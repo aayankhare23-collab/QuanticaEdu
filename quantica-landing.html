@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantica — Master Mathematics, the Hard Way (Made Joyful)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2c4d; --blue:#1f4e79; --mid:#2e75b6; --sky:#4a9fe0;
+    --accent:#ff7a45; --accent2:#ffb020;
+    --ink:#0e1726; --slate:#475569; --mute:#7c8aa0;
+    --line:#e4e9f1; --bg:#ffffff; --soft:#f5f8fc; --softer:#eef4fb;
+    --green:#1f9d6b;
+    --radius:18px; --shadow:0 18px 50px -22px rgba(15,44,77,.35);
+    --shadow-sm:0 6px 22px -10px rgba(15,44,77,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.1;letter-spacing:-.01em;font-weight:600}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter';font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;border:none;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 24px -10px rgba(255,122,69,.7)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--mid);color:var(--mid)}
+  .btn-light{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+  .btn-light:hover{background:rgba(255,255,255,.24)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces';font-weight:700;font-size:22px;color:var(--navy)}
+  .logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:17px;box-shadow:var(--shadow-sm)}
+  .navlinks{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:500;color:var(--slate)}
+  .navlinks a:hover{color:var(--navy)}
+  @media(max-width:820px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;background:
+    radial-gradient(1100px 540px at 78% -8%,rgba(74,159,224,.20),transparent 60%),
+    radial-gradient(760px 460px at 6% 18%,rgba(255,122,69,.10),transparent 55%),
+    linear-gradient(180deg,#fbfdff,#fff)}
+  .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center;padding:72px 24px 84px}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding:48px 24px 60px}}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);font-weight:700;color:var(--navy)}
+  .hero h1 .grad{background:linear-gradient(120deg,var(--mid),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{font-size:19px;color:var(--slate);margin:20px 0 28px;max-width:540px}
+  .pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;color:var(--blue);box-shadow:var(--shadow-sm)}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .micro{margin-top:16px;font-size:13.5px;color:var(--mute)}
+
+  /* hero card — interactive demo */
+  .demo{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .demo .top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff}
+  .demo .top .t{font-family:'Fraunces';font-weight:600;font-size:15px}
+  .demo .top .badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:4px 9px;border-radius:6px}
+  .demo .body{padding:22px 20px}
+  .demo .q{font-size:16.5px;font-weight:500;color:var(--ink);margin-bottom:16px}
+  .demo .q b{color:var(--blue)}
+  .opts{display:grid;gap:9px}
+  .opt{display:flex;align-items:center;gap:11px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:15px;font-weight:500;transition:all .15s ease;background:#fff}
+  .opt:hover{border-color:var(--sky);background:var(--softer)}
+  .opt .k{width:24px;height:24px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--mid);flex:none}
+  .opt.correct{border-color:var(--green);background:#e9f8f1}
+  .opt.correct .k{background:var(--green);color:#fff}
+  .opt.wrong{border-color:#f0b9b9;background:#fdeeee}
+  .opt.wrong .k{background:#d9534f;color:#fff}
+  .feedback{margin-top:14px;font-size:14.5px;padding:12px 14px;border-radius:11px;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:#e9f8f1;color:#0e6b48}
+  .feedback.hintbox{background:var(--softer);color:var(--blue)}
+  .demo .foot{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-top:1px solid var(--line);background:var(--soft);font-size:13px;color:var(--mute)}
+  .hintbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
+  .hintbtn:hover{text-decoration:underline}
+
+  /* LOGO STRIP */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft)}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;padding:18px 24px;font-size:14px;color:var(--mute);font-weight:500}
+  .strip b{color:var(--slate)}
+
+  /* SECTIONS */
+  section{padding:86px 0}
+  .sec-head{max-width:680px;margin:0 auto 52px;text-align:center}
+  .sec-head h2{font-size:clamp(28px,3.6vw,40px);color:var(--navy)}
+  .sec-head p{font-size:17.5px;color:var(--slate);margin-top:14px}
+
+  /* WHY / quadrant */
+  .why{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .why::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 85% 10%,rgba(74,159,224,.25),transparent 60%)}
+  .why .wrap{position:relative}
+  .why .sec-head h2{color:#fff}
+  .why .sec-head p{color:#c3d3e6}
+  .quad{max-width:760px;margin:0 auto;display:grid;grid-template-columns:120px 1fr 1fr;gap:0;border:1px solid rgba(255,255,255,.16);border-radius:16px;overflow:hidden}
+  .quad div{padding:20px 18px;border:0.5px solid rgba(255,255,255,.12);font-size:14.5px}
+  .quad .lbl{display:flex;align-items:center;font-weight:600;color:#9fc0e6;background:rgba(255,255,255,.04);font-size:13px}
+  .quad .hd{font-weight:700;text-align:center;background:rgba(255,255,255,.07);color:#fff;font-family:'Inter'}
+  .quad .cell b{display:block;font-family:'Fraunces';font-size:16px;margin-bottom:3px}
+  .quad .you{background:linear-gradient(135deg,rgba(255,122,69,.28),rgba(255,176,32,.18));color:#fff}
+  .quad .you b{color:#ffd9b0}
+  .quad .muted{color:#9fb3cc}
+  @media(max-width:640px){.quad{grid-template-columns:1fr}.quad .lbl{display:none}.quad .hd:first-of-type{display:none}}
+
+  /* HOW grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:860px){.grid3{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:transform .18s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:18px;background:var(--softer)}
+  .card h3{font-size:20px;color:var(--navy);margin-bottom:9px}
+  .card p{font-size:15px;color:var(--slate)}
+
+  /* CATALOG */
+  .catalog{background:var(--soft)}
+  .tier-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+  .tier-intro{background:#e3f0fb;color:var(--blue)}
+  .tier-mid{background:#fdeede;color:#c25a14}
+  .courses{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:760px){.courses{grid-template-columns:1fr}}
+  .course{display:flex;gap:15px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .15s,transform .15s}
+  .course:hover{border-color:var(--sky);transform:translateY(-2px)}
+  .course .num{font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--sky);flex:none;width:30px}
+  .course h4{font-family:'Fraunces';font-size:17px;color:var(--navy);margin-bottom:3px}
+  .course p{font-size:13.5px;color:var(--mute);line-height:1.5}
+  .catnote{text-align:center;margin-top:30px;font-size:15px;color:var(--slate)}
+  .catnote b{color:var(--navy)}
+
+  /* PRICING */
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:980px;margin:0 auto;align-items:stretch}
+  @media(max-width:860px){.prices{grid-template-columns:1fr;max-width:420px}}
+  .price{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:32px 28px;display:flex;flex-direction:column}
+  .price.feat{border-color:var(--mid);box-shadow:var(--shadow);transform:scale(1.03)}
+  @media(max-width:860px){.price.feat{transform:none}}
+  .price .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;padding:5px 14px;border-radius:999px}
+  .price .name{font-family:'Inter';font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
+  .price .amt{font-family:'Fraunces';font-weight:700;font-size:42px;color:var(--navy);margin:14px 0 2px}
+  .price .amt span{font-size:16px;font-weight:500;color:var(--mute);font-family:'Inter'}
+  .price .sub{font-size:14px;color:var(--slate);min-height:40px}
+  .price ul{list-style:none;margin:20px 0 26px;display:grid;gap:11px}
+  .price li{display:flex;gap:10px;font-size:14.5px;color:var(--slate)}
+  .price li .ck{color:var(--green);font-weight:800;flex:none}
+  .price .btn{width:100%;justify-content:center;margin-top:auto}
+
+  /* PATH band */
+  .band{background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;border-radius:24px;padding:46px 40px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+  @media(max-width:760px){.band{grid-template-columns:1fr;text-align:center;padding:36px 26px}}
+  .band h2{font-size:30px;margin-bottom:10px}
+  .band p{color:#cfe0f2;font-size:16px;max-width:520px}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 22px;transition:border-color .15s}
+  details[open]{border-color:var(--sky)}
+  summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:16.5px;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:22px;color:var(--mid);font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 0 20px;color:var(--slate);font-size:15px}
+
+  /* EMAIL / FOOTER CTA */
+  .signup{background:var(--navy);color:#fff;text-align:center}
+  .signup h2{font-size:clamp(28px,3.6vw,40px);color:#fff;max-width:640px;margin:0 auto}
+  .signup p{color:#bcd0e7;font-size:17px;margin:16px auto 30px;max-width:520px}
+  .form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .form input{flex:1;min-width:220px;padding:14px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:'Inter'}
+  .form input::placeholder{color:#9fb3cc}
+  .form input:focus{outline:none;border-color:var(--sky);background:rgba(255,255,255,.14)}
+  .formmsg{margin-top:16px;font-size:15px;font-weight:600;color:#7ee0b4;min-height:22px}
+
+  footer{background:#0a1f38;color:#8ea7c4;padding:40px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .logo{color:#fff;font-size:19px}
+  footer .logo .mark{width:26px;height:26px;font-size:15px}
+  .fine{font-size:12px;color:#5d769a;text-align:center;margin-top:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top"><span class="mark">Q</span>Quantica</a>
+      <div class="navlinks">
+        <a href="#how">How it works</a>
+        <a href="#catalog">Courses</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn btn-primary" href="#signup">Start free →</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>AoPS-grade rigor · Brilliant-style learning</span>
+      <h1>Master mathematics<br>the <span class="grad">hard way</span>—made joyful.</h1>
+      <p class="lead">Quantica is one subscription for deep, problem-solving math. From Prealgebra to pre-olympiad depth, you learn by <em>solving</em>—with instant feedback, smart hints, and a path that always knows your next step.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#signup">Start with a free unit →</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="micro">No card required · Full Prealgebra unit free · Cancel anytime</p>
+    </div>
+
+    <!-- interactive demo -->
+    <div class="demo" id="demo">
+      <div class="top">
+        <span class="t">Prealgebra · Counting</span>
+        <span class="badge">Try it</span>
+      </div>
+      <div class="body">
+        <p class="q">How many positive divisors does <b>72</b> have?</p>
+        <div class="opts" id="opts">
+          <div class="opt" data-c="0"><span class="k">A</span>6</div>
+          <div class="opt" data-c="0"><span class="k">B</span>8</div>
+          <div class="opt" data-c="1"><span class="k">C</span>12</div>
+          <div class="opt" data-c="0"><span class="k">D</span>9</div>
+        </div>
+        <div class="feedback" id="fb"></div>
+      </div>
+      <div class="foot">
+        <button class="hintbtn" id="hintbtn">💡 Need a hint?</button>
+        <span id="streak">Step 1 of 6 · 🔥 streak 3</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Built for the path between <b>Beast Academy</b> and <b>olympiad</b></span>
+    <span>·</span>
+    <span>For <b>competitors</b>, <b>homeschoolers</b>, <b>accelerated students</b> &amp; <b>adult learners</b></span>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:#9fc0e6">The gap we fill</span>
+      <h2>Rigor or affordability—why not both?</h2>
+      <p>AoPS has the depth but sells one pricey live course at a time. Brilliant is affordable and self-paced but rarely goes deep. The open-subscription, problem-solving quadrant is empty above elementary. That's Quantica.</p>
+    </div>
+    <div class="quad">
+      <div class="lbl"></div>
+      <div class="hd">Pay per course</div>
+      <div class="hd">Open subscription</div>
+
+      <div class="lbl">Deep problem-solving</div>
+      <div class="cell muted"><b>AoPS Online</b>Rigorous, but $300–950 each &amp; schedule-gated</div>
+      <div class="cell you"><b>Quantica</b>Deep math, all-access, self-paced ← you are here</div>
+
+      <div class="lbl">Procedural / breadth</div>
+      <div class="cell muted"><b>Tutoring &amp; test-prep</b>Procedural, expensive</div>
+      <div class="cell muted"><b>Brilliant · Khan</b>Affordable/free, but breadth-first</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>You do the thinking. We do the scaffolding.</h2>
+      <p>Every lesson is built around solving problems—not watching them be solved.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div class="ic">🧩</div>
+        <h3>Problem-first</h3>
+        <p>Concepts emerge from carefully sequenced problems. You discover the idea by working toward it—then we formalize it.</p>
+      </div>
+      <div class="card">
+        <div class="ic">💡</div>
+        <h3>Hints, not answers</h3>
+        <p>Stuck? Get a layered nudge—strategy, then partial, then full solution. The minimum help to keep you moving.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🗺️</div>
+        <h3>A path that knows you</h3>
+        <p>A visual mastery map shows where you are and what's next. Progress unlocks by understanding, not minutes watched.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔁</div>
+        <h3>Spaced review</h3>
+        <p>Old skills resurface inside new problems, so what you learn actually sticks for the long run.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔥</div>
+        <h3>Momentum, built in</h3>
+        <p>Streaks, XP, and challenge sets keep you coming back—motivation without diluting the rigor.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎓</div>
+        <h3>One path, all access</h3>
+        <p>Prealgebra through Intermediate, every subject, one subscription. No per-course decisions, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog" id="catalog">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The catalog</span>
+      <h2>Ten courses. One continuous journey.</h2>
+      <p>A clear spine from arithmetic foundations to pre-olympiad depth—plus enrichment tracks in counting, number theory, and logic.</p>
+    </div>
+
+    <div style="margin-bottom:14px"><span class="tier-tag tier-intro">Introduction tier</span></div>
+    <div class="courses" style="margin-bottom:34px">
+      <div class="course"><span class="num">01</span><div><h4>Prealgebra</h4><p>Integers, fractions, exponents, primes, basic equations—the foundation.</p></div></div>
+      <div class="course"><span class="num">02</span><div><h4>Introduction to Algebra</h4><p>Linear &amp; quadratic equations, inequalities, functions, graphing, systems.</p></div></div>
+      <div class="course"><span class="num">03</span><div><h4>Introduction to Geometry</h4><p>Congruence, similarity, area, the circle, trig basics, proofs, 3-D.</p></div></div>
+      <div class="course"><span class="num">04</span><div><h4>Combinatorics</h4><p>Counting techniques, combinations, probability, expected value.</p></div></div>
+      <div class="course"><span class="num">05</span><div><h4>Number Theory</h4><p>Divisibility, primes, modular arithmetic, base systems.</p></div></div>
+      <div class="course"><span class="num">06</span><div><h4>Logic Games</h4><p>Deductive puzzles, invariants, casework, parity, pigeonhole.</p></div></div>
+    </div>
+
+    <div style="margin-bottom:14px"><span class="tier-tag tier-mid">Intermediate tier</span></div>
+    <div class="courses">
+      <div class="course"><span class="num">07</span><div><h4>Intermediate Algebra</h4><p>Polynomials, complex numbers, sequences &amp; series, advanced functions.</p></div></div>
+      <div class="course"><span class="num">08</span><div><h4>Intermediate Geometry</h4><p>Power of a point, advanced theorems, transformations, analytic geometry.</p></div></div>
+      <div class="course"><span class="num">09</span><div><h4>Intermediate Combinatorics</h4><p>Advanced combinatorics, recursion, conditioning.</p></div></div>
+      <div class="course"><span class="num">10</span><div><h4>Intermediate Number Theory</h4><p>Orders, CRT, multiplicative functions, competition techniques.</p></div></div>
+    </div>
+
+    <p class="catnote"><b>More on the way.</b> A Quantitative track—probability, statistics, and the math behind markets—joins the path as Quantica grows.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Pricing</span>
+      <h2>One price. The whole catalog.</h2>
+      <p>Cheaper than a single tutoring session—and it never expires after one course.</p>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <div class="name">Monthly</div>
+        <div class="amt">$24.99<span>/mo</span></div>
+        <div class="sub">Full access, billed monthly. Flexible.</div>
+        <ul>
+          <li><span class="ck">✓</span>All 10 courses, both tiers</li>
+          <li><span class="ck">✓</span>Mastery map &amp; spaced review</li>
+          <li><span class="ck">✓</span>Cancel anytime</li>
+        </ul>
+        <a class="btn btn-ghost" href="#signup">Choose monthly</a>
+      </div>
+      <div class="price feat">
+        <span class="tag">Best value · save 50%</span>
+        <div class="name">Annual</div>
+        <div class="amt">$149<span>/yr</span></div>
+        <div class="sub">Just ~$12.42/mo. The way most learners commit to the path.</div>
+        <ul>
+          <li><span class="ck">✓</span>Everything in Monthly</li>
+          <li><span class="ck">✓</span>~50% off the monthly rate</li>
+          <li><span class="ck">✓</span>Priority on new courses</li>
+        </ul>
+        <a class="btn btn-primary" href="#signup">Start free, then $149/yr</a>
+      </div>
+      <div class="price">
+        <div class="name">Family</div>
+        <div class="amt">$249<span>/yr</span></div>
+        <div class="sub">Up to 4 learners, each with their own path.</div>
+        <ul>
+          <li><span class="ck">✓</span>4 individual accounts</li>
+          <li><span class="ck">✓</span>Built for homeschool &amp; siblings</li>
+          <li><span class="ck">✓</span>Parent progress view</li>
+        </ul>
+        <a class="btn btn-ghost" href="#signup">Choose family</a>
+      </div>
+    </div>
+    <p class="catnote" style="margin-top:34px">Start with a <b>free Prealgebra unit</b>—no card required. Subscribe when you're ready for the rest of the path.</p>
+  </div>
+</section>
+
+<!-- PATH BAND -->
+<section style="padding:30px 0 86px">
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <h2>From "I'm bad at math" to "I love hard problems."</h2>
+        <p>Quantica isn't about memorizing procedures. It's about building the problem-solving instincts that make every future course—and every hard problem—feel winnable.</p>
+      </div>
+      <a class="btn btn-light" href="#signup" style="white-space:nowrap">Begin the path →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Good to know</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Who is Quantica for?</summary><p>Ambitious learners of any age—students prepping for AMC/MATHCOUNTS, accelerated and homeschool students, and adults who want to learn math properly the first time. If you want depth, not just answers, you'll feel at home.</p></details>
+      <details><summary>How is this different from Brilliant?</summary><p>Brilliant is broad and gentle across all of STEM. Quantica goes deep on mathematics specifically—sequenced from Prealgebra to pre-olympiad rigor, with genuine problem-solving and competition-level depth.</p></details>
+      <details><summary>How is this different from AoPS?</summary><p>We share AoPS's love of hard problems. The difference is the model: AoPS sells live, scheduled courses for $300–950 each. Quantica is self-paced, all-access, and one affordable subscription—learn on your own clock.</p></details>
+      <details><summary>Do I need to buy each course?</summary><p>Never. One subscription unlocks every course and the entire path. No upsells, no per-course decisions.</p></details>
+      <details><summary>Is it really free to start?</summary><p>Yes—the first Prealgebra unit is free, no card required. You only subscribe when you want to continue the path.</p></details>
+      <details><summary>My child is under 18—how does that work?</summary><p>A parent sets up and manages the subscription, with a progress view to follow along. The Family plan covers up to four learners.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNUP -->
+<section class="signup" id="signup">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#9fc0e6">Get started</span>
+    <h2>Start your first unit free.</h2>
+    <p>Drop your email and we'll send your free Prealgebra unit plus early access as new courses ship.</p>
+    <form class="form" id="form" onsubmit="return false">
+      <input type="email" id="email" placeholder="you@email.com" required>
+      <button class="btn btn-primary" type="submit">Get my free unit →</button>
+    </form>
+    <div class="formmsg" id="formmsg"></div>
+    <p class="fine">No spam. No card. Cancel anytime once you subscribe.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="mark">Q</span>Quantica</a>
+    <span>© 2026 Quantica · Mastery-based mathematics, on subscription</span>
+  </div>
+  <p class="fine" style="color:#5d769a;margin-top:18px">Prototype landing page · pricing and copy are drafts for review.</p>
+</footer>
+
+<script>
+  // --- interactive demo problem ---
+  var solved=false;
+  document.querySelectorAll('#opts .opt').forEach(function(o){
+    o.addEventListener('click',function(){
+      if(solved) return;
+      var fb=document.getElementById('fb');
+      if(o.dataset.c==='1'){
+        o.classList.add('correct');solved=true;
+        fb.className='feedback show good';
+        fb.innerHTML='<b>Exactly.</b> 72 = 2³ × 3², so divisors = (3+1)(2+1) = <b>12</b>. That counting trick generalizes to every number—that\'s the kind of idea Quantica builds.';
+        document.getElementById('streak').textContent='Step 2 of 6 · 🔥 streak 4';
+      }else{
+        o.classList.add('wrong');
+        fb.className='feedback show hintbox';
+        fb.innerHTML='Not quite—but close thinking. Try factoring 72 into primes first. <span style="cursor:pointer;text-decoration:underline" onclick="reveal()">Show a hint</span>.';
+      }
+    });
+  });
+  document.getElementById('hintbtn').addEventListener('click',reveal);
+  function reveal(){
+    if(solved) return;
+    var fb=document.getElementById('fb');
+    fb.className='feedback show hintbox';
+    fb.innerHTML='💡 <b>Hint:</b> Write 72 as a product of primes (72 = 2³ × 3²). If a number is p<sup>a</sup>·q<sup>b</sup>, how many divisors does it have? Think (a+1)(b+1).';
+  }
+
+  // --- email capture (in-memory only) ---
+  document.getElementById('form').addEventListener('submit',function(){
+    var e=document.getElementById('email').value.trim();
+    var msg=document.getElementById('formmsg');
+    if(!e || e.indexOf('@')<1 || e.indexOf('.')<3){ msg.style.color='#ffb4a0'; msg.textContent='Please enter a valid email.'; return; }
+    msg.style.color='#7ee0b4';
+    msg.textContent="🎉 You're in! Your free Prealgebra unit is on its way to "+e+".";
+    document.getElementById('email').value='';
+  });
+</script>
+</body>
+</html>
