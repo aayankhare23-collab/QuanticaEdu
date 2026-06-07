@@ -79,6 +79,15 @@
   .demo .foot{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-top:1px solid var(--line);background:var(--soft);font-size:13px;color:var(--mute)}
   .hintbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
   .hintbtn:hover{text-decoration:underline}
+  .nextbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
+  .nextbtn:hover{text-decoration:underline}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--soft)}
+  .chips::-webkit-scrollbar{height:5px}
+  .chips::-webkit-scrollbar-thumb{background:#cdd8e6;border-radius:9px}
+  .chip{flex:none;font-size:12px;font-weight:600;color:var(--mid);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;white-space:nowrap;transition:all .15s}
+  .chip:hover{border-color:var(--sky)}
+  .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .demo .q sup{font-size:.7em}
 
   /* LOGO STRIP */
   .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft)}
@@ -106,6 +115,29 @@
   .quad .you b{color:#ffd9b0}
   .quad .muted{color:#9fb3cc}
   @media(max-width:640px){.quad{grid-template-columns:1fr}.quad .lbl{display:none}.quad .hd:first-of-type{display:none}}
+  /* contrast block */
+  .contrast{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:640px){.contrast{grid-template-columns:1fr}}
+  .cpanel{border-radius:18px;padding:28px 26px}
+  .cpanel.old{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14)}
+  .cpanel.new{background:linear-gradient(135deg,rgba(255,122,69,.24),rgba(255,176,32,.14));border:1px solid rgba(255,176,32,.34)}
+  .cpanel h4{font-family:'Fraunces';font-size:19px;margin-bottom:18px}
+  .cpanel.old h4{color:#9fb3cc}
+  .cpanel.new h4{color:#ffd9b0}
+  .cpanel ul{list-style:none;display:grid;gap:13px}
+  .cpanel li{display:flex;gap:11px;font-size:15px;line-height:1.5;color:#dce7f3}
+  .cpanel .mk{flex:none;font-weight:800}
+  .cpanel.old .mk{color:#7f93ac}
+  .cpanel.new .mk{color:#7ee0b4}
+
+  /* LETTER / who it's for */
+  .letter{background:var(--softer);position:relative;overflow:hidden}
+  .letter::before{content:"";position:absolute;font-family:'Fraunces';font-size:340px;color:rgba(31,78,121,.05);top:-90px;left:24px;line-height:1;content:"\201C"}
+  .letter .wrap{max-width:740px;text-align:center;position:relative}
+  .letter h2{font-size:clamp(26px,3.4vw,37px);color:var(--navy);margin-bottom:22px}
+  .letter p{font-size:18.5px;color:var(--slate);margin-bottom:18px;line-height:1.65}
+  .letter p .hl{color:var(--navy);font-weight:600}
+  .letter .sig{font-family:'Fraunces';font-style:italic;font-size:17px;color:var(--mid);margin-top:6px}
 
   /* HOW grid */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -201,7 +233,7 @@
 <section class="hero" style="padding:0">
   <div class="wrap">
     <div>
-      <span class="pill"><span class="dot"></span>AoPS-grade rigor · Brilliant-style learning</span>
+      <span class="pill"><span class="dot"></span>Learn by solving — not memorizing</span>
       <h1>Master mathematics<br>the <span class="grad">hard way</span>—made joyful.</h1>
       <p class="lead">Quantica is one subscription for deep, problem-solving math. From Prealgebra to pre-olympiad depth, you learn by <em>solving</em>—with instant feedback, smart hints, and a path that always knows your next step.</p>
       <div class="cta-row">
@@ -214,22 +246,18 @@
     <!-- interactive demo -->
     <div class="demo" id="demo">
       <div class="top">
-        <span class="t">Prealgebra · Counting</span>
-        <span class="badge">Try it</span>
+        <span class="t" id="demoCourse">Prealgebra</span>
+        <span class="badge">Try it · <span id="demoIdx">1</span>/10</span>
       </div>
+      <div class="chips" id="chips"></div>
       <div class="body">
-        <p class="q">How many positive divisors does <b>72</b> have?</p>
-        <div class="opts" id="opts">
-          <div class="opt" data-c="0"><span class="k">A</span>6</div>
-          <div class="opt" data-c="0"><span class="k">B</span>8</div>
-          <div class="opt" data-c="1"><span class="k">C</span>12</div>
-          <div class="opt" data-c="0"><span class="k">D</span>9</div>
-        </div>
+        <p class="q" id="q"></p>
+        <div class="opts" id="opts"></div>
         <div class="feedback" id="fb"></div>
       </div>
       <div class="foot">
         <button class="hintbtn" id="hintbtn">💡 Need a hint?</button>
-        <span id="streak">Step 1 of 6 · 🔥 streak 3</span>
+        <button class="nextbtn" id="nextbtn">Next problem →</button>
       </div>
     </div>
   </div>
@@ -237,9 +265,9 @@
 
 <div class="strip">
   <div class="wrap">
-    <span>Built for the path between <b>Beast Academy</b> and <b>olympiad</b></span>
+    <span>Math that finally <b>clicks</b>—and <b>sticks</b></span>
     <span>·</span>
-    <span>For <b>competitors</b>, <b>homeschoolers</b>, <b>accelerated students</b> &amp; <b>adult learners</b></span>
+    <span>For <b>curious students</b>, <b>homeschoolers</b>, <b>competitors</b> &amp; <b>adult learners</b></span>
   </div>
 </div>
 
@@ -247,23 +275,45 @@
 <section class="why" id="why">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow" style="color:#9fc0e6">The gap we fill</span>
-      <h2>Rigor or affordability—why not both?</h2>
-      <p>AoPS has the depth but sells one pricey live course at a time. Brilliant is affordable and self-paced but rarely goes deep. The open-subscription, problem-solving quadrant is empty above elementary. That's Quantica.</p>
+      <span class="eyebrow" style="color:#9fc0e6">Why Quantica</span>
+      <h2>A new way to learn mathematics.</h2>
+      <p>Most math learning makes you memorize steps and forget them by next week. Quantica rebuilds it around the one thing that actually creates understanding—solving real problems, with guidance, until the ideas are truly yours.</p>
     </div>
-    <div class="quad">
-      <div class="lbl"></div>
-      <div class="hd">Pay per course</div>
-      <div class="hd">Open subscription</div>
-
-      <div class="lbl">Deep problem-solving</div>
-      <div class="cell muted"><b>AoPS Online</b>Rigorous, but $300–950 each &amp; schedule-gated</div>
-      <div class="cell you"><b>Quantica</b>Deep math, all-access, self-paced ← you are here</div>
-
-      <div class="lbl">Procedural / breadth</div>
-      <div class="cell muted"><b>Tutoring &amp; test-prep</b>Procedural, expensive</div>
-      <div class="cell muted"><b>Brilliant · Khan</b>Affordable/free, but breadth-first</div>
+    <div class="contrast">
+      <div class="cpanel old">
+        <h4>The usual way</h4>
+        <ul>
+          <li><span class="mk">✗</span>Rote practice—repeat the same drill until you forget it</li>
+          <li><span class="mk">✗</span>Memorize steps without the “why”</li>
+          <li><span class="mk">✗</span>Plug numbers into a formula you were handed</li>
+          <li><span class="mk">✗</span>Worksheets that fall apart on an unfamiliar problem</li>
+          <li><span class="mk">✗</span>One-size-fits-all pacing</li>
+        </ul>
+      </div>
+      <div class="cpanel new">
+        <h4>The Quantica way — Problem-solving, not rote practice</h4>
+        <ul>
+          <li><span class="mk">✓</span>Every lesson is a problem to crack, not a worksheet to grind</li>
+          <li><span class="mk">✓</span>Build genuine problem-solving instinct, not memorized steps</li>
+          <li><span class="mk">✓</span>Discover the “why” so you can reason it out yourself</li>
+          <li><span class="mk">✓</span>Smart hints when you’re stuck—guidance, never just the answer</li>
+          <li><span class="mk">✓</span>Skills that transfer to problems you’ve never seen before</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter" id="who">
+  <div class="wrap">
+    <span class="eyebrow">Who it's for</span>
+    <h2 style="margin-top:14px">Made for everyone who loves a hard problem.</h2>
+    <p>When we started building Quantica, we kept asking ourselves one question: who is this for? The student taking their very first steps into the beauty of a real mathematical problem? The competitor, already sharpened by contests, hunting for a tougher challenge? Or the teacher and the parent, searching for problems worth a curious mind's time?</p>
+    <p><span class="hl">We refused to choose.</span> Quantica is built for all of them. The problems range from gentle to genuinely hard—never mere exercises, always something to think about. Every one comes with the ideas behind it, a guided path toward the solution, and more to try on your own.</p>
+    <p>And however difficult a problem may look, we design it so that the idea at its heart is always within reach of a motivated student. You may have to think hard, sit with it, and try more than once—but the path is there, and we'll help you find it.</p>
+    <p>Wherever you start, there's always a next step waiting.</p>
+    <p class="sig">— The Quantica team</p>
   </div>
 </section>
 
@@ -411,8 +461,8 @@
     </div>
     <div class="faq">
       <details open><summary>Who is Quantica for?</summary><p>Ambitious learners of any age—students prepping for AMC/MATHCOUNTS, accelerated and homeschool students, and adults who want to learn math properly the first time. If you want depth, not just answers, you'll feel at home.</p></details>
-      <details><summary>How is this different from Brilliant?</summary><p>Brilliant is broad and gentle across all of STEM. Quantica goes deep on mathematics specifically—sequenced from Prealgebra to pre-olympiad rigor, with genuine problem-solving and competition-level depth.</p></details>
-      <details><summary>How is this different from AoPS?</summary><p>We share AoPS's love of hard problems. The difference is the model: AoPS sells live, scheduled courses for $300–950 each. Quantica is self-paced, all-access, and one affordable subscription—learn on your own clock.</p></details>
+      <details><summary>What makes Quantica different?</summary><p>Most math sites go broad and shallow, or lock real depth behind expensive, scheduled courses. Quantica is built around genuine problem-solving—deep, sequenced, and self-paced—so you actually understand the math, all for one simple subscription.</p></details>
+      <details><summary>Do I need to be "good at math" already?</summary><p>No. Quantica meets you where you are and builds from the ground up. The hints and mastery path are designed so getting stuck is part of learning—never a wall.</p></details>
       <details><summary>Do I need to buy each course?</summary><p>Never. One subscription unlocks every course and the entire path. No upsells, no per-course decisions.</p></details>
       <details><summary>Is it really free to start?</summary><p>Yes—the first Prealgebra unit is free, no card required. You only subscribe when you want to continue the path.</p></details>
       <details><summary>My child is under 18—how does that work?</summary><p>A parent sets up and manages the subscription, with a progress view to follow along. The Family plan covers up to four learners.</p></details>
@@ -444,31 +494,106 @@
 </footer>
 
 <script>
-  // --- interactive demo problem ---
-  var solved=false;
-  document.querySelectorAll('#opts .opt').forEach(function(o){
-    o.addEventListener('click',function(){
-      if(solved) return;
-      var fb=document.getElementById('fb');
-      if(o.dataset.c==='1'){
-        o.classList.add('correct');solved=true;
-        fb.className='feedback show good';
-        fb.innerHTML='<b>Exactly.</b> 72 = 2³ × 3², so divisors = (3+1)(2+1) = <b>12</b>. That counting trick generalizes to every number—that\'s the kind of idea Quantica builds.';
-        document.getElementById('streak').textContent='Step 2 of 6 · 🔥 streak 4';
-      }else{
-        o.classList.add('wrong');
-        fb.className='feedback show hintbox';
-        fb.innerHTML='Not quite—but close thinking. Try factoring 72 into primes first. <span style="cursor:pointer;text-decoration:underline" onclick="reveal()">Show a hint</span>.';
-      }
+  // --- interactive problems: one from each course ---
+  var PROBLEMS=[
+   {c:"Prealgebra", short:"Prealgebra",
+    q:"How many positive divisors does <b>72</b> have?",
+    o:[["6",0],["8",0],["12",1],["9",0]],
+    h:"💡 <b>Hint:</b> Write 72 as a product of primes (72 = 2³ × 3²). A number p<sup>a</sup>·q<sup>b</sup> has (a+1)(b+1) divisors.",
+    s:"<b>Exactly.</b> 72 = 2³ × 3², so the count is (3+1)(2+1) = <b>12</b>. That trick works for any number."},
+   {c:"Introduction to Algebra", short:"Intro Algebra",
+    q:"If <b>x + 1/x = 5</b>, what is <b>x² + 1/x²</b>?",
+    o:[["23",1],["25",0],["24",0],["27",0]],
+    h:"💡 <b>Hint:</b> Square both sides: (x + 1/x)² = x² + 2 + 1/x².",
+    s:"<b>Nice.</b> Squaring gives 25 = x² + 2 + 1/x², so x² + 1/x² = <b>23</b>."},
+   {c:"Introduction to Geometry", short:"Intro Geometry",
+    q:"A triangle has sides <b>5, 12, 13</b>. What is its area?",
+    o:[["30",1],["60",0],["39",0],["32.5",0]],
+    h:"💡 <b>Hint:</b> Check 5² + 12². What does it equal?",
+    s:"<b>Right.</b> 5² + 12² = 13², so it's a right triangle — area = ½ · 5 · 12 = <b>30</b>."},
+   {c:"Combinatorics", short:"Combinatorics",
+    q:"How many distinct arrangements are there of the letters in <b>BANANA</b>?",
+    o:[["60",1],["120",0],["720",0],["180",0]],
+    h:"💡 <b>Hint:</b> 6 letters, but with repeats — three A's and two N's. Divide out the repeats.",
+    s:"<b>Yes.</b> 6! / (3! · 2!) = 720 / 12 = <b>60</b>."},
+   {c:"Number Theory", short:"Number Theory",
+    q:"What is the remainder when <b>2¹⁰⁰</b> is divided by <b>7</b>?",
+    o:[["2",1],["1",0],["4",0],["0",0]],
+    h:"💡 <b>Hint:</b> Look at powers of 2 mod 7. Notice 2³ = 8 ≡ 1 (mod 7).",
+    s:"<b>Exactly.</b> Since 2³ ≡ 1 (mod 7) and 100 = 3·33 + 1, we get 2¹⁰⁰ ≡ 2¹ = <b>2</b>."},
+   {c:"Logic Games", short:"Logic Games",
+    q:"You have <b>8 coins</b>; one is slightly heavier. On a balance scale, what is the fewest weighings that <i>guarantees</i> finding it?",
+    o:[["2",1],["3",0],["1",0],["4",0]],
+    h:"💡 <b>Hint:</b> Each weighing has three outcomes (left, right, balanced). Split the coins into three groups.",
+    s:"<b>Clever.</b> Weigh 3 vs 3; the heavier side — or the leftover 2 — localizes it, then one more weighing finishes. <b>2</b> weighings, since 3² = 9 ≥ 8."},
+   {c:"Intermediate Algebra", short:"Int. Algebra",
+    q:"If <b>a + b = 4</b> and <b>ab = 2</b>, what is <b>a³ + b³</b>?",
+    o:[["40",1],["28",0],["56",0],["44",0]],
+    h:"💡 <b>Hint:</b> a³ + b³ = (a + b)³ − 3ab(a + b).",
+    s:"<b>Yes.</b> (a+b)³ − 3ab(a+b) = 4³ − 3·2·4 = 64 − 24 = <b>40</b>."},
+   {c:"Intermediate Geometry", short:"Int. Geometry",
+    q:"Two chords of a circle cross inside it. One is cut into lengths <b>3</b> and <b>8</b>; the other into <b>4</b> and <b>x</b>. Find <b>x</b>.",
+    o:[["6",1],["5",0],["8",0],["24",0]],
+    h:"💡 <b>Hint:</b> When two chords intersect, the products of their two segments are equal.",
+    s:"<b>Right.</b> 3 · 8 = 4 · x, so 24 = 4x and x = <b>6</b>. (Power of a point.)"},
+   {c:"Intermediate Combinatorics", short:"Int. Combinatorics",
+    q:"In how many ways can a <b>2 × 10</b> board be tiled with <b>1 × 2</b> dominoes?",
+    o:[["89",1],["100",0],["55",0],["144",0]],
+    h:"💡 <b>Hint:</b> Let f(n) tile a 2×n board. The last column is one vertical domino or two horizontals, so f(n) = f(n−1) + f(n−2).",
+    s:"<b>Beautiful.</b> It's Fibonacci: 1, 2, 3, 5, 8, 13, 21, 34, 55, <b>89</b>."},
+   {c:"Intermediate Number Theory", short:"Int. Number Theory",
+    q:"What are the <b>last two digits</b> of <b>7²⁰²⁴</b>?",
+    o:[["01",1],["07",0],["49",0],["43",0]],
+    h:"💡 <b>Hint:</b> Work mod 100. Compute 7⁴ = 2401 — what is that mod 100?",
+    s:"<b>Exactly.</b> 7⁴ = 2401 ≡ 1 (mod 100), and 2024 = 4·506, so 7²⁰²⁴ ≡ 1 — last two digits <b>01</b>."}
+  ];
+  var idx=0, solved=false, KEYS=["A","B","C","D"];
+  function load(i){
+    idx=i; solved=false;
+    var p=PROBLEMS[i];
+    document.getElementById('demoCourse').textContent=p.c;
+    document.getElementById('demoIdx').textContent=(i+1);
+    document.getElementById('q').innerHTML=p.q;
+    var opts=document.getElementById('opts'); opts.innerHTML='';
+    p.o.forEach(function(opt,j){
+      var d=document.createElement('div');
+      d.className='opt';
+      d.innerHTML='<span class="k">'+KEYS[j]+'</span>'+opt[0];
+      d.addEventListener('click',function(){ pick(d,opt[1]); });
+      opts.appendChild(d);
     });
-  });
-  document.getElementById('hintbtn').addEventListener('click',reveal);
+    var fb=document.getElementById('fb'); fb.className='feedback'; fb.innerHTML='';
+    document.querySelectorAll('#chips .chip').forEach(function(c,k){ c.classList.toggle('active',k===i); });
+    var act=document.querySelector('#chips .chip.active'); if(act&&act.scrollIntoView) act.scrollIntoView({inline:'center',block:'nearest'});
+  }
+  function pick(el,correct){
+    if(solved) return;
+    var fb=document.getElementById('fb'), p=PROBLEMS[idx];
+    if(correct===1){
+      el.classList.add('correct'); solved=true;
+      fb.className='feedback show good'; fb.innerHTML=p.s;
+    }else{
+      el.classList.add('wrong');
+      fb.className='feedback show hintbox';
+      fb.innerHTML='Not quite — give it another look. <span style="cursor:pointer;text-decoration:underline" onclick="reveal()">Show a hint</span>.';
+    }
+  }
   function reveal(){
     if(solved) return;
     var fb=document.getElementById('fb');
-    fb.className='feedback show hintbox';
-    fb.innerHTML='💡 <b>Hint:</b> Write 72 as a product of primes (72 = 2³ × 3²). If a number is p<sup>a</sup>·q<sup>b</sup>, how many divisors does it have? Think (a+1)(b+1).';
+    fb.className='feedback show hintbox'; fb.innerHTML=PROBLEMS[idx].h;
   }
+  document.getElementById('hintbtn').addEventListener('click',reveal);
+  document.getElementById('nextbtn').addEventListener('click',function(){ load((idx+1)%PROBLEMS.length); });
+  (function(){
+    var chips=document.getElementById('chips');
+    PROBLEMS.forEach(function(p,i){
+      var c=document.createElement('button'); c.className='chip'; c.textContent=p.short;
+      c.addEventListener('click',function(){ load(i); });
+      chips.appendChild(c);
+    });
+    load(0);
+  })();
 
   // --- email capture (in-memory only) ---
   document.getElementById('form').addEventListener('submit',function(){
