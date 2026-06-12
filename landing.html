@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantica | Master Mathematics, the Hard Way (Made Joyful)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+  :root{
+    --navy:#0f2c4d; --blue:#1f4e79; --mid:#2e75b6; --sky:#4a9fe0;
+    --accent:#ff7a45; --accent2:#ffb020;
+    --ink:#0e1726; --slate:#475569; --mute:#7c8aa0;
+    --line:#e4e9f1; --bg:#ffffff; --soft:#f5f8fc; --softer:#eef4fb;
+    --green:#1f9d6b; --green2:#3ecf8e;
+    --purple:#7c3aed; --purple2:#a78bfa;
+    --gold:#c79100; --gold2:#f1b51c;
+    --radius:18px; --shadow:0 18px 50px -22px rgba(15,44,77,.35);
+    --shadow-sm:0 6px 22px -10px rgba(15,44,77,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.1;letter-spacing:-.01em;font-weight:600}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter';font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;border:none;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 24px -10px rgba(255,122,69,.7)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--mid);color:var(--mid)}
+  .btn-light{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+  .btn-light:hover{background:rgba(255,255,255,.24)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces';font-weight:700;font-size:22px;color:var(--navy)}
+  .logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:17px;box-shadow:var(--shadow-sm)}
+  .navlinks{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:500;color:var(--slate)}
+  .navlinks a:hover{color:var(--navy)}
+  @media(max-width:820px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;background:
+    radial-gradient(1100px 540px at 78% -8%,rgba(74,159,224,.20),transparent 60%),
+    radial-gradient(760px 460px at 6% 18%,rgba(255,122,69,.10),transparent 55%),
+    linear-gradient(180deg,#fbfdff,#fff)}
+  .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center;padding:72px 24px 84px}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding:48px 24px 60px}}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);font-weight:700;color:var(--navy)}
+  .hero h1 .grad{background:linear-gradient(120deg,var(--mid),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{font-size:19px;color:var(--slate);margin:20px 0 28px;max-width:540px}
+  .pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;color:var(--blue);box-shadow:var(--shadow-sm)}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .micro{margin-top:16px;font-size:13.5px;color:var(--mute)}
+
+  /* hero card: interactive demo */
+  .demo{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .demo .top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff}
+  .demo .top .t{font-family:'Fraunces';font-weight:600;font-size:15px}
+  .demo .top .badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:4px 9px;border-radius:6px}
+  .demo .body{padding:22px 20px}
+  .demo .q{font-size:16.5px;font-weight:500;color:var(--ink);margin-bottom:16px}
+  .demo .q b{color:var(--blue)}
+  .opts{display:grid;gap:9px}
+  .opt{display:flex;align-items:center;gap:11px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:15px;font-weight:500;transition:all .15s ease;background:#fff}
+  .opt:hover{border-color:var(--sky);background:var(--softer)}
+  .opt .k{width:24px;height:24px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--mid);flex:none}
+  .opt.correct{border-color:var(--green);background:#e9f8f1}
+  .opt.correct .k{background:var(--green);color:#fff}
+  .opt.wrong{border-color:#f0b9b9;background:#fdeeee}
+  .opt.wrong .k{background:#d9534f;color:#fff}
+  .feedback{margin-top:14px;font-size:14.5px;padding:12px 14px;border-radius:11px;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:#e9f8f1;color:#0e6b48}
+  .feedback.hintbox{background:var(--softer);color:var(--blue)}
+  .demo .foot{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-top:1px solid var(--line);background:var(--soft);font-size:13px;color:var(--mute)}
+  .hintbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
+  .hintbtn:hover{text-decoration:underline}
+  .nextbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
+  .nextbtn:hover{text-decoration:underline}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--soft)}
+  .chips::-webkit-scrollbar{height:5px}
+  .chips::-webkit-scrollbar-thumb{background:#cdd8e6;border-radius:9px}
+  .chip{flex:none;font-size:12px;font-weight:600;color:var(--mid);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;white-space:nowrap;transition:all .15s}
+  .chip:hover{border-color:var(--sky)}
+  .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .demo .q sup{font-size:.7em}
+
+  /* LOGO STRIP */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft)}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;padding:18px 24px;font-size:14px;color:var(--mute);font-weight:500}
+  .strip b{color:var(--slate)}
+
+  /* SECTIONS */
+  section{padding:86px 0}
+  .sec-head{max-width:680px;margin:0 auto 52px;text-align:center}
+  .sec-head h2{font-size:clamp(28px,3.6vw,40px);color:var(--navy)}
+  .sec-head p{font-size:17.5px;color:var(--slate);margin-top:14px}
+
+  /* WHY / quadrant */
+  .why{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .why::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 85% 10%,rgba(74,159,224,.25),transparent 60%)}
+  .why .wrap{position:relative}
+  .why .sec-head h2{color:#fff}
+  .why .sec-head p{color:#c3d3e6}
+  .quad{max-width:760px;margin:0 auto;display:grid;grid-template-columns:120px 1fr 1fr;gap:0;border:1px solid rgba(255,255,255,.16);border-radius:16px;overflow:hidden}
+  .quad div{padding:20px 18px;border:0.5px solid rgba(255,255,255,.12);font-size:14.5px}
+  .quad .lbl{display:flex;align-items:center;font-weight:600;color:#9fc0e6;background:rgba(255,255,255,.04);font-size:13px}
+  .quad .hd{font-weight:700;text-align:center;background:rgba(255,255,255,.07);color:#fff;font-family:'Inter'}
+  .quad .cell b{display:block;font-family:'Fraunces';font-size:16px;margin-bottom:3px}
+  .quad .you{background:linear-gradient(135deg,rgba(255,122,69,.28),rgba(255,176,32,.18));color:#fff}
+  .quad .you b{color:#ffd9b0}
+  .quad .muted{color:#9fb3cc}
+  @media(max-width:640px){.quad{grid-template-columns:1fr}.quad .lbl{display:none}.quad .hd:first-of-type{display:none}}
+  /* contrast block */
+  .contrast{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:640px){.contrast{grid-template-columns:1fr}}
+  .cpanel{border-radius:18px;padding:28px 26px}
+  .cpanel.old{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14)}
+  .cpanel.new{background:linear-gradient(135deg,rgba(255,122,69,.24),rgba(255,176,32,.14));border:1px solid rgba(255,176,32,.34)}
+  .cpanel h4{font-family:'Fraunces';font-size:19px;margin-bottom:18px}
+  .cpanel.old h4{color:#9fb3cc}
+  .cpanel.new h4{color:#ffd9b0}
+  .cpanel ul{list-style:none;display:grid;gap:13px}
+  .cpanel li{display:flex;gap:11px;font-size:15px;line-height:1.5;color:#dce7f3}
+  .cpanel .mk{flex:none;font-weight:800}
+  .cpanel.old .mk{color:#7f93ac}
+  .cpanel.new .mk{color:#7ee0b4}
+
+  /* LETTER / who it's for */
+  .letter{background:var(--softer);position:relative;overflow:hidden}
+  .letter::before{content:"";position:absolute;font-family:'Fraunces';font-size:340px;color:rgba(31,78,121,.05);top:-90px;left:24px;line-height:1;content:"\201C"}
+  .letter .wrap{max-width:740px;text-align:center;position:relative}
+  .letter h2{font-size:clamp(26px,3.4vw,37px);color:var(--navy);margin-bottom:22px}
+  .letter p{font-size:18.5px;color:var(--slate);margin-bottom:18px;line-height:1.65}
+  .letter p .hl{color:var(--navy);font-weight:600}
+  .letter .sig{font-family:'Fraunces';font-style:italic;font-size:17px;color:var(--mid);margin-top:6px}
+
+  /* HOW grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:860px){.grid3{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:transform .18s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:18px;background:var(--softer)}
+  .card h3{font-size:20px;color:var(--navy);margin-bottom:9px}
+  .card p{font-size:15px;color:var(--slate)}
+
+  /* CATALOG */
+  .catalog{background:var(--soft)}
+  .tier-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+  .tier-intro{background:#e3f0fb;color:var(--blue)}
+  .tier-mid{background:#fdeede;color:#c25a14}
+  .courses{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:760px){.courses{grid-template-columns:1fr}}
+  .course{display:flex;gap:15px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .15s,transform .15s}
+  .course:hover{border-color:var(--sky);transform:translateY(-2px)}
+  .course .num{font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--sky);flex:none;width:30px}
+  .course h4{font-family:'Fraunces';font-size:17px;color:var(--navy);margin-bottom:3px}
+  .course p{font-size:13.5px;color:var(--mute);line-height:1.5}
+  .catnote{text-align:center;margin-top:30px;font-size:15px;color:var(--slate)}
+  .catnote b{color:var(--navy)}
+
+  /* PRICING */
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:980px;margin:0 auto;align-items:stretch}
+  @media(max-width:860px){.prices{grid-template-columns:1fr;max-width:420px}}
+  .price{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:32px 28px;display:flex;flex-direction:column}
+  .price.feat{border-color:var(--mid);box-shadow:var(--shadow);transform:scale(1.03)}
+  @media(max-width:860px){.price.feat{transform:none}}
+  .price .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;padding:5px 14px;border-radius:999px}
+  .price .name{font-family:'Inter';font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
+  .price .amt{font-family:'Fraunces';font-weight:700;font-size:42px;color:var(--navy);margin:14px 0 2px}
+  .price .amt span{font-size:16px;font-weight:500;color:var(--mute);font-family:'Inter'}
+  .price .sub{font-size:14px;color:var(--slate);min-height:40px}
+  .price ul{list-style:none;margin:20px 0 26px;display:grid;gap:11px}
+  .price li{display:flex;gap:10px;font-size:14.5px;color:var(--slate)}
+  .price li .ck{color:var(--green);font-weight:800;flex:none}
+  .price .btn{width:100%;justify-content:center;margin-top:auto}
+
+  /* PATH band */
+  .band{background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;border-radius:24px;padding:46px 40px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+  @media(max-width:760px){.band{grid-template-columns:1fr;text-align:center;padding:36px 26px}}
+  .band h2{font-size:30px;margin-bottom:10px}
+  .band p{color:#cfe0f2;font-size:16px;max-width:520px}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 22px;transition:border-color .15s}
+  details[open]{border-color:var(--sky)}
+  summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:16.5px;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:22px;color:var(--mid);font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 0 20px;color:var(--slate);font-size:15px}
+
+  /* EMAIL / FOOTER CTA */
+  .signup{background:var(--navy);color:#fff;text-align:center}
+  .signup h2{font-size:clamp(28px,3.6vw,40px);color:#fff;max-width:640px;margin:0 auto}
+  .signup p{color:#bcd0e7;font-size:17px;margin:16px auto 30px;max-width:520px}
+  .form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .form input{flex:1;min-width:220px;padding:14px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:'Inter'}
+  .form input::placeholder{color:#9fb3cc}
+  .form input:focus{outline:none;border-color:var(--sky);background:rgba(255,255,255,.14)}
+  .formmsg{margin-top:16px;font-size:15px;font-weight:600;color:#7ee0b4;min-height:22px}
+
+  footer{background:#0a1f38;color:#8ea7c4;padding:40px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .logo{color:#fff;font-size:19px}
+  footer .logo .mark{width:26px;height:26px;font-size:15px}
+  .fine{font-size:12px;color:#5d769a;text-align:center;margin-top:14px}
+
+  /* lesson modal */
+  .course.clickable{cursor:pointer}
+  .course.clickable:hover{border-color:var(--mid)}
+  .peek{font-family:'Inter';font-size:11.5px;font-weight:700;color:var(--accent);margin-left:8px;white-space:nowrap;letter-spacing:.02em}
+  /* full-screen course app */
+  .overlay{position:fixed;inset:0;background:var(--soft);display:none;z-index:200}
+  .overlay.open{display:block}
+  .modal{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--soft);animation:fade .22s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .coursebar{flex:none;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .cb-left{display:flex;align-items:center;gap:14px}
+  .cb-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--navy)}
+  .cb-logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:14px}
+  .cb-back{display:none;align-items:center;gap:4px;font-family:'Inter';font-size:13.5px;font-weight:600;color:var(--mid);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer}
+  .cb-back:hover{background:var(--softer);border-color:var(--sky)}
+  .cb-exit{font-family:'Inter';font-size:13px;font-weight:600;color:var(--slate);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer}
+  .cb-exit:hover{color:var(--navy);border-color:var(--mid)}
+  .coursescroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .coursewrap{max-width:780px;margin:0 auto;padding:34px 24px 90px}
+  .pagehead{margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .pagehead .eyebrow{color:var(--mid)}
+  .pagehead h1{font-family:'Fraunces';font-weight:600;font-size:33px;color:var(--navy);line-height:1.12;margin-top:10px;letter-spacing:-.01em}
+  @media(max-width:600px){.pagehead h1{font-size:26px}.coursewrap{padding:24px 18px 64px}.coursebar{height:54px;padding:0 14px}}
+  .modal .mbody{padding:0}
+  .modal .mbody p{font-size:15.5px;color:var(--slate);margin-bottom:15px;line-height:1.7}
+  .modal .mbody p .hl{color:var(--navy);font-weight:600}
+  .formula{background:var(--softer);border:1px solid var(--line);border-radius:12px;padding:15px;text-align:center;font-size:17px;color:var(--navy);margin:4px 0 18px;font-weight:600}
+  .formula .small{display:block;font-size:12.5px;color:var(--mute);margin-top:7px;font-style:italic;font-weight:400}
+  .modal h4.sub{font-family:'Fraunces';color:var(--navy);font-size:19px;margin:8px 0 12px}
+  .whylist{list-style:none;display:grid;gap:10px;margin-bottom:18px}
+  .whylist li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--slate);background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px;line-height:1.55}
+  .whylist .n{flex:none;width:24px;height:24px;border-radius:7px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;margin-top:1px}
+  /* (legacy modal chrome removed; course now uses the full-screen .coursebar shell) */
+  .backlink{display:inline-block;font-family:'Inter';font-size:13.5px;font-weight:600;color:var(--mid);cursor:pointer;margin-bottom:16px}
+  .backlink:hover{text-decoration:underline}
+  .toc .grp{margin-bottom:16px}
+  .toc .ch{font-family:'Fraunces';font-weight:700;font-size:16px;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:7px}
+  .toc .ch .cnum{color:var(--sky);margin-right:7px}
+  .toc .sec{display:block;font-size:13.5px;color:var(--mid);padding:3px 0 3px 16px;text-decoration:none;border:none;background:none;font-family:'Inter';text-align:left;width:100%}
+  .toc a.sec{cursor:pointer}
+  .toc a.sec:hover{color:var(--blue);text-decoration:underline}
+  .toc .sec.open{color:var(--accent);font-weight:600}
+  .toc .sec.open::after{content:" · read now";font-size:11px;color:var(--accent);font-weight:600}
+  .toc .ex{display:block;font-size:13px;font-weight:600;color:#5b6b80;padding:3px 0 3px 16px;cursor:default}
+  .toc a.ex{cursor:pointer}
+  .toc a.ex:hover{color:var(--accent);text-decoration:underline}
+
+  /* COURSE DASHBOARD */
+  .dash-hero{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--softer);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:22px}
+  .dash-hero h3{font-size:21px;color:var(--navy);margin:6px 0 4px}
+  .dash-hero p{font-size:14px;color:var(--mute);margin:0}
+  @media(max-width:600px){.dash-hero{flex-direction:column;align-items:flex-start}}
+  .dash-progress{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--slate);margin-bottom:22px}
+  .dash-progress .bar{flex:1;height:8px;border-radius:99px;background:var(--softer);overflow:hidden}
+  .dash-progress .fill{display:block;height:100%;background:linear-gradient(90deg,var(--mid),var(--sky));border-radius:99px}
+  .dash-grid{display:grid;gap:10px;margin-bottom:8px}
+  .dchip{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:13px;padding:13px 16px;cursor:pointer;transition:border-color .15s,background .15s}
+  .dchip:hover{border-color:var(--sky);background:var(--soft)}
+  .dchip.locked{cursor:default}
+  .dchip.locked:hover{border-color:var(--line);background:none}
+  .dchip .stat{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700}
+  .dchip.done .stat{background:var(--green);color:#fff}
+  .dchip.current .stat{background:var(--accent);color:#fff}
+  .dchip.next .stat{background:var(--softer);color:var(--mid);border:1.5px solid var(--mid)}
+  .dchip.locked .stat{background:var(--soft);color:var(--mute)}
+  .dchip .ttl{font-family:'Fraunces';font-size:15px;color:var(--navy);font-weight:600}
+  .dchip.locked .ttl{color:var(--mute)}
+  .dchip .sub{font-size:12.5px;color:var(--mute);margin-top:2px}
+  .dchip .mini{flex:none;width:64px;height:6px;border-radius:99px;background:var(--softer);overflow:hidden;margin-left:auto}
+  .dchip .mini i{display:block;height:100%;background:linear-gradient(90deg,var(--mid),var(--sky))}
+  @media(max-width:600px){.dchip .mini{display:none}}
+
+  /* PROBLEM SETS */
+  .psethead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .psethead .pname{font-family:'Fraunces';font-size:18px;color:var(--navy)}
+  .psethead .pidx{font-size:13px;color:var(--mute);font-weight:600;white-space:nowrap}
+  .psetdone{text-align:center;padding:26px 10px}
+  .psetdone .big{font-size:38px;margin-bottom:10px}
+
+  /* LESSON BLOCKS: problem-first, learn-by-doing */
+  .probbox{border:1px solid var(--line);border-left:4px solid var(--pc,var(--mid));background:var(--soft);border-radius:0 12px 12px 0;padding:15px 18px;margin:2px 0 18px}
+  .probbox .plabel{font-family:'Inter';font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--pc,var(--mid));margin-bottom:8px;display:flex;align-items:center;gap:7px}
+  .probbox .ptext{font-size:15.5px;color:var(--ink);line-height:1.65}
+  .probbox .ptext b{color:var(--blue)}
+  .answerrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .ansinput{flex:1;min-width:140px;font-family:'Inter';font-size:14.5px;padding:9px 12px;border:1.5px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}
+  .ansinput:focus{outline:none;border-color:var(--sky)}
+  .ansinput.okin{border-color:var(--green);background:#f0fbf6}
+  .checkbtn{font-family:'Inter';font-size:13.5px;font-weight:600;color:#fff;background:var(--mid);border:none;border-radius:9px;padding:9px 18px;cursor:pointer}
+  .checkbtn:hover{background:var(--blue)}
+  .ansfb{margin-top:8px;font-size:14px;font-weight:600;min-height:18px}
+  .ansfb.right{color:var(--green)}
+  .ansfb.wrong{color:#d9534f}
+  .hintbtn2{margin-top:10px;font-family:'Inter';font-size:13px;font-weight:600;color:var(--accent);background:#fff;border:1px solid #ffd9b0;border-radius:8px;padding:6px 13px;cursor:pointer}
+  .hintbtn2:hover{background:#fff6ef}
+  .hintbtn2:disabled{color:var(--mute);border-color:var(--line);cursor:default;background:#fff}
+  .hintbox2{margin-top:8px;display:grid;gap:6px}
+  .hintbox2 .hintline{font-size:14px;color:var(--blue);background:var(--softer);border-radius:8px;padding:9px 12px;line-height:1.55}
+  .plabel.challenge{color:var(--gold)}
+  .solbtn{margin-top:12px;font-family:'Inter';font-size:13px;font-weight:600;color:var(--mid);background:#fff;border:1px dashed var(--mid);border-radius:8px;padding:6px 13px;cursor:pointer}
+  .solbtn:hover{background:var(--softer)}
+  .solution{display:none;margin-top:12px;padding-top:13px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--slate);line-height:1.7}
+  .solution.show{display:block}
+  .solution .slabel{font-weight:700;color:var(--green);font-size:11px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+  .solution b{color:var(--navy)}
+  .solution p{margin:0 0 10px}
+  .solution p:last-child{margin-bottom:0}
+  .solution .formula{font-size:15px;padding:11px 14px;margin:10px 0 12px}
+  .impbox{background:linear-gradient(135deg,var(--softer),#fbfdff);border:1px solid #bfdcf3;border-radius:12px;padding:15px 18px;margin:2px 0 18px}
+  .impbox .ilabel{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+  .impbox .itext{font-size:15px;color:var(--navy);font-weight:500;line-height:1.6}
+  .impbox .itext b{color:var(--blue)}
+  .lessonfig{margin:6px 0 20px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px 12px}
+  .lessonfig svg{width:100%;height:auto;display:block}
+  .lessonfig figcaption{margin-top:8px;font-size:13px;color:var(--mute);text-align:center;line-height:1.55}
+  .factbox{margin:10px 0 8px;background:linear-gradient(135deg,rgba(255,122,69,.10),rgba(255,176,32,.08));border:1px solid #ffd9b0;border-radius:14px;padding:16px 18px}
+  .factbox .flabel{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+  .factbox .ftext{font-size:15px;color:var(--slate);line-height:1.65}
+  .factbox .ftext b{color:var(--navy)}
+  .reviewcta{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .reviewcta .rnote{font-size:13.5px;color:var(--mute)}
+  .nextcta{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .nextcta .nnote{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .lessonnav{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+  /* PROBLEM CATEGORIES: blue try-it, green review, purple checkpoint/practice, gold challenge */
+  .cat-tryit{--pc:var(--mid);--pc2:var(--sky)}
+  .cat-review{--pc:var(--green);--pc2:var(--green2)}
+  .cat-checkpoint{--pc:var(--purple);--pc2:var(--purple2)}
+  .cat-challenge{--pc:var(--gold);--pc2:var(--gold2)}
+  .probbox.cat-tryit{background:linear-gradient(135deg,#f0f7fd,#f8fbff)}
+  .probbox.cat-review{background:linear-gradient(135deg,#ecfaf3,#f7fdfa)}
+  .probbox.cat-checkpoint{background:linear-gradient(135deg,#f4effe,#fbf9ff)}
+  .probbox.cat-challenge{background:linear-gradient(135deg,#fdf5e0,#fffbef)}
+  .probbox .checkbtn{background:linear-gradient(135deg,var(--pc,var(--mid)),var(--pc2,var(--sky)))}
+  .probbox .checkbtn:hover{filter:brightness(1.1);background:linear-gradient(135deg,var(--pc,var(--mid)),var(--pc2,var(--sky)))}
+  .probbox .solbtn{color:var(--pc,var(--mid));border-color:var(--pc,var(--mid))}
+
+  /* LESSON FLOW: one problem at a time + progress bar */
+  .lblock.hid{display:none}
+  .lblock.reveal{animation:lbIn .55s cubic-bezier(.22,1,.36,1) both}
+  @keyframes lbIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .lprog{position:sticky;top:6px;z-index:6;display:flex;align-items:center;gap:12px;padding:10px 16px;margin:0 0 20px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-sm)}
+  .lprog .segs{display:flex;flex:1;gap:5px}
+  .lprog .seg{flex:1;height:9px;border-radius:99px;background:#e7edf5;position:relative;overflow:hidden}
+  .lprog .seg i{position:absolute;inset:0;border-radius:99px;background:linear-gradient(90deg,var(--pc,var(--mid)),var(--pc2,var(--sky)));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  .lprog .seg.done i{transform:scaleX(1)}
+  .lprog .seg.done{box-shadow:0 0 10px -2px var(--pc,var(--mid))}
+  .lprog .seg.cur i{transform:scaleX(.2);animation:lpulse 1.5s ease-in-out infinite}
+  @keyframes lpulse{0%,100%{opacity:.45}50%{opacity:1}}
+  .lprog .cnt{font-family:'Inter';font-size:12.5px;font-weight:700;color:var(--slate);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  /* PRACTICE (purple) / CHALLENGE (gold) set theming */
+  #psetView[data-ptype=practice]{--pc:var(--green);--pc2:var(--green)}
+  #psetView[data-ptype=challenge]{--pc:var(--gold);--pc2:var(--gold2)}
+  #psetView[data-ptype] .psethead{border-left:4px solid var(--pc);padding-left:12px}
+  #psetView[data-ptype] .pname{color:var(--pc)}
+  #psetView[data-ptype] .pidx{background:linear-gradient(135deg,var(--pc),var(--pc2));color:#fff;border-radius:999px;padding:3px 12px;font-weight:700}
+  #psetView[data-ptype] .opt:hover{border-color:var(--pc)}
+  #psetView[data-ptype] .opt .k{color:var(--pc)}
+  #psetView[data-ptype=practice] .opt .k{background:#f1ebfe}
+  #psetView[data-ptype=challenge] .opt .k{background:#fdf3da}
+  #psetView[data-ptype] .nextbtn{background:linear-gradient(135deg,var(--pc),var(--pc2));color:#fff;padding:9px 18px;border-radius:999px;box-shadow:var(--shadow-sm)}
+  #psetView[data-ptype] .nextbtn:hover{text-decoration:none;filter:brightness(1.08)}
+  #psetView[data-ptype] .hintbtn{color:var(--pc)}
+  /* challenge encouragement note */
+  .psetnote{background:linear-gradient(135deg,rgba(245,176,32,.13),rgba(255,255,255,.55));border:1px solid rgba(245,176,32,.42);border-radius:16px;padding:18px 20px;margin-bottom:20px;box-shadow:var(--shadow-sm);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm)}
+  .psetnote .pn-label{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+  .psetnote p{font-size:14.5px;line-height:1.62;color:var(--slate);margin:0}
+  .psetnote p b{color:var(--navy)}
+  /* TOC welcome note */
+  .tocnote{background:linear-gradient(135deg,#fdfaf3,#f4f8fd);border:1px solid #eadfc8;border-radius:16px;padding:22px 24px;margin-bottom:24px;box-shadow:var(--shadow-sm)}
+  .tocnote .tn-label{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .tocnote h3{font-size:21px;color:var(--navy);margin-bottom:10px}
+  .tocnote p{font-size:14.5px;color:var(--slate);line-height:1.72;margin-bottom:11px}
+  .tocnote p:last-child{margin-bottom:0}
+  .tocnote b{color:var(--navy)}
+  .tocnote .tn-sign{font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--mid);font-size:15px}
+  .lockbtn{width:100%;text-align:left;font-family:'Inter';font-size:13.5px;font-weight:600;cursor:pointer;border-radius:11px;padding:12px 16px;margin-bottom:22px;border:1px solid var(--line);background:#fff;color:var(--slate);transition:all .15s}
+  .lockbtn:hover{border-color:var(--mid)}
+  .lockbtn.on{background:linear-gradient(135deg,rgba(31,78,121,.06),rgba(74,159,224,.05));border-color:var(--mid);color:var(--navy)}
+  .toc .sec.done{color:var(--green)}
+  .toc .sec.done .tick{font-size:11px;font-weight:700;color:var(--green)}
+  .toc .sec.locked{color:var(--mute);cursor:not-allowed}
+  .toc .sec.locked .lk{font-size:11px;font-weight:600;color:var(--mute)}
+
+  /* ============================================================
+     GLASSMORPHISM RESKIN  ·  academic + playful tech
+     Appended last so these rules layer over the base styles.
+     Same class hooks → landing, course & lesson stay uniform.
+     ============================================================ */
+  :root{
+    --navy:#16263f; --blue:#2456a6; --mid:#3a7bd5; --sky:#56b4f0;
+    --teal:#10b3a3; --teal2:#39e0cb;
+    --accent:#ff7a45; --accent2:#ffb020;
+    --ink:#15273f; --slate:#48586f; --mute:#76869c;
+    --green:#13a06e;
+    --line:rgba(36,86,166,.14);
+    --soft:rgba(255,255,255,.55);
+    --softer:rgba(86,180,240,.12);
+    --bg:transparent;
+    --radius:20px;
+    --glass:rgba(255,255,255,.70);
+    --glass-strong:rgba(255,255,255,.86);
+    --glass-line:rgba(120,155,210,.32);
+    --hi:inset 0 1px 0 rgba(255,255,255,.70);
+    --blur:blur(18px) saturate(165%);
+    --blur-sm:blur(10px) saturate(160%);
+    --shadow:0 26px 60px -28px rgba(18,42,86,.50),0 6px 18px -10px rgba(18,42,86,.16);
+    --shadow-sm:0 12px 30px -16px rgba(18,42,86,.40);
+  }
+  html{background:#eaf1fb}
+  body{color:var(--ink)}
+  ::selection{background:rgba(86,180,240,.28)}
+  a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,
+  .opt:focus-visible,.dchip:focus-visible,.course:focus-visible{outline:2px solid var(--sky);outline-offset:2px;border-radius:10px}
+
+  /* ---- ambient canvas (shared behind every view) ---- */
+  /* Gradient painted on a fixed ELEMENT (not background-attachment:fixed,
+     which mis-renders in some embedded webviews). html has an opaque
+     fallback colour so the canvas is never blank if this layer drops. */
+  .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:
+      radial-gradient(1200px 820px at 10% -8%,rgba(86,180,240,.26),transparent 58%),
+      radial-gradient(1050px 760px at 96% 4%,rgba(16,179,163,.20),transparent 55%),
+      radial-gradient(980px 760px at 82% 104%,rgba(255,122,69,.14),transparent 55%),
+      radial-gradient(940px 760px at 2% 96%,rgba(124,131,255,.14),transparent 55%),
+      linear-gradient(180deg,#f4f9ff,#eaf1fb)}
+  .bg::after{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(40,84,150,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(40,84,150,.055) 1px,transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(ellipse 78% 70% at 50% 32%,#000,transparent 80%);
+    mask-image:radial-gradient(ellipse 78% 70% at 50% 32%,#000,transparent 80%);}
+  .bg .orb{position:absolute;border-radius:50%;filter:blur(64px);opacity:.40;will-change:transform}
+  .bg .o1{width:440px;height:440px;left:-90px;top:-70px;background:radial-gradient(circle,#7cc4ff,transparent 70%);animation:floaty 19s ease-in-out infinite}
+  .bg .o2{width:400px;height:400px;right:-80px;top:5%;background:radial-gradient(circle,#5fe6d4,transparent 70%);animation:floaty 23s ease-in-out infinite reverse}
+  .bg .o3{width:380px;height:380px;left:16%;bottom:-130px;background:radial-gradient(circle,#ffc79a,transparent 70%);animation:floaty 26s ease-in-out infinite}
+  .bg .o4{width:360px;height:360px;right:12%;bottom:-100px;background:radial-gradient(circle,#b9b6ff,transparent 70%);animation:floaty 21s ease-in-out infinite reverse}
+  @keyframes floaty{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(36px,-44px) scale(1.1)}}
+
+  /* ---- buttons ---- */
+  .btn{transition:transform .18s ease,box-shadow .25s ease,background .2s ease,color .2s ease,border-color .2s ease}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:1px solid rgba(255,160,90,.5);box-shadow:0 14px 30px -12px rgba(255,122,69,.7),var(--hi)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 40px -14px rgba(255,122,69,.85),var(--hi)}
+  .btn-ghost{background:var(--glass-strong);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);color:var(--navy);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+  .btn-ghost:hover{color:var(--blue);border-color:var(--sky);transform:translateY(-2px)}
+  .btn-light{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.42);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .btn-light:hover{background:rgba(255,255,255,.28)}
+
+  /* ---- header / nav ---- */
+  header{background:rgba(255,255,255,.55);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-bottom:1px solid var(--glass-line);box-shadow:0 10px 34px -24px rgba(18,42,86,.55)}
+  .logo .mark{background:linear-gradient(135deg,var(--blue),var(--teal2));box-shadow:0 8px 18px -8px rgba(36,86,166,.6),var(--hi)}
+
+  /* ---- hero ---- */
+  .hero{background:transparent}
+  .hero h1 .grad{background:linear-gradient(120deg,var(--blue),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pill{background:var(--glass-strong);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+
+  /* ---- hero interactive demo ---- */
+  .demo{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);border-radius:22px;box-shadow:var(--shadow),var(--hi)}
+  .demo .top{background:linear-gradient(135deg,var(--navy),var(--blue))}
+  .demo .foot{background:rgba(255,255,255,.30);border-top:1px solid var(--glass-line)}
+  .chips{background:rgba(255,255,255,.26);border-bottom:1px solid var(--glass-line)}
+  .chip{background:rgba(255,255,255,.7);border:1px solid var(--glass-line)}
+  .chip.active{background:var(--blue);border-color:var(--blue)}
+  .opt{background:rgba(255,255,255,.58);border:1px solid var(--glass-line)}
+  .opt:hover{border-color:var(--sky);background:rgba(255,255,255,.85)}
+  .opt .k{background:rgba(86,180,240,.16)}
+  .opt.correct{border-color:var(--green);background:rgba(19,160,110,.14)}
+  .opt.wrong{border-color:#e29b9b;background:rgba(217,83,79,.12)}
+  .feedback.good{background:rgba(19,160,110,.14);color:#0c7a52}
+  .feedback.hintbox{background:rgba(86,180,240,.14);color:var(--blue)}
+
+  /* ---- logo strip / divider ---- */
+  .strip{background:rgba(255,255,255,.42);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border-top:1px solid var(--glass-line);border-bottom:1px solid var(--glass-line)}
+
+  /* ---- deep-glass dark bands (why / signup) ---- */
+  .why{background:linear-gradient(135deg,rgba(17,32,57,.93),rgba(20,52,96,.90));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.08)}
+  .quad{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.03)}
+  .cpanel.old{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
+  .signup{background:linear-gradient(135deg,rgba(17,32,57,.94),rgba(20,52,96,.90));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-top:1px solid rgba(255,255,255,.12)}
+  .form input{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28)}
+  .form input:focus{background:rgba(255,255,255,.18);border-color:var(--sky)}
+
+  /* ---- letter / quote band ---- */
+  .letter{background:transparent}
+  .letter::before{color:rgba(36,86,166,.07)}
+
+  /* ---- how-it-works cards ---- */
+  .card{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm),var(--hi)}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow),var(--hi)}
+  .card .ic{background:linear-gradient(135deg,var(--blue),var(--teal));border:1px solid rgba(255,255,255,.4);box-shadow:0 12px 24px -12px rgba(36,86,166,.6),var(--hi)}
+  .card .ic svg{width:26px;height:26px;stroke:#fff;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---- catalog ---- */
+  .catalog{background:transparent}
+  .tier-tag{-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm)}
+  .tier-intro{background:rgba(86,180,240,.18);color:var(--blue)}
+  .tier-mid{background:rgba(255,122,69,.18);color:#c25a14}
+  .course{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+  .course:hover{border-color:var(--sky);box-shadow:var(--shadow)}
+
+  /* ---- pricing ---- */
+  .price{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm),var(--hi)}
+  .price.feat{border-color:rgba(86,180,240,.6);box-shadow:var(--shadow),var(--hi),0 0 0 1px rgba(86,180,240,.25)}
+
+  /* ---- path band ---- */
+  .band{background:linear-gradient(135deg,var(--blue),var(--navy));border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow),var(--hi);position:relative;overflow:hidden}
+  .band::after{content:"";position:absolute;width:320px;height:320px;right:-60px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(57,224,203,.35),transparent 70%);pointer-events:none}
+
+  /* ---- FAQ ---- */
+  details{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+  details[open]{border-color:var(--sky)}
+
+  /* ---- footer ---- */
+  footer{background:linear-gradient(180deg,rgba(11,28,49,.96),rgba(8,22,44,.98));-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm)}
+
+  /* ============ COURSE + LESSON (same glass language) ============ */
+  .overlay{background:
+      radial-gradient(1200px 820px at 10% -8%,rgba(86,180,240,.26),transparent 58%),
+      radial-gradient(1050px 760px at 96% 4%,rgba(16,179,163,.20),transparent 55%),
+      radial-gradient(980px 760px at 82% 104%,rgba(255,122,69,.13),transparent 55%),
+      radial-gradient(940px 760px at 2% 96%,rgba(124,131,255,.13),transparent 55%),
+      linear-gradient(180deg,#f4f9ff,#eaf1fb)}
+  .overlay::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(40,84,150,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(40,84,150,.05) 1px,transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(ellipse 78% 70% at 50% 28%,#000,transparent 80%);
+    mask-image:radial-gradient(ellipse 78% 70% at 50% 28%,#000,transparent 80%)}
+  .modal{background:transparent}
+  .coursebar{background:rgba(255,255,255,.62);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-bottom:1px solid var(--glass-line);box-shadow:0 10px 34px -24px rgba(18,42,86,.5)}
+  .cb-logo .mark{background:linear-gradient(135deg,var(--blue),var(--teal2));box-shadow:0 6px 14px -7px rgba(36,86,166,.6),var(--hi)}
+  .cb-back{background:rgba(255,255,255,.6);border:1px solid var(--glass-line)}
+  .cb-back:hover{background:rgba(255,255,255,.85);border-color:var(--sky)}
+  .cb-exit{background:rgba(255,255,255,.6);border:1px solid var(--glass-line)}
+  .cb-exit:hover{border-color:var(--mid)}
+  .pagehead{border-bottom:1px solid var(--glass-line)}
+
+  /* course dashboard / mastery map */
+  .dash-hero{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm),var(--hi)}
+  .dash-progress .bar{background:rgba(86,180,240,.14)}
+  .dchip{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+  .dchip:hover{border-color:var(--sky);background:var(--glass-strong)}
+  .dchip.locked{background:rgba(255,255,255,.32);box-shadow:none}
+  .dchip.locked:hover{border-color:var(--glass-line);background:rgba(255,255,255,.32)}
+  .dchip .mini{background:rgba(86,180,240,.16)}
+  .lockbtn{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+  .lockbtn.on{background:linear-gradient(135deg,rgba(36,86,166,.10),rgba(16,179,163,.08));border-color:var(--mid)}
+
+  /* table of contents */
+  .toc .grp{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow-sm)}
+  .toc .ch{border-bottom-color:var(--glass-line)}
+
+  /* lesson content blocks */
+  .formula{background:rgba(255,255,255,.55);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line)}
+  .probbox{background:rgba(255,255,255,.5);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);border-left:4px solid var(--pc,var(--mid));box-shadow:var(--shadow-sm)}
+  .impbox{background:linear-gradient(135deg,rgba(86,180,240,.14),rgba(255,255,255,.5));-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid rgba(86,180,240,.32)}
+  .factbox{background:linear-gradient(135deg,rgba(255,122,69,.13),rgba(255,176,32,.10));-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid rgba(255,176,32,.4)}
+  .lessonfig{background:rgba(255,255,255,.6);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm)}
+  .whylist li{background:rgba(255,255,255,.46);border:1px solid var(--glass-line)}
+  .ansinput{background:rgba(255,255,255,.7);border:1.5px solid var(--glass-line)}
+  .ansinput:focus{border-color:var(--sky);background:#fff}
+  .ansinput.okin{border-color:var(--green);background:rgba(19,160,110,.10)}
+  .checkbtn{background:linear-gradient(135deg,var(--mid),var(--blue));box-shadow:var(--shadow-sm)}
+  .checkbtn:hover{background:linear-gradient(135deg,var(--blue),var(--navy))}
+  .hintbtn2{background:rgba(255,255,255,.7);border:1px solid rgba(255,176,32,.5)}
+  .hintbox2 .hintline{background:rgba(86,180,240,.13)}
+  .solbtn{background:rgba(255,255,255,.6)}
+  .hintbtn2:disabled{background:rgba(255,255,255,.4)}
+
+  /* problem sets */
+  .pset-q,.psetdone{}
+  #psetOpts .opt,.opts .opt{background:rgba(255,255,255,.58)}
+
+  /* ============ REWARDS: HUD · toasts · panel · shop ============ */
+  :root{--gem:#9b5de5;--gem2:#c89bff}
+  /* HUD in the course bar */
+  .hud{display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:14px;cursor:pointer;border-radius:999px;padding:2px}
+  .hud:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+  .hud-pill{display:inline-flex;align-items:center;gap:6px;font-family:'Inter';font-weight:700;font-size:13px;padding:6px 11px;border-radius:999px;background:var(--glass-strong);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);box-shadow:var(--shadow-sm);color:var(--navy);transition:transform .18s ease,box-shadow .2s ease}
+  .hud:hover .hud-pill{transform:translateY(-1px);box-shadow:var(--shadow)}
+  .hud-pill svg{width:15px;height:15px;display:block;flex:none}
+  .hud-pill.xp svg{color:var(--blue)} .hud-pill.gem svg{color:var(--gem)} .hud-pill.mp svg{color:var(--accent)}
+  .hud-pill .lvl{font-size:10px;font-weight:800;letter-spacing:.03em;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;padding:2px 7px;border-radius:999px}
+  .hud-pill.bump{animation:hudbump .5s ease}
+  @keyframes hudbump{0%{transform:scale(1)}38%{transform:scale(1.16)}100%{transform:scale(1)}}
+  @media(max-width:620px){.hud{gap:6px;margin-right:8px}.hud-pill{padding:5px 9px;font-size:12px}.hud-pill .txt-long{display:none}}
+
+  /* toasts */
+  .toast-wrap{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
+  .toast{display:flex;align-items:center;gap:11px;font-family:'Inter';font-weight:600;font-size:14px;color:var(--navy);background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--shadow);border-radius:14px;padding:11px 17px;opacity:0;transform:translateY(14px) scale(.96);animation:toastin .32s cubic-bezier(.2,.9,.3,1.3) forwards}
+  .toast .ti{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .toast .ti svg{width:16px;height:16px;color:#fff}
+  .toast .amt{font-family:'Fraunces';font-weight:700}
+  .toast.xp .ti{background:linear-gradient(135deg,var(--blue),var(--teal))}
+  .toast.gem .ti{background:linear-gradient(135deg,var(--gem),var(--gem2))}
+  .toast.mp .ti{background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .toast.tip .ti{background:linear-gradient(135deg,#64748b,#94a3b8)}
+  .toast.big{font-size:15px;padding:14px 21px;border-color:rgba(155,93,229,.4)}
+  .toast.out{animation:toastout .3s ease forwards}
+  @keyframes toastin{to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes toastout{to{opacity:0;transform:translateY(-10px) scale(.97)}}
+
+  /* rewards panel */
+  .rw-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);border-radius:18px;padding:22px 24px;box-shadow:var(--shadow-sm),var(--hi);margin-bottom:18px}
+  .rw-ring{--p:0;width:94px;height:94px;flex:none;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--mid) calc(var(--p)*1%),rgba(86,180,240,.16) 0)}
+  .rw-ring .lv{width:80px;height:80px;border-radius:50%;background:var(--glass-strong);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);display:grid;place-items:center;text-align:center}
+  .rw-ring .lv b{display:block;font-family:'Fraunces';font-size:26px;color:var(--navy);line-height:1}
+  .rw-ring .lv span{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mid)}
+  .rw-id{flex:1;min-width:200px}
+  .rw-id .rank{font-family:'Fraunces';font-size:23px;color:var(--navy);line-height:1.1}
+  .rw-id .sub{font-size:13px;color:var(--mute);margin-top:4px}
+  .rw-id .prog{margin-top:9px;font-size:12.5px;color:var(--slate);font-weight:600}
+  .rw-avatar{width:56px;height:56px;border-radius:15px;flex:none;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;font-size:26px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--teal2));box-shadow:0 10px 22px -10px rgba(36,86,166,.6),var(--hi)}
+  .rw-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px}
+  @media(max-width:640px){.rw-stats{grid-template-columns:1fr}}
+  .rw-stat{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);border-radius:16px;padding:17px 18px;box-shadow:var(--shadow-sm)}
+  .rw-stat .h{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
+  .rw-stat .h svg{width:16px;height:16px}
+  .rw-stat.gem .h{color:var(--gem)} .rw-stat.mp .h{color:#c25a14}
+  .rw-stat .big{font-family:'Fraunces';font-size:30px;color:var(--navy);margin:8px 0 2px}
+  .rw-stat .note{font-size:12.5px;color:var(--mute);line-height:1.45}
+  .rw-section-h{font-family:'Fraunces';font-size:18px;color:var(--navy);margin:24px 0 12px}
+  .streakchip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#c25a14;background:rgba(255,122,69,.13);border:1px solid rgba(255,176,32,.42);border-radius:999px;padding:7px 14px}
+  .streakchip svg{width:15px;height:15px;color:var(--accent)}
+  .rw-legend{display:grid;gap:10px}
+  .rw-legend .row{display:flex;gap:13px;align-items:flex-start;font-size:13.5px;color:var(--slate);background:rgba(255,255,255,.5);border:1px solid var(--glass-line);border-radius:13px;padding:13px 15px;line-height:1.55}
+  .rw-legend .row b{color:var(--navy)}
+  .rw-legend .lic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center}
+  .rw-legend .lic svg{width:17px;height:17px;color:#fff}
+  .rw-legend .row.xp .lic{background:linear-gradient(135deg,var(--blue),var(--teal))}
+  .rw-legend .row.gem .lic{background:linear-gradient(135deg,var(--gem),var(--gem2))}
+  .rw-legend .row.mp .lic{background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px}
+  .shop-item{background:var(--glass);-webkit-backdrop-filter:var(--blur-sm);backdrop-filter:var(--blur-sm);border:1px solid var(--glass-line);border-radius:14px;padding:13px;box-shadow:var(--shadow-sm);text-align:center}
+  .shop-item .sw{height:50px;border-radius:10px;margin-bottom:9px;border:1px solid var(--glass-line);display:grid;place-items:center;font-family:'Fraunces';font-weight:700;font-size:26px;color:#fff}
+  .shop-item .nm{font-family:'Fraunces';font-size:15px;color:var(--navy)}
+  .shop-item .cost{font-size:12px;font-weight:800;color:var(--gem);margin:3px 0 9px;display:inline-flex;align-items:center;gap:4px}
+  .shop-item button{width:100%;font-family:'Inter';font-weight:700;font-size:12.5px;border:none;border-radius:9px;padding:8px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+  .shop-item .buy{background:linear-gradient(135deg,var(--gem),#7c3fd4);color:#fff}
+  .shop-item .buy:hover{filter:brightness(1.06)}
+  .shop-item .equip{background:var(--glass-strong);border:1px solid var(--glass-line);color:var(--navy)}
+  .shop-item .equip:hover{border-color:var(--sky)}
+  .shop-item .equipped{background:rgba(19,160,110,.16);color:#0c7a52;border:1px solid rgba(19,160,110,.42)}
+  .shop-item button:disabled{opacity:.5;cursor:not-allowed}
+
+  /* mastery-map themes (recolor course canvas + accents) */
+  .overlay.theme-sunset{--mid:#f0792e;--sky:#ffb020;--blue:#e35d4b;--teal:#ff9e57;--teal2:#ffc079;
+    background:radial-gradient(1200px 820px at 10% -8%,rgba(255,160,90,.30),transparent 58%),radial-gradient(1050px 760px at 96% 4%,rgba(255,120,80,.22),transparent 55%),radial-gradient(980px 760px at 82% 104%,rgba(255,205,90,.18),transparent 55%),linear-gradient(180deg,#fff6ef,#fdeede)}
+  .overlay.theme-forest{--mid:#1f9d6b;--sky:#37e0b0;--blue:#0e7d63;--teal:#2dd4bf;--teal2:#5ff0d4;
+    background:radial-gradient(1200px 820px at 10% -8%,rgba(45,212,191,.26),transparent 58%),radial-gradient(1050px 760px at 96% 4%,rgba(16,160,110,.20),transparent 55%),radial-gradient(900px 720px at 80% 102%,rgba(120,220,160,.14),transparent 55%),linear-gradient(180deg,#f0fbf6,#e6f6ee)}
+  .overlay.theme-galaxy{--mid:#7c6cff;--sky:#a78bfa;--blue:#5b4bd6;--teal:#9b8bff;--teal2:#c3b8ff;
+    background:radial-gradient(1200px 820px at 10% -8%,rgba(124,108,255,.28),transparent 58%),radial-gradient(1050px 760px at 96% 4%,rgba(167,139,250,.22),transparent 55%),radial-gradient(980px 760px at 82% 104%,rgba(86,180,240,.14),transparent 55%),linear-gradient(180deg,#f3f1ff,#eae7fb)}
+
+  @media (prefers-reduced-motion:reduce){.toast,.hud-pill.bump{animation-duration:.01ms!important}}
+
+  /* ---- reduced motion ---- */
+  @media (prefers-reduced-motion:reduce){
+    .bg .orb{animation:none!important}
+    html{scroll-behavior:auto}
+    .card:hover,.btn-primary:hover,.btn-ghost:hover,.course:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top"><span class="mark">Q</span>Quantica</a>
+      <div class="navlinks">
+        <a href="#how">How it works</a>
+        <a href="#catalog">Courses</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn btn-primary" href="#signup">Start free →</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Learn by solving, not memorizing</span>
+      <h1>Master mathematics<br>the <span class="grad">hard way</span>, made joyful.</h1>
+      <p class="lead">Quantica is one subscription for deep, problem-solving math. From Prealgebra to pre-olympiad depth, you learn by <em>solving</em>, with instant feedback, smart hints, and a path that always knows your next step.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#signup">Start with a free unit →</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="micro">No card required · Full Prealgebra unit free · Cancel anytime</p>
+    </div>
+
+    <!-- interactive demo -->
+    <div class="demo" id="demo">
+      <div class="top">
+        <span class="t" id="demoCourse">Prealgebra</span>
+        <span class="badge">Try it · <span id="demoIdx">1</span>/10</span>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="body">
+        <p class="q" id="q"></p>
+        <div class="opts" id="opts"></div>
+        <div class="feedback" id="fb"></div>
+      </div>
+      <div class="foot">
+        <button class="hintbtn" id="hintbtn">💡 Need a hint?</button>
+        <button class="nextbtn" id="nextbtn">Next problem →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Math that finally <b>clicks</b> and <b>sticks</b></span>
+    <span>·</span>
+    <span>For <b>curious students</b>, <b>homeschoolers</b>, <b>competitors</b> &amp; <b>adult learners</b></span>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:#9fc0e6">Why Quantica</span>
+      <h2>A new way to learn mathematics.</h2>
+      <p>Most math learning makes you memorize steps and forget them by next week. Quantica rebuilds it around the one thing that actually creates understanding: solving real problems, with guidance, until the ideas are truly yours.</p>
+    </div>
+    <div class="contrast">
+      <div class="cpanel old">
+        <h4>The usual way</h4>
+        <ul>
+          <li><span class="mk">✗</span>Rote practice: repeat the same drill until you forget it</li>
+          <li><span class="mk">✗</span>Memorize steps without the “why”</li>
+          <li><span class="mk">✗</span>Plug numbers into a formula you were handed</li>
+          <li><span class="mk">✗</span>Worksheets that fall apart on an unfamiliar problem</li>
+          <li><span class="mk">✗</span>One-size-fits-all pacing</li>
+        </ul>
+      </div>
+      <div class="cpanel new">
+        <h4>The Quantica way: Problem-solving, not rote practice</h4>
+        <ul>
+          <li><span class="mk">✓</span>Every lesson is a problem to crack, not a worksheet to grind</li>
+          <li><span class="mk">✓</span>Build genuine problem-solving instinct, not memorized steps</li>
+          <li><span class="mk">✓</span>Discover the “why” so you can reason it out yourself</li>
+          <li><span class="mk">✓</span>Smart hints when you’re stuck: guidance, never just the answer</li>
+          <li><span class="mk">✓</span>Skills that transfer to problems you’ve never seen before</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter" id="who">
+  <div class="wrap">
+    <span class="eyebrow">Who it's for</span>
+    <h2 style="margin-top:14px">Made for everyone who loves a hard problem.</h2>
+    <p>When we started building Quantica, we kept asking ourselves one question: who is this for? The student taking their very first steps into the beauty of a real mathematical problem? The competitor, already sharpened by contests, hunting for a tougher challenge? Or the teacher and the parent, searching for problems worth a curious mind's time?</p>
+    <p><span class="hl">We refused to choose.</span> Quantica is built for all of them. The problems range from gentle to genuinely hard: never mere exercises, always something to think about. Every one comes with the ideas behind it, a guided path toward the solution, and more to try on your own.</p>
+    <p>And however difficult a problem may look, we design it so that the idea at its heart is always within reach of a motivated student. You may have to think hard, sit with it, and try more than once, but the path is there, and we'll help you find it.</p>
+    <p>Wherever you start, there's always a next step waiting.</p>
+    <p class="sig">From the Quantica team</p>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>You do the thinking. We do the scaffolding.</h2>
+      <p>Every lesson is built around solving problems, not watching them be solved.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4.5a1.5 1.5 0 0 1 3 0c0 .5.4 1 1 1H17a1 1 0 0 1 1 1v2c0 .6.5 1 1 1a1.5 1.5 0 0 1 0 3c-.5 0-1 .4-1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 0-1 1 1.5 1.5 0 0 1-3 0 1 1 0 0 0-1-1H7a1 1 0 0 1-1-1v-2.5c0-.6-.5-1-1-1a1.5 1.5 0 0 1 0-3c.5 0 1-.4 1-1V6.5a1 1 0 0 1 1-1h2.5c.6 0 1-.5 1-1Z"/></svg></div>
+        <h3>Problem-first</h3>
+        <p>Concepts emerge from carefully sequenced problems. You discover the idea by working toward it; then we formalize it.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.3 1 2.1V16h6v-.4c0-.8.4-1.5 1-2.1A6 6 0 0 0 12 3Z"/></svg></div>
+        <h3>Hints, not answers</h3>
+        <p>Stuck? Get a layered nudge: strategy, then partial, then full solution. The minimum help to keep you moving.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M9 6.5h5.5A3 3 0 0 1 17.5 9.5v0a3 3 0 0 1-3 3H9.5a3 3 0 0 0-3 3v0a2 2 0 0 0 2 2H15"/></svg></div>
+        <h3>A path that knows you</h3>
+        <p>A visual mastery map shows where you are and what's next. Progress unlocks by understanding, not minutes watched.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 4v4h-4"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 20v-4h4"/></svg></div>
+        <h3>Spaced review</h3>
+        <p>Old skills resurface inside new problems, so what you learn actually sticks for the long run.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 5 13h5l-1 8 8-10h-5l1-8Z"/></svg></div>
+        <h3>Momentum, built in</h3>
+        <p>Streaks, XP, and challenge sets keep you coming back: motivation without diluting the rigor.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-4 10 4-10 4L2 9Z"/><path d="M6 11v4.5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V11"/><path d="M22 9v5"/></svg></div>
+        <h3>One path, all access</h3>
+        <p>Prealgebra through Intermediate, every subject, one subscription. No per-course decisions, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog" id="catalog">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The catalog</span>
+      <h2>Ten courses. One continuous journey.</h2>
+      <p>A clear spine from arithmetic foundations to pre-olympiad depth, plus enrichment tracks in counting, number theory, and logic.</p>
+    </div>
+
+    <div style="margin-bottom:14px"><span class="tier-tag tier-intro">Introduction tier</span></div>
+    <div class="courses" style="margin-bottom:34px">
+      <div class="course clickable" onclick="openLesson()"><span class="num">01</span><div><h4>Prealgebra<span class="peek">Read the opening →</span></h4><p>Integers, fractions, exponents, primes, basic equations: the foundation.</p></div></div>
+      <div class="course"><span class="num">02</span><div><h4>Introduction to Algebra</h4><p>Linear &amp; quadratic equations, inequalities, functions, graphing, systems.</p></div></div>
+      <div class="course"><span class="num">03</span><div><h4>Introduction to Geometry</h4><p>Congruence, similarity, area, the circle, trig basics, proofs, 3-D.</p></div></div>
+      <div class="course"><span class="num">04</span><div><h4>Combinatorics</h4><p>Counting techniques, combinations, probability, expected value.</p></div></div>
+      <div class="course"><span class="num">05</span><div><h4>Number Theory</h4><p>Divisibility, primes, modular arithmetic, base systems.</p></div></div>
+      <div class="course"><span class="num">06</span><div><h4>Logic Games</h4><p>Deductive puzzles, invariants, casework, parity, pigeonhole.</p></div></div>
+    </div>
+
+    <div style="margin-bottom:14px"><span class="tier-tag tier-mid">Intermediate tier</span></div>
+    <div class="courses">
+      <div class="course"><span class="num">07</span><div><h4>Intermediate Algebra</h4><p>Polynomials, complex numbers, sequences &amp; series, advanced functions.</p></div></div>
+      <div class="course"><span class="num">08</span><div><h4>Intermediate Geometry</h4><p>Power of a point, advanced theorems, transformations, analytic geometry.</p></div></div>
+      <div class="course"><span class="num">09</span><div><h4>Intermediate Combinatorics</h4><p>Advanced combinatorics, recursion, conditioning.</p></div></div>
+      <div class="course"><span class="num">10</span><div><h4>Intermediate Number Theory</h4><p>Orders, CRT, multiplicative functions, competition techniques.</p></div></div>
+    </div>
+
+    <p class="catnote"><b>More on the way.</b> A Quantitative track (probability, statistics, and the math behind markets) joins the path as Quantica grows.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Pricing</span>
+      <h2>One price. The whole catalog.</h2>
+      <p>Cheaper than a single tutoring session, and it never expires after one course.</p>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <div class="name">Monthly</div>
+        <div class="amt">$24.99<span>/mo</span></div>
+        <div class="sub">Full access, billed monthly. Flexible.</div>
+        <ul>
+          <li><span class="ck">✓</span>All 10 courses, both tiers</li>
+          <li><span class="ck">✓</span>Mastery map &amp; spaced review</li>
+          <li><span class="ck">✓</span>Cancel anytime</li>
+        </ul>
+        <a class="btn btn-ghost" href="#signup">Choose monthly</a>
+      </div>
+      <div class="price feat">
+        <span class="tag">Best value · save 50%</span>
+        <div class="name">Annual</div>
+        <div class="amt">$149<span>/yr</span></div>
+        <div class="sub">Just ~$12.42/mo, the way most learners commit to the path.</div>
+        <ul>
+          <li><span class="ck">✓</span>Everything in Monthly</li>
+          <li><span class="ck">✓</span>~50% off the monthly rate</li>
+          <li><span class="ck">✓</span>Priority on new courses</li>
+        </ul>
+        <a class="btn btn-primary" href="#signup">Start free, then $149/yr</a>
+      </div>
+      <div class="price">
+        <div class="name">Family</div>
+        <div class="amt">$249<span>/yr</span></div>
+        <div class="sub">Up to 4 learners, each with their own path.</div>
+        <ul>
+          <li><span class="ck">✓</span>4 individual accounts</li>
+          <li><span class="ck">✓</span>Built for homeschool &amp; siblings</li>
+          <li><span class="ck">✓</span>Parent progress view</li>
+        </ul>
+        <a class="btn btn-ghost" href="#signup">Choose family</a>
+      </div>
+    </div>
+    <p class="catnote" style="margin-top:34px">Start with a <b>free Prealgebra unit</b>, no card required. Subscribe when you're ready for the rest of the path.</p>
+  </div>
+</section>
+
+<!-- PATH BAND -->
+<section style="padding:30px 0 86px">
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <h2>From "I'm bad at math" to "I love hard problems."</h2>
+        <p>Quantica isn't about memorizing procedures. It's about building the problem-solving instincts that make every future course, and every hard problem, feel winnable.</p>
+      </div>
+      <a class="btn btn-light" href="#signup" style="white-space:nowrap">Begin the path →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Good to know</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Who is Quantica for?</summary><p>Ambitious learners of any age: students prepping for AMC/MATHCOUNTS, accelerated and homeschool students, and adults who want to learn math properly the first time. If you want depth, not just answers, you'll feel at home.</p></details>
+      <details><summary>What makes Quantica different?</summary><p>Most math sites go broad and shallow, or lock real depth behind expensive, scheduled courses. Quantica is built around genuine problem-solving (deep, sequenced, and self-paced) so you actually understand the math, all for one simple subscription.</p></details>
+      <details><summary>Do I need to be "good at math" already?</summary><p>No. Quantica meets you where you are and builds from the ground up. The hints and mastery path are designed so getting stuck is part of learning, never a wall.</p></details>
+      <details><summary>Do I need to buy each course?</summary><p>Never. One subscription unlocks every course and the entire path. No upsells, no per-course decisions.</p></details>
+      <details><summary>Is it really free to start?</summary><p>Yes: the first Prealgebra unit is free, no card required. You only subscribe when you want to continue the path.</p></details>
+      <details><summary>My child is under 18. How does that work?</summary><p>A parent sets up and manages the subscription, with a progress view to follow along. The Family plan covers up to four learners.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNUP -->
+<section class="signup" id="signup">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#9fc0e6">Get started</span>
+    <h2>Start your first unit free.</h2>
+    <p>Drop your email and we'll send your free Prealgebra unit plus early access as new courses ship.</p>
+    <form class="form" id="form" onsubmit="return false">
+      <input type="email" id="email" placeholder="you@email.com" required>
+      <button class="btn btn-primary" type="submit">Get my free unit →</button>
+    </form>
+    <div class="formmsg" id="formmsg"></div>
+    <p class="fine">No spam. No card. Cancel anytime once you subscribe.</p>
+  </div>
+</section>
+
+<!-- LESSON MODAL: Prealgebra -->
+<div class="overlay" id="lessonOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Prealgebra course">
+    <header class="coursebar">
+      <div class="cb-left">
+        <button class="cb-back" id="mback" onclick="showDashboard()" aria-label="Back to course home">←<span> Home</span></button>
+        <span class="cb-logo"><span class="mark">Q</span>Quantica</span>
+      </div>
+      <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div>
+      <button class="cb-exit" onclick="closeLesson()" aria-label="Exit course">Exit course ✕</button>
+    </header>
+    <div class="coursescroll" id="courseScroll">
+      <div class="coursewrap">
+        <div class="pagehead">
+          <span class="eyebrow" id="modalEyebrow">Quantica · Prealgebra</span>
+          <h1 id="modalTitle">Course Home</h1>
+        </div>
+
+    <!-- COURSE DASHBOARD / MASTERY MAP -->
+    <div class="mbody" id="dashView">
+      <div class="dash-hero">
+        <div>
+          <span class="eyebrow">Continue learning</span>
+          <h3>1.1 · Why Begin with Arithmetic?</h3>
+          <p>Chapter 1: The Rules of Arithmetic</p>
+        </div>
+        <button class="btn btn-primary" onclick="showLesson('1.1','Why Begin with Arithmetic?','The Rules of Arithmetic',1)">Resume lesson →</button>
+      </div>
+      <div class="dash-progress">
+        <span style="white-space:nowrap;font-weight:600;color:var(--navy)">Course progress</span>
+        <span class="bar"><span class="fill" id="progFill" style="width:0%"></span></span>
+        <span style="white-space:nowrap" id="progText">0 of 0 lessons complete</span>
+      </div>
+      <button class="lockbtn" id="lockBtn" onclick="toggleLock()">🔓 Free roam is ON: open any lesson in any order</button>
+      <div class="dash-grid" id="dashGrid"></div>
+      <a class="backlink" style="display:block;margin-top:8px" onclick="showToc()">View the full table of contents →</a>
+    </div>
+
+    <!-- TABLE OF CONTENTS VIEW -->
+    <div class="mbody" id="tocView" style="display:none">
+      <a class="backlink" onclick="showDashboard()">← Back to course home</a>
+      <div class="tocnote">
+        <div class="tn-label">✦ Before you begin</div>
+        <h3>A short note on being stuck</h3>
+        <p>Nearly every idea in this course arrives as a problem you haven’t been shown how to solve. That’s on purpose. It means the most valuable thing you’ll build here isn’t arithmetic at all: it’s knowing what to do when you don’t know what to do.</p>
+        <p>So when a problem stares blankly back at you, stay calm and get your hands dirty. Reread it slowly (out loud is even better) and put it in your own words. Try tiny numbers. Draw something. Hunt for a pattern, or for structure hiding under the mess. Ask what would make the problem <em>easy</em>, then look for a way to get there. Work backwards from what you want. None of these is guaranteed to work; all of them beat staring. And a wrong turn is never wasted: finding out where the path <em>isn’t</em> is progress too.</p>
+        <p>Genuinely stuck? Leave. Take a walk. Eat a sandwich. Explain the problem to a friend, a parent, or a mildly interested cat. Your brain has a night shift, and it does some of its best work while you’re away; that’s why so many aha!s arrive in the shower. When you come back, read the problem once more: nine times out of ten, there’s a condition you haven’t used yet.</p>
+        <p>Hints exist because everyone needs one sometimes; taking one is not losing. Just give the problem an honest fight first: a hint after ten determined minutes teaches you plenty, while a solution read <em>instead of</em> struggling teaches you almost nothing. <b>The struggle isn’t the price of the lesson. It is the lesson.</b></p>
+        <p class="tn-sign">From your friends at Quantica</p>
+      </div>
+      <p style="margin-bottom:20px">Twelve chapters carry you from the rules of arithmetic all the way to real problem-solving. Tap any lesson to read it, or open a chapter's <b>Practice</b> or <b>Challenge</b> set to try problems yourself.</p>
+      <div class="toc" id="tocList"></div>
+    </div>
+
+    <!-- LESSON VIEW -->
+    <div class="mbody" id="lessonView" style="display:none">
+      <a class="backlink" onclick="showToc()">← Back to contents</a>
+      <div id="lessonBody"></div>
+    </div>
+
+    <!-- PROBLEM SET VIEW (Practice / Challenge) -->
+    <div class="mbody" id="psetView" style="display:none">
+      <a class="backlink" onclick="showToc()">← Back to contents</a>
+      <div class="psethead">
+        <span class="pname" id="psetName"></span>
+        <span class="pidx" id="psetIdx"></span>
+      </div>
+      <div class="psetnote" id="psetNote" style="display:none"></div>
+      <div id="psetBody"></div>
+    </div>
+
+    <!-- LESSON REVIEW VIEW -->
+    <div class="mbody" id="reviewView" style="display:none">
+      <a class="backlink" onclick="backFromReview()">← Back to lesson</a>
+      <p style="margin-bottom:16px;color:var(--slate)">Practice exactly what this lesson covered. Type each answer and check it; solutions unlock once you’ve tried, and hints are there if you’re stuck.</p>
+      <div id="reviewBody"></div>
+      <div id="reviewNav"></div>
+    </div>
+
+    <!-- REWARDS / PROGRESS VIEW -->
+    <div class="mbody" id="rewardsView" style="display:none">
+      <a class="backlink" onclick="showDashboard()">← Back to course home</a>
+      <div id="rewardsBody"></div>
+    </div>
+
+      </div><!-- /coursewrap -->
+    </div><!-- /coursescroll -->
+  </div><!-- /modal -->
+</div><!-- /overlay -->
+
+<div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="mark">Q</span>Quantica</a>
+    <span>© 2026 Quantica · Mastery-based mathematics, on subscription</span>
+  </div>
+  <p class="fine" style="color:#5d769a;margin-top:18px">Prototype landing page · pricing and copy are drafts for review.</p>
+</footer>
+
+<script>
+  // --- interactive problems: one from each course ---
+  var PROBLEMS=[
+   {c:"Prealgebra", short:"Prealgebra",
+    q:"How many positive divisors does <b>72</b> have?",
+    o:[["6",0],["8",0],["12",1],["9",0]],
+    h:"💡 <b>Hint:</b> Write 72 as a product of primes (72 = 2³ × 3²). A number p<sup>a</sup>·q<sup>b</sup> has (a+1)(b+1) divisors.",
+    s:"<b>Exactly.</b> 72 = 2³ × 3², so the count is (3+1)(2+1) = <b>12</b>. That trick works for any number."},
+   {c:"Introduction to Algebra", short:"Intro Algebra",
+    q:"If <b>x + 1/x = 5</b>, what is <b>x² + 1/x²</b>?",
+    o:[["23",1],["25",0],["24",0],["27",0]],
+    h:"💡 <b>Hint:</b> Square both sides: (x + 1/x)² = x² + 2 + 1/x².",
+    s:"<b>Nice.</b> Squaring gives 25 = x² + 2 + 1/x², so x² + 1/x² = <b>23</b>."},
+   {c:"Introduction to Geometry", short:"Intro Geometry",
+    q:"A triangle has sides <b>5, 12, 13</b>. What is its area?",
+    o:[["30",1],["60",0],["39",0],["32.5",0]],
+    h:"💡 <b>Hint:</b> Check 5² + 12². What does it equal?",
+    s:"<b>Right.</b> 5² + 12² = 13², so it's a right triangle; area = ½ · 5 · 12 = <b>30</b>."},
+   {c:"Combinatorics", short:"Combinatorics",
+    q:"How many distinct arrangements are there of the letters in <b>BANANA</b>?",
+    o:[["60",1],["120",0],["720",0],["180",0]],
+    h:"💡 <b>Hint:</b> 6 letters, but with repeats: three A's and two N's. Divide out the repeats.",
+    s:"<b>Yes.</b> 6! / (3! · 2!) = 720 / 12 = <b>60</b>."},
+   {c:"Number Theory", short:"Number Theory",
+    q:"What is the remainder when <b>2¹⁰⁰</b> is divided by <b>7</b>?",
+    o:[["2",1],["1",0],["4",0],["0",0]],
+    h:"💡 <b>Hint:</b> Look at powers of 2 mod 7. Notice 2³ = 8 ≡ 1 (mod 7).",
+    s:"<b>Exactly.</b> Since 2³ ≡ 1 (mod 7) and 100 = 3·33 + 1, we get 2¹⁰⁰ ≡ 2¹ = <b>2</b>."},
+   {c:"Logic Games", short:"Logic Games",
+    q:"You have <b>8 coins</b>; one is slightly heavier. On a balance scale, what is the fewest weighings that <i>guarantees</i> finding it?",
+    o:[["2",1],["3",0],["1",0],["4",0]],
+    h:"💡 <b>Hint:</b> Each weighing has three outcomes (left, right, balanced). Split the coins into three groups.",
+    s:"<b>Clever.</b> Weigh 3 vs 3; the heavier side, or the leftover 2, localizes it, and one more weighing finishes. <b>2</b> weighings, since 3² = 9 ≥ 8."},
+   {c:"Intermediate Algebra", short:"Int. Algebra",
+    q:"If <b>a + b = 4</b> and <b>ab = 2</b>, what is <b>a³ + b³</b>?",
+    o:[["40",1],["28",0],["56",0],["44",0]],
+    h:"💡 <b>Hint:</b> a³ + b³ = (a + b)³ − 3ab(a + b).",
+    s:"<b>Yes.</b> (a+b)³ − 3ab(a+b) = 4³ − 3·2·4 = 64 − 24 = <b>40</b>."},
+   {c:"Intermediate Geometry", short:"Int. Geometry",
+    q:"Two chords of a circle cross inside it. One is cut into lengths <b>3</b> and <b>8</b>; the other into <b>4</b> and <b>x</b>. Find <b>x</b>.",
+    o:[["6",1],["5",0],["8",0],["24",0]],
+    h:"💡 <b>Hint:</b> When two chords intersect, the products of their two segments are equal.",
+    s:"<b>Right.</b> 3 · 8 = 4 · x, so 24 = 4x and x = <b>6</b>. (Power of a point.)"},
+   {c:"Intermediate Combinatorics", short:"Int. Combinatorics",
+    q:"In how many ways can a <b>2 × 10</b> board be tiled with <b>1 × 2</b> dominoes?",
+    o:[["89",1],["100",0],["55",0],["144",0]],
+    h:"💡 <b>Hint:</b> Let f(n) tile a 2×n board. The last column is one vertical domino or two horizontals, so f(n) = f(n−1) + f(n−2).",
+    s:"<b>Beautiful.</b> It's Fibonacci: 1, 2, 3, 5, 8, 13, 21, 34, 55, <b>89</b>."},
+   {c:"Intermediate Number Theory", short:"Int. Number Theory",
+    q:"What are the <b>last two digits</b> of <b>7²⁰²⁴</b>?",
+    o:[["01",1],["07",0],["49",0],["43",0]],
+    h:"💡 <b>Hint:</b> Work mod 100. Compute 7⁴ = 2401. What is that mod 100?",
+    s:"<b>Exactly.</b> 7⁴ = 2401 ≡ 1 (mod 100), and 2024 = 4·506, so 7²⁰²⁴ ≡ 1, giving last two digits <b>01</b>."}
+  ];
+  var idx=0, solved=false, KEYS=["A","B","C","D"];
+  function load(i){
+    idx=i; solved=false;
+    var p=PROBLEMS[i];
+    document.getElementById('demoCourse').textContent=p.c;
+    document.getElementById('demoIdx').textContent=(i+1);
+    document.getElementById('q').innerHTML=p.q;
+    var opts=document.getElementById('opts'); opts.innerHTML='';
+    p.o.forEach(function(opt,j){
+      var d=document.createElement('div');
+      d.className='opt'; d.setAttribute('role','button'); d.tabIndex=0;
+      d.innerHTML='<span class="k">'+KEYS[j]+'</span>'+opt[0];
+      var go=function(){ pick(d,opt[1]); };
+      d.addEventListener('click',go);
+      d.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+      opts.appendChild(d);
+    });
+    var fb=document.getElementById('fb'); fb.className='feedback'; fb.innerHTML='';
+    document.querySelectorAll('#chips .chip').forEach(function(c,k){ c.classList.toggle('active',k===i); });
+    var act=document.querySelector('#chips .chip.active'); if(act&&act.scrollIntoView) act.scrollIntoView({inline:'center',block:'nearest'});
+  }
+  function pick(el,correct){
+    if(solved) return;
+    var fb=document.getElementById('fb'), p=PROBLEMS[idx];
+    if(correct===1){
+      el.classList.add('correct'); solved=true;
+      fb.className='feedback show good'; fb.innerHTML=p.s;
+    }else{
+      el.classList.add('wrong');
+      fb.className='feedback show hintbox';
+      fb.innerHTML='Not quite. Give it another look. <span style="cursor:pointer;text-decoration:underline" onclick="reveal()">Show a hint</span>.';
+    }
+  }
+  function reveal(){
+    if(solved) return;
+    var fb=document.getElementById('fb');
+    fb.className='feedback show hintbox'; fb.innerHTML=PROBLEMS[idx].h;
+  }
+  document.getElementById('hintbtn').addEventListener('click',reveal);
+  document.getElementById('nextbtn').addEventListener('click',function(){ load((idx+1)%PROBLEMS.length); });
+  (function(){
+    var chips=document.getElementById('chips');
+    PROBLEMS.forEach(function(p,i){
+      var c=document.createElement('button'); c.className='chip'; c.textContent=p.short;
+      c.addEventListener('click',function(){ load(i); });
+      chips.appendChild(c);
+    });
+    load(0);
+  })();
+
+  // --- Prealgebra course modal: table of contents ---
+  var TOC=[
+    {n:1, t:"The Rules of Arithmetic", s:[["1.1","Why Begin with Arithmetic?"],["1.2","Addition, Subtraction, and Negation"],["1.3","Multiplication"],["1.4","Checkpoint Problems"],["1.5","Division"],["1.6","Summary"]]},
+    {n:2, t:"Powers and Exponents", s:[["2.1","Repeated Multiplication"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"]]},
+    {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers"],["3.4","Prime Factorization"],["3.5","Greatest Common Divisor"],["3.6","Least Common Multiple"],["3.7","Counting a Number's Divisors"]]},
+    {n:4, t:"Working with Fractions", s:[["4.1","What a Fraction Means"],["4.2","Equivalent Fractions"],["4.3","Multiplying Fractions"],["4.4","Dividing Fractions"],["4.5","Common Denominators"],["4.6","Adding and Subtracting Fractions"],["4.7","Mixed Numbers"],["4.8","Comparing Fractions"]]},
+    {n:5, t:"Decimals", s:[["5.1","Place Value and Decimals"],["5.2","Decimal Arithmetic"],["5.3","Switching Between Fractions and Decimals"],["5.4","Rounding and Estimation"],["5.5","Repeating Decimals"]]},
+    {n:6, t:"Expressions and Equations", s:[["6.1","Building Expressions"],["6.2","Solving Linear Equations"],["6.3","Variables on Both Sides"],["6.4","Turning Words into Equations"],["6.5","Inequalities"]]},
+    {n:7, t:"Ratios, Rates, and Proportions", s:[["7.1","What Is a Ratio?"],["7.2","Ratios with Many Parts"],["7.3","Unit Rates and Speed"],["7.4","Proportions"],["7.5","Converting Units"]]},
+    {n:8, t:"Square Roots", s:[["8.1","Squares and Their Roots"],["8.2","Estimating Irrational Roots"],["8.3","Simplifying Square Roots"],["8.4","Arithmetic with Roots"]]},
+    {n:9, t:"Percents", s:[["9.1","Percents as Fractions"],["9.2","A Percent of a Number"],["9.3","Percent Increase and Decrease"],["9.4","Percents in Word Problems"]]},
+    {n:10, t:"Counting and Statistics", s:[["10.1","Adding and Subtracting Cases"],["10.2","The Multiplication Principle"],["10.3","Casework"],["10.4","Counting Pairs"],["10.5","An Introduction to Probability"],["10.6","Mean, Median, and Mode"],["10.7","Reading Tables and Graphs"],["10.8","What Statistics Can Hide"]]},
+    {n:11, t:"Geometry", s:[["11.1","Measuring Angles"],["11.2","Parallel Lines and Transversals"],["11.3","Angles Inside Polygons"],["11.4","Measuring Length"],["11.5","Perimeter"],["11.6","Area of Common Shapes"],["11.7","Circles"],["11.8","The Pythagorean Theorem"],["11.9","Special Right Triangles"],["11.10","Families of Quadrilaterals"]]},
+    {n:12, t:"A Problem-Solving Toolkit", s:[["12.1","Look for a Pattern"],["12.2","Make an Organized List"],["12.3","Draw a Picture"],["12.4","Work Backwards"]]}
+  ];
+
+  // --- written lessons, AoPS-style: problem-first, "why" over "how" ---
+  var LESSONS={
+    // Chapter 1 lessons loaded from lessons/prealgebra/chapter-1.json
+
+    // Placeholder lessons for chapters 2+ (loaded dynamically or as stubs)
+    '1.1':{title:'Placeholder - loading from file', html:'<p>Loading...</p>', next:'1.2'},
+
+    // ---- Chapter 2: Powers and Exponents ----
+    '2.1':{title:'Repeated Multiplication', blocks:[
+      {t:'p', x:'Just as multiplication is a shorthand for repeated addition, exponents are a shorthand for repeated multiplication.'},
+      {t:'prob', x:'Write <b>2 × 2 × 2 × 2 × 2</b> in compact form, and find its value.', sol:'Five 2s multiplied is <b>2⁵ = 32</b>. The 2 is the base; the small 5 is the exponent, counting how many copies are multiplied.'},
+      {t:'imp', x:'<b>aⁿ</b> means n copies of a multiplied together. a is the base, n the exponent. Note aⁿ is multiplication, not a × n.'},
+      {t:'prob', x:'Which is larger, <b>2⁵</b> or <b>5²</b>?', sol:'2⁵ = 32 but 5² = 25, so <b>2⁵</b> wins. Swapping base and exponent generally changes the value.'}
+    ]},
+    '2.2':{title:'The Laws of Exponents', blocks:[
+      {t:'p', x:'You never need to memorize the exponent rules if you are willing to count factors for a moment.'},
+      {t:'prob', x:'Simplify <b>2³ × 2⁴</b> by writing out all the 2s.', sol:'(2·2·2)(2·2·2·2) is seven 2s in a row, so 2³ × 2⁴ = <b>2⁷</b>. We simply added the exponents.'},
+      {t:'imp', x:'Multiplying powers of the same base <b>adds</b> exponents: aᵐ · aⁿ = aᵐ⁺ⁿ. Dividing <b>subtracts</b> them: aᵐ ÷ aⁿ = aᵐ⁻ⁿ.'},
+      {t:'prob', x:'Simplify <b>5⁶ ÷ 5²</b>.', sol:'Subtract the exponents: 5⁶⁻² = <b>5⁴</b> (which is 625).'}
+    ]},
+    '2.3':{title:'The Zero Power', blocks:[
+      {t:'p', x:'What could 2⁰ possibly mean: zero copies of 2 multiplied together? Let a pattern decide.'},
+      {t:'prob', x:'Look at the ladder 2³ = 8, 2² = 4, 2¹ = 2. Each step down <b>divides by 2</b>. Following that, what must 2⁰ be?', sol:'The next step down from 2 is 2 ÷ 2 = 1, so <b>2⁰ = 1</b>. The pattern forces it.'},
+      {t:'imp', x:'For any nonzero a, <b>a⁰ = 1</b>. It is the only value that keeps the exponent laws working without exceptions.'}
+    ]},
+    '2.4':{title:'Negative Powers', blocks:[
+      {t:'p', x:'Why stop the ladder at zero? Keep dividing by the base and you walk straight into negative exponents.'},
+      {t:'prob', x:'After 2⁰ = 1, take two more steps down the ladder: what are <b>2⁻¹</b> and <b>2⁻²</b>?', sol:'Dividing by 2 each time: 2⁻¹ = 1/2 and 2⁻² = 1/4. A negative exponent gives a reciprocal.'},
+      {t:'imp', x:'A negative exponent means reciprocal: <b>a⁻ⁿ = 1/aⁿ</b>. So moving a power across a fraction bar flips the sign of its exponent.'},
+      {t:'prob', x:'Evaluate <b>10⁻³</b>.', sol:'10⁻³ = 1/10³ = 1/1000 = <b>0.001</b>.'}
+    ]},
+    '2.5':{title:'Powers of Powers', blocks:[
+      {t:'p', x:'What happens when a power is itself raised to a power?'},
+      {t:'prob', x:'Simplify <b>(2³)²</b> by expanding it.', sol:'(2³)² = 2³ × 2³, which is six 2s, so it equals <b>2⁶</b>. We multiplied the exponents.'},
+      {t:'imp', x:'Raising a power to a power <b>multiplies</b> exponents: (aᵐ)ⁿ = aᵐⁿ. And a power of a product distributes: (ab)ⁿ = aⁿbⁿ.'},
+      {t:'prob', x:'Simplify <b>(3²)³</b>.', sol:'(3²)³ = 3⁶ = <b>729</b>.'}
+    ]},
+
+    // ---- Chapter 3: Primes and Divisibility ----
+    '3.1':{title:'Factors and Multiples', blocks:[
+      {t:'p', x:'"Factor" and "multiple" are two views of the same relationship between two numbers.'},
+      {t:'prob', x:'List <b>all</b> the positive factors of <b>24</b>. Try to find them in pairs.', sol:'In pairs: 1×24, 2×12, 3×8, 4×6. So the factors are <b>1, 2, 3, 4, 6, 8, 12, 24</b>: eight of them.'},
+      {t:'imp', x:'b is a <b>factor</b> (divisor) of a when a = b × (whole number); then a is a <b>multiple</b> of b. Factors come in pairs that multiply to the number.'},
+      {t:'prob', x:'Why do factors usually come in pairs, and which numbers have an <b>odd</b> count of factors?', sol:'Each factor d pairs with a/d. Only a <b>perfect square</b> has a factor (its square root) paired with itself, leaving an odd total.'}
+    ]},
+    '3.2':{title:'Tests for Divisibility', blocks:[
+      {t:'p', x:'You can often tell whether one number divides another without doing the division at all.'},
+      {t:'prob', x:'Is <b>5,238</b> divisible by 3? By 4?', sol:'Its digit sum is 5+2+3+8 = 18, a multiple of 3, so yes by 3. Its last two digits, 38, are not a multiple of 4, so no by 4.'},
+      {t:'imp', x:'Quick tests: <b>2</b> if even; <b>5</b> if it ends in 0 or 5; <b>10</b> if it ends in 0; <b>3</b> or <b>9</b> if the digit sum is divisible by 3 or 9; <b>4</b> if the last two digits are.'},
+      {t:'prob', x:'Which of 2, 3, 5, 9 divide <b>7,830</b>?', sol:'It is even (÷2), ends in 0 (÷5 and ÷10), and its digit sum is 18 (÷3 and ÷9). So <b>all of them</b>.'}
+    ]},
+    '3.4':{title:'Prime Factorization', blocks:[
+      {t:'p', x:'If primes are the atoms of numbers, prime factorization is the chemistry: breaking a number into the atoms that build it.'},
+      {t:'prob', x:'Find the prime factorization of <b>360</b>.', sol:'Split repeatedly: 360 = 36 × 10 = (4 × 9)(2 × 5) = 2² · 3² · 2 · 5 = <b>2³ · 3² · 5</b>.'},
+      {t:'imp', x:'<b>Fundamental Theorem of Arithmetic:</b> every whole number above 1 factors into primes in exactly one way (apart from order). It is a number’s unique fingerprint.'},
+      {t:'prob', x:'Factor <b>84</b> into primes.', sol:'84 = 4 × 21 = <b>2² · 3 · 7</b>.'}
+    ]},
+    '3.5':{title:'Greatest Common Divisor', blocks:[
+      {t:'p', x:'The greatest common divisor is the largest factor two numbers share, and the key to reducing fractions.'},
+      {t:'prob', x:'Find <b>gcd(36, 48)</b>.', sol:'36 = 2²·3² and 48 = 2⁴·3. Take each shared prime to its <b>lower</b> power: 2² · 3 = <b>12</b>.'},
+      {t:'imp', x:'The <b>gcd</b> is the product of the primes the numbers share, each to the lowest power present in both. If the gcd is 1, the numbers are called relatively prime.'}
+    ]},
+    '3.6':{title:'Least Common Multiple', blocks:[
+      {t:'p', x:'The least common multiple is the smallest number both numbers divide into, exactly what you need to add fractions.'},
+      {t:'prob', x:'Find <b>lcm(4, 6)</b>.', sol:'Multiples of 6 are 6, 12, … and 12 is the first that 4 also divides, so lcm = <b>12</b>. (In primes: 2² · 3.)'},
+      {t:'imp', x:'The <b>lcm</b> takes each prime to its <b>highest</b> power. A handy shortcut: gcd(a,b) × lcm(a,b) = a × b.'},
+      {t:'prob', x:'Use gcd · lcm = a · b to find <b>lcm(36, 48)</b>.', sol:'gcd is 12, and 36 × 48 = 1728, so lcm = 1728 ÷ 12 = <b>144</b>.'}
+    ]},
+    '3.7':{title:"Counting a Number's Divisors", blocks:[
+      {t:'p', x:'You can count how many divisors a number has without ever listing them.'},
+      {t:'prob', x:'How many positive divisors does <b>72</b> have?', sol:'72 = 2³ · 3². A divisor chooses a power of 2 (0–3, four options) and a power of 3 (0–2, three options): 4 × 3 = <b>12</b>.'},
+      {t:'imp', x:'If n = pᵃ · qᵇ · …, the number of positive divisors is <b>(a+1)(b+1)…</b>: one independent choice of exponent per prime.'},
+      {t:'prob', x:'How many divisors does <b>100</b> have?', sol:'100 = 2² · 5², so (2+1)(2+1) = <b>9</b>.'}
+    ]},
+
+    // ---- Chapter 4: Working with Fractions ----
+    '4.1':{title:'What a Fraction Means', blocks:[
+      {t:'p', x:'A fraction carries two ideas at once: a part of a whole, and a division waiting to happen.'},
+      {t:'prob', x:'In <b>3/4</b> of a pizza, what does the 4 tell you, and what does the 3 tell you? And what is 3 ÷ 4 as a decimal?', sol:'The 4 says cut the whole into 4 equal pieces; the 3 says take 3 of them. And 3 ÷ 4 = 0.75, the very same amount.'},
+      {t:'imp', x:'<b>a/b</b> means: split a whole into b equal parts and take a of them. It is also exactly the division <b>a ÷ b</b>.'}
+    ]},
+    '4.2':{title:'Equivalent Fractions', blocks:[
+      {t:'p', x:'The same amount of pizza can wear many different fraction names.'},
+      {t:'prob', x:'Is <b>2/3</b> the same amount as <b>6/9</b>? How can you be sure?', sol:'Multiply top and bottom of 2/3 by 3 to get 6/9: slicing each piece into 3 does not change how much you have. So yes, they are equal.'},
+      {t:'imp', x:'Multiplying or dividing the top and bottom by the same nonzero number leaves a fraction’s value unchanged. <b>Simplify</b> by dividing both by their gcd.'},
+      {t:'prob', x:'Write <b>18/24</b> in lowest terms.', sol:'gcd(18, 24) = 6, so 18/24 = <b>3/4</b>.'}
+    ]},
+    '4.3':{title:'Multiplying Fractions', blocks:[
+      {t:'p', x:'Of the four fraction operations, multiplying is the friendliest.'},
+      {t:'prob', x:'Compute <b>2/3 × 3/4</b>, that is, two-thirds <em>of</em> three-quarters.', sol:'Multiply straight across: (2×3)/(3×4) = 6/12 = <b>1/2</b>.'},
+      {t:'imp', x:'<b>a/b × c/d = (a·c)/(b·d).</b> Cancel any common factors <em>before</em> multiplying to keep the numbers small.'},
+      {t:'prob', x:'Compute <b>4/9 × 3/8</b>.', sol:'Cancel first: the 3 reduces the 9 to 3, the 4 reduces the 8 to 2, leaving 1/3 × 1/2 = <b>1/6</b>.'}
+    ]},
+    '4.4':{title:'Dividing Fractions', blocks:[
+      {t:'p', x:'The famous rule "flip the second one and multiply" deserves an explanation, not just obedience.'},
+      {t:'prob', x:'How many quarters fit inside one half? In symbols, what is <b>(1/2) ÷ (1/4)</b>?', sol:'Two quarters make a half, so the answer is <b>2</b>. And indeed 1/2 × 4/1 = 2; flipping and multiplying agrees.'},
+      {t:'imp', x:'Dividing by a fraction = multiplying by its reciprocal: <b>a/b ÷ c/d = a/b × d/c.</b>'},
+      {t:'prob', x:'Compute <b>(3/5) ÷ (9/10)</b>.', sol:'3/5 × 10/9 = 30/45 = <b>2/3</b>.'}
+    ]},
+    '4.5':{title:'Common Denominators', blocks:[
+      {t:'p', x:'To compare or combine fractions, first cut them into pieces of the same size.'},
+      {t:'prob', x:'Which is larger, <b>3/4</b> or <b>5/7</b>?', sol:'Use denominator 28: 3/4 = 21/28 and 5/7 = 20/28. Since 21 > 20, <b>3/4</b> is larger.'},
+      {t:'imp', x:'Rewrite fractions over a <b>common denominator</b> (the lcm of the denominators) before comparing or adding them. Same-sized pieces can finally be counted against each other.'}
+    ]},
+    '4.6':{title:'Adding and Subtracting Fractions', blocks:[
+      {t:'p', x:'You can only add things of the same kind, and fractions are no exception.'},
+      {t:'prob', x:'Compute <b>1/2 + 1/3</b>.', sol:'Over denominator 6: 3/6 + 2/6 = <b>5/6</b>. Halves and thirds had to become sixths before they could be added.'},
+      {t:'imp', x:'Find a common denominator, add (or subtract) the <b>numerators</b>, keep the denominator, then simplify.'},
+      {t:'prob', x:'Compute <b>5/6 − 3/8</b>.', sol:'The lcd is 24: 20/24 − 9/24 = <b>11/24</b>.'}
+    ]},
+    '4.7':{title:'Mixed Numbers', blocks:[
+      {t:'p', x:'When there is more than one whole, you can write it two ways, and you will want to move between them freely.'},
+      {t:'prob', x:'Write <b>7/3</b> as a mixed number, and write <b>2 1/4</b> as an improper fraction.', sol:'7 ÷ 3 = 2 remainder 1, so 7/3 = 2 1/3. And 2 1/4 = (2×4 + 1)/4 = 9/4.'},
+      {t:'imp', x:'<b>Improper → mixed:</b> divide; the quotient is the whole part, the remainder the new numerator. <b>Mixed → improper:</b> (whole × denominator + numerator) over the denominator.'}
+    ]},
+    '4.8':{title:'Comparing Fractions', blocks:[
+      {t:'p', x:'Beyond full common denominators, a couple of quick tricks settle most comparisons fast.'},
+      {t:'prob', x:'Order <b>2/3, 3/5, 5/8</b> from least to greatest.', sol:'As decimals: 3/5 = 0.600, 5/8 = 0.625, 2/3 ≈ 0.667. So <b>3/5 < 5/8 < 2/3</b>.'},
+      {t:'imp', x:'<b>Cross-multiply</b> to compare two fractions: a/b vs c/d becomes ad vs bc. Or compare each to a familiar benchmark like 1/2.'}
+    ]},
+
+    // ---- Chapter 5: Decimals ----
+    '5.1':{title:'Place Value and Decimals', blocks:[
+      {t:'p', x:'Decimals simply continue the place-value system past the ones place, into ever-smaller fractions.'},
+      {t:'prob', x:'In the number <b>3.45</b>, what does each digit stand for?', sol:'3 ones, 4 tenths, and 5 hundredths; that is 3 + 4/10 + 5/100.'},
+      {t:'imp', x:'Digits to the right of the point are <b>tenths, hundredths, thousandths</b>, …: fractions with denominators 10, 100, 1000. Each place is one-tenth of the place to its left.'}
+    ]},
+    '5.2':{title:'Decimal Arithmetic', blocks:[
+      {t:'p', x:'Decimal arithmetic is ordinary arithmetic; you just have to keep track of the point.'},
+      {t:'prob', x:'Compute <b>0.3 × 0.2</b>. Why is the answer 0.06 and not 0.6?', sol:'0.3 × 0.2 = 3/10 × 2/10 = 6/100 = <b>0.06</b>. The factors have one decimal place each, so the product has two.'},
+      {t:'imp', x:'To <b>add or subtract</b>, line up the decimal points. To <b>multiply</b>, ignore the points, multiply as whole numbers, then give the answer as many decimal places as the two factors had combined.'},
+      {t:'prob', x:'Compute <b>1.2 + 0.45</b>.', sol:'Line up the points: 1.20 + 0.45 = <b>1.65</b>.'}
+    ]},
+    '5.3':{title:'Switching Between Fractions and Decimals', blocks:[
+      {t:'p', x:'Fractions and decimals are two costumes for the same number; you should be able to change either one.'},
+      {t:'prob', x:'Write <b>3/8</b> as a decimal, and <b>0.75</b> as a fraction.', sol:'3 ÷ 8 = 0.375. And 0.75 = 75/100 = 3/4.'},
+      {t:'imp', x:'<b>Fraction → decimal:</b> divide top by bottom. <b>Decimal → fraction:</b> write the digits over 10, 100, … and simplify.'}
+    ]},
+    '5.4':{title:'Rounding and Estimation', blocks:[
+      {t:'p', x:'A quick estimate is your best defense against a silly mistake, and often it is all you need.'},
+      {t:'prob', x:'Estimate <b>19.8 × 4.1</b> without computing it exactly.', sol:'Round to 20 × 4 = <b>80</b>. (The exact value, 81.18, is reassuringly close.)'},
+      {t:'imp', x:'Round each number to a convenient place, compute, and check that the exact answer lands near your estimate. Always notice which way you rounded.'},
+      {t:'prob', x:'Round <b>3.14159</b> to the nearest hundredth.', sol:'The thousandths digit is 1, so we round down: <b>3.14</b>.'}
+    ]},
+    '5.5':{title:'Repeating Decimals', blocks:[
+      {t:'p', x:'Some fractions never finish as decimals, but they always settle into a repeating pattern.'},
+      {t:'prob', x:'Why is 1/3 = 0.333…? And what fraction equals <b>0.7777…</b>?', sol:'1 ÷ 3 keeps leaving a remainder of 1, repeating forever. For 0.7̄, let x = 0.777…; then 10x = 7.777…, so 10x − x = 7, giving 9x = 7 and x = <b>7/9</b>.'},
+      {t:'imp', x:'Every fraction is either a <b>terminating</b> or a <b>repeating</b> decimal. The "multiply by 10 and subtract" trick turns any repeating decimal back into a fraction.'}
+    ]},
+
+    // ---- Chapter 6: Expressions and Equations ----
+    '6.1':{title:'Building Expressions', blocks:[
+      {t:'p', x:'Algebra begins the moment we let a letter stand for a number we do not know yet.'},
+      {t:'prob', x:'Write "<b>5 more than twice a number n</b>" as an expression, then find its value when n = 4.', sol:'Twice the number is 2n; five more is 2n + 5. At n = 4 that is 2(4) + 5 = <b>13</b>.'},
+      {t:'imp', x:'A <b>variable</b> is a placeholder for a number; an <b>expression</b> is a recipe built from variables and operations. You <b>evaluate</b> it by substituting a value.'},
+      {t:'prob', x:'Write an expression for "<b>the number of cents in q quarters and d dimes</b>."', sol:'A quarter is 25 cents and a dime 10, so the total is <b>25q + 10d</b>.'}
+    ]},
+    '6.3':{title:'Variables on Both Sides', blocks:[
+      {t:'p', x:'When the unknown appears on both sides of an equation, the first job is to gather it in one place.'},
+      {t:'prob', x:'Solve <b>5x − 3 = 3x + 11</b>.', sol:'Subtract 3x from both sides: 2x − 3 = 11. Add 3: 2x = 14. Divide by 2: <b>x = 7</b>.'},
+      {t:'imp', x:'Move every variable term to one side and every constant to the other, using the same balanced moves as always, then isolate the variable.'}
+    ]},
+    '6.4':{title:'Turning Words into Equations', blocks:[
+      {t:'p', x:'In most real problems the algebra is easy; the real skill is the translation.'},
+      {t:'prob', x:'The sum of three consecutive integers is <b>96</b>. Find them.', sol:'Call the smallest n; the three are n, n+1, n+2. Then n + (n+1) + (n+2) = 96, so 3n + 3 = 96, giving n = 31. The integers are <b>31, 32, 33</b>.'},
+      {t:'imp', x:'Name the unknown, translate each phrase into symbols, solve, and finally check your answer against the original words.'}
+    ]},
+    '6.5':{title:'Inequalities', blocks:[
+      {t:'p', x:'An equation pins a value to one spot; an inequality fences off a whole range of them.'},
+      {t:'prob', x:'Solve <b>2x + 1 < 9</b>.', sol:'Subtract 1: 2x < 8. Divide by 2: <b>x < 4</b>. Every number below 4 works.'},
+      {t:'imp', x:'Inequalities use the same moves as equations, with one twist: multiplying or dividing both sides by a <b>negative</b> number <b>flips</b> the inequality sign.'},
+      {t:'prob', x:'Solve <b>−3x ≥ 12</b>.', sol:'Divide both sides by −3 and flip the sign: <b>x ≤ −4</b>.'}
+    ]},
+
+    // ---- Chapter 7: Ratios, Rates, and Proportions ----
+    '7.1':{title:'What Is a Ratio?', blocks:[
+      {t:'p', x:'A ratio compares two quantities by division: how much of one there is for each amount of the other.'},
+      {t:'prob', x:'A class has 12 boys and 8 girls. Write the ratio of boys to girls in simplest form.', sol:'12 : 8, and dividing both by gcd 4 gives <b>3 : 2</b>, three boys for every two girls.'},
+      {t:'imp', x:'A ratio <b>a : b</b> simplifies just like a fraction. It tells you the proportion, not the totals.'}
+    ]},
+    '7.2':{title:'Ratios with Many Parts', blocks:[
+      {t:'p', x:'A ratio can compare three or more quantities at once, and dividing things up in a given ratio is a classic task.'},
+      {t:'prob', x:'Split <b>$60</b> among three people in the ratio <b>1 : 2 : 3</b>.', sol:'There are 1 + 2 + 3 = 6 parts, so one part is $60 ÷ 6 = $10. The shares are <b>$10, $20, $30</b>.'},
+      {t:'imp', x:'Add the parts to find the total number of shares, divide to find the value of one part, then scale each piece up.'}
+    ]},
+    '7.3':{title:'Unit Rates and Speed', blocks:[
+      {t:'p', x:'A rate compares quantities with different units; a unit rate boils it down to "per one."'},
+      {t:'prob', x:'A car covers 150 miles in 3 hours. What is its speed? And which is the better buy: 12 oz for $3, or 20 oz for $4.40?', sol:'Speed = 150 ÷ 3 = <b>50 mph</b>. Prices: $3 ÷ 12 = $0.25/oz vs $4.40 ÷ 20 = $0.22/oz, so the <b>20 oz</b> is cheaper per ounce.'},
+      {t:'imp', x:'A <b>unit rate</b> divides to get the amount per single unit (per hour, per ounce). It is the cleanest way to compare options.'}
+    ]},
+    '7.4':{title:'Proportions', blocks:[
+      {t:'p', x:'Setting two ratios equal creates a proportion, and proportions are everywhere in scaling problems.'},
+      {t:'prob', x:'If 3 apples cost $2, what do 12 apples cost?', sol:'Set up 3/2 = 12/x and cross-multiply: 3x = 24, so x = <b>$8</b>. (Twelve apples is four batches of three.)'},
+      {t:'imp', x:'In a proportion <b>a/b = c/d</b>, cross-multiplication gives <b>ad = bc</b>, turning the proportion into an easy equation.'}
+    ]},
+    '7.5':{title:'Converting Units', blocks:[
+      {t:'p', x:'To convert units, you multiply by a cleverly disguised form of the number 1.'},
+      {t:'prob', x:'Convert <b>5 feet</b> to inches.', sol:'Since 12 in = 1 ft, multiply by (12 in / 1 ft): 5 ft × 12 in/ft = <b>60 inches</b>. The "ft" cancels.'},
+      {t:'imp', x:'A <b>conversion factor</b> like 12 in / 1 ft equals 1, so multiplying by it changes the units, not the amount. Units cancel just like numbers.'},
+      {t:'prob', x:'Convert <b>90 minutes</b> to hours.', sol:'90 min × (1 hr / 60 min) = <b>1.5 hours</b>.'}
+    ]},
+
+    // ---- Chapter 9: Percents ----
+    '9.1':{title:'Percents as Fractions', blocks:[
+      {t:'p', x:'"Percent" is just a special word for a fraction whose denominator is 100.'},
+      {t:'prob', x:'Write <b>25%</b> as a fraction and as a decimal.', sol:'25% = 25/100 = 1/4 = <b>0.25</b>.'},
+      {t:'imp', x:'<b>x% = x/100.</b> You can move freely among percent, fraction, and decimal: they are three names for one number.'}
+    ]},
+    '9.2':{title:'A Percent of a Number', blocks:[
+      {t:'p', x:'The word "of" in "a percent of a number" is a quiet instruction to multiply.'},
+      {t:'prob', x:'What is <b>15% of 80</b>?', sol:'15% = 0.15, and 0.15 × 80 = <b>12</b>.'},
+      {t:'imp', x:'A percent <b>of</b> a number = (the percent as a decimal) × (the number).'},
+      {t:'prob', x:'<b>20% of what number is 9?</b>', sol:'0.20 × x = 9, so x = 9 ÷ 0.2 = <b>45</b>.'}
+    ]},
+    '9.3':{title:'Percent Increase and Decrease', blocks:[
+      {t:'p', x:'Percents shine when describing how a quantity changes.'},
+      {t:'prob', x:'A $50 item rises by <b>20%</b>. What is the new price?', sol:'The increase is 0.20 × 50 = $10, so the price becomes $60. Faster: 1.20 × 50 = <b>$60</b>.'},
+      {t:'imp', x:'To increase by p%, multiply by <b>(1 + p/100)</b>; to decrease, multiply by <b>(1 − p/100)</b>.'}
+    ]},
+    '9.4':{title:'Percents in Word Problems', blocks:[
+      {t:'p', x:'Real life loves to stack percents: a discount, then a tax, then who knows what.'},
+      {t:'prob', x:'A $40 shirt is <b>25% off</b>, and then <b>8% tax</b> is added. What is the final price?', sol:'After the discount: 40 × 0.75 = $30. After tax: 30 × 1.08 = <b>$32.40</b>.'},
+      {t:'imp', x:'Apply successive percents by <b>multiplying their factors</b>. Surprisingly, the order of a discount and a tax does not change the final price.'}
+    ]},
+
+    // ---- Chapter 8: Square Roots ----
+    '8.2':{title:'Estimating Irrational Roots', blocks:[
+      {t:'p', x:'Even with no calculator, you can trap an irrational root between two whole numbers, and squeeze it as tight as you like.'},
+      {t:'prob', x:'<b>√70</b> lies between which two whole numbers, and which is it closer to?', sol:'8² = 64 and 9² = 81, and 64 < 70 < 81, so √70 is between <b>8 and 9</b>. Since 70 is nearer 64, it is closer to <b>8</b> (about 8.4).'},
+      {t:'imp', x:'Bracket a root with neighboring <b>perfect squares</b>, then refine by squaring decimal guesses and checking which side of the target you land on.'}
+    ]},
+    '8.3':{title:'Simplifying Square Roots', blocks:[
+      {t:'p', x:'A square root often hides a perfect square inside it, just waiting to be pulled out front.'},
+      {t:'prob', x:'Simplify <b>√72</b>.', sol:'72 = 36 × 2, and √36 = 6, so √72 = √36 · √2 = <b>6√2</b>.'},
+      {t:'imp', x:'Because <b>√(ab) = √a · √b</b>, you can extract the largest perfect-square factor from under the radical.'},
+      {t:'prob', x:'Simplify <b>√50</b>.', sol:'50 = 25 × 2, so √50 = <b>5√2</b>.'}
+    ]},
+    '8.4':{title:'Arithmetic with Roots', blocks:[
+      {t:'p', x:'Square roots combine by rules that feel a lot like working with variables.'},
+      {t:'prob', x:'Compute <b>√2 · √8</b>, and simplify <b>2√3 + 5√3</b>.', sol:'√2 · √8 = √16 = 4. And 2√3 + 5√3 = 7√3, just like 2 apples plus 5 apples.'},
+      {t:'imp', x:'Multiply roots by combining under one radical: √a · √b = √(ab). You can only <b>add</b> or subtract roots when the value under the radical matches (the "like terms" of roots).'}
+    ]},
+
+    // ---- Chapter 11: Geometry: Lines and Angles ----
+    '11.1':{title:'Measuring Angles', blocks:[
+      {t:'p', x:'An angle measures an amount of turning, recorded in degrees, with a full turn being 360°.'},
+      {t:'prob', x:'Two angles sit side by side on a straight line and one is 110°. What is the other? And what is the complement of a 35° angle?', sol:'On a line the two must total 180°, so the other is <b>70°</b>. The complement of 35° totals 90°, so it is <b>55°</b>.'},
+      {t:'imp', x:'<b>Complementary</b> angles sum to 90°, <b>supplementary</b> angles sum to 180°, and angles around a full turn sum to 360°.'}
+    ]},
+    '11.2':{title:'Parallel Lines and Transversals', blocks:[
+      {t:'p', x:'When a single line crosses two parallel lines, a whole family of equal angles springs up.'},
+      {t:'prob', x:'A transversal crosses two parallel lines, making one angle of 70°. Find its corresponding angle and its same-side interior angle.', sol:'The corresponding angle is also <b>70°</b>; the same-side interior angle is its supplement, <b>110°</b>.'},
+      {t:'imp', x:'With parallel lines: <b>corresponding</b> and <b>alternate</b> angles are equal, while <b>same-side interior</b> angles add to 180°.'}
+    ]},
+    '11.3':{title:'Angles Inside Polygons', blocks:[
+      {t:'p', x:'A single, surprising fact about triangles unlocks the angles of every polygon.'},
+      {t:'prob', x:'Imagine tearing the three corners off a paper triangle and fitting them together at a point. What shape do they form, and so what is the angle sum of a triangle?', sol:'They line up into a straight angle, so a triangle’s angles always sum to <b>180°</b>.'},
+      {t:'imp', x:'A triangle’s angles sum to 180°. Splitting an n-sided polygon into triangles shows its interior angles sum to <b>(n − 2) × 180°</b>.'},
+      {t:'prob', x:'What is the sum of the interior angles of a pentagon?', sol:'(5 − 2) × 180° = 3 × 180° = <b>540°</b>.'}
+    ]},
+
+    // ---- Chapter 11: Geometry: Length, Perimeter, and Area ----
+    '11.4':{title:'Measuring Length', blocks:[
+      {t:'p', x:'Length is distance along a line, but a number alone means nothing without a unit attached.'},
+      {t:'prob', x:'A trail runs 3 m, then another 250 cm. What is the total length, in meters?', sol:'250 cm = 2.5 m, so the total is 3 + 2.5 = <b>5.5 m</b>. You must convert to a common unit before adding.'},
+      {t:'imp', x:'Lengths can only be compared or added when expressed in the <b>same unit</b>. Convert first, then combine.'}
+    ]},
+    '11.5':{title:'Perimeter', blocks:[
+      {t:'p', x:'Perimeter is simply the total distance around the outside of a shape.'},
+      {t:'prob', x:'Find the perimeter of a rectangle that is 8 cm by 3 cm.', sol:'Add all four sides: 8 + 3 + 8 + 3 = 22 cm, or 2 × (8 + 3) = <b>22 cm</b>.'},
+      {t:'imp', x:'<b>Perimeter</b> is the sum of all the side lengths. For a rectangle, that is 2 × (length + width).'}
+    ]},
+    '11.6':{title:'Area of Common Shapes', blocks:[
+      {t:'p', x:'Area counts how many unit squares fit inside a shape, and a few clean formulas cover most cases.'},
+      {t:'prob', x:'Find the area of a triangle with base 10 and height 6, and of a parallelogram with the same base and height.', sol:'Parallelogram: base × height = 10 × 6 = 60. A triangle is exactly half of that: <b>30</b> (triangle), <b>60</b> (parallelogram).'},
+      {t:'imp', x:'<b>Rectangle:</b> length × width. <b>Parallelogram:</b> base × height. <b>Triangle:</b> ½ × base × height (half a parallelogram).'}
+    ]},
+    '11.7':{title:'Circles', blocks:[
+      {t:'p', x:'Every circle hides the same magic number, π, linking its distance around to its width.'},
+      {t:'prob', x:'A circle has radius 5. Find its circumference and its area, in terms of π.', sol:'Circumference = 2πr = <b>10π</b>. Area = πr² = π(5²) = <b>25π</b>.'},
+      {t:'imp', x:'For a circle of radius r: <b>circumference = 2πr = πd</b>, and <b>area = πr²</b>, where π ≈ 3.14159.'}
+    ]},
+
+    // ---- Chapter 11: Geometry: Triangles and Quadrilaterals ----
+    '11.8':{title:'The Pythagorean Theorem', blocks:[
+      {t:'p', x:'The most famous relationship in all of geometry connects the three sides of a right triangle.'},
+      {t:'prob', x:'A right triangle has legs 3 and 4. How long is its hypotenuse?', sol:'3² + 4² = 9 + 16 = 25, and the hypotenuse is √25 = <b>5</b>.'},
+      {t:'imp', x:'In any right triangle, <b>a² + b² = c²</b>, where c is the hypotenuse (the side opposite the right angle).'},
+      {t:'prob', x:'A right triangle has legs 5 and 12. Find the hypotenuse.', sol:'5² + 12² = 25 + 144 = 169, so the hypotenuse is √169 = <b>13</b>.'}
+    ]},
+    '11.9':{title:'Special Right Triangles', blocks:[
+      {t:'p', x:'Two right triangles appear so often that their side ratios are worth knowing by heart.'},
+      {t:'prob', x:'A 45-45-90 triangle has legs of length 1; find its hypotenuse. A 30-60-90 triangle has short leg 1; find its other two sides.', sol:'45-45-90: hypotenuse √(1+1) = √2. 30-60-90: the longer leg is √3 and the hypotenuse is 2.'},
+      {t:'imp', x:'<b>45-45-90</b> has sides in ratio 1 : 1 : √2. <b>30-60-90</b> has sides in ratio 1 : √3 : 2 (short leg : long leg : hypotenuse).'}
+    ]},
+    '11.10':{title:'Families of Quadrilaterals', blocks:[
+      {t:'p', x:'Squares, rectangles, rhombi, and parallelograms form a family tree, each a special case of the one above.'},
+      {t:'prob', x:'Is every square a rectangle? Is every rectangle a square?', sol:'Every square <b>is</b> a rectangle (it has four right angles). But a rectangle need not be a square: its sides need not all be equal. So the first is true, the second false.'},
+      {t:'imp', x:'A <b>parallelogram</b> has both pairs of opposite sides parallel. Add right angles to get a <b>rectangle</b>, equal sides to get a <b>rhombus</b>, and both to get a <b>square</b>.'}
+    ]},
+
+    // ---- Chapter 10: Counting and Statistics: A First Look at Counting ----
+    '10.1':{title:'Adding and Subtracting Cases', blocks:[
+      {t:'p', x:'Two of the most basic counting ideas are splitting a count into cases, and counting what you do not want.'},
+      {t:'prob', x:'How many whole numbers from 1 to 100 are <b>not</b> multiples of 10?', sol:'There are 10 multiples of 10 (10, 20, …, 100), so the rest number 100 − 10 = <b>90</b>. Counting the unwanted ones and subtracting is often easiest.'},
+      {t:'imp', x:'<b>Sum rule:</b> if cases do not overlap, add their counts. <b>Complementary counting:</b> count = total − (the ones you do not want).'}
+    ]},
+    '10.2':{title:'The Multiplication Principle', blocks:[
+      {t:'p', x:'When independent choices stack up, their counts multiply.'},
+      {t:'prob', x:'With 3 shirts and 4 pairs of pants, how many different outfits are possible?', sol:'Each of the 3 shirts pairs with each of the 4 pants: 3 × 4 = <b>12</b> outfits.'},
+      {t:'imp', x:'If one decision can be made m ways and a second n ways, the two together can be made <b>m × n</b> ways.'},
+      {t:'prob', x:'How many 3-letter "words" can be formed from a 26-letter alphabet if letters may repeat?', sol:'26 choices for each position: 26 × 26 × 26 = <b>26³</b>.'}
+    ]},
+    '10.3':{title:'Casework', blocks:[
+      {t:'p', x:'When choices tangle together, the cleanest path is to split the problem into separate cases.'},
+      {t:'prob', x:'Rolling two dice, in how many ways can the two numbers sum to 7?', sol:'List them: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1); that is <b>6</b> ways.'},
+      {t:'imp', x:'Break a count into cases that <b>do not overlap</b> and together cover <b>everything</b>; count each case, then add.'}
+    ]},
+    '10.4':{title:'Counting Pairs', blocks:[
+      {t:'p', x:'How many pairs can you form from a group? The answer hides a neat formula.'},
+      {t:'prob', x:'Five people each shake hands once with everyone else. How many handshakes happen?', sol:'Each of the 5 shakes 4 hands, giving 5 × 4 = 20, but that counts each handshake twice, so the answer is 20 ÷ 2 = <b>10</b>.'},
+      {t:'imp', x:'The number of pairs from n items is <b>n(n − 1)/2</b>: each ordered count divided by 2, since a pair is the same both ways.'}
+    ]},
+    '10.5':{title:'An Introduction to Probability', blocks:[
+      {t:'p', x:'Probability puts a number on how likely something is, from 0 (never) to 1 (always).'},
+      {t:'prob', x:'Two dice are rolled. What is the probability their sum is 7?', sol:'There are 6 × 6 = 36 equally likely rolls, and 6 of them sum to 7, so the probability is 6/36 = <b>1/6</b>.'},
+      {t:'imp', x:'<b>Probability = (favorable outcomes) / (total equally-likely outcomes)</b>, always a number between 0 and 1.'}
+    ]},
+
+    // ---- Chapter 10: Counting and Statistics: Data and Statistics ----
+    '10.6':{title:'Mean, Median, and Mode', blocks:[
+      {t:'p', x:'There is no single "center" of a data set: there are three, and they can tell different stories.'},
+      {t:'prob', x:'Find the mean, median, and mode of <b>4, 8, 8, 5, 10</b>.', sol:'Mean = (4+8+8+5+10)/5 = 35/5 = 7. Sorted: 4, 5, 8, 8, 10, so the median (middle) is 8. The mode (most frequent) is 8.'},
+      {t:'imp', x:'<b>Mean</b> = the average (sum ÷ count). <b>Median</b> = the middle value once sorted. <b>Mode</b> = the most frequent value.'}
+    ]},
+    '10.7':{title:'Reading Tables and Graphs', blocks:[
+      {t:'p', x:'A good graph turns a wall of numbers into a picture you can read at a glance.'},
+      {t:'prob', x:'A bar chart shows sales of 20 on Monday, 35 on Tuesday, and 15 on Wednesday. How many were sold in total, and what fraction were on Tuesday?', sol:'Total = 20 + 35 + 15 = 70. Tuesday’s share is 35/70 = <b>1/2</b>.'},
+      {t:'imp', x:'Read the <b>axes and labels first</b>. Totals, fractions, and comparisons all come from the values once you know what they measure.'}
+    ]},
+    '10.8':{title:'What Statistics Can Hide', blocks:[
+      {t:'p', x:'A single statistic can quietly mislead, which is exactly why you should never trust just one.'},
+      {t:'prob', x:'Four people earn $40,000 and one earns $400,000. Compare the mean and the median salary.', sol:'Mean = (4×40,000 + 400,000)/5 = 560,000/5 = $112,000. Median = $40,000. The lone large salary drags the mean far above what most people actually earn.'},
+      {t:'imp', x:'<b>Outliers pull the mean</b> but barely move the median, so the median often better captures the "typical" value. Always ask what a statistic leaves out.'}
+    ]},
+
+    // ---- Chapter 12: A Problem-Solving Toolkit ----
+    '12.1':{title:'Look for a Pattern', blocks:[
+      {t:'p', x:'Spotting hidden structure can turn an impossible-looking grind into a few seconds of work.'},
+      {t:'prob', x:'Add <b>1 + 2 + 3 + … + 100</b>. (Hint: pair the smallest with the largest.)', sol:'Pair 1+100, 2+99, 3+98, …: each pair sums to 101, and there are 50 pairs, so the total is 50 × 101 = <b>5050</b>.'},
+      {t:'imp', x:'Pairing terms from the ends is a classic trick, and it gives the formula <b>1 + 2 + … + n = n(n + 1)/2</b>.'}
+    ]},
+    '12.2':{title:'Make an Organized List', blocks:[
+      {t:'p', x:'A careful, systematic list guarantees you miss nothing and count nothing twice.'},
+      {t:'prob', x:'How many 3-digit numbers use each of the digits 1, 2, 3 exactly once? List them.', sol:'In order: 123, 132, 213, 231, 312, 321; that is <b>6</b> numbers.'},
+      {t:'imp', x:'Listing in a <b>consistent order</b> (say, smallest first) makes your count complete and free of duplicates.'}
+    ]},
+    '12.3':{title:'Draw a Picture', blocks:[
+      {t:'p', x:'A diagram can expose relationships that a paragraph of words keeps hidden.'},
+      {t:'prob', x:'In a class of 30, 18 play soccer, 15 play basketball, and 7 play both. How many play neither? (Draw two overlapping circles.)', sol:'Soccer-only = 18 − 7 = 11, basketball-only = 15 − 7 = 8, both = 7, so 11 + 8 + 7 = 26 play a sport. That leaves 30 − 26 = <b>4</b> who play neither.'},
+      {t:'imp', x:'<b>Venn diagrams</b>, number lines, and quick sketches turn relationships into something you can literally see and count.'}
+    ]},
+    '12.4':{title:'Work Backwards', blocks:[
+      {t:'p', x:'Sometimes the finish line is the easiest place to begin.'},
+      {t:'prob', x:'I think of a number, multiply it by 3, add 4, and the result is 19. What was my number?', sol:'Undo each step in reverse: 19 − 4 = 15, then 15 ÷ 3 = <b>5</b>.'},
+      {t:'imp', x:'To work backwards, start from the result and <b>reverse each step</b> with its inverse operation until you reach the start.'}
+    ]}
+  };
+
+  // --- Load chapter lessons from external JSON files ---
+  (function(){
+    var chaptersToLoad=[
+      {chapter:'prealgebra', num:1}
+    ];
+    var loadedCount=0;
+    var failedCount=0;
+
+    function loadChapterLessons(chapterPath,chapterNum){
+      fetch('lessons/'+chapterPath+'/chapter-'+chapterNum+'.json')
+        .then(function(resp){
+          if(!resp.ok) throw new Error('HTTP '+resp.status);
+          return resp.json();
+        })
+        .then(function(lessonsData){
+          Object.assign(LESSONS,lessonsData);
+          loadedCount++;
+          if(window.console) console.log('✓ Loaded '+chapterPath+' chapter '+chapterNum+' ('+Object.keys(lessonsData).length+' lessons)');
+          updateLessonDisplay();
+        })
+        .catch(function(err){
+          failedCount++;
+          if(window.console) console.warn('Could not load '+chapterPath+' chapter '+chapterNum+': '+err.message);
+        });
+    }
+
+    function updateLessonDisplay(){
+      // If a lesson view is open, refresh it to show newly loaded lessons
+      var currentKey=window.currentLessonKey;
+      if(currentKey && window.showLesson){
+        var parts=currentKey.split('.');
+        if(parts[0] && parts[1]){
+          window.showLesson(currentKey,(LESSONS[currentKey]||{}).title||'',parts[0],parseInt(parts[0]));
+        }
+      }
+    }
+
+    // Load all pending chapters on page load
+    chaptersToLoad.forEach(function(ch){
+      loadChapterLessons(ch.chapter,ch.num);
+    });
+  })();
+
+  // --- practice & challenge problem sets, AoPS-style ---
+  var PSET_CHALLENGE_NOTE='<div class="pn-label">A word before you begin</div><p><b>These are the hard ones, and they are meant to be.</b> A real challenge problem rarely gives itself up on the first read, so expect to sit with one, fill some scratch paper, try an idea that fails, and come back with a sharper one. That stretch of not knowing is where real problem solving actually lives. Reach for a hint only after a genuine attempt, take your time, and enjoy the click when the structure finally shows itself.</p>';
+  var PSETS={
+    1:{practice:[
+      {x:"Compute $$5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14.$$", ans:"95",
+       hints:["Do not add left to right. Pair the smallest with the largest, 5 with 14, and work inward."],
+       sol:"<p>Each end pair adds to 19: \\(5+14=19\\), \\(6+13=19\\), \\(7+12=19\\), \\(8+11=19\\), \\(9+10=19\\). There are 5 pairs, so the total is \\(5 \\times 19 = \\boxed{95}\\).</p>"},
+      {x:"Compute $$4 \\times (25 \\times 17)$$ in your head.", ans:"1700",
+       hints:["You may regroup the factors however you like. Is there a pair that makes a round 100?"],
+       sol:"<p>Regroup as \\((4 \\times 25) \\times 17 = 100 \\times 17 = \\boxed{1700}\\). The 4 and the 25 were made for each other.</p>"},
+      {x:"Compute $$73 \\times 6 + 27 \\times 6.$$", ans:"600",
+       hints:["Both pieces are multiplied by 6. Add the other two numbers first."],
+       sol:"<p>\\(73 \\times 6 + 27 \\times 6 = (73 + 27) \\times 6 = 100 \\times 6 = \\boxed{600}\\). The shared 6 lets you add before you multiply.</p>"},
+      {x:"Compute $$847 \\times 25 - 843 \\times 25.$$", ans:"100",
+       hints:["The 25 is common to both products. Subtract the other two numbers first."],
+       sol:"<p>\\((847 - 843) \\times 25 = 4 \\times 25 = \\boxed{100}\\). Two huge products were never needed.</p>"},
+      {x:"Compute $$(−4) \\times (−5) \\times (−1).$$", ans:"-20", accept:["−20"],
+       hints:["Find the size first by ignoring signs, then count how many negatives there are."],
+       sol:"<p>\\(4 \\times 5 \\times 1 = 20\\), and there are three negative factors (an odd number), so the result is \\(\\boxed{-20}\\).</p>"},
+      {x:"Compute $$2 + 3 \\times 4 - 5.$$", ans:"9",
+       hints:["Multiplication binds tighter than addition and subtraction, so handle 3 × 4 first."],
+       sol:"<p>\\(3 \\times 4 = 12\\) first, then \\(2 + 12 - 5 = \\boxed{9}\\). Getting 15 means the order slipped.</p>"},
+      {x:"Compute $$(17 \\times 4 - 68) \\times 999 + 25.$$", ans:"25",
+       hints:["Look hard at the parentheses before you reach for the 999."],
+       sol:"<p>\\(17 \\times 4 = 68\\), so \\(68 - 68 = 0\\), and anything times 0 is 0. That leaves \\(0 + 25 = \\boxed{25}\\). The giant 999 was a decoy.</p>"},
+      {x:"Compute $$\\frac{6 \\times 17 \\times 50}{3 \\times 17 \\times 25}.$$", ans:"4",
+       hints:["Match each top factor with a bottom factor it cancels, 6 with 3, 17 with 17, 50 with 25."],
+       sol:"<p>\\(6 \\div 3 = 2\\), \\(17 \\div 17 = 1\\), \\(50 \\div 25 = 2\\), so the whole quotient is \\(2 \\times 1 \\times 2 = \\boxed{4}\\).</p>"},
+      {x:"Compute $$1 - 2 + 3 - 4 + 5 - 6 + 7 - 8 + 9 - 10.$$", ans:"-5", accept:["−5"],
+       hints:["Group the terms in consecutive pairs and see what each pair is worth."],
+       sol:"<p>Each pair \\((1-2)\\), \\((3-4)\\), \\((5-6)\\), \\((7-8)\\), \\((9-10)\\) equals \\(-1\\), and there are five pairs, so the sum is \\(\\boxed{-5}\\).</p>"},
+      {x:"Compute $$(−6) \\times (10 - 13).$$", ans:"18",
+       hints:["Settle the parentheses first, then apply the sign rule."],
+       sol:"<p>\\(10 - 13 = -3\\), and \\((-6) \\times (-3) = \\boxed{18}\\). Two negatives multiply to a positive.</p>"},
+      {x:"Compute $$38 \\times 12 + 38 \\times 8 + 38 \\times 30.$$", ans:"1900",
+       hints:["The 38 multiplies all three. Add 12, 8, and 30 first."],
+       sol:"<p>\\(38 \\times (12 + 8 + 30) = 38 \\times 50 = \\boxed{1900}\\). The three numbers were chosen to add to a friendly 50.</p>"},
+      {x:"Compute $$64 \\times 125$$ in one clean step.", ans:"8000",
+       hints:["Hide an 8 inside the 64. What does 8 × 125 give you?"],
+       sol:"<p>\\(64 = 8 \\times 8\\), so \\(64 \\times 125 = 8 \\times (8 \\times 125) = 8 \\times 1000 = \\boxed{8000}\\).</p>"},
+      {x:"Compute $$12 \\div \\frac{1}{3}.$$", ans:"36",
+       hints:["Dividing by 1/3 is the same as multiplying by 3."],
+       sol:"<p>\\(12 \\div \\frac{1}{3} = 12 \\times 3 = \\boxed{36}\\). There are three thirds in every whole, so 36 of them in twelve.</p>"}
+    ], challenge:[
+      {x:"Find $$4 + 8 + 12 + \\ldots + 100.$$", ans:"1300",
+       hints:["Factor out the common factor from all terms.","The sum 1 + 2 + 3 + ... + 25 equals 25 × 26 ÷ 2."],
+       sol:"<p>All terms are multiples of 4: \\(4(1 + 2 + 3 + \\ldots + 25)\\). The inner sum is \\(\\frac{25 \\times 26}{2} = 325\\), so the total is \\(4 \\times 325 = \\boxed{1300}\\).</p>"},
+      {x:"Find $$4 - 8 + 12 - 16 + \\ldots - 96 + 100.$$", ans:"52",
+       hints:["The pattern alternates: odd-positioned terms are positive, even-positioned are negative.","96 is at position 24 (even), and 100 is at position 25 (odd)."],
+       sol:"<p>The terms are multiples of 4: 4, 8, 12, ..., 96, 100 (25 terms total). Pair consecutive terms: \\((4 - 8) + (12 - 16) + (20 - 24) + \\ldots + (92 - 96) + 100\\). Each of the 12 pairs equals \\(-4\\), giving \\(12 \\times (-4) = -48\\). Add the leftover final term: \\(-48 + 100 = \\boxed{52}\\).</p>"},
+      {x:"Compute $$2(81+83+85+87+89+91+93+95+97+99).$$", ans:"1800",
+       hints:["These are 10 consecutive odd numbers. Look for a pairing pattern.","What do 81 + 99, 83 + 97, 85 + 95, etc. each equal?"],
+       sol:"<p>The numbers 81, 83, 85, ..., 99 are 10 consecutive odd numbers. Rather than add them directly, pair them from the ends inward.</p><p>\\(81 + 99 = 180\\)<br>\\(83 + 97 = 180\\)<br>\\(85 + 95 = 180\\)<br>\\(87 + 93 = 180\\)<br>\\(89 + 91 = 180\\)</p><p>We have 5 pairs, each summing to 180. So the sum inside the parentheses is \\(5 \\times 180 = 900\\).</p><p>Now multiply by 2: \\(2 \\times 900 = \\boxed{1800}\\).</p>"},
+{x:"Compute $$\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{1}{4}\\right)\\cdots\\left(1 - \\frac{1}{10}\\right).$$", ans:"1/10", accept:["0.1"],
+       hints:["Simplify each factor first: 1 − 1/2 = 1/2, 1 − 1/3 = 2/3, etc.","Look for cancellation in the product."],
+       sol:"<p>The product is \\(\\left(\\frac{1}{2}\\right)\\left(\\frac{2}{3}\\right)\\left(\\frac{3}{4}\\right)\\cdots\\left(\\frac{9}{10}\\right)\\). This is a telescoping product: numerators and denominators cancel, leaving \\(\\boxed{\\frac{1}{10}}\\) or \\(0.1\\).</p>"},
+      {x:"The smallest product one could obtain by multiplying two numbers in the set $\\{-7, -5, -1, 1, 3\\}$ is", ans:"-21",
+       hints:["To get the most negative product, pair a large negative with a large positive."],
+       sol:"<p>The products of pairs: \\((-7)(-5) = 35\\), \\((-7)(3) = -21\\), \\((-5)(3) = -15\\), etc. The most negative is \\((-7) \\times 3 = \\boxed{-21}\\).</p>"},
+      {x:"A multiple choice exam has 20 questions. Scoring is \\(+5\\) for correct, \\(−2\\) for incorrect, \\(0\\) for unanswered. John scored 48. What is the maximum number of questions he could have answered correctly?", ans:"12",
+       hints:["Let c = correct, w = wrong, u = unanswered. Set up: c + w + u = 20 and 5c − 2w = 48.","Solve for c in terms of w, then maximize."],
+       sol:"<p>From \\(c + w + u = 20\\) and \\(5c - 2w = 48\\), we get \\(u = 20 - c - w\\) and \\(5c - 2w = 48\\). Rearranging: \\(w = \\frac{5c - 48}{2}\\). For \\(w \\geq 0\\), we need \\(5c \\geq 48\\), so \\(c \\geq 9.6\\), meaning \\(c \\geq 10\\). For \\(u \\geq 0\\), we need \\(c + w \\leq 20\\). Substituting \\(w\\): \\(c + \\frac{5c - 48}{2} \\leq 20\\), so \\(2c + 5c - 48 \\leq 40\\), giving \\(7c \\leq 88\\), so \\(c \\leq 12.57\\), meaning \\(c \\leq 12\\). When \\(c = 12\\), \\(w = 6\\), \\(u = 2\\), and \\(5(12) - 2(6) = 60 - 12 = 48\\). The maximum is \\(\\boxed{12}\\).</p>"},
+      {x:"The number \\(222,222\\) is equal to the product \\(37,037 \\times 6\\). What is the product of \\(37,037\\) and \\(27\\)?", ans:"999999",
+       hints:["Notice that 27 = 6 × 4.5 or that 27 / 6 = 4.5. Actually, 222,222 × k equals 37,037 × 6k. What k makes 37,037 × 6k = 37,037 × 27?"],
+       sol:"<p>Since \\(37,037 \\times 6 = 222,222\\), we have \\(37,037 \\times 27 = 37,037 \\times (6 \\times 4.5) = 222,222 \\times 4.5 = 999,999\\). Alternatively, \\(27 \\div 6 = 4.5\\), so \\(37,037 \\times 27 = (37,037 \\times 6) \\times 4.5 = 222,222 \\times 4.5 = \\boxed{999,999}\\).</p>"},
+      {x:"Find $$\\left(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 98 \\cdot 99\\right) - \\left(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 97 \\cdot 98\\right).$$", ans:"9702",
+       hints:["Most terms appear in both sums. What cancels?","The first sum includes 98 × 99. The second sum stops at 97 × 98."],
+       sol:"<p>The first sum is \\(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 98 \\cdot 99\\). The second is \\(1 \\cdot 2 + 2 \\cdot 3 + \\ldots + 97 \\cdot 98\\). Subtracting leaves \\(98 \\cdot 99 = \\boxed{9702}\\).</p>"},
+      {x:"Find the sum of the digits of $$9 + 99 + 999 + \\ldots + \\underbrace{99\\ldots9}_{81 \\text{ nines}}.$$", ans:"729",
+       hints:["Each term is one less than a power of 10: 9 = 10 − 1, 99 = 100 − 1, etc.","The sum becomes (10 + 100 + 1000 + ... + 10⁸¹) − 81."],
+       sol:"<p>The sum is \\(10 + 100 + 1000 + \\ldots + 10^{81}) - 81\\). The geometric series is \\(\\frac{10(10^{81} - 1)}{9} - 81 = \\frac{10^{82} - 10}{9} - 81\\). This equals \\(\\underbrace{11\\ldots1}_{81 \\text{ ones}}0 - 81 = \\underbrace{11\\ldots1}_{80 \\text{ ones}}029\\). The digit sum is \\(80 \\times 1 + 0 + 2 + 9 = \\boxed{729}\\).</p>"}
+    ]},
+    3:{practice:[
+      {q:"Which of these numbers is prime?", o:[["51",0],["57",0],["61",1],["63",0]],
+       h:"💡 Hint: \\(51 = 3 \\times 17\\) and \\(57 = 3 \\times 19\\) and \\(63 = 9 \\times 7\\). Try dividing 61 by small primes: does any of them work?",
+       s:"Right. 51, 57, and 63 all split apart, but 61 has no divisor besides 1 and itself: it's prime."},
+      {q:"What is \\(\\gcd(36, 48)\\)?", o:[["12",1],["6",0],["24",0],["4",0]],
+       h:"💡 Hint: Write each as a product of primes: \\(36 = 2^2 \\times 3^2\\) and \\(48 = 2^4 \\times 3\\). The gcd takes the smaller power of each shared prime.",
+       s:"Exactly. \\(36 = 2^2 \\cdot 3^2\\) and \\(48 = 2^4 \\cdot 3\\), so \\(\\gcd = 2^2 \\cdot 3 = 12\\), the largest piece they truly share."}
+    ], challenge:[
+      {q:"How many positive divisors does 360 have?", o:[["24",1],["12",0],["20",0],["18",0]],
+       h:"💡 Hint: \\(360 = 2^3 \\times 3^2 \\times 5^1\\). A number \\(p^a \\cdot q^b \\cdot r^c\\) has \\((a+1)(b+1)(c+1)\\) divisors.",
+       s:"Yes. \\(360 = 2^3 \\cdot 3^2 \\cdot 5\\), so the divisor count is \\((3+1)(2+1)(1+1) = 24\\)."},
+      {q:"What is the smallest positive integer with exactly 6 positive divisors?", o:[["12",1],["32",0],["18",0],["64",0]],
+       h:"💡 Hint: You need \\((a+1)(b+1)\\cdots = 6\\). That factors as \\(6 \\times 1\\) or \\(3 \\times 2\\): which arrangement of prime exponents gives the smallest number?",
+       s:"Sharp. Exponents 2 and 1 give \\(6 = 3 \\times 2\\) divisors; using the smallest primes, \\(2^2 \\cdot 3 = 12\\), with divisors 1, 2, 3, 4, 6, 12."}
+    ]},
+    6:{practice:[
+      {q:"Solve for x: \\(3x + 5 = 20\\).", o:[["x = 5",1],["x = 6",0],["x = 15",0],["x = 25/3",0]],
+       h:"💡 Hint: Keep the scale balanced: subtract 5 from both sides first, then split both sides into three equal shares.",
+       s:"Right. \\(3x + 5 = 20 \\Rightarrow 3x = 15 \\Rightarrow x = 5\\)."},
+      {q:"Solve: \\(2(x - 3) = 10\\).", o:[["x = 8",1],["x = 5",0],["x = 11",0],["x = 2",0]],
+       h:"💡 Hint: You could distribute the 2 first, or, often faster, divide both sides by 2 right away.",
+       s:"Exactly. Dividing both sides by 2 gives \\(x - 3 = 5\\), so \\(x = 8\\)."}
+    ], challenge:[
+      {q:"If \\(5x - 3 = 3x + 11\\), what is x?", o:[["7",1],["4",0],["8",0],["14",0]],
+       h:"💡 Hint: Get every x onto one side first, subtract 3x from both sides, then handle the constants.",
+       s:"Yes. \\(5x - 3 = 3x + 11 \\Rightarrow 2x - 3 = 11 \\Rightarrow 2x = 14 \\Rightarrow x = 7\\)."},
+      {q:"The sum of three consecutive integers is 96. What is the smallest of the three?", o:[["31",1],["30",0],["32",0],["33",0]],
+       h:"💡 Hint: Call the smallest one n. Then the three integers are n, n+1, and n+2; write an equation for their sum.",
+       s:"Nice. \\(n + (n+1) + (n+2) = 96 \\Rightarrow 3n + 3 = 96 \\Rightarrow n = 31\\) (and indeed \\(31 + 32 + 33 = 96\\))."}
+    ]},
+    8:{practice:[
+      {q:"What is \\(\\sqrt{144}\\)?", o:[["12",1],["14",0],["72",0],["24",0]],
+       h:"💡 Hint: What whole number, multiplied by itself, gives 144?",
+       s:"Right. \\(12 \\times 12 = 144\\), so \\(\\sqrt{144} = 12\\)."},
+      {q:"Between which two consecutive whole numbers does \\(\\sqrt{70}\\) lie?", o:[["8 and 9",1],["7 and 8",0],["9 and 10",0],["6 and 7",0]],
+       h:"💡 Hint: Square the candidate boundaries: \\(8^2 = 64\\) and \\(9^2 = 81\\). Where does 70 fall?",
+       s:"Exactly. Since \\(8^2 = 64 < 70 < 81 = 9^2\\), \\(\\sqrt{70}\\) sits strictly between 8 and 9."}
+    ], challenge:[
+      {q:"Simplify \\(\\sqrt{72}\\).", o:[["6√2",1],["2√18",0],["3√8",0],["√72 is already simplest",0]],
+       h:"💡 Hint: Pull out the largest perfect-square factor of 72. (Hint: \\(72 = 36 \\times 2\\).)",
+       s:"Beautiful. \\(72 = 36 \\times 2\\), and \\(\\sqrt{36} = 6\\), so \\(\\sqrt{72} = \\sqrt{36} \\cdot \\sqrt{2} = 6\\sqrt{2}\\)."},
+      {q:"If \\(x^2 = 49\\) and \\(x < 0\\), what is x?", o:[["−7",1],["7",0],["−49",0],["49",0]],
+       h:"💡 Hint: Both 7 and −7 square to 49; the condition \\(x < 0\\) picks out exactly one of them.",
+       s:"Yes. Both \\(7^2\\) and \\((-7)^2\\) equal 49, but only −7 is negative."}
+    ]}
+  };
+  Object.assign(PSETS,{
+    2:{practice:[
+      {q:"Evaluate \\(3^4\\).", o:[["81",1],["12",0],["64",0],["27",0]],
+       h:"💡 Hint: \\(3^4\\) means \\(3 \\times 3 \\times 3 \\times 3\\).",
+       s:"Right. \\(3 \\times 3 \\times 3 \\times 3 = 81\\)."},
+      {q:"Simplify \\(2^5 \\times 2^3\\).", o:[["2⁸",1],["2¹⁵",0],["4⁸",0],["2²",0]],
+       h:"💡 Hint: Multiplying powers of the same base adds the exponents.",
+       s:"Exactly. \\(2^5 \\times 2^3 = 2^{5+3} = 2^8\\) (which is 256)."}
+    ], challenge:[
+      {q:"Simplify \\((2^3)^2 \\times 2\\).", o:[["2⁷",1],["2⁶",0],["2¹²",0],["2⁵",0]],
+       h:"💡 Hint: First handle the power of a power: \\((2^3)^2\\) multiplies the exponents.",
+       s:"Yes. \\((2^3)^2 = 2^6\\), and \\(2^6 \\times 2^1 = 2^7 = 128\\)."},
+      {q:"Write \\(10^{-2}\\) as a decimal.", o:[["0.01",1],["0.1",0],["100",0],["−100",0]],
+       h:"💡 Hint: A negative exponent means a reciprocal: \\(10^{-2} = \\frac{1}{10^2}\\).",
+       s:"Right. \\(10^{-2} = \\frac{1}{100} = 0.01\\)."}
+    ]},
+    4:{practice:[
+      {q:"Compute \\(\\frac{2}{3} \\times \\frac{3}{5}\\).", o:[["2/5",1],["5/6",0],["6/8",0],["1/5",0]],
+       h:"💡 Hint: Multiply straight across, then simplify.",
+       s:"Right. \\(\\frac{2 \\times 3}{3 \\times 5} = \\frac{6}{15} = \\frac{2}{5}\\)."},
+      {q:"Compute \\(\\frac{1}{2} + \\frac{1}{4}\\).", o:[["3/4",1],["2/6",0],["1/6",0],["2/4",0]],
+       h:"💡 Hint: Rewrite \\(\\frac{1}{2}\\) as \\(\\frac{2}{4}\\) so both share a denominator.",
+       s:"Exactly. \\(\\frac{2}{4} + \\frac{1}{4} = \\frac{3}{4}\\)."}
+    ], challenge:[
+      {q:"Compute \\(\\frac{3}{4} \\div \\frac{2}{3}\\).", o:[["9/8",1],["1/2",0],["6/12",0],["8/9",0]],
+       h:"💡 Hint: Dividing by a fraction means multiplying by its reciprocal.",
+       s:"Yes. \\(\\frac{3}{4} \\times \\frac{3}{2} = \\frac{9}{8}\\)."},
+      {q:"Compute \\(\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6}\\).", o:[["1",1],["5/6",0],["11/12",0],["3/11",0]],
+       h:"💡 Hint: Use a common denominator of 6.",
+       s:"Beautiful. \\(\\frac{3}{6} + \\frac{2}{6} + \\frac{1}{6} = \\frac{6}{6} = 1\\)."}
+    ]},
+    5:{practice:[
+      {q:"Compute \\(0.6 \\times 0.5\\).", o:[["0.30",1],["3.0",0],["0.11",0],["0.035",0]],
+       h:"💡 Hint: \\(6 \\times 5 = 30\\), then place the point: two decimal places in all.",
+       s:"Right. \\(0.6 \\times 0.5 = 0.30\\)."},
+      {q:"Write \\(\\frac{3}{8}\\) as a decimal.", o:[["0.375",1],["0.38",0],["0.125",0],["0.83",0]],
+       h:"💡 Hint: Divide 3 by 8.",
+       s:"Exactly. \\(3 \\div 8 = 0.375\\)."}
+    ], challenge:[
+      {q:"Compute \\(0.25 + \\frac{1}{5}\\) as a decimal.", o:[["0.45",1],["0.30",0],["0.26",0],["0.70",0]],
+       h:"💡 Hint: \\(\\frac{1}{5} = 0.2\\).",
+       s:"Yes. \\(0.25 + 0.20 = 0.45\\)."},
+      {q:"What fraction equals \\(0.444\\ldots\\)?", o:[["4/9",1],["44/100",0],["2/5",0],["4/10",0]],
+       h:"💡 Hint: Let \\(x = 0.444\\ldots\\); then \\(10x - x = 4\\).",
+       s:"Clever. \\(9x = 4\\), so \\(x = \\frac{4}{9}\\)."}
+    ]},
+    7:{practice:[
+      {q:"Simplify the ratio \\(15 : 20\\).", o:[["3 : 4",1],["5 : 4",0],["4 : 3",0],["15 : 20",0]],
+       h:"💡 Hint: Divide both parts by their gcd, 5.",
+       s:"Right. \\(15 : 20 = 3 : 4\\)."},
+      {q:"If 4 pens cost \\$6, what do 10 pens cost?", o:[["$15",1],["$12",0],["$24",0],["$10",0]],
+       h:"💡 Hint: Find the price of one pen first.",
+       s:"Exactly. One pen is \\$1.50, so 10 cost \\$15."}
+    ], challenge:[
+      {q:"Divide \\$84 in the ratio \\(2 : 5\\).", o:[["$24 and $60",1],["$42 and $42",0],["$28 and $56",0],["$34 and $50",0]],
+       h:"💡 Hint: There are \\(2 + 5 = 7\\) parts. Find the value of one part first.",
+       s:"Yes. One part is \\$84 \\(\\div\\) 7 = \\$12, so the shares are \\(2 \\times 12\\) and \\(5 \\times 12\\) = \\$24 and \\$60."},
+      {q:"A car travels 180 miles in 4 hours. At that rate, how far in 7 hours?", o:[["315 miles",1],["300 miles",0],["280 miles",0],["360 miles",0]],
+       h:"💡 Hint: Find the speed in miles per hour first.",
+       s:"Right. Speed = 45 mph, so \\(45 \\times 7 = 315\\) miles."}
+    ]},
+    9:{practice:[
+      {q:"What is \\(20\\%\\) of 150?", o:[["30",1],["3",0],["15",0],["300",0]],
+       h:"💡 Hint: \\(20\\% = 0.2\\), and \"of\" means multiply.",
+       s:"Right. \\(0.2 \\times 150 = 30\\)."},
+      {q:"Write 0.35 as a percent.", o:[["35%",1],["3.5%",0],["0.35%",0],["350%",0]],
+       h:"💡 Hint: Multiply by 100 to turn a decimal into a percent.",
+       s:"Exactly. \\(0.35 = 35\\%\\)."}
+    ], challenge:[
+      {q:"A \\$80 jacket is \\(25\\%\\) off. What is the sale price?", o:[["$60",1],["$55",0],["$20",0],["$100",0]],
+       h:"💡 Hint: After \\(25\\%\\) off, you pay \\(75\\%\\) of the price.",
+       s:"Yes. \\(80 \\times 0.75 = \\$60\\)."},
+      {q:"A population grows from 200 to 250. What is the percent increase?", o:[["25%",1],["50%",0],["20%",0],["5%",0]],
+       h:"💡 Hint: Compare the increase (50) to the original amount (200).",
+       s:"Right. \\(\\frac{50}{200} = 0.25 = 25\\%\\)."}
+    ]},
+    11:{practice:[
+      {q:"Two angles are supplementary and one is \\(65°\\). What is the other?", o:[["115°",1],["25°",0],["35°",0],["295°",0]],
+       h:"💡 Hint: Supplementary angles sum to \\(180°\\).",
+       s:"Right. \\(180° - 65° = 115°\\)."},
+      {q:"What is the complement of a \\(28°\\) angle?", o:[["62°",1],["152°",0],["72°",0],["332°",0]],
+       h:"💡 Hint: Complementary angles sum to \\(90°\\).",
+       s:"Exactly. \\(90° - 28° = 62°\\)."},
+      {q:"Find the perimeter of a rectangle that is \\(9\\) by \\(4\\).", o:[["26",1],["36",0],["13",0],["22",0]],
+       h:"💡 Hint: Perimeter = \\(2 \\times\\)(length + width).",
+       s:"Right. \\(2 \\times (9 + 4) = 26\\)."},
+      {q:"Find the area of a triangle with base \\(8\\) and height \\(5\\).", o:[["20",1],["40",0],["13",0],["80",0]],
+       h:"💡 Hint: Area of a triangle = \\(\\frac{1}{2} \\times\\) base \\(\\times\\) height.",
+       s:"Exactly. \\(\\frac{1}{2} \\times 8 \\times 5 = 20\\)."},
+      {q:"A right triangle has legs \\(6\\) and \\(8\\). Find the hypotenuse.", o:[["10",1],["14",0],["12",0],["48",0]],
+       h:"💡 Hint: \\(a^2 + b^2 = c^2\\). Compute \\(36 + 64\\).",
+       s:"Right. \\(\\sqrt{36 + 64} = \\sqrt{100} = 10\\)."},
+      {q:"Which statement is always true?", o:[["A square is a rectangle",1],["A rectangle is a square",0],["A rhombus is a square",0],["A parallelogram is a rectangle",0]],
+       h:"💡 Hint: A rectangle just needs four right angles; equal sides are not required.",
+       s:"Yes. Every square has four right angles, so a square is a rectangle (but not the reverse)."}
+    ], challenge:[
+      {q:"Parallel lines are cut by a transversal; one interior angle is \\(72°\\). What is its same-side interior angle?", o:[["108°",1],["72°",0],["18°",0],["288°",0]],
+       h:"💡 Hint: Same-side interior angles add to \\(180°\\).",
+       s:"Yes. \\(180° - 72° = 108°\\)."},
+      {q:"What is the sum of the interior angles of a hexagon?", o:[["720°",1],["540°",0],["1080°",0],["360°",0]],
+       h:"💡 Hint: Use \\((n - 2) \\times 180°\\) with \\(n = 6\\).",
+       s:"Right. \\((6 - 2) \\times 180° = 720°\\)."},
+      {q:"A circle has radius \\(6\\). What is its area, in terms of \\(\\pi\\)?", o:[["36π",1],["12π",0],["6π",0],["36",0]],
+       h:"💡 Hint: Area = \\(\\pi r^2\\).",
+       s:"Yes. \\(\\pi \\times 6^2 = 36\\pi\\)."},
+      {q:"A square has area \\(64\\). What is its perimeter?", o:[["32",1],["16",0],["64",0],["256",0]],
+       h:"💡 Hint: Find the side length first: what number squares to 64?",
+       s:"Right. Side = 8, so perimeter = \\(4 \\times 8 = 32\\)."},
+      {q:"A 45-45-90 triangle has legs of length \\(5\\). Find the hypotenuse.", o:[["5√2",1],["5",0],["10",0],["√5",0]],
+       h:"💡 Hint: The sides are in ratio \\(1 : 1 : \\sqrt{2}\\).",
+       s:"Right. The hypotenuse is \\(5 \\times \\sqrt{2} = 5\\sqrt{2}\\)."},
+      {q:"In a 30-60-90 triangle the short leg is \\(4\\). Find the hypotenuse.", o:[["8",1],["4√3",0],["4√2",0],["12",0]],
+       h:"💡 Hint: The sides are in ratio \\(1 : \\sqrt{3} : 2\\); the hypotenuse is twice the short leg.",
+       s:"Yes. Hypotenuse = \\(2 \\times 4 = 8\\)."}
+    ]},
+    10:{practice:[
+      {q:"How many outfits come from 4 shirts and 3 pairs of pants?", o:[["12",1],["7",0],["1",0],["43",0]],
+       h:"💡 Hint: Independent choices multiply.",
+       s:"Right. \\(4 \\times 3 = 12\\)."},
+      {q:"How many whole numbers from 1 to 50 are multiples of 5?", o:[["10",1],["5",0],["9",0],["25",0]],
+       h:"💡 Hint: They are 5, 10, 15, \\(\\ldots\\), 50.",
+       s:"Exactly. \\(50 \\div 5 = 10\\)."},
+      {q:"Find the mean of \\(3, 7, 5, 9\\).", o:[["6",1],["7",0],["5",0],["24",0]],
+       h:"💡 Hint: Add them up, then divide by 4.",
+       s:"Right. \\(24 \\div 4 = 6\\)."},
+      {q:"Find the median of \\(2, 9, 4, 7, 5\\).", o:[["5",1],["7",0],["4",0],["9",0]],
+       h:"💡 Hint: Sort the numbers first, then take the middle one.",
+       s:"Exactly. Sorted: 2, 4, 5, 7, 9; the middle value is 5."}
+    ], challenge:[
+      {q:"How many handshakes occur among 6 people if each pair shakes once?", o:[["15",1],["30",0],["36",0],["12",0]],
+       h:"💡 Hint: The number of pairs from n people is \\(\\frac{n(n-1)}{2}\\).",
+       s:"Yes. \\(\\frac{6 \\times 5}{2} = 15\\)."},
+      {q:"Two dice are rolled. What is the probability the sum is \\(7\\)?", o:[["1/6",1],["1/12",0],["7/36",0],["1/9",0]],
+       h:"💡 Hint: Count the rolls summing to 7, out of 36 total.",
+       s:"Right. 6 of the 36 rolls give 7, so \\(\\frac{6}{36} = \\frac{1}{6}\\)."},
+      {q:"A set of 5 numbers has mean 8. Four of them are 5, 9, 10, and 6. What is the fifth?", o:[["10",1],["8",0],["12",0],["7",0]],
+       h:"💡 Hint: If the mean is 8, the five numbers total \\(5 \\times 8\\).",
+       s:"Yes. The total is 40, and \\(40 - (5+9+10+6) = 40 - 30 = 10\\)."},
+      {q:"Five workers each earn \\$30k. A sixth is hired at \\$90k. What is the new mean salary?", o:[["$40k",1],["$30k",0],["$60k",0],["$50k",0]],
+       h:"💡 Hint: Find the new total, then divide by 6.",
+       s:"Right. \\(\\frac{5 \\times 30 + 90}{6} = \\frac{240}{6} = \\$40k\\): one big salary pulls the mean up."}
+    ]},
+    12:{practice:[
+      {q:"What is \\(1 + 2 + 3 + \\ldots + 10\\)?", o:[["55",1],["50",0],["45",0],["100",0]],
+       h:"💡 Hint: Use \\(\\frac{n(n+1)}{2}\\) with \\(n = 10\\), or pair the ends.",
+       s:"Right. \\(\\frac{10 \\times 11}{2} = 55\\)."},
+      {q:"How many 2-digit numbers can be formed from the digits 1, 2, 3 with no repeats?", o:[["6",1],["9",0],["3",0],["12",0]],
+       h:"💡 Hint: 3 choices for the first digit, 2 for the second.",
+       s:"Exactly. \\(3 \\times 2 = 6\\) (12, 13, 21, 23, 31, 32)."}
+    ], challenge:[
+      {q:"I think of a number, double it, subtract 5, and get 17. What is the number?", o:[["11",1],["6",0],["22",0],["12",0]],
+       h:"💡 Hint: Work backwards: undo the subtraction, then the doubling.",
+       s:"Yes. \\(17 + 5 = 22\\), then \\(22 \\div 2 = 11\\)."},
+      {q:"What is \\(1 + 2 + \\ldots + 50\\)?", o:[["1275",1],["1250",0],["2550",0],["1225",0]],
+       h:"💡 Hint: Use \\(\\frac{n(n+1)}{2}\\) with \\(n = 50\\).",
+       s:"Right. \\(\\frac{50 \\times 51}{2} = 1275\\)."}
+    ]}
+  });
+
+  // --- view switching inside the course modal ---
+  function showView(name){
+    ['dashView','tocView','lessonView','psetView','reviewView','rewardsView'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.style.display=(id===name?'block':'none');
+    });
+    var back=document.getElementById('mback');
+    if(back) back.style.display=(name==='dashView')?'none':'inline-flex';
+    var cs=document.getElementById('courseScroll'); if(cs) cs.scrollTop=0;
+  }
+  function showDashboard(){
+    showView('dashView');
+    document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
+    document.getElementById('modalTitle').textContent='Course Home';
+    if(window.renderDashboard) renderDashboard();
+    if(window.Rewards) Rewards.renderHUD();
+  }
+  function showToc(){
+    showView('tocView');
+    document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
+    document.getElementById('modalTitle').textContent='Course Contents';
+    if(window.renderToc) renderToc();
+  }
+  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } }
+  function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLesson(); });
+
+  // --- progress + locked-path state ---
+  var completed={}, lockMode=false;  // Free roam is ON by default; users can toggle to locked path via button
+  var liveOrder=[];
+  TOC.forEach(function(ch){ ch.s.forEach(function(sec){ if(LESSONS[sec[0]]) liveOrder.push(sec[0]); }); });
+  function lessonUnlocked(key){
+    if(!lockMode) return true;
+    var i=liveOrder.indexOf(key);
+    if(i<=0) return true;
+    return !!completed[liveOrder[i-1]];
+  }
+  function completedCount(){ var n=0; liveOrder.forEach(function(k){ if(completed[k]) n++; }); return n; }
+  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); } }
+  function completeAndGo(key,next){ markDone(key); gotoLesson(next); }
+  function finishLesson(key){ markDone(key); var b=document.getElementById('doneBtn'); if(b){ b.textContent='✓ Lesson complete'; b.disabled=true; } }
+  function toggleLock(){ lockMode=!lockMode; renderDashboard(); }
+
+  // --- course home / mastery map ---
+  var CH_ICON={done:'✓',current:'▶',open:'○'};
+  function renderDashboard(){
+    var lb=document.getElementById('lockBtn');
+    if(lb){
+      lb.className='lockbtn'+(lockMode?' on':'');
+      lb.innerHTML=lockMode
+        ? '🔒 Locked path is ON: finish each lesson to unlock the next'
+        : '🔓 Free roam is ON: open any lesson in any order';
+    }
+    var total=liveOrder.length||1, done=completedCount(), pct=Math.round(done/total*100);
+    var fill=document.getElementById('progFill'); if(fill) fill.style.width=pct+'%';
+    var pt=document.getElementById('progText'); if(pt) pt.textContent=done+' of '+total+' lessons complete';
+    var host=document.getElementById('dashGrid'); if(!host) return; host.innerHTML='';
+    TOC.forEach(function(ch){
+      var live=ch.s.filter(function(sec){ return LESSONS[sec[0]]; });
+      var dn=live.filter(function(sec){ return completed[sec[0]]; }).length;
+      var st = (live.length && dn===live.length) ? 'done' : (dn>0 ? 'current' : 'open');
+      var pctc = live.length ? Math.round(dn/live.length*100) : 0;
+      var sub = live.length ? (dn+' / '+live.length+' lessons complete') : (ch.s.length+' lessons · coming soon');
+      var d=document.createElement('div'); d.className='dchip '+st;
+      d.innerHTML='<span class="stat">'+CH_ICON[st]+'</span>'+
+        '<div><div class="ttl">Chapter '+ch.n+' · '+ch.t+'</div><div class="sub">'+sub+'</div></div>'+
+        '<span class="mini"><i style="width:'+pctc+'%"></i></span>';
+      d.addEventListener('click',showToc);
+      host.appendChild(d);
+    });
+  }
+
+  // --- table of contents (respects the locked path) ---
+  function renderToc(){
+    var host=document.getElementById('tocList'); if(!host) return; host.innerHTML='';
+    TOC.forEach(function(ch){
+      var g=document.createElement('div'); g.className='grp';
+      g.innerHTML='<div class="ch"><span class="cnum">'+ch.n+'</span>'+ch.t+'</div>';
+      ch.s.forEach(function(sec){
+        var live=!!LESSONS[sec[0]], done=!!completed[sec[0]], locked=live && !lessonUnlocked(sec[0]);
+        var a=document.createElement(locked?'span':'a');
+        a.className='sec'+(live&&!locked&&!done?' open':'')+(done?' done':'')+(locked?' locked':'');
+        var tag = done ? ' <span class="tick">✓ done</span>' : (locked ? ' <span class="lk">🔒 locked</span>' : '');
+        a.innerHTML='<span style="color:var(--sky);font-weight:600">'+sec[0]+'</span>  '+sec[1]+tag;
+        if(!locked) a.addEventListener('click',function(){ showLesson(sec[0],sec[1],ch.t,ch.n); });
+        g.appendChild(a);
+      });
+      var pr=document.createElement('a'); pr.className='ex'; pr.textContent='Practice Problems →';
+      pr.addEventListener('click',function(){ openPSet(ch.n,'practice'); });
+      g.appendChild(pr);
+      var cb=document.createElement('a'); cb.className='ex'; cb.textContent='Challenge Problems →';
+      cb.addEventListener('click',function(){ openPSet(ch.n,'challenge'); });
+      g.appendChild(cb);
+      host.appendChild(g);
+    });
+  }
+  renderDashboard(); renderToc();
+
+  // --- answer grading + hints for lesson problems ---
+  var PROBREG={}, __uid=0;
+  function normAns(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/^\+/,''); }
+  function checkAns(k){
+    var rec=PROBREG[k]; if(!rec||!rec.accept) return;
+    var inp=document.getElementById('ai_'+k), fb=document.getElementById('af_'+k);
+    var v=normAns(inp.value);
+    if(v===''){ fb.className='ansfb'; fb.textContent='Type an answer first.'; return; }
+    if(rec.accept.indexOf(v)!==-1){
+      fb.className='ansfb right'; fb.innerHTML='✓ Correct. Nicely done. View the solution below for the slick way.'; inp.classList.add('okin'); inp.readOnly=true;
+      rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
+      updateFlow(true);
+    } else {
+      fb.className='ansfb wrong'; fb.innerHTML='✗ Not quite. Take a hint, tweak your answer, or view the solution.';
+      rec.attempts=(rec.attempts||0)+1; if(window.Rewards) Rewards._onWrong(rec);
+    }
+    var sb=document.getElementById('sb_'+k); if(sb) sb.style.display='inline-block';
+  }
+  function nextHint(k){
+    var rec=PROBREG[k]; if(!rec||!rec.hints) return;
+    var box=document.getElementById('hx_'+k), btn=document.getElementById('hb_'+k);
+    if(rec.hi>=rec.hints.length) return;
+    var d=document.createElement('div'); d.className='hintline'; d.innerHTML='💡 '+rec.hints[rec.hi]; box.appendChild(d); rec.hi++;
+    rec.hintsUsed=(rec.hintsUsed||0)+1; if(window.Rewards) Rewards._onHint(rec);
+    if(rec.hi>=rec.hints.length){ btn.textContent='No more hints'; btn.disabled=true; }
+    else { btn.textContent='Show next hint ('+rec.hi+'/'+rec.hints.length+')'; }
+  }
+  function typeset(el){
+    if(el && window.renderMathInElement){
+      try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); }catch(e){}
+    }
+  }
+  function renderBlocks(blocks,ctx){
+    var out='';
+    var lk=(ctx||'').slice(2);
+    var isCp=(ctx||'').charAt(0)==='L' && LESSONS[lk] && /checkpoint/i.test(LESSONS[lk].title||'');
+    blocks.forEach(function(b,__bi){
+      var inner='';
+      if(b.t==='p') inner='<p>'+b.x+'</p>';
+      else if(b.t==='f') inner='<div class="formula">'+b.x+(b.s?'<span class="small">'+b.s+'</span>':'')+'</div>';
+      else if(b.t==='sub') inner='<h4 class="sub">'+b.x+'</h4>';
+      else if(b.t==='imp') inner='<div class="impbox"><div class="ilabel">'+(b.label||'Key idea')+'</div><div class="itext">'+b.x+'</div></div>';
+      else if(b.t==='fig') inner='<figure class="lessonfig">'+b.x+(b.cap?'<figcaption>'+b.cap+'</figcaption>':'')+'</figure>';
+      else if(b.t==='fact') inner='<div class="factbox"><div class="flabel">✨ '+(b.label||'Fun fact')+'</div><div class="ftext">'+b.x+'</div></div>';
+      else if(b.t==='prob'){
+        var k=__uid++, sid='sol_'+k;
+        var hasAns=(b.ans!==undefined && b.ans!==null);
+        var hints=b.hints || (b.hint?[b.hint]:null);
+        var cat=b.cat||(/(challenge|legendary)/i.test(b.label||'')?'challenge':((ctx&&ctx.charAt(0)==='R')?'review':(isCp?'checkpoint':'tryit')));
+        var lab=b.label||(cat==='review'?'Review':(cat==='checkpoint'?'Checkpoint':'Try it yourself'));
+        var isCh=(cat==='challenge');
+        var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
+        PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
+          stableId:(ctx||'x')+':'+__bi, cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
+          graded:hasAns, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
+        inner='<div class="probbox cat-'+cat+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+icon+' '+lab+'</div><div class="ptext">'+b.x+'</div>';
+        if(hasAns){
+          inner+='<div class="answerrow"><input class="ansinput" id="ai_'+k+'" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')checkAns('+k+')"><button class="checkbtn" onclick="checkAns('+k+')">Check</button></div><div class="ansfb" id="af_'+k+'"></div>';
+        }
+        if(hints){
+          inner+='<button class="hintbtn2" id="hb_'+k+'" onclick="nextHint('+k+')">💡 Show hint</button><div class="hintbox2" id="hx_'+k+'"></div>';
+        }
+        inner+='<button class="solbtn" id="sb_'+k+'"'+(hasAns?' style="display:none"':'')+' onclick="revealSolution('+k+')">Show solution</button>'+
+          '<div class="solution" id="'+sid+'"><div class="slabel">Solution</div>'+b.sol+'</div></div>';
+      }
+      else if(b.t==='goals'){
+        var items=b.x.map(function(g,i){ return '<li><span class="n">'+(i+1)+'</span><div>'+g+'</div></li>'; }).join('');
+        inner=(b.head?'<h4 class="sub">'+b.head+'</h4>':'')+'<ul class="whylist">'+items+'</ul>';
+      }
+      out+='<div class="lblock" data-bi="'+__bi+'">'+inner+'</div>';
+    });
+    return out;
+  }
+
+  // --- lesson flow: reveal one problem at a time + segmented progress bar ---
+  var FLOW={body:null,gate:false};
+  function probResolved(k){ var r=PROBREG[k]; return !!(r&&(r.solved||r.solViewed)); }
+  function initFlow(bodyEl,gate){
+    FLOW={body:bodyEl,gate:!!gate};
+    var probs=[].slice.call(bodyEl.querySelectorAll('.probbox[data-k]'));
+    if(probs.length>1){
+      var bar=document.createElement('div'); bar.className='lprog';
+      bar.innerHTML='<div class="segs">'+probs.map(function(p){
+        var m=p.className.match(/cat-([a-z]+)/), cat=m?m[1]:'tryit';
+        return '<span class="seg cat-'+cat+'" data-k="'+p.getAttribute('data-k')+'"><i></i></span>';
+      }).join('')+'</div><span class="cnt">0 / '+probs.length+'</span>';
+      bodyEl.insertBefore(bar,bodyEl.firstChild);
+    }
+    updateFlow(false);
+  }
+  function updateFlow(animate){
+    var bodyEl=FLOW.body; if(!bodyEl||!document.body.contains(bodyEl)) return;
+    var halted=false, done=0, total=0, firstNew=null;
+    [].slice.call(bodyEl.querySelectorAll('.lblock')).forEach(function(bl){
+      if(FLOW.gate){
+        if(halted){ bl.classList.add('hid'); bl.classList.remove('reveal'); }
+        else if(bl.classList.contains('hid')){ bl.classList.remove('hid'); if(animate){ bl.classList.add('reveal'); if(!firstNew) firstNew=bl; } }
+      } else { bl.classList.remove('hid'); }
+      var pb=bl.querySelector('.probbox[data-k]');
+      if(pb){ total++; var res=probResolved(pb.getAttribute('data-k')); if(res) done++; else halted=true; }
+    });
+    var nav=bodyEl.querySelector('.lessonnav'); if(nav) nav.style.display=(FLOW.gate&&halted)?'none':'';
+    var cur=false;
+    [].slice.call(bodyEl.querySelectorAll('.lprog .seg')).forEach(function(s){
+      var res=probResolved(s.getAttribute('data-k'));
+      s.classList.toggle('done',res);
+      if(!res&&!cur){ s.classList.add('cur'); cur=true; } else { s.classList.remove('cur'); }
+    });
+    var cnt=bodyEl.querySelector('.lprog .cnt'); if(cnt) cnt.textContent=done+' / '+total;
+    if(animate&&firstNew){ setTimeout(function(){ firstNew.scrollIntoView({behavior:'smooth',block:'center'}); },60); }
+  }
+  window.updateFlow=updateFlow;
+  var currentLessonKey=null, currentLessonMeta={};
+  function showLesson(key,title,chTitle,chNum){
+    var L=LESSONS[key];
+    if(L && !lessonUnlocked(key)){ showToc(); return; }
+    showView('lessonView');
+    currentLessonKey=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
+    document.getElementById('modalEyebrow').textContent='Prealgebra · Lesson '+key;
+    document.getElementById('modalTitle').textContent=(L?L.title:title);
+    var body = L ? (L.blocks?renderBlocks(L.blocks,'L:'+key):L.html) :
+      '<p>This lesson is coming soon, in true Quantica style, written problem-first rather than as a wall of rules.</p>'+
+      '<p style="color:var(--mute);font-size:14px">In the meantime, open any lesson marked “read now” in the contents.</p>';
+    var nav='';
+    if(L && L.review && L.review.length){
+      nav += '<a class="btn btn-ghost" onclick="openReview(\''+key+'\')">📝 Review problems</a>';
+    }
+    if(L){
+      if(L.next && LESSONS[L.next]){
+        nav += '<button class="btn btn-primary" onclick="completeAndGo(\''+key+'\',\''+L.next+'\')">'+
+          (completed[key]?'Continue to':'Complete &amp; continue to')+' '+L.next+' '+LESSONS[L.next].title+' →</button>';
+      } else {
+        nav += '<button class="btn btn-primary" id="doneBtn"'+(completed[key]?' disabled':'')+' onclick="finishLesson(\''+key+'\')">'+
+          (completed[key]?'✓ Lesson complete':'Mark lesson complete ✓')+'</button>';
+      }
+    }
+    if(nav) body += '<div class="lessonnav">'+nav+'</div>';
+    document.getElementById('lessonBody').innerHTML = body;
+    typeset(document.getElementById('lessonBody'));
+    initFlow(document.getElementById('lessonBody'), !!(L&&L.blocks) && !completed[key]);
+  }
+  function gotoLesson(key){
+    var ch=parseInt(key,10);
+    var chInfo=TOC.filter(function(c){ return c.n===ch; })[0];
+    showLesson(key,(LESSONS[key]&&LESSONS[key].title)||'',chInfo?chInfo.t:'',ch);
+  }
+  function openReview(key){
+    showView('reviewView');
+    var L=LESSONS[key];
+    document.getElementById('modalEyebrow').textContent='Prealgebra · Lesson '+key+' · Review';
+    document.getElementById('modalTitle').textContent='Review: '+(L?L.title:'');
+    var blocks=(L&&L.review?L.review:[]).map(function(r){ return Object.assign({t:'prob'}, r); });
+    var body=document.getElementById('reviewBody');
+    body.innerHTML = blocks.length ? renderBlocks(blocks,'R:'+key) :
+      '<p style="color:var(--mute)">Review problems for this lesson are coming soon.</p>';
+    // add bottom navigation outside the flow (in separate container)
+    var navContainer=document.getElementById('reviewNav');
+    navContainer.innerHTML='';
+    if(blocks.length){
+      var nav=document.createElement('div'); nav.className='lessonnav'; nav.style.marginTop='32px';
+      var backBtn=document.createElement('a'); backBtn.className='btn btn-ghost'; backBtn.textContent='← Back to lesson'; backBtn.onclick=function(){ backFromReview(); };
+      nav.appendChild(backBtn);
+      if(L && L.next && LESSONS[L.next]){
+        var nextBtn=document.createElement('button'); nextBtn.className='btn btn-primary';
+        nextBtn.textContent='Complete review & continue to '+L.next+' '+LESSONS[L.next].title+' →';
+        nextBtn.onclick=function(){ completeAndGo(key, L.next); };
+        nav.appendChild(nextBtn);
+      }
+      navContainer.appendChild(nav);
+    }
+    typeset(body);
+    initFlow(body, blocks.length>0);
+  }
+  function backFromReview(){
+    if(currentLessonKey) showLesson(currentLessonKey,currentLessonMeta.title,currentLessonMeta.chTitle,currentLessonMeta.chNum);
+    else showToc();
+  }
+
+  // --- practice & challenge problem sets, one chapter at a time ---
+  var psetState={chapter:null,type:null,list:[],i:0,solved:false};
+  function openPSet(chNum,type){
+    showView('psetView');
+    document.getElementById('psetView').setAttribute('data-ptype',type);
+    var noteEl=document.getElementById('psetNote'); if(noteEl) noteEl.style.display='none';
+    var chInfo=TOC.filter(function(c){ return c.n===chNum; })[0];
+    var label=(type==='practice'?'Practice Problems':'Challenge Problems');
+    document.getElementById('modalEyebrow').textContent='Prealgebra · Chapter '+chNum;
+    document.getElementById('modalTitle').textContent=label;
+    document.getElementById('psetName').textContent=chInfo.t;
+    var data=PSETS[chNum]&&PSETS[chNum][type];
+    if(!data||!data.length){
+      document.getElementById('psetIdx').textContent='';
+      document.getElementById('psetBody').innerHTML='<div class="psetdone"><div class="big">🛠️</div>'+
+        '<p style="color:var(--slate);font-size:15px">We\'re still hand-writing the '+(type==='practice'?'practice':'challenge')+' set for this chapter; true to Quantica form, that takes care. It\'ll unlock soon.</p>'+
+        '<p style="color:var(--slate);font-size:15px">In the meantime, <span class="hl">Chapter 1\'s '+(type==='practice'?'practice':'challenge')+' set</span> is fully live; give it a try.</p>'+
+        '<button class="btn btn-ghost" style="margin-top:8px" onclick="openPSet(1,\''+type+'\')">Try Chapter 1\'s set →</button></div>';
+      return;
+    }
+    if(noteEl && type==='challenge'){ noteEl.innerHTML=PSET_CHALLENGE_NOTE; noteEl.style.display='block'; }
+    document.getElementById('psetIdx').textContent='';
+    // render as free-response, one problem per page (same flow as lesson reviews)
+    var blocks=data.map(function(r){
+      var o;
+      if(r.o && r.ans===undefined){              // convert any legacy multiple-choice item to free-response
+        var ans=''; r.o.forEach(function(opt){ if(opt[1]===1) ans=opt[0]; });
+        o={t:'prob', x:r.q, ans:ans, hints:(r.h?[r.h]:null), sol:r.s};
+      } else { o=Object.assign({t:'prob'}, r); }
+      if(type==='challenge' && !o.label) o.label='Challenge';
+      return o;
+    });
+    var ctx=(type==='challenge'?'X:c':'R:p')+chNum;
+    var bodyEl=document.getElementById('psetBody');
+    bodyEl.innerHTML=renderBlocks(blocks,ctx);
+    typeset(bodyEl);
+    initFlow(bodyEl,true);
+  }
+  function renderPSet(){
+    var st=psetState, p=st.list[st.i];
+    st.solved=false; st.hintUsed=false;
+    document.getElementById('psetIdx').textContent=(st.i+1)+' / '+st.list.length;
+    var body=document.getElementById('psetBody');
+    body.innerHTML='<p class="q">'+p.q+'</p><div class="opts" id="psetOpts"></div><div class="feedback" id="psetFb"></div>'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">'+
+      '<button class="hintbtn" onclick="revealPSet()">💡 Need a hint?</button>'+
+      '<button class="nextbtn" onclick="nextPSet()">'+(st.i+1<st.list.length?'Next problem →':'Finish set →')+'</button></div>';
+    var opts=document.getElementById('psetOpts');
+    p.o.forEach(function(opt,j){
+      var d=document.createElement('div'); d.className='opt'; d.setAttribute('role','button'); d.tabIndex=0;
+      d.innerHTML='<span class="k">'+KEYS[j]+'</span>'+opt[0];
+      var go=function(){ pickPSet(d,opt[1]); };
+      d.addEventListener('click',go);
+      d.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+      opts.appendChild(d);
+    });
+  }
+  function pickPSet(el,correct){
+    var st=psetState; if(st.solved) return;
+    var fb=document.getElementById('psetFb'), p=st.list[st.i];
+    if(correct===1){
+      el.classList.add('correct'); st.solved=true;
+      fb.className='feedback show good'; fb.innerHTML=p.s;
+      if(window.Rewards) Rewards.psetSolved(st);
+    }else{
+      el.classList.add('wrong');
+      fb.className='feedback show hintbox';
+      fb.innerHTML='Not quite. Take another look. <span style="cursor:pointer;text-decoration:underline" onclick="revealPSet()">Show a hint</span>.';
+    }
+  }
+  function revealPSet(){
+    var st=psetState; if(st.solved) return;
+    st.hintUsed=true;
+    var fb=document.getElementById('psetFb');
+    fb.className='feedback show hintbox'; fb.innerHTML=st.list[st.i].h;
+  }
+  function nextPSet(){
+    var st=psetState;
+    if(st.i+1<st.list.length){ st.i++; renderPSet(); return; }
+    if(st.type==='challenge'&&window.Rewards) Rewards.onChallengeSetComplete(st.chapter);
+    document.getElementById('psetIdx').textContent='Complete';
+    document.getElementById('psetBody').innerHTML='<div class="psetdone"><div class="big">🎉</div>'+
+      '<h4 class="sub" style="margin-top:0">Set complete!</h4>'+
+      '<p style="color:var(--slate);font-size:15px">Nice work. That\'s every problem in this set. Head back to the contents to keep moving through the chapter.</p>'+
+      '<button class="btn btn-primary" style="margin-top:6px" onclick="showToc()">← Back to contents</button></div>';
+  }
+
+  // --- re-typeset once KaTeX has finished loading (in case the course opened first) ---
+  window.addEventListener('load',function(){
+    ['lessonBody','reviewBody','psetBody'].forEach(function(id){ var el=document.getElementById(id); if(el && el.innerHTML.trim()) typeset(el); });
+  });
+
+  // --- email capture (in-memory only) ---
+  document.getElementById('form').addEventListener('submit',function(){
+    var e=document.getElementById('email').value.trim();
+    var msg=document.getElementById('formmsg');
+    if(!e || e.indexOf('@')<1 || e.indexOf('.')<3){ msg.style.color='#ffb4a0'; msg.textContent='Please enter a valid email.'; return; }
+    msg.style.color='#7ee0b4';
+    msg.textContent="🎉 You're in! Your free Prealgebra unit is on its way to "+e+".";
+    document.getElementById('email').value='';
+  });
+</script>
+
+<script>
+/* =====================================================================
+   QUANTICA REWARDS ENGINE  ·  XP · Gems · Mastery Points
+   Course-agnostic: keyed by COURSE.slug and persisted to localStorage.
+   Every future course reuses the same lessons / problem-set machinery,
+   so it earns rewards automatically, no per-course wiring required.
+   To add a course, set window.COURSE={slug,title} before this loads.
+   ===================================================================== */
+(function(){
+  var COURSE = window.COURSE || (window.COURSE = {slug:'prealgebra', title:'Prealgebra'});
+
+  /* Shared reward configuration (default for all courses).
+     Category XP weighting realises the ~20% Try-It / 30% Review /
+     50% Challenge split through per-category base values. */
+  var CFG = {
+    xpBase: { tryit:10, review:15, checkpoint:20, challenge:30, legendary:55 },
+    mpBase: { tryit:0,  review:2,  challenge:3,  legendary:6  },
+    hintXP: [1, 0.7, 0.5, 0.3],   // XP fraction kept after N hints
+    hintMP: [1, 0.34, 0],         // MP fraction kept after N hints (dies fast)
+    solutionXP: 0.15,             // small XP share for a revealed solution
+    ungradedReveal: 0.45,         // effort XP for ungraded "thinking" problems
+    minAttempt: 1, solDelayMs: 5000,
+    gems: { lesson:5, chapter:25, challengeSet:15, legendary:25, streak:3, levelUp:10 }
+  };
+
+  var SKEY='quantica.profile.v1';
+  function def(){ return {xp:0,gems:0,mp:0,awarded:{},lessons:{},chapters:{},sets:{},
+    streak:0,lastActive:null,theme:'aurora',avatar:'Q',owned:{aurora:1,Q:1,firststeps:1},
+    stats:{solved:0,independent:0,attempts:0,hints:0,solutions:0}}; }
+  function load(){ try{var s=localStorage.getItem(SKEY); if(s){var p=JSON.parse(s),d=def();
+    for(var k in d) if(!(k in p)) p[k]=d[k]; return p;}}catch(e){} return def(); }
+  var P=load();
+  function save(){ try{localStorage.setItem(SKEY,JSON.stringify(P));}catch(e){} }
+
+  /* ---- levels · ranks · prestige ---- */
+  function levelInfo(xp){ var lvl=1,need=80,floor=0;
+    while(xp>=floor+need){ floor+=need; lvl++; need=Math.round(need*1.22); }
+    return {level:lvl,into:xp-floor,span:need,floor:floor,pct:Math.min(100,Math.round((xp-floor)/need*100))}; }
+  var RANKS=[[1,'Explorer'],[3,'Novice'],[6,'Apprentice'],[10,'Adept'],[15,'Scholar'],[22,'Mathematician'],[30,'Grandmaster']];
+  function rankFor(l){ var r=RANKS[0][1]; RANKS.forEach(function(t){ if(l>=t[0]) r=t[1]; }); return r; }
+  var PRESTIGE=[[10,'Initiate'],[30,'Logician'],[75,'Theorist'],[150,'Virtuoso'],[300,'Olympian'],[600,'Sage']];
+  function prestigeFor(mp){ var r=null; PRESTIGE.forEach(function(t){ if(mp>=t[0]) r=t[1]; }); return r; }
+
+  /* ---- icons ---- */
+  var I={
+    xp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>',
+    gem:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14l3 5-10 13L2 8 5 3Z"/></svg>',
+    mp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.5 4.7 2.8 7 7.5 7.5C14.8 10 12.5 12.3 12 17c-.5-4.7-2.8-7-7.5-7.5C9.2 9 11.5 6.7 12 2Z"/></svg>',
+    tip:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm1 15h-2v-6h2Zm0-8h-2V7h2Z"/></svg>',
+    fire:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2c1 3-1 5-2 7-1-1-1-2-1-3-2 2-4 4-4 7a6 6 0 0012 0c0-4-3-6-5-11Z"/></svg>'
+  };
+  var gemS='<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-1px"><path d="M5 3h14l3 5-10 13L2 8 5 3Z"/></svg>';
+
+  /* ---- toasts ---- */
+  function toast(kind, amount, label, big){
+    var w=document.getElementById('toastWrap'); if(!w) return;
+    var t=document.createElement('div'); t.className='toast '+kind+(big?' big':'');
+    var amt=(amount!=null)?'<span class="amt">+'+amount+'</span> ':'';
+    t.innerHTML='<span class="ti">'+(I[kind]||I.tip)+'</span><span>'+amt+(label||'')+'</span>';
+    w.appendChild(t);
+    setTimeout(function(){ t.classList.add('out'); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },320); }, big?2800:1900);
+  }
+  function celebrate(text){ toast('gem',null,'<b>'+text+'</b>',true); }
+  function bumpHud(cls){ var el=document.querySelector('#hud .hud-pill.'+cls); if(el){ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); } }
+
+  /* ---- currency mutators ---- */
+  function addXP(n){ if(n<=0) return; var before=levelInfo(P.xp).level; P.xp+=n; var after=levelInfo(P.xp).level;
+    if(after>before){ addGems(CFG.gems.levelUp*(after-before),null,true); celebrate('Level '+after+' · '+rankFor(after)); } bumpHud('xp'); }
+  function addMP(n){ if(n<=0) return; var b=prestigeFor(P.mp); P.mp+=n; var a=prestigeFor(P.mp); if(a&&a!==b) celebrate('Prestige unlocked · '+a); bumpHud('mp'); }
+  function addGems(n,label,silent){ if(n<=0) return; P.gems+=n; bumpHud('gem'); if(!silent) toast('gem',n,label||'Gems'); }
+
+  function baseXP(rec){ return rec.xpOverride || CFG.xpBase[rec.legendary?'legendary':rec.cat] || CFG.xpBase.tryit; }
+  function baseMP(rec){ return rec.legendary?CFG.mpBase.legendary:(CFG.mpBase[rec.cat]||0); }
+
+  function award(rec, viaSolution){
+    if(!rec || !rec.stableId) return;
+    var id=COURSE.slug+'|'+rec.stableId;
+    if(rec._counted || P.awarded[id]) { rec._counted=true; return; }
+    var saw = viaSolution || !!rec.solViewed;          // saw the full solution → not independent
+    var h=Math.min(rec.hintsUsed||0, CFG.hintXP.length-1);
+    var xpFrac = saw ? CFG.solutionXP : CFG.hintXP[h];
+    var mpFrac = saw ? 0 : CFG.hintMP[Math.min(rec.hintsUsed||0, CFG.hintMP.length-1)];
+    var xp=Math.max(1, Math.round(baseXP(rec)*xpFrac));
+    var mp=Math.round(baseMP(rec)*mpFrac);
+    rec._counted=true; P.awarded[id]={xp:xp,mp:mp};
+    P.stats.solved++; if(!saw && !(rec.hintsUsed>0)) P.stats.independent++; if(saw) P.stats.solutions++;
+    addXP(xp); if(mp>0) addMP(mp);
+    if(rec.legendary && !saw && !(rec.hintsUsed>0)) addGems(CFG.gems.legendary,'Legendary solve');
+    toast('xp', xp, (xpFrac<1) ? ('XP'+(saw?' · solution':' · with help')) : 'XP earned');
+    if(mp>0) toast('mp', mp, 'Mastery');
+    save(); renderHUD();
+  }
+  function ungradedEffort(rec){
+    if(!rec || !rec.stableId) return;
+    var id=COURSE.slug+'|'+rec.stableId;
+    if(rec._counted || P.awarded[id]) return;
+    var xp=Math.max(1, Math.round(baseXP(rec)*CFG.ungradedReveal));
+    rec._counted=true; P.awarded[id]={xp:xp,mp:0}; P.stats.solved++;
+    addXP(xp); toast('xp', xp, 'XP · effort'); save(); renderHUD();
+  }
+
+  /* chapter completion (reads global TOC / LESSONS / completed) */
+  function checkChapter(ch){
+    if(typeof TOC==='undefined') return;
+    var info=null; TOC.forEach(function(c){ if(c.n===ch) info=c; }); if(!info) return;
+    var live=info.s.filter(function(s){ return LESSONS[s[0]]; }); if(!live.length) return;
+    var done=live.every(function(s){ return completed[s[0]]; });
+    var ck=COURSE.slug+':ch:'+ch;
+    if(done && !P.chapters[ck]){ P.chapters[ck]=1; addGems(CFG.gems.chapter,'Chapter '+ch+' mastered'); celebrate('Chapter '+ch+' complete!'); save(); }
+  }
+
+  /* ---- cosmetics ---- */
+  var THEMES=[
+    {id:'aurora',nm:'Aurora',cost:0, sw:'linear-gradient(135deg,#7cc4ff,#5fe6d4)'},
+    {id:'sunset',nm:'Sunset',cost:40,sw:'linear-gradient(135deg,#ffb020,#ff7a45)'},
+    {id:'forest',nm:'Forest',cost:40,sw:'linear-gradient(135deg,#37e0b0,#1f9d6b)'},
+    {id:'galaxy',nm:'Galaxy',cost:60,sw:'linear-gradient(135deg,#a78bfa,#5b4bd6)'}
+  ];
+  var AVATARS=[{id:'Q',cost:0},{id:'Σ',cost:20},{id:'π',cost:20},{id:'√',cost:25},{id:'∞',cost:30},{id:'Δ',cost:25}];
+  var BADGES=[{id:'firststeps',nm:'First Steps',cost:0},{id:'deepthinker',nm:'Deep Thinker',cost:50},{id:'streakkeeper',nm:'Streak Keeper',cost:60}];
+
+  function applyTheme(){
+    var o=document.getElementById('lessonOverlay'); if(!o) return;
+    o.className=o.className.replace(/\btheme-\S+/g,'').replace(/\s+/g,' ').trim();
+    o.classList.add('theme-'+(P.theme||'aurora'));
+  }
+  function ownedOrFree(id,cost){ return P.owned[id]||cost===0; }
+  function themeCard(t){
+    var owned=ownedOrFree(t.id,t.cost), eq=P.theme===t.id;
+    var btn = eq ? '<button class="equipped" disabled>✓ Equipped</button>'
+      : owned ? '<button class="equip" onclick="rwEquip(\'theme\',\''+t.id+'\')">Equip</button>'
+      : '<button class="buy" onclick="rwBuy(\'theme\',\''+t.id+'\','+t.cost+')"'+(P.gems<t.cost?' disabled':'')+'>'+gemS+' '+t.cost+'</button>';
+    return '<div class="shop-item"><div class="sw" style="background:'+t.sw+'"></div><div class="nm">'+t.nm+'</div>'+
+      '<div class="cost">'+(t.cost?(owned?'Owned':gemS+' '+t.cost):'Free')+'</div>'+btn+'</div>';
+  }
+  function avatarCard(a){
+    var owned=ownedOrFree(a.id,a.cost), eq=P.avatar===a.id;
+    var btn = eq ? '<button class="equipped" disabled>✓ Equipped</button>'
+      : owned ? '<button class="equip" onclick="rwEquip(\'avatar\',\''+a.id+'\')">Equip</button>'
+      : '<button class="buy" onclick="rwBuy(\'avatar\',\''+a.id+'\','+a.cost+')"'+(P.gems<a.cost?' disabled':'')+'>'+gemS+' '+a.cost+'</button>';
+    return '<div class="shop-item"><div class="sw" style="background:linear-gradient(135deg,var(--blue),var(--teal2))">'+a.id+'</div><div class="nm">Avatar</div>'+
+      '<div class="cost">'+(a.cost?(owned?'Owned':gemS+' '+a.cost):'Free')+'</div>'+btn+'</div>';
+  }
+  function badgeCard(bd){
+    var owned=ownedOrFree(bd.id,bd.cost);
+    var btn = owned ? '<button class="equipped" disabled>✓ Owned</button>'
+      : '<button class="buy" onclick="rwBuy(\'badge\',\''+bd.id+'\','+bd.cost+')"'+(P.gems<bd.cost?' disabled':'')+'>'+gemS+' '+bd.cost+'</button>';
+    return '<div class="shop-item"><div class="sw" style="background:linear-gradient(135deg,var(--accent),var(--accent2))">★</div><div class="nm">'+bd.nm+'</div>'+
+      '<div class="cost">'+(bd.cost?(owned?'Owned':gemS+' '+bd.cost):'Free')+'</div>'+btn+'</div>';
+  }
+  function statCard(cls,icon,label,big,note){
+    return '<div class="rw-stat '+cls+'"><div class="h">'+icon+' '+label+'</div><div class="big">'+big+'</div><div class="note">'+note+'</div></div>';
+  }
+  function legendRow(cls,icon,title,body){
+    return '<div class="row '+cls+'"><span class="lic">'+icon+'</span><div><b>'+title+'</b>: '+body+'</div></div>';
+  }
+  function renderPanel(){
+    var host=document.getElementById('rewardsBody'); if(!host) return;
+    var li=levelInfo(P.xp), rank=rankFor(li.level), pres=prestigeFor(P.mp);
+    var h='';
+    h+='<div class="rw-top">'+
+       '<div class="rw-ring" style="--p:'+li.pct+'"><div class="lv"><b>'+li.level+'</b><span>Level</span></div></div>'+
+       '<div class="rw-id"><div class="rank">'+rank+'</div>'+
+         '<div class="sub">'+(pres?('Prestige rank · '+pres):'Earn Mastery Points to unlock a prestige rank')+'</div>'+
+         '<div class="prog">'+li.into+' / '+li.span+' XP to Level '+(li.level+1)+'</div></div>'+
+       '<div class="rw-avatar">'+(P.avatar||'Q')+'</div></div>';
+    h+='<div style="margin-bottom:18px"><span class="streakchip">'+I.fire+' '+(P.streak||0)+'-day streak</span></div>';
+    h+='<div class="rw-stats">'+
+       statCard('xp',I.xp,'Experience',P.xp+' XP','<b>'+rank+'</b> · rewards effort &amp; engagement')+
+       statCard('gem',I.gem,'Gems',P.gems+' Gems','Spend on the cosmetics below')+
+       statCard('mp',I.mp,'Mastery',P.mp+' MP',(pres?'<b>'+pres+'</b> · ':'')+'rewards independent understanding')+
+       '</div>';
+    h+='<h3 class="rw-section-h">How rewards work</h3><div class="rw-legend">'+
+       legendRow('xp',I.xp,'Experience Points','earned on every problem. Full value when you solve on your own; hints lower the share you keep, and a revealed solution gives only a little. XP is never taken away.')+
+       legendRow('gem',I.gem,'Gems','rare bonuses for finishing lessons, clearing challenge sets, daily streaks, level-ups and Legendary solves. Spend them on cosmetics, never on advantages, and never for real money.')+
+       legendRow('mp',I.mp,'Mastery Points','awarded only for independent mastery: challenge &amp; review problems solved with no hints or solutions. They power your prestige rank and can\'t be farmed by repetition.')+
+       '</div>';
+    h+='<h3 class="rw-section-h">Mastery-map themes</h3><div class="shop-grid">'+THEMES.map(themeCard).join('')+'</div>';
+    h+='<h3 class="rw-section-h">Avatars</h3><div class="shop-grid">'+AVATARS.map(avatarCard).join('')+'</div>';
+    h+='<h3 class="rw-section-h">Badges</h3><div class="shop-grid">'+BADGES.map(badgeCard).join('')+'</div>';
+    host.innerHTML=h;
+  }
+  function renderHUD(){
+    var hud=document.getElementById('hud'); if(!hud) return;
+    var li=levelInfo(P.xp);
+    hud.innerHTML=
+      '<span class="hud-pill xp" title="Level '+li.level+' · '+rankFor(li.level)+'">'+I.xp+'<span class="lvl">Lv '+li.level+'</span>'+P.xp+'<span class="txt-long">&nbsp;XP</span></span>'+
+      '<span class="hud-pill gem" title="Gems">'+I.gem+' '+P.gems+'</span>'+
+      '<span class="hud-pill mp" title="Mastery Points">'+I.mp+' '+P.mp+'<span class="txt-long">&nbsp;MP</span></span>';
+  }
+
+  /* ---- public API (called by the course flows) ---- */
+  window.Rewards={
+    _onSolved:function(rec){ award(rec,false); },
+    _onWrong:function(rec){ P.stats.attempts++; save(); },
+    _onHint:function(rec){ P.stats.hints++; save(); },
+    _onReveal:function(rec){
+      if(!rec) return; var id=COURSE.slug+'|'+rec.stableId;
+      if(rec._counted || P.awarded[id]) return;
+      var elapsed=Date.now()-(rec.shownAt||0);
+      if(rec.graded){
+        if((rec.attempts||0)>=CFG.minAttempt && elapsed>=CFG.solDelayMs) award(rec,true);
+        else if((rec.attempts||0)<CFG.minAttempt) toast('tip',null,'Give it a real attempt first to earn XP');
+      } else if(elapsed>=CFG.solDelayMs) ungradedEffort(rec);
+    },
+    onLessonComplete:function(key){
+      var lk=COURSE.slug+':'+key; if(P.lessons[lk]) return; P.lessons[lk]=1;
+      addGems(CFG.gems.lesson,'Lesson complete'); save(); renderHUD();
+      var ch=parseInt(key,10); if(ch) checkChapter(ch);
+    },
+    onChallengeSetComplete:function(ch){
+      var sk=COURSE.slug+':set:'+ch; if(P.sets[sk]) return; P.sets[sk]=1;
+      addGems(CFG.gems.challengeSet,'Challenge set cleared'); save(); renderHUD();
+    },
+    psetSolved:function(st){
+      var id=COURSE.slug+'|pset:'+st.chapter+':'+st.type+':'+st.i;
+      if(P.awarded[id]) return;
+      var p=st.list[st.i]||{}, cat=(st.type==='challenge')?'challenge':'review', leg=!!p.legendary;
+      var base=leg?CFG.xpBase.legendary:CFG.xpBase[cat];
+      var xp=Math.max(1,Math.round(base*(st.hintUsed?CFG.hintXP[1]:1)));
+      var mpB=leg?CFG.mpBase.legendary:CFG.mpBase[cat];
+      var mp=Math.round(mpB*(st.hintUsed?CFG.hintMP[1]:1));
+      P.awarded[id]={xp:xp,mp:mp}; P.stats.solved++; if(!st.hintUsed) P.stats.independent++;
+      addXP(xp); if(mp>0) addMP(mp);
+      if(leg && !st.hintUsed) addGems(CFG.gems.legendary,'Legendary solve');
+      toast('xp',xp, st.hintUsed?'XP · with help':'XP earned'); if(mp>0) toast('mp',mp,'Mastery');
+      save(); renderHUD();
+    },
+    touchStreak:function(){
+      var today=new Date().toISOString().slice(0,10);
+      if(P.lastActive===today) return;
+      var yest=new Date(Date.now()-864e5).toISOString().slice(0,10);
+      P.streak=(P.lastActive===yest)?(P.streak||0)+1:1; P.lastActive=today;
+      addGems(CFG.gems.streak,'Day '+P.streak+' streak'); save(); renderHUD();
+    },
+    applyTheme:applyTheme,
+    renderHUD:renderHUD,
+    openPanel:function(){
+      if(typeof showView==='function') showView('rewardsView');
+      var e=document.getElementById('modalEyebrow'); if(e) e.textContent='Quantica · '+COURSE.title;
+      var t=document.getElementById('modalTitle'); if(t) t.textContent='Rewards & Progress';
+      renderPanel();
+    }
+  };
+  window.revealSolution=function(k){
+    var rec=(typeof PROBREG!=='undefined')?PROBREG[k]:null;
+    var s=document.getElementById('sol_'+k), btn=document.getElementById('sb_'+k);
+    if(s){ var open=s.classList.toggle('show'); if(btn) btn.textContent=open?'Hide solution':'Show solution';
+      if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.updateFlow) window.updateFlow(true); } }
+  };
+  window.rwBuy=function(type,id,cost){
+    if(P.owned[id]) return;
+    if(P.gems<cost){ toast('tip',null,'Not enough Gems yet'); return; }
+    P.gems-=cost; P.owned[id]=1;
+    if(type==='theme'){ P.theme=id; applyTheme(); }
+    else if(type==='avatar'){ P.avatar=id; }
+    toast('gem',null,'Unlocked!'); save(); renderHUD(); renderPanel();
+  };
+  window.rwEquip=function(type,id){
+    if(type==='theme'){ P.theme=id; applyTheme(); }
+    else if(type==='avatar'){ P.avatar=id; }
+    save(); renderHUD(); renderPanel();
+  };
+
+  applyTheme(); renderHUD();
+})();
+</script>
+</body>
+</html>
