@@ -568,6 +568,178 @@
         "sol": "Substitute: \\(6^{20} = (2 \\times 3)^{20} = 2^{20} \\times 3^{20}\\), \\(4^{15} = (2^2)^{15} = 2^{30}\\), \\(8^{10} = (2^3)^{10} = 2^{30}\\). The expression becomes $$\\frac{2^{20} \\times 3^{20} \\times 2^{30}}{2^{30} \\times 3^{20}} = \\frac{2^{50} \\times 3^{20}}{2^{30} \\times 3^{20}} = 2^{20}.$$ The exponent is \\(\\boxed{20}\\)."
       }
     ],
+    "review": [
+      {
+        "x": "A kaleidoscope adds mirrors in two stages. The first tube holds \\(4\\) mirrors, and each mirror doubles the number of visible copies of a bead, so the tube shows \\(2^4\\) copies. You twist on a second tube of \\(6\\) more doubling mirrors. Written as a single power of \\(2\\), how many copies of the bead do you see through the whole instrument?",
+        "hints": [
+          "Two doublings followed by more doublings is nothing but doublings in a row.",
+          "Multiplying powers of the same base piles the exponents up, so count \\(4\\) doublings then \\(6\\) more."
+        ],
+        "ans": "2^10",
+        "accept": [
+          "2^{10}",
+          "1024"
+        ],
+        "sol": "Each mirror doubles, so the first tube multiplies by \\(2^4\\) and the second by \\(2^6\\). Sending one bead through both means doubling \\(4\\) times, then \\(6\\) more, which is \\(10\\) doublings all told. Multiplying powers of the same base adds the exponents. $$2^4\\times2^6=2^{4+6}=\\boxed{2^{10}}$$ That is \\(1024\\) copies, a number you never had to build by hand."
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "That \\(2^{10}=1024\\) is the reason a kilobyte is not quite \\(1000\\) bytes. Computers count in doublings, and ten doublings overshoot a thousand by just \\(24\\). Engineers shrugged, borrowed the word kilo anyway, and the small fib has stuck ever since."
+      },
+      {
+        "x": "A library's main hall holds \\(3^9\\) books and a small reading room holds \\(3^5\\) books. The hall holds how many times as many books as the room? Give your answer as a power of \\(3\\).",
+        "hints": [
+          "How many times bigger one thing is than another is a division.",
+          "Dividing powers of the same base subtracts the exponents, so take \\(9-5\\)."
+        ],
+        "ans": "3^4",
+        "accept": [
+          "3^{4}",
+          "81"
+        ],
+        "sol": "Asking how many times as many is asking for a quotient. $$\\dfrac{3^9}{3^5}=3^{9-5}=3^4=\\boxed{81}$$ Dividing powers of the same base subtracts the exponents, so the towering \\(3^9\\) never has to be written out."
+      },
+      {
+        "x": "Two identical servers each store \\(2^{19}\\) files. Put together, they store how many files in total? Write the total as a single power of \\(2\\). Careful, the answer is not \\(4^{19}\\).",
+        "hints": [
+          "Two equal piles add up to twice one pile, so this is \\(2\\times2^{19}\\).",
+          "Doubling a power of \\(2\\) is one more doubling, lifting the exponent by a single step."
+        ],
+        "ans": "2^20",
+        "accept": [
+          "2^{20}"
+        ],
+        "sol": "Two equal stacks add to twice one stack. $$2^{19}+2^{19}=2\\times2^{19}=\\boxed{2^{20}}$$ Doubling nudges the exponent up by one and leaves the base alone. The base stays \\(2\\); it never turns into \\(4\\)."
+      },
+      {
+        "t": "imp",
+        "x": "Watch which operation you are in. Multiplying two copies of \\(2^{19}\\) adds the exponents and lands far off at \\(2^{38}\\). Adding two copies only doubles. When equal powers are added you pull the number of copies out in front, so \\(2^{19}+2^{19}=2\\times2^{19}\\), and only because that leading \\(2\\) matches the base does the exponent climb to \\(2^{20}\\)."
+      },
+      {
+        "x": "A microscope magnifies by \\(10^3\\) at one setting. To study a single cell you stack that same setting \\(4\\) times in a row, each stage feeding its image into the next, for a magnification of \\((10^3)^4\\). Write that as a single power of \\(10\\).",
+        "hints": [
+          "Stacking four stages multiplies four copies of \\(10^3\\) together.",
+          "A power raised to a power multiplies the exponents, so take \\(3\\times4\\)."
+        ],
+        "ans": "10^12",
+        "accept": [
+          "10^{12}"
+        ],
+        "sol": "Four stages each multiply by \\(10^3\\), so the total is \\(10^3\\) multiplied by itself four times, which is \\((10^3)^4\\). A power of a power multiplies the exponents. $$(10^3)^4=10^{3\\times4}=\\boxed{10^{12}}$$ A trillion-fold, written without a single zero."
+      },
+      {
+        "x": "A square mosaic is \\(6\\) tiles wide and \\(6\\) tiles tall. An artist refines it so that every tile is rebuilt as a \\(5\\)-by-\\(5\\) block of smaller tiles. How many small tiles fill the finished mosaic? Find it by writing the count as \\((6\\times5)^2\\) and letting the exponent land on each factor.",
+        "hints": [
+          "After the refit, count the small tiles along one side: \\(6\\) tiles, each \\(5\\) across.",
+          "That is \\(6\\times5=30\\) per side, so the whole square holds \\((6\\times5)^2\\) small tiles, which splits into \\(6^2\\times5^2\\)."
+        ],
+        "ans": "900",
+        "accept": [
+          "30^2",
+          "30^{2}"
+        ],
+        "sol": "Each side once spanned \\(6\\) tiles, and every tile is now \\(5\\) small tiles across, so a side runs \\(6\\times5=30\\) small tiles. The mosaic holds \\((6\\times5)^2\\) of them, and an exponent on a product drops onto each factor. $$(6\\times5)^2=6^2\\times5^2=36\\times25=\\boxed{900}$$ The same square, counted two ways, agrees."
+      },
+      {
+        "x": "Three gears feed one counter. Gear A multiplies it by \\(8\\), gear B by \\(4\\), and gear C by \\(2\\). You crank gear A three times, gear B twice, and gear C once. By what single power of \\(2\\) has the counter grown?",
+        "hints": [
+          "\\(8\\), \\(4\\), and \\(2\\) are all powers of \\(2\\): \\(8=2^3\\), \\(4=2^2\\), \\(2=2^1\\).",
+          "Cranking gear A three times multiplies by \\(8^3=(2^3)^3=2^9\\). Do the same for B and C, then add the exponents."
+        ],
+        "ans": "2^14",
+        "accept": [
+          "2^{14}",
+          "16384"
+        ],
+        "sol": "Rewrite every gear in base \\(2\\). Cranking them gives $$8^3\\times4^2\\times2=(2^3)^3\\times(2^2)^2\\times2^1=2^9\\times2^4\\times2^1.$$ Now there is one base, so add the exponents, \\(9+4+1=14\\), for \\(\\boxed{2^{14}}\\). Three different-looking gears were the same gear in disguise."
+      },
+      {
+        "t": "imp",
+        "x": "That is the move worth keeping. When the bases look different but are secretly powers of one number, rewrite every piece in that one base. The moment a single base rules the expression, the laws take over and the whole thing folds down to one tidy power."
+      },
+      {
+        "x": "Two students simplify the same thing and get opposite signs. One writes \\((-2)^4\\times2^3\\), the other writes \\(-2^4\\times2^3\\). Work out each value, then say how far apart the two results sit.",
+        "hints": [
+          "In \\((-2)^4\\) the parentheses trap the sign inside, and four negatives multiply to a positive. In \\(-2^4\\) the exponent grips only the \\(2\\), with the minus left outside.",
+          "So one path is \\(16\\times8\\) and the other is \\(-16\\times8\\). Find the gap between them."
+        ],
+        "ans": "256",
+        "accept": [
+          "256"
+        ],
+        "sol": "The parentheses decide everything. In \\((-2)^4\\) the sign is inside the power, and four negatives make a positive, so \\((-2)^4=16\\). In \\(-2^4\\) the exponent touches only the \\(2\\), and the minus waits outside, so \\(-2^4=-(16)=-16\\). Multiplying each by \\(2^3=8\\), $$16\\times8=128,\\qquad -16\\times8=-128.$$ They sit \\(128+128=\\boxed{256}\\) apart. The exponent grabs exactly what it touches, no more."
+      },
+      {
+        "x": "A puzzle claims that \\(4^{12}\\) and \\(8^8\\) are exactly the same size. Settle it by rewriting each as a power of \\(2\\). What single power of \\(2\\) do they share?",
+        "hints": [
+          "\\(4=2^2\\) and \\(8=2^3\\). Use the power-of-a-power rule on each.",
+          "\\((2^2)^{12}\\) and \\((2^3)^8\\). Multiply the exponents and compare."
+        ],
+        "ans": "2^24",
+        "accept": [
+          "2^{24}"
+        ],
+        "sol": "Send both to base \\(2\\). $$4^{12}=(2^2)^{12}=2^{24},\\qquad 8^8=(2^3)^8=2^{24}$$ Same base, same exponent, so the puzzle is right, both equal \\(\\boxed{2^{24}}\\). Forcing a shared base turns a staring contest into a single glance."
+      },
+      {
+        "x": "A number is built as \\(2^6\\times5^9\\). How many digits does it have once it is written out in full?",
+        "hints": [
+          "Pair each \\(2\\) with a \\(5\\) to make a \\(10\\). There are only six \\(2\\)s, so they pair off six of the \\(5\\)s and leave some \\(5\\)s behind.",
+          "\\(2^6\\times5^9=(2^6\\times5^6)\\times5^3=10^6\\times125\\). Now count the digits."
+        ],
+        "ans": "9",
+        "accept": [
+          "9"
+        ],
+        "sol": "A \\(2\\) and a \\(5\\) make a \\(10\\), but here the \\(5\\)s outnumber the \\(2\\)s. The six \\(2\\)s pair with six \\(5\\)s, leaving \\(5^3\\) on its own. $$2^6\\times5^9=(2^6\\times5^6)\\times5^3=10^6\\times125=125000000$$ That is \\(125\\) trailing six zeros, so \\(\\boxed{9}\\) digits in all."
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "Every trailing zero on a whole number is a hidden \\(10\\), and every \\(10\\) is a \\(2\\) holding hands with a \\(5\\). That is the whole secret behind round numbers. To learn how many zeros end a giant product, you do not multiply it out, you just count how many \\(2\\)-and-\\(5\\) pairs hide inside."
+      },
+      {
+        "label": "Star challenge",
+        "x": "Collapse this tower into a single power of \\(2\\). $$\\dfrac{8^6\\times16^3}{4^5\\times2^4}$$",
+        "hints": [
+          "Everything in sight is a power of \\(2\\): \\(8=2^3\\), \\(16=2^4\\), \\(4=2^2\\). Rewrite each with the power-of-a-power rule.",
+          "The top becomes \\(2^{18}\\times2^{12}=2^{30}\\) and the bottom \\(2^{10}\\times2^4=2^{14}\\). Now divide."
+        ],
+        "ans": "2^16",
+        "accept": [
+          "2^{16}",
+          "65536"
+        ],
+        "sol": "Send every base to \\(2\\). On top, \\(8^6=(2^3)^6=2^{18}\\) and \\(16^3=(2^4)^3=2^{12}\\), so the numerator is \\(2^{18}\\times2^{12}=2^{30}\\). On the bottom, \\(4^5=(2^2)^5=2^{10}\\) and \\(2^4=2^4\\), so the denominator is \\(2^{10}\\times2^4=2^{14}\\). Dividing same bases subtracts the exponents. $$\\dfrac{2^{30}}{2^{14}}=2^{30-14}=\\boxed{2^{16}}$$ A four-story tower flattened to one power, \\(65536\\), and all four laws took a turn."
+      },
+      {
+        "label": "Star challenge",
+        "x": "This sum refuses to merge, because the powers are not equal. $$2^{10}+2^{11}+2^{12}$$ Find its exact value.",
+        "hints": [
+          "Unequal powers cannot just combine, but they share the smallest one as a common factor. Pull \\(2^{10}\\) out of all three.",
+          "\\(2^{10}+2^{11}+2^{12}=2^{10}(1+2+4)\\). Now finish the arithmetic."
+        ],
+        "ans": "7168",
+        "accept": [
+          "7168"
+        ],
+        "sol": "Equal powers can be added in a single step, but these climb. The fix is to factor out the smallest power they all contain. $$2^{10}+2^{11}+2^{12}=2^{10}(1+2+4)=2^{10}\\times7=1024\\times7=\\boxed{7168}$$ Pulling out the lowest power is the move whenever a sum of powers will not collapse on its own."
+      },
+      {
+        "label": "Star challenge",
+        "x": "Which is larger, \\(2^{40}\\) or \\(3^{30}\\)? Decide with no calculator by giving both a shared exponent.",
+        "hints": [
+          "The exponents \\(40\\) and \\(30\\) share a factor of \\(10\\). Write each as something raised to the \\(10\\).",
+          "\\(2^{40}=(2^4)^{10}=16^{10}\\) and \\(3^{30}=(3^3)^{10}=27^{10}\\). Same exponent now, so just compare the bases."
+        ],
+        "ans": "3^30",
+        "accept": [
+          "3^{30}"
+        ],
+        "sol": "When bases differ, a shared exponent works as well as a shared base. Both exponents are multiples of \\(10\\), so factor a \\(10\\) out of each with the power-of-a-power rule. $$2^{40}=(2^4)^{10}=16^{10},\\qquad 3^{30}=(3^3)^{10}=27^{10}$$ The exponents match, so the larger base wins. Since \\(27>16\\), the bigger number is \\(\\boxed{3^{30}}\\)."
+      }
+    ],
     "next": "2.3"
   }
 }
