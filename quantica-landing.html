@@ -164,11 +164,11 @@
   .catnote b{color:var(--navy)}
 
   /* PRICING */
-  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:980px;margin:0 auto;align-items:stretch}
-  @media(max-width:860px){.prices{grid-template-columns:1fr;max-width:420px}}
+  .prices{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:680px;margin:0 auto;align-items:stretch}
+  @media(max-width:760px){.prices{grid-template-columns:1fr;max-width:420px}}
   .price{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:32px 28px;display:flex;flex-direction:column}
   .price.feat{border-color:var(--mid);box-shadow:var(--shadow);transform:scale(1.03)}
-  @media(max-width:860px){.price.feat{transform:none}}
+  @media(max-width:760px){.price.feat{transform:none}}
   .price .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;padding:5px 14px;border-radius:999px}
   .price .name{font-family:'Inter';font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
   .price .amt{font-family:'Fraunces';font-weight:700;font-size:42px;color:var(--navy);margin:14px 0 2px}
@@ -177,7 +177,7 @@
   .price ul{list-style:none;margin:20px 0 26px;display:grid;gap:11px}
   .price li{display:flex;gap:10px;font-size:14.5px;color:var(--slate)}
   .price li .ck{color:var(--green);font-weight:800;flex:none}
-  .price .btn{width:100%;justify-content:center;margin-top:auto}
+  .price .btn{width:100%;justify-content:center;margin-top:auto;font-family:inherit;cursor:pointer}
 
   /* PATH band */
   .band{background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;border-radius:24px;padding:46px 40px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
@@ -402,37 +402,26 @@
     <div class="prices">
       <div class="price">
         <div class="name">Monthly</div>
-        <div class="amt">$24.99<span>/mo</span></div>
+        <div class="amt">$29.99<span>/mo</span></div>
         <div class="sub">Full access, billed monthly. Flexible.</div>
         <ul>
           <li><span class="ck">✓</span>All 10 courses, both tiers</li>
           <li><span class="ck">✓</span>Mastery map &amp; spaced review</li>
           <li><span class="ck">✓</span>Cancel anytime</li>
         </ul>
-        <a class="btn btn-ghost" href="#signup">Choose monthly</a>
+        <button class="btn btn-ghost" onclick="subscribe()">Choose monthly</button>
       </div>
       <div class="price feat">
-        <span class="tag">Best value · save 50%</span>
+        <span class="tag">Best value</span>
         <div class="name">Annual</div>
-        <div class="amt">$149<span>/yr</span></div>
-        <div class="sub">Just ~$12.42/mo. The way most learners commit to the path.</div>
+        <div class="amt">$249.99<span>/yr</span></div>
+        <div class="sub">Just $20.83/mo. The way most learners commit to the path.</div>
         <ul>
           <li><span class="ck">✓</span>Everything in Monthly</li>
-          <li><span class="ck">✓</span>~50% off the monthly rate</li>
+          <li><span class="ck">✓</span>Lower effective monthly rate</li>
           <li><span class="ck">✓</span>Priority on new courses</li>
         </ul>
-        <a class="btn btn-primary" href="#signup">Start free, then $149/yr</a>
-      </div>
-      <div class="price">
-        <div class="name">Family</div>
-        <div class="amt">$249<span>/yr</span></div>
-        <div class="sub">Up to 4 learners, each with their own path.</div>
-        <ul>
-          <li><span class="ck">✓</span>4 individual accounts</li>
-          <li><span class="ck">✓</span>Built for homeschool &amp; siblings</li>
-          <li><span class="ck">✓</span>Parent progress view</li>
-        </ul>
-        <a class="btn btn-ghost" href="#signup">Choose family</a>
+        <button class="btn btn-primary" onclick="subscribe()">Start free, then $249.99/yr</button>
       </div>
     </div>
     <p class="catnote" style="margin-top:34px">Start with a <b>free Prealgebra unit</b>—no card required. Subscribe when you're ready for the rest of the path.</p>
@@ -465,7 +454,7 @@
       <details><summary>Do I need to be "good at math" already?</summary><p>No. Quantica meets you where you are and builds from the ground up. The hints and mastery path are designed so getting stuck is part of learning—never a wall.</p></details>
       <details><summary>Do I need to buy each course?</summary><p>Never. One subscription unlocks every course and the entire path. No upsells, no per-course decisions.</p></details>
       <details><summary>Is it really free to start?</summary><p>Yes—the first Prealgebra unit is free, no card required. You only subscribe when you want to continue the path.</p></details>
-      <details><summary>My child is under 18—how does that work?</summary><p>A parent sets up and manages the subscription, with a progress view to follow along. The Family plan covers up to four learners.</p></details>
+      <details><summary>Can a parent manage a learner's account?</summary><p>Yes—a parent or guardian can set up and manage the subscription, with a progress view to follow along.</p></details>
     </div>
   </div>
 </section>
@@ -604,6 +593,24 @@
     msg.textContent="🎉 You're in! Your free Prealgebra unit is on its way to "+e+".";
     document.getElementById('email').value='';
   });
+
+  // --- Stripe checkout ---
+  async function subscribe() {
+    try {
+      const response = await fetch('https://express-js-on-vercel-eta-one-53.vercel.app/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      alert('Could not connect. Please try again.');
+    }
+  }
 </script>
 </body>
 </html>
