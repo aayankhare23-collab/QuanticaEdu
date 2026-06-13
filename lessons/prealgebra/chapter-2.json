@@ -1,0 +1,340 @@
+{
+  "2.1": {
+    "title": "Squares and Cubes",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Multiplication lets you scale a count by repeating it. Squaring is what happens when a number repeats itself: a number multiplied by itself, written \\(b^2\\) and read as \u201cb squared.\u201d If multiplication built a grid of rows and columns, squaring builds a grid that happens to be a square, with the same number of rows as columns. Once you can read a square both as a number and as a shape, a whole layer of shortcuts opens up."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Here are the first six perfect squares. $$1^2=1,\\quad 2^2=4,\\quad 3^2=9,\\quad 4^2=16,\\quad 5^2=25,\\quad 6^2=36$$ Look at how much each square grows over the one before it, then use that growth pattern to predict \\(8^2\\) without multiplying \\(8\\times8\\) directly.",
+        "hints": [
+          "The growth from one square to the next goes 3, 5, 7, 9, 11, all odd numbers increasing by 2. What should the next two terms in that list be?"
+        ],
+        "ans": "64",
+        "sol": "The growth from each square to the next is \\(3, 5, 7, 9, 11, \\ldots\\), the odd numbers, each one 2 more than the last. The next two terms are 13 and 15. So \\(7^2 = 36+13=49\\), and $$8^2 = 49+15=\\boxed{64}.$$ Every step from one perfect square to the next adds the next odd number, a pattern that will come back later in this lesson."
+      },
+      {
+        "t": "imp",
+        "x": "For any number \\(b\\), the <b>square</b> of \\(b\\) is \\(b\\times b\\), written \\(b^2\\). When \\(b\\) is a whole number, \\(b^2\\) is called a <b>perfect square</b>, one of \\(0,1,4,9,16,25,36,\\ldots\\) Geometrically, \\(b^2\\) is the number of unit cells inside a \\(b\\)-by-\\(b\\) square, the same way ordinary multiplication counted the cells inside any rectangle."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Compute \\(2\\times3^2\\). Is it \\(2\\times(3^2)\\) or \\((2\\times3)^2\\)? Those give different values, 18 and 36, so the placement of the exponent matters.",
+        "hints": [
+          "An exponent attaches only to the symbol written directly beneath it, not to anything sitting in front of it."
+        ],
+        "ans": "18",
+        "sol": "An exponent applies only to its own base, the symbol written directly underneath it. In \\(2\\times3^2\\), that base is \\(3\\), not \\(2\\times3\\), so the expression means \\(2\\times(3^2)\\). Evaluate the power first. $$2\\times3^2 = 2\\times9 = \\boxed{18}$$ The other reading, \\((2\\times3)^2=36\\), is a genuinely different expression, one with parentheses that this one does not have."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Order of operations</b>, with powers added in. Work inside parentheses first. Then evaluate every power. Then multiply and divide, left to right. Then add and subtract, left to right. A power applies only to the base written directly beneath it, unless parentheses gather more into that base."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Two students evaluate \\(-5^2\\). One says the answer is \\(-25\\), the other says \\(25\\). Using the rule that an exponent applies only to its own base, who is right, and what does \\((-5)^2\\) equal instead?",
+        "hints": [
+          "In \\(-5^2\\), is the minus sign part of the base, or is it applied to the result afterward? Compare \\(-5^2\\) to \\(-1\\times5^2\\)."
+        ],
+        "ans": "-25",
+        "accept": [
+          "\u221225"
+        ],
+        "sol": "The base in \\(-5^2\\) is just \\(5\\), so the exponent applies to \\(5\\) alone and the minus sign is applied last. $$-5^2 = -(5^2) = \\boxed{-25}$$ The first student is right. Wrapping the \\(-5\\) in parentheses changes the base itself. $$(-5)^2=(-5)\\times(-5)=25$$ Same digits, opposite signs, because one expression has parentheses around the negative and the other does not."
+      },
+      {
+        "t": "imp",
+        "x": "<b>\\(-a^2\\)</b> means the opposite of \\(a^2\\); the minus sign applies last. <b>\\((-a)^2\\)</b> multiplies two copies of \\(-a\\) together, and two negatives make a positive. The same idea extends to any exponent \\(n\\). With an even exponent, the negatives in \\((-a)^n\\) cancel in pairs and the result is positive; with an odd exponent, one negative is left over. So \\(-a^n\\) and \\((-a)^n\\) are opposites when \\(n\\) is even, and equal when \\(n\\) is odd."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Evaluate \\(2x^2-x\\) when \\(x=-3\\).",
+        "hints": [
+          "Substitute \\(-3\\) for \\(x\\) and put parentheses around it everywhere it appears, so the expression becomes \\(2(-3)^2-(-3)\\)."
+        ],
+        "ans": "21",
+        "sol": "Substitute \\(x=-3\\), keeping it inside parentheses. $$2(-3)^2-(-3)$$ The exponent applies to the whole parenthesized \\(-3\\), so \\((-3)^2=9\\). $$2(9)-(-3)=18+3=\\boxed{21}$$ Dropping the parentheses and writing \\(2\\times-3^2\\) would quietly turn the first piece into \\(-2\\times9=-18\\), a different and wrong expression."
+      },
+      {
+        "t": "p",
+        "x": "Squaring also interacts with multiplication and division, and that interaction turns into a genuine shortcut."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\(6^2\\) directly. Then compute it a second way: write \\(6=2\\times3\\), expand \\((2\\times3)\\times(2\\times3)\\) into four factors, and use the reordering freedom from Chapter 1 to group the two 2's together and the two 3's together. Do the two methods agree, and what does the regrouped form become?",
+        "hints": [
+          "After regrouping, the four factors split into \\(2\\times2\\) and \\(3\\times3\\), which are \\(2^2\\) and \\(3^2\\)."
+        ],
+        "ans": "36",
+        "sol": "Directly, \\(6^2=36\\). Expanding the second way, $$(2\\times3)\\times(2\\times3)=2\\times3\\times2\\times3$$ Reordering and regrouping these four factors gives $$(2\\times2)\\times(3\\times3)=2^2\\times3^2=4\\times9=\\boxed{36}$$ Both routes agree, and along the way \\((2\\times3)^2\\) turned into \\(2^2\\times3^2\\). Squaring a product is the same as squaring each factor and multiplying the results."
+      },
+      {
+        "t": "imp",
+        "x": "A square <b>distributes</b> over multiplication and division. $$(ab)^2=a^2b^2 \\qquad \\left(\\frac{a}{b}\\right)^2=\\frac{a^2}{b^2}$$ It does <b>not</b> distribute over addition or subtraction. \\((a+b)^2\\) is generally not \\(a^2+b^2\\); for instance \\((1+2)^2=9\\) while \\(1^2+2^2=5\\), two different numbers."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\(25^2\\times4^2\\) without ever multiplying two multi-digit numbers together.",
+        "hints": [
+          "Chapter 1's matchmaking is back. What is \\(25\\times4\\)?"
+        ],
+        "ans": "10000",
+        "accept": [
+          "10,000"
+        ],
+        "sol": "Since \\(a^2b^2=(ab)^2\\), $$25^2\\times4^2=(25\\times4)^2=100^2=\\boxed{10000}$$ The same partner-hunting that turned \\(25\\times4\\) into a clean \\(100\\) now turns two awkward squares into one easy one."
+      },
+      {
+        "t": "p",
+        "x": "Back at the start of this lesson, the jump from one perfect square to the next was always an odd number, \\(2n+1\\) more than the square before it. That pattern is not just a curiosity. It is a mental-math shortcut waiting to be unwrapped."
+      },
+      {
+        "t": "fig",
+        "cap": "A \\(4\\)-by-\\(4\\) grid of unit squares holds \\(4^2=16\\) cells. Growing it to \\(5\\)-by-\\(5\\) adds one new column of \\(4\\), one new row of \\(4\\), and one corner cell. $$16+4+4+1=25=5^2$$ In general, \\((n+1)^2=n^2+2n+1\\): the new square is the old \\(n\\)-by-\\(n\\) square, plus two strips of length \\(n\\), plus one corner cell.",
+        "x": "<svg viewBox=\"0 0 230 205\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A 4 by 4 grid of unit squares, with an extra column of 4 cells, an extra row of 4 cells, and one corner cell added to make a 5 by 5 grid\"><rect x=\"34\" y=\"14\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"68\" y=\"14\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"102\" y=\"14\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"136\" y=\"14\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"170\" y=\"14\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"34\" y=\"48\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"68\" y=\"48\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"102\" y=\"48\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"136\" y=\"48\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"170\" y=\"48\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"34\" y=\"82\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"68\" y=\"82\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"102\" y=\"82\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"136\" y=\"82\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"170\" y=\"82\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"34\" y=\"116\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"68\" y=\"116\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"102\" y=\"116\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"136\" y=\"116\" width=\"34\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"170\" y=\"116\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"34\" y=\"150\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"68\" y=\"150\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"102\" y=\"150\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"136\" y=\"150\" width=\"34\" height=\"34\" fill=\"rgba(31,157,107,.16)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"170\" y=\"150\" width=\"34\" height=\"34\" fill=\"rgba(199,145,0,.30)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"34\" y=\"14\" width=\"136\" height=\"136\" fill=\"none\" stroke=\"var(--mid)\" stroke-width=\"2.5\"/><rect x=\"170\" y=\"14\" width=\"34\" height=\"136\" fill=\"none\" stroke=\"var(--green)\" stroke-width=\"2.5\"/><rect x=\"34\" y=\"150\" width=\"136\" height=\"34\" fill=\"none\" stroke=\"var(--green)\" stroke-width=\"2.5\"/><rect x=\"170\" y=\"150\" width=\"34\" height=\"34\" fill=\"none\" stroke=\"var(--gold)\" stroke-width=\"2.5\"/><text x=\"102\" y=\"91\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">4\u00b2</text><text x=\"187\" y=\"89\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">4</text><text x=\"102\" y=\"174\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">4</text><text x=\"187\" y=\"174\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">1</text></svg>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>\\((n+1)^2=n^2+2n+1\\).</b> To square a number that is one more than a friendly number \\(n\\), square \\(n\\), add twice \\(n\\), then add \\(1\\). The figure above shows why: the new square is the old square, plus two strips of length \\(n\\), plus the corner cell where the strips meet."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Use \\((n+1)^2=n^2+2n+1\\) to compute \\(41^2\\) without multiplying two 2-digit numbers.",
+        "hints": [
+          "Let \\(n=40\\), a very friendly number. What are \\(n^2\\), \\(2n\\), and the final \\(+1\\)?"
+        ],
+        "ans": "1681",
+        "sol": "Take \\(n=40\\). Then \\(n^2=1600\\) and \\(2n=80\\). $$41^2=1600+80+1=\\boxed{1681}$$ Every piece is a number you can add in your head."
+      },
+      {
+        "t": "prob",
+        "label": "Extra challenge",
+        "xp": 14,
+        "x": "The identity also runs in reverse. If \\(n=m+1\\), then \\(n^2=m^2+2m+1\\), which rearranges to \\((n-1)^2=n^2-2n+1\\) (writing \\(m=n-1\\)). Use this reversed identity to compute \\(99^2\\) from the friendly number \\(100\\).",
+        "hints": [
+          "Let \\(n=100\\), so \\(99^2=(n-1)^2=n^2-2n+1\\)."
+        ],
+        "ans": "9801",
+        "sol": "Take \\(n=100\\). Then \\(n^2=10000\\) and \\(2n=200\\). $$99^2=10000-200+1=\\boxed{9801}$$ One identity, run forward for a number just above a round number and run backward for a number just below one."
+      },
+      {
+        "t": "p",
+        "x": "A square is what you get when a number meets itself twice. Let it meet itself three times and you get a <b>cube</b>. Where \\(b^2\\) counted the cells of a flat square, \\(b^3\\) counts the little cubes packed inside a solid one."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Stack unit cubes into a solid block. One cube along each edge is just \\(1\\) cube, two along each edge make \\(8\\), three along each edge make \\(27\\). How many unit cubes are in a block that is \\(4\\) along each edge?",
+        "hints": [
+          "Each flat layer is a \\(4\\times4=16\\) square of cubes, and the block is \\(4\\) layers tall."
+        ],
+        "ans": "64",
+        "sol": "Each layer is a \\(4\\times4=16\\) square of unit cubes, and there are \\(4\\) such layers stacked up. $$4\\times4\\times4=\\boxed{64}$$ That count is \\(4^3\\), and the list \\(1,8,27,64\\) is the start of the perfect cubes."
+      },
+      {
+        "t": "imp",
+        "x": "For any number \\(b\\), the <b>cube</b> of \\(b\\) is \\(b\\times b\\times b\\), written \\(b^3\\) and read as \u201cb cubed.\u201d When \\(b\\) is a whole number, \\(b^3\\) is a <b>perfect cube</b>, one of \\(0,1,8,27,64,125,216,\\ldots\\) Geometrically \\(b^3\\) is the number of unit cubes inside a \\(b\\)-by-\\(b\\)-by-\\(b\\) cube, exactly as \\(b^2\\) was the number of cells inside a \\(b\\)-by-\\(b\\) square. Cubes climb much faster than squares, since each step multiplies by \\(b\\) one extra time."
+      },
+      {
+        "t": "fig",
+        "cap": "A \\(3\\)-by-\\(3\\)-by-\\(3\\) cube is built from \\(3^3=27\\) unit cubes, three to an edge in every direction. Where a square stored \\(b^2\\) cells across two directions, a cube stores \\(b^3\\) cells across three.",
+        "x": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An isometric three by three by three cube built from twenty seven small unit cubes, shown on its three visible faces\"><polygon points=\"100,16 172,55 100,94 28,55\" fill=\"rgba(74,159,224,.14)\"/><polygon points=\"100,94 172,55 172,139 100,178\" fill=\"rgba(46,117,182,.30)\"/><polygon points=\"100,94 28,55 28,139 100,178\" fill=\"rgba(46,117,182,.18)\"/><g stroke=\"rgba(15,44,77,.16)\" stroke-width=\"1\"><line x1=\"100\" y1=\"16\" x2=\"28\" y2=\"55\"/><line x1=\"100\" y1=\"16\" x2=\"172\" y2=\"55\"/><line x1=\"124\" y1=\"29\" x2=\"52\" y2=\"68\"/><line x1=\"76\" y1=\"29\" x2=\"148\" y2=\"68\"/><line x1=\"148\" y1=\"42\" x2=\"76\" y2=\"81\"/><line x1=\"52\" y1=\"42\" x2=\"124\" y2=\"81\"/><line x1=\"172\" y1=\"55\" x2=\"100\" y2=\"94\"/><line x1=\"28\" y1=\"55\" x2=\"100\" y2=\"94\"/><line x1=\"100\" y1=\"94\" x2=\"100\" y2=\"178\"/><line x1=\"124\" y1=\"81\" x2=\"124\" y2=\"165\"/><line x1=\"148\" y1=\"68\" x2=\"148\" y2=\"152\"/><line x1=\"172\" y1=\"55\" x2=\"172\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"172\" y2=\"55\"/><line x1=\"100\" y1=\"122\" x2=\"172\" y2=\"83\"/><line x1=\"100\" y1=\"150\" x2=\"172\" y2=\"111\"/><line x1=\"100\" y1=\"178\" x2=\"172\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"100\" y2=\"178\"/><line x1=\"76\" y1=\"81\" x2=\"76\" y2=\"165\"/><line x1=\"52\" y1=\"68\" x2=\"52\" y2=\"152\"/><line x1=\"28\" y1=\"55\" x2=\"28\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"28\" y2=\"55\"/><line x1=\"100\" y1=\"122\" x2=\"28\" y2=\"83\"/><line x1=\"100\" y1=\"150\" x2=\"28\" y2=\"111\"/><line x1=\"100\" y1=\"178\" x2=\"28\" y2=\"139\"/></g><g fill=\"none\" stroke=\"var(--navy)\" stroke-width=\"2.2\" stroke-linejoin=\"round\"><polygon points=\"100,16 172,55 100,94 28,55\"/><polygon points=\"100,94 172,55 172,139 100,178\"/><polygon points=\"100,94 28,55 28,139 100,178\"/></g></svg>"
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\((-2)^3\\). Then compute \\(-2^3\\). With squares these two came out opposite, since \\((-2)^2=4\\) but \\(-2^2=-4\\). What happens this time?",
+        "hints": [
+          "\\((-2)^3=(-2)(-2)(-2)\\). Multiply the first two, then bring in the third.",
+          "An exponent still binds only to its own base, so \\(-2^3\\) means \\(-(2^3)\\)."
+        ],
+        "ans": "-8",
+        "accept": [
+          "\u22128"
+        ],
+        "sol": "Multiply the three factors of \\((-2)^3\\) one step at a time. $$(-2)(-2)=4,\\qquad 4\\times(-2)=-8$$ So \\((-2)^3=-8\\). And \\(-2^3=-(2^3)=-8\\) as well, since the exponent binds only to the \\(2\\). This time the two expressions are <b>equal</b>, not opposite. Three negative factors pair off and always leave one minus standing, so the cube of a negative stays negative."
+      },
+      {
+        "t": "imp",
+        "x": "Cubing keeps the sign. Because \\(3\\) is odd, <b>\\((-a)^3=-a^3\\)</b>: the three negative factors leave one negative behind, so the cube of a negative number is negative and equals \\(-a^3\\) exactly. This is the odd case of the rule from before. An even power of a negative comes out positive, an odd power stays negative. So with cubes, unlike squares, the parentheses around the negative do not change the answer."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\(2^3\\times5^3\\) without cubing either number on its own first.",
+        "hints": [
+          "A cube distributes over a product, so \\(2^3\\times5^3=(2\\times5)^3\\)."
+        ],
+        "ans": "1000",
+        "accept": [
+          "1,000"
+        ],
+        "sol": "Cubing distributes over multiplication, so gather the bases before cubing. $$2^3\\times5^3=(2\\times5)^3=10^3=\\boxed{1000}$$ The same partner-hunting that turned an awkward product into a round number for squares does it again for cubes."
+      },
+      {
+        "t": "imp",
+        "x": "A cube distributes over multiplication and division, just as a square did. $$(ab)^3=a^3b^3 \\qquad \\left(\\frac{a}{b}\\right)^3=\\frac{a^3}{b^3}$$ The reason is the same regrouping of factors, now three copies of each instead of two. And like a square, a cube never splits over a sum, so \\((a+b)^3\\) is generally not \\(a^3+b^3\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Extra challenge",
+        "xp": 14,
+        "x": "Compute \\(12^3\\div3^3\\) without ever finding \\(12^3\\).",
+        "hints": [
+          "A cube distributes over division, so \\(12^3\\div3^3=(12\\div3)^3\\)."
+        ],
+        "ans": "64",
+        "sol": "Since \\(\\left(\\frac{a}{b}\\right)^3=\\frac{a^3}{b^3}\\), read the division with the cube on the outside. $$12^3\\div3^3=(12\\div3)^3=4^3=\\boxed{64}$$ One small cube, \\(4^3\\), in place of a four-digit division."
+      },
+      {
+        "t": "imp",
+        "label": "Recap \u00b7 Squares and cubes",
+        "x": "The square of \\(b\\) is \\(b\\times b=b^2\\) and the cube is \\(b\\times b\\times b=b^3\\). Perfect squares are \\(0,1,4,9,16,25,\\ldots\\) and perfect cubes are \\(0,1,8,27,64,125,\\ldots\\) Geometrically \\(b^2\\) counts the cells in a \\(b\\)-by-\\(b\\) square and \\(b^3\\) counts the unit cubes in a \\(b\\)-by-\\(b\\)-by-\\(b\\) cube. Consecutive perfect squares differ by the odd numbers \\(3,5,7,9,\\ldots\\), since the jump from \\(n^2\\) to \\((n+1)^2\\) is \\(2n+1\\)."
+      },
+      {
+        "t": "imp",
+        "label": "Recap \u00b7 Order of operations and the sign trap",
+        "x": "Powers are evaluated after parentheses and before multiplication, division, addition, and subtraction, and an exponent applies only to the base written directly beneath it. So \\(-a^n=-(a^n)\\) while \\((-a)^n\\) raises the negative itself. The two are opposite when \\(n\\) is even, which is why \\((-a)^2\\) is positive but \\(-a^2\\) is negative, and equal when \\(n\\) is odd, which is why \\((-a)^3=-a^3\\). Cubing passes the sign straight through."
+      },
+      {
+        "t": "imp",
+        "label": "Recap \u00b7 Powers of products and quick mental math",
+        "x": "A power distributes over multiplication and division, \\((ab)^2=a^2b^2\\) and \\((ab)^3=a^3b^3\\), with \\(\\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}\\) for division, but never over addition or subtraction. And \\((n+1)^2=n^2+2n+1\\), run forward or backward, turns squaring a number just above or just below a round number into simple addition or subtraction."
+      }
+    ],
+    "review": [
+      {
+        "x": "Compute \\(6^2+8^2\\).",
+        "ans": "100",
+        "sol": "\\(6^2=36\\) and \\(8^2=64\\), so \\(6^2+8^2=\\boxed{100}\\). That total happens to be \\(10^2\\) as well, a coincidence worth remembering."
+      },
+      {
+        "x": "Compute \\(-3^4\\).",
+        "ans": "-81",
+        "accept": [
+          "\u221281"
+        ],
+        "sol": "The exponent applies to \\(3\\) alone, so \\(-3^4=-(3^4)=-(81)=\\boxed{-81}\\)."
+      },
+      {
+        "x": "Compute \\((-3)^4\\).",
+        "ans": "81",
+        "sol": "Four copies of \\(-3\\) multiplied together. The negatives cancel in pairs, two pairs in all, so \\((-3)^4=\\boxed{81}\\). Same digits as the problem before this one, opposite sign, because the parentheses changed the base."
+      },
+      {
+        "x": "If \\(y=-5\\), what is \\(y^2-3y\\)?",
+        "ans": "40",
+        "sol": "Substitute \\(y=-5\\) in parentheses. \\(y^2=(-5)^2=25\\) and \\(3y=3(-5)=-15\\), so \\(y^2-3y=25-(-15)=25+15=\\boxed{40}\\)."
+      },
+      {
+        "x": "Compute \\(5^2\\times20^2\\) as a single square.",
+        "ans": "10000",
+        "accept": [
+          "10,000"
+        ],
+        "sol": "Since \\(a^2b^2=(ab)^2\\), \\(5^2\\times20^2=(5\\times20)^2=100^2=\\boxed{10000}\\)."
+      },
+      {
+        "x": "Find the positive difference between \\((3+4)^2\\) and \\(3^2+4^2\\).",
+        "hints": [
+          "Compute \\((3+4)^2\\) and \\(3^2+4^2\\) separately, then subtract."
+        ],
+        "ans": "24",
+        "sol": "\\((3+4)^2=7^2=49\\), while \\(3^2+4^2=9+16=25\\). The positive difference is \\(49-25=\\boxed{24}\\), a reminder that a square does not split over a sum."
+      },
+      {
+        "x": "Use \\((n+1)^2=n^2+2n+1\\) to compute \\(31^2\\).",
+        "ans": "961",
+        "sol": "Take \\(n=30\\). Then \\(n^2=900\\) and \\(2n=60\\), so \\(31^2=900+60+1=\\boxed{961}\\)."
+      },
+      {
+        "x": "Use \\((n-1)^2=n^2-2n+1\\) to compute \\(19^2\\) from \\(20^2\\).",
+        "hints": [
+          "Take \\(n=20\\) in \\((n-1)^2=n^2-2n+1\\)."
+        ],
+        "ans": "361",
+        "sol": "Take \\(n=20\\). Then \\(n^2=400\\) and \\(2n=40\\), so \\(19^2=400-40+1=\\boxed{361}\\)."
+      },
+      {
+        "x": "Compute \\(100-2\\times3^2\\).",
+        "ans": "82",
+        "sol": "The power comes first, \\(3^2=9\\). Then \\(2\\times9=18\\), and \\(100-18=\\boxed{82}\\)."
+      },
+      {
+        "x": "Compute \\((-3)^2\\times2^2\\).",
+        "ans": "36",
+        "sol": "\\((-3)^2=9\\) and \\(2^2=4\\), so \\((-3)^2\\times2^2=9\\times4=\\boxed{36}\\). Equivalently, \\((-3\\times2)^2=(-6)^2=36\\)."
+      },
+      {
+        "x": "Find the positive difference between \\((-7)^2\\) and \\(-7^2\\).",
+        "hints": [
+          "Evaluate \\((-7)^2\\) and \\(-7^2\\) separately. One of them is negative."
+        ],
+        "ans": "98",
+        "sol": "\\((-7)^2=49\\), since an even number of negative factors gives a positive result. But \\(-7^2=-(7^2)=-49\\), since the minus sign applies after the power. The positive difference is \\(49-(-49)=\\boxed{98}\\), double what either expression alone equals."
+      },
+      {
+        "x": "Compute \\(2^3+3^3\\).",
+        "ans": "35",
+        "sol": "\\(2^3=8\\) and \\(3^3=27\\), so \\(2^3+3^3=\\boxed{35}\\)."
+      },
+      {
+        "x": "Compute \\((-5)^3\\).",
+        "ans": "-125",
+        "accept": [
+          "\u2212125"
+        ],
+        "sol": "Three negative factors leave the result negative. $$(-5)(-5)(-5)=25\\times(-5)=\\boxed{-125}$$"
+      },
+      {
+        "x": "Find the positive difference between \\((-3)^3\\) and \\(-3^3\\).",
+        "hints": [
+          "Work out each one. For an odd power, how do \\((-a)^3\\) and \\(-a^3\\) compare?"
+        ],
+        "ans": "0",
+        "sol": "\\((-3)^3=-27\\), and \\(-3^3=-(27)=-27\\) as well, so the two are equal and their difference is \\(\\boxed{0}\\). For squares this same comparison gave \\(98\\), but cubing passes the sign straight through, so the gap closes to nothing."
+      },
+      {
+        "x": "Evaluate \\(x^3-x\\) when \\(x=-2\\).",
+        "ans": "-6",
+        "accept": [
+          "\u22126"
+        ],
+        "sol": "Substitute \\(x=-2\\) in parentheses. \\(x^3=(-2)^3=-8\\) and \\(x=-2\\), so \\(x^3-x=-8-(-2)=-8+2=\\boxed{-6}\\)."
+      },
+      {
+        "x": "Compute \\(6^3\\) by writing \\(6=2\\times3\\) and cubing each factor.",
+        "hints": [
+          "\\(6^3=(2\\times3)^3=2^3\\times3^3\\)."
+        ],
+        "ans": "216",
+        "sol": "\\(6^3=(2\\times3)^3=2^3\\times3^3=8\\times27=\\boxed{216}\\)."
+      },
+      {
+        "x": "Compute \\(20^3\\div5^3\\) as a single cube.",
+        "ans": "64",
+        "sol": "\\(20^3\\div5^3=(20\\div5)^3=4^3=\\boxed{64}\\)."
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "Stack up the odd numbers starting from 1, and watch what happens. \\(1\\), then \\(1+3=4\\), then \\(1+3+5=9\\), then \\(1+3+5+7=16\\). Every one of those totals is a perfect square, and it never stops: the first \\(n\\) odd numbers always add up to \\(n^2\\). The ancient Greek Pythagoreans drew exactly this picture, building each new square by wrapping an L-shaped strip of dots, called a <b>gnomon</b>, around the previous square, the same L-shape you just saw in this lesson's figure. It is the same pattern you found at the very start of this lesson, just run all the way back to the beginning. \ud83d\ude80"
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "Add up the first few cubes and something uncanny happens. \\(1^3=1\\), then \\(1^3+2^3=9\\), then \\(1^3+2^3+3^3=36\\), then \\(1^3+2^3+3^3+4^3=100\\). Every total is a perfect square, and not a random one. \\(9=3^2\\), \\(36=6^2\\), \\(100=10^2\\), and \\(3,6,10\\) are exactly the running sums \\(1+2\\), \\(1+2+3\\), \\(1+2+3+4\\). So a stack of cubes always equals the square of a plain sum, \\(1^3+2^3+\\cdots+n^3=(1+2+\\cdots+n)^2\\). The two halves of this lesson, squares and cubes, turn out to be holding hands. \ud83d\ude80"
+      }
+    ],
+    "next": "2.2"
+  }
+}

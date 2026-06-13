@@ -18,7 +18,7 @@
     --line:#e4e9f1; --bg:#ffffff; --soft:#f5f8fc; --softer:#eef4fb;
     --green:#1f9d6b; --green2:#3ecf8e;
     --purple:#7c3aed; --purple2:#a78bfa;
-    --gold:#c79100; --gold2:#f1b51c;
+    --gold:#c79100; --gold2:#f1b51c; --gold-deep:#7a4f00; --gold-deep2:#a06a00;
     --radius:18px; --shadow:0 18px 50px -22px rgba(15,44,77,.35);
     --shadow-sm:0 6px 22px -10px rgba(15,44,77,.28);
   }
@@ -350,14 +350,27 @@
   .probbox.cat-review{background:linear-gradient(135deg,#ecfaf3,#f7fdfa)}
   .probbox.cat-checkpoint{background:linear-gradient(135deg,#f4effe,#fbf9ff)}
   .probbox.cat-challenge{background:linear-gradient(135deg,#fdf5e0,#fffbef)}
+  .probbox.legendary{--pc:var(--gold-deep);--pc2:var(--gold-deep2)}
+  .probbox.cat-challenge.legendary{background:linear-gradient(135deg,#efd589,#f8e8b4);border-left-width:5px;box-shadow:0 10px 30px -14px rgba(122,79,0,.6)}
+  .probbox.legendary .plabel.challenge{color:var(--gold-deep)}
+  .legbadge{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,var(--gold-deep),var(--gold-deep2));color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.1em;padding:3px 8px;border-radius:999px;text-transform:uppercase;box-shadow:0 2px 8px -2px rgba(122,79,0,.55)}
   .probbox .checkbtn{background:linear-gradient(135deg,var(--pc,var(--mid)),var(--pc2,var(--sky)))}
   .probbox .checkbtn:hover{filter:brightness(1.1);background:linear-gradient(135deg,var(--pc,var(--mid)),var(--pc2,var(--sky)))}
   .probbox .solbtn{color:var(--pc,var(--mid));border-color:var(--pc,var(--mid))}
 
-  /* LESSON FLOW: one problem at a time + progress bar */
+  /* LESSON FLOW: one block at a time + progress bar */
+  .lblock{position:relative}
   .lblock.hid{display:none}
   .lblock.reveal{animation:lbIn .55s cubic-bezier(.22,1,.36,1) both}
   @keyframes lbIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .lblock.flowhi::before{content:'';position:absolute;inset:-7px -12px;border-radius:16px;border:2px solid var(--gold2);background:rgba(255,193,7,.07);animation:flowpulse 1.9s ease-in-out infinite;pointer-events:none;z-index:0}
+  .lblock.flowhi>*{position:relative;z-index:1}
+  @keyframes flowpulse{0%,100%{opacity:.5;box-shadow:0 12px 30px -16px rgba(199,145,0,.4)}50%{opacity:1;box-shadow:0 14px 42px -12px rgba(199,145,0,.62)}}
+  .flowcont{display:flex;justify-content:center;margin:6px 0 24px}
+  .flowbtn{font-family:'Inter';font-weight:700;font-size:13.5px;color:#fff;background:linear-gradient(135deg,var(--gold-deep2),var(--gold));border:none;border-radius:999px;padding:11px 24px;cursor:pointer;box-shadow:0 10px 26px -10px rgba(199,145,0,.6);display:inline-flex;align-items:center;gap:9px;animation:flowbob 1.7s ease-in-out infinite}
+  .flowbtn:hover{filter:brightness(1.07)}
+  .flowbtn .fa{font-size:15px;line-height:1}
+  @keyframes flowbob{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
   .lprog{position:sticky;top:6px;z-index:6;display:flex;align-items:center;gap:12px;padding:10px 16px;margin:0 0 20px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-sm)}
   .lprog .segs{display:flex;flex:1;gap:5px}
   .lprog .seg{flex:1;height:9px;border-radius:99px;background:#e7edf5;position:relative;overflow:hidden}
@@ -1163,7 +1176,7 @@
   // --- Prealgebra course modal: table of contents ---
   var TOC=[
     {n:1, t:"The Rules of Arithmetic", s:[["1.1","Why Begin with Arithmetic?"],["1.2","Addition, Subtraction, and Negation"],["1.3","Multiplication"],["1.4","Checkpoint Problems"],["1.5","Division"],["1.6","Summary"]]},
-    {n:2, t:"Powers and Exponents", s:[["2.1","Repeated Multiplication"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"]]},
+    {n:2, t:"Exponents", s:[["2.1","Squares and Cubes"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"]]},
     {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers"],["3.4","Prime Factorization"],["3.5","Greatest Common Divisor"],["3.6","Least Common Multiple"],["3.7","Counting a Number's Divisors"]]},
     {n:4, t:"Working with Fractions", s:[["4.1","What a Fraction Means"],["4.2","Equivalent Fractions"],["4.3","Multiplying Fractions"],["4.4","Dividing Fractions"],["4.5","Common Denominators"],["4.6","Adding and Subtracting Fractions"],["4.7","Mixed Numbers"],["4.8","Comparing Fractions"]]},
     {n:5, t:"Decimals", s:[["5.1","Place Value and Decimals"],["5.2","Decimal Arithmetic"],["5.3","Switching Between Fractions and Decimals"],["5.4","Rounding and Estimation"],["5.5","Repeating Decimals"]]},
@@ -1183,13 +1196,8 @@
     // Placeholder lessons for chapters 2+ (loaded dynamically or as stubs)
     '1.1':{title:'Placeholder - loading from file', html:'<p>Loading...</p>', next:'1.2'},
 
-    // ---- Chapter 2: Powers and Exponents ----
-    '2.1':{title:'Repeated Multiplication', blocks:[
-      {t:'p', x:'Just as multiplication is a shorthand for repeated addition, exponents are a shorthand for repeated multiplication.'},
-      {t:'prob', x:'Write <b>2 × 2 × 2 × 2 × 2</b> in compact form, and find its value.', sol:'Five 2s multiplied is <b>2⁵ = 32</b>. The 2 is the base; the small 5 is the exponent, counting how many copies are multiplied.'},
-      {t:'imp', x:'<b>aⁿ</b> means n copies of a multiplied together. a is the base, n the exponent. Note aⁿ is multiplication, not a × n.'},
-      {t:'prob', x:'Which is larger, <b>2⁵</b> or <b>5²</b>?', sol:'2⁵ = 32 but 5² = 25, so <b>2⁵</b> wins. Swapping base and exponent generally changes the value.'}
-    ]},
+    // ---- Chapter 2: Exponents ----
+    // 2.1 lessons loaded from lessons/prealgebra/chapter-2.json
     '2.2':{title:'The Laws of Exponents', blocks:[
       {t:'p', x:'You never need to memorize the exponent rules if you are willing to count factors for a moment.'},
       {t:'prob', x:'Simplify <b>2³ × 2⁴</b> by writing out all the 2s.', sol:'(2·2·2)(2·2·2·2) is seven 2s in a row, so 2³ × 2⁴ = <b>2⁷</b>. We simply added the exponents.'},
@@ -1548,7 +1556,8 @@
   // --- Load chapter lessons from external JSON files ---
   (function(){
     var chaptersToLoad=[
-      {chapter:'prealgebra', num:1}
+      {chapter:'prealgebra', num:1},
+      {chapter:'prealgebra', num:2}
     ];
     var loadedCount=0;
     var failedCount=0;
@@ -1647,18 +1656,21 @@
       {x:"The smallest product one could obtain by multiplying two numbers in the set $\\{-7, -5, -1, 1, 3\\}$ is", ans:"-21",
        hints:["To get the most negative product, pair a large negative with a large positive."],
        sol:"<p>The products of pairs: \\((-7)(-5) = 35\\), \\((-7)(3) = -21\\), \\((-5)(3) = -15\\), etc. The most negative is \\((-7) \\times 3 = \\boxed{-21}\\).</p>"},
-      {x:"A multiple choice exam has 20 questions. Scoring is \\(+5\\) for correct, \\(−2\\) for incorrect, \\(0\\) for unanswered. John scored 48. What is the maximum number of questions he could have answered correctly?", ans:"12",
-       hints:["Let c = correct, w = wrong, u = unanswered. Set up: c + w + u = 20 and 5c − 2w = 48.","Solve for c in terms of w, then maximize."],
-       sol:"<p>From \\(c + w + u = 20\\) and \\(5c - 2w = 48\\), we get \\(u = 20 - c - w\\) and \\(5c - 2w = 48\\). Rearranging: \\(w = \\frac{5c - 48}{2}\\). For \\(w \\geq 0\\), we need \\(5c \\geq 48\\), so \\(c \\geq 9.6\\), meaning \\(c \\geq 10\\). For \\(u \\geq 0\\), we need \\(c + w \\leq 20\\). Substituting \\(w\\): \\(c + \\frac{5c - 48}{2} \\leq 20\\), so \\(2c + 5c - 48 \\leq 40\\), giving \\(7c \\leq 88\\), so \\(c \\leq 12.57\\), meaning \\(c \\leq 12\\). When \\(c = 12\\), \\(w = 6\\), \\(u = 2\\), and \\(5(12) - 2(6) = 60 - 12 = 48\\). The maximum is \\(\\boxed{12}\\).</p>"},
       {x:"The number \\(222,222\\) is equal to the product \\(37,037 \\times 6\\). What is the product of \\(37,037\\) and \\(27\\)?", ans:"999999",
-       hints:["Notice that 27 = 6 × 4.5 or that 27 / 6 = 4.5. Actually, 222,222 × k equals 37,037 × 6k. What k makes 37,037 × 6k = 37,037 × 27?"],
-       sol:"<p>Since \\(37,037 \\times 6 = 222,222\\), we have \\(37,037 \\times 27 = 37,037 \\times (6 \\times 4.5) = 222,222 \\times 4.5 = 999,999\\). Alternatively, \\(27 \\div 6 = 4.5\\), so \\(37,037 \\times 27 = (37,037 \\times 6) \\times 4.5 = 222,222 \\times 4.5 = \\boxed{999,999}\\).</p>"},
+       hints:["You never have to multiply by 27 directly. Build 27 out of numbers you can reach from the 6 you already have.","Half of 222,222 is 37,037 × 3 = 111,111, and 27 = 3 × 9."],
+       sol:"<p>You never have to multiply by 27 directly. Start from what you are given, \\(37,037 \\times 6 = 222,222\\), and reach 27 in two easy steps.</p><p>First halve both sides. Half of 6 is 3 and half of 222,222 is 111,111, so \\(37,037 \\times 3 = 111,111\\).</p><p>Now notice that \\(27 = 3 \\times 9\\), so \\(37,037 \\times 27 = (37,037 \\times 3) \\times 9 = 111,111 \\times 9\\). Multiplying \\(111,111\\) by 9 turns each 1 into a 9 with nothing to carry, which gives \\(\\boxed{999,999}\\).</p>"},
       {x:"Find $$\\left(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 98 \\cdot 99\\right) - \\left(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 97 \\cdot 98\\right).$$", ans:"9702",
        hints:["Most terms appear in both sums. What cancels?","The first sum includes 98 × 99. The second sum stops at 97 × 98."],
-       sol:"<p>The first sum is \\(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 98 \\cdot 99\\). The second is \\(1 \\cdot 2 + 2 \\cdot 3 + \\ldots + 97 \\cdot 98\\). Subtracting leaves \\(98 \\cdot 99 = \\boxed{9702}\\).</p>"},
-      {x:"Find the sum of the digits of $$9 + 99 + 999 + \\ldots + \\underbrace{99\\ldots9}_{81 \\text{ nines}}.$$", ans:"729",
-       hints:["Each term is one less than a power of 10: 9 = 10 − 1, 99 = 100 − 1, etc.","The sum becomes (10 + 100 + 1000 + ... + 10⁸¹) − 81."],
-       sol:"<p>The sum is \\(10 + 100 + 1000 + \\ldots + 10^{81}) - 81\\). The geometric series is \\(\\frac{10(10^{81} - 1)}{9} - 81 = \\frac{10^{82} - 10}{9} - 81\\). This equals \\(\\underbrace{11\\ldots1}_{81 \\text{ ones}}0 - 81 = \\underbrace{11\\ldots1}_{80 \\text{ ones}}029\\). The digit sum is \\(80 \\times 1 + 0 + 2 + 9 = \\boxed{729}\\).</p>"}
+       sol:"<p>Write out what each sum holds. The first sum is \\(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 97 \\cdot 98 + 98 \\cdot 99\\). The second sum is \\(1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\ldots + 97 \\cdot 98\\).</p><p>Line them up. Every term in the second sum also sits in the first sum, all the way up to \\(97 \\cdot 98\\). The one piece the first sum has that the second does not is its final term, \\(98 \\cdot 99\\). So when you subtract, each shared term cancels with its twin and only \\(98 \\cdot 99\\) is left standing.</p><p>Now finish the arithmetic the easy way. \\(98 \\cdot 99 = 98 \\times 100 - 98 = 9800 - 98 = \\boxed{9702}\\).</p>"},
+      {x:"Find the sum of the digits of $$9 + 99 + 999 + \\ldots + \\underbrace{99\\ldots9}_{81 \\text{ nines}}.$$", ans:"90", legendary:true,
+       hints:["Each term is one less than a power of 10: 9 = 10 − 1, 99 = 100 − 1, etc.","The sum becomes (10 + 100 + 1000 + ... + 10⁸¹) − 81.","Try adding 10 + 100, then 10 + 100 + 1000, and look for a pattern before subtracting 81."],
+       sol:"<p>Each term is one less than a power of ten, \\(9 = 10-1\\), \\(99 = 100-1\\), and so on, so the sum equals \\(\\left(10 + 100 + 1000 + \\ldots + 10^{81}\\right) - 81\\).</p><p>Look at the pattern inside the parentheses. \\(10 = 10\\), \\(10 + 100 = 110\\), \\(10 + 100 + 1000 = 1110\\), \\(10 + 100 + 1000 + 10000 = 11110\\). Each new term adds one more 1 at the front, so adding 81 terms gives \\(\\underbrace{11\\ldots1}_{81}0\\), which is eighty one 1's followed by a 0.</p><p>Now subtract 81. The last three digits are \\(110\\), and \\(110 - 81 = 29\\), so those digits become \\(029\\); the other 79 ones do not change. The result is \\(\\underbrace{11\\ldots1}_{79}029\\).</p><p>The digit sum is \\(79 \\times 1 + 0 + 2 + 9 = \\boxed{90}\\).</p>"},
+      {x:"Compute $$1234 \\times 1234 - 1233 \\times 1235.$$", ans:"1",
+       hints:["The two products are almost equal, so do not compute them. Compare them instead.","Write \\(1233 = 1234 - 1\\) and \\(1235 = 1234 + 1\\), then expand the second product with the distributive property."],
+       sol:"<p>Computing both products is a lot of work, and the numbers are suspiciously close, so look for structure instead. Notice that \\(1233 = 1234 - 1\\) and \\(1235 = 1234 + 1\\). Expanding the second product with the distributive property, \\((1234 - 1)(1234 + 1) = 1234 \\times 1234 + 1234 - 1234 - 1 = 1234 \\times 1234 - 1\\). So the second product is exactly 1 less than the first, and \\(1234 \\times 1234 - 1233 \\times 1235 = \\boxed{1}\\). The giant multiplication was never needed.</p>"},
+      {x:"Compute $$36 \\times 37 + 36 \\times 63 + 64 \\times 37 + 64 \\times 63.$$", ans:"10000", accept:["10,000"],
+       hints:["Do not multiply anything out yet. Look for a common factor you can pull from pairs of terms.","The first two terms share a 36 and the last two share a 64. After you factor those, look for what the two pieces share."],
+       sol:"<p>Group the terms in pairs and factor each pair. The first two share a 36 and the last two share a 64, so \\(36 \\times 37 + 36 \\times 63 = 36 \\times (37 + 63) = 36 \\times 100\\) and \\(64 \\times 37 + 64 \\times 63 = 64 \\times (37 + 63) = 64 \\times 100\\). Now both pieces share a 100: \\(36 \\times 100 + 64 \\times 100 = (36 + 64) \\times 100 = 100 \\times 100 = \\boxed{10000}\\).</p>"}
     ]},
     3:{practice:[
       {q:"Which of these numbers is prime?", o:[["51",0],["57",0],["61",1],["63",0]],
@@ -2014,11 +2026,12 @@
         var cat=b.cat||(/(challenge|legendary)/i.test(b.label||'')?'challenge':((ctx&&ctx.charAt(0)==='R')?'review':(isCp?'checkpoint':'tryit')));
         var lab=b.label||(cat==='review'?'Review':(cat==='checkpoint'?'Checkpoint':'Try it yourself'));
         var isCh=(cat==='challenge');
+        var isLeg=isCh&&(!!b.legendary||/legendary/i.test(lab));
         var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
         PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
           stableId:(ctx||'x')+':'+__bi, cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
           graded:hasAns, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
-        inner='<div class="probbox cat-'+cat+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+icon+' '+lab+'</div><div class="ptext">'+b.x+'</div>';
+        inner='<div class="probbox cat-'+cat+(isLeg?' legendary':'')+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+(isLeg?'⭐⭐':icon)+' '+lab+(isLeg?' <span class="legbadge">🔥 Legendary</span>':'')+'</div><div class="ptext">'+b.x+'</div>';
         if(hasAns){
           inner+='<div class="answerrow"><input class="ansinput" id="ai_'+k+'" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')checkAns('+k+')"><button class="checkbtn" onclick="checkAns('+k+')">Check</button></div><div class="ansfb" id="af_'+k+'"></div>';
         }
@@ -2037,11 +2050,11 @@
     return out;
   }
 
-  // --- lesson flow: reveal one problem at a time + segmented progress bar ---
-  var FLOW={body:null,gate:false};
+  // --- lesson flow: reveal one block at a time, highlight it, advance on click ---
+  var FLOW={body:null,gate:false,shown:1,rendered:0};
   function probResolved(k){ var r=PROBREG[k]; return !!(r&&(r.solved||r.solViewed)); }
   function initFlow(bodyEl,gate){
-    FLOW={body:bodyEl,gate:!!gate};
+    FLOW={body:bodyEl,gate:!!gate,shown:1,rendered:0};
     var probs=[].slice.call(bodyEl.querySelectorAll('.probbox[data-k]'));
     if(probs.length>1){
       var bar=document.createElement('div'); bar.className='lprog';
@@ -2053,26 +2066,57 @@
     }
     updateFlow(false);
   }
+  function flowNext(){
+    if(!FLOW.body) return;
+    var n=FLOW.body.querySelectorAll('.lblock').length;
+    if(FLOW.shown<n){ FLOW.shown++; updateFlow(true); }
+  }
+  window.flowNext=flowNext;
   function updateFlow(animate){
     var bodyEl=FLOW.body; if(!bodyEl||!document.body.contains(bodyEl)) return;
-    var halted=false, done=0, total=0, firstNew=null;
-    [].slice.call(bodyEl.querySelectorAll('.lblock')).forEach(function(bl){
-      if(FLOW.gate){
-        if(halted){ bl.classList.add('hid'); bl.classList.remove('reveal'); }
-        else if(bl.classList.contains('hid')){ bl.classList.remove('hid'); if(animate){ bl.classList.add('reveal'); if(!firstNew) firstNew=bl; } }
-      } else { bl.classList.remove('hid'); }
-      var pb=bl.querySelector('.probbox[data-k]');
-      if(pb){ total++; var res=probResolved(pb.getAttribute('data-k')); if(res) done++; else halted=true; }
-    });
-    var nav=bodyEl.querySelector('.lessonnav'); if(nav) nav.style.display=(FLOW.gate&&halted)?'none':'';
-    var cur=false;
+    var blocks=[].slice.call(bodyEl.querySelectorAll('.lblock'));
+    var oldC=bodyEl.querySelector('.flowcont'); if(oldC&&oldC.parentNode) oldC.parentNode.removeChild(oldC);
+    var frontier=null;
+    if(!FLOW.gate){
+      blocks.forEach(function(bl){ bl.classList.remove('hid','flowhi','reveal'); });
+    } else {
+      if(FLOW.shown<1) FLOW.shown=1; if(FLOW.shown>blocks.length) FLOW.shown=blocks.length;
+      blocks.forEach(function(bl,i){
+        if(i<FLOW.shown){
+          var wasHid=bl.classList.contains('hid'); bl.classList.remove('hid');
+          if(animate&&wasHid&&i===FLOW.shown-1) bl.classList.add('reveal');
+        } else { bl.classList.add('hid'); bl.classList.remove('flowhi','reveal'); }
+        bl.classList.toggle('flowhi', i===FLOW.shown-1);
+      });
+      frontier=blocks[FLOW.shown-1]||null;
+    }
+    // progress bar
+    var done=0,total=0,cur=false;
+    blocks.forEach(function(bl){ var pb=bl.querySelector('.probbox[data-k]'); if(pb){ total++; if(probResolved(pb.getAttribute('data-k'))) done++; } });
     [].slice.call(bodyEl.querySelectorAll('.lprog .seg')).forEach(function(s){
-      var res=probResolved(s.getAttribute('data-k'));
-      s.classList.toggle('done',res);
+      var res=probResolved(s.getAttribute('data-k')); s.classList.toggle('done',res);
       if(!res&&!cur){ s.classList.add('cur'); cur=true; } else { s.classList.remove('cur'); }
     });
     var cnt=bodyEl.querySelector('.lprog .cnt'); if(cnt) cnt.textContent=done+' / '+total;
-    if(animate&&firstNew){ setTimeout(function(){ firstNew.scrollIntoView({behavior:'smooth',block:'center'}); },60); }
+    // continue button (only after the current block is dealt with) + bottom-nav gating
+    var frontierProb=frontier?frontier.querySelector('.probbox[data-k]'):null;
+    var frontierResolved=!frontierProb||probResolved(frontierProb.getAttribute('data-k'));
+    var moreLeft=FLOW.gate&&frontier&&FLOW.shown<blocks.length;
+    if(moreLeft&&frontierResolved){
+      var nextBl=blocks[FLOW.shown];
+      var nextProb=nextBl&&nextBl.querySelector('.probbox[data-k]');
+      var label=nextProb?'Click here for the next problem':'Click here to continue';
+      var cont=document.createElement('div'); cont.className='flowcont';
+      cont.innerHTML='<button class="flowbtn" onclick="flowNext()">'+label+' <span class="fa">↓</span></button>';
+      frontier.parentNode.insertBefore(cont, frontier.nextSibling);
+    }
+    var nav=bodyEl.querySelector('.lessonnav');
+    if(nav) nav.style.display=(FLOW.gate && !(!moreLeft && frontierResolved)) ? 'none' : '';
+    // scroll to a freshly revealed block, but not on in-place updates (solving, hints)
+    if(animate&&frontier&&FLOW.shown!==FLOW.rendered){
+      var f=frontier; setTimeout(function(){ f.scrollIntoView({behavior:'smooth',block:'center'}); },60);
+    }
+    FLOW.rendered=FLOW.shown;
   }
   window.updateFlow=updateFlow;
   var currentLessonKey=null, currentLessonMeta={};
