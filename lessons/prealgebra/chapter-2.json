@@ -213,116 +213,131 @@
     ],
     "review": [
       {
-        "x": "Compute \\(6^2+8^2\\).",
-        "ans": "100",
-        "sol": "\\(6^2=36\\) and \\(8^2=64\\), so \\(6^2+8^2=\\boxed{100}\\). That total happens to be \\(10^2\\) as well, a coincidence worth remembering."
-      },
-      {
-        "x": "Compute \\(-3^4\\).",
-        "ans": "-81",
-        "accept": [
-          "\u221281"
-        ],
-        "sol": "The exponent applies to \\(3\\) alone, so \\(-3^4=-(3^4)=-(81)=\\boxed{-81}\\)."
-      },
-      {
-        "x": "Compute \\((-3)^4\\).",
+        "x": "A square garden is \\(40\\) tiles along each side. The owner widens it to \\(41\\) tiles along each side. Find how many tiles get added, without ever computing \\(40^2\\) or \\(41^2\\).",
         "ans": "81",
-        "sol": "Four copies of \\(-3\\) multiplied together. The negatives cancel in pairs, two pairs in all, so \\((-3)^4=\\boxed{81}\\). Same digits as the problem before this one, opposite sign, because the parentheses changed the base."
+        "hints": [
+          "Growing an \\(n\\)-by-\\(n\\) square to \\((n+1)\\)-by-\\((n+1)\\) wraps an L-shaped strip around it, two sides of length \\(n\\) plus one corner cell.",
+          "That strip holds \\(2n+1\\) tiles. Here \\(n=40\\)."
+        ],
+        "sol": "Going from a \\(40\\)-by-\\(40\\) square out to \\(41\\)-by-\\(41\\) wraps an L-shaped gnomon around the old garden. The strip is two sides of length \\(40\\) plus the single corner where they meet, so it holds $$2\\times40+1=\\boxed{81}$$ tiles. That is the jump \\(41^2-40^2\\), and it came out odd, the way every step between consecutive squares does."
       },
       {
-        "x": "If \\(y=-5\\), what is \\(y^2-3y\\)?",
-        "ans": "40",
-        "sol": "Substitute \\(y=-5\\) in parentheses. \\(y^2=(-5)^2=25\\) and \\(3y=3(-5)=-15\\), so \\(y^2-3y=25-(-15)=25+15=\\boxed{40}\\)."
+        "x": "Two perfect squares sit side by side on the staircase of squares, and the larger is exactly \\(159\\) more than the smaller. The two numbers being squared are whole numbers one apart. Find the larger of those two numbers.",
+        "ans": "80",
+        "hints": [
+          "The step from \\(n^2\\) up to \\((n+1)^2\\) is the odd number \\(2n+1\\). That step is \\(159\\).",
+          "If \\(2n+1=159\\), peel off the \\(1\\) and halve what is left."
+        ],
+        "sol": "The step from one perfect square to the next is the gnomon \\(2n+1\\), where \\(n\\) is the smaller number being squared. Here that step is \\(159\\), so \\(2n+1=159\\). Peeling off the \\(1\\) leaves \\(2n=158\\), and half of \\(158\\) is \\(n=79\\). The two squares are \\(79^2\\) and \\(80^2\\), so the larger number being squared is \\(\\boxed{80}\\). As a check, \\(80^2-79^2=2\\times79+1=159\\)."
       },
       {
-        "x": "Compute \\(5^2\\times20^2\\) as a single square.",
-        "ans": "10000",
+        "t": "imp",
+        "x": "You handled both of those without squaring anything. The step between one perfect square and the next is always the odd number \\(2n+1\\), the gnomon strip hugging the smaller square. Read it forward and it hands you the jump. Read it backward and the jump hands you the side."
+      },
+      {
+        "x": "Add the odd numbers from \\(11\\) up to \\(39\\). $$11+13+15+\\cdots+37+39$$ The first \\(n\\) odd numbers add up to \\(n^2\\). Use that twice instead of adding all fifteen terms.",
+        "ans": "375",
+        "hints": [
+          "The odds from \\(1\\) to \\(39\\) are the first \\(20\\) of them, since \\(39=2\\times20-1\\), so they sum to \\(20^2\\).",
+          "The odds from \\(1\\) to \\(9\\) are the first \\(5\\). Subtract that block from the big one."
+        ],
+        "sol": "The odd numbers from \\(1\\) to \\(39\\) are the first \\(20\\) odds, since \\(39\\) is the twentieth odd number, so they sum to \\(20^2=400\\). The run you want skips the small odds \\(1,3,5,7,9\\), which are the first \\(5\\) odds and sum to \\(5^2=25\\). Trim that front block off. $$11+13+\\cdots+39=20^2-5^2=400-25=\\boxed{375}$$ A run of consecutive odds is one square with a smaller square sliced off its start."
+      },
+      {
+        "t": "imp",
+        "x": "A run of odd numbers starting at \\(1\\) folds into a single square, because the first \\(n\\) odds build an \\(n\\)-by-\\(n\\) square one gnomon at a time. A run that starts higher up is just that same idea, one square with a smaller square trimmed off the front."
+      },
+      {
+        "x": "A cubical crate is packed snug with small cubical boxes, no gaps. The boxes sit \\(5\\) across the floor, \\(5\\) deep, and the stack is \\(5\\) boxes tall. How many small boxes fill one full crate?",
+        "ans": "125",
+        "hints": [
+          "Each layer on the floor is a \\(5\\times5\\) square of boxes. How many layers are stacked up?",
+          "The count is \\(5\\times5\\times5\\), which is \\(5^3\\)."
+        ],
+        "sol": "Each layer resting on the floor is a \\(5\\times5=25\\) square of boxes, and \\(5\\) such layers stack from bottom to top. $$5\\times5\\times5=5^3=\\boxed{125}$$ A cubical crate packed with cubical boxes always holds a perfect cube of them."
+      },
+      {
+        "x": "A square photo has side \\(4\\) cm, so its area is \\(4^2=16\\) square cm. A cube-shaped box also has side \\(4\\) cm, so its volume is \\(4^3=64\\) cubic cm. Now double every side, sending each to \\(8\\) cm. The box's volume grows by more cubic cm than the photo's area grows by square cm. How many more?",
+        "ans": "400",
+        "hints": [
+          "Doubling a side sends \\(b\\) to \\(2b\\). For the square, \\((2b)^2=2^2b^2\\), so the area is multiplied by \\(4\\). For the cube, \\((2b)^3=2^3b^3\\), so the volume is multiplied by \\(8\\).",
+          "Find each new value, find how much each one grew, then subtract the two growths."
+        ],
+        "sol": "Because a square distributes over a product, \\((2b)^2=2^2b^2=4b^2\\), so doubling the side multiplies the area by \\(4\\). The photo goes from \\(16\\) to \\(8^2=64\\), a growth of \\(48\\) square cm. A cube distributes the same way, \\((2b)^3=2^3b^3=8b^3\\), so doubling the side multiplies the volume by \\(8\\). The box goes from \\(64\\) to \\(8^3=512\\), a growth of \\(448\\) cubic cm. The volume outgrew the area by $$448-48=\\boxed{400}.$$"
+      },
+      {
+        "t": "imp",
+        "x": "A square counts a flat area and a cube counts a solid volume, and that one extra dimension is the whole story. Stretch the side and a cube feels it more than a square. Double the side and the area climbs by \\(2^2\\), while the volume climbs by \\(2^3\\)."
+      },
+      {
+        "x": "Two expressions go head to head. $$A=-4^2+(-3)^3 \\qquad B=(-4)^2+(-3)^2$$ A classmate says they must be equal since they use the same numbers. Evaluate each one, watching every minus sign, and enter the value of the larger.",
+        "ans": "25",
+        "hints": [
+          "In \\(-4^2\\) the exponent grabs only the \\(4\\), so it means \\(-(4^2)\\). But \\((-4)^2\\) squares the whole \\(-4\\).",
+          "An even power of a negative is positive, an odd power stays negative. Use that on \\((-3)^3\\) against \\((-3)^2\\)."
+        ],
+        "sol": "Take \\(A\\) one piece at a time. In \\(-4^2\\) the exponent attaches only to the \\(4\\), so \\(-4^2=-(4^2)=-16\\). And \\((-3)^3\\) cubes a negative, and an odd power keeps the sign, so \\((-3)^3=-27\\). Thus \\(A=-16+(-27)=-43\\). Now \\(B\\). Here \\((-4)^2\\) squares the whole \\(-4\\), and an even power of a negative is positive, so \\((-4)^2=16\\), and likewise \\((-3)^2=9\\). Thus \\(B=16+9=25\\). The two are nowhere near equal. The parentheses flipped two of the four signs, and the larger value is \\(\\boxed{25}\\)."
+      },
+      {
+        "x": "A detective is handed four numbers and told that exactly one is a perfect square. $$31427 \\qquad 64008 \\qquad 57121 \\qquad 90003$$ She names it in seconds by glancing only at the last digit of each, never computing a square. Which number is the perfect square?",
+        "ans": "57121",
         "accept": [
-          "10,000"
+          "57,121"
         ],
-        "sol": "Since \\(a^2b^2=(ab)^2\\), \\(5^2\\times20^2=(5\\times20)^2=100^2=\\boxed{10000}\\)."
-      },
-      {
-        "x": "Find the positive difference between \\((3+4)^2\\) and \\(3^2+4^2\\).",
         "hints": [
-          "Compute \\((3+4)^2\\) and \\(3^2+4^2\\) separately, then subtract."
+          "Square the digits \\(0\\) through \\(9\\) and look only at the last digit of each result. Which final digits can a perfect square ever show?",
+          "A perfect square can only end in \\(0,1,4,5,6,\\) or \\(9\\). Cross out anything ending in something else."
         ],
-        "ans": "24",
-        "sol": "\\((3+4)^2=7^2=49\\), while \\(3^2+4^2=9+16=25\\). The positive difference is \\(49-25=\\boxed{24}\\), a reminder that a square does not split over a sum."
+        "sol": "The last digit of \\(b^2\\) depends only on the last digit of \\(b\\). Running through \\(0^2,1^2,\\ldots,9^2\\), the endings that ever appear are \\(0,1,4,9,6,5,6,9,4,1\\), so a perfect square can only finish in \\(0,1,4,5,6,\\) or \\(9\\), never in \\(2,3,7,\\) or \\(8\\). Now scan. \\(31427\\) ends in \\(7\\), \\(64008\\) ends in \\(8\\), and \\(90003\\) ends in \\(3\\), all impossible. Only \\(57121\\) ends in a legal digit, so it is the square. Indeed \\(57121=239^2\\). The answer is \\(\\boxed{57121}\\)."
       },
       {
-        "x": "Use \\((n+1)^2=n^2+2n+1\\) to compute \\(31^2\\).",
-        "ans": "961",
-        "sol": "Take \\(n=30\\). Then \\(n^2=900\\) and \\(2n=60\\), so \\(31^2=900+60+1=\\boxed{961}\\)."
-      },
-      {
-        "x": "Use \\((n-1)^2=n^2-2n+1\\) to compute \\(19^2\\) from \\(20^2\\).",
+        "x": "A secret two-digit whole number \\(N\\) is cubed, and only the cube is shown. $$N^3=50653$$ Two clues pin \\(N\\) with no guessing. The size of the cube traps \\(N\\) in one narrow band, and the last digit of \\(50653\\) reveals the last digit of \\(N\\) outright. Find \\(N\\).",
+        "ans": "37",
         "hints": [
-          "Take \\(n=20\\) in \\((n-1)^2=n^2-2n+1\\)."
+          "Cube the round numbers. \\(30^3=27000\\) and \\(40^3=64000\\). Where does \\(50653\\) fall?",
+          "Cube the digits \\(0\\) through \\(9\\) and read only the last digit. A cube ending in \\(3\\) comes from a base ending in exactly one digit."
         ],
-        "ans": "361",
-        "sol": "Take \\(n=20\\). Then \\(n^2=400\\) and \\(2n=40\\), so \\(19^2=400-40+1=\\boxed{361}\\)."
+        "sol": "First trap \\(N\\) by size. Since \\(30^3=27000\\) and \\(40^3=64000\\), and \\(50653\\) sits between them, \\(N\\) is somewhere in the thirties. That still leaves ten numbers, so bring in the last digit. When you cube \\(0\\) through \\(9\\), the last digits come out \\(0,1,8,7,4,5,6,3,2,9\\), every digit exactly once. A cube ending in \\(3\\) can only come from a base ending in \\(7\\). The one number in the thirties ending in \\(7\\) is \\(37\\), and \\(37^3=50653\\) checks out. So \\(N=\\boxed{37}\\)."
       },
       {
-        "x": "Compute \\(100-2\\times3^2\\).",
-        "ans": "82",
-        "sol": "The power comes first, \\(3^2=9\\). Then \\(2\\times9=18\\), and \\(100-18=\\boxed{82}\\)."
+        "t": "imp",
+        "x": "The last digit of a power leans only on the last digit of the base. For squares that digit blurs several bases together, since \\(2\\) and \\(8\\) both square to an ending of \\(4\\), so it can rule a number out but not pin it down. For cubes every digit appears exactly once, so a cube's last digit fingerprints its base with no doubt at all."
       },
       {
-        "x": "Compute \\((-3)^2\\times2^2\\).",
-        "ans": "36",
-        "sol": "\\((-3)^2=9\\) and \\(2^2=4\\), so \\((-3)^2\\times2^2=9\\times4=\\boxed{36}\\). Equivalently, \\((-3\\times2)^2=(-6)^2=36\\)."
-      },
-      {
-        "x": "Find the positive difference between \\((-7)^2\\) and \\(-7^2\\).",
-        "hints": [
-          "Evaluate \\((-7)^2\\) and \\(-7^2\\) separately. One of them is negative."
-        ],
-        "ans": "98",
-        "sol": "\\((-7)^2=49\\), since an even number of negative factors gives a positive result. But \\(-7^2=-(7^2)=-49\\), since the minus sign applies after the power. The positive difference is \\(49-(-49)=\\boxed{98}\\), double what either expression alone equals."
-      },
-      {
-        "x": "Compute \\(2^3+3^3\\).",
-        "ans": "35",
-        "sol": "\\(2^3=8\\) and \\(3^3=27\\), so \\(2^3+3^3=\\boxed{35}\\)."
-      },
-      {
-        "x": "Compute \\((-5)^3\\).",
-        "ans": "-125",
+        "label": "Star challenge",
+        "x": "A machine takes a whole number, squares it, adds twice the number, then adds \\(1\\). You feed it \\(79\\), and it prints a single perfect square. Find that square, but do it without multiplying two two-digit numbers. Name the perfect square first, then split it across a friendly product.",
+        "ans": "6400",
         "accept": [
-          "\u2212125"
+          "6,400"
         ],
-        "sol": "Three negative factors leave the result negative. $$(-5)(-5)(-5)=25\\times(-5)=\\boxed{-125}$$"
-      },
-      {
-        "x": "Find the positive difference between \\((-3)^3\\) and \\(-3^3\\).",
         "hints": [
-          "Work out each one. For an odd power, how do \\((-a)^3\\) and \\(-a^3\\) compare?"
+          "The machine builds \\(79^2+2\\times79+1\\). That is the exact shape of \\((n+1)^2=n^2+2n+1\\) with \\(n=79\\).",
+          "So the output is \\(80^2\\). Now write \\(80=8\\times10\\) and let the square distribute over the product."
         ],
-        "ans": "0",
-        "sol": "\\((-3)^3=-27\\), and \\(-3^3=-(27)=-27\\) as well, so the two are equal and their difference is \\(\\boxed{0}\\). For squares this same comparison gave \\(98\\), but cubing passes the sign straight through, so the gap closes to nothing."
+        "sol": "The machine builds \\(79^2+2\\times79+1\\), which is exactly \\(n^2+2n+1\\) with \\(n=79\\). That pattern folds up into \\((n+1)^2\\), so the output is \\((79+1)^2=80^2\\). Now dodge squaring \\(80\\) head on. A square distributes over a product, so split the base. $$80^2=(8\\times10)^2=8^2\\times10^2=64\\times100=\\boxed{6400}$$ A disguised expansion collapsed into one square, and that square broke into two easy pieces."
       },
       {
-        "x": "Evaluate \\(x^3-x\\) when \\(x=-2\\).",
-        "ans": "-6",
+        "label": "Star challenge",
+        "x": "The signs alternate all the way down this chain of squares. $$20^2-19^2+18^2-17^2+\\cdots+2^2-1^2$$ Do not square twenty numbers. Group the chain into pairs from the left, turn each pair into something simpler, then add.",
+        "ans": "210",
+        "hints": [
+          "Group it as \\((20^2-19^2)+(18^2-17^2)+\\cdots+(2^2-1^2)\\). Each pair is a step between consecutive squares.",
+          "The step \\(n^2-(n-1)^2\\) is the odd number \\(2n-1\\). Your ten pairs become ten odd numbers. What do they add to?"
+        ],
+        "sol": "Pair the chain from the left, \\((20^2-19^2)+(18^2-17^2)+\\cdots+(2^2-1^2)\\). Each pair is a step between two consecutive squares, and that step is the odd number \\(2n-1\\). So \\(20^2-19^2=39\\), then \\(18^2-17^2=35\\), on down to \\(2^2-1^2=3\\). The ten pairs become the ten odd numbers \\(39,35,31,27,23,19,15,11,7,3\\). Add them by matching the ends inward, \\(39+3=42\\), \\(35+7=42\\), and so on, which gives five pairs of \\(42\\). $$5\\times42=\\boxed{210}$$"
+      },
+      {
+        "label": "Star challenge",
+        "x": "The holding-hands fact says \\(1^3+2^3+\\cdots+n^3=(1+2+\\cdots+n)^2\\). Use it on a slice to find \\(9^3+10^3\\) without cubing \\(9\\) or \\(10\\) directly. Write the two-cube sum as one stack of cubes minus a shorter stack, then finish.",
+        "ans": "1729",
         "accept": [
-          "\u22126"
+          "1,729"
         ],
-        "sol": "Substitute \\(x=-2\\) in parentheses. \\(x^3=(-2)^3=-8\\) and \\(x=-2\\), so \\(x^3-x=-8-(-2)=-8+2=\\boxed{-6}\\)."
-      },
-      {
-        "x": "Compute \\(6^3\\) by writing \\(6=2\\times3\\) and cubing each factor.",
         "hints": [
-          "\\(6^3=(2\\times3)^3=2^3\\times3^3\\)."
+          "The stack of cubes up to \\(10\\) minus the stack up to \\(8\\) leaves exactly \\(9^3+10^3\\).",
+          "\\(1+2+\\cdots+10=55\\) and \\(1+2+\\cdots+8=36\\), so \\(9^3+10^3=55^2-36^2\\)."
         ],
-        "ans": "216",
-        "sol": "\\(6^3=(2\\times3)^3=2^3\\times3^3=8\\times27=\\boxed{216}\\)."
-      },
-      {
-        "x": "Compute \\(20^3\\div5^3\\) as a single cube.",
-        "ans": "64",
-        "sol": "\\(20^3\\div5^3=(20\\div5)^3=4^3=\\boxed{64}\\)."
+        "sol": "Take the whole stack of cubes up to \\(10\\) and remove the stack up to \\(8\\). What survives is exactly \\(9^3+10^3\\). By the holding-hands fact each stack is the square of a plain running sum, and those sums are \\(1+\\cdots+10=55\\) and \\(1+\\cdots+8=36\\). So $$9^3+10^3=55^2-36^2=3025-1296=\\boxed{1729}.$$ A pair of cubes became a difference of two squares. The number \\(1729\\) is famous, and you may meet the reason someday."
       },
       {
         "t": "fact",
@@ -336,5 +351,223 @@
       }
     ],
     "next": "2.2"
+  },
+  "2.2": {
+    "title": "The Laws of Exponents",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "You can always compute \\(2^{13}\\) by multiplying thirteen 2s in a row. But for \\(2^{100}\\) that approach is hopeless. There is a faster path hiding inside the exponents themselves, and finding it is what this section is about."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A strip of paper starts as a single layer. You fold it in half 3 times, creating \\(2^3\\) layers. Without unfolding, you fold it 4 more times. How many layers does it have now?",
+        "hints": [
+          "After 3 folds you have \\(2^3 = 8\\) layers. Each additional fold doubles every existing layer."
+        ],
+        "ans": "128",
+        "sol": "After 3 folds there are \\(2^3 = 8\\) layers. Four more folds multiply by \\(2^4 = 16\\). Total: \\(8 \\times 16 = 128\\)."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "In the folding problem you found that \\(2^3 \\times 2^4 = 128 = 2^7\\). The answer's exponent, 7, equals \\(3 + 4\\). Test this addition pattern on a different base: what is the exponent \\(n\\) such that \\(3^5 \\times 3^8 = 3^n\\)?",
+        "hints": [
+          "Does adding the exponents still work when the base is 3 instead of 2?"
+        ],
+        "ans": "13",
+        "sol": "Five 3s followed by eight more gives thirteen 3s, so \\(3^5 \\times 3^8 = 3^{13}\\) and \\(n = 13\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Product rule.</b> When you multiply two powers with the same base, add the exponents. $$a^m \\times a^n = a^{m+n}$$ Counting explains it: \\(m\\) copies of \\(a\\) followed by \\(n\\) more copies gives \\(m+n\\) copies altogether."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Find the missing exponent. $$6^{\\,?} \\times 6^8 = 6^{15}$$",
+        "hints": [
+          "The two exponents must add to 15."
+        ],
+        "ans": "7",
+        "sol": "\\(? + 8 = 15\\), so the missing exponent is \\(15 - 8 = 7\\)."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A bacterial colony doubles every hour. At midnight it contains \\(2^7\\) cells. What single power of 2 gives the cell count exactly 9 hours later? Give the exponent.",
+        "hints": [
+          "Nine more hours multiply the count by \\(2^9\\). Apply the product rule."
+        ],
+        "ans": "16",
+        "sol": "Nine more doublings multiply by \\(2^9\\), giving \\(2^7 \\times 2^9 = 2^{16}\\) cells. The exponent is \\(16\\)."
+      },
+      {
+        "t": "p",
+        "x": "The product rule handles multiplication. What happens to exponents when you divide? When you cancel factors instead of collecting them, something is subtracted rather than added. The next two problems let you discover what."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A jar holds \\(2^8 = 256\\) seeds. You plant them in pots with \\(2^3 = 8\\) seeds each. How many pots do you fill?",
+        "hints": [
+          "Divide the total by the seeds per pot.",
+          "Express the quotient as a power of 2. What happened to the exponents?"
+        ],
+        "ans": "32",
+        "sol": "\\(256 \\div 8 = 32 = 2^5\\), and \\(5 = 8 - 3\\). The exponents subtracted."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Verify the subtraction pattern by cancelling factors directly. Write \\(\\dfrac{5^7}{5^4}\\) as a fraction with every factor of 5 listed in numerator and denominator, then cancel matching pairs. What single power of 5 survives?",
+        "hints": [
+          "List seven 5s on top and four 5s on the bottom, then cancel matching pairs."
+        ],
+        "ans": "125",
+        "sol": "Four 5s cancel, leaving three: \\(\\dfrac{5^7}{5^4} = 5^3 = 125\\). The subtraction \\(7 - 4 = 3\\) counts the survivors."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Quotient rule.</b> When you divide two powers with the same base, subtract the exponents. $$a^m \\div a^n = a^{m-n} \\quad (a \\neq 0)$$ Division cancels equal factors from top and bottom, and subtraction counts what is left."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A crate holds \\(3^6 = 729\\) marbles. You split them evenly into bags of \\(3^2 = 9\\) each. How many bags do you fill?",
+        "hints": [
+          "Divide \\(3^6\\) by \\(3^2\\) and apply the quotient rule."
+        ],
+        "ans": "81",
+        "sol": "\\(3^6 \\div 3^2 = 3^4 = 81\\) bags."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Simplify \\(\\dfrac{2^{13} \\times 2^4}{2^{10}}\\) to a single power of 2, then give its value.",
+        "hints": [
+          "Combine the numerator with the product rule first, then apply the quotient rule."
+        ],
+        "ans": "128",
+        "sol": "Numerator: \\(2^{13} \\times 2^4 = 2^{17}\\). Then \\(2^{17} \\div 2^{10} = 2^7 = 128\\)."
+      },
+      {
+        "t": "p",
+        "x": "The product and quotient rules both involve two separate powers being combined. There is one more situation: a power raised to another power, like \\((3^4)^5\\). Unpacking it reveals yet another pattern waiting in the exponents."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Compute \\((2^3)^4\\) by first evaluating \\(2^3\\), then raising that result to the 4th power. You should arrive at 4096. Write 4096 as a power of 2 and look at the relationship between that final exponent and the original two exponents, 3 and 4.",
+        "hints": [
+          "\\(2^3 = 8\\). Now compute \\(8^4\\).",
+          "\\(4096 = 2^{12}\\). How does 12 relate to 3 and 4?"
+        ],
+        "ans": "4096",
+        "sol": "\\(2^3 = 8\\) and \\(8^4 = 4096 = 2^{12}\\). The final exponent \\(12 = 3 \\times 4\\), the product of the two original exponents."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Based on the pattern you just found, predict the exponent \\(n\\) such that \\((5^4)^3 = 5^n\\). No computation needed.",
+        "hints": [
+          "What operation on 4 and 3 produced the exponent in the previous problem?"
+        ],
+        "ans": "12",
+        "sol": "\\(n = 4 \\times 3 = 12\\), so \\((5^4)^3 = 5^{12}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Power rule.</b> When you raise a power to another power, multiply the exponents. $$(a^m)^n = a^{m \\times n}$$ The outer exponent calls for \\(n\\) copies of \\(a^m\\). Each copy contributes \\(m\\) factors of \\(a\\), so \\(n\\) copies contribute \\(m \\times n\\) factors altogether."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Since \\(64 = 2^6\\), rewrite \\(64^{10}\\) as a single power of 2. What is the exponent?",
+        "hints": [
+          "Substitute \\(64 = 2^6\\), then apply the power rule."
+        ],
+        "ans": "60",
+        "sol": "\\(64^{10} = (2^6)^{10} = 2^{60}\\). The exponent is \\(60\\)."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "A square floor is tiled with square tiles. Each tile has a side length of \\(4^2\\) centimetres, and the floor has \\(4^3\\) tiles along each side. Find the area of the floor in square centimetres, expressed as \\(4^n\\). What is \\(n\\)?",
+        "hints": [
+          "The floor's side length in centimetres is \\(4^3\\) tiles each \\(4^2\\) cm wide. Find the total side length in cm first.",
+          "Area equals side length squared. Apply the power rule."
+        ],
+        "ans": "10",
+        "sol": "Side length: \\(4^3 \\times 4^2 = 4^5\\) cm. Area: \\((4^5)^2 = 4^{10}\\) sq cm. So \\(n = 10\\)."
+      },
+      {
+        "t": "p",
+        "x": "The three rules so far all require the same base throughout. But a power can also sit over a product, like \\((2 \\times 5)^3\\). The next problem asks whether the exponent distributes over the multiplication or not."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Compute \\((2 \\times 5)^3\\) two ways: first as \\(10^3\\), then as \\(2^3 \\times 5^3\\). Do you get the same answer?",
+        "hints": [
+          "\\(10^3 = 1000\\). Now find \\(2^3 \\times 5^3 = 8 \\times 125\\)."
+        ],
+        "ans": "1000",
+        "sol": "\\(10^3 = 1000\\) and \\(2^3 \\times 5^3 = 8 \\times 125 = 1000\\). Both methods agree."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Power of a product.</b> An exponent distributes over multiplication. $$(ab)^n = a^n \\times b^n$$ This works because \\((ab)^n\\) means \\(n\\) copies of the pair \\(a \\cdot b\\), and you can regroup to gather all the \\(a\\)s together and all the \\(b\\)s together."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Find the positive integer \\(n\\) such that \\((9^n)^4 = 9^{20}\\).",
+        "hints": [
+          "The power rule gives \\((9^n)^4 = 9^{n \\times 4}\\). What must \\(n \\times 4\\) equal?"
+        ],
+        "ans": "5",
+        "sol": "\\(n \\times 4 = 20\\), so \\(n = 5\\)."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\(6^4 \\div (2^4 \\times 3^4)\\) without multiplying anything out.",
+        "hints": [
+          "Write \\(6 = 2 \\times 3\\) and apply the power-of-a-product rule to \\(6^4\\)."
+        ],
+        "ans": "1",
+        "sol": "\\(6^4 = (2 \\times 3)^4 = 2^4 \\times 3^4\\), so \\(6^4 \\div (2^4 \\times 3^4) = 1\\)."
+      },
+      {
+        "t": "p",
+        "x": "You now have four tools: add exponents when multiplying same-base powers, subtract when dividing, multiply when raising a power to a power, and distribute when a power sits over a product. The last two problems combine all four."
+      },
+      {
+        "t": "prob",
+        "xp": 12,
+        "x": "Simplify \\(\\dfrac{(3^5)^4}{3^{11} \\times 3^5}\\) to a single power of 3, then give its value.",
+        "hints": [
+          "Apply the power rule to the numerator and the product rule to the denominator. Then divide."
+        ],
+        "ans": "81",
+        "sol": "Numerator: \\((3^5)^4 = 3^{20}\\). Denominator: \\(3^{11} \\times 3^5 = 3^{16}\\). Quotient: \\(3^{20} \\div 3^{16} = 3^4 = 81\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Extra challenge",
+        "xp": 14,
+        "x": "Compute $$\\frac{6^{20} \\times 4^{15}}{8^{10} \\times 3^{20}}.$$ The result is a power of 2. What is the exponent?",
+        "hints": [
+          "Write every base as a product of primes: \\(6 = 2 \\times 3\\), \\(4 = 2^2\\), \\(8 = 2^3\\). Apply the power-of-a-product rule to each.",
+          "After substituting, separate the powers of 2 from the powers of 3.",
+          "The powers of 3 in the numerator and denominator are equal and cancel completely."
+        ],
+        "ans": "20",
+        "sol": "Substitute: \\(6^{20} = (2 \\times 3)^{20} = 2^{20} \\times 3^{20}\\), \\(4^{15} = (2^2)^{15} = 2^{30}\\), \\(8^{10} = (2^3)^{10} = 2^{30}\\). The expression becomes $$\\frac{2^{20} \\times 3^{20} \\times 2^{30}}{2^{30} \\times 3^{20}} = \\frac{2^{50} \\times 3^{20}}{2^{30} \\times 3^{20}} = 2^{20}.$$ The exponent is \\(\\boxed{20}\\)."
+      }
+    ],
+    "next": "2.3"
   }
 }
