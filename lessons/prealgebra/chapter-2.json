@@ -1503,5 +1503,416 @@
       }
     ],
     "next": "2.5"
+  },
+  "2.5": {
+    "title": "Powers of Powers",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Back in section 2.2 you found that raising a power to a power multiplies the two exponents. That one move is about to grow up. It still works when three or more exponents are stacked, when the inside is a fraction, when an exponent turns negative or zero, and even when a number rides out in front of the variable. This last section gathers every law in the chapter into one toolkit and turns it loose at full strength."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A glassblower mixes a colour by the ratio \\(\\dfrac{7}{2}\\), and a deeper batch needs that ratio cubed, \\(\\left(\\dfrac{7}{2}\\right)^3\\). Find it two ways. First multiply the fraction by itself three times. Then cube the top and the bottom on their own, \\(\\dfrac{7^3}{2^3}\\). Give the value as a fraction.",
+        "hints": [
+          "Multiplying \\(\\dfrac{7}{2}\\times\\dfrac{7}{2}\\times\\dfrac{7}{2}\\) collects every top together and every bottom together.",
+          "The tops give \\(7^3=343\\) and the bottoms give \\(2^3=8\\). Both methods build the very same fraction."
+        ],
+        "ans": "343/8",
+        "sol": "Multiplying the fraction by itself three times piles three 7s upstairs and three 2s downstairs. $$\\left(\\dfrac{7}{2}\\right)^3 = \\dfrac{7\\times 7\\times 7}{2\\times 2\\times 2} = \\dfrac{7^3}{2^3} = \\dfrac{343}{8}$$ Cubing the top and the bottom separately lands on the very same place. The answer is \\(\\boxed{\\dfrac{343}{8}}\\)."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Test the same idea on a fourth power so it is not just a quirk of cubing. A kite design scales the ratio \\(\\dfrac{3}{5}\\) to the fourth power. Send the exponent onto the top and the bottom separately, \\(\\dfrac{3^4}{5^4}\\), and give the value as a fraction.",
+        "hints": [
+          "The exponent lands on both the top and the bottom, so work out \\(3^4\\) and \\(5^4\\) each.",
+          "One of them is \\(3^4 = 81\\). Work out \\(5^4\\) yourself and stack it underneath."
+        ],
+        "ans": "81/625",
+        "sol": "The outer exponent drops onto the top and the bottom at once. $$\\left(\\dfrac{3}{5}\\right)^4 = \\dfrac{3^4}{5^4} = \\dfrac{81}{625}$$ So the scaled ratio is \\(\\boxed{\\dfrac{81}{625}}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Power of a quotient.</b> An outer exponent lands on the top and the bottom alike. $$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0)$$ It is the power of a product wearing a fraction. A quotient to the \\(n\\) means \\(n\\) copies of the whole fraction multiplied, so \\(n\\) tops gather over \\(n\\) bottoms."
+      },
+      {
+        "t": "p",
+        "x": "Two stacked exponents multiply. So what should three do? Nothing new really, just the same rule fired twice. Peel the outermost exponent off first and watch the rest wait their turn."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A folding screen carries a motif repeated \\(2^2\\) times across one panel. A room divider holds \\((2^2)^3\\) such panels in a grid, and an exhibition lines up \\(\\big((2^2)^3\\big)^2\\) of those dividers. Simplify the whole tower \\(\\big((2^2)^3\\big)^2\\) to a single power of 2 and give the exponent.",
+        "hints": [
+          "Peel off the outermost exponent first. The power rule turns \\(\\big((2^2)^3\\big)^2\\) into \\((2^2)^{3\\times 2}\\).",
+          "Now \\((2^2)^6 = 2^{2\\times 6}\\). All three exponents end up multiplied together."
+        ],
+        "ans": "12",
+        "accept": [
+          "2^12",
+          "2^{12}"
+        ],
+        "sol": "Work from the outside in, using the power rule each time. $$\\big((2^2)^3\\big)^2 = (2^2)^{3\\times 2} = (2^2)^6 = 2^{2\\times 6} = 2^{12}$$ Every exponent in the tower multiplied together, \\(2\\times 3\\times 2 = 12\\). The exponent is \\(\\boxed{12}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Stacked exponents multiply.</b> A tower of powers collapses by multiplying every exponent in it. $$\\big((a^m)^n\\big)^p = a^{m\\times n\\times p}$$ Each outer exponent is just the power rule firing again, so the multiplying never stops no matter how tall the tower grows."
+      },
+      {
+        "t": "p",
+        "x": "Watch your step here, because this is the single most common slip in the whole chapter. Stacking exponents multiplies them, while multiplying powers of the same base adds them. They look alike on the page and do opposite things to the exponents."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A cargo line runs two belts. The upper belt batches packages as \\((5^3)^2\\), and the lower belt batches them as \\(5^3 \\times 5^2\\). They are not the same count. Rewrite each as a single power of 5, then give the difference of the two exponents, the upper belt exponent minus the lower belt exponent.",
+        "hints": [
+          "The upper belt is a power raised to a power, so multiply its exponents. The lower belt is a product of powers, so add its exponents.",
+          "Upper is \\(5^{3\\times 2}=5^6\\) and lower is \\(5^{3+2}=5^5\\). Subtract the two exponents."
+        ],
+        "ans": "1",
+        "sol": "Each belt follows its own rule. The upper stacks a power on a power, so the exponents multiply, \\((5^3)^2 = 5^{3\\times 2} = 5^6\\). The lower multiplies two powers, so the exponents add, \\(5^3\\times 5^2 = 5^{3+2} = 5^5\\). The exponents are \\(6\\) and \\(5\\), and \\(6-5 = \\boxed{1}\\). Stacking multiplied, multiplying added."
+      },
+      {
+        "t": "p",
+        "x": "Nothing about the power rule ever asked the inner exponent to be positive. So point it downward and see whether multiplying the exponents still behaves when one of them is negative."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A sound desk stores the faint gain \\(2^{-3}\\), then a sharpening step squares whatever is stored, computing \\((2^{-3})^2\\). Multiply the exponents just as always and write the result as a single power of 2 with one exponent. Give that exponent.",
+        "hints": [
+          "The power rule multiplies the exponents even when one of them is negative.",
+          "Carry the sign through the multiplication, so the inner \\(-3\\) meets the outer \\(2\\). The product is the new exponent."
+        ],
+        "ans": "-6",
+        "accept": [
+          "2^-6",
+          "2^{-6}",
+          "1/64"
+        ],
+        "sol": "Multiply the exponents, sign and all. $$(2^{-3})^2 = 2^{(-3)\\times 2} = 2^{-6}$$ The exponent is \\(\\boxed{-6}\\). Written without a negative that is \\(\\dfrac{1}{2^6} = \\dfrac{1}{64}\\), a very small number, which fits a power that points down twice."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "An elevator panel shows the reading \\((9^4)^{0}\\). Without a calculator, give its exact value.",
+        "hints": [
+          "Multiply the stacked exponents first, \\(4 \\times 0\\), or recall what any nonzero base to the zero power is.",
+          "Whichever route you take, the panel settles on the value that every nonzero base shares at the zero power."
+        ],
+        "ans": "1",
+        "accept": [
+          "9^0"
+        ],
+        "sol": "Two routes, one answer. Multiplying the exponents gives \\((9^4)^0 = 9^{4\\times 0} = 9^0 = 1\\). Or recall \\(9^0 = 1\\) first. Either way the panel reads \\(\\boxed{1}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>The power rule ignores signs.</b> Raising a power to a power multiplies the exponents whether they are positive, negative, or zero. $$(a^m)^n = a^{m\\times n}$$ A negative inner exponent stays negative under a positive outer one, and a zero anywhere in the product collapses the whole thing to \\(a^0 = 1\\)."
+      },
+      {
+        "t": "p",
+        "x": "Now let a number ride in front of the variable. When an outer exponent meets something like two times a power, it is tempting to leave the number out front alone. It does not get to stay alone. The exponent is a power of a product, and the coefficient is one of the factors inside."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A bakery stamps trays of cookies, each tray holding \\(2x^3\\) rows where \\(x\\) is the dough setting. A holiday order raises that whole tray to the fourth power, \\((2x^3)^4\\). One apprentice writes \\(2x^{12}\\) and another writes \\(16x^{12}\\). Exactly one is right. Give the correct simplified form. Type it in the form such as 16x^12.",
+        "hints": [
+          "The outer 4 grips every factor inside the parentheses, both the \\(2\\) and the \\(x^3\\). Do not leave the \\(2\\) untouched.",
+          "One factor gives \\(2^4 = 16\\). Send the same \\(4\\) onto \\(x^3\\) yourself and combine the two pieces."
+        ],
+        "ans": "16x^12",
+        "accept": [
+          "16x^{12}"
+        ],
+        "sol": "The outer exponent lands on every factor inside, the coefficient included. $$(2x^3)^4 = 2^4 \\times (x^3)^4 = 16 \\times x^{12} = 16x^{12}$$ The apprentice who wrote \\(2x^{12}\\) forgot to raise the \\(2\\). The correct form is \\(\\boxed{16x^{12}}\\)."
+      },
+      {
+        "t": "imp",
+        "label": "The coefficient counts",
+        "x": "<b>Power of a product with a coefficient.</b> An outer exponent lands on the number out front just as surely as on the variable. $$(c\\,x^{m})^{n} = c^{n}\\,x^{m \\times n}$$ The coefficient is just another factor inside the parentheses, so the exponent grips it the same way it grips \\(x\\). Forgetting it is the classic capstone trap."
+      },
+      {
+        "t": "p",
+        "x": "One last twist on the outer exponent ties the negative powers of the previous section to the quotient rule of this one. Point the outer exponent downward while it sits on a fraction, and watch what the fraction does."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "A recipe scales to \\(\\dfrac{2}{3}\\) strength, but a reset raises that whole setting to the power \\(-3\\). Evaluate \\(\\left(\\dfrac{2}{3}\\right)^{-3}\\). Treat the negative exponent as a reciprocal first, flipping \\(\\dfrac{2}{3}\\) over, then cube. Give the value as a fraction.",
+        "hints": [
+          "A negative exponent takes the reciprocal of the base, and the reciprocal of \\(\\dfrac{2}{3}\\) is \\(\\dfrac{3}{2}\\).",
+          "So \\(\\left(\\dfrac{2}{3}\\right)^{-3} = \\left(\\dfrac{3}{2}\\right)^3 = \\dfrac{3^3}{2^3}\\)."
+        ],
+        "ans": "27/8",
+        "sol": "The negative exponent flips the fraction upright and turns positive. $$\\left(\\dfrac{2}{3}\\right)^{-3} = \\left(\\dfrac{3}{2}\\right)^{3} = \\dfrac{3^3}{2^3} = \\dfrac{27}{8}$$ Flip first, then send the exponent onto the top and the bottom. The answer is \\(\\boxed{\\dfrac{27}{8}}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Negative outer exponent flips a fraction.</b> A fraction to a negative power turns over, then the exponent acts as usual. $$\\left(\\dfrac{a}{b}\\right)^{-n} = \\left(\\dfrac{b}{a}\\right)^{n} = \\dfrac{b^{n}}{a^{n}} \\quad (a \\neq 0,\\ b \\neq 0)$$ The negative sign is just a reciprocal asking the fraction to flip, after which the exponent lands on the new top and bottom."
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "Stacked exponents grow at a pace the mind cannot picture. The tidy looking tower \\(\\big((10^3)^3\\big)^3\\) multiplies out to \\(10^{27}\\), a number with twenty seven zeros, already more than the estimated count of every grain of sand on every beach on Earth. And that is the gentle kind of tower. A true tower where each exponent is itself a full power, like \\(2^{2^{2^{2}}}\\), reaches 65536 in just four 2s, and one floor higher the number is too long to write on this page. Mathematicians invented a whole separate notation, called up-arrows, just to tame them."
+      },
+      {
+        "t": "p",
+        "x": "Time to let the laws meet. The power of a quotient, a raised coefficient, and the quotient rule can all live in one expression, kept in line by order of operations. Take it one grouped piece at a time."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "A lighting rig simplifies \\(\\dfrac{(3x^4)^2}{x^5}\\) to a single coefficient and power of \\(x\\). Find it. Type it in the form such as 16x^12.",
+        "hints": [
+          "Raise the numerator first. The outer 2 lands on the \\(3\\) and on the \\(x^4\\).",
+          "The top becomes \\(9x^8\\). Now divide by \\(x^5\\) with the quotient rule, subtracting the exponents, and keep the \\(9\\)."
+        ],
+        "ans": "9x^3",
+        "accept": [
+          "9x^{3}"
+        ],
+        "sol": "Open the numerator, letting the outer exponent hit both factors. $$(3x^4)^2 = 3^2 \\times x^{4\\times 2} = 9x^8$$ Now divide by \\(x^5\\). The coefficient is untouched by the division, and the quotient rule subtracts the variable exponents. $$\\dfrac{9x^8}{x^5} = 9x^{8-5} = 9x^3$$ The answer is \\(\\boxed{9x^3}\\)."
+      },
+      {
+        "t": "prob",
+        "xp": 12,
+        "x": "A power grid balances two terms. Simplify \\(\\left(\\dfrac{x^3}{2}\\right)^{2} \\times \\left(\\dfrac{x^2}{2}\\right)^{-3}\\) to a single number with no variable left. Find that number.",
+        "hints": [
+          "The first term lands on the top and the bottom, \\(\\dfrac{(x^3)^2}{2^2} = \\dfrac{x^6}{4}\\). The second has a negative outer exponent, so flip it first.",
+          "Flipping gives \\(\\left(\\dfrac{2}{x^2}\\right)^{3} = \\dfrac{8}{x^6}\\). Now multiply the two fractions and watch the \\(x\\) cancel."
+        ],
+        "ans": "2",
+        "sol": "Handle each term by its own rule. The first sends the exponent onto top and bottom. $$\\left(\\dfrac{x^3}{2}\\right)^{2} = \\dfrac{(x^3)^2}{2^2} = \\dfrac{x^6}{4}$$ The second has a negative outer exponent, so flip the fraction first, then raise, coefficient and all. $$\\left(\\dfrac{x^2}{2}\\right)^{-3} = \\left(\\dfrac{2}{x^2}\\right)^{3} = \\dfrac{2^3}{(x^2)^3} = \\dfrac{8}{x^6}$$ Multiply the two results. $$\\dfrac{x^6}{4} \\times \\dfrac{8}{x^6} = \\dfrac{8x^6}{4x^6} = 2x^{6-6} = 2$$ The variable cancelled completely. The answer is \\(\\boxed{2}\\)."
+      },
+      {
+        "t": "p",
+        "x": "Here is the capstone. One line, every law in the chapter. It hides a coefficient inside a flip, a quotient under an exponent, a tower of three powers, and the quotient rule, all refereed by order of operations. Take it one grouped piece at a time and watch the whole chapter cooperate."
+      },
+      {
+        "t": "prob",
+        "label": "Extra challenge",
+        "xp": 14,
+        "x": "Evaluate $$\\left(\\dfrac{(2x^3)^2}{4x^4}\\right)^{3} \\times \\left(\\dfrac{x^2}{2}\\right)^{-3}.$$ It is built so the variable cancels completely and a single number remains. Find that number.",
+        "hints": [
+          "Simplify deep inside the first parentheses before applying the outer 3. Raise \\((2x^3)^2 = 4x^6\\), then divide by \\(4x^4\\) to get a clean \\(x^2\\) with coefficient \\(1\\).",
+          "The first factor becomes \\((x^2)^3 = x^6\\). The second has a negative outer exponent, so flip \\(\\dfrac{x^2}{2}\\) to \\(\\dfrac{2}{x^2}\\) before cubing. Then multiply and watch the \\(x\\) disappear."
+        ],
+        "ans": "8",
+        "sol": "Work the first factor from the inside out. Raise the inner top, coefficient included, \\((2x^3)^2 = 2^2 x^6 = 4x^6\\). Divide by \\(4x^4\\) with the quotient rule. $$\\dfrac{4x^6}{4x^4} = \\dfrac{4}{4}\\,x^{6-4} = x^2$$ Now apply the outer exponent, a tower that multiplies. $$\\left(x^2\\right)^{3} = x^{6}$$ Turn to the second factor. A negative outer exponent flips the fraction upright, then lands on top and bottom. $$\\left(\\dfrac{x^2}{2}\\right)^{-3} = \\left(\\dfrac{2}{x^2}\\right)^{3} = \\dfrac{2^3}{(x^2)^3} = \\dfrac{8}{x^6}$$ Finally multiply the two simplified pieces. $$x^6 \\times \\dfrac{8}{x^6} = 8\\,x^{6-6} = 8x^0 = 8$$ Every law in the chapter took a turn and the variable cancelled to nothing. The number is \\(\\boxed{8}\\)."
+      }
+    ],
+    "review": [
+      {
+        "t": "p",
+        "x": "You already know that stacking a power on a power multiplies the two exponents. This section pushes that idea everywhere it can go, onto fractions, onto coefficients, up nested towers, and across negative exponents, until every law in the chapter can show up in one expression at once."
+      },
+      {
+        "t": "prob",
+        "x": "A canyon guide tests an echo by stacking it on itself. One shout returns as \\(\\left(4^2\\right)^3\\) faint repeats. Rewrite that as a single power of \\(4\\) and give the exponent.",
+        "ans": "6",
+        "accept": [
+          "4^6",
+          "4^{6}"
+        ],
+        "hints": [
+          "A power raised to a power does not add the exponents, it does something with both of them at once.",
+          "Stacked exponents multiply together, so ask what \\(2\\) and \\(3\\) give when combined that way."
+        ],
+        "sol": "Stacking a power on a power multiplies the two exponents rather than adding them. $$\\left(4^2\\right)^3 = 4^{2\\times 3} = 4^6$$ The outer \\(3\\) asks for three copies of \\(4^2\\), and each copy carries two factors of \\(4\\), so there are \\(2\\times 3=6\\) factors in all. The exponent is \\(\\boxed{6}\\)."
+      },
+      {
+        "t": "prob",
+        "x": "A quilter sews a block by raising a small square to a power. The block holds \\(\\left(\\dfrac{2}{3}\\right)^4\\) of one unit of fabric. Write that as a single fraction.",
+        "ans": "16/81",
+        "accept": [
+          "16/81"
+        ],
+        "hints": [
+          "An exponent on the outside of a fraction does not touch only the top. It has to land somewhere on the bottom too.",
+          "Raise the numerator to the \\(4\\)th and the denominator to the \\(4\\)th, each on its own."
+        ],
+        "sol": "An outer exponent on a quotient lands on both the top and the bottom. $$\\left(\\dfrac{2}{3}\\right)^4 = \\dfrac{2^4}{3^4} = \\dfrac{16}{81}$$ Four copies of \\(\\dfrac{2}{3}\\) multiplied together gather four \\(2\\)s on top and four \\(3\\)s on the bottom. The block is \\(\\boxed{\\dfrac{16}{81}}\\) of a unit."
+      },
+      {
+        "t": "imp",
+        "label": "Power of a quotient",
+        "x": "An outer exponent on a fraction lands on the top and the bottom alike, so \\(\\left(\\dfrac{a}{b}\\right)^n=\\dfrac{a^n}{b^n}\\) for any nonzero \\(b\\). It works because multiplying \\(n\\) copies of \\(\\dfrac{a}{b}\\) gathers \\(n\\) factors of \\(a\\) on top and \\(n\\) factors of \\(b\\) on the bottom."
+      },
+      {
+        "t": "prob",
+        "x": "On a beadwork loom a single tile pattern is enlarged by raising it to the fourth power. The tile is described by \\(2b^3\\), so the enlarged pattern is \\(\\left(2b^3\\right)^4\\). Simplify it to a coefficient times a single power of \\(b\\).",
+        "ans": "16b^12",
+        "accept": [
+          "16b^{12}",
+          "16 b^12",
+          "16 b^{12}"
+        ],
+        "hints": [
+          "The outer \\(4\\) lands on every factor inside the parentheses, and the \\(2\\) out front is one of those factors.",
+          "Raise the \\(2\\) to the \\(4\\)th to get the new coefficient, then multiply the stacked exponents on \\(b\\)."
+        ],
+        "sol": "The outer exponent reaches every factor inside, including the coefficient. The \\(2\\) gets raised too, which is the trap. $$\\left(2b^3\\right)^4 = 2^4 \\times \\left(b^3\\right)^4 = 16 \\times b^{3\\times 4} = 16b^{12}$$ It is not \\(2b^{12}\\). Forgetting to raise the \\(2\\) is the most common slip. The pattern simplifies to \\(\\boxed{16b^{12}}\\)."
+      },
+      {
+        "t": "imp",
+        "label": "Catch the coefficient",
+        "x": "When a product inside parentheses carries a number out front, the outer exponent lands on that number too, so \\(\\left(k\\,x^m\\right)^n=k^n\\,x^{mn}\\). For example \\(\\left(2x^3\\right)^4=16x^{12}\\), never \\(2x^{12}\\). The coefficient is a factor like any other, so it cannot be left behind."
+      },
+      {
+        "t": "prob",
+        "x": "Two coral reef readings look alike but mean different things. The first colony grows as \\(\\left(5^2\\right)^3\\) polyps, a power stacked on a power. The second grows as \\(5^2 \\times 5^3\\) polyps, two powers multiplied together. Both fold to a single power of \\(5\\). By how much does the first reading's exponent beat the second reading's exponent?",
+        "ans": "1",
+        "accept": [
+          "1",
+          "one"
+        ],
+        "hints": [
+          "One reading stacks a power on a power, the other multiplies two separate powers of the same base. The exponents come out by different rules.",
+          "Stacking multiplies the exponents and gives \\(2\\times 3\\), while multiplying powers adds them and gives \\(2+3\\). Compare the two exponents you land on."
+        ],
+        "sol": "These are the two ideas people mix up. Stacking a power on a power multiplies the exponents, while multiplying two powers of the same base adds them. $$\\left(5^2\\right)^3 = 5^{2\\times 3} = 5^6, \\qquad 5^2 \\times 5^3 = 5^{2+3} = 5^5$$ The first reading reaches exponent \\(6\\), the second reaches exponent \\(5\\). Stacking pulls ahead by \\(6-5=\\boxed{1}\\)."
+      },
+      {
+        "t": "prob",
+        "x": "A lantern festival dims a light by raising a faint setting to a power. The setting is \\(2^{-3}\\) of full brightness, and squaring it gives \\(\\left(2^{-3}\\right)^2\\). Write the result as a single power of \\(2\\) and give the exponent.",
+        "ans": "-6",
+        "accept": [
+          "2^-6",
+          "2^{-6}",
+          "1/64"
+        ],
+        "hints": [
+          "The power of a power rule still multiplies the two exponents even when one of them is negative.",
+          "Multiply \\(-3\\) by \\(2\\), keeping the sign."
+        ],
+        "sol": "The power of a power rule does not care about the sign of the exponent. It just multiplies the two. $$\\left(2^{-3}\\right)^2 = 2^{(-3)\\times 2} = 2^{-6}$$ Two copies of \\(2^{-3}\\) give a total of six factors of \\(2\\) in the denominator. The exponent is \\(\\boxed{-6}\\), which is \\(\\dfrac{1}{64}\\)."
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "Stacking really does outrun adding. Starting from \\(10^4\\), multiplying by another \\(10^3\\) only reaches \\(10^7\\), but raising it to the \\(3\\)rd power leaps to \\(10^{12}\\). That gap of five zeros is the difference between joining copies and making copies of copies."
+      },
+      {
+        "t": "prob",
+        "x": "A model railway sets its scale as a fraction, then a reversing switch raises that scale to the power \\(-2\\). The scale is \\(\\dfrac{3}{5}\\), so the switch produces \\(\\left(\\dfrac{3}{5}\\right)^{-2}\\). Write the result as a single fraction.",
+        "ans": "25/9",
+        "accept": [
+          "25/9"
+        ],
+        "hints": [
+          "A negative outer exponent on a fraction flips the fraction over before the exponent does its work.",
+          "Turn \\(\\dfrac{3}{5}\\) upside down to \\(\\dfrac{5}{3}\\), then square the right side up version."
+        ],
+        "sol": "A negative outer exponent flips the fraction, then the exponent goes positive. $$\\left(\\dfrac{3}{5}\\right)^{-2} = \\left(\\dfrac{5}{3}\\right)^{2} = \\dfrac{5^2}{3^2} = \\dfrac{25}{9}$$ The flip handles the minus sign, and the squaring lands on both the new top and the new bottom. The switch produces \\(\\boxed{\\dfrac{25}{9}}\\)."
+      },
+      {
+        "t": "imp",
+        "label": "Negative exponent flips a fraction",
+        "x": "A negative outer exponent on a fraction turns it upside down and makes the exponent positive, so \\(\\left(\\dfrac{a}{b}\\right)^{-n}=\\left(\\dfrac{b}{a}\\right)^{n}\\) for nonzero \\(a\\) and \\(b\\). The minus sign is really just the reciprocal rule wearing fraction clothes."
+      },
+      {
+        "t": "prob",
+        "x": "A fractal antenna is etched in stages. Each stage splits every arm into \\(2^2\\) smaller arms, and the design runs through three stages, so the tip count builds up as the nested tower \\(\\left(\\left(2^2\\right)^2\\right)^2\\). When three exponents are stacked, all of them multiply together. Rewrite the tower as a single power of \\(2\\) and give its exponent.",
+        "ans": "8",
+        "accept": [
+          "2^8",
+          "2^{8}",
+          "256"
+        ],
+        "hints": [
+          "Peel the tower from the inside out, multiplying exponents at each layer.",
+          "All three twos multiply together, so collapse the tower one layer at a time."
+        ],
+        "sol": "Every stacked exponent multiplies into the next. $$\\left(\\left(2^2\\right)^2\\right)^2=2^{\\,2\\times2\\times2}=2^{8}$$ The exponent is \\(\\boxed{8}\\), so the tip count is \\(256\\)."
+      },
+      {
+        "t": "prob",
+        "x": "A salt cavern records its volume as \\(\\left(2c^2\\right)^3\\) and the brine it holds as \\(4c^5\\). The packing density is the volume divided by the brine, \\(\\dfrac{\\left(2c^2\\right)^3}{4c^5}\\). Simplify it to a coefficient times a single power of \\(c\\).",
+        "ans": "2c",
+        "accept": [
+          "2c^1",
+          "2c^{1}",
+          "2 c"
+        ],
+        "hints": [
+          "Expand the top first. The outer \\(3\\) lands on the \\(2\\) as well as on \\(c^2\\).",
+          "After the top is \\(8c^6\\), divide the coefficients and subtract the exponents on \\(c\\)."
+        ],
+        "sol": "Open the top with the power of a product rule, raising the coefficient too. $$\\left(2c^2\\right)^3 = 2^3 \\times c^{2\\times 3} = 8c^6$$ Now divide, splitting the coefficients from the powers of \\(c\\). $$\\dfrac{8c^6}{4c^5} = \\dfrac{8}{4} \\times c^{6-5} = 2c^1 = 2c$$ The packing density simplifies to \\(\\boxed{2c}\\)."
+      },
+      {
+        "t": "prob",
+        "x": "A tuning fork's overtone strength is modeled by \\(\\left(a^2\\right)^3\\times\\left(a^{-3}\\right)^2\\) for a nonzero \\(a\\). Simplify each tower first, then combine. The messy expression collapses to something tiny. What is its value?",
+        "ans": "1",
+        "accept": [
+          "a^0",
+          "a^{0}"
+        ],
+        "hints": [
+          "Handle each stacked tower on its own, multiplying the two exponents inside it.",
+          "You get \\(a^{6}\\times a^{-6}\\) once each tower is flattened."
+        ],
+        "sol": "Multiply within each tower, then add when the powers meet. $$\\left(a^2\\right)^3=a^{6},\\qquad \\left(a^{-3}\\right)^2=a^{-6}$$ $$a^{6}\\times a^{-6}=a^{6+(-6)}=a^{0}=1$$ Any nonzero base to the zero power is \\(1\\), so the whole thing folds to \\(\\boxed{1}\\)."
+      },
+      {
+        "t": "fact",
+        "label": "Fun fact",
+        "x": "A tower of exponents grows almost too fast to picture. Stacking just \\(\\left(\\left(\\left(2^2\\right)^2\\right)^2\\right)^2\\) multiplies four twos to \\(2^{16}\\), already past sixty thousand. A few more floors and the number would dwarf the count of grains of sand on Earth."
+      },
+      {
+        "t": "prob",
+        "label": "Star challenge",
+        "x": "A wind chime nests three tunings. The deepest tube rings as \\(\\left(\\left(2^2\\right)^3\\right)^2\\) and a damper divides that ring by \\(\\left(2^4\\right)^2\\). The audible tone is \\(\\dfrac{\\left(\\left(2^2\\right)^3\\right)^2}{\\left(2^4\\right)^2}\\). Write it as a single power of \\(2\\) and give its value.",
+        "ans": "16",
+        "accept": [
+          "2^4",
+          "2^{4}",
+          "16"
+        ],
+        "hints": [
+          "A tower of three stacked exponents multiplies all three of them together. Do the top and the bottom separately first.",
+          "The top exponent is \\(2\\times 3\\times 2\\) and the bottom is \\(4\\times 2\\). Then subtract for the division."
+        ],
+        "sol": "Collapse each tower by multiplying all of its stacked exponents. On top, three exponents multiply. $$\\left(\\left(2^2\\right)^3\\right)^2 = 2^{2\\times 3\\times 2} = 2^{12}$$ On the bottom, two multiply. $$\\left(2^4\\right)^2 = 2^{4\\times 2} = 2^{8}$$ Now divide a common base by subtracting. $$\\dfrac{2^{12}}{2^{8}} = 2^{12-8} = 2^{4} = 16$$ The audible tone is \\(\\boxed{16}\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Star challenge",
+        "x": "A foundry mixes powers of \\(2\\) and \\(5\\) into one casting reading, $$\\left(\\dfrac{2^3 \\times 5}{10^2}\\right)^{-2}.$$ Simplify the whole thing to a single fraction.",
+        "ans": "25/4",
+        "accept": [
+          "25/4",
+          "6.25"
+        ],
+        "hints": [
+          "Simplify what is inside the parentheses to a single small fraction before the outer exponent gets involved. Note that \\(10^2 = 100\\).",
+          "Once the inside is \\(\\dfrac{2}{5}\\), the negative outer exponent flips it before squaring."
+        ],
+        "sol": "Settle the inside first. The top is \\(2^3 \\times 5 = 8\\times 5 = 40\\) and the bottom is \\(10^2 = 100\\). $$\\dfrac{2^3 \\times 5}{10^2} = \\dfrac{40}{100} = \\dfrac{2}{5}$$ Now the negative outer exponent flips the fraction, then squares it on both top and bottom. $$\\left(\\dfrac{2}{5}\\right)^{-2} = \\left(\\dfrac{5}{2}\\right)^{2} = \\dfrac{25}{4}$$ The casting reading is \\(\\boxed{\\dfrac{25}{4}}\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Star challenge",
+        "x": "A beehive arranges its active brood cells by a single formula, $$\\dfrac{\\left(2^3\\right)^4\\times\\left(2^{-2}\\right)^3}{\\left(2^4\\right)^2}.$$ Every law in this chapter shows up once. Collapse it all into a single power of \\(2\\) and give that power's exponent.",
+        "ans": "-2",
+        "accept": [
+          "-2",
+          "2^-2",
+          "2^{-2}",
+          "1/4"
+        ],
+        "hints": [
+          "Tackle each stacked power first by multiplying its two exponents, even when one is negative. The three towers become \\(2^{12}\\), \\(2^{-6}\\), and \\(2^{8}\\).",
+          "Multiply the two top powers by adding their exponents, then divide by subtracting the bottom exponent."
+        ],
+        "sol": "Flatten every stacked power first, multiplying the exponents and carrying the signs. $$\\left(2^3\\right)^4=2^{12},\\qquad \\left(2^{-2}\\right)^3=2^{-6},\\qquad \\left(2^4\\right)^2=2^{8}$$ Multiply the two powers on top by adding their exponents. $$2^{12}\\times2^{-6}=2^{12+(-6)}=2^{6}$$ Now divide by the bottom power by subtracting its exponent. $$\\dfrac{2^{6}}{2^{8}}=2^{6-8}=2^{-2}=\\boxed{2^{-2}}$$ The exponent is \\(-2\\), and the whole formula is just \\(\\dfrac{1}{4}\\). The power of a power, the product rule, the quotient rule, and a negative exponent each took one turn, and the tower folded to almost nothing."
+      }
+    ],
+    "next": "3.1"
   }
 }
