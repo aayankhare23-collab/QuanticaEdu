@@ -1991,7 +1991,7 @@
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
       updateFlow(true);
     } else {
-      fb.className='ansfb wrong'; fb.innerHTML='✗ Not quite. Take a hint, tweak your answer, or view the solution.';
+      fb.className='ansfb wrong'; fb.innerHTML='✗ Not quite. '+(rec.hints&&rec.hints.length?'Take a hint, tweak your answer, or view the solution.':'Tweak your answer or view the solution.');
       rec.attempts=(rec.attempts||0)+1; if(window.Rewards) Rewards._onWrong(rec);
     }
     var sb=document.getElementById('sb_'+k); if(sb) sb.style.display='inline-block';
@@ -2255,7 +2255,7 @@
     }else{
       el.classList.add('wrong');
       fb.className='feedback show hintbox';
-      fb.innerHTML='Not quite. Take another look. <span style="cursor:pointer;text-decoration:underline" onclick="revealPSet()">Show a hint</span>.';
+      fb.innerHTML='Not quite. Take another look.'+(p.h?' <span style="cursor:pointer;text-decoration:underline" onclick="revealPSet()">Show a hint</span>.':'');
     }
   }
   function revealPSet(){
