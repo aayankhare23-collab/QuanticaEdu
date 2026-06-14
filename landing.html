@@ -1176,7 +1176,7 @@
   // --- Prealgebra course modal: table of contents ---
   var TOC=[
     {n:1, t:"The Rules of Arithmetic", s:[["1.1","Why Begin with Arithmetic?"],["1.2","Addition, Subtraction, and Negation"],["1.3","Multiplication"],["1.4","Checkpoint Problems"],["1.5","Division"],["1.6","Summary"]]},
-    {n:2, t:"Exponents", s:[["2.1","Squares and Cubes"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"]]},
+    {n:2, t:"Exponents", s:[["2.1","Squares and Cubes"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"],["2.6","Chapter 2 Summary"]]},
     {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers"],["3.4","Prime Factorization"],["3.5","Greatest Common Divisor"],["3.6","Least Common Multiple"],["3.7","Counting a Number's Divisors"]]},
     {n:4, t:"Working with Fractions", s:[["4.1","What a Fraction Means"],["4.2","Equivalent Fractions"],["4.3","Multiplying Fractions"],["4.4","Dividing Fractions"],["4.5","Common Denominators"],["4.6","Adding and Subtracting Fractions"],["4.7","Mixed Numbers"],["4.8","Comparing Fractions"]]},
     {n:5, t:"Decimals", s:[["5.1","Place Value and Decimals"],["5.2","Decimal Arithmetic"],["5.3","Switching Between Fractions and Decimals"],["5.4","Rounding and Estimation"],["5.5","Repeating Decimals"]]},
@@ -1220,6 +1220,9 @@
       {t:'prob', x:'Simplify <b>(2³)²</b> by expanding it.', sol:'(2³)² = 2³ × 2³, which is six 2s, so it equals <b>2⁶</b>. We multiplied the exponents.'},
       {t:'imp', x:'Raising a power to a power <b>multiplies</b> exponents: (aᵐ)ⁿ = aᵐⁿ. And a power of a product distributes: (ab)ⁿ = aⁿbⁿ.'},
       {t:'prob', x:'Simplify <b>(3²)³</b>.', sol:'(3²)³ = 3⁶ = <b>729</b>.'}
+    ]},
+    '2.6':{title:'Chapter 2 Summary', blocks:[
+      {t:'p', x:'This section gathers every key idea from Chapter 2 in one place.'}
     ]},
 
     // ---- Chapter 3: Primes and Divisibility ----
@@ -1997,7 +2000,7 @@
     var rec=PROBREG[k]; if(!rec||!rec.hints) return;
     var box=document.getElementById('hx_'+k), btn=document.getElementById('hb_'+k);
     if(rec.hi>=rec.hints.length) return;
-    var d=document.createElement('div'); d.className='hintline'; d.innerHTML='💡 '+rec.hints[rec.hi]; box.appendChild(d); rec.hi++;
+    var d=document.createElement('div'); d.className='hintline'; d.innerHTML='💡 '+rec.hints[rec.hi]; box.appendChild(d); typeset(d); rec.hi++;
     rec.hintsUsed=(rec.hintsUsed||0)+1; if(window.Rewards) Rewards._onHint(rec);
     if(rec.hi>=rec.hints.length){ btn.textContent='No more hints'; btn.disabled=true; }
     else { btn.textContent='Show next hint ('+rec.hi+'/'+rec.hints.length+')'; }
