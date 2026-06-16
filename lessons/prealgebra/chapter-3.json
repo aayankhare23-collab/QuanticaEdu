@@ -1,0 +1,489 @@
+{
+  "3.1": {
+    "title": "Factors and Multiples",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "For two chapters we have worked <b>on</b> numbers, stretching them by multiplication and stacking them up with powers. Now we turn the other way and look <b>inside</b> a number, at how one whole number can sit neatly within another. The picture that carries this whole lesson is a simple one. Take a fixed pile of objects and try to arrange the whole pile into one full rectangle, every row the same length, no gaps and nothing left over. Doing that is the very same act as asking which numbers divide the pile evenly, because a side of such a rectangle is exactly a number that goes in without remainder. A side length like that is what we will call a factor. We will first hunt for these sides, watch them travel in pairs, and then turn the relationship all the way around to meet multiples, the numbers that a given number helps build."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A class is setting out exactly 24 floor cushions for a reading corner. They want one full rectangular block, every row the same length, no cushion left over and no gap anywhere. Find every number of rows that works, writing each one as rows times the matching row length, and then say what all of these working row counts have in common.",
+        "hints": [
+          "A number of rows works only if you can split 24 into that many equal rows with nothing left over. Try 1 row, then 2, then 3, and keep going, checking each time whether 24 divides up cleanly."
+        ],
+        "ans": "1, 2, 3, 4, 6, 8, 12, 24",
+        "accept": [
+          "1,2,3,4,6,8,12,24",
+          "eight"
+        ],
+        "sol": "A number of rows works exactly when it splits 24 into equal rows with nothing left over, which is the same as saying that number divides 24 evenly. Walk upward and write each working count beside the row length it forces. $$1\\times24,\\quad 2\\times12,\\quad 3\\times8,\\quad 4\\times6$$ Each arrangement names two numbers at once, the rows and the row length, and their product is always 24. Reading both numbers out of every rectangle gives the full list of row counts that work. $$1,\\ 2,\\ 3,\\ 4,\\ 6,\\ 8,\\ 12,\\ 24$$ These are precisely the numbers that divide 24 evenly. We call them the <b>factors</b>, or <b>divisors</b>, of 24, and there are $$\\boxed{8}$$ of them. Quick check, the 4-by-6 rectangle holds \\(4\\times6=24\\) cushions, exactly the pile we started with."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "A museum is mounting 48 identical square photo tiles into one full rectangular grid on a wall, and the curator wants to know every grid shape that is possible. Find all the factors of 48 by walking upward from 1, and beside each factor you find, write the partner it summons. Then notice exactly when you are allowed to stop searching.",
+        "hints": [
+          "The moment you find a small side like 3, the matching side is forced, since 3 rows must each be \\(48\\div3\\) tiles long. So every small factor you find hands you a large one for free.",
+          "Watch the two sides of each pair close in on each other. Once the next side you would test is bigger than the partner it would pair with, every grid past that point is just one you have already seen turned on its side."
+        ],
+        "ans": "1, 2, 3, 4, 6, 8, 12, 16, 24, 48",
+        "accept": [
+          "1,2,3,4,6,8,12,16,24,48",
+          "ten",
+          "10"
+        ],
+        "sol": "Start at 1 and climb, writing each factor with the partner it forces, since \\(d\\) rows of length \\(48\\div d\\) is the very same wall. $$1\\times48,\\quad 2\\times24,\\quad 3\\times16,\\quad 4\\times12,\\quad 6\\times8$$ Each small side instantly summons its larger partner, so the factors come out already sorted into matched pairs whose product is 48. Now watch where to stop. After 6 we try 7, but 7 does not divide 48. The next number that divides, 8, is already standing on the right of the pair \\(6\\times8\\). Once the side you are about to test would be larger than the partner it would summon, you have already met every rectangle, just mirrored, so the search is finished. Reading both numbers out of every pair gives all the factors. $$1,\\ 2,\\ 3,\\ 4,\\ 6,\\ 8,\\ 12,\\ 16,\\ 24,\\ 48$$ There are $$\\boxed{10}$$ of them. Quick check, the middle pair \\(6\\times8=48\\), and we stopped right after 6 because 8 was already accounted for."
+      },
+      {
+        "t": "imp",
+        "x": "A whole number \\(f\\) is a <b>factor</b> of a whole number \\(n\\), also called a <b>divisor</b> of \\(n\\), when \\(n\\) objects arrange into a full rectangle with \\(f\\) along one side and nothing left over. That is the same as saying \\(n\\) divided by \\(f\\) leaves no remainder, and the same as saying \\(n=f\\times(\\text{some whole number})\\). Factors travel in pairs, since every side \\(f\\) of a rectangle of area \\(n\\) is matched by the partner side \\(n\\div f\\) on the opposite edge, and the two multiply to \\(n\\). That pairing is why you never search all the way to \\(n\\). You only test sides up to the point where a side would meet its own partner, and below that crossing each small factor you find hands you its large partner for free, so the hunt finishes early."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "A tile artist sets identical square tiles into one solid square, the same number of rows as columns, none left over. With \\(36\\) tiles, find every factor of \\(36\\) by writing the partner pairs the way you did for rectangles, \\(1\\times36,\\ 2\\times18,\\ 3\\times12,\\ 4\\times9,\\ 6\\times6\\). Notice what is unusual about the \\(6\\times6\\) arrangement. Then, without listing its factors, predict whether \\(49\\) has an odd or an even number of factors, and say why. Contrast that with \\(35\\).",
+        "hints": [
+          "Every pair so far has used two different side lengths. Look hard at \\(6\\times6\\). How many new factors does that arrangement actually contribute?",
+          "\\(49=7\\times7\\) and \\(35=5\\times7\\). In which one does a side pair with itself?"
+        ],
+        "ans": "36 has nine factors, an odd count, because the 6-by-6 square self-pairs; 49 has an odd count, 35 has an even count",
+        "accept": [
+          "9",
+          "nine",
+          "36 has 9 factors (odd); 49 odd, 35 even"
+        ],
+        "sol": "Walk the pairs that fill a \\(36\\)-tile rectangle, each side handing you its partner. $$1\\times36,\\quad 2\\times18,\\quad 3\\times12,\\quad 4\\times9,\\quad 6\\times6$$ The first four pairs each name two <b>different</b> factors, eight factors so far. The last one is different. The square \\(6\\times6\\) uses the same number on both sides, so \\(6\\) is its own partner. It adds a single new factor, not a fresh pair. Counting them all, $$1,2,3,4,6,9,12,18,36,$$ gives \\(\\boxed{9}\\) factors, an <b>odd</b> total. Here is the reason in one breath. Factors come two at a time, a small side and its larger partner, so they would always count up to an even number. The only way to break that is for one factor to pair with itself, \\(d\\times d=n\\), which happens exactly when \\(n\\) is a perfect square. That lone self-paired factor is counted once, tipping the total to odd. So \\(49=7\\times7\\) self-pairs at \\(7\\) and has an odd number of factors, while \\(35\\) splits only into the distinct pairs \\(1\\times35\\) and \\(5\\times7\\), four factors, an even count. Quick check on \\(35\\). Its factors are \\(1,5,7,35\\), and \\(4\\) is indeed even."
+      },
+      {
+        "t": "imp",
+        "x": "Almost every factor drags a <b>different</b> partner along, so factors usually come two at a time and the count is even. The one way to break that is for a factor to pair with itself, \\(f\\times f=n\\), which happens exactly when \\(n\\) is a <b>perfect square</b>. So a whole number has an odd number of factors precisely when it is a perfect square, and the lone unpaired factor is the side of its square. An odd factor count is a fingerprint, and the print belongs to a square."
+      },
+      {
+        "t": "fig",
+        "cap": "A factor of a number is a way to fill a full rectangle, and the two side lengths form a factor pair. On the left, \\(3\\times4=12\\) uses two different partners. On the right, the square \\(6\\times6=36\\) uses one number on both sides, so the two partners have become the same factor. That single self-paired side, the gold corner on the diagonal, is the lone unpaired factor that gives a perfect square its odd total.",
+        "x": "<svg viewBox=\"0 0 400 176\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Left, a 3 by 4 grid of twelve unit cells with sides labeled 3 and 4, showing the factor pair 3 times 4 equals 12 with two different partner sides. Right, a 6 by 6 grid of thirty-six unit cells with both sides labeled 6, a diagonal drawn corner to corner and the far corner cell tinted gold, showing that for a square the two partner sides are the same factor.\"><rect x=\"18\" y=\"30\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"48\" y=\"30\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"78\" y=\"30\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"18\" y=\"60\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"48\" y=\"60\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"78\" y=\"60\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"18\" y=\"90\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"48\" y=\"90\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"78\" y=\"90\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"18\" y=\"120\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"48\" y=\"120\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"78\" y=\"120\" width=\"30\" height=\"30\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"18\" y=\"30\" width=\"90\" height=\"120\" fill=\"none\" stroke=\"var(--mid)\" stroke-width=\"2.5\"/><rect x=\"250\" y=\"26\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"272\" y=\"26\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"294\" y=\"26\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"316\" y=\"26\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"338\" y=\"26\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"360\" y=\"26\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"250\" y=\"48\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"272\" y=\"48\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"294\" y=\"48\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"316\" y=\"48\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"338\" y=\"48\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"360\" y=\"48\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"250\" y=\"70\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"272\" y=\"70\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"294\" y=\"70\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"316\" y=\"70\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"338\" y=\"70\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"360\" y=\"70\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"250\" y=\"92\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"272\" y=\"92\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"294\" y=\"92\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"316\" y=\"92\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"338\" y=\"92\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"360\" y=\"92\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"250\" y=\"114\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"272\" y=\"114\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"294\" y=\"114\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"316\" y=\"114\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"338\" y=\"114\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"360\" y=\"114\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"250\" y=\"136\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"272\" y=\"136\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"294\" y=\"136\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"316\" y=\"136\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"338\" y=\"136\" width=\"22\" height=\"22\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"360\" y=\"136\" width=\"22\" height=\"22\" fill=\"rgba(199,145,0,.30)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"250\" y=\"26\" width=\"132\" height=\"132\" fill=\"none\" stroke=\"var(--green)\" stroke-width=\"2.5\"/><line x1=\"250\" y1=\"26\" x2=\"382\" y2=\"158\" stroke=\"var(--gold)\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text x=\"63\" y=\"22\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">3</text><text x=\"8\" y=\"96\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">4</text><text x=\"63\" y=\"96\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">12</text><text x=\"316\" y=\"18\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">6</text><text x=\"240\" y=\"98\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"600\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">6</text><text x=\"316\" y=\"98\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">36</text></svg>"
+      },
+      {
+        "t": "p",
+        "x": "So far we have stood at one number and looked in at its sides. Step back now and read the same fact from the other number in the pair. If \\(6\\) is a factor of \\(36\\), then \\(36\\) is exactly where you arrive by stepping out in equal sixes, \\(6, 12, 18, 24, 30, 36\\). Seen from that side, \\(36\\) is a <b>multiple</b> of \\(6\\). Factor and multiple are one relationship seen from its two ends, a single arrow read in two directions."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A toy train starts on stone \\(0\\) of a long straight track and always rolls forward exactly \\(7\\) stones at a time, dropping a marker each time it stops, at \\(0, 7, 14, 21,\\) and onward. Without dividing, decide which of the stones \\(28, 35, 50, 63\\) the train actually lands on. For each stone it reaches, state the relationship between \\(7\\) and that stone twice, once using the word factor and once using the word multiple.",
+        "hints": [
+          "Keep adding \\(7\\). \\(7, 14, 21, 28, 35, 42, 49, 56, 63\\). Which of the four stones appear on that list?"
+        ],
+        "ans": "28, 35, 63 (not 50)",
+        "accept": [
+          "28, 35, 63",
+          "28 35 63"
+        ],
+        "sol": "Skip forward by sevens and watch where the markers fall. $$7,\\ 14,\\ 21,\\ 28,\\ 35,\\ 42,\\ 49,\\ 56,\\ 63,\\ \\ldots$$ Stones \\(28, 35,\\) and \\(63\\) all appear, but \\(50\\) does not, since the train steps from \\(49\\) straight to \\(56\\) and skips right over it. The landings are exactly the stones reached by a whole number of \\(7\\)-steps. $$28=4\\times7,\\qquad 35=5\\times7,\\qquad 63=9\\times7$$ Each landing reads two ways. Take \\(28\\). Read one direction, \\(7\\) is a <b>factor</b> of \\(28\\), since \\(28=4\\times7\\). Read the other direction, \\(28\\) is a <b>multiple</b> of \\(7\\), since it is four \\(7\\)-steps out from \\(0\\). The same double reading holds for \\(35\\) and \\(63\\). Stone \\(50\\) gets neither, because \\(7\\) is not a factor of it and it is not a multiple of \\(7\\). The train lands on $$\\boxed{28,\\ 35,\\ 63}.$$"
+      },
+      {
+        "t": "imp",
+        "x": "A whole number \\(m\\) is a <b>multiple</b> of \\(n\\) when \\(m\\) sits some whole number of \\(n\\)-steps out from \\(0\\), that is \\(m=k\\times n\\) for a whole number \\(k\\). This is the exact mirror of a factor. \\(m\\) is a multiple of \\(n\\) precisely when \\(n\\) is a factor of \\(m\\). One arrow. Read it forward and you say multiple, read it backward and you say factor."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A workshop sorts wooden rods by length, all whole numbers of centimeters. For each pair below, the first number is a rod and the second is the bar it is being compared against. Decide whether the first number is a <b>factor</b> of the second, a <b>multiple</b> of the second, <b>both</b>, or <b>neither</b>, and give a one-line reason for each. (a) \\(4\\) and \\(12\\) (b) \\(15\\) and \\(5\\) (c) \\(8\\) and \\(8\\) (d) \\(6\\) and \\(9\\)",
+        "hints": [
+          "For each pair, ask two separate questions. Does the first number divide the second evenly, and is the first number itself a whole-number times the second?",
+          "\\(a\\) is a factor of \\(b\\) when \\(b = a \\times (\\text{whole number})\\). \\(a\\) is a multiple of \\(b\\) when \\(a = b \\times (\\text{whole number})\\). A pair can satisfy both, one, or neither.",
+          "Try the pair where both numbers are equal. Does \\(8\\) divide \\(8\\), and is \\(8\\) a whole-number times \\(8\\)?"
+        ],
+        "ans": "(a) factor, (b) multiple, (c) both, (d) neither",
+        "accept": [
+          "a factor b multiple c both d neither",
+          "factor, multiple, both, neither"
+        ],
+        "sol": "Each pair asks one question twice, once in each direction. The first number is a <b>factor</b> of the second when the second is a whole-number times the first, and the first is a <b>multiple</b> of the second when the first is a whole-number times the second. <b>(a) \\(4\\) and \\(12\\).</b> Is \\(12\\) a whole-number times \\(4\\)? Yes, \\(12 = 4 \\times 3\\), so \\(4\\) is a <b>factor</b> of \\(12\\). Going the other way, \\(4\\) is not \\(12\\) times any whole number, so it is not a multiple of \\(12\\). <b>(b) \\(15\\) and \\(5\\).</b> Is \\(15\\) a whole-number times \\(5\\)? Yes, \\(15 = 5 \\times 3\\), so \\(15\\) is a <b>multiple</b> of \\(5\\). It cannot be a factor of \\(5\\), since a factor never exceeds the number it divides. <b>(c) \\(8\\) and \\(8\\).</b> Here \\(8 = 8 \\times 1\\) read both ways at once. \\(8\\) divides \\(8\\) evenly, so it is a factor, and \\(8\\) is one copy of \\(8\\), so it is a multiple. A number is always <b>both</b> a factor and a multiple of itself. <b>(d) \\(6\\) and \\(9\\).</b> Does \\(6\\) divide \\(9\\) evenly? No, \\(9 \\div 6\\) leaves a remainder. Is \\(6\\) a whole-number times \\(9\\)? No, \\(6\\) is smaller than \\(9\\). So the answer is <b>neither</b>. Notice that \\(4\\) and \\(12\\) tell the same story as \\(15\\) and \\(5\\), just told from opposite ends. Whenever one number is a factor of another, that other number is automatically a multiple of the first. <b>Factor and multiple are not two relationships, they are one relationship read in two directions.</b>"
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Two students are handed opposite assignments about the number \\(20\\). Priya must write the complete list of every <b>factor</b> of \\(20\\), while Owen must write the complete list of every <b>multiple</b> of \\(20\\). Each is asked the same question, will you ever finish? Decide who finishes and who never does, and explain why. Write out the list that can be finished. Then say whether \\(20\\) itself lands on both lists.",
+        "hints": [
+          "A factor of \\(20\\) is a side of a rectangle with area \\(20\\). Can a side ever be longer than \\(20\\)? Now think about multiples instead. After \\(20, 40, 60\\), is there ever a last one?"
+        ],
+        "ans": "Factors of 20 are finite (1, 2, 4, 5, 10, 20, six of them, largest 20); multiples are infinite; 20 sits on both lists",
+        "accept": [
+          "Priya finishes, Owen never does",
+          "factors finite, multiples infinite, 20 on both"
+        ],
+        "sol": "Priya finishes, Owen never does. Every factor of \\(20\\) is a side of a rectangle of area \\(20\\), and a side can never be longer than the area allows, so no factor can climb past \\(20\\) itself. Hunting in pairs gives \\(1\\times 20\\), \\(2\\times 10\\), \\(4\\times 5\\), and the list closes. $$1,\\ 2,\\ 4,\\ 5,\\ 10,\\ 20$$ That is six factors, the largest being \\(20\\), and Priya is done. Owen's list has no last entry. The multiples of \\(20\\) are \\(20, 40, 60, 80, 100, \\ldots\\) and from any one of them he can always take one more step of \\(20\\) and reach a new one. There is no biggest multiple, so he never finishes. Notice \\(20\\) appears on both lists at once. It is its own largest factor, since \\(20=1\\times 20\\), and it is its own smallest positive multiple, since \\(20=20\\times 1\\). And right at the front of Priya's list sits \\(1\\), a factor of \\(20\\) because one long row of \\(20\\) is a perfectly good rectangle. The finishable list is $$\\boxed{1,\\ 2,\\ 4,\\ 5,\\ 10,\\ 20}$$ Quick check, each pairs cleanly, \\(2\\times 10=20\\) and \\(4\\times 5=20\\), so nothing is missing and nothing is extra."
+      },
+      {
+        "t": "imp",
+        "x": "Here is the great asymmetry. Every positive whole number has <b>finitely many factors</b>, each one at least \\(1\\) and at most the number itself, since a factor's partner side is a whole number no smaller than \\(1\\), which keeps the factor from ever climbing past the number. The one exception is \\(0\\), which every number divides, so \\(0\\) alone has no largest factor. But every whole number has <b>infinitely many multiples</b>, because from any multiple you can always step once more and reach a fresh one. Three quiet facts rode along with this. <b>1</b> is a factor of every number \\(n\\), since one long single row is always a valid rectangle and \\(n=1\\times n\\). Every number is both a factor and a multiple of <b>itself</b>, the full-row case and the single-step case, since \\(n=n\\times 1\\). And <b>0</b> is a multiple of every number, since taking zero steps of any size leaves you sitting at \\(0\\), that is \\(0=n\\times 0\\), so \\(0\\) waits at the very front of every multiple list."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "A coastal lighthouse sweeps a beam that flashes on every \\(8\\)th second, at second \\(8\\), then \\(16\\), then \\(24\\), and onward. A keeper sits down to log every flash whose second-number falls anywhere from \\(100\\) through \\(250\\), endpoints included. How many flashes does the keeper write down?",
+        "hints": [
+          "The flashes happen exactly at the multiples of \\(8\\). Count every multiple of \\(8\\) up to \\(250\\), then peel off the ones that fall below \\(100\\).",
+          "To count multiples of \\(8\\) up to a number, see how many whole steps of \\(8\\) fit inside it. For \\(250\\), how many times does \\(8\\) go in?"
+        ],
+        "ans": "19",
+        "accept": [],
+        "sol": "The flashes sit exactly at the multiples of \\(8\\), so this is a counting question about a stretch of the multiples line. Rather than list them all, count up to the top of the window and then subtract everything that falls below the bottom. Up to \\(250\\), the largest multiple of \\(8\\) that fits is \\(248=31\\times 8\\), since \\(32\\times 8=256\\) overshoots. So \\(31\\) multiples of \\(8\\) sit in \\(1\\) through \\(250\\). Below \\(100\\), the largest multiple of \\(8\\) is \\(96=12\\times 8\\), so \\(12\\) multiples of \\(8\\) sit in \\(1\\) through \\(99\\). The flashes actually inside the window are what is left after removing the early ones. $$31-12=\\boxed{19}$$ One caution worth naming, always check whether the endpoints are themselves multiples, since an endpoint that lands on a multiple has to be counted. Here neither \\(100\\) nor \\(250\\) is a multiple of \\(8\\), so no endpoint needs special care. Quick check, the first flash inside the window is \\(104=13\\times 8\\) and the last is \\(248=31\\times 8\\), and the flashes run \\(13\\times 8\\) up through \\(31\\times 8\\), which is \\(31-13+1=19\\) of them. The two counts agree."
+      },
+      {
+        "t": "imp",
+        "x": "To count the multiples of \\(n\\) inside a range, count how many sit from the start of the line up to the top of the range, then subtract how many sit below the bottom, and what survives are the ones inside. The number of multiples of \\(n\\) from \\(1\\) up to a value \\(V\\) is just how many whole \\(n\\)-steps fit, which is \\(V\\) divided by \\(n\\) with any remainder thrown away. That one division does double duty at the edges too, round it down for the largest multiple no greater than a bound, and round up for the smallest multiple at least as big as a bound. Through all of it, keep one eye on whether each endpoint is itself a multiple, since that decides whether it joins the count."
+      },
+      {
+        "t": "p",
+        "x": "So far the multiples of a number have marched outward one at a time, each a single step past the last. Now picture two numbers that both already sit on the multiples-of-\\(n\\) trail. Add them together, or take one away from the other, and where do you land. Does the result stay on the trail, or does it wander off into the gaps between the markers? It is worth pausing to guess before you read on."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A token machine is fussy. It only ever hands out tokens in full packs of \\(9\\), or swallows them back in full packs of \\(9\\), nothing in between. A player starts at \\(0\\) tokens, receives \\(153\\), then receives \\(72\\) more, then returns \\(18\\). First, find the final count. Then argue, without ever dividing the totals, why the final count is forced to be a multiple of \\(9\\), no matter which pack sizes the machine had used.",
+        "hints": [
+          "Every amount the machine moves is a whole number of \\(9\\)s. Write each of \\(153\\), \\(72\\), and \\(18\\) as \\(9\\) times something, then collect the \\(9\\)s.",
+          "If three amounts are \\(9\\times17\\), \\(9\\times8\\), and \\(9\\times2\\), what happens when you pull the \\(9\\) out in front of the whole calculation?"
+        ],
+        "ans": "207",
+        "accept": [
+          "9 times 23",
+          "9\\times23",
+          "9*23"
+        ],
+        "sol": "The straight count is \\(153+72-18=207\\). Now for the part that matters. Every amount the machine touches is a whole number of \\(9\\)s, so write them that way, \\(153=9\\times17\\), \\(72=9\\times8\\), and \\(18=9\\times2\\). The running count is then $$9\\times17+9\\times8-9\\times2=9\\times(17+8-2)=9\\times23=\\boxed{207}.$$ The \\(9\\) was a shared factor of every piece, so it slid out in front of the whole combination and left a whole number, \\(23\\), behind. That is the heart of it. Adding or subtracting whole numbers of \\(9\\)s can only ever build another whole number of \\(9\\)s. In general, if two amounts are \\(9a\\) and \\(9b\\), then \\(9a+9b=9(a+b)\\) and \\(9a-9b=9(a-b)\\), still a whole number of \\(9\\)-steps. Picture it as the machine stacking full rows of \\(9\\). Two such blocks set on top of each other make one taller block, still full rows of \\(9\\) all the way up. Quick check, \\(9\\times23=207\\), and \\(153+72-18=207\\) too."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "A stadium turnstile shows a running count of \\(240\\), which is a multiple of \\(12\\) since \\(240=12\\times20\\). A glitch tacks a stray \\(17\\) onto the count. First, explain why the new reading \\(240+17\\) cannot possibly be a multiple of \\(12\\). Then find the smallest positive number you could add next to bring the count back onto a multiple of \\(12\\).",
+        "hints": [
+          "Suppose \\(240+17\\) were a multiple of \\(12\\). Then \\(17\\) would be the difference of two multiples of \\(12\\). What does the previous problem say such a difference has to be?",
+          "The new count is \\(257\\). Find the next multiple of \\(12\\) above it, then see how far away it sits."
+        ],
+        "ans": "7",
+        "accept": [
+          "add 7"
+        ],
+        "sol": "Suppose, just to test it, that \\(240+17\\) were itself a multiple of \\(12\\). Both \\(240\\) and that supposed total would then be multiples of \\(12\\), so their difference would be a multiple of \\(12\\) as well, by the closure you just found. But that difference is exactly \\(17\\), and \\(17\\) is not a multiple of \\(12\\). The supposition collapses, so \\(240+17=257\\) is not a multiple of \\(12\\). The same reasoning works every time. A multiple plus a non-multiple is always a non-multiple. To repair the count, find the next multiple of \\(12\\) above \\(257\\). Since \\(12\\times21=252\\) and \\(12\\times22=264\\), the count \\(257\\) sits just past \\(252\\), and the next marker is \\(264\\). So you must add $$264-257=\\boxed{7}.$$ Here is the quiet idea underneath. The stray \\(17\\) is \\(5\\) past a multiple of \\(12\\), since \\(17=12+5\\). That \\(5\\) is all that knocked the count off the trail, so the count now sits \\(5\\) past a marker and needs \\(12-5=7\\) more to reach the next one. The remainder of the stray number alone decided the whole gap. Check, \\(257+7=264=12\\times22\\)."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Closure.</b> Add or subtract two multiples of \\(n\\) and you land on a multiple of \\(n\\) again, because the shared \\(n\\) factors out of the whole thing, \\(n\\times a \\pm n\\times b = n\\times(\\text{a whole number})\\). Now turn it around for the sharper half. A multiple of \\(n\\) plus a number that is <b>not</b> a multiple of \\(n\\) can never be a multiple of \\(n\\). If it somehow were, then subtracting the two multiples would force the stray number to be a multiple too, and it simply is not. So once you toss a non-multiple onto a multiple, you are stuck off the trail until you add another number carrying exactly the missing amount back."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "A charity collects donations only in sealed envelopes. Envelope \\(A\\) holds some multiple of \\(8\\) dollars, and envelope \\(B\\) holds some multiple of \\(8\\) dollars, but you are not told either amount. A volunteer announces that the two envelopes together hold exactly \\(250\\) dollars. Show, without knowing either amount, that the announcement cannot be true. Then find the total closest to \\(250\\) that two such envelopes could actually hold.",
+        "hints": [
+          "By closure, what kind of number is \\(A+B\\) forced to be, whatever \\(A\\) and \\(B\\) are?",
+          "Is \\(250\\) a multiple of \\(8\\)? Compare it with \\(8\\times31\\) and \\(8\\times32\\)."
+        ],
+        "ans": "Impossible; the nearest reachable total is 248",
+        "accept": [
+          "248",
+          "impossible, 248"
+        ],
+        "sol": "You do not need either amount. Both envelopes hold multiples of \\(8\\), so by closure their sum \\(A+B\\) is forced to be a multiple of \\(8\\) as well. The whole question becomes a single fact about \\(250\\). Is \\(250\\) a multiple of \\(8\\)? Since \\(8\\times31=248\\) and \\(8\\times32=256\\), the number \\(250\\) lands between two neighbouring multiples of \\(8\\) and is not one of them. So no two such envelopes can ever sum to \\(250\\), and the announcement is impossible. The nearest total they could actually reach is the closer of those two neighbours, $$\\boxed{248},$$ which is just \\(2\\) below \\(250\\) and is reachable, for instance with \\(A=240\\) and \\(B=8\\). Notice what closure did here. It let you prove something about a sum whose two pieces you could not even see."
+      },
+      {
+        "t": "p",
+        "x": "One last piece of structure. Sometimes the multiples of one number sit right on top of the multiples of another, marker for marker. If a number is built from equal jumps of \\(12\\), is it automatically reachable by jumps of \\(3\\)? And does that pull the other way too? It feels like the answer should be yes at least one way around. The next problem settles which way, and it is exactly the rule the divisibility shortcuts of the next section will lean on."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "At a candle workshop, beeswax sheets arrive bundled, and every bundle holds exactly \\(12\\) sheets. Since \\(12=4\\times3\\), a bundle can be laid out as \\(3\\) rows of \\(4\\) sheets, or just as neatly as \\(4\\) rows of \\(3\\) sheets. Suppose a delivery is some whole number of full bundles, so the sheet count is a multiple of \\(12\\). (1) Explain why that sheet count must also be a multiple of \\(3\\). (2) Decide whether it must also be a multiple of \\(4\\). (3) Now run the arrow the other way. If the workshop has a pile whose size is a multiple of \\(3\\), must that pile pack into full bundles of \\(12\\), that is, must it be a multiple of \\(12\\)? Give one pile size that is a multiple of \\(3\\) but not a multiple of \\(12\\). Enter that one counterexample.",
+        "hints": [
+          "For (1) and (2), picture one bundle as \\(3\\) rows of \\(4\\) (or \\(4\\) rows of \\(3\\)). If every single bundle already splits into a whole number of threes, what happens when you have several bundles stacked together?",
+          "For (3), look for a heap that you can split into groups of \\(3\\) with none left over, yet that is too small or too lopsided to fill whole bundles of \\(12\\). Try counting up \\(3, 6, 9, \\ldots\\) and check each against \\(12\\)."
+        ],
+        "ans": "6",
+        "accept": [
+          "6",
+          "3",
+          "9",
+          "15",
+          "18",
+          "21",
+          "27",
+          "30",
+          "33",
+          "39",
+          "42",
+          "51",
+          "57",
+          "three",
+          "six",
+          "nine",
+          "fifteen",
+          "6 sheets",
+          "a pile of 6"
+        ],
+        "sol": "This whole problem is one idea, <b>chaining</b>. A multiple of a multiple is a multiple, so once \\(12\\) is built from \\(3\\) and \\(4\\), anything built from \\(12\\) inherits those smaller pieces. (1) A delivery of full bundles is some whole number of bundles, say \\(n\\) of them, so the sheet count is \\(n\\times12\\). Replace each bundle by its \\(3\\) rows of \\(4\\). Every bundle becomes \\(4+4+4\\), a whole number of threes, so $$n\\times12 = n\\times(4\\times3) = (n\\times4)\\times3,$$ which is \\(3\\) multiplied by a whole number. So the count is a multiple of \\(3\\). The threes that hid inside one bundle are still there when you stack many bundles. (2) Yes, by the same chaining, and now using the other layout. Each bundle is \\(3\\) rows of \\(4\\), so $$n\\times12 = n\\times(3\\times4) = (n\\times3)\\times4,$$ which is \\(4\\) times a whole number. So a multiple of \\(12\\) is always a multiple of \\(4\\) too. (3) No, the arrow does not run backward. Being a multiple of \\(3\\) does not force a pile to be a multiple of \\(12\\). A pile of $$\\boxed{6}$$ sheets splits cleanly into \\(2\\) groups of \\(3\\), so it is a multiple of \\(3\\), yet \\(6\\) is less than one full bundle of \\(12\\), so it is not a multiple of \\(12\\). Quick check, \\(6=3\\times2\\) confirms the multiple of \\(3\\), and \\(6\\) sitting between \\(0\\) and \\(12\\) confirms it is not a multiple of \\(12\\). (The very smallest multiple of \\(3\\) that misses \\(12\\) is actually \\(3\\) itself, so \\(6\\) is just one easy witness, not the smallest.) Chaining only flows one way, from the bigger building block down to the pieces inside it, never back up."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Chaining.</b> If \\(a\\) is a factor of \\(b\\), then every multiple of \\(b\\) is automatically a multiple of \\(a\\). The multiple carries \\(b\\) inside it, and \\(b\\) carries \\(a\\) inside it, so \\(a\\) is in there too. Stepping in \\(b\\)-sized steps is secretly stepping in \\(a\\)-sized steps. A multiple of \\(12\\), for instance, is always a multiple of \\(1, 2, 3, 4, 6\\) as well, every factor of \\(12\\) inherited for free. The chain runs only downward, toward the smaller factors, never upward, since the larger number may demand a factor the smaller one never carried. That is why a multiple of \\(3\\) need not be a multiple of \\(12\\). This one inheritance is exactly what lets the divisibility shortcuts of the next section lean on smaller factors."
+      },
+      {
+        "t": "prob",
+        "xp": 12,
+        "x": "A vault opens to a secret number that is known to satisfy three conditions at once. It is a multiple of \\(6\\), it is a perfect square, and it lies between \\(100\\) and \\(400\\) inclusive. Find every value the secret number could be, and argue that your list leaves nothing out.",
+        "hints": [
+          "If a square \\(k\\times k\\) is a multiple of \\(6\\), the side \\(k\\) itself must supply the factor \\(2\\) and the factor \\(3\\). What does that force \\(k\\) to be a multiple of?",
+          "So the secret number is the square of a multiple of \\(6\\). Which multiples of \\(6\\) have squares between \\(100\\) and \\(400\\)?"
+        ],
+        "ans": "144 and 324",
+        "accept": [
+          "144, 324",
+          "324 and 144"
+        ],
+        "sol": "The two conditions, perfect square and multiple of \\(6\\), squeeze together harder than they first look. Suppose the number is \\(k\\times k\\) and is a multiple of \\(6\\). A multiple of \\(6\\) carries a factor of \\(2\\) and a factor of \\(3\\). But \\(2\\) and \\(3\\) cannot be conjured from nowhere. For the square \\(k\\times k\\) to contain them, the side \\(k\\) must already supply a factor of \\(2\\) and a factor of \\(3\\) on its own, which makes \\(k\\) a multiple of \\(6\\). Then \\(k\\times k\\) is a multiple of \\(6\\times6=36\\). So the hunt collapses to squaring multiples of \\(6\\) and keeping the ones in range. Walking them, \\(6^2=36\\) is below \\(100\\), \\(12^2=144\\) and \\(18^2=324\\) both land between \\(100\\) and \\(400\\), and \\(24^2=576\\) overshoots. Nothing else can appear, since any valid number had to be the square of a multiple of \\(6\\) and those are the only such squares in the window. The secret number is therefore $$\\boxed{144 \\text{ or } 324}.$$ Check, \\(144=12^2\\) and \\(144=6\\times24\\), while \\(324=18^2\\) and \\(324=6\\times54\\), so both are genuine perfect squares and genuine multiples of \\(6\\) inside the range. The pleasing twist is that asking for a square that is also a multiple of \\(6\\) quietly forced a multiple of \\(36\\)."
+      },
+      {
+        "t": "imp",
+        "x": "One relationship carried this whole lesson, read from its two ends. A factor of \\(n\\) is a side of a rectangle of area \\(n\\), and because every side has a partner side, factors arrive in pairs, with the single self-paired side of a perfect square as the lone exception that tips its factor count to odd. Turn the same arrow around and the small number becomes a factor while the large one becomes a multiple. From there flowed the quiet facts, a number has finitely many factors but infinitely many multiples, \\(1\\) divides everything, every number divides itself and is its own smallest positive multiple, and \\(0\\) is a multiple of every number. To count multiples inside a window, count up to the top and subtract the ones below the bottom. By closure, sums and differences of multiples of \\(n\\) stay multiples of \\(n\\), so a stray non-multiple can never be added back to reach one. And by chaining, a multiple of a multiple is a multiple, the inheritance running only toward the smaller factors. That last fact is about to earn its keep, because the divisibility tests waiting in the next section are nothing more than chaining put to work."
+      }
+    ],
+    "review": [
+      {
+        "x": "A baker is laying exactly \\(18\\) muffins into one full rectangular tray, every row the same length, none left over and no gap. List every number of muffins a row could hold, writing each as one side of an \\(18\\)-muffin rectangle, and say how many such row lengths there are.",
+        "ans": "1, 2, 3, 6, 9, 18 (six)",
+        "sol": "A row length works exactly when the muffins split into equal rows with none left over, which is the same as that length dividing \\(18\\). Walking up from \\(1\\), each side I find tosses me its partner across the tray. $$1\\times 18,\\qquad 2\\times 9,\\qquad 3\\times 6$$ Past \\(3\\) the next side would meet a partner I already have, so I can stop. The row lengths are the factors of \\(18\\). $$1,\\ 2,\\ 3,\\ 6,\\ 9,\\ 18$$ That is \\(\\boxed{6}\\) of them. Check the middle pair, \\(3\\times 6 = 18\\), a full tray of three rows of six.",
+        "hints": [
+          "A row length works exactly when it divides \\(18\\) with nothing left over. Hunt the small ones first and let each hand you its partner."
+        ],
+        "accept": [
+          "6",
+          "six",
+          "1,2,3,6,9,18"
+        ]
+      },
+      {
+        "x": "List every factor of \\(30\\) by hunting in pairs, writing down each partner as you go, and report how many factors there are.",
+        "ans": "1, 2, 3, 5, 6, 10, 15, 30 (eight factors)",
+        "sol": "Climb from \\(1\\) and let each small factor summon its partner. $$1\\times 30,\\qquad 2\\times 15,\\qquad 3\\times 10,\\qquad 5\\times 6$$ The number \\(4\\) is skipped since it does not divide \\(30\\). Once I reach \\(6\\), the next try would only revisit a partner I already have, so the hunt is done. Collected and sorted, the factors are $$1,\\ 2,\\ 3,\\ 5,\\ 6,\\ 10,\\ 15,\\ 30,$$ which is \\(\\boxed{8}\\) factors. They come in four clean pairs, no side meeting itself, so the count is even. Check the last pair, \\(5\\times 6 = 30\\).",
+        "hints": [
+          "Test small numbers in order. Whenever one divides \\(30\\), it instantly names a larger partner \\(30\\) divided by it."
+        ],
+        "accept": [
+          "8",
+          "eight",
+          "1,2,3,5,6,10,15,30"
+        ]
+      },
+      {
+        "x": "A snack machine restocks one shelf at a time, and every full shelf holds exactly \\(6\\) cans. At closing the manager records how many cans are left on five different machines, \\(30\\), \\(42\\), \\(50\\), \\(54\\), and \\(64\\). A count belongs to a machine with only complete shelves when it is a <b>multiple of 6</b>. Which of the five counts are multiples of \\(6\\)? For the count \\(50\\), which is not, name the two nearest counts that <b>would</b> fill whole shelves, one just below and one just above, and say how far \\(50\\) sits from each.",
+        "ans": "30, 42, and 54 are multiples of 6; 50 sits between 48 and 54, two above 48 and four below 54",
+        "sol": "A count fits whole shelves exactly when \\(6\\) divides it evenly, so test each one by dividing by \\(6\\).$$30 = 6 \\times 5, \\quad 42 = 6 \\times 7, \\quad 54 = 6 \\times 9.$$Those three land squarely on a multiple of \\(6\\), so they describe machines with only complete shelves. The other two do not. Dividing \\(50\\) by \\(6\\) gives \\(8\\) with \\(2\\) left over, and dividing \\(64\\) by \\(6\\) gives \\(10\\) with \\(4\\) left over, so each leaves a partial shelf. Now place \\(50\\) on the list of multiples of \\(6\\). Counting up, the multiples near it are \\(\\ldots, 42, 48, 54, 60, \\ldots\\), so \\(50\\) sits between \\(48 = 6 \\times 8\\) and \\(54 = 6 \\times 9\\). The distances are \\(50 - 48 = 2\\) above the lower one and \\(54 - 50 = 4\\) below the upper one.$$\\boxed{30,\\ 42,\\ 54 \\text{ are multiples of } 6;\\quad 50 \\text{ lies between } 48 \\text{ and } 54,\\ +2 \\text{ and } -4}$$As a check, the two gaps add to the full shelf, \\(2 + 4 = 6\\), which is exactly the spacing between consecutive multiples of \\(6\\), so \\(50\\) really does fall inside one shelf's gap.",
+        "hints": [
+          "A number is a multiple of 6 exactly when 6 divides it with nothing left over, so try dividing each total by 6 and watch for a remainder.",
+          "For a total that is not a multiple, count 6, 12, 18, 24, ... until you pass it. The last multiple you reached and the next one are the two it sits between."
+        ],
+        "accept": [
+          "30, 42, 54",
+          "30 42 54",
+          "multiples are 30, 42, 54; 50 is between 48 and 54",
+          "30, 42 and 54"
+        ]
+      },
+      {
+        "x": "Decide whether each statement about the number \\(53\\) is true or false, with a one-line reason for each. (a) \\(1\\) is a factor of \\(53\\). (b) \\(53\\) is a multiple of \\(53\\). (c) \\(0\\) is a multiple of \\(53\\). (d) \\(53\\) is a factor of \\(0\\).",
+        "ans": "All four true",
+        "sol": "All four are true. (a) \\(1\\) is a factor of every number, since one long single row of \\(53\\) is a full rectangle, and \\(53 = 1\\times 53\\). (b) Every number is a multiple of itself, the one-step case, since \\(53 = 53\\times 1\\). (c) \\(0\\) is a multiple of every number, since zero steps of size \\(53\\) land you back at \\(0\\), that is \\(0 = 53\\times 0\\). (d) That same equation read the other way says \\(53\\) is a factor of \\(0\\), because \\(0\\) divided into rows of \\(53\\) leaves nothing over. So the verdict is $$\\boxed{\\text{all four true}}.$$ Notice that (c) and (d) are the single fact \\(0 = 53\\times 0\\) seen from its two ends, multiple on one side, factor on the other.",
+        "hints": [
+          "Each one is a quiet universal fact wearing a number. Remember that \\(0 = 53\\times 0\\)."
+        ],
+        "accept": [
+          "all true",
+          "true true true true",
+          "all 4 true"
+        ]
+      },
+      {
+        "x": "Find the smallest and the largest factor of \\(90\\), and give a one-line reason for each.",
+        "ans": "smallest 1, largest 90",
+        "sol": "The smallest factor is \\(1\\), since \\(1\\) divides every number, the single full-length row, and nothing positive is smaller. The largest factor is \\(90\\) itself, since \\(90=90\\times 1\\) is a valid rectangle, and no factor can climb past \\(90\\), because its partner side would then have to be a whole number smaller than \\(1\\), and there is none. Both bookends sit in the same partner pair, \\(1\\times 90 = 90\\). $$\\boxed{\\text{smallest } 1,\\ \\text{largest } 90}$$ Every positive number carries this same pair of bookends, \\(1\\) at the bottom and itself at the top.",
+        "hints": [
+          "One factor sits at the very bottom for every number, and one factor caps the top of every number."
+        ],
+        "accept": [
+          "1 and 90",
+          "1, 90",
+          "smallest 1 largest 90"
+        ]
+      },
+      {
+        "t": "imp",
+        "x": "Two bookends sit on every factor list. <b>1</b> is always the smallest factor, the single full-length row, and the number <b>itself</b> is always the largest, since no side of a rectangle can outrun its own area. So a factor of \\(n\\) is always trapped between \\(1\\) and \\(n\\), which is why a factor hunt can never wander off forever."
+      },
+      {
+        "x": "Of the numbers \\(49\\), \\(50\\), \\(64\\), decide which arrange into a solid square with equal rows and columns. For each that does, give the side that pairs with itself, and say which of the three therefore have an odd number of factors.",
+        "ans": "49 (side 7) and 64 (side 8) have odd factor counts; 50 does not",
+        "sol": "A number forms a solid square exactly when some side times itself gives it, which makes it a perfect square. Here \\(7\\times 7 = 49\\) and \\(8\\times 8 = 64\\), so \\(49\\) and \\(64\\) are perfect squares, each with one side that pairs with itself, side \\(7\\) for \\(49\\) and side \\(8\\) for \\(64\\). No whole number squares to \\(50\\), since \\(7^2 = 49\\) and \\(8^2 = 64\\) skip right over it, so \\(50\\) is not a perfect square. The self-paired side is the lone factor without a separate partner, so it makes the factor count odd. Therefore $$\\boxed{49\\ (\\text{side } 7)\\ \\text{and}\\ 64\\ (\\text{side } 8)}$$ have an odd number of factors, while \\(50\\), whose factors all come in distinct pairs, has an even count. An odd factor count is the fingerprint of a perfect square.",
+        "hints": [
+          "A solid square means one side multiplied by itself hits the number. Ask whether \\(7\\times 7\\) or \\(8\\times 8\\) lands on each."
+        ],
+        "accept": [
+          "49 and 64",
+          "49,64",
+          "49 64"
+        ]
+      },
+      {
+        "x": "Find how many factors \\(45\\) has by listing them in partner pairs, then say whether that count is odd or even and why.",
+        "ans": "6 factors (1, 3, 5, 9, 15, 45), even",
+        "sol": "Hunting upward and pairing, $$1\\times 45,\\qquad 3\\times 15,\\qquad 5\\times 9.$$ The numbers \\(2\\) and \\(4\\) do not divide \\(45\\), and past \\(5\\) the next side would only meet a partner already on the list, so the search ends. The factors are $$1,\\ 3,\\ 5,\\ 9,\\ 15,\\ 45,$$ a count of \\(\\boxed{6}\\). The count is even, because every side here pairs with a different partner. No side meets itself, since \\(45\\) is not a perfect square, so nothing breaks the pairs. Check the middle pair, \\(5\\times 9 = 45\\).",
+        "hints": [
+          "Pair each small factor with \\(45\\) divided by it. Then ask whether any side ever lands on its own partner."
+        ],
+        "accept": [
+          "6",
+          "six",
+          "6 even",
+          "6 factors even"
+        ]
+      },
+      {
+        "x": "A bell rings on every \\(15\\)th minute, at minute \\(15\\), \\(30\\), \\(45\\), and so on. How many times does it ring in the first two hours, that is from minute \\(1\\) up to minute \\(120\\) inclusive?",
+        "ans": "8",
+        "sol": "The rings land on the multiples of \\(15\\), so I count how many of those fit from the start of the line up to minute \\(120\\). That is how many whole \\(15\\)-steps fit in \\(120\\), $$120 \\div 15 = 8.$$ None fall before minute \\(1\\), so nothing is trimmed off the bottom. The bell rings \\(\\boxed{8}\\) times. The endpoint is friendly here, since \\(120 = 15\\times 8\\) is itself a ring, so it counts. Check, the eight rings are \\(15, 30, 45, 60, 75, 90, 105, 120\\).",
+        "hints": [
+          "The rings sit at multiples of \\(15\\). Count how many whole \\(15\\)-steps fit inside \\(120\\)."
+        ],
+        "accept": [
+          "8",
+          "eight"
+        ]
+      },
+      {
+        "x": "A string of fairy lights blinks on every \\(12\\)th bulb, at bulb \\(12\\), \\(24\\), and so on. Among the bulbs numbered \\(50\\) through \\(200\\) inclusive, how many blink?",
+        "ans": "12",
+        "sol": "The blinking bulbs sit at multiples of \\(12\\). I count up to the top of the range, then subtract the ones below the bottom. Up to \\(200\\), the number of whole \\(12\\)-steps is \\(200 \\div 12 = 16\\) with some left over, so \\(16\\) multiples fit, the largest being \\(16\\times 12 = 192\\). Below \\(50\\), that is up to \\(49\\), there are \\(49 \\div 12 = 4\\) of them, the largest being \\(4\\times 12 = 48\\). What remains inside the range is $$16 - 4 = 12.$$ So \\(\\boxed{12}\\) bulbs blink. Check the ends, the first in range is \\(60\\) and the last is \\(192\\), both genuine multiples of \\(12\\).",
+        "hints": [
+          "Count the multiples of \\(12\\) up to \\(200\\), then peel off the ones that fall below \\(50\\)."
+        ],
+        "accept": [
+          "12",
+          "twelve"
+        ]
+      },
+      {
+        "x": "Find the largest multiple of \\(14\\) that is still below \\(300\\).",
+        "ans": "294",
+        "sol": "The largest multiple of \\(14\\) below a cap comes from fitting as many whole \\(14\\)-steps under it as possible, so I divide and round down. $$300 \\div 14 = 21 \\text{ remainder } 6$$ That means \\(21\\) full steps fit, giving $$21 \\times 14 = 294.$$ The next step, \\(22\\times 14 = 308\\), overshoots past \\(300\\), so \\(294\\) is the largest that stays below. The answer is \\(\\boxed{294}\\). Check, \\(294\\) is under \\(300\\) and \\(294 + 14 = 308\\) is over, so nothing sits between them.",
+        "hints": [
+          "Divide \\(300\\) by \\(14\\) and round the answer down. That many \\(14\\)-steps gives the largest multiple under the cap."
+        ],
+        "accept": [
+          "294",
+          "14*21",
+          "21x14"
+        ]
+      },
+      {
+        "x": "Find the smallest multiple of \\(9\\) that is greater than \\(100\\) and whose three digits are all different from one another.",
+        "ans": "108",
+        "sol": "Walk up the multiples of \\(9\\) starting from \\(100\\). Since \\(9\\times11=99\\), the first multiple of \\(9\\) above \\(100\\) is \\(9\\times12=108\\). Its digits are \\(1\\), \\(0\\), and \\(8\\), all different, so it already meets every condition and there is nothing smaller to test. $$\\boxed{108}$$ Check, \\(108\\div9=12\\) exactly, \\(108>100\\), and the digits \\(1,0,8\\) repeat none, so \\(108\\) qualifies and is the smallest such multiple.",
+        "hints": [
+          "Start just above \\(100\\) and step through the multiples of \\(9\\) in order. The very first one you reach already has a special chance of working.",
+          "\\(9\\times11=99\\), so the first multiple of \\(9\\) past \\(100\\) is \\(9\\times12\\). Check its digits."
+        ]
+      },
+      {
+        "x": "Two warehouses each ship goods only in full pallets of \\(16\\) boxes, so each one always sends a multiple of \\(16\\) boxes. A store pools one delivery from each warehouse, but nobody tells the store how big either delivery was. Must the pooled pile always split evenly into full pallets of \\(16\\), no matter the two sizes?",
+        "ans": "Yes, always a multiple of 16",
+        "sol": "Each delivery is a whole number of pallets, so the first is \\(16a\\) boxes and the second is \\(16b\\) boxes for some whole numbers \\(a\\) and \\(b\\). Pooled together the store has $$16a+16b=16(a+b),$$ and \\(a+b\\) is again a whole number, so the pool is \\(16\\) times a whole number. That is exactly a whole number of full pallets, with nothing left over. The answer is \\(\\boxed{\\text{yes}}\\), the pool always splits evenly into pallets of \\(16\\). This is closure at work. The shared \\(16\\) factors straight out of the sum, so two multiples of \\(16\\) can only ever add up to another multiple of \\(16\\), whatever the hidden sizes were.",
+        "hints": [
+          "Call the two deliveries \\(16a\\) and \\(16b\\) for whole numbers \\(a\\) and \\(b\\), then add them and look for a shared factor."
+        ],
+        "accept": [
+          "Yes",
+          "yes, always",
+          "always a multiple of 16"
+        ]
+      },
+      {
+        "x": "A counter sits at \\(200\\), which is a multiple of \\(25\\). Then \\(38\\) is added by mistake. First explain in one line why the new count cannot be a multiple of \\(25\\). Then find the smallest positive number you can add next to bring the counter back onto a multiple of \\(25\\).",
+        "ans": "12",
+        "sol": "The count is now \\(200+38=238\\). If \\(238\\) were a multiple of \\(25\\), then subtracting the two multiples \\(238\\) and \\(200\\) would leave \\(38\\) as a difference of two multiples of \\(25\\), hence a multiple of \\(25\\) by closure. But \\(38\\) is not a multiple of \\(25\\), so \\(238\\) cannot be one either. Now find the next multiple of \\(25\\) above \\(238\\). The multiples nearby are \\(225\\) and \\(250\\), and \\(238\\) sits \\(13\\) past \\(225\\) and \\(12\\) short of \\(250\\). So the smallest positive number to add is $$250-238=\\boxed{12}.$$ Check, \\(238+12=250=25\\times10\\), back on the trail, and no smaller positive jump reaches a multiple of \\(25\\).",
+        "hints": [
+          "A multiple of \\(25\\) plus a non-multiple of \\(25\\) is never a multiple of \\(25\\). Why would \\(38\\) being a multiple lead to a contradiction?",
+          "The count is now \\(238\\). Which multiples of \\(25\\) sit just below and just above it?"
+        ]
+      },
+      {
+        "x": "The number of beads on a necklace is known to be a multiple of \\(18\\), though nobody says which multiple. For each of \\(2\\), \\(3\\), \\(6\\), \\(9\\), and \\(4\\), decide whether the bead count <b>must</b> also be a multiple of that number. Give a one-line reason for each, and a counterexample wherever the answer is no.",
+        "ans": "Must be a multiple of 2, 3, 6, 9; not necessarily 4",
+        "sol": "Write the count as \\(18k\\) for some whole number \\(k\\). The factors of \\(18\\) are \\(1,2,3,6,9,18\\), and by chaining a multiple of \\(18\\) carries each of them for free, since \\(18\\) already holds them inside it. Said plainly, whenever a whole number \\(m\\) divides \\(18\\) and \\(18\\) divides the bead count, then \\(m\\) divides the bead count too. So the count <b>must</b> be a multiple of \\(2\\), of \\(3\\), of \\(6\\), and of \\(9\\). For example \\(18=2\\times9=3\\times6\\), and these patterns ride along in every \\(18k\\). But \\(4\\) is not a factor of \\(18\\), so a multiple of \\(18\\) need not be a multiple of \\(4\\). The count \\(18\\) itself is a clean counterexample, since \\(18=4\\times4+2\\) leaves a remainder. So the answer is, must for \\(\\boxed{2, 3, 6, 9}\\), not necessarily for \\(4\\). The chain runs only downward, toward the factors \\(18\\) already owns, never up to a new demand like the second factor of \\(2\\) that \\(4\\) wants.",
+        "hints": [
+          "By chaining, a multiple of \\(18\\) automatically carries every factor of \\(18\\). Which of these five numbers are factors of \\(18\\)?"
+        ],
+        "accept": [
+          "2, 3, 6, 9 yes; 4 no",
+          "2,3,6,9; not 4"
+        ]
+      },
+      {
+        "x": "A poster claims that every multiple of \\(10\\) is also a multiple of \\(4\\). Find the smallest multiple of \\(10\\) that disproves the claim, and explain in one line why the arrow fails. Then state which numbers a multiple of \\(10\\) <b>is</b> always guaranteed to be a multiple of.",
+        "ans": "10",
+        "sol": "Check the multiples of \\(10\\) one at a time against \\(4\\). The first multiple, \\(10\\) itself, gives \\(10=4\\times2+2\\), a remainder of \\(2\\), so \\(10\\) is a multiple of \\(10\\) but not of \\(4\\). That is already the smallest counterexample. $$\\boxed{10}$$ The arrow fails because \\(4=2\\times2\\) demands two factors of \\(2\\), while \\(10=2\\times5\\) carries only one, so the second \\(2\\) is simply not there to inherit. What a multiple of \\(10\\) <b>is</b> always guaranteed to be is a multiple of every factor of \\(10\\), namely \\(1, 2, 5,\\) and \\(10\\), by chaining. Check, \\(20\\) happens to be a multiple of \\(4\\), but one lucky case does not rescue a claim that \\(10\\) already breaks.",
+        "hints": [
+          "Test the multiples of \\(10\\) in order against \\(4\\). The very first one already settles it.",
+          "Chaining only guarantees the factors of \\(10\\). What second factor does \\(4\\) demand that \\(10\\) does not carry?"
+        ],
+        "accept": [
+          "10 (the smallest counterexample)"
+        ]
+      },
+      {
+        "x": "A jar holds a multiple of \\(11\\) marbles. Someone takes away an unknown handful, and afterward the jar holds \\(209\\) marbles. You are also told the jar started with exactly \\(308\\) marbles. Show that the handful removed must have been a multiple of \\(11\\), and find how many marbles it was.",
+        "ans": "99",
+        "sol": "The handful removed is the start minus the finish, \\(308-209\\). The start \\(308=11\\times28\\) is a multiple of \\(11\\), and the finish \\(209=11\\times19\\) is a multiple of \\(11\\) as well, so the handful is a difference of two multiples of \\(11\\). By closure that difference is itself a multiple of \\(11\\), which settles the must without ever counting the handful directly. Now compute it, $$308-209=\\boxed{99},$$ and indeed \\(99=11\\times9\\). Check, \\(209+99=308\\), the start is restored, and the shared factor of \\(11\\) sat inside the gap the whole time.",
+        "hints": [
+          "Both \\(308\\) and \\(209\\) are multiples of \\(11\\). The handful is their difference."
+        ],
+        "accept": [
+          "99 marbles",
+          "99 (= 11 x 9)"
+        ]
+      },
+      {
+        "x": "How many whole numbers from \\(1\\) to \\(300\\) are multiples of \\(12\\) but <b>not</b> multiples of \\(5\\)?",
+        "ans": "20",
+        "sol": "Start with the whole trail. The multiples of \\(12\\) up to \\(300\\) are \\(12\\times1\\) through \\(12\\times25\\), since \\(12\\times25=300\\) lands exactly on the top, so there are \\(25\\) of them. Now remove the ones that are also multiples of \\(5\\). A number divisible by \\(12\\) and by \\(5\\) must step in both \\(12\\)s and \\(5\\)s at once, so it is a multiple of \\(60\\). The multiples of \\(60\\) up to \\(300\\) are \\(60, 120, 180, 240, 300\\), five of them. Subtract the sub-trail from the trail, $$25-5=\\boxed{20}.$$ Check, the smallest qualifier is \\(12\\) itself, not a multiple of \\(5\\), and the count \\(20\\) is exactly the \\(25\\) multiples of \\(12\\) with those \\(5\\) shared ones lifted out.",
+        "hints": [
+          "First count all multiples of \\(12\\) up to \\(300\\). Then count how many of those are also multiples of \\(5\\), and subtract.",
+          "A number that is a multiple of both \\(12\\) and \\(5\\) must be a multiple of \\(60\\)."
+        ]
+      },
+      {
+        "x": "A stage crew builds square panels out of small light tiles, one tile per unit, so a panel with \\(s\\) tiles along each edge uses \\(s\\times s=s^2\\) tiles in all. The lighting desk only accepts a panel if its tile count is a whole multiple of \\(10\\), since the tiles ship in strips of ten. The crew wants every panel design that is both a perfect square and a multiple of \\(10\\), using fewer than \\(1000\\) tiles. List every tile count that works.",
+        "ans": "100, 400, 900",
+        "sol": "Two demands sit on the count at once. It must be a perfect square \\(s^2\\), and it must be a multiple of \\(10\\), which means it carries both a factor of \\(2\\) and a factor of \\(5\\). Start with the factor of \\(5\\). A prime like \\(5\\) cannot appear in \\(s^2=s\\times s\\) unless it already lives in \\(s\\), since the only places a factor can come from are the two copies of \\(s\\). So \\(s\\) is a multiple of \\(5\\). The same reasoning handles the factor of \\(2\\), so \\(s\\) is a multiple of \\(2\\) as well. A side that is a multiple of both \\(2\\) and \\(5\\) is a multiple of \\(10\\), so write \\(s=10k\\). Then $$s^2=(10k)^2=100k^2,$$ so the tile count must be a multiple of \\(100\\). That is the real force behind the two conditions. Routing a square through a factor of \\(10\\) drags in a full factor of \\(100\\). Now list the squares of multiples of \\(10\\) that stay under \\(1000\\). Taking \\(s=10,20,30\\) gives $$10^2=100,\\quad 20^2=400,\\quad 30^2=900,$$ and the next one, \\(40^2=1600\\), has already passed \\(1000\\), so nothing beyond \\(30\\) can fit. The list is complete because every qualifying count had to be one of these multiples of \\(100\\), and these are the only ones below \\(1000\\). $$\\boxed{100,\\ 400,\\ 900}$$ Quick check, each is a clean square (\\(10^2,20^2,30^2\\)) and each ends in a \\(0\\), so each is a multiple of \\(10\\), exactly the two things asked.",
+        "hints": [
+          "A multiple of \\(10\\) carries a factor of \\(2\\) and a factor of \\(5\\). For the square \\(s^2\\) to carry a factor of \\(5\\), think about whether the side \\(s\\) itself must carry that \\(5\\), and do the same for the \\(2\\).",
+          "Once you have shown \\(s\\) must be a multiple of \\(10\\), the count \\(s^2\\) is a multiple of \\(100\\). Just walk \\(s=10,20,30,\\dots\\) and stop before the count reaches \\(1000\\)."
+        ],
+        "accept": [
+          "100,400,900",
+          "100 400 900",
+          "100;400;900",
+          "900, 400, 100",
+          "100, 400, and 900",
+          "400, 100, 900"
+        ]
+      },
+      {
+        "t": "fact",
+        "x": "Here is something lovely hiding inside a number's own factors. Take \\(6\\) and list every factor of it that is smaller than \\(6\\) itself, which gives \\(1\\), \\(2\\), and \\(3\\). Add them and you land right back where you started, since \\(1+2+3=6\\). A number that rebuilds itself this way out of its own smaller factors is called a <b>perfect number</b>. The next one is \\(28\\), whose smaller factors are \\(1\\), \\(2\\), \\(4\\), \\(7\\), and \\(14\\), and sure enough \\(1+2+4+7+14=28\\). They are rare and they grow far apart fast, the one after \\(28\\) is already \\(496\\). Every perfect number anyone has ever found is even, and here is the part that still keeps mathematicians up at night. Nobody knows whether an odd perfect number exists. People have searched past numbers with hundreds of digits and found none, yet no one has managed to prove one can never turn up. So the next time you factor a number, remember you might be poking at one of the oldest unanswered questions in all of mathematics."
+      }
+    ],
+    "next": "3.2"
+  }
+}

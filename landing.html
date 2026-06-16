@@ -1177,7 +1177,7 @@
   var TOC=[
     {n:1, t:"The Rules of Arithmetic", s:[["1.1","Why Begin with Arithmetic?"],["1.2","Addition, Subtraction, and Negation"],["1.3","Multiplication"],["1.4","Checkpoint Problems"],["1.5","Division"],["1.6","Summary"]]},
     {n:2, t:"Exponents", s:[["2.1","Squares and Cubes"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"],["2.6","Chapter 2 Summary"]]},
-    {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers"],["3.4","Prime Factorization"],["3.5","Greatest Common Divisor"],["3.6","Least Common Multiple"],["3.7","Counting a Number's Divisors"]]},
+    {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers"],["3.4","Prime Factorization"],["3.5","GCD and LCM"],["3.6","Counting a Number's Divisors"]]},
     {n:4, t:"Working with Fractions", s:[["4.1","What a Fraction Means"],["4.2","Equivalent Fractions"],["4.3","Multiplying Fractions"],["4.4","Dividing Fractions"],["4.5","Common Denominators"],["4.6","Adding and Subtracting Fractions"],["4.7","Mixed Numbers"],["4.8","Comparing Fractions"]]},
     {n:5, t:"Decimals", s:[["5.1","Place Value and Decimals"],["5.2","Decimal Arithmetic"],["5.3","Switching Between Fractions and Decimals"],["5.4","Rounding and Estimation"],["5.5","Repeating Decimals"]]},
     {n:6, t:"Expressions and Equations", s:[["6.1","Building Expressions"],["6.2","Solving Linear Equations"],["6.3","Variables on Both Sides"],["6.4","Turning Words into Equations"],["6.5","Inequalities"]]},
@@ -1244,18 +1244,15 @@
       {t:'imp', x:'<b>Fundamental Theorem of Arithmetic:</b> every whole number above 1 factors into primes in exactly one way (apart from order). It is a number’s unique fingerprint.'},
       {t:'prob', x:'Factor <b>84</b> into primes.', sol:'84 = 4 × 21 = <b>2² · 3 · 7</b>.'}
     ]},
-    '3.5':{title:'Greatest Common Divisor', blocks:[
-      {t:'p', x:'The greatest common divisor is the largest factor two numbers share, and the key to reducing fractions.'},
+    '3.5':{title:'GCD and LCM', blocks:[
+      {t:'p', x:'The greatest common divisor and the least common multiple are two sides of one coin, where one looks at the factors two numbers share and the other at the multiples they share.'},
       {t:'prob', x:'Find <b>gcd(36, 48)</b>.', sol:'36 = 2²·3² and 48 = 2⁴·3. Take each shared prime to its <b>lower</b> power: 2² · 3 = <b>12</b>.'},
-      {t:'imp', x:'The <b>gcd</b> is the product of the primes the numbers share, each to the lowest power present in both. If the gcd is 1, the numbers are called relatively prime.'}
-    ]},
-    '3.6':{title:'Least Common Multiple', blocks:[
-      {t:'p', x:'The least common multiple is the smallest number both numbers divide into, exactly what you need to add fractions.'},
+      {t:'imp', x:'The <b>gcd</b> is the product of the primes the numbers share, each to the lowest power present in both. If the gcd is 1, the numbers are called relatively prime.'},
       {t:'prob', x:'Find <b>lcm(4, 6)</b>.', sol:'Multiples of 6 are 6, 12, … and 12 is the first that 4 also divides, so lcm = <b>12</b>. (In primes: 2² · 3.)'},
       {t:'imp', x:'The <b>lcm</b> takes each prime to its <b>highest</b> power. A handy shortcut: gcd(a,b) × lcm(a,b) = a × b.'},
       {t:'prob', x:'Use gcd · lcm = a · b to find <b>lcm(36, 48)</b>.', sol:'gcd is 12, and 36 × 48 = 1728, so lcm = 1728 ÷ 12 = <b>144</b>.'}
     ]},
-    '3.7':{title:"Counting a Number's Divisors", blocks:[
+    '3.6':{title:"Counting a Number's Divisors", blocks:[
       {t:'p', x:'You can count how many divisors a number has without ever listing them.'},
       {t:'prob', x:'How many positive divisors does <b>72</b> have?', sol:'72 = 2³ · 3². A divisor chooses a power of 2 (0–3, four options) and a power of 3 (0–2, three options): 4 × 3 = <b>12</b>.'},
       {t:'imp', x:'If n = pᵃ · qᵇ · …, the number of positive divisors is <b>(a+1)(b+1)…</b>: one independent choice of exponent per prime.'},
@@ -1560,7 +1557,8 @@
   (function(){
     var chaptersToLoad=[
       {chapter:'prealgebra', num:1},
-      {chapter:'prealgebra', num:2}
+      {chapter:'prealgebra', num:2},
+      {chapter:'prealgebra', num:3}
     ];
     var loadedCount=0;
     var failedCount=0;
