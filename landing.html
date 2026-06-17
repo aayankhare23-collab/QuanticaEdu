@@ -389,6 +389,115 @@
   @keyframes lpulse{0%,100%{opacity:.45}50%{opacity:1}}
   .lprog .cnt{font-family:'Inter';font-size:12.5px;font-weight:700;color:var(--slate);white-space:nowrap;font-variant-numeric:tabular-nums}
 
+  /* ===== Lesson workspace (3-pane: tutor / problem / notebook) ===== */
+  .coursescroll.ws-mode{overflow:hidden}
+  .ws-mode .coursewrap{max-width:none;margin:0;padding:0}
+  .ws-mode .pagehead{display:none}
+  .ws-mode #lessonView>.backlink{display:none}
+  .workspace{--cbh:60px;height:calc(100vh - var(--cbh));display:grid;grid-template-columns:300px minmax(540px,1fr) 340px;gap:18px;padding:18px 22px;box-sizing:border-box}
+  @media(max-width:1240px){.workspace{grid-template-columns:280px minmax(0,1fr) 320px;gap:16px;padding:16px}}
+  .ws-pane{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);border-radius:var(--radius);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .ws-center{background:var(--glass-strong);box-shadow:var(--shadow)}
+  .ws-pane .ws-body{flex:1;overflow-y:auto;min-height:0;overscroll-behavior:contain}
+  .ws-center .ws-body{padding:24px 30px 16px}
+  .ws-center .ws-body>.ws-page{max-width:660px;margin:0 auto;width:100%}
+
+  /* center head / steps */
+  .ws-head{flex:none;padding:14px 22px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .ws-head .ws-eyebrow{font:700 10.5px/1 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--mid)}
+  .ws-head .ws-title{font-family:'Fraunces';font-weight:600;font-size:18px;color:var(--navy);line-height:1.15;flex:1;min-width:0}
+  .ws-steps{display:flex;align-items:center;gap:10px}
+  .ws-segs{display:flex;gap:4px}
+  .ws-seg{width:18px;height:6px;border-radius:99px;background:rgba(120,155,210,.28);transition:background .35s,box-shadow .35s,width .35s}
+  .ws-seg.done{background:linear-gradient(90deg,var(--mid),var(--sky))}
+  .ws-seg.cur{width:26px;background:linear-gradient(90deg,var(--mid),var(--sky));box-shadow:0 0 10px -2px var(--sky)}
+  .ws-stepn{font:700 11.5px/1 'Inter';color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  /* a page in the center */
+  .ws-page{animation:none}
+  .ws-page.ws-anim{animation:wsIn .28s cubic-bezier(.22,1,.36,1) both}
+  @keyframes wsIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  .ws-page .page-lead{margin-bottom:4px}
+  .ws-page .page-lead p{font-size:16px;line-height:1.75;color:var(--slate);margin:0 0 15px}
+  .ws-page .page-lead p:last-child{margin-bottom:18px}
+  .ws-page .probbox{margin:0}
+  .ws-page .probbox .ptext{font-size:16px;line-height:1.7}
+
+  /* center dock (back / help / next) */
+  .ws-dock{flex:none;padding:13px 22px;border-top:1px solid var(--glass-line);background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);display:flex;align-items:center;gap:14px}
+  .ws-back{font:600 13.5px/1 'Inter';color:var(--slate);background:rgba(255,255,255,.5);border:1px solid var(--glass-line);border-radius:999px;padding:10px 18px;cursor:pointer;transition:all .15s}
+  .ws-back:hover:not(:disabled){border-color:var(--sky);color:var(--mid)}
+  .ws-back:disabled{opacity:.35;cursor:default}
+  .ws-help{flex:1;text-align:center;font:500 12.5px/1.4 'Inter';color:var(--mute)}
+  .ws-help a{color:var(--mid);font-weight:600;cursor:pointer;text-decoration:underline}
+  .ws-next{font:700 14px/1 'Inter';color:#fff;border:none;border-radius:999px;padding:11px 24px;cursor:pointer;background:linear-gradient(135deg,var(--mid),var(--sky));box-shadow:0 12px 26px -12px rgba(58,123,213,.6);display:inline-flex;align-items:center;gap:7px;transition:filter .15s}
+  .ws-next:hover:not(:disabled){filter:brightness(1.07)}
+  .ws-next:disabled{background:linear-gradient(135deg,#b9c6dd,#cfd9ea);box-shadow:none;cursor:not-allowed}
+  .ws-next.is-finish{background:linear-gradient(135deg,var(--gold-deep2),var(--gold))}
+  .ws-next.ready{animation:wsNextGlow 1.7s ease-in-out infinite}
+  @keyframes wsNextGlow{0%,100%{box-shadow:0 12px 26px -12px rgba(58,123,213,.6)}50%{box-shadow:0 12px 30px -8px rgba(74,159,224,.85)}}
+
+  /* notebook (right) */
+  .ws-notebook .ws-nbhead{flex:none;padding:15px 18px 12px;border-bottom:1px solid var(--glass-line)}
+  .ws-nbhead .t{font-family:'Fraunces';font-weight:600;font-size:16px;color:var(--navy);display:flex;align-items:center;gap:7px}
+  .ws-nbhead .c{margin-top:3px;font:600 12px/1 'Inter';color:var(--mid);transition:transform .16s}
+  .ws-nbhead .c.bump{animation:nbBump .28s ease}
+  @keyframes nbBump{40%{transform:scale(1.16)}}
+  .ws-notebook .ws-body{padding:16px 16px 18px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(180deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
+  .nb-empty{margin-top:30px;text-align:center;color:var(--mute);font-size:13px;line-height:1.6;padding:0 14px}
+  .nb-empty .ico{font-size:26px;display:block;margin-bottom:8px;opacity:.7}
+  .nb-idea{position:relative;background:linear-gradient(135deg,var(--softer),rgba(255,255,255,.55));border:1px solid var(--glass-line);border-radius:14px;padding:13px 15px;margin:0 0 12px;box-shadow:0 8px 20px -16px rgba(18,42,86,.4);transition:box-shadow .3s,border-color .3s,background .3s}
+  .nb-idea.nb-arrive{animation:nbIn .42s cubic-bezier(.22,1,.36,1) both}
+  @keyframes nbIn{from{opacity:0;transform:translateX(16px) scale(.97)}to{opacity:1;transform:none}}
+  .nb-idea .nb-num{font:700 10.5px/1 'Inter';letter-spacing:.11em;text-transform:uppercase;color:var(--mid)}
+  .nb-idea .nb-text{font-size:13.5px;line-height:1.55;color:var(--navy);font-weight:500;margin-top:6px}
+  .nb-idea .nb-text b{color:var(--blue)}
+  .nb-idea.nb-new{border-color:var(--gold2);background:rgba(255,251,239,.82);box-shadow:0 0 0 2px rgba(255,193,7,.20),0 14px 30px -18px rgba(199,145,0,.5);animation:nbIn .42s cubic-bezier(.22,1,.36,1) both,flowpulse 1.9s ease-in-out infinite .42s}
+  .nb-ribbon{position:absolute;top:-9px;left:14px;font:700 9.5px/1 'Inter';letter-spacing:.04em;color:#fff;background:linear-gradient(135deg,var(--gold-deep2),var(--gold));padding:5px 9px;border-radius:999px;box-shadow:0 4px 12px -4px rgba(199,145,0,.7)}
+  .nb-got{margin-top:11px;font:700 11.5px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--gold-deep2),var(--gold));border:none;border-radius:999px;padding:7px 14px;cursor:pointer;box-shadow:0 8px 18px -8px rgba(199,145,0,.7)}
+  .nb-got:hover{filter:brightness(1.06)}
+
+  /* left tutor placeholder */
+  .ws-tutor .ws-tuthead{flex:none;padding:15px 16px 12px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:9px}
+  .ws-tuthead .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--sky));color:#fff;font:700 14px 'Fraunces';display:grid;place-items:center;flex:none}
+  .ws-tuthead .nm{font-family:'Fraunces';font-weight:600;font-size:14.5px;color:var(--navy);flex:1}
+  .ws-tuthead .soon{font:700 9px/1 'Inter';letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:rgba(16,179,163,.13);border-radius:999px;padding:5px 8px}
+  .ws-tutor .ws-body{display:flex;flex-direction:column;gap:10px;padding:16px;opacity:.66;pointer-events:none}
+  .tut-bub{max-width:88%;font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px}
+  .tut-bub.bot{align-self:flex-start;background:var(--glass-strong);border:1px solid var(--glass-line);color:var(--navy);border-bottom-left-radius:5px}
+  .tut-bub.usr{align-self:flex-end;background:transparent;border:1px dashed var(--glass-line);color:var(--mute);border-bottom-right-radius:5px}
+  .ws-tutor .tut-compose{flex:none;padding:12px;border-top:1px solid var(--glass-line);display:flex;gap:8px;opacity:.75}
+  .tut-compose input{flex:1;border:1px solid var(--glass-line);border-radius:999px;background:rgba(255,255,255,.45);color:var(--mute);font-family:'Inter';font-size:13px;padding:9px 13px}
+  .tut-compose input:disabled{cursor:not-allowed}
+  .tut-compose .snd{width:38px;height:38px;flex:none;border:none;border-radius:50%;background:#cdd8ea;color:#fff;cursor:not-allowed;display:grid;place-items:center}
+
+  /* responsive: tablet drops tutor to a drawer, phone stacks with tabs */
+  .ws-drawerbtn,.ws-tabs{display:none}
+  .ws-scrim{display:none;position:fixed;inset:60px 0 0;background:rgba(18,38,86,.30);z-index:39}
+  .ws-scrim.on{display:block}
+  @media(max-width:1079px){
+    .workspace{grid-template-columns:minmax(0,1fr) 320px;gap:14px}
+    .ws-tutor{position:fixed;left:0;top:60px;bottom:0;width:320px;z-index:40;transform:translateX(-102%);transition:transform .32s cubic-bezier(.22,1,.36,1)}
+    .ws-tutor.open{transform:none;box-shadow:var(--shadow)}
+    .ws-drawerbtn{display:inline-flex;align-items:center;gap:6px;font:600 12.5px/1 'Inter';color:var(--mid);background:var(--glass);border:1px solid var(--glass-line);border-radius:999px;padding:7px 13px;cursor:pointer}
+  }
+  @media(max-width:759px){
+    .workspace{--cbh:54px;display:block;height:auto;padding:0}
+    .ws-tabs{display:flex;gap:8px;padding:7px 12px;height:44px;box-sizing:border-box;background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-bottom:1px solid var(--glass-line);position:sticky;top:0;z-index:30}
+    .ws-tab{flex:1;font:700 12.5px/1 'Inter';color:var(--mid);background:rgba(255,255,255,.5);border:1px solid var(--glass-line);border-radius:999px;padding:8px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+    .ws-tab .b{background:var(--mid);color:#fff;border-radius:999px;font-size:10.5px;padding:1px 7px}
+    .ws-tab.glow{animation:wsNextGlow 1.2s ease-in-out 2}
+    .ws-center{border-radius:0;border-left:none;border-right:none;min-height:calc(100vh - 54px - 44px)}
+    .ws-center .ws-body{padding:18px 16px 14px}
+    .ws-tutor,.ws-notebook{position:fixed;top:54px;bottom:0;width:min(92vw,360px);z-index:40;border-radius:0;transition:transform .32s cubic-bezier(.22,1,.36,1)}
+    .ws-tutor{left:0;transform:translateX(-110%)} .ws-notebook{right:0;transform:translateX(110%)}
+    .ws-tutor.open,.ws-notebook.open{transform:none;box-shadow:var(--shadow)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .ws-page.ws-anim,.nb-idea.nb-arrive,.nb-idea.nb-new{animation:none}
+    .ws-next.ready{animation:none}
+  }
+
   /* PRACTICE (purple) / CHALLENGE (gold) set theming */
   #psetView[data-ptype=practice]{--pc:var(--green);--pc2:var(--green)}
   #psetView[data-ptype=challenge]{--pc:var(--gold);--pc2:var(--gold2)}
@@ -1271,7 +1380,7 @@
   var TOC=[
     {n:1, t:"The Rules of Arithmetic", s:[["1.1","Why Begin with Arithmetic?"],["1.2","Addition, Subtraction, and Negation"],["1.3","Multiplication"],["1.4","Checkpoint Problems"],["1.5","Division"],["1.6","Summary"]]},
     {n:2, t:"Exponents", s:[["2.1","Squares and Cubes"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"],["2.6","Chapter 2 Summary"]]},
-    {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers and Factorization"],["3.5","GCD and LCM"],["3.6","Counting a Number's Divisors"]]},
+    {n:3, t:"Primes and Divisibility", s:[["3.1","Factors and Multiples"],["3.2","Tests for Divisibility"],["3.3","Prime Numbers and Factorization"],["3.5","GCD and LCM"],["3.6","Counting a Number's Divisors"],["3.7","Chapter 3 Summary"]]},
     {n:4, t:"Working with Fractions", s:[["4.1","What a Fraction Means"],["4.2","Equivalent Fractions"],["4.3","Multiplying Fractions"],["4.4","Dividing Fractions"],["4.5","Common Denominators"],["4.6","Adding and Subtracting Fractions"],["4.7","Mixed Numbers"],["4.8","Comparing Fractions"]]},
     {n:5, t:"Decimals", s:[["5.1","Place Value and Decimals"],["5.2","Decimal Arithmetic"],["5.3","Switching Between Fractions and Decimals"],["5.4","Rounding and Estimation"],["5.5","Repeating Decimals"]]},
     {n:6, t:"Expressions and Equations", s:[["6.1","Building Expressions"],["6.2","Solving Linear Equations"],["6.3","Variables on Both Sides"],["6.4","Turning Words into Equations"],["6.5","Inequalities"]]},
@@ -1355,6 +1464,9 @@
       {t:'prob', x:'How many positive divisors does <b>72</b> have?', sol:'72 = 2³ · 3². A divisor chooses a power of 2 (0–3, four options) and a power of 3 (0–2, three options): 4 × 3 = <b>12</b>.'},
       {t:'imp', x:'If n = pᵃ · qᵇ · …, the number of positive divisors is <b>(a+1)(b+1)…</b>: one independent choice of exponent per prime.'},
       {t:'prob', x:'How many divisors does <b>100</b> have?', sol:'100 = 2² · 5², so (2+1)(2+1) = <b>9</b>.'}
+    ]},
+    '3.7':{title:'Chapter 3 Summary', blocks:[
+      {t:'p', x:'This section gathers every key idea from Chapter 3 in one place.'}
     ]},
 
     // ---- Chapter 4: Working with Fractions ----
@@ -1772,19 +1884,31 @@
        sol:"<p>Group the terms in pairs and factor each pair. The first two share a 36 and the last two share a 64, so \\(36 \\times 37 + 36 \\times 63 = 36 \\times (37 + 63) = 36 \\times 100\\) and \\(64 \\times 37 + 64 \\times 63 = 64 \\times (37 + 63) = 64 \\times 100\\). Now both pieces share a 100: \\(36 \\times 100 + 64 \\times 100 = (36 + 64) \\times 100 = 100 \\times 100 = \\boxed{10000}\\).</p>"}
     ]},
     3:{practice:[
-      {q:"Which of these numbers is prime?", o:[["51",0],["57",0],["61",1],["63",0]],
-       h:"💡 Hint: \\(51 = 3 \\times 17\\) and \\(57 = 3 \\times 19\\) and \\(63 = 9 \\times 7\\). Try dividing 61 by small primes: does any of them work?",
-       s:"Right. 51, 57, and 63 all split apart, but 61 has no divisor besides 1 and itself: it's prime."},
-      {q:"What is \\(\\gcd(36, 48)\\)?", o:[["12",1],["6",0],["24",0],["4",0]],
-       h:"💡 Hint: Write each as a product of primes: \\(36 = 2^2 \\times 3^2\\) and \\(48 = 2^4 \\times 3\\). The gcd takes the smaller power of each shared prime.",
-       s:"Exactly. \\(36 = 2^2 \\cdot 3^2\\) and \\(48 = 2^4 \\cdot 3\\), so \\(\\gcd = 2^2 \\cdot 3 = 12\\), the largest piece they truly share."}
+      {"x": "What is the largest prime factor of \\(5{,}148\\)?", "ans": "13", "accept": ["13"], "hints": ["Peel off small primes one at a time, starting with \\(2\\) and \\(3\\), using the divisibility tests.", "\\(5{,}148 = 4 \\times 1287 = 2^2 \\times 1287\\), and \\(1287\\) has digit sum \\(18\\), so \\(3\\) divides it. Keep going."], "sol": "<p>Strip primes off in turn. It is even, \\(5{,}148 = 2^2 \\times 1287\\), and \\(1287\\) has digit sum \\(18\\) so \\(1287 = 3 \\times 429 = 3^2 \\times 143\\). Finally \\(143 = 11 \\times 13\\). So \\(5{,}148 = 2^2 \\times 3^2 \\times 11 \\times 13\\), and the largest prime factor is \\(\\boxed{13}\\).</p>"},
+      {"x": "What is the remainder when \\(5{,}123{,}847\\) is divided by \\(9\\)?", "ans": "3", "accept": ["3"], "hints": ["A number leaves the same remainder under \\(9\\) as its digit sum does.", "Add the digits, and if the total has more than one digit, add again."], "sol": "<p>A number and its digit sum share the same remainder under \\(9\\). Here \\(5+1+2+3+8+4+7 = 30\\), and \\(3+0 = 3\\). So the remainder is \\(\\boxed{3}\\), with no long division needed.</p>"},
+      {"x": "How many of these five numbers are divisible by \\(6\\)? $$1356,\\quad 2470,\\quad 3915,\\quad 6300,\\quad 8642$$", "ans": "2", "accept": ["2", "two"], "hints": ["A number is divisible by \\(6\\) exactly when it is even and its digit sum is a multiple of \\(3\\).", "Throw out the odd one first, then check digit sums of the rest."], "sol": "<p>Divisible by \\(6\\) means even and divisible by \\(3\\). \\(3915\\) is odd, out. Of the evens, \\(1356\\) has digit sum \\(15\\) (yes), \\(2470\\) has \\(13\\) (no), \\(6300\\) has \\(9\\) (yes), \\(8642\\) has \\(20\\) (no). So \\(1356\\) and \\(6300\\) qualify, which is \\(\\boxed{2}\\).</p>"},
+      {"x": "What is the largest multiple of \\(47\\) that is less than \\(1000\\)?", "ans": "987", "accept": ["987"], "hints": ["Divide \\(1000\\) by \\(47\\) and throw away the remainder.", "\\(1000 \\div 47\\) is \\(21\\) with something left over."], "sol": "<p>Fit as many \\(47\\)s under \\(1000\\) as possible. Since \\(1000 \\div 47 = 21\\) remainder \\(13\\), the last full step is \\(47 \\times 21 = \\boxed{987}\\). The next one, \\(47 \\times 22 = 1034\\), overshoots.</p>"},
+      {"x": "What is the sum of the two smallest multiples of \\(8\\) that are greater than \\(150\\)?", "ans": "312", "accept": ["312"], "hints": ["Find the first multiple of \\(8\\) above \\(150\\), then take the next one too.", "\\(8 \\times 18 = 144\\) and \\(8 \\times 19 = 152\\). Add the next two multiples after \\(144\\)."], "sol": "<p>Since \\(8 \\times 18 = 144\\) and \\(8 \\times 19 = 152\\), the first multiple of \\(8\\) above \\(150\\) is \\(152\\), and the next is \\(160\\). Their sum is \\(152 + 160 = \\boxed{312}\\).</p>"},
+      {"x": "Find \\(\\gcd(252, 198)\\).", "ans": "18", "accept": ["18"], "hints": ["Use the prime fingerprints, \\(252 = 2^2 \\times 3^2 \\times 7\\) and \\(198 = 2 \\times 3^2 \\times 11\\).", "Take each shared prime to its lower power."], "sol": "<p>With \\(252 = 2^2 \\times 3^2 \\times 7\\) and \\(198 = 2 \\times 3^2 \\times 11\\), the gcd keeps each shared prime at its lower power, \\(2^1 \\times 3^2 = \\boxed{18}\\). The primes \\(7\\) and \\(11\\) belong to only one number, so they drop out.</p>"},
+      {"x": "Find \\(\\operatorname{lcm}(18, 24)\\).", "ans": "72", "accept": ["72"], "hints": ["Use \\(18 = 2 \\times 3^2\\) and \\(24 = 2^3 \\times 3\\).", "Take each prime to its higher power."], "sol": "<p>With \\(18 = 2 \\times 3^2\\) and \\(24 = 2^3 \\times 3\\), the lcm takes each prime to its higher power, \\(2^3 \\times 3^2 = \\boxed{72}\\).</p>"},
+      {"x": "Find \\(\\operatorname{lcm}(6, 10, 15)\\).", "ans": "30", "accept": ["30"], "hints": ["Write each as primes, \\(6 = 2 \\times 3\\), \\(10 = 2 \\times 5\\), \\(15 = 3 \\times 5\\).", "Collect each prime at its highest power across all three."], "sol": "<p>From \\(6 = 2 \\times 3\\), \\(10 = 2 \\times 5\\), and \\(15 = 3 \\times 5\\), the lcm gathers \\(2 \\times 3 \\times 5 = \\boxed{30}\\), each prime appearing once. Notice it is far less than the product \\(900\\), since the shared factors are not counted twice.</p>"},
+      {"x": "In the number \\(49\\square 6\\), the digit \\(\\square\\) is hidden. What is the largest digit \\(\\square\\) can be so that the whole number is divisible by \\(6\\)?", "ans": "8", "accept": ["8", "eight"], "hints": ["Divisible by \\(6\\) means divisible by both \\(2\\) and \\(3\\). The last digit is \\(6\\), so it is already even.", "For \\(3\\), the digit sum \\(4 + 9 + \\square + 6 = 19 + \\square\\) must be a multiple of \\(3\\). Which digits work, and which is largest?"], "sol": "<p>It ends in \\(6\\), so it is even no matter what \\(\\square\\) is, and only divisibility by \\(3\\) is in doubt. The digit sum is \\(4 + 9 + \\square + 6 = 19 + \\square\\), a multiple of \\(3\\) when \\(\\square\\) is \\(2\\), \\(5\\), or \\(8\\). The largest is \\(\\boxed{8}\\), giving \\(4986\\) with digit sum \\(27\\).</p>"},
+      {"x": "How many positive divisors does \\(540\\) have?", "ans": "24", "accept": ["24"], "hints": ["Factor \\(540\\) into primes first.", "\\(540 = 2^2 \\times 3^3 \\times 5\\). Add one to each exponent and multiply."], "sol": "<p>Since \\(540 = 2^2 \\times 3^3 \\times 5\\), the add-one-and-multiply rule gives \\((2+1)(3+1)(1+1) = 3 \\times 4 \\times 2 = \\boxed{24}\\) positive divisors.</p>"},
+      {"x": "How many of these four numbers are divisible by \\(8\\)? $$2104,\\quad 5320,\\quad 7016,\\quad 9148$$", "ans": "3", "accept": ["3", "three"], "hints": ["Divisibility by \\(8\\) depends only on the last three digits, since \\(1000 = 8 \\times 125\\).", "Test \\(104\\), \\(320\\), \\(016\\), and \\(148\\) against \\(8\\)."], "sol": "<p>Only the last three digits matter, since every thousand is a multiple of \\(8\\). Now \\(104 = 8 \\times 13\\), \\(320 = 8 \\times 40\\), and \\(016 = 8 \\times 2\\) all pass, while \\(148 = 8 \\times 18 + 4\\) fails. So \\(\\boxed{3}\\) of the four are divisible by \\(8\\).</p>"},
+      {"x": "A three-digit number uses each of the digits \\(2\\), \\(5\\), and \\(8\\) exactly once. It is divisible by \\(4\\), and its hundreds digit is even. What is the number?", "ans": "852", "accept": ["852"], "hints": ["Divisibility by \\(4\\) depends on the last two digits, so first find which arrangements end in a multiple of \\(4\\).", "Among the arrangements, only those ending in \\(28\\) or \\(52\\) are multiples of \\(4\\). Now apply the even-hundreds-digit rule."], "sol": "<p>Divisibility by \\(4\\) reads the last two digits. Among the six arrangements, only \\(528\\) (ending \\(28\\)) and \\(852\\) (ending \\(52\\)) are multiples of \\(4\\). The hundreds digit must be even, which rules out \\(528\\) with its leading \\(5\\) and leaves \\(\\boxed{852}\\). Check, \\(852 = 4 \\times 213\\).</p>"}
     ], challenge:[
-      {q:"How many positive divisors does 360 have?", o:[["24",1],["12",0],["20",0],["18",0]],
-       h:"💡 Hint: \\(360 = 2^3 \\times 3^2 \\times 5^1\\). A number \\(p^a \\cdot q^b \\cdot r^c\\) has \\((a+1)(b+1)(c+1)\\) divisors.",
-       s:"Yes. \\(360 = 2^3 \\cdot 3^2 \\cdot 5\\), so the divisor count is \\((3+1)(2+1)(1+1) = 24\\)."},
-      {q:"What is the smallest positive integer with exactly 6 positive divisors?", o:[["12",1],["32",0],["18",0],["64",0]],
-       h:"💡 Hint: You need \\((a+1)(b+1)\\cdots = 6\\). That factors as \\(6 \\times 1\\) or \\(3 \\times 2\\): which arrangement of prime exponents gives the smallest number?",
-       s:"Sharp. Exponents 2 and 1 give \\(6 = 3 \\times 2\\) divisors; using the smallest primes, \\(2^2 \\cdot 3 = 12\\), with divisors 1, 2, 3, 4, 6, 12."}
+      {"x": "What is the greatest odd factor of \\(9000\\)?", "ans": "1125", "accept": ["1125", "1,125"], "hints": ["An odd factor can carry no factors of \\(2\\). Strip every \\(2\\) out of \\(9000\\) first.", "\\(9000 = 2^3 \\times 1125\\). What is left once the \\(2\\)s are gone?"], "sol": "<p>An odd number holds no factor of \\(2\\), so the greatest odd factor is what survives after pulling out every \\(2\\). Since \\(9000 = 2^3 \\times 3^2 \\times 5^3\\), removing the \\(2^3\\) leaves \\(3^2 \\times 5^3 = \\boxed{1125}\\), and nothing larger can be odd and still divide \\(9000\\).</p>"},
+      {"x": "What is the smallest whole number greater than \\(1\\) that is both a perfect square and a perfect cube?", "ans": "64", "accept": ["64", "sixty-four"], "hints": ["To be a square every prime exponent must be even, and to be a cube every exponent must be a multiple of \\(3\\). What must the exponents be to satisfy both?", "Both at once forces every exponent to be a multiple of \\(6\\), a perfect sixth power. What is \\(2^6\\)?"], "sol": "<p>A perfect square needs every prime exponent even, and a perfect cube needs every exponent to be a multiple of \\(3\\). Both demands together force each exponent to be a multiple of \\(6\\), so the number is a perfect sixth power. The smallest above \\(1\\) is \\(2^6 = \\boxed{64}\\), which is at once \\(8^2\\) and \\(4^3\\).</p>"},
+      {"x": "How many zeros does the number \\(48^{5} \\times 75^{4}\\) end in?", "ans": "8", "accept": ["8", "eight"], "hints": ["Each trailing zero is one factor of \\(10 = 2 \\times 5\\), so count the \\(2\\)s and the \\(5\\)s. Factor \\(48\\) and \\(75\\) first.", "\\(48^5 = 2^{20} \\times 3^5\\) and \\(75^4 = 3^4 \\times 5^8\\). The scarcer of the \\(2\\)s and \\(5\\)s sets the count."], "sol": "<p>Every trailing zero needs a \\(2\\) paired with a \\(5\\). Factor each piece, \\(48 = 2^4 \\times 3\\) so \\(48^5 = 2^{20} \\times 3^5\\), and \\(75 = 3 \\times 5^2\\) so \\(75^4 = 3^4 \\times 5^8\\). The product carries \\(2^{20}\\) and \\(5^8\\), so you can form \\(\\min(20, 8) = \\boxed{8}\\) pairs, and the number ends in eight zeros.</p>"},
+      {"x": "How many whole numbers from \\(1\\) to \\(600\\) are divisible by both \\(2\\) and \\(3\\) but not by \\(5\\)?", "ans": "80", "accept": ["80", "eighty"], "hints": ["Divisible by both \\(2\\) and \\(3\\) means divisible by \\(6\\). Count those first.", "From the multiples of \\(6\\), remove the ones also divisible by \\(5\\), which are the multiples of \\(30\\)."], "sol": "<p>Divisible by \\(2\\) and \\(3\\) at once means divisible by \\(6\\), and there are \\(600 \\div 6 = 100\\) such numbers. Among them, the ones also divisible by \\(5\\) are the multiples of \\(30\\), numbering \\(600 \\div 30 = 20\\). Removing those leaves \\(100 - 20 = \\boxed{80}\\).</p>"},
+      {"x": "What is the smallest whole number \\(k\\) for which \\(\\operatorname{lcm}(8, 12, k) = 120\\)?", "ans": "5", "accept": ["5", "five"], "hints": ["First find \\(\\operatorname{lcm}(8,12)\\), then ask what \\(k\\) must add to push the lcm all the way up to \\(120\\).", "\\(\\operatorname{lcm}(8,12) = 24 = 2^3 \\times 3\\), but \\(120 = 2^3 \\times 3 \\times 5\\). Which prime is missing?"], "sol": "<p>Start with \\(\\operatorname{lcm}(8,12) = 24 = 2^3 \\times 3\\). The target \\(120 = 2^3 \\times 3 \\times 5\\) holds everything \\(24\\) does plus a factor of \\(5\\), which only \\(k\\) can supply. The smallest \\(k\\) carrying a \\(5\\) is \\(\\boxed{5}\\) itself, and indeed \\(\\operatorname{lcm}(8,12,5) = 120\\).</p>"},
+      {"x": "What is the largest divisor of \\(6300\\) that is not divisible by \\(4\\)?", "ans": "3150", "accept": ["3150", "3,150"], "hints": ["Factor \\(6300\\). A number is divisible by \\(4\\) only if it carries at least \\(2^2\\), so to avoid that, keep at most one factor of \\(2\\).", "\\(6300 = 2^2 \\times 3^2 \\times 5^2 \\times 7\\). Use a single \\(2\\) and all of the rest."], "sol": "<p>Factor \\(6300 = 2^2 \\times 3^2 \\times 5^2 \\times 7\\). A divisor is divisible by \\(4\\) exactly when it carries \\(2^2\\), so to dodge that it may use at most one \\(2\\). The largest such divisor keeps a single \\(2\\) and every other prime in full, \\(2 \\times 3^2 \\times 5^2 \\times 7 = \\boxed{3150}\\). Its partner is \\(6300 \\div 3150 = 2\\), and \\(3150\\) holds just one factor of \\(2\\), so \\(4\\) cannot divide it.</p>"},
+      {"x": "A whole number \\(k\\) satisfies \\(\\gcd(k, 24) = 6\\) and \\(\\operatorname{lcm}(k, 24) = 360\\). Find \\(k\\).", "ans": "90", "accept": ["90", "ninety"], "hints": ["For any two numbers, the gcd times the lcm equals the two numbers multiplied together.", "So \\(k \\times 24 = 6 \\times 360\\). Solve for \\(k\\)."], "sol": "<p>For any pair, \\(\\gcd \\times \\operatorname{lcm}\\) equals the product of the two numbers, so \\(k \\times 24 = 6 \\times 360 = 2160\\), giving \\(k = 2160 \\div 24 = \\boxed{90}\\). Check, \\(\\gcd(90,24) = 6\\) and \\(\\operatorname{lcm}(90,24) = 360\\), both as required.</p>"},
+      {"x": "Several two-digit numbers are tied for having the most divisors, with twelve divisors each. What is the largest two-digit number among them?", "ans": "96", "accept": ["96", "ninety-six"], "hints": ["A two-digit number reaches twelve divisors by spreading its primes so that the exponents-plus-one multiply to \\(12\\). Look near the top of the range.", "Check \\(96 = 2^5 \\times 3\\). How many divisors does the rule give it?"], "sol": "<p>The most divisors any two-digit number can have is twelve, reached by several of them, including \\(60, 72, 84, 90,\\) and \\(96\\). The largest is \\(96 = 2^5 \\times 3\\), whose divisor count is \\((5+1)(1+1) = 12\\), so the answer is \\(\\boxed{96}\\).</p>"},
+      {"x": "What is the largest prime factor of \\(\\operatorname{lcm}(2022, 2024)\\)?", "ans": "337", "accept": ["337"], "hints": ["Factor each number into primes first, then build the lcm by taking each prime to its higher power.", "\\(2022 = 2 \\times 3 \\times 337\\) and \\(2024 = 2^3 \\times 11 \\times 23\\). Which prime is largest across both?"], "sol": "<p>Factor each, \\(2022 = 2 \\times 3 \\times 337\\) and \\(2024 = 2^3 \\times 11 \\times 23\\), where \\(337\\) is prime since no prime up to its square root divides it. The lcm takes each prime to its higher power, \\(\\operatorname{lcm}(2022,2024) = 2^3 \\times 3 \\times 11 \\times 23 \\times 337\\), and the largest prime in it is \\(\\boxed{337}\\).</p>"},
+      {"x": "A row of \\(100\\) light switches is numbered \\(1\\) to \\(100\\), all off. A student walks the row \\(100\\) times. On pass \\(1\\) she flips every switch, on pass \\(2\\) every second switch, on pass \\(3\\) every third switch, and so on, until on pass \\(100\\) she flips only switch \\(100\\). After all \\(100\\) passes, how many lights are on?", "ans": "10", "accept": ["10", "ten"], "legendary": true, "hints": ["A switch ends on only if it was flipped an odd number of times. On which passes does switch \\(n\\) get flipped?", "Switch \\(n\\) is flipped once for every divisor of \\(n\\), so it ends on exactly when \\(n\\) has an odd number of divisors.", "Which numbers have an odd number of divisors?"], "sol": "<p>Switch \\(n\\) is flipped on pass \\(d\\) exactly when \\(d\\) divides \\(n\\), so it is flipped once for every divisor of \\(n\\). It ends on only if it was flipped an odd number of times, that is only if \\(n\\) has an odd number of divisors. From this chapter, that happens exactly for perfect squares. The perfect squares from \\(1\\) to \\(100\\) are \\(1, 4, 9, 16, 25, 36, 49, 64, 81, 100\\), so \\(\\boxed{10}\\) lights are on.</p>"},
+      {"x": "Each of the digits \\(1, 2, 3, 4, 5,\\) and \\(7\\) is used exactly once to build a six-digit number. What is the largest such number that is divisible by \\(22\\)?", "ans": "753412", "accept": ["753412", "753,412"], "legendary": true, "hints": ["\\(22 = 2 \\times 11\\), so the number must be even and pass the test for \\(11\\). The six digits sum to \\(22\\).", "For divisibility by \\(11\\) the odd-position digits and the even-position digits must each sum to \\(11\\), since together they make \\(22\\). Now build the largest value with that balance, ending in an even digit.", "Put the biggest digits at the front while keeping the two position-groups balanced at \\(11\\) each, and finish on an even digit."], "sol": "<p>Since \\(22 = 2 \\times 11\\), the number must be even and satisfy the alternating-sum test for \\(11\\). The six digits sum to \\(22\\), and divisibility by \\(11\\) requires the odd-position digits and the even-position digits to each total \\(11\\). To make the value as large as possible, load the front with big digits while keeping that balance, and end on an even digit. Working greedily down from the largest leading digits gives \\(\\boxed{753412}\\). Check, it is even and its alternating digit sum \\(2 - 1 + 4 - 3 + 5 - 7 = 0\\) is a multiple of \\(11\\), so \\(753412 = 22 \\times 34246\\).</p>"},
+      {"x": "What is the smallest positive multiple of \\(36\\) whose digits are all \\(0\\)s and \\(1\\)s?", "ans": "11111111100", "accept": ["11111111100", "11,111,111,100"], "legendary": true, "hints": ["\\(36 = 4 \\times 9\\). Handle the two requirements separately, using only the digits \\(0\\) and \\(1\\).", "Divisible by \\(9\\) means the digit sum is a multiple of \\(9\\), so you need at least nine \\(1\\)s. Divisible by \\(4\\) means the last two digits form a multiple of \\(4\\).", "Among \\(00, 01, 10, 11\\), only \\(00\\) is a multiple of \\(4\\), so the number must end in two \\(0\\)s."], "sol": "<p>Write \\(36 = 4 \\times 9\\). For divisibility by \\(9\\), the digit sum must be a multiple of \\(9\\), and since every digit is \\(0\\) or \\(1\\), that means at least nine \\(1\\)s. For divisibility by \\(4\\), the last two digits must form a multiple of \\(4\\), and among \\(00, 01, 10, 11\\) only \\(00\\) qualifies, so the number ends in two \\(0\\)s. The smallest value meeting both uses exactly nine \\(1\\)s followed by two \\(0\\)s, namely \\(\\boxed{11111111100}\\).</p>"}
     ]},
     6:{practice:[
       {q:"Solve for x: \\(3x + 5 = 20\\).", o:[["x = 5",1],["x = 6",0],["x = 15",0],["x = 25/3",0]],
@@ -2056,7 +2180,7 @@
     });
     var back=document.getElementById('mback');
     if(back) back.style.display=(name==='dashView')?'none':'inline-flex';
-    var cs=document.getElementById('courseScroll'); if(cs) cs.scrollTop=0;
+    var cs=document.getElementById('courseScroll'); if(cs){ if(name!=='lessonView'){ cs.classList.remove('ws-mode'); if(window.WS) WS.active=false; } cs.scrollTop=0; }
   }
   function showDashboard(){
     showView('dashView');
@@ -2158,7 +2282,7 @@
     if(rec.accept.indexOf(v)!==-1){
       fb.className='ansfb right'; fb.innerHTML='✓ Correct. Nicely done. View the solution below for the slick way.'; inp.classList.add('okin'); inp.readOnly=true;
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
-      updateFlow(true);
+      if(window.WS&&WS.active) WS.onResolve(k); else updateFlow(true);
     } else {
       fb.className='ansfb wrong'; fb.innerHTML='✗ Not quite. '+(rec.hints&&rec.hints.length?'Take a hint, tweak your answer, or view the solution.':'Tweak your answer or view the solution.');
       rec.attempts=(rec.attempts||0)+1; if(window.Rewards) Rewards._onWrong(rec);
@@ -2179,48 +2303,223 @@
       try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); }catch(e){}
     }
   }
+  function renderBlock(b,ctx,__bi,isCp){
+    if(b.t==='p') return '<p>'+b.x+'</p>';
+    if(b.t==='f') return '<div class="formula">'+b.x+(b.s?'<span class="small">'+b.s+'</span>':'')+'</div>';
+    if(b.t==='sub') return '<h4 class="sub">'+b.x+'</h4>';
+    if(b.t==='imp') return '<div class="impbox"><div class="ilabel">'+(b.label||'Key idea')+'</div><div class="itext">'+b.x+'</div></div>';
+    if(b.t==='fig') return '<figure class="lessonfig">'+b.x+(b.cap?'<figcaption>'+b.cap+'</figcaption>':'')+'</figure>';
+    if(b.t==='fact') return '<div class="factbox"><div class="flabel">✨ '+(b.label||'Fun fact')+'</div><div class="ftext">'+b.x+'</div></div>';
+    if(b.t==='goals'){
+      var items=b.x.map(function(g,i){ return '<li><span class="n">'+(i+1)+'</span><div>'+g+'</div></li>'; }).join('');
+      return (b.head?'<h4 class="sub">'+b.head+'</h4>':'')+'<ul class="whylist">'+items+'</ul>';
+    }
+    if(b.t==='prob'){
+      var k=__uid++, sid='sol_'+k;
+      var hasAns=(b.ans!==undefined && b.ans!==null);
+      var hints=b.hints || (b.hint?[b.hint]:null);
+      var cat=b.cat||(/(challenge|legendary)/i.test(b.label||'')?'challenge':((ctx&&ctx.charAt(0)==='R')?'review':(isCp?'checkpoint':'tryit')));
+      var lab=b.label||(cat==='review'?'Review':(cat==='checkpoint'?'Checkpoint':'Try it yourself'));
+      var isCh=(cat==='challenge');
+      var isLeg=isCh&&(!!b.legendary||/legendary/i.test(lab));
+      var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
+      PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
+        stableId:(ctx||'x')+':'+__bi, cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
+        graded:hasAns, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
+      var inner='<div class="probbox cat-'+cat+(isLeg?' legendary':'')+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+(isLeg?'⭐⭐':icon)+' '+lab+(isLeg?' <span class="legbadge">🔥 Legendary</span>':'')+'</div><div class="ptext">'+b.x+'</div>';
+      if(hasAns){
+        inner+='<div class="answerrow"><input class="ansinput" id="ai_'+k+'" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')checkAns('+k+')"><button class="checkbtn" onclick="checkAns('+k+')">Check</button></div><div class="ansfb" id="af_'+k+'"></div>';
+      }
+      if(hints){
+        inner+='<button class="hintbtn2" id="hb_'+k+'" onclick="nextHint('+k+')">💡 Show hint</button><div class="hintbox2" id="hx_'+k+'"></div>';
+      }
+      inner+='<button class="solbtn" id="sb_'+k+'"'+(hasAns?' style="display:none"':'')+' onclick="revealSolution('+k+')">Show solution</button>'+
+        '<div class="solution" id="'+sid+'"><div class="slabel">Solution</div>'+b.sol+'</div></div>';
+      return inner;
+    }
+    return '';
+  }
   function renderBlocks(blocks,ctx){
-    var out='';
     var lk=(ctx||'').slice(2);
     var isCp=(ctx||'').charAt(0)==='L' && LESSONS[lk] && /checkpoint/i.test(LESSONS[lk].title||'');
-    blocks.forEach(function(b,__bi){
-      var inner='';
-      if(b.t==='p') inner='<p>'+b.x+'</p>';
-      else if(b.t==='f') inner='<div class="formula">'+b.x+(b.s?'<span class="small">'+b.s+'</span>':'')+'</div>';
-      else if(b.t==='sub') inner='<h4 class="sub">'+b.x+'</h4>';
-      else if(b.t==='imp') inner='<div class="impbox"><div class="ilabel">'+(b.label||'Key idea')+'</div><div class="itext">'+b.x+'</div></div>';
-      else if(b.t==='fig') inner='<figure class="lessonfig">'+b.x+(b.cap?'<figcaption>'+b.cap+'</figcaption>':'')+'</figure>';
-      else if(b.t==='fact') inner='<div class="factbox"><div class="flabel">✨ '+(b.label||'Fun fact')+'</div><div class="ftext">'+b.x+'</div></div>';
-      else if(b.t==='prob'){
-        var k=__uid++, sid='sol_'+k;
-        var hasAns=(b.ans!==undefined && b.ans!==null);
-        var hints=b.hints || (b.hint?[b.hint]:null);
-        var cat=b.cat||(/(challenge|legendary)/i.test(b.label||'')?'challenge':((ctx&&ctx.charAt(0)==='R')?'review':(isCp?'checkpoint':'tryit')));
-        var lab=b.label||(cat==='review'?'Review':(cat==='checkpoint'?'Checkpoint':'Try it yourself'));
-        var isCh=(cat==='challenge');
-        var isLeg=isCh&&(!!b.legendary||/legendary/i.test(lab));
-        var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
-        PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
-          stableId:(ctx||'x')+':'+__bi, cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
-          graded:hasAns, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
-        inner='<div class="probbox cat-'+cat+(isLeg?' legendary':'')+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+(isLeg?'⭐⭐':icon)+' '+lab+(isLeg?' <span class="legbadge">🔥 Legendary</span>':'')+'</div><div class="ptext">'+b.x+'</div>';
-        if(hasAns){
-          inner+='<div class="answerrow"><input class="ansinput" id="ai_'+k+'" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')checkAns('+k+')"><button class="checkbtn" onclick="checkAns('+k+')">Check</button></div><div class="ansfb" id="af_'+k+'"></div>';
-        }
-        if(hints){
-          inner+='<button class="hintbtn2" id="hb_'+k+'" onclick="nextHint('+k+')">💡 Show hint</button><div class="hintbox2" id="hx_'+k+'"></div>';
-        }
-        inner+='<button class="solbtn" id="sb_'+k+'"'+(hasAns?' style="display:none"':'')+' onclick="revealSolution('+k+')">Show solution</button>'+
-          '<div class="solution" id="'+sid+'"><div class="slabel">Solution</div>'+b.sol+'</div></div>';
-      }
-      else if(b.t==='goals'){
-        var items=b.x.map(function(g,i){ return '<li><span class="n">'+(i+1)+'</span><div>'+g+'</div></li>'; }).join('');
-        inner=(b.head?'<h4 class="sub">'+b.head+'</h4>':'')+'<ul class="whylist">'+items+'</ul>';
-      }
-      out+='<div class="lblock" data-bi="'+__bi+'">'+inner+'</div>';
-    });
+    var out='';
+    blocks.forEach(function(b,__bi){ out+='<div class="lblock" data-bi="'+__bi+'">'+renderBlock(b,ctx,__bi,isCp)+'</div>'; });
     return out;
   }
+
+  // ===== Lesson workspace controller (3-pane paginated view) =====
+  function buildPages(blocks){
+    var hasProb=blocks.some(function(b){return b.t==='prob';});
+    var pages=[], keys=[];
+    if(hasProb){
+      var buf=[];
+      blocks.forEach(function(b){
+        if(b.t==='imp'){ keys.push({block:b, page: pages.length>0?pages.length-1:0}); }
+        else if(b.t==='prob'){ pages.push({lead:buf, prob:b}); buf=[]; }
+        else { buf.push(b); }
+      });
+      if(buf.length) pages.push({lead:buf, prob:null});
+    } else {
+      var cbuf=[];
+      var flush=function(){ if(cbuf.length){ pages.push({lead:cbuf, prob:null}); cbuf=[]; } };
+      blocks.forEach(function(b){
+        if(b.t==='imp'){ keys.push({block:b, page: pages.length}); return; }
+        if((b.t==='p'||b.t==='sub') && cbuf.length) flush();
+        cbuf.push(b);
+      });
+      flush();
+    }
+    keys.forEach(function(ki,i){ ki.num=i+1; ki.acked=false; ki.revealed=false; ki.el=null;
+      if(ki.page>pages.length-1) ki.page=Math.max(0,pages.length-1); if(ki.page<0) ki.page=0; });
+    return {pages:pages, keys:keys};
+  }
+
+  var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
+  function wsTutorHTML(){
+    return '<aside class="ws-pane ws-tutor" id="wsTutor">'+
+      '<div class="ws-tuthead"><span class="av">Q</span><span class="nm">Quantica Tutor</span><span class="soon">Soon</span></div>'+
+      '<div class="ws-body">'+
+        '<div class="tut-bub bot">Hi! Soon I\'ll be right here to talk any problem through with you, step by step.</div>'+
+        '<div class="tut-bub bot">Stuck on a step? You\'ll be able to ask me “why?” and we\'ll work it out together.</div>'+
+        '<div class="tut-bub usr">You\'ll type your questions here…</div>'+
+      '</div>'+
+      '<div class="tut-compose"><input type="text" disabled placeholder="Tutor is coming soon…"><button class="snd" disabled aria-hidden="true">➤</button></div>'+
+    '</aside>';
+  }
+  function wsNotebookHTML(){
+    return '<aside class="ws-pane ws-notebook" id="wsNotebook">'+
+      '<div class="ws-nbhead"><div class="t">📓 Your Notebook</div><div class="c" id="wsNbCount">No ideas collected yet</div></div>'+
+      '<div class="ws-body" id="wsNbBody"></div>'+
+    '</aside>';
+  }
+  function wsOpen(key,L,meta){
+    var bp=buildPages(L.blocks);
+    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys;
+    var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
+    var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
+    var html='<div class="ws-tabs"><button class="ws-tab" id="wsTabTut" onclick="WS.drawer(\'tutor\')">💬 Tutor</button>'+
+        '<button class="ws-tab" id="wsTabNb" onclick="WS.drawer(\'nb\')">📓 Notebook <span class="b" id="wsTabNbN">0</span></button></div>'+
+      '<div class="workspace">'+wsTutorHTML()+
+      '<section class="ws-pane ws-center">'+
+        '<div class="ws-head"><span class="ws-eyebrow">Lesson '+key+'</span><span class="ws-title">'+(L.title||'')+'</span>'+
+          '<button class="ws-drawerbtn" onclick="WS.drawer(\'tutor\')">💬 Tutor</button>'+
+          '<div class="ws-steps"><span class="ws-segs">'+segs+'</span><span class="ws-stepn" id="wsStepN"></span></div></div>'+
+        '<div class="ws-body" id="wsCenterBody"></div>'+
+        '<div class="ws-dock"><button class="ws-back" id="wsBack" onclick="WS.back()">← Back</button>'+
+          '<span class="ws-help" id="wsHelp"></span>'+
+          '<button class="ws-next" id="wsNext">Next →</button></div>'+
+      '</section>'+wsNotebookHTML()+
+      '<div class="ws-scrim" id="wsScrim" onclick="WS.closeDrawers()"></div></div>';
+    document.getElementById('lessonBody').innerHTML=html;
+    var body=document.getElementById('wsCenterBody');
+    WS.pages.forEach(function(pg,i){
+      var lead=pg.lead.map(function(b){return renderBlock(b,ctx,0,isCp);}).join('');
+      var inner=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,i,isCp):'');
+      var node=document.createElement('div'); node.className='ws-page'; node.setAttribute('data-p',i);
+      node.style.display='none'; node.innerHTML=inner; body.appendChild(node);
+      var pb=node.querySelector('.probbox[data-k]'); pg.probK=pb?pb.getAttribute('data-k'):null;
+    });
+    typeset(body);
+    document.getElementById('wsNbBody').innerHTML='<div class="nb-empty"><span class="ico">📓</span>Key ideas you earn will gather here. Solve a problem to collect your first one.</div>';
+    document.getElementById('courseScroll').classList.add('ws-mode');
+    WS.showPage(0);
+  }
+  WS.showPage=function(i){
+    if(i<0)i=0; if(i>WS.pages.length-1)i=WS.pages.length-1; WS.page=i;
+    var body=document.getElementById('wsCenterBody'); if(!body) return;
+    [].slice.call(body.children).forEach(function(node){
+      var p=+node.getAttribute('data-p'), on=(p===i);
+      node.style.display=on?'block':'none';
+      if(on){ node.classList.remove('ws-anim'); void node.offsetWidth; node.classList.add('ws-anim'); }
+    });
+    [].slice.call(document.querySelectorAll('.ws-segs .ws-seg')).forEach(function(s){
+      var p=+s.getAttribute('data-p'); s.classList.toggle('done',p<i); s.classList.toggle('cur',p===i);
+    });
+    var sn=document.getElementById('wsStepN'); if(sn) sn.textContent='Step '+(i+1)+' of '+WS.pages.length;
+    body.scrollTop=0;
+    WS.revealKeysFor(i);
+    WS.refreshDock();
+  };
+  WS.revealKeysFor=function(p){
+    var pg=WS.pages[p]; if(!pg) return;
+    if(pg.probK && !probResolved(pg.probK)) return;
+    var nb=document.getElementById('wsNbBody'); if(!nb) return; var revealed=false;
+    WS.keys.forEach(function(ki,j){
+      if(ki.page===p && !ki.revealed){
+        ki.revealed=true; revealed=true;
+        var empty=nb.querySelector('.nb-empty'); if(empty&&empty.parentNode) empty.parentNode.removeChild(empty);
+        var node=document.createElement('div'); node.className='nb-idea nb-arrive nb-new'; node.setAttribute('data-j',j);
+        node.innerHTML='<div class="nb-ribbon">✨ New idea earned</div><span class="nb-num">Key Idea '+ki.num+'</span>'+
+          '<div class="nb-text">'+ki.block.x+'</div><button class="nb-got" onclick="WS.ackKey('+j+')">Got it ✓</button>';
+        nb.appendChild(node); ki.el=node; typeset(node);
+        (function(n){ setTimeout(function(){ try{n.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){} },60); })(node);
+      }
+    });
+    if(revealed){ WS.updateNbCount(true); WS.pulseNbTab(); }
+  };
+  WS.ackKey=function(j){
+    var ki=WS.keys[j]; if(!ki||!ki.el) return; ki.acked=true;
+    ki.el.classList.remove('nb-new');
+    var r=ki.el.querySelector('.nb-ribbon'); if(r&&r.parentNode) r.parentNode.removeChild(r);
+    var g=ki.el.querySelector('.nb-got'); if(g&&g.parentNode) g.parentNode.removeChild(g);
+    WS.refreshDock();
+  };
+  WS.updateNbCount=function(bump){
+    var n=WS.keys.filter(function(k){return k.revealed;}).length;
+    var c=document.getElementById('wsNbCount'); if(c){ c.textContent=(n===0?'No ideas collected yet':(n+' idea'+(n>1?'s':'')+' collected')); if(bump){ c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); } }
+    var tb=document.getElementById('wsTabNbN'); if(tb) tb.textContent=n;
+  };
+  WS.pulseNbTab=function(){ var t=document.getElementById('wsTabNb'); if(t && !t.classList.contains('open')){ t.classList.remove('glow'); void t.offsetWidth; t.classList.add('glow'); } };
+  WS.gateOpen=function(p){
+    var pg=WS.pages[p]; if(!pg) return true;
+    if(pg.probK && !probResolved(pg.probK)) return false;
+    var ok=true; WS.keys.forEach(function(ki){ if(ki.page===p && (!ki.revealed || !ki.acked)) ok=false; });
+    return ok;
+  };
+  WS.refreshDock=function(){
+    var back=document.getElementById('wsBack'), next=document.getElementById('wsNext'), help=document.getElementById('wsHelp');
+    if(!next) return;
+    back.disabled=(WS.page===0);
+    var last=(WS.page===WS.pages.length-1), open=WS.gateOpen(WS.page), L=WS.L;
+    next.classList.toggle('is-finish',last); next.classList.toggle('ready',open); next.disabled=!open;
+    if(last){
+      if(L.next && LESSONS[L.next]){ next.innerHTML='Complete &amp; continue to '+L.next+' →'; next.onclick=function(){ WS.complete(); }; }
+      else { next.textContent='Finish lesson ✓'; next.onclick=function(){ WS.finish(); }; }
+    } else { next.textContent='Next →'; next.onclick=function(){ WS.next(); }; }
+    var pg=WS.pages[WS.page], hasReview=L.review&&L.review.length;
+    if(!open){
+      if(pg.probK && !probResolved(pg.probK)) help.innerHTML='Give the problem a try, you\'ve got this. Stuck? Peek at the solution.';
+      else help.innerHTML='Tap “Got it ✓” on your new key idea to continue.';
+    } else if(last && hasReview){ help.innerHTML='<a onclick="openReview(\''+WS.key+'\')">📝 Try the review problems</a>'; }
+    else help.innerHTML='';
+  };
+  WS.next=function(){ if(!WS.gateOpen(WS.page)) return; if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); };
+  WS.back=function(){ if(WS.page>0) WS.showPage(WS.page-1); };
+  WS.onResolve=function(k){ k=String(k); for(var i=0;i<WS.pages.length;i++){ if(WS.pages[i].probK===k){ WS.revealKeysFor(i); break; } } WS.refreshDock(); };
+  WS.complete=function(){ WS.close(); completeAndGo(WS.key, WS.L.next); };
+  WS.finish=function(){ markDone(WS.key); WS.showDone(); };
+  WS.showDone=function(){
+    var c=document.getElementById('wsCenterBody'); if(!c) return;
+    c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:34px"><div style="font-size:46px">🎉</div>'+
+      '<h3 style="font-family:\'Fraunces\';color:var(--navy);font-size:24px;margin:10px 0 6px">Lesson complete</h3>'+
+      '<p style="color:var(--slate)">Beautiful work. Your key ideas are saved in your notebook for whenever you need them.</p>'+
+      '<div style="display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap">'+
+      (WS.L.review&&WS.L.review.length?'<button class="ws-back" onclick="openReview(\''+WS.key+'\')">📝 Review problems</button>':'')+
+      '<button class="ws-next is-finish" onclick="showToc()">Back to contents →</button></div></div>';
+    var dock=document.querySelector('.ws-dock'); if(dock) dock.style.display='none';
+  };
+  WS.drawer=function(which){
+    var tut=document.getElementById('wsTutor'), nb=document.getElementById('wsNotebook'), sc=document.getElementById('wsScrim');
+    var el=(which==='tutor')?tut:nb, other=(which==='tutor')?nb:tut;
+    if(other) other.classList.remove('open');
+    var willOpen=el && !el.classList.contains('open');
+    if(el) el.classList.toggle('open',willOpen);
+    if(sc) sc.classList.toggle('on',willOpen);
+    if(which==='nb'){ var t=document.getElementById('wsTabNb'); if(t) t.classList.remove('glow'); }
+  };
+  WS.closeDrawers=function(){ ['wsTutor','wsNotebook','wsScrim'].forEach(function(id){var e=document.getElementById(id); if(e) e.classList.remove('open','on');}); };
+  WS.close=function(){ WS.active=false; var cs=document.getElementById('courseScroll'); if(cs) cs.classList.remove('ws-mode'); };
+  window.WS=WS;
 
   // --- lesson flow: reveal one block at a time, highlight it, advance on click ---
   var FLOW={body:null,gate:false,shown:1,rendered:0};
@@ -2314,6 +2613,7 @@
     if(window.Rewards) Rewards.setLastLesson(key);
     document.getElementById('modalEyebrow').textContent='Prealgebra · Lesson '+key;
     document.getElementById('modalTitle').textContent=(L?L.title:title);
+    if(L && L.blocks && L.blocks.length){ wsOpen(key,L,{title:title,chTitle:chTitle,chNum:chNum}); return; }
     var body = L ? (L.blocks?renderBlocks(L.blocks,'L:'+key):L.html) :
       '<p>This lesson is coming soon, in true Quantica style, written problem-first rather than as a wall of rules.</p>'+
       '<p style="color:var(--mute);font-size:14px">In the meantime, open any lesson marked “read now” in the contents.</p>';
@@ -2751,7 +3051,7 @@
     var rec=(typeof PROBREG!=='undefined')?PROBREG[k]:null;
     var s=document.getElementById('sol_'+k), btn=document.getElementById('sb_'+k);
     if(s){ var open=s.classList.toggle('show'); if(btn) btn.textContent=open?'Hide solution':'Show solution';
-      if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.updateFlow) window.updateFlow(true); } }
+      if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.WS&&WS.active) WS.onResolve(k); else if(window.updateFlow) window.updateFlow(true); } }
   };
   window.rwBuy=function(type,id,cost){
     if(P.owned[id]) return;
