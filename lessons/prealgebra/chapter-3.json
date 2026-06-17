@@ -1426,5 +1426,690 @@
       }
     ],
     "next": "3.5"
+  },
+  "3.5": {
+    "title": "GCD and LCM",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Through this chapter we learned to take a single number apart, first into its factors, then into the unique prime fingerprint that lesson 3.3 gave us. Now we set two numbers next to each other and ask how they relate. Picture two lengths of ribbon, one 56 centimeters long and one 70, and a maker who wants to cut both into equal pieces with nothing wasted. How long can each piece be? That question lives entirely in what the two numbers <b>share</b>. Turn it around and ask a different question. Two lighthouse beacons flash on their own rhythms, and you want to know when they will next flash together. That one lives in what the two numbers <b>jointly build</b>. These are the two doors of this lesson. Behind the first waits the greatest common divisor, behind the second the least common multiple, and the prime fingerprints from 3.3 are the key that opens both at once."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A maker has two ribbons, one 56 centimeters long and one 70 centimeters long. She wants to snip both into pieces that are all exactly the same whole-centimeter length, using up every bit of ribbon with no scrap left over on either one. To waste the least effort she wants the pieces as long as possible. First list every piece length that divides 56 cleanly, then every length that divides 70 cleanly, and find the lengths that work for both ribbons. What is the longest piece length she can use?",
+        "hints": [
+          "A piece length works for a ribbon only if it divides that ribbon's length with nothing left over. So write the divisors of 56 and the divisors of 70, then look for the numbers that show up on both lists.",
+          "The divisors of 56 are \\(1, 2, 4, 7, 8, 14, 28, 56\\) and the divisors of 70 are \\(1, 2, 5, 7, 10, 14, 35, 70\\). Which numbers sit on both lists, and which of those is biggest?"
+        ],
+        "ans": "14",
+        "accept": [
+          "14",
+          "fourteen",
+          "14 cm",
+          "14cm"
+        ],
+        "sol": "A piece length can be used on a ribbon only when it divides that ribbon evenly, so the lengths that work for <b>both</b> ribbons are exactly the numbers that divide \\(56\\) and \\(70\\) at the same time. List each set of divisors and watch for the overlap. $$56: \\quad 1,\\ 2,\\ 4,\\ 7,\\ 8,\\ 14,\\ 28,\\ 56$$ $$70: \\quad 1,\\ 2,\\ 5,\\ 7,\\ 10,\\ 14,\\ 35,\\ 70$$ The numbers appearing on both lists are \\(1, 2, 7,\\) and \\(14\\). These are the common divisors, the only piece lengths that clear both ribbons with no scrap, and the largest of them is \\(\\boxed{14}\\) centimeters. Quick check, \\(56 = 14 \\times 4\\) and \\(70 = 14 \\times 5\\), so the first ribbon gives four pieces and the second gives five, all of them \\(14\\) long and nothing left over. The general idea is that two numbers always share a small handful of common divisors, and the biggest one is the most a single piece can stretch while still fitting both."
+      },
+      {
+        "t": "imp",
+        "x": "The <b>greatest common divisor</b> of two whole numbers, written \\(\\gcd(a,b)\\) and also called their greatest common factor, is the largest number that divides both of them with nothing left over. Every pair has at least \\(1\\) sitting on both divisor lists, so a common divisor always exists. And since lesson 3.1 showed that a number's divisors never climb past the number itself, each list is finite, the overlap is finite, and there is always a single greatest one. It is the most that two numbers can be cut down by at the same time."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "Listing divisors is fine for small ribbons, but suppose the two numbers are \\(168\\) and \\(180\\), each with a long divisor list. Reach instead for the prime fingerprints from lesson 3.3, \\(168 = 2^3 \\times 3 \\times 7\\) and \\(180 = 2^2 \\times 3^2 \\times 5\\). A number that divides both can only be built from primes that <b>both</b> numbers actually carry, and it can use no more copies of a prime than the stingier of the two supplies. Use that to build the greatest common divisor straight from the fingerprints. What is \\(\\gcd(168, 180)\\)?",
+        "hints": [
+          "Go prime by prime. For the prime \\(2\\), the number \\(168\\) carries three of them and \\(180\\) carries two. A divisor of both can lean on at most the smaller count, two. Do the same for \\(3\\), and then ask whether \\(5\\) or \\(7\\) can appear at all.",
+          "A prime that lives in only one fingerprint cannot divide the other number, so it cannot appear in the gcd. Take each shared prime to the smaller of its two powers, then multiply those together."
+        ],
+        "ans": "12",
+        "accept": [
+          "12",
+          "twelve"
+        ],
+        "sol": "Set the two fingerprints side by side and read them prime by prime. $$168 = 2^3 \\times 3^1 \\times 7, \\qquad 180 = 2^2 \\times 3^2 \\times 5$$ A common divisor is built only from primes both numbers own, using no more copies than the smaller supply allows, since you cannot borrow a factor a number does not have. For the prime \\(2\\), the smaller power is \\(2^2\\). For the prime \\(3\\), the smaller power is \\(3^1\\). The prime \\(5\\) lives only in \\(180\\) and the prime \\(7\\) lives only in \\(168\\), so neither can divide both and neither joins in. Multiplying the survivors, $$\\gcd(168,180) = 2^2 \\times 3 = \\boxed{12}.$$ Quick check, \\(168 = 12 \\times 14\\) and \\(180 = 12 \\times 15\\), so \\(12\\) really does divide both, and nothing larger could, since any bigger common divisor would need a prime power neither fingerprint can spare. The general idea is that the gcd of two numbers is found by taking each shared prime to the <b>lower</b> of its two powers, which is far faster than listing every divisor."
+      },
+      {
+        "t": "imp",
+        "x": "Lay the two prime fingerprints side by side. The <b>greatest common divisor takes each prime to the lower of its two powers</b>, because a common divisor can only use primes both numbers carry, and only as many copies as the stingier number has. A prime that appears in just one fingerprint contributes nothing, since its lower power across the two is \\(0\\). When the two numbers share <b>no</b> prime at all, the only common divisor is \\(1\\), and we call such numbers <b>coprime</b>, or relatively prime. This is the very same coprime idea that lesson 3.2 needed for combining divisibility tests, now seen through the fingerprints."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Two interlocking gears mesh tooth to tooth. The small gear has \\(24\\) teeth and the large gear has \\(35\\) teeth, and a single tooth on each is painted red. The gears start with the two red teeth touching, then turn. The red teeth touch again only after a number of teeth has passed the meshing point that is a whole number of full turns for <b>both</b> gears at once, that is, a number divisible by \\(24\\) and by \\(35\\). First notice that \\(24 = 2^3 \\times 3\\) and \\(35 = 5 \\times 7\\) share no prime factor. Using that, how many teeth must pass the meshing point before the two red teeth touch again?",
+        "hints": [
+          "The red teeth realign after a count of teeth that both \\(24\\) and \\(35\\) divide evenly, so you want the smallest number that is a multiple of both. Start listing multiples of \\(35\\) and check which is the first that \\(24\\) also divides.",
+          "Because \\(24\\) and \\(35\\) share no prime factor, a number divisible by both must carry all of \\(24\\)'s primes and all of \\(35\\)'s primes with no overlap to save on. The smallest such number is just \\(24 \\times 35\\)."
+        ],
+        "ans": "840",
+        "accept": [
+          "840",
+          "24 x 35",
+          "24*35",
+          "24 times 35"
+        ],
+        "sol": "The red teeth meet again at the first tooth count that is a whole number of turns for both gears, which means the smallest number divisible by \\(24\\) and by \\(35\\) at once. Look at the fingerprints, \\(24 = 2^3 \\times 3\\) and \\(35 = 5 \\times 7\\). They share nothing, so they are coprime. A number divisible by \\(24\\) must carry \\(2^3\\) and \\(3\\), and a number divisible by \\(35\\) must carry \\(5\\) and \\(7\\), and since none of these primes overlap, the smallest number holding all of them is simply their product. $$24 \\times 35 = \\boxed{840}$$ So \\(840\\) teeth pass the meshing point before the red teeth touch again. Quick check, \\(840 = 24 \\times 35\\) gives the large gear \\(24\\) full turns and the small gear \\(35\\) full turns, both whole, so both red teeth are back at the meeting point together. The general idea is that when two numbers are coprime, nothing can be shared or saved, so the smallest number they both divide is just the two numbers multiplied together."
+      },
+      {
+        "t": "p",
+        "x": "That last problem quietly opened the second door. Instead of the largest length that fits <b>inside</b> two numbers, we hunted for the smallest count that the two numbers fit evenly <b>into</b>, the first place their separate rhythms line up. The gears realigned at the smallest number that both \\(24\\) and \\(35\\) divide, and because they shared no factors, that number was the full product. But most pairs do share factors, and then the answer is smaller than the product, because the shared part does not need to be counted twice. To see exactly how much smaller, we go back to listing, then back to the fingerprints."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "Two beacons sweep the harbor. The first flashes every \\(9\\) seconds, at seconds \\(9, 18, 27,\\) and onward, and the second flashes every \\(12\\) seconds, at \\(12, 24, 36,\\) and onward. They both flash at second \\(0\\) to begin. List the flash times of each beacon and find the first moment after the start when both flash at the very same second. At what second do they next flash together?",
+        "hints": [
+          "The first beacon flashes at the multiples of \\(9\\), the second at the multiples of \\(12\\). You want the first number that shows up on both lists of multiples.",
+          "Multiples of \\(9\\) are \\(9, 18, 27, 36, 45, \\ldots\\) and multiples of \\(12\\) are \\(12, 24, 36, 48, \\ldots\\). What is the smallest number appearing on both?"
+        ],
+        "ans": "36",
+        "accept": [
+          "36",
+          "thirty-six",
+          "36 seconds",
+          "36s"
+        ],
+        "sol": "The first beacon flashes at the multiples of \\(9\\) and the second at the multiples of \\(12\\), so they flash together exactly at the numbers that are multiples of <b>both</b>. Walk the two lists until they first meet. $$9: \\quad 9,\\ 18,\\ 27,\\ 36,\\ 45,\\ 54,\\ \\ldots$$ $$12: \\quad 12,\\ 24,\\ 36,\\ 48,\\ \\ldots$$ The first number on both lists is \\(36\\), so the beacons next flash together at second \\(\\boxed{36}\\). Quick check, \\(36 = 9 \\times 4\\) and \\(36 = 12 \\times 3\\), so the first beacon has flashed four times and the second three times, both landing on second \\(36\\). Notice this is smaller than \\(9 \\times 12 = 108\\), because \\(9\\) and \\(12\\) share a factor of \\(3\\) that does not need to be counted twice. The general idea is that two repeating events coincide at the common multiples of their periods, and the first coincidence is the smallest of those."
+      },
+      {
+        "t": "imp",
+        "x": "The <b>least common multiple</b> of two whole numbers, written \\(\\operatorname{lcm}(a,b)\\), is the smallest positive number that both of them divide evenly, the smallest number that is a multiple of each. Two events that repeat every \\(a\\) and every \\(b\\) steps line up exactly at the common multiples of \\(a\\) and \\(b\\), and the first time they line up is the least common multiple. You might wonder why we never speak of a <b>greatest</b> common multiple. It is because multiples run on forever, as lesson 3.1 showed, so there is no largest common multiple to find. The least one is the only interesting extreme."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "Return to \\(168\\) and \\(180\\), with fingerprints \\(168 = 2^3 \\times 3 \\times 7\\) and \\(180 = 2^2 \\times 3^2 \\times 5\\). Now hunt for the smallest number that <b>both</b> divide, their least common multiple. A number divisible by \\(168\\) must carry enough copies of every prime in \\(168\\), and a number divisible by \\(180\\) must carry enough for every prime in \\(180\\), so the lcm has to satisfy the hungrier demand for each prime. Build it from the fingerprints. What is \\(\\operatorname{lcm}(168, 180)\\)?",
+        "hints": [
+          "Go prime by prime again, but this time take the <b>larger</b> demand. For \\(2\\), the number \\(168\\) wants \\(2^3\\) while \\(180\\) only wants \\(2^2\\), so the lcm must supply \\(2^3\\) to satisfy \\(168\\). Do the same for every prime that appears in either number.",
+          "Every prime in either fingerprint must appear in the lcm, each to the highest power demanded by either number. Collect \\(2^3\\), \\(3^2\\), \\(5\\), and \\(7\\), then multiply."
+        ],
+        "ans": "2520",
+        "accept": [
+          "2520",
+          "2,520"
+        ],
+        "sol": "A number that both \\(168\\) and \\(180\\) divide must contain enough of every prime to satisfy each of them, so for each prime it must meet the <b>larger</b> of the two demands. $$168 = 2^3 \\times 3^1 \\times 7, \\qquad 180 = 2^2 \\times 3^2 \\times 5$$ For \\(2\\), the larger power is \\(2^3\\), demanded by \\(168\\). For \\(3\\), the larger power is \\(3^2\\), demanded by \\(180\\). The prime \\(5\\) is demanded by \\(180\\) and the prime \\(7\\) by \\(168\\), so both must appear. Multiplying these highest demands together, $$\\operatorname{lcm}(168,180) = 2^3 \\times 3^2 \\times 5 \\times 7 = 8 \\times 9 \\times 5 \\times 7 = \\boxed{2520}.$$ Quick check, \\(2520 = 168 \\times 15\\) and \\(2520 = 180 \\times 14\\), both whole, so \\(2520\\) really is a multiple of each, and nothing smaller could be, since dropping any prime power would starve one of the two numbers. The general idea is that the lcm of two numbers takes each prime to the <b>higher</b> of its two powers, the mirror image of how the gcd takes the lower."
+      },
+      {
+        "t": "imp",
+        "x": "Lay the two fingerprints side by side once more. The <b>least common multiple takes each prime to the higher of its two powers</b>, because a common multiple must hold enough copies of every prime to be divisible by each number, and the hungrier number sets the bar. Every prime that appears in <b>either</b> fingerprint shows up in the lcm, at its highest power, even a prime that only one of the numbers carries. So the gcd and the lcm are two readings of the very same pair of fingerprints, one taking the low power of each shared prime, the other taking the high power of every prime in sight."
+      },
+      {
+        "t": "fig",
+        "x": "<svg viewBox=\"0 0 400 256\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two overlapping circles, one for the prime factors of 168 and one for 180. The left circle alone holds an extra 2 and a 7, the shared overlap holds 2, 2, and 3, and the right circle alone holds an extra 3 and a 5. The shared overlap multiplies to the greatest common divisor 12, and everything in both circles together multiplies to the least common multiple 2520.\">\n<circle cx=\"150\" cy=\"103\" r=\"94\" fill=\"rgba(31,111,235,.05)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n<circle cx=\"250\" cy=\"103\" r=\"94\" fill=\"rgba(199,145,0,.05)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/>\n<text x=\"92\" y=\"40\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">168</text>\n<text x=\"308\" y=\"40\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">180</text>\n<circle cx=\"98\" cy=\"92\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"98\" y=\"97\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">2</text>\n<circle cx=\"98\" cy=\"128\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"98\" y=\"133\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">7</text>\n<circle cx=\"184\" cy=\"86\" r=\"15\" fill=\"rgba(31,157,107,.18)\" stroke=\"var(--green)\" stroke-width=\"1.5\"/>\n<text x=\"184\" y=\"91\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--green)\" font-family=\"Inter, sans-serif\">2</text>\n<circle cx=\"216\" cy=\"86\" r=\"15\" fill=\"rgba(31,157,107,.18)\" stroke=\"var(--green)\" stroke-width=\"1.5\"/>\n<text x=\"216\" y=\"91\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--green)\" font-family=\"Inter, sans-serif\">2</text>\n<circle cx=\"200\" cy=\"122\" r=\"15\" fill=\"rgba(31,157,107,.18)\" stroke=\"var(--green)\" stroke-width=\"1.5\"/>\n<text x=\"200\" y=\"127\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--green)\" font-family=\"Inter, sans-serif\">3</text>\n<circle cx=\"302\" cy=\"92\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"302\" y=\"97\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">3</text>\n<circle cx=\"302\" cy=\"128\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"302\" y=\"133\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">5</text>\n<text x=\"200\" y=\"166\" text-anchor=\"middle\" font-size=\"10.5\" fill=\"var(--green)\" font-family=\"Inter, sans-serif\">shared</text>\n<line x1=\"22\" y1=\"194\" x2=\"378\" y2=\"194\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"200\" y=\"216\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"var(--green)\" font-family=\"Inter, sans-serif\">gcd = shared part = 2 × 2 × 3 = 12</text>\n<text x=\"200\" y=\"240\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">lcm = everything = 2³ × 3² × 5 × 7 = 2520</text>\n</svg>",
+        "cap": "Here are the prime fingerprints of \\(168\\) and \\(180\\) drawn as two overlapping circles. The factors they share, \\(2, 2,\\) and \\(3\\), sit in the green overlap, while \\(168\\) keeps an extra \\(2\\) and a \\(7\\) on its own side and \\(180\\) keeps an extra \\(3\\) and a \\(5\\) on its. The <b>greatest common divisor</b> is the product of just the shared overlap, \\(2 \\times 2 \\times 3 = 12\\), the most both numbers carry in common. The <b>least common multiple</b> is the product of <b>everything</b> across both circles, \\(2^3 \\times 3^2 \\times 5 \\times 7 = 2520\\), since it must cover every prime either number demands. One picture, read two ways, the overlap for the gcd and the union for the lcm."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "A locksmith is told that two whole numbers have a greatest common divisor of \\(8\\) and a least common multiple of \\(240\\). She is also told that one of the numbers is \\(48\\). Rather than search, she remembers a clean relationship between a pair of numbers, their gcd, and their lcm, and she finds the other number in one step. What is the other number?",
+        "hints": [
+          "Try multiplying a few pairs of numbers and comparing the product to the gcd times the lcm of the same pair. For example take \\(12\\) and \\(18\\): their product is \\(216\\), their gcd is \\(6\\), and their lcm is \\(36\\). What do you notice about \\(6 \\times 36\\)?",
+          "For any two numbers, the gcd times the lcm equals the two numbers multiplied together. So here \\(48 \\times (\\text{other}) = 8 \\times 240\\). Solve for the other number."
+        ],
+        "ans": "40",
+        "accept": [
+          "40",
+          "forty"
+        ],
+        "sol": "The shortcut the locksmith leans on comes straight from the fingerprints. For each prime, the gcd took the lower power and the lcm took the higher power, so between them they used the lower plus the higher, which is exactly the two powers the original numbers had. Multiply across all primes and the gcd times the lcm rebuilds the product of the two numbers themselves. $$\\gcd(a,b) \\times \\operatorname{lcm}(a,b) = a \\times b$$ Here that reads \\(8 \\times 240 = 48 \\times (\\text{other})\\), so the product of the two numbers is \\(8 \\times 240 = 1920\\). Dividing out the known number, $$\\text{other} = \\frac{1920}{48} = \\boxed{40}.$$ Quick check, \\(\\gcd(48,40) = 8\\) since \\(48 = 2^4 \\times 3\\) and \\(40 = 2^3 \\times 5\\) share \\(2^3\\), and \\(\\operatorname{lcm}(48,40) = 2^4 \\times 3 \\times 5 = 240\\), matching both given facts. The general idea is that the gcd and the lcm of a pair always multiply back to the pair's own product, so knowing three of the four numbers hands you the fourth."
+      },
+      {
+        "t": "imp",
+        "x": "For any two whole numbers, $$\\gcd(a,b) \\times \\operatorname{lcm}(a,b) = a \\times b.$$ The reason is the fingerprints. Prime by prime, the gcd kept the <b>lower</b> power and the lcm kept the <b>higher</b> power, and the lower plus the higher is just the sum of the two powers that \\(a\\) and \\(b\\) started with. So multiplying the gcd by the lcm restores every prime to exactly the total power found in \\(a\\) and \\(b\\) together, which is \\(a \\times b\\). The most useful form is the rearrangement \\(\\operatorname{lcm}(a,b) = \\dfrac{a \\times b}{\\gcd(a,b)}\\), which finds an lcm quickly once you know the gcd."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "Three subway lines all leave a shared downtown hub together at \\(6\\!:\\!00\\) in the morning. The red line then departs every \\(12\\) minutes, the green line every \\(18\\) minutes, and the gold line every \\(30\\) minutes. A rider wants to know the next time all three lines depart together again. Find the prime fingerprints of \\(12\\), \\(18\\), and \\(30\\), build the least common multiple of all three, and report how many minutes after \\(6\\!:\\!00\\) the next shared departure happens.",
+        "hints": [
+          "Each line departs at the multiples of its own period, so all three leave together at a common multiple of \\(12\\), \\(18\\), and \\(30\\). You want the smallest such number, the least common multiple of all three.",
+          "Write \\(12 = 2^2 \\times 3\\), \\(18 = 2 \\times 3^2\\), and \\(30 = 2 \\times 3 \\times 5\\). For each prime that appears, take the highest power any of the three numbers demands, then multiply."
+        ],
+        "ans": "180",
+        "accept": [
+          "180",
+          "180 minutes",
+          "3 hours",
+          "180 min"
+        ],
+        "sol": "All three lines leave together exactly at the numbers that are multiples of \\(12\\), \\(18\\), and \\(30\\) at once, so the next shared departure is the least common multiple of the three. The lcm idea extends from two numbers to three with no change, you still take each prime to the highest power any of them demands. Read the fingerprints, $$12 = 2^2 \\times 3, \\qquad 18 = 2 \\times 3^2, \\qquad 30 = 2 \\times 3 \\times 5.$$ For \\(2\\), the highest demand is \\(2^2\\), from the red line. For \\(3\\), the highest demand is \\(3^2\\), from the green line. For \\(5\\), the only demand is \\(5\\), from the gold line. Multiplying the highest demands, $$\\operatorname{lcm}(12,18,30) = 2^2 \\times 3^2 \\times 5 = 4 \\times 9 \\times 5 = \\boxed{180}.$$ So the lines next leave together \\(180\\) minutes after \\(6\\!:\\!00\\), which is \\(3\\) hours later at \\(9\\!:\\!00\\). Quick check, \\(180 = 12 \\times 15 = 18 \\times 10 = 30 \\times 6\\), all whole, so every line really does have a departure at minute \\(180\\). The general idea is that the least common multiple stretches to any number of values, always taking each prime to the highest power demanded by any of them, and it tells you when several repeating rhythms all align."
+      },
+      {
+        "t": "prob",
+        "xp": 10,
+        "x": "A bakery prints a serial number on every batch ticket, and the manager wants the very first batch number of the day to be a striking one. It must be the smallest <b>four-digit</b> number that is divisible by \\(6\\), by \\(8\\), and by \\(9\\) all at once. Build the least common multiple of \\(6\\), \\(8\\), and \\(9\\), then find the smallest four-digit multiple of it. What number should the first ticket show?",
+        "hints": [
+          "A number divisible by \\(6\\), \\(8\\), and \\(9\\) is exactly a common multiple of the three, so the ones that qualify are the multiples of \\(\\operatorname{lcm}(6,8,9)\\). Find that lcm first.",
+          "With \\(6 = 2 \\times 3\\), \\(8 = 2^3\\), and \\(9 = 3^2\\), the lcm is \\(2^3 \\times 3^2 = 72\\). Now find the smallest four-digit multiple of \\(72\\) by dividing \\(1000\\) by \\(72\\) and rounding up."
+        ],
+        "ans": "1008",
+        "accept": [
+          "1008",
+          "1,008"
+        ],
+        "sol": "A batch number divisible by \\(6\\), \\(8\\), and \\(9\\) at once is a common multiple of all three, so the candidates are precisely the multiples of their least common multiple. Build it from the fingerprints, $$6 = 2 \\times 3, \\qquad 8 = 2^3, \\qquad 9 = 3^2.$$ Taking each prime to its highest demand gives \\(\\operatorname{lcm}(6,8,9) = 2^3 \\times 3^2 = 72\\). Now find the smallest four-digit multiple of \\(72\\). Four-digit numbers start at \\(1000\\), and dividing, \\(1000 \\div 72 \\approx 13.9\\), so \\(13\\) full \\(72\\)s land at \\(936\\), still three digits, and the next one steps over the line. $$72 \\times 14 = \\boxed{1008}$$ Quick check, \\(1008 = 6 \\times 168 = 8 \\times 126 = 9 \\times 112\\), all whole, and \\(1008\\) is the first four-digit number for which that is true, since \\(72 \\times 13 = 936\\) is only three digits. The general idea is that to be divisible by several numbers at once is to be a multiple of their lcm, so questions about hitting all of them collapse into a single search through the multiples of one number."
+      },
+      {
+        "t": "prob",
+        "xp": 11,
+        "x": "A teacher pours a jar of marbles onto the table. When the class sorts them into groups of \\(4\\), exactly one marble is left over. Into groups of \\(6\\), again exactly one is left over. Into groups of \\(9\\), still exactly one left over. The teacher says there are more than one marble but as few as possible. How many marbles are in the jar?",
+        "hints": [
+          "If you set the one leftover marble aside, the rest divide perfectly into groups of \\(4\\), of \\(6\\), and of \\(9\\). So the count minus \\(1\\) is a common multiple of \\(4\\), \\(6\\), and \\(9\\).",
+          "The smallest number that \\(4\\), \\(6\\), and \\(9\\) all divide is \\(\\operatorname{lcm}(4,6,9)\\). Find it, then add back the single leftover marble.",
+          "With \\(4 = 2^2\\), \\(6 = 2 \\times 3\\), and \\(9 = 3^2\\), the lcm is \\(2^2 \\times 3^2 = 36\\). The marble count is one more than the smallest common multiple above zero."
+        ],
+        "ans": "37",
+        "accept": [
+          "37",
+          "thirty-seven"
+        ],
+        "sol": "Every grouping leaves exactly one marble stranded, so if you lift that one marble away, what remains divides cleanly into groups of \\(4\\), of \\(6\\), and of \\(9\\) at the same time. That means the count minus \\(1\\) is a common multiple of all three, and the smallest such common multiple is their least common multiple. Building it, $$4 = 2^2, \\qquad 6 = 2 \\times 3, \\qquad 9 = 3^2, \\qquad \\operatorname{lcm}(4,6,9) = 2^2 \\times 3^2 = 36.$$ So the count without its leftover is \\(36\\), and adding the single stranded marble back, $$36 + 1 = \\boxed{37}.$$ Quick check, \\(37 = 4 \\times 9 + 1 = 6 \\times 6 + 1 = 9 \\times 4 + 1\\), one left over every time, and it is the smallest count above \\(1\\) that does this, since the next common multiple \\(72\\) would give \\(73\\). The general idea is that a number leaving the same remainder under several divisors sits a fixed step above a common multiple, so its smallest value is the lcm plus that shared remainder."
+      },
+      {
+        "t": "imp",
+        "x": "When a number leaves the <b>same remainder</b> \\(r\\) under several divisors, subtract that remainder and what is left divides all of them evenly, so the number is a common multiple plus \\(r\\). Its smallest value above \\(r\\) is therefore \\(\\operatorname{lcm} + r\\), and every number that works is some \\(\\operatorname{lcm} \\times k + r\\). A neat cousin appears when each remainder is exactly <b>one less</b> than its own divisor, for instance remainder \\(3\\) under \\(4\\), remainder \\(5\\) under \\(6\\), and remainder \\(7\\) under \\(8\\). Then the number is one short of dividing each cleanly, so it sits one below a common multiple, and the smallest such number is \\(\\operatorname{lcm} - 1\\). Reading the remainders is the whole trick, since they tell you how far the number sits from a common multiple."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "A volunteer is assembling identical relief kits and must use up every item with none left over. She has \\(90\\) bars of soap and \\(126\\) packets of seeds, and each kit must hold the same number of soap bars and the same number of seed packets as every other kit. She wants to make as many kits as possible. Using the fingerprints \\(90 = 2 \\times 3^2 \\times 5\\) and \\(126 = 2 \\times 3^2 \\times 7\\), find the greatest number of kits she can build.",
+        "hints": [
+          "The number of kits must divide \\(90\\) evenly, so the soap splits with none left over, and it must also divide \\(126\\) evenly for the seeds. So the kit count is a common divisor of \\(90\\) and \\(126\\), and she wants the greatest one.",
+          "Take each shared prime to its lower power. Both numbers carry \\(2\\), both carry \\(3^2\\), but \\(5\\) belongs only to \\(90\\) and \\(7\\) only to \\(126\\). Multiply the shared part."
+        ],
+        "ans": "18",
+        "accept": [
+          "18",
+          "eighteen",
+          "18 kits"
+        ],
+        "sol": "The number of kits has to divide both \\(90\\) and \\(126\\) evenly, since the soap and the seeds each split across the kits with nothing left over. So the kit count is a common divisor of the two, and making as many kits as possible means taking the <b>greatest</b> common divisor. Read the shared fingerprint, $$90 = 2 \\times 3^2 \\times 5, \\qquad 126 = 2 \\times 3^2 \\times 7.$$ Both carry one \\(2\\) and both carry \\(3^2\\), while \\(5\\) sits only in \\(90\\) and \\(7\\) only in \\(126\\), so those two cannot be shared. Multiplying the overlap, $$\\gcd(90,126) = 2 \\times 3^2 = \\boxed{18}.$$ So she can build \\(18\\) kits, each holding \\(90 \\div 18 = 5\\) bars of soap and \\(126 \\div 18 = 7\\) packets of seeds. Quick check, \\(18 \\times 5 = 90\\) and \\(18 \\times 7 = 126\\), everything used up, and no larger number divides both, since the leftover primes \\(5\\) and \\(7\\) cannot join the shared part. The general idea is that splitting two quantities into the largest possible number of identical, complete shares is exactly a greatest common divisor in disguise."
+      },
+      {
+        "t": "prob",
+        "xp": 12,
+        "x": "A clock museum releases two pendulums at the very same instant. One completes a full swing every \\(21\\) seconds, the other every \\(28\\) seconds. They both begin a swing at time zero. Over the first \\(600\\) seconds, counting only moments <b>after</b> the start, how many times do the two pendulums begin a swing at exactly the same instant?",
+        "hints": [
+          "The first pendulum starts a swing at the multiples of \\(21\\), the second at the multiples of \\(28\\). They begin together exactly at the common multiples of \\(21\\) and \\(28\\), which are the multiples of \\(\\operatorname{lcm}(21,28)\\). Find that lcm first.",
+          "With \\(21 = 3 \\times 7\\) and \\(28 = 2^2 \\times 7\\), the lcm is \\(2^2 \\times 3 \\times 7 = 84\\). Now count how many multiples of \\(84\\) land in the window from just after \\(0\\) up to \\(600\\).",
+          "Count the whole multiples of \\(84\\) that are at most \\(600\\). Since \\(84 \\times 7 = 588\\) and \\(84 \\times 8 = 672\\), see how many steps of \\(84\\) fit before passing \\(600\\)."
+        ],
+        "ans": "7",
+        "accept": [
+          "7",
+          "seven"
+        ],
+        "sol": "Each pendulum begins a swing at the multiples of its own period, so they begin together exactly at the numbers that are multiples of <b>both</b> \\(21\\) and \\(28\\). Those are precisely the multiples of the least common multiple, so first build it. $$21 = 3 \\times 7, \\qquad 28 = 2^2 \\times 7, \\qquad \\operatorname{lcm}(21,28) = 2^2 \\times 3 \\times 7 = 84.$$ The two pendulums therefore begin together every \\(84\\) seconds, at \\(84, 168, 252,\\) and so on. Now count how many of these land in the first \\(600\\) seconds, after the start. Stepping by \\(84\\), $$84,\\ 168,\\ 252,\\ 336,\\ 420,\\ 504,\\ 588,$$ and the next would be \\(84 \\times 8 = 672\\), which overshoots \\(600\\). That is \\(\\boxed{7}\\) shared swings. Quick check, \\(84 \\times 7 = 588 \\le 600\\) while \\(84 \\times 8 = 672 > 600\\), so exactly seven multiples of \\(84\\) fit, matching the count from the previous lesson's method of dividing \\(600\\) by \\(84\\) and keeping the whole part. The general idea is that two repeating events coincide at the multiples of the lcm of their periods, so counting coincidences in a window becomes a count of multiples of a single number, exactly the multiple-counting from lesson 3.1."
+      },
+      {
+        "t": "fact",
+        "x": "How would you find the greatest common divisor of two truly enormous numbers, ones far too big to factor into primes? More than two thousand years ago, Euclid wrote down an answer so clever it is still what computers use today. His idea needs no primes at all. To find the gcd of two numbers, divide the larger by the smaller and keep only the remainder, then repeat with the smaller number and that remainder, again and again, until the remainder hits zero. The last nonzero number you held is the gcd. Try it on \\(180\\) and \\(168\\). Dividing, \\(180 = 168 \\times 1 + 12\\), so the remainder is \\(12\\). Now repeat with \\(168\\) and \\(12\\), and \\(168 = 12 \\times 14 + 0\\), remainder zero. The last number standing is \\(12\\), exactly the gcd we found by fingerprints. The reason it works is that any number dividing both \\(180\\) and \\(168\\) must also divide their difference, so the common divisors never change as the numbers shrink, while the numbers themselves tumble down fast. It is one of the oldest algorithms in the world, and nobody has found a reason to retire it."
+      },
+      {
+        "t": "p",
+        "x": "Look back and the whole lesson rode on a single picture, two prime fingerprints laid side by side. Read the overlap, taking each shared prime to its lower power, and you have the greatest common divisor, the most the two numbers carry in common, the answer to every question about splitting and sharing. Read the union, taking each prime to its higher power, and you have the least common multiple, the first place two rhythms align, the answer to every question about scheduling and coinciding. The two are bound together, since the gcd times the lcm always rebuilds the product of the numbers themselves. And common multiples of a pair turned out to be nothing more than the multiples of their lcm, which folded these new ideas right back into the multiple counting from lesson 3.1. One question remains hiding in the fingerprints. We have used them to test primality, to spot perfect squares, and now to compare two numbers, but we have never asked how many divisors a single fingerprint quietly contains. That count is waiting in the next section."
+      }
+    ],
+    "review": [
+      {
+        "x": "A jeweler is sorting beads and needs the greatest common divisor of \\(120\\) and \\(144\\). Using the fingerprints \\(120 = 2^3 \\times 3 \\times 5\\) and \\(144 = 2^4 \\times 3^2\\), take each shared prime to its lower power to find \\(\\gcd(120,144)\\). Enter that number.",
+        "ans": "24",
+        "accept": [
+          "24",
+          "twenty-four"
+        ],
+        "hints": [
+          "For each prime both numbers carry, keep the lower power. For \\(2\\), that is \\(2^3\\) versus \\(2^4\\), so take \\(2^3\\). Do the same for \\(3\\).",
+          "Both share \\(2^3\\) and \\(3^1\\). The prime \\(5\\) sits only in \\(120\\), so it cannot join. Multiply the shared part."
+        ],
+        "sol": "The gcd keeps each shared prime at its lower power. $$120 = 2^3 \\times 3 \\times 5, \\qquad 144 = 2^4 \\times 3^2$$ For \\(2\\), the lower power is \\(2^3\\). For \\(3\\), the lower power is \\(3^1\\). The prime \\(5\\) appears only in \\(120\\), so it contributes nothing. Multiplying, $$\\gcd(120,144) = 2^3 \\times 3 = \\boxed{24}.$$ Quick check, \\(120 = 24 \\times 5\\) and \\(144 = 24 \\times 6\\), both whole. The general idea is that the greatest common divisor is the product of the shared primes, each taken to the smaller of its two powers."
+      },
+      {
+        "x": "Using the same two numbers, \\(120 = 2^3 \\times 3 \\times 5\\) and \\(144 = 2^4 \\times 3^2\\), now find their least common multiple by taking each prime to its higher power. Enter \\(\\operatorname{lcm}(120,144)\\).",
+        "ans": "720",
+        "accept": [
+          "720"
+        ],
+        "hints": [
+          "Every prime that appears in either number must appear in the lcm, each to the highest power demanded. For \\(2\\), take \\(2^4\\). For \\(3\\), take \\(3^2\\). Do not forget the \\(5\\).",
+          "Collect \\(2^4\\), \\(3^2\\), and \\(5\\), then multiply."
+        ],
+        "sol": "The lcm takes each prime to its higher power, including primes carried by just one number. $$120 = 2^3 \\times 3 \\times 5, \\qquad 144 = 2^4 \\times 3^2$$ For \\(2\\) the higher power is \\(2^4\\), for \\(3\\) it is \\(3^2\\), and the lone \\(5\\) from \\(120\\) must appear too. Multiplying, $$\\operatorname{lcm}(120,144) = 2^4 \\times 3^2 \\times 5 = 16 \\times 9 \\times 5 = \\boxed{720}.$$ Quick check, the gcd was \\(24\\), and \\(24 \\times 720 = 17280 = 120 \\times 144\\), so the gcd times the lcm rebuilds the product, just as it should. The general idea is that the lcm gathers every prime at its highest power, the mirror of the gcd taking the lowest."
+      },
+      {
+        "x": "Two cog wheels in a music box have \\(49\\) teeth and \\(60\\) teeth. Using \\(49 = 7^2\\) and \\(60 = 2^2 \\times 3 \\times 5\\), decide whether the two numbers share any prime factor, and report their greatest common divisor. Enter that number.",
+        "ans": "1",
+        "accept": [
+          "1",
+          "one"
+        ],
+        "hints": [
+          "Look at the two fingerprints. Do they have any prime in common at all? If not, the only number dividing both is \\(1\\).",
+          "\\(49\\) is built only from \\(7\\), while \\(60\\) is built from \\(2\\), \\(3\\), and \\(5\\). No prime is shared."
+        ],
+        "sol": "Set the fingerprints side by side, \\(49 = 7^2\\) and \\(60 = 2^2 \\times 3 \\times 5\\). They share no prime at all, since \\(49\\) is made only of \\(7\\) and \\(60\\) carries none. With nothing in the overlap, the only common divisor is \\(\\boxed{1}\\), so the numbers are coprime. Quick check, the divisors of \\(49\\) are \\(1, 7, 49\\), and none of \\(7\\) or \\(49\\) divides \\(60\\), leaving only \\(1\\). The general idea is that two numbers with no shared prime are coprime, and their greatest common divisor is always \\(1\\)."
+      },
+      {
+        "x": "Two whole numbers have a greatest common divisor of \\(9\\) and a least common multiple of \\(270\\). One of the numbers is \\(45\\). Use the relationship between a pair, their gcd, and their lcm to find the other number. Enter it.",
+        "ans": "54",
+        "accept": [
+          "54",
+          "fifty-four"
+        ],
+        "hints": [
+          "The gcd times the lcm equals the two numbers multiplied together. So \\(45 \\times (\\text{other}) = 9 \\times 270\\).",
+          "Compute \\(9 \\times 270 = 2430\\), then divide by \\(45\\)."
+        ],
+        "sol": "For any pair, \\(\\gcd \\times \\operatorname{lcm} = a \\times b\\), so the product of the two numbers is \\(9 \\times 270 = 2430\\). Dividing out the known number, $$\\text{other} = \\frac{2430}{45} = \\boxed{54}.$$ Quick check, \\(45 = 3^2 \\times 5\\) and \\(54 = 2 \\times 3^3\\) share \\(3^2 = 9\\) as their gcd, and their lcm is \\(2 \\times 3^3 \\times 5 = 270\\), matching both facts. The general idea is that the gcd and lcm of a pair always multiply back to the pair's product, so any one of the four numbers can be recovered from the other three."
+      },
+      {
+        "x": "Two ferry routes leave the same dock together at noon. One ferry returns and departs again every \\(16\\) minutes, the other every \\(24\\) minutes. How many minutes after noon do both ferries next depart together? Enter that number of minutes.",
+        "ans": "48",
+        "accept": [
+          "48",
+          "48 minutes",
+          "48 min"
+        ],
+        "hints": [
+          "Each ferry departs at the multiples of its own period, so they leave together at the common multiples of \\(16\\) and \\(24\\). You want the least common multiple.",
+          "With \\(16 = 2^4\\) and \\(24 = 2^3 \\times 3\\), take each prime to its higher power."
+        ],
+        "sol": "The ferries leave together at the common multiples of \\(16\\) and \\(24\\), and the first is their least common multiple. $$16 = 2^4, \\qquad 24 = 2^3 \\times 3, \\qquad \\operatorname{lcm}(16,24) = 2^4 \\times 3 = \\boxed{48}.$$ So they next depart together \\(48\\) minutes after noon. Quick check, \\(48 = 16 \\times 3 = 24 \\times 2\\), both whole. The general idea is that two repeating departures first coincide at the least common multiple of their periods."
+      },
+      {
+        "x": "A scout leader has a pile of badges. Handing them out in stacks of \\(5\\), one badge is left over. In stacks of \\(6\\), one is left over. In stacks of \\(8\\), again one left over. What is the smallest number of badges greater than \\(1\\) that behaves this way? Enter that number.",
+        "ans": "121",
+        "accept": [
+          "121"
+        ],
+        "hints": [
+          "Set the single leftover badge aside, and the rest divide perfectly into stacks of \\(5\\), \\(6\\), and \\(8\\). So the count minus \\(1\\) is a common multiple of all three.",
+          "Find \\(\\operatorname{lcm}(5,6,8)\\), then add back the one leftover badge."
+        ],
+        "sol": "Each stacking leaves exactly one badge over, so the count minus \\(1\\) divides evenly by \\(5\\), \\(6\\), and \\(8\\) at once, making it a common multiple of the three. The smallest such common multiple is their lcm. $$5 = 5, \\qquad 6 = 2 \\times 3, \\qquad 8 = 2^3, \\qquad \\operatorname{lcm}(5,6,8) = 2^3 \\times 3 \\times 5 = 120.$$ Adding back the single leftover badge, \\(120 + 1 = \\boxed{121}\\). Quick check, \\(121 = 5 \\times 24 + 1 = 6 \\times 20 + 1 = 8 \\times 15 + 1\\), one over every time. The general idea is that a fixed remainder under several divisors places the number a fixed step above a common multiple, so the smallest is the lcm plus that remainder."
+      },
+      {
+        "t": "imp",
+        "x": "Two fingerprints, read two ways, carry this whole lesson. The <b>greatest common divisor</b> takes each shared prime to its <b>lower</b> power, and it answers every question about splitting and sharing two quantities as far as they will go. The <b>least common multiple</b> takes every prime to its <b>higher</b> power, and it answers every question about when two repeating rhythms align. The two are tied by \\(\\gcd(a,b) \\times \\operatorname{lcm}(a,b) = a \\times b\\), so each can be found from the other through \\(\\operatorname{lcm} = \\tfrac{a \\times b}{\\gcd}\\). And since the common multiples of a pair are exactly the multiples of their lcm, counting coincidences over a range is just counting multiples of one number, the very skill from lesson 3.1."
+      },
+      {
+        "x": "A composer is layering two looping rhythms, one \\(9\\) beats long and one \\(12\\) beats long, that start together on beat \\(1\\). She wants the longest loop she can build under \\(300\\) beats whose length is a whole number of repeats of <b>both</b> rhythms. What is the largest common multiple of \\(9\\) and \\(12\\) that stays below \\(300\\)? Enter that number.",
+        "ans": "288",
+        "accept": [
+          "288"
+        ],
+        "hints": [
+          "A length that is a whole number of repeats of both rhythms is a common multiple of \\(9\\) and \\(12\\), which means a multiple of \\(\\operatorname{lcm}(9,12)\\). Find that lcm first.",
+          "Since \\(\\operatorname{lcm}(9,12) = 36\\), the common multiples are \\(36, 72, 108, \\ldots\\). Find the largest one under \\(300\\)."
+        ],
+        "sol": "A loop length that is a whole number of both rhythms is a common multiple of \\(9\\) and \\(12\\), and every common multiple is a multiple of their least common multiple. $$9 = 3^2, \\qquad 12 = 2^2 \\times 3, \\qquad \\operatorname{lcm}(9,12) = 2^2 \\times 3^2 = 36.$$ So the allowed lengths are the multiples of \\(36\\). Dividing \\(300 \\div 36 \\approx 8.3\\), the largest whole number of steps that stays under \\(300\\) is \\(8\\), giving \\(36 \\times 8 = \\boxed{288}\\). Quick check, \\(288 = 9 \\times 32 = 12 \\times 24\\), both whole, and the next multiple \\(36 \\times 9 = 324\\) sails past \\(300\\). The general idea is that the common multiples of two numbers are exactly the multiples of their lcm, so finding the largest one under a cap is the multiple-hunting of lesson 3.1 applied to that single lcm."
+      },
+      {
+        "x": "A poster shop only prints in runs that are divisible by \\(4\\), by \\(5\\), and by \\(6\\) all at once. The manager wants the smallest <b>three-digit</b> run size that qualifies. Build \\(\\operatorname{lcm}(4,5,6)\\) and find its smallest three-digit multiple. Enter that number.",
+        "ans": "120",
+        "accept": [
+          "120"
+        ],
+        "hints": [
+          "A run divisible by \\(4\\), \\(5\\), and \\(6\\) at once is a multiple of their least common multiple. Find \\(\\operatorname{lcm}(4,5,6)\\) first.",
+          "With \\(4 = 2^2\\), \\(5 = 5\\), and \\(6 = 2 \\times 3\\), the lcm is \\(2^2 \\times 3 \\times 5 = 60\\). The smallest three-digit multiple of \\(60\\) is the next one after \\(60\\) itself."
+        ],
+        "sol": "A run divisible by all three is a common multiple of \\(4\\), \\(5\\), and \\(6\\), hence a multiple of their lcm. $$4 = 2^2, \\qquad 5 = 5, \\qquad 6 = 2 \\times 3, \\qquad \\operatorname{lcm}(4,5,6) = 2^2 \\times 3 \\times 5 = 60.$$ The multiples of \\(60\\) are \\(60, 120, 180, \\ldots\\), and the smallest with three digits is \\(\\boxed{120}\\), since \\(60\\) itself has only two. Quick check, \\(120 = 4 \\times 30 = 5 \\times 24 = 6 \\times 20\\), all whole. The general idea is that being divisible by several numbers at once means being a multiple of their lcm, turning the question into a single search through that lcm's multiples."
+      },
+      {
+        "x": "Two warning lights on a tower start together and then flash on their own beats, one every \\(10\\) seconds and one every \\(15\\) seconds. During a \\(5\\)-minute span, that is \\(300\\) seconds, how many times do the two lights flash together, counting only flashes <b>after</b> the start? Enter that number.",
+        "ans": "10",
+        "accept": [
+          "10",
+          "ten"
+        ],
+        "hints": [
+          "The lights flash together at the common multiples of \\(10\\) and \\(15\\), which are the multiples of \\(\\operatorname{lcm}(10,15)\\). Find that lcm.",
+          "Since \\(\\operatorname{lcm}(10,15) = 30\\), count how many multiples of \\(30\\) fall in the \\(300\\) seconds after the start."
+        ],
+        "sol": "The lights coincide at the common multiples of \\(10\\) and \\(15\\), which are the multiples of their least common multiple. $$10 = 2 \\times 5, \\qquad 15 = 3 \\times 5, \\qquad \\operatorname{lcm}(10,15) = 2 \\times 3 \\times 5 = 30.$$ So they flash together every \\(30\\) seconds. In the \\(300\\) seconds after the start, the count of multiples of \\(30\\) is \\(300 \\div 30 = \\boxed{10}\\), landing at \\(30, 60, 90,\\) and on up to \\(300\\). Quick check, \\(30 \\times 10 = 300\\) sits right at the end of the span, so all ten coincidences fit. The general idea is that the coincidences of two rhythms are the multiples of their lcm, so counting them in a window is a plain count of multiples."
+      },
+      {
+        "x": "At a fair, a game master tries to split the waiting crowd into equal teams. Into teams of \\(2\\), one person is left without a team. Into teams of \\(3\\), one is left over. Into teams of \\(4\\), one over. Into teams of \\(5\\), still one over. What is the smallest crowd size greater than \\(1\\) for which this happens? Enter that number.",
+        "ans": "61",
+        "accept": [
+          "61",
+          "sixty-one"
+        ],
+        "hints": [
+          "Set the one leftover person aside, and the rest split evenly into teams of \\(2\\), \\(3\\), \\(4\\), and \\(5\\). So the crowd minus \\(1\\) is a common multiple of all four.",
+          "Find \\(\\operatorname{lcm}(2,3,4,5)\\), then add back the single leftover person."
+        ],
+        "sol": "Every grouping strands exactly one person, so the crowd minus \\(1\\) divides evenly by \\(2\\), \\(3\\), \\(4\\), and \\(5\\) at once, making it a common multiple of all four. The smallest is their lcm. $$2,\\ 3,\\ 4 = 2^2,\\ 5, \\qquad \\operatorname{lcm}(2,3,4,5) = 2^2 \\times 3 \\times 5 = 60.$$ Adding back the leftover person, \\(60 + 1 = \\boxed{61}\\). Quick check, \\(61\\) leaves a remainder of \\(1\\) when divided by \\(2\\), \\(3\\), \\(4\\), and \\(5\\) alike. The general idea is that a single shared remainder sets the number one step above the lcm, so the smallest such number is the lcm plus that remainder."
+      },
+      {
+        "x": "A muralist is tiling a rectangular wall \\(132\\) centimeters wide and \\(198\\) centimeters tall using identical square tiles, with no tile cut and no gap. She wants the largest square tile that fits exactly. Using \\(132 = 2^2 \\times 3 \\times 11\\) and \\(198 = 2 \\times 3^2 \\times 11\\), find the side length of the largest square tile. Enter that number of centimeters.",
+        "ans": "66",
+        "accept": [
+          "66",
+          "66 cm",
+          "66cm"
+        ],
+        "hints": [
+          "A square tile of side \\(s\\) fits the wall exactly only if \\(s\\) divides both the width \\(132\\) and the height \\(198\\) with nothing left over. So \\(s\\) is a common divisor, and you want the greatest.",
+          "Take each shared prime to its lower power. Both numbers carry \\(2\\), \\(3\\), and \\(11\\), though to different powers."
+        ],
+        "sol": "A square tile of side \\(s\\) tiles the wall exactly only when \\(s\\) divides both \\(132\\) and \\(198\\) evenly, so the side must be a common divisor, and the largest tile uses the greatest common divisor. $$132 = 2^2 \\times 3 \\times 11, \\qquad 198 = 2 \\times 3^2 \\times 11$$ Taking each shared prime to its lower power, \\(2\\) appears as \\(2^1\\), \\(3\\) as \\(3^1\\), and \\(11\\) as \\(11^1\\). Multiplying, $$\\gcd(132,198) = 2 \\times 3 \\times 11 = \\boxed{66}.$$ So the largest square tile is \\(66\\) centimeters on a side, fitting \\(132 \\div 66 = 2\\) across and \\(198 \\div 66 = 3\\) up. Quick check, \\(66 \\times 2 = 132\\) and \\(66 \\times 3 = 198\\), exact in both directions. The general idea is that the largest square that tiles a rectangle with whole sides is the greatest common divisor of the two side lengths."
+      },
+      {
+        "x": "A puzzle box opens only to the smallest whole number that leaves a remainder of \\(3\\) when divided by \\(4\\), a remainder of \\(5\\) when divided by \\(6\\), and a remainder of \\(7\\) when divided by \\(8\\). Notice how each remainder compares to its divisor before you reach for the lcm. What is the smallest such number? Enter it.",
+        "ans": "23",
+        "accept": [
+          "23",
+          "twenty-three"
+        ],
+        "hints": [
+          "Compare each remainder to its divisor. \\(3\\) is one less than \\(4\\), \\(5\\) is one less than \\(6\\), and \\(7\\) is one less than \\(8\\). So the number is one short of dividing each evenly.",
+          "If the number were one larger, it would divide evenly by \\(4\\), \\(6\\), and \\(8\\), making it a common multiple. So the number is \\(\\operatorname{lcm}(4,6,8) - 1\\)."
+        ],
+        "sol": "Look at how each remainder sits against its divisor. The remainder \\(3\\) is one less than \\(4\\), the remainder \\(5\\) is one less than \\(6\\), and the remainder \\(7\\) is one less than \\(8\\). So in every case the number falls one short of dividing cleanly, which means adding \\(1\\) would make it divide evenly by \\(4\\), \\(6\\), and \\(8\\) all at once. That makes the number one less than a common multiple, and the smallest comes from the lcm. $$4 = 2^2, \\qquad 6 = 2 \\times 3, \\qquad 8 = 2^3, \\qquad \\operatorname{lcm}(4,6,8) = 2^3 \\times 3 = 24.$$ So the number is \\(24 - 1 = \\boxed{23}\\). Quick check, \\(23 = 4 \\times 5 + 3 = 6 \\times 3 + 5 = 8 \\times 2 + 7\\), the three remainders exactly as asked. The general idea is that when every remainder is one short of its divisor, the number sits one below a common multiple, so the smallest is the lcm minus one."
+      },
+      {
+        "t": "fact",
+        "x": "The greatest common divisor and the least common multiple are not just puzzle tools, they are the hidden engines inside fractions, which is where the next chapter is headed. Whenever you reduce a fraction to lowest terms, you are dividing the top and bottom by their greatest common divisor, stripping out every factor they share until nothing common remains. And whenever you add two fractions with different bottoms, you first rewrite them over a shared denominator, and the smallest one that works is the least common multiple of the two denominators, the so called least common denominator. So the same two ideas that schedule ferries and tile walls also quietly run the entire arithmetic of fractions. Master them here and a great deal of what looks hard about fractions turns out to be gcd and lcm wearing a costume."
+      }
+    ],
+    "next": "3.6"
+  },
+  "3.6": {
+    "title": "Counting a Number's Divisors",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Two earlier ideas are about to meet. Lesson 3.1 noticed that the divisors of a number travel in pairs, with a perfect square the lone exception that owns an odd count. Lesson 3.3 broke every number into its one and only prime fingerprint. Lay those side by side and a tidy question appears. The divisors of \\(12\\) are quick to write out, but the divisors of a number like \\(360\\), or a monster like \\(1{,}000{,}000\\), would take real patience to list. What if we never had to list them? What if the fingerprint alone could tell us exactly <b>how many</b> divisors a number has, without writing down a single one? That count is hiding in plain sight, and this short final section of the chapter goes and gets it."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A little machine builds divisors of \\(12\\) by a fixed recipe. First you choose how many \\(2\\)s to use, either none, one, or two, since \\(12 = 2^2 \\times 3\\) has only two \\(2\\)s to offer. Then you choose how many \\(3\\)s to use, either none or one, since \\(12\\) carries a single \\(3\\). The machine multiplies your choices together and out pops a divisor. Work out how many <b>different</b> divisors the machine can build, and check that they really are exactly the divisors of \\(12\\). How many are there?",
+        "hints": [
+          "You make two separate choices, the number of \\(2\\)s (three options) and the number of \\(3\\)s (two options). Every pairing of one choice with the other gives a divisor. Count the pairings.",
+          "Three options for the \\(2\\)s and two options for the \\(3\\)s give \\(3 \\times 2\\) combinations. List them as \\(2^i \\times 3^j\\) and confirm you get \\(1, 2, 3, 4, 6, 12\\)."
+        ],
+        "ans": "6",
+        "accept": [
+          "6",
+          "six"
+        ],
+        "sol": "Every divisor of \\(12\\) is built by deciding how many \\(2\\)s to include and how many \\(3\\)s, and nothing else, since \\(12 = 2^2 \\times 3\\) is made of only those primes. The number of \\(2\\)s can be \\(0\\), \\(1\\), or \\(2\\), that is three choices, and the number of \\(3\\)s can be \\(0\\) or \\(1\\), that is two choices. The two decisions are completely independent, so the divisors number $$3 \\times 2 = \\boxed{6}.$$ Listing them as \\(2^i \\times 3^j\\) confirms it, $$2^0 3^0 = 1,\\ \\ 2^1 3^0 = 2,\\ \\ 2^2 3^0 = 4,\\ \\ 2^0 3^1 = 3,\\ \\ 2^1 3^1 = 6,\\ \\ 2^2 3^1 = 12,$$ exactly the six divisors of \\(12\\) and no others. Quick check, the count of \\(2\\)s ran over \\(0,1,2\\), which is \\(2 + 1 = 3\\) values, one more than the exponent, and the count of \\(3\\)s ran over \\(0,1\\), which is \\(1 + 1 = 2\\) values. The general idea is that a divisor is just an independent choice of how many of each prime to take, so the number of divisors is a product of choice counts."
+      },
+      {
+        "t": "imp",
+        "x": "Here is the rule the machine handed us. Write a number by its prime fingerprint, \\(n = p^a \\times q^b \\times r^c \\times \\cdots\\). A divisor is built by choosing how many copies of each prime to include, anywhere from \\(0\\) up to that prime's power. So prime \\(p\\) offers \\(a + 1\\) choices, prime \\(q\\) offers \\(b + 1\\), and so on, and since the choices are independent, the total number of divisors is $$\\big(a+1\\big)\\big(b+1\\big)\\big(c+1\\big)\\cdots.$$ You add one to each exponent and multiply. That single product counts every divisor at once, no listing required, and it works because each divisor corresponds to exactly one way of filling in those choices."
+      },
+      {
+        "t": "fig",
+        "x": "<svg viewBox=\"0 0 400 234\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A grid showing the divisors of 72. The four columns are headed by the powers of 2, namely 1, 2, 4, and 8, and the three rows are headed by the powers of 3, namely 1, 3, and 9. Each cell holds the product of its row and column header, filling a 4 by 3 grid with the 12 divisors of 72.\">\n<text x=\"200\" y=\"18\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">Each divisor of 72 picks one power of 2 and one power of 3</text>\n<text x=\"40\" y=\"40\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">× 2s:</text>\n<text x=\"102\" y=\"40\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">1</text>\n<text x=\"164\" y=\"40\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">2</text>\n<text x=\"226\" y=\"40\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">4</text>\n<text x=\"288\" y=\"40\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">8</text>\n<text x=\"40\" y=\"70\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">× 3s</text>\n<text x=\"40\" y=\"86\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">1</text>\n<text x=\"40\" y=\"124\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">3</text>\n<text x=\"40\" y=\"162\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">9</text>\n<rect x=\"72\" y=\"50\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"102\" y=\"74\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">1</text>\n<rect x=\"134\" y=\"50\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"164\" y=\"74\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">2</text>\n<rect x=\"196\" y=\"50\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"226\" y=\"74\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">4</text>\n<rect x=\"258\" y=\"50\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"288\" y=\"74\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">8</text>\n<rect x=\"72\" y=\"92\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"102\" y=\"116\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">3</text>\n<rect x=\"134\" y=\"92\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"164\" y=\"116\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">6</text>\n<rect x=\"196\" y=\"92\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"226\" y=\"116\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">12</text>\n<rect x=\"258\" y=\"92\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"288\" y=\"116\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">24</text>\n<rect x=\"72\" y=\"134\" width=\"60\" height=\"38\" rx=\"6\" fill=\"rgba(31,157,107,.14)\" stroke=\"var(--green)\" stroke-width=\"1\"/><text x=\"102\" y=\"158\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">9</text>\n<rect x=\"134\" y=\"134\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"164\" y=\"158\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">18</text>\n<rect x=\"196\" y=\"134\" width=\"60\" height=\"38\" rx=\"6\" fill=\"rgba(31,157,107,.14)\" stroke=\"var(--green)\" stroke-width=\"1\"/><text x=\"226\" y=\"158\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">36</text>\n<rect x=\"258\" y=\"134\" width=\"60\" height=\"38\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"288\" y=\"158\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">72</text>\n<text x=\"200\" y=\"200\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"var(--navy)\" font-family=\"Inter, sans-serif\">4 columns × 3 rows = 12 divisors</text>\n<text x=\"200\" y=\"220\" text-anchor=\"middle\" font-size=\"11.5\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">since 72 = 2³ × 3², the counts are (3+1) and (2+1)</text>\n</svg>",
+        "cap": "The rule becomes a picture for \\(72 = 2^3 \\times 3^2\\). Each divisor picks one power of \\(2\\) for its column, from \\(2^0\\) up to \\(2^3\\), giving four columns, and one power of \\(3\\) for its row, from \\(3^0\\) up to \\(3^2\\), giving three rows. Every cell of the grid is one divisor, the product of its row and column headers, so the divisors fill a tidy \\(4 \\times 3\\) rectangle. That is why the count is \\((3+1)(2+1) = 12\\), the same as adding one to each exponent and multiplying. The two green cells, \\(9\\) and \\(36\\), are the divisors that happen to be perfect squares themselves, a hint of something we will return to in a moment."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Now stretch the rule to a number with three different primes. The fingerprint of \\(360\\) is \\(360 = 2^3 \\times 3^2 \\times 5\\). Without listing a single divisor, use the add-one-and-multiply rule to count how many positive divisors \\(360\\) has. How many divisors does \\(360\\) have?",
+        "hints": [
+          "Each prime contributes one more choice than its exponent. The prime \\(2\\) has exponent \\(3\\), so it offers \\(3 + 1\\) choices. Do the same for \\(3\\) and for \\(5\\), then multiply.",
+          "The choice counts are \\(3+1 = 4\\) for the \\(2\\)s, \\(2+1 = 3\\) for the \\(3\\)s, and \\(1+1 = 2\\) for the \\(5\\). Multiply \\(4 \\times 3 \\times 2\\)."
+        ],
+        "ans": "24",
+        "accept": [
+          "24",
+          "twenty-four"
+        ],
+        "sol": "The rule extends to any number of primes without change. For \\(360 = 2^3 \\times 3^2 \\times 5^1\\), each prime offers one more choice than its exponent. The \\(2\\)s give \\(3 + 1 = 4\\) choices, the \\(3\\)s give \\(2 + 1 = 3\\), and the single \\(5\\) gives \\(1 + 1 = 2\\). Multiplying the independent choices, $$(3+1)(2+1)(1+1) = 4 \\times 3 \\times 2 = \\boxed{24}.$$ So \\(360\\) has \\(24\\) positive divisors, and we found that without writing even one of them down. Quick check, the smallest few divisors \\(1, 2, 3, 4, 5, 6, 8, 9, 10\\) already pile up fast, and the full list does run to exactly \\(24\\) entries. The general idea is that the add-one-and-multiply rule scales to as many primes as a number carries, turning a long listing chore into one quick multiplication."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "Surprises live in this rule. Compare two numbers, \\(96\\) and \\(100\\). Common sense whispers that the larger number should have more divisors, but the fingerprints tell a different story, \\(96 = 2^5 \\times 3\\) and \\(100 = 2^2 \\times 5^2\\). Use the counting rule on each, then decide which of the two numbers actually has more divisors. Enter that number.",
+        "hints": [
+          "Apply add-one-and-multiply to each. For \\(96 = 2^5 \\times 3\\), the counts are \\(5+1\\) and \\(1+1\\). For \\(100 = 2^2 \\times 5^2\\), the counts are \\(2+1\\) and \\(2+1\\).",
+          "\\(96\\) gives \\(6 \\times 2 = 12\\) divisors, while \\(100\\) gives \\(3 \\times 3 = 9\\). Which is larger?"
+        ],
+        "ans": "96",
+        "accept": [
+          "96",
+          "ninety-six"
+        ],
+        "sol": "Run the rule on each fingerprint. For \\(96 = 2^5 \\times 3\\), the divisor count is $$(5+1)(1+1) = 6 \\times 2 = 12.$$ For \\(100 = 2^2 \\times 5^2\\), it is $$(2+1)(2+1) = 3 \\times 3 = 9.$$ So \\(96\\) has \\(12\\) divisors while the larger \\(100\\) has only \\(9\\), and the winner is \\(\\boxed{96}\\). The reason is in the shape of the fingerprints. A tall stack of one prime, like the five \\(2\\)s in \\(96\\), spreads into many divisors, while \\(100\\) spends its size on two medium stacks that multiply to a smaller count. Quick check, \\(100\\) really does have just nine divisors, \\(1, 2, 4, 5, 10, 20, 25, 50, 100\\), three short of \\(96\\)'s dozen. The general idea is that the number of divisors depends on the <b>shape</b> of the prime fingerprint, the exponents, not on how big the number is."
+      },
+      {
+        "t": "prob",
+        "xp": 11,
+        "x": "Run the rule backward. A jeweler wants the smallest possible whole number that has <b>exactly</b> \\(12\\) divisors, to use as a lucky catalog code. Since the divisor count is a product of exponents-plus-one, you need exponents whose plus-one values multiply to \\(12\\). Try the different ways to break \\(12\\) into such a product, build the smallest number from each, and compare. What is the smallest whole number with exactly \\(12\\) divisors?",
+        "hints": [
+          "You need \\((a+1)(b+1)\\cdots = 12\\). The ways to write \\(12\\) as such a product include \\(12\\), \\(6 \\times 2\\), \\(4 \\times 3\\), and \\(3 \\times 2 \\times 2\\). Each gives a set of exponents to spend on primes.",
+          "To keep the number small, give the biggest exponents to the smallest primes. For the split \\(3 \\times 2 \\times 2\\), that means \\(2^2 \\times 3^1 \\times 5^1\\). Build the number for each split and take the least.",
+          "Compare \\(2^{11} = 2048\\), \\(2^5 \\times 3 = 96\\), \\(2^3 \\times 3^2 = 72\\), and \\(2^2 \\times 3 \\times 5 = 60\\). Which is smallest?"
+        ],
+        "ans": "60",
+        "accept": [
+          "60",
+          "sixty"
+        ],
+        "sol": "Since the divisor count is \\((a+1)(b+1)\\cdots\\), a number with exactly \\(12\\) divisors needs exponents whose plus-one values multiply to \\(12\\). Each way of writing \\(12\\) as such a product gives a recipe, and to make the number itself small we hand the largest exponents to the smallest primes. $$12 = 12 \\ \\Rightarrow\\ 2^{11} = 2048$$ $$12 = 6 \\times 2 \\ \\Rightarrow\\ 2^{5} \\times 3 = 96$$ $$12 = 4 \\times 3 \\ \\Rightarrow\\ 2^{3} \\times 3^{2} = 72$$ $$12 = 3 \\times 2 \\times 2 \\ \\Rightarrow\\ 2^{2} \\times 3 \\times 5 = 60$$ The smallest result is \\(\\boxed{60}\\). Quick check, \\(60 = 2^2 \\times 3 \\times 5\\) gives \\((2+1)(1+1)(1+1) = 3 \\times 2 \\times 2 = 12\\) divisors, and no arrangement of exponents summing to that product lands lower, since spreading the choices across the primes \\(2, 3, 5\\) is cheaper than stacking them high on \\(2\\) alone. The general idea is that to hit a target divisor count with the smallest number, you factor the target into exponent-plus-one pieces and load the biggest exponents onto the smallest primes."
+      },
+      {
+        "t": "prob",
+        "xp": 9,
+        "x": "Time to revisit an old mystery with new tools. Back in lesson 3.1 we found that most numbers have an even number of divisors, with perfect squares the strange exception. Sweep through the whole numbers from \\(1\\) to \\(50\\) and decide how many of them have an <b>odd</b> number of divisors. You should not need to count divisors one by one once you spot the pattern. How many numbers from \\(1\\) to \\(50\\) have an odd number of divisors?",
+        "hints": [
+          "The divisor count is a product \\((a+1)(b+1)\\cdots\\). A product of whole numbers is odd only when every single factor in it is odd. So ask, when is every \\(a+1\\) odd?",
+          "Every \\(a+1\\) is odd exactly when every exponent \\(a\\) is even, which is precisely when the number is a perfect square. So count the perfect squares from \\(1\\) to \\(50\\)."
+        ],
+        "ans": "7",
+        "accept": [
+          "7",
+          "seven"
+        ],
+        "sol": "The divisor count is the product \\((a+1)(b+1)\\cdots\\), and a product of whole numbers comes out odd only when every factor in it is odd. Each factor \\(a+1\\) is odd exactly when the exponent \\(a\\) is even. So a number has an odd divisor count precisely when <b>every</b> exponent in its fingerprint is even, and that is exactly the fingerprint of a perfect square, the very fact lesson 3.1 discovered through self-pairing. So the question becomes how many perfect squares lie from \\(1\\) to \\(50\\). They are $$1,\\ 4,\\ 9,\\ 16,\\ 25,\\ 36,\\ 49,$$ the squares of \\(1\\) through \\(7\\), since \\(8^2 = 64\\) overshoots. That is \\(\\boxed{7}\\) numbers. Quick check, \\(36 = 2^2 \\times 3^2\\) has \\((2+1)(2+1) = 9\\) divisors, an odd count, just as promised. The general idea is that the counting rule re-proves the old result, since an odd divisor count forces every exponent even, which is the fingerprint of a perfect square."
+      },
+      {
+        "t": "imp",
+        "x": "A number has an <b>odd number of divisors exactly when it is a perfect square</b>, and now we can see why from two directions. Lesson 3.1 paired each divisor \\(d\\) with its partner \\(n \\div d\\), and only a perfect square has a divisor paired with itself. The counting rule says the same thing in fingerprint language. The divisor count \\((a+1)(b+1)\\cdots\\) is odd only if every \\(a+1\\) is odd, that is only if every exponent \\(a\\) is even, which is precisely the mark of a perfect square. Two different stories, one conclusion, which is a good sign that the idea is solid."
+      },
+      {
+        "t": "prob",
+        "xp": 12,
+        "x": "One more twist to finish. Not all divisors are alike, and sometimes you want only some of them. Take \\(720 = 2^4 \\times 3^2 \\times 5\\). How many of its divisors are <b>even</b>? An even divisor must include at least one factor of \\(2\\), so think about how that single requirement changes the choices in the counting rule. How many even divisors does \\(720\\) have?",
+        "hints": [
+          "An even divisor must take at least one \\(2\\). Normally the \\(2\\)s offer choices \\(0, 1, 2, 3, 4\\), but forbidding zero \\(2\\)s leaves only \\(1, 2, 3, 4\\). The \\(3\\)s and the \\(5\\) keep all their choices.",
+          "So the even divisors number \\(4 \\times (2+1) \\times (1+1)\\). Alternatively, count all the divisors and subtract the odd ones, which are the divisors of \\(3^2 \\times 5\\)."
+        ],
+        "ans": "24",
+        "accept": [
+          "24",
+          "twenty-four"
+        ],
+        "sol": "An even divisor of \\(720 = 2^4 \\times 3^2 \\times 5\\) must carry at least one factor of \\(2\\). In the counting rule, the \\(2\\)s normally offer five choices, taking \\(0, 1, 2, 3,\\) or \\(4\\) of them, but ruling out the choice of zero leaves only the four choices \\(1, 2, 3, 4\\). The \\(3\\)s still offer \\(2 + 1 = 3\\) choices and the \\(5\\) still offers \\(1 + 1 = 2\\), so the even divisors number $$4 \\times 3 \\times 2 = \\boxed{24}.$$ A nice way to confirm it is to count from the other side. All of \\(720\\) has \\((4+1)(2+1)(1+1) = 5 \\times 3 \\times 2 = 30\\) divisors, and the <b>odd</b> ones use no \\(2\\)s at all, so they are the divisors of \\(3^2 \\times 5\\), numbering \\((2+1)(1+1) = 6\\). Subtracting, \\(30 - 6 = 24\\), matching exactly. Quick check, both routes land on \\(24\\). The general idea is that you can steer the counting rule by restricting one prime's choices, which lets you count special families of divisors like the even ones or the multiples of a given factor."
+      },
+      {
+        "t": "fact",
+        "x": "Some numbers are simply greedy for divisors. A number that has more divisors than every smaller number is called <b>highly composite</b>, and the early ones are \\(1, 2, 4, 6, 12, 24, 36, 48, 60, 120,\\) and \\(360\\). Notice anything? These are the numbers civilizations reach for again and again. A dozen is \\(12\\), an hour holds \\(60\\) minutes and a day \\(24\\) hours, a circle is cut into \\(360\\) degrees, and old systems of weight and money leaned on \\(12\\)s. The reason is exactly the counting rule. Numbers like \\(12\\) and \\(60\\) spread their size across the small primes \\(2\\) and \\(3\\) and \\(5\\) rather than stacking it high on one, so they split cleanly into halves, thirds, quarters, fifths, sixths, and more, with no awkward remainder. When you next wonder why an hour is not \\(100\\) minutes, the honest answer is that \\(60\\) has twelve divisors and \\(100\\) has only nine, and the ancients, without ever writing the rule down, chose the number that shares more easily."
+      },
+      {
+        "t": "p",
+        "x": "That brings the chapter to a close, and it is worth seeing how a single thread ran through all of it. We began by looking inside a number at its factors and multiples, then found quick tests for divisibility, then hunted the prime numbers and learned that every number is one unique product of them, its fingerprint. From that fingerprint everything else flowed, the way two numbers share a greatest common divisor and build a least common multiple, and now the way a number's divisors can be counted without ever being listed. The prime fingerprint was the master key the whole time. The next chapter turns to fractions, and the tools from here come straight along, since reducing a fraction is a greatest common divisor at work and adding fractions calls on a least common multiple. The same ideas, wearing new clothes, are waiting in Chapter 4."
+      }
+    ],
+    "review": [
+      {
+        "x": "A number is given to you already in fingerprint form, \\(2^4 \\times 5^2\\). Use the add-one-and-multiply rule to count its positive divisors. Enter that number.",
+        "ans": "15",
+        "accept": [
+          "15",
+          "fifteen"
+        ],
+        "hints": [
+          "Add one to each exponent and multiply. The \\(2\\)s give \\(4+1\\) choices and the \\(5\\)s give \\(2+1\\).",
+          "Compute \\((4+1)(2+1) = 5 \\times 3\\)."
+        ],
+        "sol": "Each prime offers one more choice than its exponent, so for \\(2^4 \\times 5^2\\) the count is $$(4+1)(2+1) = 5 \\times 3 = \\boxed{15}.$$ Quick check, the divisors are \\(2^i \\times 5^j\\) with \\(i\\) from \\(0\\) to \\(4\\) and \\(j\\) from \\(0\\) to \\(2\\), which is \\(5\\) by \\(3\\) combinations, exactly \\(15\\). The general idea is that the divisor count is the product of each exponent plus one."
+      },
+      {
+        "x": "A batch label reads \\(600\\), and a clerk wants to know how many ways it can be split into equal groups, which is just its number of divisors. First factor \\(600 = 2^3 \\times 3 \\times 5^2\\), then apply the counting rule. How many positive divisors does \\(600\\) have?",
+        "ans": "24",
+        "accept": [
+          "24",
+          "twenty-four"
+        ],
+        "hints": [
+          "With \\(600 = 2^3 \\times 3^1 \\times 5^2\\), the choice counts are \\(3+1\\), \\(1+1\\), and \\(2+1\\).",
+          "Multiply \\(4 \\times 2 \\times 3\\)."
+        ],
+        "sol": "Reading the fingerprint \\(600 = 2^3 \\times 3^1 \\times 5^2\\), the counting rule gives $$(3+1)(1+1)(2+1) = 4 \\times 2 \\times 3 = \\boxed{24}.$$ Quick check, \\(600\\) shares the count \\(24\\) with \\(360\\) from the lesson, since both spread their primes into the same shape of choices. The general idea is that once a number is in fingerprint form, its divisor count is a single multiplication away."
+      },
+      {
+        "x": "Which has more divisors, \\(64\\) or \\(90\\)? Their fingerprints are \\(64 = 2^6\\) and \\(90 = 2 \\times 3^2 \\times 5\\). Count the divisors of each, then enter the number that has more.",
+        "ans": "90",
+        "accept": [
+          "90",
+          "ninety"
+        ],
+        "hints": [
+          "For \\(64 = 2^6\\), the count is \\(6+1\\). For \\(90 = 2^1 \\times 3^2 \\times 5^1\\), multiply \\((1+1)(2+1)(1+1)\\).",
+          "\\(64\\) gives \\(7\\) divisors, while \\(90\\) gives \\(2 \\times 3 \\times 2 = 12\\). Which is larger?"
+        ],
+        "sol": "A single tall stack counts poorly. For \\(64 = 2^6\\), the divisor count is \\((6+1) = 7\\). For \\(90 = 2 \\times 3^2 \\times 5\\), it is \\((1+1)(2+1)(1+1) = 2 \\times 3 \\times 2 = 12\\). So the smaller-looking \\(90\\) wins with \\(12\\) divisors against \\(64\\)'s \\(7\\), and the answer is \\(\\boxed{90}\\). Quick check, \\(64\\) really has only the seven divisors \\(1, 2, 4, 8, 16, 32, 64\\). The general idea is that spreading primes out makes far more divisors than stacking one prime high, so divisor count tracks fingerprint shape, not size."
+      },
+      {
+        "x": "Sweep through the whole numbers from \\(1\\) to \\(100\\). How many of them have an odd number of divisors? Enter that number.",
+        "ans": "10",
+        "accept": [
+          "10",
+          "ten"
+        ],
+        "hints": [
+          "A number has an odd divisor count exactly when it is a perfect square, since that forces every exponent even. So count the perfect squares from \\(1\\) to \\(100\\).",
+          "The perfect squares are \\(1, 4, 9, \\ldots, 100\\), the squares of \\(1\\) through \\(10\\)."
+        ],
+        "sol": "A divisor count \\((a+1)(b+1)\\cdots\\) is odd only when every exponent is even, which is the fingerprint of a perfect square. So the numbers with an odd divisor count from \\(1\\) to \\(100\\) are exactly the perfect squares there, $$1, 4, 9, 16, 25, 36, 49, 64, 81, 100,$$ the squares of \\(1\\) through \\(10\\). That is \\(\\boxed{10}\\) numbers. Quick check, \\(100 = 2^2 \\times 5^2\\) has \\((2+1)(2+1) = 9\\) divisors, odd as expected. The general idea is that odd divisor counts belong to perfect squares and nothing else, so counting them is just counting squares."
+      },
+      {
+        "x": "A locksmith wants the smallest whole number that has exactly \\(8\\) divisors. Break \\(8\\) into products of exponents-plus-one, build the smallest number from each, and compare. What is the smallest whole number with exactly \\(8\\) divisors? Enter it.",
+        "ans": "24",
+        "accept": [
+          "24",
+          "twenty-four"
+        ],
+        "hints": [
+          "You need \\((a+1)(b+1)\\cdots = 8\\). The ways include \\(8\\), \\(4 \\times 2\\), and \\(2 \\times 2 \\times 2\\), giving exponent sets \\(\\{7\\}\\), \\(\\{3,1\\}\\), and \\(\\{1,1,1\\}\\).",
+          "Put the biggest exponents on the smallest primes. Compare \\(2^7 = 128\\), \\(2^3 \\times 3 = 24\\), and \\(2 \\times 3 \\times 5 = 30\\)."
+        ],
+        "sol": "A number with exactly \\(8\\) divisors needs exponents whose plus-one values multiply to \\(8\\). The recipes, each loading the biggest exponents onto the smallest primes, are $$8 = 8 \\ \\Rightarrow\\ 2^7 = 128, \\qquad 8 = 4 \\times 2 \\ \\Rightarrow\\ 2^3 \\times 3 = 24, \\qquad 8 = 2 \\times 2 \\times 2 \\ \\Rightarrow\\ 2 \\times 3 \\times 5 = 30.$$ The smallest is \\(\\boxed{24}\\). Quick check, \\(24 = 2^3 \\times 3\\) gives \\((3+1)(1+1) = 8\\) divisors, namely \\(1, 2, 3, 4, 6, 8, 12, 24\\). The general idea is that to reach a target divisor count with the least number, you factor the target and give the largest exponents to the smallest primes."
+      },
+      {
+        "x": "A storage system labels a drive by a power of two, and one drive is labeled \\(2^{10}\\). How many positive divisors does \\(2^{10}\\) have? Enter that number.",
+        "ans": "11",
+        "accept": [
+          "11",
+          "eleven"
+        ],
+        "hints": [
+          "A power of a single prime, \\(p^a\\), has its divisors \\(p^0, p^1, \\ldots, p^a\\). How many is that?",
+          "The exponent runs from \\(0\\) up to \\(10\\), so add one to the exponent."
+        ],
+        "sol": "A power of a single prime \\(2^{10}\\) has divisors \\(2^0, 2^1, \\ldots, 2^{10}\\), one for each exponent from \\(0\\) to \\(10\\). The counting rule says the same, \\((10+1) = \\boxed{11}\\). Quick check, the list \\(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024\\) holds exactly eleven numbers. The general idea is that a prime raised to the power \\(a\\) has \\(a+1\\) divisors, the simplest case of the rule."
+      },
+      {
+        "x": "A number is special if it has <b>exactly three</b> divisors. Investigate what kind of number this is, then count how many numbers from \\(1\\) to \\(50\\) have exactly three divisors. Enter that count.",
+        "ans": "4",
+        "accept": [
+          "4",
+          "four"
+        ],
+        "hints": [
+          "For the divisor count \\((a+1)(b+1)\\cdots\\) to equal \\(3\\), and since \\(3\\) is prime, the product must be a single factor \\(3\\). That means one prime with exponent \\(2\\) and no others.",
+          "So the number must be the square of a prime, \\(p^2\\). List the prime squares up to \\(50\\)."
+        ],
+        "sol": "The divisor count \\((a+1)(b+1)\\cdots\\) equals \\(3\\) only when the product is the single factor \\(3\\), since \\(3\\) is prime and cannot be split into smaller whole-number factors above \\(1\\). That forces exactly one prime with exponent \\(2\\) and nothing else, so the number must be the <b>square of a prime</b>, \\(p^2\\), whose divisors are just \\(1\\), \\(p\\), and \\(p^2\\). The prime squares up to \\(50\\) are $$2^2 = 4,\\quad 3^2 = 9,\\quad 5^2 = 25,\\quad 7^2 = 49,$$ since \\(11^2 = 121\\) overshoots. That is \\(\\boxed{4}\\) numbers. Quick check, \\(25\\) has exactly the three divisors \\(1, 5, 25\\). The general idea is that a number has exactly three divisors precisely when it is the square of a prime, a clean fingerprint forced by the counting rule."
+      },
+      {
+        "x": "Take \\(360 = 2^3 \\times 3^2 \\times 5\\) one more time. How many of its divisors are <b>even</b>? Remember that an even divisor must include at least one factor of \\(2\\). Enter that number.",
+        "ans": "18",
+        "accept": [
+          "18",
+          "eighteen"
+        ],
+        "hints": [
+          "An even divisor must take at least one \\(2\\), so the \\(2\\)s offer choices \\(1, 2, 3\\) instead of \\(0, 1, 2, 3\\). That is \\(3\\) choices. The \\(3\\)s and the \\(5\\) keep their full counts.",
+          "Even divisors number \\(3 \\times (2+1) \\times (1+1)\\). Or count all \\(24\\) divisors and subtract the odd ones, the divisors of \\(3^2 \\times 5\\)."
+        ],
+        "sol": "An even divisor of \\(360 = 2^3 \\times 3^2 \\times 5\\) must include at least one factor of \\(2\\). The \\(2\\)s normally give four choices, \\(0, 1, 2, 3\\), but ruling out zero leaves three, \\(1, 2, 3\\). The \\(3\\)s give \\(2 + 1 = 3\\) choices and the \\(5\\) gives \\(1 + 1 = 2\\), so the even divisors number $$3 \\times 3 \\times 2 = \\boxed{18}.$$ Checking from the other side, all of \\(360\\) has \\(4 \\times 3 \\times 2 = 24\\) divisors, and the odd ones are the divisors of \\(3^2 \\times 5\\), numbering \\(3 \\times 2 = 6\\), so even ones are \\(24 - 6 = 18\\), a match. Quick check, both routes give \\(18\\). The general idea is that requiring a prime to appear shrinks that prime's choice count by one, which counts a chosen family of divisors directly."
+      },
+      {
+        "t": "imp",
+        "x": "The whole section rests on one rule, read off the prime fingerprint. If \\(n = p^a \\times q^b \\times \\cdots\\), then its number of positive divisors is \\((a+1)(b+1)\\cdots\\), because each divisor is an independent choice of how many of each prime to take, from \\(0\\) up to its power. Three consequences are worth keeping. The divisor count tracks the <b>shape</b> of the exponents, not the size of the number, so a smaller number can out-divide a larger one. The count is <b>odd</b> exactly for perfect squares, since that is when every \\(a+1\\) is odd. And you can count a chosen family, like the even divisors, by trimming the choices for one prime. Run the rule backward, by splitting a target count into exponent-plus-one pieces, and you can even design a number to have exactly as many divisors as you please."
+      },
+      {
+        "t": "fact",
+        "x": "Here is a famous puzzle that is secretly this whole section in disguise. Picture a hallway of \\(100\\) closed lockers and \\(100\\) students. The first student walks by and opens every locker. The second student goes to every second locker and flips it, closing the open ones. The third student flips every third locker, the fourth every fourth, and so on, until the hundredth student flips only locker \\(100\\). When the dust settles, which lockers are left open? A locker gets flipped once for every student whose number divides it, so locker \\(n\\) is touched exactly as many times as \\(n\\) has divisors. It ends open only if it was flipped an odd number of times, which means only if \\(n\\) has an odd number of divisors. And we now know exactly which numbers those are, the perfect squares. So the lockers left standing open are \\(1, 4, 9, 16, 25, 36, 49, 64, 81,\\) and \\(100\\), and nothing else. A riddle that looks like it needs a hundred steps is answered in one breath by the counting rule."
+      }
+    ],
+    "next": "3.7"
+  },
+  "3.7": {
+    "title": "Chapter 3 Summary",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Chapter 3 began by looking <b>inside</b> a number, at the factors hiding within it, and ended holding a single master key, the prime fingerprint that every number wears and no two numbers share. Along the way each section quietly handed the next one its tools. Factors and multiples set the stage, divisibility tests gave us quick eyes, primes turned out to be the atoms, factorization made the fingerprint, and from that one fingerprint flowed the greatest common divisor, the least common multiple, and the exact count of a number's divisors. This page gathers every key idea of the chapter in one place, in the order they were built."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Factors and multiples are one relationship, read from two ends.</b> A factor of \\(n\\) is a side of a rectangle of area \\(n\\), so factors arrive in pairs that multiply to \\(n\\), \\(d\\) with its partner \\(n \\div d\\). Turn the same arrow around and the small number is a factor while the large one is a multiple. From this came a handful of quiet facts. A number has <b>finitely many factors</b> but <b>infinitely many multiples</b>. The number \\(1\\) divides everything, every number is both a factor and a multiple of itself, and \\(0\\) is a multiple of every number. And a number has an <b>odd</b> number of factors exactly when it is a <b>perfect square</b>, the lone case where a factor pairs with itself."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Closure and chaining.</b> Add or subtract two multiples of \\(n\\) and you land on a multiple of \\(n\\) again, since the shared \\(n\\) factors out, so a stray non-multiple can never be added onto a multiple to reach one. That is <b>closure</b>. And if \\(a\\) is a factor of \\(b\\), then every multiple of \\(b\\) is automatically a multiple of \\(a\\), since the multiple carries \\(b\\) inside it and \\(b\\) carries \\(a\\). That is <b>chaining</b>, and it runs only downward toward the smaller factors. These two ideas powered every divisibility test that followed."
+      },
+      {
+        "t": "p",
+        "x": "With that structure in hand, the next question was practical. Must you really divide a big number out the long way to know whether some small number goes into it, or can you glance at the digits and simply know? Place value gave the answer."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Divisibility tests all spring from place value.</b> Cut a number where one chunk becomes a multiple of the divisor, let closure throw that chunk away, and judge the small piece left behind. The <b>last digit</b> settles \\(2\\), \\(5\\), and \\(10\\), since every higher place is a multiple of ten. The <b>last two digits</b> settle \\(4\\) and the <b>last three</b> settle \\(8\\), since \\(100 = 4 \\times 25\\) and \\(1000 = 8 \\times 125\\). The <b>digit sum</b> settles \\(9\\) and \\(3\\), since every power of ten is one more than a run of nines. The <b>alternating digit sum</b> settles \\(11\\), since the powers of ten bounce just below and just above its multiples."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Combine tests only along coprime factors.</b> To test a composite divisor, split it into two factors that share no common factor and test each separately. So \\(6 = 2 \\times 3\\), \\(12 = 4 \\times 3\\), and \\(15 = 3 \\times 5\\) all work, since each split is coprime. A split like \\(12 = 2 \\times 6\\) fails, because \\(2\\) and \\(6\\) overlap in a factor of \\(2\\), so passing both pieces would not guarantee divisibility by the whole. The shared factor would be counted once but demanded twice."
+      },
+      {
+        "t": "p",
+        "x": "Testing for small factors led naturally to the smallest building blocks of all, the numbers that have no factors to find."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Primes are the atoms.</b> A <b>prime</b> has exactly two divisors, \\(1\\) and itself, a <b>composite</b> has more, the number \\(1\\) is neither, and \\(2\\) is the only even prime. To test whether \\(n\\) is prime, divide it by the primes from \\(2\\) upward and stop once a prime passes \\(\\sqrt{n}\\), since any factor pair places one member at or below the square root, and you only need primes because any composite trial divisor already carries a smaller prime. The \\(3.2\\) shortcuts clear the small primes at a glance."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Every number has one unique prime fingerprint.</b> By the <b>Fundamental Theorem of Arithmetic</b>, every whole number above \\(1\\) is a product of primes in exactly one way apart from order, written compactly with exponents like \\(360 = 2^3 \\times 3^2 \\times 5\\). That fingerprint answers a flood of questions on its own. A number is a <b>perfect square</b> exactly when every exponent is even, a <b>perfect cube</b> when every exponent is a multiple of \\(3\\), and the number of zeros it ends in is the number of \\(2\\)-and-\\(5\\) pairs it carries. And the primes themselves never run out."
+      },
+      {
+        "t": "p",
+        "x": "Once a single number could be broken into its atoms, two numbers could be compared atom by atom, which opened the last ideas of the chapter."
+      },
+      {
+        "t": "imp",
+        "x": "<b>Greatest common divisor and least common multiple are two readings of two fingerprints.</b> The <b>gcd</b> takes each shared prime to its <b>lower</b> power, the most the two numbers carry in common, and answers every question about splitting and sharing. The <b>lcm</b> takes every prime to its <b>higher</b> power, the first place two rhythms align, and answers every question about scheduling and coinciding. They are tied by \\(\\gcd(a,b) \\times \\operatorname{lcm}(a,b) = a \\times b\\), so \\(\\operatorname{lcm} = \\tfrac{a \\times b}{\\gcd}\\). Numbers sharing no prime are <b>coprime</b>, with gcd \\(1\\) and lcm equal to their product. And the common multiples of a pair are exactly the multiples of their lcm."
+      },
+      {
+        "t": "imp",
+        "x": "<b>The fingerprint counts a number's divisors too.</b> If \\(n = p^a \\times q^b \\times \\cdots\\), the number of positive divisors is \\((a+1)(b+1)\\cdots\\), since each divisor is an independent choice of how many of each prime to take, from \\(0\\) up to its power. The count depends on the <b>shape</b> of the exponents, not the size of the number, so a smaller number can hold more divisors than a larger one. The count is <b>odd</b> exactly for perfect squares, matching what factor pairs told us back in \\(3.1\\), and trimming one prime's choices counts a chosen family of divisors, like the even ones."
+      },
+      {
+        "t": "p",
+        "x": "Read the chapter from a step back and a single thread runs through all of it. Look inside a number and you find its primes, gather those primes and you have its fingerprint, and from that one object everything else follows, whether a number is divisible, prime, square, or cube, what it shares with another number, what the two jointly build, and how many divisors it quietly holds. The next chapter turns to fractions, and these tools come straight along, since reducing a fraction is a greatest common divisor at work and adding fractions calls on a least common multiple. The prime fingerprint, the master key of this chapter, is about to unlock the next."
+      }
+    ],
+    "next": "4.1"
   }
 }
