@@ -1399,6 +1399,537 @@
     "sol": "Start with the three filters. Multiplying straight across, \\(\\tfrac{5}{6}\\times\\tfrac{6}{7}\\times\\tfrac{7}{8}=\\dfrac{5\\times 6\\times 7}{6\\times 7\\times 8}\\). The \\(6\\) and the \\(7\\) each appear once on top and once on the bottom, so they cancel and leave \\(\\dfrac{5}{8}\\). This is a telescoping chain, where each filter's bottom is swallowed by the next filter's top. Now divide by the baseline. Dividing by \\(\\tfrac{5}{8}\\) means multiplying by its reciprocal \\(\\tfrac{8}{5}\\), so we have \\(\\dfrac{5}{8}\\times\\dfrac{8}{5}=\\dfrac{5\\times 8}{8\\times 5}\\). The \\(5\\) cancels with the \\(5\\) and the \\(8\\) cancels with the \\(8\\), so nothing is left but the number itself. Any nonzero fraction times its own reciprocal is \\(1\\), which makes sense because the surviving signal turned out to be exactly the baseline. $$\\boxed{1}$$"
    }
   ],
-  "next": "4.5"
+  "next": "4.4"
+ },
+ "4.4": {
+  "title": "Common Denominators and Simplification",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "A field researcher keeps a logbook for a ridge of motion cameras, the kind that snap a photo whenever something warm walks past. One night she writes that a fox tripped \\(84\\) of the \\(120\\) cameras, recorded as \\(\\tfrac{84}{120}\\). The number is honest, every digit earned, but it lands clumsily on the page, and she has a hunch the same amount could be written with much smaller, friendlier numbers. A teammate watching a different ridge writes up his own night as a share with a bottom of \\(45\\), and now the office wants a quick answer to one question. Which ridge had the busier night?<br><br>Stop for a second and feel that there are really two different troubles tangled together here. The first is about a single fraction sitting all alone. \\(\\tfrac{84}{120}\\) marks one fixed point on the line between \\(0\\) and \\(1\\), it does not move, and somewhere there is a shorter, cleaner name for that exact point, the smallest numbers that still tell the whole truth. The second trouble is sharper. One night is sliced into \\(120\\)ths and the other into \\(45\\)ths, and those are pieces of different sizes, so you cannot lay the two shares next to each other and count one against the other. They flat out disagree about how big a single piece is supposed to be.<br><br>So here is the honest question we are going to chew on for the whole lesson, and you should notice that it does not get answered yet. There seem to be two opposite moves waiting in the wings. One of them squeezes a single bulky fraction down to its smallest, plainest name. The other forces two stubborn fractions to finally speak in the same size of piece. Are those two moves secretly the <b>same idea</b> from Chapter 3, just aimed in opposite directions, one shrinking and one growing? Hold onto that thought. We are going to chase the squeezing move first."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Back at the explorer's logbook, the fuel reading sits as \\(\\tfrac{84}{120}\\). In \\(4.2\\) you might have chipped away at a fraction like this, dividing by \\(2\\), then by \\(2\\) again, then by \\(3\\), crawling down to simplest form one small step at a time. There is a faster road, and it leans on a tool you built in Chapter 3. A fraction is in simplest form exactly when its top and bottom share no common factor except \\(1\\). So rather than guessing small factors, hunt for the single <b>biggest</b> factor the top and bottom share, the \\(\\gcd\\) of \\(84\\) and \\(120\\), then divide both by that one number in a single clean move. Find \\(\\gcd(84,120)\\), then divide top and bottom by it. Write \\(\\tfrac{84}{120}\\) in simplest form as a fraction \\(\\tfrac{a}{b}\\).",
+    "hints": [
+     "The whole trick is one number, the \\(\\gcd\\) of \\(84\\) and \\(120\\). One way to find it is to list the prime factors of each and collect every prime they both carry. \\(84 = 2 \\times 2 \\times 3 \\times 7\\) and \\(120 = 2 \\times 2 \\times 2 \\times 3 \\times 5\\). Which primes show up in both, and how many times?",
+     "Both numbers carry two \\(2\\)s and one \\(3\\), so \\(\\gcd(84,120) = 2 \\times 2 \\times 3 = 12\\). Now make the single move, divide the top by \\(12\\) and the bottom by \\(12\\). What is \\(84 \\div 12\\) over \\(120 \\div 12\\)?"
+    ],
+    "ans": "7/10",
+    "accept": [
+     "7/10",
+     "7 / 10",
+     "seven tenths",
+     "seven-tenths"
+    ],
+    "sol": "First find the biggest factor the top and bottom share. Break each number into primes. \\(84 = 2 \\times 2 \\times 3 \\times 7\\) and \\(120 = 2 \\times 2 \\times 2 \\times 3 \\times 5\\). The primes they both carry are two \\(2\\)s and one \\(3\\), so the \\(\\gcd\\) is \\(2 \\times 2 \\times 3 = 12\\). That \\(12\\) is the single biggest chunk hiding in both numbers. Now divide top and bottom by it in one clean move. \\(84 \\div 12 = 7\\) and \\(120 \\div 12 = 10\\), which gives \\(\\tfrac{7}{10}\\). Check that we are truly done. The new top is \\(7\\), a prime, and \\(10 = 2 \\times 5\\) shares none of its factors, so the only thing they have in common is \\(1\\). The fraction is in simplest form, and we got there in one step instead of three. $$\\boxed{7/10}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Here is a fraction built on purpose so you can watch the machinery work. Start from \\(\\tfrac{5}{8}\\). Now multiply the top by \\(9\\) and the bottom by \\(9\\), which gives \\(\\tfrac{45}{72}\\). You did not nudge the point on the number line even a hair, you only renamed it, because multiplying the top and the bottom by the same number is the equivalent fraction move from \\(4.2\\). So \\(\\tfrac{45}{72}\\) and \\(\\tfrac{5}{8}\\) are the same amount wearing different clothes, and that \\(9\\) you multiplied in is now sitting inside both numbers, one shared factor up top and the matching one down below. Written with the factor still showing, it is \\(\\tfrac{5\\times 9}{8\\times 9}\\). That shared \\(9\\) scales the top and the bottom by the identical amount, so it cannot tilt the value one way or the other. Divide the matching \\(9\\) off both floors. What single fraction \\(\\tfrac{a}{b}\\) does \\(\\tfrac{5\\times 9}{8\\times 9}\\) collapse back to?",
+    "hints": [
+     "The \\(9\\) is doing the exact same job on top and on bottom. Ask yourself what number you started with before you ever multiplied that \\(9\\) in.",
+     "In \\(\\tfrac{5\\times 9}{8\\times 9}\\), cross out the \\(9\\) on top and the \\(9\\) on the bottom, since dividing both by \\(9\\) undoes the multiplying by \\(9\\). What is left standing is \\(\\tfrac{5}{?}\\)."
+    ],
+    "ans": "5/8",
+    "accept": [
+     "5/8",
+     "five eighths",
+     "five-eighths",
+     "five eighth",
+     "5 over 8"
+    ],
+    "sol": "Look at the shared \\(9\\). Multiplying the top by \\(9\\) and dividing the top by \\(9\\) cancel each other out, and the same is true on the bottom. So when both the top and the bottom carry a matching \\(9\\), you can lift it straight back off. Write it as two separate pieces, \\(\\tfrac{5\\times 9}{8\\times 9}=\\tfrac{5}{8}\\times\\tfrac{9}{9}\\). The piece \\(\\tfrac{9}{9}\\) equals \\(1\\), and multiplying by \\(1\\) changes nothing. That is why the value never moved. Dividing the \\(9\\) off both floors leaves \\(\\tfrac{5\\times 9}{8\\times 9}=\\dfrac{5}{8}\\). Quick gut check, \\(\\tfrac{5}{8}\\) renamed as eighths of a whole is exactly where we began, so collapsing the shared \\(9\\) returned us to the original point. \\(\\boxed{\\dfrac{5}{8}}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "A fraction is already in simplest form when the only number its top and bottom still share is \\(1\\), since there is nothing bigger left to divide out. And dividing out a shared factor is always fair because that factor sits on the top and the bottom at once, so cutting it from both scales them down by the same amount, which gives the fraction a new name but leaves the point it marks untouched. So the quickest path is to find the single biggest thing the top and bottom share, their \\(\\gcd\\), and divide both by it one time. That one cut sweeps out every shared factor at once, because the biggest one already carried all the smaller ones along with it."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 460 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A simplification of twelve over eighteen shown as two stacked bars of prime tiles. The top bar, labelled NUMERATOR, holds the primes two, two, three, which multiply to twelve. The bottom bar, labelled DENOMINATOR, holds two, three, three, which multiply to eighteen. Faint dashed vertical links pair one two on top with the two below it, and one three on top with a three below it. The two matched pairs are greyed and struck so they lift off both bars. The survivors glow gold, a single two left on the top bar and a single three left on the bottom bar, and a bracket pulls them together into the result two over three. A caption notes the cancelled tiles multiply to the greatest common divisor of twelve and eighteen, which is six.\"><rect x=\"0\" y=\"0\" width=\"460\" height=\"300\" fill=\"none\"/><text x=\"20\" y=\"34\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"var(--mid)\">NUMERATOR</text><text x=\"416\" y=\"34\" text-anchor=\"end\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">= 12</text><rect x=\"20\" y=\"44\" width=\"64\" height=\"50\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--line)\" opacity=\"0.45\"/><text x=\"52\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--slate)\" opacity=\"0.5\">2</text><line x1=\"28\" y1=\"69\" x2=\"76\" y2=\"69\" stroke=\"var(--slate)\" stroke-width=\"2\" opacity=\"0.5\"/><rect x=\"92\" y=\"44\" width=\"64\" height=\"50\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--line)\" opacity=\"0.45\"/><text x=\"124\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--slate)\" opacity=\"0.5\">3</text><line x1=\"100\" y1=\"69\" x2=\"148\" y2=\"69\" stroke=\"var(--slate)\" stroke-width=\"2\" opacity=\"0.5\"/><rect x=\"164\" y=\"40\" width=\"64\" height=\"58\" rx=\"8\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"2.5\"/><text x=\"196\" y=\"78\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"26\" font-weight=\"800\" fill=\"var(--gold-deep)\">2</text><text x=\"20\" y=\"138\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"var(--mid)\">DENOMINATOR</text><text x=\"416\" y=\"138\" text-anchor=\"end\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">= 18</text><rect x=\"20\" y=\"148\" width=\"64\" height=\"50\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" opacity=\"0.45\"/><text x=\"52\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--slate)\" opacity=\"0.5\">2</text><line x1=\"28\" y1=\"173\" x2=\"76\" y2=\"173\" stroke=\"var(--slate)\" stroke-width=\"2\" opacity=\"0.5\"/><rect x=\"92\" y=\"148\" width=\"64\" height=\"50\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" opacity=\"0.45\"/><text x=\"124\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--slate)\" opacity=\"0.5\">3</text><line x1=\"100\" y1=\"173\" x2=\"148\" y2=\"173\" stroke=\"var(--slate)\" stroke-width=\"2\" opacity=\"0.5\"/><rect x=\"164\" y=\"144\" width=\"64\" height=\"58\" rx=\"8\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"2.5\"/><text x=\"196\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"26\" font-weight=\"800\" fill=\"var(--gold-deep)\">3</text><line x1=\"52\" y1=\"96\" x2=\"52\" y2=\"146\" stroke=\"var(--slate)\" stroke-width=\"1.4\" stroke-dasharray=\"4 4\" opacity=\"0.55\"/><line x1=\"124\" y1=\"96\" x2=\"124\" y2=\"146\" stroke=\"var(--slate)\" stroke-width=\"1.4\" stroke-dasharray=\"4 4\" opacity=\"0.55\"/><text x=\"62\" y=\"124\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\" opacity=\"0.7\">paired</text><path d=\"M 252 56 L 264 56 L 264 186 L 252 186\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/><line x1=\"264\" y1=\"121\" x2=\"276\" y2=\"121\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/><text x=\"318\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"26\" font-weight=\"800\" fill=\"var(--gold-deep)\">2</text><line x1=\"296\" y1=\"116\" x2=\"340\" y2=\"116\" stroke=\"var(--gold-deep)\" stroke-width=\"2.5\"/><text x=\"318\" y=\"150\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"26\" font-weight=\"800\" fill=\"var(--gold-deep)\">3</text><text x=\"360\" y=\"121\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--slate)\">the result</text><rect x=\"20\" y=\"226\" width=\"396\" height=\"54\" rx=\"10\" fill=\"var(--soft)\" stroke=\"var(--line)\"/><text x=\"38\" y=\"250\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">The greyed tiles multiply to 2 &#215; 3 = 6 = gcd(12, 18).</text><text x=\"38\" y=\"270\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">Peeling them off both bars is one move, dividing top and bottom by 6.</text></svg>",
+    "cap": "Figure 1. Twelve is \\(2\\times 2\\times 3\\) and eighteen is \\(2\\times 3\\times 3\\). The tiles they share, one \\(2\\) and one \\(3\\), link up and lift off both bars at once. Those cancelled tiles multiply to \\(\\gcd(12,18)=6\\), so peeling the matched primes off both floors is the very same single move as dividing top and bottom by their gcd, leaving \\(\\tfrac{2}{3}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A trail map says a long hiking loop is \\(\\tfrac{25}{21}\\) of the length of a shorter practice loop. One morning a class walks \\(\\tfrac{14}{15}\\) of the full hiking loop before the weather turns and they head back. The distance they covered, written as a fraction of the practice loop, is \\(\\tfrac{14}{15}\\times\\tfrac{25}{21}\\). You could multiply straight across and then wrestle a big fraction down to lowest terms, but there is a tidier route. Before you multiply, look for factors shared between a number on top and a number on the bottom, even when they sit in different fractions. The \\(14\\) up top and the \\(21\\) down below both hold a \\(7\\). The \\(25\\) up top and the \\(15\\) down below both hold a \\(5\\). Cancel those shared factors first, and the product comes out already in simplest form. What is \\(\\tfrac{14}{15}\\times\\tfrac{25}{21}\\), written as a fraction \\(\\tfrac{a}{b}\\) in simplest form?",
+    "hints": [
+     "When you multiply two fractions, every top number meets every bottom number, so a factor on any top can cancel with a factor on any bottom. Pair up the \\(14\\) with the \\(21\\) first, since both share a \\(7\\), and pair the \\(25\\) with the \\(15\\), since both share a \\(5\\).",
+     "Replace \\(14\\) and \\(21\\) by \\(2\\) and \\(3\\) after dividing both by \\(7\\). Replace \\(25\\) and \\(15\\) by \\(5\\) and \\(3\\) after dividing both by \\(5\\). Now multiply the slimmed-down tops together and the slimmed-down bottoms together."
+    ],
+    "ans": "10/9",
+    "accept": [
+     "10/9",
+     "ten ninths",
+     "ten-ninths"
+    ],
+    "sol": "Line up the multiplication so every factor is in view, \\(\\tfrac{14}{15}\\times\\tfrac{25}{21}=\\tfrac{14\\times 25}{15\\times 21}\\). The key move is to cancel before multiplying, because in a product of fractions any top can trade a factor with any bottom. The \\(14\\) on top and the \\(21\\) on the bottom both carry a \\(7\\). Dividing each by \\(7\\) turns \\(14\\) into \\(2\\) and \\(21\\) into \\(3\\). The \\(25\\) on top and the \\(15\\) on the bottom both carry a \\(5\\). Dividing each by \\(5\\) turns \\(25\\) into \\(5\\) and \\(15\\) into \\(3\\). The expression has now slimmed down to \\(\\tfrac{2\\times 5}{3\\times 3}\\). Multiply the surviving tops, \\(2\\times 5=10\\), and the surviving bottoms, \\(3\\times 3=9\\), to get \\(\\tfrac{10}{9}\\). Because every shared factor was already removed, nothing is left to cancel, so the answer is in simplest form by design rather than by cleanup afterward. The class covered \\(\\tfrac{10}{9}\\) of the practice loop, a little more than the practice loop itself, which makes sense since the hiking loop is the longer of the two. \\(\\boxed{\\tfrac{10}{9}}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "You are scaling a recipe for a big event, and your mixing bowl holds \\(\\tfrac{9}{20}\\) of a sack of flour. Each small pour-batch needs \\(\\tfrac{3}{8}\\) of a sack. To find how many small batches you can pour, you ask how many \\(\\tfrac{3}{8}\\) sacks fit inside \\(\\tfrac{9}{20}\\) of a sack. That is the division \\(\\tfrac{9}{20}\\div\\tfrac{3}{8}\\). Flip the divisor to its reciprocal so the division becomes a multiplication, \\(\\tfrac{9}{20}\\times\\tfrac{8}{3}\\), and notice the canceling that is now in plain sight. The \\(9\\) on top shares a factor of \\(3\\) with the \\(3\\) on the bottom, and the \\(8\\) on top shares a factor of \\(4\\) with the \\(20\\) on the bottom. What is \\(\\tfrac{9}{20}\\div\\tfrac{3}{8}\\), written as a fraction \\(\\tfrac{a}{b}\\) in simplest form?",
+    "hints": [
+     "Dividing by a fraction is the same as multiplying by its reciprocal, so rewrite \\(\\tfrac{9}{20}\\div\\tfrac{3}{8}\\) as \\(\\tfrac{9}{20}\\times\\tfrac{8}{3}\\). Once it is a multiplication, any top number can cancel with any bottom number.",
+     "Cancel before multiplying. Replace the \\(9\\) and \\(3\\) with \\(3\\) and \\(1\\), since both lose a factor of \\(3\\). Replace the \\(8\\) and \\(20\\) with \\(2\\) and \\(5\\), since both lose a factor of \\(4\\). Now multiply the new tops and the new bottoms straight across."
+    ],
+    "ans": "6/5",
+    "accept": [
+     "6/5",
+     "six fifths",
+     "six-fifths",
+     "1 1/5",
+     "1.2"
+    ],
+    "sol": "Start by turning the division into a multiplication. Dividing by \\(\\tfrac{3}{8}\\) is the same as multiplying by its reciprocal \\(\\tfrac{8}{3}\\), so \\(\\tfrac{9}{20}\\div\\tfrac{3}{8}=\\tfrac{9}{20}\\times\\tfrac{8}{3}\\). The flip is what makes the simplifying easy, because in a multiplication any top factor is free to cancel with any bottom factor. Look across the two fractions. The \\(9\\) on top and the \\(3\\) on a bottom both carry a factor of \\(3\\), so divide each by \\(3\\) to get \\(3\\) and \\(1\\). The \\(8\\) on top and the \\(20\\) on a bottom both carry a factor of \\(4\\), so divide each by \\(4\\) to get \\(2\\) and \\(5\\). The product is now \\(\\tfrac{3}{5}\\times\\tfrac{2}{1}\\). Multiply straight across, \\(3\\times2=6\\) on top and \\(5\\times1=5\\) on the bottom, which gives \\(\\tfrac{6}{5}\\). Since \\(6\\) and \\(5\\) share no common factor, it is already in simplest form. So a little over one small batch fits, \\(\\tfrac{6}{5}\\) of a batch to be exact. \\(\\boxed{6/5}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A relay of six runners passes a baton, and each runner covers a leg that is a clean fraction of the leg just before it. In order, the legs are \\(\\tfrac{3}{4}\\), then \\(\\tfrac{4}{5}\\), then \\(\\tfrac{5}{6}\\), then \\(\\tfrac{6}{7}\\), then \\(\\tfrac{7}{8}\\), then \\(\\tfrac{8}{9}\\) of the one before. The total stretch, measured against the very first runner's reference leg, is the whole chain multiplied together, \\(\\tfrac{3}{4}\\times\\tfrac{4}{5}\\times\\tfrac{5}{6}\\times\\tfrac{6}{7}\\times\\tfrac{7}{8}\\times\\tfrac{8}{9}\\). Before you reach for a calculator, line the factors up and look closely. Every bottom is the very next top. The \\(4\\) on the first bottom meets the \\(4\\) on the next top, and a number over itself is just \\(1\\). The same thing happens to the \\(5\\), the \\(6\\), the \\(7\\), and the \\(8\\). The row folds shut from the inside, and only the two outermost survivors are left standing, the first top and the last bottom. What does the chain collapse to, written as a fraction \\(\\tfrac{a}{b}\\) in simplest form?",
+    "hints": [
+     "You do not have to multiply this out. Write the whole product as one giant fraction, with all six tops on top and all six bottoms underneath. Now hunt for matching numbers. Does anything on top also appear on the bottom?",
+     "Every middle number shows up once on top and once on the bottom, so each of those pairs cancels to \\(1\\). Cross out the \\(4\\), \\(5\\), \\(6\\), \\(7\\), and \\(8\\) wherever they appear. The only top with no matching bottom is the very first \\(3\\), and the only bottom with no matching top is the very last \\(9\\). What single fraction is left?"
+    ],
+    "ans": "1/3",
+    "accept": [
+     "1/3",
+     "one third",
+     "one-third",
+     "a third"
+    ],
+    "sol": "Stack all the tops over all the bottoms in one fraction instead of multiplying step by step. That gives $$\\frac{3\\times4\\times5\\times6\\times7\\times8}{4\\times5\\times6\\times7\\times8\\times9}.$$ Now compare the two rows. The top runs \\(3,4,5,6,7,8\\). The bottom runs \\(4,5,6,7,8,9\\). Every number from \\(4\\) up to \\(8\\) appears once on top and once on the bottom, and any number divided by itself is \\(1\\). So each of those pairs quietly cancels, the \\(4\\) with the \\(4\\), the \\(5\\) with the \\(5\\), and so on through the \\(8\\). The cancellation cascades through the whole chain from the inside out. When the dust settles, the only top with no partner is the \\(3\\) that started the chain, and the only bottom with no partner is the \\(9\\) that ended it. Everything between them has folded shut. What remains is \\(\\tfrac{3}{9}\\), and since \\(3\\) and \\(9\\) share a factor of \\(3\\), that simplifies to \\(\\tfrac{1}{3}\\). The relay covers exactly a third of the first runner's reference leg. \\(\\boxed{\\dfrac{1}{3}}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "I think I finally caught the habit. Whenever fractions get multiplied, or divided once I have flipped the second one, every top is about to pile onto one big top and every bottom onto one big bottom, so the smart first move is never to multiply across and then go clean up the mess. It is to scan each top against every bottom, find every shared factor no matter which fraction it came from, and lift it off both floors before I multiply a single thing. <b>Cancel first, multiply second.</b> Do that and the answer is born already in simplest form, with no reducing step waiting at the end and no giant numbers to wrestle in the middle, and a whole chain of factors can quietly fold away this way, which is exactly why that relay collapsed to such a tiny answer."
+   },
+   {
+    "t": "fact",
+    "x": "For most of recorded history, almost nobody wrote a fraction the way you do now. The ancient Egyptians, more than three thousand years ago, insisted that every fraction be built as a sum of distinct unit fractions, fractions with a plain \\(1\\) sitting on top. So instead of \\(\\tfrac{3}{4}\\) a scribe would write \\(\\tfrac{1}{2}+\\tfrac{1}{4}\\), and instead of \\(\\tfrac{2}{5}\\) he would write \\(\\tfrac{1}{3}+\\tfrac{1}{15}\\), with no piece repeated. A real document called the Rhind Papyrus, copied around \\(1550\\) BCE, even carries a long table showing how to split every fraction of the form \\(\\tfrac{2}{n}\\) into these tidy unit pieces. Working that way forces you to think hard about common denominators and shared factors on every single line, since the only way to check such a sum is to give the pieces a common bottom and add. It is a strange and beautiful reminder that the smooth \\(\\tfrac{a}{b}\\) you write without thinking was once a genuine puzzle that took trained scribes years to master."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A regional census reports that \\(1{,}485\\) households out of \\(1{,}890\\) own a bicycle, and you want to record that as a clean fraction. The numbers are far too big to spot the \\(\\gcd\\) just by staring at them, so reach for the Chapter 3 move and break each one into primes. The top number factors as \\(1{,}485 = 3\\times 3\\times 3\\times 5\\times 11\\), and the bottom number factors as \\(1{,}890 = 2\\times 3\\times 3\\times 3\\times 5\\times 7\\). Once both are stacked as primes, every shared factor sits in plain view. Cancel every prime that appears on both the top and the bottom, then read off what is left. Write \\(\\tfrac{1{,}485}{1{,}890}\\) in simplest form as \\(\\tfrac{a}{b}\\).",
+    "hints": [
+     "Line the two prime lists up factor by factor. Both the top and the bottom carry three \\(3\\)s and one \\(5\\). Those are exactly the primes you are allowed to cross off, one from the top for each one you cross off the bottom.",
+     "Strike the shared \\(3\\times 3\\times 3\\times 5\\) from both floors. On top you are left with just \\(11\\). On the bottom you are left with \\(2\\times 7\\). Multiply each leftover pile back up and write the fraction."
+    ],
+    "ans": "11/14",
+    "accept": [
+     "11/14",
+     "11 / 14",
+     "11\\14"
+    ],
+    "sol": "Stack the prime factorizations so matching primes sit above each other. The top is \\(1{,}485 = 3\\times 3\\times 3\\times 5\\times 11\\) and the bottom is \\(1{,}890 = 2\\times 3\\times 3\\times 3\\times 5\\times 7\\). The shared primes are the ones in both lists, namely \\(3\\times 3\\times 3\\) and a single \\(5\\). Cancel each shared prime from the top against its twin on the bottom. $$\\frac{1{,}485}{1{,}890}=\\frac{\\cancel{3}\\times \\cancel{3}\\times \\cancel{3}\\times \\cancel{5}\\times 11}{2\\times \\cancel{3}\\times \\cancel{3}\\times \\cancel{3}\\times \\cancel{5}\\times 7}=\\frac{11}{2\\times 7}$$ Whatever survives on top is the new numerator and whatever survives on the bottom is the new denominator. On top only \\(11\\) is left, and on the bottom \\(2\\times 7 = 14\\) is left. Since \\(11\\) is prime and shares no factor with \\(14\\), the fraction cannot shrink any further. The slow part, spotting that the hidden \\(\\gcd\\) was \\(3\\times 3\\times 3\\times 5 = 135\\), became automatic once the prime trees laid every common factor side by side. $$\\boxed{\\dfrac{11}{14}}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A letter does not have to be scary. Treat it as nothing more than a repeated factor, a plain number you will plug in at the very end. Look at this fraction. $$\\frac{k\\times k\\times k\\times k\\times 10}{k\\times k\\times 15}$$ Count copies before you do anything else. Upstairs there are four copies of \\(k\\). Downstairs there are two copies of \\(k\\). Two copies match top to bottom and cancel away, leaving two \\(k\\)s still upstairs and none below. The plain numbers \\(10\\) and \\(15\\) share a factor of \\(5\\), so they shrink to \\(2\\) over \\(3\\). The whole thing simplifies to \\(\\frac{2\\times k\\times k}{3}\\), which we write as \\(\\frac{2k^2}{3}\\), and we found that <b>before</b> ever knowing what \\(k\\) is. Now finish the job. Set \\(k=3\\). What single whole number does the fraction equal?",
+    "hints": [
+     "You already simplified to \\(\\frac{2k^2}{3}\\). Now \\(k^2\\) just means \\(k\\times k\\), so with \\(k=3\\) that piece is \\(3\\times 3\\). Build the top first, then divide by \\(3\\).",
+     "With \\(k=3\\), \\(k^2=9\\). The top is \\(2\\times 9=18\\). Then \\(\\frac{18}{3}\\) is the final number. Divide it out."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "sol": "Start by counting copies of each factor instead of multiplying everything out. The top holds four \\(k\\)s and the bottom holds two \\(k\\)s. Every \\(k\\) on the bottom can pair off with a \\(k\\) on the top and cancel, since a factor over the same factor is just \\(1\\). Two pairs cancel, which uses up both bottom \\(k\\)s and two of the top \\(k\\)s, leaving \\(k\\times k\\) upstairs and a clean \\(1\\) downstairs from those letters. Next handle the plain numbers. \\(\\frac{10}{15}\\) shares a factor of \\(5\\), and dividing both by \\(5\\) gives \\(\\frac{2}{3}\\). Put the two pieces together and the fraction is \\(\\frac{2\\times k\\times k}{3}\\), that is \\(\\frac{2k^2}{3}\\). All of that was done without knowing \\(k\\) at all. Now plug in \\(k=3\\). Then \\(k^2=3\\times 3=9\\), the top becomes \\(2\\times 9=18\\), and \\(\\frac{18}{3}=6\\). $$\\boxed{6}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Here is a fraction built from two different repeated factors, \\(a\\) and \\(b\\). $$\\frac{a\\times a\\times a\\times a\\times b\\times b}{a\\times a\\times b\\times b\\times b\\times b\\times b}$$ Handle one letter at a time. Count the \\(a\\)s top and bottom, then count the \\(b\\)s top and bottom, and cancel a matching pair every time you find one above and below. Once it is in simplest form, set \\(a=3\\) and \\(b=2\\) and work out the number. <b>What single fraction does the whole thing equal, in simplest form?</b>",
+    "hints": [
+     "The two letters never mix, so deal with them separately. There are four \\(a\\)s on top and two on the bottom, so two \\(a\\)s upstairs survive. There are two \\(b\\)s on top and five on the bottom, so three \\(b\\)s downstairs survive. Write what is left as a tidy fraction before you put numbers in.",
+     "After cancelling, you are left with \\(\\dfrac{a\\times a}{b\\times b\\times b}\\), which is \\(\\dfrac{a^2}{b^3}\\). Now \\(a=3\\) gives \\(a^2=3\\times 3=9\\), and \\(b=2\\) gives \\(b^3=2\\times 2\\times 2=8\\). Put the top over the bottom."
+    ],
+    "ans": "9/8",
+    "accept": [
+     "9/8",
+     "nine eighths",
+     "nine-eighths",
+     "9 over 8"
+    ],
+    "sol": "Treat each letter as its own little pile and never let them mix. Start with the \\(a\\)s. There are four of them on top and two on the bottom. Two of those top \\(a\\)s pair off with the two bottom \\(a\\)s and cancel, leaving \\(4-2=2\\) extra \\(a\\)s upstairs. Now the \\(b\\)s. There are two on top and five on the bottom. The two top \\(b\\)s cancel with two of the bottom ones, leaving \\(5-2=3\\) extra \\(b\\)s downstairs. Nothing else is left to cancel, so the simplified fraction is $$\\frac{a\\times a}{b\\times b\\times b}=\\frac{a^2}{b^3}.$$ This is already in simplest form as far as the letters go, and notice it stayed a fraction, with the \\(a\\)s on top and the \\(b\\)s on the bottom. Now make it a number. With \\(a=3\\), the top is \\(a^2=3\\times 3=9\\). With \\(b=2\\), the bottom is \\(b^3=2\\times 2\\times 2=8\\). So the value is \\(\\dfrac{9}{8}\\). Since \\(9\\) and \\(8\\) share no common factor, this is already simplest form, and it really is a fraction, not a whole number. $$\\boxed{9/8}$$"
+   },
+   {
+    "t": "imp",
+    "x": "So the powers were just keeping a tally the whole time. For each kind of factor, I count how many copies sit on top and how many sit on the bottom, then I strike them off in pairs, one from upstairs against one from downstairs, until one side runs out. Whatever copies are left over stay on the side that started with more of them, and that is the simplified answer. A letter plays by the exact same rules, since it is only a factor I have not put a number to yet, so I cancel the matching copies first and fill in its value at the very end."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A school's rooftop solar array generated \\(168\\) kilowatt-hours of electricity yesterday, while the whole building drew \\(480\\) kilowatt-hours in total. The caretaker wants to post one honest number on the lobby board, the part of the day's electricity that the panels themselves supplied. That part is \\(168\\) out of \\(480\\), which is the fraction \\(\\tfrac{168}{480}\\). Reduce it in a single move by dividing the top and the bottom by their \\(\\gcd\\). What fraction of the building's electricity came from the panels, written \\(\\tfrac{a}{b}\\) in simplest form?",
+    "hints": [
+     "You only need one division to finish, but it has to be division by the right number. Ask what the largest number is that goes evenly into both \\(168\\) and \\(480\\). Find that \\(\\gcd\\) first, then divide once.",
+     "Break each number into prime factors. \\(168 = 2^3 \\cdot 3 \\cdot 7\\) and \\(480 = 2^5 \\cdot 3 \\cdot 5\\). The shared part is \\(2^3 \\cdot 3 = 24\\), so the \\(\\gcd\\) is \\(24\\). Now divide both \\(168\\) and \\(480\\) by \\(24\\) and read off the answer."
+    ],
+    "ans": "7/20",
+    "accept": [
+     "7/20",
+     "seven twentieths",
+     "seven over twenty",
+     "7 over 20"
+    ],
+    "sol": "The whole job is to write \\(\\tfrac{168}{480}\\) so that nothing more cancels. The fastest honest way is to find the largest number that divides both, the \\(\\gcd\\), and divide by it once.<br><br>Factor both numbers into primes. We get \\(168 = 2^3 \\cdot 3 \\cdot 7\\) and \\(480 = 2^5 \\cdot 3 \\cdot 5\\). The factors they have in common are three twos and one three, so \\(\\gcd(168, 480) = 2^3 \\cdot 3 = 24\\).<br><br>Now divide top and bottom by \\(24\\) in one move. \\(168 \\div 24 = 7\\) and \\(480 \\div 24 = 20\\), which gives \\(\\tfrac{7}{20}\\). Since \\(7\\) is prime and does not divide \\(20\\), nothing is left to cancel, so this really is simplest form.<br><br>The caretaker can post that the panels supplied \\(\\tfrac{7}{20}\\) of the building's electricity, a little over a third of the day's power. \\(\\boxed{\\tfrac{7}{20}}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Every problem in this half was secretly the same move. We took one fraction and squeezed its denominator down as small as it could possibly go, and the tool that did the squeezing was always the \\(\\gcd\\), because pulling out the biggest factor the top and bottom share is exactly what drops the denominator as low as it will drop. What you land on is that fraction's smallest <b>private</b> name, the tidiest denominator it can wear all on its own. Hold onto that word, private, because a simplest form belongs to that one fraction and nobody else."
+   },
+   {
+    "t": "p",
+    "x": "Everything so far has worked on one fraction at a time. You took a fraction, hunted for any hidden factor it was carrying, and squeezed its denominator down to the smallest private name it could honestly hold. That is simplest form, and it is a kind of shrinking. But fractions rarely stay alone. The moment you want to ask which of two is bigger, or to set two of them next to each other and add, those private names start to get in the way. Imagine \\(\\tfrac{5}{6}\\) of a long copper wire lying beside \\(\\tfrac{7}{8}\\) of an identical wire. Both fractions are already in simplest form, so there is nothing left to shrink. And yet you still cannot say which piece is longer, because sixths and eighths are different sized cuts, and you cannot count one kind of piece against the other. Here the clever move turns completely upside down. Instead of shrinking each denominator toward its own smallest private name, you have to <b>grow</b> them until they finally agree, until both fractions are sliced into pieces of the very same size. <b>Two fractions cannot be compared or combined until they share a denominator.</b> So a brand new question opens up. What denominator can these two fractions share, and out of all the ones that would work, which shared denominator is the best?"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Back to the ribbon from the pivot, with \\(\\tfrac{5}{6}\\) sitting next to \\(\\tfrac{7}{8}\\). Right now they are awkward to compare because a sixth and an eighth are pieces of different sizes, and you cannot count pieces of different sizes together. The fix is to recut both fractions into pieces that are all the same size. A size that works for sixths and for eighths is <b>twenty fourths</b>, since \\(24\\) is a multiple of \\(6\\) and a multiple of \\(8\\). Using the equivalent fraction move from \\(4.2\\), eighths turn into twenty fourths by multiplying top and bottom by \\(3\\), so \\(\\tfrac{7}{8}\\) becomes \\(\\tfrac{21}{24}\\). Now do the same for the other ribbon. Rewritten over the shared denominator \\(24\\), what is \\(\\tfrac{5}{6}\\) as a fraction \\(\\tfrac{a}{b}\\)?",
+    "hints": [
+     "You want to rebuild \\(\\tfrac{5}{6}\\) so the bottom reads \\(24\\) instead of \\(6\\). Ask yourself what you multiply \\(6\\) by to land on \\(24\\), then remember the equivalent fraction rule says the top has to get the exact same treatment.",
+     "Since \\(6\\times 4=24\\), the multiplier is \\(4\\). Multiply the top by \\(4\\) as well, so \\(5\\times 4=20\\), and the rebuilt fraction is \\(\\tfrac{20}{24}\\)."
+    ],
+    "ans": "20/24",
+    "accept": [
+     "20/24",
+     "20 / 24",
+     "twenty twenty-fourths",
+     "twenty/twenty-fourths"
+    ],
+    "sol": "The goal is to keep the same amount of ribbon but describe it in twenty fourths instead of sixths. First figure out the multiplier that turns the denominator \\(6\\) into \\(24\\). Since \\(6\\times 4=24\\), the multiplier is \\(4\\). The equivalent fraction move says whatever you do to the bottom you must do to the top, so multiply the numerator by \\(4\\) too. That gives \\(5\\times 4=20\\) on top, and the rebuilt fraction is \\(\\tfrac{20}{24}\\). A quick gut check confirms it is the same amount, because \\(\\tfrac{20}{24}\\) just means twenty of the little pieces while \\(\\tfrac{5}{6}\\) meant five of the big pieces, and each big piece was split into \\(4\\) little ones. Both ribbons are now measured in matching twenty fourths, \\(\\tfrac{20}{24}\\) and \\(\\tfrac{21}{24}\\), so they are finally ready to count side by side. $$\\tfrac{5}{6}=\\boxed{20/24}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "You want to add \\(\\tfrac{1}{6}\\) and \\(\\tfrac{4}{9}\\), and to do that you need both fractions sitting over the <b>same</b> denominator. There is a lazy move that always works. Just multiply the two denominators together, \\(6\\times 9=54\\), and \\(54\\) is guaranteed to be a multiple of both \\(6\\) and \\(9\\). So \\(54\\) is a perfectly legal shared denominator. But it feels heavy, and there is a reason. Notice that \\(6\\) and \\(9\\) already share a factor of \\(3\\), so the product double counts that \\(3\\) and lands higher than it needs to. Think back to Chapter 3. The <b>smallest</b> number that is a multiple of both \\(6\\) and \\(9\\) is their \\(\\operatorname{lcm}\\), not their product. That smallest shared denominator has a name worth knowing, the <b>least common denominator</b>, or lcd. What is the lcd of \\(\\tfrac{1}{6}\\) and \\(\\tfrac{4}{9}\\), that is, \\(\\operatorname{lcm}(6,9)\\)?",
+    "hints": [
+     "You are hunting for the smallest number that both \\(6\\) and \\(9\\) divide into evenly. Try walking up the multiples of the bigger one, \\(9, 18, 27, \\dots\\), and stop at the first that \\(6\\) also divides.",
+     "List the multiples of \\(9\\): \\(9, 18, 27\\). Is \\(9\\) a multiple of \\(6\\)? No. Is \\(18\\) a multiple of \\(6\\)? Yes, \\(18=6\\times 3\\). That first match is your answer."
+    ],
+    "ans": "18",
+    "accept": [
+     "18",
+     "eighteen"
+    ],
+    "sol": "The product \\(6\\times 9=54\\) works, but it overshoots because \\(6\\) and \\(9\\) overlap. Both carry a factor of \\(3\\), so multiplying them counts that \\(3\\) twice. The lcm fixes this by counting each prime only as many times as it is truly needed. Break each denominator into primes, \\(6=2\\times 3\\) and \\(9=3\\times 3\\). To be a multiple of \\(6\\) you need one \\(2\\) and one \\(3\\). To be a multiple of \\(9\\) you need two \\(3\\)s. So the smallest number that covers both needs one \\(2\\) and two \\(3\\)s, which is \\(2\\times 3\\times 3=18\\). You can check it the plain way too. The multiples of \\(9\\) are \\(9, 18, 27, \\dots\\), and the very first one that \\(6\\) also divides is \\(18\\), since \\(18=6\\times 3\\). Notice \\(18\\) is exactly \\(\\tfrac{54}{3}\\), smaller than the product by the shared factor of \\(3\\). The least common denominator of \\(\\tfrac{1}{6}\\) and \\(\\tfrac{4}{9}\\) is \\(\\operatorname{lcm}(6,9)=\\boxed{18}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So here is the recipe taking shape. To give two fractions a common denominator, find a number that every denominator divides into evenly, a <b>shared multiple</b>, and rewrite each fraction over it as an equivalent fraction. Any shared multiple works, and just multiplying the denominators together always hands you one, but it is usually bigger and clumsier than it needs to be. The smallest shared multiple, the \\(\\operatorname{lcm}\\) of the denominators, keeps the numbers as gentle as possible, and that one earns its own name, the <b>least common denominator</b>. Where simplest form reached for the \\(\\gcd\\), a common denominator reaches for the \\(\\operatorname{lcm}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Two fractions, \\(\\tfrac{7}{10}\\) and \\(\\tfrac{4}{15}\\), want to live over the same bottom number so we can compare or combine them. The smallest bottom that works for both is the least common denominator, the \\(\\operatorname{lcm}\\) of \\(10\\) and \\(15\\), which is \\(30\\). To rewrite a fraction over \\(30\\) without changing its value, find what its bottom must be multiplied by to become \\(30\\), then multiply the top by that <b>same</b> number. For \\(\\tfrac{4}{15}\\), the bottom \\(15\\) needs a factor of \\(2\\), so the top becomes \\(4\\times 2=8\\), giving \\(\\tfrac{8}{30}\\). Now do the same for \\(\\tfrac{7}{10}\\). Written over the least common denominator \\(30\\), what does \\(\\tfrac{7}{10}\\) become, as a fraction \\(\\tfrac{a}{b}\\)?",
+    "hints": [
+     "Ask the bottom question first. What do you multiply \\(10\\) by to land exactly on \\(30\\)? Since \\(10\\times 3=30\\), that missing factor is \\(3\\). Whatever the bottom needed, the top needs the very same thing.",
+     "Multiply the top by that same \\(3\\). The top is \\(7\\), so \\(7\\times 3=21\\), and the bottom \\(10\\times 3=30\\). Write those two results as one fraction."
+    ],
+    "ans": "21/30",
+    "accept": [
+     "21/30",
+     "21 / 30",
+     "twenty-one thirtieths",
+     "twenty one thirtieths"
+    ],
+    "sol": "The least common denominator is the \\(\\operatorname{lcm}\\) of \\(10\\) and \\(15\\), which is \\(30\\), so we want \\(\\tfrac{7}{10}\\) rewritten with a bottom of \\(30\\). The key move is to ask what the bottom must be scaled by. Since \\(10\\times 3=30\\), the bottom needs a factor of \\(3\\). Multiplying the top and bottom by the same number keeps a fraction equal to itself, so the top must also be scaled by \\(3\\). That gives \\(\\tfrac{7\\times 3}{10\\times 3}=\\tfrac{21}{30}\\). Notice the top did not need any separate hunting. The factor for the top was simply whatever the bottom required, here a \\(3\\) both times, and that is exactly what guarantees \\(\\tfrac{21}{30}\\) is the same amount as \\(\\tfrac{7}{10}\\). So over the least common denominator, \\(\\tfrac{7}{10}=\\boxed{21/30}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 480 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two stacked horizontal bars of identical length. The top bar shows seven tenths, first cut into ten equal segments with seven shaded, then re-sliced by finer tick marks into thirty equal pieces with twenty-one shaded, labelled seven tenths equals twenty-one thirtieths, noting ten times three equals thirty. The bottom bar shows four fifteenths, first cut into fifteen equal segments with four shaded, then re-sliced by the same thirty-piece grid with eight shaded, labelled four fifteenths equals eight thirtieths, noting fifteen times two equals thirty. The thirty-piece tick marks on both bars line up vertically, so the unit pieces are the same width and can be counted directly, twenty-one against eight.\">\n  <text x=\"20\" y=\"26\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--mid)\">Re-grid onto the shared denominator 30</text>\n\n  <text x=\"20\" y=\"56\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">7/10  becomes  21/30</text>\n  <text x=\"380\" y=\"56\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" fill=\"var(--accent)\">10 &#215; 3 = 30 &#8198;&#8594;</text>\n\n  <rect x=\"20\" y=\"66\" width=\"420\" height=\"40\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"20\" y=\"66\" width=\"294\" height=\"40\" fill=\"var(--gold2)\" fill-opacity=\"0.45\"/>\n  <g stroke=\"var(--line)\" stroke-width=\"1\">\n    <line x1=\"34\" y1=\"66\" x2=\"34\" y2=\"106\"/><line x1=\"48\" y1=\"66\" x2=\"48\" y2=\"106\"/><line x1=\"62\" y1=\"66\" x2=\"62\" y2=\"106\"/><line x1=\"76\" y1=\"66\" x2=\"76\" y2=\"106\"/><line x1=\"90\" y1=\"66\" x2=\"90\" y2=\"106\"/><line x1=\"104\" y1=\"66\" x2=\"104\" y2=\"106\"/><line x1=\"118\" y1=\"66\" x2=\"118\" y2=\"106\"/><line x1=\"132\" y1=\"66\" x2=\"132\" y2=\"106\"/><line x1=\"146\" y1=\"66\" x2=\"146\" y2=\"106\"/><line x1=\"160\" y1=\"66\" x2=\"160\" y2=\"106\"/><line x1=\"174\" y1=\"66\" x2=\"174\" y2=\"106\"/><line x1=\"188\" y1=\"66\" x2=\"188\" y2=\"106\"/><line x1=\"202\" y1=\"66\" x2=\"202\" y2=\"106\"/><line x1=\"216\" y1=\"66\" x2=\"216\" y2=\"106\"/><line x1=\"230\" y1=\"66\" x2=\"230\" y2=\"106\"/><line x1=\"244\" y1=\"66\" x2=\"244\" y2=\"106\"/><line x1=\"258\" y1=\"66\" x2=\"258\" y2=\"106\"/><line x1=\"272\" y1=\"66\" x2=\"272\" y2=\"106\"/><line x1=\"286\" y1=\"66\" x2=\"286\" y2=\"106\"/><line x1=\"300\" y1=\"66\" x2=\"300\" y2=\"106\"/><line x1=\"314\" y1=\"66\" x2=\"314\" y2=\"106\"/><line x1=\"328\" y1=\"66\" x2=\"328\" y2=\"106\"/><line x1=\"342\" y1=\"66\" x2=\"342\" y2=\"106\"/><line x1=\"356\" y1=\"66\" x2=\"356\" y2=\"106\"/><line x1=\"370\" y1=\"66\" x2=\"370\" y2=\"106\"/><line x1=\"384\" y1=\"66\" x2=\"384\" y2=\"106\"/><line x1=\"398\" y1=\"66\" x2=\"398\" y2=\"106\"/><line x1=\"412\" y1=\"66\" x2=\"412\" y2=\"106\"/><line x1=\"426\" y1=\"66\" x2=\"426\" y2=\"106\"/>\n  </g>\n  <g stroke=\"var(--mid)\" stroke-width=\"1.6\" stroke-opacity=\"0.55\">\n    <line x1=\"62\" y1=\"66\" x2=\"62\" y2=\"106\"/><line x1=\"104\" y1=\"66\" x2=\"104\" y2=\"106\"/><line x1=\"146\" y1=\"66\" x2=\"146\" y2=\"106\"/><line x1=\"188\" y1=\"66\" x2=\"188\" y2=\"106\"/><line x1=\"230\" y1=\"66\" x2=\"230\" y2=\"106\"/><line x1=\"272\" y1=\"66\" x2=\"272\" y2=\"106\"/><line x1=\"314\" y1=\"66\" x2=\"314\" y2=\"106\"/>\n  </g>\n  <rect x=\"20\" y=\"66\" width=\"420\" height=\"40\" fill=\"none\" stroke=\"var(--navy)\" stroke-width=\"1.5\"/>\n  <text x=\"167\" y=\"92\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">21 of 30</text>\n\n  <text x=\"20\" y=\"148\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">4/15  becomes  8/30</text>\n  <text x=\"380\" y=\"148\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" fill=\"var(--accent)\">15 &#215; 2 = 30 &#8198;&#8594;</text>\n\n  <rect x=\"20\" y=\"158\" width=\"420\" height=\"40\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"20\" y=\"158\" width=\"112\" height=\"40\" fill=\"var(--gold2)\" fill-opacity=\"0.45\"/>\n  <g stroke=\"var(--line)\" stroke-width=\"1\">\n    <line x1=\"34\" y1=\"158\" x2=\"34\" y2=\"198\"/><line x1=\"48\" y1=\"158\" x2=\"48\" y2=\"198\"/><line x1=\"62\" y1=\"158\" x2=\"62\" y2=\"198\"/><line x1=\"76\" y1=\"158\" x2=\"76\" y2=\"198\"/><line x1=\"90\" y1=\"158\" x2=\"90\" y2=\"198\"/><line x1=\"104\" y1=\"158\" x2=\"104\" y2=\"198\"/><line x1=\"118\" y1=\"158\" x2=\"118\" y2=\"198\"/><line x1=\"132\" y1=\"158\" x2=\"132\" y2=\"198\"/><line x1=\"146\" y1=\"158\" x2=\"146\" y2=\"198\"/><line x1=\"160\" y1=\"158\" x2=\"160\" y2=\"198\"/><line x1=\"174\" y1=\"158\" x2=\"174\" y2=\"198\"/><line x1=\"188\" y1=\"158\" x2=\"188\" y2=\"198\"/><line x1=\"202\" y1=\"158\" x2=\"202\" y2=\"198\"/><line x1=\"216\" y1=\"158\" x2=\"216\" y2=\"198\"/><line x1=\"230\" y1=\"158\" x2=\"230\" y2=\"198\"/><line x1=\"244\" y1=\"158\" x2=\"244\" y2=\"198\"/><line x1=\"258\" y1=\"158\" x2=\"258\" y2=\"198\"/><line x1=\"272\" y1=\"158\" x2=\"272\" y2=\"198\"/><line x1=\"286\" y1=\"158\" x2=\"286\" y2=\"198\"/><line x1=\"300\" y1=\"158\" x2=\"300\" y2=\"198\"/><line x1=\"314\" y1=\"158\" x2=\"314\" y2=\"198\"/><line x1=\"328\" y1=\"158\" x2=\"328\" y2=\"198\"/><line x1=\"342\" y1=\"158\" x2=\"342\" y2=\"198\"/><line x1=\"356\" y1=\"158\" x2=\"356\" y2=\"198\"/><line x1=\"370\" y1=\"158\" x2=\"370\" y2=\"198\"/><line x1=\"384\" y1=\"158\" x2=\"384\" y2=\"198\"/><line x1=\"398\" y1=\"158\" x2=\"398\" y2=\"198\"/><line x1=\"412\" y1=\"158\" x2=\"412\" y2=\"198\"/><line x1=\"426\" y1=\"158\" x2=\"426\" y2=\"198\"/>\n  </g>\n  <g stroke=\"var(--mid)\" stroke-width=\"1.6\" stroke-opacity=\"0.55\">\n    <line x1=\"48\" y1=\"158\" x2=\"48\" y2=\"198\"/><line x1=\"76\" y1=\"158\" x2=\"76\" y2=\"198\"/><line x1=\"104\" y1=\"158\" x2=\"104\" y2=\"198\"/><line x1=\"132\" y1=\"158\" x2=\"132\" y2=\"198\"/>\n  </g>\n  <rect x=\"20\" y=\"158\" width=\"420\" height=\"40\" fill=\"none\" stroke=\"var(--navy)\" stroke-width=\"1.5\"/>\n  <text x=\"76\" y=\"184\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">8 of 30</text>\n\n  <g stroke=\"var(--accent)\" stroke-width=\"1\" stroke-dasharray=\"3 3\" stroke-opacity=\"0.6\">\n    <line x1=\"132\" y1=\"106\" x2=\"132\" y2=\"158\"/>\n  </g>\n\n  <text x=\"20\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">Now every little piece is the same width on both bars,</text>\n  <text x=\"20\" y=\"244\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">so the shaded amounts can be counted against each other,</text>\n  <text x=\"20\" y=\"270\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">21 thirtieths  vs  8 thirtieths.</text>\n</svg>",
+    "cap": "Both fractions start on different grids, \\(\\tfrac{7}{10}\\) cut into tenths and \\(\\tfrac{4}{15}\\) cut into fifteenths, so their pieces are different sizes and impossible to compare. Growing each one up to the LCD \\(30\\) re-slices both bars into pieces of exactly the same width. Since \\(10\\times 3=30\\) we get \\(\\tfrac{7}{10}=\\tfrac{21}{30}\\), and since \\(15\\times 2=30\\) we get \\(\\tfrac{4}{15}=\\tfrac{8}{30}\\). The tick marks now line up edge to edge across both bars, so the amounts are finally countable against each other, \\(21\\) pieces against \\(8\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A trio of fractions needs one shared denominator, \\(\\tfrac{1}{4}\\), \\(\\tfrac{5}{6}\\), and \\(\\tfrac{7}{9}\\). The least common denominator is the \\(\\operatorname{lcm}\\) of <b>all three</b> bottoms, \\(4\\), \\(6\\), and \\(9\\). Here is the move that makes three denominators no harder than two. Break each one into primes, \\(4 = 2^2\\), \\(6 = 2 \\times 3\\), and \\(9 = 3^2\\). Now scan across all three for the <b>highest power of each prime</b> that appears anywhere. The most \\(2\\)s crammed into any single denominator is two of them, from the \\(4\\). The most \\(3\\)s in any single denominator is two of them, from the \\(9\\). Multiply those winners together and you have the smallest bottom that \\(4\\), \\(6\\), and \\(9\\) all divide into. What single number is the least common denominator of \\(\\tfrac{1}{4}\\), \\(\\tfrac{5}{6}\\), and \\(\\tfrac{7}{9}\\), that is \\(\\operatorname{lcm}(4, 6, 9)\\)?",
+    "hints": [
+     "Line up the prime factorizations, \\(4 = 2^2\\), \\(6 = 2 \\times 3\\), \\(9 = 3^2\\). The lcd has to be divisible by every one of them, so it needs enough \\(2\\)s for the \\(4\\) and enough \\(3\\)s for the \\(9\\) at the same time.",
+     "Take the highest power of each prime seen anywhere. The biggest stack of \\(2\\)s is \\(2^2\\) and the biggest stack of \\(3\\)s is \\(3^2\\). The lcd is \\(2^2 \\times 3^2 = 4 \\times 9\\). Just multiply."
+    ],
+    "ans": "36",
+    "accept": [
+     "36",
+     "thirty-six",
+     "thirty six"
+    ],
+    "sol": "Write each denominator as primes so nothing stays hidden, \\(4 = 2^2\\), \\(6 = 2^1 \\times 3^1\\), and \\(9 = 3^2\\). The least common denominator must be a number that \\(4\\), \\(6\\), and \\(9\\) all divide into evenly, so it must carry <b>every</b> prime that shows up, and carry enough copies to cover the greediest denominator for that prime. For the prime \\(2\\), the greediest is the \\(4\\) with two of them, so we need \\(2^2\\). For the prime \\(3\\), the greediest is the \\(9\\) with two of them, so we need \\(3^2\\). Take the highest power of each and multiply, \\(2^2 \\times 3^2 = 4 \\times 9 = 36\\). Check that all three fit, \\(36 \\div 4 = 9\\), \\(36 \\div 6 = 6\\), and \\(36 \\div 9 = 4\\), all whole. And \\(36\\) really is the smallest such number, because dropping even one factor would leave some denominator unable to divide in. The least common denominator is \\(\\boxed{36}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "You just found that the smallest common denominator for \\(\\tfrac{1}{4}\\), \\(\\tfrac{5}{6}\\), and \\(\\tfrac{7}{9}\\) is \\(36\\). Now rebuild all three over that one bottom. The trick is the same every time, look at what the old bottom needs to grow into \\(36\\), then scale the top by the exact same amount. For \\(\\tfrac{1}{4}\\) the bottom \\(4\\) takes \\(\\times 9\\) to reach \\(36\\), so the top \\(1\\) also takes \\(\\times 9\\), giving \\(\\tfrac{9}{36}\\). For \\(\\tfrac{7}{9}\\) the bottom \\(9\\) takes \\(\\times 4\\), so \\(7\\times 4\\) on top gives \\(\\tfrac{28}{36}\\). Three fractions, one shared move, nothing new to memorize. Rewritten over \\(36\\), what does \\(\\tfrac{5}{6}\\) become, as a fraction \\(\\tfrac{a}{b}\\)?",
+    "hints": [
+     "Ask the bottom first. What times \\(6\\) lands on \\(36\\)? Whatever that number is, the top has to ride along with the exact same multiplier.",
+     "The bottom \\(6\\) needs \\(\\times 6\\) to become \\(36\\), so multiply the top by \\(6\\) too. That is \\(5\\times 6\\) over \\(6\\times 6\\)."
+    ],
+    "ans": "30/36",
+    "accept": [
+     "30/36",
+     "30 / 36",
+     "30 over 36",
+     "thirty thirty-sixths",
+     "thirty over thirty-six"
+    ],
+    "sol": "Start with the bottom, since that is what decides the multiplier. You want \\(6\\) to become \\(36\\), and \\(6\\times 6 = 36\\), so the scaling factor here is \\(6\\). The whole point of building up a fraction is that the top must climb by the same factor, otherwise you would be changing the value instead of just renaming it. So multiply the top by \\(6\\) as well, \\(5\\times 6 = 30\\). Putting them together, \\(\\tfrac{5}{6} = \\tfrac{5\\times 6}{6\\times 6} = \\tfrac{30}{36}\\). Notice this is the exact same rhythm you used for \\(\\tfrac{1}{4}\\) and \\(\\tfrac{7}{9}\\), look at what the bottom needs, then copy that move onto the top. Three fractions now share the floor \\(36\\), reading \\(\\tfrac{9}{36}\\), \\(\\tfrac{30}{36}\\), and \\(\\tfrac{28}{36}\\), all ready to be compared or combined. The one you were asked for is \\(\\boxed{30/36}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A jackpot is being split, and an argument starts about who walks away with the bigger slice. One person claims \\(\\tfrac{5}{9}\\) of the fund, the other claims \\(\\tfrac{7}{12}\\) of it. Stared at side by side, these two fractions refuse to answer the question. The denominators \\(9\\) and \\(12\\) disagree, so the pieces being counted are different sizes, and you cannot trust the numerators to settle it. The fix is to grow both fractions until they are measured in the <b>same size piece</b>. The least common denominator of \\(9\\) and \\(12\\) is \\(36\\). Build each one up to that denominator, then compare the numerators directly. Which is larger, \\(\\tfrac{5}{9}\\) or \\(\\tfrac{7}{12}\\)? Answer with the larger fraction, written \\(\\tfrac{a}{b}\\).",
+    "hints": [
+     "The two fractions are hard to compare because they count different-sized pieces. Rewrite each one over \\(36\\). What do you multiply the top and bottom of \\(\\tfrac{5}{9}\\) by to land on \\(36\\)? What about \\(\\tfrac{7}{12}\\)?",
+     "Since \\(9 \\times 4 = 36\\), \\(\\tfrac{5}{9} = \\tfrac{20}{36}\\). Since \\(12 \\times 3 = 36\\), \\(\\tfrac{7}{12} = \\tfrac{21}{36}\\). Now both count thirty-sixths, so the one with more of them wins. Compare \\(20\\) and \\(21\\)."
+    ],
+    "ans": "7/12",
+    "accept": [
+     "7/12",
+     "seven twelfths",
+     "seven-twelfths",
+     "21/36",
+     "twenty-one thirty-sixths"
+    ],
+    "sol": "As long as the denominators differ, the numerators are counting pieces of different sizes, so \\(5\\) ninths against \\(7\\) twelfths is not a fair race. Make the pieces match first. The least common denominator of \\(9\\) and \\(12\\) is \\(36\\). Grow \\(\\tfrac{5}{9}\\) by multiplying top and bottom by \\(4\\), which gives \\(\\tfrac{5 \\times 4}{9 \\times 4} = \\tfrac{20}{36}\\). Grow \\(\\tfrac{7}{12}\\) by multiplying top and bottom by \\(3\\), which gives \\(\\tfrac{7 \\times 3}{12 \\times 3} = \\tfrac{21}{36}\\). Now both are stacks of thirty-sixths, identical in size, so whichever has more pieces is the bigger share. Since \\(21 > 20\\), the second claim wins, and the comparison that was invisible at the start is now obvious. The larger fraction is \\(\\boxed{\\tfrac{7}{12}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "To set two fractions side by side, we pick a number that every bottom divides into, the smallest such number being their \\(\\operatorname{lcm}\\), and we rebuild each fraction over it by scaling the top by exactly the amount its own bottom was stretched. Once that is done every fraction is sliced into pieces of one identical size, and pieces of the same size can finally be counted straight against each other, which is the whole reason the larger share jumped out at us. Growing the denominators never moved a single amount, the same way shrinking them never did back in Part A. It only handed the fractions a shared set of names so they could speak to each other at last."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 420 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"One amount, two directions. In the center, a single gold point sits three quarters of the way along a zero to one number line, and the same amount is shown in four disguises stacked above it, six eighths, three quarters, nine twelfths, and seventy-five hundredths, all pointing to that one tick. A faint dashed line splits the picture in two. A left arrow tinted soft, labeled divide by the gcd, shrinks toward a small tidy three quarters, the smallest private name. A right arrow tinted softer, labeled multiply up to the lcm, grows toward three quarters sitting beside five sixths rewritten over a shared bottom of twelve, the smallest shared name. A banner across the top reads one amount, two directions. A caption names the symmetry between gcd shrinking one fraction and lcm stretching several fractions to a common denominator.\">\n<rect x=\"6\" y=\"6\" width=\"408\" height=\"26\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"210\" y=\"23\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--mid)\">one amount, two directions</text>\n<line x1=\"210\" y1=\"40\" x2=\"210\" y2=\"294\" stroke=\"var(--line)\" stroke-width=\"1.2\" stroke-dasharray=\"3 5\"/>\n<text x=\"210\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">the same point, four disguises</text>\n<g font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\" text-anchor=\"middle\">\n<text x=\"174\" y=\"72\">6</text><line x1=\"166\" y1=\"76\" x2=\"182\" y2=\"76\" stroke=\"var(--slate)\" stroke-width=\"1.1\"/><text x=\"174\" y=\"89\">8</text>\n<text x=\"198\" y=\"72\">9</text><line x1=\"189\" y1=\"76\" x2=\"207\" y2=\"76\" stroke=\"var(--slate)\" stroke-width=\"1.1\"/><text x=\"198\" y=\"89\">12</text>\n<text x=\"226\" y=\"72\">75</text><line x1=\"215\" y1=\"76\" x2=\"237\" y2=\"76\" stroke=\"var(--slate)\" stroke-width=\"1.1\"/><text x=\"226\" y=\"89\">100</text>\n</g>\n<g font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" font-weight=\"700\">\n<text x=\"210\" y=\"71\">3</text><line x1=\"201\" y1=\"75\" x2=\"219\" y2=\"75\" stroke=\"var(--gold-deep)\" stroke-width=\"1.3\"/><text x=\"210\" y=\"90\">4</text>\n</g>\n<path d=\"M210,96 L210,118\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\" fill=\"none\" stroke-dasharray=\"2 3\"/>\n<path d=\"M210,118 l-3,-6 M210,118 l3,-6\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\" fill=\"none\"/>\n<line x1=\"150\" y1=\"132\" x2=\"284\" y2=\"132\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n<line x1=\"150\" y1=\"126\" x2=\"150\" y2=\"138\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n<line x1=\"284\" y1=\"126\" x2=\"284\" y2=\"138\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n<text x=\"150\" y=\"153\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">0</text>\n<text x=\"284\" y=\"153\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">1</text>\n<circle cx=\"250.5\" cy=\"132\" r=\"5.5\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.3\"/>\n<text x=\"210\" y=\"178\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--mid)\" font-weight=\"600\">two ways to a tidy bottom</text>\n<text x=\"86\" y=\"200\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">SHRINK</text>\n<text x=\"86\" y=\"214\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">to the smallest private name</text>\n<path d=\"M180,228 L108,228\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n<polygon points=\"108,228 117,224 117,232\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<rect x=\"124\" y=\"222\" width=\"58\" height=\"12\" fill=\"var(--soft)\" stroke=\"none\"/>\n<text x=\"151\" y=\"246\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--mid)\">divide by the gcd</text>\n<rect x=\"40\" y=\"252\" width=\"58\" height=\"40\" rx=\"6\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<g font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" font-weight=\"700\">\n<text x=\"69\" y=\"272\">3</text><line x1=\"58\" y1=\"276\" x2=\"80\" y2=\"276\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><text x=\"69\" y=\"290\">4</text>\n</g>\n<text x=\"334\" y=\"200\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">GROW</text>\n<text x=\"334\" y=\"214\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">to the smallest shared name</text>\n<path d=\"M240,228 L312,228\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n<polygon points=\"312,228 303,224 303,232\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<rect x=\"244\" y=\"222\" width=\"64\" height=\"12\" fill=\"var(--softer)\" stroke=\"none\"/>\n<text x=\"276\" y=\"246\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--mid)\">multiply up to the lcm</text>\n<rect x=\"262\" y=\"250\" width=\"120\" height=\"44\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<g font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" font-weight=\"700\">\n<text x=\"296\" y=\"272\">9</text><line x1=\"285\" y1=\"276\" x2=\"307\" y2=\"276\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><text x=\"296\" y=\"290\">12</text>\n</g>\n<text x=\"324\" y=\"277\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">&amp;</text>\n<g font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" font-weight=\"700\">\n<text x=\"352\" y=\"272\">10</text><line x1=\"341\" y1=\"276\" x2=\"363\" y2=\"276\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><text x=\"352\" y=\"290\">12</text>\n</g>\n</svg>",
+    "cap": "One amount really does answer to many names. The point three quarters of the way to \\(1\\) wears the disguises \\(\\tfrac{6}{8}\\), \\(\\tfrac{9}{12}\\), and \\(\\tfrac{75}{100}\\) just as truthfully as \\(\\tfrac{3}{4}\\). From there our two tools pull in opposite directions toward the same goal of a convenient bottom. The \\(\\gcd\\) squeezes a single fraction down to its own smallest denominator, dividing top and bottom until \\(\\tfrac{6}{8}\\) becomes \\(\\tfrac{3}{4}\\), the smallest private name. The \\(\\operatorname{lcm}\\) does the reverse, stretching several fractions up until they share one bottom, so \\(\\tfrac{3}{4}\\) and \\(\\tfrac{5}{6}\\) both grow into twelfths, \\(\\tfrac{9}{12}\\) and \\(\\tfrac{10}{12}\\), the smallest shared name. Shrink to be simple, grow to compare, two directions, one idea."
+   },
+   {
+    "t": "imp",
+    "x": "So the right denominator was never a single number, it was a direction. When a fraction works alone and just wants its cleanest name, you <b>shrink</b> it. Divide top and bottom by their \\(\\gcd\\) and the denominator drops to the smallest private name that fraction can carry by itself. When fractions need to meet, to be compared or added, you <b>grow</b> them instead. Lift each one to the \\(\\operatorname{lcm}\\) of the denominators and they all settle on the smallest shared name where they can finally stand together. Two tools, the \\(\\gcd\\) and the \\(\\operatorname{lcm}\\), pulling in opposite directions, shrink versus grow and private versus shared, yet both reaching for the same prize, the easiest denominator for whatever the moment asks."
+   }
+  ],
+  "review": [
+   {
+    "x": "A photographer fills a contact sheet with \\(24\\) tiny thumbnails arranged in a neat grid, and exactly \\(18\\) of them are keepers worth printing. She wants to describe the keepers as a fraction of the whole sheet, written in simplest form. Reduce \\(\\tfrac{18}{24}\\) all the way in one move by dividing the top and the bottom by their \\(\\gcd\\). Write your answer as \\(\\tfrac{a}{b}\\).",
+    "ans": "3/4",
+    "accept": [
+     "3/4",
+     "three quarters",
+     "three-quarters",
+     "three fourths",
+     "three-fourths"
+    ],
+    "hints": [
+     "Reducing in one step means finding the largest number that divides both \\(18\\) and \\(24\\). List what divides each and look for the biggest one they share.",
+     "The divisors \\(18\\) and \\(24\\) share are \\(1, 2, 3, 6\\), so the greatest is \\(\\gcd(18,24)=6\\). Divide both the top and the bottom by \\(6\\)."
+    ],
+    "sol": "You could chip away at this fraction in stages, dividing by \\(2\\) and then by \\(3\\), but the cleanest path is to find the biggest factor the numerator and denominator share and remove it all at once. That factor is the \\(\\gcd\\). The numbers that divide \\(18\\) are \\(1, 2, 3, 6, 9, 18\\), and the numbers that divide \\(24\\) are \\(1, 2, 3, 4, 6, 8, 12, 24\\). The largest one in both lists is \\(6\\), so \\(\\gcd(18,24)=6\\). Now divide the top and the bottom by \\(6\\) in a single step. $$\\frac{18}{24}=\\frac{18\\div 6}{24\\div 6}=\\frac{3}{4}$$ Since \\(3\\) and \\(4\\) share no common factor larger than \\(1\\), the fraction cannot shrink any further. So \\(18\\) keepers out of \\(24\\) thumbnails is exactly \\(\\boxed{3/4}\\) of the sheet, which means three of every four pictures made the cut."
+   },
+   {
+    "x": "A baker scales every recipe by the same secret factor, so the flour and sugar in her big batch both got multiplied by it. The big batch uses \\(360\\) grams of one ingredient for every \\(504\\) grams of another, and she wants the plain ratio with that scaling stripped back out. Simplify \\(\\tfrac{360}{504}\\) to simplest form and write your answer as \\(\\tfrac{a}{b}\\).",
+    "ans": "5/7",
+    "accept": [
+     "5/7",
+     "five sevenths",
+     "five-sevenths",
+     "5 / 7"
+    ],
+    "hints": [
+     "Knocking off small factors one at a time works, but it is slow with numbers this size. The shortcut is to find \\(\\gcd(360,504)\\) and divide both numbers by it in a single move.",
+     "Use the subtract-and-repeat idea. Since \\(504-360=144\\), the gcd of \\(360\\) and \\(504\\) is the same as the gcd of \\(360\\) and \\(144\\). Keep going until the two numbers agree, then divide top and bottom by that shared value."
+    ],
+    "sol": "The slow road would be to peel off factors of \\(2\\) and \\(3\\) over and over. The fast road is to find the greatest common divisor once and divide both numbers by it together. To get \\(\\gcd(360,504)\\), I chase the difference. Since \\(504-360=144\\), the gcd of \\(360\\) and \\(504\\) equals the gcd of \\(360\\) and \\(144\\). Then \\(360-2\\cdot 144 = 72\\), so it equals the gcd of \\(144\\) and \\(72\\), and \\(72\\) divides \\(144\\) evenly, so \\(\\gcd(360,504)=72\\). Now divide top and bottom by \\(72\\). We get \\(360\\div 72 = 5\\) and \\(504\\div 72 = 7\\). Since \\(5\\) and \\(7\\) share no common factor, the fraction is fully reduced. \\(\\tfrac{360}{504}=\\tfrac{5}{7}\\), so the answer is \\(\\boxed{5/7}\\)."
+   },
+   {
+    "x": "A tile cutter has two gear ratios stamped on her machine, \\(\\tfrac{8}{21}\\) and \\(\\tfrac{7}{12}\\). When she runs both gears in a row, the overall ratio is the product of the two. Before reaching for a calculator, she looks across the tops and bottoms and cancels every shared factor she can find, so the answer pops out already in lowest terms. Multiply \\(\\tfrac{8}{21}\\) by \\(\\tfrac{7}{12}\\) and write the product as \\(\\tfrac{a}{b}\\) in simplest form. What is it?",
+    "hints": [
+     "You do not have to multiply first and simplify later. Look diagonally. The 7 on top of the second fraction shares a factor with the 21 on the bottom of the first, and the 8 on top of the first shares a factor with the 12 on the bottom of the second.",
+     "Cancel 7 against 21 to leave a 3 underneath, and cancel 4 out of both 8 and 12 to leave 2 over 3. Now the only numbers left are a small product on top and a small product on the bottom."
+    ],
+    "ans": "2/9",
+    "accept": [
+     "2/9",
+     "two ninths",
+     "two-ninths"
+    ],
+    "sol": "Write the product as one big fraction, \\(\\tfrac{8 \\times 7}{21 \\times 12}\\), and hunt for shared factors before you multiply anything out. The \\(7\\) on top and the \\(21\\) on the bottom share a factor of \\(7\\), since \\(21 = 3 \\times 7\\). Cancelling that turns the \\(7\\) into \\(1\\) and the \\(21\\) into \\(3\\). Next, the \\(8\\) on top and the \\(12\\) on the bottom share a factor of \\(4\\), since \\(8 = 4 \\times 2\\) and \\(12 = 4 \\times 3\\). Cancelling that leaves a \\(2\\) on top and a \\(3\\) on the bottom. Now the leftovers are \\(\\tfrac{2 \\times 1}{3 \\times 3} = \\tfrac{2}{9}\\). Because every common factor was already removed, the fraction is in lowest terms with nothing left to simplify, so the product is \\(\\boxed{2/9}\\)."
+   },
+   {
+    "x": "A printing studio mixes ink in tiny batches. One recipe calls for \\(\\tfrac{15}{16}\\) of a gram of pigment to be split evenly across \\(\\tfrac{25}{8}\\) milliliters of base. To find the pigment per milliliter, you divide \\(\\tfrac{15}{16}\\) by \\(\\tfrac{25}{8}\\). Flip the divisor to its reciprocal, cancel any factors shared across the top and bottom, then write the quotient in simplest form as \\(\\tfrac{a}{b}\\). What is the value of \\(\\tfrac{a}{b}\\)?",
+    "ans": "3/10",
+    "accept": [
+     "3/10",
+     "three tenths",
+     "three-tenths",
+     "0.3",
+     ".3"
+    ],
+    "hints": [
+     "Dividing by a fraction is the same as multiplying by its reciprocal. Flip \\(\\tfrac{25}{8}\\) to \\(\\tfrac{8}{25}\\), so the problem becomes \\(\\tfrac{15}{16}\\times\\tfrac{8}{25}\\).",
+     "Before multiplying straight across, look for shared factors you can cancel. The \\(8\\) and the \\(16\\) share a factor, and the \\(15\\) and the \\(25\\) share a factor. Cancel those first to keep the numbers small."
+    ],
+    "sol": "Dividing by a fraction means multiplying by its reciprocal, so flip the divisor. \\(\\tfrac{15}{16}\\div\\tfrac{25}{8}=\\tfrac{15}{16}\\times\\tfrac{8}{25}\\). Now cancel across before multiplying. The \\(8\\) on top and the \\(16\\) on the bottom share a factor of \\(8\\), leaving \\(1\\) on top and \\(2\\) on the bottom. The \\(15\\) on top and the \\(25\\) on the bottom share a factor of \\(5\\), leaving \\(3\\) on top and \\(5\\) on the bottom. That turns the product into \\(\\tfrac{3}{2}\\times\\tfrac{1}{5}=\\tfrac{3\\times 1}{2\\times 5}=\\tfrac{3}{10}\\). Since \\(3\\) and \\(10\\) share no common factor other than \\(1\\), this is already in simplest form. So \\(\\tfrac{a}{b}=\\boxed{\\tfrac{3}{10}}\\)."
+   },
+   {
+    "x": "A fraction has slipped through several copy machines and arrived as \\(\\tfrac{2310}{2730}\\), which looks far messier than it really is. Both numbers are built entirely from small primes. The top is \\(2\\times 3\\times 5\\times 7\\times 11\\) and the bottom is \\(2\\times 3\\times 5\\times 7\\times 13\\). Line up the prime factors, cancel every prime the two numbers share, and write the fraction that is left in lowest terms as \\(\\tfrac{a}{b}\\). What is that fraction?",
+    "ans": "11/13",
+    "accept": [
+     "11/13",
+     "11 / 13",
+     "eleven thirteenths",
+     "eleven-thirteenths"
+    ],
+    "hints": [
+     "Write the two prime lists right above each other so matching primes line up. The top reads \\(2\\times 3\\times 5\\times 7\\times 11\\) and the bottom reads \\(2\\times 3\\times 5\\times 7\\times 13\\). Which primes appear in both lists?",
+     "The primes \\(2\\), \\(3\\), \\(5\\), and \\(7\\) sit in both the top and the bottom, so each of those pairs cancels to \\(1\\). Whatever prime is left on top goes over whatever prime is left on the bottom."
+    ],
+    "sol": "Stacking the two factorizations makes the shared primes easy to spot. The top is \\(2\\times 3\\times 5\\times 7\\times 11\\) and the bottom is \\(2\\times 3\\times 5\\times 7\\times 13\\). Every prime in the bottom except \\(13\\) also shows up in the top, so the part the two numbers have in common is \\(2\\times 3\\times 5\\times 7=210\\). That common chunk is exactly the \\(\\gcd\\), and dividing it out of both numbers cancels it cleanly. On top, \\(2\\times 3\\times 5\\times 7\\) cancels and only \\(11\\) survives. On the bottom, the same four primes cancel and only \\(13\\) survives. So the whole fraction collapses to \\(\\tfrac{11}{13}\\). Since \\(11\\) and \\(13\\) are both prime and different, they share no factors, which tells us this is already in lowest terms. $$\\frac{2310}{2730}=\\frac{2\\times 3\\times 5\\times 7\\times 11}{2\\times 3\\times 5\\times 7\\times 13}=\\boxed{\\frac{11}{13}}$$"
+   },
+   {
+    "x": "A long product hides a tidy shortcut. Watch what happens to the chain \\(\\tfrac{2}{3}\\times\\tfrac{3}{4}\\times\\tfrac{4}{5}\\times\\tfrac{5}{6}\\times\\tfrac{6}{7}\\). Before multiplying everything out, look for matching numbers across the bars. The \\(3\\) on the bottom of the first fraction sits on top of the second, the \\(4\\) on the bottom of the second sits on top of the third, and so on down the line. Each matching pair cancels, and the whole sweep collapses to one survivor on top and one survivor on the bottom. Write that leftover product as \\(\\tfrac{a}{b}\\) in simplest form.",
+    "ans": "2/7",
+    "accept": [
+     "2/7",
+     "two sevenths",
+     "two-sevenths",
+     "two over seven"
+    ],
+    "hints": [
+     "Multiplying straight across, every top number except the very first also shows up as a bottom number somewhere earlier. Matching tops and bottoms cancel to \\(1\\).",
+     "Once all the middle numbers cancel, only the first top \\(2\\) and the last bottom \\(7\\) are left standing."
+    ],
+    "sol": "Multiply across the tops and across the bottoms, but keep the factors lined up so the pattern shows. $$\\frac{2\\times 3\\times 4\\times 5\\times 6}{3\\times 4\\times 5\\times 6\\times 7}$$ The bottom carries a \\(3,4,5,6\\), and so does the top. Each of those pairs cancels to \\(1\\), since a number over itself is \\(1\\). What never gets a partner is the \\(2\\) at the very front of the top and the \\(7\\) at the very end of the bottom. Everything between them folds away, leaving $$\\frac{2}{7}.$$ The fraction \\(\\tfrac{2}{7}\\) is already in simplest form, because \\(2\\) and \\(7\\) share no common factor bigger than \\(1\\). So the entire chain collapses to \\(\\boxed{2/7}\\)."
+   },
+   {
+    "x": "A long fraction is written out as a string of repeated factors, \\(\\dfrac{m\\times m\\times m\\times m\\times m}{m\\times m\\times 4}\\). Think of \\(m\\) as just one repeated factor sitting in the top and the bottom. Cancel each copy of \\(m\\) on the bottom against a matching copy on top, the same way you would cancel a shared whole number. After the cancelling, the fraction reads \\(\\dfrac{m^3}{4}\\). Now let \\(m=2\\). What single number does the whole expression equal?",
+    "hints": [
+     "The top has five copies of \\(m\\) and the bottom has two copies. Two copies on top pair off with the two on the bottom and disappear, leaving \\(m\\times m\\times m\\) over \\(4\\).",
+     "So the fraction is \\(\\dfrac{m^3}{4}\\). Put in \\(m=2\\), which makes the top \\(2\\times 2\\times 2=8\\), and finish the division."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "sol": "Cancelling shared factors works for letters exactly like it works for numbers. The top is five copies of \\(m\\) multiplied together, and the bottom is two copies of \\(m\\) times \\(4\\). Each \\(m\\) on the bottom cancels one \\(m\\) on top. Two of the five top copies pair off and vanish, so three copies of \\(m\\) survive on top and only the \\(4\\) is left underneath. That gives \\(\\dfrac{m^3}{4}\\). Now set \\(m=2\\). The top becomes \\(2\\times 2\\times 2=8\\), so the fraction is \\(\\dfrac{8}{4}=2\\). The whole expression equals \\(\\boxed{2}\\)."
+   },
+   {
+    "x": "A carpenter keeps two drill bits in front of her, one labelled \\(\\tfrac{3}{8}\\) of an inch and one labelled \\(\\tfrac{1}{10}\\) of an inch. She wants to rule a single measuring strip whose tick marks land exactly on both sizes, which means rewriting the two fractions over one shared bottom. The smallest bottom that works for both is the least common denominator of \\(\\tfrac{3}{8}\\) and \\(\\tfrac{1}{10}\\), which is \\(\\operatorname{lcm}(8,10)\\). What is that least common denominator?",
+    "ans": "40",
+    "accept": [
+     "40",
+     "forty"
+    ],
+    "hints": [
+     "The least common denominator is the smallest number that both \\(8\\) and \\(10\\) divide into evenly. Walk through the multiples of the larger bottom, \\(10, 20, 30, 40, \\dots\\), and stop at the first one that \\(8\\) also divides.",
+     "Break each bottom into primes, \\(8 = 2\\times 2\\times 2\\) and \\(10 = 2\\times 5\\). The \\(\\operatorname{lcm}\\) takes the most of each prime that shows up in either one, so \\(2\\times 2\\times 2\\times 5\\). Multiply that out."
+    ],
+    "sol": "The shared bottom has to be a number that both \\(8\\) and \\(10\\) divide into cleanly, and we want the smallest one so the strip is not cut finer than it needs to be. That is the \\(\\operatorname{lcm}\\) of \\(8\\) and \\(10\\). Break each into primes, \\(8 = 2\\times 2\\times 2\\) and \\(10 = 2\\times 5\\). The least common multiple takes the most of each prime that appears in either number, which is three \\(2\\)s and one \\(5\\), so $$\\operatorname{lcm}(8,10) = 2\\times 2\\times 2\\times 5 = 40.$$ Check that both bottoms fit, \\(40 \\div 8 = 5\\) and \\(40 \\div 10 = 4\\), both whole, so a strip ruled into \\(40\\)ths shows \\(\\tfrac{3}{8} = \\tfrac{15}{40}\\) and \\(\\tfrac{1}{10} = \\tfrac{4}{40}\\) exactly. The least common denominator is \\(\\boxed{40}\\)."
+   },
+   {
+    "x": "A music teacher is lining up three rhythm loops that each repeat on a different beat count. The first loop lands on every \\(4\\)th beat, the second on every \\(10\\)th beat, and the third on every \\(15\\)th beat. All three play together on beat \\(1\\), and the teacher wants to know the very next beat where all three line up again. That beat number is \\(\\operatorname{lcm}(4,10,15)\\), which is also the least common denominator of \\(\\tfrac{3}{4}\\), \\(\\tfrac{7}{10}\\), and \\(\\tfrac{2}{15}\\). What is that single number?",
+    "ans": "60",
+    "accept": [
+     "60",
+     "sixty"
+    ],
+    "hints": [
+     "Break each number into its prime building blocks first. \\(4=2^2\\), \\(10=2\\cdot 5\\), and \\(15=3\\cdot 5\\). The least common multiple needs to cover every prime that shows up.",
+     "For each prime, keep the highest power you see. You need \\(2^2\\) (from the \\(4\\)), one \\(3\\) (from the \\(15\\)), and one \\(5\\) (from the \\(10\\) and \\(15\\)). Multiply those together."
+    ],
+    "sol": "Start by writing each number as a product of primes. \\(4=2^2\\), \\(10=2\\cdot 5\\), and \\(15=3\\cdot 5\\). The least common multiple has to be divisible by all three, so it must include enough copies of each prime to cover whichever number uses it most. The \\(4\\) demands two \\(2\\)s, the \\(15\\) brings in a \\(3\\), and the \\(5\\) appears in both \\(10\\) and \\(15\\) so we need one \\(5\\). Putting those together gives \\(2^2\\cdot 3\\cdot 5 = 4\\cdot 3\\cdot 5 = 60\\). A quick check confirms it. \\(60\\div 4=15\\), \\(60\\div 10=6\\), and \\(60\\div 15=4\\), all whole numbers, and nothing smaller works for all three. So the loops realign, and the common denominator is \\(\\boxed{60}\\)."
+   },
+   {
+    "x": "A weather logbook records the chance of rain on Friday as \\(\\tfrac{7}{12}\\). To compare it against other days listed over a denominator of \\(60\\), you need to rewrite \\(\\tfrac{7}{12}\\) as an equivalent fraction with denominator \\(60\\). First find what \\(12\\) must be multiplied by to reach \\(60\\), then scale the top by that same factor. What is the new numerator, the top of the equivalent fraction over \\(60\\)?",
+    "ans": "35",
+    "accept": [
+     "35",
+     "thirty-five",
+     "thirty five"
+    ],
+    "hints": [
+     "The denominator jumped from \\(12\\) to \\(60\\). Ask yourself what single number times \\(12\\) gives \\(60\\).",
+     "Since \\(12 \\times 5 = 60\\), you multiplied the bottom by \\(5\\). To keep the fraction equal, multiply the top by \\(5\\) too."
+    ],
+    "sol": "An equivalent fraction comes from multiplying the top and bottom by the same number, so the fraction keeps its value while wearing a new outfit. Start with the denominators. To turn \\(12\\) into \\(60\\), solve \\(12 \\times ? = 60\\), which gives \\(60 \\div 12 = 5\\). So the scaling factor is \\(5\\). Now apply that same factor to the numerator so the fraction stays equal. \\(7 \\times 5 = 35\\). That means \\(\\tfrac{7}{12} = \\tfrac{35}{60}\\), and you can check it since both reduce back to \\(\\tfrac{7}{12}\\). The missing top is \\(\\boxed{35}\\)."
+   },
+   {
+    "x": "A music app shows song progress as a fraction of the way through. One track is \\(\\tfrac{4}{9}\\) of the way done. To compare it with other tracks on a shared timeline, you rewrite this fraction over the common denominator \\(45\\). First figure out what the \\(9\\) on the bottom was multiplied by to reach \\(45\\), then scale the top by that same amount. What is the new numerator over \\(45\\)?",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "The denominator went from \\(9\\) to \\(45\\). Ask yourself what number times \\(9\\) gives \\(45\\).",
+     "Since \\(9 \\times 5 = 45\\), you multiplied the bottom by \\(5\\). Multiply the top by \\(5\\) too so the value stays the same."
+    ],
+    "sol": "The denominator changed from \\(9\\) to \\(45\\). To find the scaling factor, see what \\(9\\) was multiplied by. Since \\(9 \\times 5 = 45\\), the bottom was scaled by \\(5\\).\n\nTo keep the fraction equal to \\(\\tfrac{4}{9}\\), the top has to grow by the same factor. So \\(4 \\times 5 = 20\\), which gives \\(\\tfrac{20}{45}\\).\n\nYou can check it. \\(\\tfrac{20}{45}\\) divides back down by \\(5\\) to \\(\\tfrac{4}{9}\\), so the value never changed. The new numerator is \\(\\boxed{20}\\)."
+   },
+   {
+    "x": "A relay coach is timing two runners over the same loop. Maya finishes \\(\\tfrac{4}{7}\\) of the loop before her stopwatch beeps, and Theo finishes \\(\\tfrac{5}{9}\\) of the loop in that same time. To see who covered more ground, the coach rewrites both distances over a single shared denominator. Grow each fraction to the least common denominator of \\(7\\) and \\(9\\), compare the two new top numbers, then state the larger fraction in its original form as \\(\\tfrac{a}{b}\\).",
+    "ans": "4/7",
+    "accept": [
+     "4/7",
+     "four sevenths",
+     "four-sevenths",
+     "four over seven",
+     "36/63"
+    ],
+    "hints": [
+     "The least common denominator of \\(7\\) and \\(9\\) is their \\(\\operatorname{lcm}\\). Since \\(7\\) and \\(9\\) share no common factor, that \\(\\operatorname{lcm}\\) is just \\(7 \\times 9 = 63\\).",
+     "Multiply the top and bottom of each fraction so both land on \\(63\\). \\(\\tfrac{4}{7} = \\tfrac{4 \\times 9}{63}\\) and \\(\\tfrac{5}{9} = \\tfrac{5 \\times 7}{63}\\). Whichever has the bigger numerator wins."
+    ],
+    "sol": "Both fractions have different bottoms, so they cannot be compared at a glance. The fix is to give them a shared denominator. Since \\(7\\) and \\(9\\) have no common factor, the least common denominator is \\(7 \\times 9 = 63\\). Now grow each fraction to that denominator. For \\(\\tfrac{4}{7}\\), multiply top and bottom by \\(9\\), which gives \\(\\tfrac{4 \\times 9}{7 \\times 9} = \\tfrac{36}{63}\\). For \\(\\tfrac{5}{9}\\), multiply top and bottom by \\(7\\), which gives \\(\\tfrac{5 \\times 7}{9 \\times 7} = \\tfrac{35}{63}\\). With equal denominators the comparison is just the numerators, and \\(36 > 35\\), so \\(\\tfrac{36}{63}\\) is the larger amount. That came from \\(\\tfrac{4}{7}\\), which means Maya covered more of the loop. Reported in its original form, the larger fraction is \\(\\boxed{\\tfrac{4}{7}}\\)."
+   },
+   {
+    "x": "A wind turbine produced \\(280\\) megawatt-hours of electricity last month, while the whole region generated \\(630\\) megawatt-hours all together. Write the turbine's share of the region's total as a fraction of the whole, reduced to simplest form \\(\\tfrac{a}{b}\\). The numbers are large, so rather than chip away at them, break each into primes and cancel everything the top and bottom share in one move.",
+    "ans": "4/9",
+    "accept": [
+     "4/9",
+     "4 / 9",
+     "four ninths",
+     "four-ninths"
+    ],
+    "hints": [
+     "Factor both numbers into primes. \\(280 = 2\\times 2\\times 2\\times 5\\times 7\\) and \\(630 = 2\\times 3\\times 3\\times 5\\times 7\\). Which primes appear in both lists?",
+     "They share one \\(2\\), one \\(5\\), and one \\(7\\), so \\(\\gcd(280,630) = 2\\times 5\\times 7 = 70\\). Divide the top and the bottom by \\(70\\)."
+    ],
+    "sol": "The share is \\(\\tfrac{280}{630}\\), and the fast road to simplest form is the \\(\\gcd\\). Break both into primes, \\(280 = 2\\times 2\\times 2\\times 5\\times 7\\) and \\(630 = 2\\times 3\\times 3\\times 5\\times 7\\). The primes they both carry are one \\(2\\), one \\(5\\), and one \\(7\\), so $$\\gcd(280,630) = 2\\times 5\\times 7 = 70.$$ Divide top and bottom by that single number, \\(280 \\div 70 = 4\\) and \\(630 \\div 70 = 9\\), which gives \\(\\tfrac{4}{9}\\). Check we are done, \\(4 = 2\\times 2\\) and \\(9 = 3\\times 3\\) share no prime, so the only common factor left is \\(1\\). The turbine's share in simplest form is \\(\\boxed{4/9}\\)."
+   },
+   {
+    "x": "Two ropes are stretched along a wall and someone marks how far each one reaches. The first rope reaches \\(\\tfrac{11}{15}\\) of the way across the wall, and the second reaches \\(\\tfrac{7}{9}\\) of the way. The two denominators, \\(15\\) and \\(9\\), share the least common multiple \\(45\\), so you can rename both fractions over \\(45\\) and compare the new numerators directly. Which fraction is larger, \\(\\tfrac{11}{15}\\) or \\(\\tfrac{7}{9}\\)? Write it as \\(\\tfrac{a}{b}\\).",
+    "ans": "7/9",
+    "accept": [
+     "7/9",
+     "seven ninths",
+     "seven-ninths",
+     "7 / 9"
+    ],
+    "hints": [
+     "You cannot compare \\(\\tfrac{11}{15}\\) and \\(\\tfrac{7}{9}\\) by eye because the pieces are different sizes. Find a common denominator first. The smallest number both \\(15\\) and \\(9\\) divide into is \\(45\\).",
+     "Grow each fraction to forty-fifths. Multiply \\(\\tfrac{11}{15}\\) by \\(\\tfrac{3}{3}\\) and \\(\\tfrac{7}{9}\\) by \\(\\tfrac{5}{5}\\), then compare the two new numerators. The bigger numerator wins."
+    ],
+    "sol": "The two fractions have different denominators, so rename them over a shared one before comparing. The least common multiple of \\(15\\) and \\(9\\) is \\(45\\), since \\(45 = 15 \\times 3 = 9 \\times 5\\). Grow each fraction to forty-fifths. For the first rope, \\(\\tfrac{11}{15} = \\tfrac{11 \\times 3}{15 \\times 3} = \\tfrac{33}{45}\\). For the second, \\(\\tfrac{7}{9} = \\tfrac{7 \\times 5}{9 \\times 5} = \\tfrac{35}{45}\\). Now the pieces are the same size, so I just compare numerators. Since \\(35 > 33\\), the second rope reaches farther, which means \\(\\tfrac{7}{9}\\) is the larger fraction. The larger fraction is \\(\\boxed{7/9}\\)."
+   },
+   {
+    "x": "A puzzle box has three brass gears stamped with fractions, and to open it you multiply them in a row. The catch is that the third gear is set to \"divide\" rather than \"multiply\". The lock reads \\(\\tfrac{12}{25}\\times\\tfrac{35}{18}\\div\\tfrac{7}{15}\\). The smart move is to flip that last gear from \\(\\tfrac{7}{15}\\) into \\(\\tfrac{15}{7}\\) so the whole thing becomes one long multiplication, then cancel every shared factor between a top and a bottom before you ever multiply, so no big numbers appear. What single number unlocks the box?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Dividing by \\(\\tfrac{7}{15}\\) is the same as multiplying by its reciprocal \\(\\tfrac{15}{7}\\). Rewrite the whole expression as \\(\\tfrac{12}{25}\\times\\tfrac{35}{18}\\times\\tfrac{15}{7}\\) so everything is one product.",
+     "Before multiplying, hunt for a top and a bottom that share a factor and cancel them. For example \\(35\\) and \\(7\\) share a \\(7\\), and \\(15\\) and \\(25\\) share a \\(5\\). Keep cancelling until nothing large is left."
+    ],
+    "sol": "First turn the division into multiplication by flipping the last fraction. Dividing by \\(\\tfrac{7}{15}\\) means multiplying by \\(\\tfrac{15}{7}\\), so the whole expression becomes \\[\\frac{12}{25}\\times\\frac{35}{18}\\times\\frac{15}{7}.\\] Now cancel shared factors across all the tops and bottoms before multiplying anything. The \\(35\\) on top and the \\(7\\) on the bottom share a \\(7\\), leaving \\(5\\) up top. That \\(5\\) pairs with the \\(25\\) on the bottom, which becomes \\(5\\). Next, \\(15\\) on top and that remaining \\(5\\) on the bottom leave \\(3\\) up top. Now look at \\(12\\) and \\(18\\), which share a \\(6\\), becoming \\(2\\) and \\(3\\). The \\(3\\) on the bottom cancels the \\(3\\) we still had on top. After all the cancelling, the top holds a single \\(2\\) and the bottom holds a single \\(1\\). So the product is \\(\\tfrac{2}{1}\\), and the box opens with \\(\\boxed{2}\\)."
+   }
+  ],
+  "next": "4.6"
  }
 }
