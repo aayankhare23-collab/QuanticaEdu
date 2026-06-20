@@ -10930,10 +10930,10 @@
   var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
   function wsTutorHTML(){
     return '<aside class="ws-pane ws-tutor" id="wsTutor">'+
-      '<div class="ws-tuthead"><span class="av">Q</span><span class="nm">Quantica Tutor</span>'+
+      '<div class="ws-tuthead"><span class="av">M</span><span class="nm">Milo</span>'+
       '<button class="tut-close" onclick="WS.closePanel(\'tutor\')" title="Close">✕</button></div>'+
       '<div class="ws-body" id="tutBody">'+
-        '<div class="tut-bub bot">Hi! I\'m your Quantica tutor. Try the problem first — then ask me if you get stuck.</div>'+
+        '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. Work through the problem first, then ask me if you get stuck.</div>'+
       '</div>'+
       '<div class="tut-compose"><input type="text" id="tutInput" placeholder="Ask me anything about this problem…" onkeydown="if(event.key===\'Enter\')sendTutorMsg()"><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
     '</aside>';
@@ -11709,7 +11709,7 @@ function initTutor(lessonKey, lessonTitle) {
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
   var body = document.getElementById('tutBody');
   if (body) {
-    body.innerHTML = '<div class="tut-bub bot">Hi! I\'m your Quantica tutor. Work through the problem first — then come ask me if you get stuck on <b>' + (lessonTitle || lessonKey) + '</b>.</div>';
+    body.innerHTML = '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. I can see what you\'re working on — try it first, then ask me. Current lesson: <b>' + (lessonTitle || lessonKey) + '</b>.</div>';
   }
 }
 
@@ -11741,9 +11741,13 @@ async function sendTutorMsg() {
     var res = await fetch(TUTOR_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      var pageEl = document.getElementById('wsCenterBody');
+      var pageText = '';
+      if(pageEl){ var vis=[].slice.call(pageEl.children).filter(function(n){return n.style.display!=='none';}); if(vis.length) pageText=vis[0].innerText||vis[0].textContent||''; }
+      var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim().slice(0,800) : '');
       body: JSON.stringify({
         studentMessage: msg,
-        lessonContext: tutorContext,
+        lessonContext: fullContext,
         conversationHistory: tutorHistory.slice(0, -1)
       })
     });
