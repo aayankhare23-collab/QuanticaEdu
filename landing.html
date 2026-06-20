@@ -11744,7 +11744,7 @@ async function sendTutorMsg() {
       var pageEl = document.getElementById('wsCenterBody');
       var pageText = '';
       if(pageEl){ var vis=[].slice.call(pageEl.children).filter(function(n){return n.style.display!=='none';}); if(vis.length) pageText=vis[0].innerText||vis[0].textContent||''; }
-      var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim().slice(0,800) : '');
+      var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim() : '');
       body: JSON.stringify({
         studentMessage: msg,
         lessonContext: fullContext,
