@@ -233,7 +233,7 @@
   .overlay.open{display:block}
   .modal{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--soft);animation:fade .22s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  .coursebar{flex:none;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .coursebar{flex:none;height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
   .cb-left{display:flex;align-items:center;gap:14px}
   .cb-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--navy)}
   .cb-logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:14px}
@@ -426,7 +426,7 @@
   .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
   .demo .q sup{font-size:.7em}
 
-  .workspace{--cbh:60px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
+  .workspace{--cbh:50px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
   .ws-center{flex:1;display:flex;flex-direction:column;min-height:0;transition:margin .32s cubic-bezier(.22,1,.36,1)}
   .workspace.tut-open .ws-center{margin-left:var(--tut-w)}
   .workspace.nb-open .ws-center{margin-right:var(--nb-w)}
@@ -439,7 +439,7 @@
   .workspace.tut-open .ws-tutor{transform:none}
   .ws-notebook{right:0;width:var(--nb-w);border-left:1px solid var(--glass-line);border-radius:var(--radius) 0 0 var(--radius);transform:translateX(100%)}
   .workspace.nb-open .ws-notebook{transform:none}
-  .ws-center .ws-body{padding:28px 48px 20px;overflow-y:auto;flex:1;min-height:0}
+  .ws-center .ws-body{padding:14px 48px 14px;overflow-y:auto;flex:1;min-height:0}
   .ws-center .ws-body::-webkit-scrollbar{width:4px}
   .ws-center .ws-body::-webkit-scrollbar-track{background:transparent}
   .ws-center .ws-body::-webkit-scrollbar-thumb{background:rgba(100,130,180,.25);border-radius:2px}
@@ -472,7 +472,7 @@
   .ws-page .page-lead p{font-size:17px;line-height:1.88;color:var(--slate);margin:0 0 22px;letter-spacing:.01em}
   .ws-page .page-lead p:last-child{margin-bottom:0}
   /* problem pages sit high so the revealed solution appears directly below without scrolling */
-  .ws-page:not(.page-text-only){justify-content:flex-start;padding-top:30px}
+  .ws-page:not(.page-text-only){justify-content:flex-start;padding-top:10px}
   /* key-idea page: centered golden glowing card */
   .ws-page.page-key{justify-content:center;align-items:center;padding:0}
   .key-card{max-width:560px;width:100%;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(255,250,232,.96),rgba(255,238,196,.92));border:1.6px solid rgba(228,150,24,.6);border-radius:20px;padding:30px 34px;box-shadow:0 12px 32px -12px rgba(228,160,40,.5);animation:keyCardGlow 1.5s ease-in-out infinite}
@@ -11103,7 +11103,7 @@
       if(WS.page<WS.pages.length-1){ WS.showPage(WS.page+1); }
       else if(WS.L && WS.L.next && LESSONS[WS.L.next]){ WS.complete(); }
       else { WS.finish(); }
-    }, 1300);
+    }, 2600);
   };
   WS.toggleIdea=function(btn){
     var idea=btn.closest('.nb-idea'); if(!idea) return;
