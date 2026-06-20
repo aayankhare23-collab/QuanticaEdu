@@ -437,12 +437,13 @@
   .workspace.tut-open .ws-tutor{transform:none}
   .ws-notebook{right:0;width:var(--nb-w);border-left:1px solid var(--glass-line);border-radius:var(--radius) 0 0 var(--radius);transform:translateX(100%)}
   .workspace.nb-open .ws-notebook{transform:none}
-  .ws-center .ws-body{padding:28px 48px 20px;overflow-y:auto;flex:1;min-height:0}
+  .ws-center .ws-body{padding:28px 48px 20px;overflow-y:hidden;flex:1;min-height:0}
+  .workspace.tut-open.nb-open .ws-center .ws-body{overflow-y:auto}
   .ws-center .ws-body>.ws-page{max-width:640px;margin:0 auto;width:100%}
 
   /* floating header */
-  .ws-head{flex:none;padding:4px 24px 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .workspace.tut-open.nb-open .ws-head{flex-direction:column;align-items:flex-start;gap:4px;padding:4px 16px 8px}
+  .ws-head{flex:none;padding:12px 20px 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .workspace.tut-open.nb-open .ws-head{flex-direction:column;align-items:flex-start;gap:4px;padding:10px 14px 6px}
   .workspace.tut-open.nb-open .ws-steps{width:100%;margin-top:2px}
   .ws-head .ws-eyebrow{font:700 10px/1 'Inter';letter-spacing:.14em;text-transform:uppercase;color:var(--mid);background:rgba(58,123,213,.10);border-radius:999px;padding:4px 10px}
   .ws-head .ws-title{font-family:'Fraunces';font-weight:600;font-size:17px;color:var(--navy);line-height:1.2;flex:1;min-width:0}
@@ -537,9 +538,11 @@
   .tut-bub{max-width:88%;font-size:13px;line-height:1.55;padding:10px 13px;border-radius:14px}
   .tut-bub.bot{align-self:flex-start;background:var(--glass-strong);border:1px solid var(--glass-line);color:var(--navy);border-bottom-left-radius:5px}
   .tut-bub.usr{align-self:flex-end;background:transparent;border:1px dashed var(--glass-line);color:var(--navy);border-bottom-right-radius:5px}
-  .ws-tutor .tut-compose{flex:none;padding:12px;border-top:1px solid var(--glass-line);display:flex;gap:8px}
-  .tut-compose input{flex:1;border:1px solid var(--glass-line);border-radius:999px;background:rgba(255,255,255,.45);color:var(--navy);font-family:'Inter';font-size:13px;padding:9px 13px}
-  .tut-compose input:disabled{cursor:not-allowed}
+  .ws-tutor .tut-compose{flex:none;padding:10px 12px;border-top:1px solid var(--glass-line);display:flex;align-items:flex-end;gap:8px}
+  .tut-compose .tut-input{flex:1;border:1px solid var(--glass-line);border-radius:14px;background:rgba(255,255,255,.45);color:var(--navy);font-family:'Inter';font-size:13px;padding:9px 13px;resize:none;overflow-y:hidden;min-height:38px;max-height:120px;line-height:1.5;box-sizing:border-box}
+  .tut-compose .tut-input:disabled{cursor:not-allowed}
+  @keyframes chatGlow{0%,100%{box-shadow:0 4px 16px rgba(40,100,220,.3)}50%{box-shadow:0 4px 16px rgba(40,100,220,.3),0 0 0 7px rgba(40,100,220,.18)}}
+  .ws-fab-chat.unread-glow{animation:chatGlow 1.3s ease-in-out infinite}
   .tut-compose .snd{width:38px;height:38px;flex:none;border:none;border-radius:50%;background:var(--mid);color:#fff;cursor:pointer;display:grid;place-items:center}
   .tut-compose .snd:hover{filter:brightness(1.1)}
   .tut-compose .snd:disabled{background:#cdd8ea;cursor:not-allowed}
@@ -10943,7 +10946,7 @@
       '<div class="ws-body" id="tutBody">'+
         '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. Work through the problem first, then ask me if you get stuck.</div>'+
       '</div>'+
-      '<div class="tut-compose"><input type="text" id="tutInput" placeholder="Ask me anything about this problem…" onkeydown="if(event.key===\'Enter\')sendTutorMsg()"><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
+      '<div class="tut-compose"><textarea class="tut-input" id="tutInput" placeholder="Ask me anything about this problem…" rows="1" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendTutorMsg();}" oninput="this.style.height=\'auto\';this.style.height=Math.min(this.scrollHeight,120)+\'px\';"></textarea><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
     '</aside>';
   }
 
@@ -11021,13 +11024,22 @@
         ki.revealed=true; revealed=true;
         var node=document.createElement('div'); node.className='nb-idea nb-arrive nb-new nb-open'; node.setAttribute('data-j',j);
         var rawText=ki.block.x.replace(/<[^>]+>/g,'');
-        var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1};
-        var allWds=rawText.trim().split(/\s+/);
-        var meaningful=allWds.filter(function(w){ return !stopWds[w.toLowerCase()]&&w.length>2; }).slice(0,3);
-        var shortTitle=(ki.block.label&&ki.block.label!=='Key idea')?ki.block.label:((meaningful.length?meaningful.join(' '):(allWds.slice(0,3).join(' ')))+(allWds.length>3?'...':''));
+        var boldMatches=(ki.block.x.match(/<b[^>]*>(.*?)<\/b>/gi)||[]);
+        var boldPhrases=boldMatches.map(function(m){return m.replace(/<[^>]+>/g,'').trim();}).filter(function(w){return w.length>1;});
+        var shortTitle;
+        if(ki.block.label&&ki.block.label!=='Key idea'){
+          shortTitle=ki.block.label;
+        } else if(boldPhrases.length){
+          shortTitle=boldPhrases.slice(0,2).join(' & ');
+          if(shortTitle.length>28) shortTitle=boldPhrases[0];
+        } else {
+          var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1};
+          var allWds=rawText.trim().split(/\s+/);
+          var meaningful=allWds.filter(function(w){return !stopWds[w.toLowerCase()]&&w.length>2;}).slice(0,3);
+          shortTitle=meaningful.length?meaningful.join(' '):allWds.slice(0,3).join(' ');
+        }
         node.innerHTML=
           '<button class="nb-toggle" onclick="WS.toggleIdea(this)">'+
-            '<span class="nb-star">✦</span>'+
             '<span class="nb-label">Key Idea '+ki.num+': '+shortTitle+'</span>'+
             '<span class="nb-new-badge">New</span>'+
             '<span class="nb-chevron">▼</span>'+
@@ -11110,6 +11122,7 @@
     if(which==='tutor'){
       var opening=!ws.classList.contains('tut-open');
       ws.classList.toggle('tut-open',opening);
+      if(opening){ var cf=document.getElementById('wsFabChat'); if(cf) cf.classList.remove('unread-glow'); }
       var fab=document.getElementById('wsFabIdeas');
       if(fab){ fab.classList.remove('shooting','shoot-back'); void fab.offsetWidth;
         fab.classList.add(opening?'shooting':'shoot-back');
@@ -11682,7 +11695,13 @@
     var rec=(typeof PROBREG!=='undefined')?PROBREG[k]:null;
     var s=document.getElementById('sol_'+k), btn=document.getElementById('sb_'+k);
     if(s){ var open=s.classList.toggle('show'); if(btn) btn.textContent=open?'Hide solution':'Show solution';
-      if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.WS&&WS.active) WS.onResolve(k); else if(window.updateFlow) window.updateFlow(true); } }
+      if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.WS&&WS.active) WS.onResolve(k); else if(window.updateFlow) window.updateFlow(true);
+        if(!rec.solved && !rec._askedAboutSolution && window.addTutorBotMsg){
+          rec._askedAboutSolution=true;
+          setTimeout(function(){ addTutorBotMsg("I see you checked the solution — what part of this problem gave you trouble? Let’s work through it together."); },500);
+        }
+      }
+    }
   };
   window.rwBuy=function(type,id,cost){
     if(P.owned[id]) return;
@@ -11714,12 +11733,24 @@ var tutorHistory = [];
 var tutorContext = '';
 var tutorCooldown = false;
 
+function addTutorBotMsg(text){
+  var body=document.getElementById('tutBody'); if(!body) return;
+  var bub=document.createElement('div'); bub.className='tut-bub bot'; bub.textContent=text;
+  body.appendChild(bub); body.scrollTop=body.scrollHeight;
+  tutorHistory.push({role:'assistant',content:text});
+  var ws=document.getElementById('wsWorkspace');
+  if(ws && !ws.classList.contains('tut-open')){
+    var fab=document.getElementById('wsFabChat'); if(fab) fab.classList.add('unread-glow');
+  }
+}
+window.addTutorBotMsg=addTutorBotMsg;
+
 function initTutor(lessonKey, lessonTitle) {
   tutorHistory = [];
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
   var body = document.getElementById('tutBody');
   if (body) {
-    body.innerHTML = '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. I can see what you\'re working on — try it first, then ask me. Current lesson: <b>' + (lessonTitle || lessonKey) + '</b>.</div>';
+    body.innerHTML = '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. Work through the problem first — I\'m here if you get stuck.</div>';
   }
 }
 
@@ -11739,7 +11770,7 @@ async function sendTutorMsg() {
   uBub.style.cssText = 'color:var(--navy);border-style:solid;background:rgba(255,255,255,.55)';
   uBub.textContent = msg;
   body.appendChild(uBub);
-  input.value = '';
+  input.value = ''; input.style.height = 'auto';
   body.scrollTop = body.scrollHeight;
   tutorHistory.push({ role: 'user', content: msg });
   var loadBub = document.createElement('div');
