@@ -11057,17 +11057,35 @@
     var rawText=block.x.replace(/<[^>]+>/g,'');
     var boldMatches=(block.x.match(/<b[^>]*>(.*?)<\/b>/gi)||[]);
     var boldPhrases=boldMatches.map(function(m){return m.replace(/<[^>]+>/g,'').trim();}).filter(function(w){return w.length>1;});
-    function toTitleCase(s){return s.replace(/\b\w/g,function(c){return c.toUpperCase();});}
-    var shortTitle;
-    if(block.label&&block.label!=='Key idea'){ shortTitle=block.label; }
-    else if(boldPhrases.length){ shortTitle=boldPhrases.slice(0,2).join(' & '); if(shortTitle.length>28) shortTitle=boldPhrases[0]; shortTitle=toTitleCase(shortTitle); }
-    else { var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1};
-      var allWds=rawText.trim().split(/\s+/);
+    function stripMath(s){return (s||'').replace(/\$\$?[^$]*\$\$?/g,' ').replace(/\\\([\s\S]*?\\\)/g,' ').replace(/\\\[[\s\S]*?\\\]/g,' ').replace(/\\[a-zA-Z]+(\{[^}]*\})?/g,' ');}
+    function clean(s){return stripMath(s).replace(/\s+/g,' ').replace(/^[\s.,;:·\-–—]+|[\s.,;:·\-–—]+$/g,'').trim();}
+    // capitalize word-starts only (not letters after apostrophes -> avoids "Number'S")
+    function toTitleCase(s){return s.replace(/(^|[\s(\/])([a-z])/g,function(m,p,c){return p+c.toUpperCase();});}
+    var TAIL=/\s+(and|or|the|a|an|to|of|in|by|with|is|are|that|this|its|for)$/i;
+    function cap(s){ s=clean(s); if(s.length<=30) return s; var t=s.slice(0,30); var sp=t.lastIndexOf(' '); if(sp>10) t=t.slice(0,sp); t=clean(t); while(TAIL.test(t)) t=clean(t.replace(TAIL,'')); return t+'…'; }
+    var shortTitle='';
+    // 1) authored label
+    if(block.label&&block.label!=='Key idea') shortTitle=cap(block.label);
+    // 2) bold phrases (deduped, math stripped)
+    if(!shortTitle && boldPhrases.length){
+      var seen={}, uniq=[];
+      boldPhrases.forEach(function(p){ p=clean(p); var key=p.toLowerCase(); if(p&&!seen[key]){ seen[key]=1; uniq.push(p); } });
+      if(uniq.length){ var t=uniq[0];
+        if(t.split(' ').length<=2 && uniq[1] && (t+' & '+uniq[1]).length<=26) t=t+' & '+uniq[1];
+        shortTitle=cap(toTitleCase(t));
+      }
+    }
+    // 3) meaningful words from the body text
+    if(!shortTitle){
+      var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1,'it':1,'we':1,'you':1,'that':1,'this':1};
+      var allWds=clean(rawText).split(/\s+/).filter(function(w){return w;});
       var meaningful=allWds.filter(function(w){return !stopWds[w.toLowerCase()]&&w.length>2;}).slice(0,3);
-      shortTitle=toTitleCase(meaningful.length?meaningful.join(' '):allWds.slice(0,3).join(' ')); }
+      shortTitle=cap(toTitleCase(meaningful.length?meaningful.join(' '):allWds.slice(0,4).join(' ')));
+    }
+    var labelText='Key Idea '+num+(shortTitle?(': '+shortTitle):'');
     node.innerHTML=
       '<button class="nb-toggle" onclick="WS.toggleIdea(this)">'+
-        '<span class="nb-label">Key Idea '+num+': '+shortTitle+'</span>'+
+        '<span class="nb-label">'+labelText+'</span>'+
         '<span class="nb-new-badge">New</span>'+
         '<span class="nb-chevron">▼</span>'+
       '</button>'+
@@ -11757,8 +11775,9 @@
     var s=document.getElementById('sol_'+k), btn=document.getElementById('sb_'+k);
     if(s){ var open=s.classList.toggle('show'); if(btn) btn.textContent=open?'Hide solution':'Show solution';
       if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.WS&&WS.active) WS.onResolve(k); else if(window.updateFlow) window.updateFlow(true);
-        if(!rec.solved){
-          // student gave up: lock their answer in, require them to open the chat before moving on
+        if(!rec.solved && rec.graded){
+          // student gave up on a real (answerable) problem: lock their answer in, require them to open the chat before moving on.
+          // No-answer worked examples just resolve on reveal — no Milo lock.
           rec.gaveUp=true;
           var inp=document.getElementById('ai_'+k); if(inp){ inp.readOnly=true; inp.classList.add('locked-in'); }
           if(!rec._askedAboutSolution && window.addTutorBotMsg){
