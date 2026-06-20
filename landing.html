@@ -394,6 +394,38 @@
   .ws-mode .coursewrap{max-width:none;margin:0;padding:0}
   .ws-mode .pagehead{display:none}
   .ws-mode #lessonView>.backlink{display:none}
+  .demo{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .demo .top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff}
+  .demo .top .t{font-family:'Fraunces';font-weight:600;font-size:15px}
+  .demo .top .badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:4px 9px;border-radius:6px}
+  .demo .body{padding:22px 20px}
+  .demo .q{font-size:16.5px;font-weight:500;color:var(--ink);margin-bottom:16px}
+  .demo .q b{color:var(--blue)}
+  .opts{display:grid;gap:9px}
+  .opt{display:flex;align-items:center;gap:11px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:15px;font-weight:500;transition:all .15s ease;background:#fff}
+  .opt:hover{border-color:var(--sky);background:var(--softer)}
+  .opt .k{width:24px;height:24px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--mid);flex:none}
+  .opt.correct{border-color:var(--green);background:#e9f8f1}
+  .opt.correct .k{background:var(--green);color:#fff}
+  .opt.wrong{border-color:#f0b9b9;background:#fdeeee}
+  .opt.wrong .k{background:#d9534f;color:#fff}
+  .feedback{margin-top:14px;font-size:14.5px;padding:12px 14px;border-radius:11px;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:#e9f8f1;color:#0e6b48}
+  .feedback.hintbox{background:var(--softer);color:var(--blue)}
+  .demo .foot{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-top:1px solid var(--line);background:var(--soft);font-size:13px;color:var(--mute)}
+  .hintbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
+  .hintbtn:hover{text-decoration:underline}
+  .nextbtn{font-weight:600;color:var(--mid);cursor:pointer;background:none;border:none;font-size:13.5px}
+  .nextbtn:hover{text-decoration:underline}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--soft)}
+  .chips::-webkit-scrollbar{height:5px}
+  .chips::-webkit-scrollbar-thumb{background:#cdd8e6;border-radius:9px}
+  .chip{flex:none;font-size:12px;font-weight:600;color:var(--mid);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;white-space:nowrap;transition:all .15s}
+  .chip:hover{border-color:var(--sky)}
+  .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .demo .q sup{font-size:.7em}
+
   .workspace{--cbh:60px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
   .ws-center{flex:1;display:flex;flex-direction:column;min-height:0;transition:margin .32s cubic-bezier(.22,1,.36,1)}
   .workspace.tut-open .ws-center{margin-left:var(--tut-w)}
@@ -874,7 +906,10 @@
         <button class="hintbtn" id="hintbtn">💡 Need a hint?</button>
         <button class="nextbtn" id="nextbtn">Next problem →</button>
       </div>
-    </div>
+    
+
+
+</div>
   </div>
 </section>
 
@@ -11331,6 +11366,8 @@
 </script>
 
 <script>
+
+
 /* =====================================================================
    QUANTICA REWARDS ENGINE  ·  XP · Gems · Mastery Points
    Course-agnostic: keyed by COURSE.slug and persisted to localStorage.
