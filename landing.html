@@ -11021,7 +11021,7 @@
     var body=document.getElementById('wsCenterBody'); if(!body) return;
     [].slice.call(body.children).forEach(function(node){
       var p=+node.getAttribute('data-p'), on=(p===i);
-      node.style.display=on?'block':'none';
+      node.style.display=on?'flex':'none';
       if(on){ node.classList.remove('ws-anim'); void node.offsetWidth; node.classList.add('ws-anim'); }
     });
     [].slice.call(document.querySelectorAll('.ws-segs .ws-seg')).forEach(function(s){
