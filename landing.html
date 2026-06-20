@@ -460,7 +460,7 @@
   .ws-head-divider{height:1px;background:var(--glass-line);margin:0 0 4px}
 
   /* a page in the center */
-  .ws-page{animation:none;min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
+  .ws-page{animation:none;min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:safe center}
   .ws-page.ws-anim{animation:wsIn .28s cubic-bezier(.22,1,.36,1) both}
   @keyframes wsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .ws-page.page-text-only{justify-content:center;align-items:center;padding:0}
@@ -471,8 +471,8 @@
   .ws-page .page-lead{margin-bottom:22px;width:100%}
   .ws-page .page-lead p{font-size:17px;line-height:1.88;color:var(--slate);margin:0 0 22px;letter-spacing:.01em}
   .ws-page .page-lead p:last-child{margin-bottom:0}
-  /* when a solution is revealed, top-align so the solution sits directly below the problem */
-  .ws-page.sol-open{justify-content:flex-start;padding-top:22px}
+  /* problem pages sit high so the revealed solution appears directly below without scrolling */
+  .ws-page:not(.page-text-only){justify-content:flex-start;padding-top:30px}
   .ws-page .probbox{margin:0;width:100%}
   .ws-page .probbox .ptext{font-size:16px;line-height:1.75}
   .probbox.ans-correct{border-color:var(--green) !important;box-shadow:0 0 0 3px rgba(19,160,110,.16),var(--shadow-sm) !important;animation:correctBounce .42s cubic-bezier(.22,1,.36,1)}
@@ -11728,8 +11728,6 @@
     var rec=(typeof PROBREG!=='undefined')?PROBREG[k]:null;
     var s=document.getElementById('sol_'+k), btn=document.getElementById('sb_'+k);
     if(s){ var open=s.classList.toggle('show'); if(btn) btn.textContent=open?'Hide solution':'Show solution';
-      // top-align the page so the solution sits directly below the problem (no clipping)
-      var pageEl=s.closest&&s.closest('.ws-page'); if(pageEl) pageEl.classList.toggle('sol-open',open);
       if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.WS&&WS.active) WS.onResolve(k); else if(window.updateFlow) window.updateFlow(true);
         if(!rec.solved){
           // student gave up: lock their answer in, require them to open the chat before moving on
