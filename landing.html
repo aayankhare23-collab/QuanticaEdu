@@ -11052,6 +11052,7 @@
         starBtn.classList.add(nbOpening?'shooting':'shoot-back');
         setTimeout(function(){ starBtn.classList.remove('shooting','shoot-back'); },450); }
     }
+  };
   WS.closePanel=function(which){
     var ws=document.getElementById('wsWorkspace'); if(!ws) return;
     if(which==='tutor'){
@@ -11064,8 +11065,6 @@
     } else {
       ws.classList.remove('nb-open');
     }
-    var sc=document.getElementById('wsScrim');
-    if(sc) sc.classList.toggle('on', ws.classList.contains('tut-open')||ws.classList.contains('nb-open'));
   };
   WS.closeAll=function(){
     var ws=document.getElementById('wsWorkspace'); if(!ws) return;
