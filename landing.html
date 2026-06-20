@@ -10983,7 +10983,7 @@
     });
     typeset(body);
     document.getElementById('wsNbBody').innerHTML='';
-    document.getElementById('courseScroll').classList.add('ws-mode');
+    var cs=document.getElementById('courseScroll'); if(cs){ cs.scrollTop=0; cs.classList.add('ws-mode'); }
     WS.showPage(0);
   }
   WS.showPage=function(i){
