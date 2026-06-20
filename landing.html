@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -462,14 +462,14 @@
   .ws-tuthead .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--sky));color:#fff;font:700 14px 'Fraunces';display:grid;place-items:center;flex:none}
   .ws-tuthead .nm{font-family:'Fraunces';font-weight:600;font-size:14.5px;color:var(--navy);flex:1}
   .ws-tuthead .soon{font:700 9px/1 'Inter';letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:rgba(16,179,163,.13);border-radius:999px;padding:5px 8px}
-  .ws-tutor .ws-body{display:flex;flex-direction:column;gap:10px;padding:16px;opacity:.66;pointer-events:none}
+  .ws-tutor .ws-body{display:flex;flex-direction:column;gap:10px;padding:16px}
   .tut-bub{max-width:88%;font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px}
   .tut-bub.bot{align-self:flex-start;background:var(--glass-strong);border:1px solid var(--glass-line);color:var(--navy);border-bottom-left-radius:5px}
   .tut-bub.usr{align-self:flex-end;background:transparent;border:1px dashed var(--glass-line);color:var(--mute);border-bottom-right-radius:5px}
-  .ws-tutor .tut-compose{flex:none;padding:12px;border-top:1px solid var(--glass-line);display:flex;gap:8px;opacity:.75}
+  .ws-tutor .tut-compose{flex:none;padding:12px;border-top:1px solid var(--glass-line);display:flex;gap:8px}
   .tut-compose input{flex:1;border:1px solid var(--glass-line);border-radius:999px;background:rgba(255,255,255,.45);color:var(--mute);font-family:'Inter';font-size:13px;padding:9px 13px}
   .tut-compose input:disabled{cursor:not-allowed}
-  .tut-compose .snd{width:38px;height:38px;flex:none;border:none;border-radius:50%;background:#cdd8ea;color:#fff;cursor:not-allowed;display:grid;place-items:center}
+  .tut-compose .snd{width:38px;height:38px;flex:none;border:none;border-radius:50%;background:var(--mid);color:#fff;cursor:pointer;display:grid;place-items:center}.tut-compose .snd:hover{filter:brightness(1.1)}.tut-compose .snd:disabled{background:#cdd8ea;cursor:not-allowed}
 
   /* responsive: tablet drops tutor to a drawer, phone stacks with tabs */
   .ws-drawerbtn,.ws-tabs{display:none}
@@ -1498,223 +1498,6 @@
       {t:'imp', x:'Every fraction is either a <b>terminating</b> or a <b>repeating</b> decimal. The "multiply by 10 and subtract" trick turns any repeating decimal back into a fraction.'}
     ]},
 
-    // ---- Chapter 6: Expressions and Equations ----
-    '6.1':{title:'Building Expressions', blocks:[
-      {t:'p', x:'Algebra begins the moment we let a letter stand for a number we do not know yet.'},
-      {t:'prob', x:'Write "<b>5 more than twice a number n</b>" as an expression, then find its value when n = 4.', sol:'Twice the number is 2n; five more is 2n + 5. At n = 4 that is 2(4) + 5 = <b>13</b>.'},
-      {t:'imp', x:'A <b>variable</b> is a placeholder for a number; an <b>expression</b> is a recipe built from variables and operations. You <b>evaluate</b> it by substituting a value.'},
-      {t:'prob', x:'Write an expression for "<b>the number of cents in q quarters and d dimes</b>."', sol:'A quarter is 25 cents and a dime 10, so the total is <b>25q + 10d</b>.'}
-    ]},
-    '6.3':{title:'Variables on Both Sides', blocks:[
-      {t:'p', x:'When the unknown appears on both sides of an equation, the first job is to gather it in one place.'},
-      {t:'prob', x:'Solve <b>5x − 3 = 3x + 11</b>.', sol:'Subtract 3x from both sides: 2x − 3 = 11. Add 3: 2x = 14. Divide by 2: <b>x = 7</b>.'},
-      {t:'imp', x:'Move every variable term to one side and every constant to the other, using the same balanced moves as always, then isolate the variable.'}
-    ]},
-    '6.4':{title:'Turning Words into Equations', blocks:[
-      {t:'p', x:'In most real problems the algebra is easy; the real skill is the translation.'},
-      {t:'prob', x:'The sum of three consecutive integers is <b>96</b>. Find them.', sol:'Call the smallest n; the three are n, n+1, n+2. Then n + (n+1) + (n+2) = 96, so 3n + 3 = 96, giving n = 31. The integers are <b>31, 32, 33</b>.'},
-      {t:'imp', x:'Name the unknown, translate each phrase into symbols, solve, and finally check your answer against the original words.'}
-    ]},
-    '6.5':{title:'Inequalities', blocks:[
-      {t:'p', x:'An equation pins a value to one spot; an inequality fences off a whole range of them.'},
-      {t:'prob', x:'Solve <b>2x + 1 < 9</b>.', sol:'Subtract 1: 2x < 8. Divide by 2: <b>x < 4</b>. Every number below 4 works.'},
-      {t:'imp', x:'Inequalities use the same moves as equations, with one twist: multiplying or dividing both sides by a <b>negative</b> number <b>flips</b> the inequality sign.'},
-      {t:'prob', x:'Solve <b>−3x ≥ 12</b>.', sol:'Divide both sides by −3 and flip the sign: <b>x ≤ −4</b>.'}
-    ]},
-
-    // ---- Chapter 7: Ratios, Rates, and Proportions ----
-    '7.1':{title:'What Is a Ratio?', blocks:[
-      {t:'p', x:'A ratio compares two quantities by division: how much of one there is for each amount of the other.'},
-      {t:'prob', x:'A class has 12 boys and 8 girls. Write the ratio of boys to girls in simplest form.', sol:'12 : 8, and dividing both by gcd 4 gives <b>3 : 2</b>, three boys for every two girls.'},
-      {t:'imp', x:'A ratio <b>a : b</b> simplifies just like a fraction. It tells you the proportion, not the totals.'}
-    ]},
-    '7.2':{title:'Ratios with Many Parts', blocks:[
-      {t:'p', x:'A ratio can compare three or more quantities at once, and dividing things up in a given ratio is a classic task.'},
-      {t:'prob', x:'Split <b>$60</b> among three people in the ratio <b>1 : 2 : 3</b>.', sol:'There are 1 + 2 + 3 = 6 parts, so one part is $60 ÷ 6 = $10. The shares are <b>$10, $20, $30</b>.'},
-      {t:'imp', x:'Add the parts to find the total number of shares, divide to find the value of one part, then scale each piece up.'}
-    ]},
-    '7.3':{title:'Unit Rates and Speed', blocks:[
-      {t:'p', x:'A rate compares quantities with different units; a unit rate boils it down to "per one."'},
-      {t:'prob', x:'A car covers 150 miles in 3 hours. What is its speed? And which is the better buy: 12 oz for $3, or 20 oz for $4.40?', sol:'Speed = 150 ÷ 3 = <b>50 mph</b>. Prices: $3 ÷ 12 = $0.25/oz vs $4.40 ÷ 20 = $0.22/oz, so the <b>20 oz</b> is cheaper per ounce.'},
-      {t:'imp', x:'A <b>unit rate</b> divides to get the amount per single unit (per hour, per ounce). It is the cleanest way to compare options.'}
-    ]},
-    '7.4':{title:'Proportions', blocks:[
-      {t:'p', x:'Setting two ratios equal creates a proportion, and proportions are everywhere in scaling problems.'},
-      {t:'prob', x:'If 3 apples cost $2, what do 12 apples cost?', sol:'Set up 3/2 = 12/x and cross-multiply: 3x = 24, so x = <b>$8</b>. (Twelve apples is four batches of three.)'},
-      {t:'imp', x:'In a proportion <b>a/b = c/d</b>, cross-multiplication gives <b>ad = bc</b>, turning the proportion into an easy equation.'}
-    ]},
-    '7.5':{title:'Converting Units', blocks:[
-      {t:'p', x:'To convert units, you multiply by a cleverly disguised form of the number 1.'},
-      {t:'prob', x:'Convert <b>5 feet</b> to inches.', sol:'Since 12 in = 1 ft, multiply by (12 in / 1 ft): 5 ft × 12 in/ft = <b>60 inches</b>. The "ft" cancels.'},
-      {t:'imp', x:'A <b>conversion factor</b> like 12 in / 1 ft equals 1, so multiplying by it changes the units, not the amount. Units cancel just like numbers.'},
-      {t:'prob', x:'Convert <b>90 minutes</b> to hours.', sol:'90 min × (1 hr / 60 min) = <b>1.5 hours</b>.'}
-    ]},
-
-    // ---- Chapter 9: Percents ----
-    '9.1':{title:'Percents as Fractions', blocks:[
-      {t:'p', x:'"Percent" is just a special word for a fraction whose denominator is 100.'},
-      {t:'prob', x:'Write <b>25%</b> as a fraction and as a decimal.', sol:'25% = 25/100 = 1/4 = <b>0.25</b>.'},
-      {t:'imp', x:'<b>x% = x/100.</b> You can move freely among percent, fraction, and decimal: they are three names for one number.'}
-    ]},
-    '9.2':{title:'A Percent of a Number', blocks:[
-      {t:'p', x:'The word "of" in "a percent of a number" is a quiet instruction to multiply.'},
-      {t:'prob', x:'What is <b>15% of 80</b>?', sol:'15% = 0.15, and 0.15 × 80 = <b>12</b>.'},
-      {t:'imp', x:'A percent <b>of</b> a number = (the percent as a decimal) × (the number).'},
-      {t:'prob', x:'<b>20% of what number is 9?</b>', sol:'0.20 × x = 9, so x = 9 ÷ 0.2 = <b>45</b>.'}
-    ]},
-    '9.3':{title:'Percent Increase and Decrease', blocks:[
-      {t:'p', x:'Percents shine when describing how a quantity changes.'},
-      {t:'prob', x:'A $50 item rises by <b>20%</b>. What is the new price?', sol:'The increase is 0.20 × 50 = $10, so the price becomes $60. Faster: 1.20 × 50 = <b>$60</b>.'},
-      {t:'imp', x:'To increase by p%, multiply by <b>(1 + p/100)</b>; to decrease, multiply by <b>(1 − p/100)</b>.'}
-    ]},
-    '9.4':{title:'Percents in Word Problems', blocks:[
-      {t:'p', x:'Real life loves to stack percents: a discount, then a tax, then who knows what.'},
-      {t:'prob', x:'A $40 shirt is <b>25% off</b>, and then <b>8% tax</b> is added. What is the final price?', sol:'After the discount: 40 × 0.75 = $30. After tax: 30 × 1.08 = <b>$32.40</b>.'},
-      {t:'imp', x:'Apply successive percents by <b>multiplying their factors</b>. Surprisingly, the order of a discount and a tax does not change the final price.'}
-    ]},
-
-    // ---- Chapter 8: Square Roots ----
-    '8.2':{title:'Estimating Irrational Roots', blocks:[
-      {t:'p', x:'Even with no calculator, you can trap an irrational root between two whole numbers, and squeeze it as tight as you like.'},
-      {t:'prob', x:'<b>√70</b> lies between which two whole numbers, and which is it closer to?', sol:'8² = 64 and 9² = 81, and 64 < 70 < 81, so √70 is between <b>8 and 9</b>. Since 70 is nearer 64, it is closer to <b>8</b> (about 8.4).'},
-      {t:'imp', x:'Bracket a root with neighboring <b>perfect squares</b>, then refine by squaring decimal guesses and checking which side of the target you land on.'}
-    ]},
-    '8.3':{title:'Simplifying Square Roots', blocks:[
-      {t:'p', x:'A square root often hides a perfect square inside it, just waiting to be pulled out front.'},
-      {t:'prob', x:'Simplify <b>√72</b>.', sol:'72 = 36 × 2, and √36 = 6, so √72 = √36 · √2 = <b>6√2</b>.'},
-      {t:'imp', x:'Because <b>√(ab) = √a · √b</b>, you can extract the largest perfect-square factor from under the radical.'},
-      {t:'prob', x:'Simplify <b>√50</b>.', sol:'50 = 25 × 2, so √50 = <b>5√2</b>.'}
-    ]},
-    '8.4':{title:'Arithmetic with Roots', blocks:[
-      {t:'p', x:'Square roots combine by rules that feel a lot like working with variables.'},
-      {t:'prob', x:'Compute <b>√2 · √8</b>, and simplify <b>2√3 + 5√3</b>.', sol:'√2 · √8 = √16 = 4. And 2√3 + 5√3 = 7√3, just like 2 apples plus 5 apples.'},
-      {t:'imp', x:'Multiply roots by combining under one radical: √a · √b = √(ab). You can only <b>add</b> or subtract roots when the value under the radical matches (the "like terms" of roots).'}
-    ]},
-
-    // ---- Chapter 11: Geometry: Lines and Angles ----
-    '11.1':{title:'Measuring Angles', blocks:[
-      {t:'p', x:'An angle measures an amount of turning, recorded in degrees, with a full turn being 360°.'},
-      {t:'prob', x:'Two angles sit side by side on a straight line and one is 110°. What is the other? And what is the complement of a 35° angle?', sol:'On a line the two must total 180°, so the other is <b>70°</b>. The complement of 35° totals 90°, so it is <b>55°</b>.'},
-      {t:'imp', x:'<b>Complementary</b> angles sum to 90°, <b>supplementary</b> angles sum to 180°, and angles around a full turn sum to 360°.'}
-    ]},
-    '11.2':{title:'Parallel Lines and Transversals', blocks:[
-      {t:'p', x:'When a single line crosses two parallel lines, a whole family of equal angles springs up.'},
-      {t:'prob', x:'A transversal crosses two parallel lines, making one angle of 70°. Find its corresponding angle and its same-side interior angle.', sol:'The corresponding angle is also <b>70°</b>; the same-side interior angle is its supplement, <b>110°</b>.'},
-      {t:'imp', x:'With parallel lines: <b>corresponding</b> and <b>alternate</b> angles are equal, while <b>same-side interior</b> angles add to 180°.'}
-    ]},
-    '11.3':{title:'Angles Inside Polygons', blocks:[
-      {t:'p', x:'A single, surprising fact about triangles unlocks the angles of every polygon.'},
-      {t:'prob', x:'Imagine tearing the three corners off a paper triangle and fitting them together at a point. What shape do they form, and so what is the angle sum of a triangle?', sol:'They line up into a straight angle, so a triangle’s angles always sum to <b>180°</b>.'},
-      {t:'imp', x:'A triangle’s angles sum to 180°. Splitting an n-sided polygon into triangles shows its interior angles sum to <b>(n − 2) × 180°</b>.'},
-      {t:'prob', x:'What is the sum of the interior angles of a pentagon?', sol:'(5 − 2) × 180° = 3 × 180° = <b>540°</b>.'}
-    ]},
-
-    // ---- Chapter 11: Geometry: Length, Perimeter, and Area ----
-    '11.4':{title:'Measuring Length', blocks:[
-      {t:'p', x:'Length is distance along a line, but a number alone means nothing without a unit attached.'},
-      {t:'prob', x:'A trail runs 3 m, then another 250 cm. What is the total length, in meters?', sol:'250 cm = 2.5 m, so the total is 3 + 2.5 = <b>5.5 m</b>. You must convert to a common unit before adding.'},
-      {t:'imp', x:'Lengths can only be compared or added when expressed in the <b>same unit</b>. Convert first, then combine.'}
-    ]},
-    '11.5':{title:'Perimeter', blocks:[
-      {t:'p', x:'Perimeter is simply the total distance around the outside of a shape.'},
-      {t:'prob', x:'Find the perimeter of a rectangle that is 8 cm by 3 cm.', sol:'Add all four sides: 8 + 3 + 8 + 3 = 22 cm, or 2 × (8 + 3) = <b>22 cm</b>.'},
-      {t:'imp', x:'<b>Perimeter</b> is the sum of all the side lengths. For a rectangle, that is 2 × (length + width).'}
-    ]},
-    '11.6':{title:'Area of Common Shapes', blocks:[
-      {t:'p', x:'Area counts how many unit squares fit inside a shape, and a few clean formulas cover most cases.'},
-      {t:'prob', x:'Find the area of a triangle with base 10 and height 6, and of a parallelogram with the same base and height.', sol:'Parallelogram: base × height = 10 × 6 = 60. A triangle is exactly half of that: <b>30</b> (triangle), <b>60</b> (parallelogram).'},
-      {t:'imp', x:'<b>Rectangle:</b> length × width. <b>Parallelogram:</b> base × height. <b>Triangle:</b> ½ × base × height (half a parallelogram).'}
-    ]},
-    '11.7':{title:'Circles', blocks:[
-      {t:'p', x:'Every circle hides the same magic number, π, linking its distance around to its width.'},
-      {t:'prob', x:'A circle has radius 5. Find its circumference and its area, in terms of π.', sol:'Circumference = 2πr = <b>10π</b>. Area = πr² = π(5²) = <b>25π</b>.'},
-      {t:'imp', x:'For a circle of radius r: <b>circumference = 2πr = πd</b>, and <b>area = πr²</b>, where π ≈ 3.14159.'}
-    ]},
-
-    // ---- Chapter 11: Geometry: Triangles and Quadrilaterals ----
-    '11.8':{title:'The Pythagorean Theorem', blocks:[
-      {t:'p', x:'The most famous relationship in all of geometry connects the three sides of a right triangle.'},
-      {t:'prob', x:'A right triangle has legs 3 and 4. How long is its hypotenuse?', sol:'3² + 4² = 9 + 16 = 25, and the hypotenuse is √25 = <b>5</b>.'},
-      {t:'imp', x:'In any right triangle, <b>a² + b² = c²</b>, where c is the hypotenuse (the side opposite the right angle).'},
-      {t:'prob', x:'A right triangle has legs 5 and 12. Find the hypotenuse.', sol:'5² + 12² = 25 + 144 = 169, so the hypotenuse is √169 = <b>13</b>.'}
-    ]},
-    '11.9':{title:'Special Right Triangles', blocks:[
-      {t:'p', x:'Two right triangles appear so often that their side ratios are worth knowing by heart.'},
-      {t:'prob', x:'A 45-45-90 triangle has legs of length 1; find its hypotenuse. A 30-60-90 triangle has short leg 1; find its other two sides.', sol:'45-45-90: hypotenuse √(1+1) = √2. 30-60-90: the longer leg is √3 and the hypotenuse is 2.'},
-      {t:'imp', x:'<b>45-45-90</b> has sides in ratio 1 : 1 : √2. <b>30-60-90</b> has sides in ratio 1 : √3 : 2 (short leg : long leg : hypotenuse).'}
-    ]},
-    '11.10':{title:'Families of Quadrilaterals', blocks:[
-      {t:'p', x:'Squares, rectangles, rhombi, and parallelograms form a family tree, each a special case of the one above.'},
-      {t:'prob', x:'Is every square a rectangle? Is every rectangle a square?', sol:'Every square <b>is</b> a rectangle (it has four right angles). But a rectangle need not be a square: its sides need not all be equal. So the first is true, the second false.'},
-      {t:'imp', x:'A <b>parallelogram</b> has both pairs of opposite sides parallel. Add right angles to get a <b>rectangle</b>, equal sides to get a <b>rhombus</b>, and both to get a <b>square</b>.'}
-    ]},
-
-    // ---- Chapter 10: Counting and Statistics: A First Look at Counting ----
-    '10.1':{title:'Adding and Subtracting Cases', blocks:[
-      {t:'p', x:'Two of the most basic counting ideas are splitting a count into cases, and counting what you do not want.'},
-      {t:'prob', x:'How many whole numbers from 1 to 100 are <b>not</b> multiples of 10?', sol:'There are 10 multiples of 10 (10, 20, …, 100), so the rest number 100 − 10 = <b>90</b>. Counting the unwanted ones and subtracting is often easiest.'},
-      {t:'imp', x:'<b>Sum rule:</b> if cases do not overlap, add their counts. <b>Complementary counting:</b> count = total − (the ones you do not want).'}
-    ]},
-    '10.2':{title:'The Multiplication Principle', blocks:[
-      {t:'p', x:'When independent choices stack up, their counts multiply.'},
-      {t:'prob', x:'With 3 shirts and 4 pairs of pants, how many different outfits are possible?', sol:'Each of the 3 shirts pairs with each of the 4 pants: 3 × 4 = <b>12</b> outfits.'},
-      {t:'imp', x:'If one decision can be made m ways and a second n ways, the two together can be made <b>m × n</b> ways.'},
-      {t:'prob', x:'How many 3-letter "words" can be formed from a 26-letter alphabet if letters may repeat?', sol:'26 choices for each position: 26 × 26 × 26 = <b>26³</b>.'}
-    ]},
-    '10.3':{title:'Casework', blocks:[
-      {t:'p', x:'When choices tangle together, the cleanest path is to split the problem into separate cases.'},
-      {t:'prob', x:'Rolling two dice, in how many ways can the two numbers sum to 7?', sol:'List them: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1); that is <b>6</b> ways.'},
-      {t:'imp', x:'Break a count into cases that <b>do not overlap</b> and together cover <b>everything</b>; count each case, then add.'}
-    ]},
-    '10.4':{title:'Counting Pairs', blocks:[
-      {t:'p', x:'How many pairs can you form from a group? The answer hides a neat formula.'},
-      {t:'prob', x:'Five people each shake hands once with everyone else. How many handshakes happen?', sol:'Each of the 5 shakes 4 hands, giving 5 × 4 = 20, but that counts each handshake twice, so the answer is 20 ÷ 2 = <b>10</b>.'},
-      {t:'imp', x:'The number of pairs from n items is <b>n(n − 1)/2</b>: each ordered count divided by 2, since a pair is the same both ways.'}
-    ]},
-    '10.5':{title:'An Introduction to Probability', blocks:[
-      {t:'p', x:'Probability puts a number on how likely something is, from 0 (never) to 1 (always).'},
-      {t:'prob', x:'Two dice are rolled. What is the probability their sum is 7?', sol:'There are 6 × 6 = 36 equally likely rolls, and 6 of them sum to 7, so the probability is 6/36 = <b>1/6</b>.'},
-      {t:'imp', x:'<b>Probability = (favorable outcomes) / (total equally-likely outcomes)</b>, always a number between 0 and 1.'}
-    ]},
-
-    // ---- Chapter 10: Counting and Statistics: Data and Statistics ----
-    '10.6':{title:'Mean, Median, and Mode', blocks:[
-      {t:'p', x:'There is no single "center" of a data set: there are three, and they can tell different stories.'},
-      {t:'prob', x:'Find the mean, median, and mode of <b>4, 8, 8, 5, 10</b>.', sol:'Mean = (4+8+8+5+10)/5 = 35/5 = 7. Sorted: 4, 5, 8, 8, 10, so the median (middle) is 8. The mode (most frequent) is 8.'},
-      {t:'imp', x:'<b>Mean</b> = the average (sum ÷ count). <b>Median</b> = the middle value once sorted. <b>Mode</b> = the most frequent value.'}
-    ]},
-    '10.7':{title:'Reading Tables and Graphs', blocks:[
-      {t:'p', x:'A good graph turns a wall of numbers into a picture you can read at a glance.'},
-      {t:'prob', x:'A bar chart shows sales of 20 on Monday, 35 on Tuesday, and 15 on Wednesday. How many were sold in total, and what fraction were on Tuesday?', sol:'Total = 20 + 35 + 15 = 70. Tuesday’s share is 35/70 = <b>1/2</b>.'},
-      {t:'imp', x:'Read the <b>axes and labels first</b>. Totals, fractions, and comparisons all come from the values once you know what they measure.'}
-    ]},
-    '10.8':{title:'What Statistics Can Hide', blocks:[
-      {t:'p', x:'A single statistic can quietly mislead, which is exactly why you should never trust just one.'},
-      {t:'prob', x:'Four people earn $40,000 and one earns $400,000. Compare the mean and the median salary.', sol:'Mean = (4×40,000 + 400,000)/5 = 560,000/5 = $112,000. Median = $40,000. The lone large salary drags the mean far above what most people actually earn.'},
-      {t:'imp', x:'<b>Outliers pull the mean</b> but barely move the median, so the median often better captures the "typical" value. Always ask what a statistic leaves out.'}
-    ]},
-
-    // ---- Chapter 12: A Problem-Solving Toolkit ----
-    '12.1':{title:'Look for a Pattern', blocks:[
-      {t:'p', x:'Spotting hidden structure can turn an impossible-looking grind into a few seconds of work.'},
-      {t:'prob', x:'Add <b>1 + 2 + 3 + … + 100</b>. (Hint: pair the smallest with the largest.)', sol:'Pair 1+100, 2+99, 3+98, …: each pair sums to 101, and there are 50 pairs, so the total is 50 × 101 = <b>5050</b>.'},
-      {t:'imp', x:'Pairing terms from the ends is a classic trick, and it gives the formula <b>1 + 2 + … + n = n(n + 1)/2</b>.'}
-    ]},
-    '12.2':{title:'Make an Organized List', blocks:[
-      {t:'p', x:'A careful, systematic list guarantees you miss nothing and count nothing twice.'},
-      {t:'prob', x:'How many 3-digit numbers use each of the digits 1, 2, 3 exactly once? List them.', sol:'In order: 123, 132, 213, 231, 312, 321; that is <b>6</b> numbers.'},
-      {t:'imp', x:'Listing in a <b>consistent order</b> (say, smallest first) makes your count complete and free of duplicates.'}
-    ]},
-    '12.3':{title:'Draw a Picture', blocks:[
-      {t:'p', x:'A diagram can expose relationships that a paragraph of words keeps hidden.'},
-      {t:'prob', x:'In a class of 30, 18 play soccer, 15 play basketball, and 7 play both. How many play neither? (Draw two overlapping circles.)', sol:'Soccer-only = 18 − 7 = 11, basketball-only = 15 − 7 = 8, both = 7, so 11 + 8 + 7 = 26 play a sport. That leaves 30 − 26 = <b>4</b> who play neither.'},
-      {t:'imp', x:'<b>Venn diagrams</b>, number lines, and quick sketches turn relationships into something you can literally see and count.'}
-    ]},
-    '12.4':{title:'Work Backwards', blocks:[
-      {t:'p', x:'Sometimes the finish line is the easiest place to begin.'},
-      {t:'prob', x:'I think of a number, multiply it by 3, add 4, and the result is 19. What was my number?', sol:'Undo each step in reverse: 19 − 4 = 15, then 15 ÷ 3 = <b>5</b>.'},
-      {t:'imp', x:'To work backwards, start from the result and <b>reverse each step</b> with its inverse operation until you reach the start.'}
-    ]}
   };
 
   // --- Load chapter lessons from external JSON files ---
@@ -1866,36 +1649,6 @@
       {"x": "Each of the digits \\(1, 2, 3, 4, 5,\\) and \\(7\\) is used exactly once to build a six-digit number. What is the largest such number that is divisible by \\(22\\)?", "ans": "753412", "accept": ["753412", "753,412"], "legendary": true, "hints": ["\\(22 = 2 \\times 11\\), so the number must be even and pass the test for \\(11\\). The six digits sum to \\(22\\).", "For divisibility by \\(11\\) the odd-position digits and the even-position digits must each sum to \\(11\\), since together they make \\(22\\). Now build the largest value with that balance, ending in an even digit.", "Put the biggest digits at the front while keeping the two position-groups balanced at \\(11\\) each, and finish on an even digit."], "sol": "<p>Since \\(22 = 2 \\times 11\\), the number must be even and satisfy the alternating-sum test for \\(11\\). The six digits sum to \\(22\\), and divisibility by \\(11\\) requires the odd-position digits and the even-position digits to each total \\(11\\). To make the value as large as possible, load the front with big digits while keeping that balance, and end on an even digit. Working greedily down from the largest leading digits gives \\(\\boxed{753412}\\). Check, it is even and its alternating digit sum \\(2 - 1 + 4 - 3 + 5 - 7 = 0\\) is a multiple of \\(11\\), so \\(753412 = 22 \\times 34246\\).</p>"},
       {"x": "What is the smallest positive multiple of \\(36\\) whose digits are all \\(0\\)s and \\(1\\)s?", "ans": "11111111100", "accept": ["11111111100", "11,111,111,100"], "legendary": true, "hints": ["\\(36 = 4 \\times 9\\). Handle the two requirements separately, using only the digits \\(0\\) and \\(1\\).", "Divisible by \\(9\\) means the digit sum is a multiple of \\(9\\), so you need at least nine \\(1\\)s. Divisible by \\(4\\) means the last two digits form a multiple of \\(4\\).", "Among \\(00, 01, 10, 11\\), only \\(00\\) is a multiple of \\(4\\), so the number must end in two \\(0\\)s."], "sol": "<p>Write \\(36 = 4 \\times 9\\). For divisibility by \\(9\\), the digit sum must be a multiple of \\(9\\), and since every digit is \\(0\\) or \\(1\\), that means at least nine \\(1\\)s. For divisibility by \\(4\\), the last two digits must form a multiple of \\(4\\), and among \\(00, 01, 10, 11\\) only \\(00\\) qualifies, so the number ends in two \\(0\\)s. The smallest value meeting both uses exactly nine \\(1\\)s followed by two \\(0\\)s, namely \\(\\boxed{11111111100}\\).</p>"}
     ]},
-    6:{practice:[
-      {q:"Solve for x: \\(3x + 5 = 20\\).", o:[["x = 5",1],["x = 6",0],["x = 15",0],["x = 25/3",0]],
-       h:"💡 Hint: Keep the scale balanced: subtract 5 from both sides first, then split both sides into three equal shares.",
-       s:"Right. \\(3x + 5 = 20 \\Rightarrow 3x = 15 \\Rightarrow x = 5\\)."},
-      {q:"Solve: \\(2(x - 3) = 10\\).", o:[["x = 8",1],["x = 5",0],["x = 11",0],["x = 2",0]],
-       h:"💡 Hint: You could distribute the 2 first, or, often faster, divide both sides by 2 right away.",
-       s:"Exactly. Dividing both sides by 2 gives \\(x - 3 = 5\\), so \\(x = 8\\)."}
-    ], challenge:[
-      {q:"If \\(5x - 3 = 3x + 11\\), what is x?", o:[["7",1],["4",0],["8",0],["14",0]],
-       h:"💡 Hint: Get every x onto one side first, subtract 3x from both sides, then handle the constants.",
-       s:"Yes. \\(5x - 3 = 3x + 11 \\Rightarrow 2x - 3 = 11 \\Rightarrow 2x = 14 \\Rightarrow x = 7\\)."},
-      {q:"The sum of three consecutive integers is 96. What is the smallest of the three?", o:[["31",1],["30",0],["32",0],["33",0]],
-       h:"💡 Hint: Call the smallest one n. Then the three integers are n, n+1, and n+2; write an equation for their sum.",
-       s:"Nice. \\(n + (n+1) + (n+2) = 96 \\Rightarrow 3n + 3 = 96 \\Rightarrow n = 31\\) (and indeed \\(31 + 32 + 33 = 96\\))."}
-    ]},
-    8:{practice:[
-      {q:"What is \\(\\sqrt{144}\\)?", o:[["12",1],["14",0],["72",0],["24",0]],
-       h:"💡 Hint: What whole number, multiplied by itself, gives 144?",
-       s:"Right. \\(12 \\times 12 = 144\\), so \\(\\sqrt{144} = 12\\)."},
-      {q:"Between which two consecutive whole numbers does \\(\\sqrt{70}\\) lie?", o:[["8 and 9",1],["7 and 8",0],["9 and 10",0],["6 and 7",0]],
-       h:"💡 Hint: Square the candidate boundaries: \\(8^2 = 64\\) and \\(9^2 = 81\\). Where does 70 fall?",
-       s:"Exactly. Since \\(8^2 = 64 < 70 < 81 = 9^2\\), \\(\\sqrt{70}\\) sits strictly between 8 and 9."}
-    ], challenge:[
-      {q:"Simplify \\(\\sqrt{72}\\).", o:[["6√2",1],["2√18",0],["3√8",0],["√72 is already simplest",0]],
-       h:"💡 Hint: Pull out the largest perfect-square factor of 72. (Hint: \\(72 = 36 \\times 2\\).)",
-       s:"Beautiful. \\(72 = 36 \\times 2\\), and \\(\\sqrt{36} = 6\\), so \\(\\sqrt{72} = \\sqrt{36} \\cdot \\sqrt{2} = 6\\sqrt{2}\\)."},
-      {q:"If \\(x^2 = 49\\) and \\(x < 0\\), what is x?", o:[["−7",1],["7",0],["−49",0],["49",0]],
-       h:"💡 Hint: Both 7 and −7 square to 49; the condition \\(x < 0\\) picks out exactly one of them.",
-       s:"Yes. Both \\(7^2\\) and \\((-7)^2\\) equal 49, but only −7 is negative."}
-    ]}
   };
   Object.assign(PSETS,{
     2:{practice:[
@@ -2015,117 +1768,6 @@
        h:"💡 Hint: Let \\(x = 0.444\\ldots\\); then \\(10x - x = 4\\).",
        s:"Clever. \\(9x = 4\\), so \\(x = \\frac{4}{9}\\)."}
     ]},
-    7:{practice:[
-      {q:"Simplify the ratio \\(15 : 20\\).", o:[["3 : 4",1],["5 : 4",0],["4 : 3",0],["15 : 20",0]],
-       h:"💡 Hint: Divide both parts by their gcd, 5.",
-       s:"Right. \\(15 : 20 = 3 : 4\\)."},
-      {q:"If 4 pens cost \\$6, what do 10 pens cost?", o:[["$15",1],["$12",0],["$24",0],["$10",0]],
-       h:"💡 Hint: Find the price of one pen first.",
-       s:"Exactly. One pen is \\$1.50, so 10 cost \\$15."}
-    ], challenge:[
-      {q:"Divide \\$84 in the ratio \\(2 : 5\\).", o:[["$24 and $60",1],["$42 and $42",0],["$28 and $56",0],["$34 and $50",0]],
-       h:"💡 Hint: There are \\(2 + 5 = 7\\) parts. Find the value of one part first.",
-       s:"Yes. One part is \\$84 \\(\\div\\) 7 = \\$12, so the shares are \\(2 \\times 12\\) and \\(5 \\times 12\\) = \\$24 and \\$60."},
-      {q:"A car travels 180 miles in 4 hours. At that rate, how far in 7 hours?", o:[["315 miles",1],["300 miles",0],["280 miles",0],["360 miles",0]],
-       h:"💡 Hint: Find the speed in miles per hour first.",
-       s:"Right. Speed = 45 mph, so \\(45 \\times 7 = 315\\) miles."}
-    ]},
-    9:{practice:[
-      {q:"What is \\(20\\%\\) of 150?", o:[["30",1],["3",0],["15",0],["300",0]],
-       h:"💡 Hint: \\(20\\% = 0.2\\), and \"of\" means multiply.",
-       s:"Right. \\(0.2 \\times 150 = 30\\)."},
-      {q:"Write 0.35 as a percent.", o:[["35%",1],["3.5%",0],["0.35%",0],["350%",0]],
-       h:"💡 Hint: Multiply by 100 to turn a decimal into a percent.",
-       s:"Exactly. \\(0.35 = 35\\%\\)."}
-    ], challenge:[
-      {q:"A \\$80 jacket is \\(25\\%\\) off. What is the sale price?", o:[["$60",1],["$55",0],["$20",0],["$100",0]],
-       h:"💡 Hint: After \\(25\\%\\) off, you pay \\(75\\%\\) of the price.",
-       s:"Yes. \\(80 \\times 0.75 = \\$60\\)."},
-      {q:"A population grows from 200 to 250. What is the percent increase?", o:[["25%",1],["50%",0],["20%",0],["5%",0]],
-       h:"💡 Hint: Compare the increase (50) to the original amount (200).",
-       s:"Right. \\(\\frac{50}{200} = 0.25 = 25\\%\\)."}
-    ]},
-    11:{practice:[
-      {q:"Two angles are supplementary and one is \\(65°\\). What is the other?", o:[["115°",1],["25°",0],["35°",0],["295°",0]],
-       h:"💡 Hint: Supplementary angles sum to \\(180°\\).",
-       s:"Right. \\(180° - 65° = 115°\\)."},
-      {q:"What is the complement of a \\(28°\\) angle?", o:[["62°",1],["152°",0],["72°",0],["332°",0]],
-       h:"💡 Hint: Complementary angles sum to \\(90°\\).",
-       s:"Exactly. \\(90° - 28° = 62°\\)."},
-      {q:"Find the perimeter of a rectangle that is \\(9\\) by \\(4\\).", o:[["26",1],["36",0],["13",0],["22",0]],
-       h:"💡 Hint: Perimeter = \\(2 \\times\\)(length + width).",
-       s:"Right. \\(2 \\times (9 + 4) = 26\\)."},
-      {q:"Find the area of a triangle with base \\(8\\) and height \\(5\\).", o:[["20",1],["40",0],["13",0],["80",0]],
-       h:"💡 Hint: Area of a triangle = \\(\\frac{1}{2} \\times\\) base \\(\\times\\) height.",
-       s:"Exactly. \\(\\frac{1}{2} \\times 8 \\times 5 = 20\\)."},
-      {q:"A right triangle has legs \\(6\\) and \\(8\\). Find the hypotenuse.", o:[["10",1],["14",0],["12",0],["48",0]],
-       h:"💡 Hint: \\(a^2 + b^2 = c^2\\). Compute \\(36 + 64\\).",
-       s:"Right. \\(\\sqrt{36 + 64} = \\sqrt{100} = 10\\)."},
-      {q:"Which statement is always true?", o:[["A square is a rectangle",1],["A rectangle is a square",0],["A rhombus is a square",0],["A parallelogram is a rectangle",0]],
-       h:"💡 Hint: A rectangle just needs four right angles; equal sides are not required.",
-       s:"Yes. Every square has four right angles, so a square is a rectangle (but not the reverse)."}
-    ], challenge:[
-      {q:"Parallel lines are cut by a transversal; one interior angle is \\(72°\\). What is its same-side interior angle?", o:[["108°",1],["72°",0],["18°",0],["288°",0]],
-       h:"💡 Hint: Same-side interior angles add to \\(180°\\).",
-       s:"Yes. \\(180° - 72° = 108°\\)."},
-      {q:"What is the sum of the interior angles of a hexagon?", o:[["720°",1],["540°",0],["1080°",0],["360°",0]],
-       h:"💡 Hint: Use \\((n - 2) \\times 180°\\) with \\(n = 6\\).",
-       s:"Right. \\((6 - 2) \\times 180° = 720°\\)."},
-      {q:"A circle has radius \\(6\\). What is its area, in terms of \\(\\pi\\)?", o:[["36π",1],["12π",0],["6π",0],["36",0]],
-       h:"💡 Hint: Area = \\(\\pi r^2\\).",
-       s:"Yes. \\(\\pi \\times 6^2 = 36\\pi\\)."},
-      {q:"A square has area \\(64\\). What is its perimeter?", o:[["32",1],["16",0],["64",0],["256",0]],
-       h:"💡 Hint: Find the side length first: what number squares to 64?",
-       s:"Right. Side = 8, so perimeter = \\(4 \\times 8 = 32\\)."},
-      {q:"A 45-45-90 triangle has legs of length \\(5\\). Find the hypotenuse.", o:[["5√2",1],["5",0],["10",0],["√5",0]],
-       h:"💡 Hint: The sides are in ratio \\(1 : 1 : \\sqrt{2}\\).",
-       s:"Right. The hypotenuse is \\(5 \\times \\sqrt{2} = 5\\sqrt{2}\\)."},
-      {q:"In a 30-60-90 triangle the short leg is \\(4\\). Find the hypotenuse.", o:[["8",1],["4√3",0],["4√2",0],["12",0]],
-       h:"💡 Hint: The sides are in ratio \\(1 : \\sqrt{3} : 2\\); the hypotenuse is twice the short leg.",
-       s:"Yes. Hypotenuse = \\(2 \\times 4 = 8\\)."}
-    ]},
-    10:{practice:[
-      {q:"How many outfits come from 4 shirts and 3 pairs of pants?", o:[["12",1],["7",0],["1",0],["43",0]],
-       h:"💡 Hint: Independent choices multiply.",
-       s:"Right. \\(4 \\times 3 = 12\\)."},
-      {q:"How many whole numbers from 1 to 50 are multiples of 5?", o:[["10",1],["5",0],["9",0],["25",0]],
-       h:"💡 Hint: They are 5, 10, 15, \\(\\ldots\\), 50.",
-       s:"Exactly. \\(50 \\div 5 = 10\\)."},
-      {q:"Find the mean of \\(3, 7, 5, 9\\).", o:[["6",1],["7",0],["5",0],["24",0]],
-       h:"💡 Hint: Add them up, then divide by 4.",
-       s:"Right. \\(24 \\div 4 = 6\\)."},
-      {q:"Find the median of \\(2, 9, 4, 7, 5\\).", o:[["5",1],["7",0],["4",0],["9",0]],
-       h:"💡 Hint: Sort the numbers first, then take the middle one.",
-       s:"Exactly. Sorted: 2, 4, 5, 7, 9; the middle value is 5."}
-    ], challenge:[
-      {q:"How many handshakes occur among 6 people if each pair shakes once?", o:[["15",1],["30",0],["36",0],["12",0]],
-       h:"💡 Hint: The number of pairs from n people is \\(\\frac{n(n-1)}{2}\\).",
-       s:"Yes. \\(\\frac{6 \\times 5}{2} = 15\\)."},
-      {q:"Two dice are rolled. What is the probability the sum is \\(7\\)?", o:[["1/6",1],["1/12",0],["7/36",0],["1/9",0]],
-       h:"💡 Hint: Count the rolls summing to 7, out of 36 total.",
-       s:"Right. 6 of the 36 rolls give 7, so \\(\\frac{6}{36} = \\frac{1}{6}\\)."},
-      {q:"A set of 5 numbers has mean 8. Four of them are 5, 9, 10, and 6. What is the fifth?", o:[["10",1],["8",0],["12",0],["7",0]],
-       h:"💡 Hint: If the mean is 8, the five numbers total \\(5 \\times 8\\).",
-       s:"Yes. The total is 40, and \\(40 - (5+9+10+6) = 40 - 30 = 10\\)."},
-      {q:"Five workers each earn \\$30k. A sixth is hired at \\$90k. What is the new mean salary?", o:[["$40k",1],["$30k",0],["$60k",0],["$50k",0]],
-       h:"💡 Hint: Find the new total, then divide by 6.",
-       s:"Right. \\(\\frac{5 \\times 30 + 90}{6} = \\frac{240}{6} = \\$40k\\): one big salary pulls the mean up."}
-    ]},
-    12:{practice:[
-      {q:"What is \\(1 + 2 + 3 + \\ldots + 10\\)?", o:[["55",1],["50",0],["45",0],["100",0]],
-       h:"💡 Hint: Use \\(\\frac{n(n+1)}{2}\\) with \\(n = 10\\), or pair the ends.",
-       s:"Right. \\(\\frac{10 \\times 11}{2} = 55\\)."},
-      {q:"How many 2-digit numbers can be formed from the digits 1, 2, 3 with no repeats?", o:[["6",1],["9",0],["3",0],["12",0]],
-       h:"💡 Hint: 3 choices for the first digit, 2 for the second.",
-       s:"Exactly. \\(3 \\times 2 = 6\\) (12, 13, 21, 23, 31, 32)."}
-    ], challenge:[
-      {q:"I think of a number, double it, subtract 5, and get 17. What is the number?", o:[["11",1],["6",0],["22",0],["12",0]],
-       h:"💡 Hint: Work backwards: undo the subtraction, then the doubling.",
-       s:"Yes. \\(17 + 5 = 22\\), then \\(22 \\div 2 = 11\\)."},
-      {q:"What is \\(1 + 2 + \\ldots + 50\\)?", o:[["1275",1],["1250",0],["2550",0],["1225",0]],
-       h:"💡 Hint: Use \\(\\frac{n(n+1)}{2}\\) with \\(n = 50\\).",
-       s:"Right. \\(\\frac{50 \\times 51}{2} = 1275\\)."}
-    ]}
   });
 
   // --- view switching inside the course modal ---
@@ -2333,15 +1975,14 @@
   var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
   function wsTutorHTML(){
     return '<aside class="ws-pane ws-tutor" id="wsTutor">'+
-      '<div class="ws-tuthead"><span class="av">Q</span><span class="nm">Quantica Tutor</span><span class="soon">Soon</span></div>'+
-      '<div class="ws-body">'+
-        '<div class="tut-bub bot">Hi! Soon I\'ll be right here to talk any problem through with you, step by step.</div>'+
-        '<div class="tut-bub bot">Stuck on a step? You\'ll be able to ask me “why?” and we\'ll work it out together.</div>'+
-        '<div class="tut-bub usr">You\'ll type your questions here…</div>'+
+      '<div class="ws-tuthead"><span class="av">Q</span><span class="nm">Quantica Tutor</span></div>'+
+      '<div class="ws-body" id="tutBody">'+
+        '<div class="tut-bub bot">Hi! I\'m your Quantica tutor. Try the problem first — then ask me if you get stuck.</div>'+
       '</div>'+
-      '<div class="tut-compose"><input type="text" disabled placeholder="Tutor is coming soon…"><button class="snd" disabled aria-hidden="true">➤</button></div>'+
+      '<div class="tut-compose"><input type="text" id="tutInput" placeholder="Ask me anything about this problem…" onkeydown="if(event.key===\'Enter\')sendTutorMsg()"><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
     '</aside>';
   }
+
   function wsNotebookHTML(){
     return '<aside class="ws-pane ws-notebook" id="wsNotebook">'+
       '<div class="ws-nbhead"><div class="t">📓 Your Notebook</div><div class="c" id="wsNbCount">No ideas collected yet</div></div>'+
@@ -2351,6 +1992,7 @@
   function wsOpen(key,L,meta){
     var bp=buildPages(L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys;
+    initTutor(key, L.title);
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
     var html='<div class="ws-tabs"><button class="ws-tab" id="wsTabTut" onclick="WS.drawer(\'tutor\')">💬 Tutor</button>'+
@@ -3031,6 +2673,72 @@
   }
   if(typeof renderDashHero==='function') renderDashHero();
 })();
+
+</script>
+<script>
+var TUTOR_WORKER = 'https://yellow-fog-a0e8.srivishnu0713.workers.dev';
+var tutorHistory = [];
+var tutorContext = '';
+var tutorCooldown = false;
+
+function initTutor(lessonKey, lessonTitle) {
+  tutorHistory = [];
+  tutorContext = lessonTitle || lessonKey || 'math problem solving';
+  var body = document.getElementById('tutBody');
+  if (body) {
+    body.innerHTML = '<div class="tut-bub bot">Hi! I\'m your Quantica tutor. Work through the problem first — then come ask me if you get stuck on <b>' + (lessonTitle || lessonKey) + '</b>.</div>';
+  }
+}
+
+async function sendTutorMsg() {
+  if (tutorCooldown) return;
+  var input = document.getElementById('tutInput');
+  var body = document.getElementById('tutBody');
+  var btn = document.getElementById('tutSend');
+  if (!input || !body) return;
+  var msg = input.value.trim();
+  if (!msg) return;
+  tutorCooldown = true;
+  input.disabled = true;
+  btn.disabled = true;
+  var uBub = document.createElement('div');
+  uBub.className = 'tut-bub usr';
+  uBub.style.cssText = 'color:var(--navy);border-style:solid;background:rgba(255,255,255,.55)';
+  uBub.textContent = msg;
+  body.appendChild(uBub);
+  input.value = '';
+  body.scrollTop = body.scrollHeight;
+  tutorHistory.push({ role: 'user', content: msg });
+  var loadBub = document.createElement('div');
+  loadBub.className = 'tut-bub bot';
+  loadBub.innerHTML = '<span style="opacity:.5;font-style:italic">Thinking…</span>';
+  body.appendChild(loadBub);
+  body.scrollTop = body.scrollHeight;
+  try {
+    var res = await fetch(TUTOR_WORKER, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        studentMessage: msg,
+        lessonContext: tutorContext,
+        conversationHistory: tutorHistory.slice(0, -1)
+      })
+    });
+    var data = await res.json();
+    var reply = data.feedback || (data.error ? 'Something went wrong — try again.' : 'No response received.');
+    loadBub.textContent = reply;
+    tutorHistory.push({ role: 'assistant', content: reply });
+    if (window.renderMathInElement) try { renderMathInElement(loadBub, {delimiters:[{left:'$',right:'$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); } catch(e) {}
+  } catch (e) {
+    loadBub.textContent = 'Connection error — check your internet and try again.';
+    tutorHistory.pop();
+  }
+  tutorCooldown = false;
+  input.disabled = false;
+  btn.disabled = false;
+  input.focus();
+  body.scrollTop = body.scrollHeight;
+}
 </script>
 </body>
 </html>
