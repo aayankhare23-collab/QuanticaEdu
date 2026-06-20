@@ -437,8 +437,10 @@
   .workspace.tut-open .ws-tutor{transform:none}
   .ws-notebook{right:0;width:var(--nb-w);border-left:1px solid var(--glass-line);border-radius:var(--radius) 0 0 var(--radius);transform:translateX(100%)}
   .workspace.nb-open .ws-notebook{transform:none}
-  .ws-center .ws-body{padding:28px 48px 20px;overflow-y:hidden;flex:1;min-height:0}
-  .workspace.tut-open.nb-open .ws-center .ws-body{overflow-y:auto}
+  .ws-center .ws-body{padding:28px 48px 20px;overflow-y:auto;flex:1;min-height:0}
+  .ws-center .ws-body::-webkit-scrollbar{width:4px}
+  .ws-center .ws-body::-webkit-scrollbar-track{background:transparent}
+  .ws-center .ws-body::-webkit-scrollbar-thumb{background:rgba(100,130,180,.25);border-radius:2px}
   .ws-center .ws-body>.ws-page{max-width:640px;margin:0 auto;width:100%}
 
   /* floating header */
@@ -456,7 +458,7 @@
   .ws-head-divider{height:1px;background:var(--glass-line);margin:0 0 4px}
 
   /* a page in the center */
-  .ws-page{animation:none;min-height:calc(100vh - var(--cbh) - 140px);display:flex;flex-direction:column;justify-content:center}
+  .ws-page{animation:none;height:100%;display:flex;flex-direction:column;justify-content:center}
   .ws-page.ws-anim{animation:wsIn .28s cubic-bezier(.22,1,.36,1) both}
   @keyframes wsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .ws-page.page-text-only{justify-content:center;padding:40px 0 30px}
@@ -541,8 +543,8 @@
   .ws-tutor .tut-compose{flex:none;padding:10px 12px;border-top:1px solid var(--glass-line);display:flex;align-items:flex-end;gap:8px}
   .tut-compose .tut-input{flex:1;border:1px solid var(--glass-line);border-radius:14px;background:rgba(255,255,255,.45);color:var(--navy);font-family:'Inter';font-size:13px;padding:9px 13px;resize:none;overflow-y:hidden;min-height:38px;max-height:120px;line-height:1.5;box-sizing:border-box}
   .tut-compose .tut-input:disabled{cursor:not-allowed}
-  @keyframes chatGlow{0%,100%{box-shadow:0 4px 16px rgba(40,100,220,.3)}50%{box-shadow:0 4px 16px rgba(40,100,220,.3),0 0 0 7px rgba(40,100,220,.18)}}
-  .ws-fab-chat.unread-glow{animation:chatGlow 1.3s ease-in-out infinite}
+  @keyframes chatGlow{0%,100%{box-shadow:0 4px 20px rgba(40,100,220,.5),0 0 0 0 rgba(40,120,255,.7)}50%{box-shadow:0 8px 28px rgba(40,100,220,.7),0 0 0 9px rgba(40,120,255,0)}}
+  .ws-fab-chat.unread-glow{animation:chatGlow .9s ease-in-out infinite}
   .tut-compose .snd{width:38px;height:38px;flex:none;border:none;border-radius:50%;background:var(--mid);color:#fff;cursor:pointer;display:grid;place-items:center}
   .tut-compose .snd:hover{filter:brightness(1.1)}
   .tut-compose .snd:disabled{background:#cdd8ea;cursor:not-allowed}
@@ -11026,17 +11028,19 @@
         var rawText=ki.block.x.replace(/<[^>]+>/g,'');
         var boldMatches=(ki.block.x.match(/<b[^>]*>(.*?)<\/b>/gi)||[]);
         var boldPhrases=boldMatches.map(function(m){return m.replace(/<[^>]+>/g,'').trim();}).filter(function(w){return w.length>1;});
+        function toTitleCase(s){return s.replace(/\b\w/g,function(c){return c.toUpperCase();});}
         var shortTitle;
         if(ki.block.label&&ki.block.label!=='Key idea'){
           shortTitle=ki.block.label;
         } else if(boldPhrases.length){
           shortTitle=boldPhrases.slice(0,2).join(' & ');
           if(shortTitle.length>28) shortTitle=boldPhrases[0];
+          shortTitle=toTitleCase(shortTitle);
         } else {
           var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1};
           var allWds=rawText.trim().split(/\s+/);
           var meaningful=allWds.filter(function(w){return !stopWds[w.toLowerCase()]&&w.length>2;}).slice(0,3);
-          shortTitle=meaningful.length?meaningful.join(' '):allWds.slice(0,3).join(' ');
+          shortTitle=toTitleCase(meaningful.length?meaningful.join(' '):allWds.slice(0,3).join(' '));
         }
         node.innerHTML=
           '<button class="nb-toggle" onclick="WS.toggleIdea(this)">'+
