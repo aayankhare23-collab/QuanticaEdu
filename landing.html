@@ -431,8 +431,10 @@
   .workspace.tut-open .ws-center{margin-left:var(--tut-w)}
   .workspace.nb-open .ws-center{margin-right:var(--nb-w)}
   .ws-pane{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0;overflow:hidden;position:fixed;top:var(--cbh);bottom:0;z-index:50;transition:transform .32s cubic-bezier(.22,1,.36,1)}
-  .ws-pane .ws-body{flex:1;overflow-y:hidden;min-height:0;overscroll-behavior:contain}
-  .workspace.tut-open.nb-open .ws-body{overflow-y:auto}
+  .ws-pane .ws-body{flex:1;overflow-y:auto;min-height:0;overscroll-behavior:contain}
+  .ws-pane .ws-body::-webkit-scrollbar{width:5px}
+  .ws-pane .ws-body::-webkit-scrollbar-track{background:transparent}
+  .ws-pane .ws-body::-webkit-scrollbar-thumb{background:rgba(100,130,180,.28);border-radius:3px}
   .ws-tutor{left:0;width:var(--tut-w);border-right:1px solid var(--glass-line);border-radius:0 var(--radius) var(--radius) 0;transform:translateX(-100%)}
   .workspace.tut-open .ws-tutor{transform:none}
   .ws-notebook{right:0;width:var(--nb-w);border-left:1px solid var(--glass-line);border-radius:var(--radius) 0 0 var(--radius);transform:translateX(100%)}
@@ -458,22 +460,28 @@
   .ws-head-divider{height:1px;background:var(--glass-line);margin:0 0 4px}
 
   /* a page in the center */
-  .ws-page{animation:none;height:100%;display:flex;flex-direction:column;justify-content:center}
+  .ws-page{animation:none;min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
   .ws-page.ws-anim{animation:wsIn .28s cubic-bezier(.22,1,.36,1) both}
   @keyframes wsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .ws-page.page-text-only{justify-content:center;padding:40px 0 30px}
-  .ws-page.page-text-only p{font-size:20px;font-weight:600;color:var(--navy);line-height:1.7;text-align:center;margin:0 auto;max-width:540px}
+  .ws-page.page-text-only{justify-content:center;align-items:center;padding:0}
+  .ws-page.page-text-only .page-lead{margin:0;width:100%;max-width:560px}
+  .ws-page.page-text-only .page-lead p{font-size:21px;font-weight:600;color:var(--navy);line-height:1.78;text-align:center;letter-spacing:.005em;margin:0 auto 18px;max-width:560px}
+  .ws-page.page-text-only .page-lead p:last-child{margin-bottom:0}
   .ws-page.page-text-only h4.sub{text-align:center;color:var(--mid)}
   .ws-page .page-lead{margin-bottom:22px;width:100%}
   .ws-page .page-lead p{font-size:17px;line-height:1.88;color:var(--slate);margin:0 0 22px;letter-spacing:.01em}
   .ws-page .page-lead p:last-child{margin-bottom:0}
-  .ws-page.page-text-only .page-lead p{font-size:18px;line-height:1.92}
+  /* when a solution is revealed, top-align so the solution sits directly below the problem */
+  .ws-page.sol-open{justify-content:flex-start;padding-top:22px}
   .ws-page .probbox{margin:0;width:100%}
   .ws-page .probbox .ptext{font-size:16px;line-height:1.75}
   .probbox.ans-correct{border-color:var(--green) !important;box-shadow:0 0 0 3px rgba(19,160,110,.16),var(--shadow-sm) !important;animation:correctBounce .42s cubic-bezier(.22,1,.36,1)}
   @keyframes correctBounce{0%{transform:scale(1)}35%{transform:scale(1.022)}70%{transform:scale(.99)}100%{transform:scale(1)}}
-  .probbox.ans-wrong{border-color:#e05050!important;box-shadow:0 0 0 3px rgba(220,60,60,.14)!important;animation:wrongShake .38s cubic-bezier(.36,.07,.19,.97) both;background:rgba(230,60,60,.06)!important}
+  .probbox.ans-wrong{border-color:#e05050!important;box-shadow:0 0 0 3px rgba(220,60,60,.14)!important;background:rgba(230,60,60,.06)!important}
+  .probbox.shake{animation:wrongShake .38s cubic-bezier(.36,.07,.19,.97) both}
   @keyframes wrongShake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(3px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+  .ansinput.locked-in{background:rgba(230,60,60,.07);border-color:#e0a3a3;color:var(--slate);cursor:default}
+  .ansinput[readonly]{cursor:default}
 
   /* center dock */
   .ws-dock{flex:none;padding:14px 48px 22px;display:flex;align-items:center;gap:14px}
@@ -488,6 +496,12 @@
   .ws-next.is-finish{background:linear-gradient(135deg,var(--gold-deep2),var(--gold))}
   .ws-next.ready{animation:wsNextGlow 1.7s ease-in-out infinite}
   @keyframes wsNextGlow{0%,100%{box-shadow:0 12px 26px -12px rgba(58,123,213,.6)}50%{box-shadow:0 12px 30px -8px rgba(74,159,224,.85)}}
+  /* locked Next (must open chat after giving up) */
+  .ws-next-wrap{position:relative;display:inline-flex}
+  .ws-next-wrap.locked .ws-next{background:linear-gradient(135deg,#9fb0cc,#c2cee1);box-shadow:none}
+  .ws-next-tip{display:none;position:absolute;bottom:calc(100% + 12px);right:0;background:var(--navy,#16306b);color:#fff;font:600 12px/1.45 'Inter';padding:9px 13px;border-radius:11px;max-width:230px;white-space:normal;text-align:left;box-shadow:0 10px 26px -8px rgba(18,42,86,.5);z-index:5}
+  .ws-next-tip::after{content:'';position:absolute;top:100%;right:26px;border:6px solid transparent;border-top-color:var(--navy,#16306b)}
+  .ws-next-wrap.locked:hover .ws-next-tip,.ws-next-wrap.shownow .ws-next-tip{display:block}
 
   /* key ideas panel */
   .ws-notebook .ws-nbhead{flex:none;padding:16px 18px 13px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:8px}
@@ -523,12 +537,12 @@
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;bottom:26px;left:82px;z-index:60;transition:left .32s cubic-bezier(.22,1,.36,1),filter .15s,transform .15s}
-  .workspace.tut-open .ws-fab-ideas{left:calc(var(--tut-w) + 76px)}
-  .ws-fab-ideas.shooting{animation:shootStar .4s cubic-bezier(.22,1,.36,1)}
-  .ws-fab-ideas.shoot-back{animation:shootBack .4s cubic-bezier(.22,1,.36,1)}
-  @keyframes shootStar{0%{transform:scale(1)}30%{transform:scale(.78) translateX(22px) rotate(-15deg)}65%{transform:scale(1.12) translateX(-4px) rotate(6deg)}100%{transform:scale(1) translateX(0) rotate(0)}}
-  @keyframes shootBack{0%{transform:scale(1)}30%{transform:scale(.78) translateX(-22px) rotate(15deg)}65%{transform:scale(1.12) translateX(4px) rotate(-6deg)}100%{transform:scale(1) translateX(0) rotate(0)}}
+  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;bottom:26px;left:82px;z-index:60;transition:left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .workspace.tut-open .ws-fab-ideas{left:calc(100vw - 72px)}
+  .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
+  .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
+  @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px rgba(245,176,32,.55),-66px 2px 22px -9px rgba(245,176,32,.3),-100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
+  @keyframes shootTrailBack{0%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(12deg)}40%{box-shadow:34px 1px 14px -6px rgba(245,176,32,.55),66px 2px 22px -9px rgba(245,176,32,.3),100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(-4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
 
   /* tutor panel */
   .ws-tutor .ws-tuthead{flex:none;padding:14px 16px 12px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:9px}
@@ -10847,7 +10861,7 @@
       if(window.WS&&WS.active) WS.onResolve(k); else updateFlow(true);
     } else {
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
-      if(pbox){ pbox.classList.remove('ans-correct','ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-wrong'); }
+      if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
       rec.attempts=(rec.attempts||0)+1; if(window.Rewards) Rewards._onWrong(rec);
     }
     var sb=document.getElementById('sb_'+k); if(sb) sb.style.display='inline-block';
@@ -10946,7 +10960,7 @@
       '<div class="ws-tuthead"><span class="av">M</span><span class="nm">Milo</span>'+
       '<button class="tut-close" onclick="WS.closePanel(\'tutor\')" title="Close">✕</button></div>'+
       '<div class="ws-body" id="tutBody">'+
-        '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. Work through the problem first, then ask me if you get stuck.</div>'+
+        '<div class="tut-bub bot">Hi, this is Milo, your personal Quantica Tutor!</div>'+
       '</div>'+
       '<div class="tut-compose"><textarea class="tut-input" id="tutInput" placeholder="Ask me anything about this problem…" rows="1" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendTutorMsg();}" oninput="this.style.height=\'auto\';this.style.height=Math.min(this.scrollHeight,120)+\'px\';"></textarea><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
     '</aside>';
@@ -10972,7 +10986,8 @@
         '<div class="ws-body" id="wsCenterBody"></div>'+
         '<div class="ws-dock"><button class="ws-back" id="wsBack" onclick="WS.back()">← Back</button>'+
           '<span class="ws-help" id="wsHelp"></span>'+
-          '<button class="ws-next" id="wsNext">Continue →</button></div>'+
+          '<span class="ws-next-wrap" id="wsNextWrap"><span class="ws-next-tip">Open the chat with Milo first — then you can continue.</span>'+
+          '<button class="ws-next" id="wsNext">Continue →</button></span></div>'+
       '</section>'+
       wsNotebookHTML()+
       '<div class="ws-scrim" id="wsScrim" onclick="WS.closeAll()"></div>'+
@@ -11089,28 +11104,42 @@
     if(pg.probK && !probResolved(pg.probK)) return false;
     return true;
   };
+  // problem was given up on (solution viewed unsolved) and the student hasn't opened the chat yet
+  WS._chatLocked=function(p){ p=(p==null?WS.page:p); var pg=WS.pages[p]; if(!pg||!pg.probK) return false; var r=PROBREG[pg.probK]; return !!(r&&r.gaveUp&&r.needChat&&!r.chatSeen); };
+  WS._promptChat=function(){
+    var fab=document.getElementById('wsFabChat');
+    if(fab){ fab.classList.remove('unread-glow'); void fab.offsetWidth; fab.classList.add('unread-glow'); }
+    var wrap=document.getElementById('wsNextWrap');
+    if(wrap){ wrap.classList.add('shownow'); setTimeout(function(){ wrap.classList.remove('shownow'); },1900); }
+  };
+  // call when the chat opens so the current problem's lock is satisfied
+  WS.notifyChatOpened=function(){ var pg=WS.pages[WS.page]; if(pg&&pg.probK){ var r=PROBREG[pg.probK]; if(r) r.chatSeen=true; } WS.refreshDock(); };
   WS.refreshDock=function(){
-    var back=document.getElementById('wsBack'), next=document.getElementById('wsNext'), help=document.getElementById('wsHelp');
+    var back=document.getElementById('wsBack'), next=document.getElementById('wsNext'), help=document.getElementById('wsHelp'), wrap=document.getElementById('wsNextWrap');
     if(!next) return;
     back.disabled=(WS.page===0);
-    var last=(WS.page===WS.pages.length-1), open=WS.gateOpen(WS.page), L=WS.L;
-    next.classList.toggle('is-finish',last); next.classList.toggle('ready',open); next.disabled=!open;
+    var last=(WS.page===WS.pages.length-1), resolved=WS.gateOpen(WS.page), chatLock=WS._chatLocked(), L=WS.L;
+    var open=resolved&&!chatLock;
+    next.classList.toggle('is-finish',last); next.classList.toggle('ready',open);
+    next.disabled=!resolved;            // only grey-out when the problem itself isn't resolved
+    if(wrap) wrap.classList.toggle('locked',chatLock&&resolved);
     if(last){
       if(L.next && LESSONS[L.next]){ next.innerHTML='Complete &amp; continue to '+L.next+' →'; next.onclick=function(){ WS.complete(); }; }
       else { next.textContent='Finish lesson ✓'; next.onclick=function(){ WS.finish(); }; }
     } else { next.textContent='Next →'; next.onclick=function(){ WS.next(); }; }
     var pg=WS.pages[WS.page], hasReview=L.review&&L.review.length;
-    if(!open){
+    if(!resolved){
       if(pg.probK && !probResolved(pg.probK)) help.innerHTML='Give the problem a try, you\'ve got this. Stuck? Peek at the solution.';
       else help.innerHTML='Tap “Got it ✓” on your new key idea to continue.';
-    } else if(last && hasReview){ help.innerHTML='<a onclick="openReview(\''+WS.key+'\')">📝 Try the review problems</a>'; }
+    } else if(chatLock){ help.innerHTML='Milo sent you a message — open the chat to keep going.'; }
+    else if(last && hasReview){ help.innerHTML='<a onclick="openReview(\''+WS.key+'\')">📝 Try the review problems</a>'; }
     else help.innerHTML='';
   };
-  WS.next=function(){ if(!WS.gateOpen(WS.page)) return; if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); };
+  WS.next=function(){ if(!WS.gateOpen(WS.page)) return; if(WS._chatLocked()){ WS._promptChat(); return; } if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); };
   WS.back=function(){ if(WS.page>0) WS.showPage(WS.page-1); };
   WS.onResolve=function(k){ k=String(k); for(var i=0;i<WS.pages.length;i++){ if(WS.pages[i].probK===k){ WS.revealKeysFor(i); break; } } WS.refreshDock(); };
-  WS.complete=function(){ WS.close(); completeAndGo(WS.key, WS.L.next); };
-  WS.finish=function(){ markDone(WS.key); WS.showDone(); };
+  WS.complete=function(){ if(WS._chatLocked()){ WS._promptChat(); return; } WS.close(); completeAndGo(WS.key, WS.L.next); };
+  WS.finish=function(){ if(WS._chatLocked()){ WS._promptChat(); return; } markDone(WS.key); WS.showDone(); };
   WS.showDone=function(){
     var c=document.getElementById('wsCenterBody'); if(!c) return;
     c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:34px"><div style="font-size:46px">🎉</div>'+
@@ -11126,11 +11155,11 @@
     if(which==='tutor'){
       var opening=!ws.classList.contains('tut-open');
       ws.classList.toggle('tut-open',opening);
-      if(opening){ var cf=document.getElementById('wsFabChat'); if(cf) cf.classList.remove('unread-glow'); }
+      if(opening){ var cf=document.getElementById('wsFabChat'); if(cf) cf.classList.remove('unread-glow'); WS.notifyChatOpened(); }
       var fab=document.getElementById('wsFabIdeas');
       if(fab){ fab.classList.remove('shooting','shoot-back'); void fab.offsetWidth;
         fab.classList.add(opening?'shooting':'shoot-back');
-        setTimeout(function(){ fab.classList.remove('shooting','shoot-back'); },450); }
+        setTimeout(function(){ fab.classList.remove('shooting','shoot-back'); },520); }
       if(!opening){
         var chatBtn=document.getElementById('wsFabChat');
         if(chatBtn){ chatBtn.classList.remove('fab-glow'); void chatBtn.offsetWidth; chatBtn.classList.add('fab-glow'); }
@@ -11141,7 +11170,7 @@
       var starBtn=document.getElementById('wsFabIdeas');
       if(starBtn){ starBtn.classList.remove('shooting','shoot-back'); void starBtn.offsetWidth;
         starBtn.classList.add(nbOpening?'shooting':'shoot-back');
-        setTimeout(function(){ starBtn.classList.remove('shooting','shoot-back'); },450); }
+        setTimeout(function(){ starBtn.classList.remove('shooting','shoot-back'); },520); }
     }
   };
   WS.closePanel=function(which){
@@ -11150,7 +11179,7 @@
       ws.classList.remove('tut-open');
       var fab=document.getElementById('wsFabIdeas');
       if(fab){ fab.classList.remove('shooting','shoot-back'); void fab.offsetWidth; fab.classList.add('shoot-back');
-        setTimeout(function(){ fab.classList.remove('shoot-back'); },450); }
+        setTimeout(function(){ fab.classList.remove('shoot-back'); },520); }
       var chatBtn=document.getElementById('wsFabChat');
       if(chatBtn){ chatBtn.classList.remove('fab-glow'); void chatBtn.offsetWidth; chatBtn.classList.add('fab-glow'); }
     } else {
@@ -11699,10 +11728,20 @@
     var rec=(typeof PROBREG!=='undefined')?PROBREG[k]:null;
     var s=document.getElementById('sol_'+k), btn=document.getElementById('sb_'+k);
     if(s){ var open=s.classList.toggle('show'); if(btn) btn.textContent=open?'Hide solution':'Show solution';
+      // top-align the page so the solution sits directly below the problem (no clipping)
+      var pageEl=s.closest&&s.closest('.ws-page'); if(pageEl) pageEl.classList.toggle('sol-open',open);
       if(open && rec){ rec.solViewed=true; window.Rewards._onReveal(rec); if(window.WS&&WS.active) WS.onResolve(k); else if(window.updateFlow) window.updateFlow(true);
-        if(!rec.solved && !rec._askedAboutSolution && window.addTutorBotMsg){
-          rec._askedAboutSolution=true;
-          setTimeout(function(){ addTutorBotMsg("I see you checked the solution — what part of this problem gave you trouble? Let’s work through it together."); },500);
+        if(!rec.solved){
+          // student gave up: lock their answer in, require them to open the chat before moving on
+          rec.gaveUp=true;
+          var inp=document.getElementById('ai_'+k); if(inp){ inp.readOnly=true; inp.classList.add('locked-in'); }
+          if(!rec._askedAboutSolution && window.addTutorBotMsg){
+            rec._askedAboutSolution=true; rec.needChat=true;
+            var wsEl=document.getElementById('wsWorkspace');
+            if(wsEl && wsEl.classList.contains('tut-open')) rec.chatSeen=true; // already reading the chat
+            setTimeout(function(){ addTutorBotMsg("I see you checked the solution — what part of this problem gave you trouble? Let’s work through it together."); },500);
+          }
+          if(window.WS&&WS.active) WS.refreshDock();
         }
       }
     }
@@ -11754,7 +11793,7 @@ function initTutor(lessonKey, lessonTitle) {
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
   var body = document.getElementById('tutBody');
   if (body) {
-    body.innerHTML = '<div class="tut-bub bot">Hi! I\'m Milo, your math tutor. Work through the problem first — I\'m here if you get stuck.</div>';
+    body.innerHTML = '<div class="tut-bub bot">Hi, this is Milo, your personal Quantica Tutor!</div>';
   }
 }
 
