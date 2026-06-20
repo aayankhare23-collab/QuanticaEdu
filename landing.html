@@ -446,7 +446,7 @@
   .ws-center .ws-body>.ws-page{max-width:640px;margin:0 auto;width:100%}
 
   /* floating header */
-  .ws-head{flex:none;padding:12px 20px 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .ws-head{flex:none;padding:8px 22px 6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .workspace.tut-open.nb-open .ws-head{flex-direction:column;align-items:flex-start;gap:4px;padding:10px 14px 6px}
   .workspace.tut-open.nb-open .ws-steps{width:100%;margin-top:2px}
   .ws-head .ws-eyebrow{font:700 10px/1 'Inter';letter-spacing:.14em;text-transform:uppercase;color:var(--mid);background:rgba(58,123,213,.10);border-radius:999px;padding:4px 10px}
@@ -473,6 +473,14 @@
   .ws-page .page-lead p:last-child{margin-bottom:0}
   /* problem pages sit high so the revealed solution appears directly below without scrolling */
   .ws-page:not(.page-text-only){justify-content:flex-start;padding-top:30px}
+  /* key-idea page: centered golden glowing card */
+  .ws-page.page-key{justify-content:center;align-items:center;padding:0}
+  .key-card{max-width:560px;width:100%;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(255,250,232,.96),rgba(255,238,196,.92));border:1.6px solid rgba(228,150,24,.6);border-radius:20px;padding:30px 34px;box-shadow:0 12px 32px -12px rgba(228,160,40,.5);animation:keyCardGlow 1.5s ease-in-out infinite}
+  @keyframes keyCardGlow{0%,100%{box-shadow:0 12px 32px -12px rgba(228,160,40,.5),0 0 0 0 rgba(245,185,50,.55)}50%{box-shadow:0 14px 36px -10px rgba(228,160,40,.6),0 0 0 12px rgba(245,185,50,0)}}
+  .key-card-label{font:700 11px/1 'Inter';letter-spacing:.12em;text-transform:uppercase;color:#b9740a;margin-bottom:12px}
+  .key-card-body{font-size:19px;line-height:1.72;color:var(--navy);font-weight:500}
+  .key-card-body b{color:#b9740a}
+  .nb-empty{font:500 12.5px/1.55 'Inter';color:var(--mute);text-align:center;padding:26px 14px}
   .ws-page .probbox{margin:0;width:100%}
   .ws-page .probbox .ptext{font-size:16px;line-height:1.75}
   .probbox.ans-correct{border-color:var(--green) !important;box-shadow:0 0 0 3px rgba(19,160,110,.16),var(--shadow-sm) !important;animation:correctBounce .42s cubic-bezier(.22,1,.36,1)}
@@ -10858,6 +10866,13 @@
       fb.className='ansfb right'; fb.innerHTML='✓ Correct. Nicely done. View the solution below for the slick way.'; inp.classList.add('okin'); inp.readOnly=true;
       if(pbox){ pbox.classList.remove('ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-correct'); }
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
+      // struggled first, then got it: have Milo debrief before they can move on
+      if(rec.attempts>0 && !rec._askedAboutFix && window.addTutorBotMsg){
+        rec._askedAboutFix=true; rec.needChat=true;
+        var wsElC=document.getElementById('wsWorkspace');
+        if(wsElC && wsElC.classList.contains('tut-open')) rec.chatSeen=true;
+        setTimeout(function(){ addTutorBotMsg("Nice, you got it! What tripped you up at first, and how did you fix it?"); },600);
+      }
       if(window.WS&&WS.active) WS.onResolve(k); else updateFlow(true);
     } else {
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
@@ -10928,30 +10943,27 @@
   // ===== Lesson workspace controller (3-pane paginated view) =====
   function buildPages(blocks){
     var hasProb=blocks.some(function(b){return b.t==='prob';});
-    var pages=[], keys=[];
+    var pages=[], keyCount=0;
     if(hasProb){
       var buf=[];
+      var flushBuf=function(){ if(buf.length){ pages.push({lead:buf, prob:null}); buf=[]; } };
       blocks.forEach(function(b){
-        if(b.t==='imp'){ keys.push({block:b, page: pages.length>0?pages.length-1:0}); }
-        else if(b.t==='prob'){
-          if(buf.length){ pages.push({lead:buf, prob:null}); buf=[]; }
-          pages.push({lead:[], prob:b});
-        } else { buf.push(b); }
+        if(b.t==='imp'){ flushBuf(); keyCount++; pages.push({keyIdea:b, keyNum:keyCount}); }
+        else if(b.t==='prob'){ flushBuf(); pages.push({lead:[], prob:b}); }
+        else { buf.push(b); }
       });
-      if(buf.length) pages.push({lead:buf, prob:null});
+      flushBuf();
     } else {
       var cbuf=[];
       var flush=function(){ if(cbuf.length){ pages.push({lead:cbuf, prob:null}); cbuf=[]; } };
       blocks.forEach(function(b){
-        if(b.t==='imp'){ keys.push({block:b, page: pages.length}); return; }
+        if(b.t==='imp'){ flush(); keyCount++; pages.push({keyIdea:b, keyNum:keyCount}); return; }
         if((b.t==='p'||b.t==='sub') && cbuf.length) flush();
         cbuf.push(b);
       });
       flush();
     }
-    keys.forEach(function(ki,i){ ki.num=i+1; ki.acked=true; ki.revealed=false; ki.el=null;
-      if(ki.page>pages.length-1) ki.page=Math.max(0,pages.length-1); if(ki.page<0) ki.page=0; });
-    return {pages:pages, keys:keys};
+    return {pages:pages, keys:[]};
   }
 
   var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
@@ -10986,7 +10998,7 @@
         '<div class="ws-body" id="wsCenterBody"></div>'+
         '<div class="ws-dock"><button class="ws-back" id="wsBack" onclick="WS.back()">← Back</button>'+
           '<span class="ws-help" id="wsHelp"></span>'+
-          '<span class="ws-next-wrap" id="wsNextWrap"><span class="ws-next-tip">Open the chat with Milo first — then you can continue.</span>'+
+          '<span class="ws-next-wrap" id="wsNextWrap"><span class="ws-next-tip">Open Milo to go next.</span>'+
           '<button class="ws-next" id="wsNext">Continue →</button></span></div>'+
       '</section>'+
       wsNotebookHTML()+
@@ -11002,15 +11014,22 @@
     initTutor(key, L.title);
     var body=document.getElementById('wsCenterBody');
     WS.pages.forEach(function(pg,i){
-      var lead=pg.lead.map(function(b){return renderBlock(b,ctx,0,isCp);}).join('');
-      var inner=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,i,isCp):'');
-      var isTextOnly=!pg.prob;
-      var node=document.createElement('div'); node.className='ws-page'+(isTextOnly?' page-text-only':''); node.setAttribute('data-p',i);
-      node.style.display='none'; node.innerHTML=inner; body.appendChild(node);
+      var node=document.createElement('div'); node.setAttribute('data-p',i); node.style.display='none';
+      if(pg.keyIdea){
+        node.className='ws-page page-key';
+        node.innerHTML='<div class="key-card"><div class="key-card-label">✦ Key Idea '+pg.keyNum+'</div><div class="key-card-body">'+pg.keyIdea.x+'</div></div>';
+      } else {
+        var lead=pg.lead.map(function(b){return renderBlock(b,ctx,0,isCp);}).join('');
+        var inner=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,i,isCp):'');
+        var isTextOnly=!pg.prob;
+        node.className='ws-page'+(isTextOnly?' page-text-only':'');
+        node.innerHTML=inner;
+      }
+      body.appendChild(node);
       var pb=node.querySelector('.probbox[data-k]'); pg.probK=pb?pb.getAttribute('data-k'):null;
     });
     typeset(body);
-    document.getElementById('wsNbBody').innerHTML='';
+    document.getElementById('wsNbBody').innerHTML='<div class="nb-empty">Solve each problem to unlock its key idea. They\'ll collect here.</div>';
     var cs=document.getElementById('courseScroll');
     if(cs){ cs.classList.add('ws-mode'); cs.scrollTop=0; }
     requestAnimationFrame(function(){ var c=document.getElementById('courseScroll'); if(c) c.scrollTop=0; });
@@ -11032,60 +11051,59 @@
     WS.revealKeysFor(i);
     WS.refreshDock();
   };
-  WS.revealKeysFor=function(p){
-    var pg=WS.pages[p]; if(!pg) return;
-    if(pg.probK && !probResolved(pg.probK)) return;
-    var nb=document.getElementById('wsNbBody'); if(!nb) return; var revealed=false;
-    WS.keys.forEach(function(ki,j){
-      if(ki.page===p && !ki.revealed){
-        ki.revealed=true; revealed=true;
-        var node=document.createElement('div'); node.className='nb-idea nb-arrive nb-new nb-open'; node.setAttribute('data-j',j);
-        var rawText=ki.block.x.replace(/<[^>]+>/g,'');
-        var boldMatches=(ki.block.x.match(/<b[^>]*>(.*?)<\/b>/gi)||[]);
-        var boldPhrases=boldMatches.map(function(m){return m.replace(/<[^>]+>/g,'').trim();}).filter(function(w){return w.length>1;});
-        function toTitleCase(s){return s.replace(/\b\w/g,function(c){return c.toUpperCase();});}
-        var shortTitle;
-        if(ki.block.label&&ki.block.label!=='Key idea'){
-          shortTitle=ki.block.label;
-        } else if(boldPhrases.length){
-          shortTitle=boldPhrases.slice(0,2).join(' & ');
-          if(shortTitle.length>28) shortTitle=boldPhrases[0];
-          shortTitle=toTitleCase(shortTitle);
-        } else {
-          var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1};
-          var allWds=rawText.trim().split(/\s+/);
-          var meaningful=allWds.filter(function(w){return !stopWds[w.toLowerCase()]&&w.length>2;}).slice(0,3);
-          shortTitle=toTitleCase(meaningful.length?meaningful.join(' '):allWds.slice(0,3).join(' '));
-        }
-        node.innerHTML=
-          '<button class="nb-toggle" onclick="WS.toggleIdea(this)">'+
-            '<span class="nb-label">Key Idea '+ki.num+': '+shortTitle+'</span>'+
-            '<span class="nb-new-badge">New</span>'+
-            '<span class="nb-chevron">▼</span>'+
-          '</button>'+
-          '<div class="nb-body"><div class="nb-body-inner">'+ki.block.x+'</div></div>';
-        nb.appendChild(node); ki.el=node; typeset(node);
+  WS.revealKeysFor=function(){};  // key ideas are now their own pages, filed into the notebook on Next
+  WS._buildIdeaNode=function(block,num){
+    var node=document.createElement('div'); node.className='nb-idea nb-arrive nb-new nb-open';
+    var rawText=block.x.replace(/<[^>]+>/g,'');
+    var boldMatches=(block.x.match(/<b[^>]*>(.*?)<\/b>/gi)||[]);
+    var boldPhrases=boldMatches.map(function(m){return m.replace(/<[^>]+>/g,'').trim();}).filter(function(w){return w.length>1;});
+    function toTitleCase(s){return s.replace(/\b\w/g,function(c){return c.toUpperCase();});}
+    var shortTitle;
+    if(block.label&&block.label!=='Key idea'){ shortTitle=block.label; }
+    else if(boldPhrases.length){ shortTitle=boldPhrases.slice(0,2).join(' & '); if(shortTitle.length>28) shortTitle=boldPhrases[0]; shortTitle=toTitleCase(shortTitle); }
+    else { var stopWds={'a':1,'an':1,'the':1,'is':1,'are':1,'was':1,'of':1,'to':1,'in':1,'and':1,'or':1};
+      var allWds=rawText.trim().split(/\s+/);
+      var meaningful=allWds.filter(function(w){return !stopWds[w.toLowerCase()]&&w.length>2;}).slice(0,3);
+      shortTitle=toTitleCase(meaningful.length?meaningful.join(' '):allWds.slice(0,3).join(' ')); }
+    node.innerHTML=
+      '<button class="nb-toggle" onclick="WS.toggleIdea(this)">'+
+        '<span class="nb-label">Key Idea '+num+': '+shortTitle+'</span>'+
+        '<span class="nb-new-badge">New</span>'+
+        '<span class="nb-chevron">▼</span>'+
+      '</button>'+
+      '<div class="nb-body"><div class="nb-body-inner">'+block.x+'</div></div>';
+    return node;
+  };
+  // file the current key-idea page into the notebook, open the tab so the student sees it land, then advance
+  WS.fileKeyIdea=function(p){
+    var pg=WS.pages[p];
+    if(!pg||!pg.keyIdea){ if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); return; }
+    if(!pg._filed){
+      pg._filed=true;
+      var nb=document.getElementById('wsNbBody');
+      if(nb){
+        var ph=nb.querySelector('.nb-empty'); if(ph) ph.remove();
+        // collapse + de-gold older ideas and drop their "New" badge
+        [].slice.call(nb.querySelectorAll('.nb-idea')).forEach(function(el){ el.classList.remove('nb-new','nb-arrive','nb-open'); var b=el.querySelector('.nb-new-badge'); if(b) b.remove(); });
+        var node=WS._buildIdeaNode(pg.keyIdea, pg.keyNum);
+        nb.appendChild(node); typeset(node);
         (function(n){ setTimeout(function(){ try{n.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){} },80); })(node);
       }
-    });
-    if(revealed){
-      WS.refreshDock();
-      // Auto-open key ideas panel
-      var ws=document.getElementById('wsWorkspace');
-      if(ws && !ws.classList.contains('nb-open')) ws.classList.add('nb-open');
-      // Mark all previously-new ideas as non-new (blue) except the just-added ones
-      var nbBody=document.getElementById('wsNbBody');
-      if(nbBody){
-        [].slice.call(nbBody.querySelectorAll('.nb-idea.nb-new')).forEach(function(el){
-          // Only de-gold ideas that were already revealed before this batch
-          if(!el.classList.contains('nb-arrive')) el.classList.remove('nb-new');
-        });
-        // Remove nb-arrive after animation so future reveals can de-gold them
-        setTimeout(function(){
-          [].slice.call(nbBody.querySelectorAll('.nb-idea.nb-arrive')).forEach(function(el){ el.classList.remove('nb-arrive'); });
-        },500);
-      }
     }
+    // open the notebook so the drop-in is visible
+    var ws=document.getElementById('wsWorkspace');
+    if(ws && !ws.classList.contains('nb-open')){
+      ws.classList.add('nb-open');
+      var starBtn=document.getElementById('wsFabIdeas');
+      if(starBtn){ starBtn.classList.remove('shooting','shoot-back'); void starBtn.offsetWidth; starBtn.classList.add('shooting'); setTimeout(function(){ starBtn.classList.remove('shooting'); },520); }
+    }
+    // pause so the student registers it, then close the tab and move to the next page
+    setTimeout(function(){
+      if(ws) ws.classList.remove('nb-open');
+      if(WS.page<WS.pages.length-1){ WS.showPage(WS.page+1); }
+      else if(WS.L && WS.L.next && LESSONS[WS.L.next]){ WS.complete(); }
+      else { WS.finish(); }
+    }, 1300);
   };
   WS.toggleIdea=function(btn){
     var idea=btn.closest('.nb-idea'); if(!idea) return;
@@ -11105,7 +11123,7 @@
     return true;
   };
   // problem was given up on (solution viewed unsolved) and the student hasn't opened the chat yet
-  WS._chatLocked=function(p){ p=(p==null?WS.page:p); var pg=WS.pages[p]; if(!pg||!pg.probK) return false; var r=PROBREG[pg.probK]; return !!(r&&r.gaveUp&&r.needChat&&!r.chatSeen); };
+  WS._chatLocked=function(p){ p=(p==null?WS.page:p); var pg=WS.pages[p]; if(!pg||!pg.probK) return false; var r=PROBREG[pg.probK]; return !!(r&&r.needChat&&!r.chatSeen); };
   WS._promptChat=function(){
     var fab=document.getElementById('wsFabChat');
     if(fab){ fab.classList.remove('unread-glow'); void fab.offsetWidth; fab.classList.add('unread-glow'); }
@@ -11123,19 +11141,29 @@
     next.classList.toggle('is-finish',last); next.classList.toggle('ready',open);
     next.disabled=!resolved;            // only grey-out when the problem itself isn't resolved
     if(wrap) wrap.classList.toggle('locked',chatLock&&resolved);
-    if(last){
+    var pg=WS.pages[WS.page], hasReview=L.review&&L.review.length;
+    if(pg && pg.keyIdea){
+      next.classList.remove('is-finish'); next.classList.add('ready'); next.disabled=false;
+      next.textContent='Got it ✓'; next.onclick=function(){ WS.next(); };
+    } else if(last){
       if(L.next && LESSONS[L.next]){ next.innerHTML='Complete &amp; continue to '+L.next+' →'; next.onclick=function(){ WS.complete(); }; }
       else { next.textContent='Finish lesson ✓'; next.onclick=function(){ WS.finish(); }; }
     } else { next.textContent='Next →'; next.onclick=function(){ WS.next(); }; }
-    var pg=WS.pages[WS.page], hasReview=L.review&&L.review.length;
     if(!resolved){
       if(pg.probK && !probResolved(pg.probK)) help.innerHTML='Give the problem a try, you\'ve got this. Stuck? Peek at the solution.';
-      else help.innerHTML='Tap “Got it ✓” on your new key idea to continue.';
-    } else if(chatLock){ help.innerHTML='Milo sent you a message — open the chat to keep going.'; }
+      else help.innerHTML='';
+    } else if(chatLock){ help.innerHTML='Milo sent you a message, open the chat to keep going.'; }
+    else if(pg && pg.keyIdea){ help.innerHTML='Got it? This idea saves to your Key Ideas tab.'; }
     else if(last && hasReview){ help.innerHTML='<a onclick="openReview(\''+WS.key+'\')">📝 Try the review problems</a>'; }
     else help.innerHTML='';
   };
-  WS.next=function(){ if(!WS.gateOpen(WS.page)) return; if(WS._chatLocked()){ WS._promptChat(); return; } if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); };
+  WS.next=function(){
+    if(!WS.gateOpen(WS.page)) return;
+    if(WS._chatLocked()){ WS._promptChat(); return; }
+    var pg=WS.pages[WS.page];
+    if(pg && pg.keyIdea && !pg._filed){ WS.fileKeyIdea(WS.page); return; }
+    if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1);
+  };
   WS.back=function(){ if(WS.page>0) WS.showPage(WS.page-1); };
   WS.onResolve=function(k){ k=String(k); for(var i=0;i<WS.pages.length;i++){ if(WS.pages[i].probK===k){ WS.revealKeysFor(i); break; } } WS.refreshDock(); };
   WS.complete=function(){ if(WS._chatLocked()){ WS._promptChat(); return; } WS.close(); completeAndGo(WS.key, WS.L.next); };
@@ -11737,7 +11765,7 @@
             rec._askedAboutSolution=true; rec.needChat=true;
             var wsEl=document.getElementById('wsWorkspace');
             if(wsEl && wsEl.classList.contains('tut-open')) rec.chatSeen=true; // already reading the chat
-            setTimeout(function(){ addTutorBotMsg("I see you checked the solution — what part of this problem gave you trouble? Let’s work through it together."); },500);
+            setTimeout(function(){ addTutorBotMsg("I see you checked the solution. What part gave you trouble? Let's figure it out together."); },500);
           }
           if(window.WS&&WS.active) WS.refreshDock();
         }
