@@ -10759,7 +10759,15 @@
   }
   function completedCount(){ var n=0; liveOrder.forEach(function(k){ if(completed[k]) n++; }); return n; }
   function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); } }
-  function completeAndGo(key,next){ markDone(key); gotoLesson(next); }
+  function completeAndGo(key,next){
+    try { markDone(key); } catch(e){ console.error('markDone error:',e); }
+    setTimeout(function(){
+      try { gotoLesson(next); } catch(e){
+        console.error('gotoLesson error:',e);
+        var msg='Navigation error: '+e.message; alert(msg);
+      }
+    },0);
+  }
   function finishLesson(key){ markDone(key); var b=document.getElementById('doneBtn'); if(b){ b.textContent='✓ Lesson complete'; b.disabled=true; } }
   function toggleLock(){ lockMode=!lockMode; renderDashboard(); }
 
@@ -10949,7 +10957,6 @@
   function wsOpen(key,L,meta){
     var bp=buildPages(L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys;
-    initTutor(key, L.title);
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
     var html='<div class="workspace" id="wsWorkspace">'+
@@ -10972,6 +10979,7 @@
       '<button class="ws-fab ws-fab-ideas" id="wsFabIdeas" onclick="WS.togglePanel(\'nb\')" title="Key Ideas">✦</button>'+
     '</div>';
     document.getElementById('lessonBody').innerHTML=html;
+    initTutor(key, L.title);
     var body=document.getElementById('wsCenterBody');
     WS.pages.forEach(function(pg,i){
       var lead=pg.lead.map(function(b){return renderBlock(b,ctx,0,isCp);}).join('');
@@ -10983,7 +10991,9 @@
     });
     typeset(body);
     document.getElementById('wsNbBody').innerHTML='';
-    var cs=document.getElementById('courseScroll'); if(cs){ cs.scrollTop=0; cs.classList.add('ws-mode'); }
+    var cs=document.getElementById('courseScroll');
+    if(cs){ cs.classList.add('ws-mode'); cs.scrollTop=0; }
+    requestAnimationFrame(function(){ var c=document.getElementById('courseScroll'); if(c) c.scrollTop=0; });
     WS.showPage(0);
   }
   WS.showPage=function(i){
@@ -11738,13 +11748,13 @@ async function sendTutorMsg() {
   body.appendChild(loadBub);
   body.scrollTop = body.scrollHeight;
   try {
+    var pageEl = document.getElementById('wsCenterBody');
+    var pageText = '';
+    if(pageEl){ var vis=[].slice.call(pageEl.children).filter(function(n){return n.style.display!=='none';}); if(vis.length) pageText=vis[0].innerText||vis[0].textContent||''; }
+    var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim() : '');
     var res = await fetch(TUTOR_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      var pageEl = document.getElementById('wsCenterBody');
-      var pageText = '';
-      if(pageEl){ var vis=[].slice.call(pageEl.children).filter(function(n){return n.style.display!=='none';}); if(vis.length) pageText=vis[0].innerText||vis[0].textContent||''; }
-      var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim() : '');
       body: JSON.stringify({
         studentMessage: msg,
         lessonContext: fullContext,
