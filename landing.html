@@ -536,7 +536,7 @@
   .nb-body-inner b{color:var(--blue)}
   .nb-new-badge{display:inline-block;font:700 8.5px/1 'Inter';letter-spacing:.06em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#d97b0a,#f5b020);border-radius:999px;padding:3px 7px;margin-left:6px;vertical-align:middle}
   /* floating action buttons */
-  .ws-fab-group{position:fixed;bottom:26px;left:22px;display:flex;gap:10px;z-index:60}
+  .ws-fab-group{position:fixed;top:108px;left:22px;z-index:60}
   .workspace.tut-open .ws-fab-chat{display:none}
   .workspace.nb-open .ws-fab-ideas{display:none!important}
   .ws-fab{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:19px;box-shadow:0 6px 20px -6px rgba(18,42,86,.32);transition:filter .15s,transform .15s}
@@ -545,8 +545,8 @@
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;bottom:26px;left:82px;z-index:60;transition:left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
-  .workspace.tut-open .ws-fab-ideas{left:calc(100vw - 72px)}
+  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;top:168px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
   @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px rgba(245,176,32,.55),-66px 2px 22px -9px rgba(245,176,32,.3),-100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
