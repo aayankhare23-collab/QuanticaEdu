@@ -471,8 +471,8 @@
   .ws-page .page-lead{margin-bottom:22px;width:100%}
   .ws-page .page-lead p{font-size:17px;line-height:1.88;color:var(--slate);margin:0 0 22px;letter-spacing:.01em}
   .ws-page .page-lead p:last-child{margin-bottom:0}
-  /* problem pages sit high so the revealed solution appears directly below without scrolling */
-  .ws-page:not(.page-text-only){justify-content:flex-start;padding-top:10px}
+  /* problem pages stay vertically centered (base rule uses `safe center`):
+     centered when the question (+ solution) fits, auto-scroll only when it overflows (e.g. both panels open) */
   /* key-idea page: centered golden glowing card */
   .ws-page.page-key{justify-content:center;align-items:center;padding:0}
   .key-card{max-width:560px;width:100%;margin:0 auto;text-align:center;background:linear-gradient(160deg,rgba(255,250,232,.96),rgba(255,238,196,.92));border:1.6px solid rgba(228,150,24,.6);border-radius:20px;padding:30px 34px;box-shadow:0 12px 32px -12px rgba(228,160,40,.5);animation:keyCardGlow 1.5s ease-in-out infinite}
