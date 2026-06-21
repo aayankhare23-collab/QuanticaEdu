@@ -10520,6 +10520,13 @@
   "next": "5.2"
  }};
     Object.assign(LESSONS,chData);
+    // --- content fixups ---
+    // Chapter 5 stubs were missing their `next`, breaking Complete & continue chaining.
+    var _chain5={'5.2':'5.3','5.3':'5.4','5.4':'5.5'};
+    Object.keys(_chain5).forEach(function(k){ if(LESSONS[k] && !LESSONS[k].next && LESSONS[_chain5[k]]) LESSONS[k].next=_chain5[k]; });
+    // 4.1 key ideas had no good auto-derivable titles (math-heavy); give them authored labels.
+    var _l41=['One Number, Not Two','Numerator & Denominator','Step Size & Step Count','When It Lands Whole','Where the Minus Goes','A Fraction Is an Address'];
+    if(LESSONS['4.1']&&LESSONS['4.1'].blocks){ var _i=0; LESSONS['4.1'].blocks.forEach(function(b){ if(b.t==='imp'&&_i<_l41.length){ b.label=_l41[_i++]; } }); }
   })();
 
 
