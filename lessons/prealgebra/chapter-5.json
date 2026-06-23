@@ -1468,5 +1468,497 @@
    }
   ],
   "next": "5.4"
+ },
+ "5.4": {
+  "title": "Rounding and Estimation",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "A trail app on your phone keeps a little distance counter running as you walk, and right now it reads that the waterfall is \\(4{,}732\\) steps away. You turn to a friend and say you have got about \\(4{,}700\\) steps to go. Nobody asked you to do long division, you did not measure anything, you just slid that fussy number \\(4{,}732\\) over to a rounder neighbor that is easier to carry in your head and easier to say out loud. Here is the thing worth noticing before we do any of it. There were really only two honest rounder neighbors you could have picked, \\(4{,}700\\) and \\(4{,}800\\), both clean multiples of one hundred, and \\(4{,}732\\) sits somewhere on the road between them. You picked \\(4{,}700\\) instantly, without thinking. So what did your brain actually check in that instant? It was not the whole number, because the \\(32\\) at the end is the part you threw away. Somewhere on the stretch between \\(4{,}700\\) and \\(4{,}800\\) there is a single spot, a halfway mark, and which side of that mark you land on decides everything. By the end of this lesson you will round any whole number or decimal to any place, handle the sneaky cases where a \\(9\\) tips over and changes a digit you were not even touching, round negative numbers without second-guessing yourself, and use rounding backwards and as a tool to catch mistakes. But hold this question first. When a number sits between two round neighbors, what exactly are you measuring to decide which one wins, and where is the line that splits them?"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Back to the trail counter reading \\(4{,}732\\) steps to the waterfall, and this time we want the nearest multiple of one hundred. There are two candidates. Just below sits \\(4{,}700\\), and the next one up is \\(4{,}800\\). Picture the slice of number line that runs from \\(4{,}700\\) over to \\(4{,}800\\). The exact middle of that slice is \\(4{,}750\\), since that is halfway across. The whole question of rounding comes down to one comparison, is \\(4{,}732\\) sitting below that midpoint or above it. Whichever multiple of a hundred it lands closer to is the answer. Round \\(4{,}732\\) to the nearest hundred.",
+    "hints": [
+     "Mark the two neighbors \\(4{,}700\\) and \\(4{,}800\\) and find the point exactly between them. Then ask which side of that point \\(4{,}732\\) falls on.",
+     "The midpoint is \\(4{,}750\\). Since \\(4{,}732\\) is below \\(4{,}750\\), it is closer to the neighbor on the left, which is \\(4{,}700\\)."
+    ],
+    "ans": "4700",
+    "accept": [
+     "4700",
+     "4700.0",
+     "4,700"
+    ],
+    "sol": "The two multiples of one hundred hugging \\(4{,}732\\) are \\(4{,}700\\) below and \\(4{,}800\\) above. The midpoint between them is \\(4{,}750\\), the halfway mark of that stretch. Now compare. Since \\(4{,}732\\) is less than \\(4{,}750\\), it sits on the left half of the stretch, nearer to \\(4{,}700\\). You can check the nearness directly. The gap down to \\(4{,}700\\) is \\(4{,}732 - 4{,}700 = 32\\), while the gap up to \\(4{,}800\\) is \\(4{,}800 - 4{,}732 = 68\\). A jump of \\(32\\) is much shorter than a jump of \\(68\\), so \\(4{,}700\\) wins. If the step count had landed exactly on \\(4{,}750\\), the tie would go to the larger neighbor \\(4{,}800\\), but here there is no tie. The nearest hundred is \\(\\boxed{4700}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Now the step counter reads \\(4{,}768\\). The two nearest hundreds are still \\(4{,}700\\) and \\(4{,}800\\), and the midpoint between them is still \\(4{,}750\\). Last time you walked all the way out to that midpoint and compared. But notice what actually decides the contest. A number that starts with \\(4{,}7\\) falls into the bottom half when the part after the hundreds is below \\(50\\), and into the top half when it reaches \\(50\\) or more. That whole decision turns on the very next digit, the tens digit. In \\(4{,}768\\) the tens digit is \\(6\\). Use only that digit to decide, then round \\(4{,}768\\) to the nearest hundred.",
+    "hints": [
+     "You are deciding between \\(4{,}700\\) and \\(4{,}800\\). Instead of measuring the distance to \\(4{,}750\\), just glance at the digit right after the hundreds place. Is that tens digit \\(5\\) or higher, or is it \\(4\\) or lower?",
+     "The tens digit is \\(6\\). A tens digit of \\(5\\) or more means the leftover part is already at least \\(50\\), so you have crossed the midpoint into the top half. Top half means the hundreds digit ticks up, turning the \\(7\\) into an \\(8\\)."
+    ],
+    "ans": "4800",
+    "accept": [
+     "4800",
+     "4800.0",
+     "4,800"
+    ],
+    "sol": "The two neighbors are \\(4{,}700\\) below and \\(4{,}800\\) above, and they split exactly at the midpoint \\(4{,}750\\). Reaching the midpoint or going past it sends you up to the larger neighbor. Here is the shortcut. Whether \\(4{,}768\\) lands in the top half depends only on the part sitting after the hundreds place, the \\(68\\). Anything from \\(50\\) up to \\(99\\) is in the top half, and anything from \\(00\\) to \\(49\\) is in the bottom half. So the single digit that flips the decision is the tens digit, because it alone tells you if that leftover reaches \\(50\\). The tens digit of \\(4{,}768\\) is \\(6\\), which is \\(5\\) or more, so the leftover \\(68\\) is at least \\(50\\) and you are in the top half. That means the hundreds digit rises from \\(7\\) to \\(8\\), and the smaller places fall to zero. Rounded to the nearest hundred, \\(4{,}768\\) becomes \\(\\boxed{4800}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A festival posts a running headcount on a big screen, and right now it reads \\(68{,}431\\) people inside the gates. The organizers want to announce attendance to the nearest thousand. Rounding to the thousands place means the deciding digit is the one sitting just to its right, the hundreds digit. Find that hundreds digit, ask the one question that decides everything, is it <b>5 or more</b> or <b>4 or less</b>, and then let every digit to the right of the thousands place fall to zero. Round \\(68{,}431\\) to the nearest thousand.",
+    "hints": [
+     "The place you are rounding to is the thousands place, the \\(8\\) in \\(68{,}431\\). The digit that decides what happens to it is the very next one to the right, the hundreds digit. Circle that digit and ask whether it is big enough to push the thousands place up.",
+     "The hundreds digit is \\(4\\). Since \\(4\\) is \\(4\\) or less, the thousands digit stays as it is, it does not tick up. Now drop everything to the right of the thousands place to zero and read off the result."
+    ],
+    "ans": "68000",
+    "accept": [
+     "68,000",
+     "68000.0",
+     "68000"
+    ],
+    "sol": "First find the place you are aiming for. The nearest thousand lives in the thousands digit, which is the \\(8\\) in \\(68{,}431\\). So the answer will be either \\(68{,}000\\) or the next thousand up, \\(69{,}000\\). The whole job is deciding which one is closer. The deciding digit is always the one immediately to the right of the place you are rounding to. Here that is the hundreds digit. Reading \\(68{,}431\\) from the left, the hundreds digit is \\(4\\). Now the only question that matters, is \\(4\\) in the \"5 or more\" group or the \"4 or less\" group? It is \\(4\\), so the thousands place stays put and does not climb to \\(9\\). The last step is the satisfying part. Every digit to the right of the thousands place gets swept down to zero, all at once, no matter what they were. The \\(4\\), the \\(3\\), and the \\(1\\) all become \\(0\\), giving \\(68{,}000\\). A quick sanity check confirms it. The two candidates are \\(68{,}000\\) and \\(69{,}000\\), and the halfway mark between them is \\(68{,}500\\). Our count \\(68{,}431\\) sits below \\(68{,}500\\), so it really is nearer to \\(68{,}000\\). $$68{,}431 \\approx \\boxed{68{,}000}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The festival screen now reads \\(2{,}950\\) people, and the organizers still report attendance to the nearest hundred. Set up the same picture you have been using. The hundreds digit is a 9, so the multiple of a hundred just below \\(2{,}950\\) is \\(2{,}900\\), and the next one up is \\(3{,}000\\). The midpoint between them is \\(2{,}950\\). The deciding digit is the tens digit, and here it is a 5, which lands the number exactly on the midpoint. Our rule for an exact tie is to take the larger value, so this one rounds up. The twist is what \"up\" means when the hundreds place is already a 9. There is no higher single digit to bump it to, so the tick rolls forward into the thousands. Round \\(2{,}950\\) to the nearest hundred.",
+    "hints": [
+     "Find the two nearest hundreds that hug \\(2{,}950\\), then find the midpoint between them. Which way does the tie rule send you?",
+     "You are rounding up from \\(2{,}900\\) toward \\(3{,}000\\). The hundreds digit is a 9 and cannot go to 10, so the carry pushes into the thousands. The result is the next clean hundred above \\(2{,}950\\)."
+    ],
+    "ans": "3000",
+    "accept": [
+     "3,000",
+     "3000.0",
+     "3000"
+    ],
+    "sol": "Mark the two hundreds on either side of \\(2{,}950\\). The one just below is \\(2{,}900\\) and the one just above is \\(3{,}000\\). The midpoint sits halfway between them at \\(2{,}950\\), which is exactly the number we have. Since we are right on the tie, the larger-value rule sends us to the upper neighbor, \\(3{,}000\\). Now look at the carry. Rounding up usually means nudging the hundreds digit one step higher, but here that digit is already a 9 and there is no single digit above 9. So the 9 hundreds plus one more hundred makes ten hundreds, which is a whole new thousand. The 2 in the thousands place ticks up to a 3 and the hundreds settle back to 0. That is why \\(2{,}950\\) does not become \\(2{,}1000\\), it becomes \\(3{,}000\\). So \\(2{,}950\\) rounded to the nearest hundred is \\(\\boxed{3000}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is what clicks for me. To round to a place, I really just find the two nearest multiples of that place and the exact midpoint between them, and I pick the side I am closer to. But I never have to actually measure the gap, because the single digit right after the rounding place already tells me which half I landed in. If that next digit is \\(5\\) or more I am in the top half, so the place ticks up, and if it is \\(4\\) or less I am in the bottom half, so the place stays put, and every digit after the rounding place drops to zero either way. The shortcut and the number line are the same idea wearing two different outfits."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 318\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A horizontal number line for rounding to the nearest hundred. The axis runs from four thousand seven hundred on the far left to four thousand eight hundred on the far right, both marked as bold landmark multiples of one hundred. A tall dashed line at the exact center marks the midpoint four thousand seven hundred fifty, labeled the referee, the halfway mark. A gold dot at four thousand seven hundred thirty-two sits clearly to the left of the midpoint with a small bracket showing it is nearer the left end, four thousand seven hundred. A gold dot at four thousand seven hundred sixty-eight sits clearly to the right of the midpoint with a small bracket showing it is nearer the right end, four thousand eight hundred. Below the line, the number four thousand seven hundred thirty-two is written with its tens digit three boxed in gold and a note reading under fifty, bottom half, stays at four thousand seven hundred. Beside it the number four thousand seven hundred sixty-eight is written with its tens digit six boxed in gold and a note reading reaches fifty, top half, ticks up to four thousand eight hundred.\"><text x=\"220\" y=\"20\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">Rounding to the nearest hundred</text><line x1=\"50\" y1=\"118\" x2=\"390\" y2=\"118\" stroke=\"var(--line)\" stroke-width=\"1.8\"/><line x1=\"50\" y1=\"108\" x2=\"50\" y2=\"128\" stroke=\"var(--line)\" stroke-width=\"2.4\"/><line x1=\"390\" y1=\"108\" x2=\"390\" y2=\"128\" stroke=\"var(--line)\" stroke-width=\"2.4\"/><text x=\"50\" y=\"148\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">4,700</text><text x=\"390\" y=\"148\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">4,800</text><line x1=\"220\" y1=\"74\" x2=\"220\" y2=\"130\" stroke=\"var(--slate)\" stroke-width=\"1.4\" stroke-dasharray=\"4 3\"/><text x=\"220\" y=\"66\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">4,750</text><text x=\"220\" y=\"52\" text-anchor=\"middle\" font-size=\"10\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">midpoint (the referee)</text><path d=\"M 71 100 L 71 94 L 147 94 L 147 100\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/><text x=\"109\" y=\"86\" text-anchor=\"middle\" font-size=\"9.5\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">nearer 4,700</text><circle cx=\"158.8\" cy=\"118\" r=\"5.2\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/><text x=\"158.8\" y=\"108\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">4,732</text><path d=\"M 252 100 L 252 94 L 369 94 L 369 100\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/><text x=\"310\" y=\"86\" text-anchor=\"middle\" font-size=\"9.5\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">nearer 4,800</text><circle cx=\"281.2\" cy=\"118\" r=\"5.2\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/><text x=\"281.2\" y=\"108\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">4,768</text><line x1=\"50\" y1=\"186\" x2=\"390\" y2=\"186\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/><text x=\"60\" y=\"232\" text-anchor=\"start\" font-size=\"20\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">4,7</text><rect x=\"98\" y=\"210\" width=\"22\" height=\"28\" rx=\"4\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/><text x=\"109\" y=\"232\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">3</text><text x=\"132\" y=\"232\" text-anchor=\"start\" font-size=\"20\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">2</text><text x=\"60\" y=\"258\" text-anchor=\"start\" font-size=\"10.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">under 50, bottom half</text><text x=\"60\" y=\"274\" text-anchor=\"start\" font-size=\"10.5\" font-weight=\"700\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">stays at 4,700</text><text x=\"252\" y=\"232\" text-anchor=\"start\" font-size=\"20\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">4,7</text><rect x=\"290\" y=\"210\" width=\"22\" height=\"28\" rx=\"4\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/><text x=\"301\" y=\"232\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">6</text><text x=\"324\" y=\"232\" text-anchor=\"start\" font-size=\"20\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">8</text><text x=\"252\" y=\"258\" text-anchor=\"start\" font-size=\"10.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">reaches 50, top half</text><text x=\"252\" y=\"274\" text-anchor=\"start\" font-size=\"10.5\" font-weight=\"700\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">ticks up to 4,800</text><text x=\"220\" y=\"300\" text-anchor=\"middle\" font-size=\"10\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">The boxed tens digit alone tells you which side of the referee you are on.</text></svg>",
+    "cap": "Every value between \\(4{,}700\\) and \\(4{,}800\\) leans toward whichever landmark it is closer to, and the dashed midpoint at \\(4{,}750\\) is the referee that calls it. Because \\(4{,}732\\) lands in the bottom half it stays at \\(4{,}700\\), while \\(4{,}768\\) lands in the top half and ticks up to \\(4{,}800\\). The shortcut is the boxed tens digit. A \\(3\\) means you are under \\(50\\) and still in the bottom half, a \\(6\\) means you have reached \\(50\\) and crossed into the top half, so reading that one digit tells you which side of the referee you are on without walking the whole line."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Everything you just did for whole numbers works for decimals too, because the places to the right of the point are still place values, just smaller ones. A 3D printer reports how much filament is left on the spool as \\(7.83\\) meters, but the slicer software only stores that figure to the nearest tenth of a meter. Rounding to the tenths place means your two neighbors are the multiples of one tenth on either side, \\(7.8\\) and \\(7.9\\), with the midpoint sitting at \\(7.85\\). The deciding digit is the very next one past the tenths place, the <b>hundredths</b> digit. Read it, decide which side of \\(7.85\\) you land on, and drop everything after the tenths place. Round \\(7.83\\) to the nearest tenth.",
+    "hints": [
+     "Your two neighbors are \\(7.8\\) and \\(7.9\\), and the line between them is at \\(7.85\\). The only digit that decides which neighbor you get is the hundredths digit, the one right after the tenths place.",
+     "The hundredths digit of \\(7.83\\) is \\(3\\). Since \\(7.83\\) is below the midpoint \\(7.85\\), it stays with the lower neighbor. Keep the tenths digit as it is and drop the rest."
+    ],
+    "ans": "7.8",
+    "accept": [
+     "7.8",
+     "7.80"
+    ],
+    "sol": "Rounding to the nearest tenth means choosing whichever multiple of one tenth is closest to \\(7.83\\). The two candidates are the tenths just below and just above, namely \\(7.8\\) and \\(7.9\\), and the fence between them sits exactly halfway, at \\(7.85\\). So the whole decision comes down to one question. Is \\(7.83\\) below the fence or above it? The hundredths digit answers that for us, because it measures how far past \\(7.8\\) we have traveled. Here that digit is \\(3\\), so we are at \\(7.8\\) plus three hundredths, which is short of the five hundredths needed to reach \\(7.85\\). That puts \\(7.83\\) on the lower side of the midpoint, closer to \\(7.8\\) than to \\(7.9\\). We keep the tenths digit exactly as it is and drop everything after it. The half-way rule never even comes up, since \\(3\\) is not \\(5\\). \\(\\boxed{7.8}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A tide gauge at a harbor measures the water height in meters and prints a fresh reading every minute. One reading comes in at \\(3.617\\) meters, but the harbor's daily chart only records heights to the nearest hundredth, meaning two digits after the decimal point. So your job is to snap \\(3.617\\) onto the closest two-place value. The two candidates on either side are \\(3.61\\) and \\(3.62\\), and the value sitting exactly between them is \\(3.615\\). Round \\(3.617\\) to the nearest hundredth.",
+    "hints": [
+     "You only care about which side of the midpoint \\(3.615\\) the reading falls on. Compare \\(3.617\\) to \\(3.615\\). Is it below the midpoint, at the midpoint, or above it?",
+     "The digit that decides everything is the one just past the hundredths place, the thousandths digit. Here that digit is \\(7\\). Anything \\(5\\) or higher tips you up to the larger neighbor, so keep two digits after the point and bump the hundredths up."
+    ],
+    "ans": "3.62",
+    "accept": [
+     "3.620",
+     "3.62"
+    ],
+    "sol": "Rounding to the nearest hundredth means choosing between the two-place values closest to the reading. Those neighbors are \\(3.61\\) and \\(3.62\\), and the fence post halfway between them is \\(3.615\\). The whole decision comes down to which side of that fence the reading lands on. The fast way to see it is to look at the very next digit after the hundredths place, the thousandths digit. In \\(3.617\\) that digit is \\(7\\). A thousandths digit of \\(5\\) or more means the reading is at or above the midpoint, so we move up to the larger neighbor. You can feel it in the distances too. From \\(3.617\\) down to \\(3.61\\) is \\(0.007\\), but up to \\(3.62\\) is only \\(0.003\\), so \\(3.62\\) is genuinely closer. Both ways agree. The harbor chart records the height as \\(\\boxed{3.62}\\) meters."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Here is the one case that needs a rule decided ahead of time. A planetarium show is timed at exactly \\(12.5\\) minutes, and the lobby board only lists show lengths in whole minutes. To round \\(12.5\\) to the nearest whole number, you look at its neighbors, \\(12\\) and \\(13\\). Usually you pick whichever one is closer. But \\(12.5\\) sits at the dead center between them, the same distance from each, so neither is closer. When a value lands exactly on the midpoint like this, the rule for this whole course is fixed in advance. Round to the <b>larger</b>, more positive neighbor. Using that convention, what whole number does \\(12.5\\) round to?",
+    "hints": [
+     "The two whole numbers on either side are \\(12\\) and \\(13\\), and \\(12.5\\) is exactly halfway between them. Closeness cannot break the tie here, so the agreed-on convention does.",
+     "The convention says a value sitting exactly on the midpoint rounds to the larger neighbor. Between \\(12\\) and \\(13\\), the larger one is \\(13\\)."
+    ],
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0"
+    ],
+    "sol": "Start by finding the two whole numbers \\(12.5\\) lives between. They are \\(12\\) below it and \\(13\\) above it. Normally you would measure which one is nearer and round toward that one, but here the distances are equal. From \\(12\\) up to \\(12.5\\) is \\(0.5\\), and from \\(12.5\\) up to \\(13\\) is also \\(0.5\\). The number is perfectly balanced on the midpoint, so the idea of \"closer\" gives no answer at all. That is exactly why we set a convention before this ever comes up. When a value falls exactly halfway, we round to the larger, more positive neighbor. The larger neighbor of \\(12.5\\) is \\(13\\). So the lobby board lists the show as \\(\\boxed{13}\\) minutes."
+   },
+   {
+    "t": "imp",
+    "x": "Most of the time the next digit clearly drops me into the top or bottom half, so there is one nearest multiple and nothing to argue about. But every so often a value lands exactly on the midpoint, like \\(12.5\\) sitting halfway between \\(12\\) and \\(13\\), and then \"nearest\" gives no answer at all because both ends are equally far. So this course just picks one rule and uses it everywhere, an exact tie goes to the larger, more positive value. That is why a deciding digit of \\(5\\) with only zeros after it still rounds up, and the same larger-wins rule will carry me through later even when the numbers turn negative."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "This one looks ordinary right up until the carry sneaks up on you, so go slowly. A sensitive lab scale reads \\(1.995\\) grams for a tiny crystal, and the notebook records every mass to the nearest hundredth, meaning two places after the decimal point. To round to the hundredths place you look at the thousandths digit, the deciding digit, which is \\(5\\). That is an exact tie, so by our convention you round the hundredths place up to the larger value. Here is the twist. The hundredths digit is already a \\(9\\), and bumping a \\(9\\) up does not give you a tidy \\(10\\) sitting in one slot. It rolls over to \\(0\\) and sends a carry into the tenths place, which is also a \\(9\\), so that rolls too and carries into the ones place. Follow that carry all the way through and write your result with two decimal places. Round \\(1.995\\) to the nearest hundredth.",
+    "hints": [
+     "The deciding digit is the thousandths digit, the \\(5\\) in \\(1.99\\underline{5}\\). A \\(5\\) is the exact halfway case, so round the hundredths place up to the larger value. The only catch is that the digit you are bumping is a \\(9\\), so think about where it goes when it cannot just become a \\(10\\).",
+     "Bumping the hundredths \\(9\\) up writes a \\(0\\) there and carries \\(1\\) into the tenths place. But the tenths digit is also \\(9\\), so it becomes \\(0\\) and carries \\(1\\) into the ones place, turning \\(1\\) into \\(2\\). So \\(1.99\\) climbs to \\(2.00\\). Keep both decimal places."
+    ],
+    "ans": "2.00",
+    "accept": [
+     "2.000",
+     "2.00",
+     "2",
+     "2.00 grams",
+     "2.0",
+     "2.00 g"
+    ],
+    "sol": "Start by naming the place we want and the digit that decides it. Rounding to the nearest hundredth means we keep two places after the decimal point, the \\(1.99\\) part of \\(1.995\\). The digit just past that, the thousandths digit, is the one that tells us whether to round up or stay put. In \\(1.99\\underline{5}\\) that deciding digit is \\(5\\). A \\(5\\) sitting there with nothing but the end behind it is an exact halfway point, and our rule says a tie rounds to the larger value, so we round the hundredths place up. Now the careful part. Rounding up usually just adds \\(1\\) to the hundredths digit, but that digit is already \\(9\\). You cannot write a \\(10\\) in a single slot, so the \\(9\\) becomes \\(0\\) and passes a carry of \\(1\\) to the left, into the tenths place. The tenths digit is also a \\(9\\), so the same thing happens again. It becomes \\(0\\) and hands a carry into the ones place, which lifts the \\(1\\) up to a \\(2\\). Lining up the carry from right to left, \\(1.99\\) climbs to \\(2.00\\). The notebook still records two decimal places, so we keep both zeros and write \\(2.00\\) rather than just \\(2\\). Notice what the carry did. It quietly turned a number that started with a \\(1\\) into one that starts with a \\(2\\), so the answer actually gained a whole place when the nines toppled like a row of dominoes. $$1.995 \\approx \\boxed{2.00}$$"
+   },
+   {
+    "t": "imp",
+    "x": "I used to think rounding only ever nudges the one digit I am aiming at, but a \\(9\\) sitting in that spot breaks the picture. When the rounding place holds a \\(9\\) and it needs to go up, it cannot, so it rolls over to \\(0\\) and shoves a carry into the next place to the left, exactly the way carrying works in addition, and if that place is a \\(9\\) too the carry just keeps marching. That is how a number can tip up to a clean new value, like \\(1.995\\) climbing all the way to \\(2.00\\) as both \\(9\\)s roll over. And if the carry runs all the way off the front, the number even gains a digit, the way \\(9.96\\) rounded to the nearest tenth jumps to \\(10.0\\). Rounding is still only picking the nearer multiple, the carry is just what \"up\" looks like when a \\(9\\) is standing in the way."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A carry cascade for rounding one point nine nine five to the nearest hundredth. At the top the number one point nine nine five is shown, and the deciding thousandths digit five is circled in gold with a label reading a tie, round up. Below sit three cells in a row holding the digits being kept, the ones digit one, the tenths digit nine, and the hundredths digit nine, with a bold decimal point between the ones and the tenths. A curved gold arrow starts at the hundredths nine and curls up and to the left. A note says nine cannot go up, so it becomes zero and carries one into the tenths. The tenths nine also cannot go up, so it becomes zero and carries one into the ones. That carry turns the ones one into a two. At the bottom the bold result two point zero zero is shown, with a bracket noting the number gained a whole unit, landing on two rather than on something starting with one point nine nine.\"><text x=\"220\" y=\"26\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">Round 1.995 to the nearest hundredth</text><text x=\"150\" y=\"62\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">1.99</text><text x=\"246\" y=\"62\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">5</text><circle cx=\"246\" cy=\"53\" r=\"17\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"2.4\"/><path d=\"M 246 70 Q 290 84 322 70\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><path d=\"M 322 70 l 4 -7 l 5 6 z\" fill=\"var(--gold-deep)\"/><text x=\"350\" y=\"56\" text-anchor=\"start\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">tie,</text><text x=\"350\" y=\"70\" text-anchor=\"start\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">round up</text><rect x=\"115\" y=\"110\" width=\"70\" height=\"58\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><text x=\"150\" y=\"149\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">1</text><text x=\"150\" y=\"186\" text-anchor=\"middle\" font-size=\"9.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">ones</text><circle cx=\"200\" cy=\"162\" r=\"4.5\" fill=\"var(--ink)\"/><rect x=\"215\" y=\"110\" width=\"70\" height=\"58\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><text x=\"250\" y=\"149\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">9</text><text x=\"250\" y=\"186\" text-anchor=\"middle\" font-size=\"9.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">tenths</text><rect x=\"315\" y=\"110\" width=\"70\" height=\"58\" rx=\"6\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><text x=\"350\" y=\"149\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">9</text><text x=\"350\" y=\"186\" text-anchor=\"middle\" font-size=\"9.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">hundredths</text><path d=\"M 350 106 Q 300 80 250 106\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.8\"/><path d=\"M 250 106 l 8 -4 l -1 8 z\" fill=\"var(--gold-deep)\"/><path d=\"M 250 106 Q 200 80 150 106\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.8\"/><path d=\"M 150 106 l 8 -4 l -1 8 z\" fill=\"var(--gold-deep)\"/><text x=\"350\" y=\"205\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">9 → 0, carry 1</text><text x=\"250\" y=\"205\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">9 → 0, carry 1</text><text x=\"150\" y=\"205\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">1 → 2</text><text x=\"220\" y=\"258\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">2.00</text><path d=\"M 183 274 q 0 7 7 7 h 26 q 7 0 7 -7 q 0 7 7 7 h 26 q 7 0 7 -7\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.3\"/><text x=\"220\" y=\"306\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--accent)\" font-family=\"Inter, sans-serif\">gained a whole unit</text></svg>",
+    "cap": "Rounding up a \\(9\\) works just like a carry in addition. It rolls left through every \\(9\\) it meets, turning each into a \\(0\\) and passing a \\(1\\) onward, which is how \\(1.995\\) to the nearest hundredth lands on \\(2.00\\) and not on something starting with \\(1.99\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Numbers below zero round by the very same midpoint idea. The only thing you have to keep straight is which direction counts as larger. On a cold morning a freezer log shows the temperature as \\(-83\\) degrees, and a technician records it to the nearest ten degrees. Picture the number line near there. The two multiples of ten on either side of \\(-83\\) are \\(-90\\) to the left, which is more negative, and \\(-80\\) to the right, which is more positive, that is, larger. The midpoint between them is \\(-85\\). Moving right on the number line always means moving toward larger values, even when everything is negative. Round \\(-83\\) to the nearest ten.",
+    "hints": [
+     "Find the gap from \\(-83\\) to each neighbor. How far is it left to \\(-90\\), and how far right to \\(-80\\)? The shorter trip wins.",
+     "From \\(-83\\) it is \\(7\\) steps left to reach \\(-90\\), but only \\(3\\) steps right to reach \\(-80\\). The nearer multiple of ten is \\(-80\\)."
+    ],
+    "ans": "-80",
+    "accept": [
+     "negative 80",
+     "−80",
+     "-80 degrees",
+     "-80",
+     "-80.0"
+    ],
+    "sol": "Start by naming the two multiples of ten that hug \\(-83\\). To its left sits \\(-90\\), and to its right sits \\(-80\\). Rounding to the nearest ten just asks which of these two the number is closer to. Now measure each gap. From \\(-83\\) over to \\(-90\\) is a jump of \\(7\\), since \\(-83-(-90)=7\\). From \\(-83\\) over to \\(-80\\) is a jump of only \\(3\\), since \\(-80-(-83)=3\\). The trip to the right is much shorter, so \\(-83\\) is nearer to \\(-80\\). This is the same midpoint reasoning you use with positive numbers. The halfway point here is \\(-85\\), and \\(-83\\) sits to the right of that midpoint, on the side closer to \\(-80\\). Notice that \\(-80\\) is the larger of the two values, because it lies further right on the number line, and we landed there simply by being closer, not by any special rule. So the technician records \\(\\boxed{-80}\\) degrees."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A weather thermostat can read below freezing, and right now it shows \\(-2.35\\) degrees. A display app shortens every reading to the nearest tenth before it shows up on your screen. Here is the spot where almost everyone slips. The two tenths on either side of \\(-2.35\\) are \\(-2.4\\), which is more negative and sits to the left on the number line, and \\(-2.3\\), which is more positive and sits to the right. The value \\(-2.35\\) lands exactly at the midpoint between them, so this is a true tie. Our single rule for ties says round to the <b>larger</b> value, meaning the one farther to the right. Watch the trap, the larger of \\(-2.4\\) and \\(-2.3\\) is \\(-2.3\\), not \\(-2.4\\). Round \\(-2.35\\) to the nearest tenth.",
+    "hints": [
+     "Forget the minus sign for a second and just picture the number line. Mark \\(-2.4\\) on the left and \\(-2.3\\) on the right, then drop \\(-2.35\\) in between. Is it closer to one of them, or stuck dead in the middle?",
+     "It is a perfect tie, so use the rule, round to the larger value. \"Larger\" means farther to the right on the number line. Between \\(-2.4\\) and \\(-2.3\\), the one on the right is \\(-2.3\\), so that is your answer."
+    ],
+    "ans": "-2.3",
+    "accept": [
+     "-2.3",
+     "−2.3",
+     "−2.30",
+     "-2.30"
+    ],
+    "sol": "Start by finding the two tenths that \\(-2.35\\) sits between. Going down to the next tenth gives \\(-2.4\\), and going up to the next tenth gives \\(-2.3\\). On the number line \\(-2.4\\) is on the left and \\(-2.3\\) is on the right, since numbers grow as you move right. Now check the distances. From \\(-2.35\\) to \\(-2.4\\) is \\(0.05\\), and from \\(-2.35\\) to \\(-2.3\\) is also \\(0.05\\). The gaps match, so \\(-2.35\\) is the exact midpoint, a true tie. Ties do not get to pick \"closer,\" so the one rule takes over, round to the larger value. Here is the careful part. With negatives, \"larger\" still means farther to the right on the number line, and the value farther right is \\(-2.3\\). It can feel backwards because \\(2.3\\) looks smaller than \\(2.4\\), but once you attach the minus signs, \\(-2.3\\) is the bigger number. So we round up toward zero, not away from it. The rounded reading is \\(\\boxed{-2.3}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "A negative number is not some special case with its own rulebook. It rounds to the nearer multiple just like everything else, and the only thing I have to keep straight is what <b>larger</b> means down here. Larger is always farther to the right on the number line, so between two negatives the larger one is the one closer to zero. When a negative value sits exactly on the midpoint, the same round-to-the-larger tie rule sends me toward zero, which is why \\(-2.35\\) rounds to \\(-2.3\\) and not \\(-2.4\\). Same midpoint, same tie rule, I just have to keep my left and right straight."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Rounding is not just for tidying up a single number. It is the fastest tool you have for catching a big mistake before it costs someone money. A field-trip invoice lists \\(29\\) students at \\(6.10\\) dollars each for a museum ticket, and the printed total at the bottom reads \\(1{,}769.00\\) dollars. Before anyone pays, do a five-second sanity check in your head. Round \\(29\\) to the nearest ten and round \\(6.10\\) to the nearest whole dollar, then multiply those two easy numbers. That product is the ballpark figure you would hold up against the printed \\(1{,}769\\). What is the estimate of \\(29 \\times 6.10\\) using those rounded parts?",
+    "hints": [
+     "You are not finding the exact total here, you are building a quick comparison number. Replace each part with a friendly nearby value first. What is \\(29\\) rounded to the nearest ten, and what is \\(6.10\\) rounded to the nearest whole dollar?",
+     "Rounding \\(29\\) to the nearest ten gives \\(30\\), since \\(29\\) is much closer to \\(30\\) than to \\(20\\). Rounding \\(6.10\\) to the nearest whole dollar gives \\(6\\), since \\(6.10\\) is just past \\(6\\). Now multiply \\(30 \\times 6\\)."
+    ],
+    "ans": "180",
+    "accept": [
+     "180 dollars",
+     "$180",
+     "180.0",
+     "180",
+     "180.00"
+    ],
+    "sol": "Estimating works by swapping the messy parts for the nearest easy numbers, multiplying those, and trusting the result to land in the right neighborhood. Start with the count of students. Rounding \\(29\\) to the nearest ten means asking whether it is closer to \\(20\\) or to \\(30\\). It sits one step below \\(30\\) and nine steps above \\(20\\), so it rounds up to \\(30\\). Next round the price. Rounding \\(6.10\\) to the nearest whole dollar means asking whether it is closer to \\(6\\) or to \\(7\\). The ten cents barely lifts it off \\(6\\), nowhere near the halfway mark of \\(6.50\\), so it rounds down to \\(6\\). Now multiply the friendly parts, \\(30 \\times 6 = 180\\). That is your ballpark. Here is the payoff. The printed total claims \\(1{,}769\\), but your honest estimate is only \\(180\\), and \\(1{,}769\\) is about ten times bigger. A gap that size is the unmistakable signature of a whole-digit slip, almost certainly a decimal point that drifted one spot to the right. (The exact total is actually \\(29 \\times 6.10 = 176.90\\), comfortably close to your \\(180\\), which confirms the printed figure is the wrong one.) The number you would compare against \\(1{,}769\\) is \\(\\boxed{180}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "If I round each piece before I combine them, I get a quick ballpark that is close enough to catch a real mistake. The estimate is not the exact answer, so I write it with the \\(\\approx\\) sign, like \\(29 \\times 6.10 \\approx 180\\), not an equals sign. The whole point is that when a printed total like \\(1{,}769\\) lands ten times away from my estimate of about \\(180\\), I know something is off before I do any careful work. Rounding trades a little accuracy for a lot of speed, and that trade is exactly what makes it good for checking answers and for doing math in my head."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "The same move that catches errors can also turn an awkward sum into something you do in your head. You are loading a delivery van and three crates weigh \\(487\\), \\(213\\), and \\(356\\) kilograms. You do not need the exact total, you only need a quick sense of whether you are near the van's limit. Round each weight to the nearest hundred, then add the rounded values. What is your estimated total of \\(487 + 213 + 356\\) using the nearest-hundred rounding of each part?",
+    "hints": [
+     "Handle one crate at a time. Look at the part of each weight after the hundreds and decide whether it pushes the number up to the next hundred or leaves it at the hundred below.",
+     "Round each one. \\(487\\) is past the halfway mark so it becomes \\(500\\), \\(213\\) is below halfway so it becomes \\(200\\), and \\(356\\) is past halfway so it becomes \\(400\\). Now add \\(500 + 200 + 400\\)."
+    ],
+    "ans": "1100",
+    "accept": [
+     "1100.0",
+     "1,100",
+     "1100"
+    ],
+    "sol": "Round each crate to the nearest hundred first. For \\(487\\), the part after the hundreds is \\(87\\), which is past \\(50\\), so it rounds up to \\(500\\). For \\(213\\), the leftover is \\(13\\), which is below \\(50\\), so it stays at \\(200\\). For \\(356\\), the leftover is \\(56\\), which is past \\(50\\), so it rounds up to \\(400\\). Now the sum is easy because every number ends in two zeros. Add the hundreds, \\(5 + 2 + 4 = 11\\), so the total is \\(1100\\). That is \\(500 + 200 + 400 = 1100\\). Notice how much friendlier these numbers are than the originals. The exact total happens to be \\(1056\\), so the estimate of \\(1100\\) is close enough to tell you instantly whether you are nudging the van's limit, and you never had to line up a single column. \\(\\boxed{1100}\\)"
+   },
+   {
+    "t": "fact",
+    "x": "In 1856 a survey team in colonial India finished measuring the height of a Himalayan peak they called Peak XV, and after years of sightings their math landed on exactly 29,000 feet. They did not publish that number. Worried that a flat 29,000 would look like a lazy guess rather than a real result, the office quietly announced the height as 29,002 feet instead, adding two feet that the measurements never actually claimed. Those two phantom feet are sometimes called the first man to put two feet on top of Everest. It is a strange backwards story, because the usual rule is the opposite. Honest reporting means writing only the digits you can stand behind, and a row of confident-looking zeros at the end can promise a precision you were never entitled to."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "A weather station reports a rainfall reading of \\(4.3\\) millimeters, rounded to the nearest tenth. That single number does not point to one exact original value. It stands for a whole stretch of possible originals, every true reading that would round to \\(4.3\\). The tenths-place neighbors of \\(4.3\\) are \\(4.2\\) and \\(4.4\\), and the boundaries sit at the midpoints \\(4.25\\) and \\(4.35\\). Using the rule that a value landing exactly halfway rounds to the <b>larger</b> tenth, any true reading from \\(4.25\\) up to but not reaching \\(4.35\\) reports as \\(4.3\\). Now suppose the original reading was recorded to the nearest <b>hundredth</b> before it was rounded to \\(4.3\\). What is the largest value, written to two decimal places, that still rounds to \\(4.3\\) at the nearest tenth?",
+    "hints": [
+     "The reported \\(4.3\\) covers everything from \\(4.25\\) up to but not including \\(4.35\\). You only need the values in that stretch that have exactly two decimal places, so start at the top end and step downward.",
+     "Check \\(4.35\\) first. It sits exactly halfway between \\(4.3\\) and \\(4.4\\), so by the larger-value rule it rounds up to \\(4.4\\), not \\(4.3\\). That means \\(4.35\\) is out. Step down one hundredth to \\(4.34\\) and round it to the nearest tenth to see where it lands."
+    ],
+    "ans": "4.34",
+    "accept": [
+     "4.34",
+     "4.340"
+    ],
+    "sol": "A reported \\(4.3\\) is shorthand for an interval. Every true reading that rounds to \\(4.3\\) at the tenths place lives between the midpoint below it and the midpoint above it, and those midpoints are \\(4.25\\) and \\(4.35\\). The lower end \\(4.25\\) is exactly halfway between \\(4.2\\) and \\(4.3\\), so by the larger-value rule it rounds up into \\(4.3\\) and is included. The upper end \\(4.35\\) is exactly halfway between \\(4.3\\) and \\(4.4\\), so by that same rule it jumps up to \\(4.4\\) and is shut out. So the readings that report as \\(4.3\\) are exactly those with \\(4.25 \\le \\text{value} < 4.35\\). We want the largest one that has only two decimal places. The top of the interval, \\(4.35\\), is not allowed because it rounds to \\(4.4\\). Step down one hundredth to \\(4.34\\). Its hundredths digit is \\(4\\), which is below \\(5\\), so it rounds down to \\(4.3\\). It works, and nothing between \\(4.34\\) and \\(4.35\\) has just two decimal places, so this is the ceiling. The largest two-decimal reading that still reports as \\(4.3\\) is \\(\\boxed{4.34}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Now I see what rounding really does. When I round, I swap one exact number for a tidier one, and the moment I do that the original is gone for good. The rounded \\(4.3\\) does not stand for a single number anymore, it stands for a whole stretch of numbers, everything from the lower midpoint \\(4.25\\) up to just under the upper midpoint \\(4.35\\), since any original in that band rounds back to \\(4.3\\). That is why rounding is a one-way street. Plenty of different originals all funnel down to the same rounded value, so I can never run it backward to find the one I started with, the most I can ever say in reverse is name the two boundaries the original had to live between."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A number line from 4.2 to 4.4 with tenths marks at 4.2, 4.3, and 4.4. A soft gold band stretches from 4.25 to 4.35. A filled closed dot at 4.25 is labeled included, and an open hollow dot at 4.35 is labeled not included. Dashed lines mark the boundaries 4.25 and 4.35. Three small downward arrows start from sample points 4.26, 4.30, and 4.34 inside the band and converge onto a single bold 4.3 below the line. A star marks 4.34 as the largest two-decimal original. A note reads every original in this band rounds to 4.3.\">\n  <rect x=\"145\" y=\"64\" width=\"170\" height=\"28\" fill=\"var(--softer)\"/>\n  <line x1=\"40\" y1=\"78\" x2=\"410\" y2=\"78\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"72\" x2=\"60\" y2=\"84\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"230\" y1=\"72\" x2=\"230\" y2=\"84\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"400\" y1=\"72\" x2=\"400\" y2=\"84\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"60\" y=\"58\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"middle\">4.2</text>\n  <text x=\"230\" y=\"58\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"middle\">4.3</text>\n  <text x=\"400\" y=\"58\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"middle\">4.4</text>\n  <line x1=\"145\" y1=\"44\" x2=\"145\" y2=\"100\" stroke=\"var(--gold2)\" stroke-width=\"1.25\" stroke-dasharray=\"3 3\"/>\n  <line x1=\"315\" y1=\"44\" x2=\"315\" y2=\"100\" stroke=\"var(--gold2)\" stroke-width=\"1.25\" stroke-dasharray=\"3 3\"/>\n  <circle cx=\"145\" cy=\"78\" r=\"5\" fill=\"var(--gold-deep)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/>\n  <circle cx=\"315\" cy=\"78\" r=\"5\" fill=\"#ffffff\" stroke=\"var(--gold-deep)\" stroke-width=\"1.75\"/>\n  <text x=\"145\" y=\"38\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4.25</text>\n  <text x=\"145\" y=\"115\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--mid)\" text-anchor=\"middle\">included</text>\n  <text x=\"315\" y=\"38\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4.35</text>\n  <text x=\"315\" y=\"115\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--mid)\" text-anchor=\"middle\">not included</text>\n  <text x=\"298\" y=\"62\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">&#9733;</text>\n  <line x1=\"162\" y1=\"92\" x2=\"218\" y2=\"172\" stroke=\"var(--gold2)\" stroke-width=\"1.25\"/>\n  <line x1=\"230\" y1=\"92\" x2=\"230\" y2=\"172\" stroke=\"var(--gold2)\" stroke-width=\"1.25\"/>\n  <line x1=\"298\" y1=\"92\" x2=\"242\" y2=\"172\" stroke=\"var(--gold2)\" stroke-width=\"1.25\"/>\n  <path d=\"M 220 174 L 213 166 L 227 166 Z\" fill=\"var(--gold2)\"/>\n  <path d=\"M 230 174 L 224 166 L 236 166 Z\" fill=\"var(--gold2)\"/>\n  <path d=\"M 240 174 L 233 166 L 247 166 Z\" fill=\"var(--gold2)\"/>\n  <text x=\"162\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\" text-anchor=\"middle\">4.26</text>\n  <text x=\"230\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\" text-anchor=\"middle\">4.30</text>\n  <text x=\"298\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\" text-anchor=\"middle\">4.34</text>\n  <text x=\"230\" y=\"195\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4.3</text>\n  <text x=\"230\" y=\"222\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--mid)\" text-anchor=\"middle\">every original in this band rounds to 4.3</text>\n</svg>",
+    "cap": "The reported \\(4.3\\) stands for the whole shaded interval from \\(4.25\\) up to just below \\(4.35\\). The closed dot at \\(4.25\\) is in, the hollow dot at \\(4.35\\) is out, and the star marks \\(4.34\\) as the largest two-decimal value that still lands here. This is why you can name the boundaries of the original but never recover the exact value, the information fell away when it was rounded."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "Time to put the whole lesson to work on a small puzzle with a real payoff. A bulk shop sells trail mix by weight, and the posted price tag has faded so only a few clues survive. From the receipt and the shelf label you can recover three facts about the price per scoop, in dollars. First, rounded to the nearest whole dollar the price is \\(7\\) dollars. Second, rounded to the nearest tenth of a dollar the price is \\(6.8\\) dollars. Third, the price is written to the cent and its last digit, the hundredths digit, is a \\(0\\), a clean price ending in zero. Treat each clue as a range the price must live inside. Exactly one price to the cent satisfies all three. <b>What is the price per scoop, in dollars to the cent?</b>",
+    "hints": [
+     "Turn each clue into an interval. Rounding to the nearest whole dollar gives \\(7\\), so the price runs from \\(6.5\\) up to just under \\(7.5\\). Rounding to the nearest tenth gives \\(6.8\\), so the price runs from \\(6.75\\) up to just under \\(6.85\\). The price must sit inside both ranges at once, which means inside the tighter one.",
+     "The overlap of the two ranges is \\(6.75\\) up to just under \\(6.85\\). Now list the prices in that band whose hundredths digit is \\(0\\). The candidates ending in zero cents are \\(6.80\\). Check the only one that lands in the band."
+    ],
+    "ans": "6.80",
+    "accept": [
+     "$6.8",
+     "6.80",
+     "6.80 dollars",
+     "6.8",
+     "$6.80",
+     "6.800"
+    ],
+    "sol": "The trick is to read each clue as a range and then hunt for the single point that lives in all of them. Start with clue one. Rounding to the nearest whole dollar gives \\(7\\), and with the half-way-up rule the prices that round to \\(7\\) are \\(6.5\\) up to just under \\(7.5\\). So far the price is somewhere in \\(6.5 \\le p < 7.5\\). Now clue two. Rounding to the nearest tenth gives \\(6.8\\), so the prices that round to \\(6.8\\) are \\(6.75\\) up to just under \\(6.85\\), that is \\(6.75 \\le p < 6.85\\). Notice this second range sits entirely inside the first one, so the two clues together pin the price to \\(6.75 \\le p < 6.85\\). Now bring in clue three. The price is written to the cent, and its hundredths digit is \\(0\\). The prices to the cent inside the band \\(6.75\\) up to just under \\(6.85\\) are \\(6.75, 6.76, 6.77, \\dots, 6.84\\). The only one of those whose last digit is \\(0\\) is \\(6.80\\). Quick double check. Rounded to the nearest whole dollar \\(6.80\\) gives \\(7\\), since \\(6.80\\) is past the \\(6.5\\) tipping point. Rounded to the nearest tenth it gives \\(6.8\\), since the next digit is \\(0\\) and we keep the tenth. And its hundredths digit is indeed \\(0\\). All three clues hold, and no other price to the cent does the same. The price per scoop is \\(\\boxed{6.80}\\) dollars."
+   }
+  ],
+  "review": [
+   {
+    "x": "A stadium scoreboard shows \\(7{,}284\\) fans counted so far, and the press box reports attendance to the nearest hundred. The two neighboring multiples of one hundred sit on either side of this count, and the midpoint between them is the deciding line. Using the rule that a count landing exactly on the midpoint rounds to the larger value, what is \\(7{,}284\\) rounded to the nearest hundred?",
+    "ans": "7300",
+    "accept": [
+     "7300",
+     "7,300",
+     "7300.0"
+    ],
+    "hints": [
+     "Find the two multiples of one hundred that hug \\(7{,}284\\). One is below it and one is above it. What are they?",
+     "The midpoint sits halfway between those two multiples. Compare \\(7{,}284\\) to that midpoint. Is the count below the line or above it?"
+    ],
+    "sol": "Start by trapping \\(7{,}284\\) between the nearest multiples of one hundred. Counting up in hundreds, the multiple just below is \\(7{,}200\\) and the one just above is \\(7{,}300\\). So the true count lives somewhere on the stretch between them. The midpoint of that stretch is the average of the two endpoints, which is \\(\\frac{7{,}200 + 7{,}300}{2} = 7{,}250\\). That midpoint is the fence. A count below \\(7{,}250\\) falls back to \\(7{,}200\\), and a count at or above \\(7{,}250\\) climbs to \\(7{,}300\\) (half-way rounds to the larger value). Now place the fans. Since \\(7{,}284\\) is greater than \\(7{,}250\\), the count sits on the upper side of the fence, so it rounds up. The press box reports \\(\\boxed{7300}\\) fans."
+   },
+   {
+    "x": "A school fundraiser has collected \\(3{,}500\\) dollars so far. The organizers want to print a banner showing the total rounded to the nearest thousand. Their total lands right between \\(3{,}000\\) and \\(4{,}000\\), so it is a perfect tie. Using the course convention that an exact half rounds to the larger value, what number goes on the banner?",
+    "hints": [
+     "The two nearest thousands are \\(3{,}000\\) and \\(4{,}000\\). Where does \\(3{,}500\\) sit relative to those two markers?",
+     "It sits exactly halfway, so neither one is closer. When that happens, our rule says to pick the larger of the two thousands."
+    ],
+    "ans": "4000",
+    "accept": [
+     "4000",
+     "4,000",
+     "4000.0"
+    ],
+    "sol": "To round \\(3{,}500\\) to the nearest thousand, first find the two thousands it lives between. Those are \\(3{,}000\\) below and \\(4{,}000\\) above. Now measure the distance to each one. From \\(3{,}500\\) down to \\(3{,}000\\) is \\(500\\), and from \\(3{,}500\\) up to \\(4{,}000\\) is also \\(500\\). The gaps are equal, so \\(3{,}500\\) is not closer to either thousand. It sits at the exact midpoint. Because the distances tie, the usual \"closer one wins\" idea cannot decide for us. That is exactly when our convention steps in. For a halfway value, we round to the larger thousand, which is \\(4{,}000\\). So the banner should read \\(\\boxed{4000}\\)."
+   },
+   {
+    "x": "A kitchen scale reads 6.47 kilograms of flour, and the recipe card records weights to the nearest tenth of a kilogram. Round 6.47 to the nearest tenth.",
+    "hints": [
+     "You are rounding to the tenths place, so look at the next digit to its right, the hundredths digit, to decide what happens.",
+     "The hundredths digit is 7. Since 7 is 5 or more, the tenths digit goes up by one."
+    ],
+    "ans": "6.5",
+    "accept": [
+     "6.5",
+     "6.50"
+    ],
+    "sol": "You want the value to the nearest tenth, so picture \\(6.47\\) sitting between the two nearest tenths, \\(6.4\\) and \\(6.5\\). The deciding digit is the one just past the tenths place, the hundredths digit, which is \\(7\\). The halfway mark between \\(6.4\\) and \\(6.5\\) is \\(6.45\\), and \\(6.47\\) is past it, so it sits closer to \\(6.5\\). By the rule that a deciding digit of \\(5\\) or more sends the tenths digit up, the \\(4\\) becomes a \\(5\\). So \\(6.47\\) rounds to \\(\\boxed{6.5}\\)."
+   },
+   {
+    "x": "A stopwatch logs a lap at \\(0.382\\) seconds. The results sheet keeps every time to the nearest hundredth, which means two decimal places. The thousandths digit is the one that decides which way the hundredths place goes. Round \\(0.382\\) to the nearest hundredth.",
+    "ans": "0.38",
+    "accept": [
+     "0.38",
+     "0.380",
+     ".38",
+     ".380"
+    ],
+    "hints": [
+     "Rounding to the nearest hundredth means keeping two decimal places, so look at the very next digit to the right, the thousandths digit.",
+     "The thousandths digit in \\(0.382\\) is \\(2\\). Since \\(2\\) is less than \\(5\\), the hundredths digit stays the same and you drop everything after it."
+    ],
+    "sol": "Keeping two decimal places means the hundredths place is the last one we get to write, so the deciding digit is the next one to the right. In \\(0.382\\) the hundredths digit is \\(8\\) and the thousandths digit is \\(2\\). Picture \\(0.382\\) sitting on a number line between the two hundredth marks \\(0.38\\) and \\(0.39\\). The exact halfway point is \\(0.385\\), and \\(0.382\\) sits below that, much closer to \\(0.38\\). You can also count the gaps. The distance down to \\(0.38\\) is only \\(0.002\\), while the distance up to \\(0.39\\) is \\(0.008\\). Since the thousandths digit \\(2\\) is less than \\(5\\), we leave the hundredths digit alone and cut off the rest. The lap time recorded on the sheet is \\(\\boxed{0.38}\\) seconds."
+   },
+   {
+    "x": "A city bus ride is timed at exactly \\(9.5\\) minutes, but the printed schedule only lists trips in whole minutes. Since \\(9.5\\) lands right on the midpoint between two whole numbers, round it to the nearest whole minute using the convention that a half-way value goes to the larger number. What whole number does the schedule show?",
+    "hints": [
+     "Find the two whole numbers \\(9.5\\) sits between. How far is it from each one?",
+     "It is exactly the same distance from \\(9\\) and from \\(10\\), so it is a tie. The half-way rule sends a tie to the larger value."
+    ],
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0"
+    ],
+    "sol": "The value \\(9.5\\) falls between the whole numbers \\(9\\) and \\(10\\). Check the distance to each. From \\(9\\) it is \\(9.5 - 9 = 0.5\\), and from \\(10\\) it is \\(10 - 9.5 = 0.5\\). The distances are equal, so this is a true tie, sitting exactly on the midpoint. When a number lands precisely half-way, our convention is to round to the larger value. The larger of \\(9\\) and \\(10\\) is \\(10\\), so the schedule lists this trip as \\(\\boxed{10}\\) minutes."
+   },
+   {
+    "x": "A fitness band reads its battery as \\(0.65\\) of full, and the screen only shows one digit after the decimal point, so it rounds to the nearest tenth. The hundredths digit is exactly \\(5\\), which lands the value right in the middle between two tenths. Using the rule that a halfway value rounds to the larger tenth, what does the band display?",
+    "ans": "0.7",
+    "accept": [
+     "0.7",
+     ".7",
+     "0.70"
+    ],
+    "hints": [
+     "The two tenths on either side of \\(0.65\\) are \\(0.6\\) and \\(0.7\\). Which one is \\(0.65\\) closer to?",
+     "It is not closer to either one, it sits exactly in the middle. The halfway rule says to round to the larger value."
+    ],
+    "sol": "Rounding to the nearest tenth means choosing between the two tenths that surround the number. Here those are \\(0.6\\) and \\(0.7\\). The distance from \\(0.65\\) down to \\(0.6\\) is \\(0.05\\), and the distance from \\(0.65\\) up to \\(0.7\\) is also \\(0.05\\). So \\(0.65\\) is a perfect tie, sitting exactly halfway between them. When a value lands right on the midpoint, our rule is to round to the larger value, which means we go up to \\(0.7\\). The fitness band shows \\(\\boxed{0.7}\\)."
+   },
+   {
+    "x": "A digital caliper reads \\(0.396\\) centimeters, but the spec sheet only keeps measurements to the nearest hundredth of a centimeter. Round \\(0.396\\) to the nearest hundredth.",
+    "hints": [
+     "The hundredths place is the second digit after the decimal point. In \\(0.396\\) that digit is the \\(9\\). To decide whether it stays or climbs, look at the very next digit to its right, the one in the thousandths place.",
+     "The thousandths digit is \\(6\\), which is \\(5\\) or more, so the hundredths place rounds up. But a \\(9\\) cannot become a \\(10\\) on its own. When the \\(9\\) rounds up it carries, just like \\(9 + 1\\) in regular addition."
+    ],
+    "ans": "0.40",
+    "accept": [
+     "0.40",
+     ".4",
+     "0.4 cm",
+     "0.4",
+     "0.400",
+     "0.40 cm",
+     ".40"
+    ],
+    "sol": "Find the hundredths place first. In \\(0.396\\) the digits after the point are \\(3\\) tenths, \\(9\\) hundredths, and \\(6\\) thousandths, so the hundredths place holds the \\(9\\). To round it, peek at the digit directly to its right, the thousandths digit, which is \\(6\\). Since \\(6\\) is at least \\(5\\), the hundredths place rounds up. Here is the interesting part. Rounding the \\(9\\) up does not make a single digit \\(10\\). Instead the \\(9\\) turns into \\(0\\) and carries a \\(1\\) into the tenths place, so the \\(3\\) tenths becomes \\(4\\) tenths. The thousandths digit is dropped. That gives \\(0.40\\). We keep the trailing zero so the answer still shows the hundredths place the spec sheet asked for. \\(\\boxed{0.40}\\)"
+   },
+   {
+    "x": "A fuel gauge reads 8.97 liters left in the tank, and the trip computer only keeps one decimal place. Look at the hundredths digit, decide what happens in the tenths place, and remember that a 9 in the tenths place has nowhere to grow except into the ones place. Round 8.97 to the nearest tenth.",
+    "hints": [
+     "The hundredths digit is the deciding digit. It is 7, and 7 is at least 5, so the tenths place rounds up.",
+     "Rounding up a tenths digit of 9 turns it into 10 tenths. That is a full one, so carry it into the ones place. The 8 becomes 9 and the tenths digit becomes 0. Keep one decimal place to show you rounded to the nearest tenth."
+    ],
+    "ans": "9.0",
+    "accept": [
+     "9",
+     "9.00",
+     "9.0",
+     "9.0 liters",
+     "9 liters"
+    ],
+    "sol": "Rounding to the nearest tenth means the tenths place is the last digit we keep, so the hundredths digit is the one that makes the decision. In \\(8.97\\) the hundredths digit is \\(7\\). Since \\(7 \\ge 5\\), we round the tenths place up. The tenths digit here is already \\(9\\), and bumping it up gives \\(10\\) tenths, which is the same as one whole. So the \\(9\\) in the tenths place rolls over to \\(0\\) and carries a \\(1\\) into the ones place. The \\(8\\) ones become \\(9\\) ones. Writing the result with one decimal place to match the nearest tenth, we get \\(9.0\\). A quick gut check helps too. \\(8.97\\) sits much closer to \\(9.0\\) than to \\(8.9\\), so rounding up is exactly what we expect. \\(\\boxed{9.0}\\)"
+   },
+   {
+    "x": "A weather station logs the wind-chill at \\(-46\\) degrees and reports each reading to the nearest ten. The two multiples of ten that surround \\(-46\\) are \\(-50\\) on the left and \\(-40\\) on the right, with \\(-45\\) sitting exactly between them. Remember that on a number line, moving right means getting larger, so \\(-40\\) is the larger of the two. Round \\(-46\\) to the nearest ten.",
+    "ans": "-50",
+    "accept": [
+     "-50",
+     "-50.0",
+     "−50"
+    ],
+    "hints": [
+     "Place \\(-46\\) between its neighbors \\(-50\\) and \\(-40\\). The halfway mark is \\(-45\\). Is \\(-46\\) on the side closer to \\(-50\\) or closer to \\(-40\\)?",
+     "Count the gaps. From \\(-46\\) to \\(-50\\) is \\(4\\) steps, and from \\(-46\\) to \\(-40\\) is \\(6\\) steps. Pick the multiple of ten with the smaller gap."
+    ],
+    "sol": "Start by pinning \\(-46\\) between the two multiples of ten on either side of it. Those are \\(-50\\) and \\(-40\\), and the midpoint between them is \\(-45\\). Now measure how far \\(-46\\) is from each neighbor. The distance to \\(-50\\) is \\(\\left|-46-(-50)\\right| = 4\\), and the distance to \\(-40\\) is \\(\\left|-46-(-40)\\right| = 6\\). Since \\(4\\) is smaller than \\(6\\), the value \\(-46\\) is nearer to \\(-50\\). Another way to see it is that \\(-46\\) sits to the left of the halfway mark \\(-45\\), and everything left of the midpoint rounds toward the more leftward multiple. The halfway rule that sends a tie to the larger value never comes into play here, because \\(-46\\) is not a tie. So \\(-46\\) rounded to the nearest ten is \\(\\boxed{-50}\\)."
+   },
+   {
+    "x": "An elevation app marks a hiking spot below sea level at \\(-3.5\\) meters and wants to show it rounded to the nearest whole meter. That value lands exactly on the midpoint between \\(-4\\) and \\(-3\\), so the half-way rule kicks in. Following the convention that a half-way value rounds to the <b>larger</b> of the two choices, and noting the larger of \\(-4\\) and \\(-3\\) is the one closer to zero, round \\(-3.5\\) to the nearest whole number.",
+    "hints": [
+     "The two whole-meter choices around \\(-3.5\\) are \\(-4\\) and \\(-3\\). On the number line, which one sits farther to the right?",
+     "Half-way values round to the larger number. Between \\(-4\\) and \\(-3\\), the larger value is \\(-3\\), since it is closer to zero."
+    ],
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "-3.0",
+     "−3"
+    ],
+    "sol": "The whole meters on either side of \\(-3.5\\) are \\(-4\\) and \\(-3\\). Since \\(-3.5\\) sits exactly half-way between them, the usual \"closer one wins\" test gives no winner, so the half-way rule decides. Our convention is to round a half-way value to the <b>larger</b> of the two choices. With negatives it helps to picture the number line. Moving right means getting larger, and \\(-3\\) sits to the right of \\(-4\\), closer to zero, so \\(-3\\) is the larger value. That makes the rounded elevation \\(\\boxed{-3}\\) meters."
+   },
+   {
+    "x": "A freezer probe reads \\(-1.25\\) degrees, and the app rounds every reading to the nearest tenth. On the number line \\(-1.25\\) sits exactly halfway between \\(-1.3\\) and \\(-1.2\\), so this is an exact tie. When a value lands exactly on the halfway mark, round to the <b>larger</b>, more positive value. What does the app display for the nearest tenth?",
+    "ans": "-1.2",
+    "accept": [
+     "-1.2",
+     "−1.20",
+     "-1.20",
+     "−1.2"
+    ],
+    "hints": [
+     "The tenths place is the first digit after the decimal point. The two nearest tenths around \\(-1.25\\) are \\(-1.3\\) and \\(-1.2\\). Which one is more positive, meaning farther to the right on the number line?",
+     "The reading is an exact tie, equally far from both choices. The rule here says a tie rounds to the larger value, and on a number line \\(-1.2\\) sits to the right of \\(-1.3\\), so \\(-1.2\\) is the larger one."
+    ],
+    "sol": "Rounding to the nearest tenth means choosing between the two tenths on either side of \\(-1.25\\). Those are \\(-1.3\\) and \\(-1.2\\). Check the distance to each. From \\(-1.25\\) to \\(-1.3\\) is \\(0.05\\), and from \\(-1.25\\) to \\(-1.2\\) is also \\(0.05\\). The reading is the same distance from both, so it is an exact tie. The tie-breaking rule sends a halfway value to the larger, more positive number. On the number line \\(-1.2\\) lies to the right of \\(-1.3\\), which makes \\(-1.2\\) the larger of the two. So the app shows \\(\\boxed{-1.2}\\)."
+   },
+   {
+    "x": "A concert order lists 41 tickets at \\(19.80\\) dollars each, and the printed total reads \\(81.18\\) dollars. That printed number looks suspiciously low for 41 tickets, so do a quick check by rounding the parts before you trust it. Round 41 to the nearest ten and round \\(19.80\\) to the nearest whole dollar, then multiply those two rounded numbers to get the ballpark total you would compare against the printed receipt. What is the estimate of \\(41 \\times 19.80\\) using those rounded parts?",
+    "ans": "800",
+    "accept": [
+     "$800.00",
+     "800.0",
+     "$800",
+     "800 dollars",
+     "800.00",
+     "800"
+    ],
+    "hints": [
+     "Handle each part on its own. For 41, look at the ones digit to decide which ten it sits closest to. For \\(19.80\\), the cents tell you whether it stays at 19 dollars or climbs to the next whole dollar.",
+     "The ones digit of 41 is 1, so 41 rounds down to 40. The cents in \\(19.80\\) are 80, which is past the halfway mark of 50, so \\(19.80\\) rounds up to 20. Now multiply \\(40 \\times 20\\)."
+    ],
+    "sol": "Estimation works by trading the messy numbers for friendly ones, then multiplying. Take the parts separately. The number 41 has a ones digit of 1. Since 1 is below 5, the value leans toward the smaller ten, so \\(41\\) rounds to \\(40\\). The price \\(19.80\\) sits between \\(19\\) and \\(20\\) whole dollars. The cents are \\(80\\), which is more than the halfway point of \\(50\\), so the price leans toward the larger whole dollar and \\(19.80\\) rounds to \\(20\\). Now multiply the two rounded parts. \\(40 \\times 20 = 800\\). So the ballpark total is about \\(800\\) dollars. That number towers over the printed \\(81.18\\) dollars, which tells you the receipt is almost certainly wrong, probably missing a digit. The estimate is \\(\\boxed{800}\\)."
+   },
+   {
+    "x": "You are packing three boxes for shipping. They weigh \\(596\\), \\(207\\), and \\(398\\) grams, and you want a fast total to check whether the load clears one kilogram, which is \\(1000\\) grams. Round each weight to the nearest hundred, then add the rounded values. What is the estimated total of \\(596 + 207 + 398\\) when each part is rounded to the nearest hundred?",
+    "hints": [
+     "Look at each weight on its own and find the nearest hundred. The tens digit tells you which way to go, and a tens digit of 5 or more rounds up to the larger hundred.",
+     "Round all three first, then add. You should be working with 600, 200, and 400."
+    ],
+    "ans": "1200",
+    "accept": [
+     "1200 grams",
+     "1,200 grams",
+     "1,200",
+     "1200",
+     "1200.0"
+    ],
+    "sol": "Round each weight to the nearest hundred one at a time. For \\(596\\), the tens digit is \\(9\\), which is well past halfway, so it rounds up to \\(600\\). For \\(207\\), the tens digit is \\(0\\), so it rounds down to \\(200\\). For \\(398\\), the tens digit is \\(9\\), so it rounds up to \\(400\\). Now add the friendly numbers, \\(600 + 200 + 400 = 1200\\). The estimate clears the \\(1000\\) gram mark with room to spare. \\(\\boxed{1200}\\)"
+   },
+   {
+    "x": "A weather station's rain gauge can store a reading to the nearest hundredth of a millimeter, but its display only shows the depth rounded to the nearest tenth. This morning the display reads \\(5.3\\) millimeters. You want to know the lightest rain that could have produced that reading. Using the rule that a value exactly halfway between two tenths rounds up to the larger tenth, find the SMALLEST stored value, written to two decimal places, that the display would still round to \\(5.3\\).",
+    "hints": [
+     "The display rounds to the nearest tenth. The tenths on either side of the shown value are \\(5.2\\) and \\(5.3\\). Where does the boundary between rounding down to \\(5.2\\) and up to \\(5.3\\) sit?",
+     "The midpoint between \\(5.2\\) and \\(5.3\\) is \\(5.25\\). By the halfway rule, that exact midpoint rounds up to \\(5.3\\). Anything even a hundredth smaller, like \\(5.24\\), would round down to \\(5.2\\)."
+    ],
+    "ans": "5.25",
+    "accept": [
+     "5.25",
+     "5.250"
+    ],
+    "sol": "The display rounds the stored value to the nearest tenth and shows \\(5.3\\). For a value to round to \\(5.3\\) rather than to the neighbor below, \\(5.2\\), it has to be at least as large as the point exactly halfway between them. That halfway point is \\(\\frac{5.2 + 5.3}{2} = 5.25\\). By the rule that an exact halfway value rounds up to the larger tenth, \\(5.25\\) itself rounds to \\(5.3\\). Going one hundredth lower, \\(5.24\\) is closer to \\(5.2\\), so it would round down and the display would read \\(5.2\\) instead. That makes \\(5.25\\) the smallest two-decimal stored value the gauge could hold while still showing \\(5.3\\). The smallest qualifying value is \\(\\boxed{5.25}\\)."
+   }
+  ],
+  "next": "5.5"
  }
 }
