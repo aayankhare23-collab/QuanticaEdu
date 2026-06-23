@@ -520,5 +520,532 @@
    }
   ],
   "next": "6.2"
+ },
+ "6.2": {
+  "title": "Solving Linear Equations",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Pick the thread back up. All through the last lesson you took numbers and letters and stitched them into expressions, then learned to tidy them and to spot when two of them were secretly the same for every value. But notice what an expression actually does when it is left alone. Something like \\(3x + 5\\) just sits there and describes a whole family of possibilities at once, one for each value \\(x\\) might be, with no single number forced on it. It is a description, not a question, and it is patiently waiting. Now do one small new thing and watch how much it changes. Take two expressions and set an equals sign down between them, like \\(3x + 5 = 20\\), and suddenly you have made a <b>claim</b>, that the left side and the right side come out to the very same number. That equals sign is not a button that says compute. It is a promise. And when a letter rides inside the promise, the promise is usually not true for just any value you please. It is true for one special value, the value that makes both sides genuinely match, while every other number quietly makes the claim false. Two friendly pictures will carry us the whole way through. The first is an old two-pan balance scale on a market table, the left pan holding one expression and the right pan holding the other, with the equals sign as the beam reading perfectly level. The second is the variable as a small gift sealed inside nested boxes. Building an expression last lesson was wrapping that gift, first a multiply box, then an add box, layer over layer. This whole lesson is the opposite move, unwrapping, peeling the boxes off in reverse until the gift, the actual value of the variable, sits bare on the table. Here is the light vocabulary you need, no fuss. An <b>equation</b> is two expressions joined by an equals sign, a claim that they are equal. A value of the variable that makes that claim actually true is called a <b>solution</b>. That is the whole lesson worn many different ways, keep the scale level while you peel the boxes off both pans until the variable stands alone, then check your answer by reopening the box at the very end."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A vending machine charges a flat \\(3\\) tokens just to wake up, then \\(5\\) tokens for every snack you choose, so the tokens spent on \\(w\\) snacks is the expression \\(5w+3\\). Today one kid spent exactly \\(23\\) tokens, which gives us the equation \\(5w+3=23\\). That equals sign is a claim, the snack expression landed on \\(23\\) right on the nose. We have no method yet, so be a detective and test suspects one at a time. Try \\(w=2\\) and the left side is \\(13\\), too low. Try \\(w=3\\) and the left side is \\(18\\), still low. Try \\(w=5\\) and the left side is \\(28\\), now too high. The totals climb by \\(5\\) every time \\(w\\) climbs by \\(1\\), so there is exactly one place they land on \\(23\\). What whole number \\(w\\) makes \\(5w+3\\) equal exactly \\(23\\)? A value of the variable that makes an equation true is called a <b>solution</b>. Type that value of \\(w\\).",
+    "hints": [
+     "You already passed \\(23\\) between \\(w=3\\) (which gives \\(18\\)) and \\(w=5\\) (which gives \\(28\\)). The answer is the whole number sitting right between them, so test the one you skipped.",
+     "Try \\(w=4\\). Then \\(5w\\) is \\(5\\times 4=20\\), and \\(20+3=23\\). That hits the target exactly, so that is your solution."
+    ],
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four",
+     "w = 4",
+     "w=4"
+    ],
+    "sol": "We want the value of \\(w\\) that makes \\(5w+3=23\\) a true statement. Testing values is a fine way in, and the pattern points straight at it. At \\(w=3\\) the left side is \\(18\\), and at \\(w=5\\) it is \\(28\\), so the value that lands on \\(23\\) sits between them. Test the whole number in the gap. With \\(w=4\\) we get \\(5\\times 4=20\\), and \\(20+3=23\\). The left side equals the right side, so \\(w=4\\) works. Substitution check, put \\(w=4\\) back into the original equation. The left side is \\(5\\times 4+3=20+3=23\\), and the right side is \\(23\\), so both sides match and \\(w=4\\) really is the solution. \\(\\boxed{4}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Before you ever solve an equation, you should be able to <b>check</b> one. A note slides under the math club door claiming that the equation \\(3x - 5 = 19\\) has the solution \\(x = 7\\). Do not just trust it, test it. <b>Substituting</b> means replacing every \\(x\\) with the candidate and seeing whether the two sides truly match. Try the note's claim. With \\(x = 7\\), the left side becomes \\(3(7) - 5 = 16\\), and \\(16\\) is not \\(19\\), so \\(7\\) is convicted. It is not the solution. Now hunt the real culprit. One of the two values, \\(7\\) or \\(8\\), actually solves \\(3x - 5 = 19\\). Type the value that works.",
+    "hints": [
+     "A correct solution must make the left side, \\(3x - 5\\), come out to exactly \\(19\\). You already saw \\(7\\) gives \\(16\\), which is too small, so test the other candidate.",
+     "Substitute \\(x = 8\\). The left side becomes \\(3(8) - 5\\). Work out \\(3 \\times 8 = 24\\), then \\(24 - 5\\), and see whether you land on \\(19\\)."
+    ],
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight",
+     "x = 8",
+     "x=8"
+    ],
+    "sol": "Checking a value means substituting it into the left side and seeing if you get \\(19\\). Test the note's claim first. With \\(x = 7\\), the left side is \\(3(7) - 5 = 21 - 5 = 16\\). Since \\(16 \\neq 19\\), the candidate \\(7\\) fails and is not the solution. Now test the other candidate. With \\(x = 8\\), the left side is \\(3(8) - 5 = 24 - 5 = 19\\). That matches the right side exactly, \\(19 = 19\\), so both sides agree and \\(8\\) is a genuine solution. The value that solves \\(3x - 5 = 19\\) is \\(\\boxed{8}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is what an equals sign was really saying the whole time. It is a claim that the thing on its left and the thing on its right are the very same number, and a <b>solution</b> is the one value of the variable that makes that claim come true. The identities from 6.1 held for every value, but an equation like \\(2x + 5 = 11\\) is choosy, it usually has exactly one value that fits. The best part is I never have to take my answer on faith, because I can drop the value back into both sides and watch whether the beam hangs level, and if both sides land on the same number it is a solution and if they do not it is not. So checking is not a chore I do after solving, it is the proof that the solving worked, and it catches my sign slips before anyone else does."
+   },
+   {
+    "t": "fact",
+    "x": "The equals sign is so common that it is easy to forget someone had to invent it. That someone was a Welsh mathematician named Robert Recorde, who first used it in an algebra book he published in 1557. He picked two short parallel lines of the same length because he figured nothing in the world could be more equal than a matched pair of parallel lines. Before his idea caught on, people usually wrote out the word for equals or used a short abbreviation, which made every equation slow to read and slow to write. Even so the new symbol spread slowly, taking about a hundred years before most mathematicians were using it."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Trial and error is honest work, but the scale can teach us a faster move. A thermos starts at some temperature \\(t\\) degrees. The cold afternoon then adds 17 degrees to the reading, and the display finally settles at 9 degrees, which we record as \\(t + 17 = 9\\). Think of \\(t\\) as sealed inside an add-17 box, like 17 extra grams stacked on top of the \\(t\\) block in the left pan. To free \\(t\\) you lift those 17 grams off the left pan, and to keep the beam level you lift the same 17 grams off the right pan too. Solve \\(t + 17 = 9\\) and type the value of \\(t\\).",
+    "hints": [
+     "The \\(17\\) is added to \\(t\\). To undo an addition and free the variable, do the opposite operation to both sides at once. What single move strips that \\(+17\\) off the left pan?",
+     "Subtract \\(17\\) from both sides. The left pan becomes just \\(t\\), and the right pan becomes \\(9 - 17\\). That difference dips below zero, which is fine since the thermos started cold."
+    ],
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "-8.0",
+     "−8",
+     "−8.0"
+    ],
+    "sol": "The variable \\(t\\) sits on the left, locked inside a \\(+17\\). To isolate it, undo that addition by subtracting \\(17\\) from both sides so the scale stays balanced. $$t + 17 = 9$$ $$t + 17 - 17 = 9 - 17$$ $$t = -8$$ Now check by putting \\(-8\\) back into the original equation. The left side becomes \\(-8 + 17 = 9\\), which matches the right side, so the statement is true. The value of \\(t\\) is \\(\\boxed{-8}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "In the last few problems the variable was carrying extra weight added on. This time it is being multiplied instead. Picture six identical sandbags on one pan of a balance, each holding the same unknown mass \\(m\\), and together they tip the scale to \\(15\\) units. That balance is the equation \\(6m = 15\\). The only thing wrapped around \\(m\\) here is a times-\\(6\\), and the inverse of multiplying is dividing, so dividing both sides by \\(6\\) splits each pan into six equal shares and leaves a single bag alone. The mass of one bag will not come out as a whole number, and that is completely fine, since a solution is allowed to be a fraction. Reduce it to lowest terms the way you did back in Chapter 4. Solve \\(6m = 15\\) and type \\(m\\) as a fraction in lowest terms.",
+    "hints": [
+     "The variable is multiplied by \\(6\\), so to peel that away you do the opposite of multiplying. Divide both sides of the equation by \\(6\\).",
+     "Dividing both sides by \\(6\\) gives \\(m = \\frac{15}{6}\\). Now reduce that fraction. Both \\(15\\) and \\(6\\) share a factor of \\(3\\), so cancel it to reach lowest terms."
+    ],
+    "ans": "5/2",
+    "accept": [
+     "5 / 2",
+     "5/2",
+     "five halves",
+     "five-halves",
+     "five−halves"
+    ],
+    "sol": "The variable \\(m\\) is multiplied by \\(6\\), so undo that by dividing both sides by \\(6\\). $$6m = 15$$ $$\\frac{6m}{6} = \\frac{15}{6}$$ $$m = \\frac{15}{6}$$ The left side leaves \\(m\\) alone, and the right side is \\(\\frac{15}{6}\\), which is not yet in lowest terms. Both \\(15\\) and \\(6\\) are divisible by \\(3\\), so \\(\\frac{15}{6} = \\frac{15 \\div 3}{6 \\div 3} = \\frac{5}{2}\\). Check it by putting \\(\\frac{5}{2}\\) back into the original equation. Then \\(6m = 6 \\cdot \\frac{5}{2} = \\frac{30}{2} = 15\\), which matches the right side, so the balance holds. Each sandbag has mass \\(\\frac{5}{2}\\) units. $$\\boxed{5/2}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A submarine sinks at a steady rate, and its position below the starting depth keeps getting more negative as time passes. After \\(y\\) minutes, the dive computer models how far it has dropped below the start as \\(-7y\\). The dive log records that same drop as \\(28\\), which gives the equation \\(-7y = 28\\). The variable \\(y\\) is locked inside a \"times negative seven\" box, so to free it you have to undo that multiplication. Solve \\(-7y = 28\\) and type the value of \\(y\\).",
+    "hints": [
+     "The \\(y\\) is being multiplied by \\(-7\\). The move that undoes multiplication is division, so divide both sides by \\(-7\\) and keep the sign attached to that \\(-7\\).",
+     "Dividing both sides by \\(-7\\) leaves \\(y\\) alone on the left, and on the right you get \\(28\\) divided by \\(-7\\). A positive divided by a negative is negative, so work out \\(28 \\div (-7)\\)."
+    ],
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "-4.0",
+     "−4",
+     "−4.0"
+    ],
+    "sol": "The variable \\(y\\) is multiplied by \\(-7\\), so divide both sides by \\(-7\\) to undo it. $$\\frac{-7y}{-7} = \\frac{28}{-7}$$ On the left the two \\(-7\\)s cancel and leave \\(y\\). On the right, a positive divided by a negative is negative, and \\(28 \\div 7 = 4\\), so \\(28 \\div (-7) = -4\\). $$y = -4$$ Check by putting \\(-4\\) back into the original equation. The left side becomes \\(-7(-4)\\), and a negative times a negative is positive, so \\(-7(-4) = 28\\), which matches the right side of \\(28\\). The descent really is \\(28\\) below the start, so the value is \\(\\boxed{-4}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So an equation is just a balanced scale, and balance is something I am allowed to protect. As long as I do the exact same move to both sides, the same operation with the same amount, the beam stays level and the value that made it true stays true, so I have not changed the answer at all, only repackaged it into something easier to read. Adding to both pans, subtracting from both, multiplying both by a number, or dividing both by the same nonzero number are all fair, and the one move that is never allowed is touching one side and leaving the other alone, because that secretly tips the scale and tells a lie. That is the whole permission slip for solving, I keep peeling matching amounts off both sides on purpose until the variable is standing by itself."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 360\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A two-pan balance scale shown in two stages. In the first stage the beam rests perfectly level on its central post. The left pan holds a wide labeled block x with a short stack of three small unit blocks each marked 1 sitting on top, so the left pan reads x plus 3. The right pan holds eight small unit blocks each marked 1, reading 8. Because both sides weigh the same the beam is exactly horizontal, picturing the claim x plus 3 equals 8. A pair of hands lifts exactly three unit blocks straight up off the left pan and the same three unit blocks off the right pan at the same instant, drawn as two matching removed stacks of three with upward arrows. In the second stage, after the equal lift, the left pan holds only the block x and the right pan holds five unit blocks marked 1, and the beam is still perfectly level, picturing x equals 5. The caption explains that removing the same weight from both pans keeps the scale level, which is why subtracting the same number from both sides of x plus 3 equals 8 leaves x equals 5 with the truth untouched.\"><text x=\"220\" y=\"16\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">EQUAL WEIGHT OFF BOTH SIDES KEEPS IT LEVEL</text><text x=\"120\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"600\" fill=\"var(--mid)\">before</text><text x=\"120\" y=\"55\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">x + 3 = 8</text><rect x=\"116\" y=\"70\" width=\"8\" height=\"120\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><path d=\"M100 192 h40 l8 10 h-56 z\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><circle cx=\"120\" cy=\"72\" r=\"4\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><line x1=\"40\" y1=\"72\" x2=\"200\" y2=\"72\" stroke=\"var(--line)\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><line x1=\"40\" y1=\"72\" x2=\"40\" y2=\"92\" stroke=\"var(--line)\" stroke-width=\"1\"/><path d=\"M16 92 h48 l-6 16 h-36 z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><rect x=\"20\" y=\"74\" width=\"40\" height=\"16\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"40\" y=\"86\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" font-style=\"italic\" fill=\"var(--gold-deep)\">x</text><rect x=\"27\" y=\"56\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"33.5\" y=\"66\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><rect x=\"41\" y=\"56\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"47.5\" y=\"66\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><rect x=\"34\" y=\"42\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"40.5\" y=\"52\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><line x1=\"200\" y1=\"72\" x2=\"200\" y2=\"92\" stroke=\"var(--line)\" stroke-width=\"1\"/><path d=\"M176 92 h48 l-6 16 h-36 z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><rect x=\"178\" y=\"58\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"183.5\" y=\"67\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"190\" y=\"58\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"195.5\" y=\"67\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"202\" y=\"58\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"207.5\" y=\"67\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"214\" y=\"58\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"219.5\" y=\"67\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"178\" y=\"74\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"183.5\" y=\"83\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"190\" y=\"74\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"195.5\" y=\"83\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"202\" y=\"74\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"207.5\" y=\"83\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"214\" y=\"74\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"219.5\" y=\"83\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><text x=\"120\" y=\"220\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">level: both sides weigh 8</text><rect x=\"248\" y=\"44\" width=\"174\" height=\"26\" rx=\"5\" fill=\"var(--gold2)\" opacity=\"0.16\"/><text x=\"335\" y=\"61\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">lift 3 off EACH pan, at once</text><text x=\"284\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">off left</text><rect x=\"277\" y=\"94\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/><text x=\"283.5\" y=\"104\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><rect x=\"270\" y=\"108\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/><text x=\"276.5\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><rect x=\"284\" y=\"108\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/><text x=\"290.5\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><path d=\"M283 138 v-12\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><path d=\"M283 124 l-4 6 h8 z\" fill=\"var(--accent)\"/><text x=\"386\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">off right</text><rect x=\"379\" y=\"94\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/><text x=\"385.5\" y=\"104\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><rect x=\"372\" y=\"108\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/><text x=\"378.5\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><rect x=\"386\" y=\"108\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/><text x=\"392.5\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">1</text><path d=\"M385 138 v-12\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><path d=\"M385 124 l-4 6 h8 z\" fill=\"var(--accent)\"/><text x=\"335\" y=\"158\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">same weight gone from both,</text><text x=\"335\" y=\"171\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">so the beam stays level</text><line x1=\"14\" y1=\"236\" x2=\"426\" y2=\"236\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"220\" y=\"260\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">after, still perfectly level</text><rect x=\"216\" y=\"290\" width=\"8\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><path d=\"M200 332 h40 l8 10 h-56 z\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><circle cx=\"220\" cy=\"292\" r=\"4\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><line x1=\"120\" y1=\"292\" x2=\"320\" y2=\"292\" stroke=\"var(--line)\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><line x1=\"120\" y1=\"292\" x2=\"120\" y2=\"312\" stroke=\"var(--line)\" stroke-width=\"1\"/><path d=\"M96 312 h48 l-6 16 h-36 z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><rect x=\"100\" y=\"294\" width=\"40\" height=\"16\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"120\" y=\"306\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" font-style=\"italic\" fill=\"var(--gold-deep)\">x</text><line x1=\"320\" y1=\"292\" x2=\"320\" y2=\"312\" stroke=\"var(--line)\" stroke-width=\"1\"/><path d=\"M296 312 h48 l-6 16 h-36 z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><rect x=\"298\" y=\"294\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"303.5\" y=\"303\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"310\" y=\"294\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"315.5\" y=\"303\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"322\" y=\"294\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"327.5\" y=\"303\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"304\" y=\"280\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"309.5\" y=\"289\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"316\" y=\"280\" width=\"11\" height=\"11\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><text x=\"321.5\" y=\"289\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--slate)\">1</text><rect x=\"356\" y=\"316\" width=\"74\" height=\"28\" rx=\"6\" fill=\"var(--gold2)\" opacity=\"0.16\"/><text x=\"393\" y=\"335\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" font-style=\"italic\" fill=\"var(--gold-deep)\">x = 5</text></svg>",
+    "cap": "Removing the same weight from both pans keeps the scale level. That is exactly why subtracting \\(3\\) from both sides of \\(x + 3 = 8\\) leaves \\(x = 5\\), with the equation still true. The block \\(x\\) never moved, so whatever it weighs has not changed. The balance just shows it plainly, \\(x = 5\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Up to now the variable wore a single box. Here it wears two at once. In the equation \\(4x - 9 = 7\\), the variable was first multiplied by \\(4\\) and then had \\(9\\) taken away. Picture the gift getting wrapped, the times-\\(4\\) box goes on first as the inner layer, then the minus-\\(9\\) box goes on second as the outer layer. To unwrap, peel in reverse and pull the outer box off first. Solve \\(4x - 9 = 7\\) and type the value of \\(x\\).",
+    "hints": [
+     "The outer layer is the minus \\(9\\), so deal with it first. What can you add to both sides to undo subtracting \\(9\\)?",
+     "Add \\(9\\) to both sides to get \\(4x = 16\\). Now the variable wears only the times-\\(4\\) box, so divide both sides by \\(4\\)."
+    ],
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "x = 4",
+     "x=4"
+    ],
+    "sol": "Peel the outer box first by adding \\(9\\) to both sides. $$4x - 9 + 9 = 7 + 9$$ The left side becomes \\(4x\\) and the right side becomes \\(16\\), so \\(4x = 16\\). Now the variable wears only the times-\\(4\\) box, so divide both sides by \\(4\\). $$\\frac{4x}{4} = \\frac{16}{4}$$ This gives \\(x = 4\\). Check by substituting back into the original equation. \\(4(4) - 9 = 16 - 9 = 7\\), which matches the right side, so it holds. The value of \\(x\\) is \\(\\boxed{4}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Here is a tougher pair of boxes. Start with a number \\(n\\), multiply it by \\(-3\\), then add \\(2\\), and the result is \\(10\\). As an equation that reads \\(-3n + 2 = 10\\). The two layers are still nested, the times-\\(-3\\) happened first so it is the inner box, and the add-\\(2\\) happened last so it is the outer box. Peel from the outside in, just like before, but watch the signs closely because the answer this time will not be a whole number. Solve \\(-3n + 2 = 10\\) and type \\(n\\) as a fraction in lowest terms, including its sign.",
+    "hints": [
+     "The outer box is the \\(+2\\), since the \\(2\\) was added last. Strip it off first by subtracting \\(2\\) from both sides, and see what is left on each side.",
+     "After subtracting, you have \\(-3n = 8\\). The inner box is times \\(-3\\), so undo it by dividing both sides by \\(-3\\). A positive divided by a negative is negative, and \\(8\\) and \\(3\\) share no common factor, so it stays as a fraction."
+    ],
+    "ans": "-8/3",
+    "accept": [
+     "-8 / 3",
+     "-8/3",
+     "-8/3 n",
+     "n=-8/3",
+     "n=−8/3",
+     "negative 8/3",
+     "negative eight thirds",
+     "−8 / 3",
+     "−8/3",
+     "−8/3 n"
+    ],
+    "sol": "Peel the outer box first. Subtract \\(2\\) from both sides. $$-3n + 2 - 2 = 10 - 2$$ The left side collapses to \\(-3n\\) and the right side becomes \\(8\\), so \\(-3n = 8\\). Now undo the inner box by dividing both sides by \\(-3\\). $$\\frac{-3n}{-3} = \\frac{8}{-3}$$ On the left the \\(-3\\) cancels and leaves \\(n\\). On the right, a positive over a negative is negative, and \\(8\\) and \\(3\\) have no common factor, so it does not reduce. That gives \\(n = -\\tfrac{8}{3}\\). A negative fraction is a perfectly good solution, the equation does not mind. Check it by substituting back. With \\(n = -\\tfrac{8}{3}\\), the term \\(-3n\\) is \\(-3 \\cdot \\left(-\\tfrac{8}{3}\\right) = 8\\), and \\(8 + 2 = 10\\), which matches the right side. The solution is \\(\\boxed{-8/3}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move I finally see. To set a variable free, I look at the operations stacked around it and peel them off from the outside in, undoing the last thing that was done to it first, like taking off my coat before my shirt. A constant added on the outside comes off before the number multiplying on the inside, and each peel is just the opposite operation done to both sides at once, subtraction undoing addition, division undoing multiplication, so the equation stays balanced and the answer never moves. When the variable stands bare on one side, I plug my number back in to make sure both sides really do agree."
+   },
+   {
+    "t": "p",
+    "x": "So far the pan holding the variable has been polite, just a box or two wrapped around it, easy to peel. Real equations do not always show up that neat. Sometimes the side with the variable is piled with several terms at once, like \\(2x + 3x\\), and sometimes it hides a group still waiting to be handed out, like \\(4(t - 7)\\), so there is nothing clean to peel yet. The fix is the exact housekeeping you already mastered in 6.1. Before you unwrap a single layer, tidy that side first, gather the like terms and spread out any group until the side is as short as it can possibly be, and only then start lifting the boxes off. One promise holds for this whole lesson. The variable lives on one side and stays there, while the other side stays a plain constant, so every equation here comes apart by cleaning up each side and then isolating a variable that sits on its own. Pulling variable terms across the equals sign from both pans is a different move, and that one we save for the very next lesson, so here you only ever tidy one side at a time."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A delivery rider tallies the whole day on a balance scale. The right pan holds a single weight of \\(19\\), and the left pan is a cluttered pile that reads \\(5k + 2 + 3k - 7\\), where \\(k\\) is the number of trips she made. The two pans balance, so \\(5k + 2 + 3k - 7 = 19\\). Do not rush to undo anything yet. First tidy that cluttered left pan with the combining you practiced in 6.1, then isolate \\(k\\). What is the value of \\(k\\)?",
+    "hints": [
+     "Resist undoing anything first. The left side is a pile of like terms, so combine them before you touch the right side. Add up the \\(k\\) terms, \\(5k\\) and \\(3k\\), and separately add up the plain numbers, \\(2\\) and \\(-7\\).",
+     "After combining you get \\(8k - 5 = 19\\), a clean two-step. Add \\(5\\) to both sides to get \\(8k = 24\\), then divide both sides by \\(8\\)."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "k = 3",
+     "k=3"
+    ],
+    "sol": "Tidy the left pan first by combining like terms, exactly as in 6.1. The \\(k\\) terms gather as \\(5k + 3k = 8k\\), and the plain numbers gather as \\(2 - 7 = -5\\), so the whole left side becomes \\(8k - 5\\). Notice the variable lived only on the left the whole time, so now the equation is a clean two-step. $$8k - 5 = 19$$ Add \\(5\\) to both sides to peel off the outer number. $$8k = 24$$ Divide both sides by \\(8\\). $$k = 3$$ Check by substituting \\(k = 3\\) back into the original left side, \\(5(3) + 2 + 3(3) - 7 = 15 + 2 + 9 - 7 = 19\\), which matches the right side, so the scale truly balances. The rider made \\(\\boxed{3}\\) trips."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 392\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An unwrap-in-reverse diagram solving the equation four x minus nine equals seven, drawn as three stacked rows. The top row is the wrapped gift. The unknown x sits in an inner box labeled times four, which sits inside an outer box labeled minus nine, and the whole package equals seven, showing how x was dressed up in lesson six point one. A small inverse table to the right pairs add with subtract and multiply with divide. The middle row peels the outer layer. The outer minus nine box is shaded gold and removed by adding nine to both sides, shown with a plus nine tag on the left side and a matching plus nine tag on the right side, leaving four x equals sixteen. The bottom row peels the inner layer. The inner times four box is shaded gold and removed by dividing both sides by four, shown with a divide by four tag on the left side and a matching divide by four tag on the right side, leaving x equals four. A curved arrow points from the outer layer down toward the inner layer to show the reverse order, undoing the last operation first with its inverse applied to both sides until x stands alone.\">\n  <defs>\n    <marker id=\"ah62\" markerWidth=\"7\" markerHeight=\"7\" refX=\"5\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 z\" fill=\"var(--accent)\"/></marker>\n  </defs>\n  <text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--mid)\">UNWRAP IN REVERSE</text>\n\n  <text x=\"16\" y=\"46\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">1. The gift, all wrapped up</text>\n  <rect x=\"20\" y=\"56\" width=\"150\" height=\"44\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"30\" y=\"70\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">outer: − 9</text>\n  <rect x=\"58\" y=\"66\" width=\"74\" height=\"26\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"64\" y=\"63\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">inner: × 4</text>\n  <circle cx=\"95\" cy=\"79\" r=\"11\" fill=\"var(--gold2)\" opacity=\"0.22\"/>\n  <text x=\"95\" y=\"83\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-style=\"italic\">x</text>\n  <text x=\"184\" y=\"84\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--ink)\">= 7</text>\n\n  <rect x=\"236\" y=\"50\" width=\"188\" height=\"56\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/>\n  <text x=\"330\" y=\"65\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--mid)\">each move has an opposite</text>\n  <line x1=\"330\" y1=\"71\" x2=\"330\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"2 3\"/>\n  <text x=\"300\" y=\"84\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">add</text>\n  <text x=\"300\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">multiply</text>\n  <text x=\"360\" y=\"84\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">subtract</text>\n  <text x=\"360\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">divide</text>\n\n  <path d=\"M 30 112 q -8 12 0 24\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.5\" marker-end=\"url(#ah62)\"/>\n  <text x=\"40\" y=\"130\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"var(--accent)\">peel outer first</text>\n\n  <line x1=\"16\" y1=\"120\" x2=\"424\" y2=\"120\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n\n  <text x=\"16\" y=\"148\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">2. Peel − 9, so add 9 to both sides</text>\n  <rect x=\"20\" y=\"158\" width=\"150\" height=\"44\" rx=\"6\" fill=\"var(--gold2)\" opacity=\"0.18\"/>\n  <rect x=\"20\" y=\"158\" width=\"150\" height=\"44\" rx=\"6\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/>\n  <rect x=\"58\" y=\"168\" width=\"74\" height=\"26\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"95\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--ink)\">4x</text>\n  <text x=\"184\" y=\"185\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--ink)\">= 7</text>\n  <rect x=\"100\" y=\"206\" width=\"40\" height=\"18\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/>\n  <text x=\"120\" y=\"219\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">+ 9</text>\n  <rect x=\"184\" y=\"206\" width=\"40\" height=\"18\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/>\n  <text x=\"204\" y=\"219\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">+ 9</text>\n  <text x=\"252\" y=\"185\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">leaves</text>\n  <text x=\"306\" y=\"185\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--ink)\">4x = 16</text>\n\n  <line x1=\"16\" y1=\"238\" x2=\"424\" y2=\"238\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n\n  <text x=\"16\" y=\"266\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">3. Peel × 4, so divide both sides by 4</text>\n  <rect x=\"58\" y=\"276\" width=\"74\" height=\"30\" rx=\"6\" fill=\"var(--gold2)\" opacity=\"0.18\"/>\n  <rect x=\"58\" y=\"276\" width=\"74\" height=\"30\" rx=\"6\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/>\n  <text x=\"95\" y=\"296\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\">4x</text>\n  <text x=\"150\" y=\"296\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--ink)\">= 16</text>\n  <rect x=\"58\" y=\"312\" width=\"48\" height=\"18\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/>\n  <text x=\"82\" y=\"325\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">÷ 4</text>\n  <rect x=\"150\" y=\"312\" width=\"48\" height=\"18\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/>\n  <text x=\"174\" y=\"325\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">÷ 4</text>\n  <text x=\"232\" y=\"296\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">leaves</text>\n  <circle cx=\"300\" cy=\"291\" r=\"13\" fill=\"var(--gold2)\" opacity=\"0.22\"/>\n  <text x=\"300\" y=\"296\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-style=\"italic\">x</text>\n  <text x=\"318\" y=\"296\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--ink)\">= 4</text>\n\n  <text x=\"220\" y=\"358\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">From the outside in, undo the last move first.</text>\n  <text x=\"220\" y=\"376\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">x stands alone, x = 4</text>\n</svg>",
+    "cap": "In 6.1 we dressed \\(x\\) from the inside out, first multiplying by \\(4\\) and then subtracting \\(9\\) to build \\(4x-9=7\\). To get \\(x\\) back we take the package apart from the outside in, undoing the last move first with its opposite and doing the same thing to both sides so the equation stays true. Add \\(9\\) to both sides to peel the \\(-9\\) and reach \\(4x=16\\), then divide both sides by \\(4\\) to peel the \\(\\times 4\\) and reach \\(\\boxed{x=4}\\). Checking, \\(4\\cdot 4-9=16-9=7\\), so the last layer off leaves \\(x\\) standing alone."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Sometimes a side hides its real shape inside a group. Look at \\(6(2 - q) = 30\\). On the left, the \\(6\\) is wrapped around the whole group \\(2 - q\\), and the right pan holds a plain \\(30\\). That outer times-\\(6\\) box has to reach both pieces inside before anything else can happen, the same rectangle-splitting move from 6.1. The \\(6\\) meets the \\(2\\) and the \\(6\\) meets the \\(-q\\), and that little minus sign in front of the \\(q\\) is the easiest thing in the world to drop. Distribute carefully, then peel the equation apart step by step. Solve \\(6(2 - q) = 30\\) and type the value of \\(q\\).",
+    "hints": [
+     "Hand the outer \\(6\\) to both pieces inside the group before you do anything else. The \\(6\\) hits the \\(2\\) and it also hits the \\(-q\\), so watch that the sign rides along. The left side turns into \\(12 - 6q\\).",
+     "Now you have \\(12 - 6q = 30\\), a plain two-step. Subtract \\(12\\) from both sides to get \\(-6q = 18\\), then divide both sides by \\(-6\\). A positive divided by a negative is negative."
+    ],
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "-3.0",
+     "−3",
+     "−3.0"
+    ],
+    "sol": "Start by distributing the outer \\(6\\) across the group, giving it to both the \\(2\\) and the \\(-q\\). $$6(2 - q) = 30$$ $$12 - 6q = 30$$ Notice the \\(-q\\) became \\(-6q\\), the minus sign came along for the ride. Now it is a clean two-step. Subtract \\(12\\) from both sides to strip the constant off the variable side. $$-6q = 18$$ Then divide both sides by \\(-6\\). A positive over a negative is negative. $$q = \\frac{18}{-6} = -3$$ Check it by putting \\(-3\\) back into the original. Inside the group, \\(2 - (-3) = 5\\), and \\(6 \\times 5 = 30\\), which matches the right side, so the equation holds. The value of \\(q\\) is \\(\\boxed{-3}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move I keep forgetting and then wishing I had done first. Before I touch both sides at all, I clean up the side that holds the variable, hand out any group that has a number stuck to the front of it and gather every like term, until that side is as short as it goes, ideally just one variable term and one plain number. A pan piled with loose terms or a sealed group looks scary, but the same thing tidied up is almost always a plain two step I already know how to undo. So the real first step of solving is not a both-sides step, it is the simplifying from 6.1 doing its job again, and only once each side is simple do I start peeling."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A coefficient does not have to be a whole number. Sometimes it is a fraction, and the good news is that undoing it is just as tidy. A paint mixer is filling today's order, and it takes exactly two thirds of a full tank. The tank holds \\(x\\) liters, so two thirds of the tank is \\(\\frac{2}{3}x\\). Today's order uses up \\(10\\) liters, which gives the equation \\(\\frac{2}{3}x = 10\\). The variable \\(x\\) is wrapped in a multiply-by-\\(\\frac{2}{3}\\) box, so to free it you multiply both sides by the reciprocal \\(\\frac{3}{2}\\), which turns the \\(\\frac{2}{3}\\) into a plain \\(1\\). Solve \\(\\frac{2}{3}x = 10\\) and type the value of \\(x\\).",
+    "hints": [
+     "The variable is being multiplied by \\(\\frac{2}{3}\\). To undo a multiplication you do the opposite. Multiplying both sides by the reciprocal \\(\\frac{3}{2}\\) will flip the \\(\\frac{2}{3}\\) back to \\(1\\) and leave \\(x\\) alone on the left.",
+     "Multiply both sides by \\(\\frac{3}{2}\\). The left side becomes \\(x\\). The right side becomes \\(10 \\cdot \\frac{3}{2}\\), so work out \\(\\frac{30}{2}\\)."
+    ],
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen",
+     "x = 15",
+     "x=15"
+    ],
+    "sol": "The variable is multiplied by \\(\\frac{2}{3}\\), so multiply both sides by the reciprocal \\(\\frac{3}{2}\\) to undo it.\n$$\\frac{3}{2} \\cdot \\frac{2}{3}x = \\frac{3}{2} \\cdot 10$$\nOn the left, \\(\\frac{3}{2} \\cdot \\frac{2}{3} = 1\\), so the left side is just \\(x\\). On the right, \\(10 \\cdot \\frac{3}{2} = \\frac{30}{2} = 15\\).\n$$x = 15$$\nIf you prefer, the same arithmetic comes from multiplying both sides by \\(3\\) to get \\(2x = 30\\), then dividing by \\(2\\) to get \\(x = 15\\). Either route lands in the same place. Check it by substituting \\(x = 15\\) back in. The left side is \\(\\frac{2}{3} \\cdot 15 = \\frac{30}{3} = 10\\), which matches the right side, so the tank holds \\(\\boxed{15}\\) liters."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "So far the variable has stood out in the open. Now watch it ride over a fraction bar. A relay team of 5 runners splits one long stretch of trail evenly, and each runner covers one leg. The trail has a flat warmup of 4 miles tacked onto the real distance \\(x\\), so the total miles to share are \\(x + 4\\). Splitting that total evenly among the 5 legs gives an average leg of 3 miles, which says \\(\\dfrac{x+4}{5} = 3\\). Think of the left side as a box. The outermost wrapper around the group \\(x + 4\\) is a <b>divide by 5</b> box, so that is the layer to peel first. Solve \\(\\dfrac{x+4}{5} = 3\\) and type the value of \\(x\\).",
+    "hints": [
+     "The variable is trapped under a division by 5. To undo dividing by 5, do the opposite to both sides and multiply by 5. That clears the fraction bar and leaves \\(x + 4\\) alone on the left.",
+     "Multiply both sides by 5 to get \\(x + 4 = 15\\). Now it is a one step equation, so subtract 4 from both sides to free \\(x\\)."
+    ],
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "x = 11",
+     "x=11"
+    ],
+    "sol": "The whole left side is being divided by 5, so undo that first by multiplying both sides by 5. $$\\frac{x+4}{5} \\cdot 5 = 3 \\cdot 5$$ The multiply by 5 cancels the divide by 5 on the left, and the right becomes \\(15\\), so \\(x + 4 = 15\\). Now it is a clean one step equation. Subtract 4 from both sides. $$x + 4 - 4 = 15 - 4$$ That leaves \\(x = 11\\). Check it by putting \\(11\\) back into the original equation. The top becomes \\(11 + 4 = 15\\), and \\(\\frac{15}{5} = 3\\), which matches the right side, so the value holds. The distance is \\(\\boxed{11}\\) miles."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A two-row before and after figure showing how to clear a denominator. The top row, labeled before, shows the equation the group x plus 4 over a fraction bar with a 5 underneath, equals 3. Under the bar the 5 is drawn as five equal shaded slices in a row to make the divide by 5 visible. Between the two rows a downward arrow is labeled multiply both sides by 5, and a small times 5 tag is attached to each side to show the same multiplication is applied to both the left side and the right side. The bottom row, labeled after, shows the five slices rejoined into one whole group with the fraction bar gone, so the left side is just x plus 4, an equals sign, and 15, since 3 times 5 is 15. A gold highlighted line reads x plus 4 equals 15, and a final note peels the plus 4 away to give x equals 11.\">\n<rect x=\"14\" y=\"14\" width=\"412\" height=\"272\" rx=\"12\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n<text x=\"38\" y=\"46\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\" letter-spacing=\"0.08em\">BEFORE</text>\n<rect x=\"48\" y=\"58\" width=\"84\" height=\"30\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n<text x=\"90\" y=\"78\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--ink)\" font-style=\"italic\">x + 4</text>\n<line x1=\"42\" y1=\"98\" x2=\"138\" y2=\"98\" stroke=\"var(--ink)\" stroke-width=\"2\"/>\n<rect x=\"48\" y=\"104\" width=\"16.8\" height=\"26\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/>\n<rect x=\"64.8\" y=\"104\" width=\"16.8\" height=\"26\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/>\n<rect x=\"81.6\" y=\"104\" width=\"16.8\" height=\"26\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/>\n<rect x=\"98.4\" y=\"104\" width=\"16.8\" height=\"26\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/>\n<rect x=\"115.2\" y=\"104\" width=\"16.8\" height=\"26\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/>\n<text x=\"90\" y=\"122\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">5</text>\n<text x=\"90\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">cut into 5 equal slices</text>\n<text x=\"165\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--slate)\">=</text>\n<rect x=\"196\" y=\"80\" width=\"34\" height=\"32\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n<text x=\"213\" y=\"102\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--ink)\">3</text>\n<rect x=\"40\" y=\"160\" width=\"44\" height=\"20\" rx=\"10\" fill=\"var(--gold2)\" opacity=\"0.18\"/>\n<text x=\"62\" y=\"174\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">× 5</text>\n<rect x=\"190\" y=\"160\" width=\"44\" height=\"20\" rx=\"10\" fill=\"var(--gold2)\" opacity=\"0.18\"/>\n<text x=\"212\" y=\"174\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">× 5</text>\n<line x1=\"300\" y1=\"78\" x2=\"300\" y2=\"170\" stroke=\"var(--gold2)\" stroke-width=\"1.8\"/>\n<path d=\"M 300 170 l -5 -8 h 10 z\" fill=\"var(--gold2)\"/>\n<text x=\"370\" y=\"112\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">multiply both</text>\n<text x=\"370\" y=\"126\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">sides by 5</text>\n<text x=\"370\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--gold-deep)\" font-weight=\"600\">the denominator</text>\n<line x1=\"28\" y1=\"194\" x2=\"412\" y2=\"194\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n<text x=\"38\" y=\"218\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\" letter-spacing=\"0.08em\">AFTER</text>\n<rect x=\"48\" y=\"226\" width=\"84\" height=\"32\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/>\n<text x=\"90\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--ink)\" font-style=\"italic\">x + 4</text>\n<text x=\"155\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--slate)\">=</text>\n<rect x=\"186\" y=\"226\" width=\"44\" height=\"32\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/>\n<text x=\"208\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--gold-deep)\" font-weight=\"600\">15</text>\n<text x=\"208\" y=\"276\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">3 × 5 = 15</text>\n<rect x=\"252\" y=\"222\" width=\"156\" height=\"26\" rx=\"6\" fill=\"var(--gold2)\" opacity=\"0.16\"/>\n<text x=\"330\" y=\"240\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--gold-deep)\" font-style=\"italic\">x + 4 = 15</text>\n<text x=\"330\" y=\"270\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">peel off the + 4, then x = 11</text>\n</svg>",
+    "cap": "The bar under \\(x+4\\) means the whole group is split into \\(5\\) equal slices, so the equation reads \\(\\frac{x+4}{5}=3\\). Multiplying both sides by that denominator \\(5\\) hands the five slices back as one whole group and undoes the division, turning the equation into the clean \\(x+4=15\\), since \\(3\\times 5=15\\). From there it is one more step, peel off the \\(+4\\) from both sides, and the variable stands alone at \\(x=11\\)."
+   },
+   {
+    "t": "imp",
+    "x": "When the variable is trapped under a denominator, the smartest first move is to make that denominator disappear by multiplying both sides by it, because the division cancels and I am left with whole-number pieces that are way easier to chase. The denominator is the outermost box wrapped around everything, so I peel it off first, whether it is sitting under a whole side like \\(\\frac{x+5}{4}=3\\) or hiding as a fractional coefficient like \\(\\frac{2}{3}x=8\\) where multiplying by the flipped fraction \\(\\frac{3}{2}\\) does the same job. It is still a fair both-sides multiply, so the scale stays balanced and the answer never changes. I have only swapped a messy true statement for a tidy one that means the exact same thing."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Solving for the variable is often just the first half of a question. At a fair, a ticket booth follows a rule. The number of group passes \\(x\\) it has sold satisfies the equation \\(5(x-2)=35\\). That tells you how many passes there are, but the booth's manager actually wants to know how many <b>wristbands</b> to hand out, and the wristband count is given by the expression \\(2x+1\\). First find \\(x\\), then use it. Solve \\(5(x-2)=35\\), then compute the value of \\(2x+1\\), and type that final number.",
+    "hints": [
+     "Start by solving for \\(x\\) on its own. The whole left side is multiplied by \\(5\\), so undo that first by dividing both sides by \\(5\\). Set the value of \\(x\\) aside, because the question is really asking about \\(2x+1\\).",
+     "Dividing both sides by \\(5\\) gives \\(x-2=7\\), so adding \\(2\\) to both sides gives \\(x=9\\). Now substitute into the wristband rule. Work out \\(2\\times 9+1\\) and type that single number."
+    ],
+    "ans": "19",
+    "accept": [
+     "19",
+     "19.0"
+    ],
+    "sol": "First solve the equation for \\(x\\). The left side has the whole group \\(x-2\\) multiplied by \\(5\\), so divide both sides by \\(5\\) to peel that off.\n$$5(x-2)=35$$\n$$x-2=7$$\nNow add \\(2\\) to both sides to get \\(x\\) by itself.\n$$x=9$$\nCheck this in the original equation by substituting \\(x=9\\). The left side becomes \\(5(9-2)=5\\times 7=35\\), which matches the right side, so \\(x=9\\) is correct. But the question does not want \\(x\\). It wants the number of wristbands, which the rule writes as \\(2x+1\\). Substitute \\(x=9\\) into that expression.\n$$2x+1=2\\times 9+1=18+1=19$$\nSo the booth hands out \\(19\\) wristbands. The final value is \\(\\boxed{19}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "Time to flip the whole game around. Usually you are handed an equation and you hunt for the variable. This time you are handed the variable and have to hunt for a missing number instead. A game designer is building a points system, and a win happens exactly when a player's score \\(x\\) plugs into the rule \\(3x + c = 20\\), where \\(c\\) is a fixed bonus the designer still has to choose. She wants a score of \\(x = 4\\) to count as a win, which means \\(x = 4\\) has to be a <b>solution</b> of \\(3x + c = 20\\). Find the value of \\(c\\) that makes \\(x = 4\\) a solution, and type that one number.",
+    "hints": [
+     "You know what \\(x\\) is this time, so put it to work. A solution is a value that makes the equation true, so replace \\(x\\) with \\(4\\) in \\(3x + c = 20\\) and see what the equation turns into.",
+     "After substituting you get \\(12 + c = 20\\). Now \\(c\\) is the only unknown left, sitting on one side. Undo the \\(+12\\) by subtracting \\(12\\) from both sides."
+    ],
+    "ans": "8",
+    "accept": [
+     "+8",
+     "8",
+     "8.0",
+     "c = 8",
+     "c=8",
+     "eight"
+    ],
+    "sol": "Saying \\(x = 4\\) is a solution means \\(x = 4\\) must make \\(3x + c = 20\\) a true statement. So substitute \\(4\\) in for \\(x\\). $$3(4) + c = 20$$ Multiply first to clean up the left side. $$12 + c = 20$$ Now \\(c\\) is alone on one side, and you isolate it by subtracting \\(12\\) from both sides. $$12 + c - 12 = 20 - 12$$ $$c = 8$$ Check it by putting both \\(x = 4\\) and \\(c = 8\\) back into the original rule. The left side is \\(3(4) + 8 = 12 + 8 = 20\\), and the right side is \\(20\\), so both sides land on \\(20\\) and the win condition holds. The fixed bonus the designer needs is \\(\\boxed{8}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the habit I am keeping for good. Checking is not an extra chore tacked onto the end, it is the second half of solving, so I take whatever value I found and put it back into the original equation, the messy one before I cleared or combined anything, and I work out each side on its own. If both sides land on the exact same number, the equation is balanced and I actually know I am right instead of just hoping. And when they do not match, I have not failed, I have caught myself, almost always a dropped negative or a tiny arithmetic slip, and I caught it before anybody else ever saw it. The kids who never get burned by signs are not lucky, they just always solve and then substitute."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "Time to bring the whole lesson together in one clean climb. A community garden is mapped out as 4 equal plots. Each row of the layout holds \\(m\\) beds. The planners describe the total this way. They take 3 copies of a row with 2 border beds removed, written \\(3(m-2)\\), then add 2 more full rows of \\(m\\) beds, and they share that whole total across the 4 plots. Every plot ends up with 6 beds, so the layout satisfies \\(\\dfrac{3(m-2)+2m}{4}=6\\). Peel the equation apart one box at a time, outermost first, until \\(m\\) stands alone. Solve \\(\\dfrac{3(m-2)+2m}{4}=6\\) and type the value of \\(m\\).",
+    "hints": [
+     "The whole left side is wrapped in a division by 4. That is the outermost box, so undo it first. Multiply both sides by 4 to clear the denominator, and the equation becomes \\(3(m-2)+2m=24\\).",
+     "Now distribute the 3 across \\(m-2\\) to get \\(3m-6\\), then add the \\(2m\\). The like terms \\(3m\\) and \\(2m\\) combine into \\(5m\\), so the left collapses to \\(5m-6=24\\). Add 6 to both sides, then divide both sides by 5."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "m = 6",
+     "m=6"
+    ],
+    "sol": "Start with the equation and peel off the outermost box first. The entire left side is divided by 4, so undo that by multiplying both sides by 4. $$\\frac{3(m-2)+2m}{4}=6$$ $$3(m-2)+2m=24$$ Now work inside. Distribute the 3 across \\(m-2\\) to get \\(3m-6\\), then bring down the \\(2m\\). $$3m-6+2m=24$$ Combine the like terms \\(3m\\) and \\(2m\\) into \\(5m\\), so the left side collapses. $$5m-6=24$$ Keep peeling from the outside. The \\(-6\\) is the last thing added on, so add 6 to both sides. $$5m=30$$ Finally \\(m\\) is multiplied by 5, so divide both sides by 5. $$m=6$$ The variable rode along on one side the whole way. Check by substituting \\(m=6\\) back into the original. The top becomes \\(3(6-2)+2(6)=3\\cdot 4+12=12+12=24\\), and \\(24\\div 4=6\\), which matches the right side. $$\\boxed{6}$$"
+   }
+  ],
+  "review": [
+   {
+    "x": "A diver records a depth using a single reading that climbs as she rises. Her instrument says the start reading \\(x\\) satisfies the equation \\(x + 12 = 5\\), where negative numbers mean she is below the surface. Solve \\(x + 12 = 5\\) and type the value of \\(x\\).",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "-7.0",
+     "−7",
+     "−7.0"
+    ],
+    "hints": [
+     "The variable \\(x\\) is being added to by \\(12\\). To undo adding \\(12\\), do the opposite to both sides and subtract \\(12\\).",
+     "After you subtract \\(12\\) from the right side, you are computing \\(5 - 12\\), which lands below zero."
+    ],
+    "sol": "The variable \\(x\\) sits alone on the left, with \\(12\\) added to it, so I undo that addition. Subtract \\(12\\) from both sides to keep the equation balanced.\n\n$$x + 12 = 5$$\n$$x + 12 - 12 = 5 - 12$$\n$$x = -7$$\n\nSo \\(x = \\boxed{-7}\\). Checking it, substitute \\(-7\\) back into the left side. That gives \\(-7 + 12 = 5\\), which matches the right side, so the reading is correct."
+   },
+   {
+    "x": "A clay jar starts with some marbles in it. You check it later and notice that after \\(6\\) more marbles were dropped in, the jar holds \\(20\\). If \\(n\\) stands for the number of marbles that were in the jar at the start, then the situation reads \\(n + 6 = 20\\). Solve \\(n + 6 = 20\\) and type the value of \\(n\\).",
+    "hints": [
+     "The \\(6\\) is being added to \\(n\\), so undo it by subtracting \\(6\\) from both sides at once.",
+     "Subtracting \\(6\\) from the left leaves \\(n\\) all by itself, and subtracting \\(6\\) from the right turns \\(20\\) into \\(20 - 6\\)."
+    ],
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0",
+     "fourteen",
+     "n = 14",
+     "n=14"
+    ],
+    "sol": "The variable \\(n\\) sits on the left with a \\(6\\) added to it, so to get \\(n\\) by itself, undo that addition by subtracting \\(6\\) from both sides. $$n + 6 = 20$$ $$n + 6 - 6 = 20 - 6$$ $$n = 14$$ So the jar started with \\(\\boxed{14}\\) marbles. Checking it, \\(14 + 6 = 20\\), which matches the right side, so the value works."
+   },
+   {
+    "x": "A toy shop sells building blocks in identical jumbo packs. Every pack holds the same number of blocks, and 4 packs together hold 9 blocks worth of a special edition mini set, written as \\(4m = 9\\), where \\(m\\) is how many of those mini sets fit in one pack. Solve for \\(m\\) and type the value as a fraction in lowest terms.",
+    "ans": "9/4",
+    "accept": [
+     "9 / 4",
+     "9/4",
+     "9/4ths",
+     "nine fourths"
+    ],
+    "hints": [
+     "Right now \\(m\\) is multiplied by 4. To get \\(m\\) by itself, do the opposite of multiplying and divide both sides by 4.",
+     "Dividing both sides by 4 gives \\(m = \\tfrac{9}{4}\\). Check that 9 and 4 share no common factor, so it is already in lowest terms."
+    ],
+    "sol": "We start with \\(4m = 9\\). Since \\(m\\) is multiplied by 4, we undo that by dividing both sides by 4. That gives \\(m = \\tfrac{9}{4}\\). To check, put it back in and see if \\(4 \\cdot \\tfrac{9}{4} = 9\\), and it does. Since 9 and 4 have no common factor other than 1, the fraction is already in lowest terms, so \\(\\boxed{9/4}\\)."
+   },
+   {
+    "x": "A delivery drone is descending toward a rooftop, and a tracker reports a value \\(y\\) for how its altitude is changing. The readout satisfies the equation \\(-6y = 54\\). Solve the equation and type the value of \\(y\\), including its sign.",
+    "ans": "-9",
+    "accept": [
+     "-9",
+     "-9.0",
+     "negative nine",
+     "−9",
+     "−9.0"
+    ],
+    "hints": [
+     "The \\(y\\) is being multiplied by \\(-6\\), so to get \\(y\\) by itself, divide both sides of the equation by \\(-6\\).",
+     "Work out the right side. You need \\(54\\) divided by \\(-6\\), which is \\(-9\\)."
+    ],
+    "sol": "We start with \\(-6y = 54\\). The \\(y\\) is multiplied by \\(-6\\), so we undo that by dividing both sides by \\(-6\\). On the left that leaves just \\(y\\). On the right we compute \\(54\\) divided by \\(-6\\). A positive divided by a negative is negative, and \\(54\\) divided by \\(6\\) is \\(9\\), so the result is \\(-9\\). That gives \\(y = -9\\). Check it by putting it back in. \\(-6\\) times \\(-9\\) is \\(54\\), which matches the right side, so the answer is \\(\\boxed{-9}\\)."
+   },
+   {
+    "x": "A vending machine charges the same price for every snack, plus a flat \\(\\$7\\) delivery fee tacked onto the whole order. If buying \\(3\\) snacks comes to \\(\\$22\\), then \\(3x + 7 = 22\\), where \\(x\\) is the price of one snack. Solve \\(3x + 7 = 22\\) and type the value of \\(x\\).",
+    "hints": [
+     "The \\(7\\) is just added on at the end, so peel it off first. Subtract \\(7\\) from both sides to get \\(3x\\) by itself.",
+     "Now you have \\(3x = 15\\). Since \\(3x\\) means \\(3\\) times \\(x\\), divide both sides by \\(3\\) to find \\(x\\)."
+    ],
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "x = 5",
+     "x=5"
+    ],
+    "sol": "Start with the equation and undo the operations in reverse, peeling off the constant first and then the coefficient. Subtract \\(7\\) from both sides to clear the added constant. $$3x + 7 - 7 = 22 - 7$$ $$3x = 15$$ Now \\(3x\\) means \\(3\\) times \\(x\\), so divide both sides by \\(3\\). $$\\frac{3x}{3} = \\frac{15}{3}$$ $$x = 5$$ Check by substituting \\(x = 5\\) back into the original equation. The left side becomes \\(3(5) + 7 = 15 + 7 = 22\\), which matches the right side, so the value works. \\(\\boxed{5}\\)"
+   },
+   {
+    "x": "A baker is splitting a big batch of dough across baking trays. She uses \\(w\\) cups of dough on each of two trays, then sets aside 3 cups for a test loaf, and the dough she used up comes to 4 cups in total. That gives her the equation \\(2w - 3 = 4\\). Solve for \\(w\\) and type the answer as a fraction in lowest terms.",
+    "ans": "7/2",
+    "accept": [
+     "3 1/2",
+     "3.5",
+     "7 / 2",
+     "7/2",
+     "seven halves"
+    ],
+    "hints": [
+     "The lone number on the left is the \\(-3\\). Move it out of the way first by adding 3 to both sides, so the \\(2w\\) stands alone.",
+     "After adding 3 you get \\(2w = 7\\). Now undo the times-2 by dividing both sides by 2."
+    ],
+    "sol": "Start with \\(2w - 3 = 4\\). The variable term has a number hanging off it, so peel that away first. Add 3 to both sides and the left becomes just \\(2w\\), while the right becomes \\(4 + 3 = 7\\). That leaves \\(2w = 7\\). Now \\(w\\) is only being multiplied by 2, so divide both sides by 2 to get \\(w = \\frac{7}{2}\\). Check it by putting \\(\\frac{7}{2}\\) back in. Then \\(2 \\cdot \\frac{7}{2} = 7\\), and \\(7 - 3 = 4\\), which matches the right side, so it holds. The dough on each tray is \\(\\boxed{7/2}\\) cups."
+   },
+   {
+    "x": "An expression on the left looks busier than it really is. Tidy it up first, then go hunting for the value. Solve \\(7t - 2 - 4t + 5 = 18\\) and type the value of \\(t\\).",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "t = 5",
+     "t=5"
+    ],
+    "hints": [
+     "The left side has two \\(t\\) terms and two plain numbers. Combine them first. The \\(t\\) terms give \\(7t - 4t = 3t\\), and the numbers give \\(-2 + 5 = 3\\), so the equation becomes \\(3t + 3 = 18\\).",
+     "Now peel away the outside layers. Subtract \\(3\\) from both sides to undo the \\(+3\\), then divide both sides by \\(3\\) to undo the multiplication."
+    ],
+    "sol": "Start by cleaning up the left side, since the variable only lives over there. Group the \\(t\\) terms and the constants separately.\n$$7t - 4t = 3t \\quad\\text{and}\\quad -2 + 5 = 3$$\nSo the equation simplifies to a much friendlier shape.\n$$3t + 3 = 18$$\nNow isolate \\(t\\). Subtract \\(3\\) from both sides to clear the constant.\n$$3t = 15$$\nThen divide both sides by \\(3\\).\n$$t = 5$$\nCheck it by putting \\(5\\) back into the original left side. We get \\(7\\cdot 5 - 2 - 4\\cdot 5 + 5 = 35 - 2 - 20 + 5 = 18\\), which matches the right side. So the solution is \\(\\boxed{5}\\)."
+   },
+   {
+    "x": "A packing line fills five identical kits. Each kit is supposed to hold \\(d\\) items, but every kit ships with 4 missing, so each one actually holds \\(d-4\\) items. Across all five kits the line counts 15 items total, which gives \\(5(d-4)=15\\). Distribute the 5 first, then isolate \\(d\\). What value of \\(d\\) makes the equation true?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "d = 7",
+     "d=7"
+    ],
+    "hints": [
+     "Distribute the 5 across the parentheses. \\(5(d-4)\\) becomes \\(5d-20\\), so the equation reads \\(5d-20=15\\).",
+     "Now the variable is alone on the left as one term. Undo the \\(-20\\) by adding 20 to both sides, then undo the times 5 by dividing both sides by 5."
+    ],
+    "sol": "Start by distributing the 5 across the parentheses so the left side is a clean sum. $$5(d-4)=15$$ $$5d-20=15$$ Now peel away the pieces around \\(d\\). Add 20 to both sides to clear the \\(-20\\). $$5d=35$$ Divide both sides by 5 to free \\(d\\). $$d=7$$ So \\(\\boxed{7}\\). Check it by going back to the original equation. With \\(d=7\\) each kit holds \\(7-4=3\\) items, and five kits hold \\(5\\cdot 3 = 15\\), which matches the 15 items counted, so the value works."
+   },
+   {
+    "x": "A folded triangle of paper has three equal edges, and each edge measures \\(2k+5\\) units. The whole border of the triangle, all three edges added together, comes out to \\(9\\) units. That gives the equation \\(3(2k+5)=9\\). What is the value of \\(k\\)?",
+    "hints": [
+     "Multiply the \\(3\\) through the parentheses first. \\(3 \\cdot 2k\\) and \\(3 \\cdot 5\\) give you \\(6k+15=9\\).",
+     "Now the variable is alone on the left once you peel away the constant. Subtract \\(15\\) from both sides, then divide both sides by \\(6\\)."
+    ],
+    "ans": "-1",
+    "accept": [
+     "-1",
+     "-1.0",
+     "−1",
+     "−1.0"
+    ],
+    "sol": "Start by distributing the \\(3\\) across the group. \\(3(2k+5)\\) becomes \\(6k+15\\), so the equation is now \\(6k+15=9\\). Undo the \\(+15\\) by subtracting \\(15\\) from both sides, which leaves \\(6k=-6\\). Then divide both sides by \\(6\\) to get \\(k=-1\\). $$3(2k+5)=9$$ $$6k+15=9$$ $$6k=-6$$ $$k=-1$$ Check it by putting \\(-1\\) back in. \\(2(-1)+5=3\\), and \\(3 \\cdot 3=9\\), which matches the right side. So \\(\\boxed{-1}\\)."
+   },
+   {
+    "x": "A water tank is part full. Three fifths of its capacity \\(x\\) comes out to \\(9\\) liters, so \\(\\frac{3}{5}x = 9\\). Solve for \\(x\\) and type the value of \\(x\\).",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen",
+     "x = 15",
+     "x=15"
+    ],
+    "hints": [
+     "The variable is being multiplied by \\(\\frac{3}{5}\\). To undo that, multiply both sides by the reciprocal, which is \\(\\frac{5}{3}\\).",
+     "Compute \\(9 \\cdot \\frac{5}{3}\\). The \\(9\\) and the \\(3\\) share a factor, so this lands on a clean whole number."
+    ],
+    "sol": "The variable \\(x\\) is multiplied by \\(\\frac{3}{5}\\), so I undo that by multiplying both sides by the reciprocal \\(\\frac{5}{3}\\).\n$$\\frac{5}{3} \\cdot \\frac{3}{5}x = \\frac{5}{3} \\cdot 9$$\nOn the left the two fractions cancel to \\(1\\), leaving \\(x\\). On the right \\(\\frac{5}{3} \\cdot 9 = \\frac{45}{3} = 15\\).\n$$x = 15$$\nCheck by putting \\(15\\) back in. \\(\\frac{3}{5} \\cdot 15 = \\frac{45}{5} = 9\\), which matches the right side, so it holds.\n\\(\\boxed{15}\\)"
+   },
+   {
+    "x": "Watch what a fractional coefficient asks of you. The variable \\(b\\) is not sitting alone, it is scaled by \\(\\tfrac{2}{7}\\), and the side it equals is negative. To free \\(b\\) you undo that scaling in one clean move, by multiplying by the flipped fraction, and the negative sign rides along through the whole thing. Solve \\(\\tfrac{2}{7}b = -4\\) and type the value of \\(b\\).",
+    "hints": [
+     "The coefficient \\(\\tfrac{2}{7}\\) is multiplying \\(b\\), so undo it by multiplying both sides by its reciprocal \\(\\tfrac{7}{2}\\). On the left, \\(\\tfrac{7}{2}\\cdot\\tfrac{2}{7} = 1\\), which leaves a bare \\(b\\). On the right you still have to work out \\(\\tfrac{7}{2}\\cdot(-4)\\), and a positive times a negative stays negative.",
+     "Multiplying the right side, \\(\\tfrac{7}{2}\\cdot(-4) = \\tfrac{7\\cdot(-4)}{2} = \\tfrac{-28}{2} = -14\\). So the whole equation collapses to \\(b = -14\\). Keep that minus sign, it does not disappear."
+    ],
+    "ans": "-14",
+    "accept": [
+     "-14",
+     "-14.0",
+     "minus 14",
+     "negative 14",
+     "negative fourteen",
+     "−14",
+     "−14.0"
+    ],
+    "sol": "The variable \\(b\\) is being multiplied by \\(\\tfrac{2}{7}\\), so to isolate it I multiply both sides by the reciprocal \\(\\tfrac{7}{2}\\). On the left those two fractions cancel to \\(1\\), and on the right I carry out the multiplication, keeping the sign. $$\\tfrac{7}{2}\\cdot\\tfrac{2}{7}b = \\tfrac{7}{2}\\cdot(-4)$$ $$b = \\tfrac{7\\cdot(-4)}{2} = \\tfrac{-28}{2} = -14$$ So \\(b = -14\\). Check it by substituting back into the original left side. \\(\\tfrac{2}{7}\\cdot(-14) = \\tfrac{2\\cdot(-14)}{7} = \\tfrac{-28}{7} = -4\\), which matches the right side, so the value works. The solution is \\(\\boxed{-14}\\)."
+   },
+   {
+    "x": "A scale model is built so that the value \\(3h+2\\) is shared equally among \\(4\\) display cases, and each case ends up holding \\(5\\) units. That gives the equation \\(\\dfrac{3h+2}{4}=5\\). The whole left side is divided by \\(4\\), so the fastest move is to undo that division first. Solve \\(\\dfrac{3h+2}{4}=5\\) and type the value of \\(h\\).",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "h = 6",
+     "h=6",
+     "six"
+    ],
+    "hints": [
+     "The left side is one big quantity divided by \\(4\\). Multiply both sides by \\(4\\) to clear the denominator, which turns the equation into \\(3h+2=20\\).",
+     "Now you have \\(3h+2=20\\). Peel the layers in reverse. Subtract \\(2\\) from both sides, then divide both sides by \\(3\\)."
+    ],
+    "sol": "The variable sits inside a fraction, and the whole top is divided by \\(4\\). Undo that division first by multiplying both sides by \\(4\\).\n$$\\frac{3h+2}{4}=5$$\n$$3h+2=20$$\nNow the variable has two layers wrapped around it. A \\(2\\) is added, and the result is multiplied by \\(3\\). Peel them off in reverse order. Subtract \\(2\\) from both sides.\n$$3h=18$$\nThen divide both sides by \\(3\\).\n$$h=6$$\nCheck by putting \\(6\\) back in. The top becomes \\(3\\cdot 6+2=20\\), and \\(\\frac{20}{4}=5\\), which matches the right side. So \\(\\boxed{6}\\)."
+   },
+   {
+    "x": "A whole quantity got divided into 4 equal parts, and each part came out to \\(6\\). The quantity was \\(5x+2\\). So we know that \\(\\frac{5x+2}{4}=6\\). Solve for \\(x\\), and type your answer as a fraction in lowest terms.",
+    "ans": "22/5",
+    "accept": [
+     "22 / 5",
+     "22/5",
+     "twenty two fifths",
+     "twenty-two fifths",
+     "twenty−two fifths"
+    ],
+    "hints": [
+     "The variable is trapped over a denominator of \\(4\\). Undo that division first by multiplying both sides by \\(4\\), which turns the left side into just \\(5x+2\\).",
+     "Once you have \\(5x+2=24\\), subtract \\(2\\) from both sides to get \\(5x=22\\), then divide both sides by \\(5\\). Since \\(22\\) is not a multiple of \\(5\\), your answer stays a fraction."
+    ],
+    "sol": "The variable sits over a denominator, so clear that first. Multiply both sides by \\(4\\).\n$$\\frac{5x+2}{4}\\cdot 4 = 6\\cdot 4$$\n$$5x+2 = 24$$\nNow subtract \\(2\\) from both sides.\n$$5x = 22$$\nDivide both sides by \\(5\\).\n$$x = \\frac{22}{5}$$\nSince \\(22\\) and \\(5\\) share no common factor, this is already in lowest terms. Check it by putting \\(\\frac{22}{5}\\) back in. Then \\(5x = 5\\cdot\\frac{22}{5} = 22\\), so \\(5x+2 = 24\\), and \\(\\frac{24}{4}=6\\), which matches the right side. The answer is \\(\\boxed{22/5}\\)."
+   },
+   {
+    "ans": "7",
+    "x": "Someone hands you the equation \\(2n + c = 17\\) with one piece missing. They tell you that \\(n = 5\\) is supposed to be a solution, so plugging in 5 has to make the statement true. Substitute \\(n = 5\\) and then figure out which constant \\(c\\) makes both sides equal. What is the value of \\(c\\)?",
+    "accept": [
+     "7",
+     "7.0",
+     "c = 7",
+     "c=7",
+     "seven"
+    ],
+    "hints": [
+     "Replace \\(n\\) with 5 everywhere it shows up. The equation becomes \\(2(5) + c = 17\\), and \\(2(5)\\) is just 10.",
+     "Now you have \\(10 + c = 17\\). Ask what number added to 10 lands on 17, or subtract 10 from both sides."
+    ],
+    "sol": "A solution is a value of the variable that makes the equation true, so saying \\(n = 5\\) is a solution means \\(2n + c = 17\\) has to hold when we put 5 in for \\(n\\). Substitute first.\n$$2(5) + c = 17$$\n$$10 + c = 17$$\nNow isolate \\(c\\) by subtracting 10 from both sides.\n$$10 + c - 10 = 17 - 10$$\n$$c = 7$$\nCheck it by going back to the original equation with \\(n = 5\\) and \\(c = 7\\). The left side is \\(2(5) + 7 = 10 + 7 = 17\\), which matches the right side, so the constant is \\(\\boxed{7}\\)."
+   }
+  ],
+  "next": "6.3"
  }
 }
