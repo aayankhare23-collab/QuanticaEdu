@@ -1960,5 +1960,478 @@
    }
   ],
   "next": "5.5"
+ },
+ "5.5": {
+  "title": "Repeating Decimals",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Back in 5.3 we found the rule for when a fraction gets to wear a clean stopping decimal. Put the fraction in lowest terms, look at the bottom number, and if the only primes hiding inside it are 2s and 5s, the decimal ends. Anything else, and it runs forever. We even said it out loud, that 2 and 5 are the gatekeepers of a clean decimal name. And then we stopped at one number on purpose. Three friends split a granola bar, each one gets \\(\\tfrac{1}{3}\\), and the denominator \\(3\\) is a prime that is neither a 2 nor a 5. So the rule made us a promise. <b>One third can never settle into a stopping decimal.</b> We refused to actually divide it that day and left the digits sitting there for later. This is later. Pull the thread. If \\(\\tfrac{1}{3}\\) never stops, then its digits march on without end, and the honest worry is that they pour out as some endless mess with no shape to them at all, a number you could never really write down. So here is the real question of this whole lesson, in plain words. When a decimal refuses to end, are its digits <b>random</b>, or are they secretly <b>trapped in a loop</b>. And if there is a loop, what decides how long the loop is and which digits get to live inside it. Here is the promise back. The entire answer is already hiding inside the long division you already know, sitting in the leftover remainder at each step, waiting for you to notice. By the end of this lesson you will name the loop, run any repeating decimal backward into a fraction, predict a digit a hundred places out without writing the ninety-nine before it, and meet one equality that looks impossible the very first time you see it. No new machinery. Just long division, watched closely."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Let's settle the teaser the honest way, by doing the long division ourselves. Set up \\(1 \\div 3\\). Three does not go into \\(1\\), so we write a decimal point and pull down a zero, which turns the \\(1\\) into \\(10\\). Now \\(10 \\div 3\\) is \\(3\\) with \\(1\\) left over. That leftover \\(1\\) is the whole story, so keep your eye on it. Pull down another zero next to that \\(1\\) and you are looking at \\(10\\) again, so the next digit is \\(3\\) and the leftover is \\(1\\) again. Do it once more and the same thing happens. The division never reaches something new, because every step is a perfect copy of the step before it. That endless run of threes is what we write as \\(0.\\overline{3}\\), with a bar meaning the \\(3\\) keeps going forever. Here is the concrete thing to answer, and it needs no bar to type. In the long division of \\(1\\) by \\(3\\), what number is the leftover (the remainder) at the end of every step?",
+    "hints": [
+     "Don't watch the quotient digit, watch what is left over after you subtract. Each step you have some number, you take away the biggest multiple of \\(3\\) you can, and a small leftover stays behind. Write down that leftover for the first two or three steps and see if it changes.",
+     "On step one you compute \\(10 - 9 = 1\\). On step two you pull down a zero to make \\(10\\) again, and \\(10 - 9 = 1\\). The leftover after subtracting is the same single digit every single time. Type that digit."
+    ],
+    "ans": "1",
+    "accept": [
+     "01",
+     "1",
+     "1.0",
+     "one"
+    ],
+    "sol": "Watch the remainder, not the digit, and the mystery dissolves. We are computing \\(1 \\div 3\\). Since \\(3\\) does not divide \\(1\\), we place the decimal point and bring down a zero, which makes the running number \\(10\\). The largest multiple of \\(3\\) that fits in \\(10\\) is \\(9\\), so the quotient digit is \\(3\\) and the remainder is \\(10 - 9 = 1\\). Now bring down the next zero. The remainder \\(1\\) becomes \\(10\\) once more, the digit is \\(3\\) again, and \\(10 - 9 = 1\\) again. Here is the key observation. The new remainder, \\(1\\), is exactly the number we started this whole process with. So step three must be an identical copy of step two, step four a copy of step three, and so on with no end. The remainder is locked at \\(1\\), which locks the quotient digit at \\(3\\), forever. That is precisely why \\(\\tfrac{1}{3} = 0.\\overline{3}\\), the bar marking the \\(3\\) that can never escape. The single number that returns at the end of every step is \\(\\boxed{1}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So that is the whole story. A decimal stops when the long division finally hands back a remainder of \\(0\\) and quits, and dividing \\(1\\) by \\(3\\) never gets to do that, because every step ends on the same leftover of \\(1\\). An identical leftover makes the next step identical, and an identical step prints the same digit again, so when the remainder repeats, the digit has no choice but to repeat too. One third does not run forever because its digits are unlucky, it runs forever because its remainder is stuck in a loop and can never reach \\(0\\). That is the gatekeeper rule from 5.3 seen from the inside. A denominator of \\(3\\) could never be rescaled onto a power of ten, and now we can watch the very same fact play out in the division, where the remainder simply refuses to land on \\(0\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "One stubborn remainder was easy to believe. Now watch why repeating is <b>unavoidable</b> for any fraction whose decimal never stops, using \\(\\tfrac{1}{7}\\). When you long-divide \\(1\\) by \\(7\\), every remainder along the way is one of \\(0, 1, 2, 3, 4, 5, 6\\), because a remainder is always smaller than the divisor. If a \\(0\\) ever appears the decimal stops and you are finished. So suppose it never does. Then every remainder is one of just <b>six</b> values, \\(1\\) through \\(6\\). With only six possible remainders and the division churning out new ones forever, two steps must eventually land on the same remainder. The instant a remainder you have already seen comes back, the next step copies an earlier step, and from there the entire string of digits replays on a loop. Run the division far enough to see it happen. The remainders go \\(1, 3, 2, 6, 4, 5\\), and then \\(1\\) returns, closing the loop, and the digits come out \\(142857\\) before they start over, so \\(\\tfrac{1}{7} = 0.\\overline{142857}\\). How many digits are in the repeating block of \\(\\tfrac{1}{7}\\)? Give the count.",
+    "hints": [
+     "Only \\(0\\) through \\(6\\) can ever be a remainder, and \\(0\\) would stop the decimal. So while it keeps going, every remainder is one of \\(1, 2, 3, 4, 5, 6\\). The block repeats once a remainder returns, so the longest a block can run before looping is exactly the number of different remainders that show up.",
+     "List the remainders in order until one comes back. They are \\(1, 3, 2, 6, 4, 5\\), and then \\(1\\) appears again. Count how many remainders you went through before that first repeat. That count is the length of the repeating block."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "sol": "Each step of long division produces a remainder, and that remainder is what decides the next digit. So if a remainder ever repeats, the step after it must produce the same digit and the same next remainder as before, and the pattern is locked into a loop from that point on. The length of the repeating block is just how many steps happen between a remainder and its first return. Track the remainders for \\(\\tfrac{1}{7}\\). Start with \\(1\\). Bring down a zero to get \\(10\\), and \\(10 \\div 7\\) gives digit \\(1\\) with remainder \\(3\\). Then \\(30 \\div 7\\) gives \\(4\\) remainder \\(2\\). Then \\(20 \\div 7\\) gives \\(2\\) remainder \\(6\\). Then \\(60 \\div 7\\) gives \\(8\\) remainder \\(4\\). Then \\(40 \\div 7\\) gives \\(5\\) remainder \\(5\\). Then \\(50 \\div 7\\) gives \\(7\\) remainder \\(1\\). The remainder \\(1\\) is back, the one we started with, so the loop closes here. The remainders we passed through were \\(1, 3, 2, 6, 4, 5\\), which is <b>six</b> of them, and the digits they produced were \\(1, 4, 2, 8, 5, 7\\). That gives \\(\\tfrac{1}{7} = 0.\\overline{142857}\\), a block of six digits. Notice the block could not have been longer than six, since only the six remainders \\(1\\) through \\(6\\) are available before a \\(0\\) would end it, and here all six get used. The repeating block has \\(\\boxed{6}\\) digits."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the thing I just earned. When I divide by \\(b\\), every remainder along the way is smaller than \\(b\\), so there are only so many remainders that can ever turn up, never more than \\(b\\) of them. If the division never lands on a remainder of \\(0\\), it has to keep stepping forever with only that small handful to choose from, so sooner or later a remainder I already saw has to come back, and the instant it does, every step after it copies a step I took before and the digits lock into a loop. So a decimal that refuses to stop is never wandering at random, it is always settling into a block that repeats. And that closes the loop with the gatekeepers, because a denominator carrying any prime besides \\(2\\) or \\(5\\) can never reach remainder \\(0\\), so it is shut out of stopping and pushed straight into repeating. Truly endless random decimals are real numbers, but no fraction ever spells one."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A remainder ring for one seventh. Six nodes hold the remainders that appear during long division, in the order they occur: 1, then 3, then 2, then 6, then 4, then 5. An arrow runs from each node to the next, and a final arrow closes the loop from 5 back to 1. On each arrow sits the quotient digit that step produces, so reading around the ring spells 1, 4, 2, 8, 5, 7. Below the ring the result reads 0 point 142857 with a bar over the whole block, and the ring length is labelled period equals 6. To the right, one third is drawn as a single node holding remainder 1 with an arrow looping back onto itself forever, producing the one digit block 3.\">\n  <defs>\n    <marker id=\"rh\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\">\n      <path d=\"M0 0 L10 5 L0 10 z\" fill=\"var(--line)\"/>\n    </marker>\n    <marker id=\"rg\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\">\n      <path d=\"M0 0 L10 5 L0 10 z\" fill=\"var(--gold-deep)\"/>\n    </marker>\n  </defs>\n  <text x=\"120\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--mid)\">the remainder ring for ⅐</text>\n  <!-- ring arrows: nodes at angles starting top, going clockwise. center 120,150 r 78 -->\n  <!-- node centers: 1 top(120,72) 3(187.5,111) 2(187.5,189) 6(120,228) 4(52.5,189) 5(52.5,111) -->\n  <!-- 1 -> 3 digit 1 -->\n  <path d=\"M139 81 A78 78 0 0 1 178 100\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\" marker-end=\"url(#rh)\"/>\n  <text x=\"170\" y=\"80\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">1</text>\n  <!-- 3 -> 2 digit 4 -->\n  <path d=\"M198 130 A78 78 0 0 1 198 170\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\" marker-end=\"url(#rh)\"/>\n  <text x=\"220\" y=\"155\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">4</text>\n  <!-- 2 -> 6 digit 2 -->\n  <path d=\"M178 200 A78 78 0 0 1 139 219\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\" marker-end=\"url(#rh)\"/>\n  <text x=\"170\" y=\"225\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">2</text>\n  <!-- 6 -> 4 digit 8 -->\n  <path d=\"M101 219 A78 78 0 0 1 62 200\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\" marker-end=\"url(#rh)\"/>\n  <text x=\"70\" y=\"225\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">8</text>\n  <!-- 4 -> 5 digit 5 -->\n  <path d=\"M42 170 A78 78 0 0 1 42 130\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"2\" marker-end=\"url(#rh)\"/>\n  <text x=\"20\" y=\"155\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">5</text>\n  <!-- 5 -> 1 digit 7  (closing arrow, gold) -->\n  <path d=\"M62 100 A78 78 0 0 1 101 81\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"2.5\" marker-end=\"url(#rg)\"/>\n  <text x=\"70\" y=\"80\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">7</text>\n  <!-- nodes -->\n  <circle cx=\"120\" cy=\"72\" r=\"16\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"120\" y=\"77\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\">1</text>\n  <circle cx=\"187.5\" cy=\"111\" r=\"16\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"187.5\" y=\"116\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\">3</text>\n  <circle cx=\"187.5\" cy=\"189\" r=\"16\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"187.5\" y=\"194\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\">2</text>\n  <circle cx=\"120\" cy=\"228\" r=\"16\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"120\" y=\"233\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\">6</text>\n  <circle cx=\"52.5\" cy=\"189\" r=\"16\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"52.5\" y=\"194\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\">4</text>\n  <circle cx=\"52.5\" cy=\"111\" r=\"16\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"52.5\" y=\"116\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\">5</text>\n  <!-- center label -->\n  <text x=\"120\" y=\"146\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">period</text>\n  <text x=\"120\" y=\"162\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--gold-deep)\">6</text>\n  <!-- result under the ring -->\n  <line x1=\"101\" y1=\"270\" x2=\"152\" y2=\"270\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"120\" y=\"287\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">0.142857</text>\n  <text x=\"120\" y=\"307\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">the whole block repeats</text>\n  <!-- divider -->\n  <line x1=\"305\" y1=\"50\" x2=\"305\" y2=\"270\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 4\"/>\n  <!-- 1/3 self-loop -->\n  <text x=\"375\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--mid)\">and ⅓ for contrast</text>\n  <circle cx=\"375\" cy=\"135\" r=\"20\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <text x=\"375\" y=\"141\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"600\" fill=\"var(--ink)\">1</text>\n  <!-- self loop arrow on top -->\n  <path d=\"M362 122 C345 88, 405 88, 388 122\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"2.5\" marker-end=\"url(#rg)\"/>\n  <text x=\"375\" y=\"83\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">3</text>\n  <text x=\"375\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">remainder 1</text>\n  <text x=\"375\" y=\"195\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">forever</text>\n  <line x1=\"377\" y1=\"252\" x2=\"386\" y2=\"252\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"375\" y=\"268\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">0.3</text>\n  <text x=\"375\" y=\"226\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">period 1</text>\n</svg>",
+    "cap": "Dividing \\(1\\) by \\(7\\), the leftover at each step rides around this ring in the order \\(1, 3, 2, 6, 4, 5\\), and the quotient digit stamped on each arrow spells \\(0.\\overline{142857}\\). The closing gold arrow from \\(5\\) back to \\(1\\) is the whole point. Every leftover is smaller than the divisor, so only finitely many leftovers are possible, and the moment one returns the digits are forced to repeat. The size of the loop is the length of the repeating block, the period. Here that loop holds six remainders, so the period is \\(6\\). Beside it, \\(\\tfrac{1}{3}\\) loops straight back onto remainder \\(1\\) at once, a loop of one, giving the single digit block \\(0.\\overline{3}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "You have watched the loop close before. Now give its size a name. The number of digits in the repeating block of a decimal is called its <b>period</b>, and the bar marks exactly which digits belong to that block. Try it on \\(\\tfrac{1}{11}\\). Long-divide and watch the remainders. We get \\(10 \\div 11 = 0\\) with remainder \\(10\\), then \\(100 \\div 11 = 9\\) with remainder \\(1\\), and that remainder \\(1\\) is right where we started, so the loop has closed. The digits we produced were \\(0\\) then \\(9\\), which means \\(\\tfrac{1}{11} = 0.\\overline{09}\\), with the bar stretched over <b>both</b> digits. The bar has to cover the leading \\(0\\), because the block is \\(09\\), not just \\(9\\). What is the period of \\(\\tfrac{1}{11}\\), that is, how many digits sit inside its repeating block?",
+    "hints": [
+     "The period is just a count. Look at the block sitting under the bar in \\(0.\\overline{09}\\) and count its digits, including the leading zero.",
+     "The block is \\(09\\). Count its digits one at a time. There is a \\(0\\), and there is a \\(9\\). That is two digits."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "sol": "The period is the length of the repeating block, so the real task is to find that block and then count its digits. The cleanest way is to track remainders during long division, because the moment a remainder repeats, the digits must repeat too. Start with \\(1 \\div 11\\). Since \\(1\\) is smaller than \\(11\\), we write \\(0.\\) and carry a remainder of \\(1\\). Bring down a zero to make \\(10\\). Now \\(10 \\div 11 = 0\\) with remainder \\(10\\), so the first digit after the point is \\(0\\). Bring down another zero to make \\(100\\). Now \\(100 \\div 11 = 9\\) with remainder \\(1\\), so the next digit is \\(9\\). That remainder \\(1\\) is exactly the remainder we began with, so the process repeats forever from here. The digits it keeps spitting out are \\(0, 9, 0, 9, \\dots\\), which gives $$\\frac{1}{11} = 0.\\overline{09}.$$ The bar covers \\(09\\), and that leading zero is essential. Writing \\(0.\\overline{9}\\) would mean \\(0.999\\dots\\), a completely different number. So the repeating block is \\(09\\), and counting its digits gives \\(0\\) and \\(9\\), which is \\(\\boxed{2}\\) digits. The period of \\(\\tfrac{1}{11}\\) is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "All chapter, every repeater you met started looping the instant the decimal point appeared. \\(\\tfrac{1}{3}=0.\\overline{3}\\) loops from the very first digit. But not every repeater behaves so neatly. Long-divide \\(1\\) by \\(6\\) and watch the remainders. First, \\(10\\div 6\\) gives the digit \\(1\\) with remainder \\(4\\). Next, \\(40\\div 6\\) gives the digit \\(6\\) with remainder \\(4\\). The remainder \\(4\\) has come back, so from here the digit \\(6\\) repeats forever. The result is \\(0.1\\overline{6}\\), where the bar sits over only the \\(6\\). That first \\(1\\) is a one-time opening act, and the \\(6\\) is the loop. This is no accident. The denominator \\(6\\) factors as \\(2\\times 3\\), and the lone factor of \\(2\\) is exactly the kind of factor that 5.3 said belongs to stopping decimals, while the \\(3\\) is what forces the repeating. That single \\(2\\) buys you one settling digit before the loop kicks in. How many digits come before the repeating block begins in \\(\\tfrac{1}{6}\\), meaning how many digits are <b>not</b> under the bar? Give the count.",
+    "hints": [
+     "Write out the decimal with the bar in the right place. In \\(0.1\\overline{6}\\), the bar covers the looping part. Everything to the left of where the bar starts is the non-repeating head. Just count those digits.",
+     "The repeating block is the \\(6\\), and the bar starts right at it. The only digit sitting before the bar is the \\(1\\). So count the digits before the loop begins."
+    ],
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "sol": "Long division tells the whole story through its remainders. Dividing \\(1\\) by \\(6\\), bring down a zero to get \\(10\\). Then \\(10\\div 6 = 1\\) remainder \\(4\\), so the first digit after the point is \\(1\\). Bring down another zero to get \\(40\\). Then \\(40\\div 6 = 6\\) remainder \\(4\\). The remainder is \\(4\\) again, the same one we already saw, so the process is now stuck in a loop and the digit \\(6\\) repeats endlessly. The decimal is $$\\tfrac{1}{6} = 0.1\\overline{6} = 0.16666\\ldots$$ The bar sits over the \\(6\\) only, because the loop does not begin until after that first digit. Why one settling digit and not zero? Look at the denominator. \\(6 = 2\\times 3\\). From 5.3, factors of \\(2\\) and \\(5\\) are the part that wants to terminate, and they are what create non-repeating head digits. The single factor of \\(2\\) here produces exactly one such digit, the \\(1\\), before the factor of \\(3\\) takes over and forces the endless \\(6\\). One \\(2\\) buys one settling digit. So the digits not under the bar number exactly one. $$\\boxed{1}$$"
+   },
+   {
+    "t": "imp",
+    "x": "Factor the denominator of a fraction in lowest terms and you can read its decimal before you ever divide. The <b>2s and 5s are the stopping primes</b>, and whichever of those two counts is larger sets the length of a short non-repeating head. Every <b>other prime is a looping prime</b>, and those build the repeating tail. So a denominator with only 2s and 5s gives a clean stop, one with none of them repeats from the very first digit, and one with both gives a head followed by a loop."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Every fraction we have met so far either stops cleanly or starts repeating right from the first decimal place. Here is one that does something new. It walks for a couple of digits before it settles into a loop. Let us long-divide \\(1 \\div 12\\). First, \\(10 \\div 12\\) is \\(0\\) with remainder \\(10\\), so the first decimal digit is \\(0\\). Next, \\(100 \\div 12\\) is \\(8\\) with remainder \\(4\\), so the next digit is \\(8\\). Then \\(40 \\div 12\\) is \\(3\\) with remainder \\(4\\), and that remainder \\(4\\) is one we have already seen, so from here on the digit \\(3\\) repeats forever. The decimal is \\(0.0833333\\ldots\\), and the two leading digits \\(08\\) form a non-repeating <b>head</b> before the loop ever begins. <b>What is the repeating block of \\(\\tfrac{1}{12}\\)?</b> Type the digit or digits that sit under the bar.",
+    "hints": [
+     "The repeating block is the part that keeps coming back once the digits settle into their loop. The \\(0\\) and the \\(8\\) at the front each happen only once, so neither of them is part of the loop. Watch for the moment a remainder shows up a second time, because that is exactly when the repetition kicks in.",
+     "Carry the division out to \\(0.0833333\\ldots\\). The remainder \\(4\\) appears, gives the digit \\(3\\), and then comes back as the remainder again, so the same step repeats and you keep writing \\(3\\). Only the \\(3\\) sits under the bar, so \\(\\tfrac{1}{12} = 0.08\\overline{3}\\)."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "sol": "Long division is really a hunt for a repeated remainder, so let us track the remainders carefully. Dividing \\(1\\) by \\(12\\), the first step gives \\(10 \\div 12 = 0\\) remainder \\(10\\), digit \\(0\\). The second step gives \\(100 \\div 12 = 8\\) remainder \\(4\\), digit \\(8\\). The third step gives \\(40 \\div 12 = 3\\) remainder \\(4\\). That remainder \\(4\\) is the very same one we just had, so the division has entered a cycle. From here on we will always be computing \\(40 \\div 12\\) again, writing another \\(3\\), and handing back remainder \\(4\\). The \\(3\\) loops, while the \\(0\\) and the \\(8\\) at the front each appeared only once and stay put. So \\(\\tfrac{1}{12} = 0.08\\overline{3}\\), where the bar sits over the lone digit \\(3\\). Here is the satisfying part. The head \\(08\\) is two digits long, and that is no accident. Since \\(12 = 2^2 \\times 3\\), the two factors of \\(2\\) force exactly two non-repeating digits at the start, and the leftover factor \\(3\\) is what generates the looping tail. The block under the bar is a single digit. \\(\\boxed{3}\\)"
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 312\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two stacked cards contrasting the two flavors of repeating decimal. The top card is labeled PURE and shows one seventh equals zero point one four two eight five seven with a single gold bar drawn over all six digits, tagged period six, and noted as repeating from the very first digit. The bottom card is labeled EVENTUALLY REPEATING and shows one twelfth equals zero point zero eight then a single three, where the zero eight is boxed in a calm neutral tone and labeled the non-repeating start that comes from the twos in the denominator, and the single three sits under a warm gold bar labeled the repeating block of period one that comes from the leftover three. A caption notes that the bar always sits over the block that cycles and only over that block.\"><text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">TWO FLAVORS OF REPEATING</text><rect x=\"14\" y=\"30\" width=\"412\" height=\"116\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><text x=\"30\" y=\"52\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">PURE</text><text x=\"74\" y=\"52\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">repeats from the start</text><text x=\"30\" y=\"92\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--ink)\">1</text><line x1=\"28\" y1=\"80\" x2=\"42\" y2=\"80\" stroke=\"var(--ink)\" stroke-width=\"1.3\"/><text x=\"30\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--ink)\">7</text><text x=\"50\" y=\"98\" font-family=\"Inter, sans-serif\" font-size=\"22\" fill=\"var(--ink)\">= 0.</text><text x=\"98\" y=\"98\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" letter-spacing=\"1.5\">142857</text><line x1=\"97\" y1=\"77\" x2=\"197\" y2=\"77\" stroke=\"var(--gold2)\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><text x=\"214\" y=\"95\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">period 6</text><path d=\"M 98 108 q 0 6 6 6 h 40 q 6 0 6 6 q 0 -6 6 -6 h 40 q 6 0 6 -6\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"156\" y=\"136\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">the bar covers every digit, the whole tail cycles</text><rect x=\"14\" y=\"156\" width=\"412\" height=\"144\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/><text x=\"30\" y=\"178\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">EVENTUALLY REPEATING</text><text x=\"186\" y=\"178\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">walks a few settled steps first</text><text x=\"30\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--ink)\">1</text><line x1=\"28\" y1=\"214\" x2=\"46\" y2=\"214\" stroke=\"var(--ink)\" stroke-width=\"1.3\"/><text x=\"30\" y=\"238\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--ink)\">12</text><text x=\"52\" y=\"231\" font-family=\"Inter, sans-serif\" font-size=\"22\" fill=\"var(--ink)\">= 0.</text><rect x=\"98\" y=\"210\" width=\"44\" height=\"28\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"120\" y=\"231\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" fill=\"var(--slate)\">08</text><text x=\"152\" y=\"231\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\">3</text><line x1=\"151\" y1=\"210\" x2=\"164\" y2=\"210\" stroke=\"var(--gold2)\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><text x=\"182\" y=\"228\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">period 1</text><path d=\"M 120 240 q 0 12 -28 16\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><circle cx=\"120\" cy=\"240\" r=\"1.8\" fill=\"var(--line)\"/><text x=\"30\" y=\"270\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"700\" fill=\"var(--slate)\">non-repeating start</text><text x=\"30\" y=\"283\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">comes from the 2s in 12</text><path d=\"M 158 208 q 4 -12 58 -14\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.1\"/><circle cx=\"158\" cy=\"208\" r=\"1.8\" fill=\"var(--gold2)\"/><text x=\"222\" y=\"200\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">repeating block</text><text x=\"222\" y=\"213\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">comes from the leftover 3</text><text x=\"248\" y=\"270\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">the calm head settles, then the</text><text x=\"248\" y=\"283\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">gold block cycles forever</text></svg>",
+    "cap": "The bar always sits over the block that cycles and only over that block. Some fractions repeat right out of the gate, like \\(\\tfrac{1}{7} = 0.\\overline{142857}\\), where the period is \\(6\\) and the bar starts at the very first digit. Others walk a few settled steps first, like \\(\\tfrac{1}{12} = 0.08\\overline{3}\\), where the head \\(08\\) traces back to the \\(2\\)s hiding in \\(12\\) and the lone barred \\(3\\) traces back to the leftover factor of \\(3\\). Once the bar starts, it never stops."
+   },
+   {
+    "t": "p",
+    "x": "So far you have only run the machine one direction. You hand it a fraction, you divide, and you watch where the leftover remainders push the next digit, until the line either stops or settles into a loop you have seen before. Now turn the whole thing around. Someone writes down an endless repeating decimal, something like \\(0.\\overline{3}\\) or \\(0.\\overline{142857}\\), and asks which fraction it grew from. The tail runs on forever, which feels like it should make the question hopeless, since you could never sit and copy every digit down. But here is the surprise. That endless tail is about to become the <b>easiest</b> part of the whole job, not the hardest, because a second copy of the very same tail can be lined up against the first and made to cancel it clean away. One careful algebraic move wipes out the infinite part and leaves something finite behind, and the loop you just learned to read folds straight back into a fraction. Here is the trick."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Every decimal you have met so far had an end. Now run the machine in reverse on a number that never stops. Let \\(x = 0.\\overline{7}\\), the endless \\(0.7777\\ldots\\) with a bar over the \\(7\\). That bar is the whole problem, an infinite tail of \\(7\\)s trailing off forever, and you cannot subtract your way past infinity by hand. So make a copy of the number, shifted. Multiply both sides by \\(10\\) to slide the point one place to the right, giving \\(10x = 7.7777\\ldots\\). Look at the two numbers stacked up. The tail of \\(10x\\) is an endless run of \\(7\\)s, and the tail of \\(x\\) is the same endless run of \\(7\\)s. Subtract \\(x\\) from \\(10x\\) and those identical tails cancel perfectly, leaving \\(7\\) with nothing after the point. Finish the job. Write \\(0.\\overline{7}\\) as a fraction in lowest terms.",
+    "hints": [
+     "You built two equations, \\(x = 0.7777\\ldots\\) and \\(10x = 7.7777\\ldots\\). Stack the second over the first and subtract straight down. On the left you get \\(10x - x\\). On the right, the endless \\(7\\)s line up exactly and wipe each other out, so what whole number is left?",
+     "Subtracting gives \\(9x = 7\\). To get \\(x\\) by itself, divide both sides by \\(9\\). That leaves \\(x = \\tfrac{7}{9}\\). Check whether \\(7\\) and \\(9\\) share any common factor before you call it done."
+    ],
+    "ans": "7/9",
+    "accept": [
+     "7 / 9",
+     "7 over 9",
+     "7/9",
+     "seven ninths",
+     "seven/nine"
+    ],
+    "sol": "Start by naming the number. Let \\(x = 0.\\overline{7}\\), so \\(x = 0.7777\\ldots\\) with the \\(7\\) repeating forever. The reason you cannot just read off a fraction is that the tail never ends, so the trick is to manufacture a second copy of that same tail and line it up.\n\nMultiply both sides by \\(10\\). One factor of \\(10\\) shifts the decimal point exactly one place, which is just enough to move past the first \\(7\\) and expose an identical tail underneath. $$10x = 7.7777\\ldots$$ Now write the two facts together and subtract the bottom from the top. $$\\begin{array}{r} 10x = 7.7777\\ldots \\\\ -\\;\\;\\;x = 0.7777\\ldots \\\\ \\hline 9x = 7.0000\\ldots \\end{array}$$ Watch what happened on the right. Past the decimal point, \\(10x\\) had \\(7777\\ldots\\) and \\(x\\) had \\(7777\\ldots\\), the very same endless string, so digit by digit they cancel to nothing. The infinite part vanishes, and all that survives is \\(7 - 0 = 7\\). On the left, \\(10x - x = 9x\\). So the endless decimal has collapsed into the clean statement \\(9x = 7\\).\n\nSolve it. Divide both sides by \\(9\\) to get \\(x = \\tfrac{7}{9}\\). Since \\(7\\) is prime and does not divide \\(9\\), the fraction is already in lowest terms. And it makes sense as a finale, every infinitely repeating decimal you will ever meet is secretly a fraction in disguise, and the shift-and-subtract move is the key that unlocks it. $$\\boxed{7/9}$$"
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Shift and subtract for x equals 0.7 repeating. The top row shows 10x equals 7.77777 with an ellipsis. Below it x equals 0.77777 with an ellipsis, the repeating sevens lined up in a vertical column. A gold strike line crosses the same column of sevens in both rows, showing the aligned tails cancel in the subtraction. To the right the clean result reads 9x equals 7, then x equals 7 over 9. A bottom panel generalizes a pure block of length k. Multiply by ten to the k, subtract, and the answer is the block over k nines, with a worked tag reading 0.12 repeating equals 12 over 99.\"><text x=\"220\" y=\"26\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--mid)\" text-anchor=\"middle\">Shift by one block, then subtract</text><rect x=\"14\" y=\"42\" width=\"412\" height=\"118\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"34\" y=\"78\" font-family=\"Inter, sans-serif\" font-size=\"17\" fill=\"var(--ink)\"><tspan>10x =</tspan><tspan dx=\"6\">7.</tspan></text><text x=\"125\" y=\"78\" font-family=\"Inter, sans-serif\" font-size=\"17\" letter-spacing=\"3\" fill=\"var(--slate)\">77777</text><text x=\"205\" y=\"78\" font-family=\"Inter, sans-serif\" font-size=\"17\" fill=\"var(--slate)\">…</text><text x=\"44\" y=\"112\" font-family=\"Inter, sans-serif\" font-size=\"17\" fill=\"var(--ink)\"><tspan>x =</tspan><tspan dx=\"6\">0.</tspan></text><text x=\"125\" y=\"112\" font-family=\"Inter, sans-serif\" font-size=\"17\" letter-spacing=\"3\" fill=\"var(--slate)\">77777</text><text x=\"205\" y=\"112\" font-family=\"Inter, sans-serif\" font-size=\"17\" fill=\"var(--slate)\">…</text><line x1=\"150\" y1=\"64\" x2=\"168\" y2=\"118\" stroke=\"var(--gold2)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"159\" y=\"146\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">tails cancel</text><line x1=\"34\" y1=\"124\" x2=\"222\" y2=\"124\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"22\" y=\"120\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--mid)\">−</text><line x1=\"248\" y1=\"56\" x2=\"248\" y2=\"146\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"338\" y=\"82\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"600\" fill=\"var(--ink)\" text-anchor=\"middle\">9x = 7</text><text x=\"338\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--mid)\" text-anchor=\"middle\">so</text><text x=\"322\" y=\"132\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"600\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">x =</text><text x=\"359\" y=\"125\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">7</text><line x1=\"350\" y1=\"129\" x2=\"368\" y2=\"129\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"359\" y=\"143\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">9</text><rect x=\"14\" y=\"174\" width=\"412\" height=\"106\" rx=\"10\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"30\" y=\"198\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--mid)\">The pattern, for a block of length k</text><text x=\"30\" y=\"224\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--ink)\">multiply by 10ᵏ, subtract, and the loop erases itself</text><text x=\"30\" y=\"252\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"600\" fill=\"var(--slate)\">a block repeating</text><text x=\"183\" y=\"252\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--mid)\">=</text><text x=\"232\" y=\"244\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\" text-anchor=\"middle\">the block</text><line x1=\"197\" y1=\"248\" x2=\"267\" y2=\"248\" stroke=\"var(--slate)\" stroke-width=\"1.4\"/><text x=\"232\" y=\"266\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\" text-anchor=\"middle\">k nines</text><line x1=\"290\" y1=\"232\" x2=\"290\" y2=\"268\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"358\" y=\"246\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">0.12 repeating</text><text x=\"333\" y=\"266\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--gold-deep)\">=</text><text x=\"368\" y=\"261\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">12</text><line x1=\"357\" y1=\"265\" x2=\"379\" y2=\"265\" stroke=\"var(--gold-deep)\" stroke-width=\"1.3\"/><text x=\"368\" y=\"277\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">99</text></svg>",
+    "cap": "Shifting by exactly one block length lines the endless tails up perfectly, so when you subtract they erase each other and an ordinary equation is left behind. Here \\(10x - x = 7.\\overline{7} - 0.\\overline{7}\\) gives \\(9x = 7\\), so \\(0.\\overline{7} = \\tfrac{7}{9}\\). The same trick scales to any pure repeater. A block of length \\(k\\) becomes the block written over \\(k\\) nines, for example \\(0.\\overline{12} = \\tfrac{12}{99}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Let's stretch the shifting trick to a block that is two digits wide. Let \\(x = 0.\\overline{12}\\), the endless decimal \\(0.121212\\ldots\\) with a bar over the <b>12</b>. One shift is not enough anymore, because the repeating block is two digits long, so you have to slide the decimal point past both of them. Multiply by \\(100\\), and you get \\(100x = 12.\\overline{12} = 12.121212\\ldots\\). Look at the tails. The endless run of <b>12</b>s in \\(100x\\) lines up perfectly with the endless run of <b>12</b>s in \\(x\\), so subtracting one from the other wipes them out and leaves \\(99x = 12\\). That is the pattern worth keeping. A pure block of length \\(k\\) lands over \\(k\\) nines, so a two-digit block sits over \\(99\\), and \\(0.\\overline{12}\\) starts life as \\(\\tfrac{12}{99}\\). But you are not done until the fraction is in lowest terms, the old habit from the fractions chapter. Write \\(0.\\overline{12}\\) as a fraction in lowest terms.",
+    "hints": [
+     "You already know it begins as \\(\\tfrac{12}{99}\\). Now ask the lowest-terms question. What whole number divides both \\(12\\) and \\(99\\) evenly?",
+     "Both \\(12\\) and \\(99\\) are divisible by \\(3\\). Divide the top and the bottom by \\(3\\), which gives \\(12 \\div 3 = 4\\) and \\(99 \\div 3 = 33\\). Check that \\(4\\) and \\(33\\) share no common factor, then you are finished."
+    ],
+    "ans": "4/33",
+    "accept": [
+     "0.121212...",
+     "12/99",
+     "4 / 33",
+     "4/33",
+     "four over thirty three",
+     "four over thirty-three",
+     "four thirty-thirds"
+    ],
+    "sol": "Start by naming the number. Let \\(x = 0.\\overline{12} = 0.121212\\ldots\\)\n\nThe block has two digits, so shift the decimal point two places by multiplying by \\(100\\). $$100x = 12.121212\\ldots$$ Now line the two equations up and subtract, so the matching infinite tails cancel. $$\\begin{array}{r} 100x = 12.121212\\ldots \\\\ -\\ \\ \\ x = \\ 0.121212\\ldots \\\\ \\hline 99x = 12 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\end{array}$$ Everything after the decimal point is gone, which is the whole point of shifting by the full length of the block. Solve for \\(x\\). $$x = \\frac{12}{99}$$ This is the block over two nines, exactly the pattern. But \\(\\tfrac{12}{99}\\) is not in lowest terms yet. Both numbers are divisible by \\(3\\), since \\(1+2 = 3\\) and \\(9+9 = 18\\) are each multiples of \\(3\\). $$\\frac{12}{99} = \\frac{12 \\div 3}{99 \\div 3} = \\frac{4}{33}$$ Now \\(4 = 2 \\times 2\\) and \\(33 = 3 \\times 11\\) share no common factor, so this is fully reduced. As a sanity check, dividing \\(4\\) by \\(33\\) gives \\(0.121212\\ldots\\), right back where we started.\n\n\\(0.\\overline{12} = \\boxed{4/33}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Here is the whole trick in one move. A pure repeating decimal becomes the repeating block sitting over a string of \\(9\\)s, one \\(9\\) for each digit in the block, and then you reduce. That is why \\(0.\\overline{7}=\\tfrac{7}{9}\\), \\(0.\\overline{12}=\\tfrac{12}{99}\\), and \\(0.\\overline{481}=\\tfrac{481}{999}\\). It works because shifting by exactly one block length lines the endless tails up so they cancel, and dividing by that power of ten minus \\(1\\) is the same as dividing by \\(9\\), \\(99\\), or \\(999\\). The scary infinite tail turns out to be the easy part, since it just cancels with a copy of itself."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Here is the last decimal of the chapter, and it has a twist. The number is \\(0.41\\overline{6}\\), which means \\(0.41666\\ldots\\) where only the <b>6</b> repeats forever. The \\(41\\) happens once and never comes back, and after it the \\(6\\) loops on its own. So the repeating block has length one, but the loop does not start until two places past the point. The cancel trick still works, you just have to shift past the settled head before you line up the tails. Write \\(0.41\\overline{6}\\) as a fraction in lowest terms.",
+    "hints": [
+     "You want two shifted copies of \\(x\\) whose decimal tails are identical, so the subtraction wipes the tail out. The repeating part is \\(0.00\\overline{6}\\), sitting two places in. Try sliding the point so one copy stops just before the loop and the other stops just after one block of it.",
+     "Let \\(x = 0.41\\overline{6}\\). Multiply by \\(100\\) to land just before the loop, \\(100x = 41.\\overline{6} = 41.666\\ldots\\). Multiply by \\(1{,}000\\) to land one block past it, \\(1{,}000x = 416.\\overline{6} = 416.666\\ldots\\). Both end in the same \\(.666\\ldots\\) tail. Subtract the smaller from the larger and solve for \\(x\\), then reduce."
+    ],
+    "ans": "5/12",
+    "accept": [
+     "5 / 12",
+     "5/12",
+     "five twelfths",
+     "five-twelfths"
+    ],
+    "sol": "Let \\(x = 0.41\\overline{6} = 0.41666\\ldots\\). The trouble is the \\(41\\) up front. It does not repeat, so if we shift to line up tails carelessly we will trap that head inside the subtraction. The fix is to shift past it first, then shift one more block.\n\nMultiply by \\(100\\) to slide the point right up to the edge of the loop. $$100x = 41.\\overline{6} = 41.666\\ldots$$ Now everything to the left of the point is settled, and the leftover tail is exactly \\(0.666\\ldots\\).\n\nMultiply the original by \\(1{,}000\\), which is one extra block further. $$1{,}000x = 416.\\overline{6} = 416.666\\ldots$$ This tail is also exactly \\(0.666\\ldots\\), the same as before, because the \\(6\\) loop never changes no matter how far you walk into it.\n\nThe two numbers share an identical \\(.666\\ldots\\) tail, so subtracting cancels it cleanly. $$1{,}000x - 100x = 416.666\\ldots - 41.666\\ldots$$ $$900x = 375$$\n\nSolve for \\(x\\) and reduce. Both \\(375\\) and \\(900\\) share a factor of \\(75\\), since \\(375 = 75 \\cdot 5\\) and \\(900 = 75 \\cdot 12\\). $$x = \\frac{375}{900} = \\frac{5}{12}$$\n\nA quick sanity check, \\(5 \\div 12 = 0.41666\\ldots\\), which is \\(0.41\\overline{6}\\) exactly. The head shifted out, the tails cancelled, and the whole chapter folds shut. \\(\\boxed{5/12}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Now point the same trick at a number that looks like it lives forever just under 1. Let \\(x = 0.\\overline{9}\\), the endless \\(0.9999\\dots\\) with a bar over the 9. Run the exact move you used on \\(0.\\overline{7}\\). Multiply by 10 to get \\(10x = 9.\\overline{9}\\), which is \\(9.9999\\dots\\). The tails of nines line up perfectly, so when you compute \\(10x - x\\) every nine after the point cancels and you are left with \\(9x = 9\\). Divide both sides by 9. Notice there is no rounding, no \"close enough\", no approximation hiding in any step. This is the same honest algebra that turned \\(0.\\overline{7}\\) into \\(\\tfrac{7}{9}\\), and here it is telling you that \\(0.\\overline{9}\\) and 1 are two names for one number. What does \\(0.\\overline{9}\\) equal? Give the number.",
+    "hints": [
+     "You already did the hard part for \\(0.\\overline{7}\\). Write \\(x = 0.\\overline{9}\\) and \\(10x = 9.\\overline{9}\\), then subtract. Trust the cancellation even though the result feels surprising.",
+     "Subtracting gives \\(10x - x = 9.\\overline{9} - 0.\\overline{9}\\). The infinite tails of nines are identical, so they vanish and leave \\(9x = 9\\). Now divide both sides by 9 and read off the single whole number you get."
+    ],
+    "ans": "1",
+    "accept": [
+     "01",
+     "1",
+     "1.0",
+     "1.00",
+     "one",
+     "x = 1",
+     "x=1"
+    ],
+    "sol": "Set \\(x = 0.\\overline{9}\\), so \\(x = 0.9999\\dots\\) with the nines never stopping. Multiply by 10, which slides the decimal point one place to the right. $$10x = 9.\\overline{9} = 9.9999\\dots$$ Here is the key observation. Both \\(10x\\) and \\(x\\) end in the very same endless string of nines after the decimal point, \\(.9999\\dots\\). They are not nearly the same, they are exactly the same tail. So when you subtract, that whole infinite tail cancels cleanly. $$10x - x = 9.9999\\dots - 0.9999\\dots = 9$$ On the left, \\(10x - x = 9x\\), which gives $$9x = 9.$$ Divide both sides by 9. $$x = \\frac{9}{9} = 1.$$ Look back at what just happened. Every step was ordinary algebra, the same algebra that sent \\(0.\\overline{7}\\) to \\(\\tfrac{7}{9}\\). Nowhere did you round, drop a piece, or settle for \"close enough\". The answer is not a number creeping up toward 1 and not a sliver below it. It is 1, on the nose. So \\(0.\\overline{9}\\) and 1 are simply two different names for the same number, and that is a fitting place to close the chapter. $$\\boxed{1}$$"
+   },
+   {
+    "t": "imp",
+    "x": "Nothing strange happened here. I ran the exact same procedure that turned \\(0.\\overline{7}\\) into \\(\\tfrac{7}{9}\\) and \\(0.\\overline{3}\\) into \\(\\tfrac{1}{3}\\), and when the repeating block is \\(9\\) that procedure simply hands back \\(\\tfrac{9}{9}\\), which is \\(1\\). The endless string of nines is not creeping toward \\(1\\) and never quite landing, it has already landed, because an endless decimal is one fixed number and not a journey toward something. And the thirds say the same thing from the other side, since \\(\\tfrac{1}{3}=0.\\overline{3}\\) so three of them make \\(0.\\overline{9}\\), yet three thirds also make \\(1\\). So <b>\\(0.\\overline{9}\\) and \\(1\\) are not close, they are the very same number wearing two coats</b>, the way a number can answer to more than one fraction name too."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Here is the payoff for everything you have learned about repeating decimals. Because the digits run on a fixed loop forever, you never have to grind through fifty rounds of long division to know a faraway digit. You only have to know <b>where that position lands inside the loop</b>. Recall that \\(\\tfrac{1}{7} = 0.\\overline{142857}\\), a pure repeater whose block has length \\(6\\). Position \\(1\\) is \\(1\\), position \\(2\\) is \\(4\\), and so on out to position \\(6\\), which is \\(7\\). Then position \\(7\\) starts the block over again at \\(1\\). So the digit at any position depends only on where that position falls in the cycle of \\(6\\). What is the \\(50\\)th digit after the decimal point in \\(\\tfrac{1}{7}\\)? Give the single digit.",
+    "hints": [
+     "The block \\(142857\\) is six digits long, so the pattern resets every \\(6\\) positions. Every time you pass a full group of \\(6\\), you are back at the start of the block. So really you just need to know how far past the last full group position \\(50\\) sits.",
+     "Divide \\(50\\) by \\(6\\). You get \\(8\\) full blocks with \\(2\\) left over. That remainder of \\(2\\) tells you the \\(50\\)th digit is the same as the \\(2\\)nd digit of the block \\(142857\\). Read off the second digit."
+    ],
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "sol": "The decimal is \\(\\tfrac{1}{7} = 0.\\overline{142857}\\), so the same block of six digits, \\(142857\\), repeats forever. Label the spots inside one block by position. The \\(1\\)st digit is \\(1\\), the \\(2\\)nd is \\(4\\), the \\(3\\)rd is \\(2\\), the \\(4\\)th is \\(8\\), the \\(5\\)th is \\(5\\), and the \\(6\\)th is \\(7\\). After that the block starts over, so position \\(7\\) is \\(1\\) again, position \\(8\\) is \\(4\\), and the cycle keeps turning. The key move is that every group of \\(6\\) positions returns you to the same place in the block. So to find position \\(50\\), see how many full groups of \\(6\\) fit and what is left over. $$50 = 6 \\times 8 + 2$$ Eight complete blocks carry you up through position \\(48\\), which is the end of the eighth block, a \\(7\\). Then you take \\(2\\) more steps into a fresh block. Step one lands on \\(1\\) (position \\(49\\)) and step two lands on \\(4\\) (position \\(50\\)). The remainder \\(2\\) points straight at the \\(2\\)nd digit of \\(142857\\), and that digit is \\(4\\). No fifty rounds of division needed, just one little division to find your place in the loop. \\(\\boxed{4}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Once you know the repeating block and how long it is, the decimal is already settled forever, so finding the digit at any spot is really just asking where that spot lands inside one trip around the block. Divide the position by the period and read the remainder. A remainder of \\(1\\) points to the first digit of the block, a remainder of \\(2\\) to the second, and so on, and a remainder of \\(0\\) means you stopped right on the last digit. The remainder was the thing that made the digits loop in the first place, so the same loop that trapped the division is the loop you now ride straight to any position you want."
+   },
+   {
+    "t": "fact",
+    "x": "Here is a closing thought that ties the whole chapter together. Whether a fraction repeats is not really about the fraction, it is about the base you are counting in. A fraction stops cleanly exactly when its denominator is built only from the prime factors of the base. We count in base ten, and ten is \\(2 \\times 5\\), so only denominators made of 2s and 5s terminate, which is why \\(\\tfrac{1}{8}\\) ends but \\(\\tfrac{1}{7}\\) goes on forever. If we counted in base seven instead, then \\(\\tfrac{1}{7}\\) would simply be \\(0.1\\), as tidy as one half is for us, while \\(\\tfrac{1}{2}\\) and \\(\\tfrac{1}{5}\\) would be the ones that repeat. So 142857 and its spinning wheel are not a quirk of the number 7. They are a portrait of the number 7 meeting the number 10, and the same remainder loop you uncovered in this lesson is the brush that paints it."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Here is the gatekeeper test from 5.3, now that you know exactly what \"repeats\" really means. Four unit fractions sit in front of you, each already in lowest terms, \\(\\tfrac{1}{16}\\), \\(\\tfrac{1}{20}\\), \\(\\tfrac{1}{25}\\), and \\(\\tfrac{1}{15}\\). Three of them stop after a few decimal places. Exactly one of them runs forever in a repeating loop. Do not divide a single one of them. Instead, factor each denominator into primes and look for the one fact that decides everything. A fraction in lowest terms terminates when its denominator is built only from \\(2\\)s and \\(5\\)s, and it repeats the moment any other prime shows up, because that stray prime never lets the long-division remainder land on \\(0\\). Which of these four fractions produces a repeating decimal? Give the denominator of that fraction.",
+    "hints": [
+     "Break each denominator into primes. \\(16 = 2^4\\), \\(20 = 2^2 \\times 5\\), \\(25 = 5^2\\), and \\(15 = 3 \\times 5\\). The terminating ones use only the \"friendly\" primes \\(2\\) and \\(5\\). Hunt for the denominator that smuggles in a different prime.",
+     "Three of the denominators are made purely of \\(2\\)s and \\(5\\)s, so those three terminate. Only \\(15 = 3 \\times 5\\) carries a prime that is neither \\(2\\) nor \\(5\\). That stray factor of \\(3\\) is what forces the digits to repeat, so the answer is its denominator."
+    ],
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "sol": "The whole question lives in the prime factorizations, so factor all four denominators and never touch long division. \\(16 = 2^4\\), made of nothing but \\(2\\)s. \\(20 = 2^2 \\times 5\\), only \\(2\\)s and a \\(5\\). \\(25 = 5^2\\), only \\(5\\)s. \\(15 = 3 \\times 5\\), and there it is, a \\(3\\) hiding among the friendly primes. The rule from 5.3, sharpened by this lesson, says a lowest-terms fraction terminates exactly when its denominator is built solely from \\(2\\)s and \\(5\\)s. Those are the only primes that divide a power of \\(10\\), so a denominator of that shape can always be scaled up into a clean power of ten, which is what a terminating decimal really is. A \\(3\\) can never be turned into a \\(10\\) by piling on more \\(2\\)s and \\(5\\)s, so it has no way to clear out. In the long division for \\(\\tfrac{1}{15}\\) the remainders cycle instead of reaching \\(0\\), and you get \\(\\tfrac{1}{15} = 0.0\\overline{6}\\), where the \\(6\\) loops without end. Meanwhile the other three stop cold, \\(\\tfrac{1}{16} = 0.0625\\), \\(\\tfrac{1}{20} = 0.05\\), and \\(\\tfrac{1}{25} = 0.04\\). One stray prime was the entire story. The repeating fraction is \\(\\tfrac{1}{15}\\), so the denominator you want is \\(\\boxed{15}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "One last problem, and it uses every tool you built in this chapter. Two endless decimals are in a race. The first runner is \\(0.\\overline{72}\\), the number that goes \\(0.727272\\dots\\) forever. The second runner is \\(0.\\overline{27}\\), the number that goes \\(0.272727\\dots\\) forever. The first one is clearly ahead, but by exactly how much? Find the difference \\(0.\\overline{72} - 0.\\overline{27}\\) and write it as <b>a single fraction in lowest terms</b>.",
+    "hints": [
+     "Each of these has a two-digit repeating block, and you found a shortcut for exactly this. A repeating two-digit block sits over \\(99\\). So turn each decimal into a fraction with denominator \\(99\\) before you do anything else.",
+     "Once both are written over \\(99\\), they share a denominator, so you can subtract the top numbers directly and keep the \\(99\\) underneath. That leaves one fraction. Now reduce it by dividing the top and bottom by their greatest common factor."
+    ],
+    "ans": "5/11",
+    "accept": [
+     "5 / 11",
+     "5/11",
+     "5÷11",
+     "five elevenths",
+     "five over eleven",
+     "five-elevenths"
+    ],
+    "sol": "Start by converting each runner with the block-over-nines move you discovered earlier in the chapter. A repeating two-digit block always sits over \\(99\\), so $$0.\\overline{72} = \\frac{72}{99}, \\qquad 0.\\overline{27} = \\frac{27}{99}.$$ Here is the satisfying part. Both fractions already share the denominator \\(99\\), so there is no common-denominator work to do. You just subtract the numerators and keep the \\(99\\) underneath. $$\\frac{72}{99} - \\frac{27}{99} = \\frac{72 - 27}{99} = \\frac{45}{99}.$$ Now reduce all the way down using the greatest-common-factor habit from Chapter 4. Both \\(45\\) and \\(99\\) are divisible by \\(9\\), since \\(45 = 9 \\times 5\\) and \\(99 = 9 \\times 11\\). Dividing top and bottom by \\(9\\) gives $$\\frac{45}{99} = \\frac{45 \\div 9}{99 \\div 9} = \\frac{5}{11}.$$ Since \\(5\\) is prime and does not divide \\(11\\), this is fully reduced. As a quick sanity check, \\(\\frac{5}{11}\\) is itself the repeating decimal \\(0.\\overline{45}\\), and indeed \\(0.727272\\dots\\) minus \\(0.272727\\dots\\) leaves \\(0.454545\\dots\\) at every place. The first runner beats the second by \\(\\boxed{5/11}\\)."
+   }
+  ],
+  "review": [
+   {
+    "ans": "6",
+    "x": "Set up the long division for \\(2 \\div 3\\) and keep one eye on the remainder. Three does not go into two, so you write a zero and a point, then bring the work down to \\(20\\). Three goes into \\(20\\) six times, since \\(3 \\times 6 = 18\\), and that leaves a remainder of \\(2\\) again. You are right back where you started, so the same step repeats without end, giving \\(0.\\overline{6}\\). What single digit repeats forever in this decimal?",
+    "hints": [
+     "Notice that each step in the division leaves the very same remainder of \\(2\\). When a remainder comes back, the next digit must be the same as the last one, so the decimal just loops.",
+     "The decimal is \\(0.6666\\ldots\\), written compactly as \\(0.\\overline{6}\\). The thing under the bar is the part that repeats."
+    ],
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "sol": "Long division is really a remainder machine, and the moment a remainder shows up twice, you know the digits will loop. Start with \\(2 \\div 3\\). Since \\(3\\) is bigger than \\(2\\), the whole-number part is \\(0\\), and we carry a remainder of \\(2\\) past the decimal point. Now we divide \\(20\\) by \\(3\\). Because \\(3 \\times 6 = 18\\), the digit is \\(6\\) and the leftover is \\(20 - 18 = 2\\). That leftover of \\(2\\) is exactly the remainder we began with, so the next step is identical, and so is the one after that. The machine is stuck in a loop, printing a \\(6\\) on every turn. This gives the endless decimal $$2 \\div 3 = 0.6666\\ldots = 0.\\overline{6}.$$ The bar sits over the block that repeats, and here that block is a single digit. So the digit that goes on forever is \\(\\boxed{6}\\)."
+   },
+   {
+    "x": "Here is the cleanest repeater of them all. Set up the long division \\(1 \\div 9\\). You cannot fit a 9 into 1, so you write a decimal point and bring down a zero, turning the 1 into a 10. Nine goes into 10 once, leaving a remainder of \\(1\\). But now you are exactly where you started, with a remainder of 1, so the very same step happens again, and again, forever. That endless loop gives \\(\\tfrac{1}{9} = 0.\\overline{1}\\). The bar covers the part that repeats. <b>How many digits are in the repeating block of \\(\\tfrac{1}{9}\\)?</b> That count is called the <b>period</b>. Give the period.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "The repeating block is whatever sits under the bar. Write out \\(\\tfrac{1}{9}\\) as a decimal and look at what is covered.",
+     "In \\(0.\\overline{1}\\) the bar sits over a single digit, the 1. Count how many digits are inside that block."
+    ],
+    "sol": "Do the long division and watch the remainder. Since \\(9\\) does not go into \\(1\\), place a decimal point and bring down a zero to make \\(10\\). Now \\(9\\) goes into \\(10\\) one time, since \\(9 \\times 1 = 9\\), and the remainder is \\(10 - 9 = 1\\). That remainder of \\(1\\) is exactly the number we started with, so the next step repeats the same digit, and so does the step after that, with no end. Every step writes a single \\(1\\). So the decimal is $$\\frac{1}{9} = 0.1111\\ldots = 0.\\overline{1}.$$ The bar covers just one digit, the lone \\(1\\). A repeating block that is a single digit has a period of one, and \\(\\tfrac{1}{9}\\) is the simplest pure repeater there is. The number of digits in the repeating block is \\(\\boxed{1}\\)."
+   },
+   {
+    "x": "Time to put on your long-division shoes. Divide \\(1\\) by \\(11\\) and watch the remainders carefully. Start with a remainder of \\(1\\), bring down a zero to make \\(10\\), and \\(11\\) goes into \\(10\\) zero times, leaving a remainder of \\(10\\). Bring down another zero to make \\(100\\), and \\(11\\) goes into that \\(9\\) times with \\(99\\), leaving a remainder of \\(1\\). That \\(1\\) is exactly where you began, so the digits will now loop forever. This tells you that \\(\\frac{1}{11}=0.\\overline{09}\\). <b>Write the two-digit repeating block as a digit string, leading zero and all.</b>",
+    "ans": "09",
+    "accept": [
+     "0 9",
+     "0,9",
+     "09",
+     "09.0"
+    ],
+    "hints": [
+     "The block is the run of digits that repeats forever. You found two digits before the remainder returned to its starting value of \\(1\\), so the block is two digits long.",
+     "The first repeating digit came from \\(11\\) going into \\(10\\) zero times, and the second came from \\(11\\) going into \\(100\\) nine times. Keep that leading zero, the block is not just \\(9\\)."
+    ],
+    "sol": "Long division is really a remainder chase, and the moment a remainder repeats, the whole pattern repeats with it. Start the division \\(1\\div 11\\). The first remainder is \\(1\\). Attach a zero to get \\(10\\), and ask how many times \\(11\\) fits into \\(10\\). It fits \\(0\\) times, so the first decimal digit is \\(0\\) and the remainder stays \\(10\\). Attach another zero to get \\(100\\). Now \\(11\\) fits \\(9\\) times since \\(9\\times 11=99\\), so the second decimal digit is \\(9\\) and the new remainder is \\(100-99=1\\). That remainder of \\(1\\) is exactly the one we started with, so from here the digits \\(0\\) then \\(9\\) will cycle forever. That gives \\(\\frac{1}{11}=0.0909\\ldots=0.\\overline{09}\\). The repeating block is both digits together, and the leading zero is part of the block, not decoration. So the two-digit repeating block, written as a digit string, is \\(\\boxed{09}\\)."
+   },
+   {
+    "x": "Here is the last long division of the chapter. Divide \\(5\\) by \\(6\\). The first step gives the digit \\(8\\) with a remainder of \\(2\\). From there the remainder \\(2\\) keeps coming back and the digit \\(3\\) loops forever, so \\(\\frac{5}{6} = 0.8333\\ldots = 0.8\\overline{3}\\). Notice that not every digit after the point is under the bar. The \\(8\\) sits outside it, on its own, before the repeating \\(3\\) begins. <b>How many digits come before the repeating block, that is, how many are not under the bar?</b>",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "Write the decimal out and mark the bar. In \\(0.8\\overline{3}\\), the bar covers only the \\(3\\). Everything to the left of where the bar starts is the non-repeating head.",
+     "Look at the digits after the point one at a time. The \\(8\\) comes first and never repeats, then the \\(3\\) repeats forever. Count only the digits that live outside the bar."
+    ],
+    "sol": "Long division shows the whole story. Bring down to get \\(50 \\div 6\\), which is \\(8\\) with a remainder of \\(2\\). That \\(8\\) is the first decimal digit. Now carry the remainder \\(2\\) forward, so \\(20 \\div 6\\) is \\(3\\) with a remainder of \\(2\\) again. Since the remainder is back to \\(2\\), the same step repeats, so the digit \\(3\\) loops forever.\n\nThat gives \\(\\frac{5}{6} = 0.8333\\ldots = 0.8\\overline{3}\\). The bar sits over the \\(3\\) because the \\(3\\) is the part that repeats. The \\(8\\) appears once and is never under the bar, so it is the non-repeating head. Counting the digits outside the bar, there is exactly one, the \\(8\\). \n\nA decimal like this is called eventually repeating. It settles into its loop after a short run-up rather than right away, and here that run-up is a single digit. \\(\\boxed{1}\\)"
+   },
+   {
+    "x": "A factory clock ticks once every \\(\\tfrac{7}{30}\\) of a second. To program it, an engineer needs the decimal value of \\(\\tfrac{7}{30}\\). She does the long division and notices something. Because \\(30 = 2 \\times 3 \\times 5\\), the \\(2\\) and the \\(5\\) let the decimal <b>settle</b> for one digit, and then the leftover factor of \\(3\\) makes it loop forever. She gets \\(0.2333\\ldots\\), which we write as \\(0.2\\overline{3}\\). The first digit \\(2\\) settles and never comes back, but one digit repeats forever under the bar. What single digit is the repeating block of \\(\\tfrac{7}{30}\\)?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Carry out the long division of \\(7 \\div 30\\). Watch the remainders. Once a remainder shows up a second time, the digits from that point on will repeat forever.",
+     "The first digit \\(2\\) settles and is gone for good. After that one digit keeps coming back. That recurring digit is the whole repeating block."
+    ],
+    "sol": "Do the long division of \\(7 \\div 30\\) and keep an eye on the remainders.\n\nFirst, \\(70 \\div 30 = 2\\) with remainder \\(10\\), so the first decimal digit is \\(2\\). This is the digit that <b>settles</b>, thanks to the factors of \\(2\\) and \\(5\\) in \\(30\\).\n\nNext, bring down a zero to get \\(100\\). Now \\(100 \\div 30 = 3\\) with remainder \\(10\\). The digit is \\(3\\), and the remainder is \\(10\\) again, the same remainder we just had.\n\nOnce a remainder repeats, the process is locked into a cycle. Every step from here produces another \\(3\\) with remainder \\(10\\), over and over. So \\(\\tfrac{7}{30} = 0.2333\\ldots = 0.2\\overline{3}\\).\n\nThe \\(2\\) is the settling digit and the part under the bar is the repeating block. That block is a single digit, so the repeating block is \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "Here is the trick that turns any endless tail into something solid. Let \\(x = 0.\\overline{5}\\), the decimal whose digits never stop, \\(0.5555\\ldots\\) forever. Multiply both sides by \\(10\\) to slide the digits one place left, so \\(10x = 5.5555\\ldots\\). The two numbers share the exact same endless tail, so subtracting \\(x\\) from \\(10x\\) wipes that tail out completely and leaves \\(9x = 5\\). Write \\(0.\\overline{5}\\) as a fraction in lowest terms.",
+    "hints": [
+     "You have \\(9x = 5\\) after the subtraction. To get \\(x\\) by itself, divide both sides by \\(9\\).",
+     "Dividing gives \\(x = \\tfrac{5}{9}\\). Check whether \\(5\\) and \\(9\\) share any common factor before you call it final."
+    ],
+    "ans": "5/9",
+    "accept": [
+     "5/9",
+     "five ninths",
+     "five-ninths"
+    ],
+    "sol": "Start by naming the mystery number. Let \\(x = 0.\\overline{5} = 0.5555\\ldots\\). The whole point is that this tail runs on forever with the same digit, and that is exactly what we will use against it. Multiply both sides by \\(10\\) so every digit shifts one place to the left, which gives \\(10x = 5.5555\\ldots\\). Now line the two equations up. $$10x = 5.5555\\ldots$$ $$x = 0.5555\\ldots$$ Both numbers end in the identical endless string of fives, so when we subtract the bottom from the top those tails cancel perfectly and nothing is left dangling. On the left \\(10x - x = 9x\\), and on the right \\(5.5555\\ldots - 0.5555\\ldots = 5\\). That leaves the clean little equation \\(9x = 5\\). Divide both sides by \\(9\\) to free \\(x\\), so \\(x = \\tfrac{5}{9}\\). Finally check that the fraction is already in lowest terms. The factors of \\(5\\) are just \\(1\\) and \\(5\\), and \\(9 = 3 \\times 3\\) shares none of them, so nothing reduces. The endless decimal you started with was secretly this exact fraction the whole time, \\(\\boxed{5/9}\\)."
+   },
+   {
+    "x": "Here is the whole chapter folded into one move. The block-over-nines shortcut says a repeating decimal whose block sits right after the point equals that block written over as many nines as the block has digits. The decimal \\(0.\\overline{2}\\) has a single repeating digit, so its block is just \\(2\\) and it rides over one \\(9\\). Write \\(0.\\overline{2}\\) as a fraction in lowest terms.",
+    "hints": [
+     "The block is one digit long, so the denominator is a single \\(9\\). Start by writing the block over that nine and you have \\(\\tfrac{2}{9}\\).",
+     "Now check whether \\(\\tfrac{2}{9}\\) can shrink. A fraction reduces only when the top and bottom share a common factor bigger than \\(1\\). What divides both \\(2\\) and \\(9\\)?"
+    ],
+    "ans": "2/9",
+    "accept": [
+     "2 / 9",
+     "2/9",
+     "two ninths",
+     "two over nine",
+     "two-ninths"
+    ],
+    "sol": "The repeating block is \\(2\\), and it is a single digit, so it goes over one nine. That gives \\(0.\\overline{2} = \\tfrac{2}{9}\\). The last step is to reduce. The factors of \\(2\\) are \\(1\\) and \\(2\\), and the factors of \\(9\\) are \\(1\\), \\(3\\), and \\(9\\). The only number they share is \\(1\\), so the fraction is already as small as it gets. To see why the shortcut is honest, let \\(x = 0.\\overline{2}\\). Then \\(10x = 2.\\overline{2}\\), and subtracting gives \\(10x - x = 2.\\overline{2} - 0.\\overline{2}\\), so \\(9x = 2\\) and \\(x = \\tfrac{2}{9}\\). The nine in the denominator is exactly the \\(10 - 1\\) hiding behind the trick. \\(\\boxed{2/9}\\)"
+   },
+   {
+    "x": "Here is the last decimal of the chapter, and it is a tidy one. The number \\(0.\\overline{81}\\) means \\(0.818181\\ldots\\) going on forever, with the block <b>81</b> repeating. Because the block is two digits long, that block sits over \\(99\\), so \\(0.\\overline{81}=\\dfrac{81}{99}\\). That fraction is correct, but it is not finished, because \\(81\\) and \\(99\\) share a common factor. Reduce \\(\\dfrac{81}{99}\\) all the way down and write it in lowest terms. What fraction do you get?",
+    "ans": "9/11",
+    "accept": [
+     "9 / 11",
+     "9/11",
+     "nine elevenths",
+     "nine over eleven",
+     "nine-elevenths"
+    ],
+    "hints": [
+     "A repeating block of length two always sits over \\(99\\), which is why \\(0.\\overline{81}=\\dfrac{81}{99}\\). Now ask what number divides into both \\(81\\) and \\(99\\).",
+     "Both \\(81\\) and \\(99\\) are multiples of \\(9\\). Divide the top and the bottom by \\(9\\) and see what is left."
+    ],
+    "sol": "Start by reading the bar. The notation \\(0.\\overline{81}\\) is short for \\(0.818181\\ldots\\), with the two-digit block <b>81</b> repeating forever. A repeating block of length two always sits over \\(99\\), so the fraction you begin with is $$0.\\overline{81}=\\frac{81}{99}.$$ This value is right, but \\(\\dfrac{81}{99}\\) is not in lowest terms yet, because the top and the bottom share a common factor. The greatest common factor of \\(81\\) and \\(99\\) is \\(9\\), since \\(81=9\\times 9\\) and \\(99=9\\times 11\\). Dividing both parts by \\(9\\) gives $$\\frac{81}{99}=\\frac{81\\div 9}{99\\div 9}=\\frac{9}{11}.$$ You can check the result by turning it back into a decimal. Long division of \\(9\\div 11\\) gives \\(0.818181\\ldots\\), the same repeating \\(81\\), so the conversion is sound. And \\(9\\) and \\(11\\) share no common factor other than \\(1\\), so this is as far as it reduces. The decimal that looked endless was just a neat fraction in disguise, \\(\\boxed{9/11}\\)."
+   },
+   {
+    "x": "Here is a decimal with a little extra at the front. The leading \\(0\\) sits outside the loop, and only the block \\(45\\) repeats forever, so the number is \\(0.0\\overline{45}\\), meaning \\(0.0454545\\ldots\\). The single zero never comes back, which makes this a touch trickier than a pure repeater. Shift past that head before you line up the tails. Multiply by \\(1{,}000\\) to get \\(1{,}000x = 45.4545\\ldots\\), multiply by \\(10\\) to get \\(10x = 0.4545\\ldots\\), and subtract so the repeating tails cancel and leave \\(990x = 45\\). Write \\(0.0\\overline{45}\\) as a fraction in lowest terms.",
+    "ans": "1/22",
+    "accept": [
+     "1 / 22",
+     "1/22",
+     "one over twenty two",
+     "one over twenty-two",
+     "one twenty second",
+     "one twenty-second"
+    ],
+    "hints": [
+     "The repeating block starts at the second decimal place, not the first. Use the multiplier that jumps past everything once, \\(1{,}000x\\), and the one that jumps past just the leading zero, \\(10x\\), so their tails match.",
+     "After \\(1{,}000x = 45.4545\\ldots\\) and \\(10x = 0.4545\\ldots\\), subtract to get \\(990x = 45\\), so \\(x = \\tfrac{45}{990}\\). Now find the greatest common factor of \\(45\\) and \\(990\\) and divide it out."
+    ],
+    "sol": "Call the number \\(x = 0.0\\overline{45} = 0.0454545\\ldots\\). The trouble is that single leading zero, since it appears once and never repeats, so a plain \\(100x\\) trick will not line the tails up. The fix is to shift twice. Slide the decimal three places to land just before a fresh \\(45\\), giving \\(1{,}000x = 45.454545\\ldots\\). Slide it one place to clear only the head zero, giving \\(10x = 0.454545\\ldots\\). Both now have the identical repeating tail \\(.454545\\ldots\\). Subtract the smaller from the larger and the tails vanish. $$1{,}000x - 10x = 45.4545\\ldots - 0.4545\\ldots = 45$$ The left side is \\(990x\\), so \\(990x = 45\\) and \\(x = \\tfrac{45}{990}\\). Reduce by the greatest common factor. Both share \\(45\\), since \\(45 = 45 \\cdot 1\\) and \\(990 = 45 \\cdot 22\\), giving \\(\\tfrac{45}{990} = \\tfrac{1}{22}\\). A quick check confirms it, since long division of \\(1 \\div 22\\) gives \\(0.0454545\\ldots\\), the zero once and then \\(45\\) on a loop. So \\(0.0\\overline{45} = \\boxed{1/22}\\)."
+   },
+   {
+    "x": "Here is the trick that closes out this whole chapter on decimals. Let \\(x = 0.\\overline{9}\\), the decimal whose nines never stop. Multiply both sides by \\(10\\) to shift the digits one place, which gives \\(10x = 9.\\overline{9}\\). Now subtract the first line from the second. The endless tails of nines line up perfectly and cancel, leaving \\(10x - x = 9.\\overline{9} - 0.\\overline{9}\\), so \\(9x = 9\\). Solve for \\(x\\). What single whole number does \\(0.\\overline{9}\\) equal?",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "You already have \\(9x = 9\\). Divide both sides by \\(9\\) to get \\(x\\) all by itself.",
+     "Both the starting decimal and the answer are the same number \\(x\\), so whatever \\(x\\) turns out to be is exactly what \\(0.\\overline{9}\\) is. It is a single whole number, not a fraction."
+    ],
+    "sol": "Start by naming the mystery value. Let \\(x = 0.\\overline{9}\\). The bar means the nines repeat forever with no end. Multiplying by \\(10\\) slides every digit one spot to the left, so $$10x = 9.\\overline{9}.$$ The clever part is the subtraction. Line the two equations up and take the difference. $$10x - x = 9.\\overline{9} - 0.\\overline{9}$$ On the right, the part after the decimal point is an identical endless string of nines in both numbers, so it cancels completely and only the \\(9\\) in front survives. On the left, \\(10x - x = 9x\\). That leaves $$9x = 9.$$ Divide both sides by \\(9\\) to get \\(x = 1\\). Since \\(x\\) was \\(0.\\overline{9}\\) the whole time, this says \\(0.\\overline{9}\\) and \\(1\\) are not close, they are the exact same number written two different ways. A quick second check agrees. From the work in this chapter, \\(0.\\overline{1} = \\tfrac{1}{9}\\), so nine of those repeating tenths give \\(9 \\cdot \\tfrac{1}{9} = \\tfrac{9}{9} = 1\\), and \\(9 \\cdot 0.\\overline{1} = 0.\\overline{9}\\). Both roads land in the same place. \\(\\boxed{1}\\)"
+   },
+   {
+    "x": "You have reached the last gate of the decimals chapter. The fraction \\(\\tfrac{1}{13}\\) is a pure repeater, \\(\\tfrac{1}{13} = 0.\\overline{076923}\\), so the digits after the decimal point march in a block of length six that never breaks, \\(076923\\,076923\\,076923\\dots\\) forever. Here is the puzzle. You do not get to write out a hundred digits by hand, and you should not have to. Using the fact that the block has length six, figure out which digit lands in the 100th place after the decimal point. <b>What is the 100th digit after the decimal point in \\(\\tfrac{1}{13}\\)?</b> Give the single digit.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine"
+    ],
+    "hints": [
+     "The digits repeat in groups of six, \\(076923\\). After every full group of six digits you are back at the start, so positions \\(6\\), \\(12\\), \\(18\\), and so on all hold the last digit of the block. Ask where position \\(100\\) sits relative to a fresh group.",
+     "Divide \\(100\\) by \\(6\\). You get \\(16\\) whole groups with a remainder of \\(4\\), since \\(16 \\times 6 = 96\\) and \\(100 - 96 = 4\\). So the 100th digit is the 4th digit of the block \\(076923\\)."
+    ],
+    "sol": "Start with what the decimal actually is. Doing the long division, \\(\\tfrac{1}{13} = 0.\\overline{076923}\\), a pure repeater whose block \\(076923\\) has length \\(6\\). So the stream of digits after the decimal point is \\(076923\\,076923\\,076923\\dots\\), the same six digits over and over with nothing else mixed in. Because the pattern restarts every \\(6\\) digits, the position of a digit only matters up to multiples of \\(6\\). Position \\(6\\) ends the first block, position \\(12\\) ends the second, and in general every position that is a multiple of \\(6\\) holds the last digit of the block. To place position \\(100\\), divide by the block length. \\(100 = 6 \\times 16 + 4\\), because \\(6 \\times 16 = 96\\) and \\(100 - 96 = 4\\). That means after \\(96\\) digits we have just finished \\(16\\) complete blocks and landed exactly on a block boundary, and then we count \\(4\\) more digits into a fresh copy of \\(076923\\). Reading that block, the 1st digit is \\(0\\), the 2nd is \\(7\\), the 3rd is \\(6\\), and the 4th is \\(9\\). So the digit sitting in the 100th place is \\(\\boxed{9}\\). The remainder is the whole trick. The quotient \\(16\\) just counts how many full blocks went by and never affects which digit you land on, while the remainder \\(4\\) points straight at the 4th slot of the block. A nice way to feel sure is to notice that position \\(96\\) is a multiple of \\(6\\), so it holds the \\(6\\)th digit \\(3\\), and then positions \\(97, 98, 99, 100\\) read off \\(0, 7, 6, 9\\), landing on \\(9\\) again.",
+    "label": "r11"
+   },
+   {
+    "x": "You have reached the very end of the decimals chapter, so here is a problem that rewards everything you now know about repeating patterns. Recall that \\(\\frac{4}{33} = 0.\\overline{12}\\), which means the digits run \\(0.121212\\ldots\\) forever, alternating <b>1, 2, 1, 2</b> in a repeating block of length \\(2\\). Without writing out a hundred digits, find the <b>99th</b> digit after the decimal point in \\(\\frac{4}{33}\\). Give the single digit.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "The digits repeat with a block of length \\(2\\). The odd positions \\(1, 3, 5, \\ldots\\) all hold one digit, and the even positions \\(2, 4, 6, \\ldots\\) all hold the other. Which kind of position is \\(99\\)?",
+     "Divide \\(99\\) by the block length \\(2\\). The remainder tells you how far into the block you land. A remainder of \\(1\\) points at the first digit of \\(12\\)."
+    ],
+    "sol": "The decimal \\(\\frac{4}{33} = 0.\\overline{12}\\) repeats in a block of length \\(2\\), so every digit is determined by its position within that block. To locate position \\(99\\), divide by the block length. We get \\(99 = 2 \\times 49 + 1\\), so after \\(49\\) complete blocks of \\(12\\) there is a remainder of \\(1\\). A remainder of \\(1\\) means we land on the <b>first</b> digit of the block \\(12\\), which is \\(1\\). You can sanity check this with the odd-even pattern. Odd positions \\(1, 3, 5, \\ldots\\) always hold the \\(1\\), and even positions hold the \\(2\\). Since \\(99\\) is odd, the digit is the \\(1\\). $$\\frac{4}{33} = 0.\\underbrace{12}_{1}\\underbrace{12}_{2}\\ldots, \\qquad 99 \\div 2 = 49 \\text{ r } 1$$ So the 99th digit is \\(\\boxed{1}\\)."
+   },
+   {
+    "x": "Four unit fractions are already in lowest terms, \\(\\tfrac{1}{8}\\), \\(\\tfrac{1}{40}\\), \\(\\tfrac{1}{50}\\), and \\(\\tfrac{1}{24}\\). One of them, written as a decimal, never stops. The other three terminate. Do not divide. Instead use the gatekeeper test from earlier, a fraction in lowest terms terminates exactly when its denominator is built from nothing but 2s and 5s. Factor each denominator into primes, \\(8 = 2^3\\), \\(40 = 2^3 \\times 5\\), \\(50 = 2 \\times 5^2\\), and \\(24 = 2^3 \\times 3\\). Find the one denominator that smuggles in a prime other than 2 or 5, because that is the fraction whose decimal repeats forever. Which denominator is it?",
+    "ans": "24",
+    "accept": [
+     "1/24",
+     "24",
+     "24.0"
+    ],
+    "hints": [
+     "The gatekeeper only lets a fraction terminate if, in lowest terms, the denominator is made of 2s and 5s and nothing else. Three of these pass. Look for the one factorization that hides a different prime.",
+     "Scan the four factorizations for a prime that is not 2 and not 5. Only \\(24 = 2^3 \\times 3\\) carries a 3, so that 3 is what forces the repeat."
+    ],
+    "sol": "The gatekeeper test says a fraction in lowest terms gives a terminating decimal exactly when its denominator, once fully factored, contains only the primes 2 and 5. Any other prime down there means the decimal repeats forever. So I do not need to divide at all. I just read the prime factorizations. \\(8 = 2^3\\), all 2s, so \\(\\tfrac{1}{8}\\) terminates. \\(40 = 2^3 \\times 5\\), only 2s and 5s, so \\(\\tfrac{1}{40}\\) terminates. \\(50 = 2 \\times 5^2\\), again only 2s and 5s, so \\(\\tfrac{1}{50}\\) terminates. That leaves \\(24 = 2^3 \\times 3\\). The 3 is a prime that is neither 2 nor 5, and it cannot cancel because the fraction is already in lowest terms. That single 3 is the troublemaker that keeps the decimal going. If you want proof, the long division of \\(\\tfrac{1}{24}\\) settles into \\(0.041\\overline{6} = 0.041666\\ldots\\), a decimal that truly never ends. The denominator that repeats is \\(\\boxed{24}\\)."
+   },
+   {
+    "x": "Here is the last puzzle of the chapter. Two endless decimals are waiting. The first is \\(0.\\overline{81}\\), which keeps spelling out \\(0.818181\\dots\\) forever. The second is \\(0.\\overline{36}\\), which keeps going as \\(0.363636\\dots\\) forever. The first is clearly larger, so find exactly how much it beats the second by. Write the difference \\(0.\\overline{81} - 0.\\overline{36}\\) as a single fraction in lowest terms.",
+    "ans": "5/11",
+    "accept": [
+     "5 / 11",
+     "5 over 11",
+     "5/11",
+     "five elevenths",
+     "five-elevenths"
+    ],
+    "hints": [
+     "A two-digit repeating block sits over two nines. So \\(0.\\overline{81}=\\tfrac{81}{99}\\) and \\(0.\\overline{36}=\\tfrac{36}{99}\\). Now you have two fractions that share the same bottom.",
+     "When the denominators already match, you only subtract the tops. Work out \\(81-36\\), keep \\(99\\) underneath, then look for a common factor to reduce the result."
+    ],
+    "sol": "Every repeating block of two digits turns into that block over two nines, so \\(0.\\overline{81}=\\dfrac{81}{99}\\) and \\(0.\\overline{36}=\\dfrac{36}{99}\\). They were built on the same denominator, which is the lucky part. Subtracting is just subtracting the numerators. $$\\frac{81}{99}-\\frac{36}{99}=\\frac{81-36}{99}=\\frac{45}{99}$$ Now reduce. Both \\(45\\) and \\(99\\) share the factor \\(9\\), since \\(45=9\\times 5\\) and \\(99=9\\times 11\\). Dividing top and bottom by \\(9\\) gives \\(\\dfrac{45}{99}=\\dfrac{5}{11}\\). You can sanity check it by dividing \\(5\\) by \\(11\\), which loops as \\(0.454545\\dots=0.\\overline{45}\\), exactly the gap between the two decimals you started with. \\(\\boxed{5/11}\\)"
+   }
+  ],
+  "next": "6.1"
  }
 }
