@@ -1,0 +1,524 @@
+{
+ "6.1": {
+  "title": "Building Expressions",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Open the door. For five whole chapters, every number you wrote was a number you already knew. Whole numbers first, then negatives reaching down below zero, then fractions, then decimals, and each one was a fixed amount sitting still on the page, waiting to be added or split or compared. Now picture a sealed box on a shipping desk with some number of identical stamps inside, taped shut, so you cannot count them yet. Give that hidden count a short name, the letter \\(x\\), so you can talk about it long before you ever cut the tape. Here is the leap that the whole chapter turns on. A letter is allowed to stand for a number you do not know yet, or a number that is free to change, and the instant you allow that, one short line of math can describe a whole family of situations at once instead of a single frozen case. A coffee cart that charges the same setup every morning and then a few cents for each cup poured, a dimmer dial that nobody has turned yet, a box of stamps, all of them spoken for by one little phrase. That phrase, numbers and letters stitched together with the operations you already trust, is called an <b>expression</b>, like \\(3x + 5\\). Notice that nothing you learned gets thrown out at the door. The letter is just a number wearing a disguise, so every rule you know for adding, multiplying, and grouping still holds, exactly as it did when the numbers were standing in plain sight. Set two small conventions now and keep them for the rest of your life in math. Writing a number right up against a letter with nothing in between, like \\(3x\\), means \\(3 \\times x\\), which you can picture as three of those sealed boxes lined up side by side. And \\(x\\) squared, which we write \\(x^2\\), means \\(x \\times x\\), the unknown multiplied by itself. We will learn the grammar of expressions by using it first and naming each piece only after you have already watched it do its work."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A bead artist makes bracelets. Every bracelet begins with \\(4\\) clasp beads that are always there, and then she adds \\(3\\) colored beads for each charm the customer wants. Let \\(n\\) stand for the number of charms. The charm beads come \\(3\\) per charm, so that part is \\(3n\\), which is shorthand for \\(3\\) times \\(n\\). The \\(4\\) clasp beads are always present, so the whole bracelet holds \\(3n + 4\\) beads. That one short line describes a bracelet with any number of charms at once, the entire family of bracelets folded into a single expression. Now zoom in on one order. A customer asks for \\(6\\) charms. Evaluating the expression at \\(n = 6\\) means replacing every \\(n\\) with \\(6\\), which gives \\(3(6) + 4\\). How many beads are on that bracelet? Type the single number.",
+    "hints": [
+     "The expression is \\(3n + 4\\). To evaluate at \\(n = 6\\), swap the letter \\(n\\) for the number \\(6\\) everywhere it appears. You should be looking at \\(3(6) + 4\\).",
+     "Do the multiplication first. \\(3(6)\\) means \\(3 \\times 6\\), which is \\(18\\). Then add the \\(4\\) clasp beads."
+    ],
+    "ans": "22",
+    "accept": [
+     "22",
+     "22.0",
+     "twenty two",
+     "twenty-two",
+     "twenty−two"
+    ],
+    "sol": "The total number of beads on a bracelet with \\(n\\) charms is the expression $$3n + 4.$$ To handle the order for \\(6\\) charms, evaluate at \\(n = 6\\) by replacing every \\(n\\) with \\(6\\). $$3(6) + 4 = 18 + 4 = 22.$$ The bracelet has \\(\\boxed{22}\\) beads."
+   },
+   {
+    "t": "imp",
+    "x": "A letter is just a stand-in for a number we have not pinned down yet, like the sealed count hidden in the box. When we write something like \\(3n + 4\\), we are not doing one calculation, we are quietly doing every calculation at once, the whole family of cases captured in a single short line. The expression on its own answers the general question. The moment we want one specific case back, we replace the letter with its value and watch the whole thing collapse into ordinary arithmetic we already know how to finish, and swapping in a number like that is called evaluating. Build the expression once, then plug in as many times as we want."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Here is the first piece of grammar, met through use. A diver's height in meters above the surface is given by \\(11 - 4t\\), where \\(t\\) counts the minutes of descent. The expression has two pieces, called <b>terms</b>, separated by a sign. The second term is \\(-4t\\), a number multiplied by the variable, and the minus belongs to it because every minute pulls the diver lower. That number out front, sign and all, is the <b>coefficient</b> of \\(t\\). The other piece, the lone \\(11\\), is the starting height at the surface. Read off the coefficient of \\(t\\) in \\(11 - 4t\\) and type the single value, sign included.",
+    "hints": [
+     "A subtraction is really an addition of a negative. Rewrite \\(11 - 4t\\) as \\(11 + (-4t)\\) so the sign on the \\(t\\) term sits right out in the open.",
+     "The coefficient of \\(t\\) is the whole number multiplying \\(t\\), the minus included. In \\(-4t\\) that number is \\(-4\\)."
+    ],
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "-4.0",
+     "−4",
+     "−4.0"
+    ],
+    "sol": "Start by splitting the expression into its terms. Reading \\(11 - 4t\\) as a sum makes the signs honest, \\(11 + (-4t)\\). Now the two terms are \\(11\\) and \\(-4t\\). The coefficient of \\(t\\) is the number multiplying \\(t\\), carried along with its sign, so it is \\(-4\\). The lone \\(11\\) is the constant term, the diver's starting height, and it is not attached to \\(t\\) at all. The coefficient of \\(t\\) is \\(\\boxed{-4}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Now name the bare number. A small mushroom grower stacks trays on a shelf, and each tray \\(w\\) that gets added gives about \\(8\\) ounces of harvest, sitting on top of a fixed \\(5\\) ounces from one permanent tray that is always there no matter what. The total harvest is described by the expression \\(8w + 5\\). The piece \\(8w\\) grows as more trays go on, but the \\(5\\) stands all by itself with no letter attached, and whatever \\(w\\) ends up being, that \\(5\\) never budges. A plain number sitting in an expression with no variable riding along is called a <b>constant term</b>. Identify the constant term of \\(8w + 5\\) and type that single number.",
+    "hints": [
+     "Look at the two pieces of \\(8w + 5\\). One of them has the letter \\(w\\) attached and changes as \\(w\\) changes. The other is a plain number with no letter on it. The constant term is that plain, stand alone number.",
+     "The term \\(8w\\) carries the variable, so it is not constant. That leaves \\(5\\), which has no \\(w\\) attached and never changes. Type \\(5\\)."
+    ],
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0"
+    ],
+    "sol": "The expression is already in simplest form, \\(8w + 5\\). It has two terms. The term \\(8w\\) means \\(8\\) times \\(w\\), and it carries the variable, so its value rides up and down with \\(w\\). The other term, \\(5\\), has no variable attached to it. That makes \\(5\\) the constant term, the part that stays the same no matter what \\(w\\) turns out to be. So the constant term is \\(\\boxed{5}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Picture \\(x\\) as one sealed box, and every box on this yard is the exact same size holding the exact same unknown number of things inside. A morning crew carries \\(4\\) of them across, which we write \\(4x\\) since each box holds that same hidden count. Then one lone box rolls through on its own, just \\(x\\). An afternoon crew follows with \\(6\\) more, written \\(6x\\). Stand them in a line as \\(4x + x + 6x\\). That lonely middle box still counts as one box, so the quiet number in front of it is \\(1\\), which means \\(x\\) is just another way of writing \\(1x\\). Since every box is the same kind, combining them is nothing more than counting how many you have, so you add the numbers in front. Simplify \\(4x + x + 6x\\) into a single term, then type the number that ends up in front of \\(x\\).",
+    "hints": [
+     "A bare \\(x\\) is secretly \\(1x\\), so the three counts you are gathering are \\(4\\), \\(1\\), and \\(6\\). Because the boxes are all identical, you only need to add those three numbers together, not multiply anything.",
+     "Add the numbers in front. Since \\(4 + 1 + 6 = 11\\), the line \\(4x + x + 6x\\) becomes \\(11x\\), and the number sitting in front of \\(x\\) is \\(11\\)."
+    ],
+    "ans": "11",
+    "accept": [
+     "+11",
+     "11",
+     "11.0"
+    ],
+    "sol": "The lone \\(x\\) in the middle counts as \\(1x\\), so the three coefficients you are gathering are \\(4\\), \\(1\\), and \\(6\\). Since every term is a count of the same box \\(x\\), combining them just means adding those numbers. $$4x + x + 6x = (4 + 1 + 6)x = 11x$$ The simplified expression is \\(11x\\), and the number in front of \\(x\\) is its coefficient. This is also exactly why \\(x + x = 2x\\), since one box plus one box is two boxes. Reading the coefficient off \\(11x\\) gives \\(\\boxed{11}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "A <b>term</b> is a number stuck to some letters, like \\(4x\\) or \\(8w\\), and that front number with its sign is the <b>coefficient</b>, the count of how many of that box you are holding, so a lonely \\(x\\) secretly means \\(1x\\) and a lonely \\(-x\\) means \\(-1x\\). A plain number standing by itself with no letter is a <b>constant</b>. When two terms have the exact same letter part they are <b>like terms</b>, and combining them is nothing fancier than counting, because \\(x + x\\) is just two of the same thing, which is \\(2x\\). The plus and minus signs are the seams between the terms, so when you tally up the coefficients you have to carry each sign along with its term or the count comes out wrong."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An algebra-tiles figure. Across the top is a legend with three tile shapes. First, a thin tall rectangle labeled x, called the unknown strip; next, a large square labeled x squared, noting both of its sides are length x so it is the strip turned into a square; and last, a differently shaded thin strip labeled y. The left panel is titled same kind tallies. It shows four identical x-strips in a row, a plus sign, then one more lone x-strip, an equals sign, then a bracket gathering a stack of five identical strips with a gold label five x underneath, showing that four x plus x equals five x. A dashed vertical divider separates the right panel, titled different kinds never merge. On the right, one big x squared square sits beside a single thin x-strip with a red no-merge slash between them, captioned a square and a strip are different shapes; to its right an x-strip sits beside a y-strip with the same red no-merge slash. A gold caption reads that same-shape tiles tally into one count, but a square tile and a strip tile are different objects, and an x-strip and a y-strip are different objects, so they never stack.\">\n  <text x=\"220\" y=\"16\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">MEET THE TILES</text>\n  <rect x=\"34\" y=\"26\" width=\"10\" height=\"34\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"55\" y=\"40\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--ink)\">x</text>\n  <text x=\"55\" y=\"55\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">a strip, length x</text>\n  <rect x=\"178\" y=\"26\" width=\"34\" height=\"34\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"195\" y=\"48\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\">x²</text>\n  <text x=\"222\" y=\"40\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">both sides x,</text>\n  <text x=\"222\" y=\"54\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">the strip made square</text>\n  <rect x=\"364\" y=\"26\" width=\"10\" height=\"34\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/>\n  <text x=\"385\" y=\"40\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--ink)\">y</text>\n  <text x=\"385\" y=\"55\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">a different strip</text>\n  <line x1=\"14\" y1=\"72\" x2=\"426\" y2=\"72\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n  <text x=\"108\" y=\"92\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--mid)\">same kind tallies</text>\n  <rect x=\"24\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <rect x=\"38\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <rect x=\"52\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <rect x=\"66\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"83\" y=\"129\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--slate)\">+</text>\n  <rect x=\"92\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"112\" y=\"129\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--slate)\">=</text>\n  <rect x=\"128\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/>\n  <rect x=\"142\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/>\n  <rect x=\"156\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/>\n  <rect x=\"170\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/>\n  <rect x=\"184\" y=\"104\" width=\"9\" height=\"40\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/>\n  <path d=\"M124 150 q0 5 5 5 h31 q5 0 5 5 q0 -5 5 -5 h31 q5 0 5 -5\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/>\n  <text x=\"160\" y=\"178\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">5x</text>\n  <text x=\"108\" y=\"200\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">4x + x = 5x, one running count</text>\n  <line x1=\"232\" y1=\"80\" x2=\"232\" y2=\"208\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 4\"/>\n  <text x=\"334\" y=\"92\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--mid)\">different kinds never merge</text>\n  <rect x=\"252\" y=\"104\" width=\"34\" height=\"34\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"269\" y=\"126\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\">x²</text>\n  <line x1=\"294\" y1=\"106\" x2=\"306\" y2=\"136\" stroke=\"var(--accent)\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n  <rect x=\"314\" y=\"104\" width=\"9\" height=\"34\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"287\" y=\"158\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">square vs strip,</text>\n  <text x=\"287\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">different shapes</text>\n  <rect x=\"356\" y=\"104\" width=\"9\" height=\"34\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <line x1=\"372\" y1=\"106\" x2=\"384\" y2=\"136\" stroke=\"var(--accent)\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n  <rect x=\"392\" y=\"104\" width=\"9\" height=\"34\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\" stroke-dasharray=\"2 2\"/>\n  <text x=\"378\" y=\"158\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">x-strip vs y-strip,</text>\n  <text x=\"378\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">different letters</text>\n  <line x1=\"14\" y1=\"224\" x2=\"426\" y2=\"224\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n  <text x=\"220\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">Same-shape tiles tally into one count.</text>\n  <text x=\"220\" y=\"266\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">A square tile and a strip tile are different objects,</text>\n  <text x=\"220\" y=\"282\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">and an x-strip and a y-strip are different objects,</text>\n  <text x=\"220\" y=\"298\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">so they never stack.</text>\n</svg>",
+    "cap": "Each tile is a shape, and only matching shapes pile into one count. Four \\(x\\)-strips and one more \\(x\\)-strip stack into a single tally of \\(5x\\). But an \\(x^2\\) square is not the same shape as an \\(x\\)-strip, and an \\(x\\)-strip is not the same letter as a \\(y\\)-strip, so those tiles sit side by side and stay apart."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Now use the picture as a rule, sorting by shape before you combine. In \\(x^2 + 5x + 2x^2 + 3\\), the square tiles belong with the squares and the strips belong with the strips. The two square terms \\(x^2 + 2x^2\\) gather into \\(3x^2\\), the lone \\(5x\\) has no partner among the squares, and the \\(3\\) stands alone as a constant. The \\(x^2\\) and the \\(5x\\) flatly refuse to merge, because a thing squared and the thing itself are different kinds of object, and that refusal is the whole reason counting terms is a real question. Write \\(x^2 + 5x + 2x^2 + 3\\) in simplest form. <b>How many terms does it have once it is fully simplified?</b> Type the single count.",
+    "hints": [
+     "Sort the four pieces by their shape before you add anything. Which ones are square tiles \\(x^2\\), which is a strip \\(5x\\), and which is a plain number? Only pieces of the same shape can be combined.",
+     "Combine just the squares, \\(x^2 + 2x^2 = 3x^2\\), and leave \\(5x\\) and \\(3\\) exactly where they are since nothing matches them. That gives \\(3x^2 + 5x + 3\\). Now count the separate pieces joined by plus signs."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "sol": "Group the like terms by shape. The square tiles combine, \\(x^2 + 2x^2 = 3x^2\\). The strip \\(5x\\) is alone in its shape, and the number \\(3\\) is a constant by itself, so neither one combines with anything. Putting the survivors in order from the highest power down gives $$x^2 + 5x + 2x^2 + 3 = 3x^2 + 5x + 3.$$ Now read off the separate terms joined by plus signs. They are \\(3x^2\\), then \\(5x\\), then \\(3\\). The \\(x^2\\) part and the \\(x\\) part stay apart because squaring \\(x\\) makes a different kind of object than \\(x\\) itself, so they cannot fold together. That leaves three distinct terms, so the count is \\(\\boxed{3}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the thing nobody can wiggle around. You can only fold two terms together when their variable parts match exactly, and when they do, you just add the numbers in front and the variable part rides along unchanged. If the variable parts are even a little different, like an \\(x^2\\) next to an \\(x\\), or an \\(x\\) next to a \\(y\\), they are simply different kinds of thing and there is no move that smushes them into one. That is why counting the terms in simplest form actually means something, because the count is telling you how many genuinely different kinds of quantity are still standing once all the combining is finished."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Different letters stand for different kinds, the same way raisins and nuts are not the same snack. Picture a trail-mix scoop that always grabs \\(x\\) raisins and \\(y\\) nuts at once. You tip several scoops into a bag and end up with \\(3x + 5y + 2x + y\\). Raisins only tally with raisins, so \\(3x\\) and \\(2x\\) join into \\(5x\\). Nuts only tally with nuts, and that lonely \\(y\\) is really \\(1y\\), so \\(5y\\) and \\(y\\) join into \\(6y\\). The two kinds will not merge into each other, so the bag is as tidy as it gets. After you simplify, what is the coefficient of \\(x\\)? Type that single value.",
+    "hints": [
+     "Sort the terms into two piles before you add anything. One pile holds the \\(x\\) terms, the other holds the \\(y\\) terms. A term with \\(x\\) can never land in the \\(y\\) pile, so the two letters get counted separately.",
+     "Add the \\(x\\) terms by themselves, \\(3x + 2x = 5x\\), and leave the \\(y\\) terms alone. The number sitting in front of \\(x\\) is its coefficient, so read that off."
+    ],
+    "ans": "5",
+    "accept": [
+     "+5",
+     "5",
+     "5.0",
+     "5x"
+    ],
+    "sol": "Keep the two letters in separate piles, since \\(x\\) and \\(y\\) are different kinds and never combine. Gather the \\(x\\) terms, \\(3x + 2x = 5x\\). Gather the \\(y\\) terms, remembering the lone \\(y\\) means \\(1y\\), so \\(5y + y = 6y\\). Putting the piles side by side, the expression in simplest form is $$3x + 5y + 2x + y = 5x + 6y.$$ The coefficient of \\(x\\) is the number multiplying it, which is \\(5\\). So the answer is \\(\\boxed{5}\\)."
+   },
+   {
+    "t": "fact",
+    "x": "For most of history nobody had a letter for an unknown. People wrote the mystery quantity out in full, calling it \"the thing\" or \"the heap\" and arguing in pure sentences, which turned even a small puzzle into a wordy paragraph. A ninth century scholar in Baghdad named al-Khwarizmi, whose book handed us the very word <b>algebra</b>, still described the unknown entirely in words with no symbol at all. The shift to letters came late and slowly. In the fifteen hundreds a French lawyer named Francois Viete had the bold idea of using letters not just for the unknown but for the known amounts too, so a whole family of problems could be written in one general line, and he marked the two kinds apart by using vowels for the unknowns and consonants for the knowns. A generation later Rene Descartes swapped that for the habit we still keep, late letters like \\(x, y, z\\) for the unknowns and early letters like \\(a, b, c\\) for the fixed amounts. One story even says the printer setting Descartes's book leaned on \\(x\\) because his type case had the most spare \\(x\\) blocks, so the most famous letter in algebra may owe its fame partly to a tray of metal type. When you reach for \\(x\\) today you are using a convention only a few centuries old, invented for the exact reason you are feeling right now, that one general line beats a hundred separate cases."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Here is the trick that makes distribution feel obvious. A florist sets out \\(7\\) identical glass vases along a windowsill, and into every single vase she places the same little bundle, \\(y\\) tulips together with \\(2\\) daisies. The flowers in one vase form the group \\(y + 2\\), and there are \\(7\\) vases, so the total number of flowers is \\(7(y + 2)\\). But think about what seven copies of that bundle really means. Seven copies of the bundle is seven copies of the tulips and, at the same time, seven copies of the daisies. The \\(7\\) out front reaches the \\(y\\), and it also reaches the \\(2\\). When you multiply a group by a number, you multiply <b>every</b> piece inside the group by that number, the rule \\(a(b+c) = ab + ac\\) that we call the <b>distributive property</b>. Expand \\(7(y + 2)\\) into the form (something with \\(y\\)) plus (a plain number), then read off the <b>constant term</b>, the plain number with no \\(y\\) attached, and type that single value.",
+    "hints": [
+     "The \\(7\\) has to reach both flowers in the bundle. It multiplies the \\(y\\) to give \\(7y\\), and it also multiplies the \\(2\\). The constant term is whatever that second product comes out to.",
+     "Multiply the \\(7\\) by the \\(2\\) inside the group. That product, \\(7 \\times 2\\), is the constant term, the part of \\(7y + 14\\) that has no \\(y\\)."
+    ],
+    "ans": "14",
+    "accept": [
+     "+14",
+     "14",
+     "14.0"
+    ],
+    "sol": "The \\(7\\) out front multiplies each piece of the group \\(y + 2\\) on its own. It multiplies the \\(y\\) to give \\(7y\\), and it multiplies the \\(2\\) to give \\(7 \\times 2 = 14\\). Putting the two products together expands the expression. $$7(y + 2) = 7y + 14$$ This says seven bundles hold \\(7y\\) tulips and \\(14\\) daisies all told, which matches counting seven daisies seven times. The term \\(7y\\) carries the variable, and the constant term is the plain number sitting beside it with no \\(y\\) attached. That number is \\(\\boxed{14}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 560 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An area model for the distributive property. On the left, a wide rectangle of height a is split by a vertical divider into a left piece of width b shaded lighter with its area written a times b, and a right piece of width c shaded a little darker with its area written a times c. A vertical brace on the left edge marks the height a, and a horizontal brace across the top marks the whole width b plus c, so the one whole area a times the quantity b plus c equals the two pieces a times b plus a times c. A gold equation below reads a times the group b plus c equals a b plus a c. On the right, the concrete case is a second smaller rectangle of height seven split into a width y piece labeled seven y and a width two piece labeled fourteen, with a note that this is seven rows of y plus seven rows of two, and the line seven times the group y plus two equals seven y plus fourteen.\">\n<text x=\"280\" y=\"26\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--mid)\" font-weight=\"600\">One area, two pieces</text>\n<path d=\"M 60 70 q -9 0 -9 9 v 18 q 0 9 -9 9 q 9 0 9 9 v 18 q 0 9 9 9\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<text x=\"30\" y=\"105\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\" font-style=\"italic\">a</text>\n<path d=\"M 70 60 q 0 -9 9 -9 h 76 q 9 0 9 -9 q 0 9 9 9 h 76 q 9 0 9 9\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<text x=\"173\" y=\"38\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\" font-style=\"italic\">b + c</text>\n<rect x=\"70\" y=\"70\" width=\"100\" height=\"76\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<rect x=\"170\" y=\"70\" width=\"106\" height=\"76\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<line x1=\"170\" y1=\"70\" x2=\"170\" y2=\"146\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<text x=\"120\" y=\"113\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--ink)\" font-style=\"italic\">a · b</text>\n<text x=\"223\" y=\"113\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--ink)\" font-style=\"italic\">a · c</text>\n<text x=\"120\" y=\"162\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\" font-style=\"italic\">width b</text>\n<text x=\"223\" y=\"162\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\" font-style=\"italic\">width c</text>\n<rect x=\"56\" y=\"184\" width=\"232\" height=\"30\" rx=\"5\" fill=\"var(--gold2)\" opacity=\"0.16\"/>\n<text x=\"172\" y=\"204\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" fill=\"var(--gold-deep)\" font-style=\"italic\" font-weight=\"600\">a(b + c) = ab + ac</text>\n<text x=\"172\" y=\"240\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">the whole rectangle is</text>\n<text x=\"172\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">a(b + c) measured all at once</text>\n<line x1=\"320\" y1=\"40\" x2=\"320\" y2=\"270\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/>\n<text x=\"448\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--mid)\" font-weight=\"600\">The concrete case</text>\n<text x=\"356\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" font-style=\"italic\">7</text>\n<rect x=\"370\" y=\"74\" width=\"64\" height=\"50\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<rect x=\"434\" y=\"74\" width=\"32\" height=\"50\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<line x1=\"434\" y1=\"74\" x2=\"434\" y2=\"124\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n<text x=\"402\" y=\"103\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--ink)\" font-style=\"italic\">7y</text>\n<text x=\"450\" y=\"103\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--ink)\">14</text>\n<text x=\"402\" y=\"139\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\" font-style=\"italic\">width y</text>\n<text x=\"450\" y=\"139\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">width 2</text>\n<text x=\"448\" y=\"174\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">seven rows of y, plus</text>\n<text x=\"448\" y=\"189\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">seven rows of 2 (that is 14)</text>\n<rect x=\"356\" y=\"206\" width=\"184\" height=\"30\" rx=\"5\" fill=\"var(--gold2)\" opacity=\"0.16\"/>\n<text x=\"448\" y=\"226\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--gold-deep)\" font-style=\"italic\" font-weight=\"600\">7(y + 2) = 7y + 14</text>\n</svg>",
+    "cap": "Cutting the width into two pieces cuts the area into two pieces, so a rectangle of height \\(a\\) and width \\(b+c\\) has the same area as the two slabs \\(ab\\) and \\(ac\\) put together. Multiplying a group hands the multiplier to every piece inside, which is why \\(7(y+2)\\) becomes \\(7y+14\\), as plainly as cutting the rectangle down the middle."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A school orders supply kits in two batches. The first batch is \\(3\\) kits, and each kit holds \\(x\\) notebooks plus \\(5\\) pens, so that batch is \\(3(x + 5)\\). The second batch is \\(4\\) kits, and each kit holds \\(x\\) notebooks plus \\(8\\) pens, so that batch is \\(4(x + 8)\\). The whole order is \\(3(x+5) + 4(x+8)\\). Distribute each group on its own, then combine the like terms, and the order collapses into one tidy expression of the form \\(\\text{(number of notebooks)} + \\text{(number of pens)}\\). How many pens does the order come to? Type that single number.",
+    "hints": [
+     "Open each group separately. The first group \\(3(x+5)\\) becomes \\(3x + 15\\), and the second group \\(4(x+8)\\) becomes \\(4x + 32\\). The pens are the plain numbers with no \\(x\\) attached.",
+     "Add the two plain-number pieces together. You have \\(15\\) pens from the first batch and \\(32\\) pens from the second, so the total number of pens is \\(15 + 32\\)."
+    ],
+    "ans": "47",
+    "accept": [
+     "+47",
+     "47",
+     "47.0"
+    ],
+    "sol": "Distribute across each group on its own. The first group gives \\(3(x+5) = 3x + 15\\), and the second group gives \\(4(x+8) = 4x + 32\\). Putting them together, the full order is \\(3x + 15 + 4x + 32\\). Now combine the like terms. The notebook terms join as \\(3x + 4x = 7x\\), and the pen counts join as \\(15 + 32 = 47\\). So the order simplifies to $$7x + 47.$$ The plain number with no \\(x\\) on it is the pen count, the constant term \\(47\\). The order comes to \\(\\boxed{47}\\) pens."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "This is the one to slow down on, because the whole answer leans on signs. Take \\(5(z - 3) + 3(7 - 2z)\\). When you distribute the first group the subtraction rides along, so \\(5(z - 3) = 5z - 15\\). Distribute the second group the same careful way, keeping in mind that \\(3 \\times (-2z) = -6z\\), so \\(3(7 - 2z) = 21 - 6z\\). Put it all in a row and you have \\(5z - 15 + 21 - 6z\\). Combine the like terms, simplify all the way to one cleanest form, and read off the coefficient of \\(z\\). Type that single value, sign included.",
+    "hints": [
+     "Line up your four pieces, \\(5z - 15 + 21 - 6z\\), then sort them into z terms and plain numbers. The coefficient of \\(z\\) is whatever number ends up sitting in front of \\(z\\) once you have gathered \\(5z\\) and \\(-6z\\) together.",
+     "Add the z terms by adding their coefficients, \\(5 + (-6) = -1\\), so the z part becomes \\(-z\\). Writing \\(-z\\) is the same as writing \\(-1z\\), so the coefficient is that \\(-1\\)."
+    ],
+    "ans": "-1",
+    "accept": [
+     "-1",
+     "-1.0",
+     "-1z",
+     "-z",
+     "−1",
+     "−1.0",
+     "−1z",
+     "−z"
+    ],
+    "sol": "Distribute each group, letting the subtractions travel with the terms. \\(5(z - 3) = 5z - 15\\), and \\(3(7 - 2z) = 21 - 6z\\) since \\(3 \\times (-2z) = -6z\\). That gives \\(5z - 15 + 21 - 6z\\). Now combine like terms. The z terms are \\(5z\\) and \\(-6z\\), and \\(5z - 6z = -z\\), one short of zero rather than five or eleven. The constants are \\(-15\\) and \\(21\\), and \\(-15 + 21 = 6\\). So the simplest form is \\(-z + 6\\). Since \\(-z\\) means \\(-1z\\), the coefficient of \\(z\\) is \\(\\boxed{-1}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Here is the sharpest sign trap of all. A subtraction sitting in front of a group flips the sign of everything inside the parentheses, because the number doing the multiplying carries its minus into every piece. Take the expression \\(8 - 2(x - 5)\\). The \\(-2\\) is what multiplies the group, so it lands on both the \\(x\\) and the \\(-5\\). Distribute it, then combine the constants, and the expression collapses into the form \\(\\text{(something)}\\,x + \\text{(constant)}\\). What is the <b>constant term</b> once it is fully simplified? Type that single value.",
+    "hints": [
+     "The number multiplying the group is the whole \\(-2\\), not just \\(2\\). Send it onto both pieces inside, so \\(-2 \\times x\\) and \\(-2 \\times (-5)\\). Watch what happens to that second sign.",
+     "A negative times a negative is positive, so \\(-2 \\times (-5) = +10\\). That gives \\(8 - 2x + 10\\). Add the two loose numbers \\(8 + 10\\) to get the constant, and read it off."
+    ],
+    "ans": "18",
+    "accept": [
+     "+18",
+     "18",
+     "18.0"
+    ],
+    "sol": "The \\(-2\\) in front of the group multiplies both pieces inside. Distributing it, \\(-2 \\times x = -2x\\), and \\(-2 \\times (-5) = +10\\) because a negative times a negative is positive. So $$8 - 2(x - 5) = 8 - 2x + 10.$$ The trap is that the \\(-5\\) became \\(+10\\), not \\(-10\\). Now combine the two constants, \\(8 + 10 = 18\\), which leaves $$-2x + 18.$$ The constant term is the part with no variable, so the value is \\(\\boxed{18}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is what I want to never forget. When a number sits out front of a group, I have to hand it to every single piece inside, not just the first one, so \\(3(x+4)\\) gives \\(3x\\) and \\(12\\), with the \\(3\\) reaching all the way to the back. And a subtraction or a minus parked in front of a group is really just multiplying by \\(-1\\), so it flips the sign of every piece inside, turning each plus into a minus and each minus into a plus, which is why \\(-(x-5)\\) comes out as \\(-x+5\\). Almost every slip I make is not bad arithmetic, it is one term the multiplier was supposed to touch and I left behind. So I hand the number out front to everything, sign and all, and only then do I tally."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Two expressions are called <b>equivalent</b> when they agree for every single value of the variable, no matter what number you plug in. Here are two of them. The first is \\(A = 2(3x + 4) + x\\) and the second is \\(B = 7x + 8\\). Watch \\(A\\) come apart. Distributing the \\(2\\) across \\(3x + 4\\) gives \\(6x + 8\\), and adding the lone \\(x\\) sitting outside gives \\(7x + 8\\), which is exactly \\(B\\). So they look like twins. But staring at two expressions is not proof. Here is the grading trick. Build the difference \\(A - B\\) and plug in one number. If \\(A\\) and \\(B\\) really are equivalent, that difference has to come out \\(0\\), and not just here but at every value you could choose. Compute the difference \\(A - B\\) at \\(x = 5\\) and type the single number you get.",
+    "hints": [
+     "Evaluating at \\(x = 5\\) means replacing every \\(x\\) with \\(5\\). Find the value of \\(A = 2(3x + 4) + x\\) at \\(x = 5\\), then the value of \\(B = 7x + 8\\) at \\(x = 5\\), and finally subtract the second from the first.",
+     "At \\(x = 5\\), \\(A = 2(3 \\cdot 5 + 4) + 5 = 2 \\cdot 19 + 5 = 43\\) and \\(B = 7 \\cdot 5 + 8 = 43\\). The difference is \\(43 - 43\\)."
+    ],
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero"
+    ],
+    "sol": "First simplify \\(A\\) so you can see the twins clearly. Distributing the \\(2\\) gives \\(2(3x + 4) = 6x + 8\\), and adding the outside \\(x\\) gives \\(6x + 8 + x = 7x + 8\\). So \\(A = 7x + 8\\), which is identical to \\(B = 7x + 8\\). The difference simplifies all the way down, since \\(A - B = (7x + 8) - (7x + 8) = 0\\). That \\(0\\) is not an accident of one lucky number. The \\(x\\) terms cancel and the constants cancel, so the difference is \\(0\\) for every value of \\(x\\). Now plug in the requested value. At \\(x = 5\\), \\(A = 2(3 \\cdot 5 + 4) + 5 = 2 \\cdot 19 + 5 = 43\\) and \\(B = 7 \\cdot 5 + 8 = 43\\), so the difference is \\(43 - 43 = 0\\). The two expressions truly are equivalent. \\(\\boxed{0}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Testing values is honest but lopsided. If two expressions disagree even once, you are done, they cannot be equivalent, because one mismatch is all it takes to break the promise that they agree everywhere. But matching once, or even a few times, proves nothing, since two genuinely different expressions can still happen to line up at a lucky value. The only way to be sure is to rewrite both until they read as the same simplest sentence. Reordering a sum keeps the meaning, so \\(x + 7\\) and \\(7 + x\\) say the same thing, but order matters for the operations that are not symmetric, so \\(x - 7\\) and \\(7 - x\\) are different expressions."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "In algebra a letter stands for a number we have not pinned down yet, and two expressions are <b>equivalent</b> when they give the same value no matter what that number turns out to be. Here the target is \\(6n + 10\\), and four suspects are lined up next to it. Each one is either a true match in disguise or an impostor. Suspect one is \\(2(3n + 5)\\). Suspect two is \\(3(2n + 4)\\). Suspect three is \\(5 + 6n + 5\\). Suspect four is \\(10 + 6n\\). Simplify each suspect until you can compare it cleanly with \\(6n + 10\\). How many of the four suspects are equivalent to \\(6n + 10\\)?",
+    "hints": [
+     "To unmask a suspect, rewrite it in the same plain form as the target, which is some number of \\(n\\) plus a constant. For the ones with parentheses, multiply the outside number by each piece inside. For the ones that are already a string of terms, gather the loose numbers together.",
+     "Suspect one becomes \\(6n + 10\\), a match. Suspect two becomes \\(6n + 12\\), so its constant is off by 2 and it fails. Suspect three has \\(5 + 5 = 10\\) so it is \\(6n + 10\\), a match. Suspect four is \\(10 + 6n\\), the very same two pieces just written in the other order, which is still a match. Now count the matches."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "sol": "Rewrite each suspect in the form \"number times \\(n\\), plus a constant\" and compare it with the target \\(6n + 10\\). Suspect one distributes as \\(2(3n + 5) = 6n + 10\\), which matches the target exactly. Suspect two distributes as \\(3(2n + 4) = 6n + 12\\), and since \\(12 \\ne 10\\) the constant is wrong, so this one is an impostor. Suspect three combines its loose numbers, \\(5 + 6n + 5 = 6n + 10\\), which matches. Suspect four is \\(10 + 6n\\), and reordering a sum never changes its value, so \\(10 + 6n = 6n + 10\\), another match. Three of the four suspects simplify to \\(6n + 10\\) and one does not, so the count of equivalent expressions is \\(\\boxed{3}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Here is your first real algebra build, straight from words. Two delivery routes restock the same vending machine in one day, and a letter is going to stand in for a number we do not know yet. Let \\(b\\) be the number of empty slots in the machine. The same \\(b\\) is true for both routes, since they are looking at the same machine. The morning route loads a base of \\(12\\) snacks plus \\(3\\) snacks for every empty slot it finds, which is \\(3b + 12\\). Here \\(3b\\) means \\(3\\) times \\(b\\), so it is \\(3\\) snacks per empty slot. The evening route comes by later and loads \\(2\\) snacks per empty slot plus a \\(5\\) snack top-up, which is \\(2b + 5\\). Add the two routes to get the day's total snacks loaded, then combine the like terms so the total is written in simplest form. On a day with \\(8\\) empty slots, evaluate that simplified total at \\(b = 8\\), where evaluating means replacing every \\(b\\) with \\(8\\). Type the single number you get.",
+    "hints": [
+     "Write the morning route and the evening route one after the other and add them, \\(3b + 12 + 2b + 5\\). The terms with a \\(b\\) are like terms and can be joined, and the plain numbers are like terms too. Collect the \\(b\\) terms together and the numbers together before you put in any value for \\(b\\).",
+     "Combining like terms, \\(3b + 2b = 5b\\) and \\(12 + 5 = 17\\), so the simplified total is \\(5b + 17\\). Now replace \\(b\\) with \\(8\\), so it becomes \\(5 \\times 8 + 17\\). Multiply first, then add."
+    ],
+    "ans": "57",
+    "accept": [
+     "57",
+     "57.0"
+    ],
+    "sol": "Stack the two routes and add them. The morning route is \\(3b + 12\\) and the evening route is \\(2b + 5\\), so the day's total is \\(3b + 12 + 2b + 5\\). Group the like terms, the slot terms with each other and the bases with each other. The slot terms give \\(3b + 2b = 5b\\), and the bases give \\(12 + 5 = 17\\), so the simplified total is $$5b + 17.$$ Now the day has \\(8\\) empty slots, so evaluate at \\(b = 8\\) by replacing \\(b\\) with \\(8\\). That gives \\(5 \\times 8 + 17 = 40 + 17 = 57\\), so the machine gets \\(\\boxed{57}\\) snacks that day."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "Coefficients do not have to be whole numbers. A fraction can sit in front of a variable too, and combining those terms is the same common denominator move from Chapter 4 with an \\(x\\) tagging along for the ride. Take the two \\(x\\)-terms \\(\\tfrac{2x}{3}\\) and \\(\\tfrac{5x}{7}\\). Their coefficients are \\(\\tfrac{2}{3}\\) and \\(\\tfrac{5}{7}\\), and they are like terms because both carry a single \\(x\\), so they collapse into one term. Combine \\(\\tfrac{2x}{3} + \\tfrac{5x}{7}\\) into a single term, then state the coefficient of \\(x\\) as a fraction in lowest terms, typed as a over b.",
+    "hints": [
+     "Both terms are like terms, so think of this as adding the coefficients \\(\\tfrac{2}{3}\\) and \\(\\tfrac{5}{7}\\) while the \\(x\\) just rides along. To add those fractions you need a common denominator for \\(3\\) and \\(7\\).",
+     "A common denominator of \\(3\\) and \\(7\\) is \\(21\\). Rewrite \\(\\tfrac{2x}{3}\\) as \\(\\tfrac{14x}{21}\\) and \\(\\tfrac{5x}{7}\\) as \\(\\tfrac{15x}{21}\\), then add the numerators over \\(21\\). The coefficient of \\(x\\) is whatever fraction lands in front."
+    ],
+    "ans": "29/21",
+    "accept": [
+     "29 / 21",
+     "29 over 21",
+     "29/21"
+    ],
+    "sol": "A common denominator of \\(3\\) and \\(7\\) is \\(21\\). Rewrite each term with denominator \\(21\\), so \\(\\tfrac{2x}{3} = \\tfrac{14x}{21}\\) and \\(\\tfrac{5x}{7} = \\tfrac{15x}{21}\\). Now add the numerators over the shared denominator. $$\\frac{2x}{3} + \\frac{5x}{7} = \\frac{14x}{21} + \\frac{15x}{21} = \\frac{29x}{21}$$ That single term is \\(\\tfrac{29x}{21}\\), and its coefficient of \\(x\\) is \\(\\tfrac{29}{21}\\). Since \\(29\\) is prime and does not divide \\(21\\), the fraction is already in lowest terms. The coefficient of \\(x\\) is \\(\\boxed{29/21}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So a fraction in front of a letter never started a new kind of math. \\(\\tfrac{2x}{3}\\) is just \\(\\tfrac{2}{3}\\) of an \\(x\\), so adding \\(\\tfrac{2}{3}\\) of an \\(x\\) to \\(\\tfrac{5}{7}\\) of an \\(x\\) is the exact same common-denominator work I already know, and the \\(x\\) rides along untouched while the numbers combine. I find the shared bottom, rebuild each coefficient over it, add the tops, and only then set the \\(x\\) back down beside the answer. The letter is a passenger, not a problem, and every fraction skill I built earlier still works with it sitting in the seat."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "Here is the next layer. Sometimes the two pieces you are adding live over different denominators, and an expression can be one of those pieces. Fold these together onto a common bottom. Combine \\(\\tfrac{a}{2} + \\tfrac{6a - 5}{4}\\) into a single fraction, then write it as a coefficient of \\(a\\) plus a constant term, just like \\(2a - \\tfrac{5}{4}\\). Once it is in that clean form, type the <b>constant term</b> as a fraction in lowest terms, with its sign.",
+    "hints": [
+     "The two denominators are \\(2\\) and \\(4\\), and \\(4\\) is a multiple of \\(2\\), so \\(4\\) is the common bottom. Rewrite \\(\\tfrac{a}{2}\\) over \\(4\\) by doubling top and bottom, and leave \\(\\tfrac{6a-5}{4}\\) exactly as it is. Then add the numerators over that one shared \\(4\\).",
+     "You have \\(\\tfrac{2a}{4} + \\tfrac{6a-5}{4} = \\tfrac{2a + 6a - 5}{4} = \\tfrac{8a-5}{4}\\). Split that into two fractions, \\(\\tfrac{8a}{4} - \\tfrac{5}{4} = 2a - \\tfrac{5}{4}\\). The constant term is the piece with no \\(a\\) attached."
+    ],
+    "ans": "-5/4",
+    "accept": [
+     "-5 / 4",
+     "-5/4",
+     "-5/4ths",
+     "minus 5/4",
+     "negative 5/4",
+     "negative five fourths",
+     "−5 / 4",
+     "−5/4",
+     "−5/4ths"
+    ],
+    "sol": "The denominators are \\(2\\) and \\(4\\). Since \\(4\\) is a multiple of \\(2\\), the common denominator is \\(4\\). Rewrite the first piece by multiplying its top and bottom by \\(2\\), which turns \\(\\tfrac{a}{2}\\) into \\(\\tfrac{2a}{4}\\). The second piece already sits over \\(4\\), so leave it alone. Now both pieces share a bottom, so add the numerators over that single \\(4\\). $$\\tfrac{a}{2} + \\tfrac{6a - 5}{4} = \\tfrac{2a}{4} + \\tfrac{6a - 5}{4} = \\tfrac{2a + 6a - 5}{4} = \\tfrac{8a - 5}{4}$$ To read off the parts, split the single fraction back into a term with \\(a\\) and a term without. $$\\tfrac{8a - 5}{4} = \\tfrac{8a}{4} - \\tfrac{5}{4} = 2a - \\tfrac{5}{4}$$ The coefficient of \\(a\\) is \\(2\\), and the constant term is the piece carrying no \\(a\\), which is \\(-\\tfrac{5}{4}\\). The fraction \\(\\tfrac{5}{4}\\) is already in lowest terms, so the constant term is \\(\\boxed{-5/4}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "Here is the whole lesson folded into one expression. It has a piece scaled by a fraction, a piece scaled by a whole number, and a piece sitting over a denominator, so every move you practiced shows up somewhere. Simplify \\(\\frac{1}{2}(4x + 6) + 3(x - 1) + \\frac{x - 5}{3}\\) all the way down to the form \\(\\text{(something)}\\,x + \\text{(something)}\\), then report the coefficient of \\(x\\). Type it as a fraction in lowest terms in the shape a over b.",
+    "hints": [
+     "Knock out one group at a time before you mix anything. Half of \\(4x + 6\\) gives \\(2x + 3\\). Three times \\(x - 1\\) gives \\(3x - 3\\), and watch that the \\(3\\) hits the \\(-1\\) too. The last group \\(\\frac{x - 5}{3}\\) is one quantity divided by \\(3\\), so it splits into \\(\\frac{x}{3} - \\frac{5}{3}\\).",
+     "Now sweep up only the \\(x\\) terms and ignore the constants for this question. You have \\(2x\\), \\(3x\\), and \\(\\frac{x}{3}\\), so the coefficient of \\(x\\) is \\(2 + 3 + \\frac{1}{3}\\). Put \\(2 + 3 = 5\\) over a denominator of \\(3\\) to add the last piece, which makes \\(\\frac{15}{3} + \\frac{1}{3}\\)."
+    ],
+    "ans": "16/3",
+    "accept": [
+     "16 / 3",
+     "16/3",
+     "sixteen over three",
+     "sixteen thirds"
+    ],
+    "sol": "Take the three groups one at a time. The first group is \\(\\frac{1}{2}(4x + 6) = 2x + 3\\). The second is \\(3(x - 1) = 3x - 3\\), keeping the sign on the \\(-3\\). The third is \\(\\frac{x - 5}{3} = \\frac{x}{3} - \\frac{5}{3}\\). Lining them up gives \\(2x + 3 + 3x - 3 + \\frac{x}{3} - \\frac{5}{3}\\). Gather the \\(x\\) terms first. Their coefficients add as \\(2 + 3 + \\frac{1}{3} = \\frac{15}{3} + \\frac{1}{3} = \\frac{16}{3}\\). The constants come out to \\(3 - 3 - \\frac{5}{3} = -\\frac{5}{3}\\). So the fully simplified expression is \\(\\frac{16}{3}x - \\frac{5}{3}\\), and the coefficient of \\(x\\) is \\(\\frac{16}{3}\\), already in lowest terms since \\(16\\) and \\(3\\) share no factor. The answer is \\(\\boxed{16/3}\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "A weather balloon drifts above a field. Its altitude in meters, after a small valve has been releasing gas, is given by the expression \\(13 - 7p\\), where \\(p\\) is the number of minutes the valve has been venting. In an expression like this, the number multiplying a variable is called its <b>coefficient</b>, and that number carries its own sign. State the coefficient of \\(p\\), and type that single value with its sign included.",
+    "hints": [
+     "The expression \\(13 - 7p\\) has two pieces, a plain number \\(13\\) and a term built from \\(p\\). The coefficient lives in the term that contains \\(p\\).",
+     "The minus sign in front of \\(7p\\) belongs to the coefficient. So the term is \\(-7p\\), and the number multiplying \\(p\\) is not just \\(7\\)."
+    ],
+    "ans": "-7",
+    "accept": [
+     " -7",
+     " −7",
+     "-7",
+     "-7 ",
+     "-7.0",
+     "negative 7",
+     "negative seven",
+     "−7",
+     "−7 ",
+     "−7.0"
+    ],
+    "sol": "The expression is already in simplest form, \\(13 - 7p\\). It has two terms, the constant \\(13\\) and the variable term \\(-7p\\). Reading the subtraction as adding a negative, the term built from \\(p\\) is \\(-7p\\), which means \\(-7\\) times \\(p\\). The coefficient of \\(p\\) is the number multiplying it, sign and all, so the coefficient is \\(\\boxed{-7}\\)."
+   },
+   {
+    "ans": "19",
+    "x": "A small print shop tracks how many usable pages come out of one run. When everything goes smoothly the run is worth \\(19\\), but every paper jam costs \\(5\\) pages, so the run is modeled by the expression \\(19 - 5q\\), where \\(q\\) counts the paper jams. In this expression, \\(5q\\) means \\(5\\) times \\(q\\), so that piece changes as the number of jams changes. One piece does not change at all. That unchanging number is the <b>constant term</b>. State the constant term of \\(19 - 5q\\) and type that single number.",
+    "accept": [
+     "+19",
+     "19",
+     "19.0",
+     "nineteen"
+    ],
+    "hints": [
+     "The expression \\(19 - 5q\\) has two pieces. One piece has the letter \\(q\\) attached to it, and one piece is just a plain number with no letter.",
+     "The constant term is the part that stays the same no matter what \\(q\\) is. The \\(5q\\) piece depends on \\(q\\), so the constant term has to be the other piece."
+    ],
+    "sol": "The expression is already written in simplest form as \\(19 - 5q\\). It is built from two terms. The term \\(5q\\) depends on the variable \\(q\\), since \\(5q\\) means \\(5\\) times \\(q\\), so its value shifts whenever the number of jams shifts. The other term is just \\(19\\), a plain number with no variable attached. The constant term is the term with no variable, which is the part that stays fixed no matter what \\(q\\) equals. You can see this fixed value by imagining zero jams, where \\(q = 0\\) gives \\(19 - 5(0) = 19\\). So the constant term is \\(\\boxed{19}\\)."
+   },
+   {
+    "x": "A lone variable carries a hidden number in front of it. The plain term \\(m\\) really means \\(1m\\), one copy of \\(m\\). Combine the like terms in \\(3m + m + 5m\\) into a single term, then type the coefficient of \\(m\\) in the simplified expression.",
+    "hints": [
+     "Rewrite the lone \\(m\\) as \\(1m\\) so every term shows its number out front, giving \\(3m + 1m + 5m\\).",
+     "Add only the numbers in front, since they all count copies of the same \\(m\\). The coefficient is what sits in front of \\(m\\) once you finish."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "sol": "Every term here is a number of copies of \\(m\\), so they are like terms and can be merged. Reading the lone \\(m\\) as \\(1m\\), the expression becomes \\(3m + 1m + 5m\\). Add the numbers in front, \\(3 + 1 + 5 = 9\\), and keep the \\(m\\). The simplified expression is \\(9m\\). The coefficient of \\(m\\) is \\(\\boxed{9}\\)."
+   },
+   {
+    "x": "Imagine four little stacks of coins on a table. One stack has \\(8\\) coins, then a stack of \\(2x\\) coins, then a stack of \\(5\\) coins, and finally a stack of \\(4x\\) coins, written together as \\(8 + 2x + 5 + 4x\\). Tally each kind of word on its own, the plain numbers in one pile and the \\(x\\) terms in another, and write the whole thing in simplest form. Once you have it simplified, read off the constant term and type that single value.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0"
+    ],
+    "hints": [
+     "Sort the four pieces into two groups. The plain numbers \\(8\\) and \\(5\\) belong together, and the \\(x\\) terms \\(2x\\) and \\(4x\\) belong together. You can add inside each group on its own.",
+     "Add the plain numbers to get the constant part, and add the \\(x\\) terms to get the \\(x\\) part. The constant term is the piece that has no \\(x\\) attached to it."
+    ],
+    "sol": "Group the like terms first. The plain numbers are \\(8\\) and \\(5\\), and the \\(x\\) terms are \\(2x\\) and \\(4x\\). Combine each group on its own. The numbers give \\(8 + 5 = 13\\), and the \\(x\\) terms give \\(2x + 4x = 6x\\). Putting both groups back together, the expression in simplest form is \\(6x + 13\\). The constant term is the piece with no \\(x\\) attached to it, which is \\(13\\). So the value you type is \\(\\boxed{13}\\)."
+   },
+   {
+    "x": "Imagine a tray of algebra tiles. The big square tiles each cover \\(x^2\\), which means \\(x\\) times \\(x\\), and the long thin tiles each cover one \\(x\\). You set down a group worth \\(5x^2 + 2x\\), then a friend slides over another group worth \\(3x^2 + x\\), so the whole tray reads \\(5x^2 + 2x + 3x^2 + x\\). The square tiles only combine with other square tiles, and the thin x-tiles only combine with other thin x-tiles, because \\(x^2\\) and \\(x\\) are different kinds of pieces. Gather each kind, write the expression in its simplest form, and then count how many terms are left. How many terms does the simplified expression have?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Sort the pieces into two piles. Put all the square \\(x^2\\) tiles together and all the thin \\(x\\) tiles together, then add up each pile on its own.",
+     "The \\(x^2\\) pile gives \\(5x^2 + 3x^2 = 8x^2\\) and the \\(x\\) pile gives \\(2x + x = 3x\\). Once you write those two results side by side, count the separate pieces joined by plus signs."
+    ],
+    "sol": "Keep the two kinds of tiles separate while you combine. The square tiles give \\(5x^2 + 3x^2 = 8x^2\\), and the thin x-tiles give \\(2x + x = 3x\\). Putting the piles back together, the simplest form is \\(8x^2 + 3x\\). A term is one chunk separated by a plus or minus sign, so \\(8x^2\\) is one term and \\(3x\\) is another. They cannot merge into a single piece because a square tile is not the same kind of tile as a thin one. That leaves two terms. \\(\\boxed{2}\\)"
+   },
+   {
+    "x": "Here is a little warm-up that mixes two different objects. Simplify \\(6a + 2b + a + 3b\\). Remember that \\(a\\) and \\(b\\) stand for different things, so an \\(a\\) term and a \\(b\\) term can never be added together into one piece. Combine only the matching kinds, write the result in simplest form, and then count how many terms are left. Type that single count.",
+    "hints": [
+     "Group the like terms by sweeping up all the \\(a\\) pieces in one bundle and all the \\(b\\) pieces in another. You have \\(6a\\) and \\(a\\), and separately \\(2b\\) and \\(3b\\).",
+     "Adding the \\(a\\) pieces gives \\(7a\\), and adding the \\(b\\) pieces gives \\(5b\\). These cannot merge any further, so write the answer as a sum of those two bundles and then count the bundles."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "sol": "Start by collecting the pieces that are the same kind. The \\(a\\) terms are \\(6a\\) and \\(a\\), which together make \\(6a + a = 7a\\). The \\(b\\) terms are \\(2b\\) and \\(3b\\), which together make \\(2b + 3b = 5b\\). An \\(a\\) bundle and a \\(b\\) bundle measure different objects, so they stay apart. The simplest form is $$6a + 2b + a + 3b = 7a + 5b.$$ Now read off what the question wants. The simplified expression \\(7a + 5b\\) is made of two separate pieces joined by addition, the \\(7a\\) and the \\(5b\\). That is two terms. So the count is \\(\\boxed{2}\\)."
+   },
+   {
+    "ans": "24",
+    "x": "A group like \\(8(3x + 2)\\) means you hand that \\(8\\) to every piece sitting inside. The \\(8\\) lands on the \\(3x\\), and the \\(8\\) lands on the \\(2\\). Do that and write the expanded expression. Once it is written out with no parentheses left, look at the term that has the \\(x\\) in it. The number multiplying \\(x\\) is called the <b>coefficient</b> of \\(x\\). What is the coefficient of \\(x\\)? Type that single value.",
+    "hints": [
+     "Hand the \\(8\\) to each piece on its own. You get \\(8 \\times 3x\\) for the first piece and \\(8 \\times 2\\) for the second piece. Work those out and add them.",
+     "After expanding you have one term with an \\(x\\) and one plain number. The coefficient of \\(x\\) is just the number stuck to the \\(x\\), not the plain number at the end."
+    ],
+    "accept": [
+     "+24",
+     "24",
+     "24.0",
+     "24x"
+    ],
+    "sol": "Hand the \\(8\\) to every piece inside the group. \\(8 \\times 3x = 24x\\) and \\(8 \\times 2 = 16\\). Putting those together, the expanded expression is \\(24x + 16\\). No parentheses are left, so it is in simplest form. The term holding the \\(x\\) is \\(24x\\), and the number multiplying \\(x\\) is \\(24\\). That number is the coefficient of \\(x\\). So the coefficient is \\(\\boxed{24}\\)."
+   },
+   {
+    "x": "Start with the expression \\(2(x + 6) + 5(x + 1)\\). Distribute across each group, then combine the like terms so the whole thing is written in simplest form. Once you have it, look at the constant term, the lone number with no \\(x\\) attached to it, and type that single value.",
+    "hints": [
+     "Distribute first. \\(2(x+6)\\) becomes \\(2x + 12\\), and \\(5(x+1)\\) becomes \\(5x + 5\\). Now you have \\(2x + 12 + 5x + 5\\).",
+     "Group the \\(x\\) terms together and group the plain numbers together. The plain numbers are \\(12\\) and \\(5\\). The constant term is whatever they add up to."
+    ],
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0"
+    ],
+    "sol": "Distribute each group on its own. The first group gives \\(2(x+6) = 2x + 12\\), and the second gives \\(5(x+1) = 5x + 5\\). Putting those together, the expression is \\(2x + 12 + 5x + 5\\). Now combine like terms. The \\(x\\) terms are \\(2x\\) and \\(5x\\), which add to \\(7x\\). The plain numbers are \\(12\\) and \\(5\\), which add to \\(17\\). So in simplest form the expression is \\(7x + 17\\). The constant term is the number standing alone with no \\(x\\), which is \\(17\\). So the answer is \\(\\boxed{17}\\)."
+   },
+   {
+    "x": "A letter standing in for a number does not change the rules you already know, it just lets you carry an unknown along for the ride. Start with \\(6(n - 2) + 4(5 - 3n)\\). Distribute each number across its own parentheses, letting every sign ride along with the term it belongs to, then collect the like terms into one tidy expression. Once it is in simplest form, read off the coefficient of \\(n\\), the number multiplying \\(n\\), and type that single value with its sign.",
+    "hints": [
+     "Distribute one chunk at a time. \\(6(n - 2)\\) becomes \\(6n - 12\\), and \\(4(5 - 3n)\\) becomes \\(20 - 12n\\). Notice the \\(-3n\\) keeps its minus sign when the \\(4\\) rides through.",
+     "Now gather the \\(n\\) terms together and the plain numbers together. The \\(n\\) terms are \\(6n\\) and \\(-12n\\). Combine them and the result is the coefficient you want."
+    ],
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "-6.0",
+     "−6",
+     "−6.0"
+    ],
+    "sol": "Distribute each factor across its parentheses, keeping every sign attached to its term. The first chunk gives \\(6(n - 2) = 6n - 12\\). The second chunk gives \\(4(5 - 3n) = 20 - 12n\\), where the \\(4\\) multiplies both the \\(5\\) and the \\(-3n\\). So far the expression reads \\(6n - 12 + 20 - 12n\\). Now collect like terms. The \\(n\\) terms are \\(6n\\) and \\(-12n\\), which combine to \\(-6n\\). The plain numbers are \\(-12\\) and \\(20\\), which combine to \\(8\\). The simplest form is \\(-6n + 8\\). The coefficient of \\(n\\) is the number multiplying \\(n\\), which is \\(-6\\). \\(\\boxed{-6}\\)"
+   },
+   {
+    "x": "Here is the expression \\(20 - 3(2x - 4)\\). Notice the \\(-3\\) sitting right in front of the group. When it distributes, it multiplies each piece inside, and because it is negative it flips the sign of every term in the group as it goes. Simplify the whole thing into the form a number plus a multiple of \\(x\\), as small and clean as it can be. Once it is in simplest form, find the constant term, the plain number with no \\(x\\) attached, and type that single value.",
+    "hints": [
+     "Distribute the \\(-3\\) across both terms inside the group. Watch the signs carefully. You get \\(-3 \\times 2x = -6x\\) and \\(-3 \\times (-4) = +12\\), since a negative times a negative is positive.",
+     "After distributing you have \\(20 - 6x + 12\\). The only like terms are the two plain numbers \\(20\\) and \\(12\\). Combine just those, and whatever number is left standing alone is the constant term."
+    ],
+    "ans": "32",
+    "accept": [
+     "32",
+     "32.0"
+    ],
+    "sol": "Start by distributing the \\(-3\\) into the group \\(2x - 4\\). Multiply it by each term inside. You get \\(-3 \\times 2x = -6x\\) and \\(-3 \\times (-4) = +12\\). The negative in front flips the sign of the \\(-4\\), turning it into \\(+12\\). So the expression becomes \\(20 - 6x + 12\\). Now combine the like terms. The two plain numbers \\(20\\) and \\(12\\) join together into \\(32\\), while the \\(-6x\\) has no partner and stays as it is. The simplest form is \\(32 - 6x\\). The constant term is the number standing alone with no \\(x\\) attached, which is \\(32\\). So the value you read off is \\(\\boxed{32}\\)."
+   },
+   {
+    "x": "Here are two recipes for the same expression. Let \\(A = 3(2x + 5)\\), which means triple the whole quantity \\(2x + 5\\). Let \\(B = 6x + 15\\). When two builds really are the same expression, their difference \\(A - B\\) collapses to nothing no matter what \\(x\\) is, and a quick way to test that is to plug in a number and see whether you land on zero. Evaluate the difference \\(A - B\\) at \\(x = 4\\), where evaluating at \\(x = 4\\) means replacing every \\(x\\) with \\(4\\). Type the single number you get.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero"
+    ],
+    "hints": [
+     "First open up \\(A\\). The \\(3\\) outside multiplies both pieces inside, so \\(3(2x + 5)\\) becomes \\(6x + 15\\). Now compare that to \\(B = 6x + 15\\).",
+     "Subtract carefully. \\(A - B = (6x + 15) - (6x + 15)\\). Line up the \\(6x\\) with the \\(6x\\) and the \\(15\\) with the \\(15\\), then see what is left before you even reach for \\(x = 4\\)."
+    ],
+    "sol": "Start by simplifying \\(A\\). The \\(3\\) in front of \\(3(2x + 5)\\) gets shared with both terms inside, so \\(3 \\cdot 2x = 6x\\) and \\(3 \\cdot 5 = 15\\), which gives \\(A = 6x + 15\\). That is exactly the same expression as \\(B = 6x + 15\\). Now form the difference and combine like terms, \\(A - B = (6x + 15) - (6x + 15) = 0\\). The variable has already vanished, so the simplified difference is just \\(0\\). Plugging in \\(x = 4\\) cannot change a plain \\(0\\), and you can check it directly, since \\(A = 3(2 \\cdot 4 + 5) = 3 \\cdot 13 = 39\\) and \\(B = 6 \\cdot 4 + 15 = 24 + 15 = 39\\), so \\(A - B = 39 - 39 = 0\\). The two builds agree, which is the whole point. The answer is \\(\\boxed{0}\\)."
+   },
+   {
+    "x": "Here is a target expression, \\(8x + 12\\). Below it are four expressions that might or might not be just a disguised version of the same thing. Simplify each one fully and compare it to the target. \\(4(2x + 3)\\), \\(2(4x + 6)\\), \\(8x + 6\\), \\(12 + 8x\\). How many of the four are equivalent to \\(8x + 12\\)? Type the single count.",
+    "hints": [
+     "Two expressions are equivalent when they give the same value for every choice of \\(x\\). To check, simplify each one by distributing any number sitting outside a set of parentheses, then line it up against \\(8x + 12\\).",
+     "Distributing means multiplying the outside number by each term inside, so \\(4(2x + 3)\\) becomes \\(8x + 12\\). Watch the third one carefully, the constant is \\(6\\) and not \\(12\\), and remember that \\(12 + 8x\\) is the same as \\(8x + 12\\) with the parts just written in the other order."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "sol": "Simplify each expression and compare it to the target \\(8x + 12\\). For the first, \\(4(2x + 3) = 8x + 12\\), which matches. For the second, \\(2(4x + 6) = 8x + 12\\), which also matches. For the third, \\(8x + 6\\) is already simplified, and its constant is \\(6\\) instead of \\(12\\), so it does not match. For the fourth, \\(12 + 8x\\) is the same two terms as \\(8x + 12\\) written in the other order, and order does not change the value, so it matches. Three of the four are equivalent to the target. \\(\\boxed{3}\\)"
+   },
+   {
+    "x": "A puzzle box has two dials. Turning the first dial adds \\(\\tfrac{5x}{6}\\) to the score and turning the second adds \\(\\tfrac{x}{4}\\), where \\(x\\) is the number of times you press the start button. The total score from both dials is \\(\\tfrac{5x}{6} + \\tfrac{x}{4}\\). Rewrite this as a single term using a common denominator of \\(12\\), keeping the \\(x\\). Then state the coefficient of \\(x\\) as a fraction in lowest terms, typed as a over b.",
+    "hints": [
+     "A common denominator of \\(12\\) turns \\(\\tfrac{5x}{6}\\) into \\(\\tfrac{10x}{12}\\) and \\(\\tfrac{x}{4}\\) into \\(\\tfrac{3x}{12}\\). Now the two terms are ready to add.",
+     "Add the numerators over the shared \\(12\\) to get \\(\\tfrac{13x}{12}\\). The coefficient of \\(x\\) is the fraction multiplying it, so it is \\(\\tfrac{13}{12}\\), already in lowest terms."
+    ],
+    "ans": "13/12",
+    "accept": [
+     "13 / 12",
+     "13/12",
+     "thirteen over twelve",
+     "thirteen twelfths"
+    ],
+    "sol": "Rewrite each fraction with denominator \\(12\\). Since \\(\\tfrac{5x}{6} = \\tfrac{10x}{12}\\) and \\(\\tfrac{x}{4} = \\tfrac{3x}{12}\\), the sum becomes $$\\frac{10x}{12} + \\frac{3x}{12} = \\frac{13x}{12}.$$ The combined term is \\(\\tfrac{13x}{12}\\). The coefficient of \\(x\\) is the number multiplying it, which is \\(\\tfrac{13}{12}\\). Since \\(13\\) is prime and does not divide \\(12\\), this fraction is already in lowest terms. The coefficient is \\(\\boxed{13/12}\\)."
+   },
+   {
+    "x": "A tiled courtyard has a border that runs in two rows, plus a few corner tiles. The first row uses \\(3(2s + 3)\\) tiles, the second row uses \\(2(s - 1)\\) tiles, and there are \\(5\\) corner tiles, where \\(s\\) is a size setting you can dial up or down. Build one expression for the total number of tiles, simplify it by combining like terms, then evaluate it when the size setting is \\(s = 4\\). Evaluating at \\(s = 4\\) means replacing every \\(s\\) with \\(4\\). Type the single number you get.",
+    "ans": "44",
+    "accept": [
+     "44",
+     "44.0"
+    ],
+    "hints": [
+     "First expand each piece. \\(3(2s + 3)\\) becomes \\(6s + 9\\), and \\(2(s - 1)\\) becomes \\(2s - 2\\). Now add all the tiles together, including the \\(5\\) corner tiles.",
+     "Collect the \\(s\\) terms and the plain numbers separately. The \\(s\\) terms are \\(6s + 2s = 8s\\), and the numbers are \\(9 - 2 + 5 = 12\\), so the total is \\(8s + 12\\). Put \\(s = 4\\) into that."
+    ],
+    "sol": "Start by expanding each grouped piece. The first row is \\(3(2s + 3) = 6s + 9\\), and the second row is \\(2(s - 1) = 2s - 2\\). Adding everything, including the \\(5\\) corner tiles, gives \\(6s + 9 + 2s - 2 + 5\\). Combine the like terms. The \\(s\\) terms give \\(6s + 2s = 8s\\), and the plain numbers give \\(9 - 2 + 5 = 12\\), so the simplified total is \\(8s + 12\\). Now evaluate at \\(s = 4\\) by replacing \\(s\\) with \\(4\\), which gives \\(8 \\cdot 4 + 12 = 32 + 12 = 44\\). \\(\\boxed{44}\\)"
+   }
+  ],
+  "next": "6.2"
+ }
+}
