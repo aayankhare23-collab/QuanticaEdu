@@ -966,5 +966,507 @@
    }
   ],
   "next": "5.3"
+ },
+ "5.3": {
+  "title": "Switching Between Fractions and Decimals",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Look closely at a vending machine sometime and you might catch a number wearing two coats at once. The little card taped beside the slot says the snack costs three quarters of a token, written as the fraction \\(\\tfrac{3}{4}\\). The glowing readout right above it says <b>0.75</b> tokens. Nobody snuck over and changed the price between the card and the screen. The snack costs one amount, exactly one, and \\(\\tfrac{3}{4}\\) and \\(0.75\\) are simply two correct names for that single amount, the way you might go by your full name on a form and a nickname with your friends. A number can wear a fraction coat or a decimal coat, and swapping coats never touches the number underneath. By the end of this lesson you will be switching those coats in both directions, fraction to decimal and back, and doing a lot of it in your head. But before any of that, here is a question I want to leave hanging, because we are not going to answer it yet. Some fractions slide into a neat decimal that just <b>stops</b>, the way \\(\\tfrac{3}{4}\\) settles down into \\(0.75\\) and goes quiet. Others seem to put up a fight. You start dividing and the digits keep marching out, on and on, refusing to ever land. So what is the secret rule that decides it? What separates the fractions that earn a clean, stopping decimal name from the ones that never sit still? Hold onto that question as you go. The answer is not in the dividing itself. It has been quietly waiting in the prime factors you met back in Chapter 3."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A digital trail sign glows at the start of a hiking path. It reads that the next lookout is \\(0.7\\) kilometers ahead. You want to record that distance as a fraction in your notebook, since the ranger's logbook only accepts fractions written over a power of ten. Look at where the last digit lands. The \\(7\\) sits one slot past the point, in the tenths place, so it is counting tenths. There is no whole number out front and no dividing to do here, because a terminating decimal is already a fraction in disguise. The place of the last digit tells you the bottom, and the digit itself is the top. Write \\(0.7\\) as a fraction over a power of ten.",
+    "hints": [
+     "The first slot to the right of the decimal point has a special name. A single digit sitting there is not seven of something big, it is seven of something small. What is the name of that place, and what number goes underneath when you count that many of them?",
+     "The last digit is \\(7\\) and it lives in the tenths place, so the denominator is \\(10\\). The digits after the point become the numerator, which here is just \\(7\\). Put the \\(7\\) on top and the \\(10\\) on the bottom."
+    ],
+    "ans": "7/10",
+    "accept": [
+     "7/10",
+     "seven-tenths",
+     "7 / 10",
+     "seven tenths"
+    ],
+    "sol": "Read the decimal out loud the way you would say it and the fraction almost writes itself. You would say \"seven tenths,\" and \"tenths\" is already the denominator while \"seven\" is already the numerator. Here is why the place does all the work for you. The point splits whole units from pieces of a unit, and each step to the right cuts the piece into ten times as many parts. The very first slot past the point holds tenths, so a digit sitting there counts how many tenths you have. In \\(0.7\\) that digit is \\(7\\), which means you have \\(7\\) copies of one tenth. That is exactly $$0.7 = \\frac{7}{10}.$$ Notice there was no division and no whole part to carry along, since the sign showed less than one kilometer. The single filled place named the denominator, \\(10\\), and the digit after the point became the numerator, \\(7\\). So the lookout is \\(\\boxed{7/10}\\) of a kilometer ahead."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Here is the same move you just made, only one place deeper, and this time the fraction comes out baggy. A strip of ribbon measures \\(0.45\\) of a meter. There are two digits sitting past the point now, so the last filled place is hundredths and the denominator you start with is \\(100\\). Read the two digits after the point as the ordinary whole number \\(45\\) and drop it on top, which gives \\(\\frac{45}{100}\\). That answer is correct, but it is not pulled tight, since \\(45\\) and \\(100\\) both share a hidden factor. Use the <b>gcd</b> idea from Chapter 4 to take it all the way down. Write \\(0.45\\) as a fraction in simplest form.",
+    "hints": [
+     "Start where the reading tells you to start. Two places past the point means hundredths, so \\(0.45 = \\frac{45}{100}\\). Now ask yourself the Chapter 4 question. What is the largest number that divides both \\(45\\) and \\(100\\) at the same time?",
+     "List what divides each one. The number \\(45\\) splits as \\(3 \\times 3 \\times 5\\), and \\(100\\) splits as \\(2 \\times 2 \\times 5 \\times 5\\). The only factor they truly share is a single \\(5\\), so \\(\\gcd(45,100) = 5\\). Divide the top and the bottom by \\(5\\)."
+    ],
+    "ans": "9/20",
+    "accept": [
+     "nine-twentieths",
+     "9 over 20",
+     "9⁄20",
+     "nine twentieths",
+     "9/20"
+    ],
+    "sol": "Two digits live past the decimal point, so the last place is hundredths and the denominator is \\(100\\). Reading the digits as a whole number puts \\(45\\) on top, giving the honest first version \\(\\frac{45}{100}\\). It is true, just loose.\n\\nTo tighten it, find what \\(45\\) and \\(100\\) have in common. Break each one into its prime pieces. \\(45 = 3 \\times 3 \\times 5\\) and \\(100 = 2 \\times 2 \\times 5 \\times 5\\). Lining those up, the only piece showing in both lists is a single \\(5\\), so the greatest common divisor is \\(\\gcd(45,100) = 5\\). That \\(5\\) is the biggest cut you can make in one step.\n\\nDivide top and bottom by it together. $$\\frac{45}{100} = \\frac{45 \\div 5}{100 \\div 5} = \\frac{9}{20}$$ Now check that nothing is left to remove. The top is \\(9 = 3 \\times 3\\) and the bottom is \\(20 = 2 \\times 2 \\times 5\\). They share no prime, so the fraction is pulled all the way tight. If you want proof it is still the same length of ribbon, notice \\(\\frac{9}{20} = \\frac{45}{100} = 0.45\\), right back where you started.\n\n\\(\\boxed{9/20}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "A terminating decimal is already a fraction, so I never have to divide to turn it into one. The place of the last digit hands me the denominator, tenths sit over \\(10\\), hundredths over \\(100\\), thousandths over \\(1000\\), and every digit after the point, read straight across as one number, becomes the numerator. Reading it that way just sets the fraction down, and then I tidy it the Chapter 4 way by dividing top and bottom by their gcd. That is why \\(0.7\\) is already \\(\\tfrac{7}{10}\\), while \\(0.45\\) starts as \\(\\tfrac{45}{100}\\) and trims down to \\(\\tfrac{9}{20}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 420 268\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A place-value reading of the decimal zero point one two five turned into a fraction in two steps. Three faint column cards stand side by side under the heading read the decimal off. The left card is headed tenths worth one tenth and holds the digit 1, the middle card is headed hundredths worth one hundredth and holds the digit 2, and the right card is headed thousandths worth one thousandth and holds the digit 5. A bold gold curly brace runs under all three digits and gathers them into one number, the numerator 125. A downward gold arrow drops from the last filled column, the thousandths, and points to the denominator 1000, building the fraction 125 over 1000. A second arrow labeled divide top and bottom by the gcd 125 transforms 125 over 1000 into the small tidy fraction 1 over 8. A closing note reads a heavy looking decimal can hide a small fraction, and 1000 equals 8 times 125.\"><text x=\"80\" y=\"20\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">read the decimal off</text><text x=\"20\" y=\"56\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">0.</text><rect x=\"40\" y=\"32\" width=\"48\" height=\"40\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><rect x=\"90\" y=\"32\" width=\"48\" height=\"40\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><rect x=\"140\" y=\"32\" width=\"48\" height=\"40\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"1.8\"/><text x=\"64\" y=\"61\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">1</text><text x=\"114\" y=\"61\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">2</text><text x=\"164\" y=\"61\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">5</text><text x=\"64\" y=\"88\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">tenths</text><text x=\"114\" y=\"88\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">hundredths</text><text x=\"164\" y=\"88\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">thousandths</text><text x=\"64\" y=\"100\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"600\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">1&#8260;10</text><text x=\"114\" y=\"100\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"600\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">1&#8260;100</text><text x=\"164\" y=\"100\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"600\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">1&#8260;1000</text><path d=\"M 48 112 q 0 7 7 7 L 110 119 q 4 0 4 6 q 0 -6 4 -6 L 173 119 q 7 0 7 -7\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"2\"/><text x=\"114\" y=\"146\" text-anchor=\"middle\" font-size=\"9.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">the digits pile into</text><text x=\"114\" y=\"170\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">125</text><path d=\"M 164 74 q 64 0 64 102 L 228 176\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/><path d=\"M 228 176 l -3.5 -8 l 7 0 z\" fill=\"var(--gold2)\"/><text x=\"256\" y=\"118\" text-anchor=\"middle\" font-size=\"8.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">last place reached</text><text x=\"256\" y=\"129\" text-anchor=\"middle\" font-size=\"8.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">names the bottom</text><text x=\"252\" y=\"166\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">125</text><line x1=\"226\" y1=\"174\" x2=\"278\" y2=\"174\" stroke=\"var(--slate)\" stroke-width=\"1.8\"/><text x=\"252\" y=\"196\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">1000</text><line x1=\"298\" y1=\"184\" x2=\"334\" y2=\"184\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><path d=\"M 334 184 l -8 -3 l 2 6 z\" fill=\"var(--line)\"/><text x=\"316\" y=\"168\" text-anchor=\"middle\" font-size=\"8.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">&#247; 125</text><text x=\"316\" y=\"202\" text-anchor=\"middle\" font-size=\"8.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">(the gcd)</text><text x=\"372\" y=\"166\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">1</text><line x1=\"356\" y1=\"174\" x2=\"388\" y2=\"174\" stroke=\"var(--gold-deep)\" stroke-width=\"1.8\"/><text x=\"372\" y=\"196\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">8</text><rect x=\"20\" y=\"226\" width=\"380\" height=\"30\" rx=\"7\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"210\" y=\"245\" text-anchor=\"middle\" font-size=\"9.5\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">a heavy looking decimal can hide a small fraction, since 1000 = 8 &#215; 125</text></svg>",
+    "cap": "The digits after the point pile up into the numerator, and the last place you reach names the denominator. So \\(0.125\\) reads off as \\(\\frac{125}{1000}\\). Then the \\(\\gcd\\) does the cleanup. Both \\(125\\) and \\(1{,}000\\) divide by \\(125\\), which folds that heavy looking decimal down to the tiny \\(\\frac{1}{8}\\). Notice \\(1{,}000 = 8 \\times 125\\), a thread worth remembering."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Not every decimal hides behind a zero. A scoop on the kitchen scale reads \\(2.5\\) kilograms of flour, a whole part out front and a tail of \\(5\\) tenths behind the point. There are two honest ways to read it. You can say two and five tenths, which is \\(2 + \\tfrac{5}{10}\\), or you can read every digit at once as twenty-five tenths, which is \\(\\tfrac{25}{10}\\). Notice that the single digit past the point still puts a \\(10\\) on the bottom even though a whole number is sitting in front of it. Write \\(2.5\\) as a single improper fraction in simplest form.",
+    "hints": [
+     "Read all the figures at once, ignoring the point for a moment. The digits are \\(25\\), and one digit sits past the decimal point, so the bottom is \\(10^1 = 10\\). That gives you \\(\\tfrac{25}{10}\\) before you tidy it up.",
+     "Now reduce \\(\\tfrac{25}{10}\\). Both numbers share a factor of \\(5\\), so divide top and bottom by \\(5\\). You get \\(\\tfrac{25 \\div 5}{10 \\div 5}\\), and since the top stays bigger than the bottom, leave it as an improper fraction rather than a mixed number."
+    ],
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "five halves",
+     "5 over 2",
+     "five over two"
+    ],
+    "sol": "The cleanest route is to read every figure in \\(2.5\\) at once and forget that one of them lives in front of the point. The digits are \\(25\\), and exactly one digit sits to the right of the decimal point, so the denominator is \\(10^1 = 10\\). That gives \\(2.5 = \\tfrac{25}{10}\\). The whole part out front did not change the rule, the count of digits past the point is still what sets the power of ten underneath. If you prefer the other reading, two and five tenths is \\(2 + \\tfrac{5}{10} = \\tfrac{20}{10} + \\tfrac{5}{10} = \\tfrac{25}{10}\\), the very same fraction. Now simplify. The greatest common factor of \\(25\\) and \\(10\\) is \\(5\\), so \\(\\tfrac{25}{10} = \\tfrac{25 \\div 5}{10 \\div 5} = \\tfrac{5}{2}\\). Since \\(5\\) is larger than \\(2\\), this is already an improper fraction, exactly what was asked for. A quick sanity check, \\(5 \\div 2 = 2.5\\), back to where we started. $$2.5 = \\frac{25}{10} = \\boxed{5/2}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A weather station logs the overnight temperature change as \\(-1.72\\) degrees. The minus sign tells you the temperature dropped, and that sign is going to ride along untouched while you do the conversion. Set it aside for a moment and look only at the size, \\(1.72\\). The last digit sits in the hundredths place, so \\(1.72\\) reads as one hundred seventy-two hundredths, which is \\(\\tfrac{172}{100}\\). Simplify that fraction to lowest terms, then put the minus sign back on the front exactly where it started. Write \\(-1.72\\) as a single improper fraction in simplest form, including the sign.",
+    "hints": [
+     "The negative sign is just along for the ride. Convert the size 1.72 on its own. Two decimal places means hundredths, so the bottom of the fraction is 100.",
+     "Reduce \\(\\tfrac{172}{100}\\) by its greatest common divisor. Since \\(\\gcd(172,100)=4\\), divide both the top and the bottom by 4, then write the minus sign in front of the result."
+    ],
+    "ans": "-43/25",
+    "accept": [
+     "-(43/25)",
+     "negative forty-three twenty-fifths",
+     "negative 43/25",
+     "-43 / 25",
+     "-1 18/25",
+     "−43/25",
+     "-43/25"
+    ],
+    "sol": "Handle the sign and the size separately. The negative sign is not a number to be simplified, it is just a label saying which direction the temperature moved, so park it and convert the size \\(1.72\\) by itself.\n\\nThe digit \\(2\\) is the last digit and it lives in the hundredths place, so \\(1.72\\) is one hundred seventy-two hundredths. As a fraction that is \\(\\tfrac{172}{100}\\).\n\\nNow reduce. The greatest common divisor of \\(172\\) and \\(100\\) is \\(4\\), so divide top and bottom by \\(4\\): $$\\frac{172}{100}=\\frac{172\\div 4}{100\\div 4}=\\frac{43}{25}.$$ Check that this is fully reduced. The numerator \\(43\\) is prime, and \\(25=5\\cdot 5\\) shares no factor with it, so \\(\\tfrac{43}{25}\\) cannot shrink any further.\n\\nFinally, put the sign back exactly where it was. The size came out to \\(\\tfrac{43}{25}\\), and the temperature dropped, so the answer is negative. \\(\\boxed{-43/25}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "So far you have pushed decimals into fractions. Now turn the trip around and go from a fraction to a decimal. The friendliest possible starting point is a fraction whose denominator is already a power of ten, because then you barely have to do anything. A depth sensor on a small underwater rover reports its position as \\(\\frac{47}{100}\\) of a meter below the surface. The denominator is already \\(100\\), the hundredths, so the place value is handed to you. You just have to set the digit \\(7\\) into the hundredths slot, the digit \\(4\\) into the tenths slot beside it, and guard the empty ones place with a \\(0\\). Write \\(\\frac{47}{100}\\) as a decimal.",
+    "hints": [
+     "The bottom number tells you the smallest place value in play. A denominator of \\(100\\) means the last digit of the numerator should land in the hundredths place, two spots to the right of the decimal point.",
+     "Take the numerator \\(47\\). The \\(7\\) goes in the hundredths place and the \\(4\\) goes in the tenths place. There is no whole part, so write a \\(0\\) in the ones place to hold it open, then the decimal point, then \\(47\\)."
+    ],
+    "ans": "0.47",
+    "accept": [
+     "0.47",
+     "0.470",
+     ".47",
+     ".470"
+    ],
+    "sol": "Remember from earlier that \\(\\frac{47}{100}\\) just means \\(47\\) copies of one hundredth, and one hundredth is exactly what the second place after the decimal point measures. So the whole job is to write \\(47\\) hundredths in place-value form.\nThe numerator \\(47\\) has two digits, and the denominator \\(100\\) carries two zeros. That match is the whole trick. The two zeros tell you to reserve two slots to the right of the decimal point, the tenths and the hundredths, and the numerator fills them right to left. The \\(7\\) drops into the hundredths place and the \\(4\\) sits to its left in the tenths place.\nNothing is left over for the ones place, since \\(47\\) is less than \\(100\\), so the number is smaller than one whole. We park a \\(0\\) in the ones place as a guard, just so the decimal point is not floating alone at the front. That gives \\(0.47\\).\nThis is exactly the chart you built before, read backward. Going from a decimal to a fraction, you saw \\(0.47\\) and named it \\(\\frac{47}{100}\\). Going from a fraction to a decimal, you see \\(\\frac{47}{100}\\) and name it \\(0.47\\). Same chart, opposite direction. $$\\frac{47}{100} = \\boxed{0.47}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A polishing gear in a clock spins through \\(\\tfrac{3}{5}\\) of one full turn before it clicks to a stop. You want to log that motion as a decimal, but \\(\\tfrac{3}{5}\\) does not arrive ready to read. A decimal wants a power of ten underneath it, like tenths or hundredths, and a \\(5\\) on the bottom is not a power of ten. Here is the lucky part. A \\(5\\) sits just one short step from \\(10\\), since \\(5 \\times 2 = 10\\). Nudge the denominator up onto that power of ten and the digits will fall into place. Write \\(\\tfrac{3}{5}\\) as a decimal.",
+    "hints": [
+     "You cannot just swap the \\(5\\) for a \\(10\\) on its own, because that would change the value. Whatever you do to the bottom you must also do to the top. What single number turns \\(5\\) into \\(10\\) when you multiply by it?",
+     "Multiply both \\(3\\) and \\(5\\) by \\(2\\). That gives \\(\\tfrac{6}{10}\\), which is the same value as \\(\\tfrac{3}{5}\\) since you only multiplied by \\(\\tfrac{2}{2}\\), which equals \\(1\\). Six tenths reads straight off the tenths place."
+    ],
+    "ans": "0.6",
+    "accept": [
+     "six tenths",
+     "zero point six",
+     "0.6",
+     "0.600",
+     "0.60",
+     ".6"
+    ],
+    "sol": "The whole game is getting a power of ten under the fraction so the decimal can be read directly. Right now the denominator is \\(5\\), and \\(5\\) is one short multiplication away from \\(10\\), since \\(5 \\times 2 = 10\\). So multiply the bottom by \\(2\\). The catch is that touching only the bottom would change the value, so multiply the top by \\(2\\) as well. Doing the same thing top and bottom is just multiplying by \\(\\tfrac{2}{2}\\), and \\(\\tfrac{2}{2} = 1\\), so the value is untouched. This is the equivalent-fraction move from Chapter 4. $$\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$$ Now the denominator is a power of ten. Six tenths is exactly what the first place after the decimal point holds, so you read it straight off as \\(0.6\\). The gear turned through \\(0.6\\) of a revolution. \\(\\boxed{0.6}\\)"
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Scaling eleven over twenty up to a power of ten. On the left, the fraction eleven over twenty sits in a boxed cell. A gold multiplier of five over five is applied to both rows, shown with two curved gold arrows. The top arrow is labeled eleven times five equals fifty five, the bottom arrow is labeled twenty times five equals one hundred. In the middle a boxed cell shows the new fraction fifty five over one hundred. A note explains twenty times five is one hundred because twenty is two squared times five, and one more five makes it two squared times five squared, which is one hundred. An arrow on the right reads off the decimal zero point fifty five, with the five dropping into a tenths cell and the second five into a hundredths cell of a small two column place strip after a glowing decimal point. A faint reminder reads multiply top and bottom by the same number so the value never changes.\"><rect x=\"0\" y=\"0\" width=\"440\" height=\"250\" fill=\"var(--softer)\" stroke=\"none\"/><text x=\"220\" y=\"26\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">Climb 20 up to a power of ten</text><rect x=\"22\" y=\"74\" width=\"78\" height=\"78\" rx=\"6\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><line x1=\"36\" y1=\"113\" x2=\"86\" y2=\"113\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"61\" y=\"105\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">11</text><text x=\"61\" y=\"138\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--ink)\" font-family=\"Inter, sans-serif\">20</text><path d=\"M 104 84 Q 150 50 196 84\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.8\"/><path d=\"M 196 84 l -9 -1 l 4 -6 z\" fill=\"var(--gold2)\"/><text x=\"150\" y=\"48\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">×5  (11×5=55)</text><path d=\"M 104 142 Q 150 178 196 142\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.8\"/><path d=\"M 196 142 l -9 1 l 4 6 z\" fill=\"var(--gold2)\"/><text x=\"150\" y=\"190\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">×5  (20×5=100)</text><rect x=\"128\" y=\"100\" width=\"44\" height=\"26\" rx=\"5\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"150\" y=\"112\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">5</text><line x1=\"138\" y1=\"116\" x2=\"162\" y2=\"116\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"150\" y=\"124\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">5</text><rect x=\"202\" y=\"74\" width=\"86\" height=\"78\" rx=\"6\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><line x1=\"218\" y1=\"113\" x2=\"272\" y2=\"113\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"245\" y=\"105\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">55</text><text x=\"245\" y=\"138\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">100</text><path d=\"M 290 113 L 318 113\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M 318 113 l -8 -4 l 0 8 z\" fill=\"var(--slate)\"/><text x=\"304\" y=\"103\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">read</text><text x=\"355\" y=\"103\" text-anchor=\"middle\" font-size=\"8.5\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">tenths</text><text x=\"393\" y=\"103\" text-anchor=\"middle\" font-size=\"8.5\" font-weight=\"700\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\">100ths</text><text x=\"322\" y=\"138\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">0</text><circle cx=\"331\" cy=\"138\" r=\"2.4\" fill=\"var(--gold2)\"/><rect x=\"338\" y=\"112\" width=\"34\" height=\"34\" rx=\"4\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><rect x=\"376\" y=\"112\" width=\"34\" height=\"34\" rx=\"4\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"355\" y=\"138\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">5</text><text x=\"393\" y=\"138\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\" font-family=\"Inter, sans-serif\">5</text><text x=\"220\" y=\"216\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--slate)\" font-family=\"Inter, sans-serif\">20 = 2² × 5, so it needs one more 5 to reach 2² × 5² = 100</text><text x=\"220\" y=\"236\" text-anchor=\"middle\" font-size=\"10\" fill=\"var(--mid)\" font-family=\"Inter, sans-serif\" opacity=\"0.75\">multiply top and bottom by the same number, the value never changes</text></svg>",
+    "cap": "Here is the whole move in one picture. Find the number that turns the denominator into a power of ten, multiply the top and bottom by it, then read the digits straight off into their places. The bottom is \\(20\\), and \\(20 = 2^2 \\times 5\\), so it is only missing one more \\(5\\) to become \\(2^2 \\times 5^2 = 100\\). Multiplying top and bottom by \\(\\tfrac{5}{5}\\) keeps the value the same, and it sends \\(\\tfrac{11}{20}\\) to \\(\\tfrac{55}{100}\\). Once the denominator is \\(100\\), the \\(5\\) and \\(5\\) just drop into the tenths and hundredths columns to give \\(0.55\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A scoop of trail mix is \\(\\tfrac{11}{20}\\) raisins by weight, and the rest is nuts and seeds. You want to write that fraction as a decimal so you can compare it against the labels on other bags. The move that worked before was turning the bottom into a power of ten, but 20 is not one, and trying to shrink it down to 10 is hopeless since 10 is smaller than 20. So look the other way. There is a power of ten that 20 divides into evenly, and once you spot it the multiplier almost names itself. Write \\(\\tfrac{11}{20}\\) as a decimal.",
+    "hints": [
+     "You cannot reach 10, so aim higher. What is the next power of ten after 10, and does 20 fit into it a whole number of times?",
+     "Since \\(20 \\times 5 = 100\\), multiply both the top and the bottom by 5. That gives \\(\\tfrac{55}{100}\\), and a denominator of 100 reads straight off as hundredths."
+    ],
+    "ans": "0.55",
+    "accept": [
+     "0.55",
+     "55/100",
+     "0.550",
+     ".55",
+     "11/20"
+    ],
+    "sol": "The goal is to give the denominator a value of \\(10\\), \\(100\\), \\(1{,}000\\), or some other power of ten, because those are exactly the denominators that read off cleanly as decimals. Twenty is not one of them, so the question becomes which power of ten it divides into evenly. It will not fit into \\(10\\), since \\(10\\) is smaller than \\(20\\). The next one up is \\(100\\), and \\(100 \\div 20 = 5\\) with nothing left over. That is how we knew to reach for \\(5\\). The bottom has to grow from \\(20\\) to \\(100\\), and \\(5\\) is the number that carries it there. Whatever we do to the bottom we must also do to the top, so multiply both by \\(5\\). $$\\frac{11}{20} = \\frac{11 \\times 5}{20 \\times 5} = \\frac{55}{100}$$ Now the denominator is \\(100\\), so the fraction is \\(55\\) hundredths, which is \\(0.55\\). A quick check makes sure that fits. We know \\(\\tfrac{10}{20} = \\tfrac{1}{2} = 0.5\\), and \\(\\tfrac{11}{20}\\) is one twentieth more than that, so a value just past \\(0.5\\) is exactly what we should land on. A little over half the scoop is raisins. \\(\\boxed{0.55}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "To turn a fraction into a decimal, scale it up until the bottom is a power of ten. Ask what the denominator needs to be multiplied by to land on \\(10\\), \\(100\\), or \\(1{,}000\\), then multiply the top by that same number so the value never changes. Once the bottom is a power of ten, the decimal is just the top read into its places, like \\(\\tfrac{3}{4}=\\tfrac{75}{100}=0.75\\). Sometimes the bottom is already a power of ten, sometimes it is one small step away, but scaling up and reading off the digits is the whole forward direction."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Here is where the prime view from Chapter 3 earns its keep. A wrench in a tool drawer is stamped \\(\\tfrac{7}{8}\\) of an inch wide. To read that size off a decimal ruler, you want it written as a decimal. Look hard at the denominator. The number \\(8\\) is \\(2\\times 2\\times 2\\), which is \\(2^3\\), three 2s and not a single 5 anywhere. A power of ten is built from 2s and 5s in matched counts, since \\(10 = 2\\times 5\\). So this denominator is lopsided, all 2s and no 5s, and that is exactly the gap you have to close. Write \\(\\tfrac{7}{8}\\) as a decimal.",
+    "hints": [
+     "Decimals are just fractions whose denominators are powers of ten. So aim the bottom at a power of ten. You already have three 2s in the \\(8\\). How many 5s would you need to add so the 2s and 5s match up and form \\(10\\times 10\\times 10\\)?",
+     "To turn \\(8 = 2^3\\) into \\(1{,}000 = 2^3\\times 5^3\\) you are missing exactly three 5s, and \\(5^3 = 125\\). Multiply the top and bottom of \\(\\tfrac{7}{8}\\) by \\(125\\), then read off the three decimal places."
+    ],
+    "ans": "0.875",
+    "accept": [
+     ".875",
+     "7/8",
+     "875/1000",
+     "0.875 inches",
+     "0.875",
+     "0.8750",
+     ".8750"
+    ],
+    "sol": "The trick to turning a fraction into a decimal is to get a power of ten on the bottom, because \\(\\tfrac{875}{1000}\\) is just another way of writing \\(0.875\\). So the whole job is reshaping the denominator into a power of ten without changing the value of the fraction. First break the bottom into primes. Here \\(8 = 2\\times 2\\times 2 = 2^3\\), which is three 2s and zero 5s. Now recall how powers of ten are built. Since \\(10 = 2\\times 5\\), every power of ten needs its 2s and 5s in equal counts. For example \\(1{,}000 = 10^3 = 2^3\\times 5^3\\), three of each. Compare that to what you have. Your denominator already supplies all three 2s, so it is short exactly three 5s, and \\(5^3 = 125\\). Supply the missing 5s by multiplying top and bottom by \\(125\\), which is the same as multiplying by \\(1\\), so the value does not change. $$\\frac{7}{8} = \\frac{7\\times 125}{8\\times 125} = \\frac{875}{1000}.$$ A denominator of \\(1{,}000\\) means three decimal places, so \\(\\tfrac{875}{1000}\\) reads as \\(0.875\\). The big idea is that you only ever have to top up whichever prime the bottom is short of. An all-2s denominator like \\(8\\) cleanly becomes a decimal precisely because you can fill in the matching 5s. \\(\\boxed{0.875}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Topping up to a power of ten was really a game about 2s and 5s all along, because a power of ten is just a stack of 2s matched one for one with the same number of 5s. So scaling the bottom up never invents anything, it only supplies the partners that are missing, the way \\(8\\) with its three 2s was begging for three 5s, while \\(40\\) already owns one 5 and only needs two more. The denominator's prime parts decide everything, and the multiplier I reach for is exactly whatever 2s and 5s would finish the matched set. Which makes me wonder about a bottom that smuggles in some other prime, since no pile of 2s and 5s I add will ever cancel it out."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Here are four fractions, each already in lowest terms. Three of them can be turned into a terminating decimal, and exactly one of them cannot. \\(\\dfrac{7}{16}\\), \\(\\dfrac{9}{40}\\), \\(\\dfrac{5}{12}\\), \\(\\dfrac{3}{25}\\). The trick is not to do any dividing yet. Instead, break each denominator into its prime factors the way you learned in Chapter 3, and remember that every power of ten is made of nothing but 2s and 5s, since \\(10^n = 2^n \\times 5^n\\). A fraction becomes a terminating decimal only when you can scale its denominator up to a power of ten, and that is possible only when the denominator is built from 2s and 5s alone. Factor the four denominators and find the odd one out. Which fraction <b>cannot</b> be written as a terminating decimal? Give its denominator as your answer.",
+    "hints": [
+     "Factor each denominator into primes. \\(16 = 2^4\\), \\(40 = 2^3 \\times 5\\), \\(25 = 5^2\\), and \\(12 = 2^2 \\times 3\\). Now look for any prime that is not a 2 or a 5.",
+     "A power of ten is \\(2^n \\times 5^n\\), so it never contains a factor of 3. Three of the denominators use only 2s and 5s, so you can supply whatever is missing and climb to \\(10\\), \\(100\\), or \\(1{,}000\\). The denominator that hides a 3 can never be scaled into a power of ten, because no multiplier of 2s and 5s will ever cancel that 3."
+    ],
+    "ans": "12",
+    "accept": [
+     "5/12",
+     "12.0",
+     "12",
+     "twelve"
+    ],
+    "sol": "Factor every denominator into primes and the answer almost reveals itself. \\(16 = 2^4\\), so it is pure 2s. \\(40 = 2^3 \\times 5\\), made of 2s and a 5. \\(25 = 5^2\\), pure 5s. And \\(12 = 2^2 \\times 3\\), which carries a 3. The question is whether each denominator can be scaled up to a power of ten, because a power of ten in the denominator is exactly what a terminating decimal looks like. Since \\(10^n = 2^n \\times 5^n\\), a power of ten is built from 2s and 5s and nothing else. For \\(\\dfrac{7}{16}\\), multiply top and bottom by \\(5^4\\) to fill in the missing 5s and you reach \\(10^4\\), so it terminates. For \\(\\dfrac{9}{40}\\), one extra factor of \\(5^2\\) balances the 2s and 5s into \\(1{,}000\\). For \\(\\dfrac{3}{25}\\), multiply by \\(2^2\\) and you land on \\(100\\). But \\(\\dfrac{5}{12}\\) is stuck. Its denominator holds a 3, and no matter how many 2s or 5s you multiply on, that 3 never disappears, so the denominator can never become a power of ten. The fraction that cannot terminate is \\(\\dfrac{5}{12}\\), and its denominator is \\(\\boxed{12}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So here is what we found. Once a fraction is in lowest terms, look at what its denominator is made of. If the only primes hiding in there are <b>2s and 5s</b>, you can always feed it the missing 2s or 5s to grow it into a power of ten, and a power of ten is exactly what a terminating decimal is. That is why those fractions stop. But the moment any other prime sneaks in, a 3 or a 7 or an 11, no amount of 2s and 5s can ever clear it, so no power of ten will ever fit and the decimal is forced to run forever. <b>2 and 5 are the gatekeepers of a clean decimal name.</b>"
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 318\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two panels comparing denominators by their prime factors as a gate to a power of ten. Left panel, the passing fraction has denominator 40, which factors as two times two times two times five, written as the prime tower two cubed times five. It is tagged only 2s and 5s. Two extra fives are added in lighter ink so the bottom becomes two cubed times five cubed, and an arrow lands on 1000, which equals two cubed times five cubed, with a check mark meaning the decimal terminates. Right panel, the blocked fraction has denominator 6, which factors as two times three. The lone three is circled and flagged, and the arrow toward a power of ten is crossed out, because no number of extra 2s and 5s can ever turn that 3 into part of a power of ten, marked with a no-entry symbol meaning it cannot stop. A band across the bottom reads a power of ten is two to the n times five to the n, so only 2s and 5s pass the gate.\"><defs><marker id=\"b18a\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"var(--gold-deep)\"/></marker><marker id=\"b18b\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"var(--slate)\"/></marker></defs><text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--mid)\">The gate to a power of ten</text><rect x=\"14\" y=\"34\" width=\"200\" height=\"206\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"1.5\"/><text x=\"114\" y=\"54\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--gold-deep)\">PASSES</text><text x=\"114\" y=\"80\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"600\" fill=\"var(--slate)\">7</text><line x1=\"98\" y1=\"88\" x2=\"130\" y2=\"88\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"114\" y=\"106\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"600\" fill=\"var(--slate)\">40</text><text x=\"114\" y=\"126\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--mid)\">factor the bottom</text><text x=\"114\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\">2 × 2 × 2 × 5</text><text x=\"114\" y=\"166\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--gold-deep)\" font-weight=\"600\">only 2s and 5s</text><text x=\"114\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\">2³ × 5 <tspan fill=\"var(--gold-deep)\" font-weight=\"600\"> × 5 × 5</tspan></text><line x1=\"114\" y1=\"198\" x2=\"114\" y2=\"214\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\" marker-end=\"url(#b18a)\"/><text x=\"114\" y=\"232\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--gold-deep)\">1,000 = 2³ × 5³  ✓</text><rect x=\"226\" y=\"34\" width=\"200\" height=\"206\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"326\" y=\"54\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--slate)\">BLOCKED</text><text x=\"326\" y=\"80\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"600\" fill=\"var(--slate)\">5</text><line x1=\"310\" y1=\"88\" x2=\"342\" y2=\"88\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"326\" y=\"106\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"600\" fill=\"var(--slate)\">6</text><text x=\"326\" y=\"126\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--mid)\">factor the bottom</text><text x=\"326\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\">2 × <tspan fill=\"var(--slate)\" font-weight=\"700\">3</tspan></text><circle cx=\"343\" cy=\"143\" r=\"11\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"326\" y=\"167\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--slate)\">a stray 3</text><line x1=\"326\" y1=\"176\" x2=\"326\" y2=\"206\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-dasharray=\"3 3\" marker-end=\"url(#b18b)\"/><line x1=\"318\" y1=\"183\" x2=\"334\" y2=\"199\" stroke=\"var(--slate)\" stroke-width=\"2\"/><circle cx=\"326\" cy=\"222\" r=\"11\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"2\"/><line x1=\"318.6\" y1=\"214.6\" x2=\"333.4\" y2=\"229.4\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"326\" y=\"240\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--mid)\">never a power of ten</text><rect x=\"14\" y=\"256\" width=\"412\" height=\"48\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"220\" y=\"277\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--mid)\">A power of ten is 10ⁿ = 2ⁿ × 5ⁿ</text><text x=\"220\" y=\"294\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">so only 2s and 5s ever pass the gate</text></svg>",
+    "cap": "Factor the denominator in lowest terms. If you see only 2s and 5s, it terminates, because you can always add enough of each to climb to a power of ten. Here \\(40 = 2^3 \\times 5\\) just needs two more 5s to reach \\(1{,}000 = 2^3 \\times 5^3\\). But \\(6 = 2 \\times 3\\) carries a stray \\(3\\), and no pile of extra 2s and 5s can ever absorb it, so that fraction never stops. We will see what it does instead in 5.5."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Three friends share one granola bar split perfectly evenly, so each friend gets \\(\\tfrac{1}{3}\\) of it. Notice that \\(\\tfrac{1}{3}\\) is already in lowest terms, since \\(3\\) shares no common factor with \\(1\\). You just discovered a clean way to predict whether a fraction wears a decimal coat that <b>ends</b> after finitely many digits. The trick is to look only at the denominator in lowest terms and ask what prime building blocks it is made of. A power of ten, like \\(10\\), \\(100\\), or \\(1{,}000\\), is built only from \\(2\\)s and \\(5\\)s, so a fraction can be rescaled onto a power of ten only when its denominator is also built only from \\(2\\)s and \\(5\\). Run that single test on the denominator \\(3\\). Do not actually carry out the division \\(1 \\div 3\\), and do not write any digits of the result. The story of what those digits do is exactly a later lesson, 5.5. Based only on the \\(2\\)s-and-\\(5\\)s test, will \\(\\tfrac{1}{3}\\) convert to a decimal that ends? Answer yes or no.",
+    "hints": [
+     "The test never asks you to divide. It asks one thing about the denominator in lowest terms here that denominator is \\(3\\). What prime numbers multiply together to give \\(3\\)?",
+     "Factor \\(3\\). It is already prime, so its only prime building block is \\(3\\) itself. The test says a decimal ends only when the denominator is built from \\(2\\)s and \\(5\\)s alone. Is \\(3\\) one of those allowed primes? Since a power of ten contains no factor of \\(3\\), there is no way to scale \\(3\\) up into a \\(10\\), \\(100\\), or \\(1{,}000\\)."
+    ],
+    "ans": "no",
+    "accept": [
+     "No",
+     "nope",
+     "no",
+     "n",
+     "NO"
+    ],
+    "sol": "The whole point of the new test is that you can answer this without dividing at all. A terminating decimal is really a fraction sitting over some power of ten, like \\(\\tfrac{3}{10}\\) or \\(\\tfrac{875}{1000}\\). Every power of ten factors as \\(10^n = 2^n \\cdot 5^n\\), so its only prime ingredients are \\(2\\) and \\(5\\). That means a fraction in lowest terms can be rewritten over a power of ten exactly when its denominator is also made of nothing but \\(2\\)s and \\(5\\)s.\n\nNow look at \\(\\tfrac{1}{3}\\). It is already in lowest terms, and the denominator is \\(3\\). Factor it the number \\(3\\) is prime, so its only prime building block is \\(3\\) itself. There is not a single \\(2\\) or \\(5\\) anywhere in it. To turn the bottom into a power of ten you would have to multiply \\(3\\) by something that produces a \\(10\\), \\(100\\), or \\(1{,}000\\), but none of those numbers contain a factor of \\(3\\). No whole-number multiplier can ever bridge that gap, so \\(\\tfrac{1}{3}\\) can never be rescaled onto a clean power of ten.\n\nSince the denominator fails the \\(2\\)s-and-\\(5\\)s test, the decimal does not stop. What it does instead, when you finally run \\(1 \\div 3\\), is the surprise waiting for you in lesson 5.5. For now the test alone settles the question.\n\n\\(\\boxed{no}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "A fraction and its decimal were never two different numbers, they are one number wearing two coats, and the coat that turns one into the other is just plain division, the decimal of \\(\\tfrac{a}{b}\\) is only \\(a\\) divided by \\(b\\). And the three things I kept noticing are really one thing seen from three sides, because once the fraction is in lowest terms and its bottom is built out of nothing but \\(2\\)s and \\(5\\)s I can scale it up to a power of ten, and that is the exact same reason the division finally runs out of remainder and stops clean instead of dragging on forever. So <b>scales to a power of ten</b>, <b>bottom is only \\(2\\)s and \\(5\\)s</b>, and <b>the division ends</b> are three descriptions of one situation, not three separate rules. The two names always point at the identical spot on the number line, they never disagree about the size, they just spell it differently."
+   },
+   {
+    "t": "fact",
+    "x": "Our choice of ten as the base is the reason some fractions convert cleanly and others run on forever, and a different choice would shuffle the whole list. The Babylonians, writing in clay around four thousand years ago, counted in base sixty instead of base ten. Sixty is built from the primes \\(2\\), \\(3\\), and \\(5\\), since \\(60 = 2^2 \\times 3 \\times 5\\), so it carries one extra prime that ten does not. That single extra factor of \\(3\\) is huge. For us \\(\\tfrac{1}{3}\\) never settles into a stopping decimal, but for a Babylonian scribe a third was simply twenty sixtieths, a clean and finite number. We still live with their base sixty every day, in the \\(60\\) minutes of an hour and the \\(360\\) degrees of a circle, a quiet reminder that whether a fraction terminates or repeats is never about the fraction alone. It is about which primes the base was made from."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "You have practiced both moves on their own. Decimal into a fraction coat, and fraction back into a decimal coat. Now do both in one trip. A camera setting is listed as \\(2.5\\), and you want its reciprocal, written as a decimal. Here is the plan, all three steps. First trade \\(2.5\\) into its fraction coat. Then flip that fraction to get the reciprocal, the Chapter 4 way. Then trade the flipped fraction back into a decimal coat. You leave in a decimal, you return in a decimal, but in between you take the fraction route so the flip is easy. Write the reciprocal of \\(2.5\\) as a decimal.",
+    "hints": [
+     "Start by putting on the fraction coat. The digits of \\(2.5\\) are \\(25\\), and there is one place after the point, so \\(2.5 = \\frac{25}{10}\\). Now reduce that to lowest terms before you flip, since a tidy fraction is much easier to turn over.",
+     "In lowest terms \\(2.5 = \\frac{5}{2}\\). Flipping a fraction means swapping the top and bottom, so the reciprocal of \\(\\frac{5}{2}\\) is \\(\\frac{2}{5}\\). Now you just need \\(\\frac{2}{5}\\) as a decimal. Scale the bottom up to \\(10\\) by multiplying top and bottom by \\(2\\)."
+    ],
+    "ans": "0.4",
+    "accept": [
+     "0.400",
+     "2/5",
+     "0.4",
+     ".40",
+     "two fifths",
+     ".4",
+     "0.40"
+    ],
+    "sol": "Take the round trip one step at a time. <b>Step 1, decimal to fraction.</b> The number \\(2.5\\) has one digit after the point, so it is twenty five tenths, \\(2.5 = \\frac{25}{10}\\). Both \\(25\\) and \\(10\\) share a factor of \\(5\\), so divide them out to get the lowest terms version, \\(\\frac{25}{10} = \\frac{5}{2}\\). <b>Step 2, flip for the reciprocal.</b> Taking a reciprocal just swaps the top and bottom of a fraction, exactly like Chapter 4. So the reciprocal of \\(\\frac{5}{2}\\) is \\(\\frac{2}{5}\\). Notice how much friendlier this flip is on the fraction than it would be on the messy decimal. <b>Step 3, fraction to decimal.</b> Turn \\(\\frac{2}{5}\\) into tenths by multiplying the top and bottom by \\(2\\), which gives \\(\\frac{2}{5} = \\frac{4}{10}\\), and four tenths written as a decimal is \\(0.4\\). Look back at the whole journey. You walked in carrying a decimal, slipped into a fraction so the flip was clean, then walked back out as a decimal, a full round trip through both names. As a quick check, \\(2.5 \\times 0.4 = 1\\), which is exactly what a number and its reciprocal must multiply to. \\(\\boxed{0.4}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A carpenter is marking a long board into tiny equal steps. The board measures \\(5.75\\) feet, and she wants to score a tick mark every eighth of a foot, starting from one end. She is hoping the marks land exactly, with the very last one falling right on the far end and nothing left over. To know if that works, she needs to count how many eighth-of-a-foot pieces fit inside \\(5.75\\) feet. The catch is that the length wears a decimal coat while the question is asked in eighths. Switch the length into the eighths coat and the count will be sitting right there in plain view. How many eighths are in \\(5.75\\)?",
+    "hints": [
+     "The decimal \\(5.75\\) and the fraction it equals are the same number wearing different clothes. Turn \\(5.75\\) into a fraction first, then think about how to rewrite that fraction so its bottom number is \\(8\\). Once the bottom is \\(8\\), the top tells you how many eighths.",
+     "Write \\(5.75\\) as \\(\\frac{575}{100}\\), which reduces to \\(\\frac{23}{4}\\). To rename \\(\\frac{23}{4}\\) with a bottom of \\(8\\), multiply the top and bottom by \\(2\\). Read off the new top number."
+    ],
+    "ans": "46",
+    "accept": [
+     "forty six",
+     "forty-six",
+     "46.0",
+     "46"
+    ],
+    "sol": "Asking how many eighths are in a number is just choosing a coat whose bottom is \\(8\\) and then reading off the top. So the whole job is to dress \\(5.75\\) as a fraction over \\(8\\). Start by writing the decimal as a fraction. The \\(75\\) sits in the hundredths place, so \\(5.75 = \\frac{575}{100}\\). That fraction is bulky, so reduce it. Both \\(575\\) and \\(100\\) share a factor of \\(25\\), and \\(575 \\div 25 = 23\\) while \\(100 \\div 25 = 4\\), which gives \\(\\frac{23}{4}\\). Now rename \\(\\frac{23}{4}\\) so its bottom is \\(8\\). Since \\(4 \\times 2 = 8\\), multiply the top and bottom by the same \\(2\\), $$\\frac{23}{4} = \\frac{23 \\times 2}{4 \\times 2} = \\frac{46}{8}.$$ The bottom is now \\(8\\), so each piece is one eighth, and the top simply counts how many of them there are. The marks really do land exactly, with \\(46\\) of them filling the board with nothing left over. There are \\(\\boxed{46}\\) eighths in \\(5.75\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move I just made, and it turns out to be bigger than eighths. When a question asks how many of some unit fit inside a number, like how many eighths or how many tenths or how many fifths, it is really asking me to rewrite that number as a fraction whose bottom is the unit, and then the number that shows up on top is the count. To hunt for eighths I steered the bottom to \\(8\\), and to hunt for fifths I would steer the bottom to \\(5\\) instead. So knowing both names of a number is not only for converting back and forth, it is a way to count and compare, since I just pick the name with the bottom I want and read the answer straight off the top."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "A student punches one whole number divided by another into a calculator, and the screen lights up with exactly \\(0.84\\), nothing after it, a clean ending decimal. The student forgot the two numbers but remembers three things. The number they divided by was a whole number less than \\(30\\). The two numbers had no common factor left between them, so the division was already in its simplest shape before the button got pressed. And both started out as whole numbers. From those clues alone the original pair is locked in. What whole number was sitting on top, the dividend that got divided?",
+    "hints": [
+     "The screen shows \\(0.84\\), which is just another way of writing \\(\\tfrac{84}{100}\\). Strip that fraction all the way down to lowest terms and study the denominator you land on. That denominator has to match the real divisor, since the student says nothing could be cancelled anymore.",
+     "Once \\(\\tfrac{84}{100}\\) is in lowest terms its denominator is the smallest whole number you could have divided by. The clue says the actual divisor is under \\(30\\), so see whether that lowest-terms denominator fits. If it does, it must BE the divisor, and the matching number on top is your dividend."
+    ],
+    "ans": "21",
+    "accept": [
+     "twenty-one",
+     "twenty one",
+     "21",
+     "21.0"
+    ],
+    "sol": "Start with what the screen actually says. A reading of \\(0.84\\) means eighty-four hundredths, so \\(0.84 = \\tfrac{84}{100}\\). That is not the original division yet, because \\(84\\) and \\(100\\) still share a factor. Their \\(\\gcd\\) is \\(4\\), so divide top and bottom by \\(4\\): $$\\frac{84}{100} = \\frac{84 \\div 4}{100 \\div 4} = \\frac{21}{25}.$$ Now \\(21\\) and \\(25\\) have nothing left in common, so \\(\\tfrac{21}{25}\\) is in lowest terms. The student said their numbers were already in simplest shape before dividing, so the divisor they typed had to reduce to this \\(25\\). The options would be \\(25\\) itself, or a multiple like \\(50\\) or \\(75\\). But the clue pins the divisor under \\(30\\), and the only one of those below \\(30\\) is \\(25\\). That nails the divisor to \\(25\\) and the dividend on top to \\(21\\). One last check explains why the screen could show a clean ending decimal at all. The lowest-terms denominator is \\(25 = 5 \\times 5\\), built from nothing but \\(5\\)s, so the decimal terminates instead of running forever. Everything lines up. The number that was sitting on top is \\(\\boxed{21}\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "A relay race used an electronic timer that always reports the time in tenths of a second. For one short sprint the display showed \\(0.3\\) of a second. The last digit sits in the tenths place, so the decimal is really a count of tenths. Write \\(0.3\\) as a fraction over a power of ten. Give your answer as a fraction.",
+    "ans": "3/10",
+    "accept": [
+     "3/10",
+     "3 / 10",
+     "three-tenths",
+     "three tenths"
+    ],
+    "hints": [
+     "The decimal \\(0.3\\) ends in the tenths place. Whatever place the last digit lives in tells you the denominator, so the bottom of your fraction is \\(10\\).",
+     "Put the digit you read, which is \\(3\\), over that denominator of \\(10\\). Then check whether \\(3\\) and \\(10\\) share any common factor."
+    ],
+    "sol": "Read the decimal by its last place. The \\(3\\) sits one spot to the right of the point, which is the tenths place, so \\(0.3\\) means three tenths. Writing that over a power of ten gives \\(0.3 = \\frac{3}{10}\\). Now ask whether it can be reduced. The only factors of \\(3\\) are \\(1\\) and \\(3\\), and \\(10 = 2 \\times 5\\) shares neither, so \\(\\gcd(3,10) = 1\\) and the fraction is already in lowest terms. The answer is \\(\\boxed{3/10}\\)."
+   },
+   {
+    "x": "A small juice bottle in the school cafe has a sticker that reads \"0.6 full\" near the cap. The vending machine next to it only labels bottles with fractions in simplest form, so it needs the same amount written as a fraction. Write \\(0.6\\) as a fraction in simplest form. Give your answer as a fraction.",
+    "ans": "3/5",
+    "accept": [
+     "three-fifths",
+     "three fifths",
+     "3/5"
+    ],
+    "hints": [
+     "The 6 in \\(0.6\\) sits in the tenths place, so read the decimal out loud as a number of tenths.",
+     "Once you have \\(\\tfrac{6}{10}\\), look for a number that divides both 6 and 10, then divide top and bottom by it."
+    ],
+    "sol": "Start by reading the decimal place by place. The single digit after the point is in the tenths place, so \\(0.6\\) means six tenths, which is \\(\\frac{6}{10}\\). That is already a fraction, but the machine wants simplest form, so check whether the top and bottom share a factor. Both 6 and 10 are even, and in fact \\(\\gcd(6,10)=2\\). Divide top and bottom by 2: $$\\frac{6}{10}=\\frac{6\\div 2}{10\\div 2}=\\frac{3}{5}.$$ Now 3 and 5 share no common factor larger than 1, so this is as simple as it gets. The bottle is \\(\\boxed{3/5}\\) full."
+   },
+   {
+    "x": "In a class poll about a new lunch menu, \\(0.85\\) of the students voted to keep it. The cafeteria manager wants that result written as a fraction in simplest form so it fits neatly in a report. Write \\(0.85\\) as a fraction in lowest terms.",
+    "ans": "17/20",
+    "accept": [
+     "seventeen over twenty",
+     "seventeen twentieths",
+     "17/20",
+     "17 / 20"
+    ],
+    "hints": [
+     "The digits 85 sit in the hundredths place, so \\(0.85\\) means 85 out of 100. Start by writing \\(\\frac{85}{100}\\).",
+     "Now reduce. Find the greatest common divisor of 85 and 100. Both end in 0 or 5, so they share a factor of 5. Divide top and bottom by it."
+    ],
+    "sol": "The last digit of \\(0.85\\) lands in the hundredths place, so the decimal reads as 85 hundredths. That gives the starting fraction \\(\\frac{85}{100}\\).\n\nNext, simplify. Look for the largest number that divides both 85 and 100. Since \\(85 = 5 \\times 17\\) and \\(100 = 5 \\times 20\\), the greatest common divisor is \\(5\\). Divide the top and bottom by \\(5\\):\n\n$$\\frac{85}{100} = \\frac{85 \\div 5}{100 \\div 5} = \\frac{17}{20}.$$\n\nNow 17 is prime and does not divide 20, so the fraction cannot shrink any further. The poll result in simplest form is \\(\\boxed{17/20}\\)."
+   },
+   {
+    "x": "A machinist grabs a drill bit stamped \\(0.375\\) of an inch and wants to label its drawer with a clean fraction instead. Reading the decimal out loud gives \"three hundred seventy-five thousandths,\" so it starts life as \\(\\tfrac{375}{1{,}000}\\). Reduce that all the way down. Write \\(0.375\\) in simplest form as a fraction.",
+    "hints": [
+     "The decimal stops at the thousandths place, so the starting fraction is \\(\\tfrac{375}{1{,}000}\\). Now look for a number that divides both the top and the bottom.",
+     "Both \\(375\\) and \\(1{,}000\\) are multiples of \\(125\\). Dividing top and bottom by \\(125\\) finishes the job in one move."
+    ],
+    "ans": "3/8",
+    "accept": [
+     "three eighths",
+     "3/8",
+     "three-eighths"
+    ],
+    "sol": "The last digit of \\(0.375\\) sits in the thousandths place, so the place value tells you the denominator. That gives \\(0.375 = \\tfrac{375}{1{,}000}\\). Now reduce. The greatest common divisor of \\(375\\) and \\(1{,}000\\) is \\(125\\), since \\(375 = 125 \\times 3\\) and \\(1{,}000 = 125 \\times 8\\). Dividing both parts by \\(125\\) gives \\(\\tfrac{375 \\div 125}{1{,}000 \\div 125} = \\tfrac{3}{8}\\). A quick check confirms it, \\(3 \\div 8 = 0.375\\), right back where you started. So the drawer gets labeled \\(\\boxed{3/8}\\)."
+   },
+   {
+    "x": "A weather balloon's logbook records a single elevation change as \\(-2.6\\) meters. To store every reading the same way, the team wants each one rewritten as a single improper fraction. Convert \\(-2.6\\) into one improper fraction in simplest form, keeping the sign out front. Give your answer as one fraction.",
+    "ans": "-13/5",
+    "accept": [
+     "-26/10",
+     "-13/5",
+     "-2 3/5",
+     "−13/5",
+     "-13 / 5",
+     "negative 13/5",
+     "negative thirteen fifths"
+    ],
+    "hints": [
+     "Set the sign aside for a moment and just convert the size, \\(2.6\\). The \\(6\\) sits in the tenths place, so \\(2.6\\) means \\(2\\) wholes and \\(6\\) tenths.",
+     "Turn \\(2.6\\) into a single fraction by writing it over its place value, \\(\\frac{26}{10}\\), then reduce. After you simplify, write the minus sign back in front."
+    ],
+    "sol": "The minus sign just rides along, so first handle the size \\(2.6\\) and reattach the sign at the end. The last digit of \\(2.6\\) is in the tenths place, which tells you the denominator is \\(10\\). That gives \\(2.6 = \\frac{26}{10}\\). Now simplify. Both \\(26\\) and \\(10\\) share a factor of \\(2\\), since \\(\\gcd(26,10)=2\\), so \\(\\frac{26}{10} = \\frac{26 \\div 2}{10 \\div 2} = \\frac{13}{5}\\). That fraction is already improper and in lowest terms, because \\(13\\) is prime and does not divide \\(5\\). Finally, bring the negative sign back to the front. The elevation change as a single improper fraction is \\(\\boxed{-13/5}\\). A quick sanity check, \\(\\frac{13}{5} = 2.6\\), and the sign matches the original reading."
+   },
+   {
+    "x": "A rain gauge in a school garden collects \\(\\tfrac{73}{100}\\) of a liter after a storm. The denominator is already a power of ten, so the fraction is ready to be read straight off as a decimal. Write \\(\\tfrac{73}{100}\\) as a decimal.",
+    "ans": "0.73",
+    "accept": [
+     "0.730",
+     ".73",
+     "0.73"
+    ],
+    "hints": [
+     "A denominator of \\(100\\) means hundredths, so the numerator fills the first two spots after the decimal point.",
+     "Place \\(73\\) in the tenths and hundredths positions. There are no whole liters yet, so a \\(0\\) sits in front of the point."
+    ],
+    "sol": "When the denominator is a power of ten, you do not have to divide at all. You just read the numerator into the right decimal places. The denominator here is \\(100\\), which counts hundredths, so the value goes out to the second place after the point. Drop the \\(73\\) into the tenths and hundredths spots, and put a \\(0\\) in front since there are no whole liters. That gives \\(\\tfrac{73}{100} = 0.73\\). You can sanity check it the other way too, since \\(0.73\\) read aloud is \"seventy-three hundredths\", which is exactly \\(\\tfrac{73}{100}\\). So the rain gauge holds \\(\\boxed{0.73}\\) of a liter."
+   },
+   {
+    "x": "A trail through the woods is being resurfaced. So far the crew has paved \\(\\tfrac{4}{5}\\) of the trail's length, and they want to post that fraction on a sign as a decimal so hikers can read it at a glance. Fifths are easy to rewrite with a denominator of \\(10\\), since \\(10\\) is just \\(5\\) doubled. Write \\(\\tfrac{4}{5}\\) as a decimal.",
+    "ans": "0.8",
+    "accept": [
+     "0.800",
+     "0.80",
+     "8/10",
+     "four fifths",
+     "4/5",
+     ".8",
+     "0.8"
+    ],
+    "hints": [
+     "You want a denominator of 10 because tenths turn straight into a one-digit decimal. What do you multiply 5 by to get 10?",
+     "Multiply the top and the bottom by the same number, 2, so the value does not change. That gives you eight tenths, and eight tenths written as a decimal is 0.something."
+    ],
+    "sol": "The fastest route to a decimal here is to land on a denominator of \\(10\\), because a number of tenths is exactly what the first decimal place records. Since \\(5 \\times 2 = 10\\), multiply the top and bottom by the same \\(2\\) so the fraction keeps its value. \\(\\frac{4}{5} = \\frac{4 \\times 2}{5 \\times 2} = \\frac{8}{10}\\). Now \\(\\frac{8}{10}\\) means eight tenths, and eight tenths sits in the first place after the decimal point, so it is \\(0.8\\). You can sanity check it the other way too, since \\(0.8 = \\frac{8}{10} = \\frac{4}{5}\\). The conversion terminates after a single digit, which makes sense because the denominator \\(5\\) divides evenly into a power of ten. \\(\\boxed{0.8}\\)"
+   },
+   {
+    "x": "A sourdough starter lives in a tall glass jar marked with 20 evenly spaced lines from bottom to top. After a good feeding, the bubbling starter rises to the 13th line, so the jar is \\(\\tfrac{13}{20}\\) full. Your friend's recipe app only accepts how full the jar is as a decimal. Write \\(\\tfrac{13}{20}\\) as a decimal.",
+    "ans": "0.65",
+    "accept": [
+     "0.650",
+     "0.6500",
+     ".65",
+     "0.65"
+    ],
+    "hints": [
+     "A decimal is just a fraction whose denominator is a power of ten. Can you turn the 20 on the bottom into 100 without changing the value of the fraction?",
+     "Multiply the top and the bottom by the same number, 5. That keeps the fraction equal but renames it with a denominator of 100, which reads straight off as hundredths."
+    ],
+    "sol": "Decimals are secretly fractions whose denominators are powers of ten, so the move is to rename \\(\\tfrac{13}{20}\\) with a denominator that is a power of ten. Since \\(20 \\times 5 = 100\\), multiply the top and bottom by the same \\(5\\) so the value stays the same. $$\\frac{13}{20} = \\frac{13 \\times 5}{20 \\times 5} = \\frac{65}{100}$$ A fraction over \\(100\\) is read as hundredths, and \\(\\tfrac{65}{100}\\) is sixty-five hundredths, which is written \\(0.65\\). You can sanity check it the long-division way too, since \\(13 \\div 20 = 0.65\\), a terminating decimal because \\(20 = 2^2 \\times 5\\) has only \\(2\\)s and \\(5\\)s in its factorization. The jar is \\(\\boxed{0.65}\\) full."
+   },
+   {
+    "x": "A machinist's gauge block is labeled \\(\\tfrac{5}{8}\\) of an inch thick, but her digital readout only shows decimals. The denominator \\(8\\) is \\(2^3\\), with no factor of five in sight, so to land on a clean power of ten she has to supply the missing fives herself. Rewrite \\(\\tfrac{5}{8}\\) as a decimal. Give your answer as a decimal.",
+    "ans": "0.625",
+    "accept": [
+     "0.625",
+     "0.6250",
+     ".625",
+     "0.62500"
+    ],
+    "hints": [
+     "A power of ten is a product of \\(2\\)s and \\(5\\)s in equal numbers. The bottom \\(8\\) is \\(2^3\\), three \\(2\\)s and zero \\(5\\)s. To reach \\(10^3 = 2^3 \\times 5^3\\) you only need to bring in three \\(5\\)s.",
+     "Three \\(5\\)s multiplied together is \\(5^3 = 125\\). Multiply the top and the bottom of \\(\\tfrac{5}{8}\\) by that same \\(125\\) so the value does not change, then read the new fraction as thousandths."
+    ],
+    "sol": "The trick with the scaling method is to ask what the denominator is missing. Here \\(8 = 2^3\\), so it carries three \\(2\\)s and no \\(5\\)s. A power of ten always pairs its \\(2\\)s and \\(5\\)s evenly, and the smallest one that uses three \\(2\\)s is \\(10^3 = 2^3 \\times 5^3 = 1{,}000\\). So the only thing standing between \\(8\\) and \\(1{,}000\\) is three \\(5\\)s, and \\(5^3 = 125\\).\n\nMultiply the top and bottom by that same \\(125\\) so the fraction keeps its value.\n$$\\frac{5}{8} = \\frac{5 \\times 125}{8 \\times 125} = \\frac{625}{1{,}000}.$$\n\nSix hundred twenty-five thousandths slides straight onto the readout as \\(0.625\\). You can sanity check it the long way too. Start from \\(\\tfrac{4}{8} = 0.5\\) and add one more eighth, \\(\\tfrac{1}{8} = 0.125\\), and \\(0.5 + 0.125 = 0.625\\), the same answer.\n\n\\(\\boxed{0.625}\\)"
+   },
+   {
+    "x": "A scout is sorting three cards into two boxes. The cards read \\(\\dfrac{7}{8}\\), \\(\\dfrac{4}{15}\\), and \\(\\dfrac{9}{40}\\), and every card is already in lowest terms. One box is labeled \"stops cleanly\" for fractions whose decimal form ends after a finite number of digits, and the other box is labeled \"runs forever\" for fractions whose decimal repeats without end. Exactly one card belongs in the \"runs forever\" box. The trick is to look only at each denominator and break it into primes, since a fraction in lowest terms terminates exactly when its denominator is built only from \\(2\\)s and \\(5\\)s. Find the card that belongs in the \"runs forever\" box and give its denominator as a single whole number.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "Break each denominator into its prime factors. \\(8 = 2^3\\) and \\(40 = 2^3 \\times 5\\). What does \\(15\\) factor into?",
+     "A fraction in lowest terms terminates only when its denominator uses nothing but \\(2\\)s and \\(5\\)s. Which denominator sneaks in a different prime?"
+    ],
+    "sol": "Factor each denominator and check whether it is built only from \\(2\\)s and \\(5\\)s. For \\(\\dfrac{7}{8}\\), the denominator is \\(8 = 2^3\\), all \\(2\\)s, so it terminates. In fact \\(\\dfrac{7}{8} = 0.875\\). For \\(\\dfrac{9}{40}\\), the denominator is \\(40 = 2^3 \\times 5\\), only \\(2\\)s and a \\(5\\), so it terminates too, giving \\(\\dfrac{9}{40} = 0.225\\). For \\(\\dfrac{4}{15}\\), the denominator is \\(15 = 3 \\times 5\\). That hidden \\(3\\) is not a \\(2\\) or a \\(5\\), and since the fraction is already in lowest terms nothing can cancel it away. The \\(3\\) blocks the decimal from ever stopping, so \\(\\dfrac{4}{15}\\) is the card that runs forever. Its denominator is \\(\\boxed{15}\\)."
+   },
+   {
+    "x": "A flashlight on a desk uses a dimmer wheel where each setting has a \"brightness factor.\" The factor at full power is \\(1.25\\). The factor for the low-power mode is the reciprocal of that number, meaning the two factors multiply to \\(1\\). Find the reciprocal of \\(1.25\\) and write it as a decimal.",
+    "ans": "0.8",
+    "accept": [
+     "0.800",
+     "0.80",
+     ".80",
+     ".8",
+     "0.8"
+    ],
+    "hints": [
+     "First turn \\(1.25\\) into a fraction. The digits after the point sit in the hundredths place, so \\(1.25\\) is \\(\\frac{125}{100}\\). Reduce that before you flip it.",
+     "Once you have the fraction in lowest terms, flip the top and bottom to get the reciprocal. Then look for a way to rewrite the bottom as a power of ten so the decimal falls out cleanly."
+    ],
+    "sol": "Start by writing \\(1.25\\) as a fraction. The last digit lands in the hundredths place, so \\(1.25 = \\frac{125}{100}\\). Both numbers share a factor of \\(25\\), and \\(\\frac{125}{100} = \\frac{5}{4}\\) in lowest terms. The reciprocal just swaps top and bottom, so the reciprocal of \\(\\frac{5}{4}\\) is \\(\\frac{4}{5}\\). To read \\(\\frac{4}{5}\\) as a decimal, rescale the bottom to a power of ten. Multiply top and bottom by \\(2\\) to get \\(\\frac{4 \\times 2}{5 \\times 2} = \\frac{8}{10}\\), and \\(\\frac{8}{10} = 0.8\\). A quick check, \\(1.25 \\times 0.8 = 1\\), which is exactly what a reciprocal pair should do. \\(\\boxed{0.8}\\)"
+   },
+   {
+    "x": "A pottery studio mixes glaze by parts, and one recipe is \\(\\tfrac{17}{50}\\) cobalt. The kiln's controller only accepts decimals, so you need \\(\\tfrac{17}{50}\\) written as one. The denominator \\(50\\) is built from \\(2\\) and \\(5\\) alone, since \\(50 = 2 \\times 5^2\\), so it can be scaled up to a power of ten. Find the factor that turns \\(50\\) into \\(100\\), multiply the top by that same factor, then read the decimal off. What is \\(\\tfrac{17}{50}\\) as a decimal?",
+    "ans": "0.34",
+    "accept": [
+     "0.340",
+     ".34",
+     "0.34"
+    ],
+    "hints": [
+     "The denominator is \\(50\\). What single number do you multiply \\(50\\) by to land on a power of ten like \\(100\\)?",
+     "Multiply top and bottom by \\(2\\), giving \\(\\tfrac{17}{50} = \\tfrac{34}{100}\\). A denominator of \\(100\\) means two decimal places."
+    ],
+    "sol": "The denominator \\(50\\) factors as \\(2 \\times 5^2\\), only \\(2\\)s and \\(5\\)s, so a clean decimal is waiting. To reach a power of ten, climb from \\(50\\) to \\(100\\) by multiplying by \\(2\\). Multiply the top by the same \\(2\\) so the value does not change, $$\\frac{17}{50} = \\frac{17 \\times 2}{50 \\times 2} = \\frac{34}{100}.$$ A denominator of \\(100\\) means hundredths, so the digits \\(34\\) sit two places past the point. The glaze is \\(\\boxed{0.34}\\) cobalt."
+   },
+   {
+    "x": "A long shelf measures \\(3.25\\) feet. A carpenter wants to mark it off in eighths of a foot so she can space hooks evenly. To do that, she rewrites \\(3.25\\) as a number of eighths. First she turns \\(3.25\\) into a fraction in lowest terms, then she renames that fraction with a denominator of \\(8\\). How many eighths of a foot are in \\(3.25\\)? Give your answer as a single whole number.",
+    "ans": "26",
+    "accept": [
+     "26 eighths",
+     "26",
+     "twenty-six",
+     "26.0",
+     "26/8"
+    ],
+    "hints": [
+     "Start by writing \\(3.25\\) as a fraction over a power of ten, then reduce it. Two decimal places means the denominator is \\(100\\), so begin with \\(\\frac{325}{100}\\).",
+     "Once \\(3.25 = \\frac{13}{4}\\), ask what you multiply \\(4\\) by to get \\(8\\). Whatever you do to the bottom, do to the top, and the number on top is your count of eighths."
+    ],
+    "sol": "The shelf length is \\(3.25\\) feet, and we want to know how many eighths of a foot that is. The trick is that one number can wear two outfits, a decimal outfit and a fraction outfit, and switching to the fraction makes the counting easy.\n\nFirst write the decimal as a fraction. Two digits sit after the decimal point, so the natural denominator is \\(100\\):\n$$3.25 = \\frac{325}{100}.$$\n\nNow reduce it. Both \\(325\\) and \\(100\\) share a factor of \\(25\\), so divide top and bottom by \\(25\\):\n$$\\frac{325}{100} = \\frac{325 \\div 25}{100 \\div 25} = \\frac{13}{4}.$$\n\nSo \\(3.25\\) is really \\(\\tfrac{13}{4}\\) in its simplest form. We want this same amount written over a denominator of \\(8\\). Since \\(4 \\times 2 = 8\\), multiply the top and bottom by \\(2\\):\n$$\\frac{13}{4} = \\frac{13 \\times 2}{4 \\times 2} = \\frac{26}{8}.$$\n\nRenaming a fraction this way does not change its value, it only changes the size of the pieces we count with. The shelf is \\(\\tfrac{26}{8}\\) feet long, which means it holds \\(26\\) eighths of a foot. A quick check confirms it, \\(26 \\div 8 = 3.25\\), right back where we started.\n\nSo there are \\(\\boxed{26}\\) eighths in \\(3.25\\)."
+   },
+   {
+    "x": "A simple calculator is locked so it can only show the result of one whole number divided by another. Maya types a division and the screen reads exactly <b>0.65</b>, with nothing left over and no digits trailing off forever. She tells her friend two clues about the secret division. First, the number she divided by is a whole number smaller than \\(25\\). Second, if you wrote her division as a fraction, it was already in lowest terms before she pressed equals. There is only one division that fits both clues. What whole number did Maya divide?",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "Turn the screen reading into a fraction. The decimal \\(0.65\\) means \\(65\\) hundredths, so start from \\(\\tfrac{65}{100}\\) and simplify it as far as it will go.",
+     "Once the fraction is in lowest terms, its bottom number is the divisor and its top number is the dividend. Check that the divisor really is under \\(25\\), then read off the dividend."
+    ],
+    "sol": "The screen shows a terminating decimal, so it must come from a clean fraction. Read \\(0.65\\) as sixty-five hundredths, which gives \\(\\frac{65}{100}\\). Now simplify. Both \\(65\\) and \\(100\\) share a factor of \\(5\\), since \\(65 = 5 \\times 13\\) and \\(100 = 5 \\times 20\\). Dividing top and bottom by \\(5\\) leaves \\(\\frac{13}{20}\\). The numbers \\(13\\) and \\(20\\) have no common factor bigger than \\(1\\), so this fraction is in lowest terms, which matches Maya's second clue. The bottom number of a fraction is what you divide by, and \\(20\\) is indeed smaller than \\(25\\), so the first clue checks out too. The top number is what gets divided, so the dividend is \\(\\boxed{13}\\)."
+   }
+  ],
+  "next": "5.4"
  }
 }
