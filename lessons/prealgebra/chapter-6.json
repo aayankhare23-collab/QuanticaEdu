@@ -1047,5 +1047,298 @@
    }
   ],
   "next": "6.3"
+ },
+ "6.3": {
+  "title": "Variables on Both Sides",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 6.2 the unknown always sat on one side of the equals sign while plain numbers waited on the other, and the whole job was peeling the operations off that one side. Real situations are not always so tidy. Sometimes the very same unknown shows up on both sides at once. Picture two scooter apps. One charges \\(5\\) to unlock plus \\(2\\) per minute, written \\(2m + 5\\), and the other charges \\(3\\) per minute with no unlock fee, written \\(3m\\). Ask when they cost the same and you get \\(2m + 5 = 3m\\), with the unknown \\(m\\) living on both sides. The balance scale now has unknown boxes piled on both pans, and you cannot isolate the variable while copies of it sit on each side. So this lesson adds exactly one new move, and everything else you already know carries straight over."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A locker rental and a bike rental both depend on the same number of days \\(x\\). The locker costs \\(7x + 2\\) and the bike costs \\(4x + 17\\), and today they came out to the same price, so \\(7x + 2 = 4x + 17\\). The trouble is the \\(x\\) lives on both sides, so there is nothing to peel yet. Here is the new idea. The balance rule from last lesson lets you take the same thing off both pans, and that thing is allowed to be a variable term, not just a number. Subtract \\(4x\\) from both sides to clear the \\(x\\) off the right, and the equation collapses into the one-sided kind you already solve. Solve \\(7x + 2 = 4x + 17\\) and type the value of \\(x\\).",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0"
+    ],
+    "hints": [
+     "Both sides carry an \\(x\\) term. Subtract the smaller one, \\(4x\\), from each side so the variable survives on only one side.",
+     "After subtracting \\(4x\\) you get \\(3x + 2 = 17\\). Now it is an ordinary two-step equation, subtract 2 then divide by 3."
+    ],
+    "sol": "The variable appears on both sides, so first gather it onto one side. Subtract \\(4x\\) from both sides. On the left \\(7x - 4x = 3x\\), and on the right the \\(4x\\) is gone, leaving \\(3x + 2 = 17\\). Now it is the familiar one-sided kind. Subtract 2 from both sides to get \\(3x = 15\\), then divide both sides by 3 to get \\(x = 5\\). Check by putting 5 back into the original. The left is \\(7(5) + 2 = 37\\) and the right is \\(4(5) + 17 = 37\\), a match, so \\(\\boxed{5}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "When the variable shows up on both sides, the one new move is to gather every variable term onto a single side. The balance principle still rules, so subtracting or adding the same variable term to both sides keeps the equation true, exactly as subtracting a number did. Once the variable lives on only one side, you are back to the one-sided equations from 6.2 and you finish the same way."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A level two-pan balance scale for the equation 4x = x + 6. The left pan holds four identical x boxes. The right pan holds one x box and six small unit squares. One x box on the left and the single x box on the right are highlighted in gold with arrows showing them being lifted off, because removing the same x from both pans keeps the scale level. Below, the result reads 3x = 6, so x = 2.\">\n  <text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">TAKE THE SAME x OFF BOTH PANS</text>\n  <text x=\"220\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\">4x = x + 6</text>\n  <!-- fulcrum -->\n  <polygon points=\"220,66 209,112 231,112\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"198\" y=\"112\" width=\"44\" height=\"7\" rx=\"2\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <!-- beam -->\n  <rect x=\"92\" y=\"62\" width=\"256\" height=\"8\" rx=\"4\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <!-- hangers -->\n  <line x1=\"120\" y1=\"70\" x2=\"120\" y2=\"120\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <line x1=\"320\" y1=\"70\" x2=\"320\" y2=\"120\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <!-- left bowl -->\n  <path d=\"M84 120 Q120 150 156 120\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <!-- right bowl -->\n  <path d=\"M284 120 Q320 150 356 120\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <!-- left contents: four x boxes -->\n  <g font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\">\n    <rect x=\"86\" y=\"92\" width=\"20\" height=\"26\" rx=\"4\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"96\" y=\"109\" text-anchor=\"middle\" fill=\"var(--ink)\">x</text>\n    <rect x=\"109\" y=\"92\" width=\"20\" height=\"26\" rx=\"4\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"119\" y=\"109\" text-anchor=\"middle\" fill=\"var(--ink)\">x</text>\n    <rect x=\"132\" y=\"92\" width=\"20\" height=\"26\" rx=\"4\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"142\" y=\"109\" text-anchor=\"middle\" fill=\"var(--ink)\">x</text>\n    <rect x=\"63\" y=\"92\" width=\"20\" height=\"26\" rx=\"4\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/><text x=\"73\" y=\"109\" text-anchor=\"middle\" fill=\"var(--gold-deep)\">x</text>\n  </g>\n  <!-- right contents: one x box (gold) + six units -->\n  <g font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\">\n    <rect x=\"286\" y=\"92\" width=\"20\" height=\"26\" rx=\"4\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/><text x=\"296\" y=\"109\" text-anchor=\"middle\" fill=\"var(--gold-deep)\">x</text>\n    <rect x=\"312\" y=\"92\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"318.5\" y=\"102\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\">1</text>\n    <rect x=\"327\" y=\"92\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"333.5\" y=\"102\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\">1</text>\n    <rect x=\"342\" y=\"92\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"348.5\" y=\"102\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\">1</text>\n    <rect x=\"312\" y=\"107\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"318.5\" y=\"117\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\">1</text>\n    <rect x=\"327\" y=\"107\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"333.5\" y=\"117\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\">1</text>\n    <rect x=\"342\" y=\"107\" width=\"13\" height=\"13\" rx=\"2\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"348.5\" y=\"117\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--slate)\">1</text>\n  </g>\n  <!-- remove arrows -->\n  <path d=\"M73 88 L73 74\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\" marker-end=\"url(none)\"/>\n  <text x=\"73\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"var(--gold-deep)\">off</text>\n  <path d=\"M296 88 L296 74\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <text x=\"296\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"var(--gold-deep)\">off</text>\n  <!-- result -->\n  <text x=\"220\" y=\"160\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">remove one x from each pan, the beam stays level</text>\n  <text x=\"220\" y=\"184\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">3x = 6,  so  x = 2</text>\n  <text x=\"220\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">three x boxes balance six units, so one x balances two units</text>\n</svg>",
+    "cap": "The equation \\(4x = x + 6\\) holds an \\(x\\) on each pan. Lifting one \\(x\\) off both pans at once keeps the scale level and clears the variable from the right, leaving \\(3x = 6\\). From there a single division gives \\(x = 2\\). Taking the same variable term off both sides is the one new move in this lesson."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Sometimes the bigger pile of variables is on the right, and a little planning saves you from negative numbers. Take \\(9 + 3x = 7x + 1\\). You could subtract \\(7x\\) from both sides, but that would leave a negative \\(x\\) term to wrestle with. Instead subtract the smaller variable term, \\(3x\\), from both sides, so the variable stays positive. Solve \\(9 + 3x = 7x + 1\\) and type the value of \\(x\\).",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0"
+    ],
+    "hints": [
+     "Compare the two variable terms, \\(3x\\) and \\(7x\\). Subtract the smaller, \\(3x\\), from both sides to keep the remaining \\(x\\) term positive.",
+     "After subtracting \\(3x\\) you get \\(9 = 4x + 1\\). Subtract 1, then divide by 4."
+    ],
+    "sol": "The variable terms are \\(3x\\) and \\(7x\\). Subtract the smaller, \\(3x\\), from both sides so the survivor stays positive. The left becomes \\(9\\) and the right becomes \\(4x + 1\\), giving \\(9 = 4x + 1\\). Subtract 1 from both sides to get \\(8 = 4x\\), then divide by 4 to get \\(x = 2\\). A quick check, the original left is \\(9 + 3(2) = 15\\) and the right is \\(7(2) + 1 = 15\\), so \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Before you move anything across, tidy each side on its own. In \\(5x + 4 - 2x = x + 12\\), the left side has like terms hiding in it. Combine them first, then gather the variable onto one side. Solve \\(5x + 4 - 2x = x + 12\\) and type the value of \\(x\\).",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0"
+    ],
+    "hints": [
+     "The left side is not in simplest form. Combine \\(5x\\) and \\(-2x\\) into \\(3x\\), so the equation reads \\(3x + 4 = x + 12\\).",
+     "Now subtract \\(x\\) from both sides to get \\(2x + 4 = 12\\), then finish with the usual two steps."
+    ],
+    "sol": "First simplify the left side by combining like terms, \\(5x - 2x = 3x\\), so the equation becomes \\(3x + 4 = x + 12\\). Now gather the variable. Subtract \\(x\\) from both sides to get \\(2x + 4 = 12\\). Subtract 4 to get \\(2x = 8\\), then divide by 2 to get \\(x = 4\\). Check, the original left is \\(5(4) + 4 - 2(4) = 16\\) and the right is \\(4 + 12 = 16\\), so \\(\\boxed{4}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A group on one side can hide the variable until you distribute. Take \\(2(3x - 4) = 4x + 6\\). Expand the left with the distributive property from 6.1, then collect the variable on one side. Solve \\(2(3x - 4) = 4x + 6\\) and type the value of \\(x\\).",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0"
+    ],
+    "hints": [
+     "Distribute the 2 across the group first. \\(2(3x - 4)\\) becomes \\(6x - 8\\), so the equation is \\(6x - 8 = 4x + 6\\).",
+     "Subtract \\(4x\\) from both sides to get \\(2x - 8 = 6\\), then add 8 and divide by 2."
+    ],
+    "sol": "Distribute the 2 on the left, \\(2(3x - 4) = 6x - 8\\), so the equation becomes \\(6x - 8 = 4x + 6\\). Gather the variable by subtracting \\(4x\\) from both sides, leaving \\(2x - 8 = 6\\). Add 8 to both sides to get \\(2x = 14\\), then divide by 2 to get \\(x = 7\\). Check, the left is \\(2(3 \\cdot 7 - 4) = 2(17) = 34\\) and the right is \\(4(7) + 6 = 34\\), so \\(\\boxed{7}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the whole recipe for any linear equation. First simplify each side on its own by distributing and combining like terms. Next gather all the variable terms onto one side and all the plain numbers onto the other, moving the smaller variable term so the survivor stays positive. Then isolate the variable the way you did in 6.2, and finish by checking your answer in the original equation."
+   },
+   {
+    "t": "fact",
+    "x": "Long before the equals sign or the letter \\(x\\), a mathematician named Diophantus, working in Alexandria around \\(1{,}700\\) years ago, wrote a book of puzzles that asked for unknown numbers fitting given conditions. He used special shorthand symbols in place of full words, an early step toward the equations we write today, which is why he is sometimes called the father of algebra. He had no comfortable way to handle negative answers, though, and simply discarded any puzzle whose solution came out below zero, calling such results absurd."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Nothing says the meeting value has to be a whole number. Solve \\(8x - 3 = 3x + 4\\), gather the variable, and let the answer be a fraction if that is where it lands. Type \\(x\\) as a fraction in lowest terms.",
+    "ans": "7/5",
+    "accept": [
+     "7 / 5",
+     "7/5",
+     "seven fifths"
+    ],
+    "hints": [
+     "Subtract \\(3x\\) from both sides to get \\(5x - 3 = 4\\).",
+     "Add 3 to get \\(5x = 7\\), then divide both sides by 5. The answer is a fraction, so leave it in lowest terms."
+    ],
+    "sol": "Gather the variable by subtracting \\(3x\\) from both sides, which gives \\(5x - 3 = 4\\). Add 3 to both sides to get \\(5x = 7\\), then divide both sides by 5 to get \\(x = \\tfrac{7}{5}\\). Since 7 and 5 share no common factor, it is already in lowest terms. Check, the left is \\(8 \\cdot \\tfrac{7}{5} - 3 = \\tfrac{56}{5} - \\tfrac{15}{5} = \\tfrac{41}{5}\\) and the right is \\(3 \\cdot \\tfrac{7}{5} + 4 = \\tfrac{21}{5} + \\tfrac{20}{5} = \\tfrac{41}{5}\\), so \\(\\boxed{7/5}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "When a fraction sits in the equation, clear it first. In \\(\\dfrac{x}{3} + 4 = x - 2\\), multiply every term on both sides by 3 to wipe out the denominator, then solve the both-sided equation that remains. Solve \\(\\dfrac{x}{3} + 4 = x - 2\\) and type the value of \\(x\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "hints": [
+     "Multiply every term on both sides by 3 to clear the denominator. \\(\\tfrac{x}{3}\\) becomes \\(x\\), the 4 becomes 12, and the right side \\(x - 2\\) becomes \\(3x - 6\\).",
+     "Now solve \\(x + 12 = 3x - 6\\). Subtract \\(x\\), then finish."
+    ],
+    "sol": "Clear the fraction by multiplying every term on both sides by 3. The left \\(\\tfrac{x}{3} + 4\\) becomes \\(x + 12\\), and the right \\(x - 2\\) becomes \\(3x - 6\\), so the equation is \\(x + 12 = 3x - 6\\). Subtract \\(x\\) from both sides to get \\(12 = 2x - 6\\), add 6 to get \\(18 = 2x\\), then divide by 2 to get \\(x = 9\\). Check in the original, the left is \\(\\tfrac{9}{3} + 4 = 3 + 4 = 7\\) and the right is \\(9 - 2 = 7\\), so \\(\\boxed{9}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Once in a while the variable terms cancel each other out completely when you gather them, and you are left with a statement that has no variable at all. If that leftover statement is true, like \\(6 = 6\\), then every number was a solution all along, so there are infinitely many. If the leftover statement is false, like \\(5 = -2\\), then no number can ever work, so there is no solution."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Try to solve \\(6x + 5 = 6x - 2\\). Gather the variable terms and watch what happens. How many solutions does this equation have? Type the single number.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "none",
+     "zero"
+    ],
+    "hints": [
+     "Subtract \\(6x\\) from both sides and watch the variable disappear entirely.",
+     "You are left with \\(5 = -2\\), which is never true. An equation that reduces to a false statement has no solution, so the count is 0."
+    ],
+    "sol": "Gather the variable by subtracting \\(6x\\) from both sides. Every \\(x\\) vanishes, and you are left with \\(5 = -2\\). That statement is false, and no value of \\(x\\) can ever make \\(6x + 5\\) equal \\(6x - 2\\), since the two sides always differ by 7. So the equation has no solution, a count of \\(\\boxed{0}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Now try \\(3(2x + 4) = 6x + 12\\). Distribute, gather the variable, and notice what is left. To feel the result, test three values, \\(x = 0\\), \\(x = 7\\), and \\(x = 20\\). How many of those three are solutions? Type the single count.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Distribute the 3 on the left. \\(3(2x + 4)\\) becomes \\(6x + 12\\), which is exactly the right side.",
+     "Since both sides are identical, every value of \\(x\\) is a solution, so all three test values work. Count them."
+    ],
+    "sol": "Distribute the left side, \\(3(2x + 4) = 6x + 12\\), which is precisely the right side. Gathering the variable by subtracting \\(6x\\) leaves \\(12 = 12\\), a statement that is always true. That means every value of \\(x\\) is a solution, so the equation has infinitely many. In particular all three test values \\(x = 0\\), \\(x = 7\\), and \\(x = 20\\) work, which is \\(\\boxed{3}\\) of the three. The equation is really just two ways of writing the same expression, the equivalent expressions you met in 6.1."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "Bring it together. A shop compares two presses over \\(t\\) hours. The old press has output modeled by \\(3(2t + 5)\\) pages, and the new press by \\(4t + 27\\) pages. At one special hour count they print exactly the same number of pages. Distribute, gather the variable, and find it. Solve \\(3(2t + 5) = 4t + 27\\) and type the value of \\(t\\).",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0"
+    ],
+    "hints": [
+     "Distribute the 3 first. \\(3(2t + 5)\\) becomes \\(6t + 15\\), so the equation is \\(6t + 15 = 4t + 27\\).",
+     "Subtract \\(4t\\) from both sides to get \\(2t + 15 = 27\\), then subtract 15 and divide by 2."
+    ],
+    "sol": "Distribute the left side, \\(3(2t + 5) = 6t + 15\\), so the equation is \\(6t + 15 = 4t + 27\\). Gather the variable by subtracting \\(4t\\) from both sides, leaving \\(2t + 15 = 27\\). Subtract 15 to get \\(2t = 12\\), then divide by 2 to get \\(t = 6\\). Check, the old press gives \\(3(2 \\cdot 6 + 5) = 3(17) = 51\\) and the new gives \\(4(6) + 27 = 51\\), so \\(\\boxed{6}\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "Solve \\(9x = 5x + 12\\) and type the value of \\(x\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0"
+    ],
+    "hints": [
+     "Subtract \\(5x\\) from both sides to gather the variable on the left.",
+     "That leaves \\(4x = 12\\). Divide both sides by 4."
+    ],
+    "sol": "Subtract \\(5x\\) from both sides, \\(9x - 5x = 4x\\), leaving \\(4x = 12\\). Divide both sides by 4 to get \\(x = 3\\). Check, the left is \\(9(3) = 27\\) and the right is \\(5(3) + 12 = 27\\), so \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "Solve \\(7y + 4 = 2y + 24\\) and type the value of \\(y\\).",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0"
+    ],
+    "hints": [
+     "Subtract \\(2y\\) from both sides to get \\(5y + 4 = 24\\).",
+     "Subtract 4, then divide by 5."
+    ],
+    "sol": "Subtract \\(2y\\) from both sides to get \\(5y + 4 = 24\\). Subtract 4 to get \\(5y = 20\\), then divide by 5 to get \\(y = 4\\). Check, the left is \\(7(4) + 4 = 32\\) and the right is \\(2(4) + 24 = 32\\), so \\(\\boxed{4}\\)."
+   },
+   {
+    "x": "First combine like terms on the left, then solve. Solve \\(7t + 2 - 3t = t + 17\\) and type the value of \\(t\\).",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0"
+    ],
+    "hints": [
+     "Combine \\(7t\\) and \\(-3t\\) into \\(4t\\), so the equation reads \\(4t + 2 = t + 17\\).",
+     "Subtract \\(t\\) from both sides to get \\(3t + 2 = 17\\), then finish."
+    ],
+    "sol": "Combine the like terms on the left, \\(7t - 3t = 4t\\), so the equation is \\(4t + 2 = t + 17\\). Subtract \\(t\\) from both sides to get \\(3t + 2 = 17\\), subtract 2 to get \\(3t = 15\\), then divide by 3 to get \\(t = 5\\). Check, the left is \\(7(5) + 2 - 3(5) = 22\\) and the right is \\(5 + 17 = 22\\), so \\(\\boxed{5}\\)."
+   },
+   {
+    "x": "Distribute first, then gather the variable. Solve \\(6(w - 2) = 3w + 6\\) and type the value of \\(w\\).",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0"
+    ],
+    "hints": [
+     "Distribute the 6. \\(6(w - 2)\\) becomes \\(6w - 12\\), so the equation is \\(6w - 12 = 3w + 6\\).",
+     "Subtract \\(3w\\) from both sides to get \\(3w - 12 = 6\\), then add 12 and divide by 3."
+    ],
+    "sol": "Distribute the left side, \\(6(w - 2) = 6w - 12\\), so the equation is \\(6w - 12 = 3w + 6\\). Subtract \\(3w\\) from both sides to get \\(3w - 12 = 6\\). Add 12 to get \\(3w = 18\\), then divide by 3 to get \\(w = 6\\). Check, the left is \\(6(6 - 2) = 24\\) and the right is \\(3(6) + 6 = 24\\), so \\(\\boxed{6}\\)."
+   },
+   {
+    "x": "Solve \\(7x + 1 = 2x + 9\\), and type \\(x\\) as a fraction in lowest terms.",
+    "ans": "8/5",
+    "accept": [
+     "8 / 5",
+     "8/5",
+     "eight fifths"
+    ],
+    "hints": [
+     "Subtract \\(2x\\) from both sides to get \\(5x + 1 = 9\\).",
+     "Subtract 1 to get \\(5x = 8\\), then divide by 5. The answer is a fraction in lowest terms."
+    ],
+    "sol": "Subtract \\(2x\\) from both sides to get \\(5x + 1 = 9\\). Subtract 1 to get \\(5x = 8\\), then divide by 5 to get \\(x = \\tfrac{8}{5}\\). Since 8 and 5 share no common factor, it is in lowest terms. Check, the left is \\(7 \\cdot \\tfrac{8}{5} + 1 = \\tfrac{56}{5} + \\tfrac{5}{5} = \\tfrac{61}{5}\\) and the right is \\(2 \\cdot \\tfrac{8}{5} + 9 = \\tfrac{16}{5} + \\tfrac{45}{5} = \\tfrac{61}{5}\\), so \\(\\boxed{8/5}\\)."
+   },
+   {
+    "x": "Clear the denominator first. Solve \\(\\dfrac{y}{2} + 5 = y - 1\\) and type the value of \\(y\\).",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0"
+    ],
+    "hints": [
+     "Multiply every term on both sides by 2. \\(\\tfrac{y}{2}\\) becomes \\(y\\), the 5 becomes 10, and the right side \\(y - 1\\) becomes \\(2y - 2\\).",
+     "Now solve \\(y + 10 = 2y - 2\\). Subtract \\(y\\), then finish."
+    ],
+    "sol": "Multiply every term on both sides by 2 to clear the fraction. The left \\(\\tfrac{y}{2} + 5\\) becomes \\(y + 10\\), and the right \\(y - 1\\) becomes \\(2y - 2\\), so the equation is \\(y + 10 = 2y - 2\\). Subtract \\(y\\) from both sides to get \\(10 = y - 2\\), then add 2 to get \\(y = 12\\). Check, the left is \\(\\tfrac{12}{2} + 5 = 6 + 5 = 11\\) and the right is \\(12 - 1 = 11\\), so \\(\\boxed{12}\\)."
+   },
+   {
+    "x": "Solve \\(3x - 4 = 3x + 5\\), or decide that it cannot be solved. How many solutions does it have? Type the single number.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "none",
+     "zero"
+    ],
+    "hints": [
+     "Subtract \\(3x\\) from both sides and watch the variable vanish.",
+     "You are left with \\(-4 = 5\\), which is never true, so there is no solution. The count is 0."
+    ],
+    "sol": "Subtract \\(3x\\) from both sides. The variable cancels completely and leaves \\(-4 = 5\\), a false statement. The two sides always differ by 9, so no value of \\(x\\) can ever make them equal. The equation has no solution, a count of \\(\\boxed{0}\\)."
+   },
+   {
+    "x": "Look at \\(4(x + 2) = 4x + 8\\). Test \\(x = 1\\), \\(x = 9\\), and \\(x = 50\\). How many of the three are solutions? Type the count.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Distribute the 4. \\(4(x + 2)\\) becomes \\(4x + 8\\), exactly the right side.",
+     "The two sides are identical, so every value of \\(x\\) works, including all three test values. Count them."
+    ],
+    "sol": "Distribute the left side, \\(4(x + 2) = 4x + 8\\), which matches the right side exactly. Gathering the variable leaves \\(8 = 8\\), always true, so every value of \\(x\\) is a solution and there are infinitely many. All three test values \\(x = 1\\), \\(x = 9\\), and \\(x = 50\\) work, which is \\(\\boxed{3}\\) of the three."
+   },
+   {
+    "x": "Two gyms charge by the month. Over \\(m\\) months gym A costs \\(7m + 18\\) and gym B costs \\(9m\\). Find the month count where they cost the same. Solve \\(7m + 18 = 9m\\) and type the value of \\(m\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "hints": [
+     "Subtract \\(7m\\) from both sides to get \\(18 = 2m\\).",
+     "Divide both sides by 2."
+    ],
+    "sol": "Subtract \\(7m\\) from both sides to gather the variable on the right, leaving \\(18 = 2m\\). Divide both sides by 2 to get \\(m = 9\\). Check, gym A costs \\(7(9) + 18 = 81\\) and gym B costs \\(9(9) = 81\\), so they match at \\(\\boxed{9}\\) months."
+   }
+  ],
+  "next": "6.4"
  }
 }
