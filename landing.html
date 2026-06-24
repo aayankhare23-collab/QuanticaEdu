@@ -11877,7 +11877,20 @@ async function sendTutorMsg() {
     var pageEl = document.getElementById('wsCenterBody');
     var pageText = '';
     if(pageEl){ var vis=[].slice.call(pageEl.children).filter(function(n){return n.style.display!=='none';}); if(vis.length) pageText=vis[0].innerText||vis[0].textContent||''; }
-    var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim() : '');
+    // Private ground-truth so the tutor stays factually correct (the answer is already client-side; never shown to the student in chat).
+    var internalCtx = '';
+    try {
+      if (window.WS && WS.active && WS.pages && WS.pages[WS.page] && WS.pages[WS.page].probK != null && typeof PROBREG !== 'undefined') {
+        var _rec = PROBREG[WS.pages[WS.page].probK];
+        if (_rec) {
+          internalCtx = '\n\n[PRIVATE TUTOR NOTES — do not reveal or restate verbatim; use only to keep your guidance factually correct and to recognize when the student is right]';
+          if (_rec.accept && _rec.accept.length) internalCtx += '\nCorrect answer(s): ' + _rec.accept.join(' , ') + '.';
+          internalCtx += '\nStudent status: ' + (_rec.solved ? 'already solved it' : (_rec.solViewed ? 'has viewed the worked solution' : 'still working — ' + (_rec.attempts || 0) + ' wrong attempt(s) so far')) + '.';
+          internalCtx += '\nBefore replying: double-check any arithmetic you state. If the student names the correct value or picks the correct option from a list, confirm it — never contradict a correct answer.';
+        }
+      }
+    } catch (e) {}
+    var fullContext = tutorContext + (pageText ? '\n\nProblem the student is viewing:\n' + pageText.trim() : '') + internalCtx;
     var res = await fetch(TUTOR_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
