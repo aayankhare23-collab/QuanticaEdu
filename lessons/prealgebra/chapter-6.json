@@ -1340,5 +1340,488 @@
    }
   ],
   "next": "6.4"
+ },
+ "6.4": {
+  "title": "Turning Words into Equations",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Read it like a translator. Here is the quiet secret of every word problem you have ever met. It is one single fact written down twice at the very same moment, once in ordinary English so a person can picture it, and once in the language of algebra so it can be solved. The two versions say the identical thing. A sentence like a number tripled and then dropped by four lands on eleven is just \\(3x - 4 = 11\\) wearing a coat of words, and your only new job in this whole lesson is to take that coat off. Notice how little is actually new. You already know how to stitch numbers and letters into expressions from 6.1, you can peel an equation apart and find the value that makes it true from 6.2, and you can handle the unknown showing up on both sides at once from 6.3. The whole engine is built and running. What is still missing is the short bridge from a situation told in words to the equation that matches it, and then the discipline to answer the exact question that was asked. So lean on the same five steps every single time. First, read the whole thing slowly, all the way to the end, and find the one quantity nobody has told you, the thing you are being asked to dig up. Second, give it a letter and write that definition down in plain words, something like let \\(x\\) be the number of minutes, so you never lose track of what the letter actually means. Third, walk through the sentence one phrase at a time and turn it into an equation, going by what the words mean rather than blindly copying left to right, because English does not always march in the same order as the math. Fourth, solve, using exactly the moves you already trust. Fifth, and this is where the points are truly won or lost, translate the answer back into English, say it out loud as a real-world quantity, answer the precise question that was asked, and then check it by reading your number back into the original story to make sure it fits. We will build the <b>translation dictionary</b> first, phrase by phrase, so the words stop looking like a wall. Then we will drill the habit of answering what was actually asked, because here is the warning to carry through the whole lesson. The letter you pick is very often just a helper, a stepping stone, and the question may want something else entirely, so step five is not a formality, it is the answer."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "At the arcade, an old prize machine works by a simple rule. You feed it some number of bronze tokens, it doubles that pile, then drops in seven extra tokens as a welcome bonus. After Priya feeds it her tokens, the machine's little screen lights up reading thirty-one tokens inside. In other words, seven more than twice her tokens is thirty-one. How many bronze tokens did Priya feed the machine?",
+    "hints": [
+     "Give the unknown a name first. Let \\(x\\) be the number of tokens Priya fed the machine. Now translate the sentence one phrase at a time. What does \"twice her tokens\" become, and what does \"seven more than\" that become? The words \"is thirty-one\" hand you the equals sign.",
+     "Twice her tokens is \\(2x\\), and seven more than that is \\(2x + 7\\). The phrase \"is thirty-one\" sets it equal to \\(31\\), so your equation is \\(2x + 7 = 31\\). Subtract \\(7\\) from both sides, then divide by \\(2\\)."
+    ],
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "sol": "Start by naming the unknown. Let \\(x\\) be the number of bronze tokens Priya fed the machine. Now build the equation by translating the words one piece at a time. \"Twice her tokens\" is \\(2x\\). \"Seven more than\" that means you add seven, giving \\(2x + 7\\). The phrase \"is thirty-one\" supplies the equals sign, so the equation is \\(2x + 7 = 31\\). Subtract \\(7\\) from both sides to get \\(2x = 24\\), then divide both sides by \\(2\\) to find \\(x = 12\\). The question asks how many tokens Priya fed the machine, which is exactly \\(x\\), so she fed in \\(12\\) tokens. Read it back against the words to check. Double \\(12\\) is \\(24\\), and seven more is \\(31\\), matching the screen. \\(\\boxed{12}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A beekeeper has a tall jar of honey. She scoops out exactly a third of whatever the jar holds and pours that scoop into a small bottle. Then she stirs nine more ounces of fresh honey into that same bottle. When she weighs the bottle, the scale reads seventeen ounces. The word \"of\" here means multiply, so a third of the jar's amount is one third times the starting amount. How many ounces of honey did the jar hold at the very start?",
+    "hints": [
+     "Let \\(x\\) stand for the number of ounces the jar held at the start. Now read the words one piece at a time and turn each piece into math. \"A third of the amount\" becomes \\(\\tfrac{1}{3}x\\), \"increased by nine\" adds \\(9\\), and \"is seventeen\" gives you the equals sign and the \\(17\\).",
+     "Your equation is \\(\\tfrac{1}{3}x + 9 = 17\\). Subtract \\(9\\) from both sides to get \\(\\tfrac{1}{3}x = 8\\), then multiply both sides by \\(3\\) to undo the one third."
+    ],
+    "ans": "24",
+    "accept": [
+     "24",
+     "24 ounces",
+     "24 oz",
+     "24.0"
+    ],
+    "sol": "Let \\(x\\) be the number of ounces the jar held at the very start. Now translate the words piece by piece. A third of that amount is \\(\\tfrac{1}{3}x\\), increasing it by nine ounces adds \\(9\\), and the words tell you this is seventeen, so the equation is \\(\\tfrac{1}{3}x + 9 = 17\\). Subtract \\(9\\) from both sides to get \\(\\tfrac{1}{3}x = 8\\). Multiply both sides by \\(3\\) to undo the one third, which gives \\(x = 24\\). Read it back against the words to check. A third of \\(24\\) is \\(8\\) ounces, and nine more ounces brings it to \\(17\\), which matches the scale. The question asks how many ounces the jar held at the start, so the answer is \\(\\boxed{24}\\) ounces."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Here is a trap worth slowing down for. Maya is decorating a long banner, and she tells you that nineteen fewer streamers than the number of streamers in her box ended up taped to the wall. When she counted the wall, she found forty streamers. So nineteen fewer than the number in her box gives forty. The temptation is to read this as \\(19 - x\\), but watch the order. Twelve fewer than your age is your age minus twelve, never twelve minus your age, since \"fewer than\" takes the smaller amount away from the bigger thing. The nineteen gets subtracted from the number, and the spoken order flips. How many streamers were in Maya's box to start with?",
+    "hints": [
+     "Let \\(x\\) be the number of streamers in the box. The phrase \"nineteen fewer than the number\" means you start with the number and take 19 away, so it becomes \\(x - 19\\), not \\(19 - x\\). Set that equal to 40.",
+     "Solve \\(x - 19 = 40\\) by adding 19 to both sides. Then read your answer back into the words to make sure nineteen fewer really lands on forty."
+    ],
+    "ans": "59",
+    "accept": [
+     "59",
+     "59.0",
+     "fifty nine",
+     "fifty-nine",
+     "fifty−nine"
+    ],
+    "sol": "Let \\(x\\) be the number of streamers in Maya's box to start with. The tricky phrase is \"nineteen fewer than the number.\" Fewer than subtracts the nineteen from the number, and it reverses the order you hear, so it translates to \\(x - 19\\), not \\(19 - x\\). Since that equals forty, the equation is \\(x - 19 = 40\\). Add 19 to both sides to get \\(x = 59\\). Now check against the words. Nineteen fewer than 59 is \\(59 - 19 = 40\\), which matches the count on the wall. The wrong reading \\(19 - x\\) would have given \\(19 - 59 = -40\\), a negative number of streamers, which makes no sense, so the order really does flip. The question asks how many streamers were in the box to start, which is \\(x\\), so the box held \\(\\boxed{59}\\) streamers."
+   },
+   {
+    "t": "imp",
+    "x": "Every word problem bends to the same five moves run in the same order. Name what the letter stands for and write that one line down first, because that is what keeps you from solving for the wrong thing. Then translate the sentence into an equation one phrase at a time, by meaning rather than by reading left to right, since a phrase like \"7 less than the number\" flips the order you would expect. Solve it with the tools you already have, then go back to the words and report the exact quantity the question asked for, not just whatever the letter turned out to be. Finally, read your answer into the original sentence and make sure it actually fits."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A toy workshop has two number machines bolted side by side. The first machine takes a secret number, triples it, then subtracts five, and a little glass readout shows the result. Today the readout shows forty. The second machine is different. It takes a number, doubles it, then adds two. The shop manager wants to know one thing. If you feed that same secret number from the first machine into the second machine, what does the second machine's readout show?",
+    "hints": [
+     "Give the secret number a name, say \\(n\\). The first machine triples it and subtracts five to read forty, so that sentence becomes an equation in \\(n\\). Solve that equation first, then look again at what the question is actually asking for.",
+     "Solve \\(3n - 5 = 40\\) to find \\(n = 15\\), but do not stop there. The question asks for the second machine's reading, which is \\(2n + 2\\). Put \\(n = 15\\) into \\(2n + 2\\) and compute that number."
+    ],
+    "ans": "32",
+    "accept": [
+     "32",
+     "32.0",
+     "thirty two",
+     "thirty-two",
+     "thirty−two"
+    ],
+    "sol": "Let \\(n\\) be the secret number. The first machine triples \\(n\\) and subtracts five, and the readout shows forty, so the words become \\(3n - 5 = 40\\). Add five to both sides to get \\(3n = 45\\), then divide by three to get \\(n = 15\\). Here is the trap. It is tempting to type \\(15\\) and call it done, but \\(15\\) is the secret number, not the thing the question asked for. The question asks what the second machine reads. The second machine doubles the number and adds two, so its reading is \\(2n + 2\\). Substitute \\(n = 15\\) to get \\(2 \\cdot 15 + 2 = 30 + 2 = 32\\). Read it back against the words. The first machine triples \\(15\\) to \\(45\\) and subtracts \\(5\\) to show \\(40\\), which matches. Feed \\(15\\) into the second machine, double it to \\(30\\), add \\(2\\), and the readout shows \\(32\\). The variable \\(n\\) was just a helper to find the secret number. The answer to the question asked is \\(\\boxed{32}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Two things keep tripping us up, so let's name them. First, words don't always run in the same order as the math. Phrases like \"less than\", \"fewer than\", and \"subtracted from\" flip the two pieces around, so \"seven less than a number\" is \\(x - 7\\) while \"a number subtracted from seven\" is \\(7 - x\\). Read for the meaning, not left to right. Second, the letter you pick is just a helper for writing the equation, and the question often asks for something else, so when you finish solving you have to go back to the words and report the exact thing it asked for. Before you start, underline the actual question so you remember to translate your answer back at the end."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A small rooftop garden grows nothing but marigolds and lavender. Altogether there are \\(96\\) plants, and the gardener planted three times as many lavender plants as marigolds. How many lavender plants are there?",
+    "hints": [
+     "Pick the smaller, simpler quantity to name with a variable. Let \\(m\\) be the number of marigolds. Then write the lavender count in terms of \\(m\\), and remember the two kinds together make \\(96\\) plants.",
+     "There are three times as many lavender as marigolds, so the lavender count is \\(3m\\). The total ties them together, so \\(m + 3m = 96\\). Combine to get \\(4m = 96\\), solve for \\(m\\), then read the question again. It asks for lavender, which is \\(3m\\), not \\(m\\)."
+    ],
+    "ans": "72",
+    "accept": [
+     "72",
+     "72 lavender",
+     "72 plants",
+     "72.0"
+    ],
+    "sol": "Start by naming the quantity that everything else leans on. Let \\(m\\) be the number of marigolds. The garden has three times as many lavender plants as marigolds, so the lavender count is \\(3m\\). The two kinds are the whole garden, and the whole garden is \\(96\\) plants, so the marigolds plus the lavender give \\(m + 3m = 96\\). Combine the like terms to get \\(4m = 96\\), and divide both sides by \\(4\\) to find \\(m = 24\\). So there are \\(24\\) marigolds. Now reread the question. It does not ask for marigolds, it asks for lavender, which is \\(3m\\). That is \\(3 \\cdot 24 = 72\\). The \\(24\\) was just the variable you chose along the way, not the thing being asked. Check it against the words. There are \\(24\\) marigolds and \\(72\\) lavender, and \\(24 + 72 = 96\\) plants in all, and \\(72\\) is indeed three times \\(24\\). The number of lavender plants is \\(\\boxed{72}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "The variable you pick is a tool, not always the prize. In the rooftop garden problem, all the algebra was right and \\(x\\) came out to \\(24\\), but \\(24\\) was never the thing the question asked for, so the real answer was \\(72\\). So before you start, find the actual question and underline it, and once you have your number, look back and ask whether this number is what the question wanted. If it is not, you are not done, you take one more small step to turn the variable into the quantity that was really asked."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A jeweler has a single strand of copper ribbon \\(150\\) centimeters long. She snips it once, splitting it into two pieces for two different bracelets. The longer piece comes out \\(30\\) centimeters longer than the shorter piece. How long is the longer piece, in centimeters?",
+    "hints": [
+     "You have two unknown lengths, but you do not need two letters. Let \\(x\\) stand for the shorter piece. Since the longer piece is \\(30\\) more than the shorter one, you can write it as \\(x + 30\\). Now both pieces are written with the same single letter.",
+     "The two pieces together make the whole \\(150\\) centimeter ribbon, so \\(x + (x + 30) = 150\\). Combine to get \\(2x + 30 = 150\\), then \\(2x = 120\\), so \\(x = 60\\). That is the shorter piece. The question asks for the longer piece, which is \\(x + 30\\)."
+    ],
+    "ans": "90",
+    "accept": [
+     "90",
+     "90 centimeters",
+     "90 cm",
+     "90.0",
+     "ninety"
+    ],
+    "sol": "There are two lengths to find, but tying them together lets one letter do all the work. Let \\(x\\) be the length of the shorter piece in centimeters. The longer piece is \\(30\\) centimeters longer than the shorter one, so it is \\(x + 30\\). Notice that the second unknown is now written in terms of the first, so the whole problem rides on a single variable. The two pieces came from one ribbon, so their lengths add to \\(150\\). That gives the equation $$x + (x + 30) = 150.$$ Combine the like terms to get \\(2x + 30 = 150\\). Subtract \\(30\\) from both sides to reach \\(2x = 120\\), then divide both sides by \\(2\\) to find \\(x = 60\\). So the shorter piece is \\(60\\) centimeters. The question did not ask for \\(x\\), it asked for the longer piece, which is \\(x + 30 = 60 + 30 = 90\\). Read it back against the words to check. The shorter piece is \\(60\\) and the longer is \\(90\\), they differ by \\(30\\), and \\(60 + 90 = 150\\), matching the full ribbon. The longer piece is \\(\\boxed{90}\\) centimeters."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move that does all the heavy lifting. When two unknown amounts are locked together by a total you already know, you never need two letters. Call one of them \\(x\\), and since the two pieces have to add up to the total, the other piece is just the total minus \\(x\\). Now everything in the problem is written with the one variable you already know how to solve for, and the whole two-thing puzzle quietly turns into an ordinary one-variable equation."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 344\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two column translation dictionary. The left column is the English phrase and the right column is the algebra written with x. Row one, a number, becomes x. Row two, 8 more than a number, becomes x plus 8. Row three, highlighted in gold as the trap, 8 less than a number, becomes x minus 8, not 8 minus x, because less than, fewer than, and subtracted from all reverse the order. Row four, twice a number, becomes 2x. Row five, a number tripled, becomes 3x. Row six, half of a number, becomes one half times x. Row seven, a third of a number, becomes one third times x. Row eight, a number is 40, becomes x equals 40, because is, gives, equals, and results in all map to the equals sign. The word of means multiply. Warning, the less than row reverses the order, so read subtraction phrases slowly and by meaning.\"><text x=\"18\" y=\"30\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--mid)\">English &#8594; Algebra dictionary</text><rect x=\"18\" y=\"44\" width=\"404\" height=\"28\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"62\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">English phrase</text><text x=\"264\" y=\"62\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">Algebra</text><rect x=\"18\" y=\"72\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"92\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">a number</text><text x=\"264\" y=\"92\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">x</text><rect x=\"18\" y=\"105\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"126\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">8 more than a number</text><text x=\"264\" y=\"126\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">x + 8</text><rect x=\"18\" y=\"138\" width=\"404\" height=\"33\" fill=\"var(--gold2)\" fill-opacity=\"0.30\" stroke=\"var(--gold2)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"158\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">8 less than a number</text><text x=\"264\" y=\"158\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">x &#8722; 8</text><rect x=\"18\" y=\"171\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"192\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">twice a number</text><text x=\"264\" y=\"192\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">2x</text><rect x=\"18\" y=\"204\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"224\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">a number tripled</text><text x=\"264\" y=\"224\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">3x</text><rect x=\"18\" y=\"237\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"258\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">half of a number</text><text x=\"264\" y=\"258\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">&#189;x</text><rect x=\"18\" y=\"270\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"290\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">a third of a number</text><text x=\"264\" y=\"290\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">&#8531;x</text><rect x=\"18\" y=\"303\" width=\"404\" height=\"33\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"32\" y=\"324\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"var(--slate)\">a number is 40</text><text x=\"264\" y=\"324\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"600\" fill=\"var(--ink)\">x = 40</text><line x1=\"250\" y1=\"44\" x2=\"250\" y2=\"336\" stroke=\"var(--line)\" stroke-width=\"1.5\"/></svg>",
+    "cap": "Most rows translate straight across, word by word in the same order. The one in gold is the one that catches people. Words like less than, fewer than, and subtracted from reverse the order, so 8 less than a number is \\(x - 8\\) and never \\(8 - x\\). When you hit a subtraction phrase, slow down and read it by meaning, asking what is being taken away from what. Remember too that of means multiply, and that is, gives, equals, and results in all become the \\(=\\) sign that splits a sentence into a full equation."
+   },
+   {
+    "t": "p",
+    "x": "That table is the whole vocabulary. Every word problem you will ever meet is built from those same few phrases, and once you can hear them inside a sentence, nothing genuinely new is coming. What changes from here is only the richness of the situation, how many of those phrases get stacked into one story and which quantity the question finally decides to ask for. The next problems still run on the exact same five steps you already know, read it, name the variable, translate, solve, then answer the thing that was actually asked. You will just see them at work in fuller settings, counts of two different kinds of thing at once, a choice between two ways to spend money, ages a few years apart, and runs of <b>consecutive</b> whole numbers that march one after another. Same toolkit, bigger rooms."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A sealed puzzle box holds \\(30\\) flat game tokens. Every token is either a square or a triangle. Each square token has \\(4\\) corners and each triangle token has \\(3\\) corners. When you count every corner across all the tokens together, you get \\(104\\) corners in total. How many triangle tokens are in the box?",
+    "hints": [
+     "You know two totals here, the number of tokens and the number of corners. Pick a letter for one of the counts. Let \\(s\\) be the number of squares. Since the two kinds add up to \\(30\\) tokens, how can you write the number of triangles using \\(s\\)? Then total the corners, \\(4\\) for each square and \\(3\\) for each triangle.",
+     "The triangles must be \\(30 - s\\), the total minus the squares. Counting corners gives \\(4s + 3(30 - s) = 104\\). Distribute and combine like terms to get \\(s + 90 = 104\\), so \\(s = 14\\). That is the number of squares, so finish by computing the triangles the question wants, which is \\(30 - 14\\)."
+    ],
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen"
+    ],
+    "sol": "Start by naming what you do not yet know. Let \\(s\\) be the number of square tokens. The box holds \\(30\\) tokens in all, and every token that is not a square is a triangle, so the number of triangle tokens is \\(30 - s\\). That is the key move, the second category is the total minus the first.<br><br>Now translate the corner count. Each square contributes \\(4\\) corners and each triangle contributes \\(3\\) corners, and the grand total is \\(104\\). That gives the equation $$4s + 3(30 - s) = 104.$$ Distribute the \\(3\\) to get \\(4s + 90 - 3s = 104\\). Combine the like terms \\(4s\\) and \\(-3s\\) into \\(s\\), so \\(s + 90 = 104\\). Subtract \\(90\\) from both sides to find \\(s = 14\\), which means there are \\(14\\) square tokens.<br><br>The question did not ask for squares though, it asked for triangles. The triangles are \\(30 - s = 30 - 14 = 16\\). Read it back against the words to be sure. With \\(14\\) squares and \\(16\\) triangles you have \\(14 + 16 = 30\\) tokens, and the corners come to \\(4 \\times 14 + 3 \\times 16 = 56 + 48 = 104\\), exactly as stated. So the box holds \\(\\boxed{16}\\) triangle tokens."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A tape diagram for cutting one 150 centimeter copper ribbon into two pieces. A single long horizontal bar runs left to right with a brace above the whole bar labeled 150, the total length. The bar is split into two segments. The left segment is shaded lighter and labeled x for the shorter piece. The right segment is longer. Inside the right segment, the first part is exactly the same length as the left x segment, marked off by a dashed matching line and a small x label, and the remaining part is a gold highlighted chunk labeled 30 that sticks out past where x ends, the overhang that makes the longer piece bigger. A brace under the whole right segment reads x plus 30, the longer piece. The picture shows x for the shorter piece plus x plus 30 for the longer piece filling the full 150, which is the equation two x plus 30 equals 150. A gold box at the bottom states two x plus 30 equals 150, then x equals 60 the shorter piece, and that the longer piece you report is x plus 30 equals 90 centimeters, not the variable x equals 60.\"><text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">ONE 150 cm RIBBON, CUT INTO A SHORTER AND A LONGER PIECE</text><path d=\"M40 56 v-8 h360 v8\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><path d=\"M220 48 v-8\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"220\" y=\"36\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--slate)\">150</text><rect x=\"40\" y=\"70\" width=\"144\" height=\"46\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><rect x=\"184\" y=\"70\" width=\"144\" height=\"46\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><rect x=\"328\" y=\"70\" width=\"72\" height=\"46\" fill=\"var(--gold2)\" opacity=\"0.28\"/><rect x=\"328\" y=\"70\" width=\"72\" height=\"46\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/><line x1=\"184\" y1=\"66\" x2=\"184\" y2=\"120\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"112\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" font-style=\"italic\" fill=\"var(--slate)\">x</text><text x=\"112\" y=\"111\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">shorter piece</text><text x=\"256\" y=\"92\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" font-style=\"italic\" fill=\"var(--slate)\">x</text><line x1=\"328\" y1=\"66\" x2=\"328\" y2=\"124\" stroke=\"var(--accent)\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/><text x=\"364\" y=\"92\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">30</text><text x=\"364\" y=\"106\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8\" fill=\"var(--gold-deep)\">extra</text><path d=\"M184 132 v8 h216 v-8\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><path d=\"M292 140 v8\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"292\" y=\"162\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">x + 30</text><text x=\"292\" y=\"175\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">longer piece</text><text x=\"112\" y=\"138\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"var(--slate)\">same x as the right starts with</text><line x1=\"184\" y1=\"124\" x2=\"328\" y2=\"124\" stroke=\"var(--accent)\" stroke-width=\"1.1\" stroke-dasharray=\"3 3\"/><rect x=\"34\" y=\"196\" width=\"372\" height=\"84\" rx=\"7\" fill=\"var(--gold2)\" opacity=\"0.14\"/><text x=\"220\" y=\"218\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" fill=\"var(--slate)\">the two pieces fill the whole 150, so</text><text x=\"220\" y=\"240\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" font-style=\"italic\" fill=\"var(--gold-deep)\">x + (x + 30) = 2x + 30 = 150</text><text x=\"220\" y=\"259\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" fill=\"var(--slate)\">solving gives x = 60, the shorter piece</text><text x=\"220\" y=\"274\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" fill=\"var(--slate)\">but the longer piece you report is x + 30 = <tspan font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">90</tspan></text></svg>",
+    "cap": "One ribbon of length \\(150\\) cut into two pieces. Call the shorter piece \\(x\\). The longer piece starts with that same \\(x\\) and then carries the gold \\(30\\) overhang, which is exactly what \"the longer is \\(30\\) more\" means, so the longer piece is \\(x + 30\\). Laid end to end the two pieces fill the whole bar, and the picture collapses the whole story into one equation, \\(x + (x + 30) = 2x + 30 = 150\\). Solving gives \\(x = 60\\), but read carefully what the variable is. Here \\(x\\) is the shorter piece, so if the question asks for the longer piece you report \\(x + 30 = 90\\), not \\(x = 60\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A street magician chalks a riddle on the sidewalk and dares people to crack it. She writes, \"I am thinking of a secret number. Take half of my number and shave off four, and you land in exactly the same spot as taking a third of my number and piling on three.\" A crowd gathers, but nobody can name it. What is her secret number?",
+    "hints": [
+     "Let \\(x\\) stand for the secret number. Now translate each half of the sentence on its own. \"Half of my number and shave off four\" becomes \\(\\tfrac{1}{2}x - 4\\), and \"a third of my number and pile on three\" becomes \\(\\tfrac{1}{3}x + 3\\). The phrase \"land in exactly the same spot\" is the equals sign, so set the two pieces equal.",
+     "You have \\(\\tfrac{1}{2}x - 4 = \\tfrac{1}{3}x + 3\\), with the variable on both sides and fractions in the way. Clear the fractions by multiplying every single term by \\(6\\). That turns it into \\(3x - 24 = 2x + 18\\). Now gather the \\(x\\) terms on one side and the numbers on the other, and solve."
+    ],
+    "ans": "42",
+    "accept": [
+     "42",
+     "42.0",
+     "forty two",
+     "forty-two",
+     "forty−two"
+    ],
+    "sol": "Let \\(x\\) be the magician's secret number. The riddle gives you two descriptions of the same spot, so they must be equal. The first half, \"half of my number and shave off four\", is \\(\\tfrac{1}{2}x - 4\\). The second half, \"a third of my number and pile on three\", is \\(\\tfrac{1}{3}x + 3\\). Setting them equal gives the equation \\(\\tfrac{1}{2}x - 4 = \\tfrac{1}{3}x + 3\\). The variable sits on both sides and the fractions are awkward, so clear the denominators first by multiplying every term by \\(6\\). That gives \\(3x - 24 = 2x + 18\\). Subtract \\(2x\\) from both sides to get \\(x - 24 = 18\\), then add \\(24\\) to both sides to find \\(x = 42\\). Read it back against the words to be sure. Half of \\(42\\) is \\(21\\), and shaving off four leaves \\(17\\). A third of \\(42\\) is \\(14\\), and piling on three gives \\(17\\). Both land on the same spot, so the secret number is \\(\\boxed{42}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "I keep expecting word problems to need some brand new trick, but they never do. When a sentence drops part of the number on each side of the word \"equals,\" the equation that falls out just has the variable on both sides, the exact kind I already beat in 6.3, so I gather the variable terms onto one side and finish. And when fractions of the number show up, I do not panic. I multiply every term by a common multiple to wipe the denominators clean first, and then I am right back to gathering. Translating is just reading the situation carefully enough to write down an equation, and the equation is always one I already know how to solve."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A climbing gym lets you pay for your sessions two different ways. The Steady plan charges a flat \\(\\$12\\) each month plus \\(\\$0.20\\) every time you book a wall session. The Casual plan has a smaller flat fee of \\(\\$4\\) each month but charges \\(\\$0.30\\) per session. For a quiet month with very few sessions the Casual plan is cheaper, and for a busy month the Steady plan pulls ahead, so somewhere in between the two plans cost exactly the same. How many sessions in one month make the Steady plan and the Casual plan cost the same amount?",
+    "hints": [
+     "Give the unknown a name. Let \\(s\\) be the number of sessions in the month. Now write the monthly cost of each plan as an expression in \\(s\\), and remember that \"cost the same\" is just an equals sign waiting to happen. To keep everything in whole numbers you can work in cents, so \\(\\$0.20\\) is \\(20\\) cents and the flat \\(\\$12\\) is \\(1200\\) cents.",
+     "In cents the Steady plan costs \\(1200 + 20s\\) and the Casual plan costs \\(400 + 30s\\). Set them equal to get \\(1200 + 20s = 400 + 30s\\). Get the variable on one side by subtracting \\(20s\\) from both sides, then subtract \\(400\\) from both sides, and finish by dividing."
+    ],
+    "ans": "80",
+    "accept": [
+     "80",
+     "80 sessions",
+     "80.0",
+     "eighty"
+    ],
+    "sol": "Start by naming the unknown. Let \\(s\\) be the number of sessions you book in the month. To stay exact, work in cents, so the flat \\(\\$12\\) is \\(1200\\) cents and \\(\\$0.20\\) per session is \\(20s\\) cents. That makes the Steady plan cost \\(1200 + 20s\\) cents. The Casual plan has a \\(\\$4\\) flat fee, which is \\(400\\) cents, plus \\(\\$0.30\\) per session, so it costs \\(400 + 30s\\) cents. The words \"cost the same\" turn straight into an equals sign, which gives \\(1200 + 20s = 400 + 30s\\). Subtract \\(20s\\) from both sides to gather the variable on the right, leaving \\(1200 = 400 + 10s\\). Subtract \\(400\\) from both sides to get \\(800 = 10s\\), and divide both sides by \\(10\\) to find \\(s = 80\\). Now read it back against the words. At \\(80\\) sessions the Steady plan costs \\(1200 + 20 \\cdot 80 = 2800\\) cents and the Casual plan costs \\(400 + 30 \\cdot 80 = 2800\\) cents, and both come out to \\(\\$28\\), so the two plans really do match. The question asked for the number of sessions that make the plans cost the same, which is \\(\\boxed{80}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An express-in-terms-of-one count diagram for a puzzle box holding thirty flat pieces in two kinds. A single row shows all thirty pieces. The left part of the row is a gold-outlined group of fourteen little squares, and the right part is a group of sixteen little triangles, drawn pointing up. A bracket under the squares is labelled s squares, each with four corners. A bracket under the triangles is labelled thirty minus s triangles, each with three corners, to make clear that once s squares are chosen the triangle count is forced to be thirty minus s, so one letter s describes both groups. Below the row the corner totals stack up. The square group contributes four s corners, written as four times s. The triangle group contributes three times the quantity thirty minus s corners. A large brace gathers both contributions, and a total label reads one hundred four corners, giving the equation four s plus three times the quantity thirty minus s equals one hundred four.\"><text x=\"220\" y=\"16\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">ONE LETTER DESCRIBES BOTH GROUPS</text><text x=\"220\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">The box holds 30 pieces. Pick s to be squares.</text><rect x=\"26.0\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"38.6\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"51.2\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"63.8\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"76.4\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"89.0\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"101.6\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"114.2\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"126.8\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"139.4\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"152.0\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"164.6\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"177.2\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><rect x=\"189.8\" y=\"56\" width=\"9\" height=\"9\" rx=\"1\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.2\"/><path d=\"M216.9 56 L221.4 65 L212.4 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M229.5 56 L234.0 65 L225.0 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M242.1 56 L246.6 65 L237.6 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M254.7 56 L259.2 65 L250.2 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M267.3 56 L271.8 65 L262.8 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M279.9 56 L284.4 65 L275.4 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M292.5 56 L297.0 65 L288.0 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M305.1 56 L309.6 65 L300.6 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M317.7 56 L322.2 65 L313.2 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M330.3 56 L334.8 65 L325.8 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M342.9 56 L347.4 65 L338.4 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M355.5 56 L360.0 65 L351.0 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M368.1 56 L372.6 65 L363.6 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M380.7 56 L385.2 65 L376.2 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M393.3 56 L397.8 65 L388.8 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M405.9 56 L410.4 65 L401.4 65 Z\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.1\"/><path d=\"M24 72 q0 5 5 5 h78 q5 0 5 5 q0 -5 5 -5 h78 q5 0 5 -5\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.3\"/><path d=\"M210 72 q0 5 5 5 h91 q5 0 5 5 q0 -5 5 -5 h91 q5 0 5 -5\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"112\" y=\"96\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">s squares</text><text x=\"112\" y=\"109\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">4 corners each</text><text x=\"311\" y=\"96\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ink)\">30 − s triangles</text><text x=\"311\" y=\"109\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">3 corners each</text><line x1=\"14\" y1=\"124\" x2=\"426\" y2=\"124\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"220\" y=\"146\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">COUNT THE CORNERS</text><rect x=\"40\" y=\"158\" width=\"140\" height=\"40\" rx=\"6\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/><text x=\"110\" y=\"176\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">s squares × 4 corners</text><text x=\"110\" y=\"192\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--gold-deep)\">4s</text><text x=\"198\" y=\"184\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--slate)\">+</text><rect x=\"216\" y=\"158\" width=\"184\" height=\"40\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/><text x=\"308\" y=\"176\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">(30 − s) triangles × 3 corners</text><text x=\"308\" y=\"192\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">3(30 − s)</text><path d=\"M40 210 q0 8 8 8 h156 q8 0 8 8 q0 -8 8 -8 h156 q8 0 8 -8\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><rect x=\"150\" y=\"236\" width=\"140\" height=\"30\" rx=\"7\" fill=\"var(--gold2)\" opacity=\"0.16\"/><text x=\"220\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">104 corners in all</text><text x=\"220\" y=\"288\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--slate)\">4s + 3(30 − s) = 104</text></svg>",
+    "cap": "The box has \\(30\\) pieces, so the moment you call the squares \\(s\\), the triangles have nowhere to hide. They are everything left over, which is \\(30 - s\\). One letter now describes both groups. Each square brings \\(4\\) corners and each triangle brings \\(3\\), so the corners stack up as \\(4s\\) from the squares and \\(3(30 - s)\\) from the triangles. Setting that against the \\(104\\) corners in the box gives \\(4s + 3(30 - s) = 104\\), a single equation in a single unknown built straight from the picture."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Marisol keeps a slow, patient tortoise named Pebble in her backyard. She likes to think about how Pebble keeps growing older. She notices something neat about the numbers. Six years from now, Pebble will be exactly seven sixths of its current age. How old is Pebble right now, in years?",
+    "hints": [
+     "Pick a letter for the thing you do not know yet, the age right now, and call it \\(t\\). A future age is just the current age plus however many years pass, so in six years Pebble will be \\(t + 6\\). The words say that future age equals seven sixths of the age now, so set \\(t + 6\\) equal to \\(\\tfrac{7}{6}t\\).",
+     "Start from \\(t + 6 = \\tfrac{7}{6}t\\). The fraction is annoying, so multiply every single term by \\(6\\) to clear it, which gives \\(6t + 36 = 7t\\). Now it is an ordinary equation with the variable on both sides, so subtract \\(6t\\) from each side and read off \\(t\\)."
+    ],
+    "ans": "36",
+    "accept": [
+     "36",
+     "36 years",
+     "36.0",
+     "thirty six",
+     "thirty-six",
+     "thirty−six"
+    ],
+    "sol": "Let \\(t\\) be Pebble's age right now, in years. That is the number the question is really after. Six years from now Pebble will be six years older, so the future age is \\(t + 6\\). The words tell us that future age is seven sixths of the current age, which means \\(t + 6 = \\tfrac{7}{6}t\\). To get rid of the fraction, multiply every term by \\(6\\), giving \\(6t + 36 = 7t\\). Subtract \\(6t\\) from both sides and you are left with \\(36 = t\\), so \\(t = 36\\). The question asked for Pebble's age now, and that is exactly what \\(t\\) stands for. Check it against the words. In six years Pebble would be \\(36 + 6 = 42\\), and seven sixths of \\(36\\) is \\(\\tfrac{7}{6}\\cdot 36 = 42\\) as well, so the future age really does match. Pebble is \\(\\boxed{36}\\) years old now."
+   },
+   {
+    "t": "fact",
+    "x": "You are not the first person to name an unknown and chase it through a sentence. Almost four thousand years ago in ancient Egypt, a scribe named Ahmes copied out a long scroll that we now call the Rhind Mathematical Papyrus, named after Alexander Henry Rhind, who bought it in the eighteen hundreds. Among its problems are puzzles the Egyptians called aha problems, where aha was simply their word for the unknown heap or quantity. A typical aha problem asks for a quantity such that the quantity plus a fraction of itself adds up to some stated total, which is exactly the kind of modeling you are doing right now. They had no letter \\(x\\) and no equals sign, so they wrote the whole thing out in words and worked it through by hand. People have been turning words into equations for a very, very long time, just with different handwriting."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A sculptor is welding three steel rings into a hanging mobile, and she wants the rings to grow in even steps so the piece looks balanced. She picks three consecutive even numbers for their weights in kilograms, meaning each ring is \\(2\\) kilograms heavier than the one before it. When she sets all three on the scale together, they read \\(96\\) kilograms. The whole point of an even spacing is that once you name the lightest ring, the next is \\(2\\) more and the heaviest is \\(2\\) more again, so the three weights are locked together by that one starting choice. She needs to know the weight of the heaviest ring, since that is the one the ceiling hook has to hold. <b>What is the weight, in kilograms, of the heaviest ring?</b> Type the single number.",
+    "hints": [
+     "Let \\(n\\) stand for the weight of the lightest ring in kilograms. Because the rings step up by \\(2\\) each time, the middle ring is \\(n + 2\\) and the heaviest is \\(n + 4\\). The three weights add to \\(96\\), so write that sum as an equation in \\(n\\).",
+     "Your equation is \\(n + (n + 2) + (n + 4) = 96\\). Combine the like terms on the left to get \\(3n + 6 = 96\\), then subtract \\(6\\) and divide by \\(3\\) to find \\(n\\). Once you have \\(n\\), the question wants the heaviest ring, which is \\(n + 4\\), not \\(n\\) itself."
+    ],
+    "ans": "34",
+    "accept": [
+     "34",
+     "34 kg",
+     "34.0",
+     "34kg",
+     "thirty four",
+     "thirty-four",
+     "thirty−four"
+    ],
+    "sol": "Start by naming the unknown. Let \\(n\\) be the weight of the lightest ring in kilograms. Since the rings are consecutive even numbers, each one is \\(2\\) kilograms heavier than the last, so the middle ring weighs \\(n + 2\\) and the heaviest weighs \\(n + 4\\). The three weights together read \\(96\\) kilograms, which turns the words into an equation. $$n + (n + 2) + (n + 4) = 96$$ Combine the like terms on the left. The three copies of \\(n\\) make \\(3n\\), and the loose numbers \\(2\\) and \\(4\\) make \\(6\\), so the equation becomes $$3n + 6 = 96.$$ Subtract \\(6\\) from both sides to get \\(3n = 90\\), then divide both sides by \\(3\\) to find \\(n = 30\\). So the lightest ring is \\(30\\) kilograms, the middle ring is \\(32\\), and the heaviest is \\(34\\). Here is the trap worth naming. The variable \\(n\\) came out to \\(30\\), but the question never asked for the lightest ring. It asked for the heaviest, which is \\(n + 4 = 34\\). Check it against the words. The weights \\(30\\), \\(32\\), and \\(34\\) step up by \\(2\\) each time and add to \\(30 + 32 + 34 = 96\\), and \\(34\\) is indeed the largest of the three. The heaviest ring weighs \\(\\boxed{34}\\) kilograms."
+   },
+   {
+    "t": "imp",
+    "x": "Here are the two things I figured out today. When integers run one after another, I do not need a fresh letter for each one, I anchor the first to \\(n\\) and write the next as \\(n+1\\), the one after that as \\(n+2\\), and so on, and if they are consecutive even or odd integers I just step by \\(2\\) instead, so \\(n\\), \\(n+2\\), \\(n+4\\). I add them, set the sum equal to the total I was given, solve for \\(n\\), and then, since the question almost always wants one particular member of the run, I add the right step to \\(n\\) to read off the exact integer it asked for. The second thing matters even more. Checking means putting my answer back into the original sentence in plain English, not just into the equation I wrote, because a wrong equation built from a misread will still be satisfied perfectly by its own answer, so only re-reading the words can ever catch the misread."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "A baker is packing a charity fair. She fills exactly \\(40\\) gift boxes, and every single box is either a small box that holds \\(6\\) cupcakes or a large box that holds \\(10\\) cupcakes. When she is done, the boxes hold \\(312\\) cupcakes in all. <b>How many large boxes did the baker fill?</b>",
+    "hints": [
+     "You have two unknowns but they are tied together. Let \\(s\\) be the number of small boxes. Since every box is small or large and there are \\(40\\) boxes in total, the number of large boxes must be \\(40 - s\\). Now count cupcakes, the small boxes contribute \\(6s\\) and the large boxes contribute \\(10\\) of them each.",
+     "Write the cupcake count as one equation, \\(6s + 10(40 - s) = 312\\). Distribute and combine like terms to get \\(-4s + 400 = 312\\). Solve for \\(s\\), then remember the question asks for large boxes, which is \\(40 - s\\), not \\(s\\) itself."
+    ],
+    "ans": "18",
+    "accept": [
+     "18",
+     "18 boxes",
+     "18.0",
+     "eighteen"
+    ],
+    "sol": "Let \\(s\\) be the number of small boxes the baker fills. Every box is either small or large and there are \\(40\\) boxes altogether, so the two counts add to \\(40\\) and the number of large boxes is \\(40 - s\\). That single relationship is what lets one variable carry the whole problem. Now count cupcakes. The small boxes hold \\(6\\) each, so they account for \\(6s\\) cupcakes, and the large boxes hold \\(10\\) each, so they account for \\(10(40 - s)\\) cupcakes. The total is \\(312\\), which gives the equation $$6s + 10(40 - s) = 312.$$ Distribute the \\(10\\) to get \\(6s + 400 - 10s = 312\\), then combine the like terms \\(6s\\) and \\(-10s\\) to get \\(-4s + 400 = 312\\). Subtract \\(400\\) from both sides, so \\(-4s = -88\\), and divide by \\(-4\\) to find \\(s = 22\\). So there are \\(22\\) small boxes. The question did not ask for \\(s\\), it asked for the large boxes, which is \\(40 - s = 40 - 22 = 18\\). Check it against the words. With \\(22\\) small boxes and \\(18\\) large boxes the total is \\(22 + 18 = 40\\) boxes, and the cupcakes come to \\(6 \\cdot 22 + 10 \\cdot 18 = 132 + 180 = 312\\), both exactly right. The baker filled \\(\\boxed{18}\\) large boxes."
+   }
+  ],
+  "review": [
+   {
+    "x": "A street magician is guessing the number written on a card you hold. She says, \"Four more than triple your number lands exactly on thirty-one.\" What number is on your card?",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine"
+    ],
+    "hints": [
+     "Let \\(x\\) be the number on the card. \"Triple your number\" is \\(3x\\), and \"four more than\" that adds 4, so the left side is \\(3x + 4\\).",
+     "Set \\(3x + 4 = 31\\). Subtract 4 from both sides, then divide by 3 to find \\(x\\)."
+    ],
+    "sol": "Let \\(x\\) be the number written on the card. Triple the number is \\(3x\\), and four more than that is \\(3x + 4\\). The clue says this lands on thirty-one, so the equation is $$3x + 4 = 31.$$ Subtract 4 from both sides to get \\(3x = 27\\), then divide both sides by 3 to get \\(x = 9\\). The question asks for the number on the card, which is \\(\\boxed{9}\\). Check against the words. Triple of 9 is 27, and four more than 27 is 31, exactly as the magician said."
+   },
+   {
+    "x": "A lighthouse keeper logs how many ships pass each night. On Tuesday she counted some number of ships. On Wednesday a storm kept boats in the harbor, so the count was eight less than Tuesday's number, and that Wednesday count came out to twenty-three ships. How many ships passed on Tuesday?",
+    "ans": "31",
+    "accept": [
+     "31",
+     "31.0",
+     "thirty one",
+     "thirty-one",
+     "thirty−one"
+    ],
+    "hints": [
+     "Let \\(x\\) be Tuesday's count. \"Eight less than Tuesday's number\" means you start at \\(x\\) and take 8 away, so it is \\(x - 8\\), not \\(8 - x\\). The order matters here.",
+     "You now have \\(x - 8 = 23\\). Add 8 to both sides to undo the subtraction and find \\(x\\)."
+    ],
+    "sol": "Let \\(x\\) be the number of ships that passed on Tuesday. The phrase \"eight less than Tuesday's number\" tells you to begin with Tuesday's count and remove 8, which is \\(x - 8\\). Watch the order, because \"less than\" flips it. It is \\(x - 8\\), never \\(8 - x\\). That Wednesday count equals 23, so the equation is $$x - 8 = 23.$$ Add 8 to both sides to get \\(x = 23 + 8\\), so \\(x = 31\\). The question asks for Tuesday's count, and that is exactly the \\(x\\) we solved for, so the answer is \\(\\boxed{31}\\). Check it against the words. Eight less than 31 is \\(31 - 8 = 23\\), which matches the Wednesday count, so 31 is correct."
+   },
+   {
+    "x": "A museum tour starts the morning with fifty paper maps stacked at the front desk. By lunchtime a guide reaches for the stack and finds only twelve maps still sitting there, so some number of maps got handed out and taken off the pile during the morning. The handout count is the mystery here. Reading it as a sentence, that number of maps subtracted from the fifty leaves twelve behind. How many maps were handed out over the morning? Type the single number.",
+    "hints": [
+     "Let \\(x\\) be the number of maps handed out. The maps came off the original fifty, so the fifty comes first and the handed-out amount is subtracted from it. That gives \\(50 - x\\), and what is left is \\(12\\). Be careful with the order, it is fifty minus the unknown, not the unknown minus fifty.",
+     "You now have \\(50 - x = 12\\). To get \\(x\\) by itself, you can add \\(x\\) to both sides and subtract \\(12\\) from both sides, which lines up as \\(50 - 12 = x\\). Finish that subtraction to find the number of maps."
+    ],
+    "ans": "38",
+    "accept": [
+     "38",
+     "38.0",
+     "thirty eight",
+     "thirty-eight",
+     "thirty−eight"
+    ],
+    "sol": "Let \\(x\\) stand for the number of maps handed out during the morning. The phrase that builds the equation is that number subtracted from the fifty, which means the fifty is the starting pile and \\(x\\) is taken away from it, written as \\(50 - x\\). What remains is twelve, so the equation is $$50 - x = 12.$$ Solve for \\(x\\). Add \\(x\\) to both sides to get \\(50 = 12 + x\\), then subtract \\(12\\) from both sides, which gives \\(50 - 12 = x\\), so \\(x = 38\\). The question asks how many maps were handed out, and that is exactly the number \\(x\\), so the answer is \\(38\\). Check it against the words. Thirty-eight maps subtracted from the original fifty leaves \\(50 - 38 = 12\\) maps still on the desk, which matches the twelve the guide found. So the number of maps handed out is \\(\\boxed{38}\\)."
+   },
+   {
+    "x": "A trail crew counts the number of new birdhouses they hung along a creek this spring. When you double that count and then add seven, you get thirty-three. How many birdhouses would be left if five of them were taken down?",
+    "hints": [
+     "Let \\(x\\) be the number of birdhouses the crew hung. Doubling it gives \\(2x\\), and adding seven gives \\(2x + 7\\). That whole thing equals \\(33\\), so write \\(2x + 7 = 33\\).",
+     "Solve \\(2x + 7 = 33\\) to find \\(x\\). Then reread the question. It does not ask for \\(x\\) itself, it asks how many would be left if five were taken down, so compute \\(x - 5\\)."
+    ],
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "sol": "Let \\(x\\) be the number of birdhouses the crew hung. Doubling the count gives \\(2x\\), and adding seven gives \\(2x + 7\\). The words say this equals thirty-three, so the equation is \\(2x + 7 = 33\\). Subtract \\(7\\) from both sides to get \\(2x = 26\\), then divide by \\(2\\) to get \\(x = 13\\). The crew hung \\(13\\) birdhouses. But the question asks how many would be left if five were taken down, which is \\(13 - 5 = 8\\). So the answer is \\(\\boxed{8}\\). Check against the words. Double \\(13\\) to get \\(26\\), then add \\(7\\) to get \\(33\\), which matches \"is thirty-three\", and \\(13 - 5 = 8\\) leftover."
+   },
+   {
+    "x": "A small bakery splits its morning batch of croissants between two trays. The two trays hold 45 croissants together. The window tray holds 9 fewer croissants than the kitchen tray. How many croissants are on the kitchen tray?",
+    "hints": [
+     "Let \\(k\\) stand for the number of croissants on the kitchen tray. The window tray holds 9 fewer, so write that as \\(k - 9\\).",
+     "The two trays together hold 45, so \\(k + (k - 9) = 45\\). Combine the like terms and solve for \\(k\\)."
+    ],
+    "ans": "27",
+    "accept": [
+     "27",
+     "27.0",
+     "twenty seven",
+     "twenty-seven",
+     "twenty−seven"
+    ],
+    "sol": "Let \\(k\\) be the number of croissants on the kitchen tray. The window tray holds 9 fewer than the kitchen tray, so it holds \\(k - 9\\). The two trays together hold 45, which gives the equation $$k + (k - 9) = 45.$$ Combine the like terms to get \\(2k - 9 = 45\\). Add 9 to both sides to get \\(2k = 54\\), then divide by 2 to get \\(k = 27\\). The question asks for the kitchen tray, which is exactly the variable, so the answer is \\(\\boxed{27}\\). Check it against the words. The kitchen tray has 27, the window tray has \\(27 - 9 = 18\\), and together they hold \\(27 + 18 = 45\\), which matches."
+   },
+   {
+    "x": "At a wildlife sanctuary, a thirsty llama drinks four times as much water in a day as a young goat does. On one hot afternoon the keeper measures their bowls and finds that together the two animals drank \\(40\\) liters. How many liters did the llama drink?",
+    "ans": "32",
+    "accept": [
+     "32",
+     "32 L",
+     "32 liters",
+     "32.0",
+     "thirty-two",
+     "thirty−two"
+    ],
+    "hints": [
+     "Let \\(g\\) stand for the liters the goat drank. The llama drank four times as much, so the llama is \\(4g\\). Write an equation that says the two amounts add up to \\(40\\).",
+     "Your equation is \\(g + 4g = 40\\). Combine the like terms into \\(5g\\), solve for \\(g\\), and then remember the question asks about the llama, not the goat."
+    ],
+    "sol": "Let \\(g\\) be the number of liters the goat drank. The llama drank four times as much, so the llama drank \\(4g\\). Together they drank \\(40\\) liters, which gives the equation $$g + 4g = 40.$$ Combine the like terms to get \\(5g = 40\\), then divide both sides by \\(5\\) to find \\(g = 8\\). That is the goat's amount, but the question asks how much the llama drank, so report \\(4g = 4 \\times 8 = 32\\) liters. Check it against the words. The goat drank \\(8\\) liters and the llama drank \\(32\\) liters, the llama's \\(32\\) is four times the goat's \\(8\\), and \\(8 + 32 = 40\\), which matches the total. The llama drank \\(\\boxed{32}\\) liters."
+   },
+   {
+    "x": "A robotics club is building a fleet of small machines for a demo. Every machine is either a roller, which moves on four wheels, or a hopper, which balances on two wheels. The club finished twenty-six machines in total, and when they counted every wheel in the workshop they reached eighty-four wheels. How many hoppers did the club build?",
+    "hints": [
+     "Let \\(c\\) be the number of rollers. Then the number of hoppers is whatever is left out of 26, which is \\(26 - c\\). Rollers carry 4 wheels each and hoppers carry 2 wheels each.",
+     "Write the total wheels as \\(4c + 2(26 - c) = 84\\). Expand the left side and combine like terms, then solve for \\(c\\). Once you know \\(c\\), the question asks for hoppers, so report \\(26 - c\\), not \\(c\\) itself."
+    ],
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "sol": "Let \\(c\\) be the number of rollers. Since every machine is a roller or a hopper and there are 26 in all, the number of hoppers is \\(26 - c\\). Each roller has 4 wheels and each hopper has 2 wheels, so the wheel count is \\(4c + 2(26 - c) = 84\\). Expand the left side to get \\(4c + 52 - 2c = 84\\), which simplifies to \\(2c + 52 = 84\\). Subtract 52 from both sides to get \\(2c = 32\\), so \\(c = 16\\). That is the number of rollers, but the question asks for hoppers, and the hoppers are \\(26 - c = 26 - 16 = 10\\). So the club built \\(\\boxed{10}\\) hoppers. Check it against the words. With 16 rollers and 10 hoppers that is \\(16 + 10 = 26\\) machines, and the wheels come to \\(4 \\times 16 + 2 \\times 10 = 64 + 20 = 84\\), which matches both counts."
+   },
+   {
+    "x": "A weather satellite is counting tiny ice crystals in a passing cloud. If you take a quarter of the crystal count and add five, you get exactly the same number as taking a sixth of the crystal count and adding nine. How many ice crystals are in the cloud?",
+    "hints": [
+     "Let \\(x\\) be the number of ice crystals. A quarter of the count and add five is \\(\\frac{1}{4}x + 5\\), and a sixth of the count and add nine is \\(\\frac{1}{6}x + 9\\). Set them equal.",
+     "To get rid of the fractions, multiply every single term by \\(12\\), the smallest number both \\(4\\) and \\(6\\) divide into. That turns \\(\\frac{1}{4}x\\) into \\(3x\\) and \\(\\frac{1}{6}x\\) into \\(2x\\)."
+    ],
+    "ans": "48",
+    "accept": [
+     "48",
+     "48 crystals",
+     "48.0"
+    ],
+    "sol": "Let \\(x\\) be the number of ice crystals in the cloud. A quarter of the count increased by five is \\(\\frac{1}{4}x + 5\\), and a sixth of the count increased by nine is \\(\\frac{1}{6}x + 9\\). The words say these are equal, so \\(\\frac{1}{4}x + 5 = \\frac{1}{6}x + 9\\). Multiply every term by \\(12\\) to clear the fractions, which gives \\(3x + 60 = 2x + 108\\). Subtract \\(2x\\) from both sides to get \\(x + 60 = 108\\), then subtract \\(60\\) to get \\(x = 48\\). The question asks for the number of ice crystals, so the answer is \\(\\boxed{48}\\). Check against the words. A quarter of \\(48\\) is \\(12\\), and \\(12 + 5 = 17\\). A sixth of \\(48\\) is \\(8\\), and \\(8 + 9 = 17\\). Both sides give \\(17\\), so it fits."
+   },
+   {
+    "x": "A science club picks up \\(12\\) glow items for a night hike. Each one is either a small glow stick that costs \\(\\$3\\) or a glow lantern that costs \\(\\$5\\), and the club spends \\(\\$44\\) in all. How many glow lanterns did the club buy?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "Let \\(p\\) be the number of glow sticks. Since there are \\(12\\) items in all, the number of lanterns has to be \\(12 - p\\). Each glow stick costs \\(\\$3\\) and each lantern costs \\(\\$5\\), and the whole total is \\(\\$44\\), so write \\(3p + 5(12 - p) = 44\\).",
+     "Distribute the \\(5\\) to get \\(3p + 60 - 5p = 44\\), which simplifies to \\(-2p + 60 = 44\\). Solve that for \\(p\\), then remember the question asks for lanterns, which is \\(12 - p\\), not \\(p\\) itself."
+    ],
+    "sol": "Let \\(p\\) be the number of glow sticks the club buys. There are \\(12\\) items in all, so the number of lanterns is \\(12 - p\\). Each glow stick costs \\(\\$3\\) and each lantern costs \\(\\$5\\), and the total spent is \\(\\$44\\), which gives the equation $$3p + 5(12 - p) = 44.$$ Distribute the \\(5\\) across the group, \\(5(12 - p) = 60 - 5p\\), so the equation becomes \\(3p + 60 - 5p = 44\\). Combine the \\(p\\) terms, \\(3p - 5p = -2p\\), leaving \\(-2p + 60 = 44\\). Subtract \\(60\\) from both sides to get \\(-2p = -16\\), then divide both sides by \\(-2\\) to find \\(p = 8\\). So the club bought \\(8\\) glow sticks. The question asks for lanterns, not glow sticks, and the number of lanterns is \\(12 - p = 12 - 8 = 4\\). Check it against the words. With \\(8\\) glow sticks and \\(4\\) lanterns the count is \\(8 + 4 = 12\\) items, and the cost is \\(3 \\cdot 8 + 5 \\cdot 4 = 24 + 20 = 44\\) dollars, both of which match. So the club bought \\(\\boxed{4}\\) glow lanterns."
+   },
+   {
+    "x": "A restored river boat sits in a small harbor museum, and the curator likes to quiz visitors about its age. Here is the clue on the plaque. Four years ago, the boat was only two thirds as old as it is right now. If \\(t\\) stands for the boat's age in years today, then four years ago its age was \\(t - 4\\), and that has to equal two thirds of its current age, so \\(t - 4 = \\tfrac{2}{3}t\\). How old is the boat now? Type the number of years.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "t = 12",
+     "t=12",
+     "twelve"
+    ],
+    "hints": [
+     "The equation \\(t - 4 = \\tfrac{2}{3}t\\) has a fraction in it. Multiplying every single term on both sides by \\(3\\) will clear that fraction and leave you whole numbers to work with."
+    ],
+    "sol": "Let \\(t\\) be the boat's age in years today. Four years ago its age was \\(t - 4\\), and the plaque says that equals two thirds of its current age, which gives \\(t - 4 = \\tfrac{2}{3}t\\). Clear the fraction by multiplying every term by \\(3\\), so \\(3t - 12 = 2t\\). Subtract \\(2t\\) from both sides to get \\(t - 12 = 0\\), and then \\(t = 12\\). The question asks how old the boat is now, and the variable \\(t\\) is exactly that age, so the answer is \\(\\boxed{12}\\) years. Check it against the words. Four years ago the boat was \\(12 - 4 = 8\\) years old, and two thirds of its current age is \\(\\tfrac{2}{3}\\times 12 = 8\\). Those match, so \\(12\\) is right."
+   },
+   {
+    "x": "At a Saturday robotics meetup, two cousins, Priya and her younger cousin Dev, build a bot together. Their ages add up to \\(44\\) years, and Priya is exactly three times as old as Dev. How old is Priya in years?",
+    "ans": "33",
+    "accept": [
+     "33",
+     "33 years",
+     "33.0",
+     "thirty-three",
+     "thirty−three"
+    ],
+    "hints": [
+     "Let \\(y\\) stand for Dev's age, the younger one. Then Priya's age is \\(3y\\), since she is three times as old. Their ages add to \\(44\\).",
+     "Write \\(y + 3y = 44\\) and combine the like terms to get \\(4y = 44\\). Solve for \\(y\\), then remember the question asks for Priya, not Dev."
+    ],
+    "sol": "Let \\(y\\) be Dev's age, the younger cousin. Priya is three times as old, so her age is \\(3y\\). Their ages add to \\(44\\), which gives the equation $$y + 3y = 44.$$ Combine the like terms to get \\(4y = 44\\), and divide both sides by \\(4\\) to find \\(y = 11\\). So Dev is \\(11\\). The question asks for Priya, whose age is \\(3y = 3 \\cdot 11 = 33\\). Check it against the words. The ages add to \\(11 + 33 = 44\\), and \\(33\\) is three times \\(11\\), so both conditions hold. Priya is \\(\\boxed{33}\\) years old."
+   },
+   {
+    "x": "A muralist is painting three side by side panels along a hallway wall, and each panel is one tile wider than the panel just before it. The three panels together span seventy-two tiles across. How many tiles wide is the widest panel?",
+    "hints": [
+     "The three panel widths are consecutive integers. If you call the narrowest one \\(n\\), the next is \\(n+1\\) and the widest is \\(n+2\\).",
+     "Add the three widths and set the total equal to 72. That gives \\(n + (n+1) + (n+2) = 72\\), which simplifies to \\(3n + 3 = 72\\). Solve for \\(n\\) first, then remember the question asks for the widest panel, not the narrowest."
+    ],
+    "ans": "25",
+    "accept": [
+     "25",
+     "25.0",
+     "twenty five",
+     "twenty-five",
+     "twenty−five"
+    ],
+    "sol": "Let \\(n\\) be the width of the narrowest panel in tiles. Each panel is one tile wider than the one before it, so the three widths are \\(n\\), \\(n+1\\), and \\(n+2\\). Together they span 72 tiles, so \\(n + (n+1) + (n+2) = 72\\). Combine the like terms to get \\(3n + 3 = 72\\). Subtract 3 from both sides for \\(3n = 69\\), then divide by 3 to get \\(n = 23\\). The narrowest panel is 23 tiles, the middle one is 24 tiles, and the widest is \\(n + 2 = 25\\) tiles. The question asks for the widest panel, so the answer is \\(\\boxed{25}\\). Check it against the words. The three widths 23, 24, and 25 each grow by one tile, and \\(23 + 24 + 25 = 72\\), which matches the total span."
+   },
+   {
+    "x": "A locksmith is testing two padlocks whose secret codes are consecutive odd numbers. When she adds the two codes together she gets fifty-six. What is the larger of the two codes?",
+    "hints": [
+     "Consecutive odd numbers always sit two apart, so if the smaller one is \\(n\\), the next odd one is \\(n + 2\\).",
+     "Add the two codes and set the sum equal to \\(56\\), giving \\(n + (n + 2) = 56\\). Solve for \\(n\\), then remember the question asks for the larger code, which is \\(n + 2\\)."
+    ],
+    "ans": "29",
+    "accept": [
+     "29",
+     "29.0",
+     "twenty nine",
+     "twenty-nine",
+     "twenty−nine"
+    ],
+    "sol": "Let \\(n\\) be the smaller code. Because the two codes are consecutive odd numbers, they are two apart, so the larger code is \\(n + 2\\). The two codes add to \\(56\\), which gives the equation \\(n + (n + 2) = 56\\). Combining like terms, \\(2n + 2 = 56\\). Subtract \\(2\\) from both sides to get \\(2n = 54\\), then divide by \\(2\\) to find \\(n = 27\\). The smaller code is \\(27\\) and the larger code is \\(n + 2 = 29\\). The question asks for the larger code, so the answer is \\(\\boxed{29}\\). Check against the words. The codes \\(27\\) and \\(29\\) are both odd, they are consecutive odd numbers since they differ by \\(2\\), and \\(27 + 29 = 56\\), which matches the total."
+   },
+   {
+    "x": "Two parking garages sit on the same block, and a driver wants to know which is cheaper. Garage A charges a flat $5 to enter plus $2 for every hour parked. Garage B charges a flat $11 to enter plus $1 for every hour parked. For short visits Garage A wins, and for long ones Garage B wins, so somewhere in the middle the two cost exactly the same. At how many hours of parking do the two garages charge the same amount?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6 hours",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Let \\(h\\) be the number of hours. Garage A costs \\(5 + 2h\\) dollars and Garage B costs \\(11 + h\\) dollars. The two charge the same when those expressions are equal.",
+     "Set \\(5 + 2h = 11 + h\\). Subtract \\(h\\) from both sides to gather the variable, then subtract \\(5\\) to get \\(h\\) by itself."
+    ],
+    "sol": "Let \\(h\\) be the number of hours parked. Garage A costs \\(5 + 2h\\) dollars and Garage B costs \\(11 + h\\) dollars. The two garages charge the same amount when those two costs are equal, so \\(5 + 2h = 11 + h\\). Subtract \\(h\\) from both sides to get \\(5 + h = 11\\), then subtract \\(5\\) from both sides to get \\(h = 6\\). The question asks at how many hours the costs match, which is exactly \\(h\\), so the answer is \\(\\boxed{6}\\) hours. Check it against the words. At \\(6\\) hours Garage A costs \\(5 + 2\\cdot 6 = \\$17\\) and Garage B costs \\(11 + 6 = \\$17\\), and the two amounts agree."
+   }
+  ],
+  "next": "6.5"
  }
 }
