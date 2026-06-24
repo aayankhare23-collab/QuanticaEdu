@@ -10863,6 +10863,28 @@
   // --- answer grading + hints for lesson problems ---
   var PROBREG={}, __uid=0;
   function normAns(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/^\+/,''); }
+  function confettiBurst(anchorEl){
+    try{
+      var r = anchorEl ? anchorEl.getBoundingClientRect() : {left:innerWidth/2,top:innerHeight/2,width:0};
+      var cx=r.left+r.width/2, cy=r.top+18;
+      var colors=['#f5b020','#3a7bd5','#13a06e','#e05050','#7a4ed8','#f08a3c','#28c2a0'];
+      var layer=document.createElement('div');
+      layer.className='confetti-layer';
+      layer.style.cssText='position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden';
+      document.body.appendChild(layer);
+      for(var i=0;i<38;i++){
+        var p=document.createElement('div');
+        var sz=6+Math.random()*7, round=Math.random()<0.5, col=colors[i%colors.length];
+        p.style.cssText='position:fixed;left:'+cx+'px;top:'+cy+'px;width:'+sz+'px;height:'+(round?sz:sz*0.5)+'px;background:'+col+';border-radius:'+(round?'50%':'2px')+';will-change:transform,opacity';
+        layer.appendChild(p);
+        var ang=Math.PI*2*(i/38)+(Math.random()-0.5)*0.6, dist=70+Math.random()*150;
+        var dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist-(50+Math.random()*70), rot=(Math.random()-0.5)*760;
+        p.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+dx+'px,'+(dy+170)+'px) rotate('+rot+'deg)',opacity:0}],{duration:950+Math.random()*550,easing:'cubic-bezier(.18,.7,.3,1)'});
+      }
+      setTimeout(function(){ if(layer.parentNode) layer.parentNode.removeChild(layer); },1600);
+    }catch(e){}
+  }
+  window.confettiBurst=confettiBurst;
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
     var inp=document.getElementById('ai_'+k), fb=document.getElementById('af_'+k);
@@ -10872,6 +10894,7 @@
     if(rec.accept.indexOf(v)!==-1){
       fb.className='ansfb right'; fb.innerHTML='✓ Correct. Nicely done. View the solution below for the slick way.'; inp.classList.add('okin'); inp.readOnly=true;
       if(pbox){ pbox.classList.remove('ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-correct'); }
+      confettiBurst(pbox);
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
       // struggled first, then got it: have Milo debrief before they can move on
       if(rec.attempts>0 && !rec._askedAboutFix && window.addTutorBotMsg){
@@ -10994,7 +11017,7 @@
   }
   function wsOpen(key,L,meta){
     var bp=buildPages(L.blocks);
-    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys;
+    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false;
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
     var html='<div class="workspace" id="wsWorkspace">'+
@@ -11103,6 +11126,9 @@
   WS.fileKeyIdea=function(p){
     var pg=WS.pages[p];
     if(!pg||!pg.keyIdea){ if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); return; }
+    if(WS._advancing) return;            // already filing/advancing — don't double up
+    WS._advancing=true;
+    var _nb=document.getElementById('wsNext'); if(_nb) _nb.disabled=true;   // block clicks during the dwell
     if(!pg._filed){
       pg._filed=true;
       var nb=document.getElementById('wsNbBody');
@@ -11124,6 +11150,7 @@
     }
     // pause so the student registers it, then close the tab and move to the next page
     setTimeout(function(){
+      WS._advancing=false;
       if(ws) ws.classList.remove('nb-open');
       if(WS.page<WS.pages.length-1){ WS.showPage(WS.page+1); }
       else if(WS.L && WS.L.next && LESSONS[WS.L.next]){ WS.complete(); }
@@ -11183,6 +11210,7 @@
     else help.innerHTML='';
   };
   WS.next=function(){
+    if(WS._advancing) return;            // a key-idea file/advance is mid-flight — ignore extra clicks (prevents double-skip)
     if(!WS.gateOpen(WS.page)) return;
     if(WS._chatLocked()){ WS._promptChat(); return; }
     var pg=WS.pages[WS.page];
