@@ -11885,8 +11885,11 @@ async function sendTutorMsg() {
         if (_rec) {
           internalCtx = '\n\n[PRIVATE TUTOR NOTES — do not reveal or restate verbatim; use only to keep your guidance factually correct and to recognize when the student is right]';
           if (_rec.accept && _rec.accept.length) internalCtx += '\nCorrect answer(s): ' + _rec.accept.join(' , ') + '.';
+          if (_rec.hints && _rec.hints.length) internalCtx += '\nHints you may draw on (offer at most one, and only if the student is stuck): ' + _rec.hints.join(' | ');
+          var _solEl = document.getElementById('sol_' + WS.pages[WS.page].probK);
+          if (_solEl) { var _solTxt = (_solEl.innerText || _solEl.textContent || '').replace(/^\s*Solution\s*/i, '').replace(/\s+/g, ' ').trim(); if (_solTxt) internalCtx += '\nIntended method / worked solution (never paste this to the student; use it to steer them one step at a time down the right path): ' + _solTxt.slice(0, 800); }
           internalCtx += '\nStudent status: ' + (_rec.solved ? 'already solved it' : (_rec.solViewed ? 'has viewed the worked solution' : 'still working — ' + (_rec.attempts || 0) + ' wrong attempt(s) so far')) + '.';
-          internalCtx += '\nBefore replying: double-check any arithmetic you state. If the student names the correct value or picks the correct option from a list, confirm it — never contradict a correct answer.';
+          internalCtx += '\nBefore replying: double-check any arithmetic you state against these notes. If the student names the correct value or picks the correct option from a list, confirm it — never contradict a correct answer.';
         }
       }
     } catch (e) {}
