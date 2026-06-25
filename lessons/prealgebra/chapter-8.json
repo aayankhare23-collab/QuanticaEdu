@@ -1,0 +1,512 @@
+{
+ "8.1": {
+  "title": "Squares and Their Roots",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "A maker is tiling a perfectly square panel for a workshop wall. Back in Chapter 2 she learned the forward move, take a side and multiply it by itself to get the area, so a side of 5 tiles makes a square of \\(5^2 = 25\\) tiles. Now the question flips. A finished panel uses exactly 36 tiles laid in a true square, and she wants to know how many tiles ran along one edge. She is not building forward from a side, she is working backward from the area to recover the side. That backward move is brand new, and it is the whole subject of this chapter. Squaring built the area up out of a side. The operation that takes the area and hands the side back is called the <b>square root</b>, written with a symbol called the <b>radical sign</b>, a little hook drawn over the number. The square root of a number \\(n\\) is the number whose square is \\(n\\), so \\(\\sqrt{36} = 6\\) because \\(6^2 = 36\\). We will spend this lesson running the squaring machine in reverse, only ever on perfect squares so the side always comes out a clean whole number."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A landscaper pours a fresh concrete pad shaped as one solid square. When it sets, the surface measures \\(196\\) square feet. Now she wants to wrap a metal edging strip all the way around the border, so first she needs to know how long one edge is. Here is the twist. She already knows the <b>area</b>, and area comes from squaring the side, so she has to run that backward. In other words, what whole number multiplied by itself gives \\(196\\). Try a couple of landmarks to corner the answer. Since \\(13 \\times 13 = 169\\) is too small and \\(15 \\times 15 = 225\\) is too big, the side has to sit right between them. What is the length of one edge of the pad, in feet?",
+    "hints": [
+     "Squaring a side gives the area, so to get the side back you undo the square. You are hunting for the number that, times itself, lands exactly on \\(196\\).",
+     "The two landmarks \\(13 \\times 13 = 169\\) and \\(15 \\times 15 = 225\\) trap the answer between \\(13\\) and \\(15\\). Only one whole number lives in that gap, so test it by multiplying it by itself."
+    ],
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0",
+     "fourteen"
+    ],
+    "sol": "The area of a square is the side length times itself, so finding the side means undoing that square. We want the whole number whose square is \\(196\\), which is exactly \\(\\sqrt{196}\\). The landmarks pin it down. We know \\(13^2 = 169\\), which falls short of \\(196\\), and \\(15^2 = 225\\), which overshoots it, so the side must be the one whole number squeezed between \\(13\\) and \\(15\\). That number is \\(14\\). Checking it, \\(14 \\times 14 = 196\\), which matches the area exactly. So \\(\\sqrt{196} = 14\\), and one edge of the pad is \\(\\boxed{14}\\) feet long."
+   },
+   {
+    "t": "imp",
+    "x": "So finding the side of a square from its area is really a brand new move, and it deserves a name. The <b>square root</b> of a number \\(n\\) is the number whose square is \\(n\\), and we write it with the radical symbol drawn as a hook with a bar stretched over the \\(n\\), like \\(\\sqrt{n}\\). Squaring takes a number and multiplies it by itself, and the square root reverses that, carrying us from the result back to the number we started with, so \\(\\sqrt{196} = 14\\) precisely because \\(14^2 = 196\\). When the area of a square is a perfect square, its square root is exactly the length of one side."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Now drop the area picture and just read the symbol on its own. The radical sign is a question in shorthand. When you see \\(\\sqrt{81}\\), it is asking which whole number, multiplied by itself, lands exactly on \\(81\\). Walk up the small squares to find it. We know \\(8 \\times 8 = 64\\), which is a bit short, and \\(9 \\times 9 = 81\\), which is right on the nose. What is the value of \\(\\sqrt{81}\\)? Type the single whole number.",
+    "hints": [
+     "The radical \\(\\sqrt{81}\\) wants the number whose square is \\(81\\). Try squaring whole numbers in order until one hits \\(81\\) exactly."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine"
+    ],
+    "sol": "The symbol \\(\\sqrt{81}\\) asks for the whole number whose square is \\(81\\). Test the squares nearby. Since \\(8^2 = 64\\) is too small and \\(9^2 = 81\\) hits the target exactly, the number we want is \\(9\\). So \\(\\sqrt{81} = 9\\), giving \\(\\boxed{9}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 252\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A two-way machine showing squaring and square root as opposite trips along one road. On the left are three starting numbers stacked in boxes, 7 then 9 then 12. On the right are their squares stacked in boxes, 49 then 81 then 144. A top arrow points from left to right and is labeled square, carrying each number forward to its square. A bottom arrow points from right to left and is labeled square root with the radical symbol, carrying each square back to its number. The forward pairs are 7 to 49, 9 to 81, and 12 to 144. The return pairs are 49 back to 7, 81 back to 9, and 144 back to 12. A caption notes the two arrows are the same road traveled in opposite directions.\">\n  <text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">ONE ROAD, TWO DIRECTIONS</text>\n  <text x=\"74\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" fill=\"var(--mid)\">the number</text>\n  <text x=\"366\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" fill=\"var(--mid)\">its square</text>\n  <rect x=\"42\" y=\"54\" width=\"64\" height=\"34\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"74\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">7</text>\n  <rect x=\"42\" y=\"100\" width=\"64\" height=\"34\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"74\" y=\"122\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">9</text>\n  <rect x=\"42\" y=\"146\" width=\"64\" height=\"34\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"74\" y=\"168\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">12</text>\n  <rect x=\"334\" y=\"54\" width=\"64\" height=\"34\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"366\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">49</text>\n  <rect x=\"334\" y=\"100\" width=\"64\" height=\"34\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"366\" y=\"122\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">81</text>\n  <rect x=\"334\" y=\"146\" width=\"64\" height=\"34\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"366\" y=\"168\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">144</text>\n  <defs>\n    <marker id=\"fwd\" markerWidth=\"9\" markerHeight=\"9\" refX=\"6.5\" refY=\"3\" orient=\"auto\"><path d=\"M 0 0 L 7 3 L 0 6 z\" fill=\"var(--gold-deep)\"/></marker>\n    <marker id=\"bwd\" markerWidth=\"9\" markerHeight=\"9\" refX=\"6.5\" refY=\"3\" orient=\"auto\"><path d=\"M 0 0 L 7 3 L 0 6 z\" fill=\"var(--accent)\"/></marker>\n  </defs>\n  <path d=\"M 112 84 C 180 64, 260 64, 328 84\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"2.4\" marker-end=\"url(#fwd)\"/>\n  <rect x=\"190\" y=\"60\" width=\"60\" height=\"18\" rx=\"9\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n  <text x=\"220\" y=\"73\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">square</text>\n  <path d=\"M 328 150 C 260 170, 180 170, 112 150\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"2.4\" marker-end=\"url(#bwd)\"/>\n  <rect x=\"176\" y=\"156\" width=\"88\" height=\"18\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--accent)\" stroke-width=\"1.2\"/>\n  <text x=\"220\" y=\"169\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent)\">&#8730; square root</text>\n  <text x=\"74\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--slate)\">go out: 7&#178;=49</text>\n  <text x=\"220\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--slate)\">9&#178;=81</text>\n  <text x=\"366\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--slate)\">12&#178;=144</text>\n  <text x=\"74\" y=\"226\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--accent)\">come back: &#8730;49=7</text>\n  <text x=\"220\" y=\"226\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--accent)\">&#8730;81=9</text>\n  <text x=\"366\" y=\"226\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--accent)\">&#8730;144=12</text>\n  <line x1=\"20\" y1=\"240\" x2=\"420\" y2=\"240\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/>\n  <text x=\"220\" y=\"250\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-style=\"italic\" fill=\"var(--mid)\">squaring drives out, the square root drives back</text>\n</svg>",
+    "cap": "Squaring and the square root are opposite trips along one road. Squaring carries a number out to its square, like \\(7\\) to \\(49\\), and the square root brings that square back to where it started, \\(\\sqrt{49}=7\\). On a perfect square the return trip always lands on a whole number."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A quilter is piecing together one big square panel out of tiny fabric squares. When she finishes, the panel holds exactly \\(144\\) little squares, packed edge to edge with no gaps, and the whole thing forms a perfect square. To plan her stitching she needs the number of small squares running along one side. That count is the square root of the area, \\(\\sqrt{144}\\). The familiar facts only reach \\(10 \\times 10 = 100\\), so she has to keep climbing. How many small squares run along one side of the panel?",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "You want the whole number that, multiplied by itself, gives \\(144\\). Since \\(10^2 = 100\\) is too small, the answer has to be bigger than ten. Climb up from there.",
+     "Step up one at a time. \\(11 \\times 11 = 121\\), which is still short of \\(144\\). Now try \\(12 \\times 12\\) and see where it lands."
+    ],
+    "sol": "The side length is the square root of the area, so we need the nonnegative whole number whose square is \\(144\\). The easy squares stop at \\(10^2 = 100\\), so we climb past ten. Testing the next values, \\(11^2 = 121\\), which is still less than \\(144\\), and \\(12^2 = 12 \\times 12 = 144\\), which lands exactly on it. So \\(\\sqrt{144} = 12\\), meaning the panel runs \\(12\\) small squares along each side. \\(\\boxed{12}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "A <b>perfect square</b> is just a whole number that you get by multiplying some whole number by itself, the way \\(81\\) is really \\(9^2\\) and \\(144\\) is really \\(12^2\\). So taking the square root of a perfect square is not scary at all, you are only asking which number got multiplied by itself to make it, and that number comes out clean every time. Once you know the squares of the small whole numbers, roughly \\(1\\) through \\(20\\), reading a root off is mostly recognizing a square you have already met and naming the number hiding underneath."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A stadium upgrades its scoreboard into a giant square video wall built from \\(625\\) identical square panels, fitted edge to edge into a perfect square shape. The crew needs to know how many panels run along one side, which is the square root of the total. Here is a landmark to lean on. Since \\(20^2 = 400\\) is too few panels and \\(30^2 = 900\\) is too many, the side length lands somewhere in the twenties. What is \\(\\sqrt{625}\\)? Type the single whole number.",
+    "hints": [
+     "The side length is a number in the twenties whose square is \\(625\\). Try squaring a value right in the middle of that range and see how close you land.",
+     "Test \\(25\\). Compute \\(25 \\times 25\\). If it equals \\(625\\) exactly, then \\(25\\) is the side length, since the square root recovers the side of a square from its area."
+    ],
+    "ans": "25",
+    "accept": [
+     "25",
+     "25.0",
+     "twenty five",
+     "twenty-five",
+     "twenty−five"
+    ],
+    "sol": "The square root of \\(625\\) is the nonnegative number whose square is \\(625\\). The landmark already narrows it down, because \\(20^2 = 400\\) is too small and \\(30^2 = 900\\) is too big, so the answer sits in the twenties. Trying the middle of that range, \\(25 \\times 25 = 625\\) exactly. So one full side of the video wall is \\(25\\) panels long, and \\(\\sqrt{625} = 25\\). \\(\\boxed{25}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Here is a wrinkle worth meeting head on. We know \\(10 \\times 10 = 100\\), so 10 squares to 100. But watch what happens with \\(-10\\). Since a negative times a negative is positive, \\((-10) \\times (-10) = 100\\) as well. So two different numbers square to 100, and it can feel like \\(\\sqrt{100}\\) could go either way. Mathematicians did not want the radical symbol to be ambiguous, so they made a firm choice. The radical always names the <b>nonnegative</b> value, the one that is zero or positive, so it points to exactly one number every time. With that rule in mind, evaluate \\(\\sqrt{100}\\), the single value the radical names. Type the whole number.",
+    "hints": [
+     "The radical does not mean \"any number that squares to 100\". It means the one nonnegative number whose square is 100. Of the two candidates 10 and \\(-10\\), only one is zero or positive.",
+     "Ask which value is nonnegative. Since \\(10^2 = 100\\) and 10 is positive, the radical names 10, not \\(-10\\)."
+    ],
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "sol": "Two numbers square to 100, namely 10 and \\(-10\\), since \\(10^2 = 100\\) and \\((-10)^2 = 100\\). The radical symbol is defined to name only the nonnegative one, the value that is zero or positive. Between 10 and \\(-10\\), the nonnegative choice is 10. So \\(\\sqrt{100} = 10\\), never \\(-10\\). The symbol points to exactly one value, and that value is \\(\\sqrt{100} = \\boxed{10}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the choice we make on purpose. Since a number and its negative both square to the same positive result, \\(10^2 = 100\\) and \\((-10)^2 = 100\\), the radical \\(\\sqrt{100}\\) would be stuck pointing at two answers at once if we let it mean either one. So we decide, by agreement, that the radical names only the nonnegative value, the one called the <b>principal square root</b>, which is why \\(\\sqrt{100}\\) is the single number \\(10\\) and never \\(-10\\). That one rule is what turns the square root into a clean machine, you feed it a perfect square and it hands back exactly one answer every time, and that answer is never negative."
+   },
+   {
+    "t": "p",
+    "x": "So far every time you have written \\(\\sqrt{36}\\) you have asked one tidy question, and the radical has answered with one tidy number, \\(6\\). The radical is a name. It points at a single value, the nonnegative side length of a square whose area is \\(36\\), and there is nothing ambiguous about where it points. But there is a second question hiding nearby that wears almost the same clothes. Instead of naming a value, it sets up an equation and asks which numbers could go in the empty spot, <b>every</b> number whose square lands on the target. Watch what happens next, because \\(36\\) is about to show up in both places at once. It will sit quietly inside a radical, where the answer has one shape, and it will sit on the right of an equation \\(x^2 = 36\\), where the answer has a different shape. The same number, two questions, two different kinds of reply. The whole trick from here on is reading carefully enough to tell which one you have been handed."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Here is a question that looks almost like a square root, but it is asking something different. The equation \\(x^2 = 49\\) does not hand you a symbol to evaluate. It asks for <b>every</b> number whose square is \\(49\\). One number that works is \\(7\\), since \\(7^2 = 49\\). But \\(7\\) is not alone, because a negative times a negative is positive, so \\((-7)^2 = 49\\) as well. Evaluating the radical \\(\\sqrt{49}\\) would give only the single nonnegative answer \\(7\\), yet the equation casts a wider net. How many different values of \\(x\\) make \\(x^2 = 49\\) true?",
+    "hints": [
+     "Squaring a negative number gives a positive result, so do not stop at the first number you find. Try both a positive and a negative candidate and square each one.",
+     "Check \\(7^2\\) and check \\((-7)^2\\). If both land on \\(49\\), then count how many separate values of \\(x\\) you have found."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "sol": "We want every value of \\(x\\) with \\(x^2 = 49\\). Testing the obvious one, \\(7^2 = 49\\), so \\(x = 7\\) works. Now think about negatives. Since a negative times a negative is positive, \\((-7)^2 = (-7)\\cdot(-7) = 49\\), so \\(x = -7\\) works too. No other whole number squares to \\(49\\), because anything bigger than \\(7\\) overshoots and anything between gives a different result. That leaves exactly two values, \\(7\\) and \\(-7\\). Notice this is more than \\(\\sqrt{49}\\) gives on its own, since the radical reports only the nonnegative \\(7\\). The equation, by contrast, accepts both. The count of solutions is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the thing we kept bumping into. When \\(n\\) is positive, asking which numbers satisfy \\(x^2 = n\\) has two answers, a positive one and its negative twin, since squaring throws away the sign and both come back to the same place. But \\(\\sqrt{n}\\) is a name we agreed points at only the nonnegative one of those two. So solving \\(x^2 = 36\\), which gives \\(6\\) and \\(-6\\), and evaluating \\(\\sqrt{36}\\), which gives just \\(6\\), are honestly two different questions that happen to land on the same number. The equation can hand you two values, the radical always names exactly one, and if a problem also tells you whether \\(x\\) is positive or negative, that single extra fact picks out which of the two you want."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two side-by-side number lines that contrast solving an equation with evaluating a radical. The left panel is headed solve x squared equals 36 and notes it has two answers. Its number line runs from negative 8 to positive 8 with a tick at every whole number and 0 in the middle. Two emphasized gold dots sit at negative 6 and at positive 6, and from each dot a thin curving arrow rises to a small rounded box reading 36, showing that squaring either number lands on 36. A gold label below reads x equals negative 6 or positive 6, two solutions. The right panel is headed evaluate the square root of 36, which names one value. Its number line is the same scale, but the entire negative half from 0 leftward is faded, the spot at negative 6 is only a faint dashed ghost dot, and the single highlighted gold dot is drawn at positive 6 with one arrow coming down from a box reading 6. A gold label reads the radical of 36 equals 6 only, one value. Together the panels show the equation lights up two points while the radical is defined to light up only the nonnegative one.\"><text x=\"116\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">SOLVE  x² = 36</text><text x=\"324\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">EVALUATE  √36</text><line x1=\"220\" y1=\"28\" x2=\"220\" y2=\"226\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 4\"/><line x1=\"28\" y1=\"168\" x2=\"204\" y2=\"168\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><line x1=\"28\" y1=\"162\" x2=\"28\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"39\" y1=\"164.5\" x2=\"39\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"50\" y1=\"162\" x2=\"50\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"61\" y1=\"164.5\" x2=\"61\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"72\" y1=\"162\" x2=\"72\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"83\" y1=\"164.5\" x2=\"83\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"94\" y1=\"162\" x2=\"94\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"105\" y1=\"164.5\" x2=\"105\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"116\" y1=\"162\" x2=\"116\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"127\" y1=\"164.5\" x2=\"127\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"138\" y1=\"162\" x2=\"138\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"149\" y1=\"164.5\" x2=\"149\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"160\" y1=\"162\" x2=\"160\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"171\" y1=\"164.5\" x2=\"171\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"182\" y1=\"162\" x2=\"182\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"193\" y1=\"164.5\" x2=\"193\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"204\" y1=\"162\" x2=\"204\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"28\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">−8</text><text x=\"50\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">−6</text><text x=\"72\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">−4</text><text x=\"94\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">−2</text><text x=\"116\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">0</text><text x=\"138\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">2</text><text x=\"160\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">4</text><text x=\"182\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">6</text><text x=\"204\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">8</text><rect x=\"97.0\" y=\"40\" width=\"38\" height=\"23\" rx=\"6\" fill=\"var(--gold2)\" fill-opacity=\"0.2\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/><text x=\"116\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">36</text><path d=\"M 50 160 C 50 114, 85 95, 107 65\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\" opacity=\"0.8\"/><path d=\"M 107 65 l -4 5 l 6 -1 z\" fill=\"var(--gold-deep)\" opacity=\"0.85\"/><path d=\"M 182 160 C 182 114, 147 95, 125 65\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\" opacity=\"0.8\"/><path d=\"M 125 65 l 4 5 l -6 -1 z\" fill=\"var(--gold-deep)\" opacity=\"0.85\"/><text x=\"47\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"7.5\" fill=\"var(--slate)\" opacity=\"0.85\">square it</text><text x=\"185\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"7.5\" fill=\"var(--slate)\" opacity=\"0.85\">square it</text><circle cx=\"50\" cy=\"168\" r=\"5.5\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><circle cx=\"182\" cy=\"168\" r=\"5.5\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"116\" y=\"208\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">x = −6  or  +6</text><text x=\"116\" y=\"222\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">two solutions</text><line x1=\"236\" y1=\"168\" x2=\"324\" y2=\"168\" stroke=\"var(--line)\" stroke-width=\"1.6\" opacity=\"0.25\"/><line x1=\"324\" y1=\"168\" x2=\"412\" y2=\"168\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><line x1=\"236\" y1=\"162\" x2=\"236\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"247\" y1=\"164.5\" x2=\"247\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"258\" y1=\"162\" x2=\"258\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"269\" y1=\"164.5\" x2=\"269\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"280\" y1=\"162\" x2=\"280\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"291\" y1=\"164.5\" x2=\"291\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"302\" y1=\"162\" x2=\"302\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"313\" y1=\"164.5\" x2=\"313\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\" opacity=\"0.25\"/><line x1=\"324\" y1=\"162\" x2=\"324\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"335\" y1=\"164.5\" x2=\"335\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"346\" y1=\"162\" x2=\"346\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"357\" y1=\"164.5\" x2=\"357\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"368\" y1=\"162\" x2=\"368\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"379\" y1=\"164.5\" x2=\"379\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"390\" y1=\"162\" x2=\"390\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"401\" y1=\"164.5\" x2=\"401\" y2=\"171.5\" stroke=\"var(--line)\" stroke-width=\"1\"/><line x1=\"412\" y1=\"162\" x2=\"412\" y2=\"174\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"236\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\" opacity=\"0.3\">−8</text><text x=\"258\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\" opacity=\"0.3\">−6</text><text x=\"280\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\" opacity=\"0.3\">−4</text><text x=\"302\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\" opacity=\"0.3\">−2</text><text x=\"324\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">0</text><text x=\"346\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">2</text><text x=\"368\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">4</text><text x=\"390\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">6</text><text x=\"412\" y=\"185\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">8</text><rect x=\"375.0\" y=\"40\" width=\"30\" height=\"23\" rx=\"6\" fill=\"var(--gold2)\" fill-opacity=\"0.2\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/><text x=\"390\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">6</text><circle cx=\"258\" cy=\"168\" r=\"5\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\" stroke-dasharray=\"2 2\" opacity=\"0.4\"/><path d=\"M 390 65 L 390 159\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\" opacity=\"0.8\"/><path d=\"M 390 159 l -4 -6 l 8 0 z\" fill=\"var(--gold-deep)\" opacity=\"0.85\"/><text x=\"412\" y=\"115.5\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"7.5\" fill=\"var(--slate)\" opacity=\"0.85\">points</text><text x=\"412\" y=\"125.5\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"7.5\" fill=\"var(--slate)\" opacity=\"0.85\">here</text><circle cx=\"390\" cy=\"168\" r=\"5.5\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"324\" y=\"208\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">√36 = 6 only</text><text x=\"324\" y=\"222\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">one value</text></svg>",
+    "cap": "The same number line, read two ways. The equation \\(x^2 = 36\\) lights up both \\(-6\\) and \\(+6\\), since squaring either one gives \\(36\\). The radical \\(\\sqrt{36}\\) is defined to name only the nonnegative root, so it points at the single value \\(6\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A diver tracks her depth with a number called \\(x\\), measured in feet, where \\(x\\) is negative because it records how far below the surface she is. Her dive computer models one moment with the rule \\(x^2 = 324\\). Two numbers square to \\(324\\), since \\(18^2 = 324\\) and \\((-18)^2 = 324\\), so on its own the rule allows \\(x = 18\\) or \\(x = -18\\). But a depth below the surface cannot be a positive number, so only one of these fits the story. What is the value of \\(x\\), including its sign?",
+    "hints": [
+     "Find the two numbers whose square is \\(324\\). Take the square root of \\(324\\) to get the size, then remember the negative version squares to \\(324\\) as well.",
+     "The size of \\(x\\) is \\(\\sqrt{324} = 18\\), so \\(x\\) is \\(18\\) or \\(-18\\). Since \\(x\\) measures a depth below the surface, it must be negative, which rules out \\(18\\)."
+    ],
+    "ans": "-18",
+    "accept": [
+     "-18",
+     "-18.0",
+     "negative 18",
+     "negative eighteen",
+     "−18",
+     "−18.0"
+    ],
+    "sol": "Start with the equation \\(x^2 = 324\\). To find how big \\(x\\) is, take the square root of \\(324\\). Since \\(18^2 = 324\\), we get \\(\\sqrt{324} = 18\\), so \\(x\\) has size \\(18\\). Squaring hides the sign, because both \\(18^2 = 324\\) and \\((-18)^2 = 324\\), so the equation alone leaves two candidates, \\(x = 18\\) and \\(x = -18\\). Now use the story to choose. The value \\(x\\) records a depth below the surface, which means \\(x\\) must be negative, so \\(18\\) cannot be the answer. That leaves the negative candidate, and a quick check confirms \\((-18)^2 = 324\\). So \\(x = \\boxed{-18}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Squaring is a one-way street when it comes to sign. A positive number squared is positive, since positive times positive is positive. A negative number squared is also positive, since negative times negative is positive. And \\(0^2 = 0\\). So no matter what real number you start with, squaring it lands you at \\(0\\) or above. Now look at the equation \\(x^2 = -9\\). It is asking for a real number whose square is below zero. How many real values of \\(x\\) make \\(x^2 = -9\\) true?",
+    "hints": [
+     "Try a few numbers. \\(3^2 = 9\\), \\((-3)^2 = 9\\), \\(0^2 = 0\\). Every square you get is \\(0\\) or positive. Can any of them ever equal \\(-9\\)?",
+     "Since squaring any real number gives a result of \\(0\\) or more, no real number can square to a negative like \\(-9\\). Count how many real \\(x\\) work, and that count is the answer."
+    ],
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "none",
+     "zero"
+    ],
+    "sol": "Square any real number and check the sign. A positive number squared is positive, a negative number squared is positive, and \\(0^2 = 0\\). That covers every real number, so a square is always \\(0\\) or greater. The equation \\(x^2 = -9\\) wants a square that equals \\(-9\\), which sits below zero. Nothing real can reach down there, so no real value of \\(x\\) satisfies it. The count of real solutions is \\(\\boxed{0}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "When I square any real number, positive or negative or zero, the result always comes out 0 or positive, never negative, since a negative times a negative flips back to positive and a positive times a positive stays positive. So nothing I can put in for \\(x\\) will make \\(x^2\\) land on a negative number, which means a negative number has no real square root and an equation like \\(x^2 = -25\\) has no real solution. This is not a hole in what I know how to do, it is just how squaring works, because every square points the same way, away from the negatives."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Now let us put the two moves together, and the order matters. Look at the expression \\(\\sqrt{(-12)^2}\\). The exponent acts first, so we square the \\(-12\\) before the radical ever gets a turn. A negative times a negative is positive, so squaring \\(-12\\) hands back a positive number, and then the radical reports its nonnegative root. Even though we walked in carrying a negative sign, watch where we come out. What is the value of \\(\\sqrt{(-12)^2}\\)? Type the single whole number.",
+    "hints": [
+     "Follow the order of operations and square first. What is \\((-12)^2\\)? Remember that a negative times a negative gives a positive result, so the inside becomes a positive number before you ever touch the radical.",
+     "Once the inside is \\(144\\), you just need \\(\\sqrt{144}\\). Find the nonnegative number whose square is \\(144\\). The radical always reports the nonnegative root, so the sign you started with does not survive."
+    ],
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "sol": "Work from the inside out. The square happens first, so compute \\((-12)^2\\). A negative times a negative is positive, so \\((-12)^2 = 144\\), a positive number. Now the radical takes over, and it always returns the nonnegative root, so \\(\\sqrt{144} = 12\\) since \\(12^2 = 144\\). Notice what happened. We started with \\(-12\\), but squaring threw the sign away, and the radical handed back the nonnegative version. That is why \\(\\sqrt{(-12)^2}\\) comes out positive even though the number inside began negative. The value is \\(\\boxed{12}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Squaring and taking a square root are opposite moves, so doing one and then the other lands you right back where you started. Square the square root of \\(n\\) and you get \\(n\\) again, and take the square root of \\(n\\) squared and you also get \\(n\\) back, as long as \\(n\\) was not negative to begin with. The one thing to watch is that the radical always hands back a value that is not negative, so when you square a negative number first, the square erases its sign and the root can only return the positive twin. That is why \\(\\sqrt{(-12)^2}\\) comes out to \\(12\\) and not \\(-12\\). The squaring wiped the sign away and the root had no way to put it back."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A square garden has an area of \\(1{,}296\\) square feet, and you want its exact side length. That number is too big to recognize as a square at a glance, so guessing feels hopeless. Here is a faster move. Notice that \\(1{,}296 = 16 \\times 81\\), and both \\(16\\) and \\(81\\) are perfect squares you already know. The square root of a product of perfect squares is the product of their roots, so \\(\\sqrt{1{,}296} = \\sqrt{16} \\times \\sqrt{81}\\). What is \\(\\sqrt{1{,}296}\\)? Type the single whole number.",
+    "hints": [
+     "Split the work using \\(1{,}296 = 16 \\times 81\\). You can take the root of each piece on its own, since \\(\\sqrt{16 \\times 81} = \\sqrt{16} \\times \\sqrt{81}\\).",
+     "Find each small root, then multiply them. \\(\\sqrt{16} = 4\\) because \\(4^2 = 16\\), and \\(\\sqrt{81} = 9\\) because \\(9^2 = 81\\). Now compute \\(4 \\times 9\\)."
+    ],
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0",
+     "thirty six",
+     "thirty-six",
+     "thirty−six"
+    ],
+    "sol": "Break the big number into perfect-square factors. Since \\(1{,}296 = 16 \\times 81\\), the root splits into a product of roots, so \\(\\sqrt{1{,}296} = \\sqrt{16} \\times \\sqrt{81}\\). Each piece is easy, with \\(\\sqrt{16} = 4\\) and \\(\\sqrt{81} = 9\\). Multiplying gives \\(4 \\times 9 = 36\\). To be sure, check that \\(36^2 = 36 \\times 36 = 1{,}296\\), which matches the area, so the side length is exactly \\(\\sqrt{1{,}296} = \\boxed{36}\\) feet."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 360\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A figure showing how to take the square root of 1296 by splitting it into perfect-square pieces. At the top sits the number 1296. A bracket beneath it splits 1296 into the product 16 times 81. Below, two small square grids sit side by side. On the left, a 4 by 4 grid is labeled 16, and its side length is marked 4. On the right, a 9 by 9 grid is labeled 81, and its side length is marked 9. Arrows carry the two roots, 4 and 9, downward into a multiplication that reads 4 times 9 equals 36, labeled as the square root of 1296. A caption notes you can root a big perfect square by rooting its perfect-square pieces and multiplying the results.\">\n  <text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">ROOT THE PIECES, THEN MULTIPLY</text>\n  <rect x=\"178\" y=\"30\" width=\"84\" height=\"34\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"220\" y=\"53\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">1296</text>\n  <path d=\"M 130 76 L 130 84 L 310 84 L 310 76\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <path d=\"M 220 64 L 220 84\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"220\" y=\"102\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">16 &#215; 81</text>\n  <path d=\"M 130 84 L 100 118\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <path d=\"M 310 84 L 340 118\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <g>\n    <rect x=\"62\" y=\"124\" width=\"76\" height=\"76\" rx=\"3\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n    <path d=\"M 81 124 L 81 200 M 100 124 L 100 200 M 119 124 L 119 200\" stroke=\"var(--line)\" stroke-width=\"0.8\"/>\n    <path d=\"M 62 143 L 138 143 M 62 162 L 138 162 M 62 181 L 138 181\" stroke=\"var(--line)\" stroke-width=\"0.8\"/>\n    <text x=\"100\" y=\"220\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">area 16</text>\n    <text x=\"100\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">4</text>\n    <path d=\"M 46 124 L 46 200\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n    <text x=\"38\" y=\"166\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">4</text>\n  </g>\n  <g>\n    <rect x=\"290\" y=\"124\" width=\"76\" height=\"76\" rx=\"3\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n    <path d=\"M 298 124 L 298 200 M 307 124 L 307 200 M 315 124 L 315 200 M 324 124 L 324 200 M 332 124 L 332 200 M 341 124 L 341 200 M 349 124 L 349 200 M 358 124 L 358 200\" stroke=\"var(--line)\" stroke-width=\"0.7\"/>\n    <path d=\"M 290 132 L 366 132 M 290 141 L 366 141 M 290 149 L 366 149 M 290 158 L 366 158 M 290 166 L 366 166 M 290 175 L 366 175 M 290 183 L 366 183 M 290 192 L 366 192\" stroke=\"var(--line)\" stroke-width=\"0.7\"/>\n    <text x=\"328\" y=\"220\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">area 81</text>\n    <text x=\"328\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">9</text>\n    <path d=\"M 382 124 L 382 200\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n    <text x=\"390\" y=\"166\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">9</text>\n  </g>\n  <path d=\"M 100 232 L 175 262\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.8\"/>\n  <path d=\"M 175 262 l -10 -1 l 5 -7 z\" fill=\"var(--gold2)\"/>\n  <path d=\"M 328 232 L 265 262\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.8\"/>\n  <path d=\"M 265 262 l 5 7 l 5 -8 z\" fill=\"var(--gold2)\"/>\n  <rect x=\"138\" y=\"268\" width=\"164\" height=\"40\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/>\n  <text x=\"220\" y=\"293\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">4 &#215; 9 = 36</text>\n  <text x=\"220\" y=\"330\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">&#8730;1296 = 36</text>\n  <text x=\"220\" y=\"349\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">check: 36 &#215; 36 = 1296</text>\n</svg>",
+    "cap": "A big perfect square does not have to be rooted all at once. Split \\(1296\\) into the perfect-square factors \\(16\\) and \\(81\\), root each piece on its own to get \\(4\\) and \\(9\\), then multiply those roots to land on \\(\\sqrt{1296} = 4 \\times 9 = 36\\). The two little grids show why, a side of \\(4\\) builds an area of \\(16\\) and a side of \\(9\\) builds an area of \\(81\\), so a side of \\(4 \\times 9 = 36\\) builds the full area \\(1296\\). And the check holds, \\(36 \\times 36 = 1296\\)."
+   },
+   {
+    "t": "imp",
+    "x": "When a perfect square is too big to recognize on sight, you do not have to guess your way to its root. Look for a way to split it into a product of two smaller perfect squares you already know, like writing \\(1{,}296\\) as \\(16 \\times 81\\). Then the square root of the whole is just the product of the roots of the pieces, so \\(\\sqrt{1{,}296} = \\sqrt{16} \\times \\sqrt{81} = 4 \\times 9 = 36\\). This works because rooting and multiplying cooperate, but only when both pieces really are perfect squares, since that is what keeps every root a clean whole number."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A friend is racing through homework and claims that \\(\\sqrt{1024} = 34\\). No calculator is allowed, but two quick mental tests can judge the claim. First the size test. Since \\(30^2 = 900\\) and \\(35^2 = 1{,}225\\), a number near 34 squares to well over \\(1{,}150\\), which already shoots past \\(1{,}024\\), so 34 looks too big. Second the last-digit test. A whole number ending in 4 squares to something ending in 6, because \\(4 \\times 4 = 16\\). But \\(1{,}024\\) ends in 4, not 6, so the true root cannot end in 4 at all. Both tests reject 34. Stepping down a little finds a number whose square lands exactly on \\(1{,}024\\). What is the correct value of \\(\\sqrt{1024}\\)? Type the single whole number.",
+    "hints": [
+     "The size test says the root sits below 34, and the last-digit test says it cannot end in 4. So try a slightly smaller whole number and square it to see if you hit \\(1{,}024\\) on the nose.",
+     "You want a number whose square ends in 4. A number ending in 2 works, since \\(2 \\times 2 = 4\\). Check \\(32^2\\)."
+    ],
+    "ans": "32",
+    "accept": [
+     "32",
+     "32.0",
+     "thirty two",
+     "thirty-two",
+     "thirty−two"
+    ],
+    "sol": "Both tests already narrow things down before any real arithmetic. The size test puts the root below 34, since \\(34^2 = 1{,}156\\) overshoots \\(1{,}024\\). The last-digit test rules out any root ending in 4, since those square to a number ending in 6, while \\(1{,}024\\) ends in 4. A root ending in 2 fits the last digit, because \\(2 \\times 2 = 4\\). The candidate just under 34 that ends in 2 is 32. Squaring it gives \\(32^2 = 32 \\times 32 = 1{,}024\\), an exact hit, so \\(1{,}024\\) is a perfect square and its root is the nonnegative number that squares to it. Therefore \\(\\sqrt{1024} = \\boxed{32}\\)."
+   },
+   {
+    "t": "fact",
+    "x": "The radical symbol has a quiet history hiding inside it. The Latin word \"radix\" means root, the same root that gives us the vegetable radish, so a radish really is a little root you can eat. In the early 1500s mathematicians across Europe wanted a short mark to stand for root, and the most widely told account says the sign \\(\\sqrt{\\phantom{n}}\\) grew out of a stylized lowercase letter r, the first letter of radix. The German mathematician Christoff Rudolff used an early form of the sign in an algebra book printed in 1525. The long bar that stretches across the top, called the vinculum, was added later so a reader could see exactly how much sits under the root. So the radical sign is, in a way, a five hundred year old abbreviation for the word root, which fits perfectly, since the side length is the root from which the whole square grows."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Here is a brand new shape of equation, and the surprise is where the variable hides. A landscaper is building a square herb bed, and she writes down one clean fact about it. The side length of a square is the square root of its area, so if you take the square root of the bed's area you get the length of one side. She measured that side to be \\(15\\) feet, which means \\(\\sqrt{x} = 15\\), where \\(x\\) is the area in square feet. The variable \\(x\\) is sitting under the radical, and that is new. The square root is trapping it, and the move that undoes a square root is squaring, so you can square both sides to set \\(x\\) free. What is the value of \\(x\\)?",
+    "hints": [
+     "The variable is stuck under the radical sign. Whatever you do to one side of an equation you must do to the other, so apply the same operation to both sides that will cancel the square root.",
+     "Squaring undoes a square root. The left side \\((\\sqrt{x})^2\\) collapses back to just \\(x\\), and the right side becomes \\(15^2\\). Now just compute \\(15^2\\)."
+    ],
+    "ans": "225",
+    "accept": [
+     "225",
+     "225.0",
+     "two hundred and twenty-five",
+     "two hundred and twenty−five",
+     "two hundred twenty-five",
+     "two hundred twenty−five"
+    ],
+    "sol": "The equation is \\(\\sqrt{x} = 15\\), and \\(x\\) is hiding under the radical. To free it, undo the square root by squaring, and to keep the equation balanced you square both sides. $$\\left(\\sqrt{x}\\right)^2 = 15^2$$ Squaring a square root cancels it, so the left side becomes just \\(x\\). On the right, \\(15^2 = 15 \\times 15 = 225\\). That gives \\(x = 225\\). To be sure, plug it back in. The square root of \\(225\\) really is \\(15\\), since \\(15 \\times 15 = 225\\), so the side length checks out and the area is \\(225\\) square feet. \\(\\boxed{225}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "When the unknown is trapped under a radical, I can free it by squaring both sides of the equation, since squaring is the exact move that undoes a square root. But the radical sign only ever names a value that is zero or positive, so a radical can never come out equal to a negative number. That means if an equation sets \\(\\sqrt{x}\\) equal to something negative, it has no solution at all, even if the algebra looks like it should work. Squaring both sides is a real tool, but it can never overrule what the root is allowed to be."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "Here is a capstone that pulls the whole chapter together. A square garden has an area sensor that reports \\(\\sqrt{3x + 4}\\), and right now it reads \\(11\\). So you know that \\(\\sqrt{3x + 4} = 11\\). Before doing anything, notice that \\(11\\) is positive, which means a real solution is allowed to exist, since a square root can equal a positive number. To find \\(x\\), you want to free the expression hiding under the radical. What value of \\(x\\) makes this equation true?",
+    "hints": [
+     "Squaring is the move that undoes a square root. If \\(\\sqrt{3x + 4} = 11\\), then squaring both sides gives \\(3x + 4 = 11^2\\). Work out \\(11^2\\) first.",
+     "Now \\(3x + 4 = 121\\) is just a linear equation like the ones from Chapter 6. Subtract \\(4\\) from both sides, then divide by \\(3\\)."
+    ],
+    "ans": "39",
+    "accept": [
+     "39",
+     "39.0",
+     "thirty-nine",
+     "thirty−nine"
+    ],
+    "sol": "Start with \\(\\sqrt{3x + 4} = 11\\). The right side is positive, so a real solution can exist. The square root and the square undo each other, so squaring both sides frees the inside. That gives \\(3x + 4 = 11^2 = 121\\). Now it is a plain linear equation. Subtract \\(4\\) from both sides to get \\(3x = 117\\), then divide by \\(3\\) to get \\(x = 39\\). Check it by substituting back. Inside the radical you get \\(3 \\times 39 + 4 = 117 + 4 = 121\\), and \\(\\sqrt{121} = 11\\), which matches. So the value of \\(x\\) is \\(\\boxed{39}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "Here is one last case, and it rewards every bit of care you have built up. Solve \\(\\sqrt{x - 2} = -4\\). It is tempting to square both sides right away and write \\(x - 2 = 16\\), so \\(x = 18\\), and call it done. But a square root only ever gives back zero or a positive value, so look hard at the equation before trusting that. How many solutions does the equation \\(\\sqrt{x - 2} = -4\\) have? Type the single number.",
+    "hints": [
+     "The radical \\(\\sqrt{\\phantom{x}}\\) always means the nonnegative root. So whatever \\(x - 2\\) turns out to be, can \\(\\sqrt{x - 2}\\) ever come out negative?",
+     "Try the tempting answer anyway. Squaring gives \\(x = 18\\), and then \\(\\sqrt{18 - 2} = \\sqrt{16} = 4\\), not \\(-4\\). So even that candidate fails the check. If the one value squaring hands you does not work, count how many values are left."
+    ],
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "none",
+     "zero"
+    ],
+    "sol": "The radical \\(\\sqrt{\\phantom{x}}\\) stands for the principal square root, which is always zero or positive. The right side of the equation is \\(-4\\), a negative number, and a principal square root can never equal a negative number. So before doing any algebra you can already suspect that nothing works. Let us confirm it. Squaring both sides gives \\(x - 2 = 16\\), so \\(x = 18\\). Now check that candidate in the original equation. \\(\\sqrt{18 - 2} = \\sqrt{16} = 4\\), and \\(4\\) is not \\(-4\\). The value squaring produced does not satisfy the equation, because squaring can erase a sign and sneak in a false answer. With that lone candidate rejected, no value of \\(x\\) is left that makes the equation true. The number of solutions is \\(\\boxed{0}\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "A garden bed is a perfect square, and a quick measurement shows its area is exactly \\(121\\) square feet. To set the edging, you need the length of one side, which is the number that multiplies by itself to give \\(121\\). Since \\(11 \\times 11 = 121\\), the side length is \\(\\sqrt{121}\\). What is \\(\\sqrt{121}\\)?",
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven"
+    ],
+    "hints": [
+     "A square root asks which nonnegative number, times itself, gives the number inside. Here you want the number whose square is \\(121\\).",
+     "Try a number in the middle of your tables. Since \\(10^2 = 100\\) and \\(12^2 = 144\\), the answer sits between them, and you are told \\(11 \\times 11 = 121\\)."
+    ],
+    "sol": "The square root of a number is the nonnegative value that squares to give it. We are looking for the number whose square is \\(121\\). Testing nearby whole numbers, \\(10^2 = 100\\) is too small and \\(12^2 = 144\\) is too big, so the root is between \\(10\\) and \\(12\\). Checking \\(11\\), we get \\(11 \\times 11 = 121\\), which matches exactly. So \\(\\sqrt{121} = 11\\), and that is the side length of the garden bed in feet. The answer is \\(\\boxed{11}\\)."
+   },
+   {
+    "x": "A square rug lies flat on a floor as one solid square, and it covers exactly \\(256\\) square feet. Because the rug is a perfect square, its area is the side length multiplied by itself. The side length is the number that, when squared, gives \\(256\\). What is the side length of the rug in feet?",
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen"
+    ],
+    "hints": [
+     "The area of a square is its side length times itself, so you are looking for a number whose square is \\(256\\). In other words, find \\(\\sqrt{256}\\).",
+     "Try squaring numbers near the answer. Since \\(15^2 = 225\\) is too small and \\(17^2 = 289\\) is too big, the side length sits right between them."
+    ],
+    "sol": "The area of a square equals its side length times itself, so the side length is the square root of the area. That means I need \\(\\sqrt{256}\\), the nonnegative number whose square is \\(256\\). Testing nearby whole numbers, \\(15^2 = 225\\) is too small and \\(17^2 = 289\\) is too large, so the root must be \\(16\\). Checking, \\(16 \\times 16 = 256\\), which matches the area exactly. The side length of the rug is \\(\\boxed{16}\\) feet."
+   },
+   {
+    "x": "A patio is shaped like a perfect square and covers \\(169\\) square feet of ground. You want to know how long each side is, which means finding the whole number that multiplies by itself to give \\(169\\). Before reaching for it directly, notice that \\(10^2 = 100\\) and \\(20^2 = 400\\), so the side length sits somewhere between \\(10\\) and \\(20\\) feet. Find \\(\\sqrt{169}\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "The answer is a whole number between \\(10\\) and \\(20\\), since \\(10^2 = 100\\) and \\(20^2 = 400\\). Try squaring a few numbers in that range until one lands on \\(169\\).",
+     "The number ends in \\(9\\), and a whole number squared ends in \\(9\\) only when it ends in \\(3\\) or \\(7\\). Test \\(13\\) by computing \\(13 \\times 13\\)."
+    ],
+    "sol": "Taking a square root asks for the nonnegative number whose square is \\(169\\), the same as recovering the side of a square from its area. The landmarks pin it down fast. Since \\(10^2 = 100\\) and \\(20^2 = 400\\), the root is between \\(10\\) and \\(20\\), so I only need to search that gap. Because \\(169\\) ends in a \\(9\\), the root must end in \\(3\\) or \\(7\\). Checking the smaller option, \\(13 \\times 13 = 169\\), which matches exactly. So \\(\\sqrt{169} = 13\\), meaning each side of the patio is \\(13\\) feet long. \\(\\boxed{13}\\)"
+   },
+   {
+    "ans": "3",
+    "x": "When you write \\(x^2 = 9\\), there are two numbers that work, since both \\(3\\) and \\(-3\\) square to \\(9\\). But the radical symbol is pickier than that. \\(\\sqrt{9}\\) is defined to name only one of those two numbers, the nonnegative one, so the answer is never in doubt. Evaluate \\(\\sqrt{9}\\). Type the single whole number.",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "The radical never gives back a negative value. You only need the nonnegative number whose square is \\(9\\).",
+     "Ask yourself which nonnegative whole number times itself equals \\(9\\). Since \\(3 \\times 3 = 9\\), that is your value."
+    ],
+    "sol": "The equation \\(x^2 = 9\\) has two solutions, \\(3\\) and \\(-3\\), because each of them squares to \\(9\\). The radical \\(\\sqrt{9}\\) is different from that equation. By definition it names only the nonnegative number whose square is \\(9\\), so it picks out exactly one value and ignores the negative one. Since \\(3 \\times 3 = 9\\) and \\(3\\) is nonnegative, we get \\(\\sqrt{9} = 3\\). So the value is \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "A square garden plot covers an area of \\(400\\) square feet. Since a square's area is its side length times itself, the side length is the number whose square is \\(400\\). What is \\(\\sqrt{400}\\)? Type the single whole number.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0",
+     "twenty"
+    ],
+    "hints": [
+     "The square root of a perfect square is the nonnegative number that, when multiplied by itself, gives that number. Ask yourself which whole number times itself lands on \\(400\\).",
+     "Break \\(400\\) into perfect-square pieces. Notice that \\(400 = 4 \\times 100\\), and you already know \\(\\sqrt{4} = 2\\) and \\(\\sqrt{100} = 10\\), so the root is \\(2 \\times 10\\)."
+    ],
+    "sol": "I want the nonnegative number whose square is \\(400\\). One clean way is to split \\(400\\) into perfect-square factors, since \\(400 = 4 \\times 100\\). The root of a product of perfect squares is the product of their roots, so \\(\\sqrt{400} = \\sqrt{4} \\times \\sqrt{100} = 2 \\times 10 = 20\\). I can check this by squaring back, and \\(20^2 = 20 \\times 20 = 400\\), which matches the area. So the side of the garden is \\(\\sqrt{400} = \\boxed{20}\\) feet."
+   },
+   {
+    "x": "A square garden plot has an area of \\(81\\) square meters, so its side length \\(x\\) makes \\(x^2 = 81\\). But forget the garden for a second and treat \\(x\\) as just a number on the line. Both \\(9\\) and \\(-9\\) square to \\(81\\), since \\(9^2 = 81\\) and \\((-9)^2 = 81\\). So when you ask \"what number, squared, gives \\(81\\)\" the line answers with two numbers, not one. How many values of \\(x\\) satisfy \\(x^2 = 81\\)? Type the single number.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "A value of \\(x\\) works if \\(x^2\\) lands exactly on \\(81\\). Try the positive root, then check whether its negative also works.",
+     "Test \\(9\\), since \\(9^2 = 81\\), good. Now test \\(-9\\), since \\((-9)^2 = 81\\), also good. Count how many different numbers you found."
+    ],
+    "sol": "We want every number \\(x\\) whose square is \\(81\\). Start with the obvious one. Since \\(9^2 = 81\\), the value \\(x = 9\\) works. Now remember that a negative times a negative is positive, so squaring a negative number gives a positive result. That means \\((-9)^2 = (-9)\\times(-9) = 81\\), so \\(x = -9\\) works too. No other number squares to \\(81\\), because any number larger than \\(9\\) in size has a square bigger than \\(81\\), and any number smaller in size has a square smaller than \\(81\\). So exactly two values, \\(9\\) and \\(-9\\), satisfy the equation. This is the heart of the two-answers idea. Solving \\(x^2 = 81\\) gives a pair, while evaluating the radical \\(\\sqrt{81}\\) gives just the one nonnegative value \\(9\\). The count of solutions here is \\(\\boxed{2}\\)."
+   },
+   {
+    "x": "A weather station tracks how far a reading sits from freezing using a model where \\(x^2 = 225\\). For this particular cold snap the engineers know \\(x\\) is a <b>negative</b> number. Two numbers square to give \\(225\\), namely \\(15\\) and \\(-15\\), since \\(15^2 = 225\\) and \\((-15)^2 = 225\\). The model needs the negative one. What is the value of \\(x\\)? Type the single number, including its sign.",
+    "ans": "-15",
+    "accept": [
+     "-15",
+     "-15.0",
+     "negative 15",
+     "negative fifteen",
+     "−15",
+     "−15.0"
+    ],
+    "hints": [
+     "The principal square root \\(\\sqrt{225}\\) gives you the positive number whose square is \\(225\\). Find that whole number first.",
+     "Once you know \\(\\sqrt{225} = 15\\), the two solutions of \\(x^2 = 225\\) are \\(15\\) and \\(-15\\). The problem tells you \\(x\\) is negative, so pick that one."
+    ],
+    "sol": "Start by finding the positive number whose square is \\(225\\). Since \\(15^2 = 15 \\times 15 = 225\\), we have \\(\\sqrt{225} = 15\\). That means \\(x^2 = 225\\) has two solutions, \\(x = 15\\) and \\(x = -15\\), because both \\(15^2 = 225\\) and \\((-15)^2 = 225\\). The radical symbol always points to the nonnegative root, but the equation itself keeps both. Here we are told \\(x\\) is negative, so we choose the negative one and get \\(x = \\boxed{-15}\\)."
+   },
+   {
+    "x": "A square root is a kind of reverse area finder. It hands you the side length of a square once you know the area, and an area is never negative. So when you square a real number, the result is always zero or positive, never below zero. With that in mind, look at the equation \\(x^2 = -16\\). How many real values of \\(x\\) make this true? Type the single number.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "none",
+     "zero"
+    ],
+    "hints": [
+     "Try a few numbers. A positive number squared is positive, a negative number squared is also positive, and \\(0^2 = 0\\). Can any of these land on a negative result?",
+     "Since every real number squared gives zero or more, no real \\(x\\) can ever produce \\(-16\\). Count how many work."
+    ],
+    "sol": "Squaring a real number can never give a negative result. A positive times a positive is positive, a negative times a negative is also positive, and \\(0^2 = 0\\). So \\(x^2\\) is always zero or larger for any real \\(x\\). The equation \\(x^2 = -16\\) asks for a real number whose square is \\(-16\\), which is below zero, so nothing can satisfy it. The closest perfect square nearby is \\(16\\), and \\(\\sqrt{16} = 4\\) shows that \\(4^2 = 16\\), a positive value, never \\(-16\\). There are no real solutions, so the count is \\(\\boxed{0}\\)."
+   },
+   {
+    "x": "Squaring a number and taking a square root are opposite moves, so when you do one right after the other on the same number, you land back where you started. To see it once, notice that \\(\\sqrt{49} = 7\\) and then \\(7^2 = 49\\), so the two steps cancel. Now use that same undo idea on a number that is not a perfect square. Evaluate \\(\\left(\\sqrt{47}\\right)^2\\), the square root of 47 squared. What single whole number does it equal?",
+    "ans": "47",
+    "accept": [
+     "47",
+     "47.0",
+     "forty seven",
+     "forty-seven",
+     "forty−seven"
+    ],
+    "hints": [
+     "The square root of a number is the value whose square is that number. So whatever \\(\\sqrt{47}\\) is, squaring it has to give back 47 by the very meaning of the root.",
+     "You do not need to find \\(\\sqrt{47}\\) as a decimal. Squaring undoes the root, so \\(\\left(\\sqrt{47}\\right)^2\\) is just 47 itself."
+    ],
+    "sol": "By definition, \\(\\sqrt{47}\\) is the nonnegative number whose square is 47. So if you take that number and square it, you must get 47 right back. You can confirm the pattern on a perfect square, where \\(\\sqrt{49} = 7\\) and \\(7^2 = 49\\), and the same cancellation works for any nonnegative number, including 47. That gives \\(\\left(\\sqrt{47}\\right)^2 = 47\\), so the answer is \\(\\boxed{47}\\)."
+   },
+   {
+    "x": "A square garden plot has a side length that someone recorded as the number \\(-8\\), maybe after a sign slip in their notes. To recover the real side length they square the recorded number and then take the square root of the result, since the radical always returns the nonnegative side. Evaluate \\(\\sqrt{(-8)^2}\\). Type the single whole number.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "Work from the inside out. First square \\(-8\\). A negative times a negative is positive, so \\((-8)^2\\) is a positive whole number.",
+     "Once you have the value under the radical, it is a perfect square. Take its square root, and remember the radical gives the nonnegative root."
+    ],
+    "sol": "Start inside the radical and square the recorded number. Since a negative times a negative is positive, \\((-8)^2 = 64\\). Now the expression is \\(\\sqrt{64}\\). The square root asks for the nonnegative number whose square is \\(64\\), and \\(8 \\times 8 = 64\\), so \\(\\sqrt{64} = 8\\). Notice what happened. Squaring turned \\(-8\\) into \\(64\\), and the radical brought back the nonnegative version, \\(8\\), not the original \\(-8\\). That is why \\(\\sqrt{x^2}\\) gives the nonnegative size, here \\(\\boxed{8}\\)."
+   },
+   {
+    "x": "A floor designer is laying square tiles to cover a perfectly square hall, and the finished floor uses exactly \\(4{,}900\\) tiles in all. Since the hall is square, the number of tiles along one edge times itself gives the total. Here is the handy trick. The number \\(4{,}900\\) splits as \\(49 \\times 100\\), and both \\(49\\) and \\(100\\) are perfect squares, so \\(\\sqrt{4{,}900} = \\sqrt{49} \\times \\sqrt{100}\\). How many tiles run along one edge of the hall? In other words, evaluate \\(\\sqrt{4{,}900}\\).",
+    "ans": "70",
+    "accept": [
+     "70",
+     "70.0",
+     "seventy"
+    ],
+    "hints": [
+     "Break the big number into perfect-square pieces. Notice \\(4{,}900 = 49 \\times 100\\), and you already know the roots of both of those.",
+     "Take each root on its own. \\(\\sqrt{49} = 7\\) and \\(\\sqrt{100} = 10\\), so the root of the product is \\(7 \\times 10\\)."
+    ],
+    "sol": "A square root spreads across a product, so \\(\\sqrt{49 \\times 100} = \\sqrt{49} \\times \\sqrt{100}\\). Each piece is a perfect square you can read off directly, with \\(\\sqrt{49} = 7\\) and \\(\\sqrt{100} = 10\\). Multiplying gives \\(7 \\times 10 = 70\\). Check it by squaring, since \\(70^2 = 4{,}900\\) matches the total number of tiles, so one edge of the hall is \\(70\\) tiles long. \\(\\boxed{70}\\)"
+   },
+   {
+    "x": "A friend looks at \\(\\sqrt{289}\\) and says the answer is \\(17\\). You want to be sure before agreeing, so you run two quick sanity checks. First check the last digit. Since \\(289\\) ends in \\(9\\), its root must end in a digit whose square ends in \\(9\\), which means the root ends in \\(3\\) or \\(7\\). The claim ends in \\(7\\), so it survives this check. Next check the size by squaring the claim. We get \\(17^2 = 289\\), which lands exactly on target. What is \\(\\sqrt{289}\\)? Type the single whole number.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0",
+     "seventeen"
+    ],
+    "hints": [
+     "A square root that comes out to a whole number is a number you can multiply by itself to land on \\(289\\). Try squaring a value near \\(17\\) and see if you hit \\(289\\) exactly.",
+     "Test the last-digit clue first. The root of \\(289\\) ends in \\(3\\) or \\(7\\). Now square \\(17\\) and check whether \\(17^2\\) equals \\(289\\)."
+    ],
+    "sol": "Both sanity checks point the same way, so I confirm them with a direct computation. The last-digit check says the root must end in \\(3\\) or \\(7\\), and \\(17\\) ends in \\(7\\), so it passes. The size check says squaring the candidate should land exactly on \\(289\\). Squaring gives \\(17^2 = 17 \\times 17 = 289\\), which is an exact hit. A nearby wrong guess like \\(19\\) would fail, since \\(19\\) ends in \\(9\\) and \\(19^2 = 361\\) overshoots \\(289\\). So the root that squares back to \\(289\\) is \\(\\sqrt{289} = \\boxed{17}\\)."
+   },
+   {
+    "x": "A puzzle hands you a hidden number \\(x\\) and tells you only one thing about it, that \\(\\sqrt{x} = 19\\). The square root sign is doing the work of hiding \\(x\\), so to uncover it you can undo the root by squaring both sides. What is the value of \\(x\\)? Type the single whole number.",
+    "ans": "361",
+    "accept": [
+     "361",
+     "361.0",
+     "three hundred sixty one",
+     "three hundred sixty-one",
+     "three hundred sixty−one"
+    ],
+    "hints": [
+     "Squaring undoes a square root, so square both sides of \\(\\sqrt{x} = 19\\). Squaring the left side frees \\(x\\), and squaring the right side turns \\(19\\) into \\(19^2\\).",
+     "You need \\(19^2\\), which is \\(19 \\times 19\\). Work that product out to get the whole number that \\(x\\) equals."
+    ],
+    "sol": "The equation \\(\\sqrt{x} = 19\\) keeps \\(x\\) trapped under the radical, and squaring is the move that undoes a square root, so square both sides. On the left, squaring the root gives back \\(x\\), and on the right \\(19\\) becomes \\(19^2\\), so \\(x = 19^2 = 361\\). To be sure, check the original equation, \\(\\sqrt{361} = 19\\) since \\(19 \\times 19 = 361\\), which matches. So \\(x = \\boxed{361}\\)."
+   },
+   {
+    "x": "A puzzle designer is building a level where a hidden door opens only when a player finds a value of \\(x\\) that makes \\(\\sqrt{x + 7} = -3\\) true. Before shipping the level, she wants to know how many winning values exist. Remember that the radical symbol always gives the nonnegative root, so \\(\\sqrt{x + 7}\\) can never come out negative. How many solutions does the equation \\(\\sqrt{x + 7} = -3\\) have? Type the single number.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "none",
+     "zero"
+    ],
+    "hints": [
+     "The radical symbol means the principal root, which is always zero or positive. Ask yourself whether any nonnegative result can equal \\(-3\\).",
+     "Whatever \\(x + 7\\) works out to, \\(\\sqrt{x + 7}\\) is never negative, so it cannot match the negative number \\(-3\\). Count how many values of \\(x\\) can possibly work."
+    ],
+    "sol": "The left side is \\(\\sqrt{x + 7}\\), and the radical symbol always returns the principal root, which is zero or positive. For example \\(\\sqrt{16} = 4\\) and \\(\\sqrt{49} = 7\\), never a negative value. The right side is \\(-3\\), a negative number. A quantity that is always nonnegative can never equal a negative number, so no choice of \\(x\\) makes the two sides match. If you tried to solve by squaring both sides you would get \\(x + 7 = 9\\), which gives \\(x = 2\\), but checking it shows \\(\\sqrt{2 + 7} = \\sqrt{9} = 3\\), not \\(-3\\). That candidate fails, which confirms there is no real solution. The number of solutions is \\(\\boxed{0}\\)."
+   }
+  ],
+  "next": "8.2"
+ }
+}
