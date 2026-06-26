@@ -983,5 +983,297 @@
    }
   ],
   "next": "8.3"
+ },
+ "8.3": {
+  "title": "Simplifying Square Roots",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 8.2 you pinned an irrational root down to a number line, learning that \\(\\sqrt{12}\\) sits a little under \\(3.5\\). That is a fine estimate, but it is not exact, and an estimate cannot be written cleanly or compared without fuss. This lesson does something different. It rewrites a root in a tidier exact form, no calculator and no rounding. The trick is that many numbers under a radical are secretly hiding a perfect square inside them. The number \\(12\\) is really \\(4 \\times 3\\), and \\(4\\) is a perfect square we can root on sight. The one tool that unlocks this is a rule about how a root splits across a product, and once you have it, simplifying becomes a hunt for the biggest perfect square buried in the radicand."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Before splitting anything, let us check that a root is even allowed to split across a product. Look at \\(\\sqrt{4} \\times \\sqrt{25}\\). Each piece is clean, since \\(\\sqrt{4} = 2\\) and \\(\\sqrt{25} = 5\\), so the product is \\(2 \\times 5 = 10\\). Now look at the single root of the whole product, \\(\\sqrt{4 \\times 25} = \\sqrt{100}\\). If the split is honest, this should land on the same value. What is \\(\\sqrt{100}\\)?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "A perfect square is a number whose root is whole. Ask what whole number times itself gives \\(100\\).",
+     "Since \\(10 \\times 10 = 100\\), the root of \\(100\\) is \\(10\\). Notice it matches \\(\\sqrt{4} \\times \\sqrt{25} = 2 \\times 5\\)."
+    ],
+    "sol": "Work the two sides and compare. Splitting first, \\(\\sqrt{4} \\times \\sqrt{25} = 2 \\times 5 = 10\\). Rooting the product, \\(\\sqrt{4 \\times 25} = \\sqrt{100} = 10\\), because \\(10 \\times 10 = 100\\). The two routes agree, which is exactly the rule we are after. A root of a product equals the product of the roots, so \\(\\sqrt{100} = \\boxed{10}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the rule that makes everything work. The square root of a product is the product of the square roots, written \\(\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}\\) for nonnegative \\(a\\) and \\(b\\). So a root is allowed to split anywhere its radicand factors. That is the lever, because if one of those factors is a perfect square, its root pops out as a clean whole number while the rest stays under the radical."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Now use the rule to tidy a messy root. The number \\(12\\) is not a perfect square, but it factors as \\(4 \\times 3\\), and \\(4\\) is a perfect square. Split the root with the product rule, \\(\\sqrt{12} = \\sqrt{4} \\times \\sqrt{3}\\), then root the perfect-square piece. Written in simplest form, \\(\\sqrt{12}\\) becomes a whole number times \\(\\sqrt{3}\\). What is that whole number out in front?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Split \\(12\\) as \\(4 \\times 3\\), so \\(\\sqrt{12} = \\sqrt{4} \\times \\sqrt{3}\\). The \\(\\sqrt{3}\\) part cannot be tidied, but \\(\\sqrt{4}\\) can.",
+     "Since \\(\\sqrt{4} = 2\\), the root becomes \\(2 \\times \\sqrt{3}\\), written \\(2\\sqrt{3}\\). The whole number in front is \\(2\\)."
+    ],
+    "sol": "Hunt for a perfect-square factor of \\(12\\). Since \\(12 = 4 \\times 3\\) and \\(4\\) is a perfect square, split the root, $$\\sqrt{12} = \\sqrt{4} \\times \\sqrt{3}.$$ Now \\(\\sqrt{4} = 2\\), and \\(\\sqrt{3}\\) has no perfect square to pull out, so it stays put. That leaves \\(2 \\times \\sqrt{3}\\), which we write \\(2\\sqrt{3}\\). A quick check, \\((2\\sqrt{3})^2 = 4 \\times 3 = 12\\), the number we started with. The whole number in front is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So this is the move. To simplify a square root, find the largest perfect-square factor of the number under it, take the root of that factor to pull a whole number out front, and leave whatever is left under the radical. The pulled-out number and the leftover root sit side by side, like \\(2\\sqrt{3}\\), which means \\(2\\) times \\(\\sqrt{3}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 210\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Simplifying the square root of 72 in three steps. First the square root of 72. Then 72 is split as 36 times 2, with 36 highlighted as the largest perfect square that divides 72. Then the root splits into the square root of 36 times the square root of 2. The square root of 36 becomes 6, so the result is 6 times the square root of 2.\">\n  <text x=\"220\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">PULL OUT THE LARGEST PERFECT SQUARE</text>\n  <text x=\"40\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--ink)\">&#8730;72</text>\n  <text x=\"92\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--slate)\">=</text>\n  <text x=\"112\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--ink)\">&#8730;(</text>\n  <rect x=\"138\" y=\"60\" width=\"34\" height=\"28\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"155\" y=\"80\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--gold-deep)\">36</text>\n  <text x=\"178\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--slate)\">&#215;</text>\n  <text x=\"194\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--ink)\">2)</text>\n  <text x=\"60\" y=\"104\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">the number</text>\n  <text x=\"155\" y=\"104\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--gold-deep)\">biggest square factor</text>\n  <text x=\"245\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--slate)\">=</text>\n  <text x=\"266\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--ink)\">&#8730;36</text>\n  <text x=\"312\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--slate)\">&#215;</text>\n  <text x=\"326\" y=\"80\" font-family=\"Inter, sans-serif\" font-size=\"20\" fill=\"var(--ink)\">&#8730;2</text>\n  <path d=\"M286 92 L286 120\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"286\" y=\"138\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">becomes 6</text>\n  <text x=\"150\" y=\"180\" font-family=\"Inter, sans-serif\" font-size=\"16\" fill=\"var(--slate)\">so</text>\n  <text x=\"178\" y=\"182\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--gold-deep)\">6&#8730;2</text>\n  <text x=\"240\" y=\"182\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">a whole number out front, a small root left under</text>\n</svg>",
+    "cap": "Simplifying \\(\\sqrt{72}\\). The number \\(72\\) hides the perfect square \\(36\\), since \\(72 = 36 \\times 2\\). The product rule splits the root into \\(\\sqrt{36} \\times \\sqrt{2}\\), and \\(\\sqrt{36} = 6\\) steps out front while \\(\\sqrt{2}\\) stays under the radical, giving \\(6\\sqrt{2}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Try the full move yourself on \\(\\sqrt{72}\\). The largest perfect square that divides \\(72\\) is \\(36\\), since \\(72 = 36 \\times 2\\). Split the root, take the root of \\(36\\), and leave the rest under the radical. Written in simplest form as a whole number times \\(\\sqrt{2}\\), what is the whole number in front of \\(\\sqrt{72}\\)?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Write \\(72\\) as \\(36 \\times 2\\), so \\(\\sqrt{72} = \\sqrt{36} \\times \\sqrt{2}\\).",
+     "Since \\(\\sqrt{36} = 6\\), the simplest form is \\(6\\sqrt{2}\\). The number in front is \\(6\\)."
+    ],
+    "sol": "The largest perfect square dividing \\(72\\) is \\(36\\), and \\(72 = 36 \\times 2\\). Split the root, $$\\sqrt{72} = \\sqrt{36} \\times \\sqrt{2} = 6\\sqrt{2}.$$ The \\(\\sqrt{2}\\) cannot be reduced further, so \\(6\\sqrt{2}\\) is simplest. Check, \\((6\\sqrt{2})^2 = 36 \\times 2 = 72\\). The whole number in front is \\(\\boxed{6}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Sometimes the question is about what is left behind, not what comes out. Simplify \\(\\sqrt{48}\\). The largest perfect square dividing \\(48\\) is \\(16\\), since \\(48 = 16 \\times 3\\). Once you pull the whole number out front, a single square root remains. What number is left under the radical in the simplest form of \\(\\sqrt{48}\\)?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Write \\(48 = 16 \\times 3\\), so \\(\\sqrt{48} = \\sqrt{16} \\times \\sqrt{3}\\). Which piece stays under the root?",
+     "Since \\(\\sqrt{16} = 4\\), the simplest form is \\(4\\sqrt{3}\\). The number left under the radical is \\(3\\)."
+    ],
+    "sol": "Split off the largest perfect-square factor. Since \\(48 = 16 \\times 3\\), $$\\sqrt{48} = \\sqrt{16} \\times \\sqrt{3} = 4\\sqrt{3}.$$ The \\(4\\) comes out front and the \\(3\\) stays under the radical, because \\(3\\) has no perfect-square factor bigger than \\(1\\). So the number left under the radical is \\(\\boxed{3}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Simplify \\(\\sqrt{98}\\). Look for the largest perfect square hiding in \\(98\\). Since \\(98 = 49 \\times 2\\) and \\(49\\) is a perfect square, the root tidies into a whole number times \\(\\sqrt{2}\\). What is the whole number in front?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "The perfect squares to test are \\(4, 9, 16, 25, 36, 49\\). Which one divides \\(98\\)? Try \\(49\\).",
+     "Since \\(98 = 49 \\times 2\\), we get \\(\\sqrt{98} = \\sqrt{49} \\times \\sqrt{2} = 7\\sqrt{2}\\). The number in front is \\(7\\)."
+    ],
+    "sol": "Search for a perfect-square factor of \\(98\\). Testing \\(49\\), we find \\(98 = 49 \\times 2\\), so $$\\sqrt{98} = \\sqrt{49} \\times \\sqrt{2} = 7\\sqrt{2}.$$ The leftover \\(2\\) is square-free, so \\(7\\sqrt{2}\\) is simplest. Check, \\((7\\sqrt{2})^2 = 49 \\times 2 = 98\\). The whole number in front is \\(\\boxed{7}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "A square root is in simplest form when the number left under the radical has no perfect-square factor bigger than \\(1\\). At that point nothing more can be pulled out. If you ever pull out a small square and the leftover still hides another square, you are not done yet, so reaching for the largest perfect-square factor right away finishes the job in a single step."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Not every root simplifies. Consider \\(\\sqrt{30}\\). Factor \\(30\\) all the way down to \\(2 \\times 3 \\times 5\\). Every factor appears only once, so no factor is repeated to form a perfect square. To decide whether \\(\\sqrt{30}\\) can be simplified at all, find the largest perfect square that divides \\(30\\). What is it?",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "A perfect square needs a repeated factor, like \\(2 \\times 2\\) or \\(3 \\times 3\\). In \\(30 = 2 \\times 3 \\times 5\\), is any factor repeated?",
+     "None of \\(4, 9, 16, 25\\) divides \\(30\\). The only perfect square that does is \\(1\\), so \\(\\sqrt{30}\\) is already in simplest form."
+    ],
+    "sol": "Factor \\(30\\) completely, \\(30 = 2 \\times 3 \\times 5\\). A perfect-square factor needs a repeated prime, but here every prime shows up only once, so none of \\(4\\), \\(9\\), \\(16\\), or \\(25\\) divides \\(30\\). The largest perfect square dividing \\(30\\) is just \\(1\\). Since pulling out \\(\\sqrt{1} = 1\\) changes nothing, \\(\\sqrt{30}\\) is already in simplest form. The largest perfect-square factor is \\(\\boxed{1}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "The product rule also works in reverse, joining two roots into one before you simplify. Take \\(\\sqrt{10} \\times \\sqrt{5}\\). First combine them under a single radical with the rule, \\(\\sqrt{10} \\times \\sqrt{5} = \\sqrt{10 \\times 5} = \\sqrt{50}\\). Now simplify \\(\\sqrt{50}\\), which hides the perfect square \\(25\\). Written as a whole number times \\(\\sqrt{2}\\), what is the whole number in front?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "Combine first, \\(\\sqrt{10} \\times \\sqrt{5} = \\sqrt{50}\\). Then look for the largest perfect square dividing \\(50\\).",
+     "Since \\(50 = 25 \\times 2\\), we get \\(\\sqrt{50} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}\\). The number in front is \\(5\\)."
+    ],
+    "sol": "Join the roots with the product rule, $$\\sqrt{10} \\times \\sqrt{5} = \\sqrt{10 \\times 5} = \\sqrt{50}.$$ Now simplify. The largest perfect square dividing \\(50\\) is \\(25\\), and \\(50 = 25 \\times 2\\), so $$\\sqrt{50} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}.$$ The whole number in front is \\(\\boxed{5}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two ways to simplify the square root of 288. The slow way pulls out only the small square factor 4, giving 2 times the square root of 72, which is not finished because 72 still has the square factor 36. The fast way pulls out the largest square factor 144 at once, giving 12 times the square root of 2, which is fully simplified.\">\n  <text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">TAKE THE LARGEST FACTOR, FINISH IN ONE STEP</text>\n  <text x=\"20\" y=\"70\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">small factor 4</text>\n  <text x=\"20\" y=\"98\" font-family=\"Inter, sans-serif\" font-size=\"17\" fill=\"var(--ink)\">&#8730;288 = 2&#8730;72</text>\n  <text x=\"20\" y=\"120\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">still not done, 72 holds a 36</text>\n  <text x=\"20\" y=\"142\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--slate)\">= 2 &#215; 6&#8730;2 = 12&#8730;2</text>\n  <line x1=\"220\" y1=\"50\" x2=\"220\" y2=\"160\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 4\"/>\n  <text x=\"244\" y=\"70\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">largest factor 144</text>\n  <text x=\"244\" y=\"98\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;288 = 12&#8730;2</text>\n  <text x=\"244\" y=\"120\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">done in one move</text>\n  <rect x=\"240\" y=\"132\" width=\"150\" height=\"26\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"1.5\"/>\n  <text x=\"315\" y=\"150\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">12&#8730;2, simplest</text>\n  <text x=\"220\" y=\"195\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">both reach the same answer, the largest factor just gets there faster</text>\n</svg>",
+    "cap": "Two routes for \\(\\sqrt{288}\\). Pull out only the small square \\(4\\) and you get \\(2\\sqrt{72}\\), which is not finished because \\(72\\) still hides the square \\(36\\). Pull out the largest square \\(144\\) at once and you land on \\(12\\sqrt{2}\\) in a single step. Both reach the same simplest form, but the largest factor gets there faster."
+   },
+   {
+    "t": "fact",
+    "x": "For centuries an irrational root like \\(\\sqrt{2}\\) was called a surd, a word that traveled a long way. Arabic scholars translating Greek mathematics described such a root as deaf or mute, since it could not be spoken as a clean ratio, and the Latin word for deaf, surdus, stuck to it. The bar drawn across the top of a radical, the part that tells you exactly which numbers sit under the root, is called a vinculum, Latin for a bond or tie. So a tidy expression like \\(2\\sqrt{3}\\) carries two old ideas at once, a number that once seemed unspeakable and a little tie holding its radicand together."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Time for the trickiest one, where spotting the largest square saves real work. Simplify \\(\\sqrt{507}\\). It looks stubborn, but \\(507 = 169 \\times 3\\), and \\(169\\) is a perfect square. Pull it out to write \\(\\sqrt{507}\\) as a whole number times \\(\\sqrt{3}\\). What is the whole number in front?",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "The number \\(507\\) is odd, so \\(4, 16, 36, 64, 100\\) cannot divide it. Try odd perfect squares like \\(9\\), \\(25\\), \\(49\\), \\(121\\), \\(169\\).",
+     "Since \\(507 = 169 \\times 3\\) and \\(\\sqrt{169} = 13\\), the simplest form is \\(13\\sqrt{3}\\). The number in front is \\(13\\)."
+    ],
+    "sol": "Search \\(507\\) for a perfect-square factor. It is odd, so skip the even squares, and testing odd ones gives \\(507 = 169 \\times 3\\), with \\(169 = 13^2\\). Split the root, $$\\sqrt{507} = \\sqrt{169} \\times \\sqrt{3} = 13\\sqrt{3}.$$ The leftover \\(3\\) is square-free, so \\(13\\sqrt{3}\\) is simplest. Check, \\((13\\sqrt{3})^2 = 169 \\times 3 = 507\\). The whole number in front is \\(\\boxed{13}\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "Simplify \\(\\sqrt{8}\\). The largest perfect square dividing \\(8\\) is \\(4\\), since \\(8 = 4 \\times 2\\). Written as a whole number times \\(\\sqrt{2}\\), what is the whole number in front?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Write \\(8 = 4 \\times 2\\), so \\(\\sqrt{8} = \\sqrt{4} \\times \\sqrt{2}\\).",
+     "Since \\(\\sqrt{4} = 2\\), the simplest form is \\(2\\sqrt{2}\\). The number in front is \\(2\\)."
+    ],
+    "sol": "Since \\(8 = 4 \\times 2\\), $$\\sqrt{8} = \\sqrt{4} \\times \\sqrt{2} = 2\\sqrt{2}.$$ The whole number in front is \\(\\boxed{2}\\)."
+   },
+   {
+    "x": "Simplify \\(\\sqrt{75}\\). Since \\(75 = 25 \\times 3\\) and \\(25\\) is a perfect square, the root tidies into a whole number times \\(\\sqrt{3}\\). What is the whole number in front?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "Write \\(75 = 25 \\times 3\\), so \\(\\sqrt{75} = \\sqrt{25} \\times \\sqrt{3}\\).",
+     "Since \\(\\sqrt{25} = 5\\), the simplest form is \\(5\\sqrt{3}\\). The number in front is \\(5\\)."
+    ],
+    "sol": "Since \\(75 = 25 \\times 3\\), $$\\sqrt{75} = \\sqrt{25} \\times \\sqrt{3} = 5\\sqrt{3}.$$ The whole number in front is \\(\\boxed{5}\\)."
+   },
+   {
+    "x": "Simplify \\(\\sqrt{44}\\). The largest perfect square dividing \\(44\\) is \\(4\\), since \\(44 = 4 \\times 11\\). After you pull the whole number out front, one square root remains. What number is left under the radical?",
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven"
+    ],
+    "hints": [
+     "Write \\(44 = 4 \\times 11\\), so \\(\\sqrt{44} = \\sqrt{4} \\times \\sqrt{11}\\).",
+     "Since \\(\\sqrt{4} = 2\\), the simplest form is \\(2\\sqrt{11}\\). The number left under the radical is \\(11\\)."
+    ],
+    "sol": "Since \\(44 = 4 \\times 11\\), $$\\sqrt{44} = \\sqrt{4} \\times \\sqrt{11} = 2\\sqrt{11}.$$ The \\(11\\) is square-free and stays under the radical, so the number left under it is \\(\\boxed{11}\\)."
+   },
+   {
+    "x": "Simplify \\(\\sqrt{128}\\). The largest perfect square dividing \\(128\\) is \\(64\\), since \\(128 = 64 \\times 2\\). Written as a whole number times \\(\\sqrt{2}\\), what is the whole number in front?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "Write \\(128 = 64 \\times 2\\), so \\(\\sqrt{128} = \\sqrt{64} \\times \\sqrt{2}\\).",
+     "Since \\(\\sqrt{64} = 8\\), the simplest form is \\(8\\sqrt{2}\\). The number in front is \\(8\\)."
+    ],
+    "sol": "Since \\(128 = 64 \\times 2\\), $$\\sqrt{128} = \\sqrt{64} \\times \\sqrt{2} = 8\\sqrt{2}.$$ The whole number in front is \\(\\boxed{8}\\)."
+   },
+   {
+    "x": "Use the product rule, then simplify. Combine \\(\\sqrt{3} \\times \\sqrt{12}\\) into a single root, then evaluate it. Since \\(\\sqrt{3} \\times \\sqrt{12} = \\sqrt{3 \\times 12} = \\sqrt{36}\\), this one comes out to a whole number. What is that whole number?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Combine, \\(\\sqrt{3} \\times \\sqrt{12} = \\sqrt{36}\\).",
+     "Since \\(36\\) is a perfect square, \\(\\sqrt{36} = 6\\), with no radical left at all."
+    ],
+    "sol": "Join the roots, \\(\\sqrt{3} \\times \\sqrt{12} = \\sqrt{3 \\times 12} = \\sqrt{36}\\). Since \\(36\\) is a perfect square, \\(\\sqrt{36} = 6\\), a clean whole number. So the value is \\(\\boxed{6}\\)."
+   },
+   {
+    "x": "To simplify \\(\\sqrt{60}\\), you first need its largest perfect-square factor. Factor \\(60 = 2 \\times 2 \\times 3 \\times 5\\) and gather the repeated prime into a square. What is the largest perfect square that divides \\(60\\)?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "A perfect-square factor comes from a repeated prime. In \\(60 = 2 \\times 2 \\times 3 \\times 5\\), the \\(2\\) repeats.",
+     "The repeated \\(2 \\times 2 = 4\\) is a perfect square, and no larger one divides \\(60\\), so the answer is \\(4\\)."
+    ],
+    "sol": "Factor \\(60 = 2 \\times 2 \\times 3 \\times 5\\). The only repeated prime is \\(2\\), giving the perfect square \\(2 \\times 2 = 4\\). No larger perfect square divides \\(60\\), since \\(3\\) and \\(5\\) appear only once. So the largest perfect-square factor is \\(\\boxed{4}\\). (It would simplify \\(\\sqrt{60}\\) to \\(2\\sqrt{15}\\).)"
+   },
+   {
+    "x": "Decide whether \\(\\sqrt{33}\\) can be simplified. Factor \\(33\\) completely, then find the largest perfect square that divides it. What is that largest perfect square?",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "Factor \\(33 = 3 \\times 11\\). Is any prime repeated?",
+     "No prime repeats, so no perfect square bigger than \\(1\\) divides \\(33\\). It is already in simplest form."
+    ],
+    "sol": "Factor \\(33 = 3 \\times 11\\). Each prime appears once, so there is no repeated factor to form a perfect square. The largest perfect square dividing \\(33\\) is \\(\\boxed{1}\\), which means \\(\\sqrt{33}\\) is already in simplest form."
+   },
+   {
+    "x": "Use the product rule, then simplify. Combine \\(\\sqrt{15} \\times \\sqrt{6}\\) into one root, then write it in simplest form. Since \\(\\sqrt{15} \\times \\sqrt{6} = \\sqrt{90}\\) and \\(90 = 9 \\times 10\\), the result is a whole number times \\(\\sqrt{10}\\). What is the whole number in front?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Combine, \\(\\sqrt{15} \\times \\sqrt{6} = \\sqrt{90}\\). The largest perfect square dividing \\(90\\) is \\(9\\).",
+     "Since \\(90 = 9 \\times 10\\), \\(\\sqrt{90} = \\sqrt{9} \\times \\sqrt{10} = 3\\sqrt{10}\\). The number in front is \\(3\\)."
+    ],
+    "sol": "Join the roots, \\(\\sqrt{15} \\times \\sqrt{6} = \\sqrt{15 \\times 6} = \\sqrt{90}\\). The largest perfect square dividing \\(90\\) is \\(9\\), and \\(90 = 9 \\times 10\\), so $$\\sqrt{90} = \\sqrt{9} \\times \\sqrt{10} = 3\\sqrt{10}.$$ The whole number in front is \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "Here is the trickiest one. Simplify \\(\\sqrt{675}\\) by finding its largest perfect-square factor. Since \\(675 = 225 \\times 3\\) and \\(225\\) is a perfect square, the root becomes a whole number times \\(\\sqrt{3}\\). What is the whole number in front?",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "The number \\(675\\) is odd, so test odd perfect squares like \\(9\\), \\(25\\), \\(225\\). Try \\(225\\).",
+     "Since \\(675 = 225 \\times 3\\) and \\(\\sqrt{225} = 15\\), the simplest form is \\(15\\sqrt{3}\\). The number in front is \\(15\\)."
+    ],
+    "sol": "Search \\(675\\) for its largest perfect-square factor. It is odd, and \\(675 = 225 \\times 3\\) with \\(225 = 15^2\\). Split the root, $$\\sqrt{675} = \\sqrt{225} \\times \\sqrt{3} = 15\\sqrt{3}.$$ Check, \\((15\\sqrt{3})^2 = 225 \\times 3 = 675\\). The whole number in front is \\(\\boxed{15}\\)."
+   }
+  ],
+  "next": "8.4"
  }
 }
