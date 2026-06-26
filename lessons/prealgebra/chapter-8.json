@@ -508,5 +508,480 @@
    }
   ],
   "next": "8.2"
+ },
+ "8.2": {
+  "title": "Estimating Irrational Roots",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 8.1 the number under the radical was always a perfect square, so the root came out as a clean whole number and you could just write it down. This lesson breaks that comfort. Picture a tile setter who needs a perfectly square panel covering exactly \\(50\\) square inches. The area of a square is side times side, so the length of one side has to be \\(\\sqrt{50}\\), and \\(50\\) is not on our list of perfect squares. She remembers from 8.1 that \\(7^2 = 49\\) and \\(8^2 = 64\\), so the side sits just past \\(7\\), much closer to \\(7\\) than to \\(8\\). Then she tries to nail it exactly. A fraction will not land on it. A decimal that stops will not either, because \\(7.07^2 = 49.9849\\) and \\(7.071^2\\) is still a touch under \\(50\\), forever close and never exact. Here is the surprise. A root like \\(\\sqrt{50}\\) cannot be written as a fraction, and its decimal never ends and never repeats. It is a new kind of number called <b>irrational</b>, a value we genuinely cannot write down in full. So the honest move is not to fake an exact decimal but to <b>estimate</b> it. We trap it between whole numbers, round it, count with it, and compare it to other roots. That toolkit is the whole lesson, and the perfect squares you memorized in 8.1 are the landmarks we measure against."
+   },
+   {
+    "t": "imp",
+    "x": "When the number under the radical is not a perfect square, its root is a brand new kind of number. We cannot write it as a clean fraction, and its decimal runs forever without ever ending or settling into a repeating pattern, so there is no exact value to type. But we are not stuck, because the perfect squares we learned in 8.1 sit at fixed, known spots on the number line. By finding the two perfect squares that bracket the number under the radical, we trap one of these endless roots tightly between the two whole numbers we know exactly."
+   },
+   {
+    "t": "fact",
+    "x": "The discovery that some roots are irrational unsettled the ancient world. A circle of Greek thinkers around the followers of Pythagoras held that every length could be captured as a ratio of whole numbers, a clean fraction. Then someone proved that \\(\\sqrt{2}\\), the length of the diagonal across a square one unit on each side, can never be written as any fraction at all. Legend says the man who let the secret out, often named as Hippasus, was thrown overboard at sea for shattering that belief, though historians treat the drowning as more myth than record. Whatever truly happened, the irrational numbers were here to stay, and \\(\\sqrt{2}\\) is still the most famous of them."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A square vegetable patch covers exactly \\(54\\) square meters, so each side measures \\(\\sqrt{54}\\) meters. Since \\(54\\) is not a perfect square, that side length has no exact whole or decimal value, but you can still pin down which two whole numbers it falls between using the perfect squares from 8.1 as landmarks. The square just below is \\(7^2 = 49\\), and the square just above is \\(8^2 = 64\\). That traps the side length somewhere between \\(7\\) and \\(8\\) meters. What is the largest whole number that is still less than \\(\\sqrt{54}\\), the floor of the root? Type the single whole number.",
+    "hints": [
+     "Look for the two perfect squares that sandwich \\(54\\). Which perfect square sits just below \\(54\\), and which sits just above?",
+     "You found that \\(49 < 54 < 64\\). The roots keep that same order, so \\(7 < \\sqrt{54} < 8\\). The floor is the smaller of those two whole numbers."
+    ],
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0"
+    ],
+    "sol": "The floor of \\(\\sqrt{54}\\) is the largest whole number whose square does not pass \\(54\\). Compare exact squares around \\(54\\). The whole number \\(7\\) gives \\(7^2 = 49\\), and \\(49 \\le 54\\), so \\(7\\) is safe. The next whole number \\(8\\) gives \\(8^2 = 64\\), and \\(64 > 54\\), so \\(8\\) is too big. Putting those together, \\(49 \\le 54 < 64\\). Because a larger number always has a larger square root, that same order carries over to the roots, giving \\(7 < \\sqrt{54} < 8\\). The side length lands strictly between \\(7\\) and \\(8\\) meters, so the largest whole number still below it is \\(\\boxed{7}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 232\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A horizontal number line marked at the whole numbers 6, 7, 8, and 9. Above the mark at 7 a small label reads 7 squared equals 49, and above the mark at 8 a small label reads 8 squared equals 64. A gold bracket spans the single unit from 7 to 8 and is labeled one unit wide. Inside that gap a gold peg stands about a third of the way from 7 toward 8, labeled the square root of 54, placed near 7 because 54 is much closer to 49 than to 64. The figure shows the root fenced between 7 and 8, so its floor is 7.\">\n  <text x=\"220\" y=\"16\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">FENCED BETWEEN TWO LANDMARKS</text>\n\n  <text x=\"120\" y=\"54\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">7&#178; = 49</text>\n  <text x=\"320\" y=\"54\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">8&#178; = 64</text>\n  <line x1=\"120\" y1=\"60\" x2=\"120\" y2=\"124\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/>\n  <line x1=\"320\" y1=\"60\" x2=\"320\" y2=\"124\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/>\n\n  <path d=\"M 120 92 L 120 84 L 320 84 L 320 92\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/>\n  <text x=\"220\" y=\"78\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--gold-deep)\">one unit wide</text>\n\n  <line x1=\"36\" y1=\"130\" x2=\"404\" y2=\"130\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <polygon points=\"404,130 396,126 396,134\" fill=\"var(--line)\"/>\n  <polygon points=\"36,130 44,126 44,134\" fill=\"var(--line)\"/>\n\n  <line x1=\"20\" y1=\"124\" x2=\"20\" y2=\"136\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <line x1=\"120\" y1=\"124\" x2=\"120\" y2=\"136\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"320\" y1=\"124\" x2=\"320\" y2=\"136\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"420\" y1=\"124\" x2=\"420\" y2=\"136\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n\n  <text x=\"20\" y=\"152\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\">6</text>\n  <text x=\"120\" y=\"152\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ink)\">7</text>\n  <text x=\"320\" y=\"152\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ink)\">8</text>\n  <text x=\"420\" y=\"152\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\">9</text>\n\n  <circle cx=\"190\" cy=\"130\" r=\"5\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.3\"/>\n  <line x1=\"190\" y1=\"130\" x2=\"190\" y2=\"182\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"190\" y=\"200\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;54</text>\n</svg>",
+    "cap": "The two nearest perfect squares act like fence posts. Since \\(49\\) sits below \\(54\\) and \\(64\\) sits above it, and a bigger number always has a bigger root, \\(\\sqrt{49}=7\\) and \\(\\sqrt{64}=8\\) trap \\(\\sqrt{54}\\) inside one unit, so \\(7 < \\sqrt{54} < 8\\) and its floor is \\(7\\). The peg leans toward \\(7\\) because \\(54\\) is only \\(5\\) above \\(49\\) but a full \\(10\\) below \\(64\\), so it lives in the lower part of the gap."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the trick we just stumbled onto. Because a bigger number always has a bigger square root, the moment you find the perfect square sitting just below your number and the one sitting just above it, you have caught the root between two neighboring whole numbers, and it cannot escape that fence. The smaller of those two whole numbers is the <b>floor</b> of the root, the largest whole number that still stays under it. So \\(\\sqrt{54}\\) is trapped between \\(7\\) and \\(8\\), since \\(49\\) is the perfect square just below \\(54\\) and \\(64\\) is the one just above, which makes its floor \\(7\\). The perfect squares you memorized in 8.1 are the mile markers, and every root parks itself in the gap between two of them."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Two trails climb to the same mountain lookout, and each wooden sign gives the trail's length in kilometers. Path A is marked \\(\\sqrt{46}\\) kilometers and Path B is marked \\(\\sqrt{53}\\) kilometers. Neither length is a perfect square, so a decimal would run forever, but you do not need a decimal to know which walk is longer. <b>Option 1</b> is Path A, \\(\\sqrt{46}\\). <b>Option 2</b> is Path B, \\(\\sqrt{53}\\). Which option is larger? Type 1 or 2.",
+    "hints": [
+     "You are comparing \\(\\sqrt{46}\\) and \\(\\sqrt{53}\\). Both are square roots of positive numbers, so you can compare them just by looking at the numbers tucked inside the radicals.",
+     "For nonnegative numbers, the bigger the number inside the root, the bigger the root itself. Compare \\(46\\) and \\(53\\), then pick the option whose number under the root is larger."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0"
+    ],
+    "sol": "There is no need to chase decimals here. Squaring undoes a square root, and for nonnegative numbers squaring keeps the order the same way around, so the root with the larger number inside is the larger root. Square each length exactly to see the inside numbers laid bare. Option 1 gives \\(\\left(\\sqrt{46}\\right)^2 = 46\\), and option 2 gives \\(\\left(\\sqrt{53}\\right)^2 = 53\\). Since \\(46 < 53\\), the squares are already in order, which means \\(\\sqrt{46} < \\sqrt{53}\\). Path B is the longer walk, so the larger option is \\(\\sqrt{53}\\). The answer is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is what the squaring machine quietly hands me for free. For numbers that are zero or bigger, squaring never flips the order around, so a larger number always carries a larger square root and a smaller number a smaller one. That means \\(\\sqrt{a}\\) is the bigger root exactly when \\(a\\) is the bigger number underneath, and comparing two roots turns into the easy job of comparing the plain numbers hiding inside them. So I already know \\(\\sqrt{53}\\) beats \\(\\sqrt{46}\\) without estimating anything, just because \\(53\\) beats \\(46\\), and this single rule is the engine behind trapping a root and behind everything else I am about to do."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A square skylight covers an area of \\(83\\) square inches, so the length of one edge is \\(\\sqrt{83}\\) inches. A glazier wants that length to the nearest whole inch. From the perfect squares nearby, \\(9^2 = 81\\) and \\(10^2 = 100\\), so \\(\\sqrt{83}\\) lands somewhere between \\(9\\) and \\(10\\). The number that decides which way it rounds is the halfway value \\(9.5\\), and \\(9.5^2 = 90.25\\). Now compare the area \\(83\\) to that boundary \\(90.25\\). Since \\(83\\) is below \\(90.25\\), the edge length sits on the \\(9\\) side of the halfway mark. To the nearest whole inch, what is \\(\\sqrt{83}\\)? Type the single whole number.",
+    "hints": [
+     "The two candidates are \\(9\\) and \\(10\\), and the halfway point between them is \\(9.5\\). Whichever side of \\(9.5\\) the root falls on is the side you round toward.",
+     "Square the halfway point instead of the root, since squaring keeps the order for nonnegative numbers. The boundary is \\(9.5^2 = 90.25\\). Because \\(83 < 90.25\\), the root is less than \\(9.5\\), so it rounds down."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "sol": "First trap the root between landmarks. Since \\(9^2 = 81\\) and \\(10^2 = 100\\), and \\(81 \\le 83 < 100\\), the root \\(\\sqrt{83}\\) lies between \\(9\\) and \\(10\\). To round to the nearest whole number, compare the root to the halfway point \\(9.5\\). Squaring keeps the order for nonnegative numbers, so instead of estimating \\(\\sqrt{83}\\) with a long decimal, I compare \\(83\\) to \\(9.5^2\\). To stay exact, write \\(9.5 = \\frac{19}{2}\\), so \\(9.5^2 = \\frac{19^2}{4} = \\frac{361}{4}\\). Clear the fraction by comparing \\(4 \\times 83 = 332\\) against \\(19^2 = 361\\). Since \\(332 < 361\\), we have \\(83 < 9.5^2\\), which means \\(\\sqrt{83} < 9.5\\). The root sits below the halfway mark, so it rounds down. To the nearest whole inch, \\(\\sqrt{83} \\approx \\boxed{9}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A second skylight is a square with area \\(21\\) square inches, so its edge length is \\(\\sqrt{21}\\) inches. Since \\(4^2 = 16\\) and \\(5^2 = 25\\), the edge sits somewhere between \\(4\\) and \\(5\\). At a glance \\(21\\) looks fairly close to the bottom, so you might be tempted to round down to \\(4\\). Before you commit, test the halfway mark \\(4.5\\), whose square is \\(4.5^2 = 20.25\\). Compare \\(21\\) with \\(20.25\\) and decide which side of the halfway mark \\(\\sqrt{21}\\) lands on. Rounded to the nearest whole inch, what is \\(\\sqrt{21}\\)? Type the single whole number.",
+    "hints": [
+     "The halfway point between 4 and 5 is 4.5. A root rounds up exactly when it is bigger than 4.5, which happens exactly when the number under the root is bigger than \\(4.5^2\\).",
+     "Compare \\(21\\) to \\(4.5^2 = 20.25\\). Since \\(21\\) is larger, \\(\\sqrt{21}\\) is larger than \\(4.5\\), so it has already passed the halfway mark."
+    ],
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0"
+    ],
+    "sol": "First trap the root between whole numbers. Because \\(4^2 = 16\\) and \\(5^2 = 25\\), and \\(16 < 21 < 25\\), the edge \\(\\sqrt{21}\\) lies between \\(4\\) and \\(5\\). To round to the nearest whole number, the only question is which side of the midpoint \\(4.5\\) it falls on. Instead of estimating a long decimal, square the midpoint and compare exactly. The midpoint squared is \\(4.5^2 = 20.25\\). Now compare the number under the root with that boundary. Since \\(21 > 20.25\\), squaring tells us \\(\\sqrt{21} > \\sqrt{20.25} = 4.5\\). The root has passed the halfway mark, so it rounds up to \\(5\\). The tempting guess of \\(4\\) was off, and the squared-boundary test settles it cleanly, giving \\(\\sqrt{21} \\approx 5\\) to the nearest whole inch, so the answer is \\(\\boxed{5}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the shortcut I keep coming back to. To round a root to the nearest whole number, I never have to chase its endless decimal, I only have to find the boundary it must beat. The cutoff sits exactly halfway between the two integers the root is trapped between, so I square that halfway point and compare it to the number sitting under the root. If the number under the root is smaller than that squared cutoff the root rounds down, and if it is larger the root rounds up, which lets me decide the whole thing with exact whole-number arithmetic instead of an irrational decimal that never settles."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A grandfather clock swings a pendulum whose length comes out to \\(\\sqrt{23}\\) feet, and the clockmaker wants that length to the nearest tenth of a foot. Start by trapping the root between two tenths. Since \\(4.7^2 = 22.09\\) sits below \\(23\\) and \\(4.8^2 = 23.04\\) sits above \\(23\\), the root lands between \\(4.7\\) and \\(4.8\\). To see which tenth is closer, square the halfway value \\(4.75\\), giving \\(4.75^2 = 22.5625\\). Now compare \\(23\\) to \\(22.5625\\). To the nearest tenth, what is \\(\\sqrt{23}\\)? Type the one-decimal answer.",
+    "hints": [
+     "The halfway mark between \\(4.7\\) and \\(4.8\\) is \\(4.75\\). Whichever side of \\(4.75^2\\) the number \\(23\\) falls on tells you which tenth the root is nearer to.",
+     "Compare exactly with whole numbers. Multiply both sides by \\(10000\\), so \\(4.75^2\\) becomes \\(475^2 = 225{,}625\\), while \\(23\\) becomes \\(230{,}000\\). Since \\(230{,}000\\) is bigger, \\(23\\) sits above \\(4.75^2\\), so the root is on the higher side."
+    ],
+    "ans": "4.8",
+    "accept": [
+     "4.8",
+     "4.80"
+    ],
+    "sol": "First trap \\(\\sqrt{23}\\) between two tenths by comparing squares. Squaring \\(4.7\\) and \\(4.8\\) exactly gives \\(4.7^2 = 22.09\\) and \\(4.8^2 = 23.04\\), and since \\(22.09 < 23 < 23.04\\), the root lies between \\(4.7\\) and \\(4.8\\). To round to the nearest tenth, check which side of the midpoint \\(4.75\\) the root sits on, which means comparing \\(23\\) with \\(4.75^2\\). Square the midpoint exactly, getting \\(4.75^2 = 22.5625\\). To compare without trusting a long decimal, scale by \\(10000\\), so \\(4.75^2\\) becomes \\(475^2 = 225{,}625\\) and \\(23\\) becomes \\(230{,}000\\). Since \\(225{,}625 < 230{,}000\\), we have \\(4.75^2 < 23\\), so \\(4.75 < \\sqrt{23}\\) and the root is past the midpoint, landing on the \\(4.8\\) side. Rounded to the nearest tenth, \\(\\sqrt{23} = \\boxed{4.8}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A survey drone lifts off and hovers at a height of \\(\\sqrt{41}\\) meters above its landing pad, and the flight log wants that height rounded to the nearest tenth. Trap the root first. Since \\(6.4^2 = 40.96\\) sits below \\(41\\) and \\(6.5^2 = 42.25\\) sits above \\(41\\), the root lands somewhere between \\(6.4\\) and \\(6.5\\). Now test the halfway mark by squaring \\(6.45\\), which gives \\(41.6025\\). Compare \\(41\\) against \\(41.6025\\). Because \\(41\\) is below \\(41.6025\\), the root stays on the lower side of the midpoint, the \\(6.4\\) side. To the nearest tenth, what is \\(\\sqrt{41}\\)? Type the one-decimal answer.",
+    "hints": [
+     "You already know the root is between \\(6.4\\) and \\(6.5\\). The only question is which tenth it rounds to, so the tiebreaker is the halfway point \\(6.45\\).",
+     "Compare \\(41\\) with \\(6.45^2\\). To keep it exact, square \\(645\\) and compare it to \\(41 \\times 10{,}000\\). If \\(41\\) comes out smaller, the root is below \\(6.45\\) and rounds down."
+    ],
+    "ans": "6.4",
+    "accept": [
+     "6.4",
+     "6.40"
+    ],
+    "sol": "The number \\(41\\) is not a perfect square, so \\(\\sqrt{41}\\) is irrational and we estimate it. First trap it between consecutive tenths using exact squares. Comparing without decimals, \\(6.4^2 = \\frac{64^2}{100} = \\frac{4096}{100}\\), and \\(41 = \\frac{4100}{100}\\), so since \\(4096 < 4100\\) the root is above \\(6.4\\). Likewise \\(6.5^2 = \\frac{4225}{100}\\), and since \\(4100 < 4225\\) the root is below \\(6.5\\). So \\(\\sqrt{41}\\) lies between \\(6.4\\) and \\(6.5\\). To round, square the midpoint \\(6.45\\) and compare exactly. Squaring \\(645\\) gives \\(645^2 = 416{,}025\\), while \\(41 \\times 10{,}000 = 410{,}000\\). Since \\(410{,}000 < 416{,}025\\), we have \\(41 < 6.45^2\\), which means \\(\\sqrt{41} < 6.45\\). Sitting below the halfway point, the root rounds down. To the nearest tenth, \\(\\sqrt{41} \\approx \\boxed{6.4}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A zoomed number line covering only the stretch from 4.7 to 4.8, used to round the square root of 23 to the nearest tenth. Three ticks are marked, 4.7 on the left, the midpoint 4.75 in the center, and 4.8 on the right. Under each tick its exact square is written, 4.7 squares to 22.09, 4.75 squares to 22.5625, and 4.8 squares to 23.04. The target value 23 is plotted near the right end, just past the midpoint square of 22.5625 and very close to 4.8. A tall gold peg is drawn at that spot and labeled as the square root of 23. A note points out that since 23 sits above the midpoint square 22.5625, the root has already passed the halfway mark, so it rounds up to 4.8. A caption adds that every comparison here is exact arithmetic, never the endless decimal of the root.\">\n  <text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">ZOOM IN: DOES &#8730;23 PASS THE HALFWAY MARK?</text>\n  <line x1=\"60\" y1=\"96\" x2=\"380\" y2=\"96\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"60\" y1=\"88\" x2=\"60\" y2=\"104\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <line x1=\"220\" y1=\"88\" x2=\"220\" y2=\"104\" stroke=\"var(--line)\" stroke-width=\"1.4\" stroke-dasharray=\"3 3\"/>\n  <line x1=\"380\" y1=\"88\" x2=\"380\" y2=\"104\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <text x=\"60\" y=\"122\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ink)\">4.7</text>\n  <text x=\"220\" y=\"122\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">4.75</text>\n  <text x=\"380\" y=\"122\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ink)\">4.8</text>\n  <text x=\"60\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--mid)\">square it</text>\n  <text x=\"220\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--mid)\">midpoint square</text>\n  <text x=\"380\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--mid)\">square it</text>\n  <text x=\"60\" y=\"155\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--slate)\">22.09</text>\n  <text x=\"220\" y=\"155\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">22.5625</text>\n  <text x=\"380\" y=\"155\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--slate)\">23.04</text>\n  <rect x=\"334\" y=\"40\" width=\"66\" height=\"22\" rx=\"6\" fill=\"var(--gold2)\" fill-opacity=\"0.2\" stroke=\"var(--gold2)\" stroke-width=\"1.5\"/>\n  <text x=\"367\" y=\"55\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">target 23</text>\n  <path d=\"M 367 62 L 367 90\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <path d=\"M 367 90 l -4 -6 l 8 0 z\" fill=\"var(--gold-deep)\"/>\n  <line x1=\"367\" y1=\"72\" x2=\"367\" y2=\"96\" stroke=\"var(--gold2)\" stroke-width=\"3\"/>\n  <circle cx=\"367\" cy=\"96\" r=\"5.5\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"367\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;23</text>\n  <text x=\"220\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--accent)\">23 &gt; 22.5625, so &#8730;23 is past the halfway mark</text>\n  <line x1=\"20\" y1=\"220\" x2=\"420\" y2=\"220\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/>\n  <text x=\"220\" y=\"238\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--ink)\">it rounds up to 4.8</text>\n</svg>",
+    "cap": "Zooming in on the tenth between \\(4.7\\) and \\(4.8\\), the rounding question becomes one clean comparison. Squaring the endpoints gives \\(4.7^2 = 22.09\\) and \\(4.8^2 = 23.04\\), which traps \\(\\sqrt{23}\\) inside this gap. The decider is the midpoint \\(4.75\\), whose square is \\(4.75^2 = 22.5625\\). Since the target \\(23\\) sits above \\(22.5625\\), the root \\(\\sqrt{23}\\) has already crossed the halfway mark, so it rounds up to \\(4.8\\). Every step here is exact arithmetic on the squares, so we never have to chase the endless decimal of the root itself."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A small robot rolls forward in a straight line for \\(\\sqrt{138}\\) seconds and then spins to face a new direction. The catch is that its little speaker can only call out whole seconds, so it wants to announce the largest whole number of seconds that is still less than \\(\\sqrt{138}\\). Using the perfect squares from 8.1 as landmarks, notice that \\(11^2 = 121\\) sits below \\(138\\) and \\(12^2 = 144\\) sits above \\(138\\), so the root is trapped between \\(11\\) and \\(12\\). What is the largest whole number less than \\(\\sqrt{138}\\)? Type the single whole number.",
+    "hints": [
+     "Find the two perfect squares that hug 138 from below and above. One of them is 121 and the other is 144, and you already know their roots.",
+     "Since \\(11^2 = 121 < 138 < 144 = 12^2\\), the value \\(\\sqrt{138}\\) lands somewhere between 11 and 12. The largest whole number still below it is the smaller of those two."
+    ],
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0"
+    ],
+    "sol": "I want the biggest whole number that is still smaller than \\(\\sqrt{138}\\). The cleanest way to test a whole number against a root is to square it, since squaring keeps the order for nonnegative numbers. Check \\(11\\) by comparing \\(11^2\\) with \\(138\\). Exactly, \\(11^2 = 121\\), and \\(121 < 138\\), so \\(11 < \\sqrt{138}\\). Now check the next whole number up. Exactly, \\(12^2 = 144\\), and \\(144 > 138\\), so \\(12 > \\sqrt{138}\\). That traps the root between the two, \\(11 < \\sqrt{138} < 12\\). Because \\(138\\) is not a perfect square, \\(\\sqrt{138}\\) is irrational and never lands on \\(12\\), so the largest whole number still below it is \\(11\\). The robot announces \\(\\boxed{11}\\) seconds."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A square solar farm spreads out over exactly \\(6800\\) square meters, so each side measures \\(\\sqrt{6800}\\) meters. Since \\(6800\\) is not a perfect square, that side length is one of those new never-ending numbers, but you can still pin down its whole-number part. Hunt for the two perfect squares that trap \\(6800\\) by testing nearby whole numbers. Notice that \\(82^2 = 6724\\), which sits below \\(6800\\), while \\(83^2 = 6889\\), which sits above it. What is the largest whole number of meters that is still less than \\(\\sqrt{6800}\\)? Type the single whole number.",
+    "hints": [
+     "You want two perfect squares with \\(6800\\) caught between them, and you are already handed the candidates. Since \\(82^2 = 6724\\) and \\(83^2 = 6889\\), which two consecutive whole numbers do those squares belong to?",
+     "From \\(6724 \\le 6800 \\le 6889\\) you can read off \\(82 < \\sqrt{6800} < 83\\). The largest whole number that stays below \\(\\sqrt{6800}\\) is the smaller of those two bounds."
+    ],
+    "ans": "82",
+    "accept": [
+     "82",
+     "82.0"
+    ],
+    "sol": "I want the two consecutive perfect squares that bracket \\(6800\\), because for nonnegative numbers a bigger number always has a bigger square root. Testing the nearby whole numbers gives the exact comparison \\(82^2 = 6724\\) and \\(83^2 = 6889\\). Since \\(6724 \\le 6800\\) and \\(6800 \\le 6889\\), I have \\(6724 \\le 6800 \\le 6889\\). Taking square roots keeps that order, so \\(82 < \\sqrt{6800} < 83\\). The root is strictly above \\(82\\) because \\(6800\\) is more than \\(6724\\), and strictly below \\(83\\) because \\(6800\\) is less than \\(6889\\). The largest whole number that still stays below \\(\\sqrt{6800}\\) is therefore \\(\\boxed{82}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A warehouse floor is a perfect square covering \\(2024\\) square feet, so each side measures \\(\\sqrt{2024}\\) feet. The builder wants the largest whole number of feet that is still less than the true side length. This one is sneaky, so check the perfect square just above your first guess. Notice that \\(44^2 = 1936\\) but \\(45^2 = 2025\\), which sits only one above \\(2024\\). What is the largest whole number less than \\(\\sqrt{2024}\\)? Type the single whole number.",
+    "hints": [
+     "You want two consecutive whole numbers whose squares trap \\(2024\\). One of them squares to \\(1936\\) and the next squares to \\(2025\\), and \\(2024\\) falls between those.",
+     "Since \\(45^2 = 2025\\) is bigger than \\(2024\\), the side length \\(\\sqrt{2024}\\) is just under \\(45\\), not equal to it. So the largest whole number below the root is one step down from \\(45\\)."
+    ],
+    "ans": "44",
+    "accept": [
+     "44",
+     "44.0"
+    ],
+    "sol": "I trap \\(2024\\) between two consecutive perfect squares. Squaring exactly, \\(44^2 = 1936\\) and \\(45^2 = 2025\\). Since \\(1936 < 2024 < 2025\\), I know \\(44 < \\sqrt{2024} < 45\\). The gap at the top is tiny, because \\(2025 - 2024 = 1\\), so \\(\\sqrt{2024}\\) is barely under \\(45\\). It is tempting to round up, but \\(2024\\) is not a perfect square and \\(45^2\\) already overshoots, so the root never actually reaches \\(45\\). The largest whole number that stays below \\(\\sqrt{2024}\\) is \\(\\boxed{44}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "So here is what I keep landing on, no matter how big the number under the root gets. To find the largest whole number that is still less than a root, I just hunt for the two perfect squares that hug the number, or I square whole numbers going up until I finally pass it, and then I back off to the biggest whole number whose square is still under the number. That biggest whole number is the <b>floor</b> of the root, the last whole number I reach before the root itself. The reason this never breaks is that I am only ever comparing squares, and squares stay exact even when the root runs on forever, so I never have to pin down the messy decimal at all."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A puzzle book poses this challenge. How many whole numbers \\(n\\) have a square root that lands strictly between \\(7\\) and \\(11\\)? That is, \\(7 < \\sqrt{n} < 11\\). Picture the two ends as gates the root has to squeeze between, then count every whole number that fits. Type the single count.",
+    "hints": [
+     "Squaring is fair on both sides because for nonnegative numbers a bigger value always has a bigger square root, so the order never flips. From \\(\\sqrt{n} > 7\\) you get \\(n > 49\\), and from \\(\\sqrt{n} < 11\\) you get \\(n < 121\\).",
+     "Now \\(n\\) is a whole number with \\(49 < n < 121\\). Both ends are strict, so \\(49\\) and \\(121\\) themselves are out, since their roots are exactly \\(7\\) and \\(11\\), not between. The list runs from \\(50\\) up through \\(120\\). To count a solid run of whole numbers, take last minus first plus one."
+    ],
+    "ans": "71",
+    "accept": [
+     "71",
+     "71.0"
+    ],
+    "sol": "The cleanest move is to turn the root bounds into plain number bounds by squaring. That is fair because for nonnegative numbers, the larger number always has the larger square root, so squaring keeps the order intact. Start with \\(\\sqrt{n} > 7\\). Squaring both sides gives \\(n > 7^2\\), which is \\(n > 49\\). Then \\(\\sqrt{n} < 11\\) gives \\(n < 11^2\\), which is \\(n < 121\\). So \\(n\\) is a whole number with \\(49 < n < 121\\). Both ends are strict. The number \\(49\\) is excluded because \\(\\sqrt{49} = 7\\) exactly, not greater than \\(7\\), and \\(121\\) is excluded because \\(\\sqrt{121} = 11\\) exactly, not less than \\(11\\). The qualifying whole numbers run from \\(50\\) up through \\(120\\). Counting a solid run of whole numbers is last minus first plus one, so \\(120 - 50 + 1 = 71\\). \\(\\boxed{71}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Here is the trick that makes counting easy. Asking how many whole numbers have a square root sitting between two values is hard to picture while the roots are still wrapped in radicals, so I square both ends and turn it into a question about the plain numbers underneath. If I want roots landing between \\(5\\) and \\(6\\), I square to ask which whole numbers fall between \\(25\\) and \\(36\\) instead, and now I can count them on sight. Squaring is fair here because for nonnegative numbers a bigger number always has a bigger root, so it never sneaks a value into the range or pushes one out, and the only thing left to watch is whether each end is counted or skipped."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Picture all the whole numbers \\(k\\) that get squeezed strictly between two roots, so that \\(\\sqrt{130} \\lt k \\lt \\sqrt{320}\\). Squaring turns the fuzzy roots into clean perfect-square landmarks. Since \\(11^2 = 121\\) and \\(12^2 = 144\\), the value \\(\\sqrt{130}\\) sits between \\(11\\) and \\(12\\), so the smallest whole number above it is \\(12\\). Since \\(17^2 = 289\\) and \\(18^2 = 324\\), the value \\(\\sqrt{320}\\) sits between \\(17\\) and \\(18\\), so the largest whole number below it is \\(17\\). That makes \\(k\\) run over the whole numbers from \\(12\\) up through \\(17\\). How many whole numbers is that? Type the single count.",
+    "hints": [
+     "A whole number \\(k\\) fits when its square lands strictly above \\(130\\) and strictly below \\(320\\). Find the smallest such \\(k\\) and the largest such \\(k\\) by checking squares.",
+     "The smallest fit is \\(12\\) because \\(12^2 = 144 \\gt 130\\) while \\(11^2 = 121\\) is too small. The largest fit is \\(17\\) because \\(17^2 = 289 \\lt 320\\) while \\(18^2 = 324\\) is too big. Now count from \\(12\\) through \\(17\\), and remember to include both ends."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0"
+    ],
+    "sol": "A whole number \\(k\\) lands strictly between the two roots exactly when \\(130 \\lt k^2 \\lt 320\\), so instead of estimating the roots I compare the squares directly. Walking up the perfect squares, \\(11^2 = 121\\) is below \\(130\\) but \\(12^2 = 144\\) is above \\(130\\), so the smallest \\(k\\) that works is \\(12\\). Going the other way, \\(17^2 = 289\\) is below \\(320\\) but \\(18^2 = 324\\) is above \\(320\\), so the largest \\(k\\) that works is \\(17\\). The valid values are the whole numbers \\(12, 13, 14, 15, 16, 17\\). Counting them, or computing \\(17 - 12 + 1\\), gives \\(\\boxed{6}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Once I can trap a single root between two whole numbers, counting the whole numbers caught between two different roots is the same trick run twice. Since squaring keeps everything in order for numbers that are not negative, asking which whole numbers sit between two roots is just asking which whole numbers, when squared, land strictly between the two plain numbers under the radicals. I can spot those by squaring, or I can bracket each root by itself and read off the smallest whole number above the lower root and the largest below the upper one, then count from one to the other. Either way the order rule keeps the count lined up, so none of them can sneak past me."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A rigger is hanging a sign and has two support cables to choose from, each labeled in a different style. Cable A is listed as \\(6\\sqrt{7}\\) meters and Cable B is listed as \\(4\\sqrt{15}\\) meters. She wants the longer one for extra reach, but neither number under the root is a perfect square, so she cannot read off a clean length, and the rules of this lesson say leave the radicals alone, do not break them apart. Here is the move that rescues her. Both lengths are positive, and for positive numbers a longer length always has a larger square, so she can compare the cables by comparing their squares instead. Squaring \\(6\\sqrt{7}\\) gives \\(6^2 \\times 7\\), and squaring \\(4\\sqrt{15}\\) gives \\(4^2 \\times 15\\), and both of those are plain whole numbers she can compare on sight. Option 1 is Cable A, \\(6\\sqrt{7}\\). Option 2 is Cable B, \\(4\\sqrt{15}\\). Which cable is longer? Type 1 or 2.",
+    "hints": [
+     "Comparing the radicals head on is hard, but squaring clears the roots away. Square each length using \\((a\\sqrt{b})^2 = a^2 \\times b\\), which leaves you two whole numbers, then compare those.",
+     "Cable A squared is \\(6^2 \\times 7 = 36 \\times 7 = 252\\). Cable B squared is \\(4^2 \\times 15 = 16 \\times 15 = 240\\). Since both cables are positive, the one with the larger square is the longer cable."
+    ],
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0"
+    ],
+    "sol": "Both lengths are positive, and for nonnegative numbers a larger value always has a larger square, so squaring the two lengths lets us compare them without ever touching the roots. Squaring Cable A, \\((6\\sqrt{7})^2 = 6^2 \\times 7 = 36 \\times 7 = 252\\). Squaring Cable B, \\((4\\sqrt{15})^2 = 4^2 \\times 15 = 16 \\times 15 = 240\\). These are exact whole numbers, no rounding needed, and \\(252 > 240\\). Since squaring keeps positive numbers in the same order, the cable with the larger square is the longer one, so Cable A wins. The longer cable is option \\(\\boxed{1}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 318\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A two-column panel that compares two cable lengths by squaring each one. The left column is headed Cable A and shows the expression 6 times the square root of 7 in a box. A downward arrow labeled square leads to 6 squared times 7, which leads to 36 times 7 equals 252. The right column is headed Cable B and shows the expression 4 times the square root of 15 in a box. A downward arrow labeled square leads to 4 squared times 15, which leads to 16 times 15 equals 240. Across the bottom a comparison bar reads 252 is greater than 240, and an arrow points to Cable A as the longer cable. The squared value 252 under Cable A is highlighted in gold as the winner. A caption notes that squaring is safe because both expressions are nonnegative, so it keeps their order and turns a hard root comparison into an easy whole-number one.\"><text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">SQUARE BOTH, THEN COMPARE</text><line x1=\"220\" y1=\"30\" x2=\"220\" y2=\"232\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><text x=\"116\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--mid)\">CABLE A</text><text x=\"324\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--mid)\">CABLE B</text><rect x=\"58\" y=\"54\" width=\"116\" height=\"36\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"116\" y=\"77\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">6&#8730;7</text><rect x=\"266\" y=\"54\" width=\"116\" height=\"36\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"324\" y=\"77\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">4&#8730;15</text><line x1=\"116\" y1=\"92\" x2=\"116\" y2=\"116\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><path d=\"M 111 110 L 116 117 L 121 110\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><text x=\"138\" y=\"108\" text-anchor=\"start\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-style=\"italic\" fill=\"var(--mid)\">square</text><line x1=\"324\" y1=\"92\" x2=\"324\" y2=\"116\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><path d=\"M 319 110 L 324 117 L 329 110\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><text x=\"346\" y=\"108\" text-anchor=\"start\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-style=\"italic\" fill=\"var(--mid)\">square</text><text x=\"116\" y=\"138\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">6&#178; &#215; 7</text><text x=\"324\" y=\"138\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">4&#178; &#215; 15</text><line x1=\"116\" y1=\"148\" x2=\"116\" y2=\"168\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><path d=\"M 111 162 L 116 169 L 121 162\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><line x1=\"324\" y1=\"148\" x2=\"324\" y2=\"168\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><path d=\"M 319 162 L 324 169 L 329 162\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><text x=\"116\" y=\"188\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">36 &#215; 7 =</text><rect x=\"86\" y=\"196\" width=\"60\" height=\"32\" rx=\"8\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><text x=\"116\" y=\"218\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\">252</text><text x=\"324\" y=\"188\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">16 &#215; 15 =</text><rect x=\"294\" y=\"196\" width=\"60\" height=\"32\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"324\" y=\"218\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">240</text><rect x=\"58\" y=\"252\" width=\"324\" height=\"48\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"220\" y=\"276\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--gold-deep)\">252 &#62; 240</text><text x=\"220\" y=\"292\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--mid)\">so Cable A is longer</text><path d=\"M 150 276 L 116 276 L 116 232\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><path d=\"M 111 238 L 116 231 L 121 238\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/></svg>",
+    "cap": "Two cables, one squaring trick. Cable A is \\(6\\sqrt{7}\\) and Cable B is \\(4\\sqrt{15}\\), and comparing those roots head on is hard. Square each instead. Cable A becomes \\(6^2 \\times 7 = 36 \\times 7 = 252\\) and Cable B becomes \\(4^2 \\times 15 = 16 \\times 15 = 240\\). Since both cables are nonnegative, squaring keeps their order, so \\(252 > 240\\) tells us \\(6\\sqrt{7} > 4\\sqrt{15}\\) and Cable A wins."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move we found, dressed up so it works every time. Since two nonnegative quantities keep their order when I square them, whichever one squares to the bigger number is the bigger quantity, so to compare any two root expressions I can just square both and rank the plain whole numbers I get instead. A number sitting in front of a root comes along for the ride, because it squares too, so something like \\(6\\sqrt{7}\\) squares to \\(6^2 \\times 7 = 252\\), turning an awkward irrational into one tidy number. The decimals I was reaching for were never needed, and I am only deciding which is larger here, not simplifying or combining the radicals."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Solving a geometry formula leaves you with the expression \\(\\left(\\sqrt{6}\\right)^4\\), and your teacher promises that even though \\(\\sqrt{6}\\) is one of those messy roots that never settles down into a tidy decimal, this whole thing lands on a clean whole number. Here is why. The fourth power means four copies of \\(\\sqrt{6}\\) multiplied together, which you can split into two pairs. Each pair \\(\\sqrt{6} \\times \\sqrt{6}\\) gives back the number under the root, namely \\(6\\), because that is exactly what a square root does. So the two pairs turn into \\(6 \\times 6\\). What whole number does \\(\\left(\\sqrt{6}\\right)^4\\) equal? Type the single whole number.",
+    "hints": [
+     "A square root undoes a square. Multiply two copies of the same root together, \\(\\sqrt{6} \\times \\sqrt{6}\\), and you are left with just the inside, \\(6\\). No decimals needed.",
+     "The fourth power is two of those pairs side by side, so \\(\\left(\\sqrt{6}\\right)^4 = \\left(\\sqrt{6}\\times\\sqrt{6}\\right)\\times\\left(\\sqrt{6}\\times\\sqrt{6}\\right) = 6 \\times 6\\). Now just multiply those two sixes."
+    ],
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0"
+    ],
+    "sol": "The trick is to never touch the decimal value of \\(\\sqrt{6}\\) at all. Group the four copies into pairs. One pair squares the root exactly, \\(\\left(\\sqrt{6}\\right)^2 = 6\\), since a square and a square root cancel for nonnegative numbers. The fourth power is just that result squared again, so \\(\\left(\\sqrt{6}\\right)^4 = \\left(\\left(\\sqrt{6}\\right)^2\\right)^2 = 6^2\\), and \\(6^2 = 36\\). You can sanity check this against the bracketing idea. We know \\(2 < \\sqrt{6} < 3\\) because the perfect squares \\(2^2 = 4\\) and \\(3^2 = 9\\) trap \\(6\\) between them. Raising everything to the fourth power keeps the order, so \\(2^4 < \\left(\\sqrt{6}\\right)^4 < 3^4\\), meaning the answer must land between \\(16\\) and \\(81\\). The exact value sits comfortably inside that window. So \\(\\left(\\sqrt{6}\\right)^4 = \\boxed{36}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the surprise we just caught. A square root and the number under it are tied together by one promise, that the root times itself gives back the inside, so \\(\\sqrt{6} \\cdot \\sqrt{6} = 6\\) even though \\(\\sqrt{6}\\) by itself never settles into a tidy decimal. That means any <b>even</b> power of a root is secretly a stack of those pairs, and each pair quietly collapses to the inside, so the messy irrational vanishes and a clean whole number is left standing. The fourth power is the inside squared and the sixth power is the inside cubed, because splitting an even exponent into pairs is the same as raising the inside number to half of that exponent."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "Two walking trails meet end to end, so a hiker covers both in a row. The first trail is \\(\\sqrt{18}\\) miles long and the second is \\(\\sqrt{33}\\) miles long. A planner wants to print the largest whole number of miles that the full route stays above, in other words the floor of the total length. Start loose by trapping each root between integers, then sharpen with tenths until the sum is pinned between two consecutive whole numbers. What is the largest whole number less than \\(\\sqrt{18} + \\sqrt{33}\\)? Type the single whole number.",
+    "hints": [
+     "Bracket each root by itself first. Since \\(4^2 = 16\\) and \\(5^2 = 25\\), \\(\\sqrt{18}\\) sits between 4 and 5. Since \\(5^2 = 25\\) and \\(6^2 = 36\\), \\(\\sqrt{33}\\) sits between 5 and 6. That only tells you the sum is between 9 and 11, which is too wide to name a single floor.",
+     "Push the lower edge up with tenths. Check \\(4.2^2 = 17.64\\), which is below 18, so \\(\\sqrt{18} > 4.2\\). Check \\(5.7^2 = 32.49\\), which is below 33, so \\(\\sqrt{33} > 5.7\\). Adding the safe lower edges gives more than \\(4.2 + 5.7\\). Now find a matching upper edge to trap the sum between two neighbors."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "sol": "The total length is \\(\\sqrt{18} + \\sqrt{33}\\), and I want the largest whole number below it. Squaring is the honest tool here, since for nonnegative numbers a bigger square means a bigger root. First a rough trap. From \\(4^2 = 16 < 18 < 25 = 5^2\\) I get \\(4 < \\sqrt{18} < 5\\), and from \\(5^2 = 25 < 33 < 36 = 6^2\\) I get \\(5 < \\sqrt{33} < 6\\). Together that says the sum is between \\(9\\) and \\(11\\), too loose to name one floor. Now sharpen with tenths, comparing exact squares each time. Since \\(4.2^2 = 17.64 < 18\\), I know \\(\\sqrt{18} > 4.2\\). Since \\(5.7^2 = 32.49 < 33\\), I know \\(\\sqrt{33} > 5.7\\). Adding these safe lower edges, \\(\\sqrt{18} + \\sqrt{33} > 4.2 + 5.7 = 9.9\\), which is already above \\(9\\). For the ceiling, \\(4.25^2 = 18.0625 > 18\\) gives \\(\\sqrt{18} < 4.25\\), and \\(5.75^2 = 33.0625 > 33\\) gives \\(\\sqrt{33} < 5.75\\), so the sum is less than \\(4.25 + 5.75 = 10\\). The total is squeezed into \\(9.9 < \\sqrt{18} + \\sqrt{33} < 10\\), comfortably between \\(9\\) and \\(10\\). The largest whole number below it is \\(\\boxed{9}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "A survey drone leaves its base, flies \\(\\sqrt{40}\\) miles north, then turns and flies \\(\\sqrt{75}\\) miles east. The flight planner wants the largest whole number of miles that is still below the drone's total flown distance \\(\\sqrt{40} + \\sqrt{75}\\). First trap each root. Since \\(6^2 = 36\\) and \\(7^2 = 49\\), we know \\(\\sqrt{40}\\) sits between \\(6\\) and \\(7\\). Since \\(8^2 = 64\\) and \\(9^2 = 81\\), we know \\(\\sqrt{75}\\) sits between \\(8\\) and \\(9\\). So the sum lands somewhere between \\(14\\) and \\(16\\), and it looks dangerously close to \\(15\\). The eyeball cannot settle this, so you will have to test \\(15\\) exactly. What is the largest whole number less than \\(\\sqrt{40} + \\sqrt{75}\\)? Type the single whole number.",
+    "hints": [
+     "The whole question is whether the sum slips below 15 or not. Rewrite the test \\(\\sqrt{40} + \\sqrt{75} < 15\\) by moving one root across, so you are asking whether \\(\\sqrt{40} < 15 - \\sqrt{75}\\). Both sides are nonnegative, since \\(\\sqrt{75} < 9 < 15\\), so you are allowed to square both sides without flipping the comparison.",
+     "Squaring \\(\\sqrt{40} < 15 - \\sqrt{75}\\) gives \\(40 < 225 - 30\\sqrt{75} + 75\\), which tidies up to \\(30\\sqrt{75} < 260\\). There is still one root left, so square one more time to land on plain whole numbers. Compare \\(30^2 \\cdot 75\\) against \\(260^2\\)."
+    ],
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0"
+    ],
+    "sol": "The sum clearly beats \\(14\\), since \\(\\sqrt{40} > 6\\) and \\(\\sqrt{75} > 8\\) force \\(\\sqrt{40} + \\sqrt{75} > 14\\). The real contest is whether it stays under \\(15\\), so test \\(15\\) exactly. Ask whether \\(\\sqrt{40} + \\sqrt{75} < 15\\). Move one root to the other side, so the question becomes whether \\(\\sqrt{40} < 15 - \\sqrt{75}\\). The right side is positive because \\(\\sqrt{75} < 9 < 15\\), so both sides are nonnegative and squaring keeps the order. Squaring gives \\(40 < 225 - 30\\sqrt{75} + 75\\), and the right side collects to \\(300 - 30\\sqrt{75}\\). Rearranging, \\(30\\sqrt{75} < 260\\). One root still remains, so square once more to reach plain whole numbers. The left side squares to \\(30^2 \\cdot 75 = 900 \\cdot 75 = 67{,}500\\), and the right side squares to \\(260^2 = 67{,}600\\). Since \\(67{,}500 < 67{,}600\\), the comparison \\(30\\sqrt{75} < 260\\) is true, every step reverses cleanly, and the sum really is below \\(15\\). It already cleared \\(14\\), so the sum sits strictly between \\(14\\) and \\(15\\). The largest whole number less than \\(\\sqrt{40} + \\sqrt{75}\\) is \\(\\boxed{14}\\)."
+   }
+  ],
+  "review": [
+   {
+    "ans": "5",
+    "x": "A square sticker covers exactly \\(34\\) square centimeters, so each side measures \\(\\sqrt{34}\\) centimeters. The number \\(34\\) is not a perfect square, so this side length cannot be written exactly, but you can trap it between two whole numbers using perfect square landmarks. What is the largest whole number that is less than \\(\\sqrt{34}\\), in other words its floor? Type the single whole number.",
+    "accept": [
+     "5",
+     "5.0"
+    ],
+    "hints": [
+     "Look for the perfect square just below \\(34\\) and the one just above it. Think about which whole numbers, when squared, land on either side.",
+     "Since \\(5^2 = 25\\) and \\(6^2 = 36\\), the value \\(34\\) sits between them, so \\(\\sqrt{34}\\) sits between \\(5\\) and \\(6\\). The floor is the lower of those two."
+    ],
+    "sol": "To find the floor of \\(\\sqrt{34}\\), hunt for the consecutive whole numbers whose squares bracket \\(34\\). Squaring \\(5\\) gives \\(5^2 = 25\\), which is below \\(34\\). Squaring \\(6\\) gives \\(6^2 = 36\\), which is above \\(34\\). So \\(25 < 34 < 36\\), and because a larger nonnegative number always has a larger square root, taking the root of each part keeps the order, giving \\(5 < \\sqrt{34} < 6\\). The root lands strictly between \\(5\\) and \\(6\\), so the largest whole number less than \\(\\sqrt{34}\\) is \\(\\boxed{5}\\)."
+   },
+   {
+    "x": "A climber lays out two ropes side by side. Rope 1 is marked \\(\\sqrt{63}\\) meters and Rope 2 is marked \\(\\sqrt{57}\\) meters. Both lengths land between the same two whole numbers, so just looking at the floors will not settle it. Using the order rule for nonnegative numbers, which rope is longer? Option 1 is \\(\\sqrt{63}\\). Option 2 is \\(\\sqrt{57}\\). Type 1 or 2.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0"
+    ],
+    "hints": [
+     "Both roots sit between 7 and 8, since \\(7^2 = 49\\) and \\(8^2 = 64\\). The floor is the same for both, so you cannot tell them apart that way. Look instead at what is under each root.",
+     "For nonnegative numbers, the larger number has the larger square root. Squaring \\(\\sqrt{63}\\) gives \\(63\\) and squaring \\(\\sqrt{57}\\) gives \\(57\\), so compare \\(63\\) and \\(57\\)."
+    ],
+    "sol": "Squaring a nonnegative number keeps the order, so to compare \\(\\sqrt{63}\\) and \\(\\sqrt{57}\\) I compare their squares. Squaring undoes each root, giving \\(63\\) and \\(57\\). Since \\(63 > 57\\), the root of \\(63\\) is the larger value, which means \\(\\sqrt{63} > \\sqrt{57}\\). Both roots round down to \\(7\\), so the floors tie, but the exact squares break the tie cleanly. Rope 1 is longer, so the answer is option \\(\\boxed{1}\\)."
+   },
+   {
+    "x": "A square window has an area of \\(75\\) square inches, so the length of one side is exactly \\(\\sqrt{75}\\) inches. You want that side length to the nearest whole inch. Since \\(8^2 = 64\\) and \\(9^2 = 81\\), the root is trapped between \\(8\\) and \\(9\\). To round, look at the halfway mark \\(8.5\\), whose square is \\(72.25\\). Option 1 is that \\(75\\) is below \\(72.25\\), and option 2 is that \\(75\\) is above \\(72.25\\). To the nearest whole inch, what is \\(\\sqrt{75}\\)? Type the single whole number.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "hints": [
+     "The two whole numbers in play are 8 and 9, since 8 squared is 64 and 9 squared is 81 and 75 lands between them. Rounding just asks which one 75 is closer to, and the halfway point is 8.5.",
+     "Instead of squaring 8.5 with a decimal, double everything and compare whole numbers. The side doubled is twice the root of 75, and its square is 4 times 75, which is 300. The halfway value doubled is 17, and 17 squared is 289. Whichever square is bigger tells you which way to round."
+    ],
+    "sol": "The side of the window is \\(\\sqrt{75}\\), and you want it to the nearest whole inch. First trap it between landmarks. Since \\(8^2 = 64\\) and \\(9^2 = 81\\), and \\(75\\) sits between \\(64\\) and \\(81\\), you know \\(8 < \\sqrt{75} < 9\\). To round, you compare \\(\\sqrt{75}\\) to the halfway value \\(8.5\\). Rather than work with the decimal square \\(72.25\\), keep everything as whole numbers by doubling. Doubling the root gives \\(2\\sqrt{75}\\), whose square is \\(4 \\times 75 = 300\\). Doubling \\(8.5\\) gives \\(17\\), whose square is \\(289\\). Since \\(300 > 289\\), the root \\(\\sqrt{75}\\) is greater than \\(8.5\\), so it rounds up. That makes option 2 the true statement, and the side rounds to \\(9\\) inches. To the nearest whole inch, \\(\\sqrt{75} = \\boxed{9}\\)."
+   },
+   {
+    "ans": "7",
+    "x": "A skateboard ramp climbs \\(\\sqrt{44}\\) feet from the ground to its top edge, and the builder wants that height rounded to the nearest whole foot for the sign out front. Since \\(6^2 = 36\\) and \\(7^2 = 49\\), the height lands somewhere between 6 and 7 feet. The deciding line is the halfway mark 6.5, whose square is \\(42.25\\). Option 1 is that \\(\\sqrt{44}\\) rounds down to 6, and option 2 is that it rounds up to 7. To the nearest whole foot, what is \\(\\sqrt{44}\\)? Type the single whole number.",
+    "accept": [
+     "7",
+     "7.0"
+    ],
+    "hints": [
+     "First trap the root between two integers. Find the consecutive whole numbers whose squares sit just below and just above 44, and you will know which two feet the height falls between.",
+     "Now decide which one is closer using the midpoint 6.5. Compare 44 with \\(6.5^2 = 42.25\\). If 44 is the larger number, the root is past the halfway point and rounds up."
+    ],
+    "sol": "Start by trapping the root between landmark perfect squares. Because \\(6^2 = 36\\) and \\(7^2 = 49\\), and 44 sits between 36 and 49, the order rule tells us \\(6 < \\sqrt{44} < 7\\). So the height is somewhere in the 6 to 7 range, and rounding comes down to which integer is nearer. The tie breaker is the midpoint 6.5, and squaring it gives \\(6.5^2 = 42.25\\). Compare the number under the root with that midpoint square. Since \\(44 \\ge 42.25\\), the value 44 sits above the halfway mark, which means \\(\\sqrt{44}\\) is greater than 6.5 and therefore closer to 7 than to 6. To keep the comparison fully exact you can clear the decimal by doubling before squaring, since \\(\\sqrt{44}\\) versus \\(6.5\\) is the same as \\(2\\sqrt{44}\\) versus \\(13\\), and squaring both nonnegative sides gives \\(4 \\times 44 = 176\\) against \\(13^2 = 169\\). Because \\(176 \\ge 169\\), the root really is past the midpoint, confirming it rounds up. To the nearest whole foot the ramp height is \\(\\boxed{7}\\)."
+   },
+   {
+    "ans": "5.6",
+    "x": "A length of wire measures \\(\\sqrt{31}\\) inches, and a label needs that length rounded to the nearest tenth. First trap it. Since \\(5.5^2 = 30.25\\) sits below \\(31\\) and \\(5.6^2 = 31.36\\) sits above \\(31\\), the value lies between \\(5.5\\) and \\(5.6\\). To decide which way it rounds, check the halfway value \\(5.55\\), whose square is \\(30.8025\\). Compare \\(31\\) against the two options, option 1 being \\(30.8025\\) and option 2 being \\(31\\) itself, to see whether \\(\\sqrt{31}\\) is above or below \\(5.55\\). To the nearest tenth, what is \\(\\sqrt{31}\\)? Type the one-decimal answer.",
+    "accept": [
+     "5.6",
+     "5.60"
+    ],
+    "hints": [
+     "You already trapped the root between \\(5.5\\) and \\(5.6\\). The only question left is which tenth it is closer to, so look at the midpoint \\(5.55\\).",
+     "Compare the squares instead of the roots. Since \\(5.55^2 = 30.8025\\) is less than \\(31\\), the root \\(\\sqrt{31}\\) is bigger than \\(5.55\\), so it rounds up."
+    ],
+    "sol": "Squaring keeps order for nonnegative numbers, so I can compare squares instead of roots. The consecutive tenths around the answer are \\(5.5\\) and \\(5.6\\). Their squares are \\(5.5^2 = 30.25\\) and \\(5.6^2 = 31.36\\). Since \\(30.25 \\le 31 \\le 31.36\\), the value \\(\\sqrt{31}\\) lies between \\(5.5\\) and \\(5.6\\). To round, I test the halfway point \\(5.55\\), where \\(5.55^2 = 30.8025\\). Because \\(30.8025 \\le 31\\), the root \\(\\sqrt{31}\\) is greater than \\(5.55\\), which means it sits in the upper part of the interval and rounds up. To the nearest tenth, \\(\\sqrt{31} = \\boxed{5.6}\\)."
+   },
+   {
+    "ans": "9.4",
+    "x": "A flagpole's height comes out to \\(\\sqrt{88}\\) units, and the builder needs it rounded to the nearest tenth. First trap the root. Since \\(9.3^2 = 86.49\\) sits below \\(88\\) and \\(9.4^2 = 88.36\\) sits above \\(88\\), the root lands between \\(9.3\\) and \\(9.4\\). To decide which way it rounds, check the halfway value \\(9.35\\), whose square is \\(87.4225\\). Option 1 is that \\(88\\) is below \\(87.4225\\), and option 2 is that \\(88\\) is above \\(87.4225\\). Rounded to the nearest tenth, what is \\(\\sqrt{88}\\)? Type the one-decimal answer.",
+    "accept": [
+     "9.4",
+     "9.40"
+    ],
+    "hints": [
+     "The root sits between 9.3 and 9.4 because their squares, 86.49 and 88.36, bracket 88. The tenths digit is decided by the halfway point 9.35.",
+     "Square the halfway value 9.35 to get 87.4225, then compare 88 against it. Since 88 is bigger, the root is past the halfway mark, so it rounds up."
+    ],
+    "sol": "Start by trapping \\(\\sqrt{88}\\) between two tenths. Squaring gives \\(9.3^2 = 86.49\\) and \\(9.4^2 = 88.36\\), and since \\(86.49 \\le 88 \\le 88.36\\), the root lies between \\(9.3\\) and \\(9.4\\). To round, compare \\(88\\) with the square of the midpoint \\(9.35\\). Working exactly, \\(935^2 = 874225\\) while \\(88 \\times 10000 = 880000\\), and \\(880000 > 874225\\), so \\(9.35^2 = 87.4225\\) is less than \\(88\\). That means \\(\\sqrt{88}\\) is larger than \\(9.35\\), past the halfway mark, so it rounds up to the next tenth. To the nearest tenth, \\(\\sqrt{88} \\approx \\boxed{9.4}\\)."
+   },
+   {
+    "x": "A square field has an area of \\(250\\) square yards, so each side measures \\(\\sqrt{250}\\) yards. The side length sits between two whole numbers because \\(15^2 = 225\\) and \\(16^2 = 256\\), and \\(225 \\le 250 \\le 256\\). What is the largest whole number that is less than \\(\\sqrt{250}\\)? Type the single whole number.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0"
+    ],
+    "hints": [
+     "Look for the perfect square just below \\(250\\). Since \\(15^2 = 225\\), the root of \\(250\\) is a little more than \\(15\\).",
+     "Confirm the upper landmark too. Because \\(16^2 = 256\\) is more than \\(250\\), the root has not yet reached \\(16\\), so it is trapped between \\(15\\) and \\(16\\)."
+    ],
+    "sol": "I want the largest whole number that is still smaller than \\(\\sqrt{250}\\), so I trap the root between two consecutive integers by comparing exact squares. The perfect square just below \\(250\\) is \\(15^2 = 225\\), and the next one up is \\(16^2 = 256\\). Since \\(225 \\le 250 \\le 256\\) and a larger number always has a larger square root for nonnegative numbers, I get \\(15 < \\sqrt{250} < 16\\). The root is bigger than \\(15\\) (because \\(250\\) is more than \\(225\\)) but it has not reached \\(16\\) yet (because \\(250\\) is less than \\(256\\)). So the largest whole number below \\(\\sqrt{250}\\) is \\(\\boxed{15}\\)."
+   },
+   {
+    "x": "A square reservoir holds water across a footprint of exactly \\(9000\\) square meters. Since the footprint is a square, each side measures \\(\\sqrt{9000}\\) meters, which is not a whole number. To label the edge with a clean marker, the engineers want the largest whole number that is still less than \\(\\sqrt{9000}\\). What is that whole number?",
+    "ans": "94",
+    "accept": [
+     "94",
+     "94.0"
+    ],
+    "hints": [
+     "You are hunting for two consecutive whole numbers whose squares sit just below and just above \\(9000\\). The smaller of those two is your answer.",
+     "Try squaring numbers in the nineties. Check \\(94 \\times 94\\) and \\(95 \\times 95\\) and see which one slips past \\(9000\\)."
+    ],
+    "sol": "The largest whole number less than \\(\\sqrt{9000}\\) is the floor of that root, so I look for the two consecutive whole numbers whose squares trap \\(9000\\). Testing nearby values, \\(94^2 = 8836\\) and \\(95^2 = 9025\\). Since \\(8836 < 9000 < 9025\\), squaring shows \\(94 < \\sqrt{9000} < 95\\). Because squaring preserves order for nonnegative numbers, \\(\\sqrt{9000}\\) lands strictly between \\(94\\) and \\(95\\), so the largest whole number below it is \\(\\boxed{94}\\)."
+   },
+   {
+    "x": "A digital odometer is rolling toward a reading of \\(\\sqrt{3{,}000{,}000}\\) tics, and a checkpoint flags the largest whole number that stays below it. Since \\(1{,}000^2 = 1{,}000{,}000\\) and \\(2{,}000^2 = 4{,}000{,}000\\), the root lands somewhere in the seventeen-hundreds. What is the largest whole number less than \\(\\sqrt{3{,}000{,}000}\\)? Type the single whole number.",
+    "ans": "1732",
+    "accept": [
+     "1732",
+     "1732.0"
+    ],
+    "hints": [
+     "You want the biggest whole number whose square is still at or below \\(3{,}000{,}000\\). Try a number in the seventeen-hundreds and square it, then nudge up or down.",
+     "Compare \\(1{,}732^2\\) against \\(3{,}000{,}000\\), then check \\(1{,}733^2\\). The answer is the larger one that does not pass \\(3{,}000{,}000\\)."
+    ],
+    "sol": "I want the largest whole number whose square stays at or below \\(3{,}000{,}000\\), because that whole number is the floor of \\(\\sqrt{3{,}000{,}000}\\). Squaring keeps order for nonnegative numbers, so I compare exact squares instead of decimals. Testing \\(1{,}732\\) gives \\(1{,}732^2 = 2{,}999{,}824\\), which is at or below \\(3{,}000{,}000\\). Testing the next number up, \\(1{,}733^2 = 3{,}003{,}289\\), which passes \\(3{,}000{,}000\\). So \\(1{,}732^2 \\le 3{,}000{,}000 < 1{,}733^2\\), which traps the root between \\(1{,}732\\) and \\(1{,}733\\). The largest whole number less than \\(\\sqrt{3{,}000{,}000}\\) is \\(\\boxed{1732}\\)."
+   },
+   {
+    "x": "A number puzzle. How many whole numbers \\(n\\) have a square root that is strictly greater than \\(\\sqrt{50}\\) and strictly less than \\(\\sqrt{130}\\)? Type the single count.",
+    "ans": "79",
+    "accept": [
+     "79",
+     "79.0"
+    ],
+    "hints": [
+     "For nonnegative numbers, a bigger number always has a bigger square root, so you can turn this into a question about \\(n\\) itself by squaring both ends.",
+     "Squaring \\(\\sqrt{50}\\) gives \\(50\\) and squaring \\(\\sqrt{130}\\) gives \\(130\\), so you need the whole numbers \\(n\\) strictly between \\(50\\) and \\(130\\). Count them carefully, leaving both ends out."
+    ],
+    "sol": "The order rule from this lesson says that for nonnegative numbers, the one with the larger value has the larger square root, and the comparison runs both ways. So \\(\\sqrt{50} < \\sqrt{n}\\) is the same as \\(50 < n\\), and \\(\\sqrt{n} < \\sqrt{130}\\) is the same as \\(n < 130\\). I squared each given root to get an exact bound, with \\(\\left(\\sqrt{50}\\right)^2 = 50\\) and \\(\\left(\\sqrt{130}\\right)^2 = 130\\). Now I just need the whole numbers \\(n\\) with \\(50 < n < 130\\). Since both ends are left out, the smallest is \\(51\\) and the largest is \\(129\\). Counting from \\(51\\) through \\(129\\) gives \\(129 - 51 + 1 = 79\\) whole numbers. The count is \\(\\boxed{79}\\).",
+    "label": "r10"
+   },
+   {
+    "x": "A number line has two posts marked on it. The left post sits at \\(\\sqrt{40}\\) and the right post sits at \\(\\sqrt{210}\\). A whole number \\(k\\) counts as \"fenced in\" if it lands strictly between the two posts, meaning \\(\\sqrt{40} < k < \\sqrt{210}\\). How many whole numbers \\(k\\) are fenced in?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0"
+    ],
+    "hints": [
+     "You do not need the exact value of either root. Find the smallest whole number whose square is bigger than 40, and the largest whole number whose square is smaller than 210.",
+     "Since \\(6^2 = 36\\) and \\(7^2 = 49\\), the root of 40 sits between 6 and 7, so the first whole number past it is 7. Since \\(14^2 = 196\\) and \\(15^2 = 225\\), the root of 210 sits between 14 and 15, so the last whole number before it is 14. Count from 7 up to 14."
+    ],
+    "sol": "Instead of estimating the roots as decimals, compare squares, since for nonnegative numbers a bigger square means a bigger root. For the left post, \\(6^2 = 36\\) is less than 40 and \\(7^2 = 49\\) is more than 40, so \\(6 < \\sqrt{40} < 7\\). The smallest whole number strictly above \\(\\sqrt{40}\\) is 7. For the right post, \\(14^2 = 196\\) is less than 210 and \\(15^2 = 225\\) is more than 210, so \\(14 < \\sqrt{210} < 15\\). The largest whole number strictly below \\(\\sqrt{210}\\) is 14. The fenced-in whole numbers run from 7 through 14, namely 7, 8, 9, 10, 11, 12, 13, 14. Counting them gives \\(14 - 7 + 1 = 8\\). So \\(\\boxed{8}\\)."
+   },
+   {
+    "x": "Two steel beams are cut to different lengths. Beam 1 measures \\(7\\sqrt{5}\\) meters and Beam 2 measures \\(4\\sqrt{15}\\) meters. Neither length is a whole number, so the safest way to tell them apart is to square each one, since squaring keeps the order for positive lengths. Option 1 is Beam 1 and option 2 is Beam 2. Which beam is longer? Type 1 or 2.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0"
+    ],
+    "hints": [
+     "Both lengths are positive, so whichever one has the bigger square is the longer beam. Square each expression by squaring the number out front and squaring the root.",
+     "Beam 1 squared is \\(7^2 \\times 5\\) and Beam 2 squared is \\(4^2 \\times 15\\). Work out both whole numbers, then compare."
+    ],
+    "sol": "Squaring a positive length keeps the order, so I can compare the squares instead of the messy roots. Beam 1 gives \\(\\left(7\\sqrt{5}\\right)^2 = 7^2 \\times 5 = 49 \\times 5 = 245\\). Beam 2 gives \\(\\left(4\\sqrt{15}\\right)^2 = 4^2 \\times 15 = 16 \\times 15 = 240\\). Since \\(245 \\ge 240\\), Beam 1 has the larger square, so Beam 1 is the longer beam. The answer is option \\(\\boxed{1}\\)."
+   },
+   {
+    "ans": "27",
+    "x": "Here is a number that looks scary until you slow down. Take \\(\\sqrt{3}\\), a root that never settles into a neat decimal, and raise it to the 6th power. Remember that a root squared just hands back the number underneath, so two copies of \\(\\sqrt{3}\\) collapse into \\(3\\). The six factors split into three of those pairs, which means \\(\\sqrt{3}^6\\) is the same as \\(3\\) multiplied by itself three times. Evaluate it. What single whole number does \\(\\sqrt{3}^6\\) equal?",
+    "accept": [
+     "27",
+     "27.0"
+    ],
+    "hints": [
+     "Group the six copies of \\(\\sqrt{3}\\) into pairs. Each pair \\(\\sqrt{3} \\cdot \\sqrt{3}\\) is \\(\\sqrt{3}^2\\), which equals \\(3\\).",
+     "Six factors make three pairs, so you are left with \\(3 \\cdot 3 \\cdot 3\\), which is \\(3^3\\). Work out that product."
+    ],
+    "sol": "An even power of a root always escapes back to a whole number, because two copies of a root undo it. Write the sixth power as three squared pieces, \\(\\sqrt{3}^6 = \\left(\\sqrt{3}^2\\right)^3\\). Each \\(\\sqrt{3}^2\\) is just \\(3\\), since squaring a square root returns the number underneath. That leaves \\(3^3 = 3 \\cdot 3 \\cdot 3 = 27\\). You can sanity check by comparing exact squares the other way, where the answer \\(27\\) squared is \\(729\\), and \\(\\sqrt{3}^6\\) squared is \\(\\sqrt{3}^{12} = 3^6 = 729\\) as well, so the two truly match. The irrational root vanished and a clean integer is left, \\(\\boxed{27}\\)."
+   },
+   {
+    "x": "Two walking trails meet at a junction. The shorter trail runs \\(\\sqrt{28}\\) miles and the longer trail runs \\(\\sqrt{52}\\) miles. You want to know how far you would walk if you covered both, rounded down to a whole number of miles. What is the largest whole number that is less than \\(\\sqrt{28} + \\sqrt{52}\\)? Type the single whole number.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0"
+    ],
+    "hints": [
+     "Trap each root between tenths first. Try squaring 5.2 and 5.3 to pin down \\(\\sqrt{28}\\), then square 7.2 and 7.3 to pin down \\(\\sqrt{52}\\).",
+     "Once you have a low estimate for each root, add the two low estimates to find a number the sum is safely above, then check that the sum still stays below 13."
+    ],
+    "sol": "I will trap each root between tenths by squaring, since for nonnegative numbers a larger square means a larger root. For the first trail, \\(5.2^2 = 27.04\\) which is below \\(28\\), and \\(5.3^2 = 28.09\\) which is above \\(28\\), so \\(5.2 < \\sqrt{28} < 5.3\\). For the second trail, \\(7.2^2 = 51.84\\) which is below \\(52\\), and \\(7.3^2 = 53.29\\) which is above \\(52\\), so \\(7.2 < \\sqrt{52} < 7.3\\). Adding the low ends, the total is more than \\(5.2 + 7.2 = 12.4\\), and adding the high ends, the total is less than \\(5.3 + 7.3 = 12.6\\). So the sum sits between \\(12.4\\) and \\(12.6\\), comfortably between \\(12\\) and \\(13\\). Because \\(\\sqrt{28} + \\sqrt{52}\\) is irrational it never lands exactly on a whole number, so the largest whole number below it is \\(\\boxed{12}\\)."
+   }
+  ],
+  "next": "8.3"
  }
 }
