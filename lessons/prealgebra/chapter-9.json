@@ -556,5 +556,419 @@
    }
   ],
   "next": "9.2"
+ },
+ "9.2": {
+  "title": "A Percent of a Number",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 9.1 you learned to read a percent three ways, as a percent, a fraction, or a decimal, all standing for the same value. That was the grammar. This lesson is the first real sentence you build with it. Almost every percent question in the wild is one of three close cousins, and all three grow from a single relationship. When someone asks for a percent <b>of</b> a number, that little word \"of\" is quietly telling you to multiply. A jacket marked 25% off, a tip that is 18% of the bill, a poll where 60% of voters agree, each one is a percent multiplied by a whole amount to give a part. So the backbone of the whole lesson is this, the <b>part</b> equals the <b>percent</b> times the <b>whole</b>. Once you see that one relationship, the three questions are just three ways of leaving one piece blank. You might know the percent and the whole and want the part, or know the part and the whole and want the percent, or know the part and the percent and want the whole. Same relationship every time, read from a different corner."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Start with the friendliest version, where you know the percent and the whole and just want the part. A wildlife reserve counts \\(200\\) nesting birds, and a survey finds that \\(25\\%\\) of them are herons. To find how many herons that is, turn the word \"of\" into multiplication, since \\(25\\%\\) of \\(200\\) means \\(25\\%\\) times \\(200\\). Convert the percent to the fraction \\(\\tfrac{1}{4}\\) or the decimal \\(0.25\\), then multiply. How many herons are there?",
+    "ans": "50",
+    "accept": [
+     "50",
+     "50.0",
+     "fifty"
+    ],
+    "hints": [
+     "The word \"of\" means multiply. Rewrite \\(25\\%\\) as \\(\\tfrac{1}{4}\\) or \\(0.25\\), then multiply it by \\(200\\).",
+     "One quarter of \\(200\\) is \\(200 \\div 4 = 50\\). Or \\(0.25 \\times 200 = 50\\)."
+    ],
+    "sol": "A percent of a number is a multiplication, with \"of\" as the times sign. First convert the percent, so \\(25\\% = \\tfrac{1}{4} = 0.25\\). Then multiply by the whole, $$25\\% \\text{ of } 200 = \\tfrac{1}{4} \\times 200 = 50.$$ The same answer comes from \\(0.25 \\times 200 = 50\\). So there are \\(\\boxed{50}\\) herons."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move at the heart of it. To find a percent of a number, turn the percent into a fraction or a decimal and then multiply, because the word \"of\" sitting between a percent and a number always means multiply. This is just <b>part = percent times whole</b>, with the percent and the whole known and the part waiting to be found."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A bakery sold \\(35\\) loaves yesterday, and \\(60\\%\\) of them were sourdough. To find the number of sourdough loaves, multiply the whole by the percent. Convert \\(60\\%\\) to \\(\\tfrac{3}{5}\\) or \\(0.6\\) first, then multiply by \\(35\\). How many sourdough loaves were sold?",
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0",
+     "twenty one",
+     "twenty-one"
+    ],
+    "hints": [
+     "Rewrite \\(60\\%\\) as \\(0.6\\) (or \\(\\tfrac{3}{5}\\)), then multiply by \\(35\\).",
+     "\\(0.6 \\times 35 = 21\\). Or \\(\\tfrac{3}{5} \\times 35 = 3 \\times 7 = 21\\)."
+    ],
+    "sol": "Convert and multiply. Since \\(60\\% = \\tfrac{3}{5} = 0.6\\), $$60\\% \\text{ of } 35 = \\tfrac{3}{5} \\times 35 = 3 \\times 7 = 21.$$ So \\(\\boxed{21}\\) sourdough loaves were sold."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Percents are not capped at \\(100\\). A small startup had \\(15\\) employees last year and grew to \\(300\\%\\) of that size this year. To find this year's count, multiply \\(15\\) by \\(300\\%\\). Convert \\(300\\%\\) to the whole number \\(3\\) first, since \\(300\\% = \\tfrac{300}{100} = 3\\), then multiply. How many employees are there this year?",
+    "ans": "45",
+    "accept": [
+     "45",
+     "45.0",
+     "forty five",
+     "forty-five"
+    ],
+    "hints": [
+     "A percent over \\(100\\) becomes a number bigger than \\(1\\). Here \\(300\\% = 3\\).",
+     "Multiply \\(3 \\times 15 = 45\\)."
+    ],
+    "sol": "Convert the percent, \\(300\\% = \\tfrac{300}{100} = 3\\). Then $$300\\% \\text{ of } 15 = 3 \\times 15 = 45.$$ Notice the answer is larger than the original \\(15\\), which makes sense because a percent above \\(100\\) gives more than the whole. So there are \\(\\boxed{45}\\) employees."
+   },
+   {
+    "t": "imp",
+    "x": "Watch what the size of the percent does. Taking \\(100\\%\\) of a number leaves it unchanged, taking less than \\(100\\%\\) gives less than the number, and taking more than \\(100\\%\\) gives more, since you are multiplying by exactly \\(1\\), by less than \\(1\\), or by more than \\(1\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 180\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A bar representing the whole amount 200, divided into four equal quarters of 50 each. The first quarter is shaded gold and labelled 25 percent, showing that 25 percent of 200 is 50. Below, the calculation reads one quarter times 200 equals 50.\">\n  <text x=\"220\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">OF MEANS TIMES</text>\n  <text x=\"220\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">the whole bar is 200</text>\n  <rect x=\"40\" y=\"56\" width=\"90\" height=\"40\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <rect x=\"130\" y=\"56\" width=\"90\" height=\"40\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <rect x=\"220\" y=\"56\" width=\"90\" height=\"40\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <rect x=\"310\" y=\"56\" width=\"90\" height=\"40\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"85\" y=\"81\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">50</text>\n  <text x=\"175\" y=\"81\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">50</text>\n  <text x=\"265\" y=\"81\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">50</text>\n  <text x=\"355\" y=\"81\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">50</text>\n  <text x=\"85\" y=\"116\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">25%</text>\n  <text x=\"265\" y=\"116\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">the other 75%</text>\n  <text x=\"220\" y=\"152\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">25% of 200  =  &#188; &#215; 200  =  50</text>\n</svg>",
+    "cap": "Finding \\(25\\%\\) of \\(200\\). Split the whole bar of \\(200\\) into four equal quarters of \\(50\\). One quarter is \\(25\\%\\), so \\(25\\%\\) of \\(200\\) is one of those quarters, \\(\\tfrac{1}{4} \\times 200 = 50\\). Taking a percent of a number is multiplying the whole by that fraction."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A percent can carry a fraction in it. A theater holds \\(64\\) seats, and \\(12\\tfrac{1}{2}\\%\\) of them are reserved for staff. The cleanest path is to convert \\(12\\tfrac{1}{2}\\%\\) to a fraction, and since \\(12\\tfrac{1}{2}\\% = \\tfrac{1}{8}\\), you just take one eighth of \\(64\\). How many seats are reserved?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "First convert. \\(12\\tfrac{1}{2}\\% = 12.5\\% = \\tfrac{12.5}{100} = \\tfrac{1}{8}\\).",
+     "One eighth of \\(64\\) is \\(64 \\div 8 = 8\\)."
+    ],
+    "sol": "Convert the fractional percent to a clean fraction, \\(12\\tfrac{1}{2}\\% = \\tfrac{12.5}{100} = \\tfrac{1}{8}\\). Then $$12\\tfrac{1}{2}\\% \\text{ of } 64 = \\tfrac{1}{8} \\times 64 = 8.$$ So \\(\\boxed{8}\\) seats are reserved."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Tiny percents work the same way. A water sample weighs \\(80\\) grams, and \\(2.5\\%\\) of it is dissolved minerals. Convert \\(2.5\\%\\) to the decimal \\(0.025\\), then multiply by \\(80\\). How many grams of dissolved minerals are there?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Slide the point two places left, so \\(2.5\\% = 0.025\\).",
+     "\\(0.025 \\times 80 = 2\\)."
+    ],
+    "sol": "Convert the percent to a decimal by sliding the point two places left, \\(2.5\\% = 0.025\\). Then $$2.5\\% \\text{ of } 80 = 0.025 \\times 80 = 2.$$ So there are \\(\\boxed{2}\\) grams of dissolved minerals."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Now flip the question. This time you know the part and the whole, and you want the percent. A class read \\(30\\) books out of a goal of \\(120\\) books. To find what percent of the goal they reached, divide the part by the whole and write the result as a percent. <b>What percent is \\(30\\) of \\(120\\)?</b> Give just the number.",
+    "ans": "25",
+    "accept": [
+     "25",
+     "25%",
+     "25.0",
+     "25.0%"
+    ],
+    "hints": [
+     "Make the fraction part over whole, \\(\\tfrac{30}{120}\\), and simplify.",
+     "\\(\\tfrac{30}{120} = \\tfrac{1}{4} = 0.25\\), and \\(0.25\\) as a percent is \\(25\\%\\)."
+    ],
+    "sol": "To find what percent one number is of another, divide the part by the whole, then write it as a percent. $$\\tfrac{30}{120} = \\tfrac{1}{4} = 0.25 = 25\\%.$$ So \\(30\\) is \\(\\boxed{25}\\) percent of \\(120\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Reading the relationship from a different corner, to find what percent one number is of another, divide the part by the whole and write the answer as a percent. That is just <b>percent = part divided by whole</b>, since a percent is the part measured against the whole and then scaled to a hundred."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A phone battery holds a charge of \\(80\\) units when full, and right now it holds \\(60\\) units. To report the battery level as a percent, divide the current charge by the full charge and convert. <b>What percent of \\(80\\) is \\(60\\)?</b> Give just the number.",
+    "ans": "75",
+    "accept": [
+     "75",
+     "75%",
+     "75.0",
+     "75.0%"
+    ],
+    "hints": [
+     "The part is \\(60\\) and the whole is \\(80\\), so form \\(\\tfrac{60}{80}\\) and simplify.",
+     "\\(\\tfrac{60}{80} = \\tfrac{3}{4} = 0.75 = 75\\%\\)."
+    ],
+    "sol": "Divide the part by the whole, then convert to a percent. $$\\tfrac{60}{80} = \\tfrac{3}{4} = 0.75 = 75\\%.$$ So \\(60\\) is \\(\\boxed{75}\\) percent of \\(80\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "The part can be bigger than the whole, which just gives a percent over \\(100\\). A second-hand shop bought a desk for \\(17\\) dollars and resold it for \\(51\\) dollars. To see the resale price as a percent of the cost, divide \\(51\\) by \\(17\\). <b>What percent is \\(51\\) of \\(17\\)?</b> Give just the number.",
+    "ans": "300",
+    "accept": [
+     "300",
+     "300%",
+     "300.0",
+     "300.0%"
+    ],
+    "hints": [
+     "Form \\(\\tfrac{51}{17}\\). Since \\(51\\) is bigger than \\(17\\), expect a percent above \\(100\\).",
+     "\\(\\tfrac{51}{17} = 3 = 300\\%\\)."
+    ],
+    "sol": "Divide the part by the whole, \\(\\tfrac{51}{17} = 3\\). As a percent that is \\(3 = 300\\%\\). The resale price is three times the cost, so \\(51\\) is \\(\\boxed{300}\\) percent of \\(17\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 230\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A part, percent, whole triangle. The part sits at the top, the percent at the lower left, and the whole at the lower right. The relationships are part equals percent times whole, percent equals part divided by whole, and whole equals part divided by percent. Cover the one you want and the other two tell you how to find it.\">\n  <text x=\"220\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">ONE RELATIONSHIP, THREE QUESTIONS</text>\n  <text x=\"220\" y=\"52\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--gold-deep)\">part = percent &#215; whole</text>\n  <polygon points=\"220,72 120,200 320,200\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"170\" y1=\"136\" x2=\"270\" y2=\"136\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"220\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--ink)\">part</text>\n  <text x=\"175\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">percent</text>\n  <text x=\"270\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">whole</text>\n  <text x=\"372\" y=\"120\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">percent</text>\n  <text x=\"372\" y=\"134\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">= part</text>\n  <text x=\"372\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">/ whole</text>\n  <text x=\"68\" y=\"120\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">whole</text>\n  <text x=\"68\" y=\"134\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">= part</text>\n  <text x=\"68\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">/ percent</text>\n</svg>",
+    "cap": "The three percent questions are one relationship, \\(\\text{part} = \\text{percent} \\times \\text{whole}\\), read from three corners. Cover the part and you multiply percent by whole. Cover the percent and you divide the part by the whole. Cover the whole and you divide the part by the percent."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Here is the third question, where you know the part and the percent but not the whole. A scholarship covers \\(80\\) dollars of a fee, and that \\(80\\) dollars is exactly \\(20\\%\\) of the full fee. To recover the whole fee, undo the multiplication by dividing the part by the percent. Since \\(80\\) is \\(20\\%\\) of the fee, the fee is \\(80 \\div 0.2\\). <b>\\(80\\) is \\(20\\%\\) of what number?</b>",
+    "ans": "400",
+    "accept": [
+     "400",
+     "400.0",
+     "four hundred"
+    ],
+    "hints": [
+     "The relationship is part equals percent times whole, so whole equals part divided by percent. Use \\(20\\% = 0.2\\).",
+     "\\(80 \\div 0.2 = 400\\). Check, \\(20\\%\\) of \\(400\\) is \\(80\\)."
+    ],
+    "sol": "Since the part is the percent times the whole, the whole is the part divided by the percent. With \\(20\\% = 0.2\\), $$\\text{whole} = \\frac{80}{0.2} = 400.$$ Check it, \\(20\\%\\) of \\(400\\) is \\(0.2 \\times 400 = 80\\), which matches. So \\(80\\) is \\(20\\%\\) of \\(\\boxed{400}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "The last corner. When you know the part and the percent but not the whole, divide the part by the percent, written as a fraction or decimal, to recover the whole. This is <b>whole = part divided by percent</b>, the reverse of multiplying, so always check by taking that percent of your answer to see if it lands back on the part."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A hiker has walked \\(27\\) kilometers, which is \\(75\\%\\) of the whole trail. To find the trail's full length, divide the part by the percent. Use \\(75\\% = \\tfrac{3}{4}\\) or \\(0.75\\). <b>\\(27\\) is \\(75\\%\\) of what number?</b>",
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0",
+     "thirty six",
+     "thirty-six"
+    ],
+    "hints": [
+     "Whole equals part divided by percent, so compute \\(27 \\div 0.75\\).",
+     "\\(27 \\div \\tfrac{3}{4} = 27 \\times \\tfrac{4}{3} = 36\\). Check, \\(75\\%\\) of \\(36\\) is \\(27\\)."
+    ],
+    "sol": "Divide the part by the percent. With \\(75\\% = \\tfrac{3}{4}\\), $$\\text{whole} = 27 \\div \\tfrac{3}{4} = 27 \\times \\tfrac{4}{3} = 36.$$ Check, \\(\\tfrac{3}{4} \\times 36 = 27\\), which matches. The trail is \\(\\boxed{36}\\) kilometers long."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "When the percent is over \\(100\\), the whole comes out smaller than the part. A startup's revenue this month is \\(18\\) thousand dollars, which is \\(150\\%\\) of last month's revenue. To find last month's revenue, divide the part by the percent, using \\(150\\% = 1.5\\). <b>\\(18\\) is \\(150\\%\\) of what number?</b>",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "Whole equals part divided by percent, so compute \\(18 \\div 1.5\\).",
+     "\\(18 \\div 1.5 = 12\\). Since the percent is over \\(100\\), the whole is smaller than the part."
+    ],
+    "sol": "Divide the part by the percent, with \\(150\\% = 1.5\\). $$\\text{whole} = \\frac{18}{1.5} = 12.$$ Because \\(150\\%\\) is more than \\(100\\%\\), the answer \\(12\\) is smaller than the part \\(18\\), which fits. Check, \\(1.5 \\times 12 = 18\\). So last month's revenue was \\(\\boxed{12}\\) thousand dollars."
+   },
+   {
+    "t": "fact",
+    "x": "Percents have been doing tax work for a very long time. In ancient Rome the emperor Augustus funded the army with a tax called the centesima rerum venalium, a \"hundredth of things sold\", which was a \\(1\\%\\) levy on goods at public auction. Roman records are full of such hundredth-based rates, charged on sales, on freeing enslaved people, and on inheritances. Counting in hundredths made these shares easy to compare and collect, the very same reason a percent is handy today, and it is part of why the language of percent grew up so closely tied to money."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "Bring the three questions together in one chain. A museum survey finds that \\(30\\%\\) of \\(80\\) visitors came by bus, and you want to know what percent of a different group, \\(120\\) school visitors, that same bus count represents. First find the part, the number of bus visitors, by taking \\(30\\%\\) of \\(80\\). Then ask what percent that part is of \\(120\\). <b>What percent of \\(120\\) is \\(30\\%\\) of \\(80\\)?</b> Give just the number.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "20%",
+     "20.0",
+     "20.0%",
+     "twenty"
+    ],
+    "hints": [
+     "Step one, find \\(30\\%\\) of \\(80\\). That is \\(0.3 \\times 80 = 24\\).",
+     "Step two, what percent is \\(24\\) of \\(120\\)? Form \\(\\tfrac{24}{120} = 0.2 = 20\\%\\)."
+    ],
+    "sol": "Do it in two steps. First the part, \\(30\\%\\) of \\(80 = 0.3 \\times 80 = 24\\). Then ask what percent \\(24\\) is of \\(120\\), $$\\tfrac{24}{120} = \\tfrac{1}{5} = 0.2 = 20\\%.$$ So \\(30\\%\\) of \\(80\\) is \\(\\boxed{20}\\) percent of \\(120\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "A farmers market had \\(90\\) stalls, and \\(40\\%\\) of them sold vegetables. How many stalls sold vegetables?",
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0",
+     "thirty six",
+     "thirty-six"
+    ],
+    "hints": [
+     "\"Of\" means multiply. Rewrite \\(40\\% = 0.4\\), then multiply by \\(90\\).",
+     "\\(0.4 \\times 90 = 36\\)."
+    ],
+    "sol": "\\(40\\% = 0.4\\), so \\(40\\% \\text{ of } 90 = 0.4 \\times 90 = 36\\). So \\(\\boxed{36}\\) stalls sold vegetables."
+   },
+   {
+    "x": "A song had \\(12\\) thousand listeners last week and climbed to \\(250\\%\\) of that this week. How many thousand listeners is that this week?",
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0",
+     "thirty"
+    ],
+    "hints": [
+     "A percent over \\(100\\) is more than \\(1\\). Here \\(250\\% = 2.5\\).",
+     "\\(2.5 \\times 12 = 30\\)."
+    ],
+    "sol": "\\(250\\% = \\tfrac{250}{100} = 2.5\\), so \\(250\\% \\text{ of } 12 = 2.5 \\times 12 = 30\\). So there are \\(\\boxed{30}\\) thousand listeners."
+   },
+   {
+    "x": "A puzzle has \\(16\\) pieces, and \\(37\\tfrac{1}{2}\\%\\) of them are edge pieces. How many edge pieces are there?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Convert the fractional percent, \\(37\\tfrac{1}{2}\\% = \\tfrac{37.5}{100} = \\tfrac{3}{8}\\).",
+     "\\(\\tfrac{3}{8} \\times 16 = 6\\)."
+    ],
+    "sol": "\\(37\\tfrac{1}{2}\\% = \\tfrac{37.5}{100} = \\tfrac{3}{8}\\), so \\(\\tfrac{3}{8} \\times 16 = 6\\). So there are \\(\\boxed{6}\\) edge pieces."
+   },
+   {
+    "x": "A reservoir holds \\(150\\) million liters, and \\(8\\%\\) of it is held in reserve. How many million liters are in reserve?",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "Rewrite \\(8\\% = 0.08\\), then multiply by \\(150\\).",
+     "\\(0.08 \\times 150 = 12\\)."
+    ],
+    "sol": "\\(8\\% = 0.08\\), so \\(8\\% \\text{ of } 150 = 0.08 \\times 150 = 12\\). So \\(\\boxed{12}\\) million liters are in reserve."
+   },
+   {
+    "x": "A team won \\(18\\) of its \\(72\\) games. What percent of its games did the team win? Give just the number.",
+    "ans": "25",
+    "accept": [
+     "25",
+     "25%",
+     "25.0",
+     "25.0%"
+    ],
+    "hints": [
+     "Form part over whole, \\(\\tfrac{18}{72}\\), and simplify.",
+     "\\(\\tfrac{18}{72} = \\tfrac{1}{4} = 25\\%\\)."
+    ],
+    "sol": "\\(\\tfrac{18}{72} = \\tfrac{1}{4} = 0.25 = 25\\%\\). So the team won \\(\\boxed{25}\\) percent of its games."
+   },
+   {
+    "x": "A jar holds \\(40\\) marbles, and \\(30\\) of them are blue. What percent of \\(40\\) is \\(30\\)? Give just the number.",
+    "ans": "75",
+    "accept": [
+     "75",
+     "75%",
+     "75.0",
+     "75.0%"
+    ],
+    "hints": [
+     "Form \\(\\tfrac{30}{40}\\) and simplify.",
+     "\\(\\tfrac{30}{40} = \\tfrac{3}{4} = 75\\%\\)."
+    ],
+    "sol": "\\(\\tfrac{30}{40} = \\tfrac{3}{4} = 0.75 = 75\\%\\). So \\(30\\) is \\(\\boxed{75}\\) percent of \\(40\\)."
+   },
+   {
+    "x": "A sequel sold \\(84\\) thousand copies, while the original sold \\(56\\) thousand. What percent is \\(84\\) of \\(56\\)? Give just the number.",
+    "ans": "150",
+    "accept": [
+     "150",
+     "150%",
+     "150.0",
+     "150.0%"
+    ],
+    "hints": [
+     "Form \\(\\tfrac{84}{56}\\). Since \\(84\\) is bigger than \\(56\\), expect over \\(100\\).",
+     "\\(\\tfrac{84}{56} = \\tfrac{3}{2} = 1.5 = 150\\%\\)."
+    ],
+    "sol": "\\(\\tfrac{84}{56} = \\tfrac{3}{2} = 1.5 = 150\\%\\). So \\(84\\) is \\(\\boxed{150}\\) percent of \\(56\\)."
+   },
+   {
+    "x": "A deposit of \\(21\\) dollars is \\(30\\%\\) of the total price of a bike. \\(21\\) is \\(30\\%\\) of what number?",
+    "ans": "70",
+    "accept": [
+     "70",
+     "70.0",
+     "seventy"
+    ],
+    "hints": [
+     "Whole equals part divided by percent, so compute \\(21 \\div 0.3\\).",
+     "\\(21 \\div 0.3 = 70\\). Check, \\(30\\%\\) of \\(70\\) is \\(21\\)."
+    ],
+    "sol": "Whole equals part divided by percent, with \\(30\\% = 0.3\\), so \\(\\tfrac{21}{0.3} = 70\\). Check, \\(0.3 \\times 70 = 21\\). So the price is \\(\\boxed{70}\\) dollars."
+   },
+   {
+    "x": "A runner has finished \\(45\\) laps, which is \\(90\\%\\) of the race. \\(45\\) is \\(90\\%\\) of what number?",
+    "ans": "50",
+    "accept": [
+     "50",
+     "50.0",
+     "fifty"
+    ],
+    "hints": [
+     "Compute \\(45 \\div 0.9\\).",
+     "\\(45 \\div 0.9 = 50\\). Check, \\(90\\%\\) of \\(50\\) is \\(45\\)."
+    ],
+    "sol": "Whole equals part divided by percent, with \\(90\\% = 0.9\\), so \\(\\tfrac{45}{0.9} = 50\\). Check, \\(0.9 \\times 50 = 45\\). So the race is \\(\\boxed{50}\\) laps."
+   },
+   {
+    "x": "This year a town recorded \\(120\\) building permits, which is \\(150\\%\\) of last year. \\(120\\) is \\(150\\%\\) of what number?",
+    "ans": "80",
+    "accept": [
+     "80",
+     "80.0",
+     "eighty"
+    ],
+    "hints": [
+     "Compute \\(120 \\div 1.5\\). Since the percent is over \\(100\\), the whole is smaller than \\(120\\).",
+     "\\(120 \\div 1.5 = 80\\)."
+    ],
+    "sol": "Whole equals part divided by percent, with \\(150\\% = 1.5\\), so \\(\\tfrac{120}{1.5} = 80\\). Check, \\(1.5 \\times 80 = 120\\). So last year had \\(\\boxed{80}\\) permits."
+   },
+   {
+    "x": "A tasting portion is \\(5\\) grams, which the recipe says is \\(12\\tfrac{1}{2}\\%\\) of a full serving. \\(5\\) is \\(12\\tfrac{1}{2}\\%\\) of what number?",
+    "ans": "40",
+    "accept": [
+     "40",
+     "40.0",
+     "forty"
+    ],
+    "hints": [
+     "Convert \\(12\\tfrac{1}{2}\\% = \\tfrac{1}{8}\\), then whole equals part divided by percent.",
+     "\\(5 \\div \\tfrac{1}{8} = 5 \\times 8 = 40\\)."
+    ],
+    "sol": "Convert the percent, \\(12\\tfrac{1}{2}\\% = \\tfrac{1}{8}\\). Whole equals part divided by percent, so \\(5 \\div \\tfrac{1}{8} = 5 \\times 8 = 40\\). Check, \\(\\tfrac{1}{8} \\times 40 = 5\\). So a full serving is \\(\\boxed{40}\\) grams."
+   },
+   {
+    "x": "Chain two steps together. First take \\(60\\%\\) of \\(500\\), then take \\(20\\%\\) of that result. What is \\(20\\%\\) of \\(60\\%\\) of \\(500\\)?",
+    "ans": "60",
+    "accept": [
+     "60",
+     "60.0",
+     "sixty"
+    ],
+    "hints": [
+     "Step one, \\(60\\%\\) of \\(500 = 0.6 \\times 500 = 300\\).",
+     "Step two, \\(20\\%\\) of \\(300 = 0.2 \\times 300 = 60\\)."
+    ],
+    "sol": "Work from the inside out. First \\(60\\%\\) of \\(500 = 0.6 \\times 500 = 300\\). Then \\(20\\%\\) of \\(300 = 0.2 \\times 300 = 60\\). So \\(20\\%\\) of \\(60\\%\\) of \\(500\\) is \\(\\boxed{60}\\)."
+   }
+  ],
+  "next": "9.3"
  }
 }
