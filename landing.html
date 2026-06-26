@@ -11871,6 +11871,17 @@ function addTutorBotMsg(text){
 }
 window.addTutorBotMsg=addTutorBotMsg;
 
+// Render the small subset of Markdown Milo may use sparingly: **bold** and *italic*.
+// HTML is escaped FIRST so model output can never inject markup; only asterisks that hug
+// a non-space character become <strong>/<em>, so plain "2 * 3" arithmetic is left untouched.
+function tutMd(s){
+  s = String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  s = s.replace(/\*\*(\S[^*\n]*?\S|\S)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*(\S[^*\n]*?\S|\S)\*/g, '<em>$1</em>');
+  return s;
+}
+window.tutMd=tutMd;
+
 function initTutor(lessonKey, lessonTitle) {
   tutorHistory = [];
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
@@ -11936,7 +11947,7 @@ async function sendTutorMsg() {
     });
     var data = await res.json();
     var reply = data.feedback || (data.error ? 'Tutor error: ' + data.error : 'No response received.');
-    loadBub.textContent = reply;
+    loadBub.innerHTML = tutMd(reply);
     tutorHistory.push({ role: 'assistant', content: reply });
     if (window.renderMathInElement) try { renderMathInElement(loadBub, {delimiters:[{left:'$',right:'$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); } catch(e) {}
   } catch (e) {
