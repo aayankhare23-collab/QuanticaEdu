@@ -1,0 +1,527 @@
+{
+ "10.1": {
+  "title": "Adding and Subtracting Cases",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "You already know how to count. One, two, three, easy. So why give counting a whole chapter? Because the tricky part of a real counting problem is not the counting itself, it is figuring out what to count and how to count it without missing any or counting the same thing twice. Every move we make here will be careful addition and subtraction, the same plain arithmetic you have used all along, and the percent thinking from Chapter 9 will come back to help us too."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the most useful thing to know about counting. There are almost no formulas worth memorizing. When a problem looks tricky, count a tiny version of it by hand, watch the pattern that shows up, and then trust that same pattern on the big problem. Every counting question in this chapter is just careful addition and subtraction, so the whole job is to add the cases and subtract the overlap, and to understand why each part is there instead of swallowing a trick."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A horizontal row of six evenly spaced dots labelled twelve, thirteen, fourteen, fifteen, sixteen, and seventeen from left to right. Above the row, a wide brace spans all six dots and is labelled dots equals six. Below the row, a second brace spans only the five gaps between neighbouring dots and is labelled gaps equals five. A note at the bottom reads count the posts, not the gaps, so add one. The picture shows that six numbers in a row leave only five gaps, so the count is one more than the number of gaps.\">\n  <text x=\"220\" y=\"14\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--mid)\">Six numbers, but only five gaps</text>\n  <path d=\"M 60 56 C 60 46, 70 46, 80 46 L 340 46 C 350 46, 360 46, 360 56\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <path d=\"M 210 46 C 210 40, 210 40, 210 34\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <text x=\"210\" y=\"28\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">dots = 6</text>\n  <line x1=\"60\" y1=\"100\" x2=\"360\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.4\"/>\n  <circle cx=\"60\" cy=\"100\" r=\"9\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"120\" cy=\"100\" r=\"9\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"180\" cy=\"100\" r=\"9\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"240\" cy=\"100\" r=\"9\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"300\" cy=\"100\" r=\"9\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"360\" cy=\"100\" r=\"9\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <text x=\"60\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">12</text>\n  <text x=\"120\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">13</text>\n  <text x=\"180\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">14</text>\n  <text x=\"240\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">15</text>\n  <text x=\"300\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">16</text>\n  <text x=\"360\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">17</text>\n  <text x=\"90\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">1</text>\n  <text x=\"150\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">2</text>\n  <text x=\"210\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">3</text>\n  <text x=\"270\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">4</text>\n  <text x=\"330\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">5</text>\n  <path d=\"M 60 168 C 60 178, 70 178, 80 178 L 340 178 C 350 178, 360 178, 360 168\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/>\n  <path d=\"M 210 178 C 210 184, 210 184, 210 190\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/>\n  <text x=\"210\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">gaps = 5</text>\n  <text x=\"220\" y=\"236\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-style=\"italic\" fill=\"var(--mid)\">Count the posts, not the gaps, so add 1.</text>\n</svg>",
+    "cap": "Here are the whole numbers from \\(12\\) to \\(17\\) drawn as six dots in a row. The gold brace on top circles every dot and counts \\(6\\) of them. The lower brace counts only the spaces between dots, and there are just \\(5\\). The spaces always come up one short, because the very last dot has no space after it. So if you subtract \\(17-12\\) you get \\(5\\), which is the number of gaps, not the number of dots. To count the dots you add \\(1\\) back, giving \\(5+1=6\\). Count the posts, not the gaps, so add \\(1\\)."
+   },
+   {
+    "t": "prob",
+    "x": "An apartment building has people living on every floor from the \\(3\\)rd floor all the way up to the \\(11\\)th floor, and both of those floors have people on them too. Nobody lives below the \\(3\\)rd floor or above the \\(11\\)th. The building manager wants to know how many floors have people living on them. Be careful, because the quick guess of \\(11 - 3\\) is not quite the right count. How many floors have people living on them?",
+    "xp": 6,
+    "hints": [
+     "This list is short enough to write out. Start at the \\(3\\)rd floor and count up one floor at a time until you reach the \\(11\\)th, and do not forget to count the \\(3\\)rd floor itself.",
+     "Subtracting \\(11 - 3 = 8\\) counts the steps you take going up, not the floors you land on. There is always one more floor than there are steps, because the floor you start on never got a step of its own.",
+     "Take \\(11 - 3\\) and then add \\(1\\) to put the starting floor back in the count."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "sol": "The floors with people are the whole numbers from \\(3\\) up to \\(11\\), so write them out and count. They are \\(3, 4, 5, 6, 7, 8, 9, 10, 11\\), which is \\(9\\) floors. Now look at why the quick guess misses. Subtracting gives \\(11 - 3 = 8\\), but that \\(8\\) counts the gaps you climb between floors, not the floors themselves. The \\(3\\)rd floor, where you started, never got counted by any of those gaps, so you have to add it back. That gives \\(11 - 3 + 1 = 9\\), which matches the list exactly. This little add one is the heart of counting a run of whole numbers including both ends. $$\\boxed{9}$$"
+   },
+   {
+    "t": "imp",
+    "x": "Now you can see why the \\(+1\\) keeps showing up. Picture a short fence \\(10\\) feet long with a post every foot. The subtraction \\(10-0\\) counts the gaps between posts, and there are \\(10\\) of those, but a fence always has one more post than gap because both ends get one, so it needs \\(11\\) posts. Counting the whole numbers from \\(a\\) to \\(b\\) with both ends included works the same way, and the count is \\(b-a+1\\). The subtraction finds the gaps, then you add the last post back."
+   },
+   {
+    "t": "prob",
+    "x": "You are reading a thick fantasy novel, and one chapter is so long it has its own name and a little map at the start. The chapter begins on page \\(47\\) and runs all the way to page \\(118\\), and both of those pages are part of the chapter. Nobody wants to write out every page number from \\(47\\) to \\(118\\) and count them by hand, so trust the rule you just found instead. How many pages long is the chapter?",
+    "xp": 6,
+    "hints": [
+     "You are counting whole numbers from \\(47\\) up to \\(118\\), with both ends belonging to the chapter. This is the same kind of count you just practiced, only with bigger numbers.",
+     "Watch the off by one. Subtracting \\(118 - 47\\) tells you how many steps it takes to walk from the first page to the last, but a step is not a page. You need to add one to bring back the page you started on.",
+     "Work out \\(118 - 47\\) first, then add \\(1\\)."
+    ],
+    "ans": "72",
+    "accept": [
+     "72",
+     "72.0"
+    ],
+    "sol": "The chapter covers every whole page number from \\(47\\) to \\(118\\), and both ends count. If you only subtract, you find the gap between the two page numbers, which is \\(118 - 47 = 71\\). But that \\(71\\) is the number of steps from page \\(47\\) to page \\(118\\), not the number of pages, and it has quietly left out the page you started on. Page \\(47\\) is a real page of the chapter too, so add it back. That gives \\(118 - 47 + 1 = 72\\). The same idea as the small lists, just with numbers too big to want to write out, so the rule \\(b - a + 1\\) does the work for you. The chapter is $$\\boxed{72}$$ pages long."
+   },
+   {
+    "t": "prob",
+    "x": "A space launch ends with a loud countdown. The announcer starts at \\(30\\) and calls every whole number going down, \\(30, 29, 28\\) and so on, all the way down to \\(0\\) at liftoff. Each number is said exactly once, and the final \\(0\\) is called out loud too. How many numbers does the announcer call in all, counting both \\(30\\) and \\(0\\)?",
+    "xp": 6,
+    "hints": [
+     "The numbers run from \\(0\\) up to \\(30\\), and both ends are spoken out loud, so both ends get counted.",
+     "Subtracting \\(30 - 0\\) gives the size of the gap, but it misses one of the endpoints. This is the fencepost slip.",
+     "For a run of whole numbers from the smaller to the larger, including both, the count is the larger minus the smaller, then plus one.",
+     "Do not forget that \\(0\\) is a real number the announcer says. It is one of the called numbers, not a skip."
+    ],
+    "ans": "31",
+    "accept": [
+     "31",
+     "31.0"
+    ],
+    "sol": "The announcer says every whole number from \\(0\\) all the way up to \\(30\\), and both ends are spoken. If we just did \\(30 - 0\\) we would get \\(30\\), but that counts the steps between the numbers, not the numbers themselves. It quietly leaves one number out.\n\nThink of a tiny version first. Counting from \\(0\\) to \\(2\\) gives \\(0, 1, 2\\), which is \\(3\\) numbers, yet \\(2 - 0 = 2\\). We are always short by one, because both endpoints need to be counted. So we add one back.\n\nFor whole numbers from \\(0\\) to \\(30\\), the count is \\(30 - 0 + 1\\), which is \\(30 + 1\\), giving \\(31\\). The \\(0\\) at liftoff is a real number the announcer calls, so it must be in the count.\n\n$$\\boxed{31}$$"
+   },
+   {
+    "t": "prob",
+    "x": "Your math teacher writes a number on the board and says, \"Pick a whole number strictly between \\(1\\) and \\(50\\).\" The word between here means not \\(1\\) and not \\(50\\), so neither end is allowed. How many different whole numbers could you pick?",
+    "xp": 6,
+    "hints": [
+     "The word between leaves out both ends, so \\(1\\) and \\(50\\) are off the table. What is the smallest number you are actually allowed to pick, and what is the largest?",
+     "Once you drop the ends, you are picking from \\(2\\) up to \\(49\\). Now you just need to count that run of whole numbers, both ends included.",
+     "Counting from \\(2\\) to \\(49\\) including both is \\(49 - 2 + 1\\). Remember the plus one, so you do not come up short by one."
+    ],
+    "ans": "48",
+    "accept": [
+     "48",
+     "48.0"
+    ],
+    "sol": "The word between leaves out both ends, so \\(1\\) and \\(50\\) are not choices. The smallest number you may pick is \\(2\\) and the largest is \\(49\\). Now you are just counting the whole numbers from \\(2\\) to \\(49\\) with both ends counted. Subtracting gives \\(49 - 2 = 47\\), and then you add \\(1\\) so you do not miss the starting number, giving \\(47 + 1 = 48\\). So there are \\(48\\) whole numbers you could pick. $$\\boxed{48}$$"
+   },
+   {
+    "t": "imp",
+    "x": "Counting the multiples of \\(7\\) from \\(21\\) up to \\(56\\) feels harder than counting \\(1, 2, 3\\), but it is the fencepost idea again with bigger gaps. Spot the first multiple that lands in the range and the last one that lands in the range, here \\(21\\) and \\(56\\). The span between them is \\(56-21=35\\), and since each step is \\(7\\), that span holds \\(35\\div 7=5\\) gaps. Five gaps means six numbers, so add \\(1\\) for the post you started on, giving \\(\\tfrac{56-21}{7}+1=6\\). Don't memorize it, just count the gaps and remember the extra fencepost."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 256\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A horizontal number line with ticks only at the multiples of 4 from 8 to 28. The six ticks are labeled 8, 12, 16, 20, 24, and 28. Each of the five gaps between neighboring ticks is labeled step 4. A gold brace arches over the whole stretch from the first tick at 8 to the last tick at 28 and is labeled the span 28 minus 8 equals 20. Below the line a calculation reads 20 divided by 4 equals 5 gaps, then plus 1 gives 6 terms, with the final 6 highlighted in gold. The picture shows that counting evenly spaced numbers means measuring the span, dividing by the step to count the gaps, then adding one for the extra fencepost.\">\n  <text x=\"220\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">COUNT THE GAPS, THEN ADD ONE</text>\n\n  <path d=\"M 40 60 Q 40 46 54 46 L 213 46 Q 220 46 220 38 Q 220 46 227 46 L 386 46 Q 400 46 400 60\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.6\"/>\n  <text x=\"220\" y=\"34\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--gold-deep)\">span 28 &#8722; 8 = 20</text>\n\n  <line x1=\"20\" y1=\"92\" x2=\"420\" y2=\"92\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <polygon points=\"420,92 412,88 412,96\" fill=\"var(--line)\"/>\n  <polygon points=\"20,92 28,88 28,96\" fill=\"var(--line)\"/>\n\n  <line x1=\"40\" y1=\"84\" x2=\"40\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"112\" y1=\"84\" x2=\"112\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"184\" y1=\"84\" x2=\"184\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"256\" y1=\"84\" x2=\"256\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"328\" y1=\"84\" x2=\"328\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n  <line x1=\"400\" y1=\"84\" x2=\"400\" y2=\"100\" stroke=\"var(--line)\" stroke-width=\"1.6\"/>\n\n  <circle cx=\"40\" cy=\"92\" r=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/>\n  <circle cx=\"112\" cy=\"92\" r=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/>\n  <circle cx=\"184\" cy=\"92\" r=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/>\n  <circle cx=\"256\" cy=\"92\" r=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/>\n  <circle cx=\"328\" cy=\"92\" r=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/>\n  <circle cx=\"400\" cy=\"92\" r=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.2\"/>\n\n  <text x=\"40\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\">8</text>\n  <text x=\"112\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\">12</text>\n  <text x=\"184\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\">16</text>\n  <text x=\"256\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\">20</text>\n  <text x=\"328\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\">24</text>\n  <text x=\"400\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--ink)\">28</text>\n\n  <text x=\"76\" y=\"142\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">step 4</text>\n  <text x=\"148\" y=\"142\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">step 4</text>\n  <text x=\"220\" y=\"142\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">step 4</text>\n  <text x=\"292\" y=\"142\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">step 4</text>\n  <text x=\"364\" y=\"142\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">step 4</text>\n\n  <line x1=\"40\" y1=\"158\" x2=\"400\" y2=\"158\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 4\"/>\n\n  <text x=\"220\" y=\"186\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" fill=\"var(--slate)\">20 &#247; 4 = 5 gaps</text>\n  <text x=\"220\" y=\"212\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" fill=\"var(--slate)\">5 + 1 gives <tspan font-size=\"15\" font-weight=\"700\" fill=\"var(--gold-deep)\">6 terms</tspan></text>\n</svg>",
+    "cap": "Counting evenly spaced numbers, here the multiples of \\(4\\) from \\(8\\) to \\(28\\). Do not just measure the span and stop. The span from the first term to the last is \\(28 - 8 = 20\\), and since each hop is \\(4\\) wide, that span holds \\(20 \\div 4 = 5\\) gaps. But the gaps are the spaces between the ticks, not the ticks themselves, so there is always one more tick than gap. Add \\(1\\) back for the very first term and you get \\(5 + 1 = 6\\) terms. So the count of evenly spaced numbers is the span divided by the step, plus one. It is the fencepost idea again, the gaps between the posts, and then the extra post on the end."
+   },
+   {
+    "t": "prob",
+    "x": "A long school hallway has lockers numbered \\(1\\) through \\(200\\). The custodian gives a fresh coat of paint to every locker whose number is a multiple of \\(5\\). How many lockers get painted?",
+    "xp": 7,
+    "hints": [
+     "The painted lockers are the multiples of \\(5\\) inside the range. What is the first one, and what is the last one?",
+     "These numbers are evenly spaced, stepping up by \\(5\\) each time. Find how many steps fit, then remember to add one for the starting locker.",
+     "Use (last - first) divided by the step, then \\(+1\\). Watch the off-by-one so you do not undercount."
+    ],
+    "ans": "40",
+    "accept": [
+     "40",
+     "40.0"
+    ],
+    "sol": "The painted lockers are the multiples of \\(5\\) that sit between \\(1\\) and \\(200\\). The first one is \\(5\\) and the last one is \\(200\\), since \\(200\\) is itself a multiple of \\(5\\).\n\nThese numbers march up in even steps of \\(5\\), like \\(5, 10, 15, \\dots, 200\\). To count them, first see how far we travel from the front locker to the back one. That distance is \\(200 - 5 = 195\\).\n\nEach step is \\(5\\), so the number of steps is \\(195 \\div 5 = 39\\). But the steps count the gaps between lockers, not the lockers themselves. The very first painted locker takes no step to reach, so we add one more for it.\n\nThat gives \\(39 + 1 = 40\\) painted lockers.\n\n$$\\boxed{40}$$"
+   },
+   {
+    "t": "prob",
+    "x": "On Maple Street the house numbers run from \\(24\\) all the way up to \\(150\\). Only the even-numbered houses sit on the sunny side, so houses \\(24, 26, 28\\), and so on, right up to \\(150\\). How many houses are on the sunny side?",
+    "xp": 8,
+    "hints": [
+     "The sunny-side houses are evenly spaced, going up by \\(2\\) each time. Spot the very first one and the very last one inside the range.",
+     "The first even house is \\(24\\) and the last is \\(150\\). Both ends count, so this is the fencepost idea again.",
+     "Count the gaps with \\((\\text{last} - \\text{first})\\div\\text{step}\\), then add \\(1\\) for the house you started on."
+    ],
+    "ans": "64",
+    "accept": [
+     "64",
+     "64.0"
+    ],
+    "sol": "The sunny-side houses go \\(24, 26, 28\\), and so on up to \\(150\\). They are evenly spaced because each one is \\(2\\) more than the one before. So the first house in our list is \\(24\\) and the last is \\(150\\), with a step of \\(2\\).\n\nFirst we count the gaps between houses. From \\(24\\) up to \\(150\\) is \\(150 - 24 = 126\\), and each gap is \\(2\\), so there are \\(126 \\div 2 = 63\\) gaps.\n\nBut gaps are the spaces between houses, not the houses themselves. Picture \\(63\\) jumps of \\(2\\) starting at house \\(24\\). After \\(63\\) jumps you land on the last house, and you also have the house you started on. So we add \\(1\\) to count both ends, giving \\(63 + 1 = 64\\).\n\n$$\\boxed{64}$$"
+   },
+   {
+    "t": "prob",
+    "x": "A radio station spends Sunday night counting down its weekly music chart, but it only has time to play some of the songs. It starts at rank \\(96\\) and plays every fourth song on the way down, so rank \\(96\\), then \\(92\\), then \\(88\\), and so on, all the way down until it plays rank \\(4\\) and signs off. The list runs backward, but that does not change how you count it, you still find how far it spans and how big each step is. How many songs does the station play in all?",
+    "xp": 7,
+    "hints": [
+     "Going down does not change anything. The same counting idea works whether the list climbs or falls, so look at the first rank, the last rank, and the size of each step.",
+     "The countdown spans from \\(4\\) up to \\(96\\), a gap of \\(96 - 4 = 92\\), and each step is \\(4\\). Divide the gap by the step to count the steps, then watch out for the fencepost.",
+     "Steps and songs are not the same. After you find how many steps of \\(4\\) fit in the gap, add \\(1\\) to count both ends."
+    ],
+    "ans": "24",
+    "accept": [
+     "24",
+     "24.0"
+    ],
+    "sol": "The station plays rank \\(96\\), then \\(92\\), then \\(88\\), dropping by \\(4\\) each time down to \\(4\\). Counting a falling list works exactly like counting a rising one, so first measure the gap from the smallest to the largest rank, which is \\(96 - 4 = 92\\). Each step drops the rank by \\(4\\), so the number of steps is \\(92 \\div 4 = 23\\). Steps are the spaces between the songs, not the songs themselves, so there is one more song than there are steps. Add \\(1\\) to catch both ends.$$23 + 1 = 24$$So the station plays \\(\\boxed{24}\\) songs."
+   },
+   {
+    "t": "imp",
+    "x": "Here is a sneaky thing. Picture two windows of numbers that are exactly the same width, say from 10 to 20 and from 11 to 21. They span the same distance, yet count the multiples of 5 inside each and you get different answers, because 10, 15, 20 give you three but 15, 20 give you only two. So the width of a window does not tell you how many multiples it holds. What matters is which multiples actually land inside, so always pin down the real first multiple and the real last multiple in your range before you count."
+   },
+   {
+    "t": "prob",
+    "x": "Walk down a city block where the street lamps stand in a long row, each one stamped with its own number. On this block the lamp numbers run from \\(1\\) to \\(21\\). The city is hanging a festival banner on every lamp whose number is a multiple of \\(10\\), and only those. Do not reach for a formula. Just picture which lamp numbers between \\(1\\) and \\(21\\) actually land on a multiple of \\(10\\), then count them. How many lamps on this block get a banner?",
+    "xp": 6,
+    "hints": [
+     "A multiple of \\(10\\) is a number you reach by counting \\(10, 20, 30,\\) and so on. Which of those numbers actually sit inside the range from \\(1\\) to \\(21\\)?",
+     "Check each candidate against the ends of the block. Is \\(10\\) between \\(1\\) and \\(21\\)? Is \\(20\\)? Is \\(30\\)? Keep only the ones that fit, and watch the top end carefully.",
+     "The range stops at \\(21\\), so \\(30\\) is too big and never appears on this block. Count just the multiples of \\(10\\) that truly land inside, no more."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0"
+    ],
+    "sol": "The banners go only on lamps numbered with a multiple of \\(10\\), so list the multiples of \\(10\\) in order and see which ones fall in the range from \\(1\\) to \\(21\\). The first is \\(10\\), and \\(10\\) is between \\(1\\) and \\(21\\), so that lamp gets a banner. The next is \\(20\\), and \\(20\\) is also between \\(1\\) and \\(21\\), so that lamp gets one too. The next multiple of \\(10\\) is \\(30\\), but the block stops at \\(21\\), so \\(30\\) is past the end and there is no lamp with that number here. That leaves exactly two banner lamps, the one numbered \\(10\\) and the one numbered \\(20\\), giving a count of \\(2\\). $$\\boxed{2}$$"
+   },
+   {
+    "t": "prob",
+    "x": "On the next block of the street the lamps are numbered from \\(10\\) to \\(30\\). The crew is decorating again, and the rule is the same as before. A banner goes on every lamp whose number is a multiple of \\(10\\). This block is exactly \\(20\\) numbers wide, the same width as the block you just counted, so it is tempting to expect the same banner count. Slow down and actually check which lamps qualify. How many lamps on this block get a banner?",
+    "xp": 7,
+    "hints": [
+     "Do not trust the width of \\(20\\) to settle it. Walk the numbers from \\(10\\) up to \\(30\\) and pick out only the ones that are multiples of \\(10\\).",
+     "The qualifying lamps are evenly spaced, jumping by \\(10\\) each time. Find the first one in range and the last one in range, then count the steps between them.",
+     "Watch the off by one. The count of an evenly spaced list is \\(\\tfrac{\\text{last} - \\text{first}}{\\text{step}} + 1\\), so do not forget the \\(+1\\). Notice that here both \\(10\\) and \\(30\\) are themselves multiples of \\(10\\)."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0"
+    ],
+    "sol": "List the lamps whose numbers are multiples of \\(10\\) between \\(10\\) and \\(30\\). They are \\(10\\), \\(20\\), and \\(30\\). The first one in range is \\(10\\) and the last one in range is \\(30\\), and they step by \\(10\\) each time. Using the evenly spaced count, take the gap from first to last and divide by the step, then add \\(1\\) for the starting lamp. $$\\frac{30 - 10}{10} + 1 = \\frac{20}{10} + 1 = 2 + 1 = 3$$ So \\(3\\) lamps get a banner. Here is the lesson hiding inside. This block is \\(20\\) numbers wide, the very same width as the block before, yet it holds a different number of banners. Width alone does not decide the count. What matters is which multiples actually land inside, and on this block both endpoints \\(10\\) and \\(30\\) happen to be multiples of \\(10\\), so they both count. $$\\boxed{3}$$"
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A line of ten simple stick figures. The fourth figure from the front is shaded gold. A bracket above the line spans the first four figures and is labelled four from the front. A bracket below the line spans the last seven figures, from the shaded figure to the back, and is labelled seven from the back. An arrow marks the shaded figure as counted in both brackets. The arithmetic four plus seven minus one equals ten shows that the shared child is removed once, so the line holds ten children.\">\n  <text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">ONE CHILD GETS COUNTED TWICE</text>\n  <text x=\"114\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">4th from front, so 4</text>\n  <path d=\"M42 58 L42 50 L186 50 L186 58\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"56\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M56 85 L56 108 M56 92 L48 100 M56 92 L64 100 M56 108 L49 122 M56 108 L63 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"94\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M94 85 L94 108 M94 92 L86 100 M94 92 L102 100 M94 108 L87 122 M94 108 L101 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"132\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M132 85 L132 108 M132 92 L124 100 M132 92 L140 100 M132 108 L125 122 M132 108 L139 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"170\" cy=\"78\" r=\"7.5\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"2.2\"/><path d=\"M170 86 L170 108 M170 93 L162 101 M170 93 L178 101 M170 108 L163 122 M170 108 L177 122\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"2.2\" stroke-linecap=\"round\"/>\n  <circle cx=\"208\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M208 85 L208 108 M208 92 L200 100 M208 92 L216 100 M208 108 L201 122 M208 108 L215 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"246\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M246 85 L246 108 M246 92 L238 100 M246 92 L254 100 M246 108 L239 122 M246 108 L253 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"284\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M284 85 L284 108 M284 92 L276 100 M284 92 L292 100 M284 108 L277 122 M284 108 L291 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"322\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M322 85 L322 108 M322 92 L314 100 M322 92 L330 100 M322 108 L315 122 M322 108 L329 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"360\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M360 85 L360 108 M360 92 L352 100 M360 92 L368 100 M360 108 L353 122 M360 108 L367 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"398\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M398 85 L398 108 M398 92 L390 100 M398 92 L406 100 M398 108 L391 122 M398 108 L405 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <path d=\"M152 134 L152 142 L414 142 L414 134\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/>\n  <text x=\"283\" y=\"158\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--accent)\">7th from back, so 7</text>\n  <path d=\"M170 178 L170 148\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <path d=\"M170 148 L166 154 M170 148 L174 154\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"170\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">counted in both</text>\n  <text x=\"220\" y=\"216\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">4 + 7 &#8722; 1 = 10</text>\n  <text x=\"220\" y=\"236\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">the gold child is in both brackets, so take it off once</text>\n</svg>",
+    "cap": "Picture a child standing in line who is 4th from the front and 7th from the back. The top bracket sweeps in 4 children, counting that child, and the bottom bracket sweeps in 7 children, counting that same child again. Add the two brackets and you get \\(4 + 7 = 11\\), but the shaded child sits in both, so the line was counted once too many. Take that one overlap off and the true count is \\(4 + 7 - 1 = 10\\). Whenever two groups share a member, you add the groups and subtract what they share."
+   },
+   {
+    "t": "prob",
+    "x": "You are waiting in line for a roller coaster. Counting from the front of the line, you are 9th. Counting from the back of the line, you are 15th. How many people are in the line altogether?",
+    "xp": 7,
+    "hints": [
+     "The 9 people from the front include you, and so do the 15 people from the back.",
+     "If you just add \\(9+15\\), you get counted once from the front and once from the back.",
+     "You are only one person, so subtract the one extra time you were counted."
+    ],
+    "ans": "23",
+    "accept": [
+     "23",
+     "23.0"
+    ],
+    "sol": "The 9 people counted from the front include you, all the way back to you. The 15 people counted from the back also include you, all the way up to you. So when you add \\(9+15=24\\), you have counted yourself twice, once from each side. You are only one person, so take away that one extra count, giving \\(9+15-1=23\\). $$\\boxed{23}$$"
+   },
+   {
+    "t": "imp",
+    "x": "Here is a tricky one. Picture yourself in a line and you are 6th from the front and 4th from the back. If you just add 6 and 4 you get 10, but the line is shorter than that. The trouble is that you counted yourself once from the front and again from the back, so you got counted twice. Whenever two counts share one thing, that shared thing is counted twice, so subtract it once to fix the total."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two overlapping circles. The left circle is labelled Band with fourteen students in all, and the right circle is labelled Choir with nine students in all. The almond-shaped overlap in the middle holds four students who are in both clubs. Below, the arithmetic fourteen plus nine minus four equals nineteen shows that the four shared students, counted once inside the fourteen and again inside the nine, are subtracted once, leaving nineteen students in band or choir.\">\n  <circle cx=\"165\" cy=\"140\" r=\"92\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n  <circle cx=\"275\" cy=\"140\" r=\"92\" fill=\"var(--soft)\" fill-opacity=\"0.5\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/>\n  <text x=\"108\" y=\"30\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--slate)\">Band</text>\n  <text x=\"108\" y=\"50\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">14 in all</text>\n  <text x=\"332\" y=\"30\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--gold-deep)\">Choir</text>\n  <text x=\"332\" y=\"50\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">9 in all</text>\n  <text x=\"220\" y=\"134\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"var(--gold-deep)\">4</text>\n  <text x=\"220\" y=\"160\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--gold-deep)\">in both</text>\n  <text x=\"220\" y=\"266\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--ink)\">14 + 9 &#8722; 4 = 19</text>\n  <text x=\"220\" y=\"290\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--mid)\">the 4 in both clubs were counted twice, so subtract once</text>\n</svg>",
+    "cap": "The band circle has \\(14\\) students and the choir circle has \\(9\\). If we just add, we get \\(23\\), but that is too many. The \\(4\\) students in the overlap belong to both clubs, so they sit inside the \\(14\\) and inside the \\(9\\). Adding both totals counts those \\(4\\) twice. To fix it we subtract the overlap once, and the number of students in band or choir is \\(14 + 9 - 4 = 19\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Picture two clubs. When you add the size of one club to the size of the other, anyone who is in both clubs gets counted twice, once in each total. So the number of people in club A or club B is the size of A plus the size of B minus the size of both, since you subtract that overlap once to fix the double count. Once you know how many are in A or B, the number in neither is just the total minus that, and the very same adding and subtracting works whether you are counting people or working with percents."
+   },
+   {
+    "t": "prob",
+    "x": "In an after-school club, \\(15\\) kids play soccer and \\(12\\) kids play chess. Of those, \\(7\\) kids play both soccer and chess. How many kids play at least one of the two games, soccer or chess?",
+    "xp": 6,
+    "hints": [
+     "Watch out, the 7 kids who play both got counted once in the soccer group and once in the chess group. They were counted twice.",
+     "Add the two groups together first, then take away the overlap so nobody is counted twice.",
+     "At least one means soccer or chess (or both), which is \\(15 + 12 - 7\\)."
+    ],
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0"
+    ],
+    "sol": "If we just add the two groups, \\(15 + 12 = 27\\). But that counts the \\(7\\) kids who play both twice, once inside the soccer count and once inside the chess count. To fix the double count we subtract the overlap one time, so \\(27 - 7 = 20\\). That gives the number who play at least one game, soccer or chess. $$\\boxed{20}$$"
+   },
+   {
+    "t": "prob",
+    "x": "At a summer camp, \\(22\\) kids signed up for archery and \\(19\\) kids signed up for swimming. When the counselor checked the lists, \\(33\\) kids in all had signed up for archery or swimming. Some lucky kids signed up for both. How many kids signed up for both archery and swimming?",
+    "xp": 7,
+    "hints": [
+     "If you just add \\(22+19\\), every kid who signed up for both gets counted twice, once on each list.",
+     "That double count is exactly the kids in both. So \\(22+19\\) is too big by the number of both.",
+     "The real total signed up for archery or swimming is \\(33\\). Set the overcount equal to that and the leftover is the both group."
+    ],
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0"
+    ],
+    "sol": "When you add the two lists you get \\(22+19=41\\). But that is more than the \\(33\\) kids who actually signed up. Why? Every kid who picked both archery and swimming sits on both lists, so adding the lists counts each of them twice.\n\nThe total for archery or swimming is the two lists added, then the overlap subtracted once to fix the double count. So \\(33 = 22 + 19 - \\text{both}\\). That means the both group is the amount we overcounted, which is \\(41-33=8\\).\n\nSo \\(8\\) kids signed up for both archery and swimming.\n\n$$\\boxed{8}$$"
+   },
+   {
+    "t": "prob",
+    "x": "At a family reunion of \\(50\\) people, \\(32\\) of them drink coffee and \\(19\\) drink tea. Some people drink both, and in fact \\(8\\) people pour themselves a cup of each. The rest of the family skip both drinks. How many people drink neither coffee nor tea?",
+    "xp": 7,
+    "hints": [
+     "Start by counting how many people drink coffee or tea. You cannot just add \\(32\\) and \\(19\\), because the \\(8\\) who drink both would be counted once in each group.",
+     "Add the two groups and then take away the overlap once, so the coffee-or-tea count is \\(32 + 19 - 8\\). That removes the double counting.",
+     "Once you know how many drink at least one of the two, the neither group is just the whole reunion minus that count. Subtract from \\(50\\)."
+    ],
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0"
+    ],
+    "sol": "First figure out how many people drink coffee or tea. If you simply add the two groups you get \\(32 + 19 = 51\\), but that is already more than the whole reunion, which is a clue that something got counted twice. The \\(8\\) people who drink both were counted once among the coffee drinkers and again among the tea drinkers, so you must remove that overlap one time. That gives \\(32 + 19 - 8 = 43\\) people who drink at least one of the two. Everyone else drinks neither, so subtract from the total of \\(50\\), giving \\(50 - 43 = 7\\). $$\\boxed{7}$$"
+   },
+   {
+    "t": "prob",
+    "x": "A survey of a whole town asked every home two questions. It found that \\(55\\%\\) of homes own a phone and \\(50\\%\\) own a tablet, and \\(30\\%\\) own both a phone and a tablet. Counting in percents instead of in homes, what percent of homes own neither a phone nor a tablet?",
+    "xp": 8,
+    "hints": [
+     "First find the percent that own a phone or a tablet (or both). If you just add \\(55\\) and \\(50\\) you count the both homes twice.",
+     "Subtract the overlap once so each home is counted a single time. The percent with at least one is \\(55 + 50 - 30\\).",
+     "Every home either has at least one device or has neither. So the neither percent is \\(100\\) minus the percent with at least one."
+    ],
+    "ans": "25",
+    "accept": [
+     "25",
+     "25%",
+     "25.0",
+     "25.0%"
+    ],
+    "sol": "Start with the homes that own a phone or a tablet or both. If we just add the two groups we get \\(55 + 50 = 105\\), but that is more than the whole town, so something is doubled. The \\(30\\%\\) that own both got counted once in the phone group and again in the tablet group, so we subtract that overlap one time. The percent that own at least one device is \\(55 + 50 - 30 = 75\\). Every home in town either owns at least one device or owns neither, and the whole town is \\(100\\%\\). So the neither percent is \\(100 - 75 = 25\\). $$\\boxed{25}$$"
+   },
+   {
+    "t": "imp",
+    "x": "Here is what makes a two-way table so handy. When every item gets sorted two ways at once, like cats that are kitten or adult and also short haired or long haired, a little 2 by 2 grid holds all four groups in one picture. Each row adds across to a total on the side, and each column adds down to a total along the bottom, and those edge totals must agree with the grand total in the corner. So if one of the four inside cells is missing, you never have to guess, you just subtract the cells you do know from the total they share and the missing count appears."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A two by two table of fifty-five cats sorted by kitten or adult across the top and short hair or long hair down the side. The filled cells show twelve short haired kittens, twenty short haired adults, and sixteen long haired adults. The long haired kitten cell is left blank and marked with a gold question mark. A total row below shows nineteen kittens in all and fifty-five cats in all. An arrow leads from the blank cell to the working nineteen minus twelve equals seven, the missing long haired kitten count.\">\n  <text x=\"220\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">SUBTRACTION FILLS THE BLANK CELL</text>\n  <text x=\"180\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--slate)\">Kitten</text>\n  <text x=\"270\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--slate)\">Adult</text>\n  <text x=\"360\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--mid)\">Total</text>\n  <text x=\"120\" y=\"104\" text-anchor=\"end\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--slate)\">Short hair</text>\n  <text x=\"120\" y=\"156\" text-anchor=\"end\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--slate)\">Long hair</text>\n  <text x=\"120\" y=\"200\" text-anchor=\"end\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--mid)\">Total</text>\n  <rect x=\"135\" y=\"72\" width=\"90\" height=\"52\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"0.8\"/>\n  <rect x=\"225\" y=\"72\" width=\"90\" height=\"52\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"0.8\"/>\n  <rect x=\"135\" y=\"124\" width=\"90\" height=\"52\" fill=\"var(--soft)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <rect x=\"225\" y=\"124\" width=\"90\" height=\"52\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"0.8\"/>\n  <text x=\"180\" y=\"104\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">12</text>\n  <text x=\"270\" y=\"104\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">20</text>\n  <text x=\"180\" y=\"157\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--gold-deep)\">?</text>\n  <text x=\"270\" y=\"157\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">16</text>\n  <line x1=\"120\" y1=\"184\" x2=\"390\" y2=\"184\" stroke=\"var(--line)\" stroke-width=\"1\"/>\n  <text x=\"180\" y=\"200\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--mid)\">19</text>\n  <text x=\"360\" y=\"200\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--mid)\">55</text>\n  <text x=\"360\" y=\"216\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--mid)\">cats in all</text>\n  <path d=\"M196 166 L252 232\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.4\"/>\n  <path d=\"M252 232 L244 230 M252 232 L249 223\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.4\"/>\n  <text x=\"252\" y=\"252\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">19 &#8722; 12 = 7</text>\n  <text x=\"252\" y=\"272\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">the blank long haired kitten count</text>\n</svg>",
+    "cap": "Here \\(55\\) cats are sorted two ways at once, kitten or adult across the top and short hair or long hair down the side. Three of the four inner boxes are filled, and we also know there are \\(19\\) kittens in all. Look down the Kitten column. The short haired kittens and the long haired kittens together must make \\(19\\). Since \\(12\\) of them are short haired, the rest are long haired, so the blank is \\(19\\) minus \\(12\\), giving \\(7\\). One careful subtraction fills the missing cell. The numbers here are just an example, your practice cats will use different counts."
+   },
+   {
+    "t": "prob",
+    "x": "A community garden has \\(70\\) plants in all. Of those, \\(40\\) are flowering and \\(30\\) are planted in the sunny corner. Exactly \\(22\\) plants are both flowering and in the sun. How many plants are non-flowering and in the shade?",
+    "xp": 8,
+    "hints": [
+     "Sort the plants two ways at once, flowering or not, and sunny or shady. A little 2 by 2 table with four boxes can hold every plant.",
+     "Start from the corner you know. \\(22\\) plants are both flowering and sunny. Use the row and column totals to fill the cells around it by subtracting.",
+     "There are \\(40\\) flowering plants and \\(22\\) of them are sunny, so the rest of the flowering plants are in the shade. Do the same for the sunny column.",
+     "The plant you want sits in the box that is non-flowering and shady, the last cell left. Make the four boxes add up to \\(70\\)."
+    ],
+    "ans": "22",
+    "accept": [
+     "22",
+     "22.0"
+    ],
+    "sol": "Picture four boxes that sort every plant two ways, flowering or not down the side, sunny or shady across the top. We are told the flowering and sunny corner holds \\(22\\) plants, so write \\(22\\) there.\n\nThere are \\(40\\) flowering plants in all. Of those, \\(22\\) are sunny, so the flowering and shady box holds \\(40-22=18\\).\n\nThe sunny corner has \\(30\\) plants in all. Of those, \\(22\\) are flowering, so the non-flowering and sunny box holds \\(30-22=8\\).\n\nNow we can find the last box two ways. Every plant is somewhere, and the four boxes must add to \\(70\\). The three boxes we have add to \\(22+18+8=48\\), so the non-flowering and shady box holds \\(70-48=22\\).\n\nThe same answer falls out of inclusion and exclusion. The plants that are flowering or sunny number \\(40+30-22=48\\), and we subtracted \\(22\\) once so we do not count the both group twice. The rest, the plants that are neither flowering nor sunny, number \\(70-48=22\\).\n\n$$\\boxed{22}$$"
+   },
+   {
+    "t": "fact",
+    "x": "The word tally comes from an old word for a notched stick. Long before anyone wrote down a formula, a shepherd might carve one notch for each sheep, so the stick kept a careful count even if nobody could read or write. Some tally sticks were even split down the middle, with each person keeping half, so the notches had to match up like two halves of a secret. People have always counted by being careful, one mark at a time, and that is still the real heart of it."
+   },
+   {
+    "t": "prob",
+    "x": "A teacher writes down every two-digit number, that is every whole number from \\(10\\) to \\(99\\). Then she circles the ones that are divisible by \\(3\\) or by \\(5\\). How many two-digit numbers does she circle?",
+    "xp": 11,
+    "hints": [
+     "Count the multiples of \\(3\\) and the multiples of \\(5\\) separately. For each, find the first and last one in the range, then use the evenly spaced count where the count is \\((\\text{last}-\\text{first})\\div\\text{step}+1\\).",
+     "Adding the two counts is not the final answer. Some numbers got counted in both lists. Which numbers are divisible by \\(3\\) and by \\(5\\) at the same time?",
+     "A number divisible by both \\(3\\) and \\(5\\) is a multiple of \\(15\\). Count those, since each one was counted twice, and subtract that overlap once."
+    ],
+    "ans": "42",
+    "accept": [
+     "42",
+     "42.0"
+    ],
+    "sol": "We want the two-digit numbers divisible by \\(3\\) or by \\(5\\), so we count each group and then fix the double counting.\n\nFirst the multiples of \\(3\\). The smallest two-digit multiple of \\(3\\) is \\(12\\) and the largest is \\(99\\). They step by \\(3\\), so the count is \\((99-12)\\div 3 + 1 = 87\\div 3 + 1 = 29+1 = 30\\).\n\nNext the multiples of \\(5\\). The smallest is \\(10\\) and the largest is \\(95\\). They step by \\(5\\), so the count is \\((95-10)\\div 5 + 1 = 85\\div 5 + 1 = 17+1 = 18\\).\n\nIf we just add, we get \\(30 + 18 = 48\\). But a number divisible by both \\(3\\) and \\(5\\) is a multiple of \\(15\\), and we counted each of those twice, once in each list. The two-digit multiples of \\(15\\) are \\(15, 30, 45, 60, 75, 90\\), which is \\(6\\) numbers.\n\nSo we subtract the overlap once and the answer is \\(30 + 18 - 6 = 42\\).\n\n$$\\boxed{42}$$"
+   }
+  ],
+  "review": [
+   {
+    "x": "A theater row has seats numbered in order from \\(5\\) to \\(23\\), and every single seat in that range is taken, both ends included. The person in seat \\(5\\) and the person in seat \\(23\\) are both there, along with everyone in between. How many people are sitting in the row?",
+    "hints": [
+     "It is tempting to just subtract and say \\(23 - 5\\). Try that with a tiny row first, like seats \\(1\\) to \\(3\\), and count the people by hand to see if plain subtraction gives the right answer.",
+     "Subtracting \\(23 - 5\\) tells you how many steps it is from the first seat to the last, but it quietly leaves out one of the end seats. Both ends have a person, so you need to add that one back.",
+     "Find \\(23 - 5\\) first, then add \\(1\\) to include both ends."
+    ],
+    "ans": "19",
+    "accept": [
+     "19",
+     "19.0"
+    ],
+    "sol": "Picture a tiny row to see the idea. Seats \\(1\\) to \\(3\\) hold \\(3\\) people, yet \\(3 - 1 = 2\\), so plain subtraction comes up one short. The reason is that \\(23 - 5\\) counts the steps from the first seat to the last, not the seats themselves, and it skips one of the two ends. So we subtract to get the gap and then add \\(1\\) to put that missing end back. Here \\(23 - 5 = 18\\), and \\(18 + 1 = 19\\). So there are \\(19\\) people in the row. $$\\boxed{19}$$"
+   },
+   {
+    "x": "A history teacher pins up a timeline poster. It marks one tick for every year from \\(1990\\) to \\(2024\\), and both \\(1990\\) and \\(2024\\) get a tick of their own. How many year ticks are on the poster in all?",
+    "hints": [
+     "Try a tiny version first. From \\(1990\\) to \\(1992\\) the ticks are \\(1990\\), \\(1991\\), \\(1992\\), so that is \\(3\\) ticks, not the \\(2\\) you get from \\(1992-1990\\).",
+     "Subtracting \\(2024-1990\\) counts the gaps between ticks, not the ticks themselves. There is always one more tick than the number of gaps.",
+     "Find \\(2024-1990\\) first, then add \\(1\\) to put the very first year back in, since it never got counted by the subtraction."
+    ],
+    "ans": "35",
+    "accept": [
+     "35",
+     "35.0"
+    ],
+    "sol": "It is tempting to just do \\(2024-1990=34\\), but watch a small case first. From \\(1990\\) to \\(1992\\) the ticks are \\(1990\\), \\(1991\\), \\(1992\\), which is \\(3\\) ticks, yet \\(1992-1990=2\\). The subtraction came up one short. That happens because subtracting measures the gaps between the ticks, and a row of ticks always has one more tick than it has gaps. The first year never gets counted by the subtraction, so we add it back. Here \\(2024-1990=34\\) gives the gaps, and adding \\(1\\) for the starting year gives \\(34+1=35\\) ticks. $$\\boxed{35}$$"
+   },
+   {
+    "x": "A scientist watches the temperature drop and writes down a reading at every whole degree on the way. The first reading is at \\(12\\) degrees, and the readings keep going down one whole degree at a time, \\(11\\), \\(10\\), \\(9\\), and so on, all the way down past zero to the very last reading at \\(-4\\) degrees. How many readings does the scientist take in all, counting both the \\(12\\) and the \\(-4\\)?",
+    "hints": [
+     "Picture the readings as a list of whole numbers from \\(12\\) at the top down to \\(-4\\) at the bottom. You are counting how many numbers are in that list, with both ends included.",
+     "The gap from \\(12\\) down to \\(-4\\) is \\(12 - (-4)\\), which is \\(12 + 4 = 16\\). But the gap is not the count. Try a tiny version like \\(2\\) down to \\(0\\) to see why.",
+     "From \\(2\\) down to \\(0\\) the readings are \\(2, 1, 0\\), which is \\(3\\) readings even though the gap is \\(2\\). You always need one more than the gap, so add \\(1\\) at the end."
+    ],
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0"
+    ],
+    "sol": "We are counting every whole degree from \\(12\\) down to \\(-4\\), with both ends included. First find the gap from the top reading to the bottom reading. That gap is \\(12 - (-4)\\), and subtracting a negative adds, so \\(12 - (-4) = 12 + 4 = 16\\). Now the gap is not the same as the number of readings. A short list shows why. From \\(2\\) down to \\(0\\) the readings are \\(2, 1, 0\\), which is \\(3\\) readings, one more than the gap of \\(2\\). The same fencepost idea happens here, so we take the gap and add \\(1\\), giving \\(16 + 1 = 17\\). So the scientist takes $$\\boxed{17}$$ readings."
+   },
+   {
+    "x": "A vending machine has slots numbered \\(1\\) to \\(100\\). Every night it restocks any slot whose number is a multiple of \\(6\\), so slot \\(6\\), slot \\(12\\), slot \\(18\\), and so on all get refilled. How many slots get restocked?",
+    "hints": [
+     "You are counting the multiples of \\(6\\) that fall between \\(1\\) and \\(100\\). Start by finding the first one and the last one. What is the smallest multiple of \\(6\\) in range, and what is the largest one that does not go past \\(100\\)?",
+     "The first restocked slot is \\(6\\) and the last is \\(96\\), since \\(96 = 6 \\times 16\\) and the next multiple \\(102\\) is too big. The slots step up by \\(6\\) each time.",
+     "For an evenly spaced list, the count is \\(\\tfrac{\\text{last} - \\text{first}}{\\text{step}} + 1\\). Do the subtraction and division first, then add the \\(1\\) so you do not miss the very first slot."
+    ],
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0"
+    ],
+    "sol": "The restocked slots are the multiples of \\(6\\) sitting between \\(1\\) and \\(100\\). The smallest multiple of \\(6\\) in that range is \\(6\\) itself, and the largest is \\(96\\), because \\(96 = 6 \\times 16\\) while the next multiple \\(102\\) shoots past \\(100\\). So the list runs \\(6, 12, 18, \\dots, 96\\), stepping up by \\(6\\) each time. To count an evenly spaced list, find how many steps separate the first and last terms, then add one for the starting term. The gap from \\(6\\) to \\(96\\) is \\(96 - 6 = 90\\), and each step covers \\(6\\), so there are \\(90 \\div 6 = 15\\) steps. Add the \\(1\\) for the first slot so you do not leave it out, giving \\(15 + 1 = 16\\). $$\\boxed{16}$$"
+   },
+   {
+    "x": "A jersey shop has one wall of pegs, and the owner only hangs the odd-numbered jerseys there. The numbers she hangs run \\(15, 17, 19\\), and so on, climbing by twos all the way up to \\(67\\). Notice these are evenly spaced, each one sitting \\(2\\) above the one before it, so this is not a plain run of every whole number. The first hung jersey is \\(15\\) and the last is \\(67\\). How many jerseys are hanging on that wall?",
+    "hints": [
+     "These numbers are not consecutive, they step up by \\(2\\) each time. So first figure out how many steps of size \\(2\\) it takes to climb from \\(15\\) up to \\(67\\).",
+     "Find the gap from first to last, \\(67-15\\), then split that gap into steps of \\(2\\) by dividing by \\(2\\). That counts the steps, not the jerseys.",
+     "Steps and jerseys are not the same. There is always one more jersey than there are steps, because the very first jersey takes no step to reach. So add \\(1\\) at the end."
+    ],
+    "ans": "27",
+    "accept": [
+     "27",
+     "27.0"
+    ],
+    "sol": "The hung numbers go up by \\(2\\) each time, so this is an evenly spaced list, not a solid run. The trick is to count the steps first and then remember the jerseys. The whole climb from the first number to the last covers \\(67-15=52\\). Each step is a jump of \\(2\\), so the number of steps is \\(52\\div 2=26\\). But steps are the gaps between jerseys, and there is always one more jersey than gap, since you start standing on the first jersey before taking any step at all. So add that starting jersey back in, giving \\(26+1=27\\). You can sanity check it with the formula for an evenly spaced count, which is \\(\\frac{\\text{last}-\\text{first}}{\\text{step}}+1\\), and that gives \\(\\frac{67-15}{2}+1=26+1=27\\). $$\\boxed{27}$$"
+   },
+   {
+    "x": "A warehouse runs a safety audit on certain bins. Every bin whose number is a multiple of \\(50\\) gets audited, and the bins are numbered from \\(50\\) all the way up to \\(900\\). The very first bin audited is bin \\(50\\) and the last is bin \\(900\\). How many bins get audited in all?",
+    "hints": [
+     "The audited bins are evenly spaced, jumping by \\(50\\) each time. The first one in range is \\(50\\) and the last is \\(900\\).",
+     "Find how many steps of \\(50\\) it takes to get from \\(50\\) to \\(900\\). That is \\((900 - 50)\\div 50\\).",
+     "The number of steps is one less than the number of bins, so add \\(1\\) at the end to count both the first bin and the last bin."
+    ],
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0"
+    ],
+    "sol": "The audited bins are the multiples of \\(50\\), evenly spaced \\(50\\) apart. The first one in range is \\(50\\) and the last is \\(900\\). To count evenly spaced numbers, first see how far you travel from the first to the last, which is \\(900 - 50 = 850\\). Each step is \\(50\\), so the number of steps is \\(850 \\div 50 = 17\\). But the steps count the gaps between bins, not the bins themselves, and there is always one more bin than there are gaps. So we add \\(1\\) and get \\(17 + 1 = 18\\). $$\\boxed{18}$$"
+   },
+   {
+    "x": "A gym class counts off by fours on the way down the stairs. They start at \\(100\\) and call out \\(100, 96, 92\\), and so on, dropping by \\(4\\) each time, until they reach \\(20\\) and stop. How many numbers does the class call out in all?",
+    "hints": [
+     "This is an evenly spaced list. The first number is \\(100\\), the last is \\(20\\), and each step drops by \\(4\\).",
+     "Find how many steps it takes to get from \\(100\\) down to \\(20\\). The gap is \\(100-20=80\\), and each step is \\(4\\).",
+     "Steps are the gaps between numbers, not the numbers themselves. Add one at the end so you count both the \\(100\\) and the \\(20\\)."
+    ],
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0"
+    ],
+    "sol": "The numbers are evenly spaced. They start at \\(100\\), end at \\(20\\), and drop by \\(4\\) at each step.\n\nFirst figure out how far the list travels. From \\(100\\) down to \\(20\\) is a gap of \\(100-20=80\\). Each step is \\(4\\), so the number of steps is \\(80 \\div 4 = 20\\).\n\nBut \\(20\\) steps means \\(20\\) gaps, and the gaps sit between the numbers. The very first number, \\(100\\), starts the list before any step is taken, so we add one more to count it. That gives \\(20+1=21\\) numbers.\n\nYou can write this all at once as \\(\\frac{100-20}{4}+1 = \\frac{80}{4}+1 = 20+1\\), giving $$\\boxed{21}$$"
+   },
+   {
+    "x": "Find how many multiples of \\(7\\) there are from \\(20\\) to \\(95\\). The first multiple of \\(7\\) that is at least \\(20\\) is \\(21\\), and the last one that is no more than \\(95\\) is \\(91\\). How many multiples of \\(7\\) lie in this range?",
+    "hints": [
+     "The endpoints \\(20\\) and \\(95\\) are not multiples of \\(7\\), so the real range you care about runs from \\(21\\) to \\(91\\).",
+     "These numbers step up by \\(7\\) each time, so divide the gap from first to last by \\(7\\) to count the jumps.",
+     "Counting jumps misses the very first number, so remember to add \\(1\\) at the end for the fencepost."
+    ],
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0"
+    ],
+    "sol": "The numbers \\(20\\) and \\(95\\) are not multiples of \\(7\\), so they cannot be counted. The smallest multiple of \\(7\\) that fits is \\(21\\), and the largest is \\(91\\). So we really want to count the evenly spaced list \\(21, 28, 35, \\dots, 91\\), where each number is \\(7\\) more than the one before.\n\\nTo count an evenly spaced list, find how far it is from the first term to the last, then see how many steps of \\(7\\) that takes. The gap from \\(21\\) to \\(91\\) is \\(91 - 21 = 70\\), and \\(70 \\div 7 = 10\\), so there are \\(10\\) jumps.\n\\nBut \\(10\\) jumps land on \\(10\\) new numbers after the starting one, so we must add \\(1\\) for \\(21\\) itself. That gives \\(10 + 1 = 11\\) numbers in all.\n\n$$\\boxed{11}$$"
+   },
+   {
+    "x": "A long parade is rolling down Main Street, one group after another. A marching band is the \\(15\\)th group counting from the very start of the parade, and that same band is also the \\(12\\)th group counting from the very end. How many groups are in the parade in all?",
+    "hints": [
+     "Picture the band sitting in the line of groups. Everything in front of it plus the band is one pile, and everything behind it plus the band is another pile.",
+     "If you just add \\(15\\) and \\(12\\), the band gets counted in both piles, so it is counted one extra time.",
+     "Add the two positions, then take away that \\(1\\) extra count for the band to fix the double count."
+    ],
+    "ans": "26",
+    "accept": [
+     "26",
+     "26.0"
+    ],
+    "sol": "The band is the \\(15\\)th group from the start, so there are \\(15\\) groups from the front up to and including the band. The same band is the \\(12\\)th group from the end, so there are \\(12\\) groups from the back up to and including the band. If you add those two numbers you get \\(15 + 12 = 27\\), but the band itself sits in both of those counts, so it was counted twice. To fix the double count you subtract that one overlap, giving \\(15 + 12 - 1 = 26\\) groups. $$\\boxed{26}$$"
+   },
+   {
+    "x": "At a busy bakery counter you take a number and wait your turn. Looking around, you notice you are \\(7\\)th from the front of the line, and you are also \\(7\\)th from the back. How many people are standing in the line?",
+    "hints": [
+     "Picture two groups. The first \\(7\\) people counted from the front, and the first \\(7\\) people counted from the back. Each group is \\(7\\) people.",
+     "Watch out for double counting. You belong to BOTH groups, so adding \\(7+7\\) counts you one extra time.",
+     "Add the two groups, then subtract the \\(1\\) person who got counted twice."
+    ],
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0"
+    ],
+    "sol": "Think of the line as two overlapping groups. Counting from the front, you are \\(7\\)th, so the front group is \\(7\\) people. Counting from the back, you are \\(7\\)th, so the back group is also \\(7\\) people. Adding them gives \\(7+7=14\\). But you are in BOTH groups, so you got counted twice. Subtract the one extra count of yourself, giving \\(14-1=13\\). You can check it another way. With \\(6\\) people ahead of you and \\(6\\) people behind you, the line is \\(6+1+6=13\\). $$\\boxed{13}$$"
+   },
+   {
+    "x": "The whole school is at a party, and \\(40\\) students showed up. \\(22\\) of them grab a slice of pizza, and \\(18\\) of them grab a burger. Some hungry students go back for both, and there are \\(11\\) of those. How many students eat at least one of the two foods, pizza or a burger?",
+    "hints": [
+     "You want to count everyone who eats pizza OR a burger. If you just add \\(22+18\\), the students who ate both got counted in each group.",
+     "Those \\(11\\) who ate both are sitting in the pizza count and in the burger count, so they got counted twice. Take one of those copies away.",
+     "The total of \\(40\\) students is not needed here. You only need the pizza eaters, the burger eaters, and the overlap."
+    ],
+    "ans": "29",
+    "accept": [
+     "29",
+     "29.0"
+    ],
+    "sol": "Start by adding the two groups. The pizza eaters and the burger eaters give \\(22+18=40\\). But the \\(11\\) students who ate both are inside the pizza count and inside the burger count, so they were counted twice. We need to take away one of those copies. That gives \\(40-11=29\\). So the number who eat at least one food is $$\\boxed{29}$$"
+   },
+   {
+    "x": "A food truck on Friday sells two specials, a taco and a burrito. By closing time \\(28\\) customers had bought the taco and \\(21\\) had bought the burrito. The owner also counted that \\(35\\) different customers bought a taco or a burrito. Some lucky people bought both. How many customers bought both a taco and a burrito?",
+    "hints": [
+     "Add the taco buyers and the burrito buyers, \\(28 + 21\\). Anyone who bought both got counted once in each group, so they are counted twice in that sum.",
+     "The count of people who bought a taco or a burrito is \\(35\\). That number counts each customer only once.",
+     "The extra amount in your sum, above \\(35\\), is exactly the overlap. Subtract to find the people counted twice."
+    ],
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0"
+    ],
+    "sol": "When we add the \\(28\\) taco buyers and the \\(21\\) burrito buyers we get \\(28 + 21 = 49\\). But anyone who bought both shows up in both of those groups, so they got counted twice in that \\(49\\). The true number of customers who bought a taco or a burrito is \\(35\\), and that counts each person just once. So the sum is bigger than \\(35\\) by exactly the size of the overlap. That overlap is \\(49 - 35 = 14\\). So the number who bought both is $$\\boxed{14}$$"
+   },
+   {
+    "x": "A pet show has \\(50\\) entries, and it sorts them two ways. Each entry is a cat or a dog, and each entry is short-haired or long-haired. There are \\(30\\) cats and \\(20\\) dogs. In all, \\(28\\) entries are short-haired. Of the cats, \\(16\\) are short-haired. How many of the dogs are short-haired?",
+    "hints": [
+     "Picture a small table with cats and dogs across the top, and short-haired and long-haired down the side. You want the box that is dogs and short-haired.",
+     "The \\(28\\) short-haired entries are made of two kinds, the short-haired cats and the short-haired dogs. Those two groups add up to \\(28\\).",
+     "You already know one of those two groups, the \\(16\\) short-haired cats. So subtract to find the other one."
+    ],
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0"
+    ],
+    "sol": "Think about the whole short-haired group. Every short-haired entry is either a cat or a dog, so the short-haired cats and the short-haired dogs together make up all \\(28\\) short-haired entries. We already know \\(16\\) of those are cats. So the rest must be dogs, giving \\(28 - 16 = 12\\). The \\(50\\) total, the \\(30\\) cats, and the \\(20\\) dogs were extra facts we did not need for this question. The number of short-haired dogs is $$\\boxed{12}$$"
+   },
+   {
+    "x": "Time for the big one. Look at every two-digit whole number, that is all the numbers from \\(10\\) to \\(99\\). Some of them are divisible by \\(4\\), some are divisible by \\(9\\), and a few sneaky ones are divisible by both. How many of the two-digit numbers are divisible by \\(4\\) or by \\(9\\)?",
+    "hints": [
+     "Handle each list on its own first. The two-digit multiples of \\(4\\) run from \\(12\\) up to \\(96\\), and the two-digit multiples of \\(9\\) run from \\(18\\) up to \\(99\\). For each evenly spaced list, the count is \\((\\text{last}-\\text{first})\\div\\text{step}+1\\).",
+     "When you add the two lists together, some numbers got counted twice. A number is in both lists when it is divisible by \\(4\\) and by \\(9\\) at the same time, which means it is divisible by \\(36\\).",
+     "Find how many two-digit numbers are divisible by \\(36\\), then subtract that overlap once so nothing is double counted."
+    ],
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0"
+    ],
+    "sol": "We count three things and combine them carefully.\n\nFirst the multiples of \\(4\\). The smallest two-digit one is \\(12\\) and the largest is \\(96\\), stepping by \\(4\\). The count is \\((96-12)\\div 4+1=84\\div 4+1=21+1=22\\).\n\nNext the multiples of \\(9\\). The smallest two-digit one is \\(18\\) and the largest is \\(99\\), stepping by \\(9\\). The count is \\((99-18)\\div 9+1=81\\div 9+1=9+1=10\\).\n\nNow the overlap. A number divisible by both \\(4\\) and \\(9\\) is divisible by \\(36\\). The two-digit multiples of \\(36\\) are \\(36\\) and \\(72\\), so there are \\(2\\) of them. These got counted once in the multiples of \\(4\\) and again in the multiples of \\(9\\).\n\nUsing the overlap idea, the count of numbers divisible by \\(4\\) or \\(9\\) is \\(22+10-2=30\\).\n\n$$\\boxed{30}$$"
+   }
+  ],
+  "next": "10.2"
+ }
+}
