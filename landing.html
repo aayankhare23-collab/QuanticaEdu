@@ -12034,15 +12034,18 @@ async function sendTutorMsg() {
 
   // ===== Authored adaptive content (Chapter 1 — lesson 1.2 implemented) =====
   window.ADAPT_CONTENT={
-    chapters:{ '1':{ topics:['addition','subtraction','negation'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
+    chapters:{ '1':{ topics:['addition','subtraction','negation','multiplication','distributive','signs'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
     diagnostic:{
       '1':{
         title:'Chapter 1 · The Rules of Arithmetic',
-        topics:['addition','subtraction','negation'],
+        topics:['addition','subtraction','negation','multiplication','distributive','signs'],
         questions:{
           addition:[ {x:'$$5 + 8$$',ans:'13',diff:1}, {x:'$$38 + 47$$',ans:'85',diff:3}, {x:'$$39 + 41 + 58 + 62$$',ans:'200',diff:5} ],
           subtraction:[ {x:'$$12 - 5$$',ans:'7',diff:1}, {x:'$$60 - 17 - 23$$',ans:'20',diff:3}, {x:'$$1 - 2 + 3 - 4 + 5 - 6$$',ans:'-3',diff:5} ],
-          negation:[ {x:'$$-(-9)$$',ans:'9',diff:1}, {x:'$$7 - (-3)$$',ans:'10',diff:3}, {x:'$$-(-(-(-4)))$$',ans:'4',diff:5} ]
+          negation:[ {x:'$$-(-9)$$',ans:'9',diff:1}, {x:'$$7 - (-3)$$',ans:'10',diff:3}, {x:'$$-(-(-(-4)))$$',ans:'4',diff:5} ],
+          multiplication:[ {x:'$$6 \\times 7$$',ans:'42',diff:1}, {x:'$$2 \\times 39 \\times 5$$',ans:'390',diff:3}, {x:'$$8 \\times 17 \\times 125$$',ans:'17000',diff:5} ],
+          distributive:[ {x:'$$3 \\times (10 + 4)$$',ans:'42',diff:1}, {x:'$$7 \\times 99$$',ans:'693',diff:3}, {x:'$$47 \\times 13 - 37 \\times 13$$',ans:'130',diff:5} ],
+          signs:[ {x:'$$(-3) \\times 4$$',ans:'-12',diff:1}, {x:'$$(-6) \\times (-5)$$',ans:'30',diff:3}, {x:'$$(-2) \\times (-3) \\times (-4)$$',ans:'-24',diff:5} ]
         }
       }
     },
@@ -12081,6 +12084,43 @@ async function sendTutorMsg() {
                    {t:'prob',label:'Warm-up',x:'Compute $$3-(-4).$$',ans:'7',hints:['Subtracting a negative is the same as adding.'],sol:'Subtracting $-4$ is the same as adding $4$: $3+4=7$.'} ],
             hard:[ {t:'prob',label:'Challenge',x:'Simplify $$-(-(-(-9))).$$',ans:'9',hints:['Count the minus signs &mdash; pairs cancel.'],sol:'There are four minus signs. They cancel in pairs ($-(-x)=x$), leaving $+9$.'},
                    {t:'prob',label:'Challenge',x:'Find $$15-(-10)+(-15)-10.$$',ans:'0',hints:['Hunt for what cancels: the 15s and the 10s.'],sol:'Rewrite as $15+10-15-10$. The $15$s cancel and the $10$s cancel, giving $0$.'} ]
+          }
+        }
+      },
+      '1.3':{
+        topics:['multiplication','distributive','signs'],
+        probs:[
+          {topic:'multiplication',diff:1},{topic:'multiplication',diff:3},{topic:'multiplication',diff:4},
+          {topic:'distributive',diff:2},{topic:'distributive',diff:3},{topic:'distributive',diff:4},
+          {topic:'distributive',diff:4},{topic:'signs',diff:1},{topic:'signs',diff:3},
+          {topic:'signs',diff:3}
+        ],
+        keyIdeas:{
+          1:{topic:'multiplication', s2:'Multiplying works just like adding: you can use <b>any order</b> and <b>any grouping</b>. So go <b>partner-hunting</b> for pairs that make round numbers: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'When you multiply, you can <b>reorder</b> and <b>regroup</b> the numbers however you like. Look for friendly pairs first: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$. Do those, and the rest is easy!'},
+          2:{topic:'distributive', s2:'The <b>distributive property</b> links $\\times$ and $+$: $a(b+c)=ab+ac$. Read forward it <b>splits</b> a hard multiply into easy pieces; read backward it <b>combines</b> two products that share a number.', s1:'One rule connects $\\times$ and $+$: $a(b+c)=ab+ac$. You can <b>break up</b> a tricky multiplication into easy parts, like $7\\times(10+4)=70+28$, or <b>pull out</b> a number that two products share.'},
+          3:{topic:'signs', s2:'Each negative factor <b>flips</b> the answer to the other side of zero. <b>One</b> negative makes the product negative; a <b>second</b> negative flips it back to positive, so $(-a)(-b)=ab$.', s1:'A minus sign flips the answer across zero. <b>One</b> minus &rarr; the answer is negative. <b>Two</b> minuses cancel &rarr; the answer is positive! So $(-4)\\times(-6)=24$.'},
+          4:{topic:'multiplication', s2:'You can <b>swap the order</b> ($ab=ba$) and <b>change the grouping</b> ($(ab)c=a(bc)$) of any product. Rearrange first, then partner-hunt: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'Order and grouping never change a product. Shuffle the numbers, then grab the easy pairs: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.'},
+          5:{topic:'distributive', s2:'$a(b+c)=ab+ac$ is the bridge between $\\times$ and $+$. <b>Split</b> an awkward factor across a sum or difference to multiply quickly, or <b>factor out</b> a number that two products share.', s1:'Keep the bridge $a(b+c)=ab+ac$ handy. <b>Split</b> a hard multiply into easy ones, like $4\\times998=4\\times1000-4\\times2$, or <b>pull out</b> a shared number.'},
+          6:{topic:'signs', s2:'<b>Count the negative factors.</b> An <b>odd</b> count makes the product negative; an <b>even</b> count makes it positive. So $(-2)\\times7=-14$, but $(-2)\\times(-7)=14$.', s1:'Just count the minus signs! An <b>odd</b> number of them &rarr; negative answer. An <b>even</b> number &rarr; positive answer. So $(-2)\\times(-7)=14$.'}
+        },
+        extras:{
+          multiplication:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Multiply in the easy order: $$5 \\times 9 \\times 2.$$',ans:'90',hints:['Pair the 5 and the 2 to make 10 first!'],sol:'Reorder to $(5\\times2)\\times9=10\\times9=90$. Find a pair that makes 10 before multiplying anything.'},
+                   {t:'prob',label:'Warm-up',x:'Partner up: $$4 \\times 7 \\times 25.$$',ans:'700',hints:['4 and 25 are partners &mdash; together they make 100.'],sol:'Group the partners: $(4\\times25)\\times7=100\\times7=700$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'In your head: $$2 \\times 17 \\times 5 \\times 4 \\times 25.$$',ans:'17000',hints:['Two partner pairs are hiding in the list.','$2\\times5=10$ and $4\\times25=100$.'],sol:'Pair them off: $(2\\times5)\\times(4\\times25)\\times17=10\\times100\\times17=1000\\times17=17000$.'},
+                   {t:'prob',label:'Challenge',x:'Compute $$8 \\times 625 \\times 125.$$',ans:'625000',hints:['8 and 125 are partners &mdash; they make 1000.'],sol:'$8\\times125=1000$, so $1000\\times625=625000$. Partner-hunting collapses the whole product.'} ]
+          },
+          distributive:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Split the multiply: $$6 \\times 12.$$',ans:'72',hints:['Think of 12 as $10+2$.'],sol:'$6\\times(10+2)=60+12=72$. Breaking a number into easy parts turns one hard multiply into two simple ones.'},
+                   {t:'prob',label:'Warm-up',x:'Use the bridge: $$5 \\times 21.$$',ans:'105',hints:['Write 21 as $20+1$.'],sol:'$5\\times(20+1)=100+5=105$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'No pencil: $$7 \\times 1003.$$',ans:'7021',hints:['$1003=1000+3$.'],sol:'$7\\times(1000+3)=7000+21=7021$. Split across the round number, then add the small piece.'},
+                   {t:'prob',label:'Challenge',x:'Collapse it: $$53 \\times 28 + 47 \\times 28.$$',ans:'2800',hints:['Both products share a 28 &mdash; how many 28s in all?'],sol:'Read it as fifty-three 28s plus forty-seven 28s, which is one hundred 28s: $(53+47)\\times28=100\\times28=2800$.'} ]
+          },
+          signs:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Compute $$(-5) \\times 3.$$',ans:'-15',accept:['−15'],hints:['One negative factor &mdash; so the answer is negative.'],sol:'$5\\times3=15$, and one minus sign flips it across zero: $-15$.'},
+                   {t:'prob',label:'Warm-up',x:'Compute $$(-2) \\times (-6).$$',ans:'12',hints:['Two negatives cancel &mdash; the answer is positive.'],sol:'The two minus signs flip back to positive: $2\\times6=12$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'Count the signs: $$(-1) \\times (-2) \\times (-5).$$',ans:'-10',accept:['−10'],hints:['Three negatives &mdash; is that odd or even?'],sol:'Three negative factors is an odd count, so the product is negative: $1\\times2\\times5=10$ gives $-10$.'},
+                   {t:'prob',label:'Challenge',x:'Compute $$(-4) \\times (-25) \\times (-1) \\times (-1).$$',ans:'100',hints:['Count the minus signs &mdash; even or odd?'],sol:'Four negative factors is an even count, so the product is positive: $4\\times25\\times1\\times1=100$.'} ]
           }
         }
       }
@@ -12235,13 +12275,13 @@ async function sendTutorMsg() {
   // ===== Diagnostic =====
   function chapterOf(key){ return String(parseInt(key,10)); }
   function dgContent(ch){ return window.ADAPT_CONTENT && ADAPT_CONTENT.diagnostic && ADAPT_CONTENT.diagnostic[ch]; }
-  function dgNorm(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/^\+/,''); }
+  function dgNorm(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/−/g,'-').replace(/^\+/,''); }
   var DG={ ch:null, q:[], idx:0, correct:{}, key:null, pending:null };
   function dgEnsureDom(){ if(document.getElementById('dgOverlay')) return; var o=document.createElement('div'); o.className='dg-overlay'; o.id='dgOverlay'; o.innerHTML='<div class="dg-card" id="dgCard"></div>'; document.body.appendChild(o); }
   function dgIntro(){
     var c=dgContent(DG.ch);
     document.getElementById('dgCard').innerHTML='<div class="dg-intro"><div class="dg-eyebrow">Quick check</div><h2>'+c.title+'</h2>'+
-      '<p>Take this short check (about '+DG.q.length+' questions, ~5 minutes) and we will tune every lesson in this chapter to your level &mdash; tougher where you are strong, gentler where you are still building. You can change any of it later.</p>'+
+      '<p>Take this short check (about '+DG.q.length+' quick questions, just a few minutes) and we will tune every lesson in this chapter to your level &mdash; tougher where you are strong, gentler where you are still building. You can change any of it later.</p>'+
       '<div class="dg-introbtns"><button class="dg-skip" onclick="Diagnostic.skip()">Skip for now</button><button class="dg-take" onclick="Diagnostic.begin()">Take the check</button></div></div>';
     document.getElementById('dgOverlay').classList.add('on');
   }
