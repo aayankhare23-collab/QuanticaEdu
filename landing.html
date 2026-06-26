@@ -1179,7 +1179,8 @@
         <button class="cb-back" id="mback" onclick="showDashboard()" aria-label="Back to course home">←<span> Home</span></button>
         <span class="cb-logo"><span class="mark">Q</span>Quantica</span>
       </div>
-      <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div>
+      <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
+      <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
       <button class="cb-exit" onclick="closeLesson()" aria-label="Exit course">Exit course ✕</button>
     </header>
     <div class="coursescroll" id="courseScroll">
@@ -11016,7 +11017,7 @@
     '</aside>';
   }
   function wsOpen(key,L,meta){
-    var bp=buildPages(L.blocks);
+    var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false;
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
@@ -11063,6 +11064,7 @@
     var cs=document.getElementById('courseScroll');
     if(cs){ cs.classList.add('ws-mode'); cs.scrollTop=0; }
     requestAnimationFrame(function(){ var c=document.getElementById('courseScroll'); if(c) c.scrollTop=0; });
+    if(window.DiffPanel) DiffPanel.onLessonOpen(key);
     WS.showPage(0);
   }
   WS.showPage=function(i){
@@ -11274,7 +11276,7 @@
   };
   WS.drawer=function(which){ WS.togglePanel(which); };
   WS.closeDrawers=function(){ WS.closeAll(); };
-  WS.close=function(){ WS.active=false; var cs=document.getElementById('courseScroll'); if(cs) cs.classList.remove('ws-mode'); };
+  WS.close=function(){ WS.active=false; var cs=document.getElementById('courseScroll'); if(cs) cs.classList.remove('ws-mode'); if(window.DiffPanel) DiffPanel.onLessonClose(); };
   window.WS=WS;
 
   // --- lesson flow: reveal one block at a time, highlight it, advance on click ---
@@ -11946,6 +11948,199 @@ async function sendTutorMsg() {
   input.focus();
   body.scrollTop = body.scrollHeight;
 }
+</script>
+<style>
+  .cb-rightgrp{display:flex;align-items:center;gap:12px}
+  .cb-diff{display:none;align-items:center;gap:6px;font:700 12px/1 'Inter';color:var(--mid);background:rgba(58,123,213,.10);border:1px solid var(--glass-line);border-radius:999px;padding:8px 13px;cursor:pointer;transition:all .15s}
+  .cb-diff:hover{background:rgba(58,123,213,.18)}
+  .dp-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(18,38,86,.28);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);align-items:center;justify-content:center}
+  .dp-overlay.on{display:flex}
+  .dp-card{position:relative;width:min(460px,92vw);max-height:88vh;overflow-y:auto;background:var(--soft,#f4f7fc);border:1px solid var(--glass-line);border-radius:20px;box-shadow:0 30px 80px -30px rgba(18,42,86,.6);padding:24px 26px 20px}
+  .dp-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:var(--mute);cursor:pointer;line-height:1}
+  .dp-x:hover{color:var(--navy)}
+  .dp-card h3{font-family:'Fraunces';font-weight:600;font-size:20px;color:var(--navy);margin:0 0 3px}
+  .dp-sub{font:500 12.5px/1.5 'Inter';color:var(--slate);margin:0 0 18px}
+  .dp-row{margin:0 0 18px}
+  .dp-rl{display:flex;align-items:center;justify-content:space-between;margin:0 0 11px}
+  .dp-rl .nm{font:700 13.5px/1 'Inter';color:var(--navy);text-transform:capitalize}
+  .dp-rl .tg{font:700 11px/1 'Inter';border-radius:999px;padding:4px 9px;background:rgba(58,123,213,.10)}
+  .dp-line{position:relative;height:24px;margin:0 8px;cursor:pointer}
+  .dp-track{position:absolute;top:50%;left:0;right:0;height:4px;transform:translateY(-50%);background:rgba(120,155,210,.3);border-radius:99px}
+  .dp-fill{position:absolute;top:50%;left:0;height:4px;transform:translateY(-50%);background:linear-gradient(90deg,var(--mid),var(--sky));border-radius:99px;transition:width .16s}
+  .dp-notch{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid rgba(120,155,210,.5);z-index:2}
+  .dp-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--mid),var(--sky));border:3px solid #fff;box-shadow:0 3px 9px -2px rgba(58,123,213,.7);z-index:4;transition:left .16s}
+  .dp-diag{position:absolute;top:-4px;transform:translateX(-50%);font-size:11px;color:#e8930a;z-index:3;pointer-events:none}
+  .dp-scale{display:flex;justify-content:space-between;margin-top:4px;font:600 9.5px/1 'Inter';color:var(--mute)}
+  .dp-actions{display:flex;gap:10px;align-items:center;margin-top:20px;padding-top:15px;border-top:1px solid var(--glass-line)}
+  .dp-reset{font:600 12.5px/1 'Inter';color:var(--slate);background:rgba(255,255,255,.6);border:1px solid var(--glass-line);border-radius:999px;padding:10px 16px;cursor:pointer}
+  .dp-reset:disabled{opacity:.4;cursor:not-allowed}
+  .dp-save{margin-left:auto;font:700 13px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:999px;padding:11px 24px;cursor:pointer;box-shadow:0 10px 22px -10px rgba(58,123,213,.7)}
+  .dp-note{font:500 11.5px/1.4 'Inter';color:var(--mute);margin-top:10px;text-align:center}
+  .dp-pop{position:absolute;inset:0;background:rgba(244,247,252,.88);display:none;align-items:center;justify-content:center;border-radius:20px}
+  .dp-pop.on{display:flex}
+  .dp-popcard{width:86%;background:#fff;border:1px solid var(--glass-line);border-radius:16px;padding:22px;text-align:center;box-shadow:0 18px 50px -18px rgba(18,42,86,.45)}
+  .dp-popcard p{font:600 14px/1.5 'Inter';color:var(--navy);margin:0 0 18px}
+  .dp-popbtns{display:flex;gap:10px;justify-content:center}
+  .dp-cancel{font:600 13px/1 'Inter';color:var(--slate);background:rgba(0,0,0,.04);border:1px solid var(--glass-line);border-radius:999px;padding:10px 20px;cursor:pointer}
+  .dp-continue{font:700 13px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:999px;padding:10px 22px;cursor:pointer}
+  .dp-tier-1{color:#d9682a}.dp-tier-2{color:#e0902a}.dp-tier-3{color:var(--mid)}.dp-tier-4{color:#2c8f5a}.dp-tier-5{color:#1f7a4d}
+</style>
+<script>
+(function(){
+  // ===== Adaptive difficulty state (localStorage) =====
+  var LS='quantica_adapt_v1', st;
+  try{ st=JSON.parse(localStorage.getItem(LS))||{}; }catch(e){ st={}; }
+  st.tiers=st.tiers||{}; st.diag=st.diag||{}; st.diagnosed=st.diagnosed||{};
+  function persist(){ try{ localStorage.setItem(LS,JSON.stringify(st)); }catch(e){} }
+  var NORMAL=3;
+  window.ADAPT={
+    NORMAL:NORMAL,
+    tier:function(t){ var v=st.tiers[t]; return v==null?NORMAL:v; },
+    diagTier:function(t){ var v=st.diag[t]; return v==null?null:v; },
+    setTiers:function(m){ for(var k in m) st.tiers[k]=Math.max(1,Math.min(5,m[k])); persist(); },
+    resetToNormal:function(ts){ ts.forEach(function(t){ st.tiers[t]=NORMAL; }); persist(); },
+    recordDiagnostic:function(ch,m){ for(var k in m){ st.diag[k]=m[k]; st.tiers[k]=m[k]; } st.diagnosed[ch]=true; persist(); },
+    isDiagnosed:function(ch){ return !!st.diagnosed[ch]; }
+  };
+
+  // ===== Authored adaptive content (Chapter 1 — lesson 1.2 implemented) =====
+  window.ADAPT_CONTENT={
+    chapters:{ '1':{ topics:['addition','subtraction','negation'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
+    lessons:{
+      '1.2':{
+        topics:['addition','subtraction','negation'],
+        probs:[
+          {topic:'addition',diff:1},{topic:'addition',diff:2},{topic:'addition',diff:3},
+          {topic:'addition',diff:3},{topic:'addition',diff:4},{topic:'subtraction',diff:4},
+          {topic:'subtraction',diff:2},{topic:'negation',diff:1},{topic:'negation',diff:3},
+          {topic:'negation',diff:4}
+        ],
+        keyIdeas:{
+          1:{topic:'addition', s2:'When you add, you can use <b>any order</b> and <b>any grouping</b> &mdash; the total never changes. So rearrange to make it easy!', s1:'Adding? Swap the order and group the numbers however you like. <b>The total stays the same.</b> Pick whatever is easiest for you.'},
+          2:{topic:'subtraction', s2:'Subtracting a number is the same as <b>adding its opposite</b>: $a-b=a+(-b)$. Every subtraction can become an addition.', s1:'To subtract, you can <b>add the opposite</b> instead. Taking away $5$ is the same as adding $-5$!'},
+          3:{topic:'negation', s2:'The <b>opposite of the opposite</b> is the original: $-(-a)=a$. That is why subtracting a negative <b>adds</b>.', s1:'Two minus signs cancel! $-(-5)=5$. So subtracting a negative means you <b>add</b>.'},
+          4:{topic:'addition', s2:'Two rules for adding: <b>order does not matter</b> ($a+b=b+a$) and <b>grouping does not matter</b> ($(a+b)+c=a+(b+c)$).', s1:'When adding, you can <b>switch the order</b> and <b>change the grouping</b> freely. Same answer every time.'},
+          5:{topic:'subtraction', s2:'Every subtraction is really an addition: $a-b=a+(-b)$. So all the reorder-and-group tricks work with negatives too.', s1:'Subtraction is just adding a negative. Then you can reorder and group <b>any</b> problem to make it easy.'},
+          6:{topic:'addition', s2:'Adding a long list? <b>Pair the smallest with the largest</b>, then work inward &mdash; each pair adds to the same total!', s1:'Big list to add? Match the <b>first and last</b>, then the next pair. Each pair gives the same total, so just multiply.'}
+        },
+        extras:{
+          addition:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Add in any order: $$7+8+3.$$',ans:'18',hints:['Pair 7 and 3 to make 10 first!']},
+                   {t:'prob',label:'Warm-up',x:'Group to make it easy: $$20+17+30.$$',ans:'67',hints:['Add 20 and 30 first &mdash; that makes 50.']},
+                   {t:'prob',label:'Warm-up',x:'Add the numbers 1 to 10: $$1+2+3+\\cdots+10.$$',ans:'55',hints:['Pair 1 with 10, 2 with 9, each pair makes 11!']} ],
+            hard:[ {t:'prob',label:'Challenge',x:'In your head: $$998+997+5+4.$$',ans:'2004',hints:['Round 998 and 997 up to 1000, then take back what you added.']},
+                   {t:'prob',label:'Challenge',x:'Add every whole number from 1 to 100: $$1+2+\\cdots+100.$$',ans:'5050',hints:['50 pairs, each adding to 101.']} ]
+          },
+          subtraction:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Compute $$10-3-2.$$',ans:'5',hints:['Take away 3, then take away 2.']},
+                   {t:'prob',label:'Warm-up',x:'Rearrange: $$20-8+20-12.$$',ans:'20',hints:['Look at the two 20s, and what 8 and 12 do together.']} ],
+            hard:[ {t:'prob',label:'Challenge',x:'Find $$1-2+3-4+\\cdots+99-100.$$',ans:'-50',hints:['Each pair (1-2),(3-4) makes -1. How many pairs are there?']} ]
+          },
+          negation:{
+            easy:[ {t:'prob',label:'Warm-up',x:'What is $$-(-7)$$?',ans:'7',hints:['The opposite of the opposite is the original.']},
+                   {t:'prob',label:'Warm-up',x:'Compute $$3-(-4).$$',ans:'7',hints:['Subtracting a negative is the same as adding.']} ],
+            hard:[ {t:'prob',label:'Challenge',x:'Simplify $$-(-(-(-9))).$$',ans:'9',hints:['Count the minus signs &mdash; pairs cancel.']},
+                   {t:'prob',label:'Challenge',x:'Find $$15-(-10)+(-15)-10.$$',ans:'0',hints:['Hunt for what cancels: the 15s and the 10s.']} ]
+          }
+        }
+      }
+    }
+  };
+
+  // ===== Adaptive selector: transform a lesson's blocks for the student's tiers =====
+  function includeProb(diff,tier){ return diff>=(tier-2) && diff<=(tier+1); }
+  window.adaptBlocks=function(lessonKey,blocks){
+    var C=window.ADAPT_CONTENT, A=window.ADAPT;
+    var meta=C&&C.lessons&&C.lessons[lessonKey];
+    if(!meta||!A) return blocks;
+    var out=[], probIdx=0, keyIdx=0, lastAt={}, keptByTopic={};
+    blocks.forEach(function(b){
+      if(b.t==='prob'){
+        var tag=meta.probs[probIdx]; probIdx++;
+        var topic=tag?tag.topic:null, diff=tag?tag.diff:NORMAL, tier=topic?A.tier(topic):NORMAL;
+        if(!topic || includeProb(diff,tier)){ out.push(b); if(topic){ lastAt[topic]=out.length; keptByTopic[topic]=(keptByTopic[topic]||0)+1; } }
+        else if(topic){ // remember a fallback in case the topic loses every problem
+          if(!keptByTopic[topic]) lastAt['_fb_'+topic]={at:out.length,b:b,diff:diff};
+        }
+      } else if(b.t==='imp'){
+        keyIdx++;
+        var ki=meta.keyIdeas&&meta.keyIdeas[keyIdx];
+        if(ki){ var tt=A.tier(ki.topic);
+          if(tt<=2 && (ki.s1||ki.s2)){ out.push({t:'imp',label:b.label,x:(tt===1?(ki.s1||ki.s2):(ki.s2||ki.s1))}); }
+          else out.push(b);
+        } else out.push(b);
+      } else out.push(b);
+    });
+    // equal-knowledge guard: every topic keeps at least one problem
+    meta.topics.forEach(function(topic){
+      if(!keptByTopic[topic] && lastAt['_fb_'+topic]){ var fb=lastAt['_fb_'+topic]; out.splice(fb.at,0,fb.b); lastAt[topic]=fb.at+1; }
+    });
+    // insert authored extras next to each topic
+    var inserts=[];
+    meta.topics.forEach(function(topic){
+      var tier=A.tier(topic), ex=meta.extras&&meta.extras[topic], at=lastAt[topic];
+      if(!ex||at==null) return; var add=[];
+      if(tier<=2) add=(ex.easy||[]).slice(0,(tier===1?2:1));
+      else if(tier>=4) add=(ex.hard||[]).slice(0,(tier===5?2:1));
+      if(add.length) inserts.push({at:at,blocks:add});
+    });
+    inserts.sort(function(a,b){ return b.at-a.at; });
+    inserts.forEach(function(ins){ out.splice.apply(out,[ins.at,0].concat(ins.blocks)); });
+    return out;
+  };
+
+  // ===== Difficulty panel =====
+  var lessonKey=null, topics=[], working={}, mode='';
+  var TIER_NAMES=['','Gentle','Easier','Normal','Harder','Challenge'];
+  function ensureDom(){
+    if(document.getElementById('dpOverlay')) return;
+    var o=document.createElement('div'); o.className='dp-overlay'; o.id='dpOverlay';
+    o.innerHTML='<div class="dp-card">'+
+      '<button class="dp-x" onclick="DiffPanel.close()">&#10005;</button>'+
+      '<h3>Difficulty</h3>'+
+      '<p class="dp-sub">Set how hard this lesson is for you, one topic at a time. The orange &#10022; marks what your diagnostic suggests.</p>'+
+      '<div class="dp-topics" id="dpTopics"></div>'+
+      '<div class="dp-actions"><button class="dp-reset" id="dpReset" onclick="DiffPanel.reset()">&#8634; Reset to normal</button>'+
+      '<button class="dp-save" onclick="DiffPanel.save()">Save</button></div>'+
+      '<div class="dp-note">Changes apply when you start your next lesson.</div>'+
+      '<div class="dp-pop" id="dpPop"><div class="dp-popcard"><p>We recommend following the difficulty from the diagnostic you took. Continue with your change?</p>'+
+      '<div class="dp-popbtns"><button class="dp-cancel" onclick="DiffPanel.popCancel()">Cancel</button><button class="dp-continue" onclick="DiffPanel.popContinue()">Continue</button></div></div></div>'+
+      '</div>';
+    document.body.appendChild(o);
+  }
+  function render(){
+    var host=document.getElementById('dpTopics'); if(!host) return; host.innerHTML='';
+    topics.forEach(function(tp){
+      var t=working[tp], diag=window.ADAPT.diagTier(tp), pct=(t-1)/4*100;
+      var notches=''; for(var i=1;i<=5;i++){ notches+='<span class="dp-notch" data-t="'+i+'" style="left:'+((i-1)/4*100)+'%"></span>'; }
+      var diagMark=diag?'<span class="dp-diag" style="left:'+((diag-1)/4*100)+'%">&#10022;</span>':'';
+      var row=document.createElement('div'); row.className='dp-row';
+      row.innerHTML='<div class="dp-rl"><span class="nm">'+tp+'</span><span class="tg dp-tier-'+t+'">Tier '+t+' of 5 &middot; '+TIER_NAMES[t]+'</span></div>'+
+        '<div class="dp-line" data-topic="'+tp+'"><span class="dp-track"></span><span class="dp-fill" style="width:'+pct+'%"></span>'+diagMark+notches+'<span class="dp-dot" style="left:'+pct+'%"></span></div>'+
+        '<div class="dp-scale"><span>Gentle</span><span>Normal</span><span>Challenge</span></div>';
+      host.appendChild(row);
+      var line=row.querySelector('.dp-line');
+      line.addEventListener('click',function(e){ if(mode==='reset') return; var r=line.getBoundingClientRect(); var frac=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)); setTopic(tp,Math.round(frac*4)+1); });
+    });
+    var rb=document.getElementById('dpReset'); if(rb) rb.disabled=(mode==='edit');
+  }
+  function setTopic(tp,t){ mode='edit'; working[tp]=Math.max(1,Math.min(5,t)); render(); }
+  window.DiffPanel={
+    available:function(key){ return !!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[key]); },
+    onLessonOpen:function(key){ var b=document.getElementById('cbDiff'); if(b) b.style.display=this.available(key)?'inline-flex':'none'; },
+    onLessonClose:function(){ var b=document.getElementById('cbDiff'); if(b) b.style.display='none'; },
+    open:function(){ if(!(window.WS&&WS.active)) return; lessonKey=WS.key;
+      var meta=ADAPT_CONTENT.lessons[lessonKey]; if(!meta) return;
+      topics=meta.topics.slice(); working={}; topics.forEach(function(tp){ working[tp]=window.ADAPT.tier(tp); }); mode='';
+      ensureDom(); render(); var pop=document.getElementById('dpPop'); if(pop) pop.classList.remove('on');
+      document.getElementById('dpOverlay').classList.add('on'); },
+    close:function(){ var o=document.getElementById('dpOverlay'); if(o) o.classList.remove('on'); },
+    reset:function(){ if(mode==='edit') return; mode='reset'; topics.forEach(function(tp){ working[tp]=window.ADAPT.NORMAL; }); render(); },
+    save:function(){ var p=document.getElementById('dpPop'); if(p) p.classList.add('on'); },
+    popCancel:function(){ var p=document.getElementById('dpPop'); if(p) p.classList.remove('on'); },
+    popContinue:function(){ window.ADAPT.setTiers(working); var p=document.getElementById('dpPop'); if(p) p.classList.remove('on'); this.close(); }
+  };
+})();
 </script>
 </body>
 </html>
