@@ -1275,5 +1275,456 @@
    }
   ],
   "next": "8.4"
+ },
+ "8.4": {
+  "title": "Arithmetic with Roots",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Here we are at the close of the chapter, and it is time to let roots play together. In 8.1 you met the radical and learned that every nonnegative number has a principal root, in 8.2 you trapped a stubborn root like \\(\\sqrt{2}\\) between landmarks as a decimal that never quite settles, and in 8.3 you tidied a single root by pulling out its largest perfect square, so \\(\\sqrt{72}\\) became \\(6\\sqrt{2}\\). This finale does the rest of arithmetic. We will multiply roots, divide them, add them, and subtract them, and the whole point is that every answer stays <b>exact</b>. A decimal estimate of \\(\\sqrt{2}\\) is always a hair off, but the rules let us write the true value with no rounding at all. Three threads run through it. Multiplying and dividing lean on the product and quotient rules, where the numbers under the radicals combine and any coefficients out front combine too. Adding and subtracting will feel oddly familiar, because it is just collecting like terms from 6.1 with the root quietly playing the part of the variable, so \\(3\\sqrt{5}\\) and \\(4\\sqrt{5}\\) join into \\(7\\sqrt{5}\\) the same way \\(3x\\) and \\(4x\\) made \\(7x\\). And there is one tempting wrong move, merging two roots across a plus sign, that we will catch in the act and retire for good. The quiet reward at the end is this. A long, messy string of radicals can collapse onto a single clean number, and sometimes that number is even zero."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Back in 8.3 the product rule let you split a root across a product, \\(\\sqrt{a\\times b}=\\sqrt{a}\\times\\sqrt{b}\\). Read it backward and the same rule joins two roots into one, \\(\\sqrt{a}\\times\\sqrt{b}=\\sqrt{a\\times b}\\). That is the friendliest kind of root arithmetic, so start there. Multiply \\(\\sqrt{3}\\times\\sqrt{12}\\). Pour both numbers under a single radical, multiply them, and see what you get. If the combined number happens to be a perfect square, the radical disappears and you are left with a plain whole number. What whole number does \\(\\sqrt{3}\\times\\sqrt{12}\\) equal?",
+    "hints": [
+     "Join the two roots into one using the product rule. \\(\\sqrt{3}\\times\\sqrt{12}=\\sqrt{3\\times12}\\). Now multiply the numbers inside.",
+     "You have \\(\\sqrt{36}\\). Ask yourself what number times itself gives \\(36\\). That number is your answer, with no radical left."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "sol": "Use the product rule to slide both numbers under one radical. $$\\sqrt{3}\\times\\sqrt{12}=\\sqrt{3\\times12}=\\sqrt{36}.$$ Now \\(36\\) is a perfect square because \\(6\\times6=36\\), so \\(\\sqrt{36}=6\\). The radical vanishes and you are left with a clean whole number. $$\\sqrt{3}\\times\\sqrt{12}=\\boxed{6}.$$"
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move we just ran backward. Back in 8.3 the product rule let us split one root into two, and now we are pouring two roots into one, since \\(\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}\\) works just as well read left to right. So to multiply roots I tuck both numbers under a single radical, then simplify whatever lands there the 8.3 way. And every so often the product \\(ab\\) turns out to be a perfect square, the radical vanishes, and I am left with a plain whole number, the way \\(\\sqrt{3} \\times \\sqrt{27} = \\sqrt{81} = 9\\). That clean exact landing is the whole reason we kept the root instead of cashing it in for a messy decimal."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Here is the part nobody warns you about. When you multiply two roots, the number you land on under the radical is often not a perfect square, and that is completely fine. You just finish the job the way you learned in 8.3, by pulling out the largest perfect-square factor. Try it on \\(\\sqrt{6}\\times\\sqrt{10}\\). Join them into one root, simplify all the way, and write the result as a whole number in front of a single square root. What is the whole number in front?",
+    "hints": [
+     "The product rule lets you join two roots into one. Multiply the numbers underneath, so \\(\\sqrt{6}\\times\\sqrt{10}=\\sqrt{6\\times10}=\\sqrt{60}\\). Now \\(60\\) is not a perfect square, so you are not done, you are exactly where 8.3 begins.",
+     "Find the largest perfect square that divides \\(60\\). The squares to test are \\(4, 9, 16, 25, 36\\), and \\(4\\) is the biggest that fits since \\(60=4\\times15\\). Split the root and pull the perfect square out, so \\(\\sqrt{60}=\\sqrt{4}\\times\\sqrt{15}\\)."
+    ],
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0"
+    ],
+    "sol": "Start by joining the two roots with the product rule, so the numbers underneath multiply together. That gives \\(\\sqrt{6}\\times\\sqrt{10}=\\sqrt{6\\times10}=\\sqrt{60}\\). Since \\(60\\) is not a perfect square, switch into the simplifying move from 8.3 and look for the largest perfect square that divides it. Checking \\(4, 9, 16, 25\\), and \\(36\\), the winner is \\(4\\), because \\(60=4\\times15\\) and \\(15\\) has no perfect-square factor left. Now split the radical, $$\\sqrt{60}=\\sqrt{4}\\times\\sqrt{15}=2\\sqrt{15}.$$ In simplest form the result is \\(2\\sqrt{15}\\), so the whole number sitting in front is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "fact",
+    "x": "Here is a place \\(\\sqrt{2}\\) hides in plain sight. The A-series paper sizes, the A4 you print on and the A3 and the rest used across most of the world, are built so the longer side divided by the shorter side is exactly \\(\\sqrt{2}\\). That one irrational choice has a tidy payoff. Fold any sheet in half across its long edge and the smaller sheet keeps the very same shape, the same \\(\\sqrt{2}\\) ratio, so A3 folded in half is precisely an A4, and an A4 blown up onto A3 stretches every length by exactly \\(\\sqrt{2}\\). The reason is the arithmetic of this lesson. Start with a long side of \\(\\sqrt{2}\\) and a short side of \\(1\\), halve the long side to \\(\\tfrac{\\sqrt{2}}{2}\\), and recheck the ratio of the new sheet, \\(1\\div\\tfrac{\\sqrt{2}}{2}=\\tfrac{2}{\\sqrt{2}}=\\sqrt{2}\\), right back where it started."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Now hang a whole number in front of each root and let each part do its own job. The plain numbers out front multiply together, and the numbers under the radicals multiply together, just like the product rule from 8.3. Multiply \\(4\\sqrt{3}\\times 2\\sqrt{6}\\) and write the result in simplest form as a whole number times \\(\\sqrt{2}\\). What is the whole number in front?",
+    "hints": [
+     "Handle the two pieces separately. The coefficients multiply, \\(4\\times 2\\), and the radicands multiply, \\(\\sqrt{3}\\times\\sqrt{6}=\\sqrt{18}\\). That gives you \\(8\\sqrt{18}\\), which is not yet in simplest form.",
+     "Simplify \\(\\sqrt{18}\\) the 8.3 way by pulling out the largest perfect square. Since \\(18=9\\times 2\\), you get \\(\\sqrt{18}=3\\sqrt{2}\\). Now that loose \\(3\\) folds into the \\(8\\) sitting out front."
+    ],
+    "ans": "24",
+    "accept": [
+     "24",
+     "24.0"
+    ],
+    "sol": "Keep the coefficients and the radicands in their own lanes. The whole numbers out front multiply, \\(4\\times 2=8\\), and the numbers under the radicals multiply by the product rule, \\(\\sqrt{3}\\times\\sqrt{6}=\\sqrt{18}\\). So far we have \\(4\\sqrt{3}\\times 2\\sqrt{6}=8\\sqrt{18}\\). This is correct but not yet simplest, because \\(\\sqrt{18}\\) still hides a perfect square. Pull it out the 8.3 way, since \\(18=9\\times 2\\), so \\(\\sqrt{18}=\\sqrt{9}\\times\\sqrt{2}=3\\sqrt{2}\\). That frees a \\(3\\), which folds into the \\(8\\) already out front, \\(8\\times 3=24\\). The simplest form is \\(24\\sqrt{2}\\), and the whole number in front is \\(\\boxed{24}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the whole multiplying move I just pulled out of those problems. A root with a number out front, like \\(4\\sqrt{3}\\), is only that number times the root, and to multiply two of them I run two channels at once, the front numbers multiply together to make the new coefficient and the numbers under the radicals multiply together to make the new radicand. Only after that one move do I simplify, pulling any perfect square out from under the root and folding it into the coefficient, which is how \\(4\\sqrt{3}\\times 2\\sqrt{6}\\) tidies all the way down to \\(24\\sqrt{2}\\). And a bare root carries a hidden coefficient of \\(1\\), exactly the way a lonely \\(x\\) secretly meant \\(1x\\) back in 6.1."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Multiplying a root by itself deserves its own quick look, because something tidy happens. Take the expression \\(5\\sqrt{2}\\) and square it. Squaring means \\(5\\sqrt{2}\\times 5\\sqrt{2}\\), so the coefficients meet up and the roots meet up. The two \\(5\\)s give \\(25\\), and \\(\\sqrt{2}\\times\\sqrt{2}\\) rebuilds the radicand back to \\(2\\), which makes the radical vanish. What whole number does \\(\\left(5\\sqrt{2}\\right)^2\\) equal?",
+    "hints": [
+     "Squaring is just multiplying the expression by itself, \\(5\\sqrt{2}\\times 5\\sqrt{2}\\). Group the coefficients together and the roots together.",
+     "The coefficients give \\(5\\times 5=25\\), and \\(\\sqrt{2}\\times\\sqrt{2}=\\sqrt{4}=2\\). The root undoes itself. Multiply the two whole numbers you are left with."
+    ],
+    "ans": "50",
+    "accept": [
+     "50",
+     "50.0",
+     "fifty"
+    ],
+    "sol": "To square \\(5\\sqrt{2}\\), write it as a product of itself. $$\\left(5\\sqrt{2}\\right)^2=5\\sqrt{2}\\times 5\\sqrt{2}$$ Now collect the coefficients on one side and the roots on the other. The coefficients give \\(5\\times 5=25\\), and the roots give \\(\\sqrt{2}\\times\\sqrt{2}=\\sqrt{2\\times 2}=\\sqrt{4}=2\\). So the square sends the radical away and leaves $$25\\times 2=50.$$ This is the heart of why a square root and a square cancel. Squaring \\(k\\sqrt{n}\\) always gives \\(k^2\\times n\\), a whole number whenever \\(k\\) and \\(n\\) are. \\(\\boxed{50}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Here is the clean trick we just stumbled onto. Squaring undoes a square root, so \\(\\sqrt{a}\\) times itself just hands back the plain number \\(a\\). That means when you square \\(k\\sqrt{a}\\), the front number gets squared and the number under the root steps out bare, giving \\(k^2 \\times a\\) with no radical left. So \\((5\\sqrt{2})^2\\) is \\(25 \\times 2 = 50\\), a whole number every time the radicand starts as a whole number."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Back in 6.1 you collected like terms. When you saw \\(6x + 2x\\), you did not touch the \\(x\\), you just noticed both pieces carried the same \\(x\\) and added the counts, \\(6 + 2 = 8\\), to get \\(8x\\). Roots behave the very same way as long as the number under the root matches in every piece. Look at \\(6\\sqrt{7} + 2\\sqrt{7}\\). The matching part is \\(\\sqrt{7}\\), so it plays the role of the \\(x\\), and both terms hold the same number under the root, so you add the front numbers and let the \\(\\sqrt{7}\\) ride along unchanged. What is the whole number in front of the combined root?",
+    "hints": [
+     "Treat \\(\\sqrt{7}\\) like the variable \\(x\\) from 6.1. Both terms are \"some number of \\(\\sqrt{7}\\)\", so they are like radicals and you only combine the counts out front.",
+     "Add the coefficients the same way you did \\(6x + 2x = 8x\\). Here that is \\(6 + 2\\), and the \\(\\sqrt{7}\\) stays exactly as it is."
+    ],
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "sol": "Both terms are built on the same radical \\(\\sqrt{7}\\), so they are like radicals, just like \\(6x\\) and \\(2x\\) are like terms. That means you keep the shared \\(\\sqrt{7}\\) and add only the coefficients in front. $$6\\sqrt{7} + 2\\sqrt{7} = (6 + 2)\\sqrt{7} = 8\\sqrt{7}$$ The combined root is \\(8\\sqrt{7}\\), so the whole number in front is \\(\\boxed{8}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the bridge I keep walking back to, the one that links all the way to collecting like terms in 6.1. When two radicals carry the exact same number under the root, the root is just playing the part of the variable, so they are like terms and I only add or subtract the counts sitting out front while the root itself stays untouched, which is why \\(6\\sqrt{7} + 2\\sqrt{7} = 8\\sqrt{7}\\) the same way \\(6x + 2x = 8x\\). A lonely \\(\\sqrt{7}\\) is secretly \\(1\\sqrt{7}\\), so it still has a count of one waiting to be combined. If the numbers under the roots are different the radicals are different kinds of thing and nothing fuses them, exactly the way an \\(x\\) and a \\(y\\) refuse to merge, and through all of this I never change the number under the root, only the coefficients out front are allowed to move."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 460 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two panels showing when square root terms combine. Left panel labeled LIKE. It shows 5 times the square root of 3 plus 2 times the square root of 3, where both square root of 3 parts are boxed and highlighted as matching. An arrow leads to the result 7 times the square root of 3, tagged same root, counts add. A small echo reads like 5x plus 2x equals 7x. Right panel labeled UNLIKE. It shows 5 times the square root of 3 plus 2 times the square root of 2, with the square root of 3 in gold and the square root of 2 in a contrasting accent color, marked with a small no-merge symbol. The result stays as 5 times the square root of 3 plus 2 times the square root of 2, tagged different roots, no combine, like 5x plus 2y. A top strip reads combine only when the root matches.\">\n  <text x=\"230\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">COMBINE ONLY WHEN THE ROOT MATCHES</text>\n  <line x1=\"230\" y1=\"38\" x2=\"230\" y2=\"196\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 4\"/>\n  <text x=\"115\" y=\"50\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">LIKE</text>\n  <text x=\"345\" y=\"50\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">UNLIKE</text>\n  <text x=\"20\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"19\" fill=\"var(--ink)\">5</text>\n  <rect x=\"32\" y=\"68\" width=\"34\" height=\"26\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"49\" y=\"87\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;3</text>\n  <text x=\"74\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--slate)\">+</text>\n  <text x=\"92\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"19\" fill=\"var(--ink)\">2</text>\n  <rect x=\"104\" y=\"68\" width=\"34\" height=\"26\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"121\" y=\"87\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;3</text>\n  <text x=\"115\" y=\"110\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--gold-deep)\">same root</text>\n  <path d=\"M70 124 L70 138 L160 138\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <polygon points=\"160,138 152,134 152,142\" fill=\"var(--line)\"/>\n  <text x=\"172\" y=\"143\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\">7&#8730;3</text>\n  <text x=\"115\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">counts add, 5 + 2 = 7</text>\n  <text x=\"115\" y=\"188\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">(like 5x + 2x = 7x)</text>\n  <text x=\"250\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"19\" fill=\"var(--ink)\">5</text>\n  <text x=\"262\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"19\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;3</text>\n  <text x=\"290\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--slate)\">+</text>\n  <text x=\"308\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"19\" fill=\"var(--ink)\">2</text>\n  <text x=\"320\" y=\"86\" font-family=\"Inter, sans-serif\" font-size=\"19\" font-weight=\"700\" fill=\"var(--accent)\">&#8730;2</text>\n  <text x=\"345\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"var(--slate)\">different roots</text>\n  <circle cx=\"299\" cy=\"126\" r=\"9\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/>\n  <line x1=\"293\" y1=\"132\" x2=\"305\" y2=\"120\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/>\n  <text x=\"345\" y=\"155\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--ink)\">stays 5&#8730;3 + 2&#8730;2</text>\n  <text x=\"345\" y=\"174\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">no combine</text>\n  <text x=\"345\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">(like 5x + 2y)</text>\n</svg>",
+    "cap": "When two radical terms share the same number under the root, only their counts add, so \\(5\\sqrt{3}+2\\sqrt{3}=7\\sqrt{3}\\), exactly the way \\(5x+2x=7x\\) from 6.1 collected like terms with \\(x\\). When the roots differ, like \\(\\sqrt{3}\\) and \\(\\sqrt{2}\\), there is nothing alike to gather, so \\(5\\sqrt{3}+2\\sqrt{2}\\) just stays as it is, the same as \\(5x+2y\\). The root is playing the role of the variable, and only matching roots are like terms."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Here is the trap that catches almost everyone, and perfect squares put it on display. It looks tempting to slide the plus sign right under one big radical and say \\(\\sqrt{36}+\\sqrt{64}\\) is the same as \\(\\sqrt{36+64}\\), which would be \\(\\sqrt{100}\\). Let us test that honestly instead of trusting it. Both of these roots come out clean, so you can settle the real value by hand with no estimating. What is the actual value of \\(\\sqrt{36}+\\sqrt{64}\\)?",
+    "hints": [
+     "Take each root on its own first. What is \\(\\sqrt{36}\\), and what is \\(\\sqrt{64}\\)? These are both perfect squares, so each one is a whole number.",
+     "Now just add those two whole numbers. Do NOT add \\(36\\) and \\(64\\) under one root, a root cannot reach across a plus sign like that."
+    ],
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0"
+    ],
+    "sol": "Handle each radical by itself, because that is the only thing the root sign actually applies to. Since \\(6\\times 6=36\\), we get \\(\\sqrt{36}=6\\), and since \\(8\\times 8=64\\), we get \\(\\sqrt{64}=8\\). So the sum is the honest addition $$\\sqrt{36}+\\sqrt{64}=6+8=14.$$ Now look at the trap. The shortcut \\(\\sqrt{36+64}=\\sqrt{100}=10\\) gives a different number, \\(10\\), not \\(14\\). They are not equal, which proves the rule. A square root does not distribute over a plus sign, so \\(\\sqrt{a}+\\sqrt{b}\\) is NOT \\(\\sqrt{a+b}\\). You may only combine roots when they are like radicals sitting under the same number, and even then you add their coefficients, never the numbers under the root. The true value is \\(\\boxed{14}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is something we did not get handed, we cornered it ourselves. There is no rule that lets a root slide across a plus or a minus sign, because \\(\\sqrt{36}+\\sqrt{64}\\) is \\(6+8=14\\), while \\(\\sqrt{36+64}=\\sqrt{100}=10\\), and \\(14\\) is simply not \\(10\\). A root only splits across multiplication, never across addition or subtraction, so a \\(+\\) or \\(-\\) between two roots is a wall and the numbers under them can never be pushed together across it. That is the whole reason adding works only on like radicals, by their coefficients, and never by fusing the numbers hiding under the roots."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 460 210\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A figure contrasting the right and wrong way to handle the square root of 36 plus the square root of 64. Both routes start from the same expression, the square root of 36 plus the square root of 64, shown in a box on the left. The top route, labeled the right way and marked with a check, takes each root separately, the square root of 36 equals 6 and the square root of 64 equals 8, then adds 6 plus 8 to get 14. Its tag reads take each root, then add. The bottom route, labeled the wrong way and crossed out, merges the numbers under one root as the square root of 36 plus 64, which is the square root of 100, equals 10. Its tag reads cannot merge across plus. A bold banner in the middle reads 14 is not 10. The title strip across the top reads a root does not split across a plus sign.\"><text x=\"230\" y=\"17\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--mid)\">A ROOT DOES NOT SPLIT ACROSS A PLUS SIGN</text><rect x=\"14\" y=\"78\" width=\"104\" height=\"44\" rx=\"9\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"66\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">start from</text><text x=\"66\" y=\"116\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">&#8730;36 + &#8730;64</text><path d=\"M118 92 L150 92 L150 60\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><path d=\"M145 66 L150 59 L155 66\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><path d=\"M118 108 L150 108 L150 146\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><path d=\"M145 140 L150 147 L155 140\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><circle cx=\"170\" cy=\"44\" r=\"8\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><path d=\"M166 44 L169 47 L174 41\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"184\" y=\"48\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">THE RIGHT WAY</text><text x=\"160\" y=\"74\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">&#8730;36 + &#8730;64 = 6 + 8 = </text><rect x=\"378\" y=\"58\" width=\"40\" height=\"26\" rx=\"7\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><text x=\"398\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--gold-deep)\">14</text><text x=\"160\" y=\"90\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" font-style=\"italic\" fill=\"var(--slate)\">take each root, then add</text><circle cx=\"170\" cy=\"166\" r=\"8\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/><path d=\"M166 162 L174 170 M174 162 L166 170\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><text x=\"184\" y=\"170\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--accent)\">THE WRONG WAY</text><text x=\"160\" y=\"196\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--slate)\">&#8730;(36 + 64) = &#8730;100 = 10</text><line x1=\"160\" y1=\"191\" x2=\"392\" y2=\"191\" stroke=\"var(--accent)\" stroke-width=\"2\"/><line x1=\"148\" y1=\"128\" x2=\"412\" y2=\"128\" stroke=\"var(--line)\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><rect x=\"262\" y=\"116\" width=\"120\" height=\"26\" rx=\"13\" fill=\"var(--ink)\"/><text x=\"322\" y=\"134\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#ffffff\">14 is not 10</text></svg>",
+    "cap": "Same start, two very different finishes. The right way takes each root on its own, so \\(\\sqrt{36}+\\sqrt{64}=6+8=14\\). The wrong way tries to slide the plus inside one radical, giving \\(\\sqrt{36+64}=\\sqrt{100}=10\\). Since \\(14\\) is not \\(10\\), the two paths cannot both be valid, and it is the merge that breaks. A root does not split across a plus, so \\(\\sqrt{a}+\\sqrt{b}\\) is not \\(\\sqrt{a+b}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Two radicals can wear different costumes and still be the same number underneath. Look at \\(3\\sqrt{8}-\\sqrt{72}\\). At a glance the roots clash, one is an \\(8\\) and the other a \\(72\\), so it looks like nothing can come together. But you learned in 8.3 to simplify each radical first. Pull the largest perfect square out of each, line them up, and watch what the subtraction does. What whole number does \\(3\\sqrt{8}-\\sqrt{72}\\) equal?",
+    "hints": [
+     "Simplify each piece on its own before you subtract. For the first, \\(\\sqrt{8}=\\sqrt{4}\\times\\sqrt{2}=2\\sqrt{2}\\), so \\(3\\sqrt{8}=3\\times 2\\sqrt{2}\\). For the second, \\(72=36\\times 2\\), so \\(\\sqrt{72}=6\\sqrt{2}\\).",
+     "Now both terms are like radicals in \\(\\sqrt{2}\\), so this is just collecting like terms the way you did in 6.1, with \\(\\sqrt{2}\\) playing the role of the variable. Subtract the coefficients, \\(6-6\\)."
+    ],
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero"
+    ],
+    "sol": "Simplify each radical first so the disguise comes off. For the first term, \\(\\sqrt{8}=\\sqrt{4}\\times\\sqrt{2}=2\\sqrt{2}\\), and the \\(3\\) out front multiplies in, so $$3\\sqrt{8}=3\\times 2\\sqrt{2}=6\\sqrt{2}.$$ For the second term, the largest perfect square inside \\(72\\) is \\(36\\), since \\(72=36\\times 2\\), so $$\\sqrt{72}=\\sqrt{36}\\times\\sqrt{2}=6\\sqrt{2}.$$ Both terms are now like radicals, each a multiple of \\(\\sqrt{2}\\). Subtracting is just collecting like terms, with \\(\\sqrt{2}\\) acting like a variable, so combine the coefficients \\(6-6\\), which gives $$3\\sqrt{8}-\\sqrt{72}=6\\sqrt{2}-6\\sqrt{2}=(6-6)\\sqrt{2}=0\\sqrt{2}.$$ Zero of anything is zero, so the whole expression collapses all the way down. The two radicals were secretly the same number the entire time. \\(3\\sqrt{8}-\\sqrt{72}=\\boxed{0}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move that just saved me, and I almost missed it. I should never decide whether two roots combine by how they look at the start, because \\(3\\sqrt{8}\\) and \\(\\sqrt{72}\\) look like total strangers, yet running 8.3 on each one turns them both into \\(6\\sqrt{2}\\), the same root wearing the same coefficient. So the very first thing I do with any sum or difference of roots is pull the largest perfect square out of every single piece, and only then check for like radicals to collect, the way I collected like terms back in 6.1 with the root acting as the variable. The reward can be huge, because if two simplified terms match exactly and one is subtracted from the other, they cancel to nothing and leave a clean \\(0\\), an exact answer with no radical left in sight."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 460 210\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A three stage left to right flow for the sum square root of 50 plus square root of 8. Stage one shows the two original radicals side by side, the square root of 50 and the square root of 8, with a small question mark between them asking whether they combine, because they look unlike. Stage one is labeled they look unlike. An arrow labeled simplify each leads to stage two, where the square root of 50 has become 5 times the square root of 2 and the square root of 8 has become 2 times the square root of 2, and the matching square root of 2 parts are highlighted in gold to show they now match. Stage two is labeled now they match. An arrow labeled add the coefficients leads to stage three, a highlighted box reading 7 times the square root of 2, formed by adding the coefficients 5 and 2 to get 7 while the square root of 2 stays. Stage three is labeled one term. A title strip across the top reads SIMPLIFY FIRST, THEN COMBINE.\"><text x=\"230\" y=\"18\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">SIMPLIFY FIRST, THEN COMBINE</text><text x=\"74\" y=\"42\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" font-weight=\"600\" fill=\"var(--mid)\">THEY LOOK UNLIKE</text><rect x=\"14\" y=\"52\" width=\"120\" height=\"56\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.4\"/><text x=\"50\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">&#8730;50</text><text x=\"74\" y=\"86\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\">+</text><text x=\"98\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">&#8730;8</text><text x=\"74\" y=\"68\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">?</text><line x1=\"138\" y1=\"80\" x2=\"170\" y2=\"80\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><path d=\"M 164 75 L 171 80 L 164 85\" fill=\"none\" stroke=\"var(--line)\" stroke-width=\"1.6\"/><text x=\"154\" y=\"71\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" font-style=\"italic\" fill=\"var(--mid)\">simplify</text><text x=\"154\" y=\"96\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" font-style=\"italic\" fill=\"var(--mid)\">each</text><text x=\"237\" y=\"42\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">NOW THEY MATCH</text><rect x=\"176\" y=\"52\" width=\"122\" height=\"56\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"1.5\"/><text x=\"200\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">5</text><text x=\"214\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;2</text><text x=\"237\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\">+</text><text x=\"260\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">2</text><text x=\"274\" y=\"88\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#8730;2</text><text x=\"237\" y=\"68\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" fill=\"var(--slate)\">same root</text><line x1=\"302\" y1=\"80\" x2=\"334\" y2=\"80\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><path d=\"M 328 75 L 335 80 L 328 85\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><text x=\"318\" y=\"71\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" font-style=\"italic\" fill=\"var(--mid)\">add 5+2</text><text x=\"318\" y=\"96\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"8.5\" font-style=\"italic\" fill=\"var(--mid)\">=7</text><text x=\"406\" y=\"42\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">ONE TERM</text><rect x=\"340\" y=\"52\" width=\"106\" height=\"56\" rx=\"10\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/><text x=\"393\" y=\"89\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\">7&#8730;2</text><text x=\"230\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--slate)\">&#8730;50 = 5&#8730;2  and  &#8730;8 = 2&#8730;2</text><text x=\"230\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">unlike on the surface, like underneath</text><text x=\"230\" y=\"192\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">5&#8730;2 + 2&#8730;2 = 7&#8730;2</text></svg>",
+    "cap": "Two roots that refuse to combine, until you simplify. At first \\(\\sqrt{50}\\) and \\(\\sqrt{8}\\) look like strangers, so the question mark wonders whether they can ever join. Simplifying unmasks the shared root, since \\(\\sqrt{50}=5\\sqrt{2}\\) and \\(\\sqrt{8}=2\\sqrt{2}\\), and suddenly both carry the same \\(\\sqrt{2}\\) (shown in gold). Now they are like radicals, so they add the way like terms do, and the coefficients \\(5\\) and \\(2\\) combine while the root stays put, giving \\(5\\sqrt{2}+2\\sqrt{2}=7\\sqrt{2}\\). Two unlike radicals became one tidy term."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Multiplying had its rule, so it would be strange if dividing did not. It does, and the two rules are twins. Just as \\(\\sqrt{a}\\times\\sqrt{b}=\\sqrt{a\\times b}\\), it turns out that \\(\\dfrac{\\sqrt{a}}{\\sqrt{b}}=\\sqrt{\\dfrac{a}{b}}\\). You slide the division underneath a single root and divide the numbers there. Sometimes that division lands right on a perfect square, and a messy looking quotient quietly becomes a whole number. Try it on \\(\\dfrac{\\sqrt{252}}{\\sqrt{7}}\\). What whole number does \\(\\dfrac{\\sqrt{252}}{\\sqrt{7}}\\) equal?",
+    "hints": [
+     "Use the quotient rule to pull the two roots together. \\(\\dfrac{\\sqrt{252}}{\\sqrt{7}}\\) becomes \\(\\sqrt{\\dfrac{252}{7}}\\), so the real work is just dividing \\(252\\) by \\(7\\).",
+     "Work out \\(252\\div 7\\). It comes out even, and the result is a familiar perfect square. Take its root."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "sol": "The quotient rule lets you join two roots into one. \\(\\dfrac{\\sqrt{a}}{\\sqrt{b}}=\\sqrt{\\dfrac{a}{b}}\\), so the division slides underneath a single radical. $$\\frac{\\sqrt{252}}{\\sqrt{7}}=\\sqrt{\\frac{252}{7}}$$ Now divide the numbers under the root. \\(252\\div 7=36\\), which leaves $$\\sqrt{36}.$$ And \\(36\\) is a perfect square, since \\(6\\times 6=36\\), so the whole quotient collapses to a single whole number. $$\\frac{\\sqrt{252}}{\\sqrt{7}}=\\sqrt{36}=\\boxed{6}$$ Neither \\(\\sqrt{252}\\) nor \\(\\sqrt{7}\\) is a whole number on its own, yet their quotient is. That is the quotient rule doing the same favor for division that the product rule does for multiplication, finding the clean number hiding inside."
+   },
+   {
+    "t": "imp",
+    "x": "Division turns out to have its own rule, and it mirrors the multiplying one perfectly, since \\(\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}\\). So a quotient of two roots collapses into a single root of the quotient, and when that quotient lands on a perfect square the radical just vanishes, the way \\(\\frac{\\sqrt{252}}{\\sqrt{7}} = \\sqrt{\\frac{252}{7}} = \\sqrt{36} = 6\\). The same rule reaches the other direction too, letting me take the root of a tidy fraction or a terminating decimal exactly, because the root of a quotient is the root of the top over the root of the bottom."
+   },
+   {
+    "x": "The quotient rule is the product rule's twin for division. The square root of a fraction equals the root of the top over the root of the bottom, so \\(\\sqrt{\\tfrac{a}{b}}=\\dfrac{\\sqrt{a}}{\\sqrt{b}}\\). That is great news when both the top and the bottom are perfect squares, because the whole thing comes out clean. Take \\(\\sqrt{\\dfrac{25}{49}}\\). Split the root across the fraction, then root the top and root the bottom on their own. What is the exact value of \\(\\sqrt{\\dfrac{25}{49}}\\), written as a fraction in lowest terms?",
+    "hints": [
+     "Pull the single root apart into two roots, one over the other. The root of the whole fraction equals \\(\\dfrac{\\sqrt{25}}{\\sqrt{49}}\\), so now you just need each piece on its own.",
+     "Both \\(25\\) and \\(49\\) are perfect squares. Since \\(5\\times 5=25\\) you get \\(\\sqrt{25}=5\\), and since \\(7\\times 7=49\\) you get \\(\\sqrt{49}=7\\). Stack them as a fraction."
+    ],
+    "ans": "5/7",
+    "accept": [
+     "5 / 7",
+     "5/7",
+     "five sevenths",
+     "five-sevenths",
+     "five−sevenths"
+    ],
+    "sol": "Use the quotient rule to send the root across the fraction. $$\\sqrt{\\frac{25}{49}}=\\frac{\\sqrt{25}}{\\sqrt{49}}$$ Now take each root by itself. The top is \\(\\sqrt{25}=5\\) because \\(5\\times 5=25\\), and the bottom is \\(\\sqrt{49}=7\\) because \\(7\\times 7=49\\). That leaves \\(\\dfrac{5}{7}\\). Since \\(5\\) and \\(7\\) share no common factor, the fraction is already in lowest terms. You can check it the other way too, since \\(\\left(\\dfrac{5}{7}\\right)^2=\\dfrac{25}{49}\\), so \\(\\dfrac{5}{7}\\) really is the root. $$\\sqrt{\\frac{25}{49}}=\\boxed{5/7}$$",
+    "t": "prob",
+    "xp": 8
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "Here is a root that looks scary but comes out perfectly clean. The trick is to stop seeing the decimal and start seeing the fraction hiding inside it. The number \\(0.49\\) is really \\(49\\) hundredths, which is \\(\\frac{49}{100}\\). Now the quotient rule from earlier does the heavy lifting, since \\(\\sqrt{\\frac{49}{100}}=\\frac{\\sqrt{49}}{\\sqrt{100}}\\), and both the top and the bottom are perfect squares. Try the same move on \\(0.64\\). Read it as a fraction over one hundred, split the root across the top and bottom, and turn the result back into a decimal. What is \\(\\sqrt{0.64}\\) as a decimal?",
+    "hints": [
+     "Rewrite the decimal as a fraction first. Two digits after the point means hundredths, so \\(0.64=\\frac{64}{100}\\), and the quotient rule says \\(\\sqrt{\\frac{64}{100}}=\\frac{\\sqrt{64}}{\\sqrt{100}}\\).",
+     "Both pieces are perfect squares, with \\(\\sqrt{64}=8\\) and \\(\\sqrt{100}=10\\), so you get \\(\\frac{8}{10}\\). Now write that fraction as a decimal."
+    ],
+    "ans": "0.8",
+    "accept": [
+     ".8",
+     "0.8",
+     "0.80",
+     "4 / 5",
+     "4/5",
+     "8/10"
+    ],
+    "sol": "Read the decimal as a fraction over one hundred, since two digits after the point means hundredths. That gives $$\\sqrt{0.64}=\\sqrt{\\frac{64}{100}}.$$ Now use the quotient rule to split the root across the top and the bottom, $$\\sqrt{\\frac{64}{100}}=\\frac{\\sqrt{64}}{\\sqrt{100}}.$$ Both numbers are perfect squares, with \\(\\sqrt{64}=8\\) and \\(\\sqrt{100}=10\\), so the value is \\(\\frac{8}{10}\\). Writing that back as a decimal gives a clean, terminating result. So \\(\\sqrt{0.64} = \\boxed{0.8}\\). You can check it by squaring, since \\(0.8\\times 0.8=0.64\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "Here is a counting puzzle that rewards a simplify-first habit before the chapter's last big challenge. Look at the sum \\(\\sqrt{12}+\\sqrt{50}+\\sqrt{63}+\\sqrt{8}\\). Right now the four roots all look different, but some of them are hiding the same square-free number underneath. Simplify every term using the largest perfect-square factor, then collect any like radicals by adding their coefficients, exactly the way you collect like terms. After all of that is done and the sum is in its cleanest form, how many distinct radical terms remain?",
+    "hints": [
+     "Simplify each root on its own first. Pull out the biggest perfect square from each radicand, so \\(\\sqrt{12}=2\\sqrt{3}\\), \\(\\sqrt{50}=5\\sqrt{2}\\), \\(\\sqrt{63}=3\\sqrt{7}\\), and \\(\\sqrt{8}=2\\sqrt{2}\\).",
+     "Now sort by what sits under the root. The \\(\\sqrt{2}\\) terms are like radicals and combine into one term, while \\(\\sqrt{3}\\) and \\(\\sqrt{7}\\) each appear only once. Count the different square-free numbers left under the roots."
+    ],
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "sol": "Simplify each radical by pulling out its largest perfect-square factor. Since \\(12=4\\times3\\), we get \\(\\sqrt{12}=2\\sqrt{3}\\). Since \\(50=25\\times2\\), we get \\(\\sqrt{50}=5\\sqrt{2}\\). Since \\(63=9\\times7\\), we get \\(\\sqrt{63}=3\\sqrt{7}\\). And since \\(8=4\\times2\\), we get \\(\\sqrt{8}=2\\sqrt{2}\\). So the sum becomes $$2\\sqrt{3}+5\\sqrt{2}+3\\sqrt{7}+2\\sqrt{2}.$$ Now collect like radicals. The two terms with \\(\\sqrt{2}\\) combine, since \\(5\\sqrt{2}+2\\sqrt{2}=7\\sqrt{2}\\), while \\(2\\sqrt{3}\\) and \\(3\\sqrt{7}\\) have no partner and stand alone. The cleanest form is $$7\\sqrt{2}+2\\sqrt{3}+3\\sqrt{7}.$$ Three different square-free numbers, namely \\(2\\), \\(3\\), and \\(7\\), remain under the roots, so there are three distinct radical terms left. The count is \\(\\boxed{3}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "Here is one expression that puts the whole chapter to work at once, and it lands on a single clean number. Squaring, multiplying, dividing, all in one breath. Take it piece by piece and watch the roots quietly disappear. $$\\left(2\\sqrt{5}\\right)^2+\\sqrt{72}\\times\\sqrt{2}-\\frac{\\sqrt{180}}{\\sqrt{5}}$$ What single whole number does this equal?",
+    "hints": [
+     "Handle each of the three pieces on its own before you combine. Squaring \\(2\\sqrt{5}\\) squares both the \\(2\\) and the \\(\\sqrt{5}\\). For the product use the rule that \\(\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}\\). For the quotient use \\(\\frac{\\sqrt{a}}{\\sqrt{b}}=\\sqrt{\\tfrac{a}{b}}\\).",
+     "Each piece turns into a whole number. \\(\\left(2\\sqrt{5}\\right)^2=4\\times 5\\), then \\(\\sqrt{72}\\times\\sqrt{2}=\\sqrt{144}\\), then \\(\\frac{\\sqrt{180}}{\\sqrt{5}}=\\sqrt{36}\\). Now you are just adding and subtracting three plain numbers."
+    ],
+    "ans": "26",
+    "accept": [
+     "26",
+     "26.0"
+    ],
+    "sol": "Work through the three pieces one at a time. <b>Squaring.</b> Squaring \\(2\\sqrt{5}\\) squares the coefficient and the root separately, so \\(\\left(2\\sqrt{5}\\right)^2=2^2\\times\\left(\\sqrt{5}\\right)^2=4\\times 5=20\\). <b>Multiplying.</b> By the product rule \\(\\sqrt{72}\\times\\sqrt{2}=\\sqrt{72\\times 2}=\\sqrt{144}=12\\). <b>Dividing.</b> By the quotient rule \\(\\dfrac{\\sqrt{180}}{\\sqrt{5}}=\\sqrt{\\dfrac{180}{5}}=\\sqrt{36}=6\\). Now the whole expression is just three plain numbers, \\(20+12-6\\). Adding and subtracting gives \\(32-6=26\\). A string of square roots collapses to one clean whole number. $$\\left(2\\sqrt{5}\\right)^2+\\sqrt{72}\\times\\sqrt{2}-\\frac{\\sqrt{180}}{\\sqrt{5}}=20+12-6=\\boxed{26}$$"
+   }
+  ],
+  "review": [
+   {
+    "x": "A radical can hide a whole number, and the product rule lets you find it. Combine \\(\\sqrt{5}\\times\\sqrt{45}\\) under one radical, then simplify. What whole number does \\(\\sqrt{5}\\times\\sqrt{45}\\) equal?",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0"
+    ],
+    "hints": [
+     "The product rule lets you slide both numbers under a single root. Multiply the radicands to get \\(\\sqrt{5\\times 45}\\).",
+     "Work out \\(5\\times 45\\) and ask whether that result is a perfect square. If it is, the radical resolves to a whole number."
+    ],
+    "sol": "Use the product rule to merge the two roots into one. Since \\(\\sqrt{a}\\times\\sqrt{b}=\\sqrt{a\\times b}\\), you get $$\\sqrt{5}\\times\\sqrt{45}=\\sqrt{5\\times 45}=\\sqrt{225}.$$ Now check whether \\(225\\) is a perfect square. It is, because \\(15\\times 15=225\\), so \\(\\sqrt{225}=15\\). The two roots looked irrational on their own, yet their product is a clean whole number. \\(\\boxed{15}\\)"
+   },
+   {
+    "x": "Here is a multiplication that hides a surprise. Find the value of \\(\\sqrt{2}\\times\\sqrt{32}\\). What whole number does it equal?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "The product rule lets you slide both numbers under one root, so \\(\\sqrt{2}\\times\\sqrt{32}=\\sqrt{2\\times32}\\).",
+     "Multiply inside to get \\(\\sqrt{64}\\), and ask which whole number squared gives \\(64\\)."
+    ],
+    "sol": "Use the product rule to pull both numbers under a single root. That gives \\(\\sqrt{2}\\times\\sqrt{32}=\\sqrt{2\\times32}=\\sqrt{64}\\). Now \\(64\\) is a perfect square because \\(8\\times8=64\\), so \\(\\sqrt{64}=8\\). The two roots looked irrational on their own, but their product lands right on a whole number, \\(\\boxed{8}\\)."
+   },
+   {
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "x": "Multiply \\(\\sqrt{6}\\times\\sqrt{14}\\) and simplify the result all the way. The simplified answer has the form (whole number)\\(\\sqrt{21}\\). What whole number sits in front of the root?",
+    "hints": [
+     "The product rule lets the numbers under the roots multiply, so \\(\\sqrt{6}\\times\\sqrt{14}=\\sqrt{6\\times 14}=\\sqrt{84}\\). Now you have a single radical to simplify.",
+     "Hunt for the largest perfect-square factor of \\(84\\). Since \\(84=4\\times 21\\) and \\(4\\) is a perfect square, you can pull the \\(\\sqrt{4}\\) out front."
+    ],
+    "sol": "Multiply the two roots into one. The product rule says the numbers under the radicals just multiply, so $$\\sqrt{6}\\times\\sqrt{14}=\\sqrt{6\\times 14}=\\sqrt{84}.$$ Now simplify \\(\\sqrt{84}\\) the way you did in 8.3, by finding the largest perfect-square factor. Here \\(84=4\\times 21\\), and \\(4\\) is a perfect square while \\(21\\) has no perfect-square factor left. So $$\\sqrt{84}=\\sqrt{4\\times 21}=\\sqrt{4}\\times\\sqrt{21}=2\\sqrt{21}.$$ The result is \\(2\\sqrt{21}\\), and the whole number out in front is \\(\\boxed{2}\\)."
+   },
+   {
+    "ans": "30",
+    "x": "Here is a clean multiply to warm up with. Work out \\(3\\sqrt{2}\\times 5\\sqrt{2}\\). The whole numbers in front multiply together, and the roots multiply together, and because both roots are \\(\\sqrt{2}\\) their product lands on a perfect square. What whole number does the whole thing equal?",
+    "accept": [
+     "30",
+     "30.0",
+     "thirty"
+    ],
+    "hints": [
+     "Multiply the pieces in two separate groups. The coefficients give \\(3\\times 5\\), and the roots give \\(\\sqrt{2}\\times\\sqrt{2}\\).",
+     "A root times itself undoes the root, so \\(\\sqrt{2}\\times\\sqrt{2}=2\\). Now you just have \\(15\\times 2\\)."
+    ],
+    "sol": "Split the product into the whole numbers and the roots. The coefficients multiply to \\(3\\times 5=15\\), and the roots multiply to \\(\\sqrt{2}\\times\\sqrt{2}=\\sqrt{4}=2\\). So the expression becomes \\(15\\times 2\\). That gives \\(15\\times 2=30\\), which is a plain whole number because the matching roots squared away to a perfect square. The result is \\(\\boxed{30}\\)."
+   },
+   {
+    "ans": "30",
+    "x": "Multiply \\(2\\sqrt{3}\\) by \\(5\\sqrt{6}\\) and simplify the result fully. The answer is a whole number in front of \\(\\sqrt{2}\\). What is that whole number in front of \\(\\sqrt{2}\\)?",
+    "accept": [
+     "30",
+     "30.0",
+     "thirty"
+    ],
+    "hints": [
+     "Multiply the coefficients together and the radicands together separately. The coefficients give \\(2\\times 5\\), and under the roots you get \\(\\sqrt{3}\\times\\sqrt{6}=\\sqrt{18}\\).",
+     "Now simplify \\(\\sqrt{18}\\) by pulling out the largest perfect square. Since \\(18=9\\times 2\\), you get \\(\\sqrt{18}=3\\sqrt{2}\\), and you fold that \\(3\\) into the coefficient you already have."
+    ],
+    "sol": "Handle the whole numbers and the roots on their own. The coefficients multiply to give \\(2\\times 5=10\\), and the radicands multiply to give \\(\\sqrt{3}\\times\\sqrt{6}=\\sqrt{18}\\). So far the product is \\(10\\sqrt{18}\\). Now \\(\\sqrt{18}\\) is not in simplest form, since \\(18=9\\times 2\\) and \\(9\\) is a perfect square, so \\(\\sqrt{18}=\\sqrt{9}\\times\\sqrt{2}=3\\sqrt{2}\\). Putting it back together gives \\(10\\times 3\\sqrt{2}=30\\sqrt{2}\\). The whole number sitting in front of \\(\\sqrt{2}\\) is \\(\\boxed{30}\\)."
+   },
+   {
+    "x": "Squaring a root expression is just multiplying it by itself, and a neat thing happens. The coefficient out front gets squared, and the root squared turns back into the plain number underneath. Consider \\(4\\sqrt{5}\\). Square it, so the \\(4\\) becomes \\(16\\) and the \\(\\sqrt{5}\\) becomes \\(5\\), giving \\(16\\times 5\\). What whole number does \\(\\left(4\\sqrt{5}\\right)^2\\) equal?",
+    "ans": "80",
+    "accept": [
+     "80",
+     "80.0"
+    ],
+    "hints": [
+     "Squaring means \\(4\\sqrt{5}\\times 4\\sqrt{5}\\). Group it as the coefficients together and the roots together, so \\(4\\times 4\\) and \\(\\sqrt{5}\\times\\sqrt{5}\\).",
+     "The coefficients give \\(4\\times 4=16\\), and a root times itself frees the number, so \\(\\sqrt{5}\\times\\sqrt{5}=5\\). Now multiply \\(16\\times 5\\)."
+    ],
+    "sol": "To square \\(4\\sqrt{5}\\), write it as a product with itself, \\(\\left(4\\sqrt{5}\\right)^2 = 4\\sqrt{5}\\times 4\\sqrt{5}\\). Regroup so the whole-number coefficients multiply together and the roots multiply together, giving \\(\\left(4\\times 4\\right)\\times\\left(\\sqrt{5}\\times\\sqrt{5}\\right)\\). The coefficients give \\(16\\), and a square root times itself returns the number underneath, so \\(\\sqrt{5}\\times\\sqrt{5}=5\\). That leaves \\(16\\times 5 = 80\\). So \\(\\left(4\\sqrt{5}\\right)^2 = \\boxed{80}\\)."
+   },
+   {
+    "x": "When you square \\(6\\sqrt{3}\\), the squaring and the root pull against each other and one of them wins. Write \\(\\left(6\\sqrt{3}\\right)^2\\) as \\(6\\sqrt{3}\\times 6\\sqrt{3}\\). Multiply the coefficients together and multiply the roots together, then remember that \\(\\sqrt{3}\\times\\sqrt{3}\\) is just \\(3\\) because squaring a root undoes it. What whole number does \\(\\left(6\\sqrt{3}\\right)^2\\) equal?",
+    "ans": "108",
+    "accept": [
+     "108",
+     "108.0"
+    ],
+    "hints": [
+     "Squaring means multiplying the expression by itself, so \\(\\left(6\\sqrt{3}\\right)^2=6\\sqrt{3}\\times 6\\sqrt{3}\\). Group the whole numbers with the whole numbers and the roots with the roots.",
+     "The coefficients give \\(6\\times 6=36\\), and the roots give \\(\\sqrt{3}\\times\\sqrt{3}=3\\) since a root times itself returns the number under it. Now multiply \\(36\\times 3\\)."
+    ],
+    "sol": "Squaring an expression means multiplying it by itself, so $$\\left(6\\sqrt{3}\\right)^2=6\\sqrt{3}\\times 6\\sqrt{3}.$$ Multiply the coefficients together and the roots together, \\(\\left(6\\times 6\\right)\\times\\left(\\sqrt{3}\\times\\sqrt{3}\\right)=36\\times\\left(\\sqrt{3}\\times\\sqrt{3}\\right)\\). A square root times itself gives back the number underneath, so \\(\\sqrt{3}\\times\\sqrt{3}=3\\), and the irrational part disappears completely. That leaves \\(36\\times 3=108\\), a clean whole number. So \\(\\left(6\\sqrt{3}\\right)^2=\\boxed{108}\\)."
+   },
+   {
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "x": "Here is a string of like radicals waiting to be collected. \\(10\\sqrt{3}-4\\sqrt{3}+\\sqrt{3}\\). Every term carries the same root, \\(\\sqrt{3}\\), so the root behaves just like a variable and you combine the coefficients. Remember that a lonely \\(\\sqrt{3}\\) is really \\(1\\sqrt{3}\\). After you combine everything into a single term \\(k\\sqrt{3}\\), what is the whole number \\(k\\) in front of \\(\\sqrt{3}\\)?",
+    "hints": [
+     "Treat \\(\\sqrt{3}\\) like a single object, the way you would treat \\(x\\) in \\(10x-4x+x\\). The radicand never changes, so you only ever touch the numbers in front.",
+     "Write the missing coefficient first. The bare \\(\\sqrt{3}\\) counts as \\(1\\sqrt{3}\\), so you are adding and subtracting \\(10\\), \\(-4\\), and \\(1\\). Work left to right."
+    ],
+    "sol": "Each term has the same root, \\(\\sqrt{3}\\), so these are like radicals and they collect together exactly like \\(10x-4x+x\\). First make the lonely root show its coefficient, so \\(\\sqrt{3}=1\\sqrt{3}\\). Now combine the numbers in front. \\(10-4+1=7\\). The root stays put, giving \\(7\\sqrt{3}\\), and the whole number in front is \\(\\boxed{7}\\)."
+   },
+   {
+    "ans": "17",
+    "x": "Here is a sum that tempts people into a trap. Look at \\(\\sqrt{144}+\\sqrt{25}\\). Each root is clean on its own, so handle them separately and then add. What is \\(\\sqrt{144}+\\sqrt{25}\\)?",
+    "accept": [
+     "17",
+     "17.0",
+     "seventeen"
+    ],
+    "hints": [
+     "Take each root by itself first. What number squares to \\(144\\), and what number squares to \\(25\\)? Once you have both, add them.",
+     "It is \\(12+5\\), not \\(\\sqrt{144+25}\\). You cannot slide the two roots together over the plus sign, because \\(\\sqrt{169}=13\\) is a different number entirely."
+    ],
+    "sol": "Work each radical on its own. Since \\(12\\times 12=144\\), we get \\(\\sqrt{144}=12\\). Since \\(5\\times 5=25\\), we get \\(\\sqrt{25}=5\\). Now add the two whole numbers, \\(12+5=17\\). Watch the trap. The root of a sum is not the sum of the roots, so \\(\\sqrt{144}+\\sqrt{25}\\) is not \\(\\sqrt{144+25}=\\sqrt{169}=13\\). The roots stay separate across the plus sign, and \\(13\\neq 17\\). The correct value is \\(\\boxed{17}\\)."
+   },
+   {
+    "x": "Look at \\(\\sqrt{27}+\\sqrt{48}\\). They do not look alike yet, but each one hides a factor of \\(3\\). Simplify each radical, notice they become like radicals, and combine them into a single term \\(k\\sqrt{3}\\). What whole number is \\(k\\), the coefficient in front of \\(\\sqrt{3}\\)?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "Pull the biggest perfect square out of each one. For \\(27\\) think \\(9\\times 3\\), and for \\(48\\) think \\(16\\times 3\\).",
+     "Both turn into a multiple of \\(\\sqrt{3}\\), so they are like radicals. Add the coefficients the same way you would collect like terms."
+    ],
+    "sol": "Simplify each radical first. Since \\(27=9\\times 3\\), we get \\(\\sqrt{27}=\\sqrt{9}\\times\\sqrt{3}=3\\sqrt{3}\\). Since \\(48=16\\times 3\\), we get \\(\\sqrt{48}=\\sqrt{16}\\times\\sqrt{3}=4\\sqrt{3}\\). Now both terms carry the same \\(\\sqrt{3}\\), so they are like radicals. Add the coefficients just like collecting like terms, \\(3\\sqrt{3}+4\\sqrt{3}=(3+4)\\sqrt{3}=7\\sqrt{3}\\). The whole number in front of \\(\\sqrt{3}\\) is \\(\\boxed{7}\\)."
+   },
+   {
+    "x": "Two terms can look like strangers and turn out to be the same thing once you tidy them up. Take \\(5\\sqrt{2}-\\sqrt{50}\\). The first term is already simple, but \\(\\sqrt{50}\\) is hiding a perfect square inside. Simplify \\(\\sqrt{50}\\) first, then carry out the subtraction. What whole number does \\(5\\sqrt{2}-\\sqrt{50}\\) equal?",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero"
+    ],
+    "hints": [
+     "You cannot subtract until both terms wear the same root. Look at \\(\\sqrt{50}\\) and find the largest perfect square that divides \\(50\\).",
+     "Since \\(50=25\\times 2\\), you get \\(\\sqrt{50}=\\sqrt{25}\\times\\sqrt{2}=5\\sqrt{2}\\). Now both terms are \\(5\\sqrt{2}\\), so what is \\(5\\sqrt{2}-5\\sqrt{2}\\)?"
+    ],
+    "sol": "Simplify the second radical before doing anything else. The number \\(50\\) factors as \\(25\\times 2\\), and \\(25\\) is a perfect square, so $$\\sqrt{50}=\\sqrt{25\\times 2}=\\sqrt{25}\\times\\sqrt{2}=5\\sqrt{2}.$$ Rewrite the expression with that simplified form. Now the subtraction reads $$5\\sqrt{2}-\\sqrt{50}=5\\sqrt{2}-5\\sqrt{2}.$$ Both terms are like radicals, the same \\(\\sqrt{2}\\) with the same coefficient, so think of \\(\\sqrt{2}\\) as a single object and collect. You have \\(5\\) of it minus \\(5\\) of it, which leaves \\(0\\) of it. The radical disappears completely, so \\(5\\sqrt{2}-\\sqrt{50}=\\boxed{0}\\)."
+   },
+   {
+    "x": "The quotient rule lets you pull two separate roots into one. Here is a division to test it on. Simplify \\(\\dfrac{\\sqrt{300}}{\\sqrt{3}}\\) by writing it as \\(\\sqrt{\\dfrac{300}{3}}\\), then finish. What whole number does it equal?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0"
+    ],
+    "hints": [
+     "The quotient rule says a root over a root is the root of the quotient, so \\(\\dfrac{\\sqrt{300}}{\\sqrt{3}}=\\sqrt{\\dfrac{300}{3}}\\). Do the division inside the root first.",
+     "Once you divide, \\(300\\div 3=100\\), so you are left with \\(\\sqrt{100}\\). Ask yourself which whole number times itself gives \\(100\\)."
+    ],
+    "sol": "Pull the two roots together with the quotient rule, since a root divided by a root is the root of the quotient. $$\\frac{\\sqrt{300}}{\\sqrt{3}}=\\sqrt{\\frac{300}{3}}$$ Now divide inside the radical. \\(300\\div 3=100\\), so the expression becomes \\(\\sqrt{100}\\). That is a perfect square, and \\(10\\times 10=100\\), so \\(\\sqrt{100}=10\\). The two roots that looked messy collapse into a clean whole number. \\(\\boxed{10}\\)"
+   },
+   {
+    "x": "Sometimes the cleanest way to root a fraction is to root the top and the bottom on their own. Try it on \\(\\sqrt{\\tfrac{9}{64}}\\), where both \\(9\\) and \\(64\\) are perfect squares. What is the exact value as a fraction in lowest terms?",
+    "ans": "3/8",
+    "accept": [
+     ".375",
+     "0.375",
+     "3 / 8",
+     "3/8",
+     "three eighths",
+     "three-eighths",
+     "three−eighths"
+    ],
+    "hints": [
+     "The quotient rule lets you split the root of a fraction into the root of the numerator over the root of the denominator, so \\(\\sqrt{\\tfrac{9}{64}}=\\dfrac{\\sqrt{9}}{\\sqrt{64}}\\).",
+     "Now find each root on its own. What whole number squares to \\(9\\), and what whole number squares to \\(64\\)?"
+    ],
+    "sol": "By the quotient rule the root of a fraction is the root of the top over the root of the bottom, so $$\\sqrt{\\frac{9}{64}}=\\frac{\\sqrt{9}}{\\sqrt{64}}.$$ Both pieces are perfect squares. Since \\(3\\times 3=9\\) we get \\(\\sqrt{9}=3\\), and since \\(8\\times 8=64\\) we get \\(\\sqrt{64}=8\\). That leaves \\(\\dfrac{3}{8}\\), which is already in lowest terms because \\(3\\) and \\(8\\) share no common factor. You can check it by squaring, since \\(\\left(\\tfrac{3}{8}\\right)^2=\\tfrac{9}{64}\\). So \\(\\sqrt{\\tfrac{9}{64}}=\\boxed{3/8}\\)."
+   },
+   {
+    "x": "Without a calculator, find \\(\\sqrt{0.81}\\) exactly. Rewrite the decimal as the fraction \\(\\tfrac{81}{100}\\) and use the quotient rule. What is \\(\\sqrt{0.81}\\) as a decimal?",
+    "ans": "0.9",
+    "accept": [
+     ".9",
+     "0.9",
+     "0.90",
+     "9 / 10",
+     "9/10",
+     "nine tenths"
+    ],
+    "hints": [
+     "A terminating decimal is just a fraction in disguise. The digits 81 sit in the hundredths place, so \\(0.81=\\tfrac{81}{100}\\).",
+     "The quotient rule says \\(\\sqrt{\\tfrac{81}{100}}=\\tfrac{\\sqrt{81}}{\\sqrt{100}}\\). Both the top and the bottom are perfect squares, so take each root on its own."
+    ],
+    "sol": "Start by turning the decimal into a fraction. The 81 lands in the hundredths place, so \\(0.81=\\dfrac{81}{100}\\). Now apply the quotient rule, which lets the root split across the fraction, giving \\(\\sqrt{0.81}=\\sqrt{\\dfrac{81}{100}}=\\dfrac{\\sqrt{81}}{\\sqrt{100}}\\). Both pieces are perfect squares, since \\(\\sqrt{81}=9\\) and \\(\\sqrt{100}=10\\), so the value is \\(\\dfrac{9}{10}\\). Written back as a decimal that is \\(0.9\\). You can check it by squaring, since \\(0.9\\times0.9=0.81\\). So \\(\\boxed{0.9}\\)."
+   }
+  ],
+  "next": "9.1"
  }
 }
