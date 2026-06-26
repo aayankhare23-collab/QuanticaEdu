@@ -464,7 +464,8 @@
   .ws-page.ws-anim{animation:wsIn .28s cubic-bezier(.22,1,.36,1) both}
   @keyframes wsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .ws-page.page-text-only{justify-content:center;align-items:center;padding:0}
-  .ws-page.page-text-only .page-lead{margin:0;width:100%;max-width:560px}
+  .ws-page.page-text-only .page-lead{margin:0 auto;width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 38px;box-shadow:0 14px 40px -18px rgba(18,42,86,.30)}
+  .ws-page.page-text-only .page-lead svg{max-width:100%;height:auto}
   .ws-page.page-text-only .page-lead p{font-size:21px;font-weight:600;color:var(--navy);line-height:1.78;text-align:center;letter-spacing:.005em;margin:0 auto 18px;max-width:560px}
   .ws-page.page-text-only .page-lead p:last-child{margin-bottom:0}
   .ws-page.page-text-only h4.sub{text-align:center;color:var(--mid)}
@@ -10908,7 +10909,7 @@
     } else {
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
       if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
-      rec.attempts=(rec.attempts||0)+1; if(window.Rewards) Rewards._onWrong(rec);
+      rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
     }
     var sb=document.getElementById('sb_'+k); if(sb) sb.style.display='inline-block';
   }
@@ -11931,6 +11932,7 @@ async function sendTutorMsg() {
           var _solEl = document.getElementById('sol_' + WS.pages[WS.page].probK);
           if (_solEl) { var _solTxt = (_solEl.innerText || _solEl.textContent || '').replace(/^\s*Solution\s*/i, '').replace(/\s+/g, ' ').trim(); if (_solTxt) internalCtx += '\nIntended method / worked solution (never paste this to the student; use it to steer them one step at a time down the right path): ' + _solTxt.slice(0, 800); }
           internalCtx += '\nStudent status: ' + (_rec.solved ? 'already solved it' : (_rec.solViewed ? 'has viewed the worked solution' : 'still working — ' + (_rec.attempts || 0) + ' wrong attempt(s) so far')) + '.';
+          if (_rec.wrongVals && _rec.wrongVals.length) internalCtx += '\nThe exact wrong answers the student has typed for THIS problem, in order: ' + _rec.wrongVals.join(' , ') + '. These are the student\'s OWN past attempts (not the secret answer) - you MAY tell the student what they previously tried if they ask.';
           internalCtx += '\nBefore replying: double-check any arithmetic you state against these notes. If the student names the correct value or picks the correct option from a list, confirm it — never contradict a correct answer.';
         }
       }
@@ -11967,7 +11969,7 @@ async function sendTutorMsg() {
   .cb-diff:hover{background:rgba(58,123,213,.18)}
   .dp-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(18,38,86,.28);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);align-items:center;justify-content:center}
   .dp-overlay.on{display:flex}
-  .dp-card{position:relative;width:min(460px,92vw);max-height:88vh;overflow-y:auto;background:var(--soft,#f4f7fc);border:1px solid var(--glass-line);border-radius:20px;box-shadow:0 30px 80px -30px rgba(18,42,86,.6);padding:24px 26px 20px}
+  .dp-card{position:relative;width:min(460px,92vw);max-height:88vh;overflow-y:auto;background:#fff;border:1px solid var(--glass-line);border-radius:20px;box-shadow:0 30px 80px -30px rgba(18,42,86,.6);padding:24px 26px 20px}
   .dp-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:var(--mute);cursor:pointer;line-height:1}
   .dp-x:hover{color:var(--navy)}
   .dp-card h3{font-family:'Fraunces';font-weight:600;font-size:20px;color:var(--navy);margin:0 0 3px}
@@ -11988,7 +11990,7 @@ async function sendTutorMsg() {
   .dp-reset:disabled{opacity:.4;cursor:not-allowed}
   .dp-save{margin-left:auto;font:700 13px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:999px;padding:11px 24px;cursor:pointer;box-shadow:0 10px 22px -10px rgba(58,123,213,.7)}
   .dp-note{font:500 11.5px/1.4 'Inter';color:var(--mute);margin-top:10px;text-align:center}
-  .dp-pop{position:absolute;inset:0;background:rgba(244,247,252,.88);display:none;align-items:center;justify-content:center;border-radius:20px}
+  .dp-pop{position:absolute;inset:0;background:#fff;display:none;align-items:center;justify-content:center;border-radius:20px}
   .dp-pop.on{display:flex}
   .dp-popcard{width:86%;background:#fff;border:1px solid var(--glass-line);border-radius:16px;padding:22px;text-align:center;box-shadow:0 18px 50px -18px rgba(18,42,86,.45)}
   .dp-popcard p{font:600 14px/1.5 'Inter';color:var(--navy);margin:0 0 18px}
