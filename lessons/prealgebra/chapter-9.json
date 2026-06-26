@@ -970,5 +970,473 @@
    }
   ],
   "next": "9.3"
+ },
+ "9.3": {
+  "title": "Percent Increase and Decrease",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 9.2 you took a percent <b>of</b> a number and got back a part, a still snapshot of one quantity sitting quietly at one size. Now the quantity itself starts to move. A rooftop garden lengthens its little walking trail over the summer, a flock of marsh birds thins out in a heat wave, a kayak rental drops its price for a slow week, a podcast watches its weekly plays climb. Each of these is a number going <b>up</b> or <b>down</b> by some percent, and one idea runs through every single case. The change is always measured against the amount you <b>started</b> with, the <b>original</b>, never the amount you finish at. To raise a quantity by a percent you take that percent of the original and add it on, and to lower it you take that percent of the original and subtract it away. So a percent change is really just 9.2 again, since taking a percent of a number is a multiply and the part you add or remove is \\(\\text{percent} \\times \\text{whole}\\), with the original playing the role of the whole. Here is the shortcut that will carry the whole lesson. Raising something by \\(30\\%\\) means you keep the entire original, all \\(100\\%\\) of it, and then stack another \\(30\\%\\) on top, so the new amount is \\(130\\%\\) of the original. That whole two-step move collapses into a single multiply by \\(1.30\\), one clean number called the <b>multiplier</b>. Three journeys are coming. First you will travel forward, from an old amount to a new one. Then you will run the change backward, recovering the original you started from when you only know where you landed. And finally there is the strange ending, where a rise of some percent followed by an equal fall does <b>not</b> bring you home, because each change quietly measures itself against a different original. No numbers solved yet, just the lay of the land."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A rooftop community garden started the season with \\(240\\) meters of walking trail. Over the summer the volunteers extended it by \\(35\\%\\), which means they added \\(35\\%\\) of the original \\(240\\) meters and then tacked that onto the \\(240\\) they already had. Take it one step at a time. First find \\(35\\%\\) of \\(240\\) the way you did in 9.2, then add that piece back to the starting length. After this increase, how many meters of trail are there now?",
+    "hints": [
+     "The extra trail is \\(35\\%\\) of the ORIGINAL \\(240\\) meters, not of some new total. Use part \\(=\\) percent \\(\\times\\) whole, so the added length is \\(0.35 \\times 240\\).",
+     "Once you know the added piece is \\(84\\) meters, the new trail is just the old length plus that piece, \\(240 + 84\\). Adding the extra back on is what makes this an increase."
+    ],
+    "ans": "324",
+    "accept": [
+     "324",
+     "324.0"
+    ],
+    "sol": "Walk it the slow way first. The increase is \\(35\\%\\) of the original \\(240\\) meters, so using part \\(=\\) percent \\(\\times\\) whole gives $$0.35 \\times 240 = 84 \\text{ meters added.}$$ Now add that piece back onto where you started, \\(240 + 84 = 324\\). There is a faster route that lands in the same place. Keeping all of the original is \\(100\\%\\) of it, and adding \\(35\\%\\) more makes \\(135\\%\\) in all, so the multiplier is \\(1 + 0.35 = 1.35\\). That gives \\(240 \\times 1.35 = 324\\) in one step. Either way the trail is now \\(\\boxed{324}\\) meters long."
+   },
+   {
+    "t": "imp",
+    "x": "When something grows by a percent, you do not just glue the percent on. You take that percent OF the amount you started with and add it back onto that same starting amount, so the new total is the original plus a slice of itself. The slice is always measured from where you began, never from where you land. And since the original is already the full \\(100\\%\\) of itself and we just piled more on top, a \\(30\\%\\) rise should be the same as keeping all \\(100\\%\\) and adding \\(30\\%\\) more, which is \\(130\\%\\) of the start, hinting that the two steps might fold into one quick multiply."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A small streaming channel sat at \\(480\\) subscribers. One post took off and the channel grew by \\(35\\%\\). You could find \\(35\\%\\) of \\(480\\) and add it on, and that works, but watch for a faster route. The channel already has all of itself, which is \\(100\\%\\), and you are stacking another \\(35\\%\\) on top, so the new count is \\(135\\%\\) of \\(480\\). That is the same as \\(1 + \\tfrac{35}{100} = 1.35\\) times \\(480\\), done in one step. After the \\(35\\%\\) increase, how many subscribers does the channel have now?",
+    "hints": [
+     "The original count is \\(100\\%\\) of itself, and an increase piles more on top of that. A \\(35\\%\\) increase means the new amount is \\(100\\% + 35\\% = 135\\%\\) of the original.",
+     "Turn \\(135\\%\\) into the multiplier \\(1.35\\), then compute \\(480 \\times 1.35\\) in one step instead of adding the part separately."
+    ],
+    "ans": "648",
+    "accept": [
+     "648",
+     "648.0"
+    ],
+    "sol": "A \\(35\\%\\) increase keeps the whole original and adds \\(35\\%\\) more, so the new count is \\(100\\% + 35\\% = 135\\%\\) of \\(480\\). Written as a multiplier that is \\(1 + \\tfrac{35}{100} = 1.35\\). Multiply all at once. $$480 \\times 1.35 = 648$$ Check it against the add-on path. \\(35\\%\\) of \\(480\\) is \\(0.35 \\times 480 = 168\\), and \\(480 + 168 = 648\\), the same result. The channel now has \\(\\boxed{648}\\) subscribers."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the shortcut I just stumbled onto. When something grows by \\(30\\%\\), I am keeping all \\(100\\%\\) of what I started with and stacking another \\(30\\%\\) on top, which is really \\(130\\%\\) of the original, so I can skip the two steps and just multiply once by \\(1.30\\). The \\(1\\) is the part that hangs onto the whole original amount, and the \\(0.30\\) is the extra slice the increase adds, which is why growing by \\(p\\) percent always means multiplying by \\(1 + \\tfrac{p}{100}\\). This one multiplier turns a percent increase into a single move, and it is the tool I will reach for again and again in this lesson."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two side by side multiplier strips on a horizontal number bar where the same width stands for one percent in both. The top strip, labelled a 30 percent increase, shows a full 100 percent bar in pale gold standing for the original, then a brighter 30 percent block stacked onto its right end. A bracket spans the whole extended bar, from 0 percent to 130 percent, labelled times 1.30 equals 130 percent of the original. The bottom strip, labelled a 20 percent decrease, shows a full 100 percent bar with its rightmost 20 percent slice peeled away and crossed out, leaving 80 percent shaded. A bracket spans only the shaded remainder, from 0 percent to 80 percent, labelled times 0.80 equals 80 percent of the original. The picture shows that an increase pushes the multiplier above 1 while a decrease pulls it below 1, with the original always counting as the 100 percent you build onto or cut from.\">\n  <text x=\"220\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">THE ORIGINAL IS ALWAYS 100%</text>\n\n  <text x=\"20\" y=\"52\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"600\" fill=\"var(--slate)\">a 30% increase</text>\n\n  <rect x=\"40\" y=\"62\" width=\"280\" height=\"38\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"180\" y=\"86\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">100%</text>\n\n  <rect x=\"320\" y=\"62\" width=\"84\" height=\"38\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"362\" y=\"86\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">+30%</text>\n\n  <path d=\"M 40 108 L 40 116 L 404 116 L 404 108\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"222\" y=\"135\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#215; 1.30 = 130% of the original</text>\n\n  <text x=\"20\" y=\"178\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"600\" fill=\"var(--slate)\">a 20% decrease</text>\n\n  <rect x=\"40\" y=\"188\" width=\"224\" height=\"38\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"152\" y=\"212\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--gold-deep)\">80%</text>\n\n  <rect x=\"264\" y=\"188\" width=\"56\" height=\"38\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\" stroke-dasharray=\"4 3\"/>\n  <line x1=\"264\" y1=\"188\" x2=\"320\" y2=\"226\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <line x1=\"320\" y1=\"188\" x2=\"264\" y2=\"226\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"292\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"600\" fill=\"var(--mid)\">&#8722;20%</text>\n\n  <path d=\"M 40 234 L 40 242 L 264 242 L 264 234\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"152\" y=\"261\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#215; 0.80 = 80% of the original</text>\n\n  <text x=\"220\" y=\"288\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" fill=\"var(--mid)\">up goes past 1, down stays below 1</text>\n</svg>",
+    "cap": "Both strips start from the same original, the full \\(100\\%\\) bar. Adding \\(30\\%\\) stacks a new block on the right, so the total is \\(100\\% + 30\\% = 130\\%\\), which is the multiplier \\(\\times 1.30\\). Cutting \\(20\\%\\) peels a slice off the right, leaving \\(100\\% - 20\\% = 80\\%\\), the multiplier \\(\\times 0.80\\). An increase always lands above \\(1\\) and a decrease always lands below \\(1\\), and either way you are scaling the original \\(100\\%\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A morning survey of a coastal marsh counted \\(350\\) wading birds standing in the shallows. By the heat of midday, \\(12\\%\\) of them had lifted off and flown elsewhere. A decrease keeps what is LEFT behind, and what stays is \\(100\\%\\) minus \\(12\\%\\), so \\(88\\%\\) of the flock remains. That makes the midday count \\(350\\) times \\(0.88\\), and it should also match \\(350\\) minus \\(12\\%\\) of \\(350\\). After this <b>decrease</b>, how many wading birds are still present at midday?",
+    "hints": [
+     "A \\(12\\%\\) decrease does not leave \\(12\\%\\); it leaves the rest. Find the leftover percent by taking \\(100\\% - 12\\% = 88\\%\\), and that fraction of the flock is what you want.",
+     "Turn \\(88\\%\\) into the multiplier \\(0.88\\) and multiply the original count by it, \\(350 \\times 0.88\\). If you prefer the long way, take \\(12\\%\\) of \\(350\\) and subtract it from \\(350\\); both roads land on the same number."
+    ],
+    "ans": "308",
+    "accept": [
+     "308",
+     "308.0"
+    ],
+    "sol": "A drop of \\(12\\%\\) takes away \\(12\\%\\) and leaves the other \\(88\\%\\), since \\(100\\% - 12\\% = 88\\%\\). So the multiplier for a \\(12\\%\\) decrease is \\(1 - 0.12 = 0.88\\), and the midday count is $$350 \\times 0.88 = 308.$$ The slower route agrees. First \\(12\\%\\) of \\(350\\) is \\(0.12 \\times 350 = 42\\) birds that flew off, and the survivors are \\(350 - 42 = 308\\). Both paths give the same flock, so \\(308\\) wading birds are still present at midday. \\(\\boxed{308}\\)"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A harbor rents kayaks for \\(90\\) dollars a day. On a slow weekday it posts a \\(40\\%\\) discount to pull people in. A discount works just like an increase running in reverse. Taking \\(40\\%\\) off means \\(40\\%\\) of the price is removed, so the part you actually pay is the \\(60\\%\\) that survives, which is \\(90\\) times \\(0.60\\). Notice the parallel with the increase you saw earlier. There the multiplier climbed above \\(1\\), and here it drops below \\(1\\). What is the discounted price in dollars (a decrease)?",
+    "hints": [
+     "A \\(40\\%\\) discount removes \\(40\\%\\) of the price, so what is left is \\(100\\% - 40\\% = 60\\%\\) of it. That surviving \\(60\\%\\) is your multiplier.",
+     "The multiplier for a \\(40\\%\\) decrease is \\(1 - 0.40 = 0.60\\). Multiply the original price by it, \\(90 \\times 0.60\\)."
+    ],
+    "ans": "54",
+    "accept": [
+     "$54",
+     "$54.0",
+     "$54.00",
+     "54",
+     "54.0",
+     "54.00"
+    ],
+    "sol": "A \\(40\\%\\) decrease multiplies by \\(1 - \\tfrac{40}{100} = 1 - 0.40 = 0.60\\), the share of the price that survives the discount. So the new price is $$90 \\times 0.60 = 54.$$ You can check it the slow way. Forty percent of \\(90\\) is \\(0.40 \\times 90 = 36\\), and subtracting gives \\(90 - 36 = 54\\), the same answer. The multiplier just folds the subtracting into one step. \\(\\boxed{54}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "Now run it the other way. When you cut a percent off, what is left behind is the rest of the hundred, so removing \\(12\\%\\) leaves \\(88\\%\\) standing, a single multiply by \\(0.88\\). A <b>\\(p\\) percent decrease multiplies by \\(1 - \\tfrac{p}{100}\\)</b>, which is why a \\(20\\%\\) discount is just \\(80\\%\\) of the original price, one multiply by \\(0.80\\). Increase lifts the multiplier above \\(1\\) and decrease pulls it below \\(1\\), but it is the same one-multiply move in both directions."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A new podcast pulled in \\(250\\) plays on its first episode. The second episode did better and reached \\(320\\) plays. To measure the jump, start with the change, \\(320 - 250 = 70\\) extra plays. Now here is the key part. A percent change always asks what fraction the change is <b>of where you began</b>, so you compare those \\(70\\) plays to the starting \\(250\\), not to the new \\(320\\). What percent <b>increase</b> in plays was this? Give the number only.",
+    "hints": [
+     "First find the change in plays, the new amount minus the old amount. Then remember a percent change is measured against the ORIGINAL, so the comparison you want is that change divided by \\(250\\), not divided by \\(320\\).",
+     "You have \\(70\\) more plays out of the starting \\(250\\). Compute \\(\\tfrac{70}{250}\\) and turn that fraction into a percent by multiplying by \\(100\\)."
+    ],
+    "ans": "28",
+    "accept": [
+     "28",
+     "28%",
+     "28.0",
+     "28.0%"
+    ],
+    "sol": "First find how much the plays grew, \\(320 - 250 = 70\\) more plays. A percent change is that change measured against the original amount, so divide by the \\(250\\) you started with, not the \\(320\\) you ended with. That gives the fraction \\(\\tfrac{70}{250}\\). To read it as a percent, multiply by \\(100\\), so $$\\frac{70}{250} \\times 100 = 28.$$ You can check it with the multiplier idea. A \\(28\\%\\) increase scales the original by \\(1.28\\), and \\(250 \\times 1.28 = 320\\), which lands exactly on the second episode. The question names the direction, so the answer is the positive size of the increase, \\(\\boxed{28}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A small library branch buzzed on a sunny Saturday with \\(640\\) visitors. The next Saturday it rained all day and only \\(480\\) people came in. So the count fell from \\(640\\) down to \\(480\\), a drop of \\(640 - 480 = 160\\) visitors. To turn that drop into a percent, compare it to what you started with, the original \\(640\\), not the smaller rainy-day \\(480\\). Dividing by \\(480\\) would secretly be asking a different question. Because the number of visitors shrank, this is a decrease. What percent <b>decrease</b> was this? Give the number only.",
+    "hints": [
+     "First find the drop, then ask what fraction of the ORIGINAL it is. The drop is \\(640 - 480 = 160\\), and the original is \\(640\\), so the percent change is \\(\\tfrac{160}{640}\\) written as a percent.",
+     "Simplify \\(\\tfrac{160}{640}\\). Both top and bottom share a factor of \\(160\\), so it becomes \\(\\tfrac{1}{4}\\), and \\(\\tfrac{1}{4} = 25\\%\\). Resist the urge to divide by \\(480\\); the original count is the whole here."
+    ],
+    "ans": "25",
+    "accept": [
+     "25",
+     "25%",
+     "25.0",
+     "25.0%"
+    ],
+    "sol": "The drop in visitors is \\(640 - 480 = 160\\). A percent change always measures that change against the <b>original</b> amount, so divide by \\(640\\), not by \\(480\\).<br><br>$$\\frac{640 - 480}{640} = \\frac{160}{640} = \\frac{1}{4} = 0.25 = 25\\%$$<br><br>You can check it with the multiplier. A drop of \\(25\\%\\) means the rainy Saturday kept \\(1 - 0.25 = 0.75\\) of the sunny crowd, and \\(0.75 \\times 640 = 480\\), which matches. If you had divided by \\(480\\) instead you would get about \\(33\\%\\), but that answers a different question, how much you would need to grow to climb back to \\(640\\). For the decrease from the original, the answer is \\(\\boxed{25}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is what you just pinned down. To find the percent change from an old amount to a new one, first find how much it changed, the new minus the old, and then divide that by the <b>original</b> amount and write the answer as a percent. It is a percent <b>increase</b> when the number grew and a percent <b>decrease</b> when it shrank, and the size of the change is the same either way. The original is always the yardstick sitting in the denominator, since the question is how big the change was compared to where you started, so dividing by the new amount would quietly answer a completely different question."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two vertical bars compare a podcast's plays before and after, drawn to the same scale. The left bar rises to 250, the original number of plays. The right bar rises higher to 320, the new number of plays. The slice between the two bar tops, the extra 70 plays, is bracketed and shaded gold and labelled the change equals 70. A curved arrow leads from that gold slice to a computation card that reads 70 over 250 equals 28 percent, with the 250 circled and labelled the original, divide by THIS. A small inset below shows the wrong move crossed out, 70 over 320, tagged not the new amount. The caption says the change is always measured against where we started.\">\n  <text x=\"220\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">PERCENT CHANGE = CHANGE OVER ORIGINAL</text>\n  <text x=\"220\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\">podcast plays went from 250 to 320</text>\n\n  <line x1=\"42\" y1=\"240\" x2=\"200\" y2=\"240\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n\n  <rect x=\"58\" y=\"156\" width=\"46\" height=\"84\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"81\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">original</text>\n  <text x=\"81\" y=\"150\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">250</text>\n\n  <rect x=\"138\" y=\"132\" width=\"46\" height=\"24\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <rect x=\"138\" y=\"156\" width=\"46\" height=\"84\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"161\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">new</text>\n  <text x=\"161\" y=\"126\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">320</text>\n\n  <path d=\"M196 132 L204 132 L204 156 L196 156\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"210\" y=\"141\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">change</text>\n  <text x=\"210\" y=\"157\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">= 70</text>\n\n  <path d=\"M186 144 C242 144 268 100 312 96\" fill=\"none\" stroke=\"var(--mid)\" stroke-width=\"1.4\"/>\n  <path d=\"M312 96 L304 92 M312 96 L304 101\" fill=\"none\" stroke=\"var(--mid)\" stroke-width=\"1.4\"/>\n\n  <rect x=\"314\" y=\"66\" width=\"116\" height=\"74\" rx=\"6\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"349\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--slate)\">70</text>\n  <line x1=\"332\" y1=\"106\" x2=\"366\" y2=\"106\" stroke=\"var(--slate)\" stroke-width=\"1.4\"/>\n  <text x=\"349\" y=\"124\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--gold-deep)\">250</text>\n  <ellipse cx=\"349\" cy=\"119\" rx=\"20\" ry=\"13\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <text x=\"392\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--slate)\">= 28%</text>\n  <text x=\"372\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--gold-deep)\">divide by THIS, the original</text>\n\n  <rect x=\"58\" y=\"276\" width=\"138\" height=\"34\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.2\"/>\n  <text x=\"86\" y=\"290\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--slate)\">70</text>\n  <line x1=\"74\" y1=\"296\" x2=\"98\" y2=\"296\" stroke=\"var(--slate)\" stroke-width=\"1.2\"/>\n  <text x=\"86\" y=\"308\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--slate)\">320</text>\n  <line x1=\"64\" y1=\"307\" x2=\"108\" y2=\"279\" stroke=\"var(--accent)\" stroke-width=\"2\"/>\n  <text x=\"150\" y=\"297\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--accent)\">not the new amount</text>\n</svg>",
+    "cap": "A podcast climbs from \\(250\\) plays to \\(320\\). The gold slice is the change, \\(320 - 250 = 70\\), and the percent change is that change measured against where we started, \\(\\tfrac{70}{250} = 0.28 = 28\\%\\). Dividing by the new amount, \\(\\tfrac{70}{320}\\), is the trap, since the change is always compared to the original, never to where you landed."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A bamboo shoot stood \\(14\\) centimeters tall at dawn. Bamboo grows famously fast, and by the next dawn it had stretched to \\(35\\) centimeters. To find the percent change, take the change, \\(35 - 14 = 21\\) centimeters, and compare it to the <b>original</b> \\(14\\) centimeters. Watch the size of this jump. A true doubling, from \\(14\\) up to \\(28\\), would already be a \\(100\\%\\) increase, and this shoot grew even more than double, so the answer will sail right past \\(100\\%\\). What percent <b>increase</b> was this? Give the number only.",
+    "hints": [
+     "The change is \\(35 - 14 = 21\\) centimeters. For a percent change you always divide by the ORIGINAL amount, the \\(14\\) centimeters it started at, not the \\(35\\) it ended at.",
+     "Compute \\(\\tfrac{21}{14}\\) and turn it into a percent. Since \\(21\\) is more than \\(14\\), this fraction is bigger than \\(1\\), so the percent lands above \\(100\\%\\)."
+    ],
+    "ans": "150",
+    "accept": [
+     "150",
+     "150%",
+     "150.0",
+     "150.0%"
+    ],
+    "sol": "First find the change, \\(35 - 14 = 21\\) centimeters. A percent change is measured against the <b>original</b>, so divide by \\(14\\), not by \\(35\\). $$\\frac{35 - 14}{14} = \\frac{21}{14} = \\frac{3}{2} = 1.5$$ As a percent that is \\(150\\%\\). You can sanity check it with the multiplier. Going from \\(14\\) to \\(35\\) means multiplying by \\(\\tfrac{35}{14} = 2.5\\), and a multiplier of \\(2.5\\) is the same as \\(1 + 1.5\\), a \\(150\\%\\) increase. That fits the warning in the problem. A plain doubling to \\(28\\) would have been a \\(100\\%\\) increase, and this rose past double, so the percent climbs above \\(100\\%\\). \\(\\boxed{150}\\)"
+   },
+   {
+    "t": "imp",
+    "x": "When something doubles, you have added one whole extra copy of what you started with, so that is a \\(100\\%\\) increase, not \\(200\\%\\). Tripling adds two more copies, a \\(200\\%\\) increase. There is no top end at all, since any increase past \\(100\\%\\) just means the new amount has climbed past double the old, and an amount can keep growing as far as you like. A decrease is the opposite. It has a floor, because once you have lost \\(100\\%\\) there is nothing left to take, so a drop can never beat \\(100\\%\\) while a rise can run as high as the growth itself."
+   },
+   {
+    "t": "fact",
+    "x": "Here is a slippery little distinction that trips up even careful adults. Suppose a savings account pays \\(5\\%\\) one year and then \\(7\\%\\) the next. That jump is a rise of 2 PERCENTAGE POINTS, which is just the plain gap \\(7 - 5\\) between the two rates. But measured as a percent INCREASE it is much bigger, because you divide the gap by the original rate, and \\(2 \\div 5 = 0.40\\), a \\(40\\%\\) increase. Percentage points compare two rates by subtracting, while a percent change divides that gap by the original. This is exactly why a headline about a rate can sound tiny or huge depending on which one the writer reaches for, so when you read about rates moving, it pays to ask which kind of change they mean."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "The local-history shelf at a town library is overflowing this summer. After the librarians grew the collection by \\(20\\%\\) over last year, the shelf now holds \\(738\\) books. A volunteer wants to know last year's count and reaches for the obvious move, taking \\(20\\%\\) off the \\(738\\). Watch out, because that \\(20\\%\\) was measured against the OLD number, not the new \\(738\\). Finding the original before the increase, how many books were on the shelf last year?",
+    "hints": [
+     "The tempting wrong path is \\(738 - 20\\%\\) of \\(738 = 590.4\\), which is not even a whole number of books. The \\(20\\%\\) growth was a slice of last year's count, not of this year's. So the right question is what number, when grown by \\(20\\%\\), lands on \\(738\\).",
+     "A \\(20\\%\\) increase multiplies the original by \\(1.20\\), so \\(1.20 \\times \\text{original} = 738\\). To undo a multiplication, divide. Compute \\(738 \\div 1.20\\)."
+    ],
+    "ans": "615",
+    "accept": [
+     "615",
+     "615.0"
+    ],
+    "sol": "First see why subtracting fails. The wrong path gives \\(738 - 0.20 \\times 738 = 738 - 147.6 = 590.4\\), and a shelf cannot hold \\(590.4\\) books. The reason is that the \\(20\\%\\) was a slice of LAST year's count, not of this year's \\(738\\), so peeling \\(20\\%\\) off the new total takes off too much. Set it up with the multiplier instead. A \\(20\\%\\) increase means the new amount is \\(1.20\\) times the original, so $$1.20 \\times \\text{original} = 738.$$ Undo the multiplication by dividing both sides by \\(1.20\\), which gives \\(\\text{original} = 738 \\div 1.20 = 615\\). Check it by growing \\(615\\) by \\(20\\%\\), since \\(1.20 \\times 615 = 615 + 123 = 738\\), exactly the new count. Last year the shelf held \\(\\boxed{615}\\) books."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the thing I kept getting wrong until it clicked. To get back to the amount before a percent change, I divide the new amount by the multiplier, because the new amount is the original times that multiplier and dividing is what undoes a multiply. What I cannot do is just subtract the same percent off the new amount, since that percent was a slice of the smaller original, and subtracting it from the bigger new number peels off too much. So after a \\(20\\%\\) increase the new amount is \\(1.20\\) times the original, which means I divide by \\(1.20\\) to climb back, not knock \\(20\\%\\) off the new price."
+   },
+   {
+    "t": "prob",
+    "xp": 9,
+    "x": "A ferry line announced a \\(15\\%\\) fare cut, and now a full season pass costs \\(510\\) dollars. The cut took the old price and left behind \\(85\\%\\) of it. What was the original season pass price in dollars, before the decrease?",
+    "hints": [
+     "A \\(15\\%\\) decrease keeps \\(100\\% - 15\\% = 85\\%\\) of the original, so it multiplies the old price by \\(0.85\\) to give \\(510\\). The \\(510\\) is the new amount, not the original.",
+     "Since \\(\\text{original} \\times 0.85 = 510\\), undo the multiplier by dividing. Compute \\(510 \\div 0.85\\). Adding \\(15\\%\\) of \\(510\\) back on is the wrong move, because that \\(15\\%\\) would be a slice of the smaller current price, not of the original."
+    ],
+    "ans": "600",
+    "accept": [
+     "$600",
+     "$600.0",
+     "$600.00",
+     "600",
+     "600.0",
+     "600.00"
+    ],
+    "sol": "A \\(15\\%\\) decrease leaves \\(100\\% - 15\\% = 85\\%\\) of the original price, so the multiplier is \\(0.85\\). That multiplier acted on the old price to produce the current one, which means \\(\\text{original} \\times 0.85 = 510\\). To recover the original, divide the new amount by the multiplier. $$\\text{original} = \\frac{510}{0.85} = 600$$ Check it forward, \\(600 \\times 0.85 = 510\\), which matches. Notice why the tempting shortcut fails. Adding \\(15\\%\\) of \\(510\\) back gives \\(510 + 76.50 = 586.50\\), an overshoot, because \\(15\\%\\) of the smaller current price is smaller than \\(15\\%\\) of the original. The original season pass price was \\(\\boxed{600}\\) dollars."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A backyard bee colony has \\(200\\) workers. One warm, flower-filled week the colony grew by \\(30\\%\\). Then a cold snap hit, and the next week the colony shrank by \\(30\\%\\). A lot of people guess it must be right back at \\(200\\), since it went up \\(30\\%\\) and then down \\(30\\%\\). How many workers are in the colony at the end?",
+    "hints": [
+     "Do the two weeks in order, one change at a time. A \\(30\\%\\) increase multiplies by \\(1.30\\), so the boosted colony is \\(200 \\times 1.30\\). Whatever that comes to is the new starting size for week two.",
+     "For week two, a \\(30\\%\\) decrease multiplies by \\(0.70\\). The catch is that the \\(30\\%\\) is taken off the bigger boosted number, not off the original \\(200\\), so it removes more bees than the increase added."
+    ],
+    "ans": "182",
+    "accept": [
+     "182",
+     "182.0"
+    ],
+    "sol": "Handle the weeks in order, each as a multiplier. A \\(30\\%\\) increase multiplies by \\(1.30\\), and a \\(30\\%\\) decrease multiplies by \\(0.70\\). After week one, \\(200 \\times 1.30 = 260\\) workers. After week two, the cold snap takes \\(30\\%\\) off that boosted \\(260\\), so \\(260 \\times 0.70 = 182\\). Notice the two multipliers chain together as \\(1.30 \\times 0.70 = 0.91\\), which is less than \\(1\\), so the colony lands below where it began. The \\(30\\%\\) drop was taken from the larger number \\(260\\), so it stripped away more bees than the earlier \\(30\\%\\) boost had added. The colony ends at \\(\\boxed{182}\\) workers."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the surprise that two changes in a row hand you. When one percent change follows another, you do not add the percents, you <b>multiply the multipliers</b>, because the second change is taken of a different, bigger or smaller amount than the first. That is why a \\(p\\) percent increase and then a \\(p\\) percent decrease never lands you back at the start, since \\(\\left(1 + \\tfrac{p}{100}\\right)\\left(1 - \\tfrac{p}{100}\\right)\\) is always a hair under \\(1\\), leaving you a touch below where you began. The same multiplying is what drives steady growth, rising \\(10\\%\\) each period just means multiplying by \\(1.10\\) over and over."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 252\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Three vertical bars left to right showing a value going up by twenty percent and then down by twenty percent. The first bar, tagged start, has height 100. An up-arrow labelled times 1.20, a 20 percent increase, leads to the second bar, which is taller at 120. A down-arrow labelled times 0.80, a 20 percent decrease, leads to the third bar at 96, drawn slightly shorter than the first bar. A thin dashed line is drawn straight across at the original 100 level, and the final bar of 96 clearly sits below that dashed line, showing the value did not return to 100.\">\n  <text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">UP 20%, THEN DOWN 20%</text>\n  <line x1=\"32\" y1=\"60\" x2=\"408\" y2=\"60\" stroke=\"var(--line)\" stroke-width=\"1.2\" stroke-dasharray=\"4 4\"/>\n  <text x=\"408\" y=\"56\" text-anchor=\"end\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" fill=\"var(--slate)\">original 100</text>\n  <line x1=\"32\" y1=\"210\" x2=\"408\" y2=\"210\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <rect x=\"40\" y=\"60\" width=\"70\" height=\"150\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"75\" y=\"138\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--slate)\">100</text>\n  <text x=\"75\" y=\"228\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"var(--mid)\">start</text>\n  <rect x=\"185\" y=\"30\" width=\"70\" height=\"180\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"220\" y=\"120\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--gold-deep)\">120</text>\n  <rect x=\"330\" y=\"66\" width=\"70\" height=\"144\" fill=\"var(--soft)\" stroke=\"var(--line)\" stroke-width=\"1.3\"/>\n  <text x=\"365\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--slate)\">96</text>\n  <path d=\"M 120 96 Q 150 70 178 50\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <path d=\"M 178 50 l -8 0.5 l 5 6.2 z\" fill=\"var(--gold-deep)\"/>\n  <text x=\"150\" y=\"84\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#215; 1.20</text>\n  <text x=\"150\" y=\"97\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">+20%</text>\n  <path d=\"M 265 70 Q 295 86 323 110\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/>\n  <path d=\"M 323 110 l -7.5 -2.8 l -0.8 8 z\" fill=\"var(--slate)\"/>\n  <text x=\"296\" y=\"86\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--slate)\">&#215; 0.80</text>\n  <text x=\"296\" y=\"99\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9.5\" fill=\"var(--slate)\">&#8722;20%</text>\n</svg>",
+    "cap": "Going up \\(20\\%\\) then down \\(20\\%\\) does not undo itself. The rise multiplies by \\(1.20\\) and the cut multiplies by \\(0.80\\), and \\(1.20 \\times 0.80 = 0.96\\), so you land at \\(100 \\times 0.96 = 96\\), a hair below the dashed start line, not back at \\(100\\). The reason is that the \\(20\\%\\) cut came off the taller \\(120\\), which is \\(24\\), while the \\(20\\%\\) rise had added only \\(20\\). Same percent, different size to act on, so the trip down outweighs the trip up."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A town's recycling program collects \\(5{,}000\\) kilograms of material in its first quarter, and the coordinator expects each later quarter to bring in \\(10\\%\\) more than the one before. So each quarter the amount is multiplied by \\(1.10\\). After three more quarters the total has been multiplied by \\(1.10\\) three times in a row, which is \\(5{,}000 \\times 1.10 \\times 1.10 \\times 1.10\\). Watch the steps climb, and notice each jump is bigger than the last because each \\(10\\%\\) is a slice of a larger amount. With this repeated growth, how many kilograms are expected three quarters later, in the fourth quarter overall?",
+    "hints": [
+     "A \\(10\\%\\) increase multiplies the amount by \\(1.10\\). One quarter later it is \\(5{,}000 \\times 1.10\\). Each new quarter multiplies the previous quarter's amount by \\(1.10\\) again.",
+     "Three quarters later means three multipliers stacked, so compute \\(5{,}000 \\times 1.10 \\times 1.10 \\times 1.10\\). Take it one step at a time, \\(5{,}000\\) to \\(5{,}500\\) to \\(6{,}050\\), then once more."
+    ],
+    "ans": "6655",
+    "accept": [
+     "6,655",
+     "6,655.0",
+     "6655",
+     "6655.0"
+    ],
+    "sol": "A \\(10\\%\\) increase means multiplying by \\(1 + \\tfrac{10}{100} = 1.10\\). Since the same percent applies each quarter, I stack the same multiplier once for each step. Stepping through it, the second quarter is \\(5{,}000 \\times 1.10 = 5{,}500\\), the third quarter is \\(5{,}500 \\times 1.10 = 6{,}050\\), and the fourth quarter is \\(6{,}050 \\times 1.10 = 6{,}655\\). Notice the jumps grow, \\(500\\) then \\(550\\) then \\(605\\), because each \\(10\\%\\) is taken from a bigger amount than before. All three steps at once are $$5{,}000 \\times 1.10^3 = 5{,}000 \\times 1.331 = 6{,}655.$$ So three quarters later the program expects \\(\\boxed{6655}\\) kilograms."
+   },
+   {
+    "t": "p",
+    "x": "Notice that every move in this lesson has really been one number doing the work, a single multiplier. An increase is just a multiplier above \\(1\\), a decrease is a multiplier below \\(1\\), and a chain of changes is nothing more than those multipliers multiplied together in the order they happen. So the closing problem can throw a rise and then a partial reversal at you, two different percents working off two different starting amounts, and you will not have to guess whether the changes quietly cancel. You will just multiply the multipliers and read the answer straight off."
+   },
+   {
+    "t": "prob",
+    "xp": 12,
+    "x": "A weekend art class began its season with \\(400\\) students enrolled. A clip from one of the classes went viral, and enrollment shot up \\(50\\%\\) for the busy summer. When summer ended, the fall sign-up fell by \\(40\\%\\) from that summer peak. Notice that an up of \\(50\\%\\) and a down of \\(40\\%\\) do not just cancel, because each percent is taken off a different number. Working in order, what is the fall enrollment?",
+    "hints": [
+     "Do it in two steps, one change at a time. A \\(50\\%\\) increase multiplies by \\(1.50\\), so the summer peak is \\(400 \\times 1.50\\). Whatever that comes to, the fall drop of \\(40\\%\\) is measured off that peak, not off the original \\(400\\).",
+     "A \\(40\\%\\) decrease multiplies by \\(1 - 0.40 = 0.60\\), so multiply the summer peak by \\(0.60\\). If you like, chain the multipliers first, \\(1.50 \\times 0.60 = 0.90\\), which already tells you the fall figure lands at \\(90\\%\\) of the original, not back at \\(100\\%\\)."
+    ],
+    "ans": "360",
+    "accept": [
+     "360",
+     "360.0"
+    ],
+    "sol": "Take the two changes in order, each as a multiplier. The \\(50\\%\\) increase multiplies by \\(1 + 0.50 = 1.50\\), so the summer peak is $$400 \\times 1.50 = 600.$$ The fall drop of \\(40\\%\\) is taken off that peak, and a \\(40\\%\\) decrease multiplies by \\(1 - 0.40 = 0.60\\), so $$600 \\times 0.60 = 360.$$ Here is the punchline. The two changes do not cancel. Chaining the multipliers gives \\(1.50 \\times 0.60 = 0.90\\), which is a net \\(90\\%\\) of the starting \\(400\\), a \\(10\\%\\) drop overall. The reason is that the \\(50\\%\\) rise was figured on \\(400\\) but the \\(40\\%\\) fall was figured on the larger \\(600\\), so they sit on different bases and never quite undo each other. The fall enrollment is \\(\\boxed{360}\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "A small bakery sold \\(80\\) loaves on Tuesday. On Wednesday business picked up, and the bakery sold \\(15\\%\\) more than it did on Tuesday. How many loaves did the bakery sell on Wednesday?",
+    "ans": "92",
+    "accept": [
+     "92",
+     "92.0"
+    ],
+    "hints": [
+     "A \\(15\\%\\) increase means the new amount is the old amount plus \\(15\\%\\) of it. As a multiplier that is \\(1 + 0.15\\).",
+     "Multiply Tuesday's \\(80\\) loaves by the multiplier \\(1.15\\) to get Wednesday's total."
+    ],
+    "sol": "A \\(15\\%\\) increase multiplies the original by \\(1 + \\tfrac{15}{100} = 1.15\\), since the new amount is \\(100\\%\\) of Tuesday plus another \\(15\\%\\). So Wednesday's loaves are $$80 \\times 1.15 = 92.$$ You can check this the long way. \\(15\\%\\) of \\(80\\) is \\(0.15 \\times 80 = 12\\), and \\(80 + 12 = 92\\), which matches. The bakery sold \\(\\boxed{92}\\) loaves on Wednesday."
+   },
+   {
+    "ans": "175",
+    "x": "A winter jacket usually priced at \\(250\\) dollars is marked \\(30\\%\\) off in a clearance sale. That is a percent decrease, so the jacket keeps \\(70\\%\\) of its old price. What is the sale price, in dollars?",
+    "accept": [
+     "$175",
+     "$175.00",
+     "175",
+     "175.0",
+     "175.00"
+    ],
+    "hints": [
+     "Taking \\(30\\%\\) off leaves \\(100\\% - 30\\% = 70\\%\\) of the original price, so the multiplier is \\(0.70\\).",
+     "Multiply the old price by the decrease multiplier, \\(250 \\times 0.70\\)."
+    ],
+    "sol": "A \\(30\\%\\) decrease keeps \\(70\\%\\) of the price, so the multiplier is \\(1 - 0.30 = 0.70\\). Apply it to the original price. $$250 \\times 0.70 = 175$$ The sale price is \\(\\boxed{175}\\) dollars."
+   },
+   {
+    "ans": "870",
+    "x": "A stadium that held \\(600\\) fans expanded its seating, an <b>increase</b> of \\(45\\%\\). The new number of seats is \\(145\\%\\) of the old, so you can multiply by the factor \\(1.45\\). How many seats are there now?",
+    "accept": [
+     "870",
+     "870.0"
+    ],
+    "hints": [
+     "A \\(45\\%\\) increase keeps the original \\(100\\%\\) and adds \\(45\\%\\) more, so the new amount is \\(100\\% + 45\\% = 145\\%\\) of the old. As a multiplier that is \\(1 + 0.45 = 1.45\\).",
+     "Multiply the old capacity by that factor. Work out \\(600 \\times 1.45\\)."
+    ],
+    "sol": "A \\(45\\%\\) increase means the new seating is the whole \\(100\\%\\) plus another \\(45\\%\\), which is \\(145\\%\\) of the old amount. Written as a multiplier that is \\(1 + 0.45 = 1.45\\). Now multiply the original capacity by it. $$600 \\times 1.45 = 870$$ So the stadium now holds \\(\\boxed{870}\\) seats."
+   },
+   {
+    "ans": "35",
+    "x": "A bamboo shoot stood \\(40\\) centimeters tall in the morning. By evening it had shot up to \\(54\\) centimeters, a change of \\(14\\) centimeters. Divide that change by the ORIGINAL height and write it as a percent. What percent <b>increase</b> is this? Give the number only.",
+    "accept": [
+     "35",
+     "35%",
+     "35.0",
+     "35.0%"
+    ],
+    "hints": [
+     "A percent change always compares the change to where you started, so divide the \\(14\\) by the original \\(40\\), not by \\(54\\).",
+     "Work out \\(\\tfrac{14}{40}\\) as a decimal, then multiply by \\(100\\) to turn it into a percent."
+    ],
+    "sol": "The shoot climbed from \\(40\\) up to \\(54\\), so the change is \\(54 - 40 = 14\\) centimeters. For a percent change you compare that change to the ORIGINAL height, so divide by \\(40\\). That gives \\(\\tfrac{14}{40} = 0.35\\), and as a percent \\(0.35 \\times 100 = 35\\%\\). You can check it with the multiplier. A \\(35\\%\\) increase multiplies by \\(1 + \\tfrac{35}{100} = 1.35\\), and \\(40 \\times 1.35 = 54\\), which matches the evening height. So the increase is \\(\\boxed{35}\\)."
+   },
+   {
+    "x": "A reservoir held \\(900\\) megaliters of water. After a long dry spell the level dropped to \\(720\\) megaliters. The water fell by \\(900 - 720 = 180\\) megaliters. What percent <b>decrease</b> is this? Give the number only.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "20%",
+     "20.0",
+     "20.0%"
+    ],
+    "hints": [
+     "A percent change always compares the change to the ORIGINAL amount, not the amount you ended with. The drop is \\(180\\), and the original is \\(900\\), so look at \\(\\tfrac{180}{900}\\).",
+     "Think of the multiplier. The new level is \\(\\tfrac{720}{900}\\) of the original, which is \\(0.80\\), so the reservoir kept \\(80\\%\\) and lost the rest."
+    ],
+    "sol": "The change is the drop, \\(900 - 720 = 180\\) megaliters. For a percent change you divide the change by the ORIGINAL amount, which is \\(900\\), not by the new \\(720\\).\n\n$$\\frac{180}{900} = \\frac{1}{5} = 0.20$$\n\nSo the level fell by \\(20\\%\\). You can check this with the multiplier. The new amount over the original is \\(\\tfrac{720}{900} = 0.80\\), meaning the reservoir holds \\(80\\%\\) of what it did before, a \\(20\\%\\) decrease.\n\n\\(\\boxed{20}\\)"
+   },
+   {
+    "x": "A small startup tracked its customer count over one busy year. It began with \\(25\\) customers and finished with \\(75\\). That jump of \\(50\\) extra customers, measured against the original \\(25\\), is more than just a doubling. What percent INCREASE is this? Give the number only.",
+    "ans": "200",
+    "accept": [
+     "200",
+     "200%",
+     "200.0",
+     "200.0%"
+    ],
+    "hints": [
+     "Percent change always compares the change to the ORIGINAL amount, so divide by \\(25\\), not by \\(75\\). First find the change, which is \\(75 - 25\\).",
+     "The change is \\(50\\). Now compute \\(\\tfrac{50}{25}\\) and turn that into a percent by multiplying by \\(100\\). Notice the new amount is three times the old, a multiplier of \\(3\\)."
+    ],
+    "sol": "First find the change in customers, which is \\(75 - 25 = 50\\). For a percent increase you compare this change to the ORIGINAL amount, so divide by \\(25\\), not by \\(75\\). That gives \\(\\tfrac{50}{25} = 2\\), and \\(2\\) written as a percent is \\(2 \\times 100 = 200\\%\\). You can check this with the multiplier idea. The new count is \\(75\\), which is \\(\\tfrac{75}{25} = 3\\) times the old count, a multiplier of \\(3\\). A multiplier of \\(3\\) means \\(1 + 2\\), and that extra \\(2\\) is the \\(200\\%\\) increase sitting on top of the original \\(100\\%\\). So the percent increase is \\(\\boxed{200}\\)."
+   },
+   {
+    "x": "A road bike got pricier this spring. After a \\(25\\%\\) increase, it now sells for \\(\\$500\\). Watch the trap here, the \\(\\$500\\) is the price after the jump, so taking \\(25\\%\\) off \\(500\\) would NOT bring you back to the start. What was the original price in dollars?",
+    "ans": "400",
+    "accept": [
+     "$400",
+     "$400.00",
+     "400",
+     "400.0",
+     "400.00"
+    ],
+    "hints": [
+     "A \\(25\\%\\) increase multiplies the original by \\(1 + \\tfrac{25}{100} = 1.25\\). So \\(1.25\\) times the old price equals the new price of \\(500\\).",
+     "To undo the multiplier, divide the new price by it. Work out \\(500 \\div 1.25\\), and notice this is not the same as subtracting \\(25\\%\\) of \\(500\\)."
+    ],
+    "sol": "A \\(25\\%\\) increase scales the original price by the multiplier \\(1 + \\tfrac{25}{100} = 1.25\\). That means \\(1.25 \\times \\text{original} = 500\\). To find the original, divide the new price by the multiplier. $$\\text{original} = \\frac{500}{1.25} = 400$$ Quick check, \\(1.25 \\times 400 = 500\\), which matches. Notice that subtracting \\(25\\%\\) of \\(500\\) would give \\(375\\), the wrong answer, because the \\(25\\%\\) was taken on the smaller original, not on \\(500\\). The original price was \\(\\boxed{400}\\) dollars."
+   },
+   {
+    "x": "A furniture shop ran a clearance event and dropped the price of a sofa by \\(20\\%\\). After that decrease the sofa rings up at \\(480\\) dollars. Since the new price is a \\(20\\%\\) decrease from the original, it equals the original times the multiplier \\(1 - 0.20 = 0.80\\). What was the original price of the sofa, in dollars, before the decrease?",
+    "ans": "600",
+    "accept": [
+     "$600",
+     "$600.00",
+     "600",
+     "600.0",
+     "600.00"
+    ],
+    "hints": [
+     "A \\(20\\%\\) decrease multiplies the original by \\(1 - 0.20 = 0.80\\), so the sale price is \\(0.80\\) times the original. You know the sale price, and you want the original.",
+     "To undo the multiplier, divide the new price by it. Compute \\(480 \\div 0.80\\) to find the original."
+    ],
+    "sol": "A \\(20\\%\\) decrease means the sofa keeps \\(100\\% - 20\\% = 80\\%\\) of its price, so the multiplier is \\(1 - 0.20 = 0.80\\). That gives the relationship $$\\text{original} \\times 0.80 = 480.$$ To find the original, divide the new price by the multiplier rather than adding back \\(20\\%\\). $$\\text{original} = \\frac{480}{0.80} = 600.$$ As a check, a \\(20\\%\\) cut from \\(600\\) is \\(600 \\times 0.80 = 480\\), which matches. The original price was \\(\\boxed{600}\\) dollars."
+   },
+   {
+    "ans": "210",
+    "x": "A new vlogger started the month with \\(200\\) subscribers. Over the first month the channel grew, a \\(40\\%\\) increase. The next month was quieter and the count fell, a \\(25\\%\\) decrease from that new total. How many subscribers does the channel have at the end of the two months?",
+    "accept": [
+     "210",
+     "210.0"
+    ],
+    "hints": [
+     "A \\(40\\%\\) increase multiplies by \\(1.40\\), and a \\(25\\%\\) decrease multiplies by \\(0.75\\). Each change works on whatever the count is right then, so apply them one after the other.",
+     "First find the count after month one by taking \\(200 \\times 1.40\\). Then multiply that result by \\(0.75\\) for month two. Do not just cancel the \\(40\\%\\) against the \\(25\\%\\)."
+    ],
+    "sol": "A \\(40\\%\\) increase scales by \\(1 + 0.40 = 1.40\\), and a \\(25\\%\\) decrease scales by \\(1 - 0.25 = 0.75\\). Apply them in order to the starting count of \\(200\\). After the first month the channel has \\(200 \\times 1.40 = 280\\) subscribers. After the second month it has \\(280 \\times 0.75 = 210\\) subscribers. Notice that gaining \\(40\\%\\) then losing \\(25\\%\\) did not land back at \\(200\\), because the \\(25\\%\\) drop came off the larger number \\(280\\). The final count is \\(\\boxed{210}\\)."
+   },
+   {
+    "x": "A backyard koi pond starts the morning holding \\(2{,}000\\) liters. A steady spring feeds it, and each day the volume rises by \\(20\\%\\) over what it held the day before. Since this is an increase, every day multiplies the volume by \\(1.20\\). How many liters does the pond hold after three full days of this growth?",
+    "ans": "3456",
+    "accept": [
+     "3,456",
+     "3,456.0",
+     "3456",
+     "3456.0"
+    ],
+    "hints": [
+     "A 20 percent increase means the new volume is 120 percent of the old one, so each day multiplies by \\(1.20\\). Three days in a row means doing that multiply three times.",
+     "Compute \\(1.20^3\\) first, then multiply by the starting \\(2{,}000\\) liters. You can also step through it day by day if that feels clearer."
+    ],
+    "sol": "A \\(20\\%\\) increase multiplies by \\(1 + \\tfrac{20}{100} = 1.20\\), and three days of growth means applying that multiplier three times. So the final volume is $$2{,}000 \\times 1.20 \\times 1.20 \\times 1.20 = 2{,}000 \\times 1.20^3.$$ Stepping through it, day one gives \\(2{,}000 \\times 1.20 = 2{,}400\\), day two gives \\(2{,}400 \\times 1.20 = 2{,}880\\), and day three gives \\(2{,}880 \\times 1.20 = 3{,}456\\). The pond holds \\(\\boxed{3456}\\) liters after three days."
+   },
+   {
+    "x": "A factory used \\(1{,}500\\) kilowatt-hours of electricity last month. This month the team tightened things up and cut their usage by \\(8\\%\\), a decrease. How many kilowatt-hours did the factory use this month?",
+    "ans": "1380",
+    "accept": [
+     "1,380",
+     "1380",
+     "1380 kWh",
+     "1380.0"
+    ],
+    "hints": [
+     "A decrease keeps the rest of the original. If you let go of \\(8\\%\\), how much do you hold onto?",
+     "Keeping \\(92\\%\\) means multiplying the original by the multiplier \\(0.92\\)."
+    ],
+    "sol": "An \\(8\\%\\) decrease leaves \\(100\\% - 8\\% = 92\\%\\) of the original, so the multiplier is \\(0.92\\). Multiply the original amount by it. $$1{,}500 \\times 0.92 = 1{,}380$$ So this month the factory used \\(\\boxed{1380}\\) kilowatt-hours."
+   },
+   {
+    "x": "A scout troop grew over the year. It started with \\(120\\) members and rose to \\(156\\). The number of new members is the change, \\(156 - 120 = 36\\). Divide that change by the <b>original</b> \\(120\\) and write it as a percent. What percent <b>increase</b> is this? Give the number only.",
+    "ans": "30",
+    "accept": [
+     "30",
+     "30%",
+     "30.0",
+     "30.0%"
+    ],
+    "hints": [
+     "Percent change always divides the change by the amount you started with, so use \\(\\tfrac{36}{120}\\), not \\(\\tfrac{36}{156}\\).",
+     "Work out \\(36 \\div 120 = 0.30\\), then turn that decimal into a percent by reading off the hundredths."
+    ],
+    "sol": "The change is \\(156 - 120 = 36\\) members. For a percent change you divide the change by the <b>original</b> amount, so $$\\frac{36}{120} = 0.30.$$ A decimal of \\(0.30\\) is \\(30\\%\\), which means the troop multiplied by \\(1.30\\). You can check it, since \\(120 \\times 1.30 = 156\\). So this is a \\(30\\%\\) increase, and the answer is \\(\\boxed{30}\\)."
+   },
+   {
+    "x": "A camping tent went through a \\(40\\%\\) markdown, which is a decrease, and now sells for \\(90\\) dollars. Because the price dropped by \\(40\\%\\), the sale price is \\(60\\%\\) of what the tent cost before the markdown. What was the original price in dollars?",
+    "ans": "150",
+    "accept": [
+     "$150",
+     "$150.00",
+     "150",
+     "150.0",
+     "150.00"
+    ],
+    "hints": [
+     "A \\(40\\%\\) decrease multiplies the original by \\(1 - 0.40\\), so the sale price is \\(0.60\\) times the original.",
+     "To undo the multiplier, divide the new price by it. Work out \\(90 \\div 0.60\\)."
+    ],
+    "sol": "A \\(40\\%\\) decrease uses the multiplier \\(1 - 0.40 = 0.60\\), so the sale price equals \\(0.60\\) times the original price. That gives \\(0.60 \\times \\text{original} = 90\\). To find the original, divide the new price by the multiplier, not by subtracting the percent back. So \\(\\text{original} = \\tfrac{90}{0.60} = 150\\). Check it by taking \\(40\\%\\) off, \\(150 - 0.40 \\times 150 = 150 - 60 = 90\\), which matches the sale price. The original price was \\(\\boxed{150}\\) dollars."
+   },
+   {
+    "ans": "480",
+    "x": "A club started with \\(500\\) dollars in its fund. A fundraiser pushed the fund up by a \\(20\\%\\) increase, and then supply costs pulled it down by a \\(20\\%\\) decrease. You can find the result by multiplying \\(500\\) by \\(1.20\\) and then by \\(0.80\\). How many dollars are left in the fund?",
+    "accept": [
+     "$480",
+     "$480.00",
+     "480",
+     "480.0",
+     "480.00"
+    ],
+    "hints": [
+     "A \\(20\\%\\) increase multiplies by \\(1.20\\), and a \\(20\\%\\) decrease multiplies by \\(0.80\\). Apply them one after the other to the \\(500\\).",
+     "First find \\(500 \\times 1.20\\) to get the amount after the fundraiser, then multiply that result by \\(0.80\\) for the drop from supply costs."
+    ],
+    "sol": "The fundraiser is a \\(20\\%\\) increase, so it multiplies by \\(1 + 0.20 = 1.20\\). The supply costs are a \\(20\\%\\) decrease, so they multiply by \\(1 - 0.20 = 0.80\\). Stack the two changes by multiplying the multipliers. $$500 \\times 1.20 \\times 0.80 = 600 \\times 0.80 = 480$$ Notice the fund lands below \\(500\\), not back at it, because the \\(20\\%\\) drop is taken from the larger \\(600\\), so it removes more than the \\(20\\%\\) that was added to the original \\(500\\). The fund has \\(\\boxed{480}\\) dollars left."
+   }
+  ],
+  "next": "9.4"
  }
 }
