@@ -523,5 +523,525 @@
    }
   ],
   "next": "10.2"
+ },
+ "10.2": {
+  "title": "The Multiplication Principle",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Last lesson, we counted by sorting things into cases. We added the cases up, and when groups overlapped, we subtracted the part we had counted twice. That was one way to count. Now we are going to ask a different kind of question. Instead of asking how many things are in this pile or that pile, we want to know how many ways there are to build one thing out of a few steps. Like picking an outfit, where first you choose a shirt and then you choose pants. Each choice is its own little step, and we want to count all the finished outfits. Do not worry, this is still just careful counting. We are only going to be smart about the order we count in."
+   },
+   {
+    "t": "prob",
+    "x": "You are packing for a trip and you grab \\(5\\) shirts and \\(4\\) pairs of pants. Each morning you want one outfit, which is just one shirt worn with one pair of pants. You start to wonder how many days you could go before you have to repeat the exact same outfit. Picture laying every shirt on the bed and trying it with each pair of pants, then doing the same for the next shirt, and the next. How many different outfits can you make, one shirt with one pair of pants?",
+    "xp": 6,
+    "hints": [
+     "Pick just one shirt for a moment and hold it still. With that single shirt in your hand, how many different outfits can you build by trying each of the \\(4\\) pairs of pants with it?",
+     "One shirt gives \\(4\\) outfits. Now you have \\(5\\) shirts, and every shirt gets its own group of \\(4\\) outfits, with no outfit ever shared between two shirts. So you are stacking up \\(5\\) groups that each hold \\(4\\) outfits.",
+     "You have \\(5\\) equal groups of \\(4\\) outfits, so add \\(4+4+4+4+4\\), which is the same as the product \\(5 \\times 4\\)."
+    ],
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0"
+    ],
+    "sol": "Start small and hold one shirt still. With that one shirt you can pair it with the first pair of pants, or the second, or the third, or the fourth, and that is \\(4\\) different outfits from a single shirt. Now notice that the next shirt gives its own fresh batch of \\(4\\) outfits, and none of those repeat the first shirt's outfits, because the shirt is different every time. So shirt one gives \\(4\\) outfits, shirt two gives \\(4\\) more, and so on for all \\(5\\) shirts. That is \\(5\\) equal groups of \\(4\\), so add \\(4+4+4+4+4=20\\), which is just \\(5 \\times 4 = 20\\). You could wear a new outfit every day for \\(20\\) days before repeating one. So the number of different outfits is $$\\boxed{20}.$$"
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A branching tree for building an outfit from 4 shirts and 2 pants. On the left a single start dot splits into 4 shirt branches, labelled S1, S2, S3, and S4. From the tip of each shirt branch, 2 fresh pant branches sprout, each ending in a pants choice A or B, so every shirt fans out into the same 2 pants. This makes 4 identical groups of 2 endpoints, which is 8 endpoints in all. The arithmetic below reads 4 groups of 2 equals 4 times 2 equals 8 outfits.\">\n  <text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"var(--mid)\">EACH SHIRT FANS OUT INTO THE SAME 2 PANTS</text>\n\n  <circle cx=\"38\" cy=\"160\" r=\"6\" fill=\"var(--slate)\"/>\n  <text x=\"38\" y=\"186\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--mid)\">start</text>\n\n  <line x1=\"44\" y1=\"160\" x2=\"148\" y2=\"58\" stroke=\"var(--slate)\" stroke-width=\"1.8\"/>\n  <line x1=\"44\" y1=\"160\" x2=\"148\" y2=\"126\" stroke=\"var(--slate)\" stroke-width=\"1.8\"/>\n  <line x1=\"44\" y1=\"160\" x2=\"148\" y2=\"194\" stroke=\"var(--slate)\" stroke-width=\"1.8\"/>\n  <line x1=\"44\" y1=\"160\" x2=\"148\" y2=\"262\" stroke=\"var(--slate)\" stroke-width=\"1.8\"/>\n\n  <g font-size=\"10.5\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">\n    <circle cx=\"158\" cy=\"58\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"158\" y=\"62\" font-family=\"Inter, sans-serif\">S1</text>\n    <circle cx=\"158\" cy=\"126\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"158\" y=\"130\" font-family=\"Inter, sans-serif\">S2</text>\n    <circle cx=\"158\" cy=\"194\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"158\" y=\"198\" font-family=\"Inter, sans-serif\">S3</text>\n    <circle cx=\"158\" cy=\"262\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><text x=\"158\" y=\"266\" font-family=\"Inter, sans-serif\">S4</text>\n  </g>\n\n  <line x1=\"173\" y1=\"58\"  x2=\"286\" y2=\"40\"  stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"58\"  x2=\"286\" y2=\"78\"  stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"126\" x2=\"286\" y2=\"108\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"126\" x2=\"286\" y2=\"146\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"194\" x2=\"286\" y2=\"176\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"194\" x2=\"286\" y2=\"214\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"262\" x2=\"286\" y2=\"244\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <line x1=\"173\" y1=\"262\" x2=\"286\" y2=\"282\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n\n  <g font-size=\"9.5\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">\n    <circle cx=\"299\" cy=\"40\"  r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"43\" font-family=\"Inter, sans-serif\">A</text>\n    <circle cx=\"299\" cy=\"78\"  r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"81\" font-family=\"Inter, sans-serif\">B</text>\n    <circle cx=\"299\" cy=\"108\" r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"111\" font-family=\"Inter, sans-serif\">A</text>\n    <circle cx=\"299\" cy=\"146\" r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"149\" font-family=\"Inter, sans-serif\">B</text>\n    <circle cx=\"299\" cy=\"176\" r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"179\" font-family=\"Inter, sans-serif\">A</text>\n    <circle cx=\"299\" cy=\"214\" r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"217\" font-family=\"Inter, sans-serif\">B</text>\n    <circle cx=\"299\" cy=\"244\" r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"247\" font-family=\"Inter, sans-serif\">A</text>\n    <circle cx=\"299\" cy=\"282\" r=\"13\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/><text x=\"299\" y=\"285\" font-family=\"Inter, sans-serif\">B</text>\n  </g>\n\n  <g>\n    <path d=\"M 320 30 C 330 30 330 59 340 59 C 330 59 330 88 320 88\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/>\n    <text x=\"350\" y=\"63\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">2</text>\n    <path d=\"M 320 98 C 330 98 330 127 340 127 C 330 127 330 156 320 156\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/>\n    <text x=\"350\" y=\"131\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">2</text>\n    <path d=\"M 320 166 C 330 166 330 195 340 195 C 330 195 330 224 320 224\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/>\n    <text x=\"350\" y=\"199\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">2</text>\n    <path d=\"M 320 234 C 330 234 330 263 340 263 C 330 263 330 292 320 292\" fill=\"none\" stroke=\"var(--gold2)\" stroke-width=\"1.4\"/>\n    <text x=\"350\" y=\"267\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--gold-deep)\">2</text>\n  </g>\n\n  <text x=\"220\" y=\"310\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">4 groups of 2 = 4 &#215; 2 = 8 outfits</text>\n</svg>",
+    "cap": "Building an outfit from \\(4\\) shirts and \\(2\\) pants, drawn as a tree. The trunk splits into \\(4\\) shirt branches, one for each shirt. Then from the tip of every shirt the same \\(2\\) pant branches sprout, A and B. So each shirt makes its own little group of \\(2\\) endpoints, and there are \\(4\\) of those identical groups. Counting the tips gives \\(4\\) groups of \\(2\\), which is \\(4 \\times 2 = 8\\) outfits in all."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A grid showing outfit choices. Across the top are two columns headed Jeans and Shorts, the two pants. Down the left side are three rows headed Red, Blue, and Green, the three shirts. The six inner cells are each one outfit, such as Red with Jeans or Blue with Shorts. A label on the left reads 3 shirts and a label on the top reads 2 pants. Below the grid the math reads 3 rows times 2 columns equals 6 cells, so there are 6 outfits, the same as counting the area of the grid.\"><text x=\"220\" y=\"26\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">The outfit grid</text><text x=\"270\" y=\"55\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">2 pants</text><rect x=\"150\" y=\"62\" width=\"105\" height=\"34\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"202.5\" y=\"84\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\" text-anchor=\"middle\">Jeans</text><rect x=\"262\" y=\"62\" width=\"105\" height=\"34\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"314.5\" y=\"84\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\" text-anchor=\"middle\">Shorts</text><text x=\"56\" y=\"178\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"600\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" transform=\"rotate(-90 56 178)\">3 shirts</text><rect x=\"72\" y=\"104\" width=\"70\" height=\"40\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"107\" y=\"129\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\" text-anchor=\"middle\">Red</text><rect x=\"150\" y=\"104\" width=\"105\" height=\"40\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/><text x=\"202.5\" y=\"129\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\" text-anchor=\"middle\">Red, Jeans</text><rect x=\"262\" y=\"104\" width=\"105\" height=\"40\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/><text x=\"314.5\" y=\"129\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\" text-anchor=\"middle\">Red, Shorts</text><rect x=\"72\" y=\"148\" width=\"70\" height=\"40\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"107\" y=\"173\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\" text-anchor=\"middle\">Blue</text><rect x=\"150\" y=\"148\" width=\"105\" height=\"40\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/><text x=\"202.5\" y=\"173\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\" text-anchor=\"middle\">Blue, Jeans</text><rect x=\"262\" y=\"148\" width=\"105\" height=\"40\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/><text x=\"314.5\" y=\"173\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\" text-anchor=\"middle\">Blue, Shorts</text><rect x=\"72\" y=\"192\" width=\"70\" height=\"40\" rx=\"5\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><text x=\"107\" y=\"217\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\" text-anchor=\"middle\">Green</text><rect x=\"150\" y=\"192\" width=\"105\" height=\"40\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/><text x=\"202.5\" y=\"217\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\" text-anchor=\"middle\">Green, Jeans</text><rect x=\"262\" y=\"192\" width=\"105\" height=\"40\" rx=\"5\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/><text x=\"314.5\" y=\"217\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--ink)\" text-anchor=\"middle\">Green, Shorts</text><text x=\"220\" y=\"268\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--ink)\" text-anchor=\"middle\">3 rows &#215; 2 columns = 6 cells</text><text x=\"220\" y=\"288\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"middle\">6 squares means 6 outfits</text></svg>",
+    "cap": "Here the same outfits sit in a grid instead of a tree. The \\(3\\) shirts run down the side as rows and the \\(2\\) pants run across the top as columns. Every inner square is one outfit, like Red with Jeans, and there are \\(3\\) rows of \\(2\\), so the squares fill an area of \\(3 \\times 2 = 6\\). Counting the grid gives the same \\(6\\) outfits the tree found, which is why we just multiply."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the Multiplication Principle. When a task is built from a series of independent stages, and each stage can be done in some number of ways, you find the total number of ways by multiplying the per-stage counts together. The reason is simple. Every choice you make at one stage opens up a fresh, full set of choices at the next stage, so the counts pile up by multiplying. With \\(a\\) ways for the first stage and \\(b\\) ways for the second, you get \\(a \\times b\\) ways in all."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, the slot-and-box habit. Once you trust the tree you can stop drawing it. Draw one empty box for each stage, write inside each box how many options that stage has, and multiply straight across. That one little strip of boxes is all you need from here on, and it will carry every case in this lesson, from secret codes to choosing club officers to seating people with rules about where they sit."
+   },
+   {
+    "t": "prob",
+    "x": "A boy is getting dressed and wants to pick one dress shirt and one tie. He has \\(6\\) dress shirts to choose from. His ties come in two batches, \\(3\\) of them in solid colors and \\(4\\) of them in stripes. If he pairs any shirt with any tie, how many different shirt-and-tie combinations can he make?",
+    "xp": 7,
+    "hints": [
+     "Before you can multiply, you need to know how many ties he really has. The ties are split into two groups, so figure out the single total first.",
+     "This is a two-stage choice, one shirt and then one tie, so the slot-and-box strip says multiply the count in each slot. The shirt slot is \\(6\\). The tie slot is the \\(3\\) solid ties and the \\(4\\) striped ties combined into one number.",
+     "Add the ties with \\(3 + 4\\) to fill the tie slot, then multiply by the \\(6\\) shirts."
+    ],
+    "ans": "42",
+    "accept": [
+     "42",
+     "42.0"
+    ],
+    "sol": "Picking an outfit happens in two stages, first a shirt and then a tie, so we will use the slot-and-box strip with one box for each choice. The shirt box is easy, since there are \\(6\\) shirts to choose from. The tie box needs a little work first, because the ties came to us in two groups. There are \\(3\\) solid ties and \\(4\\) striped ties, and any of them counts as a tie he could wear, so the real number of ties is \\(3 + 4 = 7\\). Now both boxes are filled in, with \\(6\\) for the shirt and \\(7\\) for the tie. The multiplication principle says multiply the boxes together, which gives \\(6 \\times 7 = 42\\). So he can put together \\(42\\) different shirt-and-tie combinations. The thing to notice is that the adding happened inside one stage to build that stage's count, and the multiplying happened across the two stages. $$\\boxed{42}$$"
+   },
+   {
+    "t": "prob",
+    "x": "A small diner serves a three-course dinner, and you build your meal by choosing one of each course. There are \\(4\\) appetizers to start, then \\(3\\) main dishes, and finally \\(5\\) desserts. Every appetizer can be paired with every main dish, and every one of those pairs can be finished off with any of the desserts. How many different three-course dinners can you build in all?",
+    "xp": 7,
+    "hints": [
+     "Think of it as filling three slots in a row, one for the appetizer, one for the main dish, and one for the dessert. How many choices does each slot have on its own?",
+     "With the multiplication principle you do not add the choices, you multiply them, since each appetizer can team up with each main dish, and each of those can team up with each dessert. So multiply the three counts together.",
+     "Multiply the slots in order. First do \\(4 \\times 3\\) for the appetizer and main dish, then multiply that result by the \\(5\\) desserts."
+    ],
+    "ans": "60",
+    "accept": [
+     "60",
+     "60.0"
+    ],
+    "sol": "Picture three slots to fill, one for each course, and count the choices for each. The appetizer slot has \\(4\\) choices, the main dish slot has \\(3\\), and the dessert slot has \\(5\\).\n\nThe multiplication principle says that when you make a string of independent choices, you multiply the number of choices at each step. Here is why. Each of the \\(4\\) appetizers can be paired with any of the \\(3\\) main dishes, which already gives \\(4 \\times 3 = 12\\) two-course starts. Then each of those \\(12\\) starts can be finished with any of the \\(5\\) desserts, so you multiply once more by \\(5\\).\n\nThat gives $$4 \\times 3 \\times 5 = 12 \\times 5 = 60.$$\n\nSo there are \\(\\boxed{60}\\) different three-course dinners. Adding one more course just means multiplying by one more factor."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A row of three labeled boxes for building a lunch. The first box is drink and holds the number 4, the second box is sandwich and holds the number 2, the third box is side and holds the number 2. A small times sign sits between each box. Below the row the product reads 4 times 2 times 2 equals 16.\">\n  <text x=\"220\" y=\"28\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">Build a lunch</text>\n\n  <!-- Box 1: drink -->\n  <rect x=\"24\" y=\"58\" width=\"96\" height=\"72\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n  <text x=\"72\" y=\"50\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\">drink</text>\n  <text x=\"72\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"32\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4</text>\n\n  <!-- times -->\n  <text x=\"148\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"24\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n  <!-- Box 2: sandwich -->\n  <rect x=\"176\" y=\"58\" width=\"96\" height=\"72\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n  <text x=\"224\" y=\"50\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\">sandwich</text>\n  <text x=\"224\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"32\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">2</text>\n\n  <!-- times -->\n  <text x=\"300\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"24\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n  <!-- Box 3: side (adding it changes nothing) -->\n  <rect x=\"328\" y=\"58\" width=\"96\" height=\"72\" rx=\"10\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2.5\"/>\n  <text x=\"376\" y=\"50\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\">side</text>\n  <text x=\"376\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"32\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">2</text>\n\n  <!-- product line -->\n  <text x=\"220\" y=\"172\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4 &#215; 2 &#215; 2 = 16</text>\n  <text x=\"376\" y=\"150\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" font-style=\"italic\">same habit</text>\n</svg>",
+    "cap": "Each box is one choice you make. There are \\(4\\) drinks, then \\(2\\) sandwiches, then \\(2\\) sides. A third box does not change the habit one bit, you still multiply straight across, and you get \\(4 \\times 2 \\times 2 = 16\\) different lunches."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA. The Multiplication Principle does not care how long the row of boxes gets. Two stages or three or four or more, the move is always the same. You count the choices for each stage and you multiply straight across the whole row."
+   },
+   {
+    "t": "prob",
+    "x": "A video game lets you build a hero by picking one thing from each of four menus. There are \\(2\\) body types, then \\(3\\) hair styles, then \\(4\\) outfits, and finally \\(6\\) weapons. Every hero is exactly one choice from each menu, and changing any single choice makes a different hero. How many different heroes can you build?",
+    "xp": 7,
+    "hints": [
+     "Building a hero is four separate decisions in a row, one for each menu, so set up four slots and write the number of choices that fit in each one.",
+     "When a job is made of stages done one after another, and the choices at each stage do not change the choices at the next, you multiply the slot numbers together instead of adding them.",
+     "Your four slots hold \\(2\\), \\(3\\), \\(4\\), and \\(6\\), so multiply \\(2 \\times 3 \\times 4 \\times 6\\) to get the total."
+    ],
+    "ans": "144",
+    "accept": [
+     "144",
+     "144.0"
+    ],
+    "sol": "Building one hero is really four small choices made in a row, so draw four slots, one for each menu. The first slot is the body type with \\(2\\) choices, the second is the hair style with \\(3\\) choices, the third is the outfit with \\(4\\) choices, and the fourth is the weapon with \\(6\\) choices.\n\nBecause the choices happen in stages and picking a body type does not shrink your hair options, and picking hair does not shrink your outfit options, and so on, you multiply the slots together rather than adding them. Each body type can be paired with each hair style, each of those can be paired with each outfit, and each of those can be paired with each weapon.\n\nSo the total is $$2 \\times 3 \\times 4 \\times 6.$$ Multiply step by step and you get \\(2 \\times 3 = 6\\), then \\(6 \\times 4 = 24\\), then \\(24 \\times 6 = 144\\). That is the multiplication principle stretched across four stages, and it gives $$\\boxed{144}$$ different heroes."
+   },
+   {
+    "t": "prob",
+    "x": "A simple toy lock has \\(3\\) dials in a row, and each dial shows one of \\(6\\) colored symbols. The same symbol is allowed to appear on more than one dial. How many different \\(3\\)-symbol codes can the lock show?",
+    "xp": 7,
+    "hints": [
+     "Picture the lock as \\(3\\) slots side by side. For each slot, ask how many symbols could go there. Since a symbol can repeat, choosing it for one dial does not stop you from using it again on the next.",
+     "Use the multiplication principle. Count the choices for the first dial, then the second, then the third, and multiply those counts together to get the total number of codes.",
+     "Each dial has \\(6\\) choices, and the choices stay the same because repeats are allowed. So the total is \\(6 \\times 6 \\times 6\\). Work out that product."
+    ],
+    "ans": "216",
+    "accept": [
+     "216",
+     "216.0"
+    ],
+    "sol": "Think of the lock as a strip of \\(3\\) slots, one for each dial. The first dial can show any of the \\(6\\) symbols, so there are \\(6\\) choices for slot one. Now here is the key. A symbol can appear on more than one dial, so picking a symbol for the first dial does not use it up. The second dial still has all \\(6\\) symbols to choose from, and so does the third. Reusing a symbol is allowed, which keeps the count at \\(6\\) every time.\n\nBy the multiplication principle we multiply the choices for each slot, which gives $$6 \\times 6 \\times 6 = 6^3 = 216.$$\n\nSo the lock can show \\(\\boxed{216}\\) different \\(3\\)-symbol codes."
+   },
+   {
+    "t": "imp",
+    "x": "When repeats are allowed, using a symbol in one box does not use it up, so every box stays full. If all \\(n\\) boxes each hold the same \\(k\\) options, you multiply \\(k\\) by itself \\(n\\) times, and you get \\(k^n\\). When repeats are not allowed, each pick gets used up and the counts step down by one, and that stepping-down feeling is exactly what sets up arrangements next."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two rows of four boxes compare codes made from four symbols. The top row, repeats allowed, has the number four in every box, so four times four times four times four equals 256. The bottom row, no repeats, steps down four, three, two, one because each symbol gets used up, which is four factorial.\">\n  <text x=\"220\" y=\"26\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">A 4-spot code from 4 symbols</text>\n\n  <text x=\"20\" y=\"62\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\">Repeats allowed</text>\n\n  <g>\n    <rect x=\"20\" y=\"72\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n    <text x=\"49\" y=\"109\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4</text>\n    <text x=\"92\" y=\"108\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n    <rect x=\"106\" y=\"72\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n    <text x=\"135\" y=\"109\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4</text>\n    <text x=\"178\" y=\"108\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n    <rect x=\"192\" y=\"72\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n    <text x=\"221\" y=\"109\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4</text>\n    <text x=\"264\" y=\"108\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n    <rect x=\"278\" y=\"72\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n    <text x=\"307\" y=\"109\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4</text>\n    <text x=\"350\" y=\"108\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">=</text>\n\n    <text x=\"396\" y=\"108\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">256</text>\n  </g>\n\n  <text x=\"20\" y=\"180\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"var(--slate)\">No repeats</text>\n\n  <g>\n    <rect x=\"20\" y=\"190\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n    <text x=\"49\" y=\"227\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4</text>\n    <text x=\"92\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n    <rect x=\"106\" y=\"190\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n    <text x=\"135\" y=\"227\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">3</text>\n    <text x=\"178\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n    <rect x=\"192\" y=\"190\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n    <text x=\"221\" y=\"227\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">2</text>\n    <text x=\"264\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n    <rect x=\"278\" y=\"190\" width=\"58\" height=\"58\" rx=\"8\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n    <text x=\"307\" y=\"227\" font-family=\"Inter, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">1</text>\n    <text x=\"350\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"var(--mid)\" text-anchor=\"middle\">=</text>\n\n    <text x=\"396\" y=\"226\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4!</text>\n  </g>\n\n  <text x=\"220\" y=\"278\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--mid)\" text-anchor=\"middle\">Each pick uses up a symbol, so the choices step down.</text>\n</svg>",
+    "cap": "Both strips fill the same four boxes, but the rule for each box is different. On the top strip repeats are allowed, so every box still has all \\(4\\) symbols to choose from, and you get \\(4 \\times 4 \\times 4 \\times 4 = 256\\). On the bottom strip no repeats are allowed, so once a symbol is used it is gone. The first box has \\(4\\) choices, then \\(3\\), then \\(2\\), then the last box has only \\(1\\) symbol left, which gives \\(4 \\times 3 \\times 2 \\times 1\\). That stepping-down product is exactly what \\(4!\\) means."
+   },
+   {
+    "t": "prob",
+    "x": "A license plate has 2 letters followed by 2 digits, in that order, like \\(AB12\\). Any of the \\(26\\) letters can go in each letter spot, and any of the \\(10\\) digits can go in each digit spot. Repeats are allowed, so a plate like \\(BB55\\) is fine. How many different license plates are possible?",
+    "xp": 8,
+    "hints": [
+     "Picture the plate as four empty slots in a row, two for letters and two for digits. Each slot gets filled on its own, so think about how many choices live in each one.",
+     "Use the multiplication principle. Count the choices for each slot separately, then multiply all four counts together. Because repeats are allowed, a slot does not lose any choices from the slots before it.",
+     "A letter slot has \\(26\\) choices and a digit slot has \\(10\\) choices, so the count is \\(26 \\times 26 \\times 10 \\times 10\\). Multiply these to finish."
+    ],
+    "ans": "67600",
+    "accept": [
+     "67600",
+     "67600.0"
+    ],
+    "sol": "Draw four slots, one for each spot on the plate, in the order letter, letter, digit, digit. Now count the choices for each slot on its own.\n\nThe first slot is a letter, so it has \\(26\\) choices. The second slot is also a letter with repeats allowed, so it has \\(26\\) choices too. The third slot is a digit, which gives \\(10\\) choices, and the fourth slot is a digit as well, so another \\(10\\) choices.\n\nBy the multiplication principle you multiply the choices across all four slots, which gives\n$$26 \\times 26 \\times 10 \\times 10.$$\n\nWork it in steps. The two letter slots give \\(26 \\times 26 = 676\\). The two digit slots give \\(10 \\times 10 = 100\\). Then \\(676 \\times 100 = 67600\\).\n\nSo the number of different license plates is \\(\\boxed{67600}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "You have \\(6\\) different books, all by different authors, and you want to line them up left to right on a single shelf. Every book gets used and each one sits in its own spot. You start wondering just how many different orders you could put them in. How many different orders are there for the \\(6\\) books?",
+    "xp": 7,
+    "hints": [
+     "Picture the shelf as \\(6\\) empty slots in a row, one for each spot from left to right. Filling the slots one at a time is far easier than trying to list every arrangement by hand.",
+     "Use the slot-and-box habit. Count the choices for the first slot, then the second, and so on, and multiply all the counts together. The key is that once a book is placed it is gone, so each slot has one fewer choice than the slot before it.",
+     "The first slot has \\(6\\) books to choose from, the next has \\(5\\) left, then \\(4\\), then \\(3\\), then \\(2\\), and the last slot has just \\(1\\) book remaining, so multiply \\(6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1\\)."
+    ],
+    "ans": "720",
+    "accept": [
+     "720",
+     "720.0"
+    ],
+    "sol": "Draw the shelf as \\(6\\) slots in a row and fill them one at a time. For the first slot on the left, any of the \\(6\\) books could go there, so you have \\(6\\) choices. Once that book is down it is used up, so the second slot only has \\(5\\) books left to pick from. The third slot then has \\(4\\) books still waiting, the fourth has \\(3\\), the fifth has \\(2\\), and by the time you reach the last slot there is only \\(1\\) book left, so it has no real choice at all.\n\nBy the multiplication principle you multiply the choices across all the slots, which gives $$6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1.$$ Working left to right, \\(6 \\times 5 = 30\\), then \\(30 \\times 4 = 120\\), then \\(120 \\times 3 = 360\\), then \\(360 \\times 2 = 720\\), and finally \\(720 \\times 1 = 720\\). This is exactly \\(6!\\), the factorial of \\(6\\), since arranging all of a set of distinct things in a row always counts down step by step like this. So the \\(6\\) books can be lined up in \\(\\boxed{720}\\) different orders."
+   },
+   {
+    "t": "imp",
+    "x": "That descending product is worth a name. When you line up \\(n\\) different things in order, the first spot can be filled \\(n\\) ways, but that thing is gone now, so the next spot has only \\(n-1\\) ways, then \\(n-2\\), and so on until the last spot has just \\(1\\) choice left. Multiply those together and you get \\(n \\times (n-1) \\times \\cdots \\times 2 \\times 1\\), which we call \\(n\\) factorial and write as \\(n!\\). It is nothing new, just the no-repeats slot-and-box picture run all the way down to \\(1\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Seven friends squeeze together for a group photo, standing shoulder to shoulder in a single row. They keep swapping spots, since everyone wants a turn in the middle. The photographer wonders how many truly different left-to-right orders the seven friends could line up in, where each friend takes one spot and no two share a spot. How many different left-to-right orders are there for the \\(7\\) friends?",
+    "xp": 7,
+    "hints": [
+     "Picture the row as seven empty spots waiting to be filled, one friend per spot. Fill them one at a time, from the leftmost spot to the rightmost, and ask how many friends are still standing free as you reach each new spot.",
+     "The leftmost spot can go to any of the \\(7\\) friends. Once that friend steps in, only \\(6\\) are left for the next spot, then \\(5\\) for the one after, and so on down to the last spot. By the slot-and-box habit you multiply those counts together.",
+     "Multiply the choices for each spot in turn, which gives \\(7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1\\). This product is exactly \\(7!\\), so all that is left is to carry out the multiplication."
+    ],
+    "ans": "5040",
+    "accept": [
+     "5040",
+     "5040.0"
+    ],
+    "sol": "Draw seven empty spots for the row and fill them one at a time from left to right. The first spot can be taken by any of the \\(7\\) friends, so it has \\(7\\) choices. Once that friend is placed, only \\(6\\) friends are still free, so the second spot has \\(6\\) choices. Keep going and the third spot has \\(5\\), the fourth has \\(4\\), the fifth has \\(3\\), the sixth has \\(2\\), and the very last spot has just the one friend nobody has used yet, so it has \\(1\\) choice.\n\nBy the slot-and-box habit, the total number of orders is the product of all those choices, which is \\(7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1\\). This is exactly the factorial \\(7!\\), the number of ways to arrange \\(7\\) different things in a row.\n\nNow multiply, building up step by step so the numbers stay friendly. $$7 \\times 6 = 42$$ $$42 \\times 5 = 210$$ $$210 \\times 4 = 840$$ $$840 \\times 3 = 2520$$ $$2520 \\times 2 = 5040$$ and the final \\(\\times 1\\) leaves it unchanged. So the seven friends can stand in $$\\boxed{5040}$$ different left-to-right orders."
+   },
+   {
+    "t": "prob",
+    "x": "A small chess club has \\(9\\) members, and they need to fill three different jobs. First they pick a president, then a vice president, and then a treasurer. Nobody is allowed to hold two jobs at once, so once a person takes one job they are out of the running for the others. The order matters here, since being president is a different job from being treasurer. How many different ways are there to fill the three jobs?",
+    "xp": 7,
+    "hints": [
+     "Think of three empty boxes in a row, one for president, one for vice president, and one for treasurer. You are filling them one at a time from the \\(9\\) members, and someone who takes a job cannot be picked again.",
+     "Count the choices for each box in turn. Any of the \\(9\\) members could be president. Once that person is chosen, only \\(8\\) people are left to be vice president, and after that only \\(7\\) are left to be treasurer. Then multiply the box counts together.",
+     "You only have three boxes, so you stop after three steps and multiply \\(9 \\times 8 \\times 7\\)."
+    ],
+    "ans": "504",
+    "accept": [
+     "504",
+     "504.0"
+    ],
+    "sol": "Draw three boxes, one for each job, and fill them from left to right. The first box is for president, and any of the \\(9\\) members could take it, which gives \\(9\\) choices. Now one person is busy being president, so only \\(8\\) members are left for the vice president box, which gives \\(8\\) choices. After that, two people are taken, so only \\(7\\) members are left for the treasurer box, which gives \\(7\\) choices. The jobs are all different and the order we fill them in matters, so we multiply the choices for each box together. We have only three jobs, so we stop after three boxes instead of running all the way down to \\(1\\), and we get \\(9 \\times 8 \\times 7\\). Working it out, \\(9 \\times 8 = 72\\), and then \\(72 \\times 7 = 504\\). So there are $$\\boxed{504}$$ different ways to fill the three jobs."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA. A partial arrangement stops early. You only have \\(r\\) boxes to fill, so you take only \\(r\\) descending factors and then you STOP, which gives \\(n \\times (n-1) \\times (n-2) \\times \\cdots\\) for exactly \\(r\\) factors. Each new box drops the count by one, because one more thing is already placed and cannot be reused. Do not run all the way down to \\(1\\), and do not use the full \\(n!\\). Fill \\(r\\) boxes, take \\(r\\) factors, stop."
+   },
+   {
+    "t": "prob",
+    "x": "Here is the last and trickiest restriction. We want to count how many three-digit numbers there are. A three-digit number is something like \\(204\\) or \\(750\\), so it has a hundreds digit, a tens digit, and a units digit. Every digit can be anything from \\(0\\) to \\(9\\), and digits are allowed to repeat, so \\(778\\) is just fine. There is one catch. The leading digit, the one in the hundreds place, cannot be \\(0\\), because a number like \\(072\\) is really only \\(72\\) and is not a three-digit number at all. How many three-digit numbers are there in all?",
+    "xp": 8,
+    "hints": [
+     "Draw three empty boxes, one for the hundreds digit, one for the tens digit, and one for the units digit. Then ask how many digits are allowed in each box, and notice that the boxes will not all have the same number of choices.",
+     "Fill the fussy box first. The hundreds digit may be anything except \\(0\\), so count those choices carefully. The other two boxes have no rule at all, so each can be any digit from \\(0\\) to \\(9\\). Once you know the choices in each box, the multiplication principle says you multiply them together.",
+     "The hundreds box has \\(9\\) choices, the tens box has \\(10\\), and the units box has \\(10\\), so you are working out \\(9 \\times 10 \\times 10\\)."
+    ],
+    "ans": "900",
+    "accept": [
+     "900",
+     "900.0"
+    ],
+    "sol": "Set up the slot-and-box strip with three boxes, one for the hundreds digit, one for the tens digit, and one for the units digit. The whole trick with a restriction is to fill the fussy box first, so start with the hundreds box. It cannot be \\(0\\), but it can be any one of \\(1, 2, 3, 4, 5, 6, 7, 8, 9\\), and that is \\(9\\) choices. The tens box has no rule, so it can be any digit from \\(0\\) to \\(9\\), which is \\(10\\) choices, and the units box is the same with \\(10\\) choices. The multiplication principle says we multiply the choices in each box, and you get $$9 \\times 10 \\times 10 = 900.$$ There is a second road that lands in the very same place, and it is the subtraction idea from \\(10.1\\). First pretend the rule does not exist and let every box hold any digit from \\(0\\) to \\(9\\), which gives \\(10 \\times 10 \\times 10 = 1000\\) strings of three digits. Now throw out the bad ones, the strings that start with \\(0\\). A bad string has \\(0\\) locked in the hundreds box, then \\(10\\) choices for the tens and \\(10\\) for the units, so there are \\(1 \\times 10 \\times 10 = 100\\) of them. Taking the bad ones away gives \\(1000 - 100 = 900\\). Both roads agree, so the count is \\(\\boxed{900}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "When a count comes with a restriction, you have two roads that meet at the same answer. Road one, fill the forced box first. Pin down the spot that has rules on it, like a leading digit with only \\(9\\) choices instead of \\(10\\), then multiply the freedom left in the other boxes. Road two, count every way as if there were no rule, then subtract the one bad chunk. That is just total minus bad from 10.1. Pick whichever road is cleaner, and trust that both land on the same number."
+   },
+   {
+    "t": "prob",
+    "x": "Six people line up in a row for a relay handoff, standing shoulder to shoulder from the far left end to the far right end. The team has one rule about the two ends. The tallest person must stand at the far left end, and the shortest person must stand at the far right end. The other four people can stand in any order in the four middle spots. How many different orders for the whole row are possible?",
+    "xp": 7,
+    "hints": [
+     "Two of the six spots are already decided for you. The far left end has to be the tallest person and the far right end has to be the shortest person, so those two spots have no choices left. The only real question is what happens in the four spots in the middle.",
+     "Pin down the forced ends first and then forget about them. That leaves four people who still need places and exactly four open middle spots, and every one of those people is different. So you are just arranging four distinct people in four spots in a row.",
+     "Fill the four middle spots one at a time. The first open spot has \\(4\\) people who could go there, then \\(3\\) left for the next, then \\(2\\), then \\(1\\). Multiply those together, which is \\(4 \\times 3 \\times 2 \\times 1 = 4!\\), and that is your count."
+    ],
+    "ans": "24",
+    "accept": [
+     "24",
+     "24.0"
+    ],
+    "sol": "Start by drawing six empty slots in a row, one for each person. The trick with a problem like this is to handle the forced spots before anything else, because a forced spot has no choice to make.\n\\nThe far left end must be the tallest person, so that slot is settled with \\(1\\) way. The far right end must be the shortest person, so that slot is settled with \\(1\\) way too. Those two ends are now locked in and they do not multiply your count at all.\n\\nThat leaves the four middle slots, and four different people who still need a home. Now use the multiplication principle slot by slot. The first open middle slot can be any of the \\(4\\) remaining people. Once that person sits down, the next slot has \\(3\\) people left to choose from, then the slot after that has \\(2\\), and the last slot has just \\(1\\) person who has to go there.\n\\nMultiply the choices for every slot together, which gives \\(1 \\times 4 \\times 3 \\times 2 \\times 1 \\times 1\\), and that is the same as \\(4 \\times 3 \\times 2 \\times 1 = 4!\\). Working it out, \\(4 \\times 3 = 12\\), then \\(12 \\times 2 = 24\\), then \\(24 \\times 1 = 24\\).\n\\nSo fixing the two ends first turns a six-person lineup into a plain arrangement of four people, and there are $$\\boxed{24}$$ different orders for the whole row."
+   },
+   {
+    "t": "prob",
+    "x": "A school locker uses a secret code that is \\(4\\) letters long, and each letter is chosen from the \\(5\\) letters \\(A, B, C, D, E\\). A letter is allowed to repeat, so a code like \\(BBAE\\) is perfectly fine. There is just one rule from the locker company, which is that the code cannot be the very same letter four times in a row, so \\(AAAA\\) and \\(CCCC\\) are not allowed. How many different codes are allowed?",
+    "xp": 8,
+    "hints": [
+     "First forget the rule for a moment and ask an easier question. If every code were allowed, including the four-in-a-row ones, how many \\(4\\)-letter codes could you build from \\(5\\) letters when repeats are allowed?",
+     "This is the total-minus-bad move from \\(10.1\\). Count every code as if the rule did not exist, then count only the banned codes by themselves, and take those away from the total.",
+     "The total is \\(5 \\times 5 \\times 5 \\times 5 = 5^4\\). The banned codes are the ones that are the same letter four times, and there is exactly one of those for each of the \\(5\\) letters, so \\(5\\) bad codes. Now subtract \\(5\\) from your total."
+    ],
+    "ans": "620",
+    "accept": [
+     "620",
+     "620.0"
+    ],
+    "sol": "The banned codes are awkward to dodge one slot at a time, so reach for the total-minus-bad move from \\(10.1\\). Count every possible code first, then take away the few that break the rule.\n\nStart with the total, pretending the rule is gone. There are \\(4\\) slots, and each slot can be any of the \\(5\\) letters because repeats are allowed. The Multiplication Principle hands you \\(5 \\times 5 \\times 5 \\times 5 = 5^4\\), which is \\(625\\) codes in all.\n\nNow count only the bad codes, the ones that are the same letter four times in a row. There is \\(AAAA\\), \\(BBBB\\), \\(CCCC\\), \\(DDDD\\), and \\(EEEE\\), one for each letter, so \\(5\\) banned codes and no more.\n\nThe allowed codes are everything left once you remove the bad ones, which gives \\(625 - 5 = 620\\).\n\n$$\\boxed{620}$$"
+   },
+   {
+    "t": "prob",
+    "x": "A locker uses a \\(4\\)-digit PIN, where each digit can be anything from \\(0\\) to \\(9\\). The owner sets three rules. The first digit has to be odd, the second digit has to be even, where \\(0\\) counts as even, and all four digits must be different from one another. How many PINs follow all three rules?",
+    "xp": 8,
+    "hints": [
+     "Draw four empty boxes, one for each digit, and fill them left to right. Settle the digit with the strictest rule first, then move along, and remember that once a digit is used it cannot show up again.",
+     "The first box must be odd, so count how many odd digits there are from \\(0\\) to \\(9\\). The second box must be even, so count the even digits. After that the third and fourth boxes can be any leftover digit, so subtract the ones already taken.",
+     "You should have \\(5\\) odd choices for the first box and \\(5\\) even choices for the second. The third box is any digit except the two already used, which leaves \\(8\\), and the fourth box leaves \\(7\\). Multiply all four counts together."
+    ],
+    "ans": "1400",
+    "accept": [
+     "1400",
+     "1400.0"
+    ],
+    "sol": "Set up four boxes, one for each digit of the PIN, and fill them from left to right while keeping track of what each rule allows.\n\nThe first digit must be odd. The odd digits from \\(0\\) to \\(9\\) are \\(1, 3, 5, 7, 9\\), so there are \\(5\\) choices for the first box.\n\nThe second digit must be even, and \\(0\\) counts as even. The even digits are \\(0, 2, 4, 6, 8\\), so that is another \\(5\\) choices for the second box. None of these can clash with the first digit, since odd and even digits never overlap, so all \\(5\\) stay open.\n\nNow the third digit can be anything from \\(0\\) to \\(9\\) as long as it is different from the two digits already placed. There are \\(10\\) digits in all and \\(2\\) are taken, which leaves \\(10 - 2 = 8\\) choices for the third box.\n\nThe fourth digit just needs to dodge the three digits already used, so \\(10 - 3 = 7\\) choices are left for the last box.\n\nMultiply the choices in each box and you get\n$$5 \\times 5 \\times 8 \\times 7 = 1400.$$\n\nSo there are \\(\\boxed{1400}\\) PINs that follow all three rules."
+   },
+   {
+    "t": "prob",
+    "x": "A 4-digit palindrome reads the same forwards and backwards. So the first digit matches the last digit, and the two middle digits match each other. For example, \\(1221\\) and \\(7337\\) are palindromes. The first digit cannot be \\(0\\), since then it would not really be a 4-digit number. How many 4-digit palindromes are there?",
+    "xp": 8,
+    "hints": [
+     "Draw four slots for the four digits. A palindrome forces some of them to copy others, so you do not really get to choose all four. Which slots are you actually free to pick?",
+     "Only the first digit and the second digit are free choices. Once you pick them, the third digit must copy the second and the fourth must copy the first. So count the ways to fill just those two free slots and multiply.",
+     "The first digit has \\(9\\) choices (it cannot be \\(0\\)), and the second digit has \\(10\\) choices (any of \\(0\\) through \\(9\\)). The last two are forced. Multiply \\(9 \\times 10\\) to finish."
+    ],
+    "ans": "90",
+    "accept": [
+     "90",
+     "90.0"
+    ],
+    "sol": "Let's lay out four slots for the digits and see which ones we really get to choose.\n\nA palindrome reads the same both ways, so the fourth digit must match the first, and the third digit must match the second. That means once we pick the first two digits, the last two are forced to copy them. So only the first slot and the second slot are free choices.\n\nFor the first digit we have \\(9\\) ways, because it can be any digit from \\(1\\) to \\(9\\) but not \\(0\\). For the second digit we have \\(10\\) ways, since any digit from \\(0\\) to \\(9\\) is allowed. The third digit just copies the second, and the fourth copies the first, so each of those has only \\(1\\) way.\n\nNow we multiply the choices for each slot, and you get\n$$9 \\times 10 \\times 1 \\times 1 = 90.$$\n\nSo the number of 4-digit palindromes is \\(\\boxed{90}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Think about every whole number from \\(100\\) all the way up to \\(999\\). These are exactly the \\(3\\)-digit numbers, and there are \\(900\\) of them in all. A few of them are special because all three of their digits are the same, like \\(111\\) or \\(777\\). Most of them are not like that. How many of the \\(900\\) three-digit numbers do NOT have all three digits the same?",
+    "xp": 7,
+    "hints": [
+     "Instead of chasing the huge pile of numbers you want, try counting the tiny pile you do not want first. How many \\(3\\)-digit numbers have all three digits the same?",
+     "This is the total-minus-bad move from \\(10.1\\). Count every \\(3\\)-digit number that is all the same digit, then take that count away from the \\(900\\). The ones left over are the numbers that do NOT have all three digits the same.",
+     "The all-same numbers are \\(111, 222, 333, 444, 555, 666, 777, 888, 999\\), which is \\(9\\) of them. Now do \\(900 - 9\\)."
+    ],
+    "ans": "891",
+    "accept": [
+     "891",
+     "891.0"
+    ],
+    "sol": "Going after the numbers that do NOT have all three digits the same head on would mean sorting through almost the whole list, so flip it around and count the bad ones instead. The bad ones are the \\(3\\)-digit numbers where all three digits match. Walk through them and they are \\(111, 222, 333, 444, 555, 666, 777, 888, 999\\), one for each digit from \\(1\\) to \\(9\\), which is \\(9\\) of them. There are \\(900\\) three-digit numbers in all, so every one of them either is all the same or is not, with no number in both groups. That means the count we want is just the total with the bad ones taken away, which gives \\(900 - 9 = 891\\). This is the same total-minus-bad idea from \\(10.1\\), counting the small unwanted group and subtracting it from the whole. So the number of \\(3\\)-digit numbers that do NOT have all three digits the same is $$\\boxed{891}.$$"
+   },
+   {
+    "t": "fact",
+    "x": "That little exclamation point in \\(5!\\) has a story. For a long time people had to write out the whole long product, like \\(5 \\times 4 \\times 3 \\times 2 \\times 1\\), every single time. A French mathematician named Christian Kramp got tired of all that writing, so in 1808 he gave the idea its own punchy symbol and called it a factorial. Now one tiny mark stands in for the entire descending product, and a number that grows this fast finally got a name as quick as it is."
+   },
+   {
+    "t": "prob",
+    "x": "A locker tag is made of one letter followed by three digits, in that order, like \\(B407\\). Any of the \\(26\\) letters can be the starting letter. The three digits must all be different from one another, and the very first of those three digits cannot be \\(0\\). How many possible locker tags are there?",
+    "xp": 11,
+    "hints": [
+     "Picture the tag as four boxes in a row, one for the letter and three for the digits. The slot-and-box habit lets you count one box at a time and then multiply.",
+     "Fill the boxes left to right and count the choices for each, but watch the two catches. The first digit cannot be \\(0\\), and every later digit has to dodge the digits you already used.",
+     "The letter has \\(26\\) choices. The first digit has \\(9\\) choices since \\(0\\) is banned. The second digit has \\(9\\) choices, any of the \\(10\\) digits except the one already placed. The third digit has \\(8\\) choices. Now find \\(26 \\times 9 \\times 9 \\times 8\\)."
+    ],
+    "ans": "16848",
+    "accept": [
+     "16848",
+     "16848.0"
+    ],
+    "sol": "Let me draw the tag as four boxes, one for the letter and three for the digits, and fill them left to right.\n\nThe letter box is easy. Any of the \\(26\\) letters works, so that box has \\(26\\) choices.\n\nNow the first digit. It can be anything except \\(0\\), so out of the ten digits \\(0\\) through \\(9\\) we throw one away and that box has \\(9\\) choices.\n\nThe second digit can be any digit at all, even \\(0\\), but it has to be different from the first digit. So from the full \\(10\\) digits we remove the one already used and that box has \\(9\\) choices.\n\nThe third digit must differ from both digits already placed, so we remove those two from the \\(10\\) and that box has \\(8\\) choices.\n\nBy the multiplication principle I multiply the choices for each box, which gives\n$$26 \\times 9 \\times 9 \\times 8.$$\nWorking it out, \\(26 \\times 9 = 234\\), then \\(234 \\times 9 = 2106\\), and \\(2106 \\times 8 = 16848\\).\n\nSo the number of possible locker tags is \\(\\boxed{16848}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "One habit carried this whole lesson. Draw the boxes, write how many options go in each box, and multiply across. Only bend that picture when a rule forces a box or bans a handful of outcomes. This is still just careful counting, only now the careful part is multiplying the choices at each step. In 10.3 Casework one box-strip will not be enough, so you split the count into a few separate cases and ADD them, and the addition from 10.1 comes roaring back."
+   }
+  ],
+  "review": [
+   {
+    "x": "You are getting dressed and you want to pick one hat and one scarf. You have \\(3\\) hats and \\(6\\) scarves. Every hat can go with every scarf. How many different hat-and-scarf pairs can you make?",
+    "hints": [
+     "Start with just one hat. If you stick with that single hat, how many scarves could you pair it with? You have \\(6\\) scarves, so that one hat gives you \\(6\\) different pairs.",
+     "Now think about the other hats. Each of the \\(3\\) hats gives you its own group of \\(6\\) pairs, and none of those pairs repeat. So you are adding up \\(6\\) three times.",
+     "Adding \\(6\\) three times is the same as multiplying, so work out \\(3 \\times 6\\) to get the total number of pairs."
+    ],
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0"
+    ],
+    "sol": "Picture choosing in two steps. First you pick a hat, and you have \\(3\\) ways to do that. Then you pick a scarf, and for each hat you have \\(6\\) scarves to choose from. Take any one hat and it can team up with each of the \\(6\\) scarves, which gives \\(6\\) pairs from that single hat. The same is true for every hat, so the three hats give you three groups of \\(6\\) pairs with no overlaps. That means you multiply the choices together, and you get $$3 \\times 6 = 18.$$ So there are \\(\\boxed{18}\\) different hat-and-scarf pairs."
+   },
+   {
+    "x": "An ice cream stand sells single-scoop cones. You pick one cone type from \\(5\\) cone types, and then one flavor. The flavors come in \\(2\\) fruit flavors and \\(3\\) chocolate flavors. A cone is one cone type paired with one flavor. How many different cones can you order?",
+    "hints": [
+     "First nail down how many flavors there really are. The flavors split into \\(2\\) fruit and \\(3\\) chocolate, so add those to get the total flavor count, which gives \\(2 + 3 = 5\\) flavors.",
+     "Now you are making two choices in a row, one cone type and then one flavor. The Multiplication Principle says you multiply the number of ways for each stage.",
+     "You have \\(5\\) cone types and \\(5\\) flavors, so multiply \\(5 \\times 5\\) to count every cone."
+    ],
+    "ans": "25",
+    "accept": [
+     "25",
+     "25.0"
+    ],
+    "sol": "First figure out how many flavors there are, since the problem hands you the flavors in two groups. There are \\(2\\) fruit flavors and \\(3\\) chocolate flavors, so the total is \\(2 + 3 = 5\\) flavors. Now you build a cone in two stages, first the cone type and then the flavor. There are \\(5\\) cone types for the first stage and \\(5\\) flavors for the second stage. The Multiplication Principle says you multiply the choices at each stage, which gives $$5 \\times 5 = 25.$$ So there are \\(\\boxed{25}\\) different cones."
+   },
+   {
+    "x": "A breakfast combo at a little cafe is built from three choices. You pick one drink, one main, and one fruit. There are \\(2\\) drinks, \\(5\\) mains, and \\(3\\) fruits to choose from. How many different breakfast combos can be made?",
+    "hints": [
+     "Build the combo one choice at a time. First pick a drink, then a main, then a fruit, and think about how many ways each step can go.",
+     "For every single drink you choose, you still get \\(5\\) mains to pair it with, and for each of those you get \\(3\\) fruits. That hints you should multiply the choices together instead of adding them.",
+     "Multiply the number of drinks by the number of mains by the number of fruits, so work out \\(2 \\times 5 \\times 3\\) and that is your count."
+    ],
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0"
+    ],
+    "sol": "Let us build a combo step by step and watch the choices grow. You start by picking a drink, and there are \\(2\\) ways to do that. For each of those drinks you then pick a main, and there are \\(5\\) mains, so the first two steps already give \\(2 \\times 5 = 10\\) different drink and main pairs. Now for each of those \\(10\\) pairs you add a fruit, and there are \\(3\\) fruits, which gives \\(10 \\times 3 = 30\\). This is the multiplication principle. When you make a string of separate choices, you multiply the number of options at each step to get the total number of ways. So you compute $$2 \\times 5 \\times 3 = 30.$$ There are \\(\\boxed{30}\\) different breakfast combos."
+   },
+   {
+    "x": "A signal is built from \\(3\\) lights set in a row, and each light glows in one of \\(4\\) colors. The same color is allowed to show up more than once, so all three lights could even be the same color. How many different signals can be made?",
+    "hints": [
+     "Build the signal one light at a time. Ask yourself how many color choices you have for the first light, then for the second, then for the third.",
+     "Because colors are allowed to repeat, the second light still has all \\(4\\) colors open to it no matter what the first light chose, and the same is true for the third. So every light has \\(4\\) options.",
+     "By the multiplication principle you multiply the choices for each step, so work out \\(4 \\times 4 \\times 4\\)."
+    ],
+    "ans": "64",
+    "accept": [
+     "64",
+     "64.0"
+    ],
+    "sol": "Let us build a signal one light at a time. The first light can be any of the \\(4\\) colors, which gives \\(4\\) choices. Since colors are allowed to repeat, the first light's color does not use anything up, so the second light again has all \\(4\\) colors open, and the third light does too. Each of the \\(3\\) lights has \\(4\\) choices that do not depend on the others, so by the multiplication principle we multiply the choices together and you get \\(4 \\times 4 \\times 4\\). Because the same number \\(4\\) shows up once for each of the \\(3\\) lights, this is \\(4^3\\), which gives \\(4 \\times 4 \\times 4 = 64\\). So there are \\(64\\) different signals. $$\\boxed{64}$$"
+   },
+   {
+    "x": "We want to count all the \\(4\\)-digit numbers. A \\(4\\)-digit number has four slots to fill, and the first slot is special because the leading digit cannot be \\(0\\), since a number like \\(0742\\) would really just be a \\(3\\)-digit number. The other three slots can hold any digit from \\(0\\) to \\(9\\), and digits are allowed to repeat. How many \\(4\\)-digit numbers are there in all?",
+    "hints": [
+     "Think about the slots one at a time. Each slot has its own number of choices, and the Multiplication Principle says you multiply those choices together to count all the ways to fill every slot.",
+     "The first slot cannot be \\(0\\), so it has only \\(9\\) choices, which are \\(1\\) through \\(9\\). Each of the other three slots can be any digit from \\(0\\) to \\(9\\), so each of those has \\(10\\) choices.",
+     "Multiply the choices for all four slots together, and you get \\(9 \\times 10 \\times 10 \\times 10\\)."
+    ],
+    "ans": "9000",
+    "accept": [
+     "9000",
+     "9000.0"
+    ],
+    "sol": "Let us fill the four slots one at a time and count the choices for each. The first slot is the leading digit, and it cannot be \\(0\\), so the digits we can use are \\(1, 2, 3, 4, 5, 6, 7, 8, 9\\), which is \\(9\\) choices. The second slot can be any digit from \\(0\\) to \\(9\\), so that is \\(10\\) choices, and the same is true for the third and fourth slots, giving \\(10\\) choices each. The Multiplication Principle tells us to multiply the choices together, which gives \\(9 \\times 10 \\times 10 \\times 10\\). Working it out, \\(10 \\times 10 \\times 10 = 1000\\), and \\(9 \\times 1000 = 9000\\). So there are \\(\\boxed{9000}\\) different \\(4\\)-digit numbers. $$9 \\times 10 \\times 10 \\times 10 = 9000$$"
+   },
+   {
+    "x": "Five different trophies are lined up in a row on a shelf. You want to know how many different orders the trophies could be placed in. Think about filling the spots one at a time, from the leftmost spot to the rightmost. How many different orders are there for the \\(5\\) trophies?",
+    "hints": [
+     "Fill the shelf one spot at a time. Any of the \\(5\\) trophies can go in the first spot, so there are \\(5\\) choices to start.",
+     "Once the first trophy is placed, only \\(4\\) trophies are left for the second spot, then \\(3\\) for the third, then \\(2\\), and finally \\(1\\) for the last spot.",
+     "By the Multiplication Principle you multiply the choices together, and you get \\(5 \\times 4 \\times 3 \\times 2 \\times 1\\), which is the factorial \\(5!\\)."
+    ],
+    "ans": "120",
+    "accept": [
+     "120",
+     "120.0"
+    ],
+    "sol": "Picture filling the five spots one at a time, from left to right. The first spot can hold any of the \\(5\\) trophies, so there are \\(5\\) ways to start. Once that trophy is down, only \\(4\\) trophies remain for the second spot, then \\(3\\) for the third, then \\(2\\) for the fourth, and the last trophy has to take the final spot, so just \\(1\\) way. The Multiplication Principle says you multiply the choices for each spot together, and you get $$5 \\times 4 \\times 3 \\times 2 \\times 1.$$ That string of counting numbers multiplied down to \\(1\\) is exactly what we write as the factorial \\(5!\\). Working it out, \\(5 \\times 4 = 20\\), then \\(20 \\times 3 = 60\\), then \\(60 \\times 2 = 120\\), and \\(120 \\times 1 = 120\\). So there are \\(\\boxed{120}\\) different orders for the trophies."
+   },
+   {
+    "x": "A race has \\(8\\) runners, and the first two to finish earn medals. The fastest one gets the gold and the next one gets the silver, so two different people. How many different ways can the two medals be awarded?",
+    "hints": [
+     "Picture filling two spots in order, first the gold and then the silver. Count how many runners could take the gold, then how many are still left for the silver.",
+     "Any of the \\(8\\) runners could win the gold. Once that runner is set, only \\(7\\) runners remain who could take the silver.",
+     "By the multiplication principle you multiply the choices for each spot, so the count is \\(8 \\times 7\\)."
+    ],
+    "ans": "56",
+    "accept": [
+     "56",
+     "56.0"
+    ],
+    "sol": "Think of two spots to fill in order, the gold first and then the silver. For the gold, any of the \\(8\\) runners could finish first, so there are \\(8\\) choices. Once the gold is decided, that runner is taken, which leaves \\(7\\) runners who could come in second for the silver. The multiplication principle says you multiply the number of choices for each spot, and you get $$8 \\times 7 = 56.$$ So the two medals can be awarded in \\(\\boxed{56}\\) different ways."
+   },
+   {
+    "x": "A tiny tag is made of \\(2\\) characters in a row, a left spot and a right spot. Each spot can hold any one of \\(9\\) different symbols, and a symbol is allowed to be used again. There is just one rule, the two characters are not allowed to be the same symbol. How many allowed tags are there?",
+    "hints": [
+     "Start by ignoring the rule for a second. Fill the left spot first. How many of the \\(9\\) symbols could go there?",
+     "Now move to the right spot. The left spot is already taken by one symbol, and that exact symbol is the only one the rule forbids here, so how many of the \\(9\\) symbols are still allowed on the right?",
+     "You have \\(9\\) choices for the left spot and \\(8\\) for the right spot. Multiply the choices along the way, so work out \\(9 \\times 8\\)."
+    ],
+    "ans": "72",
+    "accept": [
+     "72",
+     "72.0"
+    ],
+    "sol": "Build the tag one spot at a time and multiply the choices as you go. The left spot is wide open, so any of the \\(9\\) symbols can sit there, which gives \\(9\\) choices. Now look at the right spot. The rule says it cannot match the symbol you just placed on the left, and that is the only symbol it bans. So out of the \\(9\\) symbols, exactly \\(1\\) is off limits and \\(8\\) are still fine, which gives \\(8\\) choices. Multiply the choices along the two spots and you get \\(9 \\times 8 = 72\\). \\(\\boxed{72}\\)"
+   },
+   {
+    "x": "A gallery hangs four paintings in a single row along a wall. One special painting is the star of the show, so it always hangs in the far left spot. The other three paintings can hang in any order in the three spots to its right. How many different orders for the whole row are possible?",
+    "hints": [
+     "The far left spot is already decided, since the star painting is glued there. So the only thing that changes from one row to the next is how the other three paintings sit in the three remaining spots.",
+     "Fill those three open spots one at a time. The first open spot has \\(3\\) paintings to choose from, then the next spot has only \\(2\\) left, and the last spot has just \\(1\\) painting forced into it.",
+     "By the multiplication principle you multiply the choices together, so you want \\(3 \\times 2 \\times 1\\)."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0"
+    ],
+    "sol": "Start by noticing what is actually free to change. The star painting is locked into the far left spot, so that position never varies. That leaves three open spots on its right, and three paintings to place in them. The whole question is really just how many ways those three paintings can fill those three spots.\n\\nFill the spots one at a time and count the choices at each step. For the first open spot you have \\(3\\) paintings to pick from. Once that one is hung, only \\(2\\) paintings are left for the next spot. After that, just \\(1\\) painting remains, and it has to take the final spot.\n\\nThe multiplication principle says you multiply the number of choices at each step, which gives \\(3 \\times 2 \\times 1 = 6\\). You may also recognize this as \\(3!\\), the number of ways to arrange three items in a row. So there are \\(\\boxed{6}\\) different orders for the row."
+   },
+   {
+    "x": "A 4-digit palindrome is a number that reads the same forwards and backwards, like \\(3773\\) or \\(8118\\). The first digit cannot be \\(0\\), and in fact none of the digits can be \\(0\\) at all, so every digit must be one of \\(1, 2, 3, 4, 5, 6, 7, 8, 9\\). How many such 4-digit palindromes are there?",
+    "hints": [
+     "Write a palindrome as four boxes in a row. For it to read the same backwards, the last box must copy the first, and the third box must copy the second. So once you choose the first two boxes, the other two are decided for you. How many boxes are really free to choose?",
+     "Only the first two digits are free. The third and fourth just mirror them. Each free digit can be any of \\(1\\) through \\(9\\), so each free box has \\(9\\) choices. Now use the multiplication principle, where you multiply the number of choices for each free spot.",
+     "There are \\(2\\) free spots, each with \\(9\\) choices, so multiply \\(9 \\times 9\\) to get the total count."
+    ],
+    "ans": "81",
+    "accept": [
+     "81",
+     "81.0"
+    ],
+    "sol": "Picture the number as four boxes in a row, the thousands, hundreds, tens, and ones digit. For the number to read the same backwards as forwards, the ones digit has to match the thousands digit, and the tens digit has to match the hundreds digit. So a 4-digit palindrome always looks like the first two digits, then those same two digits flipped around, which gives the pattern \\(ABBA\\).\n\nThat means only the first two digits are yours to pick. Once you choose them, the last two copy themselves automatically. So there are just \\(2\\) free spots to fill.\n\nEach free spot can hold any digit from \\(1\\) to \\(9\\), and that is \\(9\\) choices. By the multiplication principle you multiply the choices for each free spot, so you do \\(9 \\times 9\\) and you get \\(81\\).\n\n$$9 \\times 9 = \\boxed{81}$$"
+   },
+   {
+    "x": "A three-digit number runs from \\(100\\) to \\(999\\), so there are \\(900\\) of them in all. A palindrome reads the same forwards and backwards, like \\(343\\) or \\(717\\). There are exactly \\(90\\) three-digit palindromes. How many three-digit numbers are NOT palindromes?",
+    "hints": [
+     "You know the whole group and you know one part of it. The part you want is everything left over, so think about subtracting.",
+     "Start from all \\(900\\) three-digit numbers. The palindromes are the ones you do not want, and there are \\(90\\) of them.",
+     "Take away the \\(90\\) palindromes from the full \\(900\\), which gives \\(900 - 90\\)."
+    ],
+    "ans": "810",
+    "accept": [
+     "810",
+     "810.0"
+    ],
+    "sol": "It is easier to count the ones we do not want and take them away. There are \\(900\\) three-digit numbers in total, and \\(90\\) of them are palindromes. So the numbers that are not palindromes are everything else, which gives \\(900 - 90 = 810\\). So the answer is \\(\\boxed{810}\\)."
+   },
+   {
+    "x": "You are planning a trip from town A to town C, and the only way to get there is to pass through town B along the way. There are \\(3\\) roads that run from A to B, and \\(4\\) roads that run from B to C. A full route means you pick one road for the first leg and one road for the second leg. How many different routes are there from A to C?",
+    "hints": [
+     "Think of the trip as two separate choices, first the road from A to B, then the road from B to C. How many ways can you make each choice on its own?",
+     "For every single road you might take from A to B, you still get all \\(4\\) choices for the road from B to C. So each of the \\(3\\) first-leg roads branches into \\(4\\) full routes.",
+     "The Multiplication Principle says you multiply the number of choices for each stage. Here that is \\(3\\) choices times \\(4\\) choices, which gives \\(3 \\times 4\\)."
+    ],
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0"
+    ],
+    "sol": "A route is built in two stages, so think about the choices one stage at a time. First you pick a road from A to B, and there are \\(3\\) of those. No matter which one you take, you then pick a road from B to C, and there are \\(4\\) of those. So each of the \\(3\\) first roads opens up \\(4\\) ways to finish the trip. That means you add \\(4\\) routes three times over, which is the same as multiplying. By the Multiplication Principle you multiply the choices at each stage, and you get $$3 \\times 4 = 12.$$ So there are \\(\\boxed{12}\\) different routes from A to C."
+   },
+   {
+    "x": "A pizza shop lets you build your own pie by picking exactly one thing from each of four lists. There are \\(2\\) crusts, \\(2\\) sauces, \\(3\\) cheeses, and \\(4\\) toppings. How many different pizzas can you build?",
+    "hints": [
+     "Each pizza is made of four separate choices, one crust and one sauce and one cheese and one topping. When you make a string of independent choices like this, you find the total by multiplying how many options each step has.",
+     "Start small. With \\(2\\) crusts and \\(2\\) sauces there are \\(2 \\times 2 = 4\\) crust-and-sauce pairs. Each of those \\(4\\) pairs can then take any of the \\(3\\) cheeses, and each of those can take any of the \\(4\\) toppings.",
+     "Multiply all four counts together, so work out \\(2 \\times 2 \\times 3 \\times 4\\) and that gives the number of different pizzas."
+    ],
+    "ans": "48",
+    "accept": [
+     "48",
+     "48.0"
+    ],
+    "sol": "Building a pizza is a chain of independent choices, one from each list, so the multiplication principle says you multiply the number of options at every step. Here that is \\(2\\) crusts, then \\(2\\) sauces, then \\(3\\) cheeses, then \\(4\\) toppings, which gives $$2 \\times 2 \\times 3 \\times 4.$$ Multiply left to right, so \\(2 \\times 2 = 4\\), then \\(4 \\times 3 = 12\\), and finally \\(12 \\times 4 = 48\\). So there are \\(\\boxed{48}\\) different pizzas."
+   },
+   {
+    "x": "A locker code is built as \\(2\\) letters first and then \\(2\\) digits, in that exact order. The two letters have to be different from each other, and the two digits have to be different from each other. How many different codes are possible?",
+    "hints": [
+     "Build the code one slot at a time and count the choices for each. The first letter has \\(26\\) choices, but the second letter cannot repeat it, so it has \\(25\\). Do the same thinking for the two digits.",
+     "The digits work the same way. The first digit has \\(10\\) choices and the second digit has to differ, which leaves \\(9\\). So you have \\(26\\), \\(25\\), \\(10\\), and \\(9\\) choices across the four slots.",
+     "Multiply all four choice counts together, and you get \\(26 \\times 25 \\times 10 \\times 9\\)."
+    ],
+    "ans": "58500",
+    "accept": [
+     "58500",
+     "58500.0"
+    ],
+    "sol": "Fill the code one slot at a time. The first letter can be any of \\(26\\), and the second letter must be different, so it has \\(25\\) left. That gives \\(26 \\times 25 = 650\\) ways for the two letters. Now the digits. The first digit can be any of \\(10\\), and the second digit must be different, which leaves \\(9\\), so the two digits give \\(10 \\times 9 = 90\\) ways. The multiplication principle says we multiply the choices from every stage, and you get $$26 \\times 25 \\times 10 \\times 9 = 650 \\times 90 = \\boxed{58500}.$$ The big idea is that \"different from each other\" just trims the choices for the second slot in each pair, and then everything still multiplies together."
+   }
+  ],
+  "next": "10.3"
  }
 }
