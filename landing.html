@@ -641,6 +641,13 @@
   .dchip.soon{cursor:default;pointer-events:none;position:relative;overflow:hidden}
   .dchip.soon .ttl,.dchip.soon .sub,.dchip.soon .stat,.dchip.soon .mini{opacity:.3;filter:blur(.5px)}
   .dchip.soon::after{content:'Coming Soon';position:absolute;inset:0;background:rgba(240,244,250,.68);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:grid;place-items:center;border-radius:12px;font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate)}
+  .dchip.paywall{cursor:pointer;position:relative;overflow:hidden}
+  .dchip.paywall .ttl,.dchip.paywall .sub,.dchip.paywall .stat,.dchip.paywall .mini{opacity:.25;filter:blur(.6px)}
+  .dchip.paywall::after{content:'🔒 Unlock Pro →';position:absolute;inset:0;background:rgba(240,244,250,.72);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:grid;place-items:center;border-radius:12px;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--ink)}
+  .dchip.paywall:hover::after{background:rgba(225,235,248,.82)}
+  .toc .sec.paywall{cursor:pointer}
+  .toc .sec.paywall:hover{color:var(--ink)}
+  .toc .sec.paywall .pw-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-left:6px;color:var(--gold-deep);opacity:.9}
 
   /* ============================================================
      GLASSMORPHISM RESKIN  ·  academic + playful tech
@@ -1296,6 +1303,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
 <script>
 (function(){
   // ── Paste your Firebase project config here ──────────────────────────────
@@ -1407,6 +1415,43 @@
     },2000);
   };
 
+  // ── Paywall / subscription ────────────────────────────────────────────────
+  window._access = null;
+  window.isAccessGranted = function isAccessGranted(chNum){
+    if(chNum===1) return true;
+    if(!window._access) return false;
+    if(window._access.type==='paid') return true;
+    if(window._access.type==='trial'){
+      var exp=window._access.expiresAt;
+      if(!exp) return true;
+      var expDate=exp.toDate ? exp.toDate() : new Date(exp.seconds*1000);
+      return expDate > new Date();
+    }
+    return false;
+  }
+  window.startCheckout=function(){
+    if(!auth.currentUser){ showAuthModal('in'); return; }
+    var fns=firebase.functions();
+    fns.httpsCallable('createCheckoutSession')().then(function(result){
+      window.location.href=result.data.url;
+    }).catch(function(err){
+      console.error('Checkout error:',err);
+      alert('Something went wrong starting checkout. Please try again.');
+    });
+  };
+  // Show success/cancel toast from Stripe redirect
+  (function(){
+    var p=new URLSearchParams(window.location.search);
+    if(p.get('payment')==='success'){
+      var t=document.createElement('div');
+      t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:12px 22px;border-radius:10px;font-weight:600;z-index:9999;font-size:14px';
+      t.textContent='Payment successful — welcome to Quantica Pro!';
+      document.body.appendChild(t);
+      setTimeout(function(){ t.remove(); },5000);
+      history.replaceState(null,'',window.location.pathname);
+    }
+  })();
+
   // ── Header auth UI ────────────────────────────────────────────────────────
   function updateAuthUI(user){
     var nav=document.getElementById('authNav'); if(!nav) return;
@@ -1422,6 +1467,7 @@
         '</button>'+
         '<div class="auth-dropdown" id="authDrop" style="display:none">'+
           '<a onclick="window.Rewards&&Rewards.openPanel&&Rewards.openPanel();var d=document.getElementById(\'authDrop\');if(d)d.style.display=\'none\'">My progress</a>'+
+          (!isAccessGranted(2) ? '<a onclick="startCheckout()" style="color:var(--gold-deep);font-weight:700">Upgrade to Pro →</a>' : '')+
           '<a onclick="fbSignOut()">Sign out</a>'+
         '</div>'+
       '</div>';
@@ -1451,6 +1497,15 @@
     db.collection('users').doc(user.uid).collection('state').doc('adapt').get().then(function(doc){
       if(doc.exists && window.ADAPT && window.ADAPT._merge) ADAPT._merge(doc.data());
     }).catch(function(e){ console.warn('Adapt load failed',e); });
+    // Load subscription
+    db.collection('users').doc(user.uid).collection('state').doc('subscription').get().then(function(doc){
+      window._access = doc.exists ? doc.data() : {type:'none'};
+      renderDashboard(); renderToc(); updateAuthUI(user);
+    }).catch(function(e){
+      console.warn('Subscription load failed',e);
+      window._access = {type:'none'};
+      renderDashboard(); renderToc();
+    });
   });
 })();
 </script>
@@ -2052,14 +2107,16 @@
       var live=ch.s.filter(function(sec){ return LESSONS[sec[0]]; });
       var dn=live.filter(function(sec){ return completed[sec[0]]; }).length;
       var isSoon = live.length === 0;
-      var st = isSoon ? 'soon' : ((live.length && dn===live.length) ? 'done' : (dn>0 ? 'current' : 'open'));
+      var isPaywalled = !isSoon && !isAccessGranted(ch.n);
+      var st = isSoon ? 'soon' : (isPaywalled ? 'paywall' : ((live.length && dn===live.length) ? 'done' : (dn>0 ? 'current' : 'open')));
       var pctc = live.length ? Math.round(dn/live.length*100) : 0;
       var sub = live.length ? (dn+' / '+live.length+' lessons complete') : (ch.s.length+' lessons · coming soon');
       var d=document.createElement('div'); d.className='dchip '+st;
       d.innerHTML='<span class="stat">'+CH_ICON[st]+'</span>'+
         '<div><div class="ttl">Chapter '+ch.n+' · '+ch.t+'</div><div class="sub">'+sub+'</div></div>'+
         '<span class="mini"><i style="width:'+pctc+'%"></i></span>';
-      if(!isSoon) d.addEventListener('click',showToc);
+      if(!isSoon && !isPaywalled) d.addEventListener('click',showToc);
+      if(isPaywalled) d.addEventListener('click',startCheckout);
       host.appendChild(d);
     });
   }
@@ -2072,12 +2129,14 @@
       g.innerHTML='<div class="ch"><span class="cnum">'+ch.n+'</span>'+ch.t+'</div>';
       ch.s.forEach(function(sec){
         var live=!!LESSONS[sec[0]], done=!!completed[sec[0]], locked=live && !lessonUnlocked(sec[0]);
-        var a=document.createElement(locked?'span':'a');
         var isSoon=!live;
-        a.className='sec'+(isSoon?' soon':'')+(live&&!locked&&!done?' open':'')+(done?' done':'')+(locked?' locked':'');
-        var tag = done ? ' <span class="tick">✓ done</span>' : (locked ? ' <span class="lk">🔒 locked</span>' : (isSoon ? ' <span class="cs-tag">· coming soon</span>' : ''));
+        var isPaywalled=!isSoon && !isAccessGranted(ch.n);
+        var a=document.createElement((locked||isPaywalled)?'span':'a');
+        a.className='sec'+(isSoon?' soon':'')+(isPaywalled?' paywall':'')+(live&&!locked&&!isPaywalled&&!done?' open':'')+(done&&!isPaywalled?' done':'')+(locked?' locked':'');
+        var tag = isPaywalled ? ' <span class="pw-tag">· pro</span>' : (done ? ' <span class="tick">✓ done</span>' : (locked ? ' <span class="lk">🔒 locked</span>' : (isSoon ? ' <span class="cs-tag">· coming soon</span>' : '')));
         a.innerHTML='<span style="color:var(--sky);font-weight:600">'+sec[0]+'</span>  '+sec[1]+tag;
-        if(!locked && !isSoon) a.addEventListener('click',function(){ showLesson(sec[0],sec[1],ch.t,ch.n); });
+        if(!locked && !isSoon && !isPaywalled) a.addEventListener('click',function(){ showLesson(sec[0],sec[1],ch.t,ch.n); });
+        if(isPaywalled) a.addEventListener('click',startCheckout);
         g.appendChild(a);
       });
       var pr=document.createElement('a'); pr.className='ex'; pr.textContent='Practice Problems →';
