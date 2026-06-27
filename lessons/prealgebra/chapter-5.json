@@ -51,7 +51,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Decimal place value.</b> Each place past the decimal point is one tenth of the place to its left: tenths \\(10^{-1}=\\tfrac{1}{10}\\), hundredths \\(10^{-2}=\\tfrac{1}{100}\\), thousandths \\(10^{-3}=\\tfrac{1}{1{,}000}\\). The decimal point is just the hinge where whole-number columns end."
+    "x": "<b>Decimal place value.</b> A decimal is whole-number place value run past the ones. Each place is one tenth of the place to its left, so stepping right walks down into the negative powers of ten from Chapter 2, tenths \\(10^{-1}=\\tfrac{1}{10}\\), hundredths \\(10^{-2}=\\tfrac{1}{100}\\), thousandths \\(10^{-3}=\\tfrac{1}{1{,}000}\\). The decimal point is not a wall, it is the hinge marking where the ones place ends, and the same divide-by-ten rule runs straight through it."
    },
    {
     "t": "fig",
@@ -114,7 +114,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Decimal-to-fraction shortcut.</b> The last decimal place names the denominator: one place gives \\(10\\), two places gives \\(100\\), three gives \\(1000\\). The digits after the point, read as a whole number, are the numerator. So \\(0.27=\\tfrac{27}{100}\\) and \\(0.009=\\tfrac{9}{1000}\\)."
+    "x": "<b>Decimal-to-fraction shortcut.</b> A decimal and a power-of-ten fraction are the same number in two outfits, so you switch by reading, never by dividing. Glance at the last filled place after the point, because that place names the bottom: one place gives \\(10\\), two places gives \\(100\\), three gives \\(1000\\). The digits after the point, read as one whole number, are the top. So \\(0.27=\\tfrac{27}{100}\\) and \\(0.009=\\tfrac{9}{1000}\\). This easy swap only works when the bottom is already a power of ten, so a fraction like \\(\\tfrac{1}{8}\\) is a job for later."
    },
    {
     "t": "prob",
@@ -180,7 +180,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Trailing versus inner zeros.</b> A zero tacked at the far right fills an empty place worth nothing, so \\(0.5=0.50=0.500\\). A zero wedged between the point and a digit shoves that digit one column further right, making the number ten times smaller: \\(0.5\\) and \\(0.05\\) are nowhere near equal."
+    "x": "<b>Trailing versus inner zeros.</b> A zero after the point does one of two opposite things, decided by where it sits. Tacked on at the very end it is empty padding, filling a place with nothing, so \\(0.5=0.50=0.500\\) and you may add or drop those trailing zeros to line decimals up. But a zero wedged between the point and a real digit steals a place that digit would have used and shoves everything after it one column further from the point, making the number ten times smaller, so \\(0.5\\) and \\(0.05\\) are nowhere near equal."
    },
    {
     "t": "fact",
@@ -273,7 +273,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Comparing decimals.</b> Align the decimal points and read place by place from the left. The first place where digits differ decides everything. More digits means finer detail, not greater size: \\(0.9\\) towers over \\(0.0999\\)."
+    "x": "<b>Comparing decimals.</b> Line up the decimal points and read place by place from the left, biggest place first. The first place where the digits disagree settles everything, because nothing further right is large enough to overturn it. The number of digits a decimal shows is just how finely it was measured, not how big it is, so a short \\(0.9\\) towers over a long \\(0.0999\\). Length is detail; size is decided on the left."
    },
    {
     "t": "prob",
@@ -329,7 +329,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Shifting by powers of ten.</b> Multiplying by \\(10^k\\) slides every digit \\(k\\) places left; dividing slides \\(k\\) places right. The point stays fixed on the page. Fill any vacated places with \\(0\\) so every digit lands in its correct column."
+    "x": "<b>Shifting by powers of ten.</b> Every place is worth ten times the place on its right, so making a number ten times bigger promotes each digit one column left, and ten times smaller demotes each digit one column right. Multiplying by \\(10^k\\) slides every digit \\(k\\) places left and dividing slides \\(k\\) places right, one slide per factor of ten. People say the point moves, but really the digits move while the point stays fixed on the page. Fill any vacated places with \\(0\\) so each digit lands in its correct column."
    },
    {
     "t": "prob",
@@ -573,7 +573,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "Decimal arithmetic is not new arithmetic. Every digit still sits in a place worth ten times the place to its right. The only new job is bookkeeping — knowing exactly where the decimal point belongs in the answer."
+    "x": "Decimal arithmetic is not new arithmetic. Every digit still sits in a place worth ten times the place to its right, and a decimal is just a fraction over a power of ten. The only genuinely new job is bookkeeping, knowing exactly where the point belongs in the answer. We will test that one idea on adding first, then multiplying, then dividing, and see whether it quietly covers all three."
    },
    {
     "t": "prob",
@@ -628,7 +628,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Adding and subtracting decimals.</b> Line up the decimal points so tenths sit over tenths, hundredths over hundredths. Pad shorter numbers with trailing zeros. Add or subtract column by column as with whole numbers, then drop the answer's point straight down."
+    "x": "<b>Adding and subtracting decimals.</b> This is not new addition. Line up the decimal points so tenths sit over tenths and hundredths over hundredths, since the point marks where the ones place stops. Pad a shorter number with trailing zeros, which is fair because a zero on the end is worth nothing. Then add or subtract column by column the way you always have, and the answer's point drops straight down under the points above. Line up the right edges instead and you stack tenths on hundredths, which is nonsense."
    },
    {
     "t": "fig",
@@ -671,11 +671,11 @@
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying decimals.</b> Multiply the digits ignoring decimal points, then count total decimal places in both factors and give the product exactly that many. \\(0.3 \\times 0.2\\): digits give \\(6\\), two places total, so the answer is \\(0.06\\), not \\(0.6\\)."
+    "x": "<b>Multiplying decimals.</b> Ignore the points and multiply the digits like plain whole numbers, then place the point by counting. Add up how many decimal places the two factors have between them, and the product gets exactly that many. It works because each factor is a whole number over a power of ten, and multiplying the bottoms means one place times one place lands on \\(10 \\times 10 = 100\\), giving two places. So \\(0.3 \\times 0.2\\): digits give \\(6\\), two places total, so the answer is \\(0.06\\), not \\(0.6\\)."
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying by a number less than one shrinks the result.</b> \\(0.3 \\times 0.2\\) must be below both \\(0.3\\) and \\(0.2\\), landing at \\(0.06\\). A longer decimal is not a larger number — size is set by the leftmost place."
+    "x": "<b>Multiplying by a number below one shrinks the result.</b> You are taking only a part of what you started with, so \\(0.3 \\times 0.2\\) has to land below both \\(0.3\\) and \\(0.2\\), and it does, at \\(0.06\\). The length of a decimal is a trick of the eye: \\(0.06\\) is longer to read than \\(0.6\\) yet ten times smaller, because size is set by the leftmost place, not by how many digits trail behind."
    },
    {
     "t": "prob",
@@ -715,7 +715,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Padding zeros when the digit count is short.</b> The total decimal places tell me how many digits must follow the point. If the whole-number product is too short, pad with leading zeros: eight thousandths must be \\(0.008\\), not \\(0.8\\)."
+    "x": "<b>Padding zeros when the digit count is short.</b> The places-add count does not say how long the answer is, it says how many digits must end up after the point. So when the whole-number product is too short to reach that far, write zeros in front of it until the last digit lands where the count demands, the same way eight thousandths must be \\(0.008\\) and not \\(0.8\\). Each of those front zeros is holding an empty place, not just sitting there for looks."
    },
    {
     "t": "fig",
@@ -761,7 +761,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Dividing by a decimal.</b> Slide both numbers the same number of places right until the divisor is whole, then divide the normal way. This keeps the quotient unchanged and lets all three operations rhyme: align to add, count to multiply, slide to divide."
+    "x": "<b>Dividing by a decimal.</b> Slide both numbers the same number of places right, just enough to make the divisor whole, then divide the plain way you already know. Sliding both by the same amount is multiplying the top and bottom of the fraction by the same power of ten, so it stays an equivalent fraction and the quotient never changes. Now all three moves rhyme: line up the points to add and subtract, count the places to multiply, slide the point to divide."
    },
    {
     "t": "prob",
@@ -1011,7 +1011,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Decimal-to-fraction shortcut.</b> The last decimal place names the denominator (tenths→\\(10\\), hundredths→\\(100\\), thousandths→\\(1000\\)) and the digits after the point form the numerator. Then divide by the gcd to reduce. So \\(0.45=\\tfrac{45}{100}=\\tfrac{9}{20}\\)."
+    "x": "<b>Decimal-to-fraction shortcut.</b> A terminating decimal is already a fraction, so you never have to divide to turn it into one. The place of the last digit hands you the denominator (tenths→\\(10\\), hundredths→\\(100\\), thousandths→\\(1000\\)), and every digit after the point, read straight across as one number, becomes the numerator. That just sets the fraction down, and then you tidy it the Chapter 4 way by dividing top and bottom by their gcd. So \\(0.7\\) is already \\(\\tfrac{7}{10}\\), while \\(0.45=\\tfrac{45}{100}=\\tfrac{9}{20}\\)."
    },
    {
     "t": "fig",
@@ -1116,7 +1116,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Fraction-to-decimal by scaling.</b> Multiply top and bottom by whatever number turns the denominator into a power of ten. Then read the numerator into the matching decimal places. Example: \\(\\tfrac{3}{4}=\\tfrac{75}{100}=0.75\\)."
+    "x": "<b>Fraction-to-decimal by scaling.</b> Scale the fraction up until the bottom is a power of ten. Ask what the denominator must be multiplied by to land on \\(10\\), \\(100\\), or \\(1{,}000\\), then multiply the top by that same number so the value never changes. Once the bottom is a power of ten, the decimal is just the numerator read into its matching places, like \\(\\tfrac{3}{4}=\\tfrac{75}{100}=0.75\\). Sometimes the bottom is already a power of ten, sometimes it is one short step away."
    },
    {
     "t": "prob",
@@ -1140,7 +1140,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Scaling uses only the missing prime partners.</b> A power of ten is \\(2^n \\times 5^n\\). To scale a denominator up, supply whatever \\(2\\)s or \\(5\\)s it lacks. A denominator with an extra prime like \\(3\\) or \\(7\\) can never be completed, so that fraction cannot terminate."
+    "x": "<b>Scaling uses only the missing prime partners.</b> A power of ten is \\(2^n \\times 5^n\\), a stack of \\(2\\)s matched one for one with the same number of \\(5\\)s. So scaling the bottom up never invents anything, it only supplies the partners that are missing: \\(8\\) with its three \\(2\\)s needs three \\(5\\)s, while \\(40\\) already owns one \\(5\\) and needs two more. The multiplier you reach for is exactly whatever \\(2\\)s and \\(5\\)s finish the matched set. A denominator carrying any other prime like \\(3\\) or \\(7\\) can never be completed, so that fraction cannot terminate."
    },
    {
     "t": "prob",
@@ -1161,7 +1161,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The termination test.</b> Put the fraction in lowest terms and factor the denominator. If only \\(2\\)s and \\(5\\)s appear, the decimal terminates — you can scale to a power of ten. Any other prime blocks that scaling and forces the decimal to run forever. <b>2 and 5 are the gatekeepers.</b>"
+    "x": "<b>The termination test.</b> Put the fraction in lowest terms and factor the denominator. If the only primes there are \\(2\\)s and \\(5\\)s, you can always feed it the missing \\(2\\)s or \\(5\\)s to grow it into a power of ten, and a power of ten is exactly what a terminating decimal is, so those fractions stop. But the moment any other prime sneaks in, a \\(3\\) or a \\(7\\) or an \\(11\\), no amount of \\(2\\)s and \\(5\\)s can clear it, no power of ten will ever fit, and the decimal is forced to run forever. <b>2 and 5 are the gatekeepers of a clean decimal name.</b>"
    },
    {
     "t": "fig",
@@ -1188,7 +1188,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>One number, many coats.</b> Scales to a power of ten, denominator built of \\(2\\)s and \\(5\\)s only, and the long division ends — these three descriptions name exactly the same situation. The two names always point at the identical spot on the number line."
+    "x": "<b>One number, many coats.</b> A fraction and its decimal are one number wearing two coats, and the coat that turns one into the other is plain division, since the decimal of \\(\\tfrac{a}{b}\\) is just \\(a\\) divided by \\(b\\). Once the fraction is in lowest terms with a bottom built of nothing but \\(2\\)s and \\(5\\)s, you can scale it up to a power of ten, which is the exact same reason the division runs out of remainder and stops clean. So <b>scales to a power of ten</b>, <b>bottom is only \\(2\\)s and \\(5\\)s</b>, and <b>the division ends</b> are three descriptions of one situation. The two names always point at the identical spot on the number line."
    },
    {
     "t": "fact",
@@ -1233,7 +1233,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Counting units by renaming.</b> How many eighths are in a number? Rewrite it as a fraction with denominator \\(8\\) and read the numerator. To count fifths, use denominator \\(5\\). Knowing both names lets you count any unit by picking the right denominator."
+    "x": "<b>Counting units by renaming.</b> When a question asks how many of some unit fit inside a number, like how many eighths or how many fifths, it is really asking you to rewrite that number as a fraction whose bottom is the unit, and then the numerator on top is the count. To hunt for eighths, steer the bottom to \\(8\\); to hunt for fifths, steer it to \\(5\\). So knowing both names of a number is not only for converting back and forth, it is a way to count and compare, since you pick the name with the bottom you want and read the answer straight off the top."
    },
    {
     "t": "prob",
@@ -1542,7 +1542,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding rule.</b> Find the digit just after the rounding place. If it is \\(5\\) or more, the rounding digit ticks up; if \\(4\\) or less, it stays. Every digit after the rounding place drops to zero. A tie (deciding digit exactly \\(5\\)) goes to the larger value."
+    "x": "<b>Rounding rule.</b> To round to a place, you really find the two nearest multiples of that place and the midpoint between them and pick the side you are closer to. But you never have to measure the gap, because the single digit just after the rounding place already tells you which half you are in. If that digit is \\(5\\) or more you are in the top half, so the place ticks up; if \\(4\\) or less you are in the bottom half, so it stays. Every digit after the rounding place drops to zero. A tie, deciding digit exactly \\(5\\), goes to the larger value."
    },
    {
     "t": "fig",
@@ -1596,7 +1596,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Tie-breaking convention.</b> When a value lands exactly on the midpoint between two neighbors, round to the larger, more positive value. A deciding digit of exactly \\(5\\) with nothing after it rounds up. This same rule applies when numbers are negative."
+    "x": "<b>Tie-breaking convention.</b> Usually the next digit clearly drops you into the top or bottom half and there is nothing to argue about. But every so often a value lands exactly on the midpoint, like \\(12.5\\) halfway between \\(12\\) and \\(13\\), and then \"nearest\" gives no answer because both ends are equally far. So this course picks one rule and uses it everywhere: an exact tie goes to the larger, more positive value. That is why a deciding digit of \\(5\\) with only zeros after it still rounds up, and the same larger-wins rule carries through even when the numbers turn negative."
    },
    {
     "t": "prob",
@@ -1619,7 +1619,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding through a 9.</b> When the rounding place holds \\(9\\) and it rounds up, the \\(9\\) becomes \\(0\\) and carries \\(1\\) left, just like addition. Every \\(9\\) in the carry path rolls over. This can push the answer up by a whole unit, as when \\(1.995\\) rounds to \\(2.00\\)."
+    "x": "<b>Rounding through a 9.</b> When the rounding place holds a \\(9\\) and needs to go up, it cannot, so it rolls over to \\(0\\) and shoves a carry into the next place left, exactly the way carrying works in addition. If that place is a \\(9\\) too the carry keeps marching, so every \\(9\\) in the carry path rolls over. That is how a number can tip up to a clean new value, like \\(1.995\\) climbing to \\(2.00\\) as both \\(9\\)s roll over, and if the carry runs off the front the number even gains a digit, the way \\(9.96\\) rounds to \\(10.0\\). Rounding is still just picking the nearer multiple; the carry is what \"up\" looks like with a \\(9\\) in the way."
    },
    {
     "t": "fig",
@@ -1663,7 +1663,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding negatives.</b> Same midpoint rule: pick the nearer neighbor. 'Larger' still means farther right on the number line, so between two negatives the larger is the one closer to zero. A tie at \\(-2.35\\) rounds to \\(-2.3\\), not \\(-2.4\\)."
+    "x": "<b>Rounding negatives.</b> A negative number is not a special case with its own rulebook. It rounds to the nearer multiple just like everything else, and the only thing to keep straight is what <b>larger</b> means down here. Larger is always farther right on the number line, so between two negatives the larger one is closer to zero. When a negative value sits exactly on the midpoint, the same round-to-the-larger tie rule sends you toward zero, which is why \\(-2.35\\) rounds to \\(-2.3\\) and not \\(-2.4\\). Same midpoint, same tie rule, just keep your left and right straight."
    },
    {
     "t": "prob",
@@ -1685,7 +1685,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Estimation as an error-check.</b> Round each piece to a friendly number, combine, and compare. Write the result with \\(\\approx\\), not \\(=\\). If the estimate is \\(180\\) and the printed total is \\(1{,}769\\), something is off before any careful work begins."
+    "x": "<b>Estimation as an error-check.</b> Round each piece before you combine and you get a quick ballpark close enough to catch a real mistake. The estimate is not the exact answer, so write it with \\(\\approx\\), like \\(29 \\times 6.10 \\approx 180\\), not an equals sign. The whole point is that when a printed total like \\(1{,}769\\) lands ten times away from your estimate of about \\(180\\), you know something is off before doing any careful work. Rounding trades a little accuracy for a lot of speed, which is exactly what makes it good for checking answers and for mental math."
    },
    {
     "t": "prob",
@@ -1724,7 +1724,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding is one-way.</b> The rounded value \\(4.3\\) stands for every original in the interval \\([4.25, 4.35)\\). Once rounded, the original is gone — you can only name the two boundaries it had to live between, not recover the exact value."
+    "x": "<b>Rounding is one-way.</b> When you round, you swap one exact number for a tidier one, and the moment you do, the original is gone for good. The rounded \\(4.3\\) no longer stands for a single number, it stands for a whole stretch, everything from the lower midpoint \\(4.25\\) up to just under the upper midpoint \\(4.35\\), since any original in that band rounds back to \\(4.3\\). That is why rounding is a one-way street. Many different originals funnel down to the same rounded value, so you can never run it backward; the most you can ever say in reverse is name the two boundaries the original had to live between."
    },
    {
     "t": "fig",
@@ -1987,7 +1987,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Why decimals repeat.</b> A decimal stops when long division reaches remainder \\(0\\). If it never does, the same remainder must eventually return — because remainders are bounded by the divisor. A repeated remainder forces a repeated digit, locking the decimal into a loop."
+    "x": "<b>Why decimals repeat.</b> A decimal stops when long division finally hands back a remainder of \\(0\\) and quits. Dividing \\(1\\) by \\(3\\) never gets to, because every step ends on the same leftover of \\(1\\). An identical leftover makes the next step identical, and an identical step prints the same digit again, so when the remainder repeats, the digit has no choice but to repeat too. One third runs forever not because its digits are unlucky but because its remainder is stuck in a loop and can never reach \\(0\\). That is the gatekeeper rule from 5.3 seen from the inside."
    },
    {
     "t": "prob",
@@ -2007,7 +2007,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Repeating is unavoidable.</b> When dividing by \\(b\\), every remainder is less than \\(b\\), giving at most \\(b-1\\) non-zero options. If none is \\(0\\), a remainder must repeat within \\(b\\) steps, forcing the digits to loop. Every non-terminating decimal from a fraction is periodic — never random."
+    "x": "<b>Repeating is unavoidable.</b> When you divide by \\(b\\), every remainder is smaller than \\(b\\), so there are at most \\(b-1\\) non-zero values that can ever turn up. If the division never lands on \\(0\\), it keeps stepping forever with only that small handful to choose from, so sooner or later a remainder you already saw comes back, and the instant it does, every step after copies a step before and the digits lock into a loop. A decimal that refuses to stop is never wandering at random, it is always settling into a block that repeats, so every non-terminating decimal from a fraction is periodic. Truly random endless decimals exist, but no fraction ever spells one."
    },
    {
     "t": "fig",
@@ -2048,7 +2048,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Reading the decimal from the denominator.</b> In lowest terms, factors of \\(2\\) and \\(5\\) create settling digits before the loop; any other prime creates the repeating tail. A pure \\(2\\)s-and-\\(5\\)s denominator terminates; additional primes force a head then a loop."
+    "x": "<b>Reading the decimal from the denominator.</b> Factor the denominator of a fraction in lowest terms and you can read its decimal before you ever divide. The <b>2s and 5s are the stopping primes</b>, and whichever of those two counts is larger sets the length of a short non-repeating head. Every <b>other prime is a looping prime</b>, building the repeating tail. So a denominator with only \\(2\\)s and \\(5\\)s gives a clean stop, one with none of them repeats from the very first digit, and one with both gives a head followed by a loop."
    },
    {
     "t": "prob",
@@ -2120,7 +2120,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Block-over-nines shortcut.</b> A pure repeating decimal equals its block over a string of \\(9\\)s, one per digit: \\(0.\\overline{7}=\\tfrac{7}{9}\\), \\(0.\\overline{12}=\\tfrac{12}{99}\\), \\(0.\\overline{481}=\\tfrac{481}{999}\\). Shift by one block length to cancel tails, then simplify."
+    "x": "<b>Block-over-nines shortcut.</b> A pure repeating decimal becomes the repeating block sitting over a string of \\(9\\)s, one \\(9\\) for each digit in the block, and then you reduce. That is why \\(0.\\overline{7}=\\tfrac{7}{9}\\), \\(0.\\overline{12}=\\tfrac{12}{99}\\), and \\(0.\\overline{481}=\\tfrac{481}{999}\\). It works because shifting by exactly one block length lines the endless tails up so they cancel, and dividing by that power of ten minus \\(1\\) is the same as dividing by \\(9\\), \\(99\\), or \\(999\\). The scary infinite tail turns out to be the easy part, since it cancels with a copy of itself."
    },
    {
     "t": "prob",
@@ -2161,7 +2161,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>\\(0.\\overline{9} = 1\\) exactly.</b> The same algebra that gives \\(0.\\overline{3} = \\tfrac{1}{3}\\) gives \\(0.\\overline{9} = \\tfrac{9}{9} = 1\\). Three thirds sum to \\(0.\\overline{9}\\) and to \\(1\\). These are not close — they are the same number wearing two names."
+    "x": "<b>\\(0.\\overline{9} = 1\\) exactly.</b> Run the same procedure that turned \\(0.\\overline{7}\\) into \\(\\tfrac{7}{9}\\) and \\(0.\\overline{3}\\) into \\(\\tfrac{1}{3}\\), and when the repeating block is \\(9\\) it simply hands back \\(\\tfrac{9}{9}=1\\). The endless string of nines is not creeping toward \\(1\\) and never quite landing, it has already landed, because an endless decimal is one fixed number, not a journey toward something. The thirds say the same thing: \\(\\tfrac{1}{3}=0.\\overline{3}\\), so three of them make \\(0.\\overline{9}\\), yet three thirds also make \\(1\\). So \\(0.\\overline{9}\\) and \\(1\\) are not close, they are the very same number wearing two names."
    },
    {
     "t": "prob",
@@ -2181,7 +2181,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Finding a far digit.</b> Divide the position by the block length. The remainder tells you the position within one cycle: remainder \\(1\\) gives the first digit, remainder \\(2\\) gives the second, remainder \\(0\\) gives the last. No long division needed beyond computing the period."
+    "x": "<b>Finding a far digit.</b> Once you know the repeating block and its length, the decimal is settled forever, so finding the digit at any spot is just asking where that spot lands inside one trip around the block. Divide the position by the period and read the remainder: remainder \\(1\\) points to the first digit of the block, remainder \\(2\\) to the second, and a remainder of \\(0\\) means you stopped right on the last digit. The remainder is what made the digits loop in the first place, so the same loop that trapped the division is the one you ride straight to any position, no long division needed beyond computing the period."
    },
    {
     "t": "fact",

@@ -24,7 +24,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Square root.</b> The square root of \\(n\\), written \\(\\sqrt{n}\\), is the nonnegative number whose square is \\(n\\). So \\(\\sqrt{196} = 14\\) because \\(14^2 = 196\\). The radical runs this operation in reverse from squaring."
+    "x": "<b>Square root.</b> The square root of a number \\(n\\), written \\(\\sqrt{n}\\) with the radical symbol drawn as a hook and a bar over the \\(n\\), is the number whose square is \\(n\\). Squaring multiplies a number by itself, and the square root reverses that, carrying you from the result back to the number you started with. So \\(\\sqrt{196} = 14\\) precisely because \\(14^2 = 196\\). When the area of a square is a perfect square, its square root is exactly the length of one side."
    },
    {
     "t": "prob",
@@ -64,7 +64,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Perfect square.</b> A whole number is a perfect square when it equals some whole number times itself, like \\(81 = 9^2\\) or \\(144 = 12^2\\). The square root of a perfect square is always a clean whole number."
+    "x": "<b>Perfect square.</b> A perfect square is a whole number you get by multiplying some whole number by itself, the way \\(81 = 9^2\\) and \\(144 = 12^2\\). Taking the square root of a perfect square just asks which number was multiplied by itself to make it, and that number always comes out a clean whole number. Once you know the squares of the small whole numbers, roughly \\(1\\) through \\(20\\), reading off a root is mostly recognizing a square you have already met and naming the number hiding underneath."
    },
    {
     "t": "prob",
@@ -102,11 +102,11 @@
    },
    {
     "t": "imp",
-    "x": "<b>Principal square root.</b> Because \\(10^2 = 100\\) and \\((-10)^2 = 100\\), the radical \\(\\sqrt{100}\\) could point at two values. By convention it names only the nonnegative one, so \\(\\sqrt{100} = 10\\), never \\(-10\\)."
+    "x": "<b>Principal square root.</b> A number and its negative square to the same positive result, since \\(10^2 = 100\\) and \\((-10)^2 = 100\\), so \\(\\sqrt{100}\\) would point at two values if we let it mean either one. By convention the radical names only the nonnegative value, called the principal square root, so \\(\\sqrt{100} = 10\\) and never \\(-10\\). That single rule turns the square root into a clean machine: feed it a perfect square and it hands back exactly one answer every time, and that answer is never negative."
    },
    {
     "t": "p",
-    "x": "The radical \\(\\sqrt{36}\\) names a single value, \\(6\\). The equation \\(x^2 = 36\\) asks something different — every number whose square equals \\(36\\). Both questions involve the same number, but their answers have different shapes."
+    "x": "The radical \\(\\sqrt{36}\\) names a single value, \\(6\\), the nonnegative side of a square with area \\(36\\), and there is nothing ambiguous about where it points. But a second question wears almost the same clothes. Instead of naming a value, \\(x^2 = 36\\) sets up an equation and asks for every number whose square lands on \\(36\\). Same number, two questions, two different shapes of answer. The trick from here is reading carefully enough to tell which one you have been handed."
    },
    {
     "t": "prob",
@@ -126,7 +126,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Equation vs. radical.</b> Solving \\(x^2 = 36\\) yields two answers, \\(6\\) and \\(-6\\), because squaring erases the sign. The radical \\(\\sqrt{36}\\) names only the nonnegative answer, \\(6\\). Extra context — like knowing \\(x\\) is negative — picks between the two."
+    "x": "<b>Equation vs. radical.</b> When \\(n\\) is positive, asking which numbers satisfy \\(x^2 = n\\) has two answers, a positive one and its negative twin, because squaring throws away the sign and both land in the same place. But \\(\\sqrt{n}\\) names only the nonnegative one of the two. So solving \\(x^2 = 36\\) gives \\(6\\) and \\(-6\\), while evaluating \\(\\sqrt{36}\\) gives just \\(6\\). The equation can hand you two values; the radical always names exactly one. Extra context, like knowing \\(x\\) is negative, picks which of the two you want."
    },
    {
     "t": "fig",
@@ -171,7 +171,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>No real root of a negative.</b> Squaring any real number gives a nonnegative result, so \\(x^2\\) can never be negative. An equation like \\(x^2 = -25\\) has no real solution."
+    "x": "<b>No real root of a negative.</b> Squaring any real number, positive or negative or zero, gives a result that is zero or positive, never negative, since a negative times a negative flips back to positive and a positive times a positive stays positive. So nothing you put in for \\(x\\) makes \\(x^2\\) negative, which means a negative number has no real square root and an equation like \\(x^2 = -25\\) has no real solution. This is not a gap in your tools, it is just how squaring works: every square points the same way, away from the negatives."
    },
    {
     "t": "prob",
@@ -191,7 +191,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Cancellation rule.</b> A square and a square root undo each other. Taking the root of a perfect square returns the original number. But because the radical yields only nonnegative values, \\(\\sqrt{(-12)^2} = 12\\), not \\(-12\\)."
+    "x": "<b>Cancellation rule.</b> Squaring and taking a square root are opposite moves, so doing one then the other lands you back where you started: \\(\\left(\\sqrt{n}\\right)^2 = n\\) and \\(\\sqrt{n^2} = n\\) whenever \\(n\\) is nonnegative. The one thing to watch is that the radical only hands back a nonnegative value, so when you square a negative number first, the square erases its sign and the root can only return the positive twin. That is why \\(\\sqrt{(-12)^2} = 12\\) and not \\(-12\\): the squaring wiped the sign away and the root had no way to put it back."
    },
    {
     "t": "prob",
@@ -218,7 +218,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Product rule for roots.</b> \\(\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}\\) for nonnegative \\(a\\) and \\(b\\). Split a large perfect square into recognizable pieces, root each, then multiply: \\(\\sqrt{1{,}296} = \\sqrt{16} \\times \\sqrt{81} = 4 \\times 9 = 36\\)."
+    "x": "<b>Product rule for roots.</b> \\(\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}\\) for nonnegative \\(a\\) and \\(b\\). When a perfect square is too big to recognize on sight, split it into a product of two smaller perfect squares you already know, root each piece, then multiply, so \\(\\sqrt{1{,}296} = \\sqrt{16} \\times \\sqrt{81} = 4 \\times 9 = 36\\). This works because rooting and multiplying cooperate, but only when both pieces really are perfect squares, since that is what keeps every root a clean whole number."
    },
    {
     "t": "prob",
@@ -263,7 +263,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Solving \\(\\sqrt{x} = k\\).</b> Square both sides to free \\(x\\): \\((\\sqrt{x})^2 = k^2\\), giving \\(x = k^2\\). This only works when \\(k \\ge 0\\), since the radical can never equal a negative number."
+    "x": "<b>Solving \\(\\sqrt{x} = k\\).</b> When the unknown is trapped under a radical, free it by squaring both sides, since squaring is the exact move that undoes a square root: \\((\\sqrt{x})^2 = k^2\\), giving \\(x = k^2\\). This only works when \\(k \\ge 0\\), because the radical names a value that is zero or positive and can never equal a negative number. If an equation sets \\(\\sqrt{x}\\) equal to something negative, it has no solution, even when the algebra looks like it should go through."
    },
    {
     "t": "prob",
@@ -518,7 +518,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Irrational roots.</b> When the radicand is not a perfect square, its root cannot be written as a fraction or a terminating decimal. We trap it between the two nearest perfect squares to pin down its whole-number part."
+    "x": "<b>Irrational roots.</b> When the number under the radical is not a perfect square, its root is a new kind of number. It cannot be written as a fraction, and its decimal runs forever without ever ending or settling into a repeating pattern, so there is no exact value to type. But you are not stuck, because the perfect squares from 8.1 sit at fixed, known spots on the number line. Find the two perfect squares that bracket the radicand, and you trap one of these endless roots tightly between two whole numbers you know exactly."
    },
    {
     "t": "fact",
@@ -546,7 +546,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Bounding a root.</b> Find the perfect squares just below and just above the radicand. Their roots fence in the irrational root. The lower root is the <b>floor</b>: the largest whole number still below \\(\\sqrt{n}\\)."
+    "x": "<b>Bounding a root.</b> A bigger number always has a bigger square root, so the moment you find the perfect square just below your number and the one just above it, you have caught the root between two neighboring whole numbers. The smaller of those whole numbers is the <b>floor</b> of the root, the largest whole number still below it. So \\(\\sqrt{54}\\) is trapped between \\(7\\) and \\(8\\), since \\(49\\) sits just below \\(54\\) and \\(64\\) just above, which makes its floor \\(7\\)."
    },
    {
     "t": "prob",
@@ -565,7 +565,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Order rule.</b> For nonnegative numbers, the larger number always has the larger square root. So comparing \\(\\sqrt{a}\\) and \\(\\sqrt{b}\\) reduces to comparing \\(a\\) and \\(b\\) directly."
+    "x": "<b>Order rule.</b> For numbers that are zero or bigger, squaring never flips the order around, so a larger number always carries a larger square root. That means \\(\\sqrt{a} > \\sqrt{b}\\) exactly when \\(a > b\\), and comparing two roots becomes the easy job of comparing the plain numbers hiding inside them. So \\(\\sqrt{53} > \\sqrt{46}\\) without any estimating, just because \\(53 > 46\\). This one rule is the engine behind trapping a root and behind everything else in the lesson."
    },
    {
     "t": "prob",
@@ -599,7 +599,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding a root.</b> To round \\(\\sqrt{n}\\) to the nearest integer, find the halfway value \\(m.5\\) between the two candidate integers. If \\(n > (m.5)^2\\), the root rounds up; otherwise it rounds down. No decimal for the root is ever needed."
+    "x": "<b>Rounding a root.</b> To round \\(\\sqrt{n}\\) to the nearest whole number, you never have to chase its endless decimal, only find the boundary it must beat. The cutoff sits exactly halfway between the two integers the root is trapped between, so square that halfway value \\(m.5\\) and compare it to \\(n\\). If \\(n > (m.5)^2\\) the root rounds up, otherwise it rounds down. The whole decision is made with exact whole-number arithmetic, and no decimal for the root is ever needed."
    },
    {
     "t": "prob",
@@ -683,7 +683,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Finding the floor.</b> To find the largest whole number below \\(\\sqrt{n}\\), search for consecutive whole numbers \\(m\\) and \\(m+1\\) with \\(m^2 \\le n < (m+1)^2\\). Then \\(m\\) is the floor of the root."
+    "x": "<b>Finding the floor.</b> To find the largest whole number below \\(\\sqrt{n}\\), search for consecutive whole numbers \\(m\\) and \\(m+1\\) with \\(m^2 \\le n < (m+1)^2\\), then \\(m\\) is the floor of the root. You can hunt for the two perfect squares that hug \\(n\\), or square whole numbers going up until you pass it and back off by one. It never breaks because you are only ever comparing squares, and squares stay exact even when the root runs on forever, so you never have to pin down the messy decimal at all."
    },
    {
     "t": "prob",
@@ -702,7 +702,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Counting roots in a range.</b> To count whole numbers \\(n\\) with \\(\\sqrt{n}\\) between two values, square the bounds to get a plain number range, then count whole numbers in that range."
+    "x": "<b>Counting roots in a range.</b> Asking how many whole numbers have a square root between two values is hard to picture while the roots are wrapped in radicals, so square both ends and turn it into a question about the plain numbers underneath. To count roots landing between \\(5\\) and \\(6\\), square to ask which whole numbers fall between \\(25\\) and \\(36\\), then count on sight. Squaring is fair because a bigger number always has a bigger root, so it never sneaks a value in or out. The only thing left to watch is whether each endpoint is counted or skipped."
    },
    {
     "t": "prob",
@@ -721,7 +721,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Whole numbers between two roots.</b> To list whole numbers \\(k\\) with \\(\\sqrt{a} < k < \\sqrt{b}\\), find the smallest whole number above \\(\\sqrt{a}\\) and the largest below \\(\\sqrt{b}\\), then count the run."
+    "x": "<b>Whole numbers between two roots.</b> Counting the whole numbers caught between two different roots is the trapping trick run twice. Since squaring keeps order for nonnegative numbers, asking which whole numbers \\(k\\) satisfy \\(\\sqrt{a} < k < \\sqrt{b}\\) is the same as asking which ones, when squared, land strictly between \\(a\\) and \\(b\\). Bracket each root by itself, read off the smallest whole number above \\(\\sqrt{a}\\) and the largest below \\(\\sqrt{b}\\), then count the run. The order rule keeps the count lined up so none slip past."
    },
    {
     "t": "prob",
@@ -745,7 +745,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Comparing root expressions.</b> Both expressions are positive, so whichever squares to the larger number is the larger quantity. Square \\(a\\sqrt{b}\\) to get \\(a^2 b\\) — a plain whole number — then compare."
+    "x": "<b>Comparing root expressions.</b> Two nonnegative quantities keep their order when you square them, so whichever one squares to the bigger number is the bigger quantity. To compare any two root expressions, square both and rank the plain whole numbers you get. A coefficient out front comes along for the ride, because it squares too, so \\(6\\sqrt{7}\\) squares to \\(6^2 \\times 7 = 252\\), turning an awkward irrational into one tidy number. The decimals you were reaching for are never needed, and this only decides which is larger, it does not simplify or combine the radicals."
    },
    {
     "t": "prob",
@@ -764,7 +764,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Even powers of roots.</b> Two copies of the same root multiply to the number underneath: \\(\\sqrt{a} \\cdot \\sqrt{a} = a\\). So \\((\\sqrt{a})^4 = a^2\\) and in general \\((\\sqrt{a})^{2k} = a^k\\) — the irrational root vanishes."
+    "x": "<b>Even powers of roots.</b> A square root and the number under it are tied together by one promise, that the root times itself gives back the inside, so \\(\\sqrt{a} \\cdot \\sqrt{a} = a\\) even though \\(\\sqrt{a}\\) by itself may never settle into a tidy decimal. Any even power of a root is just a stack of those pairs, and each pair collapses to the inside, so the irrational vanishes and a whole number is left. Thus \\((\\sqrt{a})^4 = a^2\\) and in general \\((\\sqrt{a})^{2k} = a^k\\), since splitting an even exponent into pairs raises the inside to half the exponent."
    },
    {
     "t": "prob",
@@ -1009,7 +1009,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Product rule.</b> \\(\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}\\) for nonnegative \\(a\\) and \\(b\\). So a root may split at any factor. When one factor is a perfect square, its root pops out as a whole number."
+    "x": "<b>Product rule.</b> The square root of a product is the product of the square roots, \\(\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}\\) for nonnegative \\(a\\) and \\(b\\). So a root is allowed to split anywhere its radicand factors. That is the lever for simplifying: if one of those factors is a perfect square, its root pops out as a clean whole number while the rest stays under the radical."
    },
    {
     "t": "prob",
@@ -1029,7 +1029,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Simplifying.</b> Find the largest perfect-square factor of the radicand, take its root to pull a whole number out front, and leave the rest under the radical. For example, \\(\\sqrt{12} = \\sqrt{4}\\sqrt{3} = 2\\sqrt{3}\\)."
+    "x": "<b>Simplifying.</b> To simplify a square root, find the largest perfect-square factor of the radicand, take the root of that factor to pull a whole number out front, and leave whatever is left under the radical. The pulled-out number and the leftover root sit side by side, like \\(\\sqrt{12} = \\sqrt{4}\\sqrt{3} = 2\\sqrt{3}\\), which means \\(2\\) times \\(\\sqrt{3}\\)."
    },
    {
     "t": "fig",
@@ -1086,7 +1086,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Simplest form.</b> A root is simplified when the radicand has no perfect-square factor bigger than \\(1\\). Always pull out the <i>largest</i> perfect-square factor to finish in one step."
+    "x": "<b>Simplest form.</b> A square root is in simplest form when the number left under the radical has no perfect-square factor bigger than \\(1\\), since at that point nothing more can be pulled out. If you pull out a small square and the leftover still hides another square, you are not finished, so reaching for the <i>largest</i> perfect-square factor right away does the job in a single step."
    },
    {
     "t": "prob",
@@ -1301,7 +1301,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying roots.</b> \\(\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}\\). Combine both numbers under one radical, then simplify. When \\(ab\\) is a perfect square, the radical vanishes and a whole number remains."
+    "x": "<b>Multiplying roots.</b> The product rule from 8.3 split one root into two; read left to right it joins two roots into one, \\(\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}\\). So to multiply roots, tuck both numbers under a single radical, then simplify whatever lands there the 8.3 way. Every so often the product \\(ab\\) is a perfect square, the radical vanishes, and a plain whole number is left, the way \\(\\sqrt{3} \\times \\sqrt{27} = \\sqrt{81} = 9\\). That clean exact landing is the whole reason to keep the root instead of cashing it in for a messy decimal."
    },
    {
     "t": "prob",
@@ -1339,7 +1339,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying with coefficients.</b> To multiply \\(a\\sqrt{m} \\times b\\sqrt{n}\\), multiply the coefficients together and the radicands together: \\((ab)\\sqrt{mn}\\). Then simplify the result. A bare root like \\(\\sqrt{5}\\) has a hidden coefficient of \\(1\\)."
+    "x": "<b>Multiplying with coefficients.</b> A root with a number out front, like \\(4\\sqrt{3}\\), is just that number times the root, so to multiply \\(a\\sqrt{m} \\times b\\sqrt{n}\\) you run two channels at once: the coefficients multiply together and the radicands multiply together, giving \\((ab)\\sqrt{mn}\\). Only then do you simplify, pulling any perfect square out from under the root and folding it into the coefficient, which is how \\(4\\sqrt{3} \\times 2\\sqrt{6}\\) tidies to \\(24\\sqrt{2}\\). A bare root carries a hidden coefficient of \\(1\\), just as a lonely \\(x\\) meant \\(1x\\) in 6.1."
    },
    {
     "t": "prob",
@@ -1359,7 +1359,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Squaring a root expression.</b> \\((k\\sqrt{a})^2 = k^2 \\times a\\). The coefficient squares, the root squares back to the number underneath, and no radical is left."
+    "x": "<b>Squaring a root expression.</b> Squaring undoes a square root, so \\(\\sqrt{a}\\) times itself hands back the plain number \\(a\\). When you square \\(k\\sqrt{a}\\), the coefficient gets squared and the number under the root steps out bare, giving \\((k\\sqrt{a})^2 = k^2 \\times a\\) with no radical left. So \\((5\\sqrt{2})^2 = 25 \\times 2 = 50\\), a whole number every time the radicand starts as a whole number."
    },
    {
     "t": "prob",
@@ -1379,7 +1379,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Like radicals.</b> Radical terms with the same number under the root add or subtract like terms: only the coefficients change, not the root. If the numbers under the roots differ, the terms cannot be combined."
+    "x": "<b>Like radicals.</b> This links back to collecting like terms in 6.1. When two radicals carry the exact same number under the root, the root plays the part of the variable, so they are like terms and you add or subtract only the coefficients out front while the root stays untouched, which is why \\(6\\sqrt{7} + 2\\sqrt{7} = 8\\sqrt{7}\\) the way \\(6x + 2x = 8x\\). A lonely \\(\\sqrt{7}\\) is secretly \\(1\\sqrt{7}\\). If the numbers under the roots differ, the radicals are different kinds of thing and nothing fuses them, exactly as an \\(x\\) and a \\(y\\) refuse to merge."
    },
    {
     "t": "fig",
@@ -1403,7 +1403,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>No addition inside a root.</b> \\(\\sqrt{a} + \\sqrt{b} \\ne \\sqrt{a+b}\\). The counter-example: \\(\\sqrt{36}+\\sqrt{64} = 6+8 = 14\\), but \\(\\sqrt{36+64} = \\sqrt{100} = 10\\). A root splits across multiplication, never across addition."
+    "x": "<b>No addition inside a root.</b> There is no rule that lets a root slide across a plus or minus sign: \\(\\sqrt{a} + \\sqrt{b} \\ne \\sqrt{a+b}\\). The counter-example settles it, since \\(\\sqrt{36} + \\sqrt{64} = 6 + 8 = 14\\) while \\(\\sqrt{36+64} = \\sqrt{100} = 10\\), and \\(14\\) is simply not \\(10\\). A root only splits across multiplication, never across addition or subtraction, so a \\(+\\) or \\(-\\) between two roots is a wall the numbers underneath can never cross. That is exactly why adding works only on like radicals, by their coefficients."
    },
    {
     "t": "fig",
@@ -1428,7 +1428,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Simplify before combining.</b> Before adding or subtracting radicals, simplify each term. Hidden perfect squares may reveal matching roots that cancel or combine, as in \\(3\\sqrt{8} - \\sqrt{72} = 6\\sqrt{2} - 6\\sqrt{2} = 0\\)."
+    "x": "<b>Simplify before combining.</b> Never decide whether two roots combine by how they look at the start, because \\(3\\sqrt{8}\\) and \\(\\sqrt{72}\\) look like strangers, yet simplifying each one turns both into \\(6\\sqrt{2}\\). So before adding or subtracting, pull the largest perfect square out of every term, then check for like radicals to collect, the way you collected like terms in 6.1 with the root as the variable. The reward can be big: if two simplified terms match and one is subtracted from the other, they cancel to a clean \\(0\\), as in \\(3\\sqrt{8} - \\sqrt{72} = 6\\sqrt{2} - 6\\sqrt{2} = 0\\)."
    },
    {
     "t": "fig",
@@ -1453,7 +1453,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Quotient rule.</b> \\(\\dfrac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\dfrac{a}{b}}\\). So dividing two roots collapses into a single root of the quotient. When that quotient is a perfect square, the radical disappears."
+    "x": "<b>Quotient rule.</b> Division has its own rule, a twin of the multiplying one: \\(\\dfrac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\dfrac{a}{b}}\\). A quotient of two roots collapses into a single root of the quotient, and when that quotient is a perfect square the radical just vanishes, the way \\(\\dfrac{\\sqrt{252}}{\\sqrt{7}} = \\sqrt{\\dfrac{252}{7}} = \\sqrt{36} = 6\\). The rule runs the other way too, letting you take the root of a tidy fraction or terminating decimal exactly, since the root of a quotient is the root of the top over the root of the bottom."
    },
    {
     "x": "Simplify \\(\\sqrt{\\dfrac{25}{49}}\\). Split the root across the fraction and evaluate each piece. Write your answer as a fraction in lowest terms.",

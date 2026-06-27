@@ -37,7 +37,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Factor (divisor).</b> \\(f\\) is a factor of \\(n\\) when \\(n = f \\times k\\) for some whole number \\(k\\), equivalently \\(n \\div f\\) leaves no remainder. Factors come in pairs multiplying to \\(n\\); stop searching at \\(\\sqrt{n}\\)."
+        "x": "<b>Factor (divisor).</b> A whole number \\(f\\) is a factor of \\(n\\), also called a divisor of \\(n\\), when \\(n = f \\times k\\) for some whole number \\(k\\), equivalently when \\(n \\div f\\) leaves no remainder, equivalently when \\(n\\) objects fill a rectangle with \\(f\\) along one side. Factors travel in pairs, since every side \\(f\\) is matched by the partner side \\(n \\div f\\) on the opposite edge and the two multiply to \\(n\\). That pairing is why you never search past \\(\\sqrt{n}\\): below that crossing each small factor you find hands you its large partner for free, and once a side would exceed its own partner you have met every rectangle already, just mirrored."
       },
       {
         "t": "prob",
@@ -57,7 +57,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Perfect squares have an odd factor count.</b> Every factor pairs with a different partner, keeping the count even — except when \\(f \\times f = n\\), where \\(f\\) pairs with itself. So odd factor count ↔ perfect square."
+        "x": "<b>Perfect squares have an odd factor count.</b> Almost every factor drags a different partner along, so factors come two at a time and the count is even. The one way to break that is for a factor to pair with itself, \\(f \\times f = n\\), which happens exactly when \\(n\\) is a perfect square. That lone self-paired factor is counted once, tipping the total to odd. So a whole number has an odd number of factors precisely when it is a perfect square, and the unpaired factor is the side of that square. An odd factor count is a fingerprint, and the print belongs to a square."
       },
       {
         "t": "fig",
@@ -84,7 +84,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Multiple.</b> \\(m\\) is a multiple of \\(n\\) when \\(m = k \\times n\\) for some whole number \\(k\\). This mirrors the factor definition exactly: \\(m\\) is a multiple of \\(n\\) ↔ \\(n\\) is a factor of \\(m\\)."
+        "x": "<b>Multiple.</b> A whole number \\(m\\) is a multiple of \\(n\\) when \\(m\\) sits a whole number of \\(n\\)-steps out from \\(0\\), that is \\(m = k \\times n\\) for some whole number \\(k\\). This is the exact mirror of a factor: \\(m\\) is a multiple of \\(n\\) precisely when \\(n\\) is a factor of \\(m\\). Factor and multiple are one arrow, not two relationships. Read it forward and you say multiple, read it backward and you say factor."
       },
       {
         "t": "prob",
@@ -118,7 +118,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Factors are finite; multiples are infinite.</b> No factor of \\(n\\) exceeds \\(n\\) itself, so the factor list closes. Multiples stretch forever. Also: 1 divides every \\(n\\); every \\(n\\) is both a factor and multiple of itself; 0 is a multiple of every \\(n\\)."
+        "x": "<b>Factors are finite; multiples are infinite.</b> Every factor of \\(n\\) is at least \\(1\\) and at most \\(n\\) itself, since its partner side is no smaller than \\(1\\), so the factor list closes. But from any multiple you can always step once more and reach a fresh one, so multiples stretch forever. Three quiet facts ride along. \\(1\\) is a factor of every \\(n\\), since \\(n = 1 \\times n\\). Every \\(n\\) is both a factor and a multiple of itself, since \\(n = n \\times 1\\). And \\(0\\) is a multiple of every \\(n\\), since \\(0 = n \\times 0\\), so it waits at the front of every multiple list."
       },
       {
         "t": "prob",
@@ -134,7 +134,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Counting multiples in a range.</b> Divide the upper bound by \\(n\\) (round down) to get the count up to the top; subtract the count up to just below the bottom. Check whether each endpoint is itself a multiple."
+        "x": "<b>Counting multiples in a range.</b> The number of multiples of \\(n\\) from \\(1\\) up to a value \\(V\\) is how many whole \\(n\\)-steps fit, which is \\(V \\div n\\) with the remainder thrown away. So count the multiples up to the top of the range, then subtract the multiples below the bottom, and what survives lies inside. Round the division down for the largest multiple no greater than a bound, and up for the smallest multiple at least as big as a bound. Keep one eye on whether each endpoint is itself a multiple, since that decides whether it joins the count."
       },
       {
         "t": "p",
@@ -172,7 +172,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Closure.</b> \\(na \\pm nb = n(a \\pm b)\\), so sums and differences of multiples of \\(n\\) stay multiples of \\(n\\). Conversely, a multiple of \\(n\\) plus a non-multiple of \\(n\\) can never be a multiple of \\(n\\)."
+        "x": "<b>Closure.</b> Add or subtract two multiples of \\(n\\) and you land on a multiple of \\(n\\) again, because the shared \\(n\\) factors out: \\(na \\pm nb = n(a \\pm b)\\). Turn it around for the sharper half. A multiple of \\(n\\) plus a number that is not a multiple of \\(n\\) can never be a multiple of \\(n\\), because if it were, subtracting the two multiples would force the stray number to be a multiple too, and it is not. Once you toss a non-multiple onto a multiple you are stuck off the trail until you add back exactly the missing amount."
       },
       {
         "t": "prob",
@@ -227,7 +227,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Chaining.</b> If \\(a\\) is a factor of \\(b\\), every multiple of \\(b\\) is also a multiple of \\(a\\). The chain runs only toward smaller factors, never upward — a multiple of 3 need not be a multiple of 12."
+        "x": "<b>Chaining.</b> If \\(a\\) is a factor of \\(b\\), then every multiple of \\(b\\) is automatically a multiple of \\(a\\). The multiple carries \\(b\\) inside it, and \\(b\\) carries \\(a\\) inside it, so \\(a\\) is in there too: stepping in \\(b\\)-sized steps is secretly stepping in \\(a\\)-sized steps. A multiple of \\(12\\), for instance, is always a multiple of \\(1, 2, 3, 4, 6\\) as well, every factor of \\(12\\) inherited for free. The chain runs only downward toward the smaller factors, never upward, which is why a multiple of \\(3\\) need not be a multiple of \\(12\\). This one inheritance is exactly what the divisibility shortcuts of the next section lean on."
       },
       {
         "t": "prob",
@@ -246,7 +246,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Summary.</b> Factors pair to \\(n\\); perfect squares get one self-paired factor, giving an odd count. Factors finite, multiples infinite. Closure: multiples closed under \\(+\\) and \\(-\\). Chaining: inheritance flows only toward smaller factors."
+        "x": "<b>Summary.</b> One relationship carried this lesson, read from two ends. A factor of \\(n\\) is a side of a rectangle of area \\(n\\), so factors arrive in pairs that multiply to \\(n\\), with a perfect square's self-paired side the lone exception that tips its factor count to odd. Turn the arrow around and the small number is a factor while the large one is a multiple. From there flow the quiet facts: finitely many factors but infinitely many multiples, \\(1\\) divides everything, \\(0\\) is a multiple of everything. To count multiples in a window, count up to the top and subtract the ones below the bottom. By closure, sums and differences of multiples of \\(n\\) stay multiples of \\(n\\). By chaining, a multiple of a multiple is a multiple, the inheritance running only toward smaller factors, which is exactly what the divisibility tests ahead are built on."
       }
     ],
     "review": [
@@ -340,7 +340,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Factors are finite; multiples are infinite.</b> No factor of \\(n\\) exceeds \\(n\\) itself, so the factor list closes. Multiples stretch forever. Also: 1 divides every \\(n\\); every \\(n\\) is both a factor and multiple of itself; 0 is a multiple of every \\(n\\)."
+        "x": "<b>Two bookends sit on every factor list.</b> \\(1\\) is always the smallest factor, the single full-length row, and the number itself is always the largest, since no side of a rectangle can outrun its own area. So a factor of \\(n\\) is always trapped between \\(1\\) and \\(n\\), which is why a factor hunt can never wander off forever."
       },
       {
         "x": "Which of 72, 81, and 98 has an odd number of factors? Explain through self-pairing.",
@@ -574,7 +574,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Last-digit tests for 10, 5, and 2.</b> Any number equals a whole number of tens plus its units digit \\(u\\). Since \\(10k\\) is always a multiple of \\(2\\), \\(5\\), and \\(10\\), closure leaves only \\(u\\) in doubt. Divisible by 10 ↔ ends in 0; by 5 ↔ ends in 0 or 5; by 2 ↔ ends in an even digit."
+        "x": "<b>Last-digit tests for 10, 5, and 2.</b> Split any whole number into its units digit and everything above it, \\(N = 10k + u\\), where \\(k\\) reads off the digits before the units. Since \\(10\\) already carries a factor of \\(2\\) and a factor of \\(5\\), the part \\(10k\\) is a multiple of \\(2\\), of \\(5\\), and of \\(10\\) all at once, so by closure it cannot change divisibility and the whole decision falls on \\(u\\). That gives three clean tests. Divisible by 10 exactly when \\(u = 0\\); by 5 exactly when \\(u = 0\\) or \\(5\\); by 2 exactly when \\(u\\) is even (\\(0, 2, 4, 6, 8\\))."
       },
       {
         "t": "p",
@@ -597,7 +597,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Divisibility by 4.</b> A number is divisible by \\(4\\) exactly when its last two digits are. Split any number as \\((\\text{hundreds}) + (\\text{last two digits})\\); since \\(100 = 4 \\times 25\\), the hundreds chunk is already a multiple of \\(4\\) and closure drops it."
+        "x": "<b>Divisibility by 4.</b> A whole number is divisible by \\(4\\) exactly when the number formed by its last two digits is. Split it into its last two digits plus everything from the hundreds up, like \\(8{,}516 = 8{,}500 + 16\\). The front chunk is always a whole number of hundreds, and since \\(100 = 4 \\times 25\\) is a multiple of \\(4\\), a whole number of hundreds is a multiple of \\(4\\) too. So closure drops the front chunk without changing divisibility, leaving only the last two digits to check."
       },
       {
         "t": "prob",
@@ -617,7 +617,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Test by 8: last three digits.</b> A number is divisible by 8 when its last three digits are, since \\(1000 = 8 \\times 125\\). Pattern: by \\(2\\) reads 1 digit, by \\(4\\) reads 2, by \\(8\\) reads 3."
+        "x": "<b>Test by 8: last three digits.</b> A number is divisible by 8 exactly when its last three digits form a multiple of 8, because everything to the left of those three digits is a count of thousands and \\(1000 = 8 \\times 125\\), so that front part is already a multiple of 8 and closure peels it away. This is one rung of a taller ladder: testing by 2 reads the last 1 digit, by 4 the last 2, by 8 the last 3, since each power of two divides the matching power of ten, \\(2 \\mid 10\\), \\(4 \\mid 100\\), \\(8 \\mid 1000\\)."
       },
       {
         "t": "p",
@@ -642,7 +642,7 @@
       },
       {
         "t": "imp",
-        "x": "A number is divisible by <b>9</b> exactly when its <b>digit sum</b> is, because each power of ten equals a multiple of 9 plus 1, so the multiple-of-9 parts cancel and only the digits remain. The same test works for <b>3</b>, since every multiple of 9 is also a multiple of 3."
+        "x": "A number is divisible by <b>9</b> exactly when its <b>digit sum</b> is, and the reason lives in place value. Every power of ten is one more than a multiple of \\(9\\), since \\(10 = 9+1\\), \\(100 = 99+1\\), \\(1000 = 999+1\\). So each place gives a digit times a string of nines plus that digit again, like \\(7 \\times 100 = 7 \\times 99 + 7\\). The strings-of-nines parts are all multiples of \\(9\\) and drop out together by closure, leaving only the digits added up, so the number and its digit sum share the same remainder mod \\(9\\). The same test works for <b>3</b> by chaining, since \\(3\\) is a factor of \\(9\\), so \\(9, 99, 999, \\ldots\\) each carry a \\(3\\) and drop out as well."
       },
       {
         "t": "fig",
@@ -667,7 +667,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Digital root.</b> Sum a number's digits repeatedly until one digit remains. That digit equals the remainder when divided by 9 (a root of 9 means remainder 0). It works because each power of ten is \\(9k+1\\), so digits sum up to the same remainder mod 9 at every pass."
+        "x": "<b>Digital root.</b> Sum a number's digits, then sum the digits of that result, and keep going until one digit remains. That digit equals the remainder when the number is divided by 9, where a root of 9 stands for remainder 0. It works because each power of ten is one more than a multiple of 9, so a digit times its place is that digit times a multiple of 9 plus the digit itself, contributing nothing to the remainder mod 9. Each pass therefore keeps the remainder unchanged while shrinking the number. The root settles divisibility by 9 (root 9) and by 3 (root 3, 6, or 9). Check: \\(7{,}284 \\to 7+2+8+4 = 21 \\to 3\\), and \\(7{,}284 = 809 \\times 9 + 3\\), remainder 3."
       },
       {
         "t": "fact",
@@ -704,7 +704,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>The by-11 test.</b> A number is divisible by 11 exactly when its <b>alternating digit sum</b> (plus units, minus tens, plus hundreds, …) is. The signs flip because \\(10\\equiv -1\\), \\(100\\equiv +1\\), \\(1000\\equiv -1\\pmod{11}\\), alternating at every step."
+        "x": "<b>The by-11 test.</b> A number is divisible by 11 exactly when its <b>alternating digit sum</b> is. Tag the digits from the right with alternating signs, plus the units, minus the next, plus the one after, and add them up. The signs flip because \\(10\\) is one below a multiple of \\(11\\) and leaves remainder \\(-1\\), then \\(100 = 99 + 1\\) leaves \\(+1\\), then \\(1000 = 1001 - 1\\) leaves \\(-1\\), the place values marching \\(-1, +1, -1, +1\\) as you climb. Closure strips the whole-multiple-of-\\(11\\) part of each place, leaving exactly the digits with their flipping signs, so the number and its alternating digit sum land on the same multiple of \\(11\\)."
       },
       {
         "t": "p",
@@ -761,7 +761,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Combining rule.</b> Split a composite divisor into two <b>coprime</b> factors and test each; the number is divisible by the composite exactly when it passes both. The split must be coprime — if the pieces share a factor, that factor gets double-counted and the test can pass when it should fail."
+        "x": "<b>Combining rule.</b> To test divisibility by a composite number, split it into two <b>coprime</b> factors (factors sharing no common factor), test each on its own, and the number is divisible by the whole exactly when it passes both. So \\(6 = 2 \\times 3\\), \\(12 = 3 \\times 4\\), \\(15 = 3 \\times 5\\), \\(20 = 4 \\times 5\\) all work. This is chaining: if a number's demand for a \\(2\\) and its demand for a \\(3\\) never lean on the same prime, they stack side by side and force a \\(6\\). The split must be coprime, since \\(12 = 2 \\times 6\\) fails: both pieces ask for a \\(2\\), but those could be the same \\(2\\) counted twice, while \\(12 = 2^2 \\times 3\\) demands two. That is why \\(18\\) passes the \\(2\\) and \\(6\\) tests yet is not a multiple of \\(12\\)."
       },
       {
         "t": "prob",
@@ -818,7 +818,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Running tests backward.</b> For divisibility by 9, set the digit sum equal to a multiple of 9 and solve. For divisibility by 4, only the last two digits matter. Stack both constraints to pin the hidden digit to at most one value."
+        "x": "<b>Running tests backward.</b> The same place-value cuts that test a number can fill in a missing digit. For divisibility by 9, only the digit sum decides, so choose the hidden digit to land that sum on a multiple of 9; since each step in the digit gives one step in the sum, usually exactly one value works (the edge case: if the other digits already sum to a multiple of 9, both \\(0\\) and \\(9\\) qualify). For divisibility by 4, only the last two digits decide, a separate window blind to the rest. When both rules must hold, the two windows each rule out values, and where they overlap on the same hidden digit both must agree, pinning it to at most one value."
       },
       {
         "t": "p",
@@ -884,7 +884,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Divisibility tests read only what the discarded chunk hides.</b> Last digit for 2, 5, 10 (since \\(10k\\) is divisible by all three). Last two for 4, last three for 8 (\\(100=4\\times25\\), \\(1000=8\\times125\\)). Digit sum for 3 and 9. Alternating digit sum for 11. Composites via coprime splits."
+        "x": "<b>Every divisibility test reads only the piece the tossed chunk cannot hide.</b> Write a number as digits times powers of ten, cut where one chunk becomes a multiple of the divisor, and closure throws that chunk away. The last digit settles 2, 5, 10, since the whole upper part is a multiple of all three. The last two digits settle 4 and the last three settle 8, since \\(100 = 4 \\times 25\\) and \\(1000 = 8 \\times 125\\). The digit sum settles 3 and 9, since each power of ten is one above a multiple of 9. The alternating digit sum settles 11, since the powers of ten land just below then above a multiple of 11, flipping sign. A composite settles by splitting it into coprime factors and testing each."
       },
       {
         "x": "Five sticker orders are 4,128; 7,533; 90; 25,164; and 3,400. Which are divisible by 6? How many can the printer fill?",
@@ -1048,7 +1048,7 @@
       },
       {
         "t": "imp",
-        "x": "A number is <b>prime</b> when its only factors are 1 and itself. A number is <b>composite</b> when it has more factors, so it can form a wider rectangle. The number 1 is neither. Two is the only even prime — every larger even number already has 2 as an extra factor."
+        "x": "A number is <b>prime</b> when it has exactly two distinct factors, 1 and itself, which is why it can only be drawn as a single thin strip. A number is <b>composite</b> when it has more than two factors, so it can always be fattened into a wider rectangle. The number 1 sits outside both kinds, since it has only the single factor 1, so it is neither prime nor composite. Two is the only even prime, because every even number bigger than 2 already carries 2 as an extra factor on top of 1 and itself, so it can be fattened and must be composite."
       },
       {
         "t": "prob",
@@ -1084,7 +1084,7 @@
       },
       {
         "t": "imp",
-        "x": "Every composite number has a smallest prime factor no larger than \\(\\sqrt{N}\\), because in any factor pair \\(N=a\\times b\\) the smaller partner is at most \\(\\sqrt{N}\\). So to leave only primes up to \\(N\\), you only need to sweep with primes up to \\(\\sqrt{N}\\)."
+        "x": "<b>Smallest prime factor sits below the square root.</b> Every composite number has a smallest prime factor no larger than \\(\\sqrt{N}\\). The reason is the factor-pair idea from 3.1: if \\(N = a \\times b\\) with both bigger than \\(1\\), the two partners sit on opposite sides of \\(\\sqrt{N}\\), so the smaller is at most \\(\\sqrt{N}\\), and the smallest prime hiding inside it is at most \\(\\sqrt{N}\\) too. $$\\text{If } N \\text{ is composite, its smallest prime factor} \\le \\sqrt{N}.$$ So to leave only the primes up to \\(N\\), you only need to sweep with primes up to \\(\\sqrt{N}\\); they erase every composite, and the doors still standing are exactly the primes."
       },
       {
         "t": "prob",
@@ -1121,7 +1121,7 @@
       },
       {
         "t": "imp",
-        "x": "To test whether \\(n\\) is prime, divide by the primes \\(2, 3, 5, 7,\\ldots\\) in order and stop once a prime exceeds \\(\\sqrt{n}\\). If none divide \\(n\\), it is prime. Use the 3.2 shortcuts to clear 2, 3, and 5 at a glance before any long division."
+        "x": "<b>Primality test.</b> To check whether \\(n\\) is prime, divide by the primes \\(2, 3, 5, 7, 11, \\ldots\\) in order and stop the moment a prime divisor climbs past \\(\\sqrt{n}\\); if none divided \\(n\\), it is prime. Two earlier ideas make this safe. By the factor pairs of 3.1, any factor of \\(n\\) has a partner at or below \\(\\sqrt{n}\\), so a factor below the root would already have shown up. By the chaining of 3.2, any composite trial divisor is built from smaller primes you already tried, so it can never catch \\(n\\) when they did not. Use the 3.2 shortcuts to clear 2, 3, and 5 at a glance before any long division."
       },
       {
         "t": "p",
@@ -1145,7 +1145,7 @@
       },
       {
         "t": "imp",
-        "x": "Every whole number above 1 has exactly one <b>prime factorization</b> — a product of primes unique up to order. Repeated primes are written as powers: \\(90 = 2 \\times 3^2 \\times 5\\). This is the Fundamental Theorem of Arithmetic."
+        "x": "Every whole number above 1 can be written as a product of primes, and apart from the order, in exactly one way. That product is the number's unique <b>prime factorization</b>, its fingerprint, and repeated primes are packed into exponents, so \\(90 = 2 \\times 3^2 \\times 5\\). The fingerprint comes out the same no matter how you start, because if you always pull out the smallest prime that divides what is left, every step is forced and there is no room for two different bags of primes to multiply to the same number. This is the Fundamental Theorem of Arithmetic, and it is what makes primes the true building blocks of every whole number."
       },
       {
         "t": "fig",
@@ -1201,7 +1201,7 @@
       },
       {
         "t": "imp",
-        "x": "A number is a perfect square exactly when every exponent in its prime factorization is even; a perfect cube when every exponent is a multiple of 3. More generally, a number is a perfect \\(k\\)-th power exactly when every exponent is divisible by \\(k\\)."
+        "x": "<b>Perfect powers from the fingerprint.</b> Write a number's prime factorization and look only at the exponents. It is a perfect square exactly when every exponent is even, since the square root halves each one, and a perfect cube exactly when every exponent is a multiple of 3, since the cube root takes a third of each. Both are one idea: a number is a perfect \\(k\\)-th power exactly when every exponent is divisible by \\(k\\), because the \\(k\\)-th root divides each exponent by \\(k\\) and only lands on a whole number when the exponent was a multiple of \\(k\\) to begin with."
       },
       {
         "t": "prob",
@@ -1453,7 +1453,7 @@
       },
       {
         "t": "imp",
-        "x": "The <b>greatest common divisor</b> \\(\\gcd(a,b)\\) is the largest number dividing both \\(a\\) and \\(b\\) with no remainder. Every pair shares at least 1, and since each divisor list is finite, there is always a single greatest common one."
+        "x": "The <b>greatest common divisor</b> \\(\\gcd(a,b)\\), also called the greatest common factor, is the largest number that divides both \\(a\\) and \\(b\\) with nothing left over. Every pair has \\(1\\) on both divisor lists, so a common divisor always exists. And since lesson 3.1 showed a number's divisors never climb past the number itself, each list is finite, the overlap is finite, and there is always a single greatest one. It is the most that two numbers can be cut down by at the same time."
       },
       {
         "t": "prob",
@@ -1472,7 +1472,7 @@
       },
       {
         "t": "imp",
-        "x": "Lay two fingerprints side by side. The <b>gcd takes each shared prime to the lower of its two powers</b>. A prime in only one fingerprint contributes nothing. When the two numbers share no prime at all, they are <b>coprime</b> and their gcd is 1."
+        "x": "Lay two fingerprints side by side. The <b>gcd takes each shared prime to the lower of its two powers</b>, because a common divisor can only use primes both numbers carry, and only as many copies as the stingier number has. A prime in just one fingerprint contributes nothing, since its lower power across the two is \\(0\\). When the two numbers share no prime at all, the only common divisor is \\(1\\) and we call them <b>coprime</b>. This is the same coprime idea lesson 3.2 needed for combining divisibility tests, now seen through the fingerprints."
       },
       {
         "t": "prob",
@@ -1514,7 +1514,7 @@
       },
       {
         "t": "imp",
-        "x": "The <b>least common multiple</b> \\(\\operatorname{lcm}(a,b)\\) is the smallest positive number both \\(a\\) and \\(b\\) divide. Two events align at the common multiples of their periods; the first alignment is their lcm."
+        "x": "The <b>least common multiple</b> \\(\\operatorname{lcm}(a,b)\\) is the smallest positive number that both \\(a\\) and \\(b\\) divide evenly, the smallest number that is a multiple of each. Two events repeating every \\(a\\) and every \\(b\\) steps line up exactly at the common multiples of \\(a\\) and \\(b\\), and the first alignment is their lcm. There is no <b>greatest</b> common multiple to speak of, because lesson 3.1 showed multiples run on forever, so the least one is the only interesting extreme."
       },
       {
         "t": "prob",
@@ -1842,7 +1842,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>add-one-and-multiply rule.</b> If \\(n = p^a \\times q^b \\times \\cdots\\), the number of positive divisors is \\((a+1)(b+1)\\cdots\\). Each divisor is an independent choice of how many copies of each prime to take, from 0 up to the prime's power, and the choices multiply."
+        "x": "<b>Add-one-and-multiply rule.</b> If \\(n = p^a \\times q^b \\times \\cdots\\), the number of positive divisors is \\((a+1)(b+1)\\cdots\\). A divisor is built by choosing how many copies of each prime to take, anywhere from \\(0\\) up to that prime's power, so prime \\(p\\) offers \\(a+1\\) choices, prime \\(q\\) offers \\(b+1\\), and so on. Since the choices are independent they multiply, and that single product counts every divisor at once because each divisor matches exactly one way of filling in the choices."
       },
       {
         "t": "fig",
@@ -2063,11 +2063,11 @@
       },
       {
         "t": "imp",
-        "x": "<b>Factors and multiples are one relationship read from two ends.</b> Factors pair to \\(n\\); finitely many factors, infinitely many multiples. 1 divides everything; every number is a factor and multiple of itself; 0 is a multiple of every number. Perfect squares alone have an odd factor count."
+        "x": "<b>Factors and multiples are one relationship read from two ends.</b> A factor of \\(n\\) is a side of a rectangle of area \\(n\\), so factors arrive in pairs that multiply to \\(n\\), \\(d\\) with its partner \\(n \\div d\\). Turn the arrow around and the small number is a factor while the large one is a multiple. From this came the quiet facts: a number has finitely many factors but infinitely many multiples, \\(1\\) divides everything, every number is both a factor and a multiple of itself, and \\(0\\) is a multiple of every number. And a number has an odd factor count exactly when it is a perfect square, the lone case where a factor pairs with itself."
       },
       {
         "t": "imp",
-        "x": "<b>Closure:</b> sums and differences of multiples of \\(n\\) stay multiples of \\(n\\). A non-multiple added to a multiple can never be a multiple. <b>Chaining:</b> if \\(a\\) divides \\(b\\), every multiple of \\(b\\) is automatically a multiple of \\(a\\). Chaining runs only downward toward smaller factors."
+        "x": "<b>Closure and chaining.</b> Add or subtract two multiples of \\(n\\) and you land on a multiple of \\(n\\) again, since the shared \\(n\\) factors out, so a stray non-multiple can never be added onto a multiple to reach one. That is <b>closure</b>. And if \\(a\\) is a factor of \\(b\\), then every multiple of \\(b\\) is automatically a multiple of \\(a\\), since the multiple carries \\(b\\) inside it and \\(b\\) carries \\(a\\). That is <b>chaining</b>, and it runs only downward toward the smaller factors. These two ideas powered every divisibility test that followed."
       },
       {
         "t": "p",
@@ -2075,7 +2075,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Divisibility tests spring from place value.</b> Last digit for 2, 5, 10. Last two for 4; last three for 8. Digit sum for 9 and 3 (each power of ten is \\(1\\) above a run of nines). Alternating digit sum for 11. Run any test backward to find a hidden digit."
+        "x": "<b>Divisibility tests all spring from place value.</b> Cut a number where one chunk becomes a multiple of the divisor, let closure throw that chunk away, and judge the small piece left behind. The last digit settles \\(2\\), \\(5\\), \\(10\\), since every higher place is a multiple of ten. The last two digits settle \\(4\\) and the last three settle \\(8\\), since \\(100 = 4 \\times 25\\) and \\(1000 = 8 \\times 125\\). The digit sum settles \\(9\\) and \\(3\\), since every power of ten is one above a run of nines. The alternating digit sum settles \\(11\\), since the powers of ten bounce just below then above its multiples. Run any test backward and the same cut recovers a hidden digit."
       },
       {
         "t": "imp",
