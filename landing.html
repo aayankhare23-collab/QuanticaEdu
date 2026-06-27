@@ -614,6 +614,11 @@
   .toc .sec.done .tick{font-size:11px;font-weight:700;color:var(--green)}
   .toc .sec.locked{color:var(--mute);cursor:not-allowed}
   .toc .sec.locked .lk{font-size:11px;font-weight:600;color:var(--mute)}
+  .toc .sec.soon{color:var(--mute);opacity:.38;cursor:default;pointer-events:none;user-select:none;filter:blur(.35px)}
+  .toc .sec.soon .cs-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-left:6px;opacity:.85}
+  .dchip.soon{cursor:default;pointer-events:none;position:relative;overflow:hidden}
+  .dchip.soon .ttl,.dchip.soon .sub,.dchip.soon .stat,.dchip.soon .mini{opacity:.3;filter:blur(.5px)}
+  .dchip.soon::after{content:'Coming Soon';position:absolute;inset:0;background:rgba(240,244,250,.68);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:grid;place-items:center;border-radius:12px;font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate)}
 
   /* ============================================================
      GLASSMORPHISM RESKIN  ·  academic + playful tech
@@ -1931,7 +1936,7 @@
   function toggleLock(){ lockMode=!lockMode; renderDashboard(); }
 
   // --- course home / mastery map ---
-  var CH_ICON={done:'✓',current:'▶',open:'○'};
+  var CH_ICON={done:'✓',current:'▶',open:'○',soon:'○'};
   function renderDashboard(){
     var lb=document.getElementById('lockBtn');
     if(lb){
@@ -1947,14 +1952,15 @@
     TOC.forEach(function(ch){
       var live=ch.s.filter(function(sec){ return LESSONS[sec[0]]; });
       var dn=live.filter(function(sec){ return completed[sec[0]]; }).length;
-      var st = (live.length && dn===live.length) ? 'done' : (dn>0 ? 'current' : 'open');
+      var isSoon = live.length === 0;
+      var st = isSoon ? 'soon' : ((live.length && dn===live.length) ? 'done' : (dn>0 ? 'current' : 'open'));
       var pctc = live.length ? Math.round(dn/live.length*100) : 0;
       var sub = live.length ? (dn+' / '+live.length+' lessons complete') : (ch.s.length+' lessons · coming soon');
       var d=document.createElement('div'); d.className='dchip '+st;
       d.innerHTML='<span class="stat">'+CH_ICON[st]+'</span>'+
         '<div><div class="ttl">Chapter '+ch.n+' · '+ch.t+'</div><div class="sub">'+sub+'</div></div>'+
         '<span class="mini"><i style="width:'+pctc+'%"></i></span>';
-      d.addEventListener('click',showToc);
+      if(!isSoon) d.addEventListener('click',showToc);
       host.appendChild(d);
     });
   }
@@ -1968,10 +1974,11 @@
       ch.s.forEach(function(sec){
         var live=!!LESSONS[sec[0]], done=!!completed[sec[0]], locked=live && !lessonUnlocked(sec[0]);
         var a=document.createElement(locked?'span':'a');
-        a.className='sec'+(live&&!locked&&!done?' open':'')+(done?' done':'')+(locked?' locked':'');
-        var tag = done ? ' <span class="tick">✓ done</span>' : (locked ? ' <span class="lk">🔒 locked</span>' : '');
+        var isSoon=!live;
+        a.className='sec'+(isSoon?' soon':'')+(live&&!locked&&!done?' open':'')+(done?' done':'')+(locked?' locked':'');
+        var tag = done ? ' <span class="tick">✓ done</span>' : (locked ? ' <span class="lk">🔒 locked</span>' : (isSoon ? ' <span class="cs-tag">· coming soon</span>' : ''));
         a.innerHTML='<span style="color:var(--sky);font-weight:600">'+sec[0]+'</span>  '+sec[1]+tag;
-        if(!locked) a.addEventListener('click',function(){ showLesson(sec[0],sec[1],ch.t,ch.n); });
+        if(!locked && !isSoon) a.addEventListener('click',function(){ showLesson(sec[0],sec[1],ch.t,ch.n); });
         g.appendChild(a);
       });
       var pr=document.createElement('a'); pr.className='ex'; pr.textContent='Practice Problems →';
