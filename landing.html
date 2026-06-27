@@ -986,7 +986,9 @@
         <button class="hintbtn" id="hintbtn">💡 Need a hint?</button>
         <button class="nextbtn" id="nextbtn">Next problem →</button>
       </div>
-      <div id="demoProgress" style="height:3px;background:var(--line);border-radius:0 0 16px 16px;overflow:hidden;margin-top:4px"><div id="demoBar" style="height:100%;width:100%;background:var(--mid);transform-origin:left;transition:transform linear"></div></div>
+    
+
+
 </div>
   </div>
 </section>
@@ -1580,34 +1582,8 @@
     s:"<b>Exactly.</b> 7⁴ = 2401 ≡ 1 (mod 100), and 2024 = 4·506, so 7²⁰²⁴ ≡ 1, giving last two digits <b>01</b>."}
   ];
   var idx=0, solved=false, KEYS=["A","B","C","D"];
-  var autoTimer=null, barRaf=null, autoInteracted=false;
-  var AUTO_IDLE=6000, AUTO_AFTER_SOLVE=2800;
-
-  function startBar(ms){
-    var bar=document.getElementById('demoBar'); if(!bar) return;
-    bar.style.transition='none'; bar.style.transform='scaleX(1)';
-    cancelAnimationFrame(barRaf);
-    barRaf=requestAnimationFrame(function(){
-      bar.style.transition='transform '+ms+'ms linear';
-      bar.style.transform='scaleX(0)';
-    });
-  }
-  function stopBar(){
-    var bar=document.getElementById('demoBar'); if(!bar) return;
-    cancelAnimationFrame(barRaf);
-    bar.style.transition='none'; bar.style.transform='scaleX(1)';
-  }
-  function scheduleAuto(ms){
-    clearTimeout(autoTimer);
-    startBar(ms);
-    autoTimer=setTimeout(function(){ load((idx+1)%PROBLEMS.length); },ms);
-  }
-  function cancelAuto(){
-    clearTimeout(autoTimer); autoTimer=null; stopBar();
-  }
-
   function load(i){
-    idx=i; solved=false; autoInteracted=false;
+    idx=i; solved=false;
     var p=PROBLEMS[i];
     document.getElementById('demoCourse').textContent=p.c;
     document.getElementById('demoIdx').textContent=(i+1);
@@ -1625,18 +1601,14 @@
     var fb=document.getElementById('fb'); fb.className='feedback'; fb.innerHTML='';
     document.querySelectorAll('#chips .chip').forEach(function(c,k){ c.classList.toggle('active',k===i); });
     var act=document.querySelector('#chips .chip.active'); if(act&&act.scrollIntoView) act.scrollIntoView({inline:'center',block:'nearest'});
-    scheduleAuto(AUTO_IDLE);
   }
   function pick(el,correct){
     if(solved) return;
-    autoInteracted=true;
     var fb=document.getElementById('fb'), p=PROBLEMS[idx];
     if(correct===1){
       el.classList.add('correct'); solved=true;
       fb.className='feedback show good'; fb.innerHTML=p.s;
-      scheduleAuto(AUTO_AFTER_SOLVE);
     }else{
-      cancelAuto();
       el.classList.add('wrong');
       fb.className='feedback show hintbox';
       fb.innerHTML='Not quite. Give it another look. <span style="cursor:pointer;text-decoration:underline" onclick="reveal()">Show a hint</span>.';
@@ -1644,17 +1616,16 @@
   }
   function reveal(){
     if(solved) return;
-    cancelAuto();
     var fb=document.getElementById('fb');
     fb.className='feedback show hintbox'; fb.innerHTML=PROBLEMS[idx].h;
   }
   document.getElementById('hintbtn').addEventListener('click',reveal);
-  document.getElementById('nextbtn').addEventListener('click',function(){ cancelAuto(); load((idx+1)%PROBLEMS.length); });
+  document.getElementById('nextbtn').addEventListener('click',function(){ load((idx+1)%PROBLEMS.length); });
   (function(){
     var chips=document.getElementById('chips');
     PROBLEMS.forEach(function(p,i){
       var c=document.createElement('button'); c.className='chip'; c.textContent=p.short;
-      c.addEventListener('click',function(){ cancelAuto(); load(i); });
+      c.addEventListener('click',function(){ load(i); });
       chips.appendChild(c);
     });
     load(0);
