@@ -2083,5 +2083,515 @@
    }
   ],
   "next": "10.5"
+ },
+ "10.5": {
+  "title": "An Introduction to Probability",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "You just spent a whole chapter learning to count carefully, and now you get to spend it on something fun. We are going to use counting to measure how likely something is. Picture flipping a fair coin. Do it once and you cannot say much, but flip it again and again, a hundred times, a thousand times, and about half of those flips come up heads. That steady half is the clue, so we say the probability of heads is \\(\\frac{1}{2}\\). That is really all a probability is, the fraction of the time we expect an outcome to show up over many, many tries. And here is the happy part. In the clean cases we care about, we do not have to flip anything forever to find that fraction. We can just count."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the whole idea in one line. When every outcome of an experiment is equally likely, the probability of an event is the number of favorable outcomes divided by the total number of outcomes, $$P = \\frac{\\text{favorable}}{\\text{total}}.$$ So probability is really counting wearing a new coat. You count the outcomes you want on top, you count all the outcomes on the bottom, and both of those counts come straight from the tools you just spent this chapter building."
+   },
+   {
+    "t": "prob",
+    "x": "A fair \\(6\\)-sided die has faces numbered \\(1, 2, 3, 4, 5, 6\\), and each face is equally likely to land face up. You give the die one roll. What is the probability of rolling a \\(3\\)? Give your answer as a fraction in lowest terms.",
+    "xp": 6,
+    "hints": [
+     "Every roll lands on one of the faces \\(1, 2, 3, 4, 5, 6\\), and since the die is fair they are all equally likely. How many faces are there in all? That total goes on the bottom of your fraction.",
+     "Now look for the rolls that count as a win. You want to land on a \\(3\\), so ask how many of the six faces show a \\(3\\). That favorable count goes on the top of your fraction.",
+     "You have \\(1\\) favorable face out of \\(6\\) equally likely faces, so write that as a fraction and check it is already in lowest terms."
+    ],
+    "ans": "1/6",
+    "accept": [
+     "1/6"
+    ],
+    "sol": "Start by listing what can happen on one roll. The die can land on \\(1, 2, 3, 4, 5, 6\\), and because it is fair, every one of those is equally likely. So the total count is \\(6\\). Next count the rolls that win. You are hoping for a \\(3\\), and exactly one face shows a \\(3\\), so the favorable count is \\(1\\). When every outcome is equally likely the probability is the favorable count over the total count, which gives $$\\frac{1}{6}.$$ That fraction is already in lowest terms, so the probability of rolling a \\(3\\) is \\(\\frac{1}{6}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A fair \\(6\\)-sided die is rolled once, and every face from \\(1\\) to \\(6\\) has the same chance of landing on top. You win if the number that shows is odd. Find the probability that the number rolled is odd. Give your answer as a fraction in lowest terms.",
+    "xp": 6,
+    "hints": [
+     "Start by listing the equally likely outcomes. A fair die can land on \\(1, 2, 3, 4, 5,\\) or \\(6\\), so how many faces are there in all?",
+     "Now look at which of those faces count as a win. The odd numbers are \\(1, 3, 5\\), so how many of the \\(6\\) faces are favorable?",
+     "You have \\(3\\) favorable faces out of \\(6\\) total, which gives \\(\\frac{3}{6}\\). All that is left is to write that fraction in lowest terms."
+    ],
+    "ans": "1/2",
+    "accept": [
+     ".5",
+     "0.5",
+     "1/2"
+    ],
+    "sol": "A fair die has \\(6\\) equally likely faces, so the total count is \\(6\\). The odd faces are \\(1, 3, 5\\), so \\(3\\) of the \\(6\\) equally likely faces are favorable. Putting the favorable count over the total count and you get $$\\frac{3}{6} = \\frac{1}{2}.$$ So the probability of rolling an odd number is \\(\\frac{1}{2}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A fair \\(6\\)-sided die has the numbers \\(1, 2, 3, 4, 5, 6\\) on its faces, and every face is equally likely to land on top. A perfect square is a number you get by multiplying a whole number by itself, like \\(1 = 1 \\times 1\\) and \\(4 = 2 \\times 2\\). Find the probability that the number you roll is a perfect square. Give your answer as a fraction in lowest terms.",
+    "xp": 7,
+    "hints": [
+     "First pin down what is equally likely. Since the die is fair, each of the faces \\(1, 2, 3, 4, 5, 6\\) has the same chance, so the total count is \\(6\\). That total goes on the bottom of your fraction.",
+     "Now find the favorable faces. Go through \\(1, 2, 3, 4, 5, 6\\) and ask of each one whether it is a perfect square, meaning some whole number times itself. How many of the six faces pass that test?",
+     "Only \\(1\\) and \\(4\\) are perfect squares, so you have \\(2\\) favorable faces out of \\(6\\) total, which gives the fraction \\(\\frac{2}{6}\\). All that is left is to reduce it to lowest terms."
+    ],
+    "ans": "1/3",
+    "accept": [
+     "1/3"
+    ],
+    "sol": "Start with the total count, since the die is fair every face is equally likely, so there are \\(6\\) equally likely outcomes and that \\(6\\) goes on the bottom. Next count the favorable outcomes by checking each face for being a perfect square. The perfect squares from \\(1\\) to \\(6\\) are \\(1\\) and \\(4\\), because \\(1 = 1 \\times 1\\) and \\(4 = 2 \\times 2\\), while \\(2, 3, 5,\\) and \\(6\\) are not. So \\(2\\) of the \\(6\\) faces work, and the probability is the favorable count over the total count, which gives \\(\\frac{2}{6}\\). Reducing that fraction by dividing top and bottom by \\(2\\) gives \\(\\frac{2}{6} = \\frac{1}{3}\\). $$\\boxed{\\frac{1}{3}}$$"
+   },
+   {
+    "t": "prob",
+    "x": "You roll a fair \\(6\\)-sided die one time. Its faces are the numbers \\(1, 2, 3, 4, 5,\\) and \\(6\\), and each face is equally likely to land up. Find the probability that the number you roll is one of \\(1\\) to \\(6\\). Give your answer as a fraction in lowest terms, unless the event is certain or impossible, in which case answer with the whole number \\(1\\) or \\(0\\).",
+    "xp": 6,
+    "hints": [
+     "First nail down the equally likely outcomes. A fair die has \\(6\\) faces that can come up, and each is just as likely as the others, so your total count is \\(6\\).",
+     "Now count the favorable outcomes, the rolls that count as a win. Every single face shows a number from \\(1\\) to \\(6\\), so ask yourself how many of the \\(6\\) faces fit, and notice that none of them are left out.",
+     "All \\(6\\) faces are favorable, so the probability is \\(\\frac{6}{6}\\). Simplify that fraction and think about what it means when a win is guaranteed."
+    ],
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0"
+    ],
+    "sol": "Start by counting the total. A fair die has \\(6\\) equally likely faces, so the total count is \\(6\\). Now count the favorable outcomes, the ones that make the event happen. The event is rolling a number from \\(1\\) to \\(6\\), and every one of the \\(6\\) faces is between \\(1\\) and \\(6\\), so all \\(6\\) outcomes are favorable. That gives a favorable count of \\(6\\) over a total count of \\(6\\), which is \\(\\frac{6}{6} = 1\\). This makes sense, because no matter what you roll you are guaranteed to land on a number from \\(1\\) to \\(6\\), so the event is certain. A certain event has probability \\(1\\). $$\\boxed{1}$$"
+   },
+   {
+    "t": "prob",
+    "x": "A fair \\(6\\)-sided die is rolled once. Its faces are numbered \\(1, 2, 3, 4, 5, 6\\), and each face is equally likely to land up. Find the probability of rolling a \\(7\\). Give your answer as a fraction in lowest terms, and if the event is certain or impossible give the whole number \\(1\\) or \\(0\\).",
+    "xp": 6,
+    "hints": [
+     "First settle what is equally likely. A fair die has faces numbered \\(1, 2, 3, 4, 5, 6\\), and every one of those faces is equally likely to land up, so there are \\(6\\) equally likely outcomes in all. That \\(6\\) is your total count for the bottom of the fraction.",
+     "Now look for the favorable outcomes, the ones where the die shows a \\(7\\). Go through the faces \\(1, 2, 3, 4, 5, 6\\) and check whether any of them is a \\(7\\). How many of the \\(6\\) faces actually show a \\(7\\)?",
+     "None of the faces is a \\(7\\), so the favorable count is \\(0\\). Put that favorable count over the total of \\(6\\) and simplify \\(\\frac{0}{6}\\)."
+    ],
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0"
+    ],
+    "sol": "Probability is just careful counting wearing a new coat, so let us start by counting what is equally likely. A fair die has faces numbered \\(1, 2, 3, 4, 5, 6\\), and each face is equally likely to land up, which gives a total count of \\(6\\) equally likely outcomes.\n\\nNow count the favorable outcomes, the faces that show a \\(7\\). Looking through \\(1, 2, 3, 4, 5, 6\\), none of the \\(6\\) faces is a \\(7\\), so the favorable count is \\(0\\).\n\\nPut the favorable count over the total count and you get $$\\frac{0}{6} = 0.$$\n\\nThere is simply no way for a die numbered \\(1\\) through \\(6\\) to show a \\(7\\), so this is an impossible event, and an impossible event sits at the very start of the number line with probability \\(\\boxed{0}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, the probability scale. A probability is a part of the whole, so it can never dip below \\(0\\) or climb above \\(1\\), and it always lands somewhere from \\(0\\) to \\(1\\). Something impossible sits right at \\(0\\), something certain sits right at \\(1\\), and everything else lives in between. The closer a probability sits to \\(1\\), the more likely the event, and the closer it sits to \\(0\\), the less likely it is."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 420 150\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A probability scale drawn as a number line from 0 on the left to 1 on the right. The left end at 0 is labelled impossible, the middle at one half is labelled even chance, and the right end at 1 is labelled certain. An arrow shows that moving right means more likely.\"><text x=\"210.0\" y=\"26\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">EVERY PROBABILITY LIVES BETWEEN 0 AND 1</text><line x1=\"50\" y1=\"70\" x2=\"370\" y2=\"70\" stroke=\"var(--slate)\" stroke-width=\"3\"/><line x1=\"50.0\" y1=\"61\" x2=\"50.0\" y2=\"79\" stroke=\"var(--ink)\" stroke-width=\"3\"/><circle cx=\"50.0\" cy=\"70\" r=\"6\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><text x=\"50.0\" y=\"52\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">0</text><text x=\"50.0\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">impossible</text><line x1=\"210.0\" y1=\"61\" x2=\"210.0\" y2=\"79\" stroke=\"var(--ink)\" stroke-width=\"3\"/><circle cx=\"210.0\" cy=\"70\" r=\"6\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><text x=\"210.0\" y=\"52\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">½</text><text x=\"210.0\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">even chance</text><line x1=\"370.0\" y1=\"61\" x2=\"370.0\" y2=\"79\" stroke=\"var(--ink)\" stroke-width=\"3\"/><circle cx=\"370.0\" cy=\"70\" r=\"6\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"1.5\"/><text x=\"370.0\" y=\"52\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">1</text><text x=\"370.0\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">certain</text><text x=\"210.0\" y=\"128\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-style=\"italic\" fill=\"var(--mid)\">more likely &#8594;</text></svg>",
+    "cap": "Reading left to right, every probability is just a fraction of the whole, so it always lands somewhere on this line between \\(0\\) and \\(1\\). At the far left sits \\(0\\), which means impossible, and at the far right sits \\(1\\), which means certain. Right in the middle, \\(\\frac{1}{2}\\) is an even chance, and the further right you go the more likely the event becomes."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, the equally-likely warning. Favorable over total only tells the truth when the outcomes you count are all EQUALLY LIKELY, so before you count anything, ask what the truly equal outcomes are. On a die with colored sides the equal outcomes are the \\(6\\) sides, not the colors, because the colors might be split unevenly. So count the sides. If \\(2\\) of the \\(6\\) sides are painted red, the chance of red is \\(\\frac{2}{6}\\), even though red is only \\(1\\) color out of however many. Whenever something feels uneven, dig down to the layer where every outcome really does have the same chance, and count there."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 420 150\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A bar split into 5 equal regions of the same size, so each region is equally likely. 3 of the regions are shaded gold and counted as favorable, and the other 2 are left plain. The probability of landing on a shaded region is 3 out of 5, which is 3 fifths.\"><text x=\"210.0\" y=\"26\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">COUNT THE EQUAL REGIONS</text><rect x=\"50\" y=\"46\" width=\"64\" height=\"64\" fill=\"var(--gold2)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"82.0\" y=\"83.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#9733;</text><rect x=\"114\" y=\"46\" width=\"64\" height=\"64\" fill=\"var(--gold2)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"146.0\" y=\"83.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#9733;</text><rect x=\"178\" y=\"46\" width=\"64\" height=\"64\" fill=\"var(--gold2)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"210.0\" y=\"83.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">&#9733;</text><rect x=\"242\" y=\"46\" width=\"64\" height=\"64\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><rect x=\"306\" y=\"46\" width=\"64\" height=\"64\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"210.0\" y=\"140\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">favorable 3  &#247;  total 5  =  3/5</text></svg>",
+    "cap": "Look at the bar above. It is split into \\(5\\) regions that are all the same size, and \\(3\\) of them are shaded. Because every region is exactly as big as the others, landing on any one of them is equally likely, so we can just count. There are \\(3\\) shaded regions we want out of \\(5\\) regions in total, which gives a probability of \\(\\frac{3}{5}\\). This only works because the regions are equal in size. If the pieces were different sizes they would not be equally likely, and counting them like this would no longer tell you the chance."
+   },
+   {
+    "t": "prob",
+    "x": "A special \\(8\\)-sided die has \\(2\\) red sides, \\(5\\) yellow sides, and \\(1\\) blue side, and every side is equally likely to land face up. You give it one roll. What is the probability of rolling a yellow side? Give your answer as a fraction in lowest terms.",
+    "xp": 7,
+    "hints": [
+     "Probability is a counting question wearing a new coat. The equally likely outcomes are the sides of the die, not the colors, so first ask how many sides there are in all. There are \\(8\\) of them.",
+     "Now count only the outcomes you are hoping for. A roll counts as a win when the side that lands up is yellow, and there are \\(5\\) yellow sides, so \\(5\\) of the \\(8\\) sides are favorable.",
+     "Put the favorable count over the total count, which gives \\(\\frac{5}{8}\\). Check whether that fraction can be made any simpler."
+    ],
+    "ans": "5/8",
+    "accept": [
+     ".625",
+     "0.625",
+     "5/8"
+    ],
+    "sol": "Count the sides, not the colors. The die has \\(8\\) sides, and since every side is equally likely to land up, those \\(8\\) sides are the equally likely outcomes, so the total count is \\(8\\). Now count the favorable outcomes, the ones where a yellow side comes up. There are \\(5\\) yellow sides, so the favorable count is \\(5\\). The probability is the favorable count over the total count, which gives $$\\frac{5}{8}.$$ This fraction is already in lowest terms, since \\(5\\) and \\(8\\) share no common factor bigger than \\(1\\). So the probability of rolling yellow is \\(\\frac{5}{8}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A standard deck has \\(52\\) cards split evenly into \\(4\\) suits, the spades, the hearts, the diamonds, and the clubs, with \\(13\\) cards in each suit. The deck is shuffled really well, so the top card is equally likely to be any one of the \\(52\\) cards. You flip over the top card and hope for a spade. What is the probability that the top card is a spade? Give your answer as a fraction in lowest terms.",
+    "xp": 6,
+    "hints": [
+     "Every card on top is equally likely, so the total number of equally likely outcomes is just the number of cards in the whole deck, which is \\(52\\).",
+     "Now count the favorable outcomes, the ones you are rooting for. A spade is what counts here, and there are \\(13\\) spades in the deck.",
+     "Put the favorable count over the total count to get \\(\\frac{13}{52}\\), then simplify that fraction all the way down."
+    ],
+    "ans": "1/4",
+    "accept": [
+     ".25",
+     "0.25",
+     "1/4"
+    ],
+    "sol": "Start by deciding what is equally likely. The deck was shuffled well, so the top card has the same chance of being any one of the \\(52\\) cards, and that gives you \\(52\\) equally likely outcomes for the total. Next count the favorable outcomes, the ones that make you happy. You want a spade, and a full suit has \\(13\\) cards, so there are \\(13\\) spades. The probability is the favorable count over the total count, which gives \\(\\frac{13}{52}\\). Now simplify, and since \\(13\\) divides into \\(52\\) exactly four times you get $$\\frac{13}{52} = \\frac{1}{4}.$$ That matches what you would expect, because the spades are one of the four equal suits, so they take up exactly one quarter of the deck. $$\\boxed{\\dfrac{1}{4}}$$"
+   },
+   {
+    "t": "prob",
+    "x": "A standard \\(52\\)-card deck is shuffled well and placed face down. You flip over the top card. What is the probability that the top card is a \\(9\\)? Give your answer as a fraction in lowest terms.",
+    "xp": 7,
+    "hints": [
+     "Since the deck was shuffled well, every one of the \\(52\\) cards is equally likely to be the top card. So your total count is \\(52\\), one for each card that could be sitting on top.",
+     "Now count the favorable cards, the ones that make the top card a \\(9\\). A standard deck has one \\(9\\) in each of the four suits, so think about how many \\(9\\)s there are in all.",
+     "You have \\(4\\) favorable cards out of \\(52\\) total, so the probability is \\(\\frac{4}{52}\\). All that is left is to reduce that fraction to lowest terms."
+    ],
+    "ans": "1/13",
+    "accept": [
+     "1/13"
+    ],
+    "sol": "Because the deck was shuffled well, every card is just as likely as any other to land on top, so all \\(52\\) cards are equally likely. That means the total count is \\(52\\).\n\\nNow we count the favorable outcomes, the cards that would make the top card a \\(9\\). There are \\(4\\) nines, one in each suit, so the favorable count is \\(4\\).\n\\nThe probability is the favorable count over the total count, which gives $$\\frac{4}{52} = \\frac{1}{13}.$$\n\\nSo the chance that the top card is a \\(9\\) is \\(\\boxed{\\frac{1}{13}}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A standard \\(52\\)-card deck is shuffled, and a face card means a Jack, a Queen, or a King. Find the probability that the top card is a face card. Give your answer as a fraction in lowest terms.",
+    "xp": 7,
+    "hints": [
+     "Every card in the shuffled deck is equally likely to land on top, so the total number of equally likely outcomes is just the number of cards in the deck, which is \\(52\\).",
+     "Now count the favorable cards, the ones that make the top card a face card. A face card is a Jack, a Queen, or a King, so there are \\(3\\) face ranks, and each rank shows up once in every suit. Count how many face cards there are in the whole deck.",
+     "There are \\(3\\) face ranks in each of \\(4\\) suits, so \\(3 \\times 4 = 12\\) favorable cards out of \\(52\\) total. All that is left is to write \\(\\frac{12}{52}\\) and reduce it to lowest terms."
+    ],
+    "ans": "3/13",
+    "accept": [
+     "3/13"
+    ],
+    "sol": "Since the deck is shuffled, every one of the \\(52\\) cards is equally likely to end up on top, so the total count is \\(52\\).\n\\nNow we count the favorable cards. A face card is a Jack, a Queen, or a King, which is \\(3\\) face ranks, and each of those ranks appears once in every suit. There are \\(4\\) suits, so the number of face cards is $$3 \\times 4 = 12.$$\n\\nThat gives \\(12\\) favorable cards out of \\(52\\) total, so the probability is \\(\\frac{12}{52}\\). Both numbers share a factor of \\(4\\), and dividing top and bottom by \\(4\\) gives $$\\frac{12}{52} = \\frac{3}{13}.$$\n\\nSo the probability that the top card is a face card is \\(\\boxed{\\frac{3}{13}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, two stages multiply. When an experiment happens in stages, the total number of equally likely outcomes does not add, it MULTIPLIES, and that is just the Multiplication Principle from 10.2 showing up again. Two dice are not \\(12\\) outcomes, they are \\(6 \\times 6 = 36\\), one for every cell of a \\(6\\) by \\(6\\) grid. So lay out the grid, count the favorable cells, and put that over \\(36\\). Multiply to find the total, then count what you want."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 360 360\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A six by six grid of all 36 equally likely outcomes of rolling two fair dice. The first die labels the rows 1 to 6 down the left and the second die labels the columns 1 to 6 across the top. The six cells where the two numbers add to 7 are shaded gold, running along the anti-diagonal. Six favorable outcomes out of 36 gives a probability of 1 sixth.\"><text x=\"180.0\" y=\"24\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">36 EQUALLY LIKELY ROLLS, 6 MAKE A SUM OF 7</text><text x=\"92.0\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">1</text><text x=\"136.0\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">2</text><text x=\"180.0\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">3</text><text x=\"224.0\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">4</text><text x=\"268.0\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">5</text><text x=\"312.0\" y=\"56\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">6</text><text x=\"58\" y=\"90.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">1</text><text x=\"58\" y=\"134.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">2</text><text x=\"58\" y=\"178.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">3</text><text x=\"58\" y=\"222.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">4</text><text x=\"58\" y=\"266.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">5</text><text x=\"58\" y=\"310.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--slate)\">6</text><rect x=\"70\" y=\"64\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"114\" y=\"64\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"158\" y=\"64\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"202\" y=\"64\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"246\" y=\"64\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"290\" y=\"64\" width=\"44\" height=\"44\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"312.0\" y=\"91.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">1+6</text><rect x=\"70\" y=\"108\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"114\" y=\"108\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"158\" y=\"108\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"202\" y=\"108\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"246\" y=\"108\" width=\"44\" height=\"44\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"268.0\" y=\"135.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">2+5</text><rect x=\"290\" y=\"108\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"70\" y=\"152\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"114\" y=\"152\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"158\" y=\"152\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"202\" y=\"152\" width=\"44\" height=\"44\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"224.0\" y=\"179.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">3+4</text><rect x=\"246\" y=\"152\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"290\" y=\"152\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"70\" y=\"196\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"114\" y=\"196\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"158\" y=\"196\" width=\"44\" height=\"44\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"180.0\" y=\"223.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">4+3</text><rect x=\"202\" y=\"196\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"246\" y=\"196\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"290\" y=\"196\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"70\" y=\"240\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"114\" y=\"240\" width=\"44\" height=\"44\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"136.0\" y=\"267.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">5+2</text><rect x=\"158\" y=\"240\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"202\" y=\"240\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"246\" y=\"240\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"290\" y=\"240\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"70\" y=\"284\" width=\"44\" height=\"44\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"92.0\" y=\"311.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--gold-deep)\">6+1</text><rect x=\"114\" y=\"284\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"158\" y=\"284\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"202\" y=\"284\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"246\" y=\"284\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><rect x=\"290\" y=\"284\" width=\"44\" height=\"44\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1\"/><text x=\"180.0\" y=\"354\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">6 favorable &#247; 36 total = 1/6</text></svg>",
+    "cap": "Each row is one number for the first die and each column is one number for the second die, so by the multiplication principle there are \\(6 \\times 6 = 36\\) cells, and every cell is equally likely. The shaded cells are the ones whose two numbers add to \\(7\\), and there are \\(6\\) of them, which makes the probability of rolling a sum of \\(7\\) equal to \\(\\frac{6}{36} = \\frac{1}{6}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "You roll two fair \\(6\\)-sided dice, one red and one blue, and you add the two numbers showing on top. Find the probability that the sum is \\(6\\). Give your answer as a fraction in lowest terms.",
+    "xp": 8,
+    "hints": [
+     "Start by counting the total. Each die can land \\(6\\) ways, and the two dice are separate, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely pairs to choose from.",
+     "Now hunt for the favorable pairs, the ones whose two numbers add up to \\(6\\). Go through the first die in order, \\(1\\) then \\(2\\) and so on, and ask what the other die must be each time. List them all so you do not miss any.",
+     "The pairs that work are \\((1,5), (2,4), (3,3), (4,2), (5,1)\\), so count how many that is and put it over \\(36\\)."
+    ],
+    "ans": "5/36",
+    "accept": [
+     "5/36"
+    ],
+    "sol": "First count the total number of outcomes. Each die has \\(6\\) equally likely faces, and the dice are separate, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely pairs in all.\n\nNow count the favorable ones, the pairs that add up to \\(6\\). Walk through the first die in order and find its partner each time, which gives \\((1,5), (2,4), (3,3), (4,2), (5,1)\\). That is \\(5\\) favorable outcomes.\n\nSo the probability is the favorable count over the total count, and you get $$\\frac{5}{36}.$$ This fraction is already in lowest terms."
+   },
+   {
+    "t": "prob",
+    "x": "Two fair \\(6\\)-sided dice are rolled, one red and one blue, and you read off the two numbers on top. Find the probability that the two numbers add up to \\(5\\). Give your answer as a fraction in lowest terms.",
+    "xp": 7,
+    "hints": [
+     "Picture the grid of every way the two dice can land. The red die has \\(6\\) equally likely faces and the blue die has \\(6\\) equally likely faces, and the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely cells in all. That \\(36\\) is your total count.",
+     "Now hunt for the favorable cells, the ones where the two numbers add up to \\(5\\). Go in order by what the red die shows, \\(1\\) then \\(2\\) then \\(3\\) and so on, and for each one ask what the blue die would need to be so the sum is \\(5\\). Remember that \\((1,4)\\) and \\((4,1)\\) are two different cells in the grid.",
+     "You should find exactly \\(4\\) favorable cells, namely \\((1,4),(2,3),(3,2),(4,1)\\). Put the favorable count over the total count to get \\(\\frac{4}{36}\\), then reduce it to lowest terms."
+    ],
+    "ans": "1/9",
+    "accept": [
+     "1/9"
+    ],
+    "sol": "Start with the total count. Each die has \\(6\\) equally likely faces, so by the multiplication principle the two dice together land in \\(6 \\times 6 = 36\\) equally likely cells. That is the bottom of our fraction. Now count the favorable cells, where the numbers add up to \\(5\\). Walking through them in order, the pairs adding to \\(5\\) are \\((1,4),(2,3),(3,2),(4,1)\\), which is \\(4\\) cells. So the favorable count is \\(4\\) and the total count is \\(36\\), which gives $$\\frac{4}{36} = \\frac{1}{9}.$$ Both top and bottom share a factor of \\(4\\), and dividing it out leaves the answer in lowest terms. $$\\boxed{\\frac{1}{9}}$$"
+   },
+   {
+    "t": "imp",
+    "x": "So here is the trick that just saved us all that work. Sometimes the favorable cases are a tangled mess, but the one opposite case is simple and quick to count. When that happens, count the chance of the thing you do not want and subtract it from \\(1\\), which gives \\(P(\\text{not } A) = 1 - P(A)\\). This is the clean way to handle any at least one question, since instead of chasing every winning case you find the single way it all fails and take it away from the whole. It is the same subtracting cases move from 10.1, now measuring how likely instead of how many."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 360 230\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A two by two grid of the four equally likely outcomes of flipping two coins: H H, H T, T H, and T T. The three outcomes that contain at least one heads are shaded gold, and the single T T outcome is left plain and crossed out. So the probability of at least one heads is 1 minus the probability of no heads, 1 minus 1 quarter, which is 3 quarters.\"><text x=\"180.0\" y=\"26\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">AT LEAST ONE HEADS = 1 &#8722; (NO HEADS)</text><rect x=\"96\" y=\"56\" width=\"76\" height=\"76\" rx=\"8\" fill=\"var(--gold2)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"134.0\" y=\"101.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\">HH</text><rect x=\"182\" y=\"56\" width=\"76\" height=\"76\" rx=\"8\" fill=\"var(--gold2)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"220.0\" y=\"101.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\">HT</text><rect x=\"96\" y=\"142\" width=\"76\" height=\"76\" rx=\"8\" fill=\"var(--gold2)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"134.0\" y=\"187.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"var(--gold-deep)\">TH</text><rect x=\"182\" y=\"142\" width=\"76\" height=\"76\" rx=\"8\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"1.5\"/><text x=\"220.0\" y=\"187.0\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"var(--slate)\">TT</text><line x1=\"190\" y1=\"150\" x2=\"250\" y2=\"210\" stroke=\"var(--gold-deep)\" stroke-width=\"3\"/><text x=\"180.0\" y=\"250\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">1 &#8722; 1/4 = 3/4</text></svg>",
+    "cap": "Here are the four equally likely results of flipping two coins, and three of them are shaded because they hold at least one heads. Chasing those three would be a chore, so look at the one outcome that is crossed out instead. That is the only way to get no heads, and its chance is \\(\\frac{1}{4}\\). Subtract that single opposite case from \\(1\\) and you get \\(1 - \\frac{1}{4} = \\frac{3}{4}\\). Counting the one case you do not want is much kinder than counting all the ones you do."
+   },
+   {
+    "t": "prob",
+    "x": "Two fair \\(6\\)-sided dice are rolled, a red one and a blue one. Multiply the two numbers that come up to get their product, and notice that some products land on a multiple of \\(5\\) like \\(5\\), \\(10\\), \\(15\\), \\(20\\), or \\(25\\), while most do not. Find the probability that the product of the two numbers is a multiple of \\(5\\). Give your answer as a fraction in lowest terms.",
+    "xp": 9,
+    "hints": [
+     "Start with the whole picture. The red die has \\(6\\) equally likely faces and the blue die has \\(6\\), so by the multiplication principle there are \\(6 \\times 6 = 36\\) equally likely pairs in all. Every answer will be some count of these pairs over \\(36\\).",
+     "Here is the key observation. On a single die the only multiple of \\(5\\) is the number \\(5\\) itself, so a product is a multiple of \\(5\\) exactly when at least one die shows a \\(5\\). Chasing every winning pair is messy, so flip it around and count the opposite instead, no five at all, then subtract from \\(1\\).",
+     "No five on the red die has probability \\(\\frac{5}{6}\\), and the same for the blue die, so no five anywhere is \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\). Now just take \\(1 - \\frac{25}{36}\\)."
+    ],
+    "ans": "11/36",
+    "accept": [
+     "11/36"
+    ],
+    "sol": "First count the total. The red die has \\(6\\) equally likely faces and so does the blue die, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely pairs, and \\(36\\) is our total count. Now think about when the product is a multiple of \\(5\\). The only multiple of \\(5\\) sitting on a single die is the number \\(5\\) itself, so the product is a multiple of \\(5\\) exactly when at least one die shows a \\(5\\). Whenever you see at least one, the kind move is to count the opposite case and subtract. The opposite is no five at all. No five on one die has probability \\(\\frac{5}{6}\\), so no five on either die is $$\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}.$$ That is the unfavorable count of \\(25\\) over \\(36\\). Subtracting from \\(1\\) gives the at least one five chance, which is $$1 - \\frac{25}{36} = \\frac{11}{36}.$$ So the favorable count is \\(11\\) and the total count is \\(36\\), and the probability that the product is a multiple of \\(5\\) is \\(\\boxed{\\frac{11}{36}}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Four fair coins, a penny, a nickel, a dime, and a quarter, are flipped at the same time. Find the probability that all four come up heads. Give your answer as a fraction in lowest terms.",
+    "xp": 7,
+    "hints": [
+     "Think about one coin first. Each flip can land heads or tails, so every coin has \\(2\\) equally likely results. With four coins flipped together, the total number of equally likely outcomes is \\(2 \\times 2 \\times 2 \\times 2 = 2^4 = 16\\).",
+     "Now count the favorable outcomes. Only one of those \\(16\\) outcomes has all four coins showing heads, the one where the penny, nickel, dime, and quarter are all heads. So there is just \\(1\\) favorable outcome.",
+     "You can also see this by multiplying the chances. Each coin shows heads with probability \\(\\frac{1}{2}\\), and the flips do not affect each other, so multiply \\(\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2}\\). What does that give?"
+    ],
+    "ans": "1/16",
+    "accept": [
+     ".0625",
+     "0.0625",
+     "1/16"
+    ],
+    "sol": "Start by counting all the equally likely outcomes. Each coin can land heads or tails, so it has \\(2\\) results, and the four flips do not affect each other. The total number of equally likely outcomes is \\(2 \\times 2 \\times 2 \\times 2 = 2^4 = 16\\). Now count the favorable ones. Only \\(1\\) of these has every coin showing heads, the outcome where the penny, nickel, dime, and quarter are all heads. So with \\(1\\) favorable outcome over \\(16\\) total, the probability is \\(\\frac{1}{16}\\). You can also get this by multiplying the chances, since each coin shows heads with probability \\(\\frac{1}{2}\\), which gives $$\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{16}.$$ Either way the probability that all four come up heads is \\(\\frac{1}{16}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, drawing without replacement. When you draw two cards right off the top, the deck does not reset between picks, so the first stage has \\(52\\) cards but the second stage has only \\(51\\) left. To find the chance of both happening, you walk the stages in order and MULTIPLY, the probability of the first event times the chance of the second given that the first already happened. So you handle one pick, then the smaller deck, then multiply across, which is the very same sequence and pair thinking you used to count pairs back in 10.4, only now it is measuring how likely instead of how many."
+   },
+   {
+    "t": "prob",
+    "x": "A standard \\(52\\)-card deck is shuffled, and exactly \\(26\\) of the \\(52\\) cards are red. The other \\(26\\) are black. You turn over the top two cards, one after the other. Find the probability that the top two cards are both red. Give your answer as a fraction in lowest terms.",
+    "xp": 9,
+    "hints": [
+     "This happens in two stages, the first card and then the second card, so think about each pick on its own. For the very first card, every one of the \\(52\\) cards is equally likely to be on top, and \\(26\\) of those are red. So what is the chance the first card is red?",
+     "The drawing happens without putting the first card back, so the second pick has one fewer card to choose from. Once a red card is already on top, only \\(51\\) cards remain and only \\(25\\) of them are still red. Find the chance the second card is red given that, then remember that to get both stages to happen you multiply the two chances.",
+     "You have the first card red with probability \\(\\frac{26}{52} = \\frac{1}{2}\\) and the second red with probability \\(\\frac{25}{51}\\). All that is left is to multiply \\(\\frac{1}{2} \\times \\frac{25}{51}\\)."
+    ],
+    "ans": "25/102",
+    "accept": [
+     "25/102"
+    ],
+    "sol": "This is a two-stage draw, the first card and then the second, so we walk the stages in order and multiply their chances.\n\\nStart with the first card. Every one of the \\(52\\) cards is equally likely to land on top, and \\(26\\) of them are red. The favorable count is \\(26\\) and the total count is \\(52\\), so the first card is red with probability $$\\frac{26}{52} = \\frac{1}{2}.$$\n\\nNow the second card, and here is the key. We did not put the first card back, so once a red card is already on top there are only \\(51\\) cards left and only \\(25\\) of them are still red. The favorable count is \\(25\\) and the total count is \\(51\\), so the second card is red with probability \\(\\frac{25}{51}\\).\n\\nTo make both stages happen we multiply the two chances, which gives $$\\frac{1}{2} \\times \\frac{25}{51} = \\frac{25}{102}.$$\n\\nThat fraction is already in lowest terms, so the probability that the top two cards are both red is \\(\\boxed{\\frac{25}{102}}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A standard \\(52\\)-card deck has \\(26\\) black cards and \\(26\\) red cards. You shuffle it well and then turn over the cards one at a time from the top. Find the probability that the top card is black and the second card is red. Give your answer as a fraction in lowest terms.",
+    "xp": 9,
+    "hints": [
+     "Think about this in two stages, one card at a time. For the very first card off the top, every one of the \\(52\\) cards is equally likely to be on top, so that is your total to start with. How many of those \\(52\\) cards are the color you want, which is black?",
+     "There are \\(26\\) black cards out of \\(52\\), so the first card is black with probability \\(\\frac{26}{52} = \\frac{1}{2}\\). Now move to the second card. One card is already gone, so only \\(51\\) cards are left. How many of those leftover cards are red, and what fraction does that give for the second stage?",
+     "Stage one gives \\(\\frac{1}{2}\\), and stage two gives \\(\\frac{26}{51}\\) since all \\(26\\) red cards are still in the deck among the \\(51\\) that remain. The only thing left is to multiply these two stage probabilities together and write the result in lowest terms."
+    ],
+    "ans": "13/51",
+    "accept": [
+     "13/51"
+    ],
+    "sol": "We are drawing without putting cards back, so we walk through the deck one card at a time and multiply the chance at each stage, just like the card problems from Lesson 10.4 but now measuring how likely instead of how many.\n\\nStart with the top card. Every one of the \\(52\\) cards is equally likely to land on top, and \\(26\\) of them are black, so the favorable count is \\(26\\) out of a total of \\(52\\). That gives a first-stage probability of \\(\\frac{26}{52} = \\frac{1}{2}\\).\n\\nNow the second card. One card is already gone, so only \\(51\\) cards remain. All \\(26\\) red cards are still sitting in the deck, so the favorable count is \\(26\\) out of a total of \\(51\\), which gives \\(\\frac{26}{51}\\).\n\\nTo find the chance that both things happen we multiply the two stages, and you get $$\\frac{1}{2} \\times \\frac{26}{51} = \\frac{26}{102} = \\frac{13}{51}.$$\n\\nSo the probability that the top card is black and the second card is red is \\(\\boxed{\\frac{13}{51}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, probability is counting in a new coat. When every outcome is equally likely, the probability of an event is the favorable count over the total count, which we write as \\(\\frac{\\text{favorable}}{\\text{total}}\\). That means every tool you built this chapter feeds straight into it. Adding and subtracting cases from \\(10.1\\) keeps your counts honest, the multiplication principle from \\(10.2\\) hands you the total number of outcomes, casework from \\(10.3\\) gathers up the favorable ones, and counting pairs from \\(10.4\\) handles the times order does not matter. So there is really nothing new to learn here. Count the favorable, count the total, and the probability falls right out."
+   },
+   {
+    "t": "prob",
+    "x": "Two fair \\(8\\)-sided dice, each numbered \\(1\\) through \\(8\\), are rolled and the two numbers are multiplied together. Find the probability that the product of the two numbers is greater than \\(36\\). Give your answer as a fraction in lowest terms.",
+    "xp": 11,
+    "hints": [
+     "Start with the playing field. Each die can land on any of \\(8\\) faces, and the multiplication principle says the first die has \\(8\\) choices and the second has \\(8\\) choices, so the total number of equally likely ordered outcomes is \\(8 \\times 8 = 64\\). Picture them as a \\(8\\) by \\(8\\) grid of cells, and now you just need to count the cells where the product beats \\(36\\).",
+     "Now hunt for the favorable cells, the ones where the two numbers multiply to more than \\(36\\). Only the bigger numbers can do it. Try fixing the larger die at \\(8\\), then at \\(7\\), then at \\(6\\), then at \\(5\\), and for each one ask which partners push the product over \\(36\\). Remember that order matters here, so \\((6,7)\\) and \\((7,6)\\) are two different cells.",
+     "Carefully listing them gives \\((5,8),(6,7),(6,8),(7,6),(7,7),(7,8),(8,5),(8,6),(8,7),(8,8)\\), which is \\(10\\) favorable cells out of \\(64\\) total. All that is left is to write \\(\\frac{10}{64}\\) and reduce it to lowest terms by dividing the top and bottom by \\(2\\)."
+    ],
+    "ans": "5/32",
+    "accept": [
+     ".15625",
+     "0.15625",
+     "5/32"
+    ],
+    "sol": "First let us figure out how many equally likely outcomes there are in all. The first die can land on any of its \\(8\\) faces, and the second die can land on any of its \\(8\\) faces, and the multiplication principle ties them together, so the total number of equally likely outcomes is $$8 \\times 8 = 64.$$\\nThink of these as the cells of a \\(8\\) by \\(8\\) grid, one cell for each pair of rolls.\n\\nNow we count the favorable cells, the ones where the product is greater than \\(36\\). Only the larger numbers can climb that high, so working through the possibilities gives the ordered pairs \\((5,8),(6,7),(6,8),(7,6),(7,7),(7,8),(8,5),(8,6),(8,7),(8,8)\\). Counting them up, that is \\(10\\) favorable outcomes.\n\\nSo we have a favorable count of \\(10\\) over a total count of \\(64\\), and reducing that fraction by dividing top and bottom by \\(2\\) gives $$\\frac{10}{64} = \\frac{5}{32}.$$\\nThe probability that the product is greater than \\(36\\) is \\(\\boxed{\\frac{5}{32}}\\)."
+   },
+   {
+    "t": "fact",
+    "x": "Probability did not start in a classroom, it started over a gambling table. Back in \\(1654\\) a French writer wanted to know the fair way to split the pot of a dice game that got stopped before anyone won, and he wrote to the mathematician Blaise Pascal to ask. Pascal traded letters about it with another brilliant thinker named Pierre de Fermat, and in working out that one puzzle the two of them quietly built the first real footing for the whole subject. A gambler and physician named Gerolamo Cardano had scribbled about dice odds a hundred years earlier, and much later Pierre-Simon Laplace tidied the ideas into the clean rules we use, but those friendly letters about an unfinished game are where it truly took off."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, the whole lesson on one number line. When every outcome is equally likely, the probability of an event is the favorable count over the total count, and that answer always lands somewhere from \\(0\\) for impossible to \\(1\\) for certain, with closer to \\(1\\) meaning more likely. So it was all one move, count the favorable, count the total, and read off where the chance sits. Two dice are \\(6 \\times 6 = 36\\) equally likely cells, not \\(12\\). For an \"at least one\" question, flip to the complement and use \\(P(\\text{not } A) = 1 - P(A)\\), since counting the single opposite case is far kinder. And for picks made in stages, like drawing cards without putting them back, you walk the stages and multiply their chances, \\(52\\) then \\(51\\) and so on. That is really the counting from this chapter wearing a new coat. In 10.6 Mean, Median, and Mode we turn the other way, from measuring how likely something is to describing data we have already collected."
+   }
+  ],
+  "review": [
+   {
+    "x": "An \\(8\\)-sided die has its sides painted in three colors, with \\(2\\) red sides, \\(5\\) yellow sides, and \\(1\\) blue side. You roll it once, and every side is equally likely to land face up. What is the probability of rolling blue? Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Every side is equally likely, so the equally likely outcomes are the sides themselves, not the colors. Count the sides to find your total, and there are \\(8\\) of them.",
+     "Now count the favorable outcomes, meaning the sides that count as a win. Only the blue sides help here, and there is \\(1\\) blue side.",
+     "You have \\(1\\) favorable side out of \\(8\\) total sides, so put the favorable count over the total count and write the fraction."
+    ],
+    "ans": "1/8",
+    "accept": [
+     ".125",
+     "0.125",
+     "1/8"
+    ],
+    "sol": "The equally likely outcomes are the \\(8\\) sides of the die, so the total count is \\(8\\). A roll counts as a win only when blue lands on top, and there is \\(1\\) blue side, so the favorable count is \\(1\\). Putting the favorable count over the total count gives $$\\frac{1}{8}.$$ That fraction is already in lowest terms, so the probability of rolling blue is \\(\\frac{1}{8}\\)."
+   },
+   {
+    "x": "A fair \\(6\\)-sided die is rolled once, with the faces \\(1, 2, 3, 4, 5, 6\\) all equally likely. Find the probability that the number rolled is \\(4\\) or less. Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Start with what is equally likely. A fair die has \\(6\\) faces, \\(1, 2, 3, 4, 5, 6\\), and each one has the same chance, so the total count is \\(6\\).",
+     "Now count only the faces that win. Which numbers are \\(4\\) or less? Those are \\(1, 2, 3, 4\\), so the favorable count is \\(4\\).",
+     "Put the favorable count over the total count, which gives \\(\\frac{4}{6}\\), then simplify it to lowest terms."
+    ],
+    "ans": "2/3",
+    "accept": [
+     "2/3"
+    ],
+    "sol": "A fair die has \\(6\\) equally likely faces, \\(1, 2, 3, 4, 5, 6\\), so the total count is \\(6\\). The faces that are \\(4\\) or less are \\(1, 2, 3, 4\\), which is a favorable count of \\(4\\). Probability is the favorable count over the total count, and the faces \\(1,2,3,4\\) are \\(4\\) of \\(6\\), so $$\\frac{4}{6} = \\frac{2}{3}.$$ The probability is \\(\\frac{2}{3}\\)."
+   },
+   {
+    "x": "A fair \\(6\\)-sided die is rolled once. Each of the faces \\(1, 2, 3, 4, 5, 6\\) is equally likely to land face up. Find the probability that the number rolled is not a \\(1\\). Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "A fair die has \\(6\\) equally likely faces, the numbers \\(1, 2, 3, 4, 5, 6\\). That \\(6\\) is your total count, the number of equally likely outcomes.",
+     "You could count every face that is not a \\(1\\), or you could notice the complement is tiny. Only \\(1\\) of the \\(6\\) faces is a \\(1\\), so it might be kinder to start there and flip it around.",
+     "There are \\(5\\) faces that are not a \\(1\\) out of \\(6\\) faces in all, which is the same as \\(1 - \\frac{1}{6}\\). Just write that as a single fraction."
+    ],
+    "ans": "5/6",
+    "accept": [
+     "5/6"
+    ],
+    "sol": "Start by counting what is equally likely. A fair die has \\(6\\) faces, the numbers \\(1, 2, 3, 4, 5, 6\\), and each is just as likely as any other, so the total count is \\(6\\). Now count the favorable faces, the ones that are not a \\(1\\). Those are \\(2, 3, 4, 5, 6\\), and that is \\(5\\) faces. The favorable count is \\(5\\) and the total count is \\(6\\), so the probability is the favorable over the total, which gives \\(\\frac{5}{6}\\). You can also see it as the complement, since only one face is a \\(1\\), so the chance of not rolling a \\(1\\) is \\(1 - \\frac{1}{6} = \\frac{5}{6}\\), the same answer. $$\\boxed{\\frac{5}{6}}$$"
+   },
+   {
+    "x": "A standard \\(52\\)-card deck is shuffled well and placed face down. You flip over the very top card and look at it. There are four \\(10\\)s in the deck and four Jacks, and every card is equally likely to be the one on top. Find the probability that the top card is a \\(10\\) or a Jack. Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Every one of the \\(52\\) cards is equally likely to land on top, so the total number of equally likely outcomes is \\(52\\). That \\(52\\) is the bottom of your fraction.",
+     "Now count the favorable cards, the ones that make you win. There are \\(4\\) tens and \\(4\\) jacks, and no card is both, so add them up to get the top of your fraction.",
+     "You have \\(8\\) winning cards out of \\(52\\), which gives \\(\\frac{8}{52}\\). Now reduce that fraction to lowest terms by dividing top and bottom by the same number."
+    ],
+    "ans": "2/13",
+    "accept": [
+     "2/13"
+    ],
+    "sol": "Start by asking what is equally likely. The deck is shuffled, so any of the \\(52\\) cards is just as likely as any other to be on top, which means the total count is \\(52\\). Next count the favorable cards, the ones you are hoping for. There are \\(4\\) tens and \\(4\\) jacks, and a card cannot be both at once, so the favorable count is \\(4 + 4 = 8\\). Now put the favorable count over the total count and you get \\(\\frac{8}{52}\\). The last step is to write it in lowest terms, and since \\(8\\) and \\(52\\) share a factor of \\(4\\), dividing both by \\(4\\) gives \\(4\\) tens and \\(4\\) jacks are \\(8\\) cards of \\(52\\), \\(\\frac{8}{52} = \\frac{2}{13}\\). So the probability is $$\\frac{8}{52} = \\frac{2}{13}.$$"
+   },
+   {
+    "x": "Two fair \\(6\\)-sided dice are rolled, one after the other. Find the probability that the two numbers add up to a sum of \\(4\\). Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "When you roll two dice, the outcomes that are truly equally likely are the ordered pairs, the number on the first die together with the number on the second. Since the first die has \\(6\\) sides and the second die has \\(6\\) sides, the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely outcomes in all, so that is your total count.",
+     "Now count only the outcomes you want, the ones where the two numbers add up to \\(4\\). Walk through the pairs in order and ask which first roll leaves room for a second roll that finishes the sum at \\(4\\). List them carefully so you do not miss any and you do not count any twice.",
+     "You found the favorable pairs \\((1,3),(2,2),(3,1)\\), so the favorable count is \\(3\\) out of the total \\(36\\). Write that as \\(\\frac{3}{36}\\) and reduce it to lowest terms to finish."
+    ],
+    "ans": "1/12",
+    "accept": [
+     "1/12"
+    ],
+    "sol": "Rolling two dice is just the counting from this chapter wearing a new coat, so we count the favorable outcomes and divide by the total. The equally likely outcomes are the ordered pairs, the first roll together with the second roll. The first die has \\(6\\) sides and the second die has \\(6\\) sides, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely outcomes, and that is our total count.\n\nNow we hunt for the outcomes where the sum is \\(4\\). Going through them in order, the pairs that work are \\((1,3),(2,2),(3,1)\\), which is \\(3\\) of the \\(36\\). That gives a favorable count of \\(3\\).\n\nSo the probability is the favorable count over the total count, which is \\(\\frac{3}{36}\\). Reducing to lowest terms, $$\\frac{3}{36} = \\frac{1}{12}.$$ So the probability that the sum is \\(4\\) is \\(\\boxed{\\frac{1}{12}}\\)."
+   },
+   {
+    "x": "Two fair \\(6\\)-sided dice are rolled, one after the other. Find the probability that the two numbers add up to a sum of \\(11\\). Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Think about every way the two dice can land. The first die has \\(6\\) equally likely faces and the second die has \\(6\\) equally likely faces, so by the multiplication principle there are \\(6 \\times 6 = 36\\) equally likely pairs in all. That \\(36\\) is your total count.",
+     "Now hunt for the favorable pairs, the ones where the two faces add up to \\(11\\). List them carefully and watch the order, since the first die showing one number and the second showing another is a different pair from the swap.",
+     "You should find the favorable pairs \\((5,6)\\) and \\((6,5)\\), which is \\(2\\) pairs out of \\(36\\). All that is left is to write \\(\\frac{2}{36}\\) in lowest terms."
+    ],
+    "ans": "1/18",
+    "accept": [
+     "1/18"
+    ],
+    "sol": "Start by counting every equally likely outcome. The first die has \\(6\\) faces and the second die has \\(6\\) faces, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely pairs, and that is our total count. Now we count the favorable pairs, the ones whose two faces add up to \\(11\\). The only ways to reach \\(11\\) are \\((5,6)\\) and \\((6,5)\\), so that is a favorable count of \\(2\\). Putting the favorable count over the total count, \\((5,6),(6,5)\\) is \\(2\\) of \\(36\\), which gives \\(\\frac{2}{36}\\), and reducing gives \\(\\frac{2}{36} = \\frac{1}{18}\\). So the probability is \\(\\boxed{\\frac{1}{18}}.\\)"
+   },
+   {
+    "x": "Two fair \\(6\\)-sided dice are rolled, one red and one blue, and you watch the two numbers that come up. Find the probability that the sum of the two dice is \\(2\\). Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Think of the red die and the blue die separately. The red die can land \\(6\\) ways and the blue die can land \\(6\\) ways, so picture all the equally likely pairs in a \\(6\\) by \\(6\\) grid. How many cells are in that grid in all?",
+     "Now count the favorable cells, the ones where the two numbers add up to \\(2\\). The smallest number each die can show is \\(1\\), so ask yourself how many pairs of dice actually total \\(2\\).",
+     "There is exactly one pair that totals \\(2\\), namely \\((1,1)\\), out of \\(36\\) equally likely pairs. Just write that as a fraction."
+    ],
+    "ans": "1/36",
+    "accept": [
+     "1/36"
+    ],
+    "sol": "Start by counting all the equally likely outcomes. The red die has \\(6\\) faces and the blue die has \\(6\\) faces, so by the multiplication principle there are \\(6 \\times 6 = 36\\) equally likely pairs, which is our total count. Now count the favorable pairs, the ones whose sum is \\(2\\). Each die shows at least a \\(1\\), so the only way to reach a sum of \\(2\\) is for both dice to land on \\(1\\). Only \\((1,1)\\) works, which gives a favorable count of \\(1\\). The probability is the favorable count over the total count, so $$\\boxed{\\frac{1}{36}}.$$"
+   },
+   {
+    "x": "A standard \\(52\\)-card deck is shuffled, and \\(13\\) of those cards are spades. Find the probability that the top two cards are both spades. Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Think about the top card first, then the second card. There are \\(52\\) equally likely cards that could be on top, and \\(13\\) of them are spades. After you set that first card aside, the deck has changed for the second pick.",
+     "For the top card to be a spade, you want \\(13\\) favorable cards out of \\(52\\). Once a spade is gone, only \\(12\\) spades are left and only \\(51\\) cards remain, so the second pick has its own count. Multiply the two stages together since both have to happen.",
+     "You have \\(\\frac{13}{52} \\times \\frac{12}{51}\\). Notice \\(\\frac{13}{52} = \\frac{1}{4}\\), then finish multiplying and reduce the result all the way down."
+    ],
+    "ans": "1/17",
+    "accept": [
+     "1/17"
+    ],
+    "sol": "This is a two stage draw with no putting cards back, so we walk the picks one at a time and multiply their chances. For the top card, the favorable count is the \\(13\\) spades and the total count is the \\(52\\) cards, which gives \\(\\frac{13}{52}\\). Now one spade is gone, so for the second card the favorable count is the \\(12\\) spades that are left and the total count is the \\(51\\) cards still in the deck, which gives \\(\\frac{12}{51}\\). Both stages have to happen, so we multiply them and you get \\(\\frac{13}{52} \\times \\frac{12}{51} = \\frac{1}{4} \\times \\frac{12}{51} = \\frac{12}{204} = \\frac{1}{17}\\). So the probability that the top two cards are both spades is \\(\\frac{1}{17}\\). $$\\boxed{\\dfrac{1}{17}}$$"
+   },
+   {
+    "x": "A standard deck of \\(52\\) cards is shuffled, and then you flip over the very top card and the one right beneath it. You are hoping for a lucky start, where both of those top two cards turn out to be aces. There are \\(4\\) aces hiding somewhere in the deck. What is the probability that the top two cards are both aces? Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Look at the two cards one at a time, in order. For the first card off the top, every one of the \\(52\\) cards is equally likely to be there, and you want it to be one of the \\(4\\) aces, so that chance is \\(\\frac{4}{52}\\).",
+     "Once the first card really is an ace, it is gone from the deck. Now only \\(51\\) cards are left, and only \\(3\\) of them are still aces, so the chance the second card is also an ace is \\(\\frac{3}{51}\\). To get both in a row you multiply the two stage chances together.",
+     "You just need to work out \\(\\frac{4}{52} \\times \\frac{3}{51}\\). Simplify \\(\\frac{4}{52}\\) to \\(\\frac{1}{13}\\) first, then multiply and reduce the result to lowest terms."
+    ],
+    "ans": "1/221",
+    "accept": [
+     "1/221"
+    ],
+    "sol": "Walk the two cards in order, since one is dealt before the other. For the top card, all \\(52\\) cards are equally likely and \\(4\\) of them are favorable, the aces, so the chance the first card is an ace is \\(\\frac{4}{52}\\). Now suppose that first card really was an ace. It is no longer in the deck, so there are only \\(51\\) cards left and only \\(3\\) of them are still aces. The favorable count is \\(3\\) and the total count is \\(51\\), which gives a chance of \\(\\frac{3}{51}\\) for the second card. To land both aces in a row you multiply the two stage chances, and you get \\(\\frac{4}{52} \\times \\frac{3}{51} = \\frac{1}{13} \\times \\frac{3}{51} = \\frac{3}{663} = \\frac{1}{221}\\). So the probability that the top two cards are both aces is \\(\\boxed{\\frac{1}{221}}\\)."
+   },
+   {
+    "x": "A standard \\(52\\)-card deck is shuffled well, and \\(12\\) of those cards are face cards, meaning the Jacks, Queens, and Kings. You flip over the top two cards one after the other without putting the first one back. What is the probability that both of the top two cards are face cards? Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Think about the deck one card at a time. For the very first card off the top, every one of the \\(52\\) cards is equally likely to be there, and \\(12\\) of those are face cards. So the chance the first card is a face card is \\(\\frac{12}{52}\\).",
+     "Now you need both cards to be face cards, so walk the two picks in sequence and multiply their chances. Once the first face card is gone, the deck has only \\(51\\) cards left and only \\(11\\) of them are still face cards, which makes the second chance \\(\\frac{11}{51}\\).",
+     "You are multiplying \\(\\frac{12}{52} \\times \\frac{11}{51}\\). Simplify \\(\\frac{12}{52}\\) to \\(\\frac{3}{13}\\) first if you like, then multiply across the top and across the bottom and reduce the result to lowest terms."
+    ],
+    "ans": "11/221",
+    "accept": [
+     "11/221"
+    ],
+    "sol": "We want both of the top two cards to be face cards, so we measure the chance one stage at a time and multiply, just like counting a pair in sequence. For the first card, all \\(52\\) cards are equally likely and \\(12\\) of them are face cards, so the favorable count is \\(12\\) out of a total of \\(52\\), which gives \\(\\frac{12}{52}\\). After that face card is set aside, the deck has one fewer card, so now there are \\(51\\) cards left and only \\(11\\) of them are still face cards, which gives \\(\\frac{11}{51}\\) for the second pick. We multiply the two stages, and you get $$\\frac{12}{52} \\times \\frac{11}{51} = \\frac{3}{13} \\times \\frac{11}{51} = \\frac{33}{663} = \\frac{11}{221}.$$ So the probability that the top two cards are both face cards is \\(\\boxed{\\frac{11}{221}}\\)."
+   },
+   {
+    "x": "Four fair coins are flipped at the same time. Find the probability that at least one of them comes up heads. Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Each coin can land heads or tails, so think about every possible string of four results like HTTH or TTTT. Since each of the four coins has \\(2\\) sides, the multiplication principle gives \\(2 \\times 2 \\times 2 \\times 2 = 16\\) equally likely outcomes in all.",
+     "Chasing every way to get at least one head means counting one head, two heads, three heads, and four heads, which is a lot of work. The complement is much kinder, since the only outcome with no heads at all is the single all tails outcome.",
+     "There is exactly \\(1\\) all tails outcome out of \\(16\\), so the chance of no heads is \\(\\frac{1}{16}\\). Now use \\(P(\\text{at least one head}) = 1 - \\frac{1}{16}\\) and finish the subtraction."
+    ],
+    "ans": "15/16",
+    "accept": [
+     ".9375",
+     "0.9375",
+     "15/16"
+    ],
+    "sol": "Each coin lands heads or tails, so a full result is a string of four letters like HTTH. Each of the four coins has \\(2\\) choices, and the multiplication principle gives \\(2 \\times 2 \\times 2 \\times 2 = 16\\) equally likely outcomes, which is our total count. Now we want at least one head, and going after that head on directly means counting one head, two heads, three heads, and four heads, which is a pile of cases. The complement saves us. The only way to get no heads is to have all tails, and that is just the single outcome TTTT, so the favorable count for no heads is \\(1\\) out of \\(16\\), which gives \\(\\frac{1}{16}\\). Flipping it around with \\(P(\\text{at least one head}) = 1 - P(\\text{no heads})\\), we get \\(1 - \\frac{1}{16} = \\frac{15}{16}\\). So the probability of at least one head is $$\\boxed{\\frac{15}{16}}.$$"
+   },
+   {
+    "x": "Four fair coins are flipped, and each one lands either heads or tails. Find the probability that exactly two of the four coins come up heads. Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Start with the total. Each of the \\(4\\) coins has \\(2\\) possible results, so the whole flip has \\(2^4 = 16\\) equally likely outcomes. That \\(16\\) is the number going on the bottom of your fraction.",
+     "Now count the favorable outcomes, the ones with exactly two heads. Saying which coins are heads is the same as choosing which \\(2\\) of the \\(4\\) coins are the heads, so this is a pair count from one group of \\(4\\).",
+     "Each of the \\(4\\) coins could pair with the other \\(3\\), which gives \\(4 \\times 3\\), and you divide by \\(2\\) so you do not count the same pair twice, so you get \\(\\frac{4 \\times 3}{2} = 6\\) favorable outcomes out of \\(16\\). Now reduce \\(\\frac{6}{16}\\)."
+    ],
+    "ans": "3/8",
+    "accept": [
+     ".375",
+     "0.375",
+     "3/8"
+    ],
+    "sol": "First find the total number of equally likely outcomes. Each of the \\(4\\) coins lands heads or tails, so it has \\(2\\) results, and the multiplication principle gives \\(2^4 = 16\\) outcomes in all. That is our total count.\n\\nNow count the favorable outcomes, the ones with exactly two heads. Picking which coins come up heads is the same as choosing which \\(2\\) of the \\(4\\) coins are the heads, so this is a pair count from one group of \\(4\\). Each of the \\(4\\) coins can pair with the other \\(3\\), which gives \\(4 \\times 3\\), but that counts every pair twice, once from each side, so we divide by \\(2\\) and you get \\(\\frac{4 \\times 3}{2} = 6\\). So there are \\(6\\) favorable outcomes.\n\\nPut the favorable count over the total count, which gives $$\\frac{6}{16} = \\frac{3}{8}.$$ So the probability of exactly two heads is \\(\\boxed{\\frac{3}{8}}\\)."
+   },
+   {
+    "x": "Two fair \\(6\\)-sided dice are rolled, and you look at the product of the two numbers that come up. Find the probability that this product is even. Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Picture the two dice as a grid, where the first die gives a row and the second die gives a column. Each die has \\(6\\) equally likely faces, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely cells in all, and that \\(36\\) is your total count.",
+     "Chasing every way the product turns out even is a lot of cases, so flip it around with the complement. The product is even unless something special happens, so ask the one quiet question, when is a product of two numbers actually odd?",
+     "A product is odd only when both numbers are odd, and each die shows an odd number with chance \\(\\frac{3}{6}\\), so the chance both are odd is \\(\\frac{3}{6} \\times \\frac{3}{6} = \\frac{1}{4}\\). Now take that away from \\(1\\)."
+    ],
+    "ans": "3/4",
+    "accept": [
+     ".75",
+     "0.75",
+     "3/4"
+    ],
+    "sol": "Trying to list every way the product comes out even is a long road, so let us walk the kinder one and count the opposite first. A product of two whole numbers is odd only when both numbers are odd, because as soon as even one of them is even, the product turns even too.\n\\nSo when is the product odd? Only when the first die is odd and the second die is odd. On one die the odd faces are \\(1\\), \\(3\\), and \\(5\\), which is \\(3\\) favorable faces out of \\(6\\), giving \\(\\frac{3}{6}\\). The two dice are independent, so we multiply the two stages and you get $$\\frac{3}{6} \\times \\frac{3}{6} = \\frac{1}{4}.$$\n\\nThat \\(\\frac{1}{4}\\) is the chance the product is odd, which is the one case we did not want. The complement does the rest, since even is everything that is left over, so we subtract from \\(1\\) and you get \\(1 - \\frac{1}{4} = \\frac{3}{4}\\). So the probability that the product is even is \\(\\boxed{\\frac{3}{4}}\\)."
+   },
+   {
+    "x": "A bag holds \\(4\\) red, \\(3\\) blue, and \\(5\\) green marbles, all the same size, and you draw one marble at random without looking. What is the probability that the marble you draw is green? Give your answer as a fraction in lowest terms.",
+    "hints": [
+     "Every marble is the same size, so each one is equally likely to be the one you grab. Start by counting how many marbles are in the bag all together.",
+     "Now count just the marbles that make the event happen, the green ones. The probability is the number of favorable marbles over the total number of marbles.",
+     "You found \\(5\\) green marbles and \\(4+3+5=12\\) marbles in all, so set up the fraction \\(\\frac{5}{12}\\) and check whether it can be reduced."
+    ],
+    "ans": "5/12",
+    "accept": [
+     "5/12"
+    ],
+    "sol": "There are \\(5\\) green of \\(4+3+5 = 12\\) marbles, \\(\\frac{5}{12}\\)."
+   }
+  ],
+  "next": "10.6"
  }
 }
