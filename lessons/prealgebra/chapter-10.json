@@ -1563,5 +1563,525 @@
    }
   ],
   "next": "10.4"
+ },
+ "10.4": {
+  "title": "Counting Pairs",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In Lesson 10.2 we lined up a row of choices and multiplied straight across, and that counted every outcome where the order mattered, like first place and second place in a race. But a lot of real questions are not like that. Think about a handshake between two people. If you shake my hand, that is the same single handshake as me shaking yours, so you and me is not a different handshake from me and you. When order stops mattering like this, a plain multiply quietly counts everything twice, once for each way of saying the same thing. The good news is that the overcount is gentle and tidy, so once we spot it we can undo it with one small fix, and that little fix is the whole heart of this lesson."
+   },
+   {
+    "t": "prob",
+    "x": "Six friends meet up, and each friend shakes hands exactly once with every other friend. No two friends shake hands more than once. How many handshakes happen in all?",
+    "xp": 6,
+    "hints": [
+     "A handshake is a PAIR of friends, and the pair Ana with Ben is the very same handshake as Ben with Ana, so the order does not matter. And everyone comes from the one group of six friends, not from two separate groups. So this is a pair count, where you will want to watch out for counting each handshake twice.",
+     "Set up the count the easy way first. Each of the \\(6\\) friends reaches out to the other \\(5\\) friends, so multiply to get \\(6 \\times 5\\). Now ask yourself the key question for pairs, did that count each handshake once, or did it sneak each one in twice?",
+     "You have \\(6 \\times 5 = 30\\), but every handshake got counted twice, once from each friend in the pair. So the honest count is half of \\(30\\), and all that is left is to take that half."
+    ],
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0"
+    ],
+    "sol": "A handshake is really just an unordered pair of friends, where Ana shaking Ben's hand is the same single handshake as Ben shaking Ana's hand. So this is a pair count, and everyone comes from the one group of six friends.\n\\nLet us count the easy way first and fix the trouble after. Each of the \\(6\\) friends shakes hands with the other \\(5\\) friends, and multiplying those gives $$6 \\times 5 = 30.$$\n\\nBut look closely, because that \\(30\\) counts every handshake twice. When Ana reaches out to Ben we count it once, and when Ben reaches out to Ana we count the same handshake again. Each pair got tallied from both sides, so the count is doubled.\n\\nThe honest answer is half as big, so we divide by \\(2\\) to undo the overcount, which gives $$30 / 2 = 15.$$\n\\nSo the six friends share \\(\\boxed{15}\\) handshakes."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, counting pairs. To count pairs where the order does not matter, first count the ordered way, the way you already trust from the multiplication principle. You have \\(n\\) choices for the first pick, then \\(n-1\\) choices left for the second, which gives \\(n(n-1)\\). But every pair just got counted twice, once as A then B and once as B then A, which is the same handshake both times. So you cut the overcount in half and divide by \\(2\\). The number of pairs you can make from \\(n\\) things is \\(\\frac{n(n-1)}{2}\\). Count the ordered way, then divide by \\(2\\) to undo the double count."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 416 304\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A four by four grid showing why we divide by two when counting pairs. The four people A, B, C, D label both the columns across the top and the rows down the left side. Each cell is a person paired with another. The four cells along the main diagonal, where a person meets themselves, are blacked out and counted as not real pairs. The six cells above the diagonal are shaded gold and the six cells below the diagonal are shaded blue. These two triangles are mirror copies of each other, so the pair A and B appears once in the gold triangle and once again as B and A in the blue triangle. That makes 12 shaded cells, which are the ordered pairs. Each real pair is counted twice, once in each triangle, so 12 divided by 2 gives 6 actual pairs.\">\n  <text x=\"208\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"var(--mid)\">EACH PAIR SITS IN THE GRID TWICE</text>\n\n  <text x=\"148\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">A</text>\n  <text x=\"204\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">B</text>\n  <text x=\"260\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">C</text>\n  <text x=\"316\" y=\"58\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">D</text>\n\n  <text x=\"104\" y=\"92\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">A</text>\n  <text x=\"104\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">B</text>\n  <text x=\"104\" y=\"204\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">C</text>\n  <text x=\"104\" y=\"260\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">D</text>\n\n  <rect x=\"120\" y=\"68\" width=\"56\" height=\"56\" fill=\"var(--ink)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"176\" y=\"68\" width=\"56\" height=\"56\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"232\" y=\"68\" width=\"56\" height=\"56\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"288\" y=\"68\" width=\"56\" height=\"56\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n\n  <rect x=\"120\" y=\"124\" width=\"56\" height=\"56\" fill=\"var(--mid)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"176\" y=\"124\" width=\"56\" height=\"56\" fill=\"var(--ink)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"232\" y=\"124\" width=\"56\" height=\"56\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"288\" y=\"124\" width=\"56\" height=\"56\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n\n  <rect x=\"120\" y=\"180\" width=\"56\" height=\"56\" fill=\"var(--mid)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"176\" y=\"180\" width=\"56\" height=\"56\" fill=\"var(--mid)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"232\" y=\"180\" width=\"56\" height=\"56\" fill=\"var(--ink)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"288\" y=\"180\" width=\"56\" height=\"56\" fill=\"var(--gold2)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n\n  <rect x=\"120\" y=\"236\" width=\"56\" height=\"56\" fill=\"var(--mid)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"176\" y=\"236\" width=\"56\" height=\"56\" fill=\"var(--mid)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"232\" y=\"236\" width=\"56\" height=\"56\" fill=\"var(--mid)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"288\" y=\"236\" width=\"56\" height=\"56\" fill=\"var(--ink)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n\n  <text x=\"270\" y=\"102\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"var(--gold-deep)\">6 here</text>\n  <text x=\"146\" y=\"262\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"var(--soft)\">6 here</text>\n</svg>",
+    "cap": "Here are \\(4\\) people, A, B, C, D, written across the top and down the side. Every cell pairs the person in its row with the person in its column. The \\(4\\) black cells run down the middle, where someone would meet themselves, so those are not real pairs and we toss them out. That leaves the gold triangle above with \\(6\\) cells and the blue triangle below with \\(6\\) cells, which is \\(12\\) cells in all. Notice the two triangles are mirror copies. The pair A with B is a gold cell, and B with A is the matching blue cell, so each real pair shows up twice. To undo that double counting we share the \\(12\\) equally between the two copies, and you get \\(12 \\div 2 = 6\\) actual pairs."
+   },
+   {
+    "t": "prob",
+    "x": "A tennis class has \\(5\\) girls. A doubles team is any group of \\(2\\) of them. How many different doubles teams can be formed?",
+    "xp": 6,
+    "hints": [
+     "First ask what kind of count this is. A team is just \\(2\\) girls picked from the class, and the order you name them in does not matter, since pairing Ana with Beth is the same team as pairing Beth with Ana. And notice you are choosing both girls from one single group, not one girl from one group and one from another. So this is counting pairs.",
+     "Set it up like a handshake. Each of the \\(5\\) girls could partner with any of the other \\(4\\), which gives \\(5 \\times 4\\) ways if order mattered. But order does not matter here, so each team got counted twice, once from each girl's side. That tells you what to do next with that product.",
+     "You have \\(5 \\times 4 = 20\\), and since every team was counted twice you divide by \\(2\\). So you just need \\(\\frac{20}{2}\\)."
+    ],
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0"
+    ],
+    "sol": "A doubles team is just \\(2\\) girls chosen from the class, and the order does not matter, since the team made of Ana and Beth is the very same team as Beth and Ana. So this is a pair count, and both girls come from one single group.\n\\nStart by letting each girl reach out to a partner. Any of the \\(5\\) girls can pair with any of the other \\(4\\), and that gives $$5 \\times 4 = 20.$$\n\\nBut that \\(20\\) counts every team twice, once when Ana picks Beth and once when Beth picks Ana, and those are the same team. So the honest count is half as big, and you divide by \\(2\\), which gives $$\\frac{5 \\times 4}{2} = \\frac{20}{2} = 10.$$\n\\nSo you can form \\(\\boxed{10}\\) different doubles teams."
+   },
+   {
+    "t": "prob",
+    "x": "In a round-robin tournament, every player plays every other player exactly once. Picture \\(8\\) players signing up, and think about who faces whom. Each match brings together two of the players, and no two players meet more than once. How many matches are played in this \\(8\\)-person round-robin tournament?",
+    "xp": 7,
+    "hints": [
+     "Think about what one match really is. It is a pair of two players, and the match where Ana plays Ben is the very same match as the one where Ben plays Ana, so order does not matter. And notice that both players come from the one group of \\(8\\), not from two separate groups.",
+     "Each of the \\(8\\) players could face any of the other \\(7\\), so multiply to get \\(8 \\times 7\\). Now ask the key question, since both players come from the same group, does counting this way count each match once or twice, and if it is twice then you will need to divide by \\(2\\).",
+     "You have \\(8 \\times 7 = 56\\), and every match got counted twice because each pair shows up from both players' points of view. So take half of \\(56\\) and you are there."
+    ],
+    "ans": "28",
+    "accept": [
+     "28",
+     "28.0"
+    ],
+    "sol": "Every match is just a pair of players, so we are choosing \\(2\\) players from the \\(8\\), where order does not matter since Ana playing Ben is the same match as Ben playing Ana. Start with the multiplying habit. Each of the \\(8\\) players can face any of the other \\(7\\), which gives \\(8 \\times 7 = 56\\). But that counts each match twice, once from each player's side, so we undo the overcount by dividing by \\(2\\). That gives $$\\frac{8 \\times 7}{2} = \\frac{56}{2} = 28.$$ Since both players come from the same group of \\(8\\), the divide-by-\\(2\\) is exactly what keeps us honest, and we land on \\(\\boxed{28}\\) matches."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the one to keep. Choosing \\(2\\) things from \\(n\\) is the workhorse of this whole chapter, and it always counts the same way. A handshake in a room, a match in a round-robin, a team of two, a pair of co-presidents, every one of them is just a pair pulled from \\(n\\), and every one of them comes out to \\(\\frac{n(n-1)}{2}\\). A round-robin where everyone plays everyone exactly once is this and nothing more. When you meet a new pair problem, draw two boxes for the two picks, multiply to fill them, then halve because the two boxes are really the same pair seen from each side."
+   },
+   {
+    "t": "prob",
+    "x": "A club has \\(12\\) members, and it needs to pick \\(2\\) of them to serve together as co-presidents. The two co-presidents share the exact same job, so there is no \"first\" president and no \"second\" president, just a pair of people doing the role side by side. How many different pairs of co-presidents are possible?",
+    "xp": 6,
+    "hints": [
+     "Start by asking what kind of count this is. Are you choosing a pair where the order does not matter, or are you making two separate picks from two groups you can tell apart? Here both co-presidents come from the one club and they share the same role, so this is a pair where order does not matter.",
+     "Lean on the multiplying habit. The first co-president can be any of the \\(12\\) members, and the second can be any of the remaining \\(11\\), which gives \\(12 \\times 11\\). Now decide the key thing, whether picking Ana then Ben is different from picking Ben then Ana. Since they share one role, those are the same pair, so you will need to divide by \\(2\\).",
+     "You have \\(\\frac{12 \\times 11}{2}\\). Work out \\(12 \\times 11 = 132\\), then take half of \\(132\\)."
+    ],
+    "ans": "66",
+    "accept": [
+     "66",
+     "66.0"
+    ],
+    "sol": "Both co-presidents come from the same club, so this is one group, and the two of them share the same role, which means the pair is unordered. Reach for the multiplying habit first. The first co-president could be any of the \\(12\\) members, and the second could be any of the \\(11\\) who are left, and you get \\(12 \\times 11\\). But watch the trap. Choosing Ana and then Ben gives the very same pair of co-presidents as choosing Ben and then Ana, so every pair has been counted twice. The honest count is half as big, so you divide by \\(2\\), which gives $$\\frac{12 \\times 11}{2} = \\frac{132}{2} = 66.$$ So there are \\(\\boxed{66}\\) different pairs of co-presidents."
+   },
+   {
+    "t": "prob",
+    "x": "An ice cream shop has \\(11\\) flavors. A double scoop uses \\(2\\) different flavors, and the order they are stacked does not matter. How many different double scoops are possible?",
+    "xp": 6,
+    "hints": [
+     "First decide what kind of count this is. You are choosing \\(2\\) flavors from one single list of \\(11\\), and a scoop of chocolate on vanilla is the very same scoop as vanilla on chocolate. So this is a pair where the order does not matter, and both flavors come from the same group, not two separate groups.",
+     "Set it up like a handshake. The first flavor has \\(11\\) choices and the second has \\(10\\) left, so a first pass gives \\(11 \\times 10\\). But picking chocolate then vanilla and picking vanilla then chocolate land on the same double scoop, so each scoop got counted twice. That tells you whether to divide by \\(2\\) here.",
+     "You have \\(\\frac{11 \\times 10}{2}\\) to finish. Work out the top first, then take half of it, and you have your count."
+    ],
+    "ans": "55",
+    "accept": [
+     "55",
+     "55.0"
+    ],
+    "sol": "A double scoop is just an unordered pair of flavors, because a scoop of mint on top of strawberry is the exact same dessert as strawberry on top of mint. So this is the handshake idea wearing a new costume, and we count pairs from one group of \\(11\\).\n\nStart the way we multiply in 10.2. The first flavor can be any of the \\(11\\), and once it is chosen the second flavor can be any of the \\(10\\) that are left, and you get $$11 \\times 10 = 110.$$\n\nBut watch the same trap as the handshakes. Choosing chocolate first and vanilla second gives the same double scoop as choosing vanilla first and chocolate second, so every scoop has been counted twice. To undo that overcount we take half, which gives $$\\frac{11 \\times 10}{2} = \\frac{110}{2} = 55.$$\n\nSo there are \\(\\boxed{55}\\) different double scoops."
+   },
+   {
+    "t": "prob",
+    "x": "Seven points are marked on a page, and no three of them lie in a straight line. Someone draws a straight segment joining every pair of points. How many segments are drawn in all?",
+    "xp": 7,
+    "hints": [
+     "Each segment just joins two of the points, so this is a pair where the order does not matter. Ben-and-Ana is the same segment as Ana-and-Ben. And all seven points come from one single group, not two separate groups, so think about whether you might be counting each segment twice.",
+     "Set up the count. Each of the \\(7\\) points can reach out to the other \\(6\\) points, which gives \\(7 \\times 6\\). But since the segment from one point to another is the very same segment going back, every pair got counted twice, so you will need to divide by \\(2\\).",
+     "You have \\(7 \\times 6 = 42\\), and now you just halve it. Take \\(\\frac{42}{2}\\) and you are done."
+    ],
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0"
+    ],
+    "sol": "Every segment is really just a pair of points, since a segment is fixed the moment you pick the two points it joins. So counting segments is the same as counting how many pairs you can make from the seven points.\n\nStart by letting each point reach out to all the others. Each of the \\(7\\) points can connect to the other \\(6\\), which gives \\(7 \\times 6 = 42\\). But watch the trap here, because the segment from one point to another is the exact same segment as the one going back the other way. That means every pair got counted twice. To fix the overcount you take half, so you divide by \\(2\\).\n\nThat gives $$\\frac{7 \\times 6}{2} = \\frac{42}{2} = 21.$$\n\nSo the number of segments drawn is \\(\\boxed{21}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the contrast worth carrying everywhere. When the two things you pick come from the same group, like two people in one room, every pair gets counted twice, so you divide by \\(2\\). But when you pick one thing from one group and one from a different group, like a leader and a follower or a team from each of two schools, the two picks can never swap places, so nothing is ever counted twice. There you just multiply the group sizes and you do not divide at all."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A left column of 4 squares and a right column of 3 circles. A straight line joins every square to every circle, making 4 times 3 equals 12 connections in all, with each connection drawn one time.\">\n  <title>Cross-group pairing of 4 squares with 3 circles</title>\n  <desc>Four squares on the left each connect to three circles on the right, giving twelve connections, counted as 4 times 3 equals 12.</desc>\n\n  <line x1=\"92\" y1=\"62\" x2=\"348\" y2=\"90\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"62\" x2=\"348\" y2=\"150\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"62\" x2=\"348\" y2=\"210\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"116\" x2=\"348\" y2=\"90\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"116\" x2=\"348\" y2=\"150\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"116\" x2=\"348\" y2=\"210\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"170\" x2=\"348\" y2=\"90\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"170\" x2=\"348\" y2=\"150\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"170\" x2=\"348\" y2=\"210\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"224\" x2=\"348\" y2=\"90\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"224\" x2=\"348\" y2=\"150\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <line x1=\"92\" y1=\"224\" x2=\"348\" y2=\"210\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n\n  <rect x=\"72\" y=\"48\" width=\"28\" height=\"28\" rx=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/>\n  <rect x=\"72\" y=\"102\" width=\"28\" height=\"28\" rx=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/>\n  <rect x=\"72\" y=\"156\" width=\"28\" height=\"28\" rx=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/>\n  <rect x=\"72\" y=\"210\" width=\"28\" height=\"28\" rx=\"4\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\" stroke-width=\"2\"/>\n\n  <circle cx=\"348\" cy=\"90\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n  <circle cx=\"348\" cy=\"150\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n  <circle cx=\"348\" cy=\"210\" r=\"15\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n\n  <text x=\"86\" y=\"28\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\" text-anchor=\"middle\">4 squares</text>\n  <text x=\"348\" y=\"48\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\" text-anchor=\"middle\">3 circles</text>\n\n  <text x=\"220\" y=\"282\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4 &#215; 3 = 12 connections</text>\n</svg>",
+    "cap": "Here are two separate groups, a left group of \\(4\\) squares and a right group of \\(3\\) circles. Reach out from the top square and you can draw a line to each of the \\(3\\) circles, which is \\(3\\) connections from that one square. Every one of the \\(4\\) squares does the same thing, so you stack up \\(4\\) groups of \\(3\\) and you get \\(4 \\times 3 = 12\\) lines in all. Notice that no line repeats. A square is never a circle, so the two sides never swap places, and that is why you pick one from each group, multiply, and do not divide. The total stays \\(\\boxed{12}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A dance class has \\(7\\) leaders and \\(6\\) followers. Every leader dances exactly once with every follower. How many leader-and-follower dances take place?",
+    "xp": 6,
+    "hints": [
+     "Before you count anything, ask what kind of pairing this is. A dance joins one leader with one follower. Are those two coming from the same group, where order would not matter, or are they coming from two different groups you can tell apart?",
+     "You are pulling one pick from the leaders and one pick from the followers, two separate groups, so multiply their sizes. Then pause and decide whether you need to divide by \\(2\\) the way you do when both picks come from one group.",
+     "Multiplying gives \\(7\\times6\\), and since a leader and a follower can never trade roles, no dance gets counted twice, so there is no dividing by \\(2\\) here. Just finish that one product."
+    ],
+    "ans": "42",
+    "accept": [
+     "42",
+     "42.0"
+    ],
+    "sol": "Each dance pairs one leader with one follower, and those two picks come from TWO different groups, the leaders and the followers. When the picks come from groups you can tell apart, you simply multiply the sizes, so $$7\\times6=42.$$\n\nNotice there is no dividing by \\(2\\) this time. We divide by \\(2\\) only when both picks come from the same group, because then choosing Ana then Ben is the same pair as choosing Ben then Ana. Here a leader and a follower can never swap roles, so no dance is ever counted twice and nothing needs undoing.\n\nThe number of dances is \\(\\boxed{42}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "At a party there are \\(5\\) women and \\(4\\) men. Every woman shakes hands with every other person at the party, both the other women and all the men. The men, though, never shake hands with each other, so no handshake happens between two men. Each handshake that does happen happens just once. How many handshakes take place in all?",
+    "xp": 8,
+    "hints": [
+     "A handshake is just a pair of people, and the order does not matter, since you shaking my hand is the same single handshake as me shaking yours. So really you are counting how many allowed pairs there are. Notice the pairs come in different kinds, some join two women, some join a woman and a man, and some would join two men.",
+     "Split the count into kinds of pairs. For two women, both come from the same group of \\(5\\), so that is a pair where you reach out and then divide by \\(2\\). For a woman and a man, the two picks come from different groups, so you just multiply the sizes and do not divide. For two men, none are allowed, so that kind adds nothing.",
+     "You should have woman-with-woman giving \\(\\frac{5 \\times 4}{2}\\), woman-with-man giving \\(5 \\times 4\\), and man-with-man giving \\(0\\). Work each one out, then add the three counts together."
+    ],
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0"
+    ],
+    "sol": "A handshake is a pair of people, and order does not matter, so all we are really doing is counting the allowed pairs. The trick is that the pairs come in different kinds, so let us split them up and count each kind on its own.\n\\nFirst the woman-with-woman handshakes. Both people in such a pair come from the same group of \\(5\\) women. Each woman could reach out to the other \\(4\\), and you get \\(5 \\times 4\\), but that counts Ana-with-Bea and Bea-with-Ana as two different things when they are the very same handshake. So we divide by \\(2\\) to undo that double count, which gives \\(\\frac{5 \\times 4}{2} = 10\\).\n\\nNext the woman-with-man handshakes. Now the two people come from groups you can tell apart, one woman and one man, so nothing gets counted twice and there is no dividing by \\(2\\). You simply multiply the sizes, which gives \\(5 \\times 4 = 20\\).\n\\nLast the man-with-man handshakes. The rule says no two men shake hands, so this kind adds nothing at all, a flat \\(0\\).\n\\nNow add the kinds together, and you get \\(10 + 20 = 30\\).\n\n$$\\boxed{30}$$"
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, pairs the casework way (a callback to 10.3). When some pairs are off limits, you do not have to count them one by one. Count every pair with \\(\\frac{n(n-1)}{2}\\), then take away the forbidden ones, the way the diagonals of a polygon are just all the pairs of corners with the \\(n\\) sides removed. Or split the pairs into kinds, like same-group versus cross-group, count each kind on its own, and add. That is the casework from 10.3 wearing a new hat, only now the things you are splitting and subtracting are pairs."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 340 330\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Six people at a small gathering shown as dots, four filled dots for the women and two open dots for the two men. Every one of the fifteen possible connecting lines between dots is drawn. The single dashed line that joins the two men to each other is crossed out, leaving fourteen allowed handshakes.\"><line x1=\"170\" y1=\"55\" x2=\"252\" y2=\"102.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"170\" y1=\"55\" x2=\"252\" y2=\"197.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"170\" y1=\"55\" x2=\"170\" y2=\"245\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"170\" y1=\"55\" x2=\"88\" y2=\"197.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"170\" y1=\"55\" x2=\"88\" y2=\"102.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"102.5\" x2=\"252\" y2=\"197.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"102.5\" x2=\"170\" y2=\"245\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"102.5\" x2=\"88\" y2=\"197.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"102.5\" x2=\"88\" y2=\"102.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"197.5\" x2=\"170\" y2=\"245\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"197.5\" x2=\"88\" y2=\"197.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"252\" y1=\"197.5\" x2=\"88\" y2=\"102.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"170\" y1=\"245\" x2=\"88\" y2=\"197.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"170\" y1=\"245\" x2=\"88\" y2=\"102.5\" stroke=\"var(--line)\" stroke-width=\"1.5\"/><line x1=\"88\" y1=\"197.5\" x2=\"88\" y2=\"102.5\" stroke=\"var(--slate)\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><line x1=\"72\" y1=\"134\" x2=\"104\" y2=\"166\" stroke=\"var(--gold-deep)\" stroke-width=\"2.6\"/><line x1=\"104\" y1=\"134\" x2=\"72\" y2=\"166\" stroke=\"var(--gold-deep)\" stroke-width=\"2.6\"/><circle cx=\"170\" cy=\"55\" r=\"9\" fill=\"var(--mid)\" stroke=\"var(--ink)\" stroke-width=\"1.5\"/><circle cx=\"252\" cy=\"102.5\" r=\"9\" fill=\"var(--mid)\" stroke=\"var(--ink)\" stroke-width=\"1.5\"/><circle cx=\"252\" cy=\"197.5\" r=\"9\" fill=\"var(--mid)\" stroke=\"var(--ink)\" stroke-width=\"1.5\"/><circle cx=\"170\" cy=\"245\" r=\"9\" fill=\"var(--mid)\" stroke=\"var(--ink)\" stroke-width=\"1.5\"/><circle cx=\"88\" cy=\"197.5\" r=\"9\" fill=\"var(--softer)\" stroke=\"var(--ink)\" stroke-width=\"1.5\"/><circle cx=\"88\" cy=\"102.5\" r=\"9\" fill=\"var(--softer)\" stroke=\"var(--ink)\" stroke-width=\"1.5\"/><text x=\"56\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"end\">man</text><text x=\"56\" y=\"201\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"end\">man</text><text x=\"170\" y=\"40\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\" text-anchor=\"middle\">woman</text><text x=\"170\" y=\"293\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" fill=\"var(--slate)\" text-anchor=\"middle\">filled dot = woman, open dot = man</text><text x=\"170\" y=\"315\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">15 lines, cross out 1, leaves 14</text></svg>",
+    "cap": "Here are all \\(6\\) people at the gathering, four women as filled dots and two men as open dots. Draw a line for every pair and you get \\(\\frac{6 \\times 5}{2} = 15\\) lines in all. But the two men will not shake hands with each other, so that single man-with-man line is crossed out, which is \\(1\\) pair to remove. The allowed handshakes are \\(15 - 1 = 14\\). Count every pair, then subtract the pairs that are not allowed."
+   },
+   {
+    "t": "prob",
+    "x": "A hexagon is a flat shape with \\(6\\) corners and \\(6\\) sides. A diagonal is a straight line that joins two corners which are not already joined by a side. Picture standing at one corner and drawing a line to every other corner, then doing the same from each corner, and being careful not to count any of the sides as diagonals. How many diagonals does the hexagon have?",
+    "xp": 7,
+    "hints": [
+     "Every line in this picture joins two corners, so you are choosing a pair of corners where the order does not matter. All \\(6\\) corners come from one single hexagon, not two separate groups, so this is a pairs question and not a multiply-the-two-sizes question.",
+     "First count how many pairs of corners there are at all. Each of the \\(6\\) corners reaches out to the other \\(5\\), which gives \\(6 \\times 5\\), and then you divide by \\(2\\) because joining corner A to corner B is the very same line as joining B to A.",
+     "Once you know there are \\(15\\) pairs of corners in all, remember that some of those lines are sides, not diagonals. The hexagon has \\(6\\) sides, so take those away from the \\(15\\) and you are left with just the diagonals."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "sol": "Start with a friendly idea. Every pair of corners in the hexagon is joined by a line, and that line is either a side or a diagonal, never both. So if you count all the pairs of corners first, the diagonals are just what is left after you take the sides away.\n\nCount the pairs of corners. Each of the \\(6\\) corners can reach out to the other \\(5\\) corners, and that gives \\(6 \\times 5\\). But joining corner A to corner B is the same line as joining corner B to A, so every pair got counted twice. Divide by \\(2\\) to undo that double count, which gives $$\\frac{6 \\times 5}{2} = 15.$$\n\nSo there are \\(15\\) pairs of corners in all. Of these, \\(6\\) of the lines are the sides of the hexagon, and a side is not a diagonal. Take those away and the diagonals are $$15 - 6 = 9.$$\n\nSo the hexagon has \\(\\boxed{9}\\) diagonals."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the move worth keeping. Pick any two corners of a polygon and the line joining them is either a side or a diagonal, with nothing in between, so the diagonals are just all the corner pairs after you take away the ones that are sides. There are \\(\\frac{n(n-1)}{2}\\) pairs of corners in all, and exactly \\(n\\) of them are sides, one for each edge of the shape, which leaves \\(\\frac{n(n-1)}{2} - n\\) diagonals. Notice the trick. You did not hunt for diagonals one by one, you counted every pair the easy way and then subtracted the few you did not want, and that habit of building what you need by removing what you do not is going to keep paying off."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A square with its four corners marked as dots. The four sides of the square are drawn in slate blue and the two diagonals that cross inside are drawn in orange. To the right, three lines of math explain that the number of all corner pairs is 4 times 3 over 2 equals 6, that 4 of those pairs are sides, and that 6 minus 4 leaves 2 diagonals.\">\n  <rect x=\"0\" y=\"0\" width=\"440\" height=\"300\" fill=\"var(--soft)\"/>\n  <text x=\"24\" y=\"34\" font-family=\"Inter, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"var(--ink)\">A square has 4 corners</text>\n  <line x1=\"40\" y1=\"80\" x2=\"200\" y2=\"240\" stroke=\"var(--accent)\" stroke-width=\"4\"/>\n  <line x1=\"200\" y1=\"80\" x2=\"40\" y2=\"240\" stroke=\"var(--accent)\" stroke-width=\"4\"/>\n  <line x1=\"40\" y1=\"80\" x2=\"200\" y2=\"80\" stroke=\"var(--slate)\" stroke-width=\"5\"/>\n  <line x1=\"200\" y1=\"80\" x2=\"200\" y2=\"240\" stroke=\"var(--slate)\" stroke-width=\"5\"/>\n  <line x1=\"200\" y1=\"240\" x2=\"40\" y2=\"240\" stroke=\"var(--slate)\" stroke-width=\"5\"/>\n  <line x1=\"40\" y1=\"240\" x2=\"40\" y2=\"80\" stroke=\"var(--slate)\" stroke-width=\"5\"/>\n  <circle cx=\"40\" cy=\"80\" r=\"7\" fill=\"var(--ink)\"/>\n  <circle cx=\"200\" cy=\"80\" r=\"7\" fill=\"var(--ink)\"/>\n  <circle cx=\"200\" cy=\"240\" r=\"7\" fill=\"var(--ink)\"/>\n  <circle cx=\"40\" cy=\"240\" r=\"7\" fill=\"var(--ink)\"/>\n  <line x1=\"40\" y1=\"270\" x2=\"64\" y2=\"270\" stroke=\"var(--slate)\" stroke-width=\"5\"/>\n  <text x=\"70\" y=\"275\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">4 sides</text>\n  <line x1=\"140\" y1=\"270\" x2=\"164\" y2=\"270\" stroke=\"var(--accent)\" stroke-width=\"4\"/>\n  <text x=\"170\" y=\"275\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--accent)\">2 diagonals</text>\n  <text x=\"252\" y=\"92\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">all corner pairs</text>\n  <text x=\"252\" y=\"116\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">4 &#215; 3 &#247; 2 = 6</text>\n  <text x=\"252\" y=\"154\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">pairs that are sides</text>\n  <text x=\"252\" y=\"178\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--slate)\">4</text>\n  <text x=\"252\" y=\"216\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\">so diagonals</text>\n  <text x=\"252\" y=\"240\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--accent)\">6 &#8722; 4 = 2</text>\n</svg>",
+    "cap": "Picture a square with its \\(4\\) corners. Count every pair of corners and you get \\(\\frac{4 \\times 3}{2} = 6\\) pairs in all. The slate lines are the \\(4\\) sides, where each pair of corners that sits next to each other is joined. Take those away and the orange lines are what is left, so the diagonals are \\(6 - 4 = 2\\). Every pair of corners is either a side or a diagonal."
+   },
+   {
+    "t": "prob",
+    "x": "A decagon is a flat shape with \\(10\\) corners and \\(10\\) straight sides. A diagonal is a straight segment that joins two corners but is not one of the sides. How many diagonals does a decagon have?",
+    "xp": 8,
+    "hints": [
+     "Every diagonal joins two corners, and the order you name them in does not matter, so this is a pair where Ana to Ben is the same as Ben to Ana. And all the corners live in one single group, so you will count pairs from that one group rather than multiply two different sizes.",
+     "Count the pairs of corners first. Each of the \\(10\\) corners can reach the other \\(9\\), which gives \\(10 \\times 9\\), and since each pair got counted twice you divide by \\(2\\). That total includes the sides though, so afterward you will need to take the sides back out.",
+     "You should have \\(\\frac{10 \\times 9}{2} = 45\\) pairs of corners. Now just remove the \\(10\\) that are sides and not diagonals."
+    ],
+    "ans": "35",
+    "accept": [
+     "35",
+     "35.0"
+    ],
+    "sol": "Start by counting every pair of corners, since each pair gives one straight segment joining them. There are \\(10\\) corners, and each one reaches out to the other \\(9\\), which gives \\(10 \\times 9\\). But Ana to Ben and Ben to Ana are the same segment counted twice, so you divide by \\(2\\) and you get $$\\frac{10 \\times 9}{2} = 45.$$ Those \\(45\\) segments include the \\(10\\) sides of the decagon, and sides are not diagonals. So take them back out, which gives \\(45 - 10 = 35\\). The decagon has \\(\\boxed{35}\\) diagonals."
+   },
+   {
+    "t": "prob",
+    "x": "Six people play in a checkers tournament. Every pair of players plays exactly \\(3\\) games against each other, so each twosome faces off three times. How many games are played in all?",
+    "xp": 8,
+    "hints": [
+     "First decide what you are really counting. A game is played by a pair of people, and the pair Ana with Ben is the same matchup as Ben with Ana, so order does not matter here. And the two players come from the same group of six, not two separate groups, which is the clue that this is a pair where you will need to undo a double count.",
+     "Count the pairs first. Each of the \\(6\\) people could face each of the other \\(5\\), which gives \\(6 \\times 5\\), but that counts every matchup twice since Ana with Ben and Ben with Ana are the same game, so divide by \\(2\\). Then think about what each pair does after that.",
+     "You have found that there are \\(\\frac{6 \\times 5}{2} = 15\\) pairs. Each pair plays \\(3\\) games, so the last step is to multiply \\(15\\) by \\(3\\)."
+    ],
+    "ans": "45",
+    "accept": [
+     "45",
+     "45.0"
+    ],
+    "sol": "Start by counting the matchups, since each game is played by a pair of players. Each of the \\(6\\) people reaches out to the other \\(5\\), which gives \\(6 \\times 5 = 30\\). But that counts every matchup twice, because Ana playing Ben is the very same pairing as Ben playing Ana, so divide by \\(2\\) to undo the overcount and you get $$\\frac{6 \\times 5}{2} = 15$$ pairs of players. Now bring in the part that makes this more than a plain pair count. Each pair does not play once, it plays \\(3\\) games, so multiply the number of pairs by the games per pair, which gives $$15 \\times 3 = 45.$$ So the tournament has \\(\\boxed{45}\\) games in all."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, pairs taken several times. When every pair does the same thing more than once, like a team that plays each other team \\(k\\) games, you do not start over. Count the pairs first the way you just did, with \\(\\frac{n(n-1)}{2}\\), and then multiply that by \\(k\\). So pairs first, then the multiplication principle from 10.2 sitting right on top, and you get \\(\\frac{n(n-1)}{2} \\times k\\). Choosing the pair handles the order does not matter part, and the \\(\\times k\\) just stacks the repeats on after."
+   },
+   {
+    "t": "prob",
+    "x": "A sports league has \\(12\\) teams split into two divisions of \\(6\\). Each team plays every team in its own division twice, and every team in the other division once. How many games are in the full season?",
+    "xp": 8,
+    "hints": [
+     "Sort the games into two kinds, the ones inside a division and the ones across the divisions. Inside a division, a game is a PAIR of teams from one group where order does not matter, so Ana versus Ben is the same game as Ben versus Ana. Across the divisions you are picking one team from each of two groups you can tell apart, which is a different kind of count.",
+     "For one division, first count the pairs with \\(\\frac{6 \\times 5}{2}\\), then remember each pair plays twice, and there are two divisions. For the across games, you do not divide by \\(2\\), since the two teams come from groups you can tell apart, so just multiply the sizes \\(6 \\times 6\\).",
+     "One division gives \\(\\frac{6 \\times 5}{2} = 15\\) pairs, doubled is \\(30\\), and two divisions make \\(60\\). The across games are \\(6 \\times 6 = 36\\). Now add \\(60\\) and \\(36\\)."
+    ],
+    "ans": "96",
+    "accept": [
+     "96",
+     "96.0"
+    ],
+    "sol": "Split the season into two kinds of games, the ones inside a division and the ones across the divisions. Start inside one division. A game there is a pair of teams where order does not matter, so the number of pairs is \\(\\frac{6 \\times 5}{2} = 15\\). Each of those pairs plays twice, which gives \\(15 \\times 2 = 30\\) games in that one division. There are two divisions just like it, so that part is \\(30 \\times 2 = 60\\). Now the across games. Here you pick one team from one division and one team from the other, and those are two groups you can tell apart, so nothing gets double counted and you never divide by \\(2\\). Each of the \\(6\\) teams plays each of the other \\(6\\) once, which gives \\(6 \\times 6 = 36\\). Add the two kinds together and you get \\(60 + 36 = 96\\). $$\\boxed{96}$$"
+   },
+   {
+    "t": "prob",
+    "x": "Four students volunteer for the school store, and exactly \\(2\\) of them work together each day. No pair of students works together more than once. How many days at most can be scheduled?",
+    "xp": 7,
+    "hints": [
+     "Two students working together is a PAIR, and the order does not matter, since Ana with Ben is the same team as Ben with Ana. And notice all four come from one single group of volunteers, not two separate groups.",
+     "Each student can be paired with the other \\(3\\), so reach for the multiplying habit and you get \\(4 \\times 3\\). But every pair gets counted twice that way, so think about whether you should divide by \\(2\\).",
+     "You have \\(\\frac{4 \\times 3}{2}\\), which is \\(\\frac{12}{2}\\). The most days is just how many different pairs there are, so finish the division."
+    ],
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0"
+    ],
+    "sol": "Each day puts a different pair of students together, and no pair ever repeats, so the most days you can schedule is simply the number of different pairs you can make.\n\nTo count the pairs, think of each of the \\(4\\) students reaching out to the other \\(3\\), which gives \\(4 \\times 3 = 12\\). But that counts every pair twice, once from each person's side, since Ana with Ben is the same team as Ben with Ana. So the honest count is half as big and you divide by \\(2\\), which gives $$\\frac{4 \\times 3}{2} = \\frac{12}{2} = 6.$$\n\nThere are \\(6\\) different pairs, so the greatest number of days that can be scheduled is \\(\\boxed{6}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, pairs are triangular numbers. Counting pairs is secretly just adding up \\(1 + 2 + \\cdots + (n-1)\\). Bring people in one at a time and the second person makes \\(1\\) new pair, the third makes \\(2\\), the fourth makes \\(3\\), and so on, so the running total of new pairs marches up the staircase \\(1, 2, 3, \\ldots\\) until the last person adds \\(n-1\\). That is why \\(\\frac{n(n-1)}{2}\\) and \\(1 + 2 + \\cdots + (n-1)\\) are the same number wearing two outfits. And you can add a long climbing sum like that in a flash with the Gauss trick, by folding the staircase in half and pairing the ends, first plus last, then second plus second to last, and so on, since every one of those little pairs sums to the same thing."
+   },
+   {
+    "t": "prob",
+    "x": "In a \\(17\\)-person round-robin, every pair of players meets exactly once, so the number of matches is the number of pairs. There is a neat second way to count those matches by adding instead of using a formula. Line the \\(17\\) players up in a row and look at each player's matches against the players before them. The \\(2\\)nd player has \\(1\\) match against an earlier player, the \\(3\\)rd player has \\(2\\) earlier opponents, the \\(4\\)th has \\(3\\), and so on, all the way up to the \\(17\\)th player, who has \\(16\\) earlier opponents. Adding these up counts every match exactly once and gives the sum \\(1 + 2 + 3 + \\cdots + 16\\). What is the value of this sum, \\(1 + 2 + 3 + \\cdots + 16\\)?",
+    "xp": 7,
+    "hints": [
+     "You are adding up the whole numbers from \\(1\\) all the way to \\(16\\). This is the same total as the number of pairs you can choose from \\(17\\) players, since order does not matter and Ana versus Ben is the same match as Ben versus Ana.",
+     "You could add straight across, but there is a faster way. Try folding the staircase in half. Pair the smallest term with the largest, then the next smallest with the next largest, and notice that every pair makes the same total.",
+     "Pairing the ends gives \\(1 + 16 = 17\\), \\(2 + 15 = 17\\), and so on down to \\(8 + 9 = 17\\). Count how many pairs of \\(17\\) you have, then multiply."
+    ],
+    "ans": "136",
+    "accept": [
+     "136",
+     "136.0"
+    ],
+    "sol": "This is the triangular-number way of counting pairs. Instead of adding \\(1 + 2 + 3 + \\cdots + 16\\) term by term, fold the staircase in half the way Gauss did and pair the terms from the ends. The smallest plus the largest gives \\(1 + 16 = 17\\), the next pair gives \\(2 + 15 = 17\\), and you keep going inward down to \\(8 + 9 = 17\\). Every pair sums to the same \\(17\\). There are \\(8\\) of these pairs, since \\(16\\) terms split into \\(8\\) cozy couples, which gives $$8 \\times 17 = 136.$$ This matches the pair-counting formula straight away, because choosing a pair from \\(17\\) players is \\(\\frac{17 \\times 16}{2} = 136\\). Two roads, one answer, and the adding road shows you that counting pairs is really just stacking up \\(1 + 2 + \\cdots + (n-1)\\). So the sum is \\(\\boxed{136}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A round-robin tournament has \\(15\\) teams, and every team plays every other team exactly once. The tournament organizer needs to print a schedule, so she wants to know the total number of matches. How many matches are played in all?",
+    "xp": 7,
+    "hints": [
+     "First decide what kind of count this is. A match is just a pair of teams, and the order does not matter, since the match between team A and team B is the very same match as the one between team B and team A. Notice too that both teams come from the one group of \\(15\\), not from two separate groups, so this really is a counting-pairs problem.",
+     "Lean on the multiplying habit. Each of the \\(15\\) teams reaches out to the other \\(14\\) teams, which gives \\(15 \\times 14\\). But ask yourself the key question, did you count each match once or twice. Since A versus B and B versus A are the same match, you have counted everything twice, so this time you do need to divide by \\(2\\).",
+     "You are almost there. Work out \\(15 \\times 14 = 210\\), and then take half of that to undo the double counting."
+    ],
+    "ans": "105",
+    "accept": [
+     "105",
+     "105.0"
+    ],
+    "sol": "A match is a pair of teams, and the order inside a pair does not matter, so this is a counting-pairs question where both teams come from the one group of \\(15\\). Start the way we always do, by letting each team reach out. Every one of the \\(15\\) teams could play each of the other \\(14\\) teams, and you get \\(15 \\times 14 = 210\\). But watch the trap. When team A plays team B and when team B plays team A, that is the very same match counted twice, so \\(210\\) is twice too big. Undo the overcount by dividing by \\(2\\), which gives $$\\frac{15 \\times 14}{2} = \\frac{210}{2} = 105.$$ So choosing \\(2\\) teams from \\(15\\) lands on \\(\\boxed{105}\\) matches."
+   },
+   {
+    "t": "prob",
+    "x": "An icosahedron is a solid with \\(20\\) triangular faces, \\(12\\) vertices, and \\(30\\) edges. An interior diagonal is a segment joining two vertices that do not lie on a common face. How many interior diagonals does an icosahedron have?",
+    "xp": 11,
+    "hints": [
+     "A segment just needs two corners, and swapping which corner you name first gives the same segment, so this is a pair where order does not matter, all coming from one group of \\(12\\) vertices.",
+     "Start by counting every pair of vertices, multiply \\(12\\) by \\(11\\) and divide by \\(2\\) since each segment got named twice. Then think about which of those pairs you do not want, the ones that sit on a common face.",
+     "All pairs come to \\(\\frac{12 \\times 11}{2} = 66\\). Every face is a triangle, so the only pairs sharing a face are the \\(30\\) edges. Now you just have \\(66\\) and \\(30\\) waiting to be combined."
+    ],
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0"
+    ],
+    "sol": "A diagonal is a segment, and a segment is just two corners chosen together, where it does not matter which one you name first. So this is a pair count from the one group of \\(12\\) vertices.\n\nStart by counting all the pairs of vertices you could possibly join. Each of the \\(12\\) vertices can reach out to the other \\(11\\), and then you divide by \\(2\\) so that joining Ana to Ben and joining Ben to Ana count as one segment, which gives $$\\frac{12 \\times 11}{2} = 66.$$\n\nThat \\(66\\) counts every segment, but we only want the interior ones. So we remove the pairs that lie on a common face. Here is the lovely part. Every face is a triangle, and a triangle has no diagonals of its own, so the only vertex-pairs that share a face are the ones that are actual edges of the solid. There are \\(30\\) edges, so there are \\(30\\) pairs to take out.\n\nTaking those out leaves $$66 - 30 = 36.$$\n\nSo an icosahedron has \\(\\boxed{36}\\) interior diagonals."
+   },
+   {
+    "t": "fact",
+    "x": "Those pair counts \\(1, 3, 6, 10, 15, \\ldots\\) have a lovely name, the triangular numbers, and the name is not just for show. Set down one dot, then a row of two beneath it, then a row of three, and so on, and the dots really do pile up into a neat triangle, with the number of dots in each triangle matching exactly how many pairs you can choose. It is a quiet little gift that the answer to \"how many handshakes\" is the very same as \"how many dots stack into a triangle,\" so the next time you count pairs you can picture them settling into that shape."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, counting pairs. To count the pairs you can make from one group, multiply then divide by 2, which gives \\(\\frac{n(n-1)}{2}\\), since each thing reaches out to the other \\(n-1\\) and then you undo the double count. Across two groups you can tell apart, just multiply the sizes and never divide, because nothing got counted twice. When some pairs are not allowed, subtract the forbidden ones or split into cases, and to count the diagonals of a polygon take all the pairs of corners and subtract the \\(n\\) sides, which is \\(\\frac{n(n-1)}{2} - n\\). In 10.5 An Introduction to Probability, these very counts become the way we measure how likely something is, since once you know how many pairs there are you can ask how often one of them shows up."
+   }
+  ],
+  "review": [
+   {
+    "x": "A round-robin tournament has \\(13\\) players, and the rule is simple, every player plays exactly one match against every other player. So each possible pair of players meets exactly once over the whole tournament. How many matches are played in all?",
+    "hints": [
+     "A match is just a pair of players, and the match where Ana plays Ben is the same match as the one where Ben plays Ana, so order does not matter here. And the two players in a match come from one single group of \\(13\\), not two separate groups.",
+     "Each of the \\(13\\) players faces the other \\(12\\), which gives \\(13 \\times 12\\). But that counts every match twice, once from each player's side, so think about whether you need to divide by \\(2\\) to undo the double count.",
+     "You have \\(13 \\times 12 = 156\\), and now you just need to cut that double count in half by dividing by \\(2\\)."
+    ],
+    "ans": "78",
+    "accept": [
+     "78",
+     "78.0"
+    ],
+    "sol": "A match is a pair of players, so we are counting pairs from one group of \\(13\\). Start the way we always do, by letting each player reach out to everyone else. Each of the \\(13\\) players faces the other \\(12\\), and multiplying gives \\(13 \\times 12 = 156\\). But here is the trap, because the match where Ana plays Ben is the very same match as the one where Ben plays Ana, yet we just counted it twice, once from each side. To undo that double count we cut the total in half, so we divide by \\(2\\) and get $$\\frac{13 \\times 12}{2} = 78.$$ So the tournament has \\(\\boxed{78}\\) matches."
+   },
+   {
+    "x": "Fourteen people meet at a small gathering, and each person shakes hands once with every other person. How many handshakes happen in all?",
+    "hints": [
+     "A handshake between two people is a pair where the order does not make a new handshake, since Ana shaking Ben's hand is the same as Ben shaking Ana's hand. And everyone comes from one single group of \\(14\\), not two separate groups, so this really is a count of pairs.",
+     "Set it up by giving each of the \\(14\\) people a hand to reach out, so each one reaches the other \\(13\\), and you get \\(14\\times13\\). Now ask whether that counts every handshake once or twice, and since each handshake got counted from both sides, you will need to divide by \\(2\\).",
+     "You should be looking at \\(\\frac{14\\times13}{2}\\). Work out \\(14\\times13\\) first, and then take half of it to land on the answer."
+    ],
+    "ans": "91",
+    "accept": [
+     "91",
+     "91.0"
+    ],
+    "sol": "A handshake joins two people, and the order does not matter, since Ana shaking Ben's hand and Ben shaking Ana's hand are the very same handshake. So we are counting pairs, and everyone comes from one group of \\(14\\).\n\nGive each person a hand to reach out. Each of the \\(14\\) people reaches the other \\(13\\), which gives \\(14\\times13\\). But this counts every handshake twice, once from each person's side, so the honest count is half as big and we divide by \\(2\\), and you get $$\\frac{14\\times13}{2}=91.$$\n\nSo the number of handshakes is \\(\\boxed{91}\\)."
+   },
+   {
+    "x": "A team of \\(16\\) players picks \\(2\\) of themselves to be co-captains. The two co-captains share the job equally, so it does not matter which one you name first. How many different pairs of co-captains are possible?",
+    "hints": [
+     "First decide what kind of count this is. The two co-captains come from one single group, the same team, and naming Maya and then Leo gives the very same pair as naming Leo and then Maya. So order does not matter, which means you are counting pairs.",
+     "Reach for the pair-counting habit. Each of the \\(16\\) players could pair up with any of the other \\(15\\), which gives \\(16 \\times 15\\). But every pair just got counted twice, once from each player's side, so you will need to divide by \\(2\\) to undo that double count.",
+     "You have \\(16 \\times 15 = 240\\) from the first step. Now cut that in half to fix the overcount, and that single division by \\(2\\) gives you the answer."
+    ],
+    "ans": "120",
+    "accept": [
+     "120",
+     "120.0"
+    ],
+    "sol": "Both co-captains come from the same team, and the two of them share the job, so naming one first and the other second does not make a new choice. That tells us we are counting pairs, where order does not matter.\n\\nThink about it from one player's view first. Any single player could team up with any of the other \\(15\\) players, and there are \\(16\\) players who could do that reaching out, which gives \\(16 \\times 15 = 240\\). But here is the trap. When Maya pairs with Leo and when Leo pairs with Maya, that is the very same pair of co-captains counted twice. So \\(240\\) is exactly double the honest answer.\n\\nWe undo that double count by cutting it in half, and you get \\(\\frac{16 \\times 15}{2} = 120\\). So there are $$\\boxed{120}$$ different pairs of co-captains."
+   },
+   {
+    "x": "Eighteen points lie on a circle. A chord is drawn joining each pair of points, so every two points are connected by exactly one chord. How many chords are drawn in all?",
+    "hints": [
+     "A chord is just a segment between two of the points, so really you are choosing a pair of points. Ask yourself whether the order matters here, since the chord from point \\(A\\) to point \\(B\\) is the same chord as the one from \\(B\\) to \\(A\\), and whether you are picking from one group or two.",
+     "Try counting it the multiplying way first. Each of the \\(18\\) points reaches out to the other \\(17\\) points, which gives \\(18 \\times 17\\). Now think hard about whether that count sees each chord once or twice, since order does not matter for a pair.",
+     "You have \\(18 \\times 17 = 306\\) from the reaching-out count, but every chord got counted from both ends, so you are one divide-by-\\(2\\) away from the honest total."
+    ],
+    "ans": "153",
+    "accept": [
+     "153",
+     "153.0"
+    ],
+    "sol": "A chord just connects two of the points, so drawing a chord is the same as choosing a pair of points. The order does not matter, because the chord joining point \\(A\\) to point \\(B\\) is the exact same chord as the one joining \\(B\\) to \\(A\\), and all the points sit in one single group on the circle.\n\\nLet us count the reaching-out way first. Each of the \\(18\\) points can connect to any of the other \\(17\\) points, which gives \\(18 \\times 17 = 306\\). But watch the trap. When point \\(A\\) reaches over to \\(B\\) and when \\(B\\) reaches back to \\(A\\), that is one and the same chord counted twice. So \\(306\\) is exactly double the real number of chords.\n\\nWe undo the overcount by dividing by \\(2\\), which gives\n$$\\frac{18 \\times 17}{2} = \\frac{306}{2} = 153.$$\n\\nSo the number of chords drawn is \\(\\boxed{153}\\)."
+   },
+   {
+    "x": "A pentagon is a shape with \\(5\\) corners and \\(5\\) sides. A diagonal is a straight segment that joins two corners but is not one of the sides. How many diagonals does a pentagon have?",
+    "hints": [
+     "A diagonal joins two corners, and a corner paired with another corner is the same no matter which one you name first, so this is a count of pairs where order does not matter, all coming from one group of \\(5\\) corners.",
+     "Start by counting every pair of corners with \\(\\frac{5 \\times 4}{2}\\), since each corner reaches the other \\(4\\) and you divide by \\(2\\) so you do not count the same pair twice. Then remember some of those pairs are the \\(5\\) sides, not diagonals.",
+     "You have \\(\\frac{5 \\times 4}{2} = 10\\) corner pairs in all. Now take away the \\(5\\) that are sides and finish the subtraction."
+    ],
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0"
+    ],
+    "sol": "Start by counting every pair of corners, because each segment of the pentagon, side or diagonal, joins two corners. There are \\(5\\) corners, and each one can pair with the other \\(4\\), which gives \\(5 \\times 4\\). But that counts every pair twice, once from each corner, like corner Ana to corner Ben and corner Ben to corner Ana being the same segment, so you divide by \\(2\\) and you get $$\\frac{5 \\times 4}{2} = 10$$ corner pairs in all. Now \\(10\\) is too many, because some of those pairs are the sides of the pentagon, not diagonals. A pentagon has \\(5\\) sides, so take those out, which gives \\(10 - 5 = 5\\). So the pentagon has \\(\\boxed{5}\\) diagonals."
+   },
+   {
+    "x": "A stop sign is a regular octagon, a flat shape with \\(8\\) straight sides and \\(8\\) corners. A diagonal is a straight segment joining two corners that are not already next to each other along an edge. How many diagonals does an octagon have?",
+    "hints": [
+     "Every segment you can draw connects two corners, and a segment from corner A to corner B is the same segment as the one from B to A. So this is a question about pairs of corners where order does not matter, all chosen from the single group of \\(8\\) corners. Start by asking how many pairs of corners there are in all.",
+     "Count all the pairs first. Each of the \\(8\\) corners can reach the other \\(7\\), and you get \\(8 \\times 7\\), but that counts every pair twice, once from each end, so divide by \\(2\\). Then remember that some of those segments are sides of the octagon, not diagonals, and think about how many you should take away.",
+     "You found \\(\\frac{8 \\times 7}{2} = 28\\) corner pairs in total. An octagon has \\(8\\) sides, and each side is one of those pairs but is not a diagonal, so just subtract those \\(8\\) from the \\(28\\)."
+    ],
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0"
+    ],
+    "sol": "Every segment between two corners is decided by a pair of corners, and the pair from A to B is the very same pair as from B to A, so order does not matter and all the corners come from one group of \\(8\\). First count how many pairs of corners there are in all. Each of the \\(8\\) corners reaches out to the other \\(7\\), which gives \\(8 \\times 7\\), but that counts each pair twice, once from each end, so you divide by \\(2\\) and get $$\\frac{8 \\times 7}{2} = 28.$$ That \\(28\\) is every segment you could draw between two corners. But \\(8\\) of those segments are the sides of the octagon, and a side is not a diagonal, so take those away, which gives \\(28 - 8 = 20\\). So an octagon has \\(\\boxed{20}\\) diagonals."
+   },
+   {
+    "x": "A chess match is held between two schools. One school has \\(7\\) players and the other school has \\(8\\) players. Every player plays each player from the other school exactly once. How many games are played?",
+    "hints": [
+     "Ask first whether this is a pair where order does not matter. Here each game needs one player from one school and one player from the other school, so the two players come from two groups you can tell apart, not from a single group.",
+     "Set up the count by multiplying the size of one school by the size of the other, since each of the \\(7\\) players faces each of the \\(8\\) players. Then ask whether you need to divide by \\(2\\), and notice that the two players come from different groups so nothing gets counted twice.",
+     "You are almost there, so just work out \\(7 \\times 8\\) and that is your total with no dividing by \\(2\\)."
+    ],
+    "ans": "56",
+    "accept": [
+     "56",
+     "56.0"
+    ],
+    "sol": "Every game pairs one player from the first school with one player from the second school. Take any one of the \\(7\\) players on the first team, and that player has \\(8\\) opponents to face on the other team, which gives \\(8\\) games. The same is true for each of the \\(7\\) players, so you multiply, \\(7 \\times 8 = 56\\).\n\nNow check whether you have overcounted. When two players come from the same group you would count each handshake twice and need to divide by \\(2\\), but here the two players come from different schools that you can tell apart, so no game is ever counted twice and you never divide by \\(2\\). The honest total is $$7 \\times 8 = 56,$$ so the number of games is \\(\\boxed{56}\\)."
+   },
+   {
+    "x": "At a small gathering there are \\(6\\) women and \\(3\\) men. Every woman shakes hands once with every other person in the room, women and men alike. The men, though, never shake hands with each other, so no handshake happens between two men. How many handshakes happen in all?",
+    "hints": [
+     "Some of these handshakes are between two women, and some are between a woman and a man. Ask yourself which kind is a pair where order does not matter, both picked from the same group, and which kind reaches across two different groups. The two kinds get counted in different ways.",
+     "For the woman-with-woman handshakes you are choosing \\(2\\) from the same \\(6\\) people, so multiply \\(6 \\times 5\\) and then divide by \\(2\\) since shaking is the same handshake counted twice. For the woman-with-man handshakes the two people come from groups you can tell apart, so you just multiply \\(6 \\times 3\\) and do not divide by \\(2\\) at all.",
+     "Work out \\(\\frac{6 \\times 5}{2}\\) for the women together, then \\(6 \\times 3\\) for the women with the men, and all that is left is to add those two counts."
+    ],
+    "ans": "33",
+    "accept": [
+     "33",
+     "33.0"
+    ],
+    "sol": "Let us sort the handshakes into the kinds that happen. First the women among themselves. A handshake here is a pair of women, where order does not matter, since Ana shaking Bea is the very same handshake as Bea shaking Ana. Each of the \\(6\\) women reaches out to the other \\(5\\), which gives \\(6 \\times 5\\), but that counts every handshake twice, so we halve it and get \\(\\frac{6 \\times 5}{2} = 15\\). Next the women with the men. Here the two people come from groups we can tell apart, a woman from one side and a man from the other, so nothing is double counted and we simply multiply. That is \\(6 \\times 3 = 18\\), with no dividing by \\(2\\). The men never shake each other, so there is nothing more to add. Putting the two counts together gives \\(15 + 18 = 33\\). So the number of handshakes is \\(\\boxed{33}\\)."
+   },
+   {
+    "x": "A small club has \\(6\\) players, and every player plays every other player \\(4\\) times. How many games are played in all?",
+    "hints": [
+     "Start by thinking about who is in a single game. A game is just two players together, and the game between Ana and Ben is the same game as the one between Ben and Ana, so order does not matter. Everyone comes from the one group of \\(6\\), so this is a pair-counting question, not a pick-from-two-different-groups question.",
+     "Count the pairs of players first. Each of the \\(6\\) players reaches out to the other \\(5\\), which gives \\(6 \\times 5\\), but that counts each pair twice, once from each side, so divide by \\(2\\). Once you know how many pairs there are, remember that each pair does not play just once.",
+     "You should have found \\(\\frac{6 \\times 5}{2} = 15\\) pairs of players. Every one of those pairs plays \\(4\\) games, so all that is left is to multiply \\(15\\) by \\(4\\)."
+    ],
+    "ans": "60",
+    "accept": [
+     "60",
+     "60.0"
+    ],
+    "sol": "First figure out how many different pairs of players there are, since each pair is one matchup. Each of the \\(6\\) players reaches out to the other \\(5\\), and you get \\(6 \\times 5\\). But when Ana faces Ben and when Ben faces Ana that is the very same pair counted twice, so the honest count is half as big, which means we divide by \\(2\\) and you get $$\\frac{6 \\times 5}{2} = 15$$ pairs of players.\n\nNow each of those \\(15\\) pairs plays \\(4\\) games, not just one. So we multiply the number of pairs by the games each pair plays, which gives \\(15 \\times 4 = 60\\).\n\nSo the total number of games is \\(\\boxed{60}\\)."
+   },
+   {
+    "x": "A sports league has \\(8\\) teams split into two divisions of \\(4\\) teams each. Every team plays each of the other teams in its own division twice, and plays each team in the other division once. How many games are in the whole season?",
+    "hints": [
+     "Sort the games into two kinds before you count, the games inside a division and the games across the two divisions. Inside one division a game is just a pair of teams and the order does not matter, so playing the Hawks against the Owls is the same matchup as the Owls against the Hawks. A game across divisions picks one team from each separate group, so think about whether that is a pair from one group or one team from each of two groups.",
+     "Inside a single division of \\(4\\) teams, count how many pairs of teams there are with \\(\\frac{4 \\times 3}{2}\\), then double it because each pair meets twice. Do that for both divisions. For the across games, you pick one team from one division and one from the other, two separate groups you can tell apart, so you just multiply the sizes and never divide by \\(2\\).",
+     "One division has \\(\\frac{4 \\times 3}{2} = 6\\) pairs, and \\(6 \\times 2 = 12\\) games, so the two divisions together give \\(12 + 12 = 24\\) inside games. The across games give \\(4 \\times 4 = 16\\). Now you just add the inside total and the across total."
+    ],
+    "ans": "40",
+    "accept": [
+     "40",
+     "40.0"
+    ],
+    "sol": "There are really two different kinds of games here, so let us count each kind on its own and add them at the end.\n\\nFirst the games inside a division. A game between two teams in the same division is just a pair of teams, and the order does not matter, since playing team A against team B is the very same game as team B against team A. With \\(4\\) teams in a division, the number of pairs is\n$$\\frac{4 \\times 3}{2} = 6.$$\\nEach of those pairs meets twice, so one division has \\(6 \\times 2 = 12\\) games. There are two divisions built the same way, so the inside games total\n$$12 + 12 = 24.$$\n\\nNow the games across the divisions. Here you pick one team from the first division and one team from the second division. These come from two groups you can tell apart, so nothing gets double counted and you do not divide by \\(2\\), you simply multiply the sizes and you get\n$$4 \\times 4 = 16.$$\n\\nThe inside games and the across games never overlap, so we add them and you get\n$$24 + 16 = 40.$$\n\\nSo the season has \\(\\boxed{40}\\) games."
+   },
+   {
+    "x": "Find the sum of the first \\(14\\) even numbers, \\(2 + 4 + 6 + \\cdots + 28\\). What is the value of this sum?",
+    "hints": [
+     "This is really a pairing question, the same trick that turns counting handshakes into something easy. The numbers run from \\(2\\) up to \\(28\\), and you can match them up two at a time. Try teaming the smallest with the largest and see what each pair adds up to.",
+     "Pair the ends inward, so \\(2\\) goes with \\(28\\), then \\(4\\) goes with \\(26\\), and keep walking inward. Every pair adds up to the same amount, so figure out that common sum and then count how many pairs you can make from the \\(14\\) numbers.",
+     "Each pair adds to \\(30\\), and \\(14\\) numbers split into \\(7\\) pairs. All that is left is to work out \\(7 \\times 30\\)."
+    ],
+    "ans": "210",
+    "accept": [
+     "210",
+     "210.0"
+    ],
+    "sol": "Instead of adding the numbers one slow step at a time, let us pair them from the ends, the same folding move that made counting pairs so friendly. Walk in from both sides at once. The smallest and the largest team up first, and you get \\(2 + 28 = 30\\). The next ones in are \\(4\\) and \\(26\\), and you get \\(4 + 26 = 30\\) again. Keep going, \\(6 + 24 = 30\\), and the same total keeps coming up.\\nEvery pair lands on \\(30\\), which is the nice part. There are \\(14\\) numbers in the list, and folding them in half makes \\(7\\) pairs. So you have \\(7\\) pairs that each add to \\(30\\), which gives $$7 \\times 30 = 210.$$\\nThat is exactly the Gauss staircase trick. You can also see it as \\(14 \\times 15 = 210\\), since the average of the two ends times the count gives the same total. So the sum is \\(\\boxed{210}\\)."
+   },
+   {
+    "x": "A cube has \\(8\\) vertices, \\(12\\) edges, and \\(6\\) square faces. An interior diagonal is a line joining two vertices that do not share a face, so it cuts straight through the inside of the cube instead of running along an edge or across a face. How many interior diagonals does a cube have?",
+    "hints": [
+     "An interior diagonal joins two corners, and swapping which corner you start from gives the very same diagonal, so this is a pair where order does not matter. Every corner comes from the one set of \\(8\\) vertices, so you are counting pairs from a single group, not picking from two separate groups.",
+     "Start by counting all the pairs of corners you could join. There are \\(8\\) vertices, so the number of pairs is \\(\\frac{8 \\times 7}{2}\\). Not all of those pairs are interior diagonals though, since some joined corners are edges and some are diagonals lying flat on a face.",
+     "From all the pairs, take away the ones that are not interior. There are \\(12\\) edges to remove, and each of the \\(6\\) square faces has \\(2\\) face diagonals, so subtract \\(6 \\times 2\\) of those too. Whatever pairs are left must be the interior diagonals."
+    ],
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0"
+    ],
+    "sol": "Start by joining corners with no rules at all. Any line that joins two of the cube's corners comes from choosing a pair of vertices, and since starting at one corner or the other gives the same line, order does not matter. With \\(8\\) vertices the number of pairs is $$\\frac{8 \\times 7}{2} = 28.$$ So there are \\(28\\) lines joining corners in total. Now we sift out the ones that are not interior. Some of those pairs are edges of the cube, and a cube has \\(12\\) edges, so we take those away. Some other pairs run straight across a face, and each square face has \\(2\\) face diagonals, so across the \\(6\\) faces that is \\(6 \\times 2 = 12\\) face diagonals to take away as well. What is left after removing the edges and the face diagonals must be the lines that pierce the inside, which gives $$28 - 12 - 12 = 4.$$ So a cube has \\(\\boxed{4}\\) interior diagonals."
+   },
+   {
+    "x": "A pizza shop offers \\(20\\) different toppings, and a 2-topping pizza uses two different toppings where the order you name them does not matter. How many different 2-topping pizzas can be made?",
+    "hints": [
+     "First decide what kind of count this is. You are choosing two toppings from one single list of \\(20\\), and a mushroom-and-onion pizza is the same as an onion-and-mushroom pizza, so the order does not matter. That makes this a count of pairs from one group, not two separate groups.",
+     "Pair counting starts the same way as the handshakes did. Each of the \\(20\\) toppings could pair with the other \\(19\\), which gives \\(20 \\times 19\\). But naming topping A first then B gives the same pizza as B first then A, so every pizza got counted twice. To undo that overcount you divide by \\(2\\).",
+     "Set it up as \\(\\frac{20 \\times 19}{2}\\). Now \\(20 \\times 19 = 380\\), and all that is left is to take half of \\(380\\)."
+    ],
+    "ans": "190",
+    "accept": [
+     "190",
+     "190.0"
+    ],
+    "sol": "Picking two different toppings from one list of \\(20\\), where order does not matter, is exactly a count of pairs. Think of it the way we counted handshakes. Each of the \\(20\\) toppings can join with any of the other \\(19\\), which gives \\(20 \\times 19\\) ordered picks. But choosing mushroom then onion makes the very same pizza as onion then mushroom, so every pizza has been counted twice. To honestly count each pizza once you divide by \\(2\\), and you get $$\\frac{20 \\times 19}{2} = \\frac{380}{2} = 190.$$ So there are \\(\\boxed{190}\\) different 2-topping pizzas."
+   },
+   {
+    "x": "A flat seven sided sign is cut in the shape of a heptagon, with seven corners around its edge. A designer wants to draw every diagonal, meaning every straight line that joins two corners but is not one of the seven sides. How many diagonals does the heptagon have?",
+    "hints": [
+     "Joining two corners with a line treats the two corners the same way, since the line from corner A to corner B is the very same line from corner B to corner A. So this is a pair where order does not matter, and all seven corners come from the one heptagon, not from two separate groups.",
+     "Count every pair of corners first, using \\(\\frac{n(n-1)}{2}\\) with \\(n = 7\\). You multiply \\(7 \\times 6\\) and divide by \\(2\\) since each pair would otherwise be counted twice. That gives all the corner-joining lines, both the sides and the diagonals together.",
+     "You have \\(21\\) corner pairs in all, but \\(7\\) of those lines are the sides of the heptagon, not diagonals. Take those away, so find \\(21 - 7\\)."
+    ],
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0"
+    ],
+    "sol": "A diagonal joins two corners, and the line from one corner to another is the same line no matter which corner you name first, so every diagonal is really a pair of corners where order does not matter. That is exactly a pair-counting job. With \\(7\\) corners, the number of ways to choose a pair is \\(\\frac{7 \\times 6}{2} = 21\\), where you multiply because each of the \\(7\\) corners reaches out to the other \\(6\\), and you divide by \\(2\\) because that count sees each pair twice. So there are \\(21\\) lines joining corners in all. But not every such line is a diagonal. The \\(7\\) sides of the heptagon also join two corners, and we do not want to count those. So we take all the corner pairs and subtract the sides, which gives \\(21 - 7 = 14\\). The heptagon has \\(\\boxed{14}\\) diagonals."
+   }
+  ],
+  "next": "10.5"
  }
 }
