@@ -215,6 +215,9 @@
   .price li{display:flex;gap:10px;font-size:14.5px;color:var(--slate)}
   .price li .ck{color:var(--green);font-weight:800;flex:none}
   .price .btn{width:100%;justify-content:center;margin-top:auto}
+  .price.soon-plan{position:relative;pointer-events:none;user-select:none}
+  .price.soon-plan>*{opacity:.25;filter:blur(.5px)}
+  .price.soon-plan::after{content:'Coming Soon';position:absolute;inset:0;display:grid;place-items:center;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);border-radius:var(--radius)}
 
   /* PATH band */
   .band{background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;border-radius:24px;padding:46px 40px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
@@ -1129,7 +1132,7 @@
     <div class="prices">
       <div class="price">
         <div class="name">Monthly</div>
-        <div class="amt">$24.99<span>/mo</span></div>
+        <div class="amt">$29.99<span>/mo</span></div>
         <div class="sub">Full access, billed monthly. Flexible.</div>
         <ul>
           <li><span class="ck">✓</span>All 10 courses, both tiers</li>
@@ -1138,7 +1141,7 @@
         </ul>
         <a class="btn btn-ghost" href="https://buy.stripe.com/aFa8wO78z5mO45EdSQ5Rm00" target="_blank">Choose monthly</a>
       </div>
-      <div class="price feat">
+      <div class="price feat soon-plan">
         <span class="tag">Best value · save 50%</span>
         <div class="name">Annual</div>
         <div class="amt">$149<span>/yr</span></div>
@@ -1150,7 +1153,7 @@
         </ul>
         <a class="btn btn-primary" href="#signup">Start free, then $149/yr</a>
       </div>
-      <div class="price">
+      <div class="price soon-plan">
         <div class="name">Family</div>
         <div class="amt">$249<span>/yr</span></div>
         <div class="sub">Up to 4 learners, each with their own path.</div>
