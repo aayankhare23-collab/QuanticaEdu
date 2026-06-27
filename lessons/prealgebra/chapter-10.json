@@ -1043,5 +1043,525 @@
    }
   ],
   "next": "10.3"
+ },
+ "10.3": {
+  "title": "Casework",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In Lesson 10.1 you counted by adding piles together and subtracting the part where they overlapped, and in Lesson 10.2 you counted by lining up a row of independent stages and multiplying straight across. Each one is perfect for the right kind of problem. But some problems do not sit neatly in either box, and forcing them in gives a wrong count every time. So here is a third tool. When a problem is too lumpy to handle all at once, you break it into a few separate cases, count each case on its own, and add the case counts at the end. That move is called casework, and the whole lesson is really just one promise. Casework is organized counting, where the only two ways to slip up are skipping a case so something never gets counted, or letting two cases overlap so something gets counted twice. Keep those two from happening and the rest takes care of itself."
+   },
+   {
+    "t": "prob",
+    "x": "A food truck sells two kinds of items. A taco comes with exactly one of \\(5\\) fillings. A burrito comes with one of \\(4\\) fillings and also one of \\(2\\) salsas. How many different single items, a taco or a burrito, can you order?",
+    "xp": 6,
+    "hints": [
+     "You cannot count this with one clean multiply, because a taco has just one choice to make and a burrito has two. So split it. What are the two separate piles of items you are choosing from?",
+     "Make two cases, one for tacos and one for burritos. A taco is fully decided by its single filling. A burrito is decided by its filling and its salsa together. Count each case on its own.",
+     "Tacos give you \\(5\\) ways. For burritos you pick one of \\(4\\) fillings and one of \\(2\\) salsas, which is \\(4 \\times 2 = 8\\) ways. Now you just have the two pile counts \\(5\\) and \\(8\\) sitting in front of you."
+    ],
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0"
+    ],
+    "sol": "A taco makes one choice and a burrito makes two, so one single multiply will not count them all at once. Let us split into cases instead, one pile for tacos and one pile for burritos.\n\nCase 1, tacos. A taco is just one of \\(5\\) fillings, so there are \\(5\\) different tacos.\n\nCase 2, burritos. Here you pick one of \\(4\\) fillings and one of \\(2\\) salsas, and inside a case you multiply just like in 10.2, which gives $$4 \\times 2 = 8$$ different burritos.\n\nThese two cases do not overlap, since nothing is both a taco and a burrito, and together they cover every item the truck sells. So across the cases we add the way we did in 10.1, and you get $$5 + 8 = 13.$$\n\nSo you can order \\(\\boxed{13}\\) different single items."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, casework. When one clean multiply will not work because the choices change partway through, you split. Break everything you are counting into a few cases, count each case all on its own, then ADD the case counts together. Inside a case you multiply the way you did in 10.2, and across the cases you add the way you did in 10.1. Two promises keep this honest. The cases must never overlap, or something gets counted twice, and together they must cover every possibility, or something slips through and gets missed. No overlap and no gaps. Once you trust those two, you can trust any split you make."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 360\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A big rounded box labelled everything we are counting, divided by two vertical lines into three case boxes. The first case box shows 6, the second shows 8, the third shows 5. Below the big box an equation reads 6 plus 8 plus 5 equals 19.\">\n  <rect x=\"20\" y=\"20\" width=\"400\" height=\"40\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n  <text x=\"220\" y=\"45\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"600\" fill=\"var(--ink)\">everything we are counting</text>\n\n  <rect x=\"20\" y=\"90\" width=\"400\" height=\"120\" rx=\"12\" fill=\"var(--soft)\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n  <line x1=\"153\" y1=\"90\" x2=\"153\" y2=\"210\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n  <line x1=\"287\" y1=\"90\" x2=\"287\" y2=\"210\" stroke=\"var(--slate)\" stroke-width=\"2\"/>\n\n  <text x=\"86\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">Case 1</text>\n  <text x=\"86\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"40\" font-weight=\"700\" fill=\"var(--gold-deep)\">6</text>\n\n  <text x=\"220\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">Case 2</text>\n  <text x=\"220\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"40\" font-weight=\"700\" fill=\"var(--gold-deep)\">8</text>\n\n  <text x=\"353\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"600\" fill=\"var(--slate)\">Case 3</text>\n  <text x=\"353\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"40\" font-weight=\"700\" fill=\"var(--gold-deep)\">5</text>\n\n  <text x=\"220\" y=\"270\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" fill=\"var(--mid)\">add the cases</text>\n\n  <rect x=\"120\" y=\"290\" width=\"200\" height=\"46\" rx=\"12\" fill=\"var(--softer)\" stroke=\"var(--gold2)\" stroke-width=\"2.5\"/>\n  <text x=\"220\" y=\"320\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"var(--ink)\">6 + 8 + 5 = 19</text>\n</svg>",
+    "cap": "The big top box holds everything we want to count. We split it into three separate cases that do not overlap, here \\(6\\) things in Case 1, \\(8\\) in Case 2, and \\(5\\) in Case 3. Count each case on its own, then add them up and you get \\(6 + 8 + 5 = 19\\)."
+   },
+   {
+    "t": "prob",
+    "x": "On the island of Zedland the alphabet has only \\(6\\) letters. A word there can be \\(1\\), \\(2\\), or \\(3\\) letters long, and a letter is allowed to repeat. How many possible words are there in all?",
+    "xp": 6,
+    "hints": [
+     "The words come in different lengths, and a one-letter word and a three-letter word are built in very different ways. Try splitting the count by how long the word is, so you handle each length on its own.",
+     "Set up three piles. Count the one-letter words, then the two-letter words, then the three-letter words. Inside each pile every slot has \\(6\\) choices, so a one-letter word has \\(6\\) options, a two-letter word has \\(6 \\times 6\\), and a three-letter word has \\(6 \\times 6 \\times 6\\).",
+     "Work out each pile and you get \\(6\\) one-letter words, \\(6^2 = 36\\) two-letter words, and \\(6^3 = 216\\) three-letter words. All that is left is to add the three pile counts together."
+    ],
+    "ans": "258",
+    "accept": [
+     "258",
+     "258.0"
+    ],
+    "sol": "A word can be \\(1\\), \\(2\\), or \\(3\\) letters long, and those are three pretty different shapes. So instead of trying to count everything with one multiply, split the words by length and count each length on its own.\n\nFor a one-letter word there is just a single slot, and it can be any of the \\(6\\) letters, so that gives \\(6\\) words.\n\nFor a two-letter word there are two slots, and each slot can be any of the \\(6\\) letters since repeats are allowed. Inside this case you multiply, which gives \\(6 \\times 6 = 6^2 = 36\\) words.\n\nFor a three-letter word there are three slots, each with \\(6\\) choices, so multiplying gives \\(6 \\times 6 \\times 6 = 6^3 = 216\\) words.\n\nThese three piles never overlap, because a word has exactly one length, and together they cover every possible word. So now you add across the cases, which gives\n$$6 + 36 + 216 = 258.$$\n\nSo the number of possible words is \\(\\boxed{258}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA. This is casework, and it works because the two big rules finally team up. Inside one case nothing has changed, so you draw the same box-strip from 10.2 and multiply straight across, since a single case is just its own little box-strip. Then across the cases you add, exactly the way you added piles back in 10.1. So multiply inside a case, add across the cases, and that one sentence carries the rest of this lesson. Casework is the bridge that lets the adding from 10.1 and the multiplying from 10.2 work together on a problem too lumpy for either one alone. And here is the part worth circling. The hard skill is not the multiplying or the adding, it is choosing what to split on, because a good split leaves you a few tidy cases instead of a swarm of messy ones."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Counting words from a two-letter alphabet A and B by their length. Left column shows the two one-letter words A and B. Right column shows the four two-letter words A A, A B, B A, B B. Below, two plus four equals six total words.\">\n  <text x=\"220\" y=\"26\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">Alphabet { A , B }</text>\n\n  <text x=\"110\" y=\"54\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">length 1</text>\n  <text x=\"320\" y=\"54\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">length 2</text>\n\n  <rect x=\"62\" y=\"70\" width=\"96\" height=\"150\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n  <rect x=\"200\" y=\"70\" width=\"178\" height=\"150\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"1.5\"/>\n\n  <rect x=\"82\" y=\"86\" width=\"56\" height=\"40\" rx=\"7\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n  <text x=\"110\" y=\"113\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">A</text>\n  <rect x=\"82\" y=\"140\" width=\"56\" height=\"40\" rx=\"7\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n  <text x=\"110\" y=\"167\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">B</text>\n\n  <rect x=\"216\" y=\"86\" width=\"68\" height=\"40\" rx=\"7\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n  <text x=\"250\" y=\"113\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">AA</text>\n  <rect x=\"294\" y=\"86\" width=\"68\" height=\"40\" rx=\"7\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n  <text x=\"328\" y=\"113\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">AB</text>\n  <rect x=\"216\" y=\"140\" width=\"68\" height=\"40\" rx=\"7\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n  <text x=\"250\" y=\"167\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">BA</text>\n  <rect x=\"294\" y=\"140\" width=\"68\" height=\"40\" rx=\"7\" fill=\"var(--soft)\" stroke=\"var(--mid)\" stroke-width=\"1.5\"/>\n  <text x=\"328\" y=\"167\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\">BB</text>\n\n  <text x=\"110\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">2 words</text>\n  <text x=\"289\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">4 words</text>\n\n  <rect x=\"62\" y=\"244\" width=\"316\" height=\"34\" rx=\"9\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2\"/>\n  <text x=\"220\" y=\"266\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">2 + 4 = 6 words in all</text>\n</svg>",
+    "cap": "Here is a tiny alphabet with just two letters, \\(A\\) and \\(B\\). To count every short word we sort them by how many letters they have. There are \\(2\\) words of length one, namely \\(A\\) and \\(B\\). There are \\(4\\) words of length two, namely \\(AA\\), \\(AB\\), \\(BA\\), and \\(BB\\). We handled each length on its own, then we add the piles together and you get \\(2 + 4 = 6\\) words in all. That is the heart of casework, split the job into clear cases, count each one, then add."
+   },
+   {
+    "t": "prob",
+    "x": "You write out every whole number from \\(1\\) to \\(150\\) in a row, one after another, like \\(1, 2, 3, \\dots, 150\\). How many digits do you write in total?",
+    "xp": 7,
+    "hints": [
+     "One clean multiply will not work here, because the numbers are not all the same length. The number \\(7\\) uses one digit, \\(43\\) uses two, and \\(128\\) uses three. So split your count into piles by how many digits each number has.",
+     "Make three piles. The one-digit numbers run from \\(1\\) to \\(9\\), the two-digit numbers run from \\(10\\) to \\(99\\), and the three-digit numbers run from \\(100\\) to \\(150\\). Inside each pile, count how many numbers there are and multiply by the digits each one uses.",
+     "Pile one gives \\(9\\times1=9\\) digits, pile two gives \\(90\\times2=180\\) digits, and pile three gives \\(51\\times3=153\\) digits. Now you just need to bring the three pile counts together."
+    ],
+    "ans": "342",
+    "accept": [
+     "342",
+     "342.0"
+    ],
+    "sol": "If you try to count this with one quick multiply, it breaks. Some numbers are short like \\(5\\), some are longer like \\(88\\), and some are longer still like \\(141\\). They do not all cost the same number of digits, so there is no single clean multiply to reach for.\n\nThe rescue is to split what you are counting into piles, count each pile on its own, and add at the end. Here the natural split is by how many digits a number has.\n\nThe first pile is the one-digit numbers, from \\(1\\) to \\(9\\). That is \\(9\\) numbers, each using \\(1\\) digit, and you get $$9\\times1=9.$$\n\nThe second pile is the two-digit numbers, from \\(10\\) to \\(99\\). That is \\(90\\) numbers, each using \\(2\\) digits, which gives $$90\\times2=180.$$\n\nThe third pile is the three-digit numbers, from \\(100\\) to \\(150\\). That is \\(51\\) numbers, each using \\(3\\) digits, so $$51\\times3=153.$$\n\nThe three piles never overlap, and together they cover every number from \\(1\\) to \\(150\\), so nothing is counted twice and nothing slips through. Inside each pile you multiplied, and now across the piles you add, $$9+180+153=342.$$\n\nSo the total number of digits you write is \\(\\boxed{342}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "You have pennies, nickels, and dimes, and you want to make exactly \\(20\\) cents. A penny is worth \\(1\\) cent, a nickel is worth \\(5\\) cents, and a dime is worth \\(10\\) cents. You may use any number of each coin, including none of one of them. How many different ways can you make \\(20\\) cents?",
+    "xp": 7,
+    "hints": [
+     "One clean multiply will not work here, because the coins are not interchangeable. Try splitting the problem into piles based on the coin that limits you the most. Since dimes are the biggest, ask how many dimes you use and make a separate case for each choice.",
+     "Figure out which numbers of dimes are even possible. You can use \\(0\\) dimes, \\(1\\) dime, or \\(2\\) dimes, since \\(3\\) dimes would already be \\(30\\) cents, which is too much. So you have exactly three cases to count, one for each of those dime counts.",
+     "In each case, count how many nickels can fit in the leftover amount, and let pennies quietly fill whatever is still missing. With \\(0\\) dimes you have \\(20\\) cents to fill, so nickels can be \\(0,1,2,3,\\) or \\(4\\). With \\(1\\) dime you have \\(10\\) cents left, so nickels can be \\(0,1,\\) or \\(2\\). With \\(2\\) dimes you have \\(0\\) cents left, so nickels must be \\(0\\). Now you just need to add the three pile counts together."
+    ],
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0"
+    ],
+    "sol": "If you try to do this with one quick multiply, like in 10.2, it falls apart fast, because picking a dime is not the same kind of choice as picking a penny. The coins are worth different amounts, so the choices are not the same all the way across. That is the snag, and the rescue is casework. We split what we are counting into a few separate piles, count each pile on its own, and add at the end.\n\nThe smart thing to split on is the coin that boxes us in the most, which is the dime, since it is the biggest. So let us case on how many dimes we use.\n\nWith \\(0\\) dimes we still have all \\(20\\) cents to make from nickels and pennies. The nickels can be \\(0, 1, 2, 3,\\) or \\(4\\), and whatever is left over is just filled in with pennies. That is \\(5\\) ways.\n\nWith \\(1\\) dime we have used \\(10\\) cents, so \\(10\\) cents are left. The nickels can be \\(0, 1,\\) or \\(2\\), and pennies fill the rest, which gives \\(3\\) ways.\n\nWith \\(2\\) dimes we have already used the full \\(20\\) cents, so there is nothing left. The only choice is \\(0\\) nickels and \\(0\\) pennies, which is \\(1\\) way.\n\nNotice that \\(3\\) dimes is impossible, since that is already \\(30\\) cents, so our three cases truly cover everything, and no way of making \\(20\\) cents lands in two cases at once, since each way uses one fixed number of dimes. The cases never overlap and together they catch everything.\n\nNow we add across the cases the way we did in 10.1, and you get $$5 + 3 + 1 = 9.$$ So there are \\(\\boxed{9}\\) ways to make \\(20\\) cents."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, choosing what to split on. The cases are not handed to you, you get to pick the thing you split on, and the smart pick is the one that breaks the problem into the FEWEST, cleanest cases. That winning split almost always rides on the most demanding quantity, the part with the tightest squeeze on it, like the biggest coin you might spend, the largest square that still fits, or the one digit the rule pins down. Go after that cramped part first and you are left with a few tidy cases instead of a swarm of messy ones, and the rest of the count falls out easy."
+   },
+   {
+    "t": "prob",
+    "x": "We are counting ordered pairs of positive integers \\((a, b)\\). Both \\(a\\) and \\(b\\) have to be at least \\(1\\). The pair counts when \\(a^2 + b < 24\\). How many such pairs \\((a, b)\\) are there?",
+    "xp": 8,
+    "hints": [
+     "Try the slot trick and you will notice the choices for \\(b\\) shrink as \\(a\\) grows, so one clean multiply will not work. Split into cases by the value of \\(a\\) instead, and count each value on its own.",
+     "Pin down \\(a\\) first. If \\(a = 1\\) then you need \\(1 + b < 24\\), so \\(b < 23\\). If \\(a = 2\\) then \\(4 + b < 24\\), so \\(b < 20\\). Keep going for \\(a = 3\\) and \\(a = 4\\), and check where \\(a^2\\) alone already pushes past \\(24\\).",
+     "Count the allowed \\(b\\) values in each case, remembering \\(b\\) starts at \\(1\\). You should get \\(22\\) for \\(a = 1\\), then \\(19\\), then \\(14\\), then \\(7\\), and nothing for \\(a = 5\\). Now add those pile counts."
+    ],
+    "ans": "62",
+    "accept": [
+     "62",
+     "62.0"
+    ],
+    "sol": "Here the choices are not the same all the way across, because the bigger \\(a\\) gets, the less room \\(b\\) has. So we split by the value of \\(a\\) and count each pile on its own.\n\nIf \\(a = 1\\), then \\(a^2 = 1\\) and we need \\(1 + b < 24\\), which gives \\(b < 23\\). Since \\(b\\) is a positive integer, that is \\(b = 1\\) up to \\(b = 22\\), so \\(22\\) pairs.\n\nIf \\(a = 2\\), then \\(a^2 = 4\\) and we need \\(4 + b < 24\\), which gives \\(b < 20\\). So \\(b = 1\\) up to \\(b = 19\\), so \\(19\\) pairs.\n\nIf \\(a = 3\\), then \\(a^2 = 9\\) and we need \\(9 + b < 24\\), which gives \\(b < 15\\). So \\(b = 1\\) up to \\(b = 14\\), so \\(14\\) pairs.\n\nIf \\(a = 4\\), then \\(a^2 = 16\\) and we need \\(16 + b < 24\\), which gives \\(b < 8\\). So \\(b = 1\\) up to \\(b = 7\\), so \\(7\\) pairs.\n\nIf \\(a = 5\\), then \\(a^2 = 25\\), and that alone is already more than \\(24\\), so even the smallest \\(b\\) is too big. No pairs here, and every larger \\(a\\) is worse, so we can stop.\n\nThe cases never overlap, since each fixes one value of \\(a\\), and together they cover every \\(a\\) that could possibly work. So we add the pile counts and get $$22 + 19 + 14 + 7 = 62.$$\n\nSo the number of pairs is \\(\\boxed{62}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 420 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A three column casework table for counting positive pairs where a squared plus b is less than 13. The columns are the value of a, what it forces for b, and the count. The row a equals 1 forces b less than 12 and counts 11. The row a equals 2 forces b less than 9 and counts 8. The row a equals 3 forces b less than 4 and counts 3. A total row at the bottom adds the counts to 22.\">\n  <text x=\"210\" y=\"26\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"700\" fill=\"var(--ink)\">Counting pairs with a&#178; + b &lt; 13</text>\n\n  <rect x=\"20\" y=\"42\" width=\"120\" height=\"34\" fill=\"var(--soft)\" stroke=\"var(--line)\"/>\n  <rect x=\"140\" y=\"42\" width=\"160\" height=\"34\" fill=\"var(--soft)\" stroke=\"var(--line)\"/>\n  <rect x=\"300\" y=\"42\" width=\"100\" height=\"34\" fill=\"var(--soft)\" stroke=\"var(--line)\"/>\n  <text x=\"80\" y=\"64\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">case: a</text>\n  <text x=\"220\" y=\"64\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">what it forces</text>\n  <text x=\"350\" y=\"64\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--slate)\">count</text>\n\n  <rect x=\"20\" y=\"76\" width=\"120\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <rect x=\"140\" y=\"76\" width=\"160\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <rect x=\"300\" y=\"76\" width=\"100\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <text x=\"80\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--ink)\">a = 1</text>\n  <text x=\"220\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--mid)\">b &lt; 12</text>\n  <text x=\"350\" y=\"98\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">11</text>\n\n  <rect x=\"20\" y=\"110\" width=\"120\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <rect x=\"140\" y=\"110\" width=\"160\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <rect x=\"300\" y=\"110\" width=\"100\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <text x=\"80\" y=\"132\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--ink)\">a = 2</text>\n  <text x=\"220\" y=\"132\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--mid)\">b &lt; 9</text>\n  <text x=\"350\" y=\"132\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">8</text>\n\n  <rect x=\"20\" y=\"144\" width=\"120\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <rect x=\"140\" y=\"144\" width=\"160\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <rect x=\"300\" y=\"144\" width=\"100\" height=\"34\" fill=\"var(--softer)\" stroke=\"var(--line)\"/>\n  <text x=\"80\" y=\"166\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--ink)\">a = 3</text>\n  <text x=\"220\" y=\"166\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--mid)\">b &lt; 4</text>\n  <text x=\"350\" y=\"166\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"var(--ink)\">3</text>\n\n  <text x=\"210\" y=\"198\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">a = 4 forces a&#178; = 16, too big, so we stop</text>\n\n  <rect x=\"20\" y=\"210\" width=\"280\" height=\"40\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\"/>\n  <rect x=\"300\" y=\"210\" width=\"100\" height=\"40\" fill=\"var(--gold2)\" stroke=\"var(--gold-deep)\"/>\n  <text x=\"160\" y=\"235\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"var(--gold-deep)\">Total = 11 + 8 + 3</text>\n  <text x=\"350\" y=\"235\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--gold-deep)\">22</text>\n\n  <text x=\"210\" y=\"278\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12\" fill=\"var(--slate)\">Each case is counted once, then we add.</text>\n</svg>",
+    "cap": "Here we count positive pairs \\(a\\) and \\(b\\) with \\(a^2 + b < 13\\), and the table sorts them by the value of \\(a\\). When \\(a = 1\\) we need \\(1 + b < 13\\), so \\(b < 12\\) and that gives \\(11\\) choices. When \\(a = 2\\) we need \\(4 + b < 13\\), so \\(b < 9\\) which gives \\(8\\) choices. When \\(a = 3\\) we need \\(9 + b < 13\\), so \\(b < 4\\) which gives \\(3\\) choices. Trying \\(a = 4\\) makes \\(a^2 = 16\\), already too big, so we stop. Adding the three case counts down the last column gives $$11 + 8 + 3 = 22.$$ A table keeps cases organized so you add them up without missing one, and you land on \\(\\boxed{22}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A two-digit number runs from \\(10\\) up to \\(99\\). Some of them have a tens digit that is bigger than the units digit, like \\(31\\) where \\(3\\) beats \\(1\\), or \\(90\\) where \\(9\\) beats \\(0\\). How many two-digit numbers have a tens digit that is greater than the units digit?",
+    "xp": 6,
+    "hints": [
+     "You cannot just multiply choices for the two digits, because once you pick the tens digit, the number of allowed units digits depends on what you picked. Try splitting the count by the tens digit, and handle each tens digit as its own pile.",
+     "Pick a tens digit and call it \\(t\\). It can be anything from \\(1\\) to \\(9\\). For that fixed \\(t\\), the units digit just has to be smaller, so it can be \\(0, 1, \\ldots, t-1\\), which is \\(t\\) choices.",
+     "So the tens digit \\(t=1\\) gives \\(1\\) number, \\(t=2\\) gives \\(2\\) numbers, on up to \\(t=9\\) giving \\(9\\) numbers. Now you just need the total of \\(1+2+\\cdots+9\\)."
+    ],
+    "ans": "45",
+    "accept": [
+     "45",
+     "45.0"
+    ],
+    "sol": "Try the slot-and-box trick from before and it snags right away. The tens digit has \\(9\\) choices and the units digit has \\(10\\) choices, but you cannot multiply, because how many units digits are allowed depends on which tens digit you chose. A small tens digit leaves almost no room underneath it, while a big one leaves plenty. The choices are not the same all the way across, so one clean multiply will not work.\n\nSo we split. The cramped part here is the tie between the two digits, so we case on the tens digit \\(t\\), giving one pile for each value of \\(t\\).\n\nInside a pile, fix the tens digit \\(t\\). The units digit just has to be smaller than \\(t\\), so it can be \\(0, 1, \\ldots, t-1\\), and that is \\(t\\) choices.\n\nNow we walk through the piles. When \\(t=1\\) the units digit can only be \\(0\\), so \\(1\\) number. When \\(t=2\\) it can be \\(0\\) or \\(1\\), so \\(2\\) numbers. This keeps climbing, all the way up to \\(t=9\\), which gives \\(9\\) numbers.\n\nThese piles never overlap, since each number has just one tens digit, and together they cover every two-digit number, since the tens digit is always somewhere from \\(1\\) to \\(9\\). So we add the pile counts and you get $$1+2+3+4+5+6+7+8+9 = 45.$$\n\nSo the number of two-digit numbers whose tens digit beats its units digit is \\(\\boxed{45}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A three-digit number has a hundreds digit, a tens digit, and a units digit. The hundreds digit runs from \\(1\\) to \\(9\\), and the tens and units digits each run from \\(0\\) to \\(9\\). We only want the three-digit numbers where the hundreds digit is at least three times the tens digit, so the hundreds digit is bigger than or equal to \\(3\\) times the tens digit. How many three-digit numbers have this property?",
+    "xp": 8,
+    "hints": [
+     "The rule only ties together the hundreds digit and the tens digit, and the units digit is along for the ride with all \\(10\\) choices no matter what. So the tidiest thing to split on is the tens digit \\(t\\), because once you fix \\(t\\) the demand \"hundreds is at least \\(3t\\)\" becomes one simple count.",
+     "Walk the tens digit through its values and ask how many hundreds digits from \\(1\\) to \\(9\\) clear the bar \\(3t\\). When \\(t=0\\) you need hundreds at least \\(0\\), so all of \\(1\\) to \\(9\\) work. When \\(t=1\\) you need hundreds at least \\(3\\). When \\(t=2\\) you need at least \\(6\\). When \\(t=3\\) you need at least \\(9\\). When \\(t\\) is \\(4\\) or more, even \\(9\\) is too small, so those cases give nothing.",
+     "Count the hundreds choices in each living case, then remember every one of those still gets \\(10\\) free units digits. You should have hundreds counts of \\(9\\), \\(7\\), \\(4\\), and \\(1\\) for \\(t=0,1,2,3\\). Add those, then multiply by \\(10\\)."
+    ],
+    "ans": "210",
+    "accept": [
+     "210",
+     "210.0"
+    ],
+    "sol": "Here the slot-and-box trick from 10.2 gets snagged, because the hundreds digit and the tens digit are not free of each other. How many hundreds digits are allowed depends on what the tens digit is, so one clean multiply across all three slots would lie. That is the signal to use casework. We split what we are counting into a few separate piles, count each pile on its own, and add at the end.\n\nThe smart thing to split on is the tens digit \\(t\\), since the rule only links the hundreds digit to it. And notice the units digit never enters the rule at all, so in every pile it quietly brings \\(10\\) choices.\n\nFor \\(t=0\\) we need the hundreds digit to be at least \\(3 \\times 0 = 0\\), so all of \\(1\\) to \\(9\\) work, which gives \\(9\\) choices.\n\nFor \\(t=1\\) we need the hundreds digit to be at least \\(3 \\times 1 = 3\\), so \\(3\\) through \\(9\\) work, which gives \\(7\\) choices.\n\nFor \\(t=2\\) we need the hundreds digit to be at least \\(3 \\times 2 = 6\\), so \\(6\\) through \\(9\\) work, which gives \\(4\\) choices.\n\nFor \\(t=3\\) we need the hundreds digit to be at least \\(3 \\times 3 = 9\\), so only \\(9\\) works, which gives \\(1\\) choice.\n\nFor \\(t=4\\) or anything larger we would need the hundreds digit to be at least \\(12\\), and no digit is that big, so those piles are empty.\n\nThese piles never overlap, since each three-digit number has exactly one tens digit, and together they cover every tens digit, so nothing is double counted and nothing slips through.\n\nNow we use the spine of the chapter. Inside each case the units digit multiplies in with its \\(10\\) choices, and across the cases we add. Adding the hundreds counts first gives $$9 + 7 + 4 + 1 = 21,$$ and then each of those carries \\(10\\) free units digits, so $$21 \\times 10 = 210.$$\n\nSo the count of three-digit numbers whose hundreds digit is at least three times the tens digit is \\(\\boxed{210}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA. Lay your cases out in a tidy table or an orderly list, find the count for each one, then add straight down the column. That bit of neatness is doing real work, because when every case has its own row staring back at you, it is hard to skip one by accident and just as hard to count the same one twice. Being organized is not a frill here, it is the very thing that keeps your two promises honest, so nothing slips through and nothing gets counted twice."
+   },
+   {
+    "t": "prob",
+    "x": "A four-digit number has a thousands digit, a hundreds digit, a tens digit, and a units digit. Call them \\(d_1\\), \\(d_2\\), \\(d_3\\), and \\(d_4\\) from left to right. We want the units digit to equal the sum of the thousands digit and the hundreds digit, so \\(d_4 = d_1 + d_2\\). The tens digit \\(d_3\\) can be anything from \\(0\\) to \\(9\\). How many four-digit numbers have this property?",
+    "xp": 8,
+    "hints": [
+     "One clean multiply will not work here, because the choices for the digits depend on each other. The units digit is forced to be \\(d_1 + d_2\\), and a single digit only goes up to \\(9\\). Try splitting into cases based on the thousands digit \\(d_1\\), since \\(d_1\\) is the most cramped (it cannot be \\(0\\)).",
+     "Inside each case, fix \\(d_1\\) and count the allowed hundreds digits \\(d_2\\). You need \\(d_1 + d_2 \\le 9\\) so that \\(d_4 = d_1 + d_2\\) stays a single digit. For \\(d_1 = 1\\), the values \\(d_2 = 0, 1, \\ldots, 8\\) all work, which is \\(9\\) choices. For \\(d_1 = 2\\), you get \\(8\\) choices. Keep going down to \\(d_1 = 9\\).",
+     "Across the cases the counts are \\(9, 8, 7, 6, 5, 4, 3, 2, 1\\), and adding them gives \\(45\\) good \\((d_1, d_2)\\) pairs. Each such pair fixes \\(d_4\\) completely. Now remember the tens digit \\(d_3\\) is still free, with \\(10\\) choices. You are one multiply away from the answer."
+    ],
+    "ans": "450",
+    "accept": [
+     "450",
+     "450.0"
+    ],
+    "sol": "Let us name the digits \\(d_1\\), \\(d_2\\), \\(d_3\\), \\(d_4\\) from left to right. The rule is \\(d_4 = d_1 + d_2\\), and the tens digit \\(d_3\\) is free.\n\nIf we tried one clean multiply we would get stuck, because the units digit is not a free choice. It is pinned to \\(d_1 + d_2\\), and a single digit can only be \\(0\\) through \\(9\\). So we need \\(d_1 + d_2 \\le 9\\), or the units slot would need two digits, which is not allowed. The choices are not the same all the way across, so we split into cases.\n\nSplit on the thousands digit \\(d_1\\), because it is the most demanding. It must be \\(1\\) through \\(9\\), never \\(0\\). Inside each case we count the hundreds digits \\(d_2\\) that keep \\(d_1 + d_2 \\le 9\\).\n\nFor \\(d_1 = 1\\), we need \\(d_2 \\le 8\\), and you get \\(9\\) choices.\nFor \\(d_1 = 2\\), we need \\(d_2 \\le 7\\), which gives \\(8\\) choices.\nThis keeps going, dropping by one each time, down to \\(d_1 = 9\\), where only \\(d_2 = 0\\) works, so \\(1\\) choice.\n\nThese cases never overlap and together they cover every allowed start, so we add the case counts and you get\n$$9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 45.$$\n\nEach of these \\(45\\) pairs fixes \\(d_4\\) for us, since \\(d_4 = d_1 + d_2\\). The only thing still free is the tens digit \\(d_3\\), with \\(10\\) choices. Inside a case we multiply, so we multiply the \\(45\\) good fronts by the \\(10\\) tens digits, which gives\n$$45 \\times 10 = 450.$$\n\nSo the number of four-digit numbers with this property is \\(\\boxed{450}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A two-digit number is any whole number from \\(10\\) to \\(99\\). Add its two digits together. How many two-digit numbers have two digits that add up to a perfect square?",
+    "xp": 7,
+    "hints": [
+     "The slot trick from 10.2 will not work here in one clean multiply, because the digit sum can land on a few different perfect squares and each one behaves differently. So split into cases by the digit sum. First figure out which perfect squares a digit sum can even reach.",
+     "The two digits of a two-digit number add up to somewhere between \\(1\\) and \\(18\\). The perfect squares living in that range are \\(1\\), \\(4\\), \\(9\\), and \\(16\\). Make one case for each of those four sums, then count the two-digit numbers in each case on its own.",
+     "Sum \\(=1\\) gives just \\(10\\), so \\(1\\) number. Sum \\(=4\\) gives \\(4\\) numbers, and sum \\(=9\\) gives \\(9\\) numbers. Sum \\(=16\\) gives \\(3\\) numbers. Now add the four pile counts the way you added in 10.1."
+    ],
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0"
+    ],
+    "sol": "First let us see why one quick multiply will not do the job. The digit sum is not the same all the way across, since it can equal a few different perfect squares, and each of those squares gives a different number of two-digit numbers. So we split into cases by the value of the digit sum, and inside each case we count, then across the cases we add.\n\nThe two digits of a two-digit number add up to at least \\(1\\) and at most \\(18\\). The perfect squares in that range are \\(1\\), \\(4\\), \\(9\\), and \\(16\\), so those are our four cases, and no two of them overlap and together they catch every number that works.\n\nCase sum \\(=1\\). The only way is \\(10\\), which gives \\(1\\) number.\n\nCase sum \\(=4\\). We can use \\(13\\), \\(22\\), \\(31\\), and \\(40\\), which gives \\(4\\) numbers.\n\nCase sum \\(=9\\). We can use \\(18\\), \\(27\\), \\(36\\), \\(45\\), \\(54\\), \\(63\\), \\(72\\), \\(81\\), and \\(90\\), which gives \\(9\\) numbers.\n\nCase sum \\(=16\\). We can use \\(79\\), \\(88\\), and \\(97\\), which gives \\(3\\) numbers.\n\nNow we add the pile counts, and you get $$1 + 4 + 9 + 3 = 17.$$\n\nSo the number of two-digit numbers whose digits add up to a perfect square is \\(\\boxed{17}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "There are two hats on the table. Hat one holds balls numbered \\(1\\) through \\(15\\), so it has \\(15\\) balls. Hat two holds balls numbered \\(16\\) through \\(25\\), so it has \\(10\\) balls. You first pick one of the two hats. Then from that hat you draw \\(2\\) balls one after another, and you do not put the first ball back before drawing the second. The order matters, so drawing ball \\(3\\) then ball \\(7\\) counts as different from drawing ball \\(7\\) then ball \\(3\\). How many different ordered draws (first ball, then second ball) are possible in all?",
+    "xp": 7,
+    "hints": [
+     "The two hats hold different amounts of balls, so one clean multiply will not work for the whole thing at once. Try splitting the count by which hat you reached into.",
+     "Set up two piles. In the hat one pile you draw from \\(15\\) balls, and in the hat two pile you draw from \\(10\\) balls. Count the ordered draws in each pile on its own.",
+     "Hat one gives \\(15\\times14=210\\) ordered draws and hat two gives \\(10\\times9=90\\) ordered draws. Now you just need to put the two pile counts together."
+    ],
+    "ans": "300",
+    "accept": [
+     "300",
+     "300.0"
+    ],
+    "sol": "Here the trick from before snags right away, because the two hats do not hold the same number of balls, so you cannot do one clean multiply across the whole problem. The rescue is to split what you are counting into separate piles, count each pile by itself, and add the pile counts at the end. The most demanding part is which hat you reached into, so let us case on the hat.\n\nFirst, suppose you picked hat one. It has \\(15\\) balls. For the first draw you have \\(15\\) choices, and since you keep that ball out, the second draw has \\(14\\) choices left. Inside this case you multiply, which gives $$15\\times14=210$$ ordered draws.\n\nNow suppose you picked hat two. It has \\(10\\) balls. The first draw has \\(10\\) choices, and the second draw has \\(9\\) choices left. Inside this case you multiply again, which gives $$10\\times9=90$$ ordered draws.\n\nThese two cases never overlap, since a draw comes from exactly one hat, and together they cover every possible draw. So across the cases you add, and you get $$210+90=300.$$\n\nSo the number of different ordered draws is \\(\\boxed{300}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, choose then do. When your very first choice changes how many ways the rest can go, like which hat you grab or which box you reach into, you cannot multiply straight across, because the boxes do not hold the same counts. So split into cases on that first choice, count each case on its own with the slot and box habit from 10.2, and add the case counts together. Multiply inside a case, add across the cases."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 440 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A road map drawn left to right through towns A, B, C, D, E, F and H. Two roads run from A to B. Single roads run A to C, B to D, C to D, and a direct road A to D. On the right single roads run D to E, E to H, D to F, F to H, and a direct road D to H. Every road points to the right.\"><defs><marker id=\"ah\" markerWidth=\"10\" markerHeight=\"10\" refX=\"7.5\" refY=\"3\" orient=\"auto\" markerUnits=\"userSpaceOnUse\"><path d=\"M0,0 L7.5,3 L0,6 Z\" fill=\"var(--slate)\"/></marker></defs><line x1=\"150.3\" y1=\"60.5\" x2=\"203.9\" y2=\"97.5\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"45.2\" y1=\"117.2\" x2=\"118.7\" y2=\"157.4\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"150.3\" y1=\"159.5\" x2=\"203.9\" y2=\"122.5\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"47.0\" y1=\"110.0\" x2=\"200.0\" y2=\"110.0\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"235.2\" y1=\"102.9\" x2=\"310.6\" y2=\"62.4\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"342.0\" y1=\"61.0\" x2=\"390.3\" y2=\"96.9\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"235.2\" y1=\"117.1\" x2=\"310.6\" y2=\"157.6\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"342.0\" y1=\"159.0\" x2=\"390.3\" y2=\"123.1\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"237.0\" y1=\"110.0\" x2=\"386.0\" y2=\"110.0\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><path d=\"M46.6,106.4 Q92.7,95.0 122.0,67.1\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><path d=\"M42.9,99.7 Q77.3,67.0 116.6,57.3\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><circle cx=\"32\" cy=\"110\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"32\" y=\"115\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">A</text><circle cx=\"138\" cy=\"52\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"138\" y=\"57\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">B</text><circle cx=\"138\" cy=\"168\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"138\" y=\"173\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">C</text><circle cx=\"222\" cy=\"110\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"222\" y=\"115\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">D</text><circle cx=\"330\" cy=\"52\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"330\" y=\"57\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">E</text><circle cx=\"330\" cy=\"168\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"330\" y=\"173\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">F</text><circle cx=\"408\" cy=\"110\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"408\" y=\"115\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">H</text></svg>",
+    "cap": "Here is the road map we will use for the next two problems. You start at town \\(A\\) on the left and travel through some of the towns \\(B\\), \\(C\\), \\(D\\), \\(E\\), \\(F\\), and \\(H\\), always moving left to right and never doubling back. There are two roads running from \\(A\\) to \\(B\\), and every other link is a single road. Notice the two handy shortcuts as well, a direct road from \\(A\\) to \\(D\\) and a direct road from \\(D\\) to \\(H\\). Follow the arrows and see where the roads can take you.</cap>\n</invoke>\n"
+   },
+   {
+    "t": "prob",
+    "x": "Use the road map shown above. You may travel only from left to right along the roads. There are \\(2\\) roads from town \\(A\\) to town \\(B\\), then \\(1\\) road from \\(B\\) to \\(D\\). There is \\(1\\) road from \\(A\\) to \\(C\\), then \\(1\\) road from \\(C\\) to \\(D\\). There is also \\(1\\) direct road straight from \\(A\\) to \\(D\\), and \\(1\\) direct road from \\(D\\) to \\(H\\) further along. Travelling only left to right, how many routes are there from \\(A\\) to \\(D\\)?",
+    "xp": 6,
+    "hints": [
+     "One clean multiply will not work here, because the trip from \\(A\\) to \\(D\\) can pass through different towns first. Try splitting it into separate piles based on which town you reach \\(D\\) through. What are the different ways the trip could go?",
+     "Make three cases that do not overlap and that cover every route. Case 1 goes through \\(B\\), case 2 goes through \\(C\\), and case 3 takes the direct road \\(A\\) to \\(D\\). Now count each pile on its own using the multiply move from 10.2.",
+     "Through \\(B\\) you pick \\(1\\) of \\(2\\) roads to \\(B\\) and then the \\(1\\) road \\(B\\) to \\(D\\), so \\(2 \\times 1 = 2\\) routes. Through \\(C\\) there is \\(1 \\times 1 = 1\\) route. The direct road is \\(1\\) route. You just have to add the three pile counts."
+    ],
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0"
+    ],
+    "sol": "One clean multiply will not work here, because the choices are not the same all the way across. So let us split the routes into a few piles based on which town the trip reaches \\(D\\) through, count each pile on its own, and add at the end. That move is casework, and the rule we keep coming back to is that inside each case we multiply and across the cases we add.\n\nOur three cases never overlap, since a route either passes through \\(B\\), or through \\(C\\), or takes the direct road, and never two of those at once. They also cover everything, since every route to \\(D\\) must do one of those three things.\n\nCase 1, through \\(B\\). You pick \\(1\\) of the \\(2\\) roads from \\(A\\) to \\(B\\), then the \\(1\\) road from \\(B\\) to \\(D\\), which gives \\(2 \\times 1 = 2\\) routes.\n\nCase 2, through \\(C\\). You take the \\(1\\) road from \\(A\\) to \\(C\\), then the \\(1\\) road from \\(C\\) to \\(D\\), which gives \\(1 \\times 1 = 1\\) route.\n\nCase 3, the direct road. There is \\(1\\) road straight from \\(A\\) to \\(D\\), so that is \\(1\\) route.\n\nNow we add across the cases and you get $$2 + 1 + 1 = 4.$$\n\nSo the number of routes from \\(A\\) to \\(D\\) is \\(\\boxed{4}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, counting routes. To count all the ways to make a trip, group the routes by which town in the middle you pass through, count each group on its own, and ADD the groups, which is casework on the route. And when a single route is built from independent stretches that all run through that town, you MULTIPLY the stretch counts, just like 10.2. So multiply along one route to count its group, then add the groups across the towns. That is casework and the Multiplication Principle working side by side."
+   },
+   {
+    "t": "prob",
+    "x": "Look at the road map above. All roads run left to right, and a traveler can only move that way, never back. Between towns \\(A\\) and \\(B\\) there are two roads. There is also a direct road straight from \\(A\\) to \\(D\\). From \\(D\\) onward, one road leads \\(D\\) to \\(E\\) to \\(H\\), another leads \\(D\\) to \\(F\\) to \\(H\\), and a third road goes directly from \\(D\\) to \\(H\\). Every road on the map eventually feeds into \\(D\\), so any trip from \\(A\\) to \\(H\\) has to pass through \\(D\\). It turns out there are \\(4\\) different routes from \\(A\\) to \\(D\\). How many routes are there all the way from \\(A\\) to \\(H\\)?",
+    "xp": 8,
+    "hints": [
+     "The whole trip squeezes through one town. Every route from \\(A\\) to \\(H\\) has to pass through \\(D\\), so split the journey at \\(D\\) into the first stretch \\(A\\) to \\(D\\) and the second stretch \\(D\\) to \\(H\\), and handle each pile on its own.",
+     "You are told the first stretch \\(A\\) to \\(D\\) has \\(4\\) routes. Now count the second stretch \\(D\\) to \\(H\\) by listing its cases. There is \\(D\\) to \\(E\\) to \\(H\\), there is \\(D\\) to \\(F\\) to \\(H\\), and there is the direct road \\(D\\) to \\(H\\).",
+     "So the second stretch has \\(3\\) routes. Picking a way from \\(A\\) to \\(D\\) and then a way from \\(D\\) to \\(H\\) are two independent choices, so this is a multiply, not an add. You just need \\(4\\times 3\\)."
+    ],
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0"
+    ],
+    "sol": "Every road on the map funnels into \\(D\\), so a route from \\(A\\) to \\(H\\) is really two trips stitched together, first \\(A\\) to \\(D\\) and then \\(D\\) to \\(H\\). That gives us a clean place to split.\n\\nThe first stretch is handed to us. There are \\(4\\) routes from \\(A\\) to \\(D\\).\n\\nFor the second stretch, list the cases from \\(D\\) to \\(H\\) and count them honestly. The first case is \\(D\\) to \\(E\\) to \\(H\\). The second case is \\(D\\) to \\(F\\) to \\(H\\). The third case is the direct road \\(D\\) to \\(H\\). No two of these are the same route, and there are no other ways forward, so the cases do not overlap and they cover everything. That is \\(3\\) routes from \\(D\\) to \\(H\\).\n\\nNow comes the spine. Choosing your way from \\(A\\) to \\(D\\) and choosing your way from \\(D\\) to \\(H\\) are independent, so inside a single trip we multiply, the way we did in 10.2. Each of the \\(4\\) first-stretch routes can be followed by any of the \\(3\\) second-stretch routes, which gives $$4\\times 3 = 12.$$\n\\nSo there are \\(\\boxed{12}\\) routes from \\(A\\) all the way to \\(H\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A three-digit number runs from \\(100\\) up to \\(999\\). We want the ones that have exactly one digit equal to \\(0\\). For example, \\(204\\) works because it has a single \\(0\\), and \\(190\\) works too, but \\(500\\) has two zeros so it is out, and \\(347\\) has none so it is out as well. How many three-digit numbers have exactly one digit equal to \\(0\\)?",
+    "xp": 7,
+    "hints": [
+     "The leading digit of a three-digit number can never be \\(0\\), since a number like \\(047\\) is really just \\(47\\). So the lone \\(0\\) has nowhere to hide in the hundreds spot. That tells you the two places where the single \\(0\\) could actually sit, and those two spots are a perfect thing to split into cases on.",
+     "Make two cases. In the first case the \\(0\\) sits in the tens place and the units digit is not \\(0\\). In the second case the \\(0\\) sits in the units place and the tens digit is not \\(0\\). Inside each case, figure out how many choices the hundreds digit has and how many choices the remaining free digit has, then multiply those two counts.",
+     "Case one gives \\(9 \\times 9 = 81\\), and case two gives \\(9 \\times 9 = 81\\). The two cases never overlap and together they cover every way to have exactly one \\(0\\). All that is left is to combine the two pile counts."
+    ],
+    "ans": "162",
+    "accept": [
+     "162",
+     "162.0"
+    ],
+    "sol": "Try counting this with one clean multiply and you hit a snag, because the digit choices are not the same all the way across. The hundreds digit cannot be \\(0\\), but the tens and units digits can be, and we need exactly one of them to be \\(0\\). One multiply will not capture that, so we split into a few piles instead and count each on its own. That is casework. Inside each case we multiply the way we did before, and across the cases we add.\n\nFirst, notice the hundreds digit is never \\(0\\), since a three-digit number like \\(061\\) is really just the two-digit number \\(61\\). So the single \\(0\\) must live in either the tens place or the units place. That is the cramped part of the problem, so it is exactly what we split on. The two cases never overlap, because the \\(0\\) cannot be in both spots at once while staying a single \\(0\\), and together they cover everything.\n\nCase one is the \\(0\\) in the tens place, with the units digit not \\(0\\). The hundreds digit can be any of \\(1\\) through \\(9\\), which gives \\(9\\) choices. The tens digit is locked as \\(0\\). The units digit can be any of \\(1\\) through \\(9\\), since it is not allowed to be \\(0\\), and that gives \\(9\\) choices. Multiplying inside the case, we get $$9 \\times 9 = 81.$$\n\nCase two is the \\(0\\) in the units place, with the tens digit not \\(0\\). The hundreds digit again has \\(9\\) choices, the tens digit can be any of \\(1\\) through \\(9\\) for another \\(9\\) choices, and the units digit is locked as \\(0\\). Multiplying inside this case, we get $$9 \\times 9 = 81.$$\n\nNow we add across the cases, which gives $$81 + 81 = 162.$$\n\nSo there are \\(\\boxed{162}\\) three-digit numbers with exactly one digit equal to \\(0\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Look at the whole numbers from \\(1\\) to \\(999\\). Some of them have a digit \\(2\\) somewhere, like \\(2\\), \\(25\\), \\(112\\), or \\(200\\). How many of the numbers from \\(1\\) to \\(999\\) have at least one digit equal to \\(2\\)?",
+    "xp": 8,
+    "hints": [
+     "Counting the numbers that DO have a \\(2\\) splits into messy overlapping cases, the \\(2\\) could be in the ones, the tens, or the hundreds place, and some numbers have it in more than one spot. The slick split is just has a \\(2\\) versus does not have a \\(2\\). Count the friendlier side, the ones with no \\(2\\) at all, and subtract from the total.",
+     "Picture every number from \\(1\\) to \\(999\\) as three digit slots, like \\(007\\) for \\(7\\) or \\(052\\) for \\(52\\). For a slot to avoid the digit \\(2\\), it can be any of \\(\\{0,1,3,4,5,6,7,8,9\\}\\), which is \\(9\\) choices. Multiply the slots the 10.2 way to count all three-slot strings with no \\(2\\).",
+     "Three slots with \\(9\\) choices each gives \\(9\\times9\\times9=729\\) strings from \\(000\\) to \\(999\\) that avoid the digit \\(2\\). But \\(000\\) is really \\(0\\), which is not in \\(1\\) to \\(999\\), so toss it and you have \\(728\\) numbers with no \\(2\\). The total count of numbers is \\(999\\). Now you only need one subtraction."
+    ],
+    "ans": "271",
+    "accept": [
+     "271",
+     "271.0"
+    ],
+    "sol": "Counting the numbers that have a \\(2\\) directly is a swarm, since the \\(2\\) could sit in any of three places and some numbers carry it in two or three places at once. So we use the slick split, has a \\(2\\) versus does not, and count the lazy side first.\n\nIt is much friendlier to count the numbers from \\(1\\) to \\(999\\) that have NO digit equal to \\(2\\), then subtract. Think of every number as three digit slots, so \\(7\\) is \\(007\\) and \\(52\\) is \\(052\\). For a slot to dodge the digit \\(2\\), it may be any of \\(\\{0,1,3,4,5,6,7,8,9\\}\\), which is \\(9\\) choices.\n\nInside this single case we multiply the 10.2 way, three slots with \\(9\\) choices each, and you get\n$$9\\times9\\times9=729$$\nstrings from \\(000\\) to \\(999\\) that contain no \\(2\\). One of those strings is \\(000\\), which stands for \\(0\\), and \\(0\\) is not in our range \\(1\\) to \\(999\\), so we drop it. That leaves \\(729-1=728\\) numbers with no digit \\(2\\).\n\nThere are \\(999\\) numbers in all from \\(1\\) to \\(999\\). The two piles, no \\(2\\) and at least one \\(2\\), do not overlap and together cover everything, so the at-least-one-\\(2\\) pile is whatever the no-\\(2\\) pile leaves behind, which gives\n$$999-728=271.$$\n\nSo the number of whole numbers from \\(1\\) to \\(999\\) with at least one digit equal to \\(2\\) is \\(\\boxed{271}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, the complement split. Sometimes the two cleanest cases are simply has the property and does not, and one of those two sides is far easier to count. So count the easy side, then subtract it from the total to get the side you actually wanted. This is still casework, only one case did all the lazy work for you, and the subtracting is the very same total minus the rest you trusted back in 10.1."
+   },
+   {
+    "t": "prob",
+    "x": "You are building a \\(3\\)-character code. Each character is either a capital letter, with \\(26\\) choices, or a single digit, with \\(10\\) choices. The catch is that exactly one of the three characters must be a letter, and the other two must be digits. How many such codes can you make?",
+    "xp": 8,
+    "hints": [
+     "A clean single multiply would mix up codes where the letter sits in different spots, so try splitting on something. What is the one thing that changes from code to code here, that you could break into separate piles? Think about WHERE the single letter lands.",
+     "Make one case for each position the letter could sit in, so a case for the letter being first, one for it being second, and one for it being third. That is \\(3\\) cases. Inside any one case, count the letter spot and the two digit spots on their own.",
+     "Inside one case the letter spot has \\(26\\) choices and each digit spot has \\(10\\), so that single case gives \\(26\\times10\\times10=2600\\) codes. Now you have \\(3\\) cases that each give \\(2600\\), and they do not overlap. You just need to combine the \\(3\\) case counts."
+    ],
+    "ans": "7800",
+    "accept": [
+     "7800",
+     "7800.0"
+    ],
+    "sol": "If you tried to do this in one quick multiply, you would get stuck, because the three spots are not all the same. One spot is a letter and two are digits, but the problem never told you which spot is the letter. So let us split on exactly that snag, which is WHICH position holds the single letter.\n\nThe letter can sit in the first spot, or the second spot, or the third spot, and that gives us \\(3\\) cases. These cases never overlap, since the letter lives in only one place, and together they cover every legal code, so nothing slips through.\n\nNow count inside one case, say the letter is first. The letter spot has \\(26\\) choices. Each of the other two spots is a digit, so they give \\(10\\times10=100\\) ways. Multiplying inside this one case, you get\n$$26\\times100=2600.$$\n\nThe other two cases work the exact same way, so each of the \\(3\\) cases gives \\(2600\\) codes. Inside a case we multiplied, and now across the cases we add, which is the same as\n$$3\\times2600=7800.$$\n\nSo the number of codes is \\(\\boxed{7800}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A three-digit number has a hundreds digit, a tens digit, and a units digit. The hundreds digit cannot be \\(0\\), or the number would not really have three digits. We want the numbers where all three digits add up to \\(6\\). For example, \\(123\\) works because \\(1 + 2 + 3 = 6\\), and so does \\(600\\) because \\(6 + 0 + 0 = 6\\). How many three-digit numbers have digits that add up to \\(6\\)?",
+    "xp": 11,
+    "hints": [
+     "The thing that feels most cramped here is the hundreds digit, since it cannot be \\(0\\) and it cannot be too big either. What is the largest the hundreds digit could ever be if the three digits only add up to \\(6\\)? Try splitting into cases based on the hundreds digit.",
+     "Call the hundreds digit \\(h\\). Since \\(h \\ge 1\\) and the other two digits are at least \\(0\\), the hundreds digit can only be \\(1, 2, 3, 4, 5,\\) or \\(6\\). Once you fix \\(h\\), the tens and units digits just have to add up to \\(6 - h\\).",
+     "For a fixed \\(h\\), count the ways the tens and units digits can sum to \\(6 - h\\). If two digits must add up to some number \\(n\\) (with \\(0 \\le n \\le 9\\)), the tens digit can be \\(0, 1, \\dots, n\\) and the units digit is forced, so there are \\(n + 1\\) ways. That gives \\(6, 5, 4, 3, 2, 1\\) ways for \\(h = 1, 2, 3, 4, 5, 6\\). Now you just need to add those pile counts."
+    ],
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0"
+    ],
+    "sol": "The tightest part of this problem is the hundreds digit, so that is the smart thing to split on. The hundreds digit \\(h\\) has to be at least \\(1\\), and the three digits together only reach \\(6\\), so \\(h\\) can be \\(1, 2, 3, 4, 5,\\) or \\(6\\) and no more. That gives us six tidy cases.\n\nInside each case, once we pin down \\(h\\), the tens digit and the units digit just have to add up to whatever is left, which is \\(6 - h\\). When two digits must sum to some value \\(n\\) between \\(0\\) and \\(9\\), the tens digit can be anything from \\(0\\) up to \\(n\\) and the units digit is then forced, so there are \\(n + 1\\) ways.\n\nNow we count each pile on its own.\n\nFor \\(h = 1\\), the rest must sum to \\(5\\), which gives \\(5 + 1 = 6\\) ways.\nFor \\(h = 2\\), the rest must sum to \\(4\\), which gives \\(4 + 1 = 5\\) ways.\nFor \\(h = 3\\), the rest must sum to \\(3\\), which gives \\(3 + 1 = 4\\) ways.\nFor \\(h = 4\\), the rest must sum to \\(2\\), which gives \\(2 + 1 = 3\\) ways.\nFor \\(h = 5\\), the rest must sum to \\(1\\), which gives \\(1 + 1 = 2\\) ways.\nFor \\(h = 6\\), the rest must sum to \\(0\\), which gives \\(0 + 1 = 1\\) way.\n\nThese six cases never overlap, because each number has exactly one hundreds digit, and together they cover everything, because the hundreds digit has to be one of those six values. So we add the pile counts across the cases, the way we add in \\(10.1\\), after multiplying inside each case, the way we do in \\(10.2\\), and you get\n$$6 + 5 + 4 + 3 + 2 + 1 = 21.$$\n\nSo there are \\(\\boxed{21}\\) three-digit numbers whose digits add up to \\(6\\)."
+   },
+   {
+    "t": "fact",
+    "x": "Splitting a problem into cases and checking every single one is not just a school trick, it has cracked famous problems too. For a long time mapmakers noticed that you never seemed to need more than \\(4\\) colors to shade any map so that touching countries differ, but nobody could prove it. In \\(1976\\) two mathematicians finally did, and the way they won was pure casework. They boiled every possible map down to a finite pile of basic shapes, just under \\(2{,}000\\) of them, and then had a computer grind through the cases one by one to show each one behaved. It was the first big theorem ever settled this way, and it works because the cases never overlap and together they cover every map there is, the same two promises you are leaning on right now."
+   },
+   {
+    "t": "imp",
+    "x": "KEY IDEA, the casework habit. When one clean multiply will not do, pick a smart thing to split on, going after the most cramped part of the problem. Make sure your cases never overlap and together cover everything, so nothing is counted twice and nothing slips through. Then count each case on its own, multiplying inside a case the way you did in 10.2, and add the case counts at the end the way you did in 10.1. That is the whole move. Inside a case you multiply, across the cases you add. In 10.4 Counting Pairs we count how many ways to choose a pair or a group when the order does not matter, so picking Sam then Maya is the same choice as picking Maya then Sam."
+   }
+  ],
+  "review": [
+   {
+    "x": "An ice cream stand sells two kinds of sundaes, small and large. A small sundae comes in one of \\(5\\) flavors. A large sundae comes in one of \\(5\\) flavors and one of \\(2\\) sauces. How many different sundaes can you order in all?",
+    "hints": [
+     "The two sizes are not built the same way, so one clean multiply will not work. Split your count into cases by size, the small sundaes in one pile and the large sundaes in another.",
+     "Count each pile on its own. For a small sundae you only pick a flavor, so that is \\(5\\). For a large sundae you pick a flavor and a sauce, so multiply inside that case.",
+     "You should now have \\(5\\) small sundaes and \\(5\\times2=10\\) large sundaes. All that is left is to add the two pile counts across the cases."
+    ],
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0"
+    ],
+    "sol": "A small sundae is built differently from a large one, so trying to multiply straight across does not fit. Let us split what we are counting into two cases by size, and the two sizes never overlap and together cover every sundae, so the split is honest.\n\nCase 1, small sundaes. Here you only choose a flavor, and there are \\(5\\) flavors, which gives \\(5\\) small sundaes.\n\nCase 2, large sundaes. Here you choose a flavor and a sauce, so we multiply inside the case and you get \\(5\\times2=10\\) large sundaes.\n\nNow add across the cases, so $$5+10=15.$$\n\nThe number of different sundaes is \\(\\boxed{15}\\)."
+   },
+   {
+    "x": "A toy code is either \\(1\\) symbol long or \\(2\\) symbols long. Each symbol is one of \\(5\\) shapes, and shapes are allowed to repeat. How many possible codes are there?",
+    "hints": [
+     "The codes are not all the same length, so one clean multiply will not catch everything. Try splitting what you are counting by the length of the code, the \\(1\\)-symbol codes in one pile and the \\(2\\)-symbol codes in another.",
+     "Count each pile on its own. A \\(1\\)-symbol code has just one slot with \\(5\\) shapes to choose from. A \\(2\\)-symbol code has two slots, each with \\(5\\) shapes, so that pile is \\(5 \\times 5\\).",
+     "So the short codes give \\(5\\) and the long codes give \\(5^2 = 25\\). Now you have a count for each pile, and there is just one move left."
+    ],
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0"
+    ],
+    "sol": "The codes come in two different lengths, so a single multiply will not do it. This is a job for casework. Split what you are counting by the length of the code, with the \\(1\\)-symbol codes in one pile and the \\(2\\)-symbol codes in another. These two piles never overlap, since a code cannot be both lengths at once, and together they cover every code.\n\nInside each pile we multiply the way we learned before. A \\(1\\)-symbol code has a single slot with \\(5\\) shapes to fill it, which gives \\(5\\) codes. A \\(2\\)-symbol code has two slots, each with \\(5\\) shapes and repeats allowed, which gives \\(5^2 = 25\\) codes.\n\nNow we add across the cases, and you get\n$$5 + 5^2 = 5 + 25 = 30.$$\nSo the number of possible codes is \\(\\boxed{30}\\)."
+   },
+   {
+    "x": "You write out every whole number from \\(1\\) to \\(99\\), one after another. Some of those numbers have one digit and some have two digits. How many digits do you write in total?",
+    "hints": [
+     "One clean multiply will not work here, because the numbers are not all the same length. The one-digit numbers and the two-digit numbers each behave differently. What is the natural thing to split your cases on?",
+     "Make two cases. Case one is the numbers \\(1\\) to \\(9\\), which each have one digit. Case two is the numbers \\(10\\) to \\(99\\), which each have two digits. Now count how many numbers live in each case.",
+     "Case one has \\(9\\) numbers with \\(1\\) digit each, so that pile is \\(9\\). Case two has \\(90\\) numbers with \\(2\\) digits each, so that pile is \\(90\\times2=180\\). You have both pile counts now."
+    ],
+    "ans": "189",
+    "accept": [
+     "189",
+     "189.0"
+    ],
+    "sol": "If you try to count this with one multiply, you get stuck right away, because the numbers do not all have the same number of digits. A \\(7\\) takes one digit but a \\(53\\) takes two, so there is no single length to multiply by. That is the snag that tells you to split into cases.\n\nThe natural split is by how many digits a number has, so make two piles.\n\nPile one is the numbers \\(1\\) to \\(9\\). There are \\(9\\) of them and each one has a single digit, which gives \\(9\\) digits in this pile.\n\nPile two is the numbers \\(10\\) to \\(99\\). There are \\(90\\) of them and each one has two digits, so that pile is \\(90\\times2=180\\) digits.\n\nThe two piles never overlap, since a number cannot be both one digit and two digits, and together they cover every number from \\(1\\) to \\(99\\), so nothing slips through. Now add the pile counts and you get\n$$9+180=189.$$\nSo the total number of digits written is \\(\\boxed{189}\\)."
+   },
+   {
+    "x": "Using pennies, nickels, and dimes, in how many ways can you make \\(30\\) cents? You can use any number of each coin, including none. How many ways are there in all?",
+    "hints": [
+     "One clean multiply will not work here, because once you pick some coins the rest are not free to be anything. So split into cases. A good thing to split on is the most demanding coin, the dimes, since each dime is worth a lot and there are only a few you could possibly use.",
+     "Try each number of dimes on its own. With \\(0\\) dimes you still have \\(30\\) cents to fill with nickels and pennies, with \\(1\\) dime you have \\(20\\) cents left, with \\(2\\) dimes you have \\(10\\) cents left, and with \\(3\\) dimes you have \\(0\\) cents left. In each case, once you choose how many nickels you use, the pennies are forced, so just count the allowed numbers of nickels.",
+     "Count the nickel choices in each case. With \\(30\\) cents to fill you can use \\(0\\) to \\(6\\) nickels, which is \\(7\\) ways. With \\(20\\) cents you can use \\(0\\) to \\(4\\) nickels, which is \\(5\\) ways. With \\(10\\) cents you can use \\(0\\) to \\(2\\) nickels, which is \\(3\\) ways. With \\(0\\) cents you can use \\(0\\) nickels, which is \\(1\\) way. Now you just need to put these pile counts together."
+    ],
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0"
+    ],
+    "sol": "A single multiply breaks here, because the coins do not have the same freedom all the way across. Once you commit to some dimes, the amount left over changes how many nickels you are even allowed to use. So we split into piles and count each pile on its own.\n\nWe will split on the number of dimes, since dimes are the most demanding coin and you can fit only a few of them into \\(30\\) cents. The possible counts are \\(0\\), \\(1\\), \\(2\\), and \\(3\\) dimes. These cases never overlap, and together they cover every way, so nothing gets counted twice and nothing slips through.\n\nHere is the quiet trick inside each case. Once we have chosen the dimes and then the nickels, the pennies are completely forced, since the pennies just fill whatever is left. So in each case we only have to count the allowed numbers of nickels.\n\nWith \\(0\\) dimes there is \\(30\\) cents left to cover, so we can use \\(0\\) up to \\(6\\) nickels, which is \\(7\\) ways.\n\nWith \\(1\\) dime there is \\(20\\) cents left, so we can use \\(0\\) up to \\(4\\) nickels, which is \\(5\\) ways.\n\nWith \\(2\\) dimes there is \\(10\\) cents left, so we can use \\(0\\) up to \\(2\\) nickels, which is \\(3\\) ways.\n\nWith \\(3\\) dimes there is \\(0\\) cents left, so we can use \\(0\\) nickels, which is \\(1\\) way.\n\nNow we add the pile counts across the cases, and you get $$7 + 5 + 3 + 1 = 16.$$\n\nSo the number of ways is \\(\\boxed{16}\\)."
+   },
+   {
+    "x": "How many ordered pairs of positive integers \\((a,b)\\) satisfy \\(a^2 + b < 15\\)? Here \\(a\\) and \\(b\\) are both positive integers, so each is at least \\(1\\), and the order matters, so \\((a,b)\\) counts as its own pair.",
+    "hints": [
+     "Try counting in one clean multiply and watch it snag. The trouble is that \\(a^2\\) grows fast, so the room left for \\(b\\) shrinks as \\(a\\) climbs. That uneven shrinking is your cue to split into cases by the value of \\(a\\).",
+     "Lock in which \\(a\\) values are even possible, then count \\(b\\) inside each one. Since \\(b\\) is at least \\(1\\), you need \\(a^2 < 14\\), which only allows \\(a = 1, 2, 3\\). For each, ask how many positive \\(b\\) keep \\(a^2 + b < 15\\).",
+     "For \\(a = 1\\) you need \\(b < 14\\), so \\(b\\) runs \\(1\\) to \\(13\\). For \\(a = 2\\) you need \\(b < 11\\), so \\(b\\) runs \\(1\\) to \\(10\\). For \\(a = 3\\) you need \\(b < 6\\), so \\(b\\) runs \\(1\\) to \\(5\\). Now you just add the three pile counts."
+    ],
+    "ans": "28",
+    "accept": [
+     "28",
+     "28.0"
+    ],
+    "sol": "If you reach for one tidy multiply here, it snags right away, because the choices for \\(b\\) are not the same all the way across. As \\(a\\) grows, \\(a^2\\) eats up more room and leaves less space for \\(b\\). So we split into cases by the value of \\(a\\) and count each pile on its own.\n\nFirst, which \\(a\\) are even allowed? Since \\(b\\) is at least \\(1\\), we need \\(a^2 + 1 < 15\\), which means \\(a^2 < 14\\), so \\(a\\) can only be \\(1\\), \\(2\\), or \\(3\\).\n\nCase \\(a = 1\\). We need \\(1 + b < 15\\), so \\(b < 14\\), and \\(b\\) runs from \\(1\\) to \\(13\\), which gives \\(13\\) pairs.\n\nCase \\(a = 2\\). We need \\(4 + b < 15\\), so \\(b < 11\\), and \\(b\\) runs from \\(1\\) to \\(10\\), which gives \\(10\\) pairs.\n\nCase \\(a = 3\\). We need \\(9 + b < 15\\), so \\(b < 6\\), and \\(b\\) runs from \\(1\\) to \\(5\\), which gives \\(5\\) pairs.\n\nThese three cases never overlap, since each fixes a different \\(a\\), and together they cover every allowed \\(a\\), so nothing slips through. Inside each case we counted, and across the cases we add, so $$13 + 10 + 5 = 28.$$\n\n\\(\\boxed{28}\\)"
+   },
+   {
+    "x": "How many two-digit numbers have a units digit that is greater than the tens digit? A two-digit number runs from \\(10\\) to \\(99\\), so its tens digit can be \\(1\\) through \\(9\\) and its units digit can be \\(0\\) through \\(9\\). Count the ones where the units digit is strictly bigger than the tens digit.",
+    "hints": [
+     "The trouble is that the units digit does not have the same number of choices every time, since how big it can be depends on the tens digit. So split into cases on the tens digit \\(t\\) and count each pile on its own.",
+     "Take a tens digit \\(t\\). The units digit has to be larger than \\(t\\), so it can be any value from \\(t+1\\) up to \\(9\\). That is \\(9 - t\\) choices for that one case.",
+     "Now run \\(t\\) from \\(1\\) to \\(8\\) and write down the pile counts. You get \\(8\\) when \\(t=1\\), then \\(7\\), then \\(6\\), all the way down to \\(1\\) when \\(t=8\\). Add those pile counts."
+    ],
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0"
+    ],
+    "sol": "Here one clean multiply will not work, because the units digit does not get the same number of choices every time. How big it can be depends on the tens digit. So let us split into cases on the tens digit \\(t\\) and count each pile by itself.\n\nPick a tens digit \\(t\\). The units digit must be strictly larger than \\(t\\), so it can be anything from \\(t+1\\) up to \\(9\\). Counting those gives \\(9 - t\\) choices.\n\nNow walk \\(t\\) through its values. If \\(t = 1\\), the units digit can be \\(2\\) through \\(9\\), which is \\(8\\) choices. If \\(t = 2\\), it can be \\(3\\) through \\(9\\), which is \\(7\\) choices. This keeps shrinking by one, all the way down to \\(t = 8\\), where the units digit can only be \\(9\\), so \\(1\\) choice. Once \\(t = 9\\) there is nothing bigger left, so that pile is empty and we stop.\n\nThe cases never overlap, since each number has just one tens digit, and together they cover every two-digit number we care about. So we add the pile counts $$8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 36.$$\n\nSo there are \\(\\boxed{36}\\) two-digit numbers whose units digit is greater than its tens digit."
+   },
+   {
+    "x": "A three-digit number runs from \\(100\\) to \\(999\\), so its hundreds digit is one of \\(1\\) through \\(9\\) and its tens and units digits are each one of \\(0\\) through \\(9\\). How many three-digit numbers have a hundreds digit that is at least two times the tens digit?",
+    "hints": [
+     "The hundreds digit has to keep up with two times the tens digit, so the tens digit is the cramped, demanding part. Split into cases on the value of the tens digit \\(t\\), and notice the units digit never matters, it is free with \\(10\\) choices no matter what.",
+     "In each case you need the hundreds digit \\(h\\) to satisfy \\(h \\ge 2t\\) with \\(h\\) from \\(1\\) to \\(9\\). When \\(t=0\\) you need \\(h \\ge 0\\), so all \\(9\\) hundreds digits work. When \\(t=1\\) you need \\(h \\ge 2\\), so \\(8\\) work. Keep going for \\(t=2,3,4\\), and check when \\(2t\\) shoots past \\(9\\) so no hundreds digit can reach it.",
+     "Counting the hundreds choices case by case gives \\(9\\) for \\(t=0\\), then \\(8\\), then \\(6\\), then \\(4\\), then \\(2\\), and once \\(t \\ge 5\\) you need \\(h \\ge 10\\) which is impossible, so those cases give \\(0\\). Add the hundreds choices, then remember each number still has \\(10\\) free units digits to multiply in."
+    ],
+    "ans": "290",
+    "accept": [
+     "290",
+     "290.0"
+    ],
+    "sol": "One clean multiply will not work here, because the hundreds digit choices depend on the tens digit, so the choices are not the same all the way across. That is the signal to split into cases. The tens digit is the demanding part, so we case on it.\n\nFirst notice the units digit is along for the ride. The condition only ties the hundreds digit to the tens digit, so the units digit is always free with \\(10\\) choices. We can count the good hundreds-tens pairs and multiply by \\(10\\) at the very end.\n\nNow case on the tens digit \\(t\\). In each case we need the hundreds digit \\(h\\) from \\(1\\) to \\(9\\) with \\(h \\ge 2t\\).\n\nWhen \\(t=0\\), we need \\(h \\ge 0\\), so all \\(9\\) hundreds digits work.\n\nWhen \\(t=1\\), we need \\(h \\ge 2\\), which leaves \\(h\\) from \\(2\\) to \\(9\\), so \\(8\\) work.\n\nWhen \\(t=2\\), we need \\(h \\ge 4\\), which leaves \\(h\\) from \\(4\\) to \\(9\\), so \\(6\\) work.\n\nWhen \\(t=3\\), we need \\(h \\ge 6\\), which leaves \\(h\\) from \\(6\\) to \\(9\\), so \\(4\\) work.\n\nWhen \\(t=4\\), we need \\(h \\ge 8\\), which leaves \\(h\\) from \\(8\\) to \\(9\\), so \\(2\\) work.\n\nWhen \\(t \\ge 5\\), we need \\(h \\ge 10\\), and no single digit reaches \\(10\\), so none of these cases give anything.\n\nThese cases never overlap, since each one fixes a different tens digit, and together they cover every tens digit \\(0\\) through \\(9\\), so nothing is counted twice and nothing slips through. Inside each case we multiply, and across the cases we add. Adding the hundreds choices gives \\(9+8+6+4+2 = 29\\), and each of those hundreds-tens pairs still has \\(10\\) free units digits, which gives\n\n$$(9+8+6+4+2)\\times 10 = 29 \\times 10 = 290.$$\n\nSo there are \\(\\boxed{290}\\) such three-digit numbers."
+   },
+   {
+    "x": "A three-digit number has a hundreds digit, a tens digit, and a units digit. The hundreds digit runs from \\(1\\) to \\(9\\), and the tens and units digits each run from \\(0\\) to \\(9\\). How many three-digit numbers have their hundreds digit equal to the sum of their tens digit and their units digit?",
+    "hints": [
+     "The hundreds digit \\(h\\) is doing all the work here, since it has to match \\(\\text{tens}+\\text{units}\\). Try splitting into cases on the value of \\(h\\), one case for each \\(h\\) from \\(1\\) to \\(9\\).",
+     "Pick a case, say the hundreds digit is some fixed \\(h\\). Now you just need the tens and units digits, each from \\(0\\) to \\(9\\), to add up to \\(h\\). Count how many such pairs there are for that \\(h\\).",
+     "For a fixed \\(h\\), the tens digit can be \\(0,1,2,\\dots,h\\) and the units digit is forced to be \\(h\\) minus that, so there are \\(h+1\\) pairs. Now write down \\(h+1\\) for each \\(h\\) from \\(1\\) to \\(9\\) and you are one step from the total."
+    ],
+    "ans": "54",
+    "accept": [
+     "54",
+     "54.0"
+    ],
+    "sol": "The hundreds digit is the demanding part, because it has to equal \\(\\text{tens}+\\text{units}\\). So that is the thing to split on. We make one case for each possible hundreds digit \\(h\\), where \\(h\\) runs from \\(1\\) to \\(9\\).\n\nInside a single case the hundreds digit is locked at some value \\(h\\). All we need now is for the tens digit and the units digit, each from \\(0\\) to \\(9\\), to add up to \\(h\\). The tens digit can be any of \\(0, 1, 2, \\dots, h\\), and once we choose it the units digit is forced to be whatever is left over. That gives \\(h+1\\) ways inside the case.\n\nSo the count for each hundreds digit is \\(h+1\\). When \\(h=1\\) we get \\(2\\) ways, when \\(h=2\\) we get \\(3\\) ways, and so on up to \\(h=9\\), which gives \\(10\\) ways. The cases never overlap, since each number has just one hundreds digit, and together they cover every number we want.\n\nNow we add across the cases, which gives\n$$2 + 3 + 4 + \\cdots + 10 = 54.$$\n\nInside each case we multiplied (well, we counted the forced pairs), and across the cases we added, and the whole thing falls apart cleanly once we split on the hundreds digit. So the answer is \\(\\boxed{54}\\)."
+   },
+   {
+    "x": "There are two boxes on a table. Box one holds \\(8\\) cards and box two holds \\(6\\) cards. You first pick one of the two boxes, and then from that box you draw \\(2\\) cards one after the other, without putting the first one back. The order you draw them in matters, so drawing card A then card B counts as different from drawing card B then card A. How many different ordered draws are possible in all?",
+    "hints": [
+     "The two boxes have different numbers of cards, so a single multiply for the whole problem will not work. Split into cases by which box you reached into, and count each box on its own.",
+     "Take box one first. It has \\(8\\) cards, so the first card has \\(8\\) choices and the second has \\(7\\) left, which gives \\(8\\times 7\\). Then do box two the same way with its \\(6\\) cards.",
+     "You now have the draws from box one and the draws from box two. These are two separate piles that never share a draw, so to finish you add the two pile counts together."
+    ],
+    "ans": "86",
+    "accept": [
+     "86",
+     "86.0"
+    ],
+    "sol": "The catch here is that the two boxes do not hold the same number of cards, so one clean multiply across the whole problem would give the wrong count. The rescue is casework. Split by which box you picked, count each box on its own, and add the piles at the end.\n\nInside a case you multiply, just like in 10.2. For box one there are \\(8\\) cards, so the first draw has \\(8\\) choices and the second has \\(7\\) left since you do not put the first one back, which gives \\(8\\times 7=56\\) ordered draws.\n\nFor box two there are \\(6\\) cards, so the first draw has \\(6\\) choices and the second has \\(5\\) left, which gives \\(6\\times 5=30\\) ordered draws.\n\nThese two piles never overlap, because a draw from box one can never also be a draw from box two, and together they cover every possible draw. So across the cases you add, just like in 10.1, and you get $$56+30=86.$$ So the number of ordered draws is \\(\\boxed{86}\\)."
+   },
+   {
+    "x": "A four-digit number runs from \\(1000\\) to \\(9999\\), so its first digit is never \\(0\\). We want the four-digit numbers that have exactly one digit equal to \\(0\\), meaning one of the four digits is a \\(0\\) and the other three are all nonzero. How many four-digit numbers have exactly one digit equal to \\(0\\)?",
+    "hints": [
+     "The leading digit can never be \\(0\\), so the lone \\(0\\) can only sit in one of the other three positions. That is a clean thing to split on. Try making one case for each spot the \\(0\\) could land in.",
+     "Split into cases by which position holds the \\(0\\). There are \\(3\\) positions it could be (the hundreds, the tens, or the ones), so you get \\(3\\) cases. In each case, the thousands digit is one of \\(1\\) through \\(9\\), so \\(9\\) choices, the \\(0\\) is locked into its chosen spot, and the two leftover spots must each be nonzero, so \\(9\\) choices each.",
+     "Each case has the same size, namely \\(9\\) for the thousands digit times \\(9\\) times \\(9\\) for the two leftover nonzero spots, which is \\(9 \\times 9 \\times 9\\) per case. Now multiply that by the \\(3\\) cases."
+    ],
+    "ans": "2187",
+    "accept": [
+     "2187",
+     "2187.0"
+    ],
+    "sol": "Here is the snag if you reach for one clean multiply. The four spots do not all behave the same way, because the rule \"exactly one \\(0\\)\" depends on where that \\(0\\) lands, and the leading spot cannot even hold a \\(0\\). So instead of one multiply, we split the count into a few cases, count each case on its own, and add the case counts at the end. That move is casework.\n\nWhat should we split on? Go after the cramped part. The thousands digit is never \\(0\\), so the single \\(0\\) is forced to sit in one of the other three positions, which are the hundreds, the tens, and the ones. That gives us \\(3\\) tidy cases, one for each spot the lone \\(0\\) could take.\n\nNow count one case, say the \\(0\\) sits in the hundreds spot. The thousands digit can be any of \\(1\\) through \\(9\\), so \\(9\\) choices. The hundreds spot is locked as \\(0\\), so \\(1\\) choice. The tens and ones must each be nonzero so we keep exactly one \\(0\\), and that is \\(9\\) choices each. Inside this case we multiply, the way we did in 10.2, and you get $$9 \\times 1 \\times 9 \\times 9 = 9 \\times 9 \\times 9 = 729.$$\n\nThe other two cases, with the \\(0\\) in the tens spot or in the ones spot, work out exactly the same way, since the thousands digit still has \\(9\\) choices and the two leftover nonzero spots still have \\(9\\) choices each. So each of the \\(3\\) cases gives \\(729\\).\n\nThe cases never overlap, because a number lands in only one case depending on which single spot its \\(0\\) occupies, and together they cover every four-digit number with exactly one \\(0\\). So across the cases we add, the way we did in 10.1, which is the same as multiplying the per-case count by \\(3\\), and you get $$3 \\times 729 = 2187,$$ or all at once $$3 \\times 9 \\times 9 \\times 9 = 2187.$$\n\nSo there are \\(\\boxed{2187}\\) four-digit numbers with exactly one digit equal to \\(0\\)."
+   },
+   {
+    "x": "Count the whole numbers from \\(1\\) to \\(500\\) that have at least one digit equal to \\(7\\). How many such numbers are there?",
+    "hints": [
+     "Trying to count the numbers that *have* a \\(7\\) means worrying about the \\(7\\) being in the ones place, or the tens place, or the hundreds place, and those piles overlap. Flip it around. It is friendlier to count the numbers with *no* \\(7\\) at all, then subtract that pile from \\(500\\).",
+     "Split the \\(500\\) numbers by how many digits they have. There are the small ones from \\(1\\) to \\(99\\), then the three-digit ones from \\(100\\) to \\(499\\), and finally \\(500\\) sitting by itself. In each pile, count how many numbers dodge the digit \\(7\\) completely.",
+     "Think of every number from \\(000\\) to \\(499\\) as three slots. The hundreds slot can be \\(0,1,2,3,4\\) with no \\(7\\) to avoid, which is \\(5\\) choices. The tens and ones slots each run \\(0\\) through \\(9\\) but must skip the \\(7\\), which leaves \\(9\\) choices each. Multiply those to count the no-\\(7\\) numbers, remember \\(000\\) is not really in our range, and check whether \\(500\\) has a \\(7\\)."
+    ],
+    "ans": "95",
+    "accept": [
+     "95",
+     "95.0"
+    ],
+    "sol": "Counting the numbers that *have* a \\(7\\) gets tangled fast, because the \\(7\\) could hide in the ones place or the tens place or the hundreds place, and a number like \\(77\\) would get counted more than once. So we play the lazy card. We count the numbers with *no* \\(7\\) anywhere, and then subtract that pile from \\(500\\). This is casework where one side did almost all the work for us.\n\nTo count the no-\\(7\\) numbers cleanly, picture every number from \\(0\\) to \\(499\\) as three digit slots, a hundreds slot, a tens slot, and a ones slot. The hundreds slot can be \\(0,1,2,3,\\) or \\(4\\), and none of those is a \\(7\\), so that is \\(5\\) choices. The tens slot runs from \\(0\\) to \\(9\\) but must avoid the \\(7\\), which leaves \\(9\\) choices. The ones slot is the same, \\(9\\) choices. Inside this one case we multiply, the way we always do, and we get\n$$5 \\times 9 \\times 9 = 405.$$\n\nThat count of \\(405\\) secretly includes \\(000\\), which is just \\(0\\) and is not in our range of \\(1\\) to \\(500\\), so it does not steal anything from us, because \\(0\\) has no \\(7\\) either way and we will handle the endpoints honestly. What it covers is the whole stretch from \\(1\\) to \\(499\\), plus the stand-in \\(0\\). The number \\(500\\) is the only one left out of the slot picture, and \\(500\\) has no \\(7\\) in it, so it belongs in the no-\\(7\\) pile too.\n\nSo the no-\\(7\\) numbers from \\(1\\) to \\(500\\) are the \\(405\\) from the slots, minus the \\(1\\) for the \\(0\\) that is not really in our range, plus the \\(1\\) for \\(500\\), which gives\n$$405 - 1 + 1 = 405.$$\n\nThere are \\(405\\) numbers with no \\(7\\) at all. Everything else must have at least one \\(7\\), so we subtract from the full \\(500\\) and get\n$$500 - 405 = 95.$$\n\n\\(\\boxed{95}\\)"
+   },
+   {
+    "x": "A code has \\(3\\) characters. Each character is either a capital letter, and there are \\(26\\) of those, or a digit, and there are \\(10\\) of those. The catch is that exactly one of the three characters is a digit, so the other two must both be letters. How many such codes are there?",
+    "hints": [
+     "One clean multiply will not work here, because the single digit could sit in any of the three spots. Try splitting into cases on WHICH position holds the lone digit.",
+     "There are \\(3\\) cases, one for each position the digit could take. In every case, that one spot is a digit, so it has \\(10\\) choices, and the other two spots are letters.",
+     "Inside each case you multiply, and you get \\(10\\times 26\\times 26\\) codes. Now you have \\(3\\) cases that all give the same count, so think about how to combine them."
+    ],
+    "ans": "20280",
+    "accept": [
+     "20280",
+     "20280.0"
+    ],
+    "sol": "If you try to multiply straight across, you get stuck, because each spot is not \"any of \\(36\\)\" all the way through. The rule that exactly one spot is a digit means the spots do not all behave the same, so one clean multiply would miss it. The fix is to split into cases on WHICH position holds the single digit.\n\nThere are exactly \\(3\\) places that lone digit could live, the first spot, the second spot, or the third spot. That is our \\(3\\) cases.\n\nTake one case, say the digit sits in the first spot. That first spot is a digit, so it has \\(10\\) choices. The other two spots must be letters, and each letter spot has \\(26\\) choices, which gives $$26\\times 26 = 676.$$ So this one case has $$10\\times 676 = 6760$$ codes.\n\nThe other two cases, digit in the second spot and digit in the third spot, work the same way and each give \\(6760\\) codes too. Notice the two promises hold. No code is counted twice, because each code has its digit in exactly one position, and the cases cover everything, because the digit has to be somewhere.\n\nInside each case we multiplied, and across the \\(3\\) cases we add, which gives $$3\\times 10\\times 676 = 20280.$$\n\nSo there are \\(\\boxed{20280}\\) such codes."
+   },
+   {
+    "x": "How many three-digit numbers have digits that add up to \\(4\\)? In a three-digit number the hundreds digit is at least \\(1\\), and the three digits together must sum to \\(4\\).",
+    "hints": [
+     "The hundreds digit cannot be \\(0\\), and it cannot be more than \\(4\\) or the digits would already add past \\(4\\). So split into cases on the hundreds digit \\(h\\), where \\(h\\) runs from \\(1\\) to \\(4\\).",
+     "Once you fix the hundreds digit \\(h\\), the tens and units digits must add up to \\(4-h\\). For a target sum \\(s\\) the number of ways to pick the tens digit (with the units digit forced) is \\(s+1\\). So \\(h=1\\) needs tens+units \\(=3\\), \\(h=2\\) needs \\(=2\\), \\(h=3\\) needs \\(=1\\), and \\(h=4\\) needs \\(=0\\).",
+     "Count each case on its own. \\(h=1\\) gives \\(4\\) ways, \\(h=2\\) gives \\(3\\) ways, \\(h=3\\) gives \\(2\\) ways, \\(h=4\\) gives \\(1\\) way. Now add the four pile counts."
+    ],
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0"
+    ],
+    "sol": "The slot-and-box trick stalls here because the digits do not all have the same number of choices, so we split into cases. The cleanest thing to split on is the hundreds digit \\(h\\), since it is the most cramped (it has to be at least \\(1\\), and it cannot exceed \\(4\\) or the sum already overshoots). So \\(h\\) runs from \\(1\\) to \\(4\\).\n\nInside each case the hundreds digit is fixed, so the tens and units digits must add up to whatever is left, which is \\(4-h\\). If those two digits must add up to \\(s\\), you can pick the tens digit anywhere from \\(0\\) up to \\(s\\) and the units digit is forced, which gives \\(s+1\\) ways.\n\nNow count each pile.\n\nWhen \\(h=1\\), the rest must sum to \\(3\\), giving \\(3+1=4\\) ways.\nWhen \\(h=2\\), the rest must sum to \\(2\\), giving \\(2+1=3\\) ways.\nWhen \\(h=3\\), the rest must sum to \\(1\\), giving \\(1+1=2\\) ways.\nWhen \\(h=4\\), the rest must sum to \\(0\\), giving \\(0+1=1\\) way.\n\nThese cases never overlap, since each fixes a different hundreds digit, and together they cover every possibility. So we add the pile counts across the cases, which gives $$4+3+2+1=10.$$\n\nSo there are \\(\\boxed{10}\\) three-digit numbers whose digits add up to \\(4\\)."
+   },
+   {
+    "x": "We want to count ordered pairs of positive integers \\((a, b)\\) that satisfy \\(a + b^2 < 20\\). Both \\(a\\) and \\(b\\) have to be at least \\(1\\). How many such pairs \\((a, b)\\) are there?",
+    "hints": [
+     "One clean multiply will not work here, because \\(b\\) and \\(b^2\\) change how much room is left for \\(a\\). Try splitting into cases based on the value of \\(b\\).",
+     "For each \\(b\\), the rule \\(a + b^2 < 20\\) becomes \\(a < 20 - b^2\\). So \\(b=1\\) needs \\(a < 19\\), \\(b=2\\) needs \\(a < 16\\), \\(b=3\\) needs \\(a < 11\\), and \\(b=4\\) needs \\(a < 4\\). Once \\(b=5\\) we have \\(b^2 = 25\\), which is already too big, so the cases stop.",
+     "Now count the positive whole values of \\(a\\) in each case. With \\(a < 19\\) you get \\(18\\) values, with \\(a < 16\\) you get \\(15\\), with \\(a < 11\\) you get \\(10\\), and with \\(a < 4\\) you get \\(3\\). All that is left is to add these four pile counts together."
+    ],
+    "ans": "46",
+    "accept": [
+     "46",
+     "46.0"
+    ],
+    "sol": "If we try to count everything in one multiply, we get stuck, because the \\(b^2\\) part eats up a different amount of room depending on \\(b\\). So let us split into cases on the value of \\(b\\) and count each pile on its own.\n\nFor any \\(b\\), the rule \\(a + b^2 < 20\\) means \\(a < 20 - b^2\\), and we just need the positive whole values of \\(a\\) that fit.\n\nWhen \\(b = 1\\) we need \\(a < 19\\), which gives \\(18\\) choices for \\(a\\).\n\nWhen \\(b = 2\\) we need \\(a < 16\\), which gives \\(15\\) choices.\n\nWhen \\(b = 3\\) we need \\(a < 11\\), which gives \\(10\\) choices.\n\nWhen \\(b = 4\\) we need \\(a < 4\\), which gives \\(3\\) choices.\n\nWhen \\(b = 5\\) we already have \\(b^2 = 25\\), which is too big on its own, so there is nothing left to count and the cases stop here.\n\nThese four cases never overlap, since each fixes a different \\(b\\), and together they cover every pair. So we add the pile counts and you get $$18 + 15 + 10 + 3 = 46.$$\n\nSo the number of pairs is \\(\\boxed{46}\\)."
+   }
+  ],
+  "next": "10.4"
  }
 }
