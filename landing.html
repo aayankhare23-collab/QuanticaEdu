@@ -464,7 +464,8 @@
   .ws-page.ws-anim{animation:wsIn .28s cubic-bezier(.22,1,.36,1) both}
   @keyframes wsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .ws-page.page-text-only{justify-content:center;align-items:center;padding:0}
-  .ws-page.page-text-only .page-lead{margin:0;width:100%;max-width:560px}
+  .ws-page.page-text-only .page-lead{margin:0 auto;width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 38px;box-shadow:0 14px 40px -18px rgba(18,42,86,.30)}
+  .ws-page.page-text-only .page-lead svg{max-width:100%;height:auto}
   .ws-page.page-text-only .page-lead p{font-size:21px;font-weight:600;color:var(--navy);line-height:1.78;text-align:center;letter-spacing:.005em;margin:0 auto 18px;max-width:560px}
   .ws-page.page-text-only .page-lead p:last-child{margin-bottom:0}
   .ws-page.page-text-only h4.sub{text-align:center;color:var(--mid)}
@@ -1179,7 +1180,8 @@
         <button class="cb-back" id="mback" onclick="showDashboard()" aria-label="Back to course home">←<span> Home</span></button>
         <span class="cb-logo"><span class="mark">Q</span>Quantica</span>
       </div>
-      <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div>
+      <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
+      <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
       <button class="cb-exit" onclick="closeLesson()" aria-label="Exit course">Exit course ✕</button>
     </header>
     <div class="coursescroll" id="courseScroll">
@@ -1986,6 +1988,28 @@
   // --- answer grading + hints for lesson problems ---
   var PROBREG={}, __uid=0;
   function normAns(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/^\+/,''); }
+  function confettiBurst(anchorEl){
+    try{
+      var r = anchorEl ? anchorEl.getBoundingClientRect() : {left:innerWidth/2,top:innerHeight/2,width:0};
+      var cx=r.left+r.width/2, cy=r.top+18;
+      var colors=['#f5b020','#3a7bd5','#13a06e','#e05050','#7a4ed8','#f08a3c','#28c2a0'];
+      var layer=document.createElement('div');
+      layer.className='confetti-layer';
+      layer.style.cssText='position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden';
+      document.body.appendChild(layer);
+      for(var i=0;i<38;i++){
+        var p=document.createElement('div');
+        var sz=6+Math.random()*7, round=Math.random()<0.5, col=colors[i%colors.length];
+        p.style.cssText='position:fixed;left:'+cx+'px;top:'+cy+'px;width:'+sz+'px;height:'+(round?sz:sz*0.5)+'px;background:'+col+';border-radius:'+(round?'50%':'2px')+';will-change:transform,opacity';
+        layer.appendChild(p);
+        var ang=Math.PI*2*(i/38)+(Math.random()-0.5)*0.6, dist=70+Math.random()*150;
+        var dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist-(50+Math.random()*70), rot=(Math.random()-0.5)*760;
+        p.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+dx+'px,'+(dy+170)+'px) rotate('+rot+'deg)',opacity:0}],{duration:950+Math.random()*550,easing:'cubic-bezier(.18,.7,.3,1)'});
+      }
+      setTimeout(function(){ if(layer.parentNode) layer.parentNode.removeChild(layer); },1600);
+    }catch(e){}
+  }
+  window.confettiBurst=confettiBurst;
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
     var inp=document.getElementById('ai_'+k), fb=document.getElementById('af_'+k);
@@ -1995,6 +2019,7 @@
     if(rec.accept.indexOf(v)!==-1){
       fb.className='ansfb right'; fb.innerHTML='✓ Correct. Nicely done. View the solution below for the slick way.'; inp.classList.add('okin'); inp.readOnly=true;
       if(pbox){ pbox.classList.remove('ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-correct'); }
+      confettiBurst(pbox);
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
       // struggled first, then got it: have Milo debrief before they can move on
       if(rec.attempts>0 && !rec._askedAboutFix && window.addTutorBotMsg){
@@ -2007,7 +2032,7 @@
     } else {
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
       if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
-      rec.attempts=(rec.attempts||0)+1; if(window.Rewards) Rewards._onWrong(rec);
+      rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
     }
     var sb=document.getElementById('sb_'+k); if(sb) sb.style.display='inline-block';
   }
@@ -2055,9 +2080,9 @@
       if(hints){
         inner+='<button class="hintbtn2" id="hb_'+k+'" onclick="nextHint('+k+')">💡 Show hint</button><div class="hintbox2" id="hx_'+k+'"></div>';
       }
-      inner+='<button class="solbtn" id="sb_'+k+'"'+(hasAns?' style="display:none"':'')+' onclick="revealSolution('+k+')">Show solution</button>'+
+      inner+=(b.sol?('<button class="solbtn" id="sb_'+k+'"'+(hasAns?' style="display:none"':'')+' onclick="revealSolution('+k+')">Show solution</button>'):'')+
         '</div>'+
-        '<div class="solution" id="'+sid+'"><div class="slabel">Solution</div>'+b.sol+'</div>';
+        (b.sol?('<div class="solution" id="'+sid+'"><div class="slabel">Solution</div>'+b.sol+'</div>'):'');
       return inner;
     }
     return '';
@@ -2116,8 +2141,8 @@
     '</aside>';
   }
   function wsOpen(key,L,meta){
-    var bp=buildPages(L.blocks);
-    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys;
+    var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
+    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false;
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
     var html='<div class="workspace" id="wsWorkspace">'+
@@ -2163,7 +2188,9 @@
     var cs=document.getElementById('courseScroll');
     if(cs){ cs.classList.add('ws-mode'); cs.scrollTop=0; }
     requestAnimationFrame(function(){ var c=document.getElementById('courseScroll'); if(c) c.scrollTop=0; });
+    if(window.DiffPanel) DiffPanel.onLessonOpen(key);
     WS.showPage(0);
+    if(window.Diagnostic && Diagnostic.needs(key) && window.DiffPanel && DiffPanel.available(key)) Diagnostic.startFor(key);
   }
   WS.showPage=function(i){
     if(i<0)i=0; if(i>WS.pages.length-1)i=WS.pages.length-1; WS.page=i;
@@ -2226,6 +2253,9 @@
   WS.fileKeyIdea=function(p){
     var pg=WS.pages[p];
     if(!pg||!pg.keyIdea){ if(WS.page<WS.pages.length-1) WS.showPage(WS.page+1); return; }
+    if(WS._advancing) return;            // already filing/advancing — don't double up
+    WS._advancing=true;
+    var _nb=document.getElementById('wsNext'); if(_nb) _nb.disabled=true;   // block clicks during the dwell
     if(!pg._filed){
       pg._filed=true;
       var nb=document.getElementById('wsNbBody');
@@ -2247,6 +2277,7 @@
     }
     // pause so the student registers it, then close the tab and move to the next page
     setTimeout(function(){
+      WS._advancing=false;
       if(ws) ws.classList.remove('nb-open');
       if(WS.page<WS.pages.length-1){ WS.showPage(WS.page+1); }
       else if(WS.L && WS.L.next && LESSONS[WS.L.next]){ WS.complete(); }
@@ -2306,6 +2337,7 @@
     else help.innerHTML='';
   };
   WS.next=function(){
+    if(WS._advancing) return;            // a key-idea file/advance is mid-flight — ignore extra clicks (prevents double-skip)
     if(!WS.gateOpen(WS.page)) return;
     if(WS._chatLocked()){ WS._promptChat(); return; }
     var pg=WS.pages[WS.page];
@@ -2369,7 +2401,7 @@
   };
   WS.drawer=function(which){ WS.togglePanel(which); };
   WS.closeDrawers=function(){ WS.closeAll(); };
-  WS.close=function(){ WS.active=false; var cs=document.getElementById('courseScroll'); if(cs) cs.classList.remove('ws-mode'); };
+  WS.close=function(){ WS.active=false; var cs=document.getElementById('courseScroll'); if(cs) cs.classList.remove('ws-mode'); if(window.DiffPanel) DiffPanel.onLessonClose(); };
   window.WS=WS;
 
   // --- lesson flow: reveal one block at a time, highlight it, advance on click ---
@@ -2963,6 +2995,17 @@ function addTutorBotMsg(text){
 }
 window.addTutorBotMsg=addTutorBotMsg;
 
+// Render the small subset of Markdown Milo may use sparingly: **bold** and *italic*.
+// HTML is escaped FIRST so model output can never inject markup; only asterisks that hug
+// a non-space character become <strong>/<em>, so plain "2 * 3" arithmetic is left untouched.
+function tutMd(s){
+  s = String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  s = s.replace(/\*\*(\S[^*\n]*?\S|\S)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*(\S[^*\n]*?\S|\S)\*/g, '<em>$1</em>');
+  return s;
+}
+window.tutMd=tutMd;
+
 function initTutor(lessonKey, lessonTitle) {
   tutorHistory = [];
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
@@ -3000,7 +3043,24 @@ async function sendTutorMsg() {
     var pageEl = document.getElementById('wsCenterBody');
     var pageText = '';
     if(pageEl){ var vis=[].slice.call(pageEl.children).filter(function(n){return n.style.display!=='none';}); if(vis.length) pageText=vis[0].innerText||vis[0].textContent||''; }
-    var fullContext = tutorContext + (pageText ? '\n\nCurrent page content the student is viewing:\n' + pageText.trim() : '');
+    // Private ground-truth so the tutor stays factually correct (the answer is already client-side; never shown to the student in chat).
+    var internalCtx = '';
+    try {
+      if (window.WS && WS.active && WS.pages && WS.pages[WS.page] && WS.pages[WS.page].probK != null && typeof PROBREG !== 'undefined') {
+        var _rec = PROBREG[WS.pages[WS.page].probK];
+        if (_rec) {
+          internalCtx = '\n\n[PRIVATE TUTOR NOTES — do not reveal or restate verbatim; use only to keep your guidance factually correct and to recognize when the student is right]';
+          if (_rec.accept && _rec.accept.length) internalCtx += '\nCorrect answer(s): ' + _rec.accept.join(' , ') + '.';
+          if (_rec.hints && _rec.hints.length) internalCtx += '\nHints you may draw on (offer at most one, and only if the student is stuck): ' + _rec.hints.join(' | ');
+          var _solEl = document.getElementById('sol_' + WS.pages[WS.page].probK);
+          if (_solEl) { var _solTxt = (_solEl.innerText || _solEl.textContent || '').replace(/^\s*Solution\s*/i, '').replace(/\s+/g, ' ').trim(); if (_solTxt) internalCtx += '\nIntended method / worked solution (never paste this to the student; use it to steer them one step at a time down the right path): ' + _solTxt.slice(0, 800); }
+          internalCtx += '\nStudent status: ' + (_rec.solved ? 'already solved it' : (_rec.solViewed ? 'has viewed the worked solution' : 'still working — ' + (_rec.attempts || 0) + ' wrong attempt(s) so far')) + '.';
+          if (_rec.wrongVals && _rec.wrongVals.length) internalCtx += '\nThe exact wrong answers the student has typed for THIS problem, in order: ' + _rec.wrongVals.join(' , ') + '. These are the student\'s OWN past attempts (not the secret answer) - you MAY tell the student what they previously tried if they ask.';
+          internalCtx += '\nBefore replying: double-check any arithmetic you state against these notes. If the student names the correct value or picks the correct option from a list, confirm it — never contradict a correct answer.';
+        }
+      }
+    } catch (e) {}
+    var fullContext = tutorContext + (pageText ? '\n\nProblem the student is viewing:\n' + pageText.trim() : '') + internalCtx;
     var res = await fetch(TUTOR_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -3012,7 +3072,7 @@ async function sendTutorMsg() {
     });
     var data = await res.json();
     var reply = data.feedback || (data.error ? 'Tutor error: ' + data.error : 'No response received.');
-    loadBub.textContent = reply;
+    loadBub.innerHTML = tutMd(reply);
     tutorHistory.push({ role: 'assistant', content: reply });
     if (window.renderMathInElement) try { renderMathInElement(loadBub, {delimiters:[{left:'$',right:'$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); } catch(e) {}
   } catch (e) {
@@ -3025,6 +3085,377 @@ async function sendTutorMsg() {
   input.focus();
   body.scrollTop = body.scrollHeight;
 }
+</script>
+<style>
+  .cb-rightgrp{display:flex;align-items:center;gap:12px}
+  .cb-diff{display:none;align-items:center;gap:6px;font:700 12px/1 'Inter';color:var(--mid);background:rgba(58,123,213,.10);border:1px solid var(--glass-line);border-radius:999px;padding:8px 13px;cursor:pointer;transition:all .15s}
+  .cb-diff:hover{background:rgba(58,123,213,.18)}
+  .dp-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(18,38,86,.28);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);align-items:center;justify-content:center}
+  .dp-overlay.on{display:flex}
+  .dp-card{position:relative;width:min(460px,92vw);max-height:88vh;overflow-y:auto;background:#fff;border:1px solid var(--glass-line);border-radius:20px;box-shadow:0 30px 80px -30px rgba(18,42,86,.6);padding:24px 26px 20px}
+  .dp-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:var(--mute);cursor:pointer;line-height:1}
+  .dp-x:hover{color:var(--navy)}
+  .dp-card h3{font-family:'Fraunces';font-weight:600;font-size:20px;color:var(--navy);margin:0 0 3px}
+  .dp-sub{font:500 12.5px/1.5 'Inter';color:var(--slate);margin:0 0 18px}
+  .dp-row{margin:0 0 18px}
+  .dp-rl{display:flex;align-items:center;justify-content:space-between;margin:0 0 11px}
+  .dp-rl .nm{font:700 13.5px/1 'Inter';color:var(--navy);text-transform:capitalize}
+  .dp-rl .tg{font:700 11px/1 'Inter';border-radius:999px;padding:4px 9px;background:rgba(58,123,213,.10)}
+  .dp-line{position:relative;height:24px;margin:0 8px;cursor:pointer}
+  .dp-track{position:absolute;top:50%;left:0;right:0;height:4px;transform:translateY(-50%);background:rgba(120,155,210,.3);border-radius:99px}
+  .dp-fill{position:absolute;top:50%;left:0;height:4px;transform:translateY(-50%);background:linear-gradient(90deg,var(--mid),var(--sky));border-radius:99px;transition:width .16s}
+  .dp-notch{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid rgba(120,155,210,.5);z-index:2}
+  .dp-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--mid),var(--sky));border:3px solid #fff;box-shadow:0 3px 9px -2px rgba(58,123,213,.7);z-index:4;transition:left .16s}
+  .dp-diag{position:absolute;top:-4px;transform:translateX(-50%);font-size:11px;color:#e8930a;z-index:3;pointer-events:none}
+  .dp-scale{display:flex;justify-content:space-between;margin-top:4px;font:600 9.5px/1 'Inter';color:var(--mute)}
+  .dp-actions{display:flex;gap:10px;align-items:center;margin-top:20px;padding-top:15px;border-top:1px solid var(--glass-line)}
+  .dp-reset{font:600 12.5px/1 'Inter';color:var(--slate);background:rgba(255,255,255,.6);border:1px solid var(--glass-line);border-radius:999px;padding:10px 16px;cursor:pointer}
+  .dp-reset:disabled{opacity:.4;cursor:not-allowed}
+  .dp-save{margin-left:auto;font:700 13px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:999px;padding:11px 24px;cursor:pointer;box-shadow:0 10px 22px -10px rgba(58,123,213,.7)}
+  .dp-note{font:500 11.5px/1.4 'Inter';color:var(--mute);margin-top:10px;text-align:center}
+  .dp-pop{position:absolute;inset:0;background:#fff;display:none;align-items:center;justify-content:center;border-radius:20px}
+  .dp-pop.on{display:flex}
+  .dp-popcard{width:86%;background:#fff;border:1px solid var(--glass-line);border-radius:16px;padding:22px;text-align:center;box-shadow:0 18px 50px -18px rgba(18,42,86,.45)}
+  .dp-popcard p{font:600 14px/1.5 'Inter';color:var(--navy);margin:0 0 18px}
+  .dp-popbtns{display:flex;gap:10px;justify-content:center}
+  .dp-cancel{font:600 13px/1 'Inter';color:var(--slate);background:rgba(0,0,0,.04);border:1px solid var(--glass-line);border-radius:999px;padding:10px 20px;cursor:pointer}
+  .dp-continue{font:700 13px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:999px;padding:10px 22px;cursor:pointer}
+  .dp-tier-1{color:#d9682a}.dp-tier-2{color:#e0902a}.dp-tier-3{color:var(--mid)}.dp-tier-4{color:#2c8f5a}.dp-tier-5{color:#1f7a4d}
+  .dp-retake{margin-top:12px;text-align:center}.dp-retake a{font:600 12px/1 'Inter';color:var(--mid);cursor:pointer;text-decoration:underline}
+  /* diagnostic */
+  .dg-overlay{display:none;position:fixed;inset:0;z-index:400;background:linear-gradient(160deg,#eaf1fb,#f5eef8);align-items:center;justify-content:center;padding:20px}
+  .dg-overlay.on{display:flex}
+  .dg-card{width:min(560px,94vw);max-height:92vh;overflow-y:auto;background:#fff;border:1px solid var(--glass-line);border-radius:24px;box-shadow:0 40px 100px -40px rgba(18,42,86,.6);padding:36px 40px}
+  .dg-eyebrow{font:800 11px/1 'Inter';letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
+  .dg-card h2{font-family:'Fraunces';font-weight:600;font-size:25px;color:var(--navy);margin:0 0 12px;line-height:1.18}
+  .dg-intro p,.dg-results p{font:500 14.5px/1.6 'Inter';color:var(--slate);margin:0 0 24px}
+  .dg-introbtns{display:flex;gap:10px;justify-content:flex-end}
+  .dg-skip{font:600 13.5px/1 'Inter';color:var(--slate);background:rgba(0,0,0,.04);border:1px solid var(--glass-line);border-radius:999px;padding:12px 20px;cursor:pointer}
+  .dg-take{font:700 14px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:999px;padding:13px 26px;cursor:pointer;box-shadow:0 12px 26px -12px rgba(58,123,213,.7)}
+  .dg-prog{height:6px;background:rgba(120,155,210,.25);border-radius:99px;overflow:hidden;margin-bottom:14px}
+  .dg-progfill{display:block;height:100%;background:linear-gradient(90deg,var(--mid),var(--sky));transition:width .25s}
+  .dg-count{font:700 11px/1 'Inter';color:var(--mute);margin-bottom:16px}
+  .dg-topic{font:800 11px/1 'Inter';letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
+  .dg-q{font-size:26px;color:var(--navy);margin:0 0 22px;font-weight:600}
+  .dg-answer{display:flex;gap:10px}
+  .dg-input{flex:1;font:600 16px/1 'Inter';padding:13px 15px;border:1.5px solid var(--glass-line);border-radius:12px;background:#fff;color:var(--ink)}
+  .dg-input:focus{outline:none;border-color:var(--sky)}
+  .dg-next{font:700 14px/1 'Inter';color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));border:none;border-radius:12px;padding:0 24px;cursor:pointer}
+  .dg-skipq{margin-top:14px}.dg-skipq a{font:600 12.5px/1 'Inter';color:var(--mute);cursor:pointer;text-decoration:underline}
+  .dg-rlist{display:flex;flex-direction:column;gap:9px;margin:6px 0 24px}
+  .dg-rrow{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--soft,#f4f7fc);border:1px solid var(--glass-line);border-radius:12px}
+  .dg-rt{font:700 14px/1 'Inter';color:var(--navy);text-transform:capitalize}
+  .dg-rv{font:700 12.5px/1 'Inter'}
+</style>
+<script>
+(function(){
+  // ===== Adaptive difficulty state (localStorage) =====
+  var LS='quantica_adapt_v1', st;
+  try{ st=JSON.parse(localStorage.getItem(LS))||{}; }catch(e){ st={}; }
+  st.tiers=st.tiers||{}; st.diag=st.diag||{}; st.diagnosed=st.diagnosed||{}; st.skipped=st.skipped||{};
+  function persist(){ try{ localStorage.setItem(LS,JSON.stringify(st)); }catch(e){} }
+  var NORMAL=3;
+  window.ADAPT={
+    NORMAL:NORMAL,
+    tier:function(t){ var v=st.tiers[t]; return v==null?NORMAL:v; },
+    diagTier:function(t){ var v=st.diag[t]; return v==null?null:v; },
+    setTiers:function(m){ for(var k in m){ var v=Math.round(m[k]); if(isFinite(v)) st.tiers[k]=Math.max(1,Math.min(5,v)); } persist(); },
+    resetToNormal:function(ts){ ts.forEach(function(t){ st.tiers[t]=NORMAL; }); persist(); },
+    recordDiagnostic:function(ch,m){ for(var k in m){ st.diag[k]=m[k]; st.tiers[k]=m[k]; } st.diagnosed[ch]=true; delete st.skipped[ch]; persist(); },
+    isDiagnosed:function(ch){ return !!st.diagnosed[ch]; },
+    isSkipped:function(ch){ return !!st.skipped[ch]; },
+    skip:function(ch){ st.skipped[ch]=true; persist(); },
+    clearDiagnostic:function(ch){ delete st.diagnosed[ch]; delete st.skipped[ch]; var c=window.ADAPT_CONTENT&&ADAPT_CONTENT.chapters&&ADAPT_CONTENT.chapters[ch]; if(c&&c.topics) c.topics.forEach(function(t){ delete st.diag[t]; st.tiers[t]=NORMAL; }); persist(); }
+  };
+
+  // ===== Authored adaptive content (Chapter 1 — lesson 1.2 implemented) =====
+  window.ADAPT_CONTENT={
+    chapters:{ '1':{ topics:['addition','subtraction','negation','multiplication','distributive','signs'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
+    diagnostic:{
+      '1':{
+        title:'Chapter 1 · The Rules of Arithmetic',
+        topics:['addition','subtraction','negation','multiplication','distributive','signs'],
+        questions:{
+          addition:[ {x:'$$5 + 8$$',ans:'13',diff:1}, {x:'$$38 + 47$$',ans:'85',diff:3}, {x:'$$39 + 41 + 58 + 62$$',ans:'200',diff:5} ],
+          subtraction:[ {x:'$$12 - 5$$',ans:'7',diff:1}, {x:'$$60 - 17 - 23$$',ans:'20',diff:3}, {x:'$$1 - 2 + 3 - 4 + 5 - 6$$',ans:'-3',diff:5} ],
+          negation:[ {x:'$$-(-9)$$',ans:'9',diff:1}, {x:'$$7 - (-3)$$',ans:'10',diff:3}, {x:'$$-(-(-(-4)))$$',ans:'4',diff:5} ],
+          multiplication:[ {x:'$$6 \\times 7$$',ans:'42',diff:1}, {x:'$$2 \\times 39 \\times 5$$',ans:'390',diff:3}, {x:'$$8 \\times 17 \\times 125$$',ans:'17000',diff:5} ],
+          distributive:[ {x:'$$3 \\times (10 + 4)$$',ans:'42',diff:1}, {x:'$$7 \\times 99$$',ans:'693',diff:3}, {x:'$$47 \\times 13 - 37 \\times 13$$',ans:'130',diff:5} ],
+          signs:[ {x:'$$(-3) \\times 4$$',ans:'-12',diff:1}, {x:'$$(-6) \\times (-5)$$',ans:'30',diff:3}, {x:'$$(-2) \\times (-3) \\times (-4)$$',ans:'-24',diff:5} ]
+        }
+      }
+    },
+    lessons:{
+      '1.2':{
+        topics:['addition','subtraction','negation'],
+        probs:[
+          {topic:'addition',diff:1},{topic:'addition',diff:2},{topic:'addition',diff:3},
+          {topic:'addition',diff:3},{topic:'addition',diff:4},{topic:'subtraction',diff:4},
+          {topic:'subtraction',diff:2},{topic:'negation',diff:1},{topic:'negation',diff:3},
+          {topic:'negation',diff:4}
+        ],
+        keyIdeas:{
+          1:{topic:'addition', s2:'When you add, you can use <b>any order</b> and <b>any grouping</b> &mdash; the total never changes. So rearrange to make it easy!', s1:'Adding? Swap the order and group the numbers however you like. <b>The total stays the same.</b> Pick whatever is easiest for you.'},
+          2:{topic:'subtraction', s2:'Subtracting a number is the same as <b>adding its opposite</b>: $a-b=a+(-b)$. Every subtraction can become an addition.', s1:'To subtract, you can <b>add the opposite</b> instead. Taking away $5$ is the same as adding $-5$!'},
+          3:{topic:'negation', s2:'The <b>opposite of the opposite</b> is the original: $-(-a)=a$. That is why subtracting a negative <b>adds</b>.', s1:'Two minus signs cancel! $-(-5)=5$. So subtracting a negative means you <b>add</b>.'},
+          4:{topic:'addition', s2:'Two rules for adding: <b>order does not matter</b> ($a+b=b+a$) and <b>grouping does not matter</b> ($(a+b)+c=a+(b+c)$).', s1:'When adding, you can <b>switch the order</b> and <b>change the grouping</b> freely. Same answer every time.'},
+          5:{topic:'subtraction', s2:'Every subtraction is really an addition: $a-b=a+(-b)$. So all the reorder-and-group tricks work with negatives too.', s1:'Subtraction is just adding a negative. Then you can reorder and group <b>any</b> problem to make it easy.'},
+          6:{topic:'addition', s2:'Adding a long list? <b>Pair the smallest with the largest</b>, then work inward &mdash; each pair adds to the same total!', s1:'Big list to add? Match the <b>first and last</b>, then the next pair. Each pair gives the same total, so just multiply.'}
+        },
+        extras:{
+          addition:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Add in any order: $$7+8+3.$$',ans:'18',hints:['Pair 7 and 3 to make 10 first!'],sol:'Reorder to $7+3+8$. Then $7+3=10$, and $10+8=18$.'},
+                   {t:'prob',label:'Warm-up',x:'Group to make it easy: $$20+17+30.$$',ans:'67',hints:['Add 20 and 30 first &mdash; that makes 50.'],sol:'Group the round numbers: $20+30=50$, then $50+17=67$.'},
+                   {t:'prob',label:'Warm-up',x:'Add the numbers 1 to 10: $$1+2+3+\\cdots+10.$$',ans:'55',hints:['Pair 1 with 10, 2 with 9, each pair makes 11!'],sol:'Pair from the ends: $1+10,\\,2+9,\\,3+8,\\,4+7,\\,5+6$ &mdash; five pairs of $11$, so $5\\times 11=55$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'In your head: $$998+997+5+4.$$',ans:'2004',hints:['Round 998 and 997 up to 1000, then take back what you added.'],sol:'Think $1000+1000=2000$. You added $2+3=5$ too much, but the $+5+4$ adds $9$, so $2000-5+9=2004$. (Or directly: $998+997=1995$, then $+9=2004$.)'},
+                   {t:'prob',label:'Challenge',x:'Add every whole number from 1 to 100: $$1+2+\\cdots+100.$$',ans:'5050',hints:['50 pairs, each adding to 101.'],sol:'Pair from the ends: $1+100,\\,2+99,\\dots$ &mdash; fifty pairs, each summing to $101$. So $50\\times 101 = 5050$.'} ]
+          },
+          subtraction:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Compute $$10-3-2.$$',ans:'5',hints:['Take away 3, then take away 2.'],sol:'Subtracting $3$ then $2$ removes $5$ in all: $10-5=5$.'},
+                   {t:'prob',label:'Warm-up',x:'Rearrange: $$20-8+20-12.$$',ans:'20',hints:['Look at the two 20s, and what 8 and 12 do together.'],sol:'Group: $20+20=40$ and $8+12=20$, so $40-20=20$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'Find $$1-2+3-4+\\cdots+99-100.$$',ans:'-50',hints:['Each pair (1-2),(3-4) makes -1. How many pairs are there?'],sol:'Group in pairs: $(1-2)+(3-4)+\\cdots+(99-100)$. Each pair is $-1$, and there are $50$ pairs, so the total is $-50$.'} ]
+          },
+          negation:{
+            easy:[ {t:'prob',label:'Warm-up',x:'What is $$-(-7)$$?',ans:'7',hints:['The opposite of the opposite is the original.'],sol:'The opposite of $-7$ is $7$, so $-(-7)=7$.'},
+                   {t:'prob',label:'Warm-up',x:'Compute $$3-(-4).$$',ans:'7',hints:['Subtracting a negative is the same as adding.'],sol:'Subtracting $-4$ is the same as adding $4$: $3+4=7$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'Simplify $$-(-(-(-9))).$$',ans:'9',hints:['Count the minus signs &mdash; pairs cancel.'],sol:'There are four minus signs. They cancel in pairs ($-(-x)=x$), leaving $+9$.'},
+                   {t:'prob',label:'Challenge',x:'Find $$15-(-10)+(-15)-10.$$',ans:'0',hints:['Hunt for what cancels: the 15s and the 10s.'],sol:'Rewrite as $15+10-15-10$. The $15$s cancel and the $10$s cancel, giving $0$.'} ]
+          }
+        }
+      },
+      '1.3':{
+        topics:['multiplication','distributive','signs'],
+        probs:[
+          {topic:'multiplication',diff:1},{topic:'multiplication',diff:3},{topic:'multiplication',diff:4},
+          {topic:'distributive',diff:2},{topic:'distributive',diff:3},{topic:'distributive',diff:4},
+          {topic:'distributive',diff:4},{topic:'signs',diff:1},{topic:'signs',diff:3},
+          {topic:'signs',diff:3}
+        ],
+        keyIdeas:{
+          1:{topic:'multiplication', s2:'Multiplying works just like adding: you can use <b>any order</b> and <b>any grouping</b>. So go <b>partner-hunting</b> for pairs that make round numbers: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'When you multiply, you can <b>reorder</b> and <b>regroup</b> the numbers however you like. Look for friendly pairs first: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$. Do those, and the rest is easy!'},
+          2:{topic:'distributive', s2:'The <b>distributive property</b> links $\\times$ and $+$: $a(b+c)=ab+ac$. Read forward it <b>splits</b> a hard multiply into easy pieces; read backward it <b>combines</b> two products that share a number.', s1:'One rule connects $\\times$ and $+$: $a(b+c)=ab+ac$. You can <b>break up</b> a tricky multiplication into easy parts, like $7\\times(10+4)=70+28$, or <b>pull out</b> a number that two products share.'},
+          3:{topic:'signs', s2:'Each negative factor <b>flips</b> the answer to the other side of zero. <b>One</b> negative makes the product negative; a <b>second</b> negative flips it back to positive, so $(-a)(-b)=ab$.', s1:'A minus sign flips the answer across zero. <b>One</b> minus &rarr; the answer is negative. <b>Two</b> minuses cancel &rarr; the answer is positive! So $(-4)\\times(-6)=24$.'},
+          4:{topic:'multiplication', s2:'You can <b>swap the order</b> ($ab=ba$) and <b>change the grouping</b> ($(ab)c=a(bc)$) of any product. Rearrange first, then partner-hunt: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'Order and grouping never change a product. Shuffle the numbers, then grab the easy pairs: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.'},
+          5:{topic:'distributive', s2:'$a(b+c)=ab+ac$ is the bridge between $\\times$ and $+$. <b>Split</b> an awkward factor across a sum or difference to multiply quickly, or <b>factor out</b> a number that two products share.', s1:'Keep the bridge $a(b+c)=ab+ac$ handy. <b>Split</b> a hard multiply into easy ones, like $4\\times998=4\\times1000-4\\times2$, or <b>pull out</b> a shared number.'},
+          6:{topic:'signs', s2:'<b>Count the negative factors.</b> An <b>odd</b> count makes the product negative; an <b>even</b> count makes it positive. So $(-2)\\times7=-14$, but $(-2)\\times(-7)=14$.', s1:'Just count the minus signs! An <b>odd</b> number of them &rarr; negative answer. An <b>even</b> number &rarr; positive answer. So $(-2)\\times(-7)=14$.'}
+        },
+        extras:{
+          multiplication:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Multiply in the easy order: $$5 \\times 9 \\times 2.$$',ans:'90',hints:['Pair the 5 and the 2 to make 10 first!'],sol:'Reorder to $(5\\times2)\\times9=10\\times9=90$. Find a pair that makes 10 before multiplying anything.'},
+                   {t:'prob',label:'Warm-up',x:'Partner up: $$4 \\times 7 \\times 25.$$',ans:'700',hints:['4 and 25 are partners &mdash; together they make 100.'],sol:'Group the partners: $(4\\times25)\\times7=100\\times7=700$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'In your head: $$2 \\times 17 \\times 5 \\times 4 \\times 25.$$',ans:'17000',hints:['Two partner pairs are hiding in the list.','$2\\times5=10$ and $4\\times25=100$.'],sol:'Pair them off: $(2\\times5)\\times(4\\times25)\\times17=10\\times100\\times17=1000\\times17=17000$.'},
+                   {t:'prob',label:'Challenge',x:'Compute $$8 \\times 625 \\times 125.$$',ans:'625000',hints:['8 and 125 are partners &mdash; they make 1000.'],sol:'$8\\times125=1000$, so $1000\\times625=625000$. Partner-hunting collapses the whole product.'} ]
+          },
+          distributive:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Split the multiply: $$6 \\times 12.$$',ans:'72',hints:['Think of 12 as $10+2$.'],sol:'$6\\times(10+2)=60+12=72$. Breaking a number into easy parts turns one hard multiply into two simple ones.'},
+                   {t:'prob',label:'Warm-up',x:'Use the bridge: $$5 \\times 21.$$',ans:'105',hints:['Write 21 as $20+1$.'],sol:'$5\\times(20+1)=100+5=105$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'No pencil: $$7 \\times 1003.$$',ans:'7021',hints:['$1003=1000+3$.'],sol:'$7\\times(1000+3)=7000+21=7021$. Split across the round number, then add the small piece.'},
+                   {t:'prob',label:'Challenge',x:'Collapse it: $$53 \\times 28 + 47 \\times 28.$$',ans:'2800',hints:['Both products share a 28 &mdash; how many 28s in all?'],sol:'Read it as fifty-three 28s plus forty-seven 28s, which is one hundred 28s: $(53+47)\\times28=100\\times28=2800$.'} ]
+          },
+          signs:{
+            easy:[ {t:'prob',label:'Warm-up',x:'Compute $$(-5) \\times 3.$$',ans:'-15',accept:['−15'],hints:['One negative factor &mdash; so the answer is negative.'],sol:'$5\\times3=15$, and one minus sign flips it across zero: $-15$.'},
+                   {t:'prob',label:'Warm-up',x:'Compute $$(-2) \\times (-6).$$',ans:'12',hints:['Two negatives cancel &mdash; the answer is positive.'],sol:'The two minus signs flip back to positive: $2\\times6=12$.'} ],
+            hard:[ {t:'prob',label:'Challenge',x:'Count the signs: $$(-1) \\times (-2) \\times (-5).$$',ans:'-10',accept:['−10'],hints:['Three negatives &mdash; is that odd or even?'],sol:'Three negative factors is an odd count, so the product is negative: $1\\times2\\times5=10$ gives $-10$.'},
+                   {t:'prob',label:'Challenge',x:'Compute $$(-4) \\times (-25) \\times (-1) \\times (-1).$$',ans:'100',hints:['Count the minus signs &mdash; even or odd?'],sol:'Four negative factors is an even count, so the product is positive: $4\\times25\\times1\\times1=100$.'} ]
+          }
+        }
+      }
+    }
+  };
+
+  // ===== Adaptive selector: transform a lesson's blocks for the student's tiers =====
+  function includeProb(diff,tier){ return diff>=(tier-2) && diff<=(tier+1); }
+  function _clone(b){ var c={}; for(var k in b) c[k]=b[k]; return c; }
+  // index-based annotations so adaptation can run on the whole lesson OR any tail sub-range
+  function _annot(lessonKey,fullBlocks){
+    var meta=ADAPT_CONTENT.lessons[lessonKey]; if(!meta) return null;
+    var pt={},ki={},po=0,ko=0;
+    fullBlocks.forEach(function(b,idx){
+      if(b.t==='prob'){ pt[idx]=meta.probs[po]||null; po++; }
+      else if(b.t==='imp'){ ko++; ki[idx]={num:ko,info:meta.keyIdeas&&meta.keyIdeas[ko]}; }
+    });
+    return {meta:meta,pt:pt,ki:ki};
+  }
+  // adapt original blocks in [from,to) using the student's current tiers; output blocks carry __src (original index)
+  function _adaptRange(lessonKey,fullBlocks,from,to){
+    var A=window.ADAPT, a=_annot(lessonKey,fullBlocks);
+    if(!a||!A) return fullBlocks.slice(from,to).map(_clone);
+    var out=[],lastAt={},keptByTopic={},fb={};
+    for(var idx=from; idx<to; idx++){
+      var b=fullBlocks[idx];
+      if(b.t==='prob'){
+        var tag=a.pt[idx], topic=tag?tag.topic:null, diff=tag?tag.diff:NORMAL, tier=topic?A.tier(topic):NORMAL;
+        if(!topic || includeProb(diff,tier)){ var nb=_clone(b); nb.__src=idx; out.push(nb); if(topic){ lastAt[topic]=out.length; keptByTopic[topic]=(keptByTopic[topic]||0)+1; } }
+        else if(topic && !keptByTopic[topic] && !fb[topic]){ fb[topic]={at:out.length,b:b,idx:idx}; }
+      } else if(b.t==='imp'){
+        var info=a.ki[idx]&&a.ki[idx].info;
+        if(info){ var tt=A.tier(info.topic);
+          if(tt<=2 && (info.s1||info.s2)){ out.push({t:'imp',label:b.label,x:(tt===1?(info.s1||info.s2):(info.s2||info.s1)),__src:idx}); }
+          else { var c=_clone(b); c.__src=idx; out.push(c); }
+        } else { var c1=_clone(b); c1.__src=idx; out.push(c1); }
+      } else { var c2=_clone(b); c2.__src=idx; out.push(c2); }
+    }
+    // equal-knowledge guard: keep >=1 problem of a topic that appears in this range but got fully filtered
+    a.meta.topics.forEach(function(topic){
+      if(!keptByTopic[topic] && fb[topic]){ var f=fb[topic]; var nb=_clone(f.b); nb.__src=f.idx; out.splice(f.at,0,nb); lastAt[topic]=f.at+1; keptByTopic[topic]=1; }
+    });
+    // authored extras next to each topic
+    var inserts=[];
+    a.meta.topics.forEach(function(topic){
+      var tier=A.tier(topic), ex=a.meta.extras&&a.meta.extras[topic], at=lastAt[topic];
+      if(!ex||at==null) return; var add=[];
+      if(tier<=2) add=(ex.easy||[]).slice(0,(tier===1?2:1));
+      else if(tier>=4) add=(ex.hard||[]).slice(0,(tier===5?2:1));
+      if(add.length){ var src=(out[at-1]&&out[at-1].__src!=null)?out[at-1].__src:(to-1); add=add.map(function(p){ var c=_clone(p); c.__src=src; return c; }); inserts.push({at:at,blocks:add}); }
+    });
+    inserts.sort(function(a,b){ return b.at-a.at; });
+    inserts.forEach(function(ins){ out.splice.apply(out,[ins.at,0].concat(ins.blocks)); });
+    return out;
+  }
+  window.adaptBlocks=function(lessonKey,blocks){
+    if(!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[lessonKey])||!window.ADAPT) return blocks;
+    return _adaptRange(lessonKey,blocks,0,blocks.length);
+  };
+  // ===== Mid-lesson reflow: keep the current page, rebuild everything after it at the new tiers =====
+  window.reflowLesson=function(){
+    var WS=window.WS; if(!WS||!WS.active) return;
+    if(!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[WS.key])) return;
+    var cur=WS.page;
+    // cut = highest original-block index already consumed by pages [0..cur]
+    var cut=-1, kiOffset=0;
+    for(var i=0;i<=cur;i++){ var pg=WS.pages[i]; if(pg.keyIdea) kiOffset++;
+      var bs=(pg.lead||[]).concat([pg.prob,pg.keyIdea]);
+      bs.forEach(function(b){ if(b&&b.__src!=null&&b.__src>cut) cut=b.__src; });
+    }
+    var orig=WS.L.blocks;
+    if(cut>=orig.length-1) return; // nothing after the current page
+    var tail=_adaptRange(WS.key,orig,cut+1,orig.length);
+    if(typeof buildPages!=='function') return;
+    var bp=buildPages(tail);
+    bp.pages.forEach(function(pg){ if(pg.keyIdea){ kiOffset++; pg.keyNum=kiOffset; } });
+    var body=document.getElementById('wsCenterBody'); if(!body) return;
+    var ctx='L:'+WS.key, isCp=/checkpoint/i.test(WS.L.title||'');
+    // drop old DOM + page entries after the current page
+    [].slice.call(body.children).forEach(function(n){ if(+n.getAttribute('data-p')>cur) n.parentNode.removeChild(n); });
+    WS.pages=WS.pages.slice(0,cur+1);
+    // render new tail pages
+    bp.pages.forEach(function(pg){
+      var idx=WS.pages.length;
+      var node=document.createElement('div'); node.setAttribute('data-p',idx); node.style.display='none';
+      if(pg.keyIdea){ node.className='ws-page page-key'; node.innerHTML='<div class="key-card"><div class="key-card-label">✦ Key Idea '+pg.keyNum+'</div><div class="key-card-body">'+pg.keyIdea.x+'</div></div>'; }
+      else { var lead=(pg.lead||[]).map(function(b){return renderBlock(b,ctx,0,isCp);}).join(''); node.className='ws-page'+(!pg.prob?' page-text-only':''); node.innerHTML=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,idx,isCp):''); }
+      body.appendChild(node);
+      var pb=node.querySelector('.probbox[data-k]'); pg.probK=pb?pb.getAttribute('data-k'):null;
+      WS.pages.push(pg);
+    });
+    if(typeof typeset==='function') typeset(body);
+    // rebuild the progress segments to match the new page count
+    var segc=document.querySelector('.ws-segs');
+    if(segc){ var s=''; for(var j=0;j<WS.pages.length;j++) s+='<span class="ws-seg" data-p="'+j+'"></span>'; segc.innerHTML=s; }
+    WS.showPage(cur); // stay exactly where the student was
+  };
+
+  // ===== Difficulty panel =====
+  var lessonKey=null, topics=[], working={}, mode='';
+  var TIER_NAMES=['','Gentle','Easier','Normal','Harder','Challenge'];
+  function ensureDom(){
+    if(document.getElementById('dpOverlay')) return;
+    var o=document.createElement('div'); o.className='dp-overlay'; o.id='dpOverlay';
+    o.innerHTML='<div class="dp-card">'+
+      '<button class="dp-x" onclick="DiffPanel.close()">&#10005;</button>'+
+      '<h3>Difficulty</h3>'+
+      '<p class="dp-sub">Set how hard this lesson is for you, one topic at a time. The orange &#10022; marks what your diagnostic suggests.</p>'+
+      '<div class="dp-topics" id="dpTopics"></div>'+
+      '<div class="dp-actions"><button class="dp-reset" id="dpReset" onclick="DiffPanel.reset()">&#8634; Reset to normal</button>'+
+      '<button class="dp-save" onclick="DiffPanel.save()">Save</button></div>'+
+      '<div class="dp-note">Your change applies from the next question to the end of this lesson — the one you are on now stays the same.</div>'+
+      '<div class="dp-retake"><a onclick="window.Diagnostic&&window.WS&&Diagnostic.retake(WS.key)">Re-take the diagnostic</a></div>'+
+      '<div class="dp-pop" id="dpPop"><div class="dp-popcard"><p>We recommend following the difficulty from the diagnostic you took. Continue with your change?</p>'+
+      '<div class="dp-popbtns"><button class="dp-cancel" onclick="DiffPanel.popCancel()">Cancel</button><button class="dp-continue" onclick="DiffPanel.popContinue()">Continue</button></div></div></div>'+
+      '</div>';
+    document.body.appendChild(o);
+  }
+  function render(){
+    var host=document.getElementById('dpTopics'); if(!host) return; host.innerHTML='';
+    topics.forEach(function(tp){
+      var t=working[tp], diag=window.ADAPT.diagTier(tp), pct=(t-1)/4*100;
+      var notches=''; for(var i=1;i<=5;i++){ notches+='<span class="dp-notch" data-t="'+i+'" style="left:'+((i-1)/4*100)+'%"></span>'; }
+      var diagMark=diag?'<span class="dp-diag" style="left:'+((diag-1)/4*100)+'%">&#10022;</span>':'';
+      var row=document.createElement('div'); row.className='dp-row';
+      row.innerHTML='<div class="dp-rl"><span class="nm">'+tp+'</span><span class="tg dp-tier-'+t+'">Tier '+t+' of 5 &middot; '+TIER_NAMES[t]+'</span></div>'+
+        '<div class="dp-line" data-topic="'+tp+'"><span class="dp-track"></span><span class="dp-fill" style="width:'+pct+'%"></span>'+diagMark+notches+'<span class="dp-dot" style="left:'+pct+'%"></span></div>'+
+        '<div class="dp-scale"><span>Gentle</span><span>Normal</span><span>Challenge</span></div>';
+      host.appendChild(row);
+      var line=row.querySelector('.dp-line');
+      line.addEventListener('click',function(e){ if(mode==='reset') return; var r=line.getBoundingClientRect(); var frac=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)); setTopic(tp,Math.round(frac*4)+1); });
+    });
+    var rb=document.getElementById('dpReset'); if(rb) rb.disabled=(mode==='edit');
+  }
+  function setTopic(tp,t){ t=Math.round(t); if(!isFinite(t)) return; mode='edit'; working[tp]=Math.max(1,Math.min(5,t)); render(); }
+  window.DiffPanel={
+    available:function(key){ return !!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[key]); },
+    onLessonOpen:function(key){ var b=document.getElementById('cbDiff'); if(b) b.style.display=this.available(key)?'inline-flex':'none'; },
+    onLessonClose:function(){ var b=document.getElementById('cbDiff'); if(b) b.style.display='none'; },
+    open:function(){ if(!(window.WS&&WS.active)) return; lessonKey=WS.key;
+      var meta=ADAPT_CONTENT.lessons[lessonKey]; if(!meta) return;
+      topics=meta.topics.slice(); working={}; topics.forEach(function(tp){ working[tp]=window.ADAPT.tier(tp); }); mode='';
+      ensureDom(); render(); var pop=document.getElementById('dpPop'); if(pop) pop.classList.remove('on');
+      document.getElementById('dpOverlay').classList.add('on'); },
+    close:function(){ var o=document.getElementById('dpOverlay'); if(o) o.classList.remove('on'); },
+    reset:function(){ if(mode==='edit') return; mode='reset'; topics.forEach(function(tp){ working[tp]=window.ADAPT.NORMAL; }); render(); },
+    save:function(){ var p=document.getElementById('dpPop'); if(p) p.classList.add('on'); },
+    popCancel:function(){ var p=document.getElementById('dpPop'); if(p) p.classList.remove('on'); },
+    popContinue:function(){ window.ADAPT.setTiers(working); var p=document.getElementById('dpPop'); if(p) p.classList.remove('on'); this.close(); if(window.reflowLesson) window.reflowLesson(); }
+  };
+
+  // ===== Diagnostic =====
+  function chapterOf(key){ return String(parseInt(key,10)); }
+  function dgContent(ch){ return window.ADAPT_CONTENT && ADAPT_CONTENT.diagnostic && ADAPT_CONTENT.diagnostic[ch]; }
+  function dgNorm(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/−/g,'-').replace(/^\+/,''); }
+  var DG={ ch:null, q:[], idx:0, correct:{}, key:null, pending:null };
+  function dgEnsureDom(){ if(document.getElementById('dgOverlay')) return; var o=document.createElement('div'); o.className='dg-overlay'; o.id='dgOverlay'; o.innerHTML='<div class="dg-card" id="dgCard"></div>'; document.body.appendChild(o); }
+  function dgIntro(){
+    var c=dgContent(DG.ch);
+    document.getElementById('dgCard').innerHTML='<div class="dg-intro"><div class="dg-eyebrow">Quick check</div><h2>'+c.title+'</h2>'+
+      '<p>Take this short check (about '+DG.q.length+' quick questions, just a few minutes) and we will tune every lesson in this chapter to your level &mdash; tougher where you are strong, gentler where you are still building. You can change any of it later.</p>'+
+      '<div class="dg-introbtns"><button class="dg-skip" onclick="Diagnostic.skip()">Skip for now</button><button class="dg-take" onclick="Diagnostic.begin()">Take the check</button></div></div>';
+    document.getElementById('dgOverlay').classList.add('on');
+  }
+  function dgQuestion(){
+    var q=DG.q[DG.idx];
+    document.getElementById('dgCard').innerHTML='<div class="dg-quiz"><div class="dg-prog"><span class="dg-progfill" style="width:'+(DG.idx/DG.q.length*100)+'%"></span></div>'+
+      '<div class="dg-count">Question '+(DG.idx+1)+' of '+DG.q.length+'</div><div class="dg-topic">'+q.topic+'</div>'+
+      '<div class="dg-q" id="dgQ">'+q.x+'</div>'+
+      '<div class="dg-answer"><input class="dg-input" id="dgInput" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')Diagnostic.submit()"><button class="dg-next" onclick="Diagnostic.submit()">'+(DG.idx===DG.q.length-1?'Finish':'Next')+'</button></div>'+
+      '<div class="dg-skipq"><a onclick="Diagnostic.submit(true)">Not sure &mdash; skip this one</a></div></div>';
+    if(typeof typeset==='function') typeset(document.getElementById('dgQ'));
+    var inp=document.getElementById('dgInput'); if(inp) inp.focus();
+  }
+  function dgScore(){ var c=dgContent(DG.ch), tiers={}; c.topics.forEach(function(tp){ var cor=DG.correct[tp]||0; tiers[tp]=[1,2,3,5][Math.min(3,cor)]; }); return tiers; }
+  function dgResults(){
+    var tiers=dgScore(), TN=['','Gentle','Easier','Normal','Harder','Challenge'];
+    var rows=Object.keys(tiers).map(function(tp){ var t=tiers[tp]; return '<div class="dg-rrow"><span class="dg-rt">'+tp+'</span><span class="dg-rv dp-tier-'+t+'">Tier '+t+' &middot; '+TN[t]+'</span></div>'; }).join('');
+    document.getElementById('dgCard').innerHTML='<div class="dg-results"><div class="dg-eyebrow">All set!</div><h2>Here is your starting point</h2>'+
+      '<p>We have tuned this chapter to match you. Fine-tune any topic any time with the &#9881; Difficulty button.</p><div class="dg-rlist">'+rows+'</div>'+
+      '<button class="dg-take" onclick="Diagnostic.finish()">Start the chapter</button></div>';
+    DG.pending=tiers;
+  }
+  window.Diagnostic={
+    needs:function(key){ var ch=chapterOf(key); if(!dgContent(ch)) return false; return !window.ADAPT.isDiagnosed(ch) && !window.ADAPT.isSkipped(ch); },
+    startFor:function(key){
+      var ch=chapterOf(key), c=dgContent(ch); if(!c) return;
+      DG.ch=ch; DG.key=key; DG.idx=0; DG.correct={}; DG.pending=null;
+      var maxLen=0; c.topics.forEach(function(tp){ maxLen=Math.max(maxLen,(c.questions[tp]||[]).length); });
+      var list=[]; for(var r=0;r<maxLen;r++){ c.topics.forEach(function(tp){ var qs=c.questions[tp]; if(qs&&qs[r]) list.push({topic:tp,x:qs[r].x,ans:qs[r].ans,diff:qs[r].diff,rung:r}); }); }
+      DG.q=list; dgEnsureDom(); dgIntro();
+    },
+    skip:function(){ window.ADAPT.skip(DG.ch); var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
+    begin:function(){ DG.idx=0; DG.correct={}; dgQuestion(); },
+    submit:function(skipQ){ var q=DG.q[DG.idx]; if(!skipQ){ var inp=document.getElementById('dgInput'); var v=inp?dgNorm(inp.value):''; if(v!=='' && v===dgNorm(q.ans)) DG.correct[q.topic]=(DG.correct[q.topic]||0)+1; } DG.idx++; if(DG.idx>=DG.q.length) dgResults(); else dgQuestion(); },
+    finish:function(){ var tiers=DG.pending||dgScore(); window.ADAPT.recordDiagnostic(DG.ch, tiers); var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
+    retake:function(key){ var ch=chapterOf(key); window.ADAPT.clearDiagnostic(ch); if(window.DiffPanel) DiffPanel.close(); this.startFor(key); }
+  };
+})();
 </script>
 </body>
 </html>
