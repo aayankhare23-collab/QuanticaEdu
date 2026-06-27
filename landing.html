@@ -53,6 +53,28 @@
   .auth-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;min-width:170px;z-index:200}
   .auth-dropdown a{display:block;padding:9px 13px;border-radius:8px;font-size:14px;font-weight:500;color:var(--slate);cursor:pointer;transition:background .12s}
   .auth-dropdown a:hover{background:var(--soft);color:var(--navy)}
+  /* AUTH MODAL */
+  .auth-ov{position:fixed;inset:0;background:rgba(15,25,45,.48);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:4000;display:grid;place-items:center;padding:16px}
+  .auth-card{background:#fff;border-radius:22px;padding:38px 34px 30px;width:100%;max-width:400px;box-shadow:0 28px 64px -14px rgba(15,25,45,.34);position:relative;animation:authIn .22s ease}
+  @keyframes authIn{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+  .auth-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;color:var(--slate);cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px}
+  .auth-x:hover{color:var(--navy);background:var(--softer)}
+  .auth-card h2{font-family:'Fraunces';font-size:22px;color:var(--navy);margin:0 0 4px}
+  .auth-card .auth-sub{font-size:13.5px;color:var(--slate);margin:0 0 22px;line-height:1.5}
+  .auth-tabs{display:flex;border-bottom:1.5px solid var(--line);margin-bottom:20px}
+  .auth-tab{flex:1;padding:9px;font-size:14px;font-weight:600;background:none;border:none;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;cursor:pointer;color:var(--mute);font-family:'Inter';transition:color .15s}
+  .auth-tab.on{color:var(--mid);border-bottom-color:var(--mid)}
+  .auth-err{font-size:12.5px;color:#d63a3a;min-height:18px;margin:-4px 0 8px}
+  .auth-lbl{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px;margin-top:12px}
+  .auth-inp{width:100%;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;font-family:'Inter';color:var(--navy);box-sizing:border-box;transition:border-color .15s;outline:none}
+  .auth-inp:focus{border-color:var(--mid)}
+  .auth-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter';margin-top:16px;transition:filter .15s}
+  .auth-btn:hover{filter:brightness(1.08)}
+  .auth-btn:disabled{opacity:.55;cursor:default;filter:none}
+  .auth-div{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--mute);font-size:12px}
+  .auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:var(--line)}
+  .auth-google{width:100%;padding:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter';display:flex;align-items:center;justify-content:center;gap:9px;color:var(--navy);transition:border-color .15s,background .15s}
+  .auth-google:hover{border-color:var(--mid);background:var(--softer)}
 
   /* HERO */
   .hero{position:relative;overflow:hidden;background:
@@ -1277,33 +1299,94 @@
 <script>
 (function(){
   // ── Paste your Firebase project config here ──────────────────────────────
-  // Create a project at console.firebase.google.com, then:
-  // Project Settings → Your apps → Web app → Config snippet
+  // 1. Go to console.firebase.google.com → Add project
+  // 2. Project Settings → Your apps → </> Web → Register app → copy config
+  // 3. Authentication → Sign-in method → enable Email/Password + Google
+  // 4. Firestore Database → Create database (production mode)
+  // 5. Firestore → Rules → paste the rules from the code comment below
   var cfg={
     apiKey:"REPLACE_API_KEY",
     authDomain:"REPLACE_PROJECT_ID.firebaseapp.com",
     projectId:"REPLACE_PROJECT_ID",
-    storageBucket:"REPLACE_PROJECT_ID.appspot.com",
+    storageBucket:"REPLACE_PROJECT_ID.firebasestorage.app",
     messagingSenderId:"REPLACE_SENDER_ID",
     appId:"REPLACE_APP_ID"
   };
+  /* Firestore security rules — paste into Firebase console:
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+      match /users/{uid} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+        match /state/{doc} {
+          allow read, write: if request.auth != null && request.auth.uid == uid;
+        }
+      }
+    }
+  }
+  */
   // ─────────────────────────────────────────────────────────────────────────
-  if(cfg.apiKey==='REPLACE_API_KEY') return; // not configured yet — site runs fine without it
+  if(cfg.apiKey==='REPLACE_API_KEY'){
+    // Not configured yet — show "Sign in" button that opens modal anyway
+    window.showAuthModal=function(tab){ var o=document.getElementById('authOv'); if(o) o.style.display='grid'; authTab(tab||'in'); };
+    window.hideAuthModal=function(){ var o=document.getElementById('authOv'); if(o) o.style.display='none'; };
+    window.authTab=function(t){ document.getElementById('tabIn').classList.toggle('on',t==='in'); document.getElementById('tabUp').classList.toggle('on',t==='up'); document.getElementById('authSubmit').textContent=t==='in'?'Sign in':'Create account'; };
+    window.fbEmailAuth=window.signInWithGoogle=function(){ document.getElementById('authErr').textContent='Firebase not configured yet.'; };
+    window.fbSignOut=function(){};
+    return;
+  }
 
   firebase.initializeApp(cfg);
   var auth=firebase.auth();
   var db=firebase.firestore();
-  var syncTimer=null;
+  var syncTimer=null, adaptTimer=null;
 
-  // Sign in / sign out (called by auth UI buttons)
+  // ── Auth modal helpers ────────────────────────────────────────────────────
+  window.showAuthModal=function(tab){
+    var o=document.getElementById('authOv'); if(o) o.style.display='grid';
+    authTab(tab||'in');
+    setTimeout(function(){ var e=document.getElementById('authEmail'); if(e) e.focus(); },80);
+  };
+  window.hideAuthModal=function(){
+    var o=document.getElementById('authOv'); if(o) o.style.display='none';
+    document.getElementById('authErr').textContent='';
+  };
+  window.authTab=function(t){
+    document.getElementById('tabIn').classList.toggle('on',t==='in');
+    document.getElementById('tabUp').classList.toggle('on',t==='up');
+    var btn=document.getElementById('authSubmit');
+    if(btn) btn.textContent=t==='in'?'Sign in':'Create account';
+    document.getElementById('authErr').textContent='';
+  };
+
+  // ── Email / password auth ─────────────────────────────────────────────────
+  window.fbEmailAuth=function(){
+    var email=(document.getElementById('authEmail').value||'').trim();
+    var pwd=document.getElementById('authPwd').value||'';
+    var err=document.getElementById('authErr');
+    var btn=document.getElementById('authSubmit');
+    if(!email||!pwd){ err.textContent='Please fill in both fields.'; return; }
+    btn.disabled=true; btn.textContent='Please wait…'; err.textContent='';
+    var isUp=document.getElementById('tabUp').classList.contains('on');
+    var p=isUp ? auth.createUserWithEmailAndPassword(email,pwd) : auth.signInWithEmailAndPassword(email,pwd);
+    p.catch(function(e){
+      btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
+      var msg={'auth/user-not-found':'No account with that email.','auth/wrong-password':'Incorrect password.','auth/email-already-in-use':'An account with that email already exists.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.'};
+      err.textContent=msg[e.code]||e.message;
+    });
+  };
+
+  // ── Google sign-in ────────────────────────────────────────────────────────
   window.signInWithGoogle=function(){
-    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){ console.warn('Sign-in error',e); });
-  };
-  window.fbSignOut=function(){
-    auth.signOut();
+    document.getElementById('authErr').textContent='';
+    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .catch(function(e){ document.getElementById('authErr').textContent=e.message; });
   };
 
-  // Debounced cloud write — fires 2 s after the last save() call
+  // ── Sign out ──────────────────────────────────────────────────────────────
+  window.fbSignOut=function(){ auth.signOut(); };
+
+  // ── Cloud sync hooks ──────────────────────────────────────────────────────
   window.__fbSync=function(P){
     if(!auth.currentUser) return;
     clearTimeout(syncTimer);
@@ -1313,7 +1396,17 @@
     },2000);
   };
 
-  // Auth-state-driven UI updates
+  window.__adaptSync=function(st){
+    if(!auth.currentUser) return;
+    clearTimeout(adaptTimer);
+    adaptTimer=setTimeout(function(){
+      db.collection('users').doc(auth.currentUser.uid)
+        .collection('state').doc('adapt').set(st)
+        .catch(function(e){ console.warn('Adapt sync failed',e); });
+    },2000);
+  };
+
+  // ── Header auth UI ────────────────────────────────────────────────────────
   function updateAuthUI(user){
     var nav=document.getElementById('authNav'); if(!nav) return;
     if(user){
@@ -1321,7 +1414,7 @@
       var photo=user.photoURL
         ? '<img src="'+user.photoURL+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">'
         : init;
-      var first=(user.displayName||user.email||'').split(' ')[0];
+      var first=(user.displayName||user.email||'').split(/[\s@]/)[0];
       nav.innerHTML='<div class="auth-wrap">'+
         '<button class="user-pill" id="userPill" onclick="var d=document.getElementById(\'authDrop\');d.style.display=d.style.display===\'none\'?\'block\':\'none\'">'+
           '<span class="user-avatar">'+photo+'</span><span>'+first+'</span>'+
@@ -1332,26 +1425,31 @@
         '</div>'+
       '</div>';
     } else {
-      nav.innerHTML='<button class="btn btn-primary" onclick="signInWithGoogle()">Sign in →</button>';
+      nav.innerHTML='<button class="btn btn-primary" onclick="showAuthModal(\'in\')">Sign in →</button>';
     }
   }
 
-  // Close dropdown on outside click
   document.addEventListener('click',function(e){
     var d=document.getElementById('authDrop');
     if(d && !e.target.closest('#userPill')) d.style.display='none';
   });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') hideAuthModal();
+  });
 
-  // On auth state change: update UI and load cloud data
+  // ── Auth state observer ───────────────────────────────────────────────────
   auth.onAuthStateChanged(function(user){
     updateAuthUI(user);
-    if(user){
-      db.collection('users').doc(user.uid).get()
-        .then(function(doc){
-          if(doc.exists && window.Rewards) Rewards.mergeFromCloud(doc.data());
-        })
-        .catch(function(e){ console.warn('Cloud load failed',e); });
-    }
+    if(!user) return;
+    hideAuthModal();
+    // Load rewards profile
+    db.collection('users').doc(user.uid).get().then(function(doc){
+      if(doc.exists && window.Rewards) Rewards.mergeFromCloud(doc.data());
+    }).catch(function(e){ console.warn('Cloud load failed',e); });
+    // Load adaptive state
+    db.collection('users').doc(user.uid).collection('state').doc('adapt').get().then(function(doc){
+      if(doc.exists && window.ADAPT && window.ADAPT._merge) ADAPT._merge(doc.data());
+    }).catch(function(e){ console.warn('Adapt load failed',e); });
   });
 })();
 </script>
@@ -3160,7 +3258,7 @@ async function sendTutorMsg() {
   var LS='quantica_adapt_v1', st;
   try{ st=JSON.parse(localStorage.getItem(LS))||{}; }catch(e){ st={}; }
   st.tiers=st.tiers||{}; st.diag=st.diag||{}; st.diagnosed=st.diagnosed||{}; st.skipped=st.skipped||{};
-  function persist(){ try{ localStorage.setItem(LS,JSON.stringify(st)); }catch(e){} }
+  function persist(){ try{ localStorage.setItem(LS,JSON.stringify(st)); }catch(e){} if(window.__adaptSync) window.__adaptSync(st); }
   var NORMAL=3;
   window.ADAPT={
     NORMAL:NORMAL,
@@ -3172,7 +3270,8 @@ async function sendTutorMsg() {
     isDiagnosed:function(ch){ return !!st.diagnosed[ch]; },
     isSkipped:function(ch){ return !!st.skipped[ch]; },
     skip:function(ch){ st.skipped[ch]=true; persist(); },
-    clearDiagnostic:function(ch){ delete st.diagnosed[ch]; delete st.skipped[ch]; var c=window.ADAPT_CONTENT&&ADAPT_CONTENT.chapters&&ADAPT_CONTENT.chapters[ch]; if(c&&c.topics) c.topics.forEach(function(t){ delete st.diag[t]; st.tiers[t]=NORMAL; }); persist(); }
+    clearDiagnostic:function(ch){ delete st.diagnosed[ch]; delete st.skipped[ch]; var c=window.ADAPT_CONTENT&&ADAPT_CONTENT.chapters&&ADAPT_CONTENT.chapters[ch]; if(c&&c.topics) c.topics.forEach(function(t){ delete st.diag[t]; st.tiers[t]=NORMAL; }); persist(); },
+    _merge:function(data){ if(!data) return; if(data.tiers) Object.assign(st.tiers,data.tiers); if(data.diag) Object.assign(st.diag,data.diag); if(data.diagnosed) Object.assign(st.diagnosed,data.diagnosed); if(data.skipped) Object.assign(st.skipped,data.skipped); }
   };
 
   // ===== Authored adaptive content (Chapter 1 — lesson 1.2 implemented) =====
@@ -3464,5 +3563,29 @@ async function sendTutorMsg() {
   };
 })();
 </script>
+
+<!-- AUTH MODAL -->
+<div id="authOv" class="auth-ov" style="display:none" role="dialog" aria-modal="true" aria-label="Sign in to Quantica" onclick="if(event.target===this)hideAuthModal()">
+  <div class="auth-card">
+    <button class="auth-x" onclick="hideAuthModal()" aria-label="Close">&#215;</button>
+    <h2>Welcome to Quantica</h2>
+    <p class="auth-sub">Sign in to save your progress and sync across devices.</p>
+    <div class="auth-tabs">
+      <button class="auth-tab on" id="tabIn" onclick="authTab('in')">Sign in</button>
+      <button class="auth-tab" id="tabUp" onclick="authTab('up')">Create account</button>
+    </div>
+    <div id="authErr" class="auth-err"></div>
+    <label class="auth-lbl" for="authEmail">Email</label>
+    <input class="auth-inp" type="email" id="authEmail" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')fbEmailAuth()">
+    <label class="auth-lbl" for="authPwd">Password</label>
+    <input class="auth-inp" type="password" id="authPwd" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')fbEmailAuth()">
+    <button class="auth-btn" id="authSubmit" onclick="fbEmailAuth()">Sign in</button>
+    <div class="auth-div">or</div>
+    <button class="auth-google" onclick="signInWithGoogle()">
+      <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.32-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.68 28.18A13.9 13.9 0 0 1 10.8 24c0-1.45.25-2.86.68-4.18v-5.7H4.34A23.99 23.99 0 0 0 0 24c0 3.88.93 7.55 2.56 10.82z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.34 5.7c1.74-5.2 6.59-9.07 12.32-9.07z"/></svg>
+      Continue with Google
+    </button>
+  </div>
+</div>
 </body>
 </html>
