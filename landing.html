@@ -1259,7 +1259,7 @@
         <p>Hints exist because everyone needs one sometimes; taking one is not losing. Just give the problem an honest fight first: a hint after ten determined minutes teaches you plenty, while a solution read <em>instead of</em> struggling teaches you almost nothing. <b>The struggle isn’t the price of the lesson. It is the lesson.</b></p>
         <p class="tn-sign">From your friends at Quantica</p>
       </div>
-      <p style="margin-bottom:20px">Twelve chapters carry you from the rules of arithmetic all the way to real problem-solving. Tap any lesson to read it, or open a chapter's <b>Practice</b> or <b>Challenge</b> set to try problems yourself.</p>
+      <p id="tocIntro" style="margin-bottom:20px">Twelve chapters carry you from the rules of arithmetic all the way to real problem-solving. Tap any lesson to read it, or open a chapter's <b>Practice</b> or <b>Challenge</b> set to try problems yourself.</p>
       <div class="toc" id="tocList"></div>
     </div>
 
@@ -2189,11 +2189,12 @@
     if(window.renderDashHero) renderDashHero();
     if(window.Rewards) Rewards.renderHUD();
   }
-  function showToc(){
+  function showToc(only){
     showView('tocView');
     document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
-    document.getElementById('modalTitle').textContent='Course Contents';
-    if(window.renderToc) renderToc();
+    var ch=only!=null ? TOC.filter(function(c){ return c.n===only; })[0] : null;
+    document.getElementById('modalTitle').textContent= ch ? ('Chapter '+ch.n+' · '+ch.t) : 'Course Contents';
+    if(window.renderToc) renderToc(only);
   }
   function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } }
   function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; }
@@ -2249,16 +2250,26 @@
       d.innerHTML='<span class="stat">'+CH_ICON[st]+'</span>'+
         '<div><div class="ttl">Chapter '+ch.n+' · '+ch.t+'</div><div class="sub">'+sub+'</div></div>'+
         '<span class="mini"><i style="width:'+pctc+'%"></i></span>';
-      if(!isSoon && !isPaywalled) d.addEventListener('click',showToc);
+      if(!isSoon && !isPaywalled) d.addEventListener('click',function(){ showToc(ch.n); });
       if(isPaywalled) d.addEventListener('click',startCheckout);
       host.appendChild(d);
     });
   }
 
   // --- table of contents (respects the locked path) ---
-  function renderToc(){
+  function renderToc(only){
     var host=document.getElementById('tocList'); if(!host) return; host.innerHTML='';
+    var single = only!=null;
+    var note=document.querySelector('#tocView .tocnote'); if(note) note.style.display=single?'none':'';
+    var intro=document.getElementById('tocIntro'); if(intro) intro.style.display=single?'none':'';
+    if(single){
+      var ftc=document.createElement('a'); ftc.className='backlink'; ftc.style.cssText='display:inline-block;margin-bottom:18px';
+      ftc.textContent='← View full TOC';
+      ftc.addEventListener('click',function(){ showToc(); });
+      host.appendChild(ftc);
+    }
     TOC.forEach(function(ch){
+      if(single && ch.n!==only) return;
       var g=document.createElement('div'); g.className='grp';
       g.innerHTML='<div class="ch"><span class="cnum">'+ch.n+'</span>'+ch.t+'</div>';
       ch.s.forEach(function(sec){
