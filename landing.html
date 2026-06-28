@@ -63,6 +63,10 @@
   .auth-card{background:#fff;border-radius:22px;padding:38px 34px 30px;width:100%;max-width:400px;box-shadow:0 28px 64px -14px rgba(15,25,45,.34);position:relative;animation:authIn .22s ease}
   @keyframes authIn{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
   .auth-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;color:var(--slate);cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px}
+  .cat-ov{position:fixed;inset:0;background:rgba(15,25,45,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:4000;overflow-y:auto;padding:40px 16px}
+  .cat-modal{background:#fff;border-radius:24px;padding:38px 34px 30px;width:100%;max-width:880px;box-shadow:0 28px 64px -14px rgba(15,25,45,.34);position:relative;animation:authIn .22s ease;margin:0 auto}
+  .cat-x{position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;color:var(--slate);cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px;z-index:1}
+  .cat-x:hover{background:var(--soft)}
   .auth-x:hover{color:var(--navy);background:var(--softer)}
   .auth-card h2{font-family:'Fraunces';font-size:22px;color:var(--navy);margin:0 0 4px}
   .auth-card .auth-sub{font-size:13.5px;color:var(--slate);margin:0 0 22px;line-height:1.5}
@@ -955,7 +959,7 @@
       <a class="logo" href="#top"><span class="mark"></span>Quantica</a>
       <div class="navlinks">
         <a href="#how">How it works</a>
-        <a href="#catalog">Courses</a>
+        <a href="#" onclick="openCatalog();return false;">Courses</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -1148,9 +1152,10 @@
   </div>
 </section>
 
-<!-- CATALOG -->
-<section class="catalog" id="catalog">
-  <div class="wrap">
+<!-- CATALOG (modal tab) -->
+<div id="catalogOv" class="cat-ov" style="display:none" role="dialog" aria-modal="true" aria-label="Course catalog" onclick="if(event.target===this)closeCatalog()">
+  <div class="cat-modal">
+    <button class="cat-x" onclick="closeCatalog()" aria-label="Close">×</button>
     <div class="sec-head">
       <span class="eyebrow">The catalog</span>
       <h2>Ten courses. One continuous journey.</h2>
@@ -1159,7 +1164,7 @@
 
     <div style="margin-bottom:14px"><span class="tier-tag tier-intro">Introduction tier</span></div>
     <div class="courses" style="margin-bottom:34px">
-      <div class="course clickable" onclick="openLesson()"><span class="num">01</span><div><h4>Prealgebra<span class="peek">Read the opening →</span></h4><p>Integers, fractions, exponents, primes, basic equations: the foundation.</p></div></div>
+      <div class="course clickable" onclick="closeCatalog();openLesson()"><span class="num">01</span><div><h4>Prealgebra<span class="peek">Read the opening →</span></h4><p>Integers, fractions, exponents, primes, basic equations: the foundation.</p></div></div>
       <div class="course soon"><span class="num">02</span><div><h4>Introduction to Algebra<span class="soon-badge">Coming soon</span></h4><p>Linear &amp; quadratic equations, inequalities, functions, graphing, systems.</p></div></div>
       <div class="course soon"><span class="num">03</span><div><h4>Introduction to Geometry<span class="soon-badge">Coming soon</span></h4><p>Congruence, similarity, area, the circle, trig basics, proofs, 3-D.</p></div></div>
       <div class="course soon"><span class="num">04</span><div><h4>Combinatorics<span class="soon-badge">Coming soon</span></h4><p>Counting techniques, combinations, probability, expected value.</p></div></div>
@@ -1177,7 +1182,12 @@
 
     <p class="catnote"><b>More on the way.</b> A Quantitative track (probability, statistics, and the math behind markets) joins the path as Quantica grows.</p>
   </div>
-</section>
+</div>
+<script>
+  window.openCatalog=function(){ var o=document.getElementById('catalogOv'); if(o){ o.style.display='block'; document.body.style.overflow='hidden'; } };
+  window.closeCatalog=function(){ var o=document.getElementById('catalogOv'); if(o){ o.style.display='none'; document.body.style.overflow=''; } };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ var o=document.getElementById('catalogOv'); if(o&&o.style.display!=='none') closeCatalog(); } });
+</script>
 
 <!-- PRICING -->
 <section id="pricing">
