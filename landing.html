@@ -67,6 +67,19 @@
   .cat-modal{background:#fff;border-radius:24px;padding:38px 34px 30px;width:100%;max-width:880px;box-shadow:0 28px 64px -14px rgba(15,25,45,.34);position:relative;animation:authIn .22s ease;margin:0 auto}
   .cat-x{position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;color:var(--slate);cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px;z-index:1}
   .cat-x:hover{background:var(--soft)}
+  /* new-user guided tour */
+  .tour-spot{position:fixed;z-index:6000;border:3px solid #f5b020;border-radius:12px;box-shadow:0 0 0 9999px rgba(12,22,42,.62),0 0 22px 5px rgba(245,176,32,.55);pointer-events:none;transition:left .35s cubic-bezier(.4,0,.2,1),top .35s cubic-bezier(.4,0,.2,1),width .35s cubic-bezier(.4,0,.2,1),height .35s cubic-bezier(.4,0,.2,1)}
+  .tour-pop{position:fixed;z-index:6001;background:#fff;border-radius:16px;box-shadow:0 22px 50px -12px rgba(15,25,45,.45);padding:18px 20px 15px;width:300px;max-width:calc(100vw - 32px);animation:authIn .25s ease}
+  .tour-pop .tp-step{font:700 11px/1 'Inter';letter-spacing:.1em;text-transform:uppercase;color:#cf8a12;margin-bottom:8px}
+  .tour-pop h4{font-family:'Fraunces';font-size:17px;color:var(--navy);margin:0 0 6px}
+  .tour-pop p{font-size:14px;line-height:1.5;color:var(--slate);margin:0 0 14px}
+  .tour-pop .tp-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .tour-pop .tp-dots{display:flex;gap:5px}
+  .tour-pop .tp-dot{width:6px;height:6px;border-radius:50%;background:var(--line)}
+  .tour-pop .tp-dot.on{background:#f5b020}
+  .tour-pop .tp-skip{background:none;border:none;color:var(--mute);font-size:13px;cursor:pointer;padding:4px 2px}
+  .tour-pop .tp-next{background:linear-gradient(135deg,#f5b020,#dd9416);color:#fff;border:none;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;cursor:pointer;box-shadow:0 6px 14px -6px rgba(221,148,22,.7)}
+  .tour-pop .tp-next:hover{filter:brightness(1.06)}
   .auth-x:hover{color:var(--navy);background:var(--softer)}
   .auth-card h2{font-family:'Fraunces';font-size:22px;color:var(--navy);margin:0 0 4px}
   .auth-card .auth-sub{font-size:13.5px;color:var(--slate);margin:0 0 22px;line-height:1.5}
@@ -959,11 +972,11 @@
       <a class="logo" href="#top"><span class="mark"></span>Quantica</a>
       <div class="navlinks">
         <a href="#how">How it works</a>
-        <a href="#" onclick="openCatalog();return false;">Courses</a>
+        <a id="navCourses" href="#" onclick="openCatalog();return false;">Courses</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </div>
-      <div id="authNav"><a class="btn btn-primary" href="#signup">Start free →</a></div>
+      <div id="authNav"><a class="btn btn-primary" href="#" onclick="openLesson();return false;">Start free →</a></div>
     </nav>
   </div>
 </header>
@@ -976,7 +989,7 @@
       <h1>Master mathematics<br><span class="grad">by doing</span>, not memorizing.</h1>
       <p class="lead">Quantica is one subscription for rigorous, rewarding mathematics that promotes problem solving, rather than rote memorization. Rather than slogging through textbooks, students learn by <em>solving</em>, with instant feedback, hints, and an on-demand tutor named Milo.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#signup">Start with a free unit →</a>
+        <a class="btn btn-primary" href="#" onclick="openLesson();return false;">Start with a free unit →</a>
         <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
       <p class="micro">No card required · Full Prealgebra unit free · Cancel anytime</p>
@@ -1219,7 +1232,7 @@
           <li><span class="ck">✓</span>~50% off the monthly rate</li>
           <li><span class="ck">✓</span>Priority on new courses</li>
         </ul>
-        <a class="btn btn-primary" href="#signup">Start free, then $149/yr</a>
+        <a class="btn btn-primary" href="#" onclick="openLesson();return false;">Start free, then $149/yr</a>
       </div>
       <div class="price soon-plan">
         <div class="name">Family</div>
@@ -1230,7 +1243,7 @@
           <li><span class="ck">✓</span>Built for homeschool &amp; siblings</li>
           <li><span class="ck">✓</span>Parent progress view</li>
         </ul>
-        <a class="btn btn-ghost" href="#signup">Choose family</a>
+        <a class="btn btn-ghost" href="#" onclick="openLesson();return false;">Choose family</a>
       </div>
     </div>
     <p class="catnote" style="margin-top:34px">Start with a <b>free Prealgebra unit</b>, no card required. Subscribe when you're ready for the rest of the path.</p>
@@ -1245,7 +1258,7 @@
         <h2>From "I'm bad at math" to "I love hard problems."</h2>
         <p>Quantica isn't about memorizing procedures. It's about building the problem-solving instincts that make every future course, and every hard problem, feel winnable.</p>
       </div>
-      <a class="btn btn-light" href="#signup" style="white-space:nowrap">Begin the path →</a>
+      <a class="btn btn-light" href="#" onclick="openLesson();return false;" style="white-space:nowrap">Begin the path →</a>
     </div>
   </div>
 </section>
@@ -3845,5 +3858,77 @@ async function sendTutorMsg() {
     </button>
   </div>
 </div>
+
+<script>
+/* ---- New-user guided tour: golden coachmarks around the landing ---- */
+(function(){
+  var STEPS=[
+    {sel:'.hero h1', title:'Welcome to Quantica', text:'Here you learn math by actually solving problems, not memorizing steps. Here is a 30 second tour of how it works.', place:'bottom'},
+    {sel:'.cta-row .btn-primary', title:'Start free, right now', text:'Chapter 1 of Prealgebra is completely free. Click this button anytime to jump in and start solving.', place:'bottom'},
+    {sel:'#navCourses', title:'Browse the courses', text:'Open the full catalog from here. Prealgebra is live today, and more courses arrive soon.', place:'bottom'},
+    {sel:'#milo .milo-chat', title:'Meet Milo, your tutor', text:'Stuck on a problem? Milo guides you with hints and questions until it clicks, never just the answer.', place:'top'},
+    {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course. Create an account and our team grants you free access shortly.', place:'top'}
+  ];
+  var KEY='quantica_tourSeen_v1';
+  var i=0, spot=null, pop=null, active=false;
+
+  function ensureEls(){
+    if(!spot){ spot=document.createElement('div'); spot.className='tour-spot'; document.body.appendChild(spot); }
+    if(!pop){ pop=document.createElement('div'); pop.className='tour-pop'; document.body.appendChild(pop); }
+  }
+  function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+  function place(){
+    var step=STEPS[i]; var el=document.querySelector(step.sel);
+    if(!el){ next(); return; }
+    var r=el.getBoundingClientRect(), pad=8, vw=innerWidth, vh=innerHeight;
+    spot.style.left=(r.left-pad)+'px'; spot.style.top=(r.top-pad)+'px';
+    spot.style.width=(r.width+pad*2)+'px'; spot.style.height=(r.height+pad*2)+'px';
+    var pw=pop.offsetWidth||300, ph=pop.offsetHeight||150;
+    var below=r.bottom+14, above=r.top-ph-14;
+    var top = step.place==='top' ? (above>=12?above:below) : (below+ph<=vh-12?below:above);
+    top=clamp(top,12,vh-ph-12);
+    var left=clamp(r.left+r.width/2-pw/2,16,vw-pw-16);
+    pop.style.top=top+'px'; pop.style.left=left+'px';
+  }
+  function render(){
+    var step=STEPS[i];
+    var dots=STEPS.map(function(_,k){return '<span class="tp-dot'+(k===i?' on':'')+'"></span>';}).join('');
+    pop.innerHTML='<div class="tp-step">Step '+(i+1)+' of '+STEPS.length+'</div>'+
+      '<h4>'+step.title+'</h4><p>'+step.text+'</p>'+
+      '<div class="tp-row"><button class="tp-skip" onclick="window.__tourSkip()">Skip</button>'+
+      '<div class="tp-dots">'+dots+'</div>'+
+      '<button class="tp-next" onclick="window.__tourNext()">'+(i===STEPS.length-1?'Done':'Next')+'</button></div>';
+  }
+  function show(){
+    var step=STEPS[i]; var el=document.querySelector(step.sel);
+    if(!el){ next(); return; }
+    el.scrollIntoView({block:'center',behavior:'smooth'});
+    setTimeout(function(){ render(); place(); },360);
+  }
+  function next(){ if(i<STEPS.length-1){ i++; show(); } else { end(); } }
+  function end(){
+    active=false;
+    try{ localStorage.setItem(KEY,'1'); }catch(e){}
+    if(spot) spot.remove(); if(pop) pop.remove(); spot=null; pop=null;
+    window.removeEventListener('scroll',place,true); window.removeEventListener('resize',place);
+  }
+  window.__tourNext=next;
+  window.__tourSkip=end;
+
+  window.startTour=function(){
+    if(active) return; active=true; i=0; ensureEls();
+    window.addEventListener('scroll',place,true); window.addEventListener('resize',place);
+    document.addEventListener('keydown',function esc(e){ if(e.key==='Escape'&&active){ end(); document.removeEventListener('keydown',esc); } });
+    show();
+  };
+
+  // Auto-start for first-time visitors once the page has settled.
+  window.addEventListener('load',function(){
+    var seen; try{ seen=localStorage.getItem(KEY); }catch(e){ seen='1'; }
+    var inCourse=document.getElementById('lessonOverlay')&&document.getElementById('lessonOverlay').classList.contains('open');
+    if(!seen && !inCourse) setTimeout(window.startTour, 900);
+  });
+})();
+</script>
 </body>
 </html>
