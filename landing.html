@@ -1096,6 +1096,58 @@
   </div>
 </section>
 
+<!-- MILO -->
+<style>
+  .milo-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;max-width:1040px;margin:0 auto}
+  @media(max-width:840px){.milo-grid{grid-template-columns:1fr;gap:34px}}
+  .milo-copy .eyebrow{color:var(--mid)}
+  .milo-feats{list-style:none;margin:24px 0 0;display:grid;gap:17px;padding:0}
+  .milo-feats li{display:flex;gap:13px;align-items:flex-start}
+  .milo-feats .mf-ic{flex:none;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:15px;box-shadow:var(--shadow-sm)}
+  .milo-feats h4{font-family:'Fraunces';font-size:16px;color:var(--navy);margin:0 0 2px}
+  .milo-feats p{font-size:14px;color:var(--slate);line-height:1.55;margin:0}
+  .milo-chat{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+  .milo-chat-head{display:flex;align-items:center;gap:11px;padding:15px 18px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,#f0f7fd,#f8fbff)}
+  .milo-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:18px;box-shadow:var(--shadow-sm)}
+  .milo-chat-head .nm{font-family:'Fraunces';font-weight:600;font-size:16px;color:var(--navy)}
+  .milo-chat-head .st{font-size:12px;color:var(--green);display:flex;align-items:center;gap:5px}
+  .milo-chat-head .st::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green)}
+  .milo-body{padding:18px;display:flex;flex-direction:column;gap:11px;background:#fbfdff}
+  .mb{max-width:84%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5}
+  .mb.bot{align-self:flex-start;background:#eef4fb;color:var(--slate);border-bottom-left-radius:5px}
+  .mb.me{align-self:flex-end;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;border-bottom-right-radius:5px}
+  .milo-compose{display:flex;gap:8px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);background:#fff}
+  .milo-compose .fake-input{flex:1;font-size:13.5px;color:var(--mute);background:var(--softer);border:1px solid var(--line);border-radius:999px;padding:9px 14px}
+  .milo-compose .snd{flex:none;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;display:grid;place-items:center;font-size:14px}
+</style>
+<section id="milo">
+  <div class="wrap">
+    <div class="milo-grid">
+      <div class="milo-copy">
+        <span class="eyebrow">Meet Milo</span>
+        <h2 style="margin-top:14px">A tutor on call for every problem.</h2>
+        <p class="lead" style="margin-top:12px">Milo is your personal Quantica tutor, built into every lesson. When a problem stops you cold, Milo is right there, not to hand you the answer, but to ask the right question and help you find it yourself.</p>
+        <ul class="milo-feats">
+          <li><span class="mf-ic">?</span><div><h4>Ask anything, anytime</h4><p>Stuck on a step, or unsure why something works? Ask Milo in plain words and get a clear, patient explanation tied to the exact problem in front of you.</p></div></li>
+          <li><span class="mf-ic">✦</span><div><h4>Guides, never spoils</h4><p>Milo nudges you toward the idea instead of dumping the solution, so the insight stays yours and actually sticks.</p></div></li>
+          <li><span class="mf-ic">↻</span><div><h4>Reflects with you</h4><p>After you crack a hard one, Milo asks what tripped you up and how you got past it, turning a single problem into a lasting lesson.</p></div></li>
+        </ul>
+      </div>
+      <div class="milo-chat" aria-hidden="true">
+        <div class="milo-chat-head"><span class="milo-av">M</span><div><div class="nm">Milo</div><div class="st">Your Quantica tutor</div></div></div>
+        <div class="milo-body">
+          <div class="mb bot">Hi, this is Milo, your personal Quantica tutor! What are you working on?</div>
+          <div class="mb me">I don't get why √72 becomes 6√2.</div>
+          <div class="mb bot">Good question. What is the largest perfect square that divides 72? Start there.</div>
+          <div class="mb me">36?</div>
+          <div class="mb bot">Exactly. So 72 = 36 × 2. What happens when you pull the 36 out of the root?</div>
+        </div>
+        <div class="milo-compose"><span class="fake-input">Ask me anything about this problem…</span><span class="snd">➤</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CATALOG -->
 <section class="catalog" id="catalog">
   <div class="wrap">
