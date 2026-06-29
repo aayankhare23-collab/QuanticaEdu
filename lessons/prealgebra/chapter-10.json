@@ -37,22 +37,6 @@
    },
    {
     "t": "prob",
-    "x": "A chapter runs from page \\(47\\) to page \\(118\\), both included. How many pages long is the chapter?",
-    "xp": 6,
-    "hints": [
-     "You are counting whole numbers from \\(47\\) up to \\(118\\), with both ends belonging to the chapter. This is the same kind of count you just practiced, only with bigger numbers.",
-     "Watch the off by one. Subtracting \\(118 - 47\\) tells you how many steps it takes to walk from the first page to the last, but a step is not a page. You need to add one to bring back the page you started on.",
-     "Work out \\(118 - 47\\) first, then add \\(1\\)."
-    ],
-    "ans": "72",
-    "accept": [
-     "72",
-     "72.0"
-    ],
-    "sol": "The chapter covers every whole page number from \\(47\\) to \\(118\\), and both ends count. If you only subtract, you find the gap between the two page numbers, which is \\(118 - 47 = 71\\). But that \\(71\\) is the number of steps from page \\(47\\) to page \\(118\\), not the number of pages, and it has quietly left out the page you started on. Page \\(47\\) is a real page of the chapter too, so add it back. That gives \\(118 - 47 + 1 = 72\\). The same idea as the small lists, just with numbers too big to want to write out, so the rule \\(b - a + 1\\) does the work for you. The chapter is $$\\boxed{72}$$ pages long."
-   },
-   {
-    "t": "prob",
     "x": "A rocket countdown calls every whole number from \\(30\\) down to \\(0\\), both included. How many numbers are called?",
     "xp": 6,
     "hints": [
@@ -146,38 +130,6 @@
     "x": "<b>Width does not decide the count.</b> Two ranges of the same width can hold different numbers of multiples. The windows \\(10\\) to \\(20\\) and \\(11\\) to \\(21\\) span the same distance, yet \\(10, 15, 20\\) gives three multiples of \\(5\\) while \\(15, 20\\) gives only two. What matters is which multiples actually land inside, so always pin down the real first multiple and the real last multiple in your range before you count."
    },
    {
-    "t": "prob",
-    "x": "Lamps \\(1\\) through \\(21\\) line a block. Banners go only on multiples of \\(10\\). How many lamps get a banner?",
-    "xp": 6,
-    "hints": [
-     "A multiple of \\(10\\) is a number you reach by counting \\(10, 20, 30,\\) and so on. Which of those numbers actually sit inside the range from \\(1\\) to \\(21\\)?",
-     "Check each candidate against the ends of the block. Is \\(10\\) between \\(1\\) and \\(21\\)? Is \\(20\\)? Is \\(30\\)? Keep only the ones that fit, and watch the top end carefully.",
-     "The range stops at \\(21\\), so \\(30\\) is too big and never appears on this block. Count just the multiples of \\(10\\) that truly land inside, no more."
-    ],
-    "ans": "2",
-    "accept": [
-     "2",
-     "2.0"
-    ],
-    "sol": "The banners go only on lamps numbered with a multiple of \\(10\\), so list the multiples of \\(10\\) in order and see which ones fall in the range from \\(1\\) to \\(21\\). The first is \\(10\\), and \\(10\\) is between \\(1\\) and \\(21\\), so that lamp gets a banner. The next is \\(20\\), and \\(20\\) is also between \\(1\\) and \\(21\\), so that lamp gets one too. The next multiple of \\(10\\) is \\(30\\), but the block stops at \\(21\\), so \\(30\\) is past the end and there is no lamp with that number here. That leaves exactly two banner lamps, the one numbered \\(10\\) and the one numbered \\(20\\), giving a count of \\(2\\). $$\\boxed{2}$$"
-   },
-   {
-    "t": "prob",
-    "x": "Lamps \\(10\\) through \\(30\\) line the next block. Banners go on every multiple of \\(10\\). How many lamps get a banner?",
-    "xp": 7,
-    "hints": [
-     "Do not trust the width of \\(20\\) to settle it. Walk the numbers from \\(10\\) up to \\(30\\) and pick out only the ones that are multiples of \\(10\\).",
-     "The qualifying lamps are evenly spaced, jumping by \\(10\\) each time. Find the first one in range and the last one in range, then count the steps between them.",
-     "Watch the off by one. The count of an evenly spaced list is \\(\\tfrac{\\text{last} - \\text{first}}{\\text{step}} + 1\\), so do not forget the \\(+1\\). Notice that here both \\(10\\) and \\(30\\) are themselves multiples of \\(10\\)."
-    ],
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0"
-    ],
-    "sol": "List the lamps whose numbers are multiples of \\(10\\) between \\(10\\) and \\(30\\). They are \\(10\\), \\(20\\), and \\(30\\). The first one in range is \\(10\\) and the last one in range is \\(30\\), and they step by \\(10\\) each time. Using the evenly spaced count, take the gap from first to last and divide by the step, then add \\(1\\) for the starting lamp. $$\\frac{30 - 10}{10} + 1 = \\frac{20}{10} + 1 = 2 + 1 = 3$$ So \\(3\\) lamps get a banner. Here is the lesson hiding inside. This block is \\(20\\) numbers wide, the very same width as the block before, yet it holds a different number of banners. Width alone does not decide the count. What matters is which multiples actually land inside, and on this block both endpoints \\(10\\) and \\(30\\) happen to be multiples of \\(10\\), so they both count. $$\\boxed{3}$$"
-   },
-   {
     "t": "fig",
     "x": "<svg viewBox=\"0 0 440 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A line of ten simple stick figures. The fourth figure from the front is shaded gold. A bracket above the line spans the first four figures and is labelled four from the front. A bracket below the line spans the last seven figures, from the shaded figure to the back, and is labelled seven from the back. An arrow marks the shaded figure as counted in both brackets. The arithmetic four plus seven minus one equals ten shows that the shared child is removed once, so the line holds ten children.\">\n  <text x=\"220\" y=\"20\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"var(--mid)\">ONE CHILD GETS COUNTED TWICE</text>\n  <text x=\"114\" y=\"44\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--gold-deep)\">4th from front, so 4</text>\n  <path d=\"M42 58 L42 50 L186 50 L186 58\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.6\"/>\n  <circle cx=\"56\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M56 85 L56 108 M56 92 L48 100 M56 92 L64 100 M56 108 L49 122 M56 108 L63 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"94\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M94 85 L94 108 M94 92 L86 100 M94 92 L102 100 M94 108 L87 122 M94 108 L101 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"132\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M132 85 L132 108 M132 92 L124 100 M132 92 L140 100 M132 108 L125 122 M132 108 L139 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"170\" cy=\"78\" r=\"7.5\" fill=\"var(--softer)\" stroke=\"var(--gold-deep)\" stroke-width=\"2.2\"/><path d=\"M170 86 L170 108 M170 93 L162 101 M170 93 L178 101 M170 108 L163 122 M170 108 L177 122\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"2.2\" stroke-linecap=\"round\"/>\n  <circle cx=\"208\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M208 85 L208 108 M208 92 L200 100 M208 92 L216 100 M208 108 L201 122 M208 108 L215 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"246\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M246 85 L246 108 M246 92 L238 100 M246 92 L254 100 M246 108 L239 122 M246 108 L253 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"284\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M284 85 L284 108 M284 92 L276 100 M284 92 L292 100 M284 108 L277 122 M284 108 L291 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"322\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M322 85 L322 108 M322 92 L314 100 M322 92 L330 100 M322 108 L315 122 M322 108 L329 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"360\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M360 85 L360 108 M360 92 L352 100 M360 92 L368 100 M360 108 L353 122 M360 108 L367 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <circle cx=\"398\" cy=\"78\" r=\"7\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\"/><path d=\"M398 85 L398 108 M398 92 L390 100 M398 92 L406 100 M398 108 L391 122 M398 108 L405 122\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>\n  <path d=\"M152 134 L152 142 L414 142 L414 134\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"1.6\"/>\n  <text x=\"283\" y=\"158\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"var(--accent)\">7th from back, so 7</text>\n  <path d=\"M170 178 L170 148\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <path d=\"M170 148 L166 154 M170 148 L174 154\" fill=\"none\" stroke=\"var(--gold-deep)\" stroke-width=\"1.4\"/>\n  <text x=\"170\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10.5\" font-weight=\"600\" fill=\"var(--gold-deep)\">counted in both</text>\n  <text x=\"220\" y=\"216\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\">4 + 7 &#8722; 1 = 10</text>\n  <text x=\"220\" y=\"236\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--slate)\">the gold child is in both brackets, so take it off once</text>\n</svg>",
     "cap": "Picture a child standing in line who is 4th from the front and 7th from the back. The top bracket sweeps in 4 children, counting that child, and the bottom bracket sweeps in 7 children, counting that same child again. Add the two brackets and you get \\(4 + 7 = 11\\), but the shaded child sits in both, so the line was counted once too many. Take that one overlap off and the true count is \\(4 + 7 - 1 = 10\\). Whenever two groups share a member, you add the groups and subtract what they share."
@@ -258,24 +210,6 @@
      "7.0"
     ],
     "sol": "First figure out how many people drink coffee or tea. If you simply add the two groups you get \\(32 + 19 = 51\\), but that is already more than the whole reunion, which is a clue that something got counted twice. The \\(8\\) people who drink both were counted once among the coffee drinkers and again among the tea drinkers, so you must remove that overlap one time. That gives \\(32 + 19 - 8 = 43\\) people who drink at least one of the two. Everyone else drinks neither, so subtract from the total of \\(50\\), giving \\(50 - 43 = 7\\). $$\\boxed{7}$$"
-   },
-   {
-    "t": "prob",
-    "x": "\\(55\\%\\) of homes own a phone, \\(50\\%\\) own a tablet, and \\(30\\%\\) own both. What percent own neither?",
-    "xp": 8,
-    "hints": [
-     "First find the percent that own a phone or a tablet (or both). If you just add \\(55\\) and \\(50\\) you count the both homes twice.",
-     "Subtract the overlap once so each home is counted a single time. The percent with at least one is \\(55 + 50 - 30\\).",
-     "Every home either has at least one device or has neither. So the neither percent is \\(100\\) minus the percent with at least one."
-    ],
-    "ans": "25",
-    "accept": [
-     "25",
-     "25%",
-     "25.0",
-     "25.0%"
-    ],
-    "sol": "Start with the homes that own a phone or a tablet or both. If we just add the two groups we get \\(55 + 50 = 105\\), but that is more than the whole town, so something is doubled. The \\(30\\%\\) that own both got counted once in the phone group and again in the tablet group, so we subtract that overlap one time. The percent that own at least one device is \\(55 + 50 - 30 = 75\\). Every home in town either owns at least one device or owns neither, and the whole town is \\(100\\%\\). So the neither percent is \\(100 - 75 = 25\\). $$\\boxed{25}$$"
    },
    {
     "t": "imp",
@@ -566,38 +500,6 @@
     "x": "<b>Slot-and-box habit.</b> Once you trust the tree of choices you can stop drawing it. Draw one empty box for each stage, write inside each box how many options that stage has, and multiply straight across. That one strip of boxes is all you need from here on, and it carries every problem in this lesson, from secret codes to choosing club officers to seating people with rules about where they sit."
    },
    {
-    "t": "prob",
-    "x": "A boy has \\(6\\) dress shirts and \\(7\\) ties (\\(3\\) solid and \\(4\\) striped). How many different shirt-and-tie outfits can he make?",
-    "xp": 7,
-    "hints": [
-     "Before you can multiply, you need to know how many ties he really has. The ties are split into two groups, so figure out the single total first.",
-     "This is a two-stage choice, one shirt and then one tie, so the slot-and-box strip says multiply the count in each slot. The shirt slot is \\(6\\). The tie slot is the \\(3\\) solid ties and the \\(4\\) striped ties combined into one number.",
-     "Add the ties with \\(3 + 4\\) to fill the tie slot, then multiply by the \\(6\\) shirts."
-    ],
-    "ans": "42",
-    "accept": [
-     "42",
-     "42.0"
-    ],
-    "sol": "Picking an outfit happens in two stages, first a shirt and then a tie, so we will use the slot-and-box strip with one box for each choice. The shirt box is easy, since there are \\(6\\) shirts to choose from. The tie box needs a little work first, because the ties came to us in two groups. There are \\(3\\) solid ties and \\(4\\) striped ties, and any of them counts as a tie he could wear, so the real number of ties is \\(3 + 4 = 7\\). Now both boxes are filled in, with \\(6\\) for the shirt and \\(7\\) for the tie. The multiplication principle says multiply the boxes together, which gives \\(6 \\times 7 = 42\\). So he can put together \\(42\\) different shirt-and-tie combinations. The thing to notice is that the adding happened inside one stage to build that stage's count, and the multiplying happened across the two stages. $$\\boxed{42}$$"
-   },
-   {
-    "t": "prob",
-    "x": "A diner offers \\(4\\) appetizers, \\(3\\) mains, and \\(5\\) desserts. How many different three-course dinners are possible?",
-    "xp": 7,
-    "hints": [
-     "Think of it as filling three slots in a row, one for the appetizer, one for the main dish, and one for the dessert. How many choices does each slot have on its own?",
-     "With the multiplication principle you do not add the choices, you multiply them, since each appetizer can team up with each main dish, and each of those can team up with each dessert. So multiply the three counts together.",
-     "Multiply the slots in order. First do \\(4 \\times 3\\) for the appetizer and main dish, then multiply that result by the \\(5\\) desserts."
-    ],
-    "ans": "60",
-    "accept": [
-     "60",
-     "60.0"
-    ],
-    "sol": "Picture three slots to fill, one for each course, and count the choices for each. The appetizer slot has \\(4\\) choices, the main dish slot has \\(3\\), and the dessert slot has \\(5\\).\n\nThe multiplication principle says that when you make a string of independent choices, you multiply the number of choices at each step. Here is why. Each of the \\(4\\) appetizers can be paired with any of the \\(3\\) main dishes, which already gives \\(4 \\times 3 = 12\\) two-course starts. Then each of those \\(12\\) starts can be finished with any of the \\(5\\) desserts, so you multiply once more by \\(5\\).\n\nThat gives $$4 \\times 3 \\times 5 = 12 \\times 5 = 60.$$\n\nSo there are \\(\\boxed{60}\\) different three-course dinners. Adding one more course just means multiplying by one more factor."
-   },
-   {
     "t": "fig",
     "x": "<svg viewBox=\"0 0 440 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A row of three labeled boxes for building a lunch. The first box is drink and holds the number 4, the second box is sandwich and holds the number 2, the third box is side and holds the number 2. A small times sign sits between each box. Below the row the product reads 4 times 2 times 2 equals 16.\">\n  <text x=\"220\" y=\"28\" font-family=\"Inter, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">Build a lunch</text>\n\n  <!-- Box 1: drink -->\n  <rect x=\"24\" y=\"58\" width=\"96\" height=\"72\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n  <text x=\"72\" y=\"50\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\">drink</text>\n  <text x=\"72\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"32\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">4</text>\n\n  <!-- times -->\n  <text x=\"148\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"24\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n  <!-- Box 2: sandwich -->\n  <rect x=\"176\" y=\"58\" width=\"96\" height=\"72\" rx=\"10\" fill=\"var(--softer)\" stroke=\"var(--line)\" stroke-width=\"2\"/>\n  <text x=\"224\" y=\"50\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\">sandwich</text>\n  <text x=\"224\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"32\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">2</text>\n\n  <!-- times -->\n  <text x=\"300\" y=\"104\" font-family=\"Inter, sans-serif\" font-size=\"24\" fill=\"var(--mid)\" text-anchor=\"middle\">&#215;</text>\n\n  <!-- Box 3: side (adding it changes nothing) -->\n  <rect x=\"328\" y=\"58\" width=\"96\" height=\"72\" rx=\"10\" fill=\"var(--soft)\" stroke=\"var(--gold2)\" stroke-width=\"2.5\"/>\n  <text x=\"376\" y=\"50\" font-family=\"Inter, sans-serif\" font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\">side</text>\n  <text x=\"376\" y=\"106\" font-family=\"Inter, sans-serif\" font-size=\"32\" font-weight=\"700\" fill=\"var(--gold-deep)\" text-anchor=\"middle\">2</text>\n\n  <!-- product line -->\n  <text x=\"220\" y=\"172\" font-family=\"Inter, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"var(--ink)\" text-anchor=\"middle\">4 &#215; 2 &#215; 2 = 16</text>\n  <text x=\"376\" y=\"150\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"var(--gold-deep)\" text-anchor=\"middle\" font-style=\"italic\">same habit</text>\n</svg>",
     "cap": "Each box is one choice you make. There are \\(4\\) drinks, then \\(2\\) sandwiches, then \\(2\\) sides. A third box does not change the habit one bit, you still multiply straight across, and you get \\(4 \\times 2 \\times 2 = 16\\) different lunches."
@@ -685,22 +587,6 @@
    },
    {
     "t": "prob",
-    "x": "How many different left-to-right orders can \\(7\\) friends stand in for a photo?",
-    "xp": 7,
-    "hints": [
-     "Picture the row as seven empty spots waiting to be filled, one friend per spot. Fill them one at a time, from the leftmost spot to the rightmost, and ask how many friends are still standing free as you reach each new spot.",
-     "The leftmost spot can go to any of the \\(7\\) friends. Once that friend steps in, only \\(6\\) are left for the next spot, then \\(5\\) for the one after, and so on down to the last spot. By the slot-and-box habit you multiply those counts together.",
-     "Multiply the choices for each spot in turn, which gives \\(7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1\\). This product is exactly \\(7!\\), so all that is left is to carry out the multiplication."
-    ],
-    "ans": "5040",
-    "accept": [
-     "5040",
-     "5040.0"
-    ],
-    "sol": "Draw seven empty spots for the row and fill them one at a time from left to right. The first spot can be taken by any of the \\(7\\) friends, so it has \\(7\\) choices. Once that friend is placed, only \\(6\\) friends are still free, so the second spot has \\(6\\) choices. Keep going and the third spot has \\(5\\), the fourth has \\(4\\), the fifth has \\(3\\), the sixth has \\(2\\), and the very last spot has just the one friend nobody has used yet, so it has \\(1\\) choice.\n\nBy the slot-and-box habit, the total number of orders is the product of all those choices, which is \\(7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1\\). This is exactly the factorial \\(7!\\), the number of ways to arrange \\(7\\) different things in a row.\n\nNow multiply, building up step by step so the numbers stay friendly. $$7 \\times 6 = 42$$ $$42 \\times 5 = 210$$ $$210 \\times 4 = 840$$ $$840 \\times 3 = 2520$$ $$2520 \\times 2 = 5040$$ and the final \\(\\times 1\\) leaves it unchanged. So the seven friends can stand in $$\\boxed{5040}$$ different left-to-right orders."
-   },
-   {
-    "t": "prob",
     "x": "\\(9\\) club members compete for president, vice president, and treasurer. Nobody holds two jobs. How many ways can the three jobs be filled?",
     "xp": 7,
     "hints": [
@@ -754,22 +640,6 @@
      "24.0"
     ],
     "sol": "Start by drawing six empty slots in a row, one for each person. The trick with a problem like this is to handle the forced spots before anything else, because a forced spot has no choice to make.\n\\nThe far left end must be the tallest person, so that slot is settled with \\(1\\) way. The far right end must be the shortest person, so that slot is settled with \\(1\\) way too. Those two ends are now locked in and they do not multiply your count at all.\n\\nThat leaves the four middle slots, and four different people who still need a home. Now use the multiplication principle slot by slot. The first open middle slot can be any of the \\(4\\) remaining people. Once that person sits down, the next slot has \\(3\\) people left to choose from, then the slot after that has \\(2\\), and the last slot has just \\(1\\) person who has to go there.\n\\nMultiply the choices for every slot together, which gives \\(1 \\times 4 \\times 3 \\times 2 \\times 1 \\times 1\\), and that is the same as \\(4 \\times 3 \\times 2 \\times 1 = 4!\\). Working it out, \\(4 \\times 3 = 12\\), then \\(12 \\times 2 = 24\\), then \\(24 \\times 1 = 24\\).\n\\nSo fixing the two ends first turns a six-person lineup into a plain arrangement of four people, and there are $$\\boxed{24}$$ different orders for the whole row."
-   },
-   {
-    "t": "prob",
-    "x": "A \\(4\\)-letter code uses letters from \\(\\{A,B,C,D,E\\}\\) with repeats allowed, but the code cannot be the same letter four times in a row. How many codes are allowed?",
-    "xp": 8,
-    "hints": [
-     "First forget the rule for a moment and ask an easier question. If every code were allowed, including the four-in-a-row ones, how many \\(4\\)-letter codes could you build from \\(5\\) letters when repeats are allowed?",
-     "This is the total-minus-bad move from \\(10.1\\). Count every code as if the rule did not exist, then count only the banned codes by themselves, and take those away from the total.",
-     "The total is \\(5 \\times 5 \\times 5 \\times 5 = 5^4\\). The banned codes are the ones that are the same letter four times, and there is exactly one of those for each of the \\(5\\) letters, so \\(5\\) bad codes. Now subtract \\(5\\) from your total."
-    ],
-    "ans": "620",
-    "accept": [
-     "620",
-     "620.0"
-    ],
-    "sol": "The banned codes are awkward to dodge one slot at a time, so reach for the total-minus-bad move from \\(10.1\\). Count every possible code first, then take away the few that break the rule.\n\nStart with the total, pretending the rule is gone. There are \\(4\\) slots, and each slot can be any of the \\(5\\) letters because repeats are allowed. The Multiplication Principle hands you \\(5 \\times 5 \\times 5 \\times 5 = 5^4\\), which is \\(625\\) codes in all.\n\nNow count only the bad codes, the ones that are the same letter four times in a row. There is \\(AAAA\\), \\(BBBB\\), \\(CCCC\\), \\(DDDD\\), and \\(EEEE\\), one for each letter, so \\(5\\) banned codes and no more.\n\nThe allowed codes are everything left once you remove the bad ones, which gives \\(625 - 5 = 620\\).\n\n$$\\boxed{620}$$"
    },
    {
     "t": "prob",
@@ -1196,22 +1066,6 @@
    },
    {
     "t": "prob",
-    "x": "How many four-digit numbers have a units digit equal to the sum of the thousands and hundreds digits? (The tens digit is free.)",
-    "xp": 8,
-    "hints": [
-     "One clean multiply will not work here, because the choices for the digits depend on each other. The units digit is forced to be \\(d_1 + d_2\\), and a single digit only goes up to \\(9\\). Try splitting into cases based on the thousands digit \\(d_1\\), since \\(d_1\\) is the most cramped (it cannot be \\(0\\)).",
-     "Inside each case, fix \\(d_1\\) and count the allowed hundreds digits \\(d_2\\). You need \\(d_1 + d_2 \\le 9\\) so that \\(d_4 = d_1 + d_2\\) stays a single digit. For \\(d_1 = 1\\), the values \\(d_2 = 0, 1, \\ldots, 8\\) all work, which is \\(9\\) choices. For \\(d_1 = 2\\), you get \\(8\\) choices. Keep going down to \\(d_1 = 9\\).",
-     "Across the cases the counts are \\(9, 8, 7, 6, 5, 4, 3, 2, 1\\), and adding them gives \\(45\\) good \\((d_1, d_2)\\) pairs. Each such pair fixes \\(d_4\\) completely. Now remember the tens digit \\(d_3\\) is still free, with \\(10\\) choices. You are one multiply away from the answer."
-    ],
-    "ans": "450",
-    "accept": [
-     "450",
-     "450.0"
-    ],
-    "sol": "Let us name the digits \\(d_1\\), \\(d_2\\), \\(d_3\\), \\(d_4\\) from left to right. The rule is \\(d_4 = d_1 + d_2\\), and the tens digit \\(d_3\\) is free.\n\nIf we tried one clean multiply we would get stuck, because the units digit is not a free choice. It is pinned to \\(d_1 + d_2\\), and a single digit can only be \\(0\\) through \\(9\\). So we need \\(d_1 + d_2 \\le 9\\), or the units slot would need two digits, which is not allowed. The choices are not the same all the way across, so we split into cases.\n\nSplit on the thousands digit \\(d_1\\), because it is the most demanding. It must be \\(1\\) through \\(9\\), never \\(0\\). Inside each case we count the hundreds digits \\(d_2\\) that keep \\(d_1 + d_2 \\le 9\\).\n\nFor \\(d_1 = 1\\), we need \\(d_2 \\le 8\\), and you get \\(9\\) choices.\nFor \\(d_1 = 2\\), we need \\(d_2 \\le 7\\), which gives \\(8\\) choices.\nThis keeps going, dropping by one each time, down to \\(d_1 = 9\\), where only \\(d_2 = 0\\) works, so \\(1\\) choice.\n\nThese cases never overlap and together they cover every allowed start, so we add the case counts and you get\n$$9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 45.$$\n\nEach of these \\(45\\) pairs fixes \\(d_4\\) for us, since \\(d_4 = d_1 + d_2\\). The only thing still free is the tens digit \\(d_3\\), with \\(10\\) choices. Inside a case we multiply, so we multiply the \\(45\\) good fronts by the \\(10\\) tens digits, which gives\n$$45 \\times 10 = 450.$$\n\nSo the number of four-digit numbers with this property is \\(\\boxed{450}\\)."
-   },
-   {
-    "t": "prob",
     "x": "How many two-digit numbers have digits that add up to a perfect square?",
     "xp": 7,
     "hints": [
@@ -1250,22 +1104,6 @@
     "t": "fig",
     "x": "<svg viewBox=\"0 0 440 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A road map drawn left to right through towns A, B, C, D, E, F and H. Two roads run from A to B. Single roads run A to C, B to D, C to D, and a direct road A to D. On the right single roads run D to E, E to H, D to F, F to H, and a direct road D to H. Every road points to the right.\"><defs><marker id=\"ah\" markerWidth=\"10\" markerHeight=\"10\" refX=\"7.5\" refY=\"3\" orient=\"auto\" markerUnits=\"userSpaceOnUse\"><path d=\"M0,0 L7.5,3 L0,6 Z\" fill=\"var(--slate)\"/></marker></defs><line x1=\"150.3\" y1=\"60.5\" x2=\"203.9\" y2=\"97.5\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"45.2\" y1=\"117.2\" x2=\"118.7\" y2=\"157.4\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"150.3\" y1=\"159.5\" x2=\"203.9\" y2=\"122.5\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"47.0\" y1=\"110.0\" x2=\"200.0\" y2=\"110.0\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"235.2\" y1=\"102.9\" x2=\"310.6\" y2=\"62.4\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"342.0\" y1=\"61.0\" x2=\"390.3\" y2=\"96.9\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"235.2\" y1=\"117.1\" x2=\"310.6\" y2=\"157.6\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"342.0\" y1=\"159.0\" x2=\"390.3\" y2=\"123.1\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><line x1=\"237.0\" y1=\"110.0\" x2=\"386.0\" y2=\"110.0\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><path d=\"M46.6,106.4 Q92.7,95.0 122.0,67.1\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><path d=\"M42.9,99.7 Q77.3,67.0 116.6,57.3\" fill=\"none\" stroke=\"var(--slate)\" stroke-width=\"2\" marker-end=\"url(#ah)\"/><circle cx=\"32\" cy=\"110\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"32\" y=\"115\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">A</text><circle cx=\"138\" cy=\"52\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"138\" y=\"57\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">B</text><circle cx=\"138\" cy=\"168\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"138\" y=\"173\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">C</text><circle cx=\"222\" cy=\"110\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"222\" y=\"115\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">D</text><circle cx=\"330\" cy=\"52\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"330\" y=\"57\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">E</text><circle cx=\"330\" cy=\"168\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"330\" y=\"173\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">F</text><circle cx=\"408\" cy=\"110\" r=\"15\" fill=\"var(--softer)\" stroke=\"var(--slate)\" stroke-width=\"2\"/><text x=\"408\" y=\"115\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"15\" font-weight=\"600\" fill=\"var(--ink)\">H</text></svg>",
     "cap": "Here is the road map we will use for the next two problems. You start at town \\(A\\) on the left and travel through some of the towns \\(B\\), \\(C\\), \\(D\\), \\(E\\), \\(F\\), and \\(H\\), always moving left to right and never doubling back. There are two roads running from \\(A\\) to \\(B\\), and every other link is a single road. Notice the two handy shortcuts as well, a direct road from \\(A\\) to \\(D\\) and a direct road from \\(D\\) to \\(H\\). Follow the arrows and see where the roads can take you.</cap>\n</invoke>\n"
-   },
-   {
-    "t": "prob",
-    "x": "Using the map above: \\(2\\) roads from A to B, \\(1\\) each B-to-D and A-to-C and C-to-D, plus a direct A-to-D road. How many routes are there from A to D?",
-    "xp": 6,
-    "hints": [
-     "One clean multiply will not work here, because the trip from \\(A\\) to \\(D\\) can pass through different towns first. Try splitting it into separate piles based on which town you reach \\(D\\) through. What are the different ways the trip could go?",
-     "Make three cases that do not overlap and that cover every route. Case 1 goes through \\(B\\), case 2 goes through \\(C\\), and case 3 takes the direct road \\(A\\) to \\(D\\). Now count each pile on its own using the multiply move from 10.2.",
-     "Through \\(B\\) you pick \\(1\\) of \\(2\\) roads to \\(B\\) and then the \\(1\\) road \\(B\\) to \\(D\\), so \\(2 \\times 1 = 2\\) routes. Through \\(C\\) there is \\(1 \\times 1 = 1\\) route. The direct road is \\(1\\) route. You just have to add the three pile counts."
-    ],
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0"
-    ],
-    "sol": "One clean multiply will not work here, because the choices are not the same all the way across. So let us split the routes into a few piles based on which town the trip reaches \\(D\\) through, count each pile on its own, and add at the end. That move is casework, and the rule we keep coming back to is that inside each case we multiply and across the cases we add.\n\nOur three cases never overlap, since a route either passes through \\(B\\), or through \\(C\\), or takes the direct road, and never two of those at once. They also cover everything, since every route to \\(D\\) must do one of those three things.\n\nCase 1, through \\(B\\). You pick \\(1\\) of the \\(2\\) roads from \\(A\\) to \\(B\\), then the \\(1\\) road from \\(B\\) to \\(D\\), which gives \\(2 \\times 1 = 2\\) routes.\n\nCase 2, through \\(C\\). You take the \\(1\\) road from \\(A\\) to \\(C\\), then the \\(1\\) road from \\(C\\) to \\(D\\), which gives \\(1 \\times 1 = 1\\) route.\n\nCase 3, the direct road. There is \\(1\\) road straight from \\(A\\) to \\(D\\), so that is \\(1\\) route.\n\nNow we add across the cases and you get $$2 + 1 + 1 = 4.$$\n\nSo the number of routes from \\(A\\) to \\(D\\) is \\(\\boxed{4}\\)."
    },
    {
     "t": "imp",
@@ -1322,38 +1160,6 @@
    {
     "t": "imp",
     "x": "<b>Complement split.</b> Sometimes the two cleanest cases are simply has the property and does not, and one side is far easier to count. So count the easy side, then subtract it from the total to get the side you actually wanted. This is still casework, only one case did all the lazy work for you, and the subtracting is the same total-minus-the-rest move you trusted back in 10.1. It is especially handy for at-least-one questions."
-   },
-   {
-    "t": "prob",
-    "x": "A 3-character code has exactly one letter (26 choices) and two digits (10 choices each). How many such codes can you make?",
-    "xp": 8,
-    "hints": [
-     "A clean single multiply would mix up codes where the letter sits in different spots, so try splitting on something. What is the one thing that changes from code to code here, that you could break into separate piles? Think about WHERE the single letter lands.",
-     "Make one case for each position the letter could sit in, so a case for the letter being first, one for it being second, and one for it being third. That is \\(3\\) cases. Inside any one case, count the letter spot and the two digit spots on their own.",
-     "Inside one case the letter spot has \\(26\\) choices and each digit spot has \\(10\\), so that single case gives \\(26\\times10\\times10=2600\\) codes. Now you have \\(3\\) cases that each give \\(2600\\), and they do not overlap. You just need to combine the \\(3\\) case counts."
-    ],
-    "ans": "7800",
-    "accept": [
-     "7800",
-     "7800.0"
-    ],
-    "sol": "If you tried to do this in one quick multiply, you would get stuck, because the three spots are not all the same. One spot is a letter and two are digits, but the problem never told you which spot is the letter. So let us split on exactly that snag, which is WHICH position holds the single letter.\n\nThe letter can sit in the first spot, or the second spot, or the third spot, and that gives us \\(3\\) cases. These cases never overlap, since the letter lives in only one place, and together they cover every legal code, so nothing slips through.\n\nNow count inside one case, say the letter is first. The letter spot has \\(26\\) choices. Each of the other two spots is a digit, so they give \\(10\\times10=100\\) ways. Multiplying inside this one case, you get\n$$26\\times100=2600.$$\n\nThe other two cases work the exact same way, so each of the \\(3\\) cases gives \\(2600\\) codes. Inside a case we multiplied, and now across the cases we add, which is the same as\n$$3\\times2600=7800.$$\n\nSo the number of codes is \\(\\boxed{7800}\\)."
-   },
-   {
-    "t": "prob",
-    "x": "How many three-digit numbers have digits that add up to \\(6\\)? (For example, \\(123\\) works since \\(1+2+3=6\\), and so does \\(600\\).)",
-    "xp": 11,
-    "hints": [
-     "The thing that feels most cramped here is the hundreds digit, since it cannot be \\(0\\) and it cannot be too big either. What is the largest the hundreds digit could ever be if the three digits only add up to \\(6\\)? Try splitting into cases based on the hundreds digit.",
-     "Call the hundreds digit \\(h\\). Since \\(h \\ge 1\\) and the other two digits are at least \\(0\\), the hundreds digit can only be \\(1, 2, 3, 4, 5,\\) or \\(6\\). Once you fix \\(h\\), the tens and units digits just have to add up to \\(6 - h\\).",
-     "For a fixed \\(h\\), count the ways the tens and units digits can sum to \\(6 - h\\). If two digits must add up to some number \\(n\\) (with \\(0 \\le n \\le 9\\)), the tens digit can be \\(0, 1, \\dots, n\\) and the units digit is forced, so there are \\(n + 1\\) ways. That gives \\(6, 5, 4, 3, 2, 1\\) ways for \\(h = 1, 2, 3, 4, 5, 6\\). Now you just need to add those pile counts."
-    ],
-    "ans": "21",
-    "accept": [
-     "21",
-     "21.0"
-    ],
-    "sol": "The tightest part of this problem is the hundreds digit, so that is the smart thing to split on. The hundreds digit \\(h\\) has to be at least \\(1\\), and the three digits together only reach \\(6\\), so \\(h\\) can be \\(1, 2, 3, 4, 5,\\) or \\(6\\) and no more. That gives us six tidy cases.\n\nInside each case, once we pin down \\(h\\), the tens digit and the units digit just have to add up to whatever is left, which is \\(6 - h\\). When two digits must sum to some value \\(n\\) between \\(0\\) and \\(9\\), the tens digit can be anything from \\(0\\) up to \\(n\\) and the units digit is then forced, so there are \\(n + 1\\) ways.\n\nNow we count each pile on its own.\n\nFor \\(h = 1\\), the rest must sum to \\(5\\), which gives \\(5 + 1 = 6\\) ways.\nFor \\(h = 2\\), the rest must sum to \\(4\\), which gives \\(4 + 1 = 5\\) ways.\nFor \\(h = 3\\), the rest must sum to \\(3\\), which gives \\(3 + 1 = 4\\) ways.\nFor \\(h = 4\\), the rest must sum to \\(2\\), which gives \\(2 + 1 = 3\\) ways.\nFor \\(h = 5\\), the rest must sum to \\(1\\), which gives \\(1 + 1 = 2\\) ways.\nFor \\(h = 6\\), the rest must sum to \\(0\\), which gives \\(0 + 1 = 1\\) way.\n\nThese six cases never overlap, because each number has exactly one hundreds digit, and together they cover everything, because the hundreds digit has to be one of those six values. So we add the pile counts across the cases, the way we add in \\(10.1\\), after multiplying inside each case, the way we do in \\(10.2\\), and you get\n$$6 + 5 + 4 + 3 + 2 + 1 = 21.$$\n\nSo there are \\(\\boxed{21}\\) three-digit numbers whose digits add up to \\(6\\)."
    },
    {
     "t": "fact",
@@ -1598,22 +1404,6 @@
    },
    {
     "t": "prob",
-    "x": "A tennis class has \\(5\\) girls. How many different doubles teams (pairs) can be formed?",
-    "xp": 6,
-    "hints": [
-     "First ask what kind of count this is. A team is just \\(2\\) girls picked from the class, and the order you name them in does not matter, since pairing Ana with Beth is the same team as pairing Beth with Ana. And notice you are choosing both girls from one single group, not one girl from one group and one from another. So this is counting pairs.",
-     "Set it up like a handshake. Each of the \\(5\\) girls could partner with any of the other \\(4\\), which gives \\(5 \\times 4\\) ways if order mattered. But order does not matter here, so each team got counted twice, once from each girl's side. That tells you what to do next with that product.",
-     "You have \\(5 \\times 4 = 20\\), and since every team was counted twice you divide by \\(2\\). So you just need \\(\\frac{20}{2}\\)."
-    ],
-    "ans": "10",
-    "accept": [
-     "10",
-     "10.0"
-    ],
-    "sol": "A doubles team is just \\(2\\) girls chosen from the class, and the order does not matter, since the team made of Ana and Beth is the very same team as Beth and Ana. So this is a pair count, and both girls come from one single group.\n\\nStart by letting each girl reach out to a partner. Any of the \\(5\\) girls can pair with any of the other \\(4\\), and that gives $$5 \\times 4 = 20.$$\n\\nBut that \\(20\\) counts every team twice, once when Ana picks Beth and once when Beth picks Ana, and those are the same team. So the honest count is half as big, and you divide by \\(2\\), which gives $$\\frac{5 \\times 4}{2} = \\frac{20}{2} = 10.$$\n\\nSo you can form \\(\\boxed{10}\\) different doubles teams."
-   },
-   {
-    "t": "prob",
     "x": "In an 8-player round-robin tournament, every pair of players meets exactly once. How many matches are played?",
     "xp": 7,
     "hints": [
@@ -1634,22 +1424,6 @@
    },
    {
     "t": "prob",
-    "x": "A club has \\(12\\) members and needs \\(2\\) to serve as co-presidents (same role). How many pairs of co-presidents are possible?",
-    "xp": 6,
-    "hints": [
-     "Start by asking what kind of count this is. Are you choosing a pair where the order does not matter, or are you making two separate picks from two groups you can tell apart? Here both co-presidents come from the one club and they share the same role, so this is a pair where order does not matter.",
-     "Lean on the multiplying habit. The first co-president can be any of the \\(12\\) members, and the second can be any of the remaining \\(11\\), which gives \\(12 \\times 11\\). Now decide the key thing, whether picking Ana then Ben is different from picking Ben then Ana. Since they share one role, those are the same pair, so you will need to divide by \\(2\\).",
-     "You have \\(\\frac{12 \\times 11}{2}\\). Work out \\(12 \\times 11 = 132\\), then take half of \\(132\\)."
-    ],
-    "ans": "66",
-    "accept": [
-     "66",
-     "66.0"
-    ],
-    "sol": "Both co-presidents come from the same club, so this is one group, and the two of them share the same role, which means the pair is unordered. Reach for the multiplying habit first. The first co-president could be any of the \\(12\\) members, and the second could be any of the \\(11\\) who are left, and you get \\(12 \\times 11\\). But watch the trap. Choosing Ana and then Ben gives the very same pair of co-presidents as choosing Ben and then Ana, so every pair has been counted twice. The honest count is half as big, so you divide by \\(2\\), which gives $$\\frac{12 \\times 11}{2} = \\frac{132}{2} = 66.$$ So there are \\(\\boxed{66}\\) different pairs of co-presidents."
-   },
-   {
-    "t": "prob",
     "x": "An ice cream shop has \\(11\\) flavors. A double scoop uses \\(2\\) different flavors, order doesn't matter. How many different double scoops are possible?",
     "xp": 6,
     "hints": [
@@ -1663,22 +1437,6 @@
      "55.0"
     ],
     "sol": "A double scoop is just an unordered pair of flavors, because a scoop of mint on top of strawberry is the exact same dessert as strawberry on top of mint. So this is the handshake idea wearing a new costume, and we count pairs from one group of \\(11\\).\n\nStart the way we multiply in 10.2. The first flavor can be any of the \\(11\\), and once it is chosen the second flavor can be any of the \\(10\\) that are left, and you get $$11 \\times 10 = 110.$$\n\nBut watch the same trap as the handshakes. Choosing chocolate first and vanilla second gives the same double scoop as choosing vanilla first and chocolate second, so every scoop has been counted twice. To undo that overcount we take half, which gives $$\\frac{11 \\times 10}{2} = \\frac{110}{2} = 55.$$\n\nSo there are \\(\\boxed{55}\\) different double scoops."
-   },
-   {
-    "t": "prob",
-    "x": "Seven points are placed so no three are collinear. Every pair is connected by a segment. How many segments are drawn?",
-    "xp": 7,
-    "hints": [
-     "Each segment just joins two of the points, so this is a pair where the order does not matter. Ben-and-Ana is the same segment as Ana-and-Ben. And all seven points come from one single group, not two separate groups, so think about whether you might be counting each segment twice.",
-     "Set up the count. Each of the \\(7\\) points can reach out to the other \\(6\\) points, which gives \\(7 \\times 6\\). But since the segment from one point to another is the very same segment going back, every pair got counted twice, so you will need to divide by \\(2\\).",
-     "You have \\(7 \\times 6 = 42\\), and now you just halve it. Take \\(\\frac{42}{2}\\) and you are done."
-    ],
-    "ans": "21",
-    "accept": [
-     "21",
-     "21.0"
-    ],
-    "sol": "Every segment is really just a pair of points, since a segment is fixed the moment you pick the two points it joins. So counting segments is the same as counting how many pairs you can make from the seven points.\n\nStart by letting each point reach out to all the others. Each of the \\(7\\) points can connect to the other \\(6\\), which gives \\(7 \\times 6 = 42\\). But watch the trap here, because the segment from one point to another is the exact same segment as the one going back the other way. That means every pair got counted twice. To fix the overcount you take half, so you divide by \\(2\\).\n\nThat gives $$\\frac{7 \\times 6}{2} = \\frac{42}{2} = 21.$$\n\nSo the number of segments drawn is \\(\\boxed{21}\\)."
    },
    {
     "t": "imp",
@@ -1842,22 +1600,6 @@
      "136.0"
     ],
     "sol": "This is the triangular-number way of counting pairs. Instead of adding \\(1 + 2 + 3 + \\cdots + 16\\) term by term, fold the staircase in half the way Gauss did and pair the terms from the ends. The smallest plus the largest gives \\(1 + 16 = 17\\), the next pair gives \\(2 + 15 = 17\\), and you keep going inward down to \\(8 + 9 = 17\\). Every pair sums to the same \\(17\\). There are \\(8\\) of these pairs, since \\(16\\) terms split into \\(8\\) cozy couples, which gives $$8 \\times 17 = 136.$$ This matches the pair-counting formula straight away, because choosing a pair from \\(17\\) players is \\(\\frac{17 \\times 16}{2} = 136\\). Two roads, one answer, and the adding road shows you that counting pairs is really just stacking up \\(1 + 2 + \\cdots + (n-1)\\). So the sum is \\(\\boxed{136}\\)."
-   },
-   {
-    "t": "prob",
-    "x": "A 15-team round-robin has every pair of teams playing once. How many matches are played?",
-    "xp": 7,
-    "hints": [
-     "First decide what kind of count this is. A match is just a pair of teams, and the order does not matter, since the match between team A and team B is the very same match as the one between team B and team A. Notice too that both teams come from the one group of \\(15\\), not from two separate groups, so this really is a counting-pairs problem.",
-     "Lean on the multiplying habit. Each of the \\(15\\) teams reaches out to the other \\(14\\) teams, which gives \\(15 \\times 14\\). But ask yourself the key question, did you count each match once or twice. Since A versus B and B versus A are the same match, you have counted everything twice, so this time you do need to divide by \\(2\\).",
-     "You are almost there. Work out \\(15 \\times 14 = 210\\), and then take half of that to undo the double counting."
-    ],
-    "ans": "105",
-    "accept": [
-     "105",
-     "105.0"
-    ],
-    "sol": "A match is a pair of teams, and the order inside a pair does not matter, so this is a counting-pairs question where both teams come from the one group of \\(15\\). Start the way we always do, by letting each team reach out. Every one of the \\(15\\) teams could play each of the other \\(14\\) teams, and you get \\(15 \\times 14 = 210\\). But watch the trap. When team A plays team B and when team B plays team A, that is the very same match counted twice, so \\(210\\) is twice too big. Undo the overcount by dividing by \\(2\\), which gives $$\\frac{15 \\times 14}{2} = \\frac{210}{2} = 105.$$ So choosing \\(2\\) teams from \\(15\\) lands on \\(\\boxed{105}\\) matches."
    },
    {
     "t": "prob",
@@ -2129,37 +1871,6 @@
    },
    {
     "t": "prob",
-    "x": "A fair 6-sided die is rolled once. What is the probability of rolling a perfect square? Give your answer as a fraction in lowest terms.",
-    "xp": 7,
-    "hints": [
-     "First pin down what is equally likely. Since the die is fair, each of the faces \\(1, 2, 3, 4, 5, 6\\) has the same chance, so the total count is \\(6\\). That total goes on the bottom of your fraction.",
-     "Now find the favorable faces. Go through \\(1, 2, 3, 4, 5, 6\\) and ask of each one whether it is a perfect square, meaning some whole number times itself. How many of the six faces pass that test?",
-     "Only \\(1\\) and \\(4\\) are perfect squares, so you have \\(2\\) favorable faces out of \\(6\\) total, which gives the fraction \\(\\frac{2}{6}\\). All that is left is to reduce it to lowest terms."
-    ],
-    "ans": "1/3",
-    "accept": [
-     "1/3"
-    ],
-    "sol": "Start with the total count, since the die is fair every face is equally likely, so there are \\(6\\) equally likely outcomes and that \\(6\\) goes on the bottom. Next count the favorable outcomes by checking each face for being a perfect square. The perfect squares from \\(1\\) to \\(6\\) are \\(1\\) and \\(4\\), because \\(1 = 1 \\times 1\\) and \\(4 = 2 \\times 2\\), while \\(2, 3, 5,\\) and \\(6\\) are not. So \\(2\\) of the \\(6\\) faces work, and the probability is the favorable count over the total count, which gives \\(\\frac{2}{6}\\). Reducing that fraction by dividing top and bottom by \\(2\\) gives \\(\\frac{2}{6} = \\frac{1}{3}\\). $$\\boxed{\\frac{1}{3}}$$"
-   },
-   {
-    "t": "prob",
-    "x": "A fair 6-sided die is rolled once. What is the probability of rolling a number from \\(1\\) to \\(6\\)? Answer with \\(0\\) or \\(1\\) if certain or impossible.",
-    "xp": 6,
-    "hints": [
-     "First nail down the equally likely outcomes. A fair die has \\(6\\) faces that can come up, and each is just as likely as the others, so your total count is \\(6\\).",
-     "Now count the favorable outcomes, the rolls that count as a win. Every single face shows a number from \\(1\\) to \\(6\\), so ask yourself how many of the \\(6\\) faces fit, and notice that none of them are left out.",
-     "All \\(6\\) faces are favorable, so the probability is \\(\\frac{6}{6}\\). Simplify that fraction and think about what it means when a win is guaranteed."
-    ],
-    "ans": "1",
-    "accept": [
-     "1",
-     "1.0"
-    ],
-    "sol": "Start by counting the total. A fair die has \\(6\\) equally likely faces, so the total count is \\(6\\). Now count the favorable outcomes, the ones that make the event happen. The event is rolling a number from \\(1\\) to \\(6\\), and every one of the \\(6\\) faces is between \\(1\\) and \\(6\\), so all \\(6\\) outcomes are favorable. That gives a favorable count of \\(6\\) over a total count of \\(6\\), which is \\(\\frac{6}{6} = 1\\). This makes sense, because no matter what you roll you are guaranteed to land on a number from \\(1\\) to \\(6\\), so the event is certain. A certain event has probability \\(1\\). $$\\boxed{1}$$"
-   },
-   {
-    "t": "prob",
     "x": "A fair 6-sided die is rolled once. What is the probability of rolling a \\(7\\)? Answer with \\(0\\) or \\(1\\) if certain or impossible.",
     "xp": 6,
     "hints": [
@@ -2228,21 +1939,6 @@
    },
    {
     "t": "prob",
-    "x": "A shuffled 52-card deck is drawn from the top. What is the probability the top card is a \\(9\\)? Give your answer in lowest terms.",
-    "xp": 7,
-    "hints": [
-     "Since the deck was shuffled well, every one of the \\(52\\) cards is equally likely to be the top card. So your total count is \\(52\\), one for each card that could be sitting on top.",
-     "Now count the favorable cards, the ones that make the top card a \\(9\\). A standard deck has one \\(9\\) in each of the four suits, so think about how many \\(9\\)s there are in all.",
-     "You have \\(4\\) favorable cards out of \\(52\\) total, so the probability is \\(\\frac{4}{52}\\). All that is left is to reduce that fraction to lowest terms."
-    ],
-    "ans": "1/13",
-    "accept": [
-     "1/13"
-    ],
-    "sol": "Because the deck was shuffled well, every card is just as likely as any other to land on top, so all \\(52\\) cards are equally likely. That means the total count is \\(52\\).\n\\nNow we count the favorable outcomes, the cards that would make the top card a \\(9\\). There are \\(4\\) nines, one in each suit, so the favorable count is \\(4\\).\n\\nThe probability is the favorable count over the total count, which gives $$\\frac{4}{52} = \\frac{1}{13}.$$\n\\nSo the chance that the top card is a \\(9\\) is \\(\\boxed{\\frac{1}{13}}\\)."
-   },
-   {
-    "t": "prob",
     "x": "A shuffled 52-card deck is drawn from the top. What is the probability the top card is a face card (Jack, Queen, or King)? Give your answer in lowest terms.",
     "xp": 7,
     "hints": [
@@ -2279,21 +1975,6 @@
      "5/36"
     ],
     "sol": "First count the total number of outcomes. Each die has \\(6\\) equally likely faces, and the dice are separate, so the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely pairs in all.\n\nNow count the favorable ones, the pairs that add up to \\(6\\). Walk through the first die in order and find its partner each time, which gives \\((1,5), (2,4), (3,3), (4,2), (5,1)\\). That is \\(5\\) favorable outcomes.\n\nSo the probability is the favorable count over the total count, and you get $$\\frac{5}{36}.$$ This fraction is already in lowest terms."
-   },
-   {
-    "t": "prob",
-    "x": "Two fair 6-sided dice are rolled. What is the probability the sum is \\(5\\)? Give your answer in lowest terms.",
-    "xp": 7,
-    "hints": [
-     "Picture the grid of every way the two dice can land. The red die has \\(6\\) equally likely faces and the blue die has \\(6\\) equally likely faces, and the multiplication principle gives \\(6 \\times 6 = 36\\) equally likely cells in all. That \\(36\\) is your total count.",
-     "Now hunt for the favorable cells, the ones where the two numbers add up to \\(5\\). Go in order by what the red die shows, \\(1\\) then \\(2\\) then \\(3\\) and so on, and for each one ask what the blue die would need to be so the sum is \\(5\\). Remember that \\((1,4)\\) and \\((4,1)\\) are two different cells in the grid.",
-     "You should find exactly \\(4\\) favorable cells, namely \\((1,4),(2,3),(3,2),(4,1)\\). Put the favorable count over the total count to get \\(\\frac{4}{36}\\), then reduce it to lowest terms."
-    ],
-    "ans": "1/9",
-    "accept": [
-     "1/9"
-    ],
-    "sol": "Start with the total count. Each die has \\(6\\) equally likely faces, so by the multiplication principle the two dice together land in \\(6 \\times 6 = 36\\) equally likely cells. That is the bottom of our fraction. Now count the favorable cells, where the numbers add up to \\(5\\). Walking through them in order, the pairs adding to \\(5\\) are \\((1,4),(2,3),(3,2),(4,1)\\), which is \\(4\\) cells. So the favorable count is \\(4\\) and the total count is \\(36\\), which gives $$\\frac{4}{36} = \\frac{1}{9}.$$ Both top and bottom share a factor of \\(4\\), and dividing it out leaves the answer in lowest terms. $$\\boxed{\\frac{1}{9}}$$"
    },
    {
     "t": "imp",

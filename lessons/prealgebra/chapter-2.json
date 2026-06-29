@@ -371,16 +371,6 @@
         "sol": "After the first three folds the stack holds \\(2^3 = 8\\) layers. Each of the four new folds doubles every layer already there, so those rounds multiply the whole stack by \\(2^4\\). Two batches of doublings stacked end to end are just doublings in a row. $$2^3 \\times 2^4 = 8 \\times 16 = \\boxed{128}$$ Count the exponents: \\(3\\) doublings then \\(4\\) more is \\(7\\) doublings, and \\(2^7 = 128\\). That is the product rule at its plainest: two runs of the same factor, one after the other, merge into one run whose length is the sum of theirs."
       },
       {
-        "t": "prob",
-        "xp": 6,
-        "x": "In the folding problem you found that \\(2^3 \\times 2^4 = 128 = 2^7\\). The answer's exponent, 7, equals \\(3 + 4\\). Test this addition pattern on a different base: what is the exponent \\(n\\) such that \\(3^5 \\times 3^8 = 3^n\\)?",
-        "hints": [
-          "Does adding the exponents still work when the base is 3 instead of 2?"
-        ],
-        "ans": "13",
-        "sol": "The argument depends on the structure of powers, not the particular base. Multiplying \\(3^5\\) by \\(3^8\\) lines up five 3s followed by eight more 3s. $$3^5 \\times 3^8 = 3^{5+8} = 3^{13}$$ So \\(n = \\boxed{13}\\). The base shifted from 2 to 3 and the pattern still held. Concatenating two runs of identical factors always gives one run whose length is the total count, so adding the exponents is correct for any nonzero base."
-      },
-      {
         "t": "imp",
         "x": "<b>Product rule.</b> When you multiply two powers with the same base, add the exponents. $$a^m \\times a^n = a^{m+n}$$ Counting explains it: \\(m\\) copies of \\(a\\) followed by \\(n\\) more copies gives \\(m+n\\) copies altogether."
       },
@@ -395,29 +385,8 @@
         "sol": "The product rule says the two exponents add up to the combined exponent. Here the combined exponent is 15, so $$? + 8 = 15.$$ Reading that backward, \\(? = 15 - 8 = \\boxed{7}\\). The product rule runs in both directions: forward it fuses two powers into one; backward it recovers a missing exponent from the finished product."
       },
       {
-        "t": "prob",
-        "xp": 8,
-        "x": "A bacterial colony doubles every hour. At midnight it contains \\(2^7\\) cells. What single power of 2 gives the cell count exactly 9 hours later? Give the exponent.",
-        "hints": [
-          "Nine more hours multiply the count by \\(2^9\\). Apply the product rule."
-        ],
-        "ans": "16",
-        "sol": "At midnight the colony holds \\(2^7\\) cells. Nine more hours each double the entire population, so nine hours of growth multiply the count by \\(2^9\\). Stringing the starting total and the growth run together is just doubling sixteen times in a row. $$2^7 \\times 2^9 = 2^{7+9} = 2^{16}$$ The exponent is \\(\\boxed{16}\\). The product rule folds two separate runs of doubling into one addition in the exponent, so the 65\\,536-cell morning count never needs to be built."
-      },
-      {
         "t": "p",
         "x": "The product rule handles multiplication. What happens to exponents when you divide? When you cancel factors instead of collecting them, something is subtracted rather than added. The next two problems let you discover what."
-      },
-      {
-        "t": "prob",
-        "xp": 6,
-        "x": "A jar holds \\(2^8 = 256\\) seeds. You plant them in pots with \\(2^3 = 8\\) seeds each. How many pots do you fill?",
-        "hints": [
-          "Divide the total by the seeds per pot.",
-          "Express the quotient as a power of 2. What happened to the exponents?"
-        ],
-        "ans": "32",
-        "sol": "Divide 256 seeds into groups of 8, writing both as powers of 2. The division asks how many 2s survive after cancellation. $$\\frac{2^8}{2^3} = \\frac{2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2}{2 \\cdot 2 \\cdot 2}$$ Three 2s in the denominator each erase one from the eight upstairs, leaving \\(8 - 3 = 5\\) survivors. $$2^8 \\div 2^3 = 2^5 = \\boxed{32}$$ The subtraction \\(8 - 3\\) counts the factors that escaped unmatched. That is all the quotient rule is doing: cancellation, counted in the exponent."
       },
       {
         "t": "prob",
@@ -432,16 +401,6 @@
       {
         "t": "imp",
         "x": "<b>Quotient rule.</b> When you divide two powers with the same base, subtract the exponents. $$a^m \\div a^n = a^{m-n} \\quad (a \\neq 0)$$ Division cancels equal factors from top and bottom, and subtraction counts what is left."
-      },
-      {
-        "t": "prob",
-        "xp": 8,
-        "x": "A crate holds \\(3^6 = 729\\) marbles. You split them evenly into bags of \\(3^2 = 9\\) each. How many bags do you fill?",
-        "hints": [
-          "Divide \\(3^6\\) by \\(3^2\\) and apply the quotient rule."
-        ],
-        "ans": "81",
-        "sol": "Dividing two powers of the same base subtracts the exponents, because equal factors cancel from numerator and denominator. $$3^6 \\div 3^2 = 3^{6-2} = 3^4$$ Two 3s in the denominator wiped out two of the six upstairs, leaving four 3s standing. $$3^4 = \\boxed{81}$$ bags filled. The quotient rule delivers the answer without computing 729 \\(\\div\\) 9 directly."
       },
       {
         "t": "prob",
@@ -467,16 +426,6 @@
         ],
         "ans": "4096",
         "sol": "Work it out directly. \\(2^3 = 8\\), and \\(8^4 = 4096\\). Now place \\(4096\\) on the ladder of powers of 2: \\(4096 = 2^{12}\\). The final exponent is 12, and \\(12 = 3 \\times 4\\). Four copies of \\(2^3\\) each contribute 3 factors of 2, so there are \\(4 \\times 3 = 12\\) factors altogether. $$(2^3)^4 = 2^{3 \\times 4} = 2^{12} = \\boxed{4096}$$ A power raised to another power multiplies the two exponents, because the outer exponent calls for that many copies of the inner power, and each copy adds the inner exponent's worth of factors."
-      },
-      {
-        "t": "prob",
-        "xp": 6,
-        "x": "Based on the pattern you just found, predict the exponent \\(n\\) such that \\((5^4)^3 = 5^n\\). No computation needed.",
-        "hints": [
-          "What operation on 4 and 3 produced the exponent in the previous problem?"
-        ],
-        "ans": "12",
-        "sol": "A power raised to another power multiplies the two exponents, and the particular base does not change that. The inner exponent is 4, the outer is 3, and \\(4 \\times 3 = 12\\). $$(5^4)^3 = 5^{4 \\times 3} = 5^{12}$$ So \\(n = \\boxed{12}\\). No computation was necessary, and the enormous number \\(5^{12}\\) never had to be built. Multiplying the exponents is the only arithmetic needed."
       },
       {
         "t": "imp",
@@ -1096,20 +1045,6 @@
         "sol": "One more step down divides \\(5^0 = 1\\) by 5, giving \\(1 \\div 5 = \\dfrac{1}{5}\\). So \\(5^{-1} = \\boxed{\\dfrac{1}{5}}\\). A negative exponent has flipped the base into the bottom of a fraction."
       },
       {
-        "t": "prob",
-        "xp": 6,
-        "x": "One step lower the lab records \\(5^{-2}\\), again the entry above divided by 5. What number is \\(5^{-2}\\)? Write it as a fraction.",
-        "hints": [
-          "Start from \\(5^{-1} = \\dfrac{1}{5}\\) and divide it by 5 once more.",
-          "Dividing \\(\\dfrac{1}{5}\\) by 5 puts a 25 in the bottom, and \\(25 = 5^2\\). Notice the matching positive power."
-        ],
-        "ans": "1/25",
-        "accept": [
-          "0.04"
-        ],
-        "sol": "Dividing \\(5^{-1} = \\dfrac{1}{5}\\) by 5 gives \\(\\dfrac{1}{25}\\), and \\(25 = 5^2\\). So \\(5^{-2} = \\dfrac{1}{5^2} = \\boxed{\\dfrac{1}{25}}\\). The negative exponent landed the matching positive power downstairs."
-      },
-      {
         "t": "imp",
         "x": "<b>Negative powers.</b> A nonzero base raised to a negative exponent is 1 over the base raised to the matching positive exponent. $$a^{-n} = \\dfrac{1}{a^{n}} \\quad (a \\neq 0)$$ The descending ladder forces it. Each step down divides by the base, and dividing past \\(a^0 = 1\\) sends the base under the fraction bar."
       },
@@ -1144,20 +1079,6 @@
         ],
         "ans": "1/81",
         "sol": "Flip the base under the bar with its matching positive power. $$3^{-4} = \\dfrac{1}{3^4} = \\dfrac{1}{81}$$ So the width is \\(\\boxed{\\dfrac{1}{81}}\\) of a millimetre."
-      },
-      {
-        "t": "prob",
-        "xp": 8,
-        "x": "A street map is printed at a scale of \\(10^{-3}\\) of real size, so a thousand paces shrink to one. Write \\(10^{-3}\\) as a single fraction.",
-        "hints": [
-          "A negative exponent of ten drops the matching power of ten into the denominator.",
-          "So this is \\(\\dfrac{1}{10^3}\\), and \\(10^3 = 1000\\)."
-        ],
-        "ans": "1/1000",
-        "accept": [
-          "0.001"
-        ],
-        "sol": "The negative exponent sends the power of ten downstairs. $$10^{-3} = \\dfrac{1}{10^3} = \\dfrac{1}{1000}$$ So the map shows everything at \\(\\boxed{\\dfrac{1}{1000}}\\) of full size. Each negative power of ten is just one more zero under the bar."
       },
       {
         "t": "p",
