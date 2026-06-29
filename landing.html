@@ -3908,7 +3908,7 @@ async function sendTutorMsg() {
     {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course. Create an account and our team grants you free access shortly.', place:'top'}
   ];
   var KEY='quantica_tourSeen_v1';
-  var i=0, spot=null, pop=null, active=false;
+  var i=0, spot=null, pop=null, active=false, rafPending=false, scrollTimer=null;
 
   function ensureEls(){
     if(!spot){ spot=document.createElement('div'); spot.className='tour-spot'; document.body.appendChild(spot); }
@@ -3927,6 +3927,19 @@ async function sendTutorMsg() {
     top=clamp(top,12,vh-ph-12);
     var left=clamp(r.left+r.width/2-pw/2,16,vw-pw-16);
     pop.style.top=top+'px'; pop.style.left=left+'px';
+  }
+  function onScroll(){
+    if(!spot) return;
+    if(!rafPending){
+      rafPending=true;
+      requestAnimationFrame(function(){
+        spot.style.transition='none';
+        place();
+        rafPending=false;
+        clearTimeout(scrollTimer);
+        scrollTimer=setTimeout(function(){ if(spot) spot.style.transition=''; },150);
+      });
+    }
   }
   function render(){
     var step=STEPS[i];
@@ -3948,14 +3961,15 @@ async function sendTutorMsg() {
     active=false;
     try{ localStorage.setItem(KEY,'1'); }catch(e){}
     if(spot) spot.remove(); if(pop) pop.remove(); spot=null; pop=null;
-    window.removeEventListener('scroll',place,true); window.removeEventListener('resize',place);
+    clearTimeout(scrollTimer);
+    window.removeEventListener('scroll',onScroll,true); window.removeEventListener('resize',place);
   }
   window.__tourNext=next;
   window.__tourSkip=end;
 
   window.startTour=function(){
     if(active) return; active=true; i=0; ensureEls();
-    window.addEventListener('scroll',place,true); window.addEventListener('resize',place);
+    window.addEventListener('scroll',onScroll,true); window.addEventListener('resize',place);
     document.addEventListener('keydown',function esc(e){ if(e.key==='Escape'&&active){ end(); document.removeEventListener('keydown',esc); } });
     show();
   };
