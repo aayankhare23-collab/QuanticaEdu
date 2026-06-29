@@ -68,7 +68,7 @@
   .cat-x{position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;color:var(--slate);cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px;z-index:1}
   .cat-x:hover{background:var(--soft)}
   /* new-user guided tour */
-  .tour-spot{position:fixed;z-index:6000;border:3px solid #f5b020;border-radius:12px;box-shadow:0 0 0 9999px rgba(12,22,42,.62),0 0 22px 5px rgba(245,176,32,.55);pointer-events:none;transition:left .35s cubic-bezier(.4,0,.2,1),top .35s cubic-bezier(.4,0,.2,1),width .35s cubic-bezier(.4,0,.2,1),height .35s cubic-bezier(.4,0,.2,1)}
+  .tour-spot{position:fixed;z-index:6000;border:3px solid #f5b020;border-radius:12px;box-shadow:0 0 0 9999px rgba(12,22,42,.62),0 0 22px 5px rgba(245,176,32,.55);pointer-events:none;will-change:left,top,width,height}
   .tour-pop{position:fixed;z-index:6001;background:#fff;border-radius:16px;box-shadow:0 22px 50px -12px rgba(15,25,45,.45);padding:18px 20px 15px;width:300px;max-width:calc(100vw - 32px);animation:authIn .25s ease}
   .tour-pop .tp-step{font:700 11px/1 'Inter';letter-spacing:.1em;text-transform:uppercase;color:#cf8a12;margin-bottom:8px}
   .tour-pop h4{font-family:'Fraunces';font-size:17px;color:var(--navy);margin:0 0 6px}
@@ -3908,7 +3908,7 @@ async function sendTutorMsg() {
     {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course. Create an account and our team grants you free access shortly.', place:'top'}
   ];
   var KEY='quantica_tourSeen_v1';
-  var i=0, spot=null, pop=null, active=false, rafPending=false, scrollTimer=null;
+  var i=0, spot=null, pop=null, active=false, trackRAF=null, lastKey='';
 
   function ensureEls(){
     if(!spot){ spot=document.createElement('div'); spot.className='tour-spot'; document.body.appendChild(spot); }
@@ -3916,9 +3916,14 @@ async function sendTutorMsg() {
   }
   function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
   function place(){
+    if(!spot||!pop) return;
     var step=STEPS[i]; var el=document.querySelector(step.sel);
-    if(!el){ next(); return; }
+    if(!el) return;
     var r=el.getBoundingClientRect(), pad=8, vw=innerWidth, vh=innerHeight;
+    // Skip the style writes when nothing moved, so the big box-shadow isn't repainted every idle frame.
+    var key=r.left+'|'+r.top+'|'+r.width+'|'+r.height+'|'+vw+'|'+vh;
+    if(key===lastKey) return;
+    lastKey=key;
     spot.style.left=(r.left-pad)+'px'; spot.style.top=(r.top-pad)+'px';
     spot.style.width=(r.width+pad*2)+'px'; spot.style.height=(r.height+pad*2)+'px';
     var pw=pop.offsetWidth||300, ph=pop.offsetHeight||150;
@@ -3928,18 +3933,13 @@ async function sendTutorMsg() {
     var left=clamp(r.left+r.width/2-pw/2,16,vw-pw-16);
     pop.style.top=top+'px'; pop.style.left=left+'px';
   }
-  function onScroll(){
-    if(!spot) return;
-    if(!rafPending){
-      rafPending=true;
-      requestAnimationFrame(function(){
-        spot.style.transition='none';
-        place();
-        rafPending=false;
-        clearTimeout(scrollTimer);
-        scrollTimer=setTimeout(function(){ if(spot) spot.style.transition=''; },150);
-      });
-    }
+  // Continuously re-pin the spotlight to its target every frame while the tour is open.
+  // This tracks the element through any scroll (user or smooth scrollIntoView) with zero lag,
+  // since it never depends on throttled scroll events firing.
+  function track(){
+    if(!active){ trackRAF=null; return; }
+    place();
+    trackRAF=requestAnimationFrame(track);
   }
   function render(){
     var step=STEPS[i];
@@ -3953,24 +3953,25 @@ async function sendTutorMsg() {
   function show(){
     var step=STEPS[i]; var el=document.querySelector(step.sel);
     if(!el){ next(); return; }
+    lastKey='';            // force a reposition for the new target
+    render();
+    // The rAF loop keeps the spotlight glued to the element as the page smooth-scrolls it into view.
     el.scrollIntoView({block:'center',behavior:'smooth'});
-    setTimeout(function(){ render(); place(); },360);
   }
   function next(){ if(i<STEPS.length-1){ i++; show(); } else { end(); } }
   function end(){
     active=false;
     try{ localStorage.setItem(KEY,'1'); }catch(e){}
+    if(trackRAF){ cancelAnimationFrame(trackRAF); trackRAF=null; }
     if(spot) spot.remove(); if(pop) pop.remove(); spot=null; pop=null;
-    clearTimeout(scrollTimer);
-    window.removeEventListener('scroll',onScroll,true); window.removeEventListener('resize',place);
   }
   window.__tourNext=next;
   window.__tourSkip=end;
 
   window.startTour=function(){
-    if(active) return; active=true; i=0; ensureEls();
-    window.addEventListener('scroll',onScroll,true); window.addEventListener('resize',place);
+    if(active) return; active=true; i=0; lastKey=''; ensureEls();
     document.addEventListener('keydown',function esc(e){ if(e.key==='Escape'&&active){ end(); document.removeEventListener('keydown',esc); } });
+    track();   // start the continuous tracking loop
     show();
   };
 
