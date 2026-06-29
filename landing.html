@@ -528,6 +528,11 @@
   .ws-page.page-text-only .page-lead p{font-size:21px;font-weight:600;color:var(--navy);line-height:1.78;text-align:center;letter-spacing:.005em;margin:0 auto 18px;max-width:560px}
   .ws-page.page-text-only .page-lead p:last-child{margin-bottom:0}
   .ws-page.page-text-only h4.sub{text-align:center;color:var(--mid)}
+  @media(max-width:600px){
+    .ws-center .ws-body{padding:12px 16px 12px}
+    .ws-page.page-text-only .page-lead{padding:24px 22px}
+    .ws-page.page-text-only .page-lead p{font-size:19px;line-height:1.7}
+  }
   .ws-page .page-lead{margin-bottom:22px;width:100%}
   .ws-page .page-lead p{font-size:17px;line-height:1.88;color:var(--slate);margin:0 0 22px;letter-spacing:.01em}
   .ws-page .page-lead p:last-child{margin-bottom:0}
@@ -2547,11 +2552,13 @@
     var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false;
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
+    var eyebrow=(L&&L._eyebrow)?L._eyebrow:('Lesson '+key);
+    var hasKeys=bp.pages.some(function(p){return !!p.keyIdea;});
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
     var html='<div class="workspace" id="wsWorkspace">'+
       wsTutorHTML()+
       '<section class="ws-center" id="wsCenter">'+
-        '<div class="ws-head"><span class="ws-eyebrow">Lesson '+key+'</span><span class="ws-title">'+(L.title||'')+'</span>'+
+        '<div class="ws-head"><span class="ws-eyebrow">'+eyebrow+'</span><span class="ws-title">'+(L.title||'')+'</span>'+
           '<div class="ws-steps"><span class="ws-segs">'+segs+'</span><span class="ws-stepn" id="wsStepN"></span></div></div>'+
         '<div class="ws-body" id="wsCenterBody"></div>'+
         '<div class="ws-dock"><button class="ws-back" id="wsBack" onclick="WS.back()">← Back</button>'+
@@ -2592,6 +2599,7 @@
     if(cs){ cs.classList.add('ws-mode'); cs.scrollTop=0; }
     requestAnimationFrame(function(){ var c=document.getElementById('courseScroll'); if(c) c.scrollTop=0; });
     if(window.DiffPanel) DiffPanel.onLessonOpen(key);
+    var _idf=document.getElementById('wsFabIdeas'); if(_idf) _idf.style.display=hasKeys?'':'none';
     WS.showPage(0);
     if(window.Diagnostic && Diagnostic.needs(key) && window.DiffPanel && DiffPanel.available(key)) Diagnostic.startFor(key);
   }
@@ -2750,14 +2758,20 @@
   WS.back=function(){ if(WS.page>0) WS.showPage(WS.page-1); };
   WS.onResolve=function(k){ k=String(k); for(var i=0;i<WS.pages.length;i++){ if(WS.pages[i].probK===k){ WS.revealKeysFor(i); break; } } WS.refreshDock(); };
   WS.complete=function(){ if(WS._chatLocked()){ WS._promptChat(); return; } WS.close(); completeAndGo(WS.key, WS.L.next); };
-  WS.finish=function(){ if(WS._chatLocked()){ WS._promptChat(); return; } markDone(WS.key); WS.showDone(); };
+  WS.finish=function(){ if(WS._chatLocked()){ WS._promptChat(); return; }
+    if(WS.L&&WS.L._pset){ if(WS.L._psetType==='challenge'&&window.Rewards&&Rewards.onChallengeSetComplete){ try{Rewards.onChallengeSetComplete(WS.L._psetChapter);}catch(e){} } }
+    else { markDone(WS.key); }
+    WS.showDone(); };
   WS.showDone=function(){
     var c=document.getElementById('wsCenterBody'); if(!c) return;
+    var isP=WS.L&&WS.L._pset;
+    var heading=isP?'Set complete':'Lesson complete';
+    var sub=isP?'Nice work &mdash; that\'s every problem in this set. Head back to the contents to keep moving through the chapter.':'Beautiful work. Your key ideas are saved in your notebook for whenever you need them.';
     c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:34px"><div style="font-size:46px">🎉</div>'+
-      '<h3 style="font-family:\'Fraunces\';color:var(--navy);font-size:24px;margin:10px 0 6px">Lesson complete</h3>'+
-      '<p style="color:var(--slate)">Beautiful work. Your key ideas are saved in your notebook for whenever you need them.</p>'+
+      '<h3 style="font-family:\'Fraunces\';color:var(--navy);font-size:24px;margin:10px 0 6px">'+heading+'</h3>'+
+      '<p style="color:var(--slate)">'+sub+'</p>'+
       '<div style="display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap">'+
-      (WS.L.review&&WS.L.review.length?'<button class="ws-back" onclick="openReview(\''+WS.key+'\')">📝 Review problems</button>':'')+
+      (!isP&&WS.L.review&&WS.L.review.length?'<button class="ws-back" onclick="openReview(\''+WS.key+'\')">📝 Review problems</button>':'')+
       '<button class="ws-next is-finish" onclick="showToc()">Back to contents →</button></div></div>';
     var dock=document.querySelector('.ws-dock'); if(dock) dock.style.display='none';
   };
@@ -2961,16 +2975,16 @@
   // --- practice & challenge problem sets, one chapter at a time ---
   var psetState={chapter:null,type:null,list:[],i:0,solved:false};
   function openPSet(chNum,type){
-    showView('psetView');
-    document.getElementById('psetView').setAttribute('data-ptype',type);
-    var noteEl=document.getElementById('psetNote'); if(noteEl) noteEl.style.display='none';
     var chInfo=TOC.filter(function(c){ return c.n===chNum; })[0];
     var label=(type==='practice'?'Practice Problems':'Challenge Problems');
-    document.getElementById('modalEyebrow').textContent='Prealgebra · Chapter '+chNum;
-    document.getElementById('modalTitle').textContent=label;
-    document.getElementById('psetName').textContent=chInfo.t;
     var data=PSETS[chNum]&&PSETS[chNum][type];
     if(!data||!data.length){
+      showView('psetView');
+      document.getElementById('psetView').setAttribute('data-ptype',type);
+      var noteEl=document.getElementById('psetNote'); if(noteEl) noteEl.style.display='none';
+      document.getElementById('modalEyebrow').textContent='Prealgebra · Chapter '+chNum;
+      document.getElementById('modalTitle').textContent=label;
+      if(chInfo) document.getElementById('psetName').textContent=chInfo.t;
       document.getElementById('psetIdx').textContent='';
       document.getElementById('psetBody').innerHTML='<div class="psetdone"><div class="big">🛠️</div>'+
         '<p style="color:var(--slate);font-size:15px">We\'re still hand-writing the '+(type==='practice'?'practice':'challenge')+' set for this chapter; true to Quantica form, that takes care. It\'ll unlock soon.</p>'+
@@ -2978,9 +2992,8 @@
         '<button class="btn btn-ghost" style="margin-top:8px" onclick="openPSet(1,\''+type+'\')">Try Chapter 1\'s set →</button></div>';
       return;
     }
-    if(noteEl && type==='challenge'){ noteEl.innerHTML=PSET_CHALLENGE_NOTE; noteEl.style.display='block'; }
-    document.getElementById('psetIdx').textContent='';
-    // render as free-response, one problem per page (same flow as lesson reviews)
+    // Run Practice/Challenge problems through the full lesson workspace, so they get the
+    // identical one-problem-per-page layout AND the Milo tutor that lessons have.
     var blocks=data.map(function(r){
       var o;
       if(r.o && r.ans===undefined){              // convert any legacy multiple-choice item to free-response
@@ -2990,11 +3003,12 @@
       if(type==='challenge' && !o.label) o.label='Challenge';
       return o;
     });
-    var ctx=(type==='challenge'?'X:c':'R:p')+chNum;
-    var bodyEl=document.getElementById('psetBody');
-    bodyEl.innerHTML=renderBlocks(blocks,ctx);
-    typeset(bodyEl);
-    initFlow(bodyEl,true);
+    if(type==='challenge'){ blocks.unshift({t:'p', x:'<b>A word before you begin.</b> These are the hard ones, and they are meant to be. A real challenge problem rarely gives itself up on the first read &mdash; expect to sit with one, try an idea that fails, and come back with a sharper one. Reach for a hint only after a genuine attempt, take your time, and enjoy the click when the structure finally shows itself.'}); }
+    var L={ title:label, blocks:blocks, _pset:true, _psetType:type, _psetChapter:chNum, _eyebrow:'Chapter '+chNum+(chInfo?' · '+chInfo.t:'') };
+    showView('lessonView');
+    document.getElementById('modalEyebrow').textContent='Prealgebra · Chapter '+chNum;
+    document.getElementById('modalTitle').textContent=label;
+    wsOpen('pset-'+chNum+'-'+type, L, {title:label, chTitle:(chInfo?chInfo.t:''), chNum:chNum});
   }
   function renderPSet(){
     var st=psetState, p=st.list[st.i];
