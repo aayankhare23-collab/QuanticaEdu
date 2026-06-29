@@ -2780,20 +2780,28 @@
     var hasReview=!isP&&WS.L.review&&WS.L.review.length;
     var heading=isP?'Set complete':'Lesson complete';
     var sub=isP?'Nice work &mdash; that\'s every problem in this set. Head back to the contents to keep moving through the chapter.'
-      :(hasReview?'Beautiful work. You just learned the ideas &mdash; now lock them in with a round of practice problems built on this exact lesson.'
+      :(hasReview?'Beautiful work &mdash; you\'ve got the ideas down.'
                  :'Beautiful work. Your key ideas are saved in your notebook for whenever you need them.');
-    var btns='';
+    var body;
     if(hasReview){
-      // Practice is the primary call-to-action; continuing is the quieter option.
-      btns='<button class="ws-next is-finish" onclick="openReview(\''+WS.key+'\')">📝 Practice this lesson →</button>'+
-           '<button class="ws-back" onclick="showToc()">Back to contents</button>';
+      var n=WS.L.review.length;
+      // A dedicated "recommended next step" card makes practice the obvious, single path forward.
+      body='<div style="display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:20px">'+
+        '<div style="background:linear-gradient(135deg,#fff8e8,#fff);border:2px solid var(--gold);border-radius:18px;padding:22px 24px;max-width:430px;width:100%;box-shadow:0 16px 38px -18px rgba(199,145,0,.55)">'+
+          '<div style="font:700 12px/1 \'Inter\';letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px">▸ Recommended next step</div>'+
+          '<div style="font-family:\'Fraunces\';font-size:21px;color:var(--navy);margin-bottom:5px">Practice what you just learned</div>'+
+          '<div style="font-size:14.5px;line-height:1.55;color:var(--slate);margin-bottom:18px">'+n+' practice problems built on this exact lesson, with Milo on call if you get stuck. This is where it sticks.</div>'+
+          '<button class="ws-next is-finish" style="width:100%;justify-content:center;font-size:16px;padding:15px" onclick="openReview(\''+WS.key+'\')">📝 Start practice &rarr;</button>'+
+        '</div>'+
+        '<button class="lnk-skip" onclick="showToc()" style="background:none;border:none;color:var(--mute);font:500 14px/1 \'Inter\';cursor:pointer;padding:6px;text-decoration:underline;text-underline-offset:3px">Skip for now, back to contents</button>'+
+      '</div>';
     } else {
-      btns='<button class="ws-next is-finish" onclick="showToc()">Back to contents →</button>';
+      body='<div style="margin-top:20px"><button class="ws-next is-finish" onclick="showToc()">Back to contents &rarr;</button></div>';
     }
-    c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:34px"><div style="font-size:46px">🎉</div>'+
+    c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:30px"><div style="font-size:46px">🎉</div>'+
       '<h3 style="font-family:\'Fraunces\';color:var(--navy);font-size:24px;margin:10px 0 6px">'+heading+'</h3>'+
       '<p style="color:var(--slate);max-width:440px;margin:0 auto">'+sub+'</p>'+
-      '<div style="display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap">'+btns+'</div></div>';
+      body+'</div>';
     var dock=document.querySelector('.ws-dock'); if(dock) dock.style.display='none';
   };
   WS.togglePanel=function(which){
