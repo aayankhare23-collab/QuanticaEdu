@@ -1,4 +1,27 @@
 {
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".git",
+      "functions/**",
+      "node_modules/**",
+      "tools/**",
+      "README.md",
+      "*.docx"
+    ],
+    "rewrites": [
+      {
+        "source": "/checkout/success",
+        "destination": "/landing.html"
+      },
+      {
+        "source": "/checkout/cancel",
+        "destination": "/landing.html"
+      }
+    ]
+  },
   "functions": [
     {
       "source": "functions",

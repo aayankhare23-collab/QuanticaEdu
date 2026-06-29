@@ -97,6 +97,13 @@
   .auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:var(--line)}
   .auth-google{width:100%;padding:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter';display:flex;align-items:center;justify-content:center;gap:9px;color:var(--navy);transition:border-color .15s,background .15s}
   .auth-google:hover{border-color:var(--mid);background:var(--softer)}
+  .age-gate{margin:14px 0 2px;display:none}
+  .age-lbl{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--slate);line-height:1.5;cursor:pointer}
+  .age-lbl input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--blue);width:15px;height:15px;cursor:pointer}
+  .age-lbl a{color:var(--blue);text-decoration:underline}
+  .foot-links{display:flex;gap:20px}
+  .foot-links a{color:#8ea7c4;text-decoration:none;font-size:13px}
+  .foot-links a:hover{color:#fff}
 
   /* HERO */
   .hero{position:relative;overflow:hidden;background:
@@ -985,8 +992,7 @@
 <section class="hero" style="padding:0">
   <div class="wrap">
     <div>
-      <span class="pill"><span class="dot"></span>Learn by solving, not memorizing</span>
-      <h1>Master mathematics<br><span class="grad">by doing</span>, not memorizing.</h1>
+      <h1>Our mission is to bridge the gap between <span class="grad">doing math</span> and understanding math.</h1>
       <p class="lead">Quantica is one subscription for rigorous, rewarding mathematics that promotes problem solving, rather than rote memorization. Rather than slogging through textbooks, students learn by <em>solving</em>, with instant feedback, hints, and an on-demand tutor named Milo.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#" onclick="openLesson();return false;">Start with a free unit →</a>
@@ -1443,6 +1449,10 @@
     var btn=document.getElementById('authSubmit');
     if(btn) btn.textContent=t==='in'?'Sign in':'Create account';
     document.getElementById('authErr').textContent='';
+    var ag=document.getElementById('ageGate');
+    if(ag) ag.style.display=t==='up'?'block':'none';
+    var cb=document.getElementById('ageCb');
+    if(cb && t==='in') cb.checked=false;
   };
 
   // ── Email / password auth ─────────────────────────────────────────────────
@@ -1452,8 +1462,9 @@
     var err=document.getElementById('authErr');
     var btn=document.getElementById('authSubmit');
     if(!email||!pwd){ err.textContent='Please fill in both fields.'; return; }
-    btn.disabled=true; btn.textContent='Please wait…'; err.textContent='';
     var isUp=document.getElementById('tabUp').classList.contains('on');
+    if(isUp){ var ageCb=document.getElementById('ageCb'); if(ageCb&&!ageCb.checked){ err.textContent='Please confirm your age and agree to the terms to create an account.'; return; } }
+    btn.disabled=true; btn.textContent='Please wait…'; err.textContent='';
     var p=isUp ? auth.createUserWithEmailAndPassword(email,pwd) : auth.signInWithEmailAndPassword(email,pwd);
     p.catch(function(e){
       btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
@@ -1464,9 +1475,12 @@
 
   // ── Google sign-in ────────────────────────────────────────────────────────
   window.signInWithGoogle=function(){
-    document.getElementById('authErr').textContent='';
+    var err=document.getElementById('authErr');
+    err.textContent='';
+    var isUp=document.getElementById('tabUp').classList.contains('on');
+    if(isUp){ var ageCb=document.getElementById('ageCb'); if(ageCb&&!ageCb.checked){ err.textContent='Please confirm your age and agree to the terms to create an account.'; return; } }
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .catch(function(e){ document.getElementById('authErr').textContent=e.message; });
+      .catch(function(e){ err.textContent=e.message; });
   };
 
   // ── Sign out ──────────────────────────────────────────────────────────────
@@ -1590,6 +1604,10 @@
 <footer>
   <div class="wrap">
     <a class="logo" href="#top"><span class="mark"></span>Quantica</a>
+    <div class="foot-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
     <span>© 2026 Quantica · Mastery-based mathematics, on subscription</span>
   </div>
   <p class="fine" style="color:#5d769a;margin-top:18px">Prototype landing page · pricing and copy are drafts for review.</p>
@@ -3850,6 +3868,12 @@ async function sendTutorMsg() {
     <input class="auth-inp" type="email" id="authEmail" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')fbEmailAuth()">
     <label class="auth-lbl" for="authPwd">Password</label>
     <input class="auth-inp" type="password" id="authPwd" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')fbEmailAuth()">
+    <div id="ageGate" class="age-gate">
+      <label class="age-lbl">
+        <input type="checkbox" id="ageCb">
+        <span>I am 13 or older, or a parent/guardian is creating this account for me. I have read and agree to the <a href="/terms.html" target="_blank">Terms of Service</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>.</span>
+      </label>
+    </div>
     <button class="auth-btn" id="authSubmit" onclick="fbEmailAuth()">Sign in</button>
     <div class="auth-div">or</div>
     <button class="auth-google" onclick="signInWithGoogle()">
