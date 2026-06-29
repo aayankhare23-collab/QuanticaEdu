@@ -2614,7 +2614,19 @@
     [].slice.call(document.querySelectorAll('.ws-segs .ws-seg')).forEach(function(s){
       var p=+s.getAttribute('data-p'); s.classList.toggle('done',p<i); s.classList.toggle('cur',p===i);
     });
-    var sn=document.getElementById('wsStepN'); if(sn) sn.textContent='Step '+(i+1)+' of '+WS.pages.length;
+    var sn=document.getElementById('wsStepN');
+    if(sn){
+      // Count problems, not pages — worked-example and exposition pages shouldn't inflate the number.
+      var probTotal=0, probAt=0;
+      for(var pi=0; pi<WS.pages.length; pi++){
+        if(WS.pages[pi].prob){ probTotal++; if(pi<=i) probAt=probTotal; }
+      }
+      var cur=WS.pages[i];
+      if(probTotal===0)        sn.textContent='Page '+(i+1)+' of '+WS.pages.length;
+      else if(cur && cur.prob) sn.textContent='Problem '+probAt+' of '+probTotal;
+      else if(cur && cur.keyIdea) sn.textContent='Key idea';
+      else                     sn.textContent='';
+    }
     body.scrollTop=0;
     WS.revealKeysFor(i);
     WS.refreshDock();
@@ -2765,14 +2777,23 @@
   WS.showDone=function(){
     var c=document.getElementById('wsCenterBody'); if(!c) return;
     var isP=WS.L&&WS.L._pset;
+    var hasReview=!isP&&WS.L.review&&WS.L.review.length;
     var heading=isP?'Set complete':'Lesson complete';
-    var sub=isP?'Nice work &mdash; that\'s every problem in this set. Head back to the contents to keep moving through the chapter.':'Beautiful work. Your key ideas are saved in your notebook for whenever you need them.';
+    var sub=isP?'Nice work &mdash; that\'s every problem in this set. Head back to the contents to keep moving through the chapter.'
+      :(hasReview?'Beautiful work. You just learned the ideas &mdash; now lock them in with a round of practice problems built on this exact lesson.'
+                 :'Beautiful work. Your key ideas are saved in your notebook for whenever you need them.');
+    var btns='';
+    if(hasReview){
+      // Practice is the primary call-to-action; continuing is the quieter option.
+      btns='<button class="ws-next is-finish" onclick="openReview(\''+WS.key+'\')">📝 Practice this lesson →</button>'+
+           '<button class="ws-back" onclick="showToc()">Back to contents</button>';
+    } else {
+      btns='<button class="ws-next is-finish" onclick="showToc()">Back to contents →</button>';
+    }
     c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:34px"><div style="font-size:46px">🎉</div>'+
       '<h3 style="font-family:\'Fraunces\';color:var(--navy);font-size:24px;margin:10px 0 6px">'+heading+'</h3>'+
-      '<p style="color:var(--slate)">'+sub+'</p>'+
-      '<div style="display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap">'+
-      (!isP&&WS.L.review&&WS.L.review.length?'<button class="ws-back" onclick="openReview(\''+WS.key+'\')">📝 Review problems</button>':'')+
-      '<button class="ws-next is-finish" onclick="showToc()">Back to contents →</button></div></div>';
+      '<p style="color:var(--slate);max-width:440px;margin:0 auto">'+sub+'</p>'+
+      '<div style="display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap">'+btns+'</div></div>';
     var dock=document.querySelector('.ws-dock'); if(dock) dock.style.display='none';
   };
   WS.togglePanel=function(which){
