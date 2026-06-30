@@ -80,6 +80,39 @@
   .tour-pop .tp-skip{background:none;border:none;color:var(--mute);font-size:13px;cursor:pointer;padding:4px 2px}
   .tour-pop .tp-next{background:linear-gradient(135deg,#f5b020,#dd9416);color:#fff;border:none;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;cursor:pointer;box-shadow:0 6px 14px -6px rgba(221,148,22,.7)}
   .tour-pop .tp-next:hover{filter:brightness(1.06)}
+  /* ---- Account-creation walkthrough: golden key-idea cards ---- */
+  .acct-tour{position:fixed;inset:0;z-index:7000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(12,22,42,.6);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+  .acct-tour.on{display:flex;animation:atFade .3s ease}
+  @keyframes atFade{from{opacity:0}to{opacity:1}}
+  .at-card{position:relative;width:min(440px,100%);background:linear-gradient(160deg,#fffdf6,#fff6e2);border:1.6px solid rgba(228,150,24,.55);border-radius:22px;box-shadow:0 26px 60px -18px rgba(120,79,0,.5),0 0 0 1px rgba(255,255,255,.55) inset;padding:32px 30px 22px;text-align:center}
+  .at-card.swap{animation:atPop .4s cubic-bezier(.22,1,.36,1)}
+  @keyframes atPop{from{opacity:0;transform:translateY(12px) scale(.975)}to{opacity:1;transform:none}}
+  .at-eyebrow{font:700 11px/1 'Inter';letter-spacing:.14em;text-transform:uppercase;color:#b9740a;margin-bottom:11px}
+  .at-card h3{font-family:'Fraunces';font-size:23px;line-height:1.2;color:var(--navy);margin:0 0 16px}
+  .at-stage{margin:0 0 18px;display:flex;justify-content:center;min-height:54px;align-items:center}
+  .at-card p{font-size:14.5px;line-height:1.62;color:var(--slate);margin:0 0 22px}
+  .at-card p b{color:#b9740a}
+  .at-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .at-dots{display:flex;gap:6px}
+  .at-dot{width:7px;height:7px;border-radius:50%;background:rgba(228,150,24,.28);transition:all .2s}
+  .at-dot.on{background:#e0a52a;transform:scale(1.25)}
+  .at-back{background:none;border:none;color:var(--mute);font:600 13.5px 'Inter';cursor:pointer;padding:6px 2px;visibility:hidden}
+  .at-back.show{visibility:visible}
+  .at-next{background:linear-gradient(135deg,#f1b51c,#dd9416);color:#fff;border:none;font:700 14.5px 'Inter';padding:11px 22px;border-radius:999px;cursor:pointer;box-shadow:0 8px 18px -7px rgba(221,148,22,.8);transition:filter .15s,transform .1s}
+  .at-next:hover{filter:brightness(1.06)}
+  .at-next:active{transform:scale(.97)}
+  .at-skip{position:absolute;top:13px;right:15px;background:none;border:none;color:var(--mute);font:500 13px 'Inter';cursor:pointer;padding:5px 8px;border-radius:7px;transition:color .12s,background .12s}
+  .at-skip:hover{color:var(--navy);background:rgba(120,79,0,.07)}
+  .at-mockkey{width:100%;max-width:332px;background:linear-gradient(160deg,rgba(255,250,232,.97),rgba(255,238,196,.94));border:1.4px solid rgba(228,150,24,.55);border-radius:14px;padding:14px 17px;text-align:left;box-shadow:0 8px 20px -10px rgba(228,160,40,.5)}
+  .at-mockkey .l{font:700 9.5px/1 'Inter';letter-spacing:.12em;text-transform:uppercase;color:#b9740a;margin-bottom:7px}
+  .at-mockkey .b{font-size:13.5px;line-height:1.55;color:var(--navy);font-weight:500}
+  .at-mockkey .b b{color:#b9740a}
+  .at-mockbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .at-mockhint{font:600 13px 'Inter';color:var(--accent);background:#fff;border:1px solid #ffd9b0;border-radius:8px;padding:8px 14px}
+  .at-mocksol{font:600 13px 'Inter';color:var(--mid);background:#fff;border:1px solid #cfe0fa;border-radius:8px;padding:8px 14px}
+  .at-mockchat{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--mid),var(--sky));box-shadow:0 8px 20px -6px rgba(18,42,86,.45);animation:atPulse 1.9s ease-in-out infinite}
+  @keyframes atPulse{0%,100%{box-shadow:0 8px 20px -6px rgba(18,42,86,.45),0 0 0 0 rgba(74,159,224,.5)}50%{box-shadow:0 8px 20px -6px rgba(18,42,86,.45),0 0 0 13px rgba(74,159,224,0)}}
+  .at-emoji{font-size:46px;line-height:1}
   .auth-x:hover{color:var(--navy);background:var(--softer)}
   .auth-card h2{font-family:'Fraunces';font-size:22px;color:var(--navy);margin:0 0 4px}
   .auth-card .auth-sub{font-size:13.5px;color:var(--slate);margin:0 0 22px;line-height:1.5}
@@ -1471,7 +1504,10 @@
     if(isUp){ var ageCb=document.getElementById('ageCb'); if(ageCb&&!ageCb.checked){ err.textContent='Please confirm your age and agree to the terms to create an account.'; return; } }
     btn.disabled=true; btn.textContent='Please wait…'; err.textContent='';
     var p=isUp ? auth.createUserWithEmailAndPassword(email,pwd) : auth.signInWithEmailAndPassword(email,pwd);
-    p.catch(function(e){
+    p.then(function(){
+      // A fresh email/password account always means a brand-new user: walk them through the tools.
+      if(isUp && window.AccountTour) setTimeout(function(){ AccountTour.start(); },420);
+    }).catch(function(e){
       btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
       var msg={'auth/user-not-found':'No account with that email.','auth/wrong-password':'Incorrect password.','auth/email-already-in-use':'An account with that email already exists.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.'};
       err.textContent=msg[e.code]||e.message;
@@ -1485,6 +1521,11 @@
     var isUp=document.getElementById('tabUp').classList.contains('on');
     if(isUp){ var ageCb=document.getElementById('ageCb'); if(ageCb&&!ageCb.checked){ err.textContent='Please confirm your age and agree to the terms to create an account.'; return; } }
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(function(result){
+        // Only first-time Google accounts get the walkthrough, not returning sign-ins.
+        if(result && result.additionalUserInfo && result.additionalUserInfo.isNewUser && window.AccountTour)
+          setTimeout(function(){ AccountTour.start(); },420);
+      })
       .catch(function(e){ err.textContent=e.message; });
   };
 
@@ -4009,6 +4050,75 @@ async function sendTutorMsg() {
     var seen; try{ seen=localStorage.getItem(KEY); }catch(e){ seen='1'; }
     var inCourse=document.getElementById('lessonOverlay')&&document.getElementById('lessonOverlay').classList.contains('open');
     if(!seen && !inCourse) setTimeout(window.startTour, 900);
+  });
+})();
+</script>
+
+<script>
+/* ---- Account-creation walkthrough: golden Key-Idea cards shown once, right after signup ---- */
+(function(){
+  var KEY='quantica_acctTour_v1';
+  var STEPS=[
+    { eyebrow:'Welcome to Quantica', title:'You’re in. Here’s how it works.',
+      stage:'<div class="at-emoji">✨</div>',
+      body:'Quantica teaches math by having you <b>solve</b>, not memorize. Every lesson is a short stack of problems you work through yourself. Here is a 20 second tour of the three tools that carry you the whole way.' },
+    { eyebrow:'The golden cards', title:'Key Ideas make it stick',
+      stage:'<div class="at-mockkey"><div class="l">✦ Key Idea 1</div><div class="b">A fraction is just <b>division waiting to happen</b>. Three quarters is 3 shared into 4.</div></div>',
+      body:'Crack a problem and its Key Idea unlocks, then files itself into your <b>✦ Key Ideas</b> tab. By the end of a lesson you have built your own cheat sheet, in your own words, from problems you actually solved.' },
+    { eyebrow:'When you get stuck', title:'Hints and solutions are the point',
+      stage:'<div class="at-mockbtns"><span class="at-mockhint">💡 Show hint</span><span class="at-mocksol">Show solution</span></div>',
+      body:'Give each problem an honest fight first. Then open a hint with zero guilt, and if you are still stuck, read the full solution and study it. Learning from a worked solution is <b>one of the most valuable things you can do here</b>, not a shortcut. Never be afraid to look.' },
+    { eyebrow:'Your tutor', title:'Milo is one tap away',
+      stage:'<div class="at-mockchat"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div>',
+      body:'Look for this chat button in the corner of every lesson. Tap it and Milo helps with whatever problem is in front of you, nudging you forward with questions and hints instead of just handing over the answer.' },
+    { eyebrow:'You’re ready', title:'Chapter 1 is on us',
+      stage:'<div class="at-emoji">🎉</div>',
+      body:'The whole first chapter of Prealgebra is free. Jump in and solve your first problem.',
+      cta:'Start Chapter 1 →' }
+  ];
+  var ov=null, idx=0;
+  function build(){
+    ov=document.createElement('div'); ov.className='acct-tour'; ov.id='acctTour';
+    ov.innerHTML='<div class="at-card" id="atCard"></div>';
+    document.body.appendChild(ov);
+  }
+  function render(){
+    var s=STEPS[idx], card=document.getElementById('atCard'); if(!card) return;
+    var dots=STEPS.map(function(_,k){return '<span class="at-dot'+(k===idx?' on':'')+'"></span>';}).join('');
+    var last=idx===STEPS.length-1;
+    card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
+    card.innerHTML=
+      '<button class="at-skip" onclick="AccountTour.end()">Skip</button>'+
+      '<div class="at-eyebrow">'+s.eyebrow+'</div>'+
+      '<h3>'+s.title+'</h3>'+
+      (s.stage?'<div class="at-stage">'+s.stage+'</div>':'')+
+      '<p>'+s.body+'</p>'+
+      '<div class="at-foot">'+
+        '<button class="at-back'+(idx>0?' show':'')+'" onclick="AccountTour.back()">← Back</button>'+
+        '<div class="at-dots">'+dots+'</div>'+
+        '<button class="at-next" onclick="AccountTour.next()">'+(last?(s.cta||'Done'):'Next')+'</button>'+
+      '</div>';
+  }
+  var AccountTour={
+    start:function(){
+      try{ if(localStorage.getItem(KEY)) return; }catch(e){}
+      // Close any active landing auto-tour so two tours never stack, and mark it seen.
+      try{ if(window.__tourSkip) window.__tourSkip(); }catch(e){}
+      if(!ov) build();
+      idx=0; render();
+      ov.classList.add('on');
+    },
+    next:function(){ if(idx<STEPS.length-1){ idx++; render(); } else { this.end(true); } },
+    back:function(){ if(idx>0){ idx--; render(); } },
+    end:function(go){
+      try{ localStorage.setItem(KEY,'1'); }catch(e){}
+      if(ov) ov.classList.remove('on');
+      if(go===true && typeof openLesson==='function') setTimeout(openLesson,260);
+    }
+  };
+  window.AccountTour=AccountTour;
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && ov && ov.classList.contains('on')) AccountTour.end();
   });
 })();
 </script>
