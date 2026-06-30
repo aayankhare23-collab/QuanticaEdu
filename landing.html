@@ -1006,7 +1006,7 @@
       <h1>Our mission is to bridge the gap between <span class="grad">doing math</span> and understanding math.</h1>
       <p class="lead">Quantica is one subscription for rigorous, rewarding mathematics that promotes problem solving, rather than rote memorization. Rather than slogging through textbooks, students learn by <em>solving</em>, with instant feedback, hints, and an on-demand tutor named Milo.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#" onclick="openLesson();return false;">Start with a free unit →</a>
+        <a class="btn btn-primary start-free-cta" data-free-label="Start with a free unit →" href="#" onclick="openLesson();return false;">Start with a free unit →</a>
         <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
       <p class="micro">No card required · Full Prealgebra unit free · Cancel anytime</p>
@@ -1249,7 +1249,7 @@
           <li><span class="ck">✓</span>~50% off the monthly rate</li>
           <li><span class="ck">✓</span>Priority on new courses</li>
         </ul>
-        <a class="btn btn-primary" href="#" onclick="openLesson();return false;">Start free, then $149/yr</a>
+        <a class="btn btn-primary start-free-cta" data-free-label="Start free, then $149/yr" href="#" onclick="openLesson();return false;">Start free, then $149/yr</a>
       </div>
       <div class="price soon-plan">
         <div class="name">Family</div>
@@ -1539,6 +1539,13 @@
     }
     return false;
   }
+  // Paid users have already unlocked everything, so the landing CTAs shouldn't pitch the free unit.
+  window.updateStartCTAs=function(){
+    var paid=isAccessGranted(2);
+    [].forEach.call(document.querySelectorAll('.start-free-cta'),function(a){
+      a.textContent = paid ? 'Start any course now →' : (a.getAttribute('data-free-label')||a.textContent);
+    });
+  };
   window.startCheckout=function(){
     if(!auth.currentUser){ showAuthModal('in'); return; }
     var fns=firebase.functions();
@@ -1597,7 +1604,7 @@
   // ── Auth state observer ───────────────────────────────────────────────────
   auth.onAuthStateChanged(function(user){
     updateAuthUI(user);
-    if(!user) return;
+    if(!user){ window._access=null; updateStartCTAs(); return; }
     hideAuthModal();
     // Load rewards profile
     db.collection('users').doc(user.uid).get().then(function(doc){
@@ -1610,11 +1617,11 @@
     // Load subscription
     db.collection('users').doc(user.uid).collection('state').doc('subscription').get().then(function(doc){
       window._access = doc.exists ? doc.data() : {type:'none'};
-      renderDashboard(); renderToc(); updateAuthUI(user);
+      renderDashboard(); renderToc(); updateAuthUI(user); updateStartCTAs();
     }).catch(function(e){
       console.warn('Subscription load failed',e);
       window._access = {type:'none'};
-      renderDashboard(); renderToc();
+      renderDashboard(); renderToc(); updateStartCTAs();
     });
   });
 })();
