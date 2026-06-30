@@ -1606,9 +1606,24 @@
     updateAuthUI(user);
     if(!user){ window._access=null; updateStartCTAs(); return; }
     hideAuthModal();
-    // Load rewards profile
+    // Load rewards profile, and create a minimal profile record the first time we see this
+    // account in Firestore. The users/{uid} doc is otherwise only written lazily on the first
+    // progress sync, so accounts that never make progress never get a row. This backfills them.
     db.collection('users').doc(user.uid).get().then(function(doc){
-      if(doc.exists && window.Rewards) Rewards.mergeFromCloud(doc.data());
+      if(doc.exists){
+        if(window.Rewards) Rewards.mergeFromCloud(doc.data());
+      } else {
+        var prov=(user.providerData&&user.providerData[0]&&user.providerData[0].providerId)||null;
+        db.collection('users').doc(user.uid).set({
+          email:user.email||null,
+          displayName:user.displayName||null,
+          provider:prov,
+          // serverTimestamp marks when this Firestore record was made; authCreatedAt is the
+          // genuine account-creation time from Auth, so backfilled rows still show the real date.
+          createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+          authCreatedAt:(user.metadata&&user.metadata.creationTime)||null
+        },{merge:true}).catch(function(e){ console.warn('User profile create failed',e); });
+      }
     }).catch(function(e){ console.warn('Cloud load failed',e); });
     // Load adaptive state
     db.collection('users').doc(user.uid).collection('state').doc('adapt').get().then(function(doc){
