@@ -50,7 +50,8 @@ Each figure is in **two** places that must stay in sync: the inline `chData` in 
 (what renders) and `lessons/prealgebra/chapter-N.json` (source). See the memory note on inline
 lesson data. Edit by brace-matching `var chData=`, JSON.parse, mutate, re-serialize.
 
-## Rollout status
-- Done: 4.4 (all 3 figures).
-- Remaining: 108 figures across 43 lessons (75 visibly cramped). Suggested order: free **Chapter 1**
-  first (highest visibility — every visitor sees it), then by chapter.
+## Rollout status (messiest-first)
+- Done (11): 4.4 ×3 · 7.3 ×2 (speed triangle, avg speed) · 7.5 area · 9.4 cascade · 6.4 tape ·
+  6.2 unwrap · 4.3 strip · 7.4 map scale.
+- Remaining: ~97 figures. Next in the ranked-by-cramming list: 6.1 (4x+x=5x), 6.2#0 (balance
+  scale), 7.2 (match shared part), 8.3 (largest factor), 6.3 (take same x off both pans), 5.5, 3.2…
