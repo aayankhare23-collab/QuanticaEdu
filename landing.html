@@ -2613,23 +2613,10 @@
     '</div>';
     document.getElementById('lessonBody').innerHTML=html;
     initTutor(key, L.title);
-    var body=document.getElementById('wsCenterBody');
-    WS.pages.forEach(function(pg,i){
-      var node=document.createElement('div'); node.setAttribute('data-p',i); node.style.display='none';
-      if(pg.keyIdea){
-        node.className='ws-page page-key';
-        node.innerHTML='<div class="key-card"><div class="key-card-label">✦ Key Idea '+pg.keyNum+'</div><div class="key-card-body">'+pg.keyIdea.x+'</div></div>';
-      } else {
-        var lead=pg.lead.map(function(b){return renderBlock(b,ctx,0,isCp);}).join('');
-        var inner=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,i,isCp):'');
-        var isTextOnly=!pg.prob;
-        node.className='ws-page'+(isTextOnly?' page-text-only':'');
-        node.innerHTML=inner;
-      }
-      body.appendChild(node);
-      var pb=node.querySelector('.probbox[data-k]'); pg.probK=pb?pb.getAttribute('data-k'):null;
-    });
-    typeset(body);
+    // Lazy rendering: build + typeset only the page the student is on (plus a prefetch of the next),
+    // instead of materializing every page and all its KaTeX up front. That turns a ~200ms+ blocking
+    // render on big lessons into a few ms. _ctx/_isCp let the on-demand builder render later pages.
+    WS._ctx=ctx; WS._isCp=isCp;
     document.getElementById('wsNbBody').innerHTML='<div class="nb-empty">Solve each problem to unlock its key idea. They\'ll collect here.</div>';
     var cs=document.getElementById('courseScroll');
     if(cs){ cs.classList.add('ws-mode'); cs.scrollTop=0; }
@@ -2639,9 +2626,38 @@
     WS.showPage(0);
     if(window.Diagnostic && Diagnostic.needs(key) && window.DiffPanel && DiffPanel.available(key)) Diagnostic.startFor(key);
   }
+  // Build (and KaTeX-typeset) the DOM node for a single page. The 3rd renderBlock arg is the page
+  // index, which feeds each problem's stableId — passing it here keeps cross-session progress intact.
+  WS._buildPageNode=function(i){
+    var pg=WS.pages[i]; if(!pg) return null;
+    var ctx=WS._ctx, isCp=WS._isCp;
+    var node=document.createElement('div'); node.setAttribute('data-p',i); node.style.display='none';
+    if(pg.keyIdea){
+      node.className='ws-page page-key';
+      node.innerHTML='<div class="key-card"><div class="key-card-label">✦ Key Idea '+pg.keyNum+'</div><div class="key-card-body">'+pg.keyIdea.x+'</div></div>';
+    } else {
+      var lead=(pg.lead||[]).map(function(b){return renderBlock(b,ctx,0,isCp);}).join('');
+      node.className='ws-page'+(!pg.prob?' page-text-only':'');
+      node.innerHTML=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,i,isCp):'');
+    }
+    var pb=node.querySelector('.probbox[data-k]'); pg.probK=pb?pb.getAttribute('data-k'):null;
+    if(typeof typeset==='function') typeset(node);
+    return node;
+  };
+  // Ensure page i is in the DOM (build it if not), inserted in page-index order. Idempotent.
+  WS._ensurePage=function(i){
+    if(i<0||i>WS.pages.length-1) return null;
+    var body=document.getElementById('wsCenterBody'); if(!body) return null;
+    var kids=body.children, ref=null;
+    for(var j=0;j<kids.length;j++){ var p=+kids[j].getAttribute('data-p'); if(p===i) return kids[j]; if(ref===null&&p>i) ref=kids[j]; }
+    var node=WS._buildPageNode(i); if(!node) return null;
+    body.insertBefore(node, ref);
+    return node;
+  };
   WS.showPage=function(i){
     if(i<0)i=0; if(i>WS.pages.length-1)i=WS.pages.length-1; WS.page=i;
     var body=document.getElementById('wsCenterBody'); if(!body) return;
+    WS._ensurePage(i);                       // build this page on demand if it isn't built yet
     [].slice.call(body.children).forEach(function(node){
       var p=+node.getAttribute('data-p'), on=(p===i);
       node.style.display=on?'flex':'none';
@@ -2666,6 +2682,8 @@
     body.scrollTop=0;
     WS.revealKeysFor(i);
     WS.refreshDock();
+    // Prefetch the next page off the critical path so Continue → feels instant.
+    if(i+1<=WS.pages.length-1) requestAnimationFrame(function(){ WS._ensurePage(i+1); });
   };
   WS.revealKeysFor=function(){};  // key ideas are now their own pages, filed into the notebook on Next
   WS._buildIdeaNode=function(block,num){
@@ -3812,17 +3830,8 @@ async function sendTutorMsg() {
     // drop old DOM + page entries after the current page
     [].slice.call(body.children).forEach(function(n){ if(+n.getAttribute('data-p')>cur) n.parentNode.removeChild(n); });
     WS.pages=WS.pages.slice(0,cur+1);
-    // render new tail pages
-    bp.pages.forEach(function(pg){
-      var idx=WS.pages.length;
-      var node=document.createElement('div'); node.setAttribute('data-p',idx); node.style.display='none';
-      if(pg.keyIdea){ node.className='ws-page page-key'; node.innerHTML='<div class="key-card"><div class="key-card-label">✦ Key Idea '+pg.keyNum+'</div><div class="key-card-body">'+pg.keyIdea.x+'</div></div>'; }
-      else { var lead=(pg.lead||[]).map(function(b){return renderBlock(b,ctx,0,isCp);}).join(''); node.className='ws-page'+(!pg.prob?' page-text-only':''); node.innerHTML=(lead?'<div class="page-lead">'+lead+'</div>':'')+(pg.prob?renderBlock(pg.prob,ctx,idx,isCp):''); }
-      body.appendChild(node);
-      var pb=node.querySelector('.probbox[data-k]'); pg.probK=pb?pb.getAttribute('data-k'):null;
-      WS.pages.push(pg);
-    });
-    if(typeof typeset==='function') typeset(body);
+    // append new tail page data; the DOM nodes build lazily on navigation (WS._ensurePage)
+    bp.pages.forEach(function(pg){ WS.pages.push(pg); });
     // rebuild the progress segments to match the new page count
     var segc=document.querySelector('.ws-segs');
     if(segc){ var s=''; for(var j=0;j<WS.pages.length;j++) s+='<span class="ws-seg" data-p="'+j+'"></span>'; segc.innerHTML=s; }
