@@ -2274,5 +2274,420 @@
    }
   ],
   "next": "10.6"
+ },
+ "10.6": {
+  "title": "Mean, Median, and Mode",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Probability gave one number for how likely something is. A whole list of numbers deserves the same treatment, one number that stands in for the crowd. There are three natural ways to name the center of a data set, and each answers a slightly different question. The mean shares everything out fairly, the median finds the value sitting in the middle, and the mode picks the one that shows up most."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Five aquarium tanks along a wall hold \\(12\\), \\(7\\), \\(15\\), \\(9\\), and \\(12\\) guppies. A keeper scoops guppies from tank to tank until every tank holds the same number, with none added and none removed overall. How many guppies end up in each tank? Give the number.",
+    "ans": "11",
+    "accept": [
+     "11"
+    ],
+    "hints": [
+     "Since no guppies are added or removed, the total across all five tanks stays fixed no matter how they get shuffled around. Start by adding up how many guppies there are altogether.",
+     "Every tank must end with the same count, so take that total and split it evenly among the \\(5\\) tanks. That single equal share is the number each tank ends up holding."
+    ],
+    "sol": "The keeper only moves guppies around, so the total never changes. Add the five tanks to find how many guppies there are in all, giving \\(12 + 7 + 15 + 9 + 12 = 55\\). Now share those \\(55\\) guppies equally among the \\(5\\) tanks, so each tank gets $$\\frac{55}{5} = \\boxed{11}.$$ Every tank ends up holding \\(11\\) guppies. That equal share is exactly the mean of the original counts, the number you would get if you leveled them all out."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 600 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"On the left, four uneven stacks of blocks with heights three, eight, four, and five, totaling twenty. An arrow labeled level off points to the right, where the same twenty blocks form four equal stacks of height five, the mean.\"><text x=\"60\" y=\"44\" text-anchor=\"start\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2f6fe0\" font-family=\"Inter, sans-serif\" letter-spacing=\"1.4\">UNEVEN</text><rect x=\"60\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"60\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"60\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><text x=\"75.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >3</text><rect x=\"102\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"100\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"82\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"64\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"102\" y=\"46\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><text x=\"117.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >8</text><rect x=\"144\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"144\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"144\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"144\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><text x=\"159.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >4</text><rect x=\"186\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"186\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"186\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"186\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><rect x=\"186\" y=\"100\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1\"/><text x=\"201.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >5</text><text x=\"138.0\" y=\"228\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"400\" fill=\"#7c8aa0\" font-family=\"Inter, sans-serif\" >total = 3 + 8 + 4 + 5 = 20</text><path d=\"M230 120 L364 120\" stroke=\"#2f6fe0\" stroke-width=\"2.6\" stroke-linecap=\"round\"/><path d=\"M366 120 l-8 -5 M366 120 l-8 5\" stroke=\"#2f6fe0\" stroke-width=\"2.6\" fill=\"none\" stroke-linecap=\"round\"/><text x=\"298.0\" y=\"110\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"#2f6fe0\" font-family=\"Inter, sans-serif\" >level off</text><text x=\"380\" y=\"44\" text-anchor=\"start\" font-size=\"12.5\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" letter-spacing=\"1.4\">EVEN</text><rect x=\"380\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"380\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"380\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"380\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"380\" y=\"100\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"422\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"422\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"422\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"422\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"422\" y=\"100\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"464\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"464\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"464\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"464\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"464\" y=\"100\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"506\" y=\"172\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"506\" y=\"154\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"506\" y=\"136\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"506\" y=\"118\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><rect x=\"506\" y=\"100\" width=\"30\" height=\"16\" rx=\"3\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.2\"/><line x1=\"370\" y1=\"100\" x2=\"578\" y2=\"100\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><text x=\"552\" y=\"104\" text-anchor=\"start\" font-size=\"12.5\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >mean 5</text><text x=\"395.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >5</text><text x=\"437.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >5</text><text x=\"479.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >5</text><text x=\"521.0\" y=\"208\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >5</text></svg>",
+    "cap": "The total amount of stuff never changes when you spread it out evenly, and that even share is the mean. Four stacks of heights \\(3\\), \\(8\\), \\(4\\), and \\(5\\) hold \\(20\\) blocks altogether, so pouring them into four equal piles levels everything off at \\(5\\) each."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The mean.</b> The mean (or average) of a list is the total of the values divided by how many there are, $$\\text{mean}=\\frac{\\text{sum of the values}}{\\text{how many values}}.$$ Think of it as the fair share. Pool everything together, then split it evenly among the values, and the mean is the amount each one gets. It is the single level everything settles to, so a list where nobody has more or less than anyone else already sits at its mean."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A kite flyer records how many minutes her kite stayed up on four windy afternoons: \\(18\\), \\(25\\), \\(22\\), and \\(30\\) minutes. What is the mean number of minutes the kite stayed up per afternoon? Give your answer as a decimal.",
+    "ans": "23.75",
+    "accept": [
+     "23.75",
+     "95/4"
+    ],
+    "hints": [
+     "The mean is the total of all the values divided by how many values there are, so first add the four times \\(18 + 25 + 22 + 30\\).",
+     "The sum is \\(95\\), and there are \\(4\\) afternoons, so divide \\(95\\) by \\(4\\) and notice the answer does not have to match any single afternoon."
+    ],
+    "sol": "The mean is the sum of the values divided by how many there are. Add the four recorded times, \\(18 + 25 + 22 + 30 = 95\\), then divide by the \\(4\\) afternoons, giving\n$$\\text{mean} = \\frac{95}{4} = \\boxed{23.75}.$$\nNotice that \\(23.75\\) is not one of the recorded times. The mean is a balancing point for the whole set, so it can land between the values rather than on any of them. The kite stayed up a mean of \\(23.75\\) minutes per afternoon."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Recovering a total.</b> The mean does not have to be one of your actual values. The \\(23.75\\) minutes was never a single reading on any day, it is just where the numbers balance. And the formula runs backwards. Since \\(\\text{mean} = \\text{sum} \\div \\text{count}\\), you can rearrange to get $$\\text{sum} = \\text{mean} \\times \\text{count}.$$ So knowing the mean and how many values there are tells you the total, even without seeing the values. That reverse move is exactly what lets you recover one missing value when you know everything else, which is the next problem."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A bakery records how many loaves it sells each day from Monday through Friday. On four of the days it sold \\(40\\), \\(52\\), \\(38\\), and \\(61\\) loaves, and the five-day average came out to exactly \\(49\\) loaves. How many loaves were sold on the fifth day? Give the number.",
+    "ans": "54",
+    "accept": [
+     "54"
+    ],
+    "hints": [
+     "The mean is the total divided by the number of days, so if the average of five days is \\(49\\), the five daily counts must add up to \\(49 \\times 5\\). Work out that total first.",
+     "You know four of the five values, so subtract their sum from the full total. Whatever is left over is the number of loaves sold on the missing day."
+    ],
+    "sol": "Work backward from the mean. The average of the five days is the total divided by \\(5\\), so the total number of loaves must be $$49 \\times 5 = 245.$$ Now add the four days you already know, giving \\(40 + 52 + 38 + 61 = 191\\). The missing day is whatever brings the running sum up to \\(245\\), so subtract, $$245 - 191 = \\boxed{54}.$$ The bakery sold \\(54\\) loaves on the fifth day."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A coding club has \\(12\\) beginners who averaged \\(30\\) points on a puzzle, and \\(8\\) advanced members who averaged \\(55\\) points. What is the average score of all \\(20\\) members together? It is tempting to just average \\(30\\) and \\(55\\), but that ignores how many people are in each group, so think about the total points first. Give the number.",
+    "ans": "40",
+    "accept": [
+     "40"
+    ],
+    "hints": [
+     "The mean of a group is total points divided by number of people, so you can run that backward. A group's total is its mean times its size, which gives \\(12 \\times 30\\) points for the beginners and \\(8 \\times 55\\) points for the advanced members.",
+     "Add both totals to get the points scored by all \\(20\\) members, then divide that sum by \\(20\\). Averaging \\(30\\) and \\(55\\) to get \\(42.5\\) would be wrong here because the two groups are not the same size, and the larger beginner group pulls the true average down."
+    ],
+    "sol": "Use the weighted mean, which means you rebuild the total points and divide by the total number of people instead of averaging the two group averages. Each group's total is its average times its size, so the beginners scored \\(12 \\times 30 = 360\\) points and the advanced members scored \\(8 \\times 55 = 440\\) points. Together all \\(20\\) members scored \\(360 + 440 = 800\\) points, and the average is that total divided by \\(20\\), $$\\frac{12 \\times 30 + 8 \\times 55}{20} = \\frac{800}{20} = \\boxed{40}.$$ Notice this is not \\(42.5\\), the plain average of \\(30\\) and \\(55\\). The groups have different sizes, and since there are more beginners than advanced members, their lower score carries more weight and pulls the combined average below the midpoint. The average score of all \\(20\\) members is \\(40\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Weight by size.</b> To combine two groups into one mean, you cannot just average the two averages, unless the groups are the same size. Instead, rebuild the totals. Each group's mean times its own count gives that group's total, and adding those totals and dividing by everybody counted gives the combined mean, $$\\text{mean}=\\frac{\\text{sum of every group total}}{\\text{everybody counted}}.$$ The bigger group has more values pulling on the total, so the combined mean drifts toward that group's own average. A class of \\(30\\) outvotes a class of \\(5\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Seven kids skip stones across a pond and count the skips: \\(4, 9, 6, 3, 8, 7, 11\\). The median is the middle score once the list is sorted from smallest to largest. What is the median number of skips? Give the number.",
+    "ans": "7",
+    "accept": [
+     "7"
+    ],
+    "hints": [
+     "The list is scrambled, so sort it from smallest to largest before you look for the middle. Sorting gives \\(3, 4, 6, 7, 8, 9, 11\\).",
+     "With \\(7\\) values in order, the middle one is the \\(4\\)th, since three values sit below it and three sit above it."
+    ],
+    "sol": "The median is the middle value, but middle only makes sense once the numbers are in order, so sort first. Sorting \\(4, 9, 6, 3, 8, 7, 11\\) from smallest to largest gives $$3,\\ 4,\\ 6,\\ \\underline{7},\\ 8,\\ 9,\\ 11.$$ There are \\(7\\) values, and the middle one is the \\(4\\)th, with three values below it \\((3, 4, 6)\\) and three above it \\((8, 9, 11)\\). That balance is what makes it the center. So the median number of skips is \\(\\boxed{7}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 560 270\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Top: five points in order at two, four, five, eight, nine on a number line, the middle point five highlighted as the median. Bottom: four points at three, six, ten, thirteen, with the median marked at eight, halfway between the two middle points six and ten.\"><line x1=\"60\" y1=\"70\" x2=\"500\" y2=\"70\" stroke=\"#7c8aa0\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"140.0\" cy=\"70\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"140.0\" y=\"94\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >2</text><circle cx=\"220.0\" cy=\"70\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"220.0\" y=\"94\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >4</text><circle cx=\"260.0\" cy=\"70\" r=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><text x=\"260.0\" y=\"94\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >5</text><circle cx=\"380.0\" cy=\"70\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"380.0\" y=\"94\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >8</text><circle cx=\"420.0\" cy=\"70\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"420.0\" y=\"94\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >9</text><text x=\"60\" y=\"42\" text-anchor=\"start\" font-size=\"12\" font-weight=\"700\" fill=\"#2f6fe0\" font-family=\"Inter, sans-serif\" letter-spacing=\"1.2\">ODD COUNT</text><line x1=\"260.0\" y1=\"46\" x2=\"260.0\" y2=\"62\" stroke=\"#f0b429\" stroke-width=\"2\"/><text x=\"260.0\" y=\"40\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >median 5</text><text x=\"60\" y=\"152\" text-anchor=\"start\" font-size=\"12\" font-weight=\"700\" fill=\"#2f6fe0\" font-family=\"Inter, sans-serif\" letter-spacing=\"1.2\">EVEN COUNT</text><line x1=\"60\" y1=\"180\" x2=\"500\" y2=\"180\" stroke=\"#7c8aa0\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"148.0\" cy=\"180\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"148.0\" y=\"204\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >3</text><circle cx=\"236.0\" cy=\"180\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"236.0\" y=\"204\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >6</text><circle cx=\"353.3\" cy=\"180\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"353.3333333333333\" y=\"204\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >10</text><circle cx=\"441.3\" cy=\"180\" r=\"6.5\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><text x=\"441.33333333333337\" y=\"204\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >13</text><line x1=\"294.7\" y1=\"154\" x2=\"294.7\" y2=\"180\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><circle cx=\"294.7\" cy=\"180\" r=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><text x=\"294.66666666666663\" y=\"148\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >median 8</text><text x=\"294.66666666666663\" y=\"140\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"400\" fill=\"#7c8aa0\" font-family=\"Inter, sans-serif\" >halfway between 6 and 10</text></svg>",
+    "cap": "To find the median, put the values in order and take the one in the middle, shown here in gold. When the count is even there is no single middle value, so you land halfway between the two middle dots by splitting the difference."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The median.</b> The median is the middle value once the list is written in order, so order the numbers first, always. When the count is odd there is a single value sitting dead center, and that lone value is the median. When the count is even there are two values in the middle, and the median is their mean, $$\\text{median} = \\frac{\\text{lower middle} + \\text{upper middle}}{2}.$$ So just like the mean, the median need not be one of the numbers in the list."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Six friends compare how many books they read over the summer: \\(5, 12, 8, 3, 9, 14\\). What is the median number of books? Give your answer as a decimal.",
+    "ans": "8.5",
+    "accept": [
+     "8.5",
+     "17/2",
+     "8.50"
+    ],
+    "hints": [
+     "The median is the middle value once the data is in order, so start by sorting the six counts from smallest to largest.",
+     "With six values there is no single middle number, so look at the two values sitting in the middle and take their mean."
+    ],
+    "sol": "The median is the middle of the ordered data, so first sort the counts from smallest to largest, giving \\(3, 5, 8, 9, 12, 14\\). There are six values, an even count, so no single number sits in the middle. The two middle values are the third and fourth, \\(8\\) and \\(9\\), and the median is their mean, $$\\frac{8 + 9}{2} = \\frac{17}{2} = \\boxed{8.5}.$$ So the median number of books read is \\(8.5\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A five-person startup pays its four employees \\(42\\), \\(48\\), \\(45\\), and \\(51\\) thousand dollars a year, while the founder earns \\(314\\) thousand. By how many thousand dollars does the mean salary exceed the median salary? Give the number (of thousand dollars).",
+    "ans": "52",
+    "accept": [
+     "52"
+    ],
+    "hints": [
+     "The mean is the total of all five salaries divided by \\(5\\), so add \\(42 + 48 + 45 + 51 + 314\\) and split the sum evenly across the five people.",
+     "The median is the middle value once the salaries are lined up in order, so sort them as \\(42, 45, 48, 51, 314\\) and read off the one in the center, then subtract it from the mean."
+    ],
+    "sol": "Find the mean and the median, then take the difference. The mean adds all five salaries and divides by \\(5\\),\n$$\\text{mean} = \\frac{42 + 48 + 45 + 51 + 314}{5} = \\frac{500}{5} = 100.$$\nFor the median, order the salaries as \\(42, 45, 48, 51, 314\\) and take the middle one, giving \\(48\\). The gap between them is\n$$100 - 48 = \\boxed{52}.$$\nSo the mean salary sits \\(52\\) thousand dollars above the median. The four ordinary salaries pin the median near the middle of the pack, but the founder's \\(314\\) thousand yanks the mean far upward, which is exactly how one lone large value distorts an average."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 560 230\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A number line with a tight cluster of points at three, four, five, six and a lone outlier at twenty-two. The median sits at five inside the cluster; the mean is dragged out to eight, pulled toward the outlier.\"><line x1=\"60\" y1=\"140\" x2=\"510\" y2=\"140\" stroke=\"#7c8aa0\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"136\" x2=\"60.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"60.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >0</text><line x1=\"97.5\" y1=\"136\" x2=\"97.5\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"97.5\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >2</text><line x1=\"135.0\" y1=\"136\" x2=\"135.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"135.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >4</text><line x1=\"172.5\" y1=\"136\" x2=\"172.5\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"172.5\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >6</text><line x1=\"210.0\" y1=\"136\" x2=\"210.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"210.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >8</text><line x1=\"247.5\" y1=\"136\" x2=\"247.5\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"247.5\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >10</text><line x1=\"285.0\" y1=\"136\" x2=\"285.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"285.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >12</text><line x1=\"322.5\" y1=\"136\" x2=\"322.5\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"322.5\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >14</text><line x1=\"360.0\" y1=\"136\" x2=\"360.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"360.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >16</text><line x1=\"397.5\" y1=\"136\" x2=\"397.5\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"397.5\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >18</text><line x1=\"435.0\" y1=\"136\" x2=\"435.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"435.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >20</text><line x1=\"472.5\" y1=\"136\" x2=\"472.5\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"472.5\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >22</text><line x1=\"510.0\" y1=\"136\" x2=\"510.0\" y2=\"144\" stroke=\"#e4e9f1\" stroke-width=\"1.5\"/><text x=\"510.0\" y=\"160\" text-anchor=\"middle\" font-size=\"10.5\" font-weight=\"400\" fill=\"#aab4c2\" font-family=\"Inter, sans-serif\" >24</text><circle cx=\"116.2\" cy=\"140\" r=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><circle cx=\"135.0\" cy=\"140\" r=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><circle cx=\"153.8\" cy=\"140\" r=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><circle cx=\"172.5\" cy=\"140\" r=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1\"/><circle cx=\"472.5\" cy=\"140\" r=\"7.5\" fill=\"#f08a4b\" stroke=\"#c85f1f\" stroke-width=\"1.5\"/><text x=\"472.5\" y=\"124\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"#c85f1f\" font-family=\"Inter, sans-serif\" >outlier</text><line x1=\"153.8\" y1=\"94\" x2=\"153.8\" y2=\"131\" stroke=\"#f0b429\" stroke-width=\"2.4\"/><text x=\"153.75\" y=\"88\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >median 5</text><line x1=\"210.0\" y1=\"174\" x2=\"210.0\" y2=\"149\" stroke=\"#2257c5\" stroke-width=\"2.4\"/><text x=\"210.0\" y=\"192\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >mean 8</text><path d=\"M153.8 162 L206.0 162\" stroke=\"#2f6fe0\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><path d=\"M208.0 162 l-7 -4 M208.0 162 l-7 4\" stroke=\"#2f6fe0\" stroke-width=\"2\" fill=\"none\"/><text x=\"181.875\" y=\"210\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"400\" fill=\"#7c8aa0\" font-family=\"Inter, sans-serif\" >the lone big value drags the mean, not the median</text></svg>",
+    "cap": "One far-off value barely nudges the median, which stays parked inside the cluster, but it hauls the mean well to the right, away from where most of the data sits. When the data is lopsided like this, the median gives the more honest picture of a typical value."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Outliers and robustness.</b> An outlier is one value sitting far from the rest, and the two measures react to it very differently. The median only cares about position, the middle slot, so an outlier barely nudges it. The mean feels every value's size, so a single giant value drags it toward itself. That is why for lopsided data like incomes, home prices, or a handful of enormous entries, the median is the more honest \"typical\" number. When the data is fairly even, no value pulls hard on the mean, and the mean and median land almost on top of each other."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A jacket shop records the sizes it sold today: \\(6, 8, 8, 10, 8, 12, 8, 10, 6, 8\\). They want to reorder the most of whichever size sells best, so they need the size that appears most often in the list. Which size should they reorder the most of? Give the size.",
+    "ans": "8",
+    "accept": [
+     "8"
+    ],
+    "hints": [
+     "The size they should reorder most is the mode, the value that appears most often, so tally how many times each size shows up in the list.",
+     "Count carefully. Size \\(6\\) appears twice, size \\(10\\) appears twice, and size \\(12\\) appears once, but one size beats them all, and that highest count is the mode."
+    ],
+    "sol": "The size to reorder most is the mode, the value that appears most often. Tally each size in \\(6, 8, 8, 10, 8, 12, 8, 10, 6, 8\\). Size \\(6\\) shows up twice, size \\(10\\) shows up twice, and size \\(12\\) shows up once. Size \\(8\\) shows up five times, which is more than any other size, giving $$\\text{mode} = \\boxed{8}.$$ So the shop should reorder the most of size \\(8\\), since that is the size that sells most often."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 560 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A frequency bar chart over the values two through six with counts one, two, four, two, one. The tallest bar, over the value four with a count of four, is highlighted gold as the mode.\"><line x1=\"94\" y1=\"190\" x2=\"516\" y2=\"190\" stroke=\"#475569\" stroke-width=\"2\"/><rect x=\"110\" y=\"160\" width=\"54\" height=\"30\" rx=\"4\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.2\"/><text x=\"137.0\" y=\"152\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >1</text><text x=\"137.0\" y=\"210\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"600\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >2</text><rect x=\"194\" y=\"130\" width=\"54\" height=\"60\" rx=\"4\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.2\"/><text x=\"221.0\" y=\"122\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >2</text><text x=\"221.0\" y=\"210\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"600\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >3</text><rect x=\"278\" y=\"70\" width=\"54\" height=\"120\" rx=\"4\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><text x=\"305.0\" y=\"62\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >4</text><text x=\"305.0\" y=\"210\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"600\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >4</text><text x=\"305.0\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\" >mode</text><rect x=\"362\" y=\"130\" width=\"54\" height=\"60\" rx=\"4\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.2\"/><text x=\"389.0\" y=\"122\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >2</text><text x=\"389.0\" y=\"210\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"600\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >5</text><rect x=\"446\" y=\"160\" width=\"54\" height=\"30\" rx=\"4\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.2\"/><text x=\"473.0\" y=\"152\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\" >1</text><text x=\"473.0\" y=\"210\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"600\" fill=\"#475569\" font-family=\"Inter, sans-serif\" >6</text><text x=\"80\" y=\"210\" text-anchor=\"end\" font-size=\"11\" font-weight=\"400\" fill=\"#7c8aa0\" font-family=\"Inter, sans-serif\" >value</text><text x=\"94\" y=\"45\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"400\" fill=\"#7c8aa0\" font-family=\"Inter, sans-serif\" >count</text></svg>",
+    "cap": "The mode is the value that shows up most often, so it stands as the tallest bar. Here that is the value \\(4\\), which appears \\(4\\) times."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The mode.</b> The mode is the value that appears most often. The mean and median care about size and position, but the mode only cares about frequency, which is what makes it the natural \"typical\" for choices and categories. A shoe store stocks the most common size, not the average one, and a survey reports the most frequent answer. Frequency is the whole story, so a list where every value is different has no mode at all, and a list where two values tie for most frequent has two modes."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A list can have more than one mode. A survey records these numbers: \\(2, 5, 2, 7, 5, 9, 5, 2\\). Both \\(2\\) and \\(5\\) appear three times, which is more often than any other value. A value counts as a mode when it ties for the most frequent. How many values are modes?",
+    "ans": "2",
+    "accept": [
+     "2"
+    ],
+    "hints": [
+     "Tally how many times each different value shows up. Count the \\(2\\)s, the \\(5\\)s, the \\(7\\), and the \\(9\\) separately.",
+     "The mode is the value with the highest count, but if two values share that same top count, they are both modes. Look for which values reach the largest tally and count how many there are."
+    ],
+    "sol": "Count how often each value appears. The value \\(2\\) shows up three times, the value \\(5\\) shows up three times, the value \\(7\\) once, and the value \\(9\\) once. The most frequent count is three, and two different values reach it, so both \\(2\\) and \\(5\\) are modes. That is what \"multimodal\" means, a list with more than one mode. Counting the values that tie for most frequent gives $$\\boxed{2}.$$ There are two modes."
+   },
+   {
+    "t": "prob",
+    "xp": 10,
+    "x": "A gym sets your membership tier by the median of your nine monthly visit counts. Seven months in, your counts are \\(20, 8, 16, 5, 22, 12, 16\\). You have two months left, and you can visit at most \\(30\\) times in a month. What is the highest median you can reach across all nine months? Give the number.",
+    "ans": "16",
+    "accept": [
+     "16"
+    ],
+    "hints": [
+     "With nine values, the median is the \\(5\\)th number once they are sorted, so the whole question is where that middle slot lands.",
+     "Each new month can be at most \\(30\\), which is larger than everything you already have, so both new values drop in above your current numbers and none of them can slide into the \\(5\\)th slot from below."
+    ],
+    "sol": "The median of nine values is the \\(5\\)th value once they are sorted, so the goal is to make that \\(5\\)th slot as large as possible. Sort the seven known counts, giving $$5,\\ 8,\\ 12,\\ 16,\\ 16,\\ 20,\\ 22.$$ Now add the two remaining months. Each can be at most \\(30\\), and \\(30\\) is bigger than every number already on the list, so both new values land at the top no matter what you pick. Adding two numbers only at the high end shifts nothing below the middle, so the \\(5\\)th of the nine sorted values stays put at the \\(5\\)th of the original seven, which is \\(16\\). Pushing the new months higher just makes the top of the list bigger, never the middle, so the best you can do is $$\\boxed{16}.$$ The highest median you can reach is \\(16\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A gymnast's five routine scores average \\(9.2\\). She has one routine left, and she wants her average across all six scores to stay exactly \\(9.2\\). What score must she earn on the sixth routine? Give your answer as a decimal.",
+    "ans": "9.2",
+    "accept": [
+     "9.2",
+     "46/5",
+     "9.20"
+    ],
+    "hints": [
+     "The mean is the total of all scores divided by how many there are. With five scores averaging \\(9.2\\), the current total is \\(5 \\times 9.2 = 46\\).",
+     "After the sixth routine you will divide a new total by \\(6\\), and you want that to equal \\(9.2\\). Ask what sixth score keeps the total-over-count balanced, and notice that adding one more copy of the mean itself leaves the mean untouched."
+    ],
+    "sol": "Use the fact that the mean is the total divided by the count. The five scores average \\(9.2\\), so their total is \\(5 \\times 9.2 = 46\\). Call the sixth score \\(x\\). For the six-score average to stay \\(9.2\\), the new total \\(46 + x\\) divided by \\(6\\) must equal \\(9.2\\), giving\n$$\\frac{46 + x}{6} = 9.2.$$\nMultiply both sides by \\(6\\), so \\(46 + x = 55.2\\), and subtract \\(46\\) to get \\(x = 9.2\\). This matches the shortcut worth remembering. Adding one more value that equals the current mean leaves the mean exactly where it was, since you are adding one more average-sized share to an average-sized pile. She must score $$\\boxed{9.2}.$$"
+   },
+   {
+    "t": "imp",
+    "x": "<b>The balancing point.</b> The mean is the balance point of the data. Measure how far each value sits above or below the mean, and those gaps cancel out exactly, so they always sum to zero. That one fact explains a lot. Adding a new value equal to the mean changes nothing, since it adds no gap to either side. A value above the mean tips the balance up, and one below tips it down, $$\\text{sum of gaps above} = \\text{sum of gaps below}.$$ So a single far-off outlier, with a huge gap on one side, can drag the mean a surprising distance to keep the two sides even."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A staircase has an LED on every step. The steps show \\(7, 11, 15, 19,\\) and so on, going up by \\(4\\) each step, with the top step showing \\(43\\). What is the mean of all the numbers shown? Give the number.",
+    "ans": "25",
+    "accept": [
+     "25"
+    ],
+    "hints": [
+     "The numbers are evenly spaced, each one \\(4\\) more than the last, so pair them from the outside in. The smallest \\(7\\) pairs with the largest \\(43\\), the next \\(11\\) pairs with \\(39\\), and so on, just like pairing the ends when you add \\(1\\) up to \\(n\\).",
+     "Every pair adds to the same total, \\(7+43 = 50\\), so every number sits the same distance above or below the center. That means you never have to add the whole list, since the mean is just the value halfway between the two ends."
+    ],
+    "sol": "The numbers are evenly spaced, each one \\(4\\) above the one before, so a shortcut works. Pair them from the ends inward, giving \\(7\\) with \\(43\\), then \\(11\\) with \\(39\\), then \\(15\\) with \\(35\\), and each pair sums to \\(50\\). Because the pairs are all equal, the values are perfectly balanced around one center, so the mean equals the median equals the average of the first and last term. That average is\n$$\\frac{7 + 43}{2} = \\frac{50}{2} = \\boxed{25}.$$\nNo full sum needed. For any evenly spaced list, the mean is just the average of the two ends, which here is \\(25\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Evenly spaced lists.</b> When the values step up by a constant amount, the list is symmetric about its center. Each value below the middle is matched by one an equal distance above it, so those pairs balance out and the mean lands exactly at the median. Both equal the average of the first and last value, $$\\text{mean}=\\frac{\\text{first}+\\text{last}}{2}.$$ You get the center from just the two ends, with no need to add everything up. This is why a run of consecutive whole numbers, or any list with a fixed gap, gives up its mean at a glance."
+   },
+   {
+    "t": "prob",
+    "xp": 11,
+    "x": "A set of five positive whole numbers has a mean of \\(16\\), a median of \\(15\\), and \\(15\\) is its only mode. What is the greatest value the largest number in the set could be? Give the number.",
+    "ans": "47",
+    "accept": [
+     "47"
+    ],
+    "hints": [
+     "A mean of \\(16\\) across five numbers fixes the total. Multiply to get the sum, \\(5 \\times 16 = 80\\), so however you fill the five slots they must add to \\(80\\).",
+     "Sort the five numbers. The median is the 3rd value, so the middle slot is \\(15\\). For \\(15\\) to be the only mode it has to appear at least twice, so make the 4th slot \\(15\\) too, and to leave the largest as big as possible make the two smallest slots the tiniest distinct positive integers that do not tie \\(15\\), namely \\(1\\) and \\(2\\)."
+    ],
+    "sol": "The mean tells you the sum. Five numbers averaging \\(16\\) add up to \\(5 \\times 16 = 80\\). Sort the set from smallest to largest and fill the five slots to push the top number as high as possible. The median is the 3rd value, so slot 3 is \\(15\\). For \\(15\\) to be the only mode it must appear at least twice and more often than anything else, so put another \\(15\\) in slot 4. To make the largest number big, shrink the first two slots as much as the rules allow. They must be positive whole numbers, and they cannot both be \\(15\\) or a repeated value that ties \\(15\\) for mode, so the smallest safe choice is \\(1\\) and \\(2\\). That leaves the largest number as the rest of the total,\n$$80 - (1 + 2 + 15 + 15) = \\boxed{47}.$$\nChecking, the set \\(\\{1, 2, 15, 15, 47\\}\\) has sum \\(80\\) so mean \\(16\\), middle value \\(15\\) so median \\(15\\), and \\(15\\) is the only repeat so the only mode. The greatest the largest number can be is \\(47\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "The word \"average\" traces back through Old French and Italian to the Arabic \"awariya\", meaning damaged goods. When a storm ruined part of a ship's cargo, the loss was shared out evenly among all the merchants, and that fair split of a total is exactly what a mean does today."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Three summaries, one question each.</b> The <b>mean</b> is the fair share, the total split evenly across the count, so it feels every value and gets tugged hard by an outlier. The <b>median</b> is the middle of the ordered list, and because it only cares about position it stays honest when the data is lopsided. The <b>mode</b> is the most common value, the right tool for categories and for deciding what is typical to stock or expect. Pick the summary that answers the question you actually asked. And when the mean and median disagree by a lot, do not just average them, that gap is the data telling you it is skewed, with a long tail dragging the mean away from the middle."
+   }
+  ],
+  "review": [
+   {
+    "x": "Find the mean of the four numbers \\(14\\), \\(9\\), \\(22\\), and \\(15\\). Give the number.",
+    "ans": "15",
+    "accept": [
+     "15"
+    ],
+    "hints": [
+     "Add all four numbers to get the total, then divide by how many numbers there are, which is \\(4\\)."
+    ],
+    "sol": "The mean is the total of the values divided by how many values there are. First add them, \\(14 + 9 + 22 + 15 = 60\\). There are \\(4\\) numbers, so divide the total by \\(4\\), $$\\text{mean} = \\frac{60}{4} = \\boxed{15}.$$ The mean of the four numbers is \\(15\\)."
+   },
+   {
+    "x": "Find the median of the data set \\(7, 2, 9, 4, 6\\). Give the number.",
+    "ans": "6",
+    "accept": [
+     "6"
+    ],
+    "hints": [
+     "Put the five values in order from smallest to largest first, then look for the value sitting right in the middle with two numbers on each side of it."
+    ],
+    "sol": "The median is the middle value once the data is in order, so start by sorting the five numbers from smallest to largest, giving \\(2, 4, 6, 7, 9\\). With five values there is a single middle position, the third one, with two numbers below it and two above it. $$2,\\ 4,\\ \\boxed{6},\\ 7,\\ 9$$ The value in that center spot is \\(6\\), so the median is \\(6\\)."
+   },
+   {
+    "x": "Find the mode of this data set: \\(3, 7, 3, 9, 3, 7, 5\\). Give the number.",
+    "ans": "3",
+    "accept": [
+     "3"
+    ],
+    "hints": [
+     "The mode is the value that appears most often, so tally how many times each number shows up and pick the one with the highest count."
+    ],
+    "sol": "The mode is the value that occurs most frequently, so count how often each number appears. Tallying the seven values gives \\(3\\) three times, \\(7\\) twice, and \\(9\\) and \\(5\\) once each. The winner is clear, since $$3 \\text{ appears } 3 \\text{ times},$$ more than any other value. The mode is \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "Find the mean of the four numbers \\(10\\), \\(13\\), \\(14\\), and \\(10\\). Give your answer as a decimal.",
+    "ans": "11.75",
+    "accept": [
+     "11.75",
+     "47/4"
+    ],
+    "hints": [
+     "Add all four numbers to get the total, then divide by \\(4\\) since there are four values. The quotient is not whole, so carry it out as a decimal."
+    ],
+    "sol": "The mean is the total of the values divided by how many there are. Adding the four numbers gives \\(10 + 13 + 14 + 10 = 47\\), and there are \\(4\\) of them, so divide the total by \\(4\\), $$\\text{mean} = \\frac{47}{4} = \\boxed{11.75}.$$ The mean of the four numbers is \\(11.75\\)."
+   },
+   {
+    "x": "A weather station takes five daily temperature readings, and their mean is \\(20\\) degrees. Four of the readings are \\(15\\), \\(22\\), \\(18\\), and \\(25\\). What is the fifth reading? Give the number.",
+    "ans": "20",
+    "accept": [
+     "20"
+    ],
+    "hints": [
+     "The mean is the total divided by how many values there are, so if five readings average \\(20\\), their sum must be \\(5 \\times 20 = 100\\). Add up the four readings you know, then see what is left to reach \\(100\\)."
+    ],
+    "sol": "Work backward from the mean. Since the mean of five readings is \\(20\\), the five readings together must add to \\(5 \\times 20 = 100\\). The four known readings sum to \\(15 + 22 + 18 + 25 = 80\\), so the fifth reading is whatever fills the gap up to \\(100\\), giving\n$$100 - 80 = \\boxed{20}.$$\nThe fifth reading is \\(20\\) degrees."
+   },
+   {
+    "x": "Find the median of these six numbers: \\(12, 4, 8, 20, 6, 10\\). Give the number.",
+    "ans": "9",
+    "accept": [
+     "9"
+    ],
+    "hints": [
+     "Sort the six numbers from smallest to largest first. With an even count there is no single middle value, so the median is the mean of the two middle numbers, the \\(3\\)rd and \\(4\\)th in the sorted list."
+    ],
+    "sol": ""
+   },
+   {
+    "x": "On a test, a group of \\(10\\) students averaged \\(80\\) points and a separate group of \\(15\\) students averaged \\(90\\) points. What is the average score of all \\(25\\) students combined? Give the number.",
+    "ans": "86",
+    "accept": [
+     "86"
+    ],
+    "hints": [
+     "The overall average is the total of all points divided by the total number of students, not the average of \\(80\\) and \\(90\\). Find the total points each group scored by multiplying its average by its size, then add those totals and divide by \\(25\\)."
+    ],
+    "sol": "This is a weighted mean, so you cannot just average \\(80\\) and \\(90\\), because the two groups are different sizes. Instead, rebuild the total score of each group from its average. The \\(10\\) students who averaged \\(80\\) scored \\(10 \\times 80 = 800\\) points all together, and the \\(15\\) students who averaged \\(90\\) scored \\(15 \\times 90 = 1350\\) points. Add those to get the total for everyone, then divide by all \\(25\\) students, giving\n$$\\frac{800 + 1350}{25} = \\frac{2150}{25} = \\boxed{86}.$$\nThe combined average is \\(86\\), which sits closer to \\(90\\) than to \\(80\\) because the larger group pulls the mean toward its score."
+   },
+   {
+    "x": "A data set has the values \\(8\\), \\(10\\), \\(9\\), \\(11\\), and \\(62\\). The mean of these five numbers is \\(20\\), and the median is \\(10\\). By how much does the mean exceed the median? Give the number.",
+    "ans": "10",
+    "accept": [
+     "10"
+    ],
+    "hints": [
+     "The mean and median are both handed to you, so you only need their difference. Sort the values to see why the median is \\(10\\): the ordered list is \\(8, 9, 10, 11, 62\\), and the middle value is \\(10\\), while the lone large value \\(62\\) drags the mean up to \\(20\\)."
+    ],
+    "sol": "Subtract the median from the mean to measure how far apart the two centers sit. The mean of the five values is \\(\\frac{8 + 10 + 9 + 11 + 62}{5} = \\frac{100}{5} = 20\\), and sorting the list to \\(8, 9, 10, 11, 62\\) puts \\(10\\) in the middle, so the median is \\(10\\). The single value \\(62\\) is an outlier that pulls the mean far above the typical value while leaving the median untouched, which is exactly why the two differ. Taking the difference gives $$20 - 10 = \\boxed{10}.$$ The mean exceeds the median by \\(10\\)."
+   },
+   {
+    "x": "The ten multiples of \\(3\\) from \\(3\\) up to \\(30\\) are \\(3, 6, 9, \\dots, 30\\), and they add up to \\(165\\). Remove one number so that the nine numbers left have a mean of \\(16\\). Which number is removed? Give the number.",
+    "ans": "21",
+    "accept": [
+     "21"
+    ],
+    "hints": [
+     "The nine remaining numbers have a mean of \\(16\\), so their total must be \\(9 \\times 16 = 144\\). The number you remove is whatever is missing from the original sum of \\(165\\) to leave that total."
+    ],
+    "sol": "The mean of the nine remaining numbers is their sum divided by \\(9\\), so if that mean is \\(16\\), the nine numbers must add to \\(9 \\times 16 = 144\\). All ten numbers together add to \\(165\\), so the removed number is the gap between those two totals, giving $$165 - 144 = \\boxed{21}.$$ Since \\(21\\) is one of the multiples of \\(3\\) in the list, removing it drops the sum from \\(165\\) to \\(144\\) and leaves the nine numbers averaging exactly \\(16\\). The number removed is \\(21\\)."
+   },
+   {
+    "x": "Six different positive whole numbers have a mean of \\(10\\), so they add up to \\(60\\). What is the largest that any single one of them can be? Give the number.",
+    "ans": "45",
+    "accept": [
+     "45"
+    ],
+    "hints": [
+     "To make one number as large as possible while the total stays fixed at \\(60\\), squeeze every other number as small as it can go. The five others must be different positive whole numbers, so the smallest they can be is \\(1, 2, 3, 4, 5\\)."
+    ],
+    "sol": "The six numbers are fixed to sum to \\(60\\), since a mean of \\(10\\) across six values means \\(6 \\times 10 = 60\\). To push one value as high as possible, make the other five as small as they can be. They have to be different positive whole numbers, so the smallest five distinct choices are \\(1, 2, 3, 4, 5\\), which add to \\(15\\). Whatever is left over goes to the sixth number, giving\n\n$$60 - 15 = \\boxed{45}.$$\n\nThe largest any single one of them can be is \\(45\\)."
+   },
+   {
+    "x": "The mean of five numbers is \\(12\\). A sixth number is added, and the mean of all six numbers rises to \\(14\\). What is the sixth number? Give the number.",
+    "ans": "24",
+    "accept": [
+     "24"
+    ],
+    "hints": [
+     "The mean times the count gives the total, so the five numbers add to \\(5 \\times 12 = 60\\) and all six add to \\(6 \\times 14 = 84\\). The sixth number is whatever fills the gap between those two totals."
+    ],
+    "sol": "Turn each mean back into a total by multiplying the mean by how many numbers it covers. The first five numbers have mean \\(12\\), so their total is \\(5 \\times 12 = 60\\). After the sixth number is added, all six have mean \\(14\\), so their total is \\(6 \\times 14 = 84\\). The sixth number is the difference between the new total and the old one, giving $$84 - 60 = \\boxed{24}.$$ So the sixth number is \\(24\\)."
+   },
+   {
+    "x": "A shoe shop sold these sizes over one afternoon: \\(7, 8, 8, 9, 8, 10, 7, 8\\). The owner wants to restock the most common size, since that is what customers buy the most. Which size should the shop restock the most of? Give the size.",
+    "ans": "8",
+    "accept": [
+     "8"
+    ],
+    "hints": [
+     "The size to restock is the one that sold the most, which is the mode. Count how many times each size appears and find the one with the highest count."
+    ],
+    "sol": "The most common value in a data set is the mode, so restocking the size that sold most means finding the mode. Tally each size: \\(7\\) appears twice, \\(9\\) appears once, \\(10\\) appears once, and \\(8\\) appears in four of the eight sales. No other size comes close, so the mode is $$\\boxed{8}.$$ The shop should restock size \\(8\\), because it was the size customers bought most often."
+   },
+   {
+    "x": "Find the average of all the whole numbers from \\(41\\) to \\(59\\), including both ends. Give the number.",
+    "ans": "50",
+    "accept": [
+     "50"
+    ],
+    "hints": [
+     "When a list of numbers is evenly spaced, you do not have to add them all up. The mean sits right in the middle, so average the smallest and largest values, \\((41+59)/2\\)."
+    ],
+    "sol": "The numbers \\(41, 42, 43, \\dots, 59\\) are evenly spaced, one apart, so they are perfectly balanced around their center. For any evenly spaced list the mean equals the average of the first and last value, which saves you from adding all nineteen numbers. Averaging the two ends gives $$\\frac{41+59}{2}=\\frac{100}{2}=\\boxed{50}.$$ The average of the whole numbers from \\(41\\) to \\(59\\) is \\(50\\)."
+   },
+   {
+    "x": "A set of five positive whole numbers has a mean of \\(6\\), a median of \\(6\\), and \\(8\\) as its only mode. What is the difference between the largest and smallest values in the set? Give the number.",
+    "ans": "5",
+    "accept": [
+     "5"
+    ],
+    "hints": [
+     "The mean of \\(6\\) over five numbers forces the total to be \\(30\\), and the median of \\(6\\) fixes the middle value as \\(6\\), so line the five numbers up from smallest to largest and pin down the rest so that \\(8\\) shows up more than any other value while the whole list still sums to \\(30\\)."
+    ],
+    "sol": "Work from the three clues one at a time. A mean of \\(6\\) across five numbers means they add to \\(5 \\times 6 = 30\\). A median of \\(6\\) means the middle value, the third when the numbers are sorted, equals \\(6\\). For \\(8\\) to be the only mode it must appear more than any other value, so the two largest slots are both \\(8\\), giving \\(6, 8, 8\\) for the top three and a running total of \\(22\\). That leaves the two smallest numbers to add to \\(30 - 22 = 8\\), and they must be different from each other and from \\(8\\) so no value ties \\(8\\) for most frequent. The pair \\(3\\) and \\(5\\) works, so the set is \\(3, 5, 6, 8, 8\\). The largest value is \\(8\\) and the smallest is \\(3\\), giving\n$$8 - 3 = \\boxed{5}.$$\nThe difference between the largest and smallest values is \\(5\\)."
+   }
+  ],
+  "next": "10.7"
  }
 }
