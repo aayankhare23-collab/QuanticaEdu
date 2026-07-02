@@ -1528,16 +1528,18 @@
   // ── Paywall / subscription ────────────────────────────────────────────────
   window._access = null;
   window.isAccessGranted = function isAccessGranted(chNum){
-    if(chNum===1) return true;
-    if(!window._access) return false;
-    if(window._access.type==='paid') return true;
-    if(window._access.type==='trial'){
-      var exp=window._access.expiresAt;
-      if(!exp) return true;
-      var expDate=exp.toDate ? exp.toDate() : new Date(exp.seconds*1000);
-      return expDate > new Date();
-    }
-    return false;
+    return true;   // ── PAYWALL DISABLED: every chapter is free for everyone ──
+    // To re-enable the paywall, remove the line above and restore this gating:
+    // if(chNum===1) return true;
+    // if(!window._access) return false;
+    // if(window._access.type==='paid') return true;
+    // if(window._access.type==='trial'){
+    //   var exp=window._access.expiresAt;
+    //   if(!exp) return true;
+    //   var expDate=exp.toDate ? exp.toDate() : new Date(exp.seconds*1000);
+    //   return expDate > new Date();
+    // }
+    // return false;
   }
   // Paid users have already unlocked everything, so the landing CTAs shouldn't pitch the free unit.
   window.updateStartCTAs=function(){
