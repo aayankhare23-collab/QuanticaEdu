@@ -984,589 +984,549 @@
   <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
 </div>
 
-<style id="mktg-css">
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap');
-.mktg{
-  --nv:#0f2c4d;--bl:#1f4e79;--md:#2e75b6;--sk:#4a9fe0;--ink:#122238;--sl:#4a5a72;--mu:#8393aa;
-  --acc:#ff7a45;--gold:#f1b51c;--goldd:#c79100;--grn:#1f9d6b;--grn2:#3ecf8e;--pur:#7c3aed;--pur2:#a78bfa;
-  --glass:rgba(255,255,255,.66);--glass-b:rgba(255,255,255,.78);
-  --line:rgba(20,54,92,.09);--hair:rgba(20,54,92,.14);
-  --sh:0 34px 80px -34px rgba(15,44,77,.42);--sh-sm:0 16px 40px -20px rgba(15,44,77,.4);
-  --r:30px;--r-sm:20px;
-  position:relative;font-family:'Geist',system-ui,sans-serif;color:var(--ink);z-index:1;
-  background:linear-gradient(180deg,#eef5ff 0%,#eaf0fe 45%,#f1f6ff 100%);
+<style id="wmb-design">
+/* ============================================================
+   QuanticaEdu — WEMBI x BRILLIANT design system (verified)
+   All rules scoped under .wmb. Font: Space Grotesk.
+   Palette: lime #beff8b, slate #9dbbc5, black #0a0a0a, off-white #ededeb
+   CONTRAST FIXES vs the draft:
+   - Split de-emphasis into two tokens with explicit AA guidance:
+     --wmb-gray (#5c5c58, 5.73:1) = AA-safe for ANY text size.
+     --wmb-gray-soft (#7a7a74, 3.68:1) = LARGE TEXT ONLY (>=24px or >=18.66px bold).
+   - .wmb-dim (the trailing large-heading gray) is locked to large type only.
+   - Added .wmb-muted (uses --wmb-gray) as the ONLY class allowed on small
+     de-emphasized body copy, so 3.68:1 gray never lands on 16px paragraphs.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+.wmb{
+  /* ---- color tokens ---- */
+  --wmb-bg:#ededeb;          /* warm off-white page */
+  --wmb-bg-2:#e5e5e2;        /* subtly deeper panel wash */
+  --wmb-ink:#0a0a0a;         /* near-black text (16.9:1 on bg) */
+  --wmb-lime:#beff8b;        /* solid highlighter / primary pill */
+  --wmb-lime-deep:#6fbf3a;   /* tiny accent dots only */
+  --wmb-slate:#9dbbc5;       /* image panel / muted surface */
+  --wmb-slate-deep:#7ba0ad;  /* slate gradient far stop */
+  --wmb-gray:#5c5c58;        /* AA-safe de-emphasis, 5.73:1 — any size */
+  --wmb-gray-soft:#7a7a74;   /* 3.68:1 — LARGE TEXT ONLY (>=24px / 18.66px bold) */
+  --wmb-rule:#0a0a0a;        /* thin editorial rules */
+  --wmb-rule-soft:rgba(10,10,10,.12);
+  --wmb-white:#ffffff;
+
+  /* ---- type scale (fluid) ---- */
+  --wmb-hero:clamp(48px,8vw,120px);
+  --wmb-h2:clamp(34px,5.2vw,72px);
+  --wmb-h3:clamp(24px,3vw,40px);
+  --wmb-lead:clamp(17px,1.5vw,21px);
+  --wmb-body:16px;
+  --wmb-small:13px;
+
+  /* ---- rhythm ---- */
+  --wmb-gutter:clamp(20px,4vw,64px);
+  --wmb-section-y:clamp(72px,12vw,168px);
+  --wmb-max:1240px;
+  --wmb-radius:28px;
+  --wmb-radius-lg:40px;
+
+  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  color:var(--wmb-ink);
+  background:var(--wmb-bg);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01" 1;
+}
+
+.wmb *{box-sizing:border-box}
+.wmb ::selection{background:var(--wmb-lime);color:var(--wmb-ink)}
+
+/* ---- layout container ---- */
+.wmb .wmb-wrap{max-width:var(--wmb-max);margin:0 auto;padding:0 var(--wmb-gutter)}
+.wmb .wmb-section{padding-block:var(--wmb-section-y)}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.wmb h1,.wmb h2,.wmb h3{
+  font-weight:700;
+  line-height:.98;
+  letter-spacing:-.03em;
+  margin:0;
+  color:var(--wmb-ink);
+}
+.wmb .wmb-hero{
+  font-size:var(--wmb-hero);
+  font-weight:700;
+  line-height:.92;
+  letter-spacing:-.04em;
+}
+.wmb h2,.wmb .wmb-h2{font-size:var(--wmb-h2);line-height:.96;letter-spacing:-.035em}
+.wmb h3,.wmb .wmb-h3{font-size:var(--wmb-h3);line-height:1.02;letter-spacing:-.02em}
+
+.wmb .wmb-lead{
+  font-size:var(--wmb-lead);
+  line-height:1.5;
+  font-weight:400;
+  max-width:44ch;
+  color:var(--wmb-ink);
+}
+/* sparse body: black opening, gray trailing de-emphasis */
+.wmb p{font-size:var(--wmb-body);line-height:1.6;font-weight:400;max-width:52ch;margin:0}
+
+/* --- de-emphasis: two safe tiers --- */
+/* .wmb-dim = trailing gray on LARGE headings only (>=24px). 3.68:1 is AA-large. */
+.wmb .wmb-dim{color:var(--wmb-gray-soft)}
+/* Guard: if .wmb-dim is ever applied to normal body text it must inherit the
+   AA-safe gray instead. Authors: use .wmb-muted on any sub-24px de-emphasis. */
+.wmb p .wmb-dim,.wmb .wmb-lead .wmb-dim{color:var(--wmb-gray)}
+/* .wmb-muted = AA-safe muted body at ANY size (5.73:1) */
+.wmb .wmb-muted{color:var(--wmb-gray)}
+
+/* eyebrow / kicker */
+.wmb .wmb-kicker{
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--wmb-gray);margin:0;
+}
+
+/* ---- SOLID lime highlighter marker (ink on lime = 16.84:1) ---- */
+.wmb .wmb-mark{
+  display:inline;
+  background:var(--wmb-lime);
+  color:var(--wmb-ink);
+  border-radius:.28em;
+  padding:.02em .22em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.wmb .wmb-mark-block{
+  display:inline-block;
+  background:var(--wmb-lime);
+  color:var(--wmb-ink);
+  border-radius:.18em;
+  padding:.04em .24em .12em;
+  line-height:.98;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+/* ============================================================
+   THIN EDITORIAL RULES
+   ============================================================ */
+.wmb .wmb-rule{border:0;border-top:1px solid var(--wmb-rule);margin:0}
+.wmb .wmb-rule-soft{border:0;border-top:1px solid var(--wmb-rule-soft);margin:0}
+
+/* ============================================================
+   PILL BUTTONS + PILL NAV  (all text is ink on transparent/lime,
+   or bg on ink for --dark: every combination is >=16.8:1)
+   ============================================================ */
+.wmb .wmb-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:inherit;font-weight:600;font-size:15px;letter-spacing:-.01em;
+  padding:14px 26px;border-radius:999px;border:1.5px solid var(--wmb-ink);
+  background:transparent;color:var(--wmb-ink);cursor:pointer;
+  transition:transform .18s ease,background .18s ease,color .18s ease;
+  white-space:nowrap;text-decoration:none;
+}
+.wmb .wmb-btn:hover{transform:translateY(-2px)}
+.wmb .wmb-btn--solid{background:var(--wmb-lime);border-color:var(--wmb-lime)}
+.wmb .wmb-btn--solid:hover{background:#b0f778;border-color:#b0f778}
+.wmb .wmb-btn--dark{background:var(--wmb-ink);border-color:var(--wmb-ink);color:var(--wmb-bg)}
+.wmb .wmb-btn--dark:hover{background:#1c1c1c}
+.wmb .wmb-btn--ghost{background:transparent}
+.wmb .wmb-btn--ghost:hover{background:rgba(10,10,10,.05)}
+.wmb .wmb-btn--lg{padding:17px 34px;font-size:16px}
+
+/* small green status dot (decorative, not a text pair) */
+.wmb .wmb-dot{width:8px;height:8px;border-radius:999px;background:var(--wmb-lime-deep);flex:none}
+
+/* nav bar */
+.wmb .wmb-nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-block:20px}
+.wmb .wmb-nav-brand{font-weight:700;font-size:20px;letter-spacing:-.03em;margin-right:auto}
+.wmb .wmb-nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wmb .wmb-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:inherit;font-weight:500;font-size:14px;letter-spacing:-.01em;
+  padding:9px 18px;border-radius:999px;border:1.5px solid var(--wmb-rule-soft);
+  background:transparent;color:var(--wmb-ink);cursor:pointer;text-decoration:none;
+  transition:border-color .18s ease,background .18s ease,transform .18s ease;
+}
+.wmb .wmb-pill:hover{border-color:var(--wmb-ink);transform:translateY(-1px)}
+.wmb .wmb-pill--on{background:var(--wmb-lime);border-color:var(--wmb-lime)}
+
+/* ============================================================
+   SLATE IMAGERY PANEL (backdrop for hero art / proofs)
+   ============================================================ */
+.wmb .wmb-panel{
+  border-radius:var(--wmb-radius-lg);
+  background:linear-gradient(150deg,var(--wmb-slate) 0%,#c3d6dd 100%);
   overflow:hidden;
 }
-.mktg::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:
-   radial-gradient(720px 520px at 84% 2%, rgba(74,159,224,.40), transparent 60%),
-   radial-gradient(620px 520px at 6% 9%, rgba(124,58,237,.18), transparent 60%),
-   radial-gradient(760px 660px at 98% 46%, rgba(241,181,28,.30), transparent 62%),
-   radial-gradient(740px 620px at 1% 80%, rgba(31,157,107,.28), transparent 62%),
-   radial-gradient(640px 540px at 64% 116%, rgba(241,181,28,.17), transparent 60%);}
-.mktg .wrap{max-width:1140px;margin:0 auto;padding:0 26px}
-.mktg h1,.mktg h2,.mktg h3,.mktg h4{font-family:'Geist',system-ui,sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.022em;color:var(--nv)}
-.mktg .serif{font-family:'Geist',system-ui,sans-serif}
-.mktg p{color:var(--sl);line-height:1.62}
-.mktg .eyebrow{font-family:'Geist';font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--md)}
-.mktg .grad{background:linear-gradient(100deg,var(--goldd),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.mktg .grad.gr{background:linear-gradient(100deg,var(--grn),var(--grn2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.mktg .grad.bp{background:linear-gradient(100deg,var(--md),var(--pur));-webkit-background-clip:text;background-clip:text;color:transparent}
+</style>
 
-/* buttons (scoped) */
-.mktg .mbtn{display:inline-flex;align-items:center;gap:9px;font-family:'Geist';font-weight:650;font-size:15.5px;padding:15px 26px;border-radius:999px;border:none;cursor:pointer;text-decoration:none;transition:transform .18s cubic-bezier(.3,1.3,.5,1),box-shadow .22s,background .2s;white-space:nowrap}
-.mktg .mbtn.primary{background:linear-gradient(120deg,var(--bl),var(--sk));color:#fff;box-shadow:0 16px 34px -14px rgba(31,78,121,.6)}
-.mktg .mbtn.primary:hover{transform:translateY(-2px);box-shadow:0 22px 44px -14px rgba(31,78,121,.68)}
-.mktg .mbtn.ghost{background:var(--glass-b);color:var(--nv);border:1px solid var(--hair);backdrop-filter:blur(8px)}
-.mktg .mbtn.ghost:hover{transform:translateY(-2px);border-color:var(--sk)}
-.mktg .mbtn.dark{background:var(--nv);color:#fff}
-.mktg .mbtn.dark:hover{transform:translateY(-2px);background:#153a63}
-.mktg .mbtn.sm{padding:11px 20px;font-size:14.5px}
+<style id="wmb-layout">
+/* force Space Grotesk across the whole marketing region (app sets h1/p fonts globally) */
+.wmb,.wmb h1,.wmb h2,.wmb h3,.wmb h4,.wmb h5,.wmb p,.wmb a,.wmb span,.wmb div,.wmb button,.wmb summary,.wmb small,.wmb li,.wmb ul,.wmb strong,.wmb em,.wmb text{font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif}
+/* ---- hero background (subtle drifting grid + sparse capsule rain) ---- */
+.wmb{--hb-lime:#beff8b;--hb-slate:#9dbbc5;--hb-strength:.85}
+.wmb-herosec{position:relative;isolation:isolate;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:var(--hb-strength);
+  -webkit-mask-image:radial-gradient(120% 108% at 24% 22%,#000 32%,transparent 74%);
+          mask-image:radial-gradient(120% 108% at 24% 22%,#000 32%,transparent 74%)}
+.hero-bg__grid{position:absolute;inset:-40px;background-image:linear-gradient(to right,rgba(10,10,10,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(10,10,10,.05) 1px,transparent 1px);background-size:34px 34px;animation:hb-drift 42s linear infinite}
+@keyframes hb-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-34px,-34px,0)}}
+.hero-bg__rain{position:absolute;inset:0}
+.hero-bg__rain i{position:absolute;top:-60px;left:var(--x);width:var(--w);height:var(--h);background:var(--c);border-radius:999px;opacity:0;filter:blur(.3px);animation:hb-fall var(--dur) linear var(--d) infinite}
+@keyframes hb-fall{0%{transform:translateY(0);opacity:0}12%{opacity:.3}88%{opacity:.3}100%{transform:translateY(120vh);opacity:0}}
+@media(prefers-reduced-motion:reduce){.hero-bg__grid{animation:none}.hero-bg__rain i{animation:none;opacity:0}}
 
-/* header */
-.mktg-head{--bl:#1f4e79;--sk:#4a9fe0;--nv:#0f2c4d;--sl:#4a5a72;--md:#2e75b6;--hair:rgba(20,54,92,.14);--glass:rgba(255,255,255,.66);--glass-b:rgba(255,255,255,.78);--sh-sm:0 16px 40px -20px rgba(15,44,77,.4);position:sticky;top:14px;z-index:60;margin:14px auto 0;max-width:1180px;padding:0 18px}
-.mktg-head .bar{display:flex;align-items:center;gap:18px;background:var(--glass);backdrop-filter:blur(20px) saturate(1.3);border:1px solid var(--glass-b);border-radius:999px;padding:10px 12px 10px 22px;box-shadow:var(--sh-sm)}
-.mktg-head .logo{display:flex;align-items:center;gap:10px;font-family:'Geist';font-weight:700;font-size:22px;color:var(--nv);text-decoration:none}
-.mktg-head .logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--bl),var(--sk));box-shadow:0 6px 16px -6px rgba(31,78,121,.7);position:relative}
-.mktg-head nav.links{display:flex;gap:24px;margin:0 auto}
-.mktg-head nav.links a{font-size:14.5px;font-weight:550;color:var(--sl);text-decoration:none;transition:color .15s}
-.mktg-head nav.links a:hover{color:var(--nv)}
-.mktg-head .mbtn{display:inline-flex;align-items:center;gap:8px;font-family:'Geist';font-weight:650;font-size:14.5px;padding:11px 20px;border-radius:999px;border:none;cursor:pointer;text-decoration:none;transition:transform .18s cubic-bezier(.3,1.3,.5,1),box-shadow .22s,background .2s,color .15s;white-space:nowrap}
-.mktg-head .mbtn.primary{background:linear-gradient(120deg,var(--bl),var(--sk));color:#fff;box-shadow:0 12px 26px -12px rgba(31,78,121,.6)}
-.mktg-head .mbtn.primary:hover{transform:translateY(-1px);box-shadow:0 16px 32px -12px rgba(31,78,121,.7)}
-.mktg-head .mbtn.ghost{background:transparent;color:var(--nv);border:1px solid transparent}
-.mktg-head .mbtn.ghost:hover{color:var(--md)}
-.mktg-head .hact{display:flex;gap:9px;align-items:center}
-@media(max-width:860px){.mktg-head nav.links{display:none}}
-@media(max-width:560px){.mktg-head{padding:0 10px}.mktg-head .bar{gap:8px;padding:8px 8px 8px 16px}.mktg-head .hact .ghost{display:none}.mktg-head .logo{font-size:19px}.mktg-head .mbtn.primary{font-size:12.5px;padding:10px 14px}}
+/* ---- hero ---- */
+.wmb-herosec{padding-block:clamp(28px,5vw,64px) var(--wmb-section-y)}
+.wmb-hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(28px,5vw,64px);align-items:center}
+.wmb-hero-copy .wmb-hero{margin:0}
+.wmb-hero-copy .wmb-lead{margin-top:clamp(20px,2.4vw,30px)}
+.wmb-hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(26px,3vw,38px)}
+.wmb-hero-milo{display:flex;justify-content:center}
+.wmb-hero-note{margin-top:18px;font-size:13px}
+/* hero Pythagorean proof (large & prominent) */
+.wmb-hero-proof{width:100%;max-width:510px;margin:0 auto}
+.wmb-hero-proof svg{width:100%;height:auto;display:block}
+/* Meet Milo chat showcase row */
+.wmb-milo-row{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(30px,5vw,72px);align-items:center}
+.wmb-milo-chat{display:flex;justify-content:center}
+.wmb-milo-copy .wmb-kicker{margin-bottom:14px}
+.wmb-milo-copy .wmb-h2{margin:0;max-width:16ch}
+.wmb-milo-copy p{margin-top:22px;font-size:var(--wmb-lead)}
 
-/* generic glass card + device frame */
-.mktg .glass{background:var(--glass);backdrop-filter:blur(22px) saturate(1.25);border:1px solid var(--glass-b);border-radius:var(--r);box-shadow:var(--sh)}
-.mktg .device{position:relative;background:var(--glass);backdrop-filter:blur(22px) saturate(1.25);border:1px solid var(--glass-b);border-radius:var(--r);box-shadow:var(--sh);padding:20px}
-.mktg .device .screen{background:linear-gradient(180deg,#ffffff,#f7fafe);border:1px solid var(--line);border-radius:20px;padding:16px;overflow:hidden}
-.mktg .device .screen svg{width:100%;height:auto;display:block}
-.mktg .device .cap{margin-top:12px;font-size:13px;font-weight:600;color:var(--md);text-align:center;font-family:'Geist'}
-.mktg .blob{position:absolute;width:66px;height:66px;border-radius:22px;background:linear-gradient(135deg,var(--sk),var(--bl));box-shadow:0 20px 40px -14px rgba(31,78,121,.6);display:grid;place-items:center;color:#fff;font-family:'Geist';font-weight:700;font-size:30px;z-index:3;animation:mfloat 5.5s ease-in-out infinite}
-.mktg .blob::after{content:"";position:absolute;inset:0;border-radius:22px;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 55%)}
-@keyframes mfloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-13px) rotate(4deg)}}
-.mktg .blob.g{background:linear-gradient(135deg,var(--grn2),var(--grn))}
-.mktg .blob.gd{background:linear-gradient(135deg,#ffd257,var(--gold))}
-.mktg .blob.pu{background:linear-gradient(135deg,var(--pur2),var(--pur))}
-.mktg .blob.bl{background:linear-gradient(135deg,var(--sk),var(--bl))}
-/* colored outlines on the proof cards (echoing the lesson question borders) */
-.mktg .device{border-width:1.5px}
-.mktg .device.bd-g{border-color:rgba(31,157,107,.55);box-shadow:0 30px 66px -30px rgba(31,157,107,.44),0 0 0 1px rgba(31,157,107,.16)}
-.mktg .device.bd-gd{border-color:rgba(199,145,0,.6);box-shadow:0 30px 66px -30px rgba(199,145,0,.4),0 0 0 1px rgba(241,181,28,.22)}
-.mktg .device.bd-pu{border-color:rgba(124,58,237,.5);box-shadow:0 30px 66px -30px rgba(124,58,237,.4),0 0 0 1px rgba(124,58,237,.15)}
-.mktg .device.bd-bl{border-color:rgba(74,159,224,.55);box-shadow:0 30px 66px -30px rgba(31,78,121,.44),0 0 0 1px rgba(74,159,224,.18)}
+/* ---- Milo dark chat (Milo in action) — large & prominent hero element ---- */
+.wmb .milo-card{width:100%;max-width:564px}
+.wmb .milo-win{width:100%;box-sizing:border-box;background:radial-gradient(120% 130% at 50% 0%,#16273f 0%,#0c1626 60%,#080f19 100%);border:1px solid rgba(190,255,139,.26);border-radius:30px;box-shadow:0 56px 120px -44px rgba(10,10,10,.62),0 0 0 1px rgba(255,255,255,.03),0 0 90px -26px rgba(190,255,139,.45);overflow:hidden}
+.wmb .milo-win .top{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(120deg,#17293f,#0f2136)}
+.wmb .milo-win .av{width:50px;height:50px;flex:none;display:grid;place-items:center;animation:milo-bob 5s ease-in-out infinite}
+.wmb .milo-win .av svg{width:100%;height:auto;display:block}
+@keyframes milo-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.wmb .milo-win .who{line-height:1.2}
+.wmb .milo-win .nm{font-weight:600;font-size:16px;color:#f4f8ff}
+.wmb .milo-win .st{font-size:12px;color:#93e6b4;display:flex;align-items:center;gap:6px;margin-top:2px}
+.wmb .milo-win .st::before{content:"";width:7px;height:7px;border-radius:999px;background:#7bd63f;box-shadow:0 0 0 0 rgba(123,214,63,.5);animation:milo-pulse 2s infinite}
+@keyframes milo-pulse{0%{box-shadow:0 0 0 0 rgba(123,214,63,.5)}70%{box-shadow:0 0 0 8px rgba(123,214,63,0)}100%{box-shadow:0 0 0 0 rgba(123,214,63,0)}}
+.wmb .milo-win .body{padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;height:452px;box-sizing:border-box;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%)}
+.wmb .milo-win .mb{max-width:86%;flex:0 0 auto;padding:12px 16px;border-radius:17px;font-size:15.5px;line-height:1.5;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .4s ease,transform .45s cubic-bezier(.3,1.2,.5,1)}
+.wmb .milo-win .mb.show{opacity:1;transform:none}
+.wmb .milo-win .mb.bot{align-self:flex-start;background:linear-gradient(180deg,#243a54,#1b2e46);color:#e8eef7;border-bottom-left-radius:5px}
+.wmb .milo-win .mb.me{align-self:flex-end;background:#beff8b;color:#0a0a0a;font-weight:500;border-bottom-right-radius:5px}
+.wmb .milo-win .mb b{color:inherit}
+.wmb .milo-win .typing{align-self:flex-start;flex:0 0 auto;background:linear-gradient(180deg,#243a54,#1b2e46);border-radius:16px;border-bottom-left-radius:5px;padding:13px 16px;display:none;gap:4px}
+.wmb .milo-win .typing.show{display:flex}
+.wmb .milo-win .typing i{width:7px;height:7px;border-radius:999px;background:#9fb0c9;animation:milo-dot 1.2s infinite}
+.wmb .milo-win .typing i:nth-child(2){animation-delay:.2s}.wmb .milo-win .typing i:nth-child(3){animation-delay:.4s}
+@keyframes milo-dot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.wmb .milo-win .compose{display:flex;gap:9px;align-items:center;padding:13px 15px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.wmb .milo-win .compose .fi{flex:1;font-size:13px;color:#9fb0c9;background:#17253d;border-radius:999px;padding:10px 15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wmb .milo-win .compose .snd{width:36px;height:36px;flex:none;border-radius:999px;background:#beff8b;color:#0a0a0a;display:grid;place-items:center;font-size:14px}
+@media(prefers-reduced-motion:reduce){.wmb .milo-win .mb{opacity:1;transform:none;transition:none}.wmb .milo-win .av{animation:none}}
 
-/* HERO */
-.mktg-hero{padding:52px 0 26px}
-.mktg-hero .grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
-.mktg-hero h1{font-size:clamp(40px,5.6vw,68px)}
-.mktg-hero .lead{font-size:19px;color:var(--sl);margin:22px 0 30px;max-width:34ch}
-.mktg-hero .cta-row{display:flex;gap:13px;flex-wrap:wrap}
-.mktg-hero .micro{margin-top:16px;font-size:13.5px;color:var(--mu);font-weight:500}
-@media(max-width:900px){.mktg-hero .grid{grid-template-columns:1fr;gap:36px}.mktg-hero{padding:34px 0 10px}}
+/* ---- value strip ---- */
+.wmb-strip{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);padding-top:clamp(24px,4vw,52px);border-top:1px solid var(--wmb-rule-soft)}
+.wmb-strip-item .wmb-kicker{margin-bottom:10px}
+.wmb-strip-item h3{font-size:var(--wmb-h3)}
+.wmb-strip-item p{margin-top:8px}
 
-/* MILO animated chat */
-.milo-card{position:relative;width:440px;max-width:100%;margin-left:auto}
-.milo-win{width:100%;box-sizing:border-box;background:radial-gradient(120% 130% at 50% 0%,#14243b 0%,#0b1420 62%,#080f19 100%);border:1px solid rgba(124,58,237,.22);border-radius:26px;box-shadow:var(--sh),0 0 0 1px rgba(124,58,237,.08);overflow:hidden}
-.milo-win .top{display:flex;align-items:center;gap:11px;padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(120deg,#152238 0%,#10263f 100%)}
-.milo-win .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#4a9fe0);display:grid;place-items:center;color:#fff;font-family:'Geist';font-weight:700;font-size:19px;box-shadow:0 6px 16px -6px rgba(124,58,237,.6)}
-.milo-win .nm{font-family:'Geist';font-weight:600;font-size:16px;color:#f5f8fd}
-.milo-win .st{font-size:12px;color:#34d399;display:flex;align-items:center;gap:5px}
-.milo-win .st::before{content:"";width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.5);animation:mpulse 2s infinite}
-@keyframes mpulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 7px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
-.milo-win .body{padding:18px;display:flex;flex-direction:column;justify-content:flex-end;gap:11px;height:290px;box-sizing:border-box;overflow:hidden;background:transparent;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 34px,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 34px,#000 100%)}
-.milo-win .mb{max-width:85%;flex:0 0 auto;padding:11px 15px;border-radius:16px;font-size:14.5px;line-height:1.5;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .4s,transform .45s cubic-bezier(.3,1.2,.5,1)}
-.milo-win .mb.show{opacity:1;transform:none}
-.milo-win .mb.bot{align-self:flex-start;background:linear-gradient(180deg,#223a5c 0%,#1c2f4a 100%);color:#e8eef7;border-bottom-left-radius:5px}
-.milo-win .mb.me{align-self:flex-end;background:linear-gradient(135deg,#6d28d9 0%,#7c3aed 100%);color:#fff;border-bottom-right-radius:5px}
-.milo-win .mb.me b,.milo-win .mb.bot b{color:inherit}
-.milo-win .typing{align-self:flex-start;flex:0 0 auto;background:linear-gradient(180deg,#223a5c 0%,#1c2f4a 100%);border-radius:16px;border-bottom-left-radius:5px;padding:13px 16px;display:none;gap:4px}
-.milo-win .typing.show{display:flex}
-.milo-win .typing i{width:7px;height:7px;border-radius:50%;background:#9fb0c9;animation:mdot 1.2s infinite}
-.milo-win .typing i:nth-child(2){animation-delay:.2s}.milo-win .typing i:nth-child(3){animation-delay:.4s}
-@keyframes mdot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
-.milo-win .compose{display:flex;gap:8px;align-items:center;padding:12px 14px;border-top:1px solid rgba(124,58,237,.2);background:linear-gradient(0deg,#0c1826,#0f1e30)}
-.milo-win .compose .fi{flex:1;font-size:13px;color:#9fb0c9;background:#141f33;border-radius:999px;padding:9px 14px}
-.milo-win .compose .snd{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;display:grid;place-items:center;font-size:13px}
-.milo-card .blob{top:-26px;right:-14px}
+/* ---- meet milo ---- */
+.wmb-meet{max-width:20ch}
+.wmb-meet .wmb-h2{margin:0}
+.wmb-meet p{margin-top:22px;font-size:var(--wmb-lead)}
 
-/* proof strip */
-.mktg-strip{padding:26px 0 6px}
-.mktg-strip .row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.mktg-strip .pcard{padding:22px 22px 20px;border-radius:var(--r-sm)}
-.mktg-strip .pcard .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:13px;color:#fff}
-.mktg-strip .pcard:nth-child(1) .ic{background:linear-gradient(135deg,var(--sk),var(--bl))}
-.mktg-strip .pcard:nth-child(2) .ic{background:linear-gradient(135deg,var(--grn2),var(--grn))}
-.mktg-strip .pcard:nth-child(3) .ic{background:linear-gradient(135deg,#ffd257,var(--gold))}
-.mktg-strip .pcard:nth-child(1){border-left:4px solid var(--sk)}
-.mktg-strip .pcard:nth-child(2){border-left:4px solid var(--grn)}
-.mktg-strip .pcard:nth-child(3){border-left:4px solid var(--goldd)}
-.mktg-strip .pcard h4{font-size:16.5px;margin-bottom:5px}
-.mktg-strip .pcard p{font-size:14px;color:var(--sl);margin:0}
-@media(max-width:820px){.mktg-strip .row{grid-template-columns:1fr}}
+/* ---- visual proofs (numbered editorial rows) ---- */
+.wmb-proof-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,88px);align-items:center;padding-block:clamp(36px,6vw,80px);border-top:1px solid var(--wmb-rule-soft)}
+.wmb-proof-row.rev .wmb-proof-fig{order:2}
+.wmb-proof-fig{display:flex;justify-content:center}
+.wmb-proof-fig svg{width:100%;max-width:440px;height:auto;display:block}
+.wmb-num{display:block;font-size:clamp(40px,6vw,84px);font-weight:700;line-height:.9;letter-spacing:-.04em;color:var(--wmb-ink)}
+.wmb-proof-txt .wmb-rule{margin:18px 0}
+.wmb-proof-txt h2{font-size:var(--wmb-h2)}
+.wmb-proof-txt p{margin-top:20px}
 
-/* meet milo climax */
-.mktg-meet{padding:76px 0 40px;text-align:center;position:relative}
-.mktg-meet .eyebrow{color:var(--md)}
-.mktg-meet h2{font-size:clamp(32px,4.6vw,52px);margin:16px auto 0;max-width:16ch}
-.mktg-meet p{font-size:18px;max-width:52ch;margin:18px auto 0}
-.mktg-meet .bigblob{width:88px;height:88px;border-radius:26px;margin:0 auto 6px;background:linear-gradient(135deg,var(--sk),var(--bl));box-shadow:0 30px 60px -22px rgba(31,78,121,.6);display:grid;place-items:center;color:#fff;font-family:'Geist';font-weight:700;font-size:42px;position:relative;animation:mfloat 6s ease-in-out infinite}
-.mktg-meet .bigblob::after{content:"";position:absolute;inset:0;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.45),transparent 55%)}
-.mktg-meet .beam{width:2px;height:70px;margin:0 auto;background:linear-gradient(180deg,rgba(74,159,224,.55),transparent)}
+/* ---- course path ---- */
+.wmb-path .wmb-h2{max-width:16ch;margin:0}
+.wmb-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(24px,3vw,36px)}
 
-/* feature rows */
-.mktg-feat{padding:34px 0}
-.mktg-feat .frow{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin:52px 0}
-.mktg-feat .frow.rev .fimg{order:2}
-.mktg-feat .frow h2{font-size:clamp(28px,3.6vw,40px)}
-.mktg-feat .frow .ftxt p{font-size:17px;margin-top:16px;max-width:40ch}
-.mktg-feat .frow .ftry{margin-top:22px}
-@media(max-width:900px){.mktg-feat .frow{grid-template-columns:1fr;gap:26px;margin:40px 0}.mktg-feat .frow.rev .fimg{order:0}}
+/* ---- pricing ---- */
+.wmb-pricing .wmb-h2{margin:0 0 clamp(28px,3.5vw,44px)}
+.wmb-price-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:860px}
+.wmb-price{border:1.5px solid var(--wmb-rule-soft);border-radius:var(--wmb-radius);padding:clamp(24px,3vw,36px);position:relative;background:transparent}
+.wmb-price--feat{border-color:var(--wmb-ink)}
+.wmb-price .wmb-price-tag{position:absolute;top:-13px;left:24px;background:var(--wmb-lime);color:var(--wmb-ink);font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px}
+.wmb-price .wmb-price-name{font-weight:600;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--wmb-gray)}
+.wmb-price .wmb-price-amt{font-size:clamp(38px,5vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1;margin:12px 0 4px}
+.wmb-price .wmb-price-amt span{font-size:16px;font-weight:500;color:var(--wmb-gray)}
+.wmb-price ul{list-style:none;padding:0;margin:20px 0 26px;display:grid;gap:11px}
+.wmb-price li{font-size:15px;display:flex;gap:10px;align-items:flex-start}
+.wmb-price li::before{content:"";width:16px;height:16px;flex:none;margin-top:3px;border-radius:999px;background:var(--wmb-lime);box-shadow:inset 0 0 0 1.5px var(--wmb-ink)}
+.wmb-price .wmb-btn{width:100%;justify-content:center}
+.wmb-price-note{margin-top:22px;font-size:13px}
 
-/* relocated interactive demo (glass) */
-.mktg .demo{background:var(--glass);backdrop-filter:blur(22px);border:1.5px solid rgba(74,159,224,.5);border-radius:var(--r);overflow:hidden;box-shadow:0 30px 66px -30px rgba(31,78,121,.42),0 0 0 1px rgba(74,159,224,.16)}
-.mktg .demo .top{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;background:linear-gradient(120deg,var(--nv),var(--bl));color:#fff}
-.mktg .demo .top .t{font-family:'Geist';font-weight:600;font-size:15px}
-.mktg .demo .top .badge{font-size:12px;font-weight:600;background:rgba(255,255,255,.16);padding:4px 11px;border-radius:999px}
-.mktg .demo .chips{display:flex;gap:7px;flex-wrap:wrap;padding:14px 18px 0}
-.mktg .demo .chip{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);color:var(--sl);cursor:pointer}
-.mktg .demo .chip.active{background:var(--bl);color:#fff;border-color:var(--bl)}
-.mktg .demo .body{padding:16px 18px 6px}
-.mktg .demo .q{font-size:16px;font-weight:600;color:var(--ink);line-height:1.5}
-.mktg .demo .q b{color:var(--bl)}
-.mktg .demo .opts{display:grid;gap:9px;margin-top:14px}
-.mktg .demo .opt{text-align:left;padding:12px 15px;border:1.5px solid var(--hair);border-radius:13px;background:#fff;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s;font-family:'Geist'}
-.mktg .demo .opt:hover{border-color:var(--sk)}
-.mktg .demo .opt.right{border-color:var(--grn);background:rgba(31,157,107,.09);color:#0c7a52}
-.mktg .demo .opt.wrong{border-color:#e0796b;background:rgba(224,121,107,.09)}
-.mktg .demo .feedback{margin:12px 0 0;font-size:14px;font-weight:600;min-height:20px}
-.mktg .demo .feedback.ok{color:var(--grn)}.mktg .demo .feedback.no{color:#c9503f}.mktg .demo .feedback.hintbox{color:var(--bl)}
-.mktg .demo .foot{display:flex;justify-content:space-between;padding:12px 18px 16px}
-.mktg .demo .foot button{font-family:'Geist';font-weight:600;font-size:14px;padding:9px 16px;border-radius:999px;border:1px solid var(--hair);background:#fff;color:var(--nv);cursor:pointer}
-.mktg .demo .foot .nextbtn{background:linear-gradient(120deg,var(--bl),var(--sk));color:#fff;border:none}
+/* ---- faq ---- */
+.wmb-faq .wmb-h2{margin:0 0 clamp(20px,2.5vw,32px)}
+.wmb-faq-list{max-width:760px}
+.wmb-faq details{border-top:1px solid var(--wmb-rule-soft);padding:20px 0}
+.wmb-faq details:last-child{border-bottom:1px solid var(--wmb-rule-soft)}
+.wmb-faq summary{list-style:none;cursor:pointer;color:var(--wmb-ink);font-weight:600;font-size:clamp(18px,2vw,22px);letter-spacing:-.02em;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.wmb-faq summary::-webkit-details-marker{display:none}
+.wmb-faq summary::after{content:"+";font-weight:400;font-size:26px;line-height:1;color:var(--wmb-gray)}
+.wmb-faq details[open] summary::after{content:"\2013"}
+.wmb-faq details p{margin-top:14px}
 
-/* course pills */
-.mktg-path{padding:64px 0 30px;text-align:center}
-.mktg-path h2{font-size:clamp(28px,3.8vw,44px);max-width:20ch;margin:14px auto 0}
-.mktg-path .pills{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;margin-top:30px}
-.mktg-path .cpill{padding:12px 22px;border-radius:999px;font-size:15px;font-weight:600;font-family:'Geist';background:var(--glass-b);border:1px solid var(--hair);color:var(--nv);cursor:pointer;transition:transform .16s,border-color .16s,background .16s}
-.mktg-path .cpill:hover{transform:translateY(-2px);border-color:var(--sk)}
-.mktg-path .cpill.on{background:var(--nv);color:#fff;border-color:var(--nv)}
-.mktg-path .cpill .soon{opacity:.55;font-weight:500;font-size:12px;margin-left:6px}
+/* ---- final cta ---- */
+.wmb-final{text-align:left}
+.wmb-final .wmb-hero{margin:0 0 clamp(26px,3vw,40px)}
 
-/* contrast / why */
-.mktg-why{padding:56px 0}
-.mktg-why .sec-head{text-align:center;max-width:640px;margin:0 auto 34px}
-.mktg-why .sec-head h2{font-size:clamp(28px,3.8vw,42px);margin-top:12px}
-.mktg-why .sec-head p{font-size:17px;margin-top:14px}
-.mktg-why .contrast{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:940px;margin:0 auto}
-.mktg-why .cpanel{padding:28px;border-radius:var(--r-sm)}
-.mktg-why .cpanel.old{background:rgba(255,255,255,.5);border:1px solid var(--line)}
-.mktg-why .cpanel.new{background:var(--glass);border:1px solid var(--glass-b);border-left:4px solid var(--grn);backdrop-filter:blur(18px);box-shadow:var(--sh-sm)}
-.mktg-why .cpanel h4{font-size:18px;margin-bottom:16px}
-.mktg-why .cpanel ul{list-style:none;display:grid;gap:11px}
-.mktg-why .cpanel li{display:flex;gap:11px;font-size:14.5px;color:var(--sl);line-height:1.5}
-.mktg-why .cpanel .mk{flex:none;width:21px;height:21px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:1px}
-.mktg-why .old .mk{background:rgba(150,120,120,.14);color:#a76a6a}
-.mktg-why .new .mk{background:rgba(31,157,107,.16);color:var(--grn)}
-@media(max-width:820px){.mktg-why .contrast{grid-template-columns:1fr}}
+/* ---- footer ---- */
+.wmb-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:40px;border-top:1px solid var(--wmb-rule)}
+.wmb-foot-links{display:flex;gap:20px}
+.wmb-foot-links a{color:var(--wmb-ink);text-decoration:none;font-size:14px;font-weight:500}
+.wmb-foot-links a:hover{text-decoration:underline}
 
-/* pricing */
-.mktg-pricing{padding:56px 0}
-.mktg-pricing .sec-head{text-align:center;max-width:620px;margin:0 auto 36px}
-.mktg-pricing .sec-head h2{font-size:clamp(28px,3.8vw,42px);margin-top:12px}
-.mktg-pricing .sec-head p{font-size:17px;margin-top:12px}
-.mktg-pricing .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:0 auto}
-.mktg-pricing .price{padding:28px 26px;border-radius:var(--r);background:rgba(255,255,255,.55);border:1px solid var(--line);position:relative}
-.mktg-pricing .price.feat{background:var(--glass);border:1.6px solid var(--gold);backdrop-filter:blur(18px);box-shadow:0 34px 80px -34px rgba(199,145,0,.42),0 0 0 1px rgba(241,181,28,.26)}
-.mktg-pricing .price .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,var(--goldd),var(--gold));color:#fff;font-size:11.5px;font-weight:700;padding:5px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 20px -8px rgba(199,145,0,.6)}
-.mktg-pricing .price .name{font-family:'Geist';font-weight:600;font-size:19px;color:var(--nv)}
-.mktg-pricing .price .amt{font-family:'Geist';font-size:38px;color:var(--nv);margin:8px 0 2px}
-.mktg-pricing .price .amt span{font-size:15px;color:var(--mu);font-family:'Geist';font-weight:500}
-.mktg-pricing .price .sub{font-size:13.5px;color:var(--sl);min-height:38px}
-.mktg-pricing .price ul{list-style:none;display:grid;gap:9px;margin:16px 0 20px}
-.mktg-pricing .price li{display:flex;gap:9px;font-size:14px;color:var(--sl)}
-.mktg-pricing .price .ck{color:var(--grn);font-weight:800}
-.mktg-pricing .price .mbtn{width:100%;justify-content:center}
-.mktg-pricing .note{text-align:center;font-size:14px;color:var(--sl);margin-top:28px}
-@media(max-width:820px){.mktg-pricing .prices{grid-template-columns:1fr}}
-
-/* faq */
-.mktg-faq{padding:50px 0 40px;max-width:760px;margin:0 auto}
-.mktg-faq .sec-head{text-align:center;margin-bottom:26px}
-.mktg-faq .sec-head h2{font-size:clamp(26px,3.4vw,38px);margin-top:10px}
-.mktg-faq details{background:var(--glass);border:1px solid var(--glass-b);border-radius:16px;padding:16px 20px;margin-bottom:11px;backdrop-filter:blur(14px)}
-.mktg-faq summary{font-weight:650;color:var(--nv);cursor:pointer;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center}
-.mktg-faq summary::-webkit-details-marker{display:none}
-.mktg-faq summary::after{content:"+";font-size:20px;color:var(--md);font-weight:400}
-.mktg-faq details[open] summary::after{content:"\2212"}
-.mktg-faq details p{margin-top:11px;font-size:14.5px;color:var(--sl)}
-
-/* final CTA */
-.mktg-final{padding:20px 0 90px}
-.mktg-final .band{background:linear-gradient(125deg,var(--nv),var(--bl) 62%,var(--md));border-radius:var(--r);padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:34px;color:#fff;box-shadow:var(--sh);position:relative;overflow:hidden}
-.mktg-final .band::after{content:"";position:absolute;width:340px;height:340px;right:-60px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(74,159,224,.5),transparent 60%)}
-.mktg-final .band h2{color:#fff;font-size:clamp(26px,3.4vw,38px);max-width:20ch;position:relative}
-.mktg-final .band p{color:rgba(255,255,255,.78);margin-top:12px;max-width:46ch;position:relative}
-.mktg-final .band .mbtn{position:relative}
-@media(max-width:760px){.mktg-final .band{flex-direction:column;text-align:center;align-items:flex-start;padding:36px 28px}}
-
-/* footer */
-.mktg-foot{padding:34px 0;border-top:1px solid var(--line)}
-.mktg-foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.mktg-foot .logo{display:flex;align-items:center;gap:9px;font-family:'Geist';font-weight:700;font-size:19px;color:var(--nv)}
-.mktg-foot .logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--bl),var(--sk))}
-.mktg-foot small{color:var(--mu);font-size:13px}
-.mktg-foot .flinks{display:flex;gap:20px}
-.mktg-foot .flinks a{font-size:13.5px;color:var(--sl);text-decoration:none;font-weight:550}
-.mktg-foot .flinks a:hover{color:var(--nv)}
-
-/* scroll reveal */
-.mktg .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
-.mktg .reveal.in{opacity:1;transform:none}
-
-/* pythagorean proof draw-in */
-.mktg .pyth-anim svg{overflow:visible}
-.mktg .pyth-anim .psq{opacity:0;transform:scale(.6);transform-origin:center;transition:opacity .6s,transform .7s cubic-bezier(.2,1.2,.4,1)}
-.mktg .pyth-anim.in .psq{opacity:1;transform:none}
-.mktg .pyth-anim.in .psq.s2{transition-delay:.25s}
-.mktg .pyth-anim.in .psq.s3{transition-delay:.5s}
-
-@media(prefers-reduced-motion:reduce){
-  .mktg .blob,.mktg .bigblob,.milo-win .st::before,.milo-win .typing i{animation:none!important}
-  .mktg .reveal{opacity:1;transform:none;transition:none}
-  .milo-win .mb{opacity:1;transform:none;transition:none}
+/* ---- responsive ---- */
+@media(max-width:860px){
+  .wmb-nav{gap:8px}
+  .wmb-herosec{padding-top:8px}
+  .wmb-hero-grid{grid-template-columns:1fr;gap:30px}
+  .wmb-hero-milo{margin-top:4px}
+  .wmb-milo-row{grid-template-columns:1fr;gap:30px}
+  .wmb-milo-copy{order:-1}
+  .wmb-strip{grid-template-columns:1fr;gap:26px}
+  .wmb-proof-row{grid-template-columns:1fr;gap:26px}
+  .wmb-proof-row.rev .wmb-proof-fig{order:0}
+  .wmb-proof-fig{order:-1}
+  .wmb-price-grid{grid-template-columns:1fr}
 }
 </style>
 
-<header class="mktg-head">
-  <div class="bar">
-    <a class="logo" href="#top"><span class="mark"></span>Quantica</a>
-    <nav class="links">
-      <a href="#how">How it works</a>
-      <a href="#" onclick="openCatalog();return false;">Courses</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="hact">
-      <a class="mbtn ghost sm" href="#" onclick="openLesson();return false;">Sign in</a>
-      <a class="mbtn primary sm start-free-cta" data-free-label="Start free &#8594;" href="#" onclick="openLesson();return false;">Start free &#8594;</a>
-    </div>
-  </div>
-</header>
-
-<div class="mktg">
+<div class="wmb">
 <a id="top"></a>
 
+<!-- NAV -->
+<nav class="wmb-nav wmb-wrap">
+  <a class="wmb-nav-brand" href="#top">QuanticaEdu</a>
+  <div class="wmb-nav-links">
+    <a class="wmb-pill" href="#how">How it works</a>
+    <a class="wmb-pill" href="#path">Courses</a>
+    <a class="wmb-pill" href="#pricing">Pricing</a>
+    <a class="wmb-pill wmb-pill--on" href="#" onclick="openLesson();return false;"><span class="wmb-dot"></span>Start free</a>
+  </div>
+</nav>
+
 <!-- HERO -->
-<section class="mktg-hero"><div class="wrap"><div class="grid">
-  <div class="reveal">
-    <h1>Understand math,<br>don't <span class="grad">memorize</span> it.</h1>
-    <p class="lead">Quantica teaches prealgebra through olympiad by having you <em>solve</em>, not memorize. Instant feedback, layered hints, and Milo, a tutor who helps you find the answer yourself.</p>
-    <div class="cta-row">
-      <a class="mbtn primary start-free-cta" data-free-label="Start with a free unit &#8594;" href="#" onclick="openLesson();return false;">Start with a free unit &#8594;</a>
-      <a class="mbtn ghost" href="#how">See how it works</a>
-    </div>
-    <p class="micro">No card required &middot; Full Prealgebra unit free &middot; Cancel anytime</p>
-  </div>
-  <div class="milo-card reveal">
-    <div class="blob">Q</div>
-    <div class="milo-win" id="miloWin">
-      <div class="top"><span class="av">M</span><div><div class="nm">Milo</div><div class="st">your Quantica tutor</div></div></div>
-      <div class="body" id="miloBody"></div>
-      <div class="compose"><span class="fi">Ask me anything about this problem&hellip;</span><span class="snd">&#10148;</span></div>
+<section class="wmb-herosec wmb-section" id="start">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg__grid"></div>
+    <div class="hero-bg__rain">
+      <i style="--x:9%;--d:0s;--dur:22s;--w:6px;--h:30px;--c:var(--hb-lime)"></i>
+      <i style="--x:24%;--d:6s;--dur:19s;--w:6px;--h:22px;--c:var(--hb-slate)"></i>
+      <i style="--x:41%;--d:11s;--dur:24s;--w:6px;--h:40px;--c:var(--hb-slate)"></i>
+      <i style="--x:63%;--d:3s;--dur:20s;--w:6px;--h:26px;--c:var(--hb-lime)"></i>
+      <i style="--x:79%;--d:14s;--dur:23s;--w:6px;--h:34px;--c:var(--hb-slate)"></i>
+      <i style="--x:90%;--d:8s;--dur:26s;--w:6px;--h:24px;--c:var(--hb-slate)"></i>
     </div>
   </div>
-</div></div></section>
-
-<!-- PROOF STRIP -->
-<section class="mktg-strip"><div class="wrap"><div class="row">
-  <div class="glass pcard reveal">
-    <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.5 4.5a1.5 1.5 0 0 1 3 0c0 .5.4 1 1 1H17a1 1 0 0 1 1 1v2c0 .6.5 1 1 1a1.5 1.5 0 0 1 0 3c-.5 0-1 .4-1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 0-1 1 1.5 1.5 0 0 1-3 0 1 1 0 0 0-1-1H7a1 1 0 0 1-1-1v-2.5c0-.6-.5-1-1-1a1.5 1.5 0 0 1 0-3c.5 0 1-.4 1-1V6.5a1 1 0 0 1 1-1h2.5c.6 0 1-.5 1-1Z"/></svg></div>
-    <h4>Problem-first</h4><p>Every lesson is a problem to crack, not a worksheet to grind. The idea emerges as you work.</p>
-  </div>
-  <div class="glass pcard reveal">
-    <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.3 1 2.1V16h6v-.4c0-.8.4-1.5 1-2.1A6 6 0 0 0 12 3Z"/></svg></div>
-    <h4>Guided, never spoiled</h4><p>Layered hints and Milo nudge you toward the answer. The moment it clicks is yours.</p>
-  </div>
-  <div class="glass pcard reveal">
-    <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9l10-4 10 4-10 4L2 9Z"/><path d="M6 11v4.5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V11"/></svg></div>
-    <h4>One path, all access</h4><p>Prealgebra to pre-olympiad, every subject on one continuous path, one subscription.</p>
-  </div>
-</div></div></section>
-
-<!-- MEET MILO -->
-<section class="mktg-meet"><div class="wrap reveal">
-  <div class="bigblob">Q</div>
-  <div class="beam"></div>
-  <span class="eyebrow">Meet Milo</span>
-  <h2>A tutor on call for every problem.</h2>
-  <p>When a problem stops you cold, Milo is right there, not to hand you the answer, but to ask the right question and help you find it yourself.</p>
-</div></section>
-
-<!-- FEATURES (show, not tell) -->
-<section class="mktg-feat" id="how"><div class="wrap">
-
-  <div class="frow">
-    <div class="device fimg reveal bd-g pyth-anim">
-      <div class="blob g" style="top:-22px;left:-16px">&#9650;</div>
-      <div class="screen"><svg class="py" viewBox="0 0 360 372" xmlns="http://www.w3.org/2000/svg"><style>
-.py .tri{stroke:#14315a;stroke-width:2.2;fill:rgba(255,255,255,.9);stroke-linejoin:round}
-.py .sq{stroke:#14315a;stroke-width:2}
-.py .cs{fill:#20b378;opacity:.85;animation:pyGreen 7s ease-in-out infinite}
-.py .as{fill:#2f6fe0;opacity:0;animation:pyBlue 7s ease-in-out infinite}
-.py .bs{fill:#f1b51c;opacity:0;animation:pyGold 7s ease-in-out infinite}
-.py .tb{animation:pyTb 7s ease-in-out infinite}
-.py .tc{transform-box:view-box;transform-origin:320px 40px;animation:pyTc 7s ease-in-out infinite}
-.py .td{transform-box:view-box;transform-origin:40px 40px;animation:pyTd 7s ease-in-out infinite}
-.py .lbl{font:800 19px 'Geist',sans-serif;opacity:0;animation:pyLbl 7s ease-in-out infinite}
-@keyframes pyTb{0%,14%{transform:none}40%,66%{transform:translateY(-160px)}92%,100%{transform:none}}
-@keyframes pyTc{0%,14%{transform:none}40%,66%{transform:translate(-160px,0) rotate(-90deg)}92%,100%{transform:none}}
-@keyframes pyTd{0%,14%{transform:none}40%,66%{transform:translate(120px,120px) rotate(90deg)}92%,100%{transform:none}}
-@keyframes pyGreen{0%,16%{opacity:.85}38%,68%{opacity:0}90%,100%{opacity:.85}}
-@keyframes pyBlue{0%,20%{opacity:0}42%,66%{opacity:.82}88%,100%{opacity:0}}
-@keyframes pyGold{0%,20%{opacity:0}42%,66%{opacity:.82}88%,100%{opacity:0}}
-@keyframes pyLbl{0%,20%{opacity:0}44%,64%{opacity:1}86%,100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.py *{animation:none!important}.py .as,.py .bs{opacity:.82}.py .cs{opacity:0}.py .tb{transform:translateY(-160px)}.py .tc{transform:translate(-160px,0) rotate(-90deg)}.py .td{transform:translate(120px,120px) rotate(90deg)}}
+  <div class="wmb-wrap wmb-hero-grid">
+    <div class="wmb-hero-copy">
+      <h1 class="wmb-hero">Understand math.<br>Don&#8217;t <span class="wmb-mark-block">memorize</span> it.</h1>
+      <p class="wmb-lead">Learn by solving, with Milo. <span class="wmb-dim">A tutor that helps you find the answer yourself.</span></p>
+      <div class="wmb-hero-cta">
+        <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="#" onclick="openLesson();return false;">Start free</a>
+        <a class="wmb-btn wmb-btn--lg" href="#how">See how it works</a>
+      </div>
+      <p class="wmb-hero-note wmb-muted">No card required &middot; Full Prealgebra unit free</p>
+    </div>
+    <div class="wmb-hero-milo">
+      <div class="wmb-hero-proof"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
+.py .tri{fill:#ededeb;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
+.py .frame{fill:none;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
+.py .cs{fill:#beff8b;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round;animation:pyC 10s cubic-bezier(.65,0,.35,1) infinite}
+.py .ls{fill:#9dbbc5;stroke:#0a0a0a;stroke-width:2;opacity:0;animation:pyL 10s cubic-bezier(.65,0,.35,1) infinite}
+.py .tb{animation:pyTb 10s cubic-bezier(.65,0,.35,1) infinite}
+.py .tc{transform-box:view-box;transform-origin:320px 40px;animation:pyTc 10s cubic-bezier(.65,0,.35,1) infinite}
+.py .td{transform-box:view-box;transform-origin:40px 40px;animation:pyTd 10s cubic-bezier(.65,0,.35,1) infinite}
+.py .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;font-size:20px;fill:#0a0a0a}
+@keyframes pyTb{0%,12%{transform:none}34%,72%{transform:translateY(-160px)}90%,100%{transform:none}}
+@keyframes pyTc{0%,12%{transform:none}34%,72%{transform:translate(-160px,0) rotate(-90deg)}90%,100%{transform:none}}
+@keyframes pyTd{0%,12%{transform:none}34%,72%{transform:translate(120px,120px) rotate(90deg)}90%,100%{transform:none}}
+@keyframes pyC{0%,14%{opacity:1}32%,74%{opacity:0}90%,100%{opacity:1}}
+@keyframes pyL{0%,16%{opacity:0}36%,72%{opacity:1}88%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.py *{animation:none!important}.py .cs{opacity:0}.py .ls{opacity:1}.py .tb{transform:translateY(-160px)}.py .tc{transform:translate(-160px,0) rotate(-90deg)}.py .td{transform:translate(120px,120px) rotate(90deg)}}
 </style>
-<rect class="as" x="40" y="40" width="120" height="120"/>
-<rect class="bs" x="160" y="160" width="160" height="160"/>
+<rect class="ls" x="40" y="40" width="120" height="120"/>
+<rect class="ls" x="160" y="160" width="160" height="160"/>
 <polygon class="cs" points="160,320 320,200 200,40 40,160"/>
-<rect class="sq" x="40" y="40" width="280" height="280" fill="none"/>
+<rect class="frame" x="40" y="40" width="280" height="280"/>
 <polygon class="tri" points="40,320 160,320 40,160"/>
 <polygon class="tri tb" points="320,320 320,200 160,320"/>
 <polygon class="tri tc" points="320,40 200,40 320,200"/>
 <polygon class="tri td" points="40,40 40,160 200,40"/>
-<text class="lbl" x="180" y="360" text-anchor="middle" fill="#14315a">a&#178; + b&#178; = c&#178;</text>
+<text class="lbl" x="180" y="366" text-anchor="middle">a&#178; + b&#178; = c&#178;</text>
 </svg></div>
-      <div class="cap">The Pythagorean theorem, proven &#8212; not asserted</div>
-    </div>
-    <div class="ftxt reveal">
-      <span class="eyebrow" style="color:var(--grn)">See the why</span>
-      <h2>Every idea is proven, not asserted.</h2>
-      <p>Watch <em>why</em> a&#178; + b&#178; = c&#178;, with the squares on the sides adding up before your eyes. When you understand where a rule comes from, you never forget it, and you can rebuild it yourself.</p>
     </div>
   </div>
+</section>
 
-  <div class="frow rev">
-    <div class="demo fimg reveal" id="demo">
-      <div class="top"><span class="t" id="demoCourse">Prealgebra</span><span class="badge">Try it &middot; <span id="demoIdx">1</span>/10</span></div>
-      <div class="chips" id="chips"></div>
-      <div class="body"><p class="q" id="q"></p><div class="opts" id="opts"></div><div class="feedback" id="fb"></div></div>
-      <div class="foot"><button class="hintbtn" id="hintbtn">&#128161; Need a hint?</button><button class="nextbtn" id="nextbtn">Next problem &#8594;</button></div>
-    </div>
-    <div class="ftxt reveal">
-      <span class="eyebrow" style="color:var(--md)">Learn by solving</span>
-      <h2>You do the thinking. We do the scaffolding.</h2>
-      <p>Every lesson is a real problem to work through, with instant feedback and hints that give the minimum help to keep you moving. Try one right here.</p>
-    </div>
+<!-- VALUE STRIP -->
+<section class="wmb-wrap">
+  <div class="wmb-strip">
+    <div class="wmb-strip-item"><p class="wmb-kicker">Problem-first</p><h3>You solve, we scaffold.</h3><p class="wmb-muted">Every lesson is a problem to crack, not a worksheet to grind.</p></div>
+    <div class="wmb-strip-item"><p class="wmb-kicker">Guided</p><h3>Never spoiled.</h3><p class="wmb-muted">Layered hints and Milo nudge you toward the answer.</p></div>
+    <div class="wmb-strip-item"><p class="wmb-kicker">One path</p><h3>All access.</h3><p class="wmb-muted">Prealgebra to pre-olympiad, one continuous path.</p></div>
   </div>
+</section>
 
-  <div class="frow">
-    <div class="device fimg reveal bd-gd ">
-      <div class="blob gd" style="top:-22px;left:-16px">&#8736;</div>
-      <div class="screen"><svg class="tg" viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg"><style>
-.tg .edge{stroke:#14315a;stroke-width:2.4;fill:#f2f7fd;stroke-linejoin:round}
-.tg .wg{stroke:none}
-.tg .base{stroke:#14315a;stroke-width:2.4}
-.tg .mv{opacity:0}
-.tg .m1{animation:tgM1 6.5s ease-in-out infinite}
-.tg .m2{animation:tgM2 6.5s ease-in-out infinite}
-.tg .m3{animation:tgM3 6.5s ease-in-out infinite}
-.tg .lbl{font:800 17px 'Geist',sans-serif;fill:#14315a;opacity:0;animation:tgLbl 6.5s ease-in-out infinite}
-@keyframes tgM1{0%,22%{opacity:0}40%,90%{opacity:1}100%{opacity:0}}
-@keyframes tgM2{0%,34%{opacity:0}52%,90%{opacity:1}100%{opacity:0}}
-@keyframes tgM3{0%,46%{opacity:0}64%,90%{opacity:1}100%{opacity:0}}
-@keyframes tgLbl{0%,62%{opacity:0}78%,92%{opacity:1}100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.tg .mv{opacity:1}.tg .lbl{opacity:1}.tg *{animation:none!important}}
+<!-- MEET MILO (chat showcase) -->
+<section class="wmb-wrap wmb-section wmb-milo-row">
+  <div class="wmb-milo-chat"><div class="milo-card">
+        <div class="milo-win">
+          <div class="top">
+            <span class="av"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/>
+<path d="M32 7 C23 7 18 11 15.5 21 C20 14 26 12 32 12 Z" fill="#9dbbc5" opacity=".32"/>
+<circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/>
+<circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/>
+<circle cx="26.4" cy="29" r=".8" fill="#fff"/><circle cx="39.4" cy="29" r=".8" fill="#fff"/>
+<path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+</svg></span>
+            <div class="who"><div class="nm">Milo</div><div class="st">your Quantica tutor</div></div>
+          </div>
+          <div class="body" id="miloBody"></div>
+          <div class="compose"><span class="fi">Ask me anything about this problem&hellip;</span><span class="snd">&#10148;</span></div>
+        </div>
+      </div></div>
+  <div class="wmb-milo-copy">
+    <span class="wmb-kicker">Meet Milo</span>
+    <h2 class="wmb-h2">A tutor <span class="wmb-mark">on call</span> for every problem.</h2>
+    <p class="wmb-muted">When a problem stops you cold, Milo asks the right question &#8212; not the answer &#8212; and helps you find it yourself.</p>
+  </div>
+</section>
+
+<!-- VISUAL PROOFS -->
+<section class="wmb-wrap" id="how">
+
+  <div class="wmb-proof-row">
+    <div class="wmb-proof-fig"><svg class="tg wp-svg" viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg"><style>
+.tg .edge{fill:#ededeb;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
+.tg .given{fill:#9dbbc5;stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round}
+.tg .base{stroke:#0a0a0a;stroke-width:2;stroke-linecap:round}
+.tg .ans{fill:#beff8b;stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round;opacity:0}
+.tg .m1{animation:tgM1 10s cubic-bezier(.65,0,.35,1) infinite}
+.tg .m2{animation:tgM2 10s cubic-bezier(.65,0,.35,1) infinite}
+.tg .m3{animation:tgM3 10s cubic-bezier(.65,0,.35,1) infinite}
+.tg .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;font-size:17px;fill:#0a0a0a;opacity:0;animation:tgLbl 10s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes tgM1{0%,16%{opacity:0}30%,74%{opacity:1}88%,100%{opacity:0}}
+@keyframes tgM2{0%,24%{opacity:0}38%,74%{opacity:1}84%,100%{opacity:0}}
+@keyframes tgM3{0%,32%{opacity:0}46%,74%{opacity:1}80%,100%{opacity:0}}
+@keyframes tgLbl{0%,50%{opacity:0}64%,74%{opacity:1}84%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.tg .ans{opacity:1}.tg .lbl{opacity:1}.tg *{animation:none!important}}
 </style>
-<polygon class="edge" points="70,225 300,225 150,70"/>
-<path class="wg " d="M70.0,225.0 L100.0,225.0 A30,30 0 0 0 83.8,198.3 Z" fill="#2f6fe0"/><path class="wg " d="M300.0,225.0 L279.1,203.4 A30,30 0 0 0 270.0,225.0 Z" fill="#f1b51c"/><path class="wg " d="M150.0,70.0 L136.2,96.7 A30,30 0 0 0 170.9,91.6 Z" fill="#20b378"/>
-<line class="base" x1="70" y1="278" x2="290" y2="278"/>
-<path class="wg mv m1" d="M180.0,278.0 L210.0,278.0 A30,30 0 0 0 193.8,251.3 Z" fill="#2f6fe0"/><path class="wg mv m2" d="M180.0,278.0 L193.8,251.3 A30,30 0 0 0 159.1,256.4 Z" fill="#20b378"/><path class="wg mv m3" d="M180.0,278.0 L159.1,256.4 A30,30 0 0 0 150.0,278.0 Z" fill="#f1b51c"/>
-<text class="lbl" x="180" y="300" text-anchor="middle">the three angles make a straight line &#8226; 180&#176;</text>
+<polygon class="edge" points="70,222 300,222 150,66"/>
+<path class="wg given" d="M70.0,222.0 L104.0,222.0 A34,34 0 0 0 85.5,191.7 Z"/><path class="wg given" d="M300.0,222.0 L276.4,197.5 A34,34 0 0 0 266.0,222.0 Z"/><path class="wg given" d="M150.0,66.0 L134.5,96.3 A34,34 0 0 0 173.6,90.5 Z"/>
+<line class="base" x1="74" y1="270" x2="286" y2="270"/>
+<path class="wg ans m1" d="M180.0,270.0 L214.0,270.0 A34,34 0 0 0 195.5,239.7 Z"/><path class="wg ans m2" d="M180.0,270.0 L195.5,239.7 A34,34 0 0 0 156.4,245.5 Z"/><path class="wg ans m3" d="M180.0,270.0 L156.4,245.5 A34,34 0 0 0 146.0,270.0 Z"/>
+<text class="lbl" x="180" y="296" text-anchor="middle">the three angles make a straight line &#8226; 180&#176;</text>
 </svg></div>
-      <div class="cap">Why a triangle&#8217;s angles always sum to 180&#176;</div>
-    </div>
-    <div class="ftxt reveal">
-      <span class="eyebrow" style="color:var(--goldd)">Discover the idea</span>
-      <h2>You reach the concept, then we name it.</h2>
-      <p>Concepts emerge from carefully sequenced problems. You discover the idea by working toward it, so it sticks, and the next hard problem feels winnable.</p>
+    <div class="wmb-proof-txt">
+      <span class="wmb-num">01</span>
+      <hr class="wmb-rule">
+      <h2>You reach the<br><span class="wmb-mark-block">concept</span>, then we name it.</h2>
+      <hr class="wmb-rule">
+      <p class="wmb-muted">The three angles of any triangle fold onto a straight line. You discover the idea by working toward it, so it sticks.</p>
     </div>
   </div>
 
-  <div class="frow rev">
-    <div class="device fimg reveal bd-pu ">
-      <div class="blob pu" style="top:-22px;right:-16px;left:auto">&#9711;</div>
-      <div class="screen"><svg class="ci" viewBox="0 0 380 210" xmlns="http://www.w3.org/2000/svg"><style>.ci .wd{stroke:#fff;stroke-width:1}
-.ci .lbl{font:800 16px 'Geist',sans-serif;fill:#14315a;opacity:0;animation:ciLbl 7s ease-in-out infinite}
-@keyframes ciLbl{0%,46%{opacity:0}66%,90%{opacity:1}100%{opacity:0}}
-.ci .w0{transform-box:view-box;transform-origin:92px 104px;animation:ciW0 7s ease-in-out infinite}@keyframes ciW0{0%,16%{transform:none}44%,70%{transform:translate(76.8px,4.0px) rotate(-75.0deg)}92%,100%{transform:none}}.ci .w1{transform-box:view-box;transform-origin:92px 104px;animation:ciW1 7s ease-in-out infinite}@keyframes ciW1{0%,16%{transform:none}44%,70%{transform:translate(93.5px,-60.0px) rotate(-225.0deg)}92%,100%{transform:none}}.ci .w2{transform-box:view-box;transform-origin:92px 104px;animation:ciW2 7s ease-in-out infinite}@keyframes ciW2{0%,16%{transform:none}44%,70%{transform:translate(110.3px,4.0px) rotate(-15.0deg)}92%,100%{transform:none}}.ci .w3{transform-box:view-box;transform-origin:92px 104px;animation:ciW3 7s ease-in-out infinite}@keyframes ciW3{0%,16%{transform:none}44%,70%{transform:translate(127.0px,-60.0px) rotate(-165.0deg)}92%,100%{transform:none}}.ci .w4{transform-box:view-box;transform-origin:92px 104px;animation:ciW4 7s ease-in-out infinite}@keyframes ciW4{0%,16%{transform:none}44%,70%{transform:translate(143.8px,4.0px) rotate(45.0deg)}92%,100%{transform:none}}.ci .w5{transform-box:view-box;transform-origin:92px 104px;animation:ciW5 7s ease-in-out infinite}@keyframes ciW5{0%,16%{transform:none}44%,70%{transform:translate(160.5px,-60.0px) rotate(-105.0deg)}92%,100%{transform:none}}.ci .w6{transform-box:view-box;transform-origin:92px 104px;animation:ciW6 7s ease-in-out infinite}@keyframes ciW6{0%,16%{transform:none}44%,70%{transform:translate(177.3px,4.0px) rotate(105.0deg)}92%,100%{transform:none}}.ci .w7{transform-box:view-box;transform-origin:92px 104px;animation:ciW7 7s ease-in-out infinite}@keyframes ciW7{0%,16%{transform:none}44%,70%{transform:translate(194.0px,-60.0px) rotate(-45.0deg)}92%,100%{transform:none}}.ci .w8{transform-box:view-box;transform-origin:92px 104px;animation:ciW8 7s ease-in-out infinite}@keyframes ciW8{0%,16%{transform:none}44%,70%{transform:translate(210.8px,4.0px) rotate(165.0deg)}92%,100%{transform:none}}.ci .w9{transform-box:view-box;transform-origin:92px 104px;animation:ciW9 7s ease-in-out infinite}@keyframes ciW9{0%,16%{transform:none}44%,70%{transform:translate(227.6px,-60.0px) rotate(15.0deg)}92%,100%{transform:none}}.ci .w10{transform-box:view-box;transform-origin:92px 104px;animation:ciW10 7s ease-in-out infinite}@keyframes ciW10{0%,16%{transform:none}44%,70%{transform:translate(244.3px,4.0px) rotate(225.0deg)}92%,100%{transform:none}}.ci .w11{transform-box:view-box;transform-origin:92px 104px;animation:ciW11 7s ease-in-out infinite}@keyframes ciW11{0%,16%{transform:none}44%,70%{transform:translate(261.1px,-60.0px) rotate(75.0deg)}92%,100%{transform:none}}
-@media(prefers-reduced-motion:reduce){.ci *{animation:none!important}.ci .lbl{opacity:1}}</style>
-<path class="wd w0" d="M92,104 L156.0,104.0 A64,64 0 0 0 147.4,72.0 Z" fill="#2f6fe0" opacity="0.92"/><path class="wd w1" d="M92,104 L147.4,72.0 A64,64 0 0 0 124.0,48.6 Z" fill="#7c5cff" opacity="0.84"/><path class="wd w2" d="M92,104 L124.0,48.6 A64,64 0 0 0 92.0,40.0 Z" fill="#2f6fe0" opacity="0.92"/><path class="wd w3" d="M92,104 L92.0,40.0 A64,64 0 0 0 60.0,48.6 Z" fill="#7c5cff" opacity="0.84"/><path class="wd w4" d="M92,104 L60.0,48.6 A64,64 0 0 0 36.6,72.0 Z" fill="#2f6fe0" opacity="0.92"/><path class="wd w5" d="M92,104 L36.6,72.0 A64,64 0 0 0 28.0,104.0 Z" fill="#7c5cff" opacity="0.84"/><path class="wd w6" d="M92,104 L28.0,104.0 A64,64 0 0 0 36.6,136.0 Z" fill="#2f6fe0" opacity="0.92"/><path class="wd w7" d="M92,104 L36.6,136.0 A64,64 0 0 0 60.0,159.4 Z" fill="#7c5cff" opacity="0.84"/><path class="wd w8" d="M92,104 L60.0,159.4 A64,64 0 0 0 92.0,168.0 Z" fill="#2f6fe0" opacity="0.92"/><path class="wd w9" d="M92,104 L92.0,168.0 A64,64 0 0 0 124.0,159.4 Z" fill="#7c5cff" opacity="0.84"/><path class="wd w10" d="M92,104 L124.0,159.4 A64,64 0 0 0 147.4,136.0 Z" fill="#2f6fe0" opacity="0.92"/><path class="wd w11" d="M92,104 L147.4,136.0 A64,64 0 0 0 156.0,104.0 Z" fill="#7c5cff" opacity="0.84"/>
-<text class="lbl" x="190" y="196" text-anchor="middle">the wedges rearrange &#8594; area = &#960;r&#178;</text>
+  <div class="wmb-proof-row rev">
+    <div class="wmb-proof-fig"><svg class="ci wp-svg" viewBox="0 0 380 214" xmlns="http://www.w3.org/2000/svg"><style>.ci .wd{stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round}
+.ci .up{fill:#beff8b}
+.ci .dn{fill:#9dbbc5}
+.ci .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;font-size:16px;fill:#0a0a0a;opacity:0;animation:ciLbl 10s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes ciLbl{0%,40%{opacity:0}56%,74%{opacity:1}86%,100%{opacity:0}}
+.ci .w0{transform-box:view-box;transform-origin:94px 106px;animation:ciW0 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW0{0%,12.0%{transform:none}34.0%,72%{transform:translate(73.3px,8.0px) rotate(-75.0deg)}90%,100%{transform:none}}.ci .w1{transform-box:view-box;transform-origin:94px 106px;animation:ciW1 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW1{0%,12.9%{transform:none}34.9%,72%{transform:translate(90.6px,-58.0px) rotate(-225.0deg)}90%,100%{transform:none}}.ci .w2{transform-box:view-box;transform-origin:94px 106px;animation:ciW2 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW2{0%,13.8%{transform:none}35.8%,72%{transform:translate(107.8px,8.0px) rotate(-15.0deg)}90%,100%{transform:none}}.ci .w3{transform-box:view-box;transform-origin:94px 106px;animation:ciW3 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW3{0%,14.7%{transform:none}36.7%,72%{transform:translate(125.1px,-58.0px) rotate(-165.0deg)}90%,100%{transform:none}}.ci .w4{transform-box:view-box;transform-origin:94px 106px;animation:ciW4 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW4{0%,15.6%{transform:none}37.6%,72%{transform:translate(142.4px,8.0px) rotate(45.0deg)}90%,100%{transform:none}}.ci .w5{transform-box:view-box;transform-origin:94px 106px;animation:ciW5 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW5{0%,16.5%{transform:none}38.5%,72%{transform:translate(159.7px,-58.0px) rotate(-105.0deg)}90%,100%{transform:none}}.ci .w6{transform-box:view-box;transform-origin:94px 106px;animation:ciW6 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW6{0%,17.4%{transform:none}39.4%,72%{transform:translate(177.0px,8.0px) rotate(105.0deg)}90%,100%{transform:none}}.ci .w7{transform-box:view-box;transform-origin:94px 106px;animation:ciW7 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW7{0%,18.3%{transform:none}40.3%,72%{transform:translate(194.2px,-58.0px) rotate(-45.0deg)}90%,100%{transform:none}}.ci .w8{transform-box:view-box;transform-origin:94px 106px;animation:ciW8 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW8{0%,19.2%{transform:none}41.2%,72%{transform:translate(211.5px,8.0px) rotate(165.0deg)}90%,100%{transform:none}}.ci .w9{transform-box:view-box;transform-origin:94px 106px;animation:ciW9 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW9{0%,20.1%{transform:none}42.1%,72%{transform:translate(228.8px,-58.0px) rotate(15.0deg)}90%,100%{transform:none}}.ci .w10{transform-box:view-box;transform-origin:94px 106px;animation:ciW10 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW10{0%,21.0%{transform:none}43.0%,72%{transform:translate(246.1px,8.0px) rotate(225.0deg)}90%,100%{transform:none}}.ci .w11{transform-box:view-box;transform-origin:94px 106px;animation:ciW11 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW11{0%,21.9%{transform:none}43.9%,72%{transform:translate(263.3px,-58.0px) rotate(75.0deg)}90%,100%{transform:none}}
+@media(prefers-reduced-motion:reduce){.ci .wd{animation:none!important}.ci .lbl{opacity:1;animation:none!important}.ci .w0{transform:translate(73.3px,8.0px) rotate(-75.0deg)}.ci .w1{transform:translate(90.6px,-58.0px) rotate(-225.0deg)}.ci .w2{transform:translate(107.8px,8.0px) rotate(-15.0deg)}.ci .w3{transform:translate(125.1px,-58.0px) rotate(-165.0deg)}.ci .w4{transform:translate(142.4px,8.0px) rotate(45.0deg)}.ci .w5{transform:translate(159.7px,-58.0px) rotate(-105.0deg)}.ci .w6{transform:translate(177.0px,8.0px) rotate(105.0deg)}.ci .w7{transform:translate(194.2px,-58.0px) rotate(-45.0deg)}.ci .w8{transform:translate(211.5px,8.0px) rotate(165.0deg)}.ci .w9{transform:translate(228.8px,-58.0px) rotate(15.0deg)}.ci .w10{transform:translate(246.1px,8.0px) rotate(225.0deg)}.ci .w11{transform:translate(263.3px,-58.0px) rotate(75.0deg)}}</style>
+<path class="wd up w0" d="M94,106 L160.0,106.0 A66,66 0 0 0 151.2,73.0 Z"/><path class="wd dn w1" d="M94,106 L151.2,73.0 A66,66 0 0 0 127.0,48.8 Z"/><path class="wd up w2" d="M94,106 L127.0,48.8 A66,66 0 0 0 94.0,40.0 Z"/><path class="wd dn w3" d="M94,106 L94.0,40.0 A66,66 0 0 0 61.0,48.8 Z"/><path class="wd up w4" d="M94,106 L61.0,48.8 A66,66 0 0 0 36.8,73.0 Z"/><path class="wd dn w5" d="M94,106 L36.8,73.0 A66,66 0 0 0 28.0,106.0 Z"/><path class="wd up w6" d="M94,106 L28.0,106.0 A66,66 0 0 0 36.8,139.0 Z"/><path class="wd dn w7" d="M94,106 L36.8,139.0 A66,66 0 0 0 61.0,163.2 Z"/><path class="wd up w8" d="M94,106 L61.0,163.2 A66,66 0 0 0 94.0,172.0 Z"/><path class="wd dn w9" d="M94,106 L94.0,172.0 A66,66 0 0 0 127.0,163.2 Z"/><path class="wd up w10" d="M94,106 L127.0,163.2 A66,66 0 0 0 151.2,139.0 Z"/><path class="wd dn w11" d="M94,106 L151.2,139.0 A66,66 0 0 0 160.0,106.0 Z"/>
+<text class="lbl" x="190" y="202" text-anchor="middle">the wedges rearrange &#8594; area = &#960;r&#178;</text>
 </svg></div>
-      <div class="cap">Where the area of a circle really comes from</div>
-    </div>
-    <div class="ftxt reveal">
-      <span class="eyebrow" style="color:var(--pur)">Understanding that transfers</span>
-      <h2>Skills that carry to problems you&#8217;ve never seen.</h2>
-      <p>Old skills resurface inside new problems, and every concept is built from the ground up, so what you learn transfers instead of evaporating by next week.</p>
+    <div class="wmb-proof-txt">
+      <span class="wmb-num">02</span>
+      <hr class="wmb-rule">
+      <h2>Skills that<br><span class="wmb-mark-block">transfer</span>.</h2>
+      <hr class="wmb-rule">
+      <p class="wmb-muted">Slice a circle finely enough and it unrolls into a rectangle &#8212; that is where &#960;r&#178; comes from. Built from the ground up, it carries to problems you have never seen.</p>
     </div>
   </div>
-
-</div></section>
+</section>
 
 <!-- COURSE PATH -->
-<section class="mktg-path"><div class="wrap reveal">
-  <span class="eyebrow" style="color:var(--grn)">The path</span>
-  <h2>From arithmetic to olympiad. One continuous journey.</h2>
-  <div class="pills">
-    <button class="cpill on" onclick="openCatalog()">Prealgebra</button>
-    <button class="cpill" onclick="openCatalog()">Algebra</button>
-    <button class="cpill" onclick="openCatalog()">Geometry</button>
-    <button class="cpill" onclick="openCatalog()">Number Theory</button>
-    <button class="cpill" onclick="openCatalog()">Combinatorics</button>
-    <button class="cpill" onclick="openCatalog()">Logic Games</button>
-    <button class="cpill" onclick="openCatalog()">See all 10 &#8594;</button>
+<section class="wmb-wrap wmb-section wmb-path" id="path">
+  <h2 class="wmb-h2">From arithmetic to <span class="wmb-mark">olympiad</span>. One continuous journey.</h2>
+  <div class="wmb-pills">
+    <a class="wmb-pill wmb-pill--on" href="#" onclick="openLesson();return false;"><span class="wmb-dot"></span>Prealgebra</a>
+    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Algebra</a>
+    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Geometry</a>
+    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Number Theory</a>
+    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Counting</a>
+    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Logic</a>
+    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Intermediate</a>
   </div>
-</div></section>
-
-<!-- WHY / CONTRAST -->
-<section class="mktg-why" id="why"><div class="wrap">
-  <div class="sec-head reveal">
-    <span class="eyebrow" style="color:var(--goldd)">Why Quantica</span>
-    <h2>A new way to learn mathematics.</h2>
-    <p>Most math makes you memorize steps and forget them by next week. Quantica rebuilds it around the one thing that creates real understanding: solving problems, with guidance, until the ideas are truly yours.</p>
-  </div>
-  <div class="contrast reveal">
-    <div class="cpanel old">
-      <h4>The usual way</h4>
-      <ul>
-        <li><span class="mk">&#10005;</span>Rote drills you forget by next week</li>
-        <li><span class="mk">&#10005;</span>Memorize steps without the &ldquo;why&rdquo;</li>
-        <li><span class="mk">&#10005;</span>Plug numbers into a handed-down formula</li>
-        <li><span class="mk">&#10005;</span>Worksheets that fall apart on a new problem</li>
-      </ul>
-    </div>
-    <div class="cpanel new">
-      <h4>The Quantica way</h4>
-      <ul>
-        <li><span class="mk">&#10003;</span>Every lesson is a problem to crack</li>
-        <li><span class="mk">&#10003;</span>Discover the &ldquo;why&rdquo; so you can reason it out</li>
-        <li><span class="mk">&#10003;</span>Hints that guide, never just the answer</li>
-        <li><span class="mk">&#10003;</span>Skills that transfer to unseen problems</li>
-      </ul>
-    </div>
-  </div>
-</div></section>
+</section>
 
 <!-- PRICING -->
-<section class="mktg-pricing" id="pricing"><div class="wrap">
-  <div class="sec-head reveal">
-    <span class="eyebrow" style="color:var(--pur)">Pricing</span>
-    <h2>One price. The whole catalog.</h2>
-    <p>Cheaper than a single tutoring session, and it never expires after one course.</p>
-  </div>
-  <div class="prices reveal">
-    <div class="price">
-      <div class="name">Monthly</div>
-      <div class="amt">$29.99<span>/mo</span></div>
-      <div class="sub">Full access, billed monthly. Flexible.</div>
-      <ul><li><span class="ck">&#10003;</span>All 10 courses, both tiers</li><li><span class="ck">&#10003;</span>Mastery map &amp; spaced review</li><li><span class="ck">&#10003;</span>Cancel anytime</li></ul>
-      <a class="mbtn ghost" href="https://buy.stripe.com/aFa8wO78z5mO45EdSQ5Rm00" target="_blank">Choose monthly</a>
+<section class="wmb-wrap wmb-section wmb-pricing" id="pricing">
+  <h2 class="wmb-h2">One price. <span class="wmb-mark">The whole catalog</span>.</h2>
+  <div class="wmb-price-grid">
+    <div class="wmb-price">
+      <div class="wmb-price-name">Monthly</div>
+      <div class="wmb-price-amt">$29.99<span>/mo</span></div>
+      <ul><li>All 10 courses, both tiers</li><li>Mastery map &amp; spaced review</li><li>Cancel anytime</li></ul>
+      <a class="wmb-btn" href="#" onclick="openLesson();return false;">Choose monthly</a>
     </div>
-    <div class="price feat">
-      <span class="tag">Best value &middot; save 50%</span>
-      <div class="name">Annual</div>
-      <div class="amt">$179.99<span>/yr</span></div>
-      <div class="sub">Just ~$15/mo, the way most learners commit to the path.</div>
-      <ul><li><span class="ck">&#10003;</span>Everything in Monthly</li><li><span class="ck">&#10003;</span>~50% off the monthly rate</li><li><span class="ck">&#10003;</span>Priority on new courses</li></ul>
-      <a class="mbtn primary start-free-cta" data-free-label="Start free, then $149/yr" href="#" onclick="openLesson();return false;">Start free, then $149/yr</a>
-    </div>
-    <div class="price">
-      <div class="name">Family</div>
-      <div class="amt">$249<span>/yr</span></div>
-      <div class="sub">Up to 4 learners, each with their own path.</div>
-      <ul><li><span class="ck">&#10003;</span>4 individual accounts</li><li><span class="ck">&#10003;</span>Built for homeschool &amp; siblings</li><li><span class="ck">&#10003;</span>Parent progress view</li></ul>
-      <a class="mbtn ghost" href="#" onclick="openLesson();return false;">Choose family</a>
+    <div class="wmb-price wmb-price--feat">
+      <div class="wmb-price-tag">Best value &middot; save 50%</div>
+      <div class="wmb-price-name">Annual</div>
+      <div class="wmb-price-amt">$179.99<span>/yr</span></div>
+      <ul><li>Everything in Monthly</li><li>Just ~$15/mo, billed yearly</li><li>Cancel anytime</li></ul>
+      <a class="wmb-btn wmb-btn--solid" href="#" onclick="openLesson();return false;">Choose annual</a>
     </div>
   </div>
-  <p class="note">Start with a <b>free Prealgebra unit</b>, no card required. Subscribe when you&#8217;re ready for the rest of the path.</p>
-</div></section>
+  <p class="wmb-price-note wmb-muted">Cheaper than a single tutoring session, and it never expires after one course.</p>
+</section>
 
 <!-- FAQ -->
-<section class="mktg-faq" id="faq"><div class="wrap">
-  <div class="sec-head reveal"><span class="eyebrow">Questions</span><h2>Good to know</h2></div>
-  <div class="reveal">
-    <details open><summary>Who is Quantica for?</summary><p>Ambitious learners of any age: students prepping for AMC/MATHCOUNTS, accelerated and homeschool students, and adults who want to learn math properly the first time. If you want depth, not just answers, you&#8217;ll feel at home.</p></details>
-    <details><summary>What makes Quantica different?</summary><p>Most math sites go broad and shallow, or lock real depth behind expensive, scheduled courses. Quantica is built around genuine problem-solving, deep, sequenced, and self-paced, so you actually understand the math, all for one simple subscription.</p></details>
-    <details><summary>Do I need to be &ldquo;good at math&rdquo; already?</summary><p>No. Quantica meets you where you are and builds from the ground up. The hints and mastery path are designed so getting stuck is part of learning, never a wall.</p></details>
-    <details><summary>Do I need to buy each course?</summary><p>Never. One subscription unlocks every course and the entire path. No upsells, no per-course decisions.</p></details>
-    <details><summary>Is it really free to start?</summary><p>Yes: the first Prealgebra unit is free, no card required. You only subscribe when you want to continue the path.</p></details>
-    <details><summary>My child is under 18. How does that work?</summary><p>A parent sets up and manages the subscription, with a progress view to follow along. The Family plan covers up to four learners.</p></details>
+<section class="wmb-wrap wmb-section wmb-faq">
+  <h2 class="wmb-h2">Good to know</h2>
+  <div class="wmb-faq-list">
+    <details><summary>What makes Quantica different?</summary><p class="wmb-muted">You learn by solving real problems with instant feedback and layered hints, so concepts emerge from your own work instead of being memorized.</p></details>
+    <details><summary>Do I need to be good at math already?</summary><p class="wmb-muted">No. Every course is built from the ground up, and Milo is there whenever a problem stops you.</p></details>
+    <details><summary>Is it really free to start?</summary><p class="wmb-muted">Yes. The full Prealgebra unit is free, no card required.</p></details>
+    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. One subscription unlocks all ten courses on one continuous path.</p></details>
   </div>
-</div></section>
+</section>
 
 <!-- FINAL CTA -->
-<section class="mktg-final"><div class="wrap reveal"><div class="band">
-  <div>
-    <h2>From &ldquo;I&#8217;m bad at math&rdquo; to &ldquo;I love hard problems.&rdquo;</h2>
-    <p>Quantica isn&#8217;t about memorizing procedures. It&#8217;s about building the problem-solving instincts that make every hard problem feel winnable.</p>
-  </div>
-  <a class="mbtn ghost" style="background:#fff;color:var(--nv)" href="#" onclick="openLesson();return false;">Begin the path &#8594;</a>
-</div></div></section>
+<section class="wmb-wrap wmb-section wmb-final">
+  <h2 class="wmb-hero">Start <span class="wmb-mark-block">solving</span>.</h2>
+  <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="#" onclick="openLesson();return false;">Start free &#8594;</a>
+</section>
 
 <!-- FOOTER -->
-<footer class="mktg-foot"><div class="wrap">
-  <div class="logo"><span class="mark"></span>Quantica</div>
-  <div class="flinks"><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
-  <small>&copy; 2026 Quantica &middot; Learn math by solving.</small>
-</div></footer>
-
-<!-- CATALOG (modal) -->
-<div id="catalogOv" class="cat-ov" style="display:none" role="dialog" aria-modal="true" aria-label="Course catalog" onclick="if(event.target===this)closeCatalog()">
-  <div class="cat-modal">
-    <button class="cat-x" onclick="closeCatalog()" aria-label="Close">&times;</button>
-    <div class="sec-head"><span class="eyebrow" style="color:var(--grn)">The catalog</span><h2>Ten courses. One continuous journey.</h2><p>A clear spine from arithmetic foundations to pre-olympiad depth, plus enrichment tracks in counting, number theory, and logic.</p></div>
-    <div style="margin-bottom:14px"><span class="tier-tag tier-intro">Introduction tier</span></div>
-    <div class="courses" style="margin-bottom:34px">
-      <div class="course clickable" onclick="closeCatalog();openLesson()"><span class="num">01</span><div><h4>Prealgebra<span class="peek">Read the opening &#8594;</span></h4><p>Integers, fractions, exponents, primes, basic equations: the foundation.</p></div></div>
-      <div class="course soon"><span class="num">02</span><div><h4>Introduction to Algebra<span class="soon-badge">Coming soon</span></h4><p>Linear &amp; quadratic equations, inequalities, functions, graphing, systems.</p></div></div>
-      <div class="course soon"><span class="num">03</span><div><h4>Introduction to Geometry<span class="soon-badge">Coming soon</span></h4><p>Congruence, similarity, area, the circle, trig basics, proofs, 3-D.</p></div></div>
-      <div class="course soon"><span class="num">04</span><div><h4>Combinatorics<span class="soon-badge">Coming soon</span></h4><p>Counting techniques, combinations, probability, expected value.</p></div></div>
-      <div class="course soon"><span class="num">05</span><div><h4>Number Theory<span class="soon-badge">Coming soon</span></h4><p>Divisibility, primes, modular arithmetic, base systems.</p></div></div>
-      <div class="course soon"><span class="num">06</span><div><h4>Logic Games<span class="soon-badge">Coming soon</span></h4><p>Deductive puzzles, invariants, casework, parity, pigeonhole.</p></div></div>
-    </div>
-    <div style="margin-bottom:14px"><span class="tier-tag tier-mid">Intermediate tier</span></div>
-    <div class="courses">
-      <div class="course soon"><span class="num">07</span><div><h4>Intermediate Algebra<span class="soon-badge">Coming soon</span></h4><p>Polynomials, complex numbers, sequences &amp; series, advanced functions.</p></div></div>
-      <div class="course soon"><span class="num">08</span><div><h4>Intermediate Geometry<span class="soon-badge">Coming soon</span></h4><p>Power of a point, advanced theorems, transformations, analytic geometry.</p></div></div>
-      <div class="course soon"><span class="num">09</span><div><h4>Intermediate Combinatorics<span class="soon-badge">Coming soon</span></h4><p>Advanced combinatorics, recursion, conditioning.</p></div></div>
-      <div class="course soon"><span class="num">10</span><div><h4>Intermediate Number Theory<span class="soon-badge">Coming soon</span></h4><p>Orders, CRT, multiplicative functions, competition techniques.</p></div></div>
-    </div>
-    <p class="catnote"><b>More on the way.</b> A Quantitative track (probability, statistics, and the math behind markets) joins the path as Quantica grows.</p>
-  </div>
+<footer class="wmb-wrap wmb-foot">
+  <span class="wmb-nav-brand">QuanticaEdu</span>
+  <div class="wmb-foot-links"><a href="#pricing">Pricing</a><a href="#how">How it works</a><a href="#path">Courses</a></div>
+  <small class="wmb-muted">&#169; 2026 Quantica &middot; Learn math by solving.</small>
+</footer>
 </div>
-
-</div><!-- /.mktg -->
 
 <script>
 (function(){
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  // scroll reveal
-  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-  document.querySelectorAll('.mktg .reveal').forEach(function(el){ if(rm){el.classList.add('in');} else io.observe(el); });
-  // catalog
-  window.openCatalog=window.openCatalog||function(){var o=document.getElementById('catalogOv');if(o){o.style.display='block';document.body.style.overflow='hidden';}};
-  window.closeCatalog=window.closeCatalog||function(){var o=document.getElementById('catalogOv');if(o){o.style.display='none';document.body.style.overflow='';}};
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){var o=document.getElementById('catalogOv');if(o&&o.style.display!=='none')closeCatalog();}});
-  // Milo animated chat
   var body=document.getElementById('miloBody');
+  if(!body) return;
   var script=[
     {who:'bot',t:"Hi, I&#8217;m Milo. What are you stuck on?"},
     {who:'me', t:"Why does &#8730;72 become 6&#8730;2?"},
@@ -1577,29 +1537,27 @@
     {who:'bot',t:"That&#8217;s it. You just did it yourself. &#10024;"}
   ];
   function run(){
-    if(!body) return; body.innerHTML='';
+    body.innerHTML='';
     var typing=document.createElement('div'); typing.className='typing'; typing.innerHTML='<i></i><i></i><i></i>';
     body.appendChild(typing);
     var i=0;
     function step(){
-      if(i>=script.length){ setTimeout(run, 4200); return; }
+      if(i>=script.length){ setTimeout(run,4200); return; }
       var m=script[i];
-      var showBubble=function(){
+      var show=function(){
         typing.classList.remove('show');
         var b=document.createElement('div'); b.className='mb '+m.who; b.innerHTML=m.t;
-        body.insertBefore(b, typing);
+        body.insertBefore(b,typing);
         requestAnimationFrame(function(){ b.classList.add('show'); });
-        i++;
-        setTimeout(step, m.who==='me'?700:900);
+        i++; setTimeout(step, m.who==='me'?760:960);
       };
-      if(m.who==='bot' && !rm){ typing.classList.add('show'); setTimeout(showBubble, 780); }
-      else showBubble();
+      if(m.who==='bot' && !rm){ typing.classList.add('show'); setTimeout(show,820); }
+      else show();
     }
     step();
   }
-  if(rm){ // static: show all
-    body.innerHTML=script.map(function(m){return '<div class="mb '+m.who+' show">'+m.t+'</div>';}).join('');
-  } else { run(); }
+  if(rm){ body.innerHTML=script.map(function(m){return '<div class="mb '+m.who+' show">'+m.t+'</div>';}).join(''); }
+  else { run(); }
 })();
 </script>
 
