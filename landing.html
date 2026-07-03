@@ -973,6 +973,22 @@
     .card:hover,.btn-primary:hover,.btn-ghost:hover,.course:hover{transform:none}
   }
 </style>
+
+<meta name="description" content="Quantica teaches math from prealgebra to olympiad by having you solve, not memorize. Instant feedback, layered hints, and Milo, a tutor that helps you find the answer yourself.">
+<link rel="canonical" href="https://quanticaedu-a077d.web.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantica">
+<meta property="og:title" content="Quantica | Learn math by solving">
+<meta property="og:description" content="Prealgebra to olympiad. Learn by solving real problems with instant feedback and Milo, your tutor.">
+<meta property="og:url" content="https://quanticaedu-a077d.web.app/">
+<meta property="og:image" content="https://quanticaedu-a077d.web.app/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quantica | Learn math by solving">
+<meta name="twitter:description" content="Prealgebra to olympiad. Learn by solving, with Milo.">
+<meta name="twitter:image" content="https://quanticaedu-a077d.web.app/og-default.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Quantica","url":"https://quanticaedu-a077d.web.app/","logo":"https://quanticaedu-a077d.web.app/og-default.png","sameAs":[],"description":"Quantica teaches math from prealgebra to olympiad by having you solve, not memorize."}</script>
 </head>
 <body>
 
@@ -1559,6 +1575,16 @@
   if(rm){ body.innerHTML=script.map(function(m){return '<div class="mb '+m.who+' show">'+m.t+'</div>';}).join(''); }
   else { run(); }
 })();
+</script>
+<script>
+/* Deep-launch: /prealgebra (and other course pages) link here with ?start=1 to open the course app directly. */
+window.addEventListener('load',function(){
+  if(location.search.indexOf('start=')<0) return;
+  var n=0,t=setInterval(function(){
+    if(typeof window.openLesson==='function'){clearInterval(t);try{window.openLesson();}catch(e){}}
+    else if(++n>120){clearInterval(t);}
+  },40);
+});
 </script>
 
 <!-- SIGNUP -->
