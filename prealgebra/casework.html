@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casework — Prealgebra | Quantica</title>
+<meta name="description" content="Casework: Sometimes one multiply handles everything; sometimes it doesn&#x27;t. When choices change partway through, split the problem into separate cases, count e">
+<link rel="canonical" href="https://quanticaedu.com/prealgebra/casework">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Quantica">
+<meta property="og:title" content="Casework — Prealgebra">
+<meta property="og:description" content="Casework: Sometimes one multiply handles everything; sometimes it doesn&#x27;t. When choices change partway through, split the problem into separate cases, count e">
+<meta property="og:url" content="https://quanticaedu.com/prealgebra/casework"><meta property="og:image" content="https://quanticaedu.com/og-prealgebra.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://quanticaedu.com/og-prealgebra.png">
+<link rel="icon" href="/favicon.svg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Casework", "url": "https://quanticaedu.com/prealgebra/casework", "description": "Casework: Sometimes one multiply handles everything; sometimes it doesn't. When choices change partway through, split the problem into separate cases, count e", "inLanguage": "en", "learningResourceType": "lesson", "educationalLevel": "Prealgebra", "isPartOf": {"@type": "Course", "name": "Prealgebra", "url": "https://quanticaedu.com/prealgebra"}, "provider": {"@type": "Organization", "name": "Quantica", "url": "https://quanticaedu.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Quantica", "item": "https://quanticaedu.com/"}, {"@type": "ListItem", "position": 2, "name": "Prealgebra", "item": "https://quanticaedu.com/prealgebra"}, {"@type": "ListItem", "position": 3, "name": "Casework", "item": "https://quanticaedu.com/prealgebra/casework"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+<style>
+:root{--bg:#ededeb;--ink:#0a0a0a;--lime:#beff8b;--slate:#9dbbc5;--gray:#5c5c58;--line:rgba(10,10,10,.12)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}img,svg{max-width:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0}
+.mark{background:var(--lime);border-radius:.16em;padding:.02em .2em}
+.milo{width:1em;height:1em;vertical-align:-.18em}
+.nav{display:flex;align-items:center;gap:12px;padding:20px 0}
+.brand{font-weight:700;font-size:19px;letter-spacing:-.03em;text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:8px}
+.brand .milo{width:24px;height:24px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px;border:1.5px solid var(--ink);text-decoration:none;white-space:nowrap;transition:transform .15s}
+.pill:hover{transform:translateY(-2px)}.pill.solid{background:var(--lime);border-color:var(--lime)}
+.crumbs{font-size:13px;color:var(--gray);padding:8px 0 0}.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}
+.head{padding:22px 0 8px}.head .ey{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:12px}
+.head h1{font-size:clamp(30px,5.5vw,52px);letter-spacing:-.035em}
+.startbar{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 8px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.content{padding:12px 0 8px;font-size:17px}
+.content p{margin:18px 0}
+.content b{font-weight:700}
+.key{background:linear-gradient(180deg,rgba(190,255,139,.5),rgba(190,255,139,.22));border:1px solid rgba(10,10,10,.14);border-radius:16px;padding:20px 22px;margin:24px 0}
+.fact{background:rgba(157,187,197,.22);border-left:3px solid var(--slate);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0}
+.tag{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+.prob{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0;background:rgba(255,255,255,.35)}
+.prob-q{font-size:16px}
+.sol{margin-top:12px}.sol summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--gray)}
+.sol[open] summary{margin-bottom:10px}.sol>div{font-size:15px;color:#242424}
+.sec-h{font-size:clamp(24px,4vw,38px);letter-spacing:-.03em;margin:44px 0 8px}
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 10px}
+.pager a{border:1px solid var(--line);border-radius:16px;padding:16px 20px;text-decoration:none;background:rgba(255,255,255,.35)}
+.pager a:hover{border-color:var(--ink)}.pager .dir{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:.1em}
+.pager a.next{text-align:right}.pager .t{font-weight:600;margin-top:4px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--ink);padding:30px 0;margin-top:30px;font-size:14px}
+.foot a{text-decoration:none;margin-left:16px}
+@media(max-width:560px){.pager{grid-template-columns:1fr}.pager a.next{text-align:left}}
+</style></head>
+<body>
+<header class="wrap nav"><a class="brand" href="/"><svg viewBox="0 0 64 64" class="milo" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>Quantica</a><a class="pill" href="/prealgebra">Prealgebra</a><a class="pill solid" href="/?lesson=10.3">Open in the course</a></header>
+<div class="wrap">
+  <nav class="crumbs"><a href="/">Home</a> › <a href="/prealgebra">Prealgebra</a> › Chapter 10: Counting and Statistics</nav>
+  <div class="head"><p class="ey">Prealgebra · Lesson 10.3</p><h1>Casework</h1></div>
+  <div class="startbar"><a class="pill solid" href="/?lesson=10.3">Solve this lesson — free →</a><a class="pill" href="/prealgebra">All lessons</a></div>
+  <article class="content">
+  <p>Sometimes one multiply handles everything; sometimes it doesn't. When choices change partway through, split the problem into separate cases, count each case on its own, and add.</p>
+<div class="prob"><div class="prob-q">A food truck sells tacos (with \(1\) of \(5\) fillings) and burritos (with \(1\) of \(4\) fillings and \(1\) of \(2\) salsas). How many different single items can you order?</div><details class="sol"><summary>Show solution</summary><div>A taco makes one choice and a burrito makes two, so one single multiply will not count them all at once. Let us split into cases instead, one pile for tacos and one pile for burritos.
+
+Case 1, tacos. A taco is just one of \(5\) fillings, so there are \(5\) different tacos.
+
+Case 2, burritos. Here you pick one of \(4\) fillings and one of \(2\) salsas, and inside a case you multiply just like in 10.2, which gives $$4 \times 2 = 8$$ different burritos.
+
+These two cases do not overlap, since nothing is both a taco and a burrito, and together they cover every item the truck sells. So across the cases we add the way we did in 10.1, and you get $$5 + 8 = 13.$$
+
+So you can order \(\boxed{13}\) different single items.</div></details></div>
+<aside class="key"><span class="tag">Key idea</span><div><b>Casework.</b> When one clean multiply will not work because the choices change partway through, you split. Break everything you are counting into a few cases, count each case all on its own, then ADD the case counts. Inside a case you multiply the way you did in 10.2, and across the cases you add the way you did in 10.1. Two promises keep this honest: the cases must never overlap, or something gets counted twice, and together they must cover every possibility, or something slips through. No overlap and no gaps.</div></aside>
+<div class="prob"><div class="prob-q">Zedland has a 6-letter alphabet. Words can be 1, 2, or 3 letters long, with repeats allowed. How many possible words are there?</div><details class="sol"><summary>Show solution</summary><div>A word can be \(1\), \(2\), or \(3\) letters long, and those are three pretty different shapes. So instead of trying to count everything with one multiply, split the words by length and count each length on its own.
+
+For a one-letter word there is just a single slot, and it can be any of the \(6\) letters, so that gives \(6\) words.
+
+For a two-letter word there are two slots, and each slot can be any of the \(6\) letters since repeats are allowed. Inside this case you multiply, which gives \(6 \times 6 = 6^2 = 36\) words.
+
+For a three-letter word there are three slots, each with \(6\) choices, so multiplying gives \(6 \times 6 \times 6 = 6^3 = 216\) words.
+
+These three piles never overlap, because a word has exactly one length, and together they cover every possible word. So now you add across the cases, which gives
+$$6 + 36 + 216 = 258.$$
+
+So the number of possible words is \(\boxed{258}\).</div></details></div>
+<aside class="key"><span class="tag">Key idea</span><div><b>Multiply inside, add across.</b> Inside one case nothing has changed, so you draw the same box-strip from 10.2 and multiply straight across, since a single case is just its own little box-strip. Then across the cases you add, exactly the way you added piles back in 10.1. Casework is the bridge that lets the adding from 10.1 and the multiplying from 10.2 work together on a problem too lumpy for either alone. The hard skill is neither the multiplying nor the adding, it is choosing what to split on.</div></aside>
+<div class="prob"><div class="prob-q">Every whole number from \(1\) to \(150\) is written out. How many digits are written in total?</div><details class="sol"><summary>Show solution</summary><div>If you try to count this with one quick multiply, it breaks. Some numbers are short like \(5\), some are longer like \(88\), and some are longer still like \(141\). They do not all cost the same number of digits, so there is no single clean multiply to reach for.
+
+The rescue is to split what you are counting into piles, count each pile on its own, and add at the end. Here the natural split is by how many digits a number has.
+
+The first pile is the one-digit numbers, from \(1\) to \(9\). That is \(9\) numbers, each using \(1\) digit, and you get $$9\times1=9.$$
+
+The second pile is the two-digit numbers, from \(10\) to \(99\). That is \(90\) numbers, each using \(2\) digits, which gives $$90\times2=180.$$
+
+The third pile is the three-digit numbers, from \(100\) to \(150\). That is \(51\) numbers, each using \(3\) digits, so $$51\times3=153.$$
+
+The three piles never overlap, and together they cover every number from \(1\) to \(150\), so nothing is counted twice and nothing slips through. Inside each pile you multiplied, and now across the piles you add, $$9+180+153=342.$$
+
+So the total number of digits you write is \(\boxed{342}\).</div></details></div>
+<div class="prob"><div class="prob-q">Using pennies, nickels, and dimes (any amounts, including zero), how many ways can you make \(20\) cents?</div><details class="sol"><summary>Show solution</summary><div>If you try to do this with one quick multiply, like in 10.2, it falls apart fast, because picking a dime is not the same kind of choice as picking a penny. The coins are worth different amounts, so the choices are not the same all the way across. That is the snag, and the rescue is casework. We split what we are counting into a few separate piles, count each pile on its own, and add at the end.
+
+The smart thing to split on is the coin that boxes us in the most, which is the dime, since it is the biggest. So let us case on how many dimes we use.
+
+With \(0\) dimes we still have all \(20\) cents to make from nickels and pennies. The nickels can be \(0, 1, 2, 3,\) or \(4\), and whatever is left over is just filled in with pennies. That is \(5\) ways.
+
+With \(1\) dime we have used \(10\) cents, so \(10\) cents are left. The nickels can be \(0, 1,\) or \(2\), and pennies fill the rest, which gives \(3\) ways.
+
+With \(2\) dimes we have already used the full \(20\) cents, so there is nothing left. The only choice is \(0\) nickels and \(0\) pennies, which is \(1\) way.
+
+Notice that \(3\) dimes is impossible, since that is already \(30\) cents, so our three cases truly cover everything, and no way of making \(20\) cents lands in two cases at once, since each way uses one fixed number of dimes. The cases never overlap and together they catch everything.
+
+Now we add across the cases the way we did in 10.1, and you get $$5 + 3 + 1 = 9.$$ So there are \(\boxed{9}\) ways to make \(20\) cents.</div></details></div>
+<aside class="key"><span class="tag">Key idea</span><div><b>Choose the smart split.</b> The cases are not handed to you, you pick the thing you split on, and the smart pick breaks the problem into the fewest, cleanest cases. That winning split almost always rides on the most demanding quantity, the part with the tightest squeeze, like the biggest coin you might spend, the largest square that still fits, or the one digit a rule pins down. Go after that cramped part first and you are left with a few tidy cases instead of a swarm of messy ones.</div></aside>
+<div class="prob"><div class="prob-q">How many ordered pairs of positive integers \((a, b)\) satisfy \(a^2 + b < 24\)?</div><details class="sol"><summary>Show solution</summary><div>Here the choices are not the same all the way across, because the bigger \(a\) gets, the less room \(b\) has. So we split by the value of \(a\) and count each pile on its own.
+
+If \(a = 1\), then \(a^2 = 1\) and we need \(1 + b < 24\), which gives \(b < 23\). Since \(b\) is a positive integer, that is \(b = 1\) up to \(b = 22\), so \(22\) pairs.
+
+If \(a = 2\), then \(a^2 = 4\) and we need \(4 + b < 24\), which gives \(b < 20\). So \(b = 1\) up to \(b = 19\), so \(19\) pairs.
+
+If \(a = 3\), then \(a^2 = 9\) and we need \(9 + b < 24\), which gives \(b < 15\). So \(b = 1\) up to \(b = 14\), so \(14\) pairs.
+
+If \(a = 4\), then \(a^2 = 16\) and we need \(16 + b < 24\), which gives \(b < 8\). So \(b = 1\) up to \(b = 7\), so \(7\) pairs.
+
+If \(a = 5\), then \(a^2 = 25\), and that alone is already more than \(24\), so even the smallest \(b\) is too big. No pairs here, and every larger \(a\) is worse, so we can stop.
+
+The cases never overlap, since each fixes one value of \(a\), and together they cover every \(a\) that could possibly work. So we add the pile counts and get $$22 + 19 + 14 + 7 = 62.$$
+
+So the number of pairs is \(\boxed{62}\).</div></details></div>
+<div class="prob"><div class="prob-q">How many two-digit numbers have a tens digit greater than the units digit?</div><details class="sol"><summary>Show solution</summary><div>Try the slot-and-box trick from before and it snags right away. The tens digit has \(9\) choices and the units digit has \(10\) choices, but you cannot multiply, because how many units digits are allowed depends on which tens digit you chose. A small tens digit leaves almost no room underneath it, while a big one leaves plenty. The choices are not the same all the way across, so one clean multiply will not work.
+
+So we split. The cramped part here is the tie between the two digits, so we case on the tens digit \(t\), giving one pile for each value of \(t\).
+
+Inside a pile, fix the tens digit \(t\). The units digit just has to be smaller than \(t\), so it can be \(0, 1, \ldots, t-1\), and that is \(t\) choices.
+
+Now we walk through the piles. When \(t=1\) the units digit can only be \(0\), so \(1\) number. When \(t=2\) it can be \(0\) or \(1\), so \(2\) numbers. This keeps climbing, all the way up to \(t=9\), which gives \(9\) numbers.
+
+These piles never overlap, since each number has just one tens digit, and together they cover every two-digit number, since the tens digit is always somewhere from \(1\) to \(9\). So we add the pile counts and you get $$1+2+3+4+5+6+7+8+9 = 45.$$
+
+So the number of two-digit numbers whose tens digit beats its units digit is \(\boxed{45}\).</div></details></div>
+<div class="prob"><div class="prob-q">How many three-digit numbers have a hundreds digit that is at least \(3\) times the tens digit?</div><details class="sol"><summary>Show solution</summary><div>Here the slot-and-box trick from 10.2 gets snagged, because the hundreds digit and the tens digit are not free of each other. How many hundreds digits are allowed depends on what the tens digit is, so one clean multiply across all three slots would lie. That is the signal to use casework. We split what we are counting into a few separate piles, count each pile on its own, and add at the end.
+
+The smart thing to split on is the tens digit \(t\), since the rule only links the hundreds digit to it. And notice the units digit never enters the rule at all, so in every pile it quietly brings \(10\) choices.
+
+For \(t=0\) we need the hundreds digit to be at least \(3 \times 0 = 0\), so all of \(1\) to \(9\) work, which gives \(9\) choices.
+
+For \(t=1\) we need the hundreds digit to be at least \(3 \times 1 = 3\), so \(3\) through \(9\) work, which gives \(7\) choices.
+
+For \(t=2\) we need the hundreds digit to be at least \(3 \times 2 = 6\), so \(6\) through \(9\) work, which gives \(4\) choices.
+
+For \(t=3\) we need the hundreds digit to be at least \(3 \times 3 = 9\), so only \(9\) works, which gives \(1\) choice.
+
+For \(t=4\) or anything larger we would need the hundreds digit to be at least \(12\), and no digit is that big, so those piles are empty.
+
+These piles never overlap, since each three-digit number has exactly one tens digit, and together they cover every tens digit, so nothing is double counted and nothing slips through.
+
+Now we use the spine of the chapter. Inside each case the units digit multiplies in with its \(10\) choices, and across the cases we add. Adding the hundreds counts first gives $$9 + 7 + 4 + 1 = 21,$$ and then each of those carries \(10\) free units digits, so $$21 \times 10 = 210.$$
+
+So the count of three-digit numbers whose hundreds digit is at least three times the tens digit is \(\boxed{210}\).</div></details></div>
+<aside class="key"><span class="tag">Key idea</span><div><b>Stay organized.</b> Lay your cases out in a tidy table or orderly list, find the count for each one, then add straight down the column. That neatness does real work: when every case has its own row staring back at you, it is hard to skip one by accident and just as hard to count the same one twice. Being organized is not a frill here, it is the very thing that keeps the no-overlaps and no-gaps promises honest.</div></aside>
+<div class="prob"><div class="prob-q">How many two-digit numbers have digits that add up to a perfect square?</div><details class="sol"><summary>Show solution</summary><div>First let us see why one quick multiply will not do the job. The digit sum is not the same all the way across, since it can equal a few different perfect squares, and each of those squares gives a different number of two-digit numbers. So we split into cases by the value of the digit sum, and inside each case we count, then across the cases we add.
+
+The two digits of a two-digit number add up to at least \(1\) and at most \(18\). The perfect squares in that range are \(1\), \(4\), \(9\), and \(16\), so those are our four cases, and no two of them overlap and together they catch every number that works.
+
+Case sum \(=1\). The only way is \(10\), which gives \(1\) number.
+
+Case sum \(=4\). We can use \(13\), \(22\), \(31\), and \(40\), which gives \(4\) numbers.
+
+Case sum \(=9\). We can use \(18\), \(27\), \(36\), \(45\), \(54\), \(63\), \(72\), \(81\), and \(90\), which gives \(9\) numbers.
+
+Case sum \(=16\). We can use \(79\), \(88\), and \(97\), which gives \(3\) numbers.
+
+Now we add the pile counts, and you get $$1 + 4 + 9 + 3 = 17.$$
+
+So the number of two-digit numbers whose digits add up to a perfect square is \(\boxed{17}\).</div></details></div>
+<div class="prob"><div class="prob-q">Hat 1 holds balls numbered \(1\) to \(15\) and Hat 2 holds balls \(16\) to \(25\). You pick one hat, then draw \(2\) balls from it one after another without replacement, where order matters. How many different ordered draws are possible?</div><details class="sol"><summary>Show solution</summary><div>Here the trick from before snags right away, because the two hats do not hold the same number of balls, so you cannot do one clean multiply across the whole problem. The rescue is to split what you are counting into separate piles, count each pile by itself, and add the pile counts at the end. The most demanding part is which hat you reached into, so let us case on the hat.
+
+First, suppose you picked hat one. It has \(15\) balls. For the first draw you have \(15\) choices, and since you keep that ball out, the second draw has \(14\) choices left. Inside this case you multiply, which gives $$15\times14=210$$ ordered draws.
+
+Now suppose you picked hat two. It has \(10\) balls. The first draw has \(10\) choices, and the second draw has \(9\) choices left. Inside this case you multiply again, which gives $$10\times9=90$$ ordered draws.
+
+These two cases never overlap, since a draw comes from exactly one hat, and together they cover every possible draw. So across the cases you add, and you get $$210+90=300.$$
+
+So the number of different ordered draws is \(\boxed{300}\).</div></details></div>
+<aside class="key"><span class="tag">Key idea</span><div><b>Choose then do.</b> When your very first choice changes how many ways the rest can go, like which hat you grab or which box you reach into, you cannot multiply straight across, because the boxes do not hold the same counts. So split into cases on that first choice, count each case on its own with the slot-and-box habit from 10.2, and add the case counts together. Multiply inside a case, add across the cases.</div></aside>
+<aside class="key"><span class="tag">Key idea</span><div><b>Count routes by casework.</b> To count all the ways to make a trip, group the routes by which middle town they pass through, count each group on its own, and ADD the groups, which is casework on the route. When a single route is built from independent stretches that all run through that town, you MULTIPLY the stretch counts, just like 10.2. So multiply along one route to count its group, then add the groups across the towns. Casework and the Multiplication Principle working side by side.</div></aside>
+<div class="prob"><div class="prob-q">Using the map above, there are \(4\) routes from A to D, and from D to H there are \(3\) routes (via E, via F, or direct). How many routes go all the way from A to H?</div><details class="sol"><summary>Show solution</summary><div>Every road on the map funnels into \(D\), so a route from \(A\) to \(H\) is really two trips stitched together, first \(A\) to \(D\) and then \(D\) to \(H\). That gives us a clean place to split.
+\nThe first stretch is handed to us. There are \(4\) routes from \(A\) to \(D\).
+\nFor the second stretch, list the cases from \(D\) to \(H\) and count them honestly. The first case is \(D\) to \(E\) to \(H\). The second case is \(D\) to \(F\) to \(H\). The third case is the direct road \(D\) to \(H\). No two of these are the same route, and there are no other ways forward, so the cases do not overlap and they cover everything. That is \(3\) routes from \(D\) to \(H\).
+\nNow comes the spine. Choosing your way from \(A\) to \(D\) and choosing your way from \(D\) to \(H\) are independent, so inside a single trip we multiply, the way we did in 10.2. Each of the \(4\) first-stretch routes can be followed by any of the \(3\) second-stretch routes, which gives $$4\times 3 = 12.$$
+\nSo there are \(\boxed{12}\) routes from \(A\) all the way to \(H\).</div></details></div>
+<div class="prob"><div class="prob-q">How many three-digit numbers have exactly one digit equal to \(0\)?</div><details class="sol"><summary>Show solution</summary><div>Try counting this with one clean multiply and you hit a snag, because the digit choices are not the same all the way across. The hundreds digit cannot be \(0\), but the tens and units digits can be, and we need exactly one of them to be \(0\). One multiply will not capture that, so we split into a few piles instead and count each on its own. That is casework. Inside each case we multiply the way we did before, and across the cases we add.
+
+First, notice the hundreds digit is never \(0\), since a three-digit number like \(061\) is really just the two-digit number \(61\). So the single \(0\) must live in either the tens place or the units place. That is the cramped part of the problem, so it is exactly what we split on. The two cases never overlap, because the \(0\) cannot be in both spots at once while staying a single \(0\), and together they cover everything.
+
+Case one is the \(0\) in the tens place, with the units digit not \(0\). The hundreds digit can be any of \(1\) through \(9\), which gives \(9\) choices. The tens digit is locked as \(0\). The units digit can be any of \(1\) through \(9\), since it is not allowed to be \(0\), and that gives \(9\) choices. Multiplying inside the case, we get $$9 \times 9 = 81.$$
+
+Case two is the \(0\) in the units place, with the tens digit not \(0\). The hundreds digit again has \(9\) choices, the tens digit can be any of \(1\) through \(9\) for another \(9\) choices, and the units digit is locked as \(0\). Multiplying inside this case, we get $$9 \times 9 = 81.$$
+
+Now we add across the cases, which gives $$81 + 81 = 162.$$
+
+So there are \(\boxed{162}\) three-digit numbers with exactly one digit equal to \(0\).</div></details></div>
+<div class="prob"><div class="prob-q">How many whole numbers from \(1\) to \(999\) have at least one digit equal to \(2\)?</div><details class="sol"><summary>Show solution</summary><div>Counting the numbers that have a \(2\) directly is a swarm, since the \(2\) could sit in any of three places and some numbers carry it in two or three places at once. So we use the slick split, has a \(2\) versus does not, and count the lazy side first.
+
+It is much friendlier to count the numbers from \(1\) to \(999\) that have NO digit equal to \(2\), then subtract. Think of every number as three digit slots, so \(7\) is \(007\) and \(52\) is \(052\). For a slot to dodge the digit \(2\), it may be any of \(\{0,1,3,4,5,6,7,8,9\}\), which is \(9\) choices.
+
+Inside this single case we multiply the 10.2 way, three slots with \(9\) choices each, and you get
+$$9\times9\times9=729$$
+strings from \(000\) to \(999\) that contain no \(2\). One of those strings is \(000\), which stands for \(0\), and \(0\) is not in our range \(1\) to \(999\), so we drop it. That leaves \(729-1=728\) numbers with no digit \(2\).
+
+There are \(999\) numbers in all from \(1\) to \(999\). The two piles, no \(2\) and at least one \(2\), do not overlap and together cover everything, so the at-least-one-\(2\) pile is whatever the no-\(2\) pile leaves behind, which gives
+$$999-728=271.$$
+
+So the number of whole numbers from \(1\) to \(999\) with at least one digit equal to \(2\) is \(\boxed{271}\).</div></details></div>
+<aside class="key"><span class="tag">Key idea</span><div><b>Complement split.</b> Sometimes the two cleanest cases are simply has the property and does not, and one side is far easier to count. So count the easy side, then subtract it from the total to get the side you actually wanted. This is still casework, only one case did all the lazy work for you, and the subtracting is the same total-minus-the-rest move you trusted back in 10.1. It is especially handy for at-least-one questions.</div></aside>
+<aside class="fact"><span class="tag">Fun fact</span><div>In 1976 two mathematicians settled the Four Color Map Theorem using pure casework, they reduced every possible map to one of about 1,976 basic shapes and had a computer check each one.</div></aside>
+<aside class="key"><span class="tag">Key idea</span><div><b>Casework habit.</b> When one clean multiply will not do, pick a smart thing to split on, going after the most cramped part of the problem. Make sure your cases never overlap and together cover everything, so nothing is counted twice and nothing slips through. Then count each case on its own, multiplying inside a case the way you did in 10.2, and add the case counts at the end the way you did in 10.1. In 10.4 Counting Pairs we count how many ways to choose a pair or group when order does not matter, so picking Sam then Maya is the same choice as Maya then Sam.</div></aside>
+  <h2 class="sec-h">Review <span class="mark">problems</span></h2>
+<div class="prob"><div class="prob-q"><b>Review 1.</b> A small sundae has \(5\) flavor choices; a large has \(5\) flavors and \(2\) sauces. How many different sundaes can you order?</div><details class="sol"><summary>Show solution</summary><div>A small sundae is built differently from a large one, so trying to multiply straight across does not fit. Let us split what we are counting into two cases by size, and the two sizes never overlap and together cover every sundae, so the split is honest.
+
+Case 1, small sundaes. Here you only choose a flavor, and there are \(5\) flavors, which gives \(5\) small sundaes.
+
+Case 2, large sundaes. Here you choose a flavor and a sauce, so we multiply inside the case and you get \(5\times2=10\) large sundaes.
+
+Now add across the cases, so $$5+10=15.$$
+
+The number of different sundaes is \(\boxed{15}\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 2.</b> A code is \(1\) or \(2\) symbols long, each from \(5\) shapes, with repeats allowed. How many possible codes are there?</div><details class="sol"><summary>Show solution</summary><div>The codes come in two different lengths, so a single multiply will not do it. This is a job for casework. Split what you are counting by the length of the code, with the \(1\)-symbol codes in one pile and the \(2\)-symbol codes in another. These two piles never overlap, since a code cannot be both lengths at once, and together they cover every code.
+
+Inside each pile we multiply the way we learned before. A \(1\)-symbol code has a single slot with \(5\) shapes to fill it, which gives \(5\) codes. A \(2\)-symbol code has two slots, each with \(5\) shapes and repeats allowed, which gives \(5^2 = 25\) codes.
+
+Now we add across the cases, and you get
+$$5 + 5^2 = 5 + 25 = 30.$$
+So the number of possible codes is \(\boxed{30}\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 3.</b> Every whole number from \(1\) to \(99\) is written out. How many digits are written in total?</div><details class="sol"><summary>Show solution</summary><div>If you try to count this with one multiply, you get stuck right away, because the numbers do not all have the same number of digits. A \(7\) takes one digit but a \(53\) takes two, so there is no single length to multiply by. That is the snag that tells you to split into cases.
+
+The natural split is by how many digits a number has, so make two piles.
+
+Pile one is the numbers \(1\) to \(9\). There are \(9\) of them and each one has a single digit, which gives \(9\) digits in this pile.
+
+Pile two is the numbers \(10\) to \(99\). There are \(90\) of them and each one has two digits, so that pile is \(90\times2=180\) digits.
+
+The two piles never overlap, since a number cannot be both one digit and two digits, and together they cover every number from \(1\) to \(99\), so nothing slips through. Now add the pile counts and you get
+$$9+180=189.$$
+So the total number of digits written is \(\boxed{189}\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 4.</b> Using pennies, nickels, and dimes (any amounts, including zero), how many ways can you make \(30\) cents?</div><details class="sol"><summary>Show solution</summary><div>A single multiply breaks here, because the coins do not have the same freedom all the way across. Once you commit to some dimes, the amount left over changes how many nickels you are even allowed to use. So we split into piles and count each pile on its own.
+
+We will split on the number of dimes, since dimes are the most demanding coin and you can fit only a few of them into \(30\) cents. The possible counts are \(0\), \(1\), \(2\), and \(3\) dimes. These cases never overlap, and together they cover every way, so nothing gets counted twice and nothing slips through.
+
+Here is the quiet trick inside each case. Once we have chosen the dimes and then the nickels, the pennies are completely forced, since the pennies just fill whatever is left. So in each case we only have to count the allowed numbers of nickels.
+
+With \(0\) dimes there is \(30\) cents left to cover, so we can use \(0\) up to \(6\) nickels, which is \(7\) ways.
+
+With \(1\) dime there is \(20\) cents left, so we can use \(0\) up to \(4\) nickels, which is \(5\) ways.
+
+With \(2\) dimes there is \(10\) cents left, so we can use \(0\) up to \(2\) nickels, which is \(3\) ways.
+
+With \(3\) dimes there is \(0\) cents left, so we can use \(0\) nickels, which is \(1\) way.
+
+Now we add the pile counts across the cases, and you get $$7 + 5 + 3 + 1 = 16.$$
+
+So the number of ways is \(\boxed{16}\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 5.</b> How many ordered pairs of positive integers \((a,b)\) satisfy \(a^2 + b < 15\)?</div><details class="sol"><summary>Show solution</summary><div>If you reach for one tidy multiply here, it snags right away, because the choices for \(b\) are not the same all the way across. As \(a\) grows, \(a^2\) eats up more room and leaves less space for \(b\). So we split into cases by the value of \(a\) and count each pile on its own.
+
+First, which \(a\) are even allowed? Since \(b\) is at least \(1\), we need \(a^2 + 1 < 15\), which means \(a^2 < 14\), so \(a\) can only be \(1\), \(2\), or \(3\).
+
+Case \(a = 1\). We need \(1 + b < 15\), so \(b < 14\), and \(b\) runs from \(1\) to \(13\), which gives \(13\) pairs.
+
+Case \(a = 2\). We need \(4 + b < 15\), so \(b < 11\), and \(b\) runs from \(1\) to \(10\), which gives \(10\) pairs.
+
+Case \(a = 3\). We need \(9 + b < 15\), so \(b < 6\), and \(b\) runs from \(1\) to \(5\), which gives \(5\) pairs.
+
+These three cases never overlap, since each fixes a different \(a\), and together they cover every allowed \(a\), so nothing slips through. Inside each case we counted, and across the cases we add, so $$13 + 10 + 5 = 28.$$
+
+\(\boxed{28}\)</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 6.</b> How many two-digit numbers have a units digit strictly greater than the tens digit?</div><details class="sol"><summary>Show solution</summary><div>Here one clean multiply will not work, because the units digit does not get the same number of choices every time. How big it can be depends on the tens digit. So let us split into cases on the tens digit \(t\) and count each pile by itself.
+
+Pick a tens digit \(t\). The units digit must be strictly larger than \(t\), so it can be anything from \(t+1\) up to \(9\). Counting those gives \(9 - t\) choices.
+
+Now walk \(t\) through its values. If \(t = 1\), the units digit can be \(2\) through \(9\), which is \(8\) choices. If \(t = 2\), it can be \(3\) through \(9\), which is \(7\) choices. This keeps shrinking by one, all the way down to \(t = 8\), where the units digit can only be \(9\), so \(1\) choice. Once \(t = 9\) there is nothing bigger left, so that pile is empty and we stop.
+
+The cases never overlap, since each number has just one tens digit, and together they cover every two-digit number we care about. So we add the pile counts $$8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 36.$$
+
+So there are \(\boxed{36}\) two-digit numbers whose units digit is greater than its tens digit.</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 7.</b> How many three-digit numbers have a hundreds digit that is at least \(2\) times the tens digit?</div><details class="sol"><summary>Show solution</summary><div>One clean multiply will not work here, because the hundreds digit choices depend on the tens digit, so the choices are not the same all the way across. That is the signal to split into cases. The tens digit is the demanding part, so we case on it.
+
+First notice the units digit is along for the ride. The condition only ties the hundreds digit to the tens digit, so the units digit is always free with \(10\) choices. We can count the good hundreds-tens pairs and multiply by \(10\) at the very end.
+
+Now case on the tens digit \(t\). In each case we need the hundreds digit \(h\) from \(1\) to \(9\) with \(h \ge 2t\).
+
+When \(t=0\), we need \(h \ge 0\), so all \(9\) hundreds digits work.
+
+When \(t=1\), we need \(h \ge 2\), which leaves \(h\) from \(2\) to \(9\), so \(8\) work.
+
+When \(t=2\), we need \(h \ge 4\), which leaves \(h\) from \(4\) to \(9\), so \(6\) work.
+
+When \(t=3\), we need \(h \ge 6\), which leaves \(h\) from \(6\) to \(9\), so \(4\) work.
+
+When \(t=4\), we need \(h \ge 8\), which leaves \(h\) from \(8\) to \(9\), so \(2\) work.
+
+When \(t \ge 5\), we need \(h \ge 10\), and no single digit reaches \(10\), so none of these cases give anything.
+
+These cases never overlap, since each one fixes a different tens digit, and together they cover every tens digit \(0\) through \(9\), so nothing is counted twice and nothing slips through. Inside each case we multiply, and across the cases we add. Adding the hundreds choices gives \(9+8+6+4+2 = 29\), and each of those hundreds-tens pairs still has \(10\) free units digits, which gives
+
+$$(9+8+6+4+2)\times 10 = 29 \times 10 = 290.$$
+
+So there are \(\boxed{290}\) such three-digit numbers.</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 8.</b> How many three-digit numbers have a hundreds digit equal to the sum of the tens and units digits?</div><details class="sol"><summary>Show solution</summary><div>The hundreds digit is the demanding part, because it has to equal \(\text{tens}+\text{units}\). So that is the thing to split on. We make one case for each possible hundreds digit \(h\), where \(h\) runs from \(1\) to \(9\).
+
+Inside a single case the hundreds digit is locked at some value \(h\). All we need now is for the tens digit and the units digit, each from \(0\) to \(9\), to add up to \(h\). The tens digit can be any of \(0, 1, 2, \dots, h\), and once we choose it the units digit is forced to be whatever is left over. That gives \(h+1\) ways inside the case.
+
+So the count for each hundreds digit is \(h+1\). When \(h=1\) we get \(2\) ways, when \(h=2\) we get \(3\) ways, and so on up to \(h=9\), which gives \(10\) ways. The cases never overlap, since each number has just one hundreds digit, and together they cover every number we want.
+
+Now we add across the cases, which gives
+$$2 + 3 + 4 + \cdots + 10 = 54.$$
+
+Inside each case we multiplied (well, we counted the forced pairs), and across the cases we added, and the whole thing falls apart cleanly once we split on the hundreds digit. So the answer is \(\boxed{54}\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 9.</b> Box 1 has \(8\) cards, Box 2 has \(6\). Pick a box, then draw \(2\) cards in order without replacement. How many ordered draws are possible?</div><details class="sol"><summary>Show solution</summary><div>The catch here is that the two boxes do not hold the same number of cards, so one clean multiply across the whole problem would give the wrong count. The rescue is casework. Split by which box you picked, count each box on its own, and add the piles at the end.
+
+Inside a case you multiply, just like in 10.2. For box one there are \(8\) cards, so the first draw has \(8\) choices and the second has \(7\) left since you do not put the first one back, which gives \(8\times 7=56\) ordered draws.
+
+For box two there are \(6\) cards, so the first draw has \(6\) choices and the second has \(5\) left, which gives \(6\times 5=30\) ordered draws.
+
+These two piles never overlap, because a draw from box one can never also be a draw from box two, and together they cover every possible draw. So across the cases you add, just like in 10.1, and you get $$56+30=86.$$ So the number of ordered draws is \(\boxed{86}\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 10.</b> How many four-digit numbers have exactly one digit equal to \(0\)?</div><details class="sol"><summary>Show solution</summary><div>Here is the snag if you reach for one clean multiply. The four spots do not all behave the same way, because the rule "exactly one \(0\)" depends on where that \(0\) lands, and the leading spot cannot even hold a \(0\). So instead of one multiply, we split the count into a few cases, count each case on its own, and add the case counts at the end. That move is casework.
+
+What should we split on? Go after the cramped part. The thousands digit is never \(0\), so the single \(0\) is forced to sit in one of the other three positions, which are the hundreds, the tens, and the ones. That gives us \(3\) tidy cases, one for each spot the lone \(0\) could take.
+
+Now count one case, say the \(0\) sits in the hundreds spot. The thousands digit can be any of \(1\) through \(9\), so \(9\) choices. The hundreds spot is locked as \(0\), so \(1\) choice. The tens and ones must each be nonzero so we keep exactly one \(0\), and that is \(9\) choices each. Inside this case we multiply, the way we did in 10.2, and you get $$9 \times 1 \times 9 \times 9 = 9 \times 9 \times 9 = 729.$$
+
+The other two cases, with the \(0\) in the tens spot or in the ones spot, work out exactly the same way, since the thousands digit still has \(9\) choices and the two leftover nonzero spots still have \(9\) choices each. So each of the \(3\) cases gives \(729\).
+
+The cases never overlap, because a number lands in only one case depending on which single spot its \(0\) occupies, and together they cover every four-digit number with exactly one \(0\). So across the cases we add, the way we did in 10.1, which is the same as multiplying the per-case count by \(3\), and you get $$3 \times 729 = 2187,$$ or all at once $$3 \times 9 \times 9 \times 9 = 2187.$$
+
+So there are \(\boxed{2187}\) four-digit numbers with exactly one digit equal to \(0\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 11.</b> How many whole numbers from \(1\) to \(500\) have at least one digit equal to \(7\)?</div><details class="sol"><summary>Show solution</summary><div>Counting the numbers that *have* a \(7\) gets tangled fast, because the \(7\) could hide in the ones place or the tens place or the hundreds place, and a number like \(77\) would get counted more than once. So we play the lazy card. We count the numbers with *no* \(7\) anywhere, and then subtract that pile from \(500\). This is casework where one side did almost all the work for us.
+
+To count the no-\(7\) numbers cleanly, picture every number from \(0\) to \(499\) as three digit slots, a hundreds slot, a tens slot, and a ones slot. The hundreds slot can be \(0,1,2,3,\) or \(4\), and none of those is a \(7\), so that is \(5\) choices. The tens slot runs from \(0\) to \(9\) but must avoid the \(7\), which leaves \(9\) choices. The ones slot is the same, \(9\) choices. Inside this one case we multiply, the way we always do, and we get
+$$5 \times 9 \times 9 = 405.$$
+
+That count of \(405\) secretly includes \(000\), which is just \(0\) and is not in our range of \(1\) to \(500\), so it does not steal anything from us, because \(0\) has no \(7\) either way and we will handle the endpoints honestly. What it covers is the whole stretch from \(1\) to \(499\), plus the stand-in \(0\). The number \(500\) is the only one left out of the slot picture, and \(500\) has no \(7\) in it, so it belongs in the no-\(7\) pile too.
+
+So the no-\(7\) numbers from \(1\) to \(500\) are the \(405\) from the slots, minus the \(1\) for the \(0\) that is not really in our range, plus the \(1\) for \(500\), which gives
+$$405 - 1 + 1 = 405.$$
+
+There are \(405\) numbers with no \(7\) at all. Everything else must have at least one \(7\), so we subtract from the full \(500\) and get
+$$500 - 405 = 95.$$
+
+\(\boxed{95}\)</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 12.</b> A 3-character code has exactly one digit (\(10\) choices) and two letters (\(26\) choices each). How many such codes are there?</div><details class="sol"><summary>Show solution</summary><div>If you try to multiply straight across, you get stuck, because each spot is not "any of \(36\)" all the way through. The rule that exactly one spot is a digit means the spots do not all behave the same, so one clean multiply would miss it. The fix is to split into cases on WHICH position holds the single digit.
+
+There are exactly \(3\) places that lone digit could live, the first spot, the second spot, or the third spot. That is our \(3\) cases.
+
+Take one case, say the digit sits in the first spot. That first spot is a digit, so it has \(10\) choices. The other two spots must be letters, and each letter spot has \(26\) choices, which gives $$26\times 26 = 676.$$ So this one case has $$10\times 676 = 6760$$ codes.
+
+The other two cases, digit in the second spot and digit in the third spot, work the same way and each give \(6760\) codes too. Notice the two promises hold. No code is counted twice, because each code has its digit in exactly one position, and the cases cover everything, because the digit has to be somewhere.
+
+Inside each case we multiplied, and across the \(3\) cases we add, which gives $$3\times 10\times 676 = 20280.$$
+
+So there are \(\boxed{20280}\) such codes.</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 13.</b> How many three-digit numbers have digits that add up to \(4\)?</div><details class="sol"><summary>Show solution</summary><div>The slot-and-box trick stalls here because the digits do not all have the same number of choices, so we split into cases. The cleanest thing to split on is the hundreds digit \(h\), since it is the most cramped (it has to be at least \(1\), and it cannot exceed \(4\) or the sum already overshoots). So \(h\) runs from \(1\) to \(4\).
+
+Inside each case the hundreds digit is fixed, so the tens and units digits must add up to whatever is left, which is \(4-h\). If those two digits must add up to \(s\), you can pick the tens digit anywhere from \(0\) up to \(s\) and the units digit is forced, which gives \(s+1\) ways.
+
+Now count each pile.
+
+When \(h=1\), the rest must sum to \(3\), giving \(3+1=4\) ways.
+When \(h=2\), the rest must sum to \(2\), giving \(2+1=3\) ways.
+When \(h=3\), the rest must sum to \(1\), giving \(1+1=2\) ways.
+When \(h=4\), the rest must sum to \(0\), giving \(0+1=1\) way.
+
+These cases never overlap, since each fixes a different hundreds digit, and together they cover every possibility. So we add the pile counts across the cases, which gives $$4+3+2+1=10.$$
+
+So there are \(\boxed{10}\) three-digit numbers whose digits add up to \(4\).</div></details></div>
+<div class="prob"><div class="prob-q"><b>Review 14.</b> How many ordered pairs of positive integers \((a, b)\) satisfy \(a + b^2 < 20\)?</div><details class="sol"><summary>Show solution</summary><div>If we try to count everything in one multiply, we get stuck, because the \(b^2\) part eats up a different amount of room depending on \(b\). So let us split into cases on the value of \(b\) and count each pile on its own.
+
+For any \(b\), the rule \(a + b^2 < 20\) means \(a < 20 - b^2\), and we just need the positive whole values of \(a\) that fit.
+
+When \(b = 1\) we need \(a < 19\), which gives \(18\) choices for \(a\).
+
+When \(b = 2\) we need \(a < 16\), which gives \(15\) choices.
+
+When \(b = 3\) we need \(a < 11\), which gives \(10\) choices.
+
+When \(b = 4\) we need \(a < 4\), which gives \(3\) choices.
+
+When \(b = 5\) we already have \(b^2 = 25\), which is too big on its own, so there is nothing left to count and the cases stop here.
+
+These four cases never overlap, since each fixes a different \(b\), and together they cover every pair. So we add the pile counts and you get $$18 + 15 + 10 + 3 = 46.$$
+
+So the number of pairs is \(\boxed{46}\).</div></details></div>
+  </article>
+  <nav class="pager"><a class="prev" href="/prealgebra/the-multiplication-principle"><span class="dir">← Previous</span><div class="t">The Multiplication Principle</div></a><a class="next" href="/prealgebra/counting-pairs"><span class="dir">Next →</span><div class="t">Counting Pairs</div></a></nav>
+</div>
+<footer class="wrap foot"><a class="brand" href="/"><svg viewBox="0 0 64 64" class="milo" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>Quantica</a><div><a href="/prealgebra">Prealgebra</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></footer>
+</body></html>

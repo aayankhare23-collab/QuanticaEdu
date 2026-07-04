@@ -1577,12 +1577,16 @@
 })();
 </script>
 <script>
-/* Deep-launch: /prealgebra (and other course pages) link here with ?start=1 to open the course app directly. */
+/* Deep-launch from the SEO pages: ?start=1 opens the course dashboard; ?lesson=KEY opens that specific lesson. */
 window.addEventListener('load',function(){
-  if(location.search.indexOf('start=')<0) return;
+  var m=location.search.match(/[?&]lesson=([0-9.]+)/);
+  var wantStart=location.search.indexOf('start=')>=0;
+  if(!m && !wantStart) return;
   var n=0,t=setInterval(function(){
-    if(typeof window.openLesson==='function'){clearInterval(t);try{window.openLesson();}catch(e){}}
-    else if(++n>120){clearInterval(t);}
+    if(typeof window.openLesson==='function'){
+      clearInterval(t);
+      try{ window.openLesson(); if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); } }catch(e){}
+    } else if(++n>120){ clearInterval(t); }
   },40);
 });
 </script>
