@@ -989,6 +989,42 @@
 <meta name="twitter:description" content="Prealgebra to olympiad. Learn by solving, with Milo.">
 <meta name="twitter:image" content="https://quanticaedu.com/og-default.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Quantica","url":"https://quanticaedu.com/","logo":"https://quanticaedu.com/og-default.png","sameAs":[],"description":"Quantica teaches math from prealgebra to olympiad by having you solve, not memorize."}</script>
+
+<style id="app-wembi-theme">
+/* Re-skin the course app to the landing's palette (cream + lime + dark navy + Space Grotesk).
+   Overrides token VALUES + font only — no layout/behaviour changes. Loaded after the app CSS. */
+:root{
+  --bg:#ededeb; --soft:#e7e7e3; --softer:#e1e1dc;
+  --ink:#0a0a0a; --slate:#55554f; --mute:#83837c;
+  --line:#dcdcd5;
+  --navy:#14243b; --blue:#17293f; --mid:#274264; --sky:#3f74a8;
+  --accent:#beff8b; --accent2:#a8f074;
+  --green:#1f9d6b; --green2:#3ecf8e;
+  --gold:#c79100; --gold2:#f1b51c;
+  --purple:#7c3aed; --purple2:#a78bfa;
+}
+body{font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif}
+/* app titles used the serif 'Fraunces' — switch every one to Space Grotesk to match the landing */
+h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel h4,.letter::before,.letter .sig,.course .num,.course h4,.price .amt,.cb-logo,.pagehead h1,.modal h4.sub,.toc .ch,.dchip .ttl,.psethead .pname,.ws-head .ws-title,.ws-nbhead .t,.ws-tuthead .nm,.tocnote .tn-sign,.toast .amt,.rw-ring .lv b,.rw-id .rank,.rw-avatar,.rw-stat .big,.rw-section-h,.shop-item .sw,.shop-item .nm,.dp-card h3,.dg-card h2{font-family:'Space Grotesk',system-ui,sans-serif}
+/* primary CTA becomes lime with dark text (was orange gradient + white text) */
+.btn-primary{color:#0a0a0a !important;text-shadow:none;border-color:rgba(10,10,10,.12) !important;box-shadow:0 12px 26px -12px rgba(120,190,60,.55) !important}
+.btn-primary:hover{box-shadow:0 16px 32px -12px rgba(120,190,60,.7) !important}
+/* dark Milo tutor panel — match the landing's dark Milo chat */
+.ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#16273f 0%,#0c1626 60%,#080f19 100%) !important;border-color:rgba(190,255,139,.22) !important;color:#dbe6f5}
+.ws-tutor .ws-tuthead{background:linear-gradient(120deg,#17293f,#0f2136) !important;border-bottom:1px solid rgba(255,255,255,.08) !important}
+.ws-tutor .ws-tuthead .nm{color:#f4f8ff}
+.ws-tutor .tut-close{color:#9fb0c9}
+.ws-tutor .ws-body{background:transparent !important}
+.ws-tutor .tut-bub{color:#e8eef7}
+.ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#243a54,#1b2e46) !important}
+.ws-tutor .tut-bub.me,.ws-tutor .tut-bub.usr,.ws-tutor .tut-bub.user,.ws-tutor .tut-bub.you{background:#beff8b !important;color:#0a0a0a !important}
+.ws-tutor .tut-compose{background:rgba(255,255,255,.03) !important;border-top:1px solid rgba(255,255,255,.08) !important}
+.ws-tutor .tut-input{background:#17253d !important;color:#dbe6f5 !important;border-color:rgba(255,255,255,.1) !important}
+.ws-tutor .tut-input::placeholder{color:#9fb0c9}
+.ws-tutor .snd{background:#beff8b !important;color:#0a0a0a !important}
+/* workspace primary "Continue" -> lime (green primary, like the landing) */
+.ws-next{background:#beff8b !important;color:#0a0a0a !important;box-shadow:0 12px 26px -12px rgba(120,190,60,.55) !important}
+</style>
 </head>
 <body>
 
