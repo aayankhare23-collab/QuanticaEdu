@@ -1409,7 +1409,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <a class="wmb-pill" href="/blog">Blog</a>
     <a class="wmb-pill" href="#pricing">Pricing</a>
     <a class="wmb-pill" id="navSignin" href="#" onclick="showAuthModal('in');return false;">Sign in</a>
-    <a class="wmb-pill wmb-pill--on" href="#" onclick="openLesson();return false;"><span class="wmb-dot"></span>Start free</a>
+    <a class="wmb-pill wmb-pill--on" href="/prealgebra"><span class="wmb-dot"></span>Start free</a>
   </div>
 </nav>
 
@@ -1431,7 +1431,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       <h1 class="wmb-hero">Understand math.<br>Don&#8217;t <span class="wmb-mark-block">memorize</span> it.</h1>
       <p class="wmb-lead">Learn by solving, with Milo. <span class="wmb-dim">A tutor that helps you find the answer yourself.</span></p>
       <div class="wmb-hero-cta">
-        <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="#" onclick="openLesson();return false;">Start free</a>
+        <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="/prealgebra">Start free</a>
         <a class="wmb-btn wmb-btn--lg" href="#how">See how it works</a>
       </div>
       <p class="wmb-hero-note wmb-muted">No card required &middot; Full Prealgebra unit free</p>
@@ -1581,7 +1581,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       <div class="wmb-price-name">Everything, free</div>
       <div class="wmb-price-amt">$0</div>
       <ul><li>Full Prealgebra course, every lesson</li><li>Milo, your tutor, on every problem</li><li>Mastery map &amp; spaced review</li><li>No card required</li></ul>
-      <a class="wmb-btn wmb-btn--solid" href="#" onclick="openLesson();return false;">Start free &rarr;</a>
+      <a class="wmb-btn wmb-btn--solid" href="/prealgebra">Start free &rarr;</a>
     </div>
   </div>
   <p class="wmb-price-note wmb-muted">No paywall right now. When we do introduce pricing, it will still cost less than a single tutoring session.</p>
@@ -1601,7 +1601,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 <!-- FINAL CTA -->
 <section class="wmb-wrap wmb-section wmb-final">
   <h2 class="wmb-hero">Start <span class="wmb-mark-block">solving</span>.</h2>
-  <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="#" onclick="openLesson();return false;">Start free &#8594;</a>
+  <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="/prealgebra">Start free &#8594;</a>
 </section>
 
 <!-- FOOTER -->
@@ -4456,7 +4456,7 @@ async function sendTutorMsg() {
 /* Delayed "save your progress" prompt. Fires once, ~1s after the first lesson is
    completed, only for signed-out users. Non-blocking and dismissible — a nudge, not a wall. */
 (function(){
-  var KEY='qa_signin_prompt_v1';
+  var KEY='qa_signin_prompt_v2';
   var MILO='<svg viewBox="0 0 64 64" style="width:100%;height:100%" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>';
   function seen(){ try{ return !!localStorage.getItem(KEY); }catch(e){ return false; } }
   function mark(){ try{ localStorage.setItem(KEY,'1'); }catch(e){} }
@@ -4484,13 +4484,14 @@ async function sendTutorMsg() {
       '</div>';
     document.body.appendChild(el);
   }
-  function show(){ build(); requestAnimationFrame(function(){ el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; el.style.pointerEvents='auto'; }); }
+  function show(){ build(); void el.offsetHeight; /* force reflow so the transition fires */ el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; el.style.pointerEvents='auto'; }
   function hide(){ if(!el) return; el.style.opacity='0'; el.style.transform='translateX(-50%) translateY(24px)'; el.style.pointerEvents='none'; }
   window.__signinPrompt={
     afterLesson:function(){
       if(seen()||signedIn()) return;
-      mark();
-      setTimeout(function(){ if(!signedIn()) show(); }, 1100);
+      // only burn the once-flag when we actually show it (not before the delay),
+      // so a failed reveal or a mid-delay sign-in doesn't silently consume the one chance
+      setTimeout(function(){ if(seen()||signedIn()) return; mark(); show(); }, 1100);
     },
     go:function(){ hide(); if(window.showAuthModal) showAuthModal('up'); },
     dismiss:function(){ hide(); },
