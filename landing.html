@@ -942,6 +942,12 @@
   .rw-stat .big{font-family:'Fraunces';font-size:30px;color:var(--navy);margin:8px 0 2px}
   .rw-stat .note{font-size:12.5px;color:var(--mute);line-height:1.45}
   .rw-section-h{font-family:'Fraunces';font-size:18px;color:var(--navy);margin:24px 0 12px}
+  .rw-acct{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border:1px solid var(--line);border-radius:13px;margin-bottom:18px;background:var(--soft)}
+  .rw-acct .lbl{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mute)}
+  .rw-acct .who{font-size:14px;font-weight:600;color:var(--ink);margin-top:2px;word-break:break-word}
+  .rw-acct button{flex:0 0 auto;border-radius:999px;padding:9px 17px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)}
+  .rw-acct button:hover{border-color:var(--ink)}
+  .rw-acct button.save{background:#beff8b;border-color:#beff8b;color:#0a0a0a}
   .streakchip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#c25a14;background:rgba(255,122,69,.13);border:1px solid rgba(255,176,32,.42);border-radius:999px;padding:7px 14px}
   .streakchip svg{width:15px;height:15px;color:var(--accent)}
   .rw-legend{display:grid;gap:10px}
@@ -1961,6 +1967,8 @@ window.addEventListener('load',function(){
   // ── Auth state observer ───────────────────────────────────────────────────
   auth.onAuthStateChanged(function(user){
     updateAuthUI(user);
+    var rv=document.getElementById('rewardsView');
+    if(rv && rv.style.display!=='none' && window.Rewards && Rewards.openPanel) Rewards.openPanel();
     if(!user){ window._access=null; updateStartCTAs(); return; }
     hideAuthModal();
     // Load rewards profile, and create a minimal profile record the first time we see this
@@ -3520,6 +3528,10 @@ window.addEventListener('load',function(){
     var host=document.getElementById('rewardsBody'); if(!host) return;
     var li=levelInfo(P.xp), rank=rankFor(li.level), pres=prestigeFor(P.mp);
     var h='';
+    var u=(window.firebase&&firebase.auth&&firebase.auth().currentUser)||null;
+    h+= u
+      ? '<div class="rw-acct"><div><div class="lbl">Signed in</div><div class="who">'+(u.email||u.displayName||'Your account')+'</div></div><button onclick="if(window.fbSignOut)fbSignOut()">Sign out</button></div>'
+      : '<div class="rw-acct"><div><div class="lbl">Not signed in</div><div class="who">Progress is saved on this device only</div></div><button class="save" onclick="if(window.showAuthModal)showAuthModal(\'up\')">Save progress</button></div>';
     h+='<div class="rw-top">'+
        '<div class="rw-ring" style="--p:'+li.pct+'"><div class="lv"><b>'+li.level+'</b><span>Level</span></div></div>'+
        '<div class="rw-id"><div class="rank">'+rank+'</div>'+
