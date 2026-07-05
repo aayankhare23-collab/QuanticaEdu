@@ -1658,7 +1658,7 @@ window.addEventListener('load',function(){
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
       <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
-      <button class="cb-exit" onclick="closeLesson()" aria-label="Exit course">Exit course ✕</button>
+      <button class="cb-exit" onclick="navExit()" aria-label="Exit course">Exit course ✕</button>
     </header>
     <div class="coursescroll" id="courseScroll">
       <div class="coursewrap">
@@ -2532,6 +2532,7 @@ window.addEventListener('load',function(){
     var cs=document.getElementById('courseScroll'); if(cs){ if(name!=='lessonView'){ cs.classList.remove('ws-mode'); if(window.WS) WS.active=false; } cs.scrollTop=0; }
   }
   function showDashboard(){
+    if(window.navGuard && !navGuard(1,{v:'dash'})) return;
     showView('dashView');
     document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
     document.getElementById('modalTitle').textContent='Course Home';
@@ -2540,6 +2541,7 @@ window.addEventListener('load',function(){
     if(window.Rewards) Rewards.renderHUD();
   }
   function showToc(only){
+    if(window.navGuard && !navGuard(2,{v:'toc',ch:(only!=null?only:null)})) return;
     showView('tocView');
     document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
     var ch=only!=null ? TOC.filter(function(c){ return c.n===only; })[0] : null;
@@ -2547,8 +2549,37 @@ window.addEventListener('load',function(){
     if(window.renderToc) renderToc(only);
   }
   function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open'); }
-  function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; }
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLesson(); });
+  function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; window._navLevel=0; }
+  window.navExit=function(){ if(window._navLevel>0){ history.go(-window._navLevel); } else { closeLesson(); } };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') navExit(); });
+
+  /* ===== Browser Back walks the course: lesson -> chapter TOC -> course home -> landing.
+     Levels: 0 landing(closed) · 1 dash · 2 toc · 3 lesson. Forward nav pushes a history
+     entry; the browser Back button (popstate) renders the shallower view. ===== */
+  window._navLevel=0; window._navApply=false;
+  function _navUrl(){ return location.pathname + location.search; }
+  window.navGuard=function(level,state){
+    if(window._navApply){ window._navLevel=level; return true; }        // popstate is driving
+    if(level>window._navLevel){ history.pushState(state,'',_navUrl()); window._navLevel=level; return true; }  // deeper
+    if(level===window._navLevel){ history.replaceState(state,'',_navUrl()); return true; }                     // sideways
+    history.go(level-window._navLevel); return false;                  // shallower: pop, popstate renders
+  };
+  window.addEventListener('popstate',function(ev){
+    var s=ev.state||{v:'landing'};
+    window._navApply=true;
+    try{
+      if(s.v==='landing'){ window._navLevel=0; closeLesson(); }
+      else{
+        var ov=document.getElementById('lessonOverlay');
+        if(ov && !ov.classList.contains('open')){ ov.classList.add('open'); document.body.style.overflow='hidden'; }
+        if(s.v==='dash') showDashboard();
+        else if(s.v==='toc') showToc(s.ch);
+        else if(s.v==='lesson') showLesson(s.key,s.title||'',s.chTitle||'',s.chNum);
+      }
+    }catch(e){ console.warn('nav popstate',e); }
+    window._navApply=false;
+  });
+  try{ history.replaceState({v:'landing'},'',_navUrl()); }catch(e){}
 
   // --- progress + locked-path state ---
   var completed={}, lockMode=false;  // Free roam is ON by default; users can toggle to locked path via button
@@ -3207,6 +3238,9 @@ window.addEventListener('load',function(){
   function showLesson(key,title,chTitle,chNum){
     var L=LESSONS[key];
     if(L && !lessonUnlocked(key)){ showToc(); return; }
+    // ensure a chapter-TOC entry sits under this lesson so Back lands on the chapter TOC
+    if(window.navGuard && !window._navApply && window._navLevel<2){ history.pushState({v:'toc',ch:chNum},'',location.pathname+location.search); window._navLevel=2; }
+    if(window.navGuard && !navGuard(3,{v:'lesson',key:key,title:title,chTitle:chTitle,chNum:chNum})) return;
     if(window.track) track('lesson_start',{lesson:key});
     showView('lessonView');
     currentLessonKey=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
