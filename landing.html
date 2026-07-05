@@ -1033,10 +1033,6 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 </head>
 <body>
 
-<div class="site-banner">
-  This site is in its early stages and we are passionately upgrading as you read this. Please excuse any issues and make sure to address them in the <a href="https://docs.google.com/forms/d/e/1FAIpQLSexURn50sc4gdpLUCPxPEKIF31LnxvQee5ipaLEvejZ1zmBAA/viewform" target="_blank">feedback form</a>. Create an account, and our team will personally grant you free access to everything shortly after you sign up, usually within 3 to 12 hours. In the meantime, enjoy the first chapter of prealgebra while our curriculum developers work hard at creating a quality educational experience!
-</div>
-
 <div class="bg" aria-hidden="true">
   <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
 </div>
@@ -1211,6 +1207,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 }
 .wmb .wmb-pill:hover{border-color:var(--wmb-ink);transform:translateY(-1px)}
 .wmb .wmb-pill--on{background:var(--wmb-lime);border-color:var(--wmb-lime)}
+.wmb .wmb-pill--soon{border-style:dashed;border-color:var(--wmb-rule-soft);color:var(--wmb-gray);cursor:default}
+.wmb .wmb-pill--soon:hover{transform:none;border-color:var(--wmb-rule-soft)}
+.wmb .wmb-pill--soon em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--wmb-rule-soft);color:var(--wmb-ink)}
 
 /* ============================================================
    SLATE IMAGERY PANEL (backdrop for hero art / proofs)
@@ -1525,12 +1524,12 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   <h2 class="wmb-h2">From arithmetic to <span class="wmb-mark">olympiad</span>. One continuous journey.</h2>
   <div class="wmb-pills">
     <a class="wmb-pill wmb-pill--on" href="/prealgebra"><span class="wmb-dot"></span>Prealgebra</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Algebra</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Geometry</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Number Theory</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Counting</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Logic</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Intermediate</a>
+    <span class="wmb-pill wmb-pill--soon">Algebra <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Geometry <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Number Theory <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Counting <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Logic <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Intermediate <em>Soon</em></span>
   </div>
   <p style="margin-top:28px;font-size:17px"><a href="/prealgebra" style="border-bottom:2px solid var(--wmb-ink);text-decoration:none;font-weight:600">Browse the full Prealgebra syllabus &mdash; 12 chapters, 64 lessons &rarr;</a></p>
 </section>
@@ -1542,7 +1541,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <div class="wmb-price">
       <div class="wmb-price-name">Monthly</div>
       <div class="wmb-price-amt">$29.99<span>/mo</span></div>
-      <ul><li>All 10 courses, both tiers</li><li>Mastery map &amp; spaced review</li><li>Cancel anytime</li></ul>
+      <ul><li>Full Prealgebra course, every lesson</li><li>Mastery map &amp; spaced review</li><li>Cancel anytime</li></ul>
       <a class="wmb-btn" href="#" onclick="openLesson();return false;">Choose monthly</a>
     </div>
     <div class="wmb-price wmb-price--feat">
@@ -1563,7 +1562,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <details><summary>What makes Quantica different?</summary><p class="wmb-muted">You learn by solving real problems with instant feedback and layered hints, so concepts emerge from your own work instead of being memorized.</p></details>
     <details><summary>Do I need to be good at math already?</summary><p class="wmb-muted">No. Every course is built from the ground up, and Milo is there whenever a problem stops you.</p></details>
     <details><summary>Is it really free to start?</summary><p class="wmb-muted">Yes. The full Prealgebra unit is free, no card required.</p></details>
-    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. One subscription unlocks all ten courses on one continuous path.</p></details>
+    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. One subscription unlocks every course on Quantica, including new ones as we add them.</p></details>
   </div>
 </section>
 
@@ -4165,7 +4164,7 @@ async function sendTutorMsg() {
     {sel:'.cta-row .btn-primary', title:'Start free, right now', text:'Chapter 1 of Prealgebra is completely free. Click this button anytime to jump in and start solving.', place:'bottom'},
     {sel:'#navCourses', title:'Browse the courses', text:'Open the full catalog from here. Prealgebra is live today, and more courses arrive soon.', place:'bottom'},
     {sel:'#milo .milo-chat', title:'Meet Milo, your tutor', text:'Stuck on a problem? Milo guides you with hints and questions until it clicks, never just the answer.', place:'top'},
-    {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course. Create an account and our team grants you free access shortly.', place:'top'}
+    {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course on Quantica. Start free, no card required.', place:'top'}
   ];
   var KEY='quantica_tourSeen_v1';
   var i=0, spot=null, pop=null, active=false, trackRAF=null, lastKey='';
