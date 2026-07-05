@@ -321,6 +321,17 @@
   .pagehead .eyebrow{color:var(--mid)}
   .pagehead h1{font-family:'Fraunces';font-weight:600;font-size:33px;color:var(--navy);line-height:1.12;margin-top:10px;letter-spacing:-.01em}
   @media(max-width:600px){.pagehead h1{font-size:26px}.coursewrap{padding:24px 18px 64px}.coursebar{height:54px;padding:0 14px}}
+  /* mobile course header: keep Home + Exit always visible; reclaim space from the logo,
+     let the HUD shrink/scroll so nothing pushes the Exit button off-screen */
+  @media(max-width:560px){
+    .coursebar{padding:0 10px}
+    .cb-logo{display:none}
+    .cb-rightgrp{min-width:0;overflow:hidden}
+    .hud{min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-right:8px}
+    .hud::-webkit-scrollbar{display:none}
+    .cb-exit{flex:none;padding:8px 12px}
+    .cb-exit .exit-txt{display:none}
+  }
   .modal .mbody{padding:0}
   .modal .mbody p{font-size:15.5px;color:var(--slate);margin-bottom:15px;line-height:1.7}
   .modal .mbody p .hl{color:var(--navy);font-weight:600}
@@ -1658,7 +1669,7 @@ window.addEventListener('load',function(){
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
       <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
-      <button class="cb-exit" onclick="navExit()" aria-label="Exit course">Exit course ✕</button>
+      <button class="cb-exit" onclick="navExit()" aria-label="Exit course"><span class="exit-txt">Exit course </span>✕</button>
     </header>
     <div class="coursescroll" id="courseScroll">
       <div class="coursewrap">
