@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics 4 — ad + personalization signals off for a kids-safe setup -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});
+  window.track=function(n,p){ try{ gtag('event',n,p||{}); }catch(e){} };
+</script>
 <title>Quantica | Master Mathematics, the Hard Way (Made Joyful)</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%232f6fc0'/%3E%3Cstop%20offset='1'%20stop-color='%235bb8d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='100'%20height='100'%20rx='22'%20fill='url(%23g)'/%3E%3Ctext%20x='50'%20y='53'%20text-anchor='middle'%20dominant-baseline='central'%20font-family='Georgia,serif'%20font-size='80'%20font-weight='600'%20fill='%23fff'%3EQ%3C/text%3E%3Cg%20fill='%23fff'%3E%3Crect%20x='38'%20y='57'%20width='4.4'%20height='8'%20rx='1'/%3E%3Crect%20x='44.5'%20y='53'%20width='4.4'%20height='12'%20rx='1'/%3E%3Crect%20x='51'%20y='48'%20width='4.4'%20height='17'%20rx='1'/%3E%3Crect%20x='57.5'%20y='43'%20width='4.4'%20height='22'%20rx='1'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1969,6 +1978,7 @@ window.addEventListener('load',function(){
         },{merge:true}).catch(function(e){ console.warn('User profile create failed',e); });
         // brand-new account: push whatever progress they already made (e.g. the first lesson) to the cloud
         if(window.Rewards && Rewards.syncUp) Rewards.syncUp();
+        if(window.track) track('sign_up',{method:prov||'password'});
       }
     }).catch(function(e){ console.warn('Cloud load failed',e); });
     // Load adaptive state
@@ -2524,7 +2534,7 @@ window.addEventListener('load',function(){
     document.getElementById('modalTitle').textContent= ch ? ('Chapter '+ch.n+' · '+ch.t) : 'Course Contents';
     if(window.renderToc) renderToc(only);
   }
-  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } }
+  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open'); }
   function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLesson(); });
 
@@ -2539,7 +2549,7 @@ window.addEventListener('load',function(){
     return !!completed[liveOrder[i-1]];
   }
   function completedCount(){ var n=0; liveOrder.forEach(function(k){ if(completed[k]) n++; }); return n; }
-  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
+  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.track) track('lesson_complete',{lesson:key}); if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
   function completeAndGo(key,next){
     try { markDone(key); } catch(e){ console.error('markDone error:',e); }
     setTimeout(function(){
@@ -3185,6 +3195,7 @@ window.addEventListener('load',function(){
   function showLesson(key,title,chTitle,chNum){
     var L=LESSONS[key];
     if(L && !lessonUnlocked(key)){ showToc(); return; }
+    if(window.track) track('lesson_start',{lesson:key});
     showView('lessonView');
     currentLessonKey=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
     if(window.Rewards) Rewards.setLastLesson(key);
