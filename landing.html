@@ -1219,6 +1219,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .wmb .wmb-pill--soon{border-style:dashed;border-color:var(--wmb-rule-soft);color:var(--wmb-gray);cursor:default}
 .wmb .wmb-pill--soon:hover{transform:none;border-color:var(--wmb-rule-soft)}
 .wmb .wmb-pill--soon em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--wmb-rule-soft);color:var(--wmb-ink)}
+.acct-menu{position:fixed;z-index:100001;background:#fff;border:1.5px solid rgba(10,10,10,.14);border-radius:14px;box-shadow:0 18px 44px -14px rgba(10,10,10,.4);padding:6px;min-width:184px}
+.acct-menu a{display:block;padding:10px 14px;border-radius:9px;text-decoration:none;color:#0a0a0a;font-weight:600;font-size:14px;font-family:'Space Grotesk',system-ui,sans-serif;cursor:pointer}
+.acct-menu a:hover{background:#f0f0ec}
 
 /* ============================================================
    SLATE IMAGERY PANEL (backdrop for hero art / proofs)
@@ -1917,11 +1920,12 @@ window.addEventListener('load',function(){
     if(sp){
       if(user){
         var fn=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
-        sp.textContent=fn; sp.classList.add('wmb-pill--on');
-        sp.onclick=function(e){ e.preventDefault(); openLesson(); };
+        sp.textContent=fn+' ▾'; sp.classList.add('wmb-pill--on');
+        sp.onclick=function(e){ e.preventDefault(); if(window.__acctMenu) __acctMenu.toggle(sp); };
       } else {
         sp.textContent='Sign in'; sp.classList.remove('wmb-pill--on');
         sp.onclick=function(e){ e.preventDefault(); showAuthModal('in'); };
+        if(window.__acctMenu) __acctMenu.hide();
       }
     }
     var nav=document.getElementById('authNav'); if(!nav) return;
@@ -4427,6 +4431,46 @@ async function sendTutorMsg() {
     dismiss:function(){ hide(); },
     _force:function(){ try{ localStorage.removeItem(KEY); }catch(e){} show(); }  // for manual testing
   };
+})();
+</script>
+
+<script>
+/* Account menu for the nav pill: opens under the signed-in user's name, offers
+   "Continue course" and "Sign out". Closes on outside click or Escape. */
+(function(){
+  var menu=null;
+  function build(){
+    if(menu) return menu;
+    menu=document.createElement('div');
+    menu.className='acct-menu'; menu.style.display='none';
+    menu.innerHTML='<a data-act="course">Continue course &rarr;</a><a data-act="out">Sign out</a>';
+    menu.addEventListener('click',function(e){
+      var a=e.target.closest('a'); if(!a) return; e.preventDefault(); hide();
+      if(a.getAttribute('data-act')==='course'){ if(window.openLesson) openLesson(); }
+      else { if(window.fbSignOut) fbSignOut(); }
+    });
+    document.body.appendChild(menu);
+    return menu;
+  }
+  function hide(){ if(menu) menu.style.display='none'; }
+  window.__acctMenu={
+    toggle:function(anchor){
+      var m=build();
+      if(m.style.display==='block'){ hide(); return; }
+      m.style.visibility='hidden'; m.style.display='block';   // show to measure, then place
+      var r=anchor.getBoundingClientRect(), mw=m.offsetWidth||184;
+      var left=Math.max(12, Math.min(r.right-mw, window.innerWidth-mw-12));  // right-align to pill, clamp on-screen
+      m.style.left=left+'px'; m.style.right='auto'; m.style.top=(r.bottom+8)+'px';
+      m.style.visibility='visible';
+    },
+    hide:hide
+  };
+  document.addEventListener('click',function(e){
+    if(!menu || menu.style.display!=='block') return;
+    if(e.target.closest('.acct-menu') || e.target.closest('#navSignin')) return;
+    hide();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
 })();
 </script>
 </body>
