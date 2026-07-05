@@ -642,6 +642,14 @@
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
   @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px rgba(245,176,32,.55),-66px 2px 22px -9px rgba(245,176,32,.3),-100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
   @keyframes shootTrailBack{0%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(12deg)}40%{box-shadow:34px 1px 14px -6px rgba(245,176,32,.55),66px 2px 22px -9px rgba(245,176,32,.3),100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(-4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
+  /* mobile: content is full-width (no side gutter), so move the floating helper buttons
+     off the lesson text into the bottom-left corner (Next lives bottom-right) */
+  @media(max-width:560px){
+    .ws-fab-group{top:auto;bottom:20px;left:14px}
+    .ws-fab-ideas{top:auto;bottom:76px;left:14px}
+    .workspace.tut-open .ws-fab-ideas{display:none}   /* tutor is full-screen on mobile; hide the floating helper */
+    .ws-fab{width:46px;height:46px;font-size:18px}
+  }
 
   /* tutor panel */
   .ws-tutor .ws-tuthead{flex:none;padding:14px 16px 12px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:9px}
