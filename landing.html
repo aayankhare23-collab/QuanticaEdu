@@ -112,6 +112,11 @@
   .auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:var(--line)}
   .auth-google{width:100%;padding:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter';display:flex;align-items:center;justify-content:center;gap:9px;color:var(--navy);transition:border-color .15s,background .15s}
   .auth-google:hover{border-color:var(--mid);background:var(--softer)}
+  .auth-forgot{display:inline-block;margin:6px 0 2px;font-size:12.5px;font-weight:600;color:var(--mid);cursor:pointer;text-decoration:none}
+  .auth-forgot:hover{text-decoration:underline}
+  .auth-consent{margin:12px 0 0;font-size:11.5px;line-height:1.5;color:var(--slate)}
+  .auth-consent a{color:var(--mid)}
+  .auth-err.ok{color:var(--green)}
   .age-gate{margin:14px 0 2px;display:none}
   .age-lbl{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--slate);line-height:1.5;cursor:pointer}
   .age-lbl input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--blue);width:15px;height:15px;cursor:pointer}
@@ -511,7 +516,7 @@
   .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
   .demo .q sup{font-size:.7em}
 
-  .workspace{--cbh:52px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
+  .workspace{--cbh:52px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));height:calc(100dvh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
   .ws-center{flex:1;display:flex;flex-direction:column;min-height:0;padding:0;transition:margin .32s cubic-bezier(.22,1,.36,1)}
   .workspace.tut-open .ws-center{margin-left:var(--tut-w)}
   .workspace.nb-open .ws-center{margin-right:var(--nb-w)}
@@ -1728,7 +1733,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <details><summary>What makes Quantica different?</summary><p class="wmb-muted">You learn by solving real problems with instant feedback and layered hints, so concepts emerge from your own work instead of being memorized.</p></details>
     <details><summary>Do I need to be good at math already?</summary><p class="wmb-muted">No. Every course is built from the ground up, and Milo is there whenever a problem stops you.</p></details>
     <details><summary>Is it really free to start?</summary><p class="wmb-muted">Yes. The full Prealgebra unit is free, no card required.</p></details>
-    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. One subscription unlocks every course on Quantica, including new ones as we add them.</p></details>
+    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. Everything on Quantica is free during early access. When pricing launches later, one simple plan will unlock every course.</p></details>
   </div>
 </section>
 
@@ -1741,7 +1746,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 <!-- FOOTER -->
 <footer class="wmb-wrap wmb-foot">
   <span class="wmb-nav-brand">QuanticaEdu</span>
-  <div class="wmb-foot-links"><a href="/prealgebra">Prealgebra</a><a href="/blog">Blog</a><a href="#pricing">Pricing</a><a href="#how">How it works</a></div>
+  <div class="wmb-foot-links"><a href="/prealgebra">Prealgebra</a><a href="/blog">Blog</a><a href="#pricing">Pricing</a><a href="#how">How it works</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
   <small class="wmb-muted">&#169; 2026 Quantica &middot; Learn math by solving.</small>
 </footer>
 </div>
@@ -1996,17 +2001,32 @@ window.addEventListener('load',function(){
     var pwd=document.getElementById('authPwd').value||'';
     var err=document.getElementById('authErr');
     var btn=document.getElementById('authSubmit');
+    if(btn.disabled) return;   // in-flight guard: Enter key can't double-submit
+    err.classList.remove('ok');
     if(!email||!pwd){ err.textContent='Please fill in both fields.'; return; }
     var isUp=document.getElementById('tabUp').classList.contains('on');
     if(isUp){ var ageCb=document.getElementById('ageCb'); if(ageCb&&!ageCb.checked){ err.textContent='Please confirm your age and agree to the terms to create an account.'; return; } }
     btn.disabled=true; btn.textContent='Please wait…'; err.textContent='';
     var p=isUp ? auth.createUserWithEmailAndPassword(email,pwd) : auth.signInWithEmailAndPassword(email,pwd);
     p.then(function(){
+      btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
       // A fresh email/password account always means a brand-new user: walk them through the tools.
       if(isUp && window.AccountTour) setTimeout(function(){ AccountTour.start(); },420);
     }).catch(function(e){
       btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
       var msg={'auth/user-not-found':'No account with that email.','auth/wrong-password':'Incorrect password.','auth/email-already-in-use':'An account with that email already exists.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.'};
+      err.textContent=msg[e.code]||e.message;
+    });
+  };
+  window.fbResetPwd=function(){
+    var email=(document.getElementById('authEmail').value||'').trim();
+    var err=document.getElementById('authErr');
+    err.classList.remove('ok');
+    if(!email){ err.textContent='Type your email above first, then tap Forgot password.'; return; }
+    auth.sendPasswordResetEmail(email).then(function(){
+      err.classList.add('ok'); err.textContent='Reset email sent. Check your inbox (and spam folder).';
+    }).catch(function(e){
+      var msg={'auth/user-not-found':'No account with that email.','auth/invalid-email':'Please enter a valid email address.'};
       err.textContent=msg[e.code]||e.message;
     });
   };
@@ -2023,11 +2043,22 @@ window.addEventListener('load',function(){
         if(result && result.additionalUserInfo && result.additionalUserInfo.isNewUser && window.AccountTour)
           setTimeout(function(){ AccountTour.start(); },420);
       })
-      .catch(function(e){ err.textContent=e.message; });
+      .catch(function(e){
+        if(e.code==='auth/popup-blocked'){ auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()); return; }
+        if(e.code==='auth/popup-closed-by-user'||e.code==='auth/cancelled-popup-request'){ err.textContent='Sign-in window was closed. Tap the button to try again.'; return; }
+        err.textContent=e.message;
+      });
   };
 
   // ── Sign out ──────────────────────────────────────────────────────────────
-  window.fbSignOut=function(){ auth.signOut(); };
+  window.fbSignOut=function(){
+    // Clear this account's local copy so the next person on a shared device starts
+    // fresh instead of inheriting (and cloud-merging) someone else's progress.
+    auth.signOut().then(function(){
+      try{ localStorage.removeItem('quantica.profile.v1'); localStorage.removeItem('quantica_adapt_v1'); localStorage.removeItem('qa_signin_prompt_v2'); }catch(e){}
+      location.reload();
+    });
+  };
 
   // ── Cloud sync hooks ──────────────────────────────────────────────────────
   window.__fbSync=function(P){
@@ -2166,7 +2197,10 @@ window.addEventListener('load',function(){
         },{merge:true}).catch(function(e){ console.warn('User profile create failed',e); });
         // brand-new account: push whatever progress they already made (e.g. the first lesson) to the cloud
         if(window.Rewards && Rewards.syncUp) Rewards.syncUp();
-        if(window.track) track('sign_up',{method:prov||'password'});
+        // this branch also backfills docs for old accounts, so gate the event on the
+        // auth account actually being minutes old, not just the doc being missing
+        var isNewAcct = user.metadata && user.metadata.creationTime && (Date.now()-new Date(user.metadata.creationTime).getTime() < 5*60*1000);
+        if(isNewAcct && window.track) track('sign_up',{method:prov||'password'});
       }
     }).catch(function(e){ console.warn('Cloud load failed',e); });
     // Load adaptive state
@@ -4388,10 +4422,11 @@ async function sendTutorMsg() {
     <input class="auth-inp" type="email" id="authEmail" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')fbEmailAuth()">
     <label class="auth-lbl" for="authPwd">Password</label>
     <input class="auth-inp" type="password" id="authPwd" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')fbEmailAuth()">
+    <a class="auth-forgot" id="authForgot" onclick="fbResetPwd()">Forgot password?</a>
     <div id="ageGate" class="age-gate">
       <label class="age-lbl">
         <input type="checkbox" id="ageCb">
-        <span>I am 13 or older, or a parent/guardian is creating this account for me. I have read and agree to the <a href="/terms.html" target="_blank">Terms of Service</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>.</span>
+        <span>I am 13 or older, or a parent/guardian is creating this account for me. I have read and agree to the <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</span>
       </label>
     </div>
     <button class="auth-btn" id="authSubmit" onclick="fbEmailAuth()">Sign in</button>
@@ -4400,95 +4435,10 @@ async function sendTutorMsg() {
       <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.32-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.68 28.18A13.9 13.9 0 0 1 10.8 24c0-1.45.25-2.86.68-4.18v-5.7H4.34A23.99 23.99 0 0 0 0 24c0 3.88.93 7.55 2.56 10.82z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.34 5.7c1.74-5.2 6.59-9.07 12.32-9.07z"/></svg>
       Continue with Google
     </button>
+    <p class="auth-consent">By continuing, you confirm you are 13 or older (or a parent/guardian has given permission) and agree to the <a href="/terms" target="_blank">Terms</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</p>
   </div>
 </div>
 
-<script>
-/* ---- New-user guided tour: golden coachmarks around the landing ---- */
-(function(){
-  var STEPS=[
-    {sel:'.hero h1', title:'Welcome to Quantica', text:'Here you learn math by actually solving problems, not memorizing steps. Here is a 30 second tour of how it works.', place:'bottom'},
-    {sel:'.cta-row .btn-primary', title:'Start free, right now', text:'Chapter 1 of Prealgebra is completely free. Click this button anytime to jump in and start solving.', place:'bottom'},
-    {sel:'#navCourses', title:'Browse the courses', text:'Open the full catalog from here. Prealgebra is live today, and more courses arrive soon.', place:'bottom'},
-    {sel:'#milo .milo-chat', title:'Meet Milo, your tutor', text:'Stuck on a problem? Milo guides you with hints and questions until it clicks, never just the answer.', place:'top'},
-    {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course on Quantica. Start free, no card required.', place:'top'}
-  ];
-  var KEY='quantica_tourSeen_v1';
-  var i=0, spot=null, pop=null, active=false, trackRAF=null, lastKey='';
-
-  function ensureEls(){
-    if(!spot){ spot=document.createElement('div'); spot.className='tour-spot'; document.body.appendChild(spot); }
-    if(!pop){ pop=document.createElement('div'); pop.className='tour-pop'; document.body.appendChild(pop); }
-  }
-  function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
-  function place(){
-    if(!spot||!pop) return;
-    var step=STEPS[i]; var el=document.querySelector(step.sel);
-    if(!el) return;
-    var r=el.getBoundingClientRect(), pad=8, vw=innerWidth, vh=innerHeight;
-    // Skip the style writes when nothing moved, so the big box-shadow isn't repainted every idle frame.
-    var key=r.left+'|'+r.top+'|'+r.width+'|'+r.height+'|'+vw+'|'+vh;
-    if(key===lastKey) return;
-    lastKey=key;
-    spot.style.left=(r.left-pad)+'px'; spot.style.top=(r.top-pad)+'px';
-    spot.style.width=(r.width+pad*2)+'px'; spot.style.height=(r.height+pad*2)+'px';
-    var pw=pop.offsetWidth||300, ph=pop.offsetHeight||150;
-    var below=r.bottom+14, above=r.top-ph-14;
-    var top = step.place==='top' ? (above>=12?above:below) : (below+ph<=vh-12?below:above);
-    top=clamp(top,12,vh-ph-12);
-    var left=clamp(r.left+r.width/2-pw/2,16,vw-pw-16);
-    pop.style.top=top+'px'; pop.style.left=left+'px';
-  }
-  // Continuously re-pin the spotlight to its target every frame while the tour is open.
-  // This tracks the element through any scroll (user or smooth scrollIntoView) with zero lag,
-  // since it never depends on throttled scroll events firing.
-  function track(){
-    if(!active){ trackRAF=null; return; }
-    place();
-    trackRAF=requestAnimationFrame(track);
-  }
-  function render(){
-    var step=STEPS[i];
-    var dots=STEPS.map(function(_,k){return '<span class="tp-dot'+(k===i?' on':'')+'"></span>';}).join('');
-    pop.innerHTML='<div class="tp-step">Step '+(i+1)+' of '+STEPS.length+'</div>'+
-      '<h4>'+step.title+'</h4><p>'+step.text+'</p>'+
-      '<div class="tp-row"><button class="tp-skip" onclick="window.__tourSkip()">Skip</button>'+
-      '<div class="tp-dots">'+dots+'</div>'+
-      '<button class="tp-next" onclick="window.__tourNext()">'+(i===STEPS.length-1?'Done':'Next')+'</button></div>';
-  }
-  function show(){
-    var step=STEPS[i]; var el=document.querySelector(step.sel);
-    if(!el){ next(); return; }
-    lastKey='';            // force a reposition for the new target
-    render();
-    // The rAF loop keeps the spotlight glued to the element as the page smooth-scrolls it into view.
-    el.scrollIntoView({block:'center',behavior:'smooth'});
-  }
-  function next(){ if(i<STEPS.length-1){ i++; show(); } else { end(); } }
-  function end(){
-    active=false;
-    try{ localStorage.setItem(KEY,'1'); }catch(e){}
-    if(trackRAF){ cancelAnimationFrame(trackRAF); trackRAF=null; }
-    if(spot) spot.remove(); if(pop) pop.remove(); spot=null; pop=null;
-  }
-  window.__tourNext=next;
-  window.__tourSkip=end;
-
-  window.startTour=function(){
-    if(active) return; active=true; i=0; lastKey=''; ensureEls();
-    document.addEventListener('keydown',function esc(e){ if(e.key==='Escape'&&active){ end(); document.removeEventListener('keydown',esc); } });
-    track();   // start the continuous tracking loop
-    show();
-  };
-
-  // Auto-start for first-time visitors once the page has settled.
-  window.addEventListener('load',function(){
-    var seen; try{ seen=localStorage.getItem(KEY); }catch(e){ seen='1'; }
-    var inCourse=document.getElementById('lessonOverlay')&&document.getElementById('lessonOverlay').classList.contains('open');
-    if(!seen && !inCourse) setTimeout(window.startTour, 900);
-  });
-})();
-</script>
 
 <script>
 /* ---- New-user onboarding: drop them into a real sample problem and run the golden
@@ -4648,10 +4598,10 @@ async function sendTutorMsg() {
       if(seen()||signedIn()) return;
       // only burn the once-flag when we actually show it (not before the delay),
       // so a failed reveal or a mid-delay sign-in doesn't silently consume the one chance
-      setTimeout(function(){ if(seen()||signedIn()) return; mark(); show(); }, 1100);
+      setTimeout(function(){ if(seen()||signedIn()) return; mark(); show(); if(window.track) track('signin_prompt_shown'); }, 1100);
     },
-    go:function(){ hide(); if(window.showAuthModal) showAuthModal('up'); },
-    dismiss:function(){ hide(); },
+    go:function(){ hide(); if(window.track) track('signin_prompt_click'); if(window.showAuthModal) showAuthModal('up'); },
+    dismiss:function(){ hide(); if(window.track) track('signin_prompt_dismiss'); },
     _force:function(){ try{ localStorage.removeItem(KEY); }catch(e){} show(); }  // for manual testing
   };
 })();
