@@ -3010,5 +3010,265 @@
    }
   ],
   "next": "11.9"
+ },
+ "11.9": {
+  "title": "Special Right Triangles",
+  "next": "11.10",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Cut a square in half along its diagonal and you get a right triangle with two equal legs. Triangles like this appear everywhere, in ramps, rooftops, and folded napkins, so it pays to know them by heart. Start by measuring one with the tool you already own, the Pythagorean Theorem."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A right triangle has legs \\(1\\) and \\(1\\). Use the Pythagorean Theorem to find the square of the hypotenuse. What number is \\(c^2\\)?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "The theorem says \\(a^2 + b^2 = c^2\\), and here both legs are \\(1\\).",
+     "Compute \\(1^2 + 1^2\\)."
+    ],
+    "sol": "The legs give \\(c^2 = 1^2 + 1^2 = 2\\), so the hypotenuse itself is \\(\\sqrt{2}\\). The square of the hypotenuse is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The 45-45-90 triangle.</b> A right triangle with two equal legs also has two equal \\(45\\) degree angles, so it is called a 45-45-90 triangle. If each leg is \\(s\\), the Pythagorean Theorem gives \\(c^2 = s^2 + s^2 = 2s^2\\), so the hypotenuse is \\(c = s\\sqrt{2}\\). That is the whole rule. Whatever the leg is, the hypotenuse is that length times \\(\\sqrt{2}\\), about \\(1.41\\) times longer. Every 45-45-90 triangle is half of a square, which is why the pattern never changes.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 270\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a square cut along its diagonal into two 45-45-90 triangles\"><path d=\"M95,45 L245,45 L245,195 L95,195 Z\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/><path d=\"M95,195 L245,45\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2.4\"/><path d=\"M245,183 L233,183 L233,195\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.4\"/><text x=\"170\" y=\"219\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">s</text><text x=\"261\" y=\"125\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">s</text><text x=\"150\" y=\"106\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">s√2</text><text x=\"122\" y=\"181\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">45°</text><text x=\"220\" y=\"66\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">45°</text></svg></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Each leg of a 45-45-90 triangle is \\(5\\). The hypotenuse simplifies to \\(k\\sqrt{2}\\). What whole number is \\(k\\)?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "The hypotenuse of a 45-45-90 triangle is the leg times \\(\\sqrt{2}\\).",
+     "With legs of \\(5\\), the hypotenuse is \\(5\\sqrt{2}\\)."
+    ],
+    "sol": "Hypotenuse \\(= s\\sqrt{2} = 5\\sqrt{2}\\). You can confirm it with the theorem, since \\(5^2 + 5^2 = 50\\) and \\(\\sqrt{50} = 5\\sqrt{2}\\). So \\(k = \\boxed{5}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The hypotenuse of a 45-45-90 triangle measures \\(7\\sqrt{2}\\). How long is each leg?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "Run the rule backwards. The hypotenuse is leg \\(\\times \\sqrt{2}\\), so the leg is hypotenuse \\(\\div \\sqrt{2}\\).",
+     "If \\(s\\sqrt{2} = 7\\sqrt{2}\\), what is \\(s\\)?"
+    ],
+    "sol": "The hypotenuse is always \\(s\\sqrt{2}\\). Matching \\(s\\sqrt{2} = 7\\sqrt{2}\\) gives \\(s = \\boxed{7}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A wheelchair ramp rises at a \\(45\\) degree angle, so its rise and its horizontal run are the two legs of a 45-45-90 triangle. The run is \\(12\\) meters. How many meters is the rise?",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "In a 45-45-90 triangle the two legs are equal.",
+     "The rise and the run are the two legs."
+    ],
+    "sol": "The legs of a 45-45-90 triangle are equal, so the rise matches the run at \\(\\boxed{12}\\) meters."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The 30-60-90 triangle.</b> Cut an equilateral triangle straight down the middle and each half is a right triangle with angles of \\(30\\), \\(60\\), and \\(90\\) degrees. Say the equilateral triangle has side \\(2x\\). The cut splits the base in half, so the short leg is \\(x\\), and the hypotenuse is an untouched side, \\(2x\\). The height comes from the Pythagorean Theorem, \\(h^2 = (2x)^2 - x^2 = 3x^2\\), so \\(h = x\\sqrt{3}\\). The sides always come in the ratio \\(x\\), \\(x\\sqrt{3}\\), \\(2x\\), where the short leg \\(x\\) sits opposite the \\(30\\) degree angle and the hypotenuse is exactly twice the short leg.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 270\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"an equilateral triangle cut down the middle into two 30-60-90 triangles\"><path d=\"M60,225 L280,225 L170,35 Z\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/><path d=\"M170,35 L170,225\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-dasharray=\"6 5\"/><path d=\"M170,213 L182,213 L182,225\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.4\"/><text x=\"225\" y=\"246\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">x</text><text x=\"242\" y=\"128\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">2x</text><text x=\"150\" y=\"132\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">x√3</text><text x=\"184\" y=\"76\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">30°</text><text x=\"243\" y=\"212\" text-anchor=\"middle\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">60°</text></svg></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The short leg of a 30-60-90 triangle is \\(4\\). The hypotenuse is always twice the short leg. How long is the hypotenuse?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "Hypotenuse \\(= 2 \\times\\) short leg."
+    ],
+    "sol": "Twice the short leg is \\(2 \\times 4 = \\boxed{8}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The hypotenuse of a 30-60-90 triangle is \\(14\\). How long is the short leg?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "The hypotenuse is twice the short leg, so run it backwards.",
+     "Half of \\(14\\)."
+    ],
+    "sol": "The short leg is half the hypotenuse, \\(14 \\div 2 = \\boxed{7}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The short leg of a 30-60-90 triangle is \\(5\\). The long leg simplifies to \\(k\\sqrt{3}\\). What whole number is \\(k\\)?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "The long leg is the short leg times \\(\\sqrt{3}\\).",
+     "With a short leg of \\(5\\), the long leg is \\(5\\sqrt{3}\\)."
+    ],
+    "sol": "Long leg \\(=\\) short leg \\(\\times \\sqrt{3} = 5\\sqrt{3}\\). So \\(k = \\boxed{5}\\)."
+   },
+   {
+    "t": "fact",
+    "x": "The clear plastic set squares in a geometry kit are exactly these two triangles, one 45-45-90 and one 30-60-90. Drafters picked them because their angles combine into \\(15\\), \\(75\\), \\(105\\), and more, enough to draw nearly any standard angle."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "An equilateral triangle has \\(10\\) cm sides. Its height simplifies to \\(k\\sqrt{3}\\) cm. What whole number is \\(k\\)?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "The height cuts the triangle into two 30-60-90 halves, and the short leg of each half is half of \\(10\\).",
+     "Height \\(=\\) short leg \\(\\times \\sqrt{3}\\), and the short leg is \\(5\\)."
+    ],
+    "sol": "The height splits the base, so the short leg is \\(10 \\div 2 = 5\\), and the height is the long leg, \\(5\\sqrt{3}\\). So \\(k = \\boxed{5}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Two patterns worth keeping.</b> A 45-45-90 triangle has sides \\(s\\), \\(s\\), \\(s\\sqrt{2}\\). A 30-60-90 triangle has sides \\(x\\), \\(x\\sqrt{3}\\), \\(2x\\), with the short leg opposite the smallest angle. Spot the angles and you can skip the algebra entirely, and if you ever doubt a shortcut, the Pythagorean Theorem will confirm it. These two triangles return constantly in later geometry and trigonometry, so the hour you spend on them now pays off for years."
+   }
+  ],
+  "review": [
+   {
+    "x": "Each leg of a 45-45-90 triangle is \\(3\\). The hypotenuse simplifies to \\(k\\sqrt{2}\\). What is \\(k\\)?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Hypotenuse \\(=\\) leg \\(\\times \\sqrt{2}\\)."
+    ],
+    "sol": "Hypotenuse \\(= 3\\sqrt{2}\\), so \\(k = \\boxed{3}\\)."
+   },
+   {
+    "x": "The hypotenuse of a 45-45-90 triangle is \\(11\\sqrt{2}\\). How long is each leg?",
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven"
+    ],
+    "hints": [
+     "The hypotenuse is \\(s\\sqrt{2}\\). Match it to \\(11\\sqrt{2}\\)."
+    ],
+    "sol": "From \\(s\\sqrt{2} = 11\\sqrt{2}\\) we get \\(s = \\boxed{11}\\)."
+   },
+   {
+    "x": "A square has \\(7\\) inch sides. Its diagonal simplifies to \\(k\\sqrt{2}\\) inches. What is \\(k\\)?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "The diagonal of a square is the hypotenuse of a 45-45-90 triangle whose legs are the sides."
+    ],
+    "sol": "The diagonal is side \\(\\times \\sqrt{2} = 7\\sqrt{2}\\), so \\(k = \\boxed{7}\\)."
+   },
+   {
+    "x": "The short leg of a 30-60-90 triangle is \\(6\\). How long is the hypotenuse?",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "The hypotenuse is twice the short leg."
+    ],
+    "sol": "Hypotenuse \\(= 2 \\times 6 = \\boxed{12}\\)."
+   },
+   {
+    "x": "The hypotenuse of a 30-60-90 triangle is \\(20\\). How long is the short leg?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Short leg \\(=\\) hypotenuse \\(\\div 2\\)."
+    ],
+    "sol": "Half of \\(20\\) is \\(\\boxed{10}\\)."
+   },
+   {
+    "x": "The short leg of a 30-60-90 triangle is \\(8\\). The long leg simplifies to \\(k\\sqrt{3}\\). What is \\(k\\)?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "Long leg \\(=\\) short leg \\(\\times \\sqrt{3}\\)."
+    ],
+    "sol": "The long leg is \\(8\\sqrt{3}\\), so \\(k = \\boxed{8}\\)."
+   },
+   {
+    "x": "An equilateral triangle has \\(12\\) cm sides. Its height simplifies to \\(k\\sqrt{3}\\) cm. What is \\(k\\)?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "The height makes two 30-60-90 halves. The short leg is half of \\(12\\).",
+     "Height \\(= 6\\sqrt{3}\\)."
+    ],
+    "sol": "The short leg is \\(12 \\div 2 = 6\\), so the height is \\(6\\sqrt{3}\\) and \\(k = \\boxed{6}\\)."
+   },
+   {
+    "x": "Each leg of a 45-45-90 triangle is \\(9\\). Use the Pythagorean Theorem to check the shortcut. What is the square of the hypotenuse?",
+    "ans": "162",
+    "accept": [
+     "162",
+     "162.0"
+    ],
+    "hints": [
+     "Compute \\(9^2 + 9^2\\).",
+     "The shortcut predicts \\(c = 9\\sqrt{2}\\), and \\((9\\sqrt{2})^2 = 81 \\times 2\\)."
+    ],
+    "sol": "By the theorem, \\(c^2 = 81 + 81 = 162\\). The shortcut agrees, since \\((9\\sqrt{2})^2 = 162\\). The answer is \\(\\boxed{162}\\)."
+   }
+  ]
  }
 }
