@@ -328,5 +328,337 @@
     "sol": "<p>Both loops have length \\(4\\), and \\(43\\) leaves remainder \\(3\\), landing on the third spot of each. So \\(3^{43}\\) ends in \\(7\\) and \\(7^{43}\\) ends in \\(3\\).</p><p>The sum therefore ends the way \\(7 + 3 = 10\\) ends, in \\(\\boxed{0}\\).</p><p>Two enormous towers, one shared remainder, and a carry that wipes the digit to zero. That is the pattern strategy running at full power.</p>"
    }
   ]
+ },
+ "12.2": {
+  "title": "Make an Organized List",
+  "next": "12.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Some problems have no formula at all. They simply ask what is possible, and the only honest way to answer is to write every possibility down. The danger is missing one. So strong solvers never scribble possibilities at random. They pick an order before they start, march through it, and end with a list that proves itself complete. This lesson is about building lists that cannot leak."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "At a juice bar, smoothies cost \\(9\\) tokens and juices cost \\(6\\) tokens. A camp counselor spends exactly \\(60\\) tokens and buys at least one drink of some kind, possibly zero of one kind. How many different orders are possible?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "March through the number of smoothies, \\(0, 1, 2, \\ldots\\), and for each one check whether the leftover tokens split evenly into \\(6\\)s."
+    ],
+    "sol": "<p>Walk the smoothie count upward and test the leftovers. Zero smoothies leaves \\(60\\), which is \\(10\\) juices. One smoothie leaves \\(51\\), not a multiple of \\(6\\). Two leave \\(42\\), which is \\(7\\) juices. Three leave \\(33\\), no. Four leave \\(24\\), which is \\(4\\) juices. Five leave \\(15\\), no. Six leave \\(6\\), one juice. Seven would cost too much.</p><p>The complete list has \\(\\boxed{4}\\) orders. Because the smoothie count marched \\(0\\) through \\(6\\) without skipping, nothing was missed.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "At an arcade counter, plushies cost \\(12\\) tickets and keychains cost \\(5\\) tickets. A player spends exactly \\(53\\) tickets. How many plushies did the player buy?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "Try each plushie count in turn, \\(0, 1, 2, 3, 4\\), and check whether the remaining tickets are a multiple of \\(5\\).",
+     "A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), which makes each leftover instant to test."
+    ],
+    "sol": "<p>March the plushie count. Zero plushies leaves \\(53\\), one leaves \\(41\\), two leave \\(29\\), three leave \\(17\\), none of which end in \\(0\\) or \\(5\\). Four plushies leave \\(53 - 48 = 5\\), exactly one keychain.</p><p>Five plushies would cost \\(60\\), too much, so the march is over and the answer is unique, \\(\\boxed{4}\\) plushies.</p><p>The ones-digit shortcut turned each check into a glance. Good lists lean on quick tests like that.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>March one variable.</b> When two unknowns share one total, do not juggle both. Choose one, usually the pricier item, and walk its count step by step from zero. Each step pins the leftover, and the leftover either splits cleanly or it does not. The finished table is the whole truth, every order that exists and none that do not, and the marching order is what makes it airtight.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smoothies</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">juices</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">0</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">10</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">7</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">6</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr></table></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A puzzle card reads, find the two-digit number that is a multiple of \\(9\\), has both digits prime, and has a ones digit larger than its tens digit. What is the number?",
+    "ans": "27",
+    "accept": [
+     "27",
+     "27.0",
+     "twenty seven",
+     "twenty-seven"
+    ],
+    "hints": [
+     "Start from the tightest condition. There are only ten two-digit multiples of \\(9\\), so list them.",
+     "The prime digits are \\(2, 3, 5, 7\\). Strike out every multiple of \\(9\\) containing any other digit, then apply the last condition."
+    ],
+    "sol": "<p>The multiples of \\(9\\) give a short master list, \\(18, 27, 36, 45, 54, 63, 72, 81, 90, 99\\).</p><p>Both digits must come from \\(2, 3, 5, 7\\). That single stroke eliminates everything except \\(27\\) and \\(72\\).</p><p>Finally the ones digit must beat the tens digit, and only \\(\\boxed{27}\\) survives.</p><p>Notice the strategy. The multiple-of-nine condition built a world of ten numbers, and the other conditions only had to filter it.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "How many two-digit numbers have digits that multiply to \\(12\\)?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "List the factor pairs of \\(12\\) where both factors are single digits, then remember each pair can appear in two orders."
+    ],
+    "sol": "<p>Digit pairs multiplying to \\(12\\) must be factor pairs with both factors at most \\(9\\), so \\(2 \\times 6\\) and \\(3 \\times 4\\). The pair \\(1 \\times 12\\) fails, since \\(12\\) is not a digit.</p><p>Each surviving pair builds two numbers, \\(26\\) and \\(62\\), \\(34\\) and \\(43\\).</p><p>$$\\boxed{4}$$</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Start where the light is brightest.</b> When a hunt comes with several conditions, rank them by how hard they squeeze. A condition like multiple of \\(9\\) leaves ten candidates, while a condition like ones digit larger than tens leaves dozens, so begin with the squeeze. Build the short master list from the tightest condition, then let the looser ones cross entries off. The same hunt run in the opposite order works, but you would be testing ninety numbers instead of ten."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A street performer splits \\(7\\) identical juggling rings among \\(3\\) identical trays, with every tray holding at least one ring. Since the trays are identical, only the group sizes matter, not which tray is which. How many different splits are possible?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "Sort each split from largest pile to smallest, and list splits in order of the largest pile, starting from the biggest it could be, which is \\(5\\).",
+     "For each choice of largest pile, march the middle pile downward and let the smallest pile be whatever remains, checking it stays between \\(1\\) and the middle."
+    ],
+    "sol": "<p>Write every split largest pile first. The largest pile can be at most \\(5\\), since the other two trays need a ring each.</p><p>Largest \\(5\\) forces \\(5, 1, 1\\). Largest \\(4\\) gives \\(4, 2, 1\\). Largest \\(3\\) gives \\(3, 3, 1\\) and \\(3, 2, 2\\). A largest pile of \\(2\\) could hold at most \\(2 + 2 + 2 = 6\\) rings, too few.</p><p>$$\\boxed{4}$$</p><p>Sorting each split before writing it is what stops \\(4, 2, 1\\) and \\(1, 2, 4\\) from sneaking in as two different entries.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A librarian packs \\(8\\) identical books into identical boxes, using at most \\(3\\) boxes, with no box left empty. How many different packings are possible?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Split into cases by the number of boxes used, one, two, or three, and handle each case as its own ordered list.",
+     "With two boxes list \\(7{+}1, 6{+}2, 5{+}3, 4{+}4\\) and stop before repeats. With three, march the largest pile from \\(6\\) down."
+    ],
+    "sol": "<p>One box gives a single packing, all \\(8\\) together.</p><p>Two boxes, written larger pile first, give \\(7{+}1\\), \\(6{+}2\\), \\(5{+}3\\), \\(4{+}4\\), and stopping there matters, since \\(3{+}5\\) would repeat \\(5{+}3\\). That is \\(4\\) packings.</p><p>Three boxes, marching the largest pile downward, give \\(6{+}1{+}1\\), \\(5{+}2{+}1\\), \\(4{+}3{+}1\\), \\(4{+}2{+}2\\), \\(3{+}3{+}2\\). That is \\(5\\) more.</p><p>$$1 + 4 + 5 = \\boxed{10}$$</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Give the list a spine.</b> A safe list is sorted by something, largest pile first, smallest number first, alphabetical order, anything consistent. The spine does two jobs at once. It stops the same possibility from sneaking in twice wearing a different order, and it tells you exactly when you are done, because the next entry would break the ordering rule. A list with a spine is a proof. A list without one is a pile of guesses.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">largest tray</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">middle</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smallest</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">5</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td></tr></table></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A gym locker's number is between \\(30\\) and \\(60\\). Divided by \\(7\\) it leaves remainder \\(2\\), and divided by \\(4\\) it leaves remainder \\(1\\). What is the locker number?",
+    "ans": "37",
+    "accept": [
+     "37",
+     "37.0",
+     "thirty seven",
+     "thirty-seven"
+    ],
+    "hints": [
+     "The remainder-\\(2\\) condition is the rarer one. List those numbers between \\(30\\) and \\(60\\) first, they climb by \\(7\\)s.",
+     "That short list is \\(30, 37, 44, 51, 58\\). Test each against the divided-by-\\(4\\) condition."
+    ],
+    "sol": "<p>Numbers leaving remainder \\(2\\) under division by \\(7\\) arrive every seven steps, so between \\(30\\) and \\(60\\) the whole list is \\(30, 37, 44, 51, 58\\).</p><p>Now test remainders under \\(4\\). They come out \\(2, 1, 0, 3, 2\\) in turn, and only \\(37\\) leaves the required \\(1\\).</p><p>$$\\boxed{37}$$</p><p>Two overlapping remainder conditions almost always fall to this one-two, list the stingier condition, filter with the looser one.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "How many three-digit numbers have digits adding to exactly \\(4\\)?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Organize by the hundreds digit, which can be \\(1, 2, 3,\\) or \\(4\\). Each choice leaves a smaller target for the last two digits.",
+     "With hundreds digit \\(1\\), the last two digits must add to \\(3\\), giving \\(03, 12, 21, 30\\), four numbers. Count the other cases the same way."
+    ],
+    "sol": "<p>Case on the hundreds digit. If it is \\(1\\), the remaining digits sum to \\(3\\), giving \\(103, 112, 121, 130\\), four numbers. If it is \\(2\\), they sum to \\(2\\), giving \\(202, 211, 220\\), three numbers. If it is \\(3\\), two numbers, \\(301, 310\\). If it is \\(4\\), just \\(400\\).</p><p>$$4 + 3 + 2 + 1 = \\boxed{10}$$</p><p>The counts stepping down \\(4, 3, 2, 1\\) are the list rewarding good organization with a pattern, the previous lesson shaking hands with this one.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Casework is a list of lists.</b> Big hunts split along one natural feature, the hundreds digit, the number of boxes, the count of one item. Each case becomes a small list you can finish in one breath, and the case totals add up at the end. Choose the splitting feature so no possibility can belong to two cases at once and none can escape every case. That is the same promise a single list makes, no repeats and no gaps, made at a larger scale."
+   },
+   {
+    "t": "fact",
+    "x": "There is a famous online encyclopedia whose entries are not words but lists of numbers. Type in the start of any sequence you have discovered, like \\(1, 4, 9, 16\\), and it names the pattern, cites who found it, and shows where else it appears. Mathematicians add new lists to it nearly every day."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A snack stand offers \\(6\\) different toppings, and a frozen yogurt comes with exactly \\(2\\) different toppings. Using an alphabetical list or otherwise, count how many different topping pairs are possible.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "Name the toppings A through F and list pairs alphabetically, all pairs starting with A first, then those starting with B, and so on.",
+     "A starts \\(5\\) pairs, B starts \\(4\\) new ones, and each later letter starts one fewer."
+    ],
+    "sol": "<p>Alphabetical order is the spine. Pairs beginning with A are AB, AC, AD, AE, AF, five of them. Pairs beginning with B add BC, BD, BE, BF, four new ones, since AB is already counted. The pattern steps down from there.</p><p>$$5 + 4 + 3 + 2 + 1 = \\boxed{15}$$</p><p>This is the pairs count from the counting chapter, rebuilt by hand. When a formula slips your mind mid-problem, an organized list will always rebuild it for you.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A padlock's three-digit code has strictly decreasing digits, is a multiple of \\(5\\), and has digits adding to \\(12\\). How many codes fit all three conditions?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), so split into those two cases.",
+     "Ending in \\(0\\) needs the first two digits to add to \\(12\\) with first digit larger. Ending in \\(5\\) needs them to add to \\(7\\) with both digits larger than \\(5\\), which is worth checking carefully."
+    ],
+    "sol": "<p>Case one, the code ends in \\(0\\). The first two digits add to \\(12\\), strictly decreasing into the \\(0\\), giving \\(93, 84, 75\\), so the codes \\(930, 840, 750\\).</p><p>Case two, the code ends in \\(5\\). The first two digits would add to \\(7\\) while each stays above \\(5\\), but two digits above \\(5\\) already add to at least \\(13\\). The case is empty.</p><p>$$3 + 0 = \\boxed{3}$$</p><p>An empty case is not wasted work. Proving nothing lives there is exactly what makes the final count trustworthy.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>The complete-list creed.</b> A finished list must answer two challenges. Why does everything on it belong, and why can nothing else exist. The first is easy, check each entry. The second is where the craft lives, and every tool in this lesson serves it, marching a single variable, starting from the tightest condition, sorting by a spine, and splitting into cases that cannot overlap or leak. Build lists that way and what you hand in is not a guess. It is a proof written as a table."
+   }
+  ],
+  "review": [
+   {
+    "x": "A bake sale prices muffins at \\(8\\) tokens and cookies at \\(5\\) tokens. One customer spends exactly \\(67\\) tokens. How many muffins did the customer buy?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "March the muffin count from \\(0\\) to \\(8\\) and check which leftover is a multiple of \\(5\\), meaning it ends in \\(0\\) or \\(5\\)."
+    ],
+    "sol": "<p>Marching muffins from zero, the leftovers run \\(67, 59, 51, 43, 35, 27, 19, 11, 3\\). Only \\(35\\) ends in \\(0\\) or \\(5\\), at four muffins, leaving \\(7\\) cookies.</p><p>$$\\boxed{4}$$</p>"
+   },
+   {
+    "x": "How many two-digit multiples of \\(7\\) have digits adding to \\(10\\)?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "There are only thirteen two-digit multiples of \\(7\\), so list them and check digit sums."
+    ],
+    "sol": "<p>The multiples run \\(14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98\\). Checking digit sums, only \\(28\\) and \\(91\\) reach \\(10\\).</p><p>$$\\boxed{2}$$</p>"
+   },
+   {
+    "x": "Six identical candles are packed into up to \\(3\\) identical gift bags, where a bag may hold any number of candles but empty bags are thrown away. Only the group sizes matter. How many different packings are possible?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "Case on the number of bags actually used, one, two, or three, listing each case largest bag first.",
+     "One bag gives one way. Two bags give \\(5{+}1, 4{+}2, 3{+}3\\). List the three-bag splits the same careful way."
+    ],
+    "sol": "<p>One bag, just \\(6\\). Two bags, largest first, \\(5{+}1\\), \\(4{+}2\\), \\(3{+}3\\). Three bags, \\(4{+}1{+}1\\), \\(3{+}2{+}1\\), \\(2{+}2{+}2\\).</p><p>$$1 + 3 + 3 = \\boxed{7}$$</p>"
+   },
+   {
+    "x": "A jersey number is less than \\(50\\), leaves remainder \\(3\\) when divided by \\(8\\), and is a multiple of \\(5\\). What is the number?",
+    "ans": "35",
+    "accept": [
+     "35",
+     "35.0",
+     "thirty five",
+     "thirty-five"
+    ],
+    "hints": [
+     "List the numbers under \\(50\\) that leave remainder \\(3\\) under \\(8\\), they climb by eights, then keep the one ending in \\(0\\) or \\(5\\)."
+    ],
+    "sol": "<p>Remainder \\(3\\) under \\(8\\) gives the list \\(3, 11, 19, 27, 35, 43\\). The only multiple of \\(5\\) on it is \\(\\boxed{35}\\).</p>"
+   },
+   {
+    "x": "How many two-digit numbers have digits adding to exactly \\(9\\)?",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine"
+    ],
+    "hints": [
+     "March the tens digit from \\(1\\) to \\(9\\). Each choice forces the ones digit completely."
+    ],
+    "sol": "<p>For each tens digit \\(1\\) through \\(9\\), the ones digit must be \\(9\\) minus it, giving \\(18, 27, 36, 45, 54, 63, 72, 81, 90\\), one number per tens digit.</p><p>$$\\boxed{9}$$</p>"
+   },
+   {
+    "x": "How many three-digit numbers use only the digits \\(1, 2, 3, 4\\) with the digits strictly increasing from left to right?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "Strictly increasing means the number is just a choice of three different digits, written in their only legal order. List the choices."
+    ],
+    "sol": "<p>Choosing which digit to leave out gives every possibility, \\(123, 124, 134, 234\\).</p><p>$$\\boxed{4}$$</p>"
+   },
+   {
+    "x": "An ice-cream cart offers \\(7\\) flavors, and a double cone holds \\(2\\) different flavors, order not mattering. How many different double cones are possible?",
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0",
+     "twenty one",
+     "twenty-one"
+    ],
+    "hints": [
+     "List pairs with an alphabetical spine. The first flavor starts \\(6\\) pairs, the next starts \\(5\\) new ones, and so on."
+    ],
+    "sol": "<p>With the flavors ordered, the first starts \\(6\\) pairs, the second \\(5\\) new ones, then \\(4, 3, 2, 1\\).</p><p>$$6+5+4+3+2+1 = \\boxed{21}$$</p>"
+   },
+   {
+    "x": "How many three-digit palindromes smaller than \\(300\\) are multiples of \\(4\\)?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "A three-digit palindrome reads the same forward and backward, so below \\(300\\) it looks like \\(1x1\\) or \\(2x2\\). A multiple of \\(4\\) must be even, which kills one family.",
+     "List the ten numbers \\(202, 212, \\ldots, 292\\) and test each for divisibility by \\(4\\) using its last two digits."
+    ],
+    "sol": "<p>Palindromes \\(1x1\\) end in \\(1\\), which is odd, so no multiples of \\(4\\) live there. The \\(2x2\\) family is \\(202, 212, 222, 232, 242, 252, 262, 272, 282, 292\\).</p><p>A number is a multiple of \\(4\\) exactly when its last two digits are, so test \\(02, 12, 22, \\ldots\\) The survivors are \\(212, 232, 252, 272, 292\\).</p><p>$$\\boxed{5}$$</p>"
+   },
+   {
+    "x": "At a fair, rides cost \\(12\\) tickets and games cost \\(7\\) tickets. A visitor spends exactly \\(100\\) tickets. How many rides and games did the visitor enjoy in total?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "March the ride count from \\(0\\) to \\(8\\) and test whether the leftover splits into \\(7\\)s.",
+     "Only one ride count works. Add its rides and games together."
+    ],
+    "sol": "<p>Marching rides, the leftovers are \\(100, 88, 76, 64, 52, 40, 28, 16, 4\\), and only \\(28\\), at six rides, is a multiple of \\(7\\), giving four games.</p><p>$$6 + 4 = \\boxed{10}$$</p>"
+   },
+   {
+    "x": "A game shop sells power crystals in sizes \\(1\\), \\(5\\), and \\(10\\) gems. In how many different ways can a player spend exactly \\(25\\) gems, where only the number of each size matters?",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "Case on the number of \\(10\\)-gem crystals, which can be \\(0\\), \\(1\\), or \\(2\\). Inside each case, march the \\(5\\)-gem count.",
+     "Whatever remains after the tens and fives is filled by \\(1\\)s in exactly one way, so just count the legal five-counts in each case."
+    ],
+    "sol": "<p>Case on tens. With two tens, \\(5\\) gems remain, allowing zero or one five, \\(2\\) ways. With one ten, \\(15\\) remain, allowing zero through three fives, \\(4\\) ways. With no tens, \\(25\\) remain, allowing zero through five fives, \\(6\\) ways.</p><p>$$2 + 4 + 6 = \\boxed{12}$$</p><p>The singles are the silent partner. They mop up any remainder in exactly one way, so the whole count lives in the tens and fives.</p>"
+   }
+  ]
  }
 }
