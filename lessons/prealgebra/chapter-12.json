@@ -1,0 +1,332 @@
+{
+ "12.1": {
+  "title": "Look for a Pattern",
+  "next": "12.2",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Some problems are too big to attack head on. Nobody multiplies out the five hundredth term of anything. Strong solvers play instead. They compute a few small cases, line the results up, and watch for a rhythm. Once the rhythm is caught, a problem the size of a mountain collapses into one short division. This lesson is about catching rhythms."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Write out the ones digits of the first several multiples of \\(8\\), that is \\(8, 16, 24, 32, 40, 48, \\ldots\\), and watch what the ones digits do. Then predict the ones digit of the \\(43\\)rd multiple of \\(8\\).",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "The ones digits run \\(8, 6, 4, 2, 0\\) and then start over, a loop of length \\(5\\).",
+     "Divide \\(43\\) by \\(5\\) and let the remainder point to a spot inside the loop."
+    ],
+    "sol": "<p>The ones digits cycle through \\(8, 6, 4, 2, 0\\) forever, repeating every \\(5\\) multiples.</p><p>Since \\(43 = 8 \\times 5 + 3\\), the \\(43\\)rd multiple sits at the third spot of a fresh loop, whose ones digit is \\(4\\).</p><p>The check is sweet. \\(43 \\times 8 = 344\\), which indeed ends in \\(\\boxed{4}\\).</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A mosaic artist lays tiles along a hallway in a repeating run of nine tiles, five hexagons, then three squares, then one star, over and over. Among the first \\(500\\) tiles, how many are stars?",
+    "ans": "55",
+    "accept": [
+     "55",
+     "55.0",
+     "fifty five",
+     "fifty-five"
+    ],
+    "hints": [
+     "Each full run of \\(9\\) tiles contains exactly one star, so first count complete runs inside \\(500\\).",
+     "Since \\(500 = 55 \\times 9 + 5\\), there are \\(55\\) full runs plus \\(5\\) leftover tiles. Check whether any of those leftovers is a star."
+    ],
+    "sol": "<p>Dividing, \\(500 = 55 \\times 9 + 5\\), so the hallway holds \\(55\\) complete runs and then \\(5\\) extra tiles.</p><p>Each complete run contributes one star, giving \\(55\\) so far. The five leftover tiles are the first five of a new run, all hexagons, so no star joins them.</p><p>$$55 + 0 = \\boxed{55}$$</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Find the loop, then divide.</b> When a pattern repeats every \\(k\\) steps, division with remainder is the whole game. Divide the target position by \\(k\\). The quotient counts finished loops, and the remainder tells you exactly where you stand inside the current one. One division stands in for hundreds of steps of listing. The only care required is the handoff, matching remainder \\(1\\) to the first spot in the loop, remainder \\(2\\) to the second, and a remainder of \\(0\\) to the loop's final spot."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Compute the ones digit of each of \\(3^1, 3^2, 3^3, 3^4, 3^5\\), and keep going just far enough to see the ones digits repeat. How many steps long is the repeating loop?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "The powers begin \\(3, 9, 27, 81, 243\\). Read off just the ones digits."
+    ],
+    "sol": "<p>The ones digits run \\(3, 9, 7, 1\\), and then \\(3^5 = 243\\) brings the digit back to \\(3\\), restarting the parade.</p><p>The loop is \\(3, 9, 7, 1\\), which is \\(\\boxed{4}\\) steps long.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Using the loop you just found, determine the ones digit of \\(3^{43}\\).",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "The loop \\(3, 9, 7, 1\\) restarts every \\(4\\) powers, so divide \\(43\\) by \\(4\\).",
+     "A remainder of \\(3\\) lands on the third digit of the loop."
+    ],
+    "sol": "<p>Since \\(43 = 10 \\times 4 + 3\\), the exponent \\(43\\) lands three steps into a fresh loop of \\(3, 9, 7, 1\\).</p><p>The third digit of the loop is \\(\\boxed{7}\\). A forty-three-digit-long monster of a number, and its final digit surrenders to one division.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The powers of \\(7\\) have their own ones-digit loop. Find it, then find the ones digit of \\(7^7\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Compute ones digits of \\(7^1, 7^2, 7^3, 7^4\\). Multiplying ones digits only, \\(7, 9, 3, 1\\), then the loop restarts.",
+     "With a loop of length \\(4\\), the exponent \\(7\\) leaves remainder \\(3\\), the third spot."
+    ],
+    "sol": "<p>Tracking only ones digits, \\(7 \\times 7\\) ends in \\(9\\), then \\(9 \\times 7\\) ends in \\(3\\), then \\(3 \\times 7\\) ends in \\(1\\), and the loop \\(7, 9, 3, 1\\) restarts.</p><p>Since \\(7 = 1 \\times 4 + 3\\), the seventh power lands on the loop's third digit.</p><p>$$7^7 \\text{ ends in } \\boxed{3}$$</p><p>Indeed \\(7^7 = 823{,}543\\).</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Track only what matters.</b> The ones digit of a product depends only on the ones digits of the factors, so to follow the ones digit of growing powers you may throw the rest of the number away at every step. That is why a loop must appear. There are only ten possible ones digits, so some digit eventually shows up twice, and from that moment the whole future replays the past. Huge exponents are not obstacles, they are just positions inside a short loop."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A vineyard climbs a hillside in terraces. The top terrace holds \\(14\\) vines, and each terrace below holds \\(3\\) more vines than the one above it. How many vines grow on the \\(20\\)th terrace from the top?",
+    "ans": "71",
+    "accept": [
+     "71",
+     "71.0",
+     "seventy one",
+     "seventy-one"
+    ],
+    "hints": [
+     "Make a tiny table. Terrace \\(1\\) has \\(14\\), terrace \\(2\\) has \\(17\\), terrace \\(3\\) has \\(20\\). Each step down adds one \\(3\\).",
+     "Reaching terrace \\(20\\) takes \\(19\\) steps down from the top."
+    ],
+    "sol": "<p>Each terrace adds \\(3\\), and getting from terrace \\(1\\) to terrace \\(20\\) takes \\(19\\) such steps.</p><p>$$14 + 19 \\times 3 = 14 + 57 = \\boxed{71}$$</p><p>The table makes the rule visible. The \\(n\\)th terrace holds the starting \\(14\\) plus \\(n - 1\\) copies of the step.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "How many vines grow on the hillside in total, across all \\(20\\) terraces?",
+    "ans": "850",
+    "accept": [
+     "850",
+     "850.0"
+    ],
+    "hints": [
+     "Pair the terraces from the outside in. The first with the last gives \\(14 + 71 = 85\\), the second with the second to last gives \\(17 + 68 = 85\\) again.",
+     "Twenty terraces form \\(10\\) such pairs."
+    ],
+    "sol": "<p>Pair the top terrace with the bottom one, the second with the second from the bottom, and so on. Every pair totals the same amount,</p><p>$$14 + 71 = 17 + 68 = \\cdots = 85$$</p><p>because each step inward adds \\(3\\) to one partner and removes \\(3\\) from the other. Ten pairs at \\(85\\) apiece give</p><p>$$10 \\times 85 = \\boxed{850}$$</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Small table, bold guess, honest check.</b> For growth patterns, compute the first few values and lay them in a table beside their positions. A steady step means the \\(n\\)th value is the start plus \\(n-1\\) steps, and totals surrender to pairing, where the ends of the list team up into identical sums. But a guessed rule is a suspect, not a verdict. Test it on a case you did not use to build it, or find the reason it works, before trusting it with position five hundred."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A fidget counter shows \\(3\\). Every button press changes the number by one rule. If the number is even, it is cut in half. If it is odd, \\(5\\) is added. So the display reads \\(3, 8, 4, 2, \\ldots\\) as presses go by. What number shows after the \\(99\\)th press, that is, as the \\(100\\)th number in the list counting the starting \\(3\\)?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Keep pressing. The list runs \\(3, 8, 4, 2, 1, 6\\) and then returns to \\(3\\), so it loops every \\(6\\) numbers.",
+     "Since \\(100 = 16 \\times 6 + 4\\), the \\(100\\)th number sits at the fourth spot of the loop."
+    ],
+    "sol": "<p>Following the rule, \\(3 \\to 8 \\to 4 \\to 2 \\to 1 \\to 6 \\to 3\\), and the display is trapped in a loop of six numbers, \\(3, 8, 4, 2, 1, 6\\).</p><p>With \\(100 = 16 \\times 6 + 4\\), the \\(100\\)th number is the fourth member of the loop.</p><p>$$\\boxed{2}$$</p><p>Iteration problems almost always fall into a loop, because a rule with limited outputs must eventually revisit a number, and from there history repeats exactly.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A drummer warms up in bursts. The first burst is \\(1\\) beat, the second is \\(3\\) beats, the third is \\(5\\) beats, each burst two beats longer than the last. Compute the total beats after one burst, after two, after three, and after four, and stare at those totals. Then find the total number of beats after the \\(20\\)th burst.",
+    "ans": "400",
+    "accept": [
+     "400",
+     "400.0"
+    ],
+    "hints": [
+     "The running totals are \\(1, 4, 9, 16, \\ldots\\), which are perfect squares.",
+     "After \\(n\\) bursts the total is \\(n^2\\), so evaluate \\(20^2\\)."
+    ],
+    "sol": "<p>The totals march \\(1, 4, 9, 16\\), the perfect squares. The guess is that \\(n\\) bursts total \\(n^2\\) beats, and a fifth case confirms it, \\(16 + 9 = 25\\).</p><p>$$20^2 = \\boxed{400}$$</p><p>The reason is worth keeping. Each new odd burst wraps one more L-shaped shell around a square of dots, growing it to the next square, as the picture in the next insight shows.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Patterns can hide squares.</b> The sum \\(1 + 3 + 5 + \\cdots\\) of the first \\(n\\) odd numbers is always \\(n^2\\), and the picture explains why. Start with one dot. Adding \\(3\\) dots in an L shape makes a \\(2 \\times 2\\) square, adding \\(5\\) more makes \\(3 \\times 3\\), and every next odd number is exactly the shell needed to reach the next square. A pattern earns full trust only when a reason like this stands behind it. The table finds the rhythm, the reason locks it in.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a four by four square of dots built shell by shell, adding 1 then 3 then 5 then 7 dots\"><circle cx=\"95\" cy=\"178\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"137\" cy=\"178\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"95\" cy=\"136\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"137\" cy=\"136\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"179\" cy=\"178\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"95\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"179\" cy=\"136\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"137\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"179\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"221\" cy=\"178\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"95\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"136\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"137\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"94\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"179\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><text x=\"175\" y=\"225\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">1 + 3 + 5 + 7 = 16</text></svg></div>"
+   },
+   {
+    "t": "fact",
+    "x": "Patterns without reasons can betray you. Place dots on a circle and connect every pair. The regions inside count \\(1, 2, 4, 8, 16\\), and nearly everyone bets the sixth dot gives \\(32\\). It gives \\(31\\). The pattern was a coincidence wearing a costume, which is why solvers always hunt for the why."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Two neon signs are switched on at the same moment. One flashes every \\(6\\) seconds, the other every \\(10\\) seconds. Over the next \\(3\\) minutes after switch-on, how many more times will the two signs flash at exactly the same moment?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "The joint flashes are themselves a repeating pattern. They happen at times that are multiples of both \\(6\\) and \\(10\\), and the first is at the least common multiple.",
+     "Shared flashes come every \\(30\\) seconds, and \\(3\\) minutes holds \\(180\\) seconds."
+    ],
+    "sol": "<p>A shared flash needs a time that is a multiple of \\(6\\) and of \\(10\\) at once, and the smallest is \\(\\text{lcm}(6,10) = 30\\). So the signs align every \\(30\\) seconds, at \\(30, 60, 90, 120, 150,\\) and \\(180\\) seconds.</p><p>$$180 \\div 30 = \\boxed{6}$$</p><p>Two separate rhythms always merge into one bigger rhythm, and its length is their least common multiple, an old friend from the divisibility chapter.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>The pattern hunter's routine.</b> Every problem in this lesson fell to the same four moves. Compute small cases, arrange them in a list or table, name the rhythm, then find the reason it must continue. After that, remainders locate positions inside loops, steps and pairings measure growing lists, and least common multiples merge rhythms. The routine matters more than any single answer, because it turns a problem you cannot finish by hand into one you can finish in your head."
+   }
+  ],
+  "review": [
+   {
+    "x": "A road-trip playlist of \\(8\\) songs plays on repeat without shuffle. Counting from the very first play, which song number is the \\(75\\)th song played?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Divide \\(75\\) by \\(8\\) and use the remainder to locate the spot inside the current pass."
+    ],
+    "sol": "<p>Since \\(75 = 9 \\times 8 + 3\\), nine full passes finish and the \\(75\\)th play is the third song of the next pass, song \\(\\boxed{3}\\).</p>"
+   },
+   {
+    "x": "A scarf is knitted in a repeating band of \\(12\\) rows, \\(5\\) blue rows followed by \\(7\\) white rows. Among the first \\(400\\) rows, how many are blue?",
+    "ans": "169",
+    "accept": [
+     "169",
+     "169.0"
+    ],
+    "hints": [
+     "Count full bands first, using \\(400 = 33 \\times 12 + 4\\).",
+     "The \\(4\\) leftover rows begin a new band, and a band begins with blue rows."
+    ],
+    "sol": "<p>There are \\(33\\) complete bands, each with \\(5\\) blue rows, for \\(165\\). The \\(4\\) leftover rows are the start of a new band, and the first \\(5\\) rows of any band are blue, so all \\(4\\) leftovers are blue.</p><p>$$165 + 4 = \\boxed{169}$$</p>"
+   },
+   {
+    "x": "What is the ones digit of \\(9^{55}\\)?",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine"
+    ],
+    "hints": [
+     "The ones digits of powers of \\(9\\) alternate, \\(9, 1, 9, 1, \\ldots\\), a loop of length \\(2\\)."
+    ],
+    "sol": "<p>Odd powers of \\(9\\) end in \\(9\\) and even powers end in \\(1\\). Since \\(55\\) is odd, \\(9^{55}\\) ends in \\(\\boxed{9}\\).</p>"
+   },
+   {
+    "x": "What is the ones digit of \\(4^{100}\\)?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Powers of \\(4\\) end \\(4, 6, 4, 6, \\ldots\\), flipping with each step."
+    ],
+    "sol": "<p>The ones digit alternates, \\(4\\) for odd exponents and \\(6\\) for even ones. The exponent \\(100\\) is even, so the digit is \\(\\boxed{6}\\).</p>"
+   },
+   {
+    "x": "A charm bracelet design puts \\(7\\) charms on the first strand, and every following strand carries \\(4\\) more charms than the one before. How many charms are on the \\(15\\)th strand?",
+    "ans": "63",
+    "accept": [
+     "63",
+     "63.0",
+     "sixty three",
+     "sixty-three"
+    ],
+    "hints": [
+     "Reaching the \\(15\\)th strand takes \\(14\\) steps of \\(+4\\) from the first."
+    ],
+    "sol": "<p>Fourteen steps of \\(4\\) sit between the first and fifteenth strands,</p><p>$$7 + 14 \\times 4 = 7 + 56 = \\boxed{63}$$</p>"
+   },
+   {
+    "x": "A brick staircase has \\(30\\) rows. The top row uses \\(5\\) bricks, and each row below uses \\(2\\) more bricks than the row above. How many bricks does the whole staircase use?",
+    "ans": "1020",
+    "accept": [
+     "1020",
+     "1020.0",
+     "1,020"
+    ],
+    "hints": [
+     "First find the bottom row, \\(5 + 29 \\times 2 = 63\\) bricks.",
+     "Pair the rows from the outside in. Each pair totals \\(5 + 63 = 68\\), and \\(30\\) rows make \\(15\\) pairs."
+    ],
+    "sol": "<p>The bottom row holds \\(5 + 29 \\times 2 = 63\\) bricks. Pairing the top row with the bottom, the second with the second from the bottom, and so on gives \\(15\\) pairs, each totaling \\(68\\).</p><p>$$15 \\times 68 = \\boxed{1020}$$</p>"
+   },
+   {
+    "x": "A game screen starts at \\(6\\) and updates with every tap. If the number on screen is less than \\(20\\), it doubles. Otherwise, \\(15\\) is subtracted. Counting the starting \\(6\\) as the first number, what is the \\(50\\)th number to appear?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Generate terms until the screen repeats. The list runs \\(6, 12, 24, 9, 18, 36, 21\\) and then returns to \\(6\\), a loop of \\(7\\).",
+     "Use \\(50 = 7 \\times 7 + 1\\), so the \\(50\\)th number sits at the loop's first spot."
+    ],
+    "sol": "<p>The screen cycles through \\(6, 12, 24, 9, 18, 36, 21\\) and then repeats, a loop of length \\(7\\).</p><p>Since \\(50 = 7 \\times 7 + 1\\), the \\(50\\)th number is the first member of the loop, \\(\\boxed{6}\\).</p>"
+   },
+   {
+    "x": "Adding consecutive odd numbers starting from \\(1\\), a student reaches a total of exactly \\(225\\). How many odd numbers did the student add?",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "The sum of the first \\(n\\) odd numbers is \\(n^2\\), so ask which square equals \\(225\\)."
+    ],
+    "sol": "<p>The running totals of odd numbers are the perfect squares, so the student stopped when \\(n^2 = 225\\), that is \\(n = \\boxed{15}\\).</p>"
+   },
+   {
+    "x": "Two meshed gears have \\(8\\) teeth and \\(14\\) teeth, and a paint mark sits where they currently touch. As they spin, the marks meet again only after a whole number of teeth have passed on both gears. How many full turns does the small gear make before the two marks first line up again?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "The marks realign after a number of teeth that both gear sizes divide, the least common multiple of \\(8\\) and \\(14\\).",
+     "That is \\(56\\) teeth. Convert it into turns of the \\(8\\)-tooth gear."
+    ],
+    "sol": "<p>The meeting point must be a multiple of both \\(8\\) and \\(14\\), and \\(\\text{lcm}(8, 14) = 56\\) teeth. The small gear completes</p><p>$$56 \\div 8 = \\boxed{7}$$</p><p>full turns. The big gear makes \\(4\\), and the rhythms reunite.</p>"
+   },
+   {
+    "x": "Using the ones-digit loops of \\(3\\) and \\(7\\), find the ones digit of \\(3^{43} + 7^{43}\\).",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero"
+    ],
+    "hints": [
+     "From the lesson, \\(3^{43}\\) ends in \\(7\\). Run the same remainder argument on \\(7^{43}\\) with its loop \\(7, 9, 3, 1\\).",
+     "Add the two ones digits, and the ones digit of the sum is what remains after any carry."
+    ],
+    "sol": "<p>Both loops have length \\(4\\), and \\(43\\) leaves remainder \\(3\\), landing on the third spot of each. So \\(3^{43}\\) ends in \\(7\\) and \\(7^{43}\\) ends in \\(3\\).</p><p>The sum therefore ends the way \\(7 + 3 = 10\\) ends, in \\(\\boxed{0}\\).</p><p>Two enormous towers, one shared remainder, and a carry that wipes the digit to zero. That is the pattern strategy running at full power.</p>"
+   }
+  ]
+ }
+}
