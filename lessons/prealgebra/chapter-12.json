@@ -660,5 +660,318 @@
     "sol": "<p>Case on tens. With two tens, \\(5\\) gems remain, allowing zero or one five, \\(2\\) ways. With one ten, \\(15\\) remain, allowing zero through three fives, \\(4\\) ways. With no tens, \\(25\\) remain, allowing zero through five fives, \\(6\\) ways.</p><p>$$2 + 4 + 6 = \\boxed{12}$$</p><p>The singles are the silent partner. They mop up any remainder in exactly one way, so the whole count lives in the tens and fives.</p>"
    }
   ]
+ },
+ "12.3": {
+  "title": "Draw a Picture",
+  "next": "12.4",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Some problems arrive as a wall of words, and the words are designed to tangle you. The strongest first move is often not a calculation at all. It is a sketch. A path becomes a map, a schedule becomes a timeline, a set of clues becomes dots and arrows, and suddenly the answer is sitting in plain sight. This lesson is about drawing your way past the tangle."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "On a straight boardwalk, the ice cream stand is \\(40\\) meters east of the pier, and the arcade is \\(25\\) meters west of the ice cream stand. Sketch the boardwalk as a line. How many meters is the arcade from the pier?",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "Mark the pier, step \\(40\\) east to the ice cream stand, then step \\(25\\) back west for the arcade."
+    ],
+    "sol": "<p>On the sketch, the arcade lands \\(40 - 25 = 15\\) meters east of the pier.</p><p>$$\\boxed{15}$$</p><p>Without the line, east and west blur together. With it, the subtraction draws itself.</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A park drone takes off, flies \\(9\\) blocks east, \\(2\\) blocks north, \\(3\\) blocks west, and \\(6\\) blocks north, then lands. Sketch the flight, then find the straight-line distance in blocks from takeoff to landing.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Total the east-west motion and the north-south motion separately. The wandering collapses to one net east amount and one net north amount.",
+     "Net \\(6\\) east and net \\(8\\) north are the legs of a right triangle, and the straight-line distance is its hypotenuse."
+    ],
+    "sol": "<p>East-west movement nets to \\(9 - 3 = 6\\) blocks east, and north-south nets to \\(2 + 6 = 8\\) blocks north. On the sketch, takeoff and landing sit at two corners of a right triangle with legs \\(6\\) and \\(8\\).</p><p>$$d^2 = 6^2 + 8^2 = 100, \\qquad d = \\boxed{10}$$</p><p>Four legs of flying, one triangle, and the Pythagorean Theorem from the geometry chapter finishes it.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Turn wandering into a map.</b> However tangled a journey sounds, its east-west steps combine into one net east-west amount, and its north-south steps into one net north-south amount, because opposite directions cancel. Drawn on a grid, the whole trip collapses into a single right triangle, and the straight-line distance is just its hypotenuse. The picture does the bookkeeping that words make slippery.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 260\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a wandering path collapsed into one right triangle\"><path d=\"M50,210 L158,210 L158,186 L122,186 L122,114\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2.6\" stroke-linejoin=\"round\"/><circle cx=\"50\" cy=\"210\" r=\"5\" fill=\"#2f4a6e\"/><circle cx=\"122\" cy=\"114\" r=\"5\" fill=\"#8a5a08\"/><path d=\"M50,222 L122,222\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M134,210 L134,114\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M50,210 L122,114\" fill=\"none\" stroke=\"#8a5a08\" stroke-width=\"2.2\" stroke-dasharray=\"6 4\"/><text x=\"86\" y=\"240\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">net 6 east</text><text x=\"163\" y=\"162\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">net 8 north</text><text x=\"64\" y=\"150\" font-size=\"13\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">10</text></svg></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A claw crane lifts a prize \\(7\\) cm with each press of the button, but between presses the prize slips back \\(3\\) cm. The prize must rise \\(25\\) cm to clear the bin wall, and once it clears, it is out, no more slipping. Draw the height after each press. How many presses does it take?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Track the peak height at each press. Press one peaks at \\(7\\), then each later press peaks \\(4\\) higher than the last, since \\(7\\) up and \\(3\\) back gain \\(4\\) per full cycle.",
+     "The story ends the moment a peak reaches \\(25\\). Do not subtract the slip after the winning press."
+    ],
+    "sol": "<p>The peaks climb \\(7, 11, 15, 19, 23, 27\\), each press peaking \\(4\\) above the last.</p><p>The fifth press peaks at \\(23\\), still short. The sixth press peaks at \\(27\\), past the \\(25\\) cm wall, and the prize is out before any slip can happen.</p><p>$$\\boxed{6}$$</p><p>The tempting shortcut, divide \\(25\\) by the net gain of \\(4\\), misses that the final press never gives back its \\(3\\) cm. The drawing catches what the formula fumbles.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Respect the finish line.</b> Progress that gains and gives back, climbing and slipping, filling and leaking, charging and draining, is a timeline problem, and timelines end early. The last step counts in full, with nothing given back, because the story stops at the goal. Sketch the level after every step and circle the first moment the goal line is crossed. Averages and net rates describe the middle of the journey, never its end."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Four swimmers line up for a relay in positions \\(1\\) through \\(4\\). Kai swims immediately after Lena. Mira swims somewhere before Lena. Jo does not swim first, and Jo swims somewhere before Kai. Draw four slots and place the swimmers. Which position does Jo swim?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Kai immediately after Lena glues them into a block, Lena then Kai. Try the block in positions \\(2\\)-\\(3\\) and \\(3\\)-\\(4\\), since Mira must fit before Lena.",
+     "If Lena and Kai take \\(2\\) and \\(3\\), the only slot before Kai that is not first is taken by Lena. Push the block later and see what opens up."
+    ],
+    "sol": "<p>Glue Lena and Kai into a block. If the block sits at positions \\(2\\) and \\(3\\), then Mira takes \\(1\\), and Jo needs a slot before Kai that is not position \\(1\\), but position \\(2\\) is Lena's. Dead end.</p><p>So the block sits at \\(3\\) and \\(4\\). Mira must come before Lena, and Jo cannot be first, so Mira takes \\(1\\) and Jo takes \\(2\\). Every clue checks out with the order Mira, Jo, Lena, Kai.</p><p>$$\\boxed{2}$$</p><p>Drawing the four slots makes each clue a physical constraint you can test in seconds, instead of a sentence you have to keep rereading.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Clues become a picture of a line.</b> Ordering puzzles are pictures waiting to happen. Draw the finishing slots, turn each clue into an arrow or a glued block, and place the most restrictive piece first, exactly like the tightest condition rule from the organized-list lesson. A wrong placement collides with a clue almost immediately, and each collision eliminates a whole branch of possibilities. The sketch is doing casework for you."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A baker slices a baguette into \\(9\\) pieces, and each cut takes \\(30\\) seconds. Sketch the baguette with its cut marks. How many minutes does the slicing take?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "Draw the loaf and mark the cuts. Nine pieces need one fewer cut than pieces."
+    ],
+    "sol": "<p>The sketch shows \\(8\\) cut marks producing \\(9\\) pieces, since each cut adds exactly one piece to the count.</p><p>$$8 \\times 30 = 240 \\text{ seconds} = \\boxed{4} \\text{ minutes}$$</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Two boards, each \\(30\\) cm long, are glued together with an \\(8\\) cm overlap to make one longer shelf. Draw the two boards overlapping. How many centimeters long is the shelf?",
+    "ans": "52",
+    "accept": [
+     "52",
+     "52.0",
+     "fifty two",
+     "fifty-two"
+    ],
+    "hints": [
+     "Laid end to end they would span \\(60\\) cm, but the overlapped stretch was counted twice, once inside each board."
+    ],
+    "sol": "<p>End to end, the boards would cover \\(30 + 30 = 60\\) cm, but the drawing shows the \\(8\\) cm overlap belonging to both boards at once, so it was counted twice.</p><p>$$60 - 8 = \\boxed{52}$$</p>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A straight garden path is \\(180\\) meters long, with a lamp at each end and lamps every \\(15\\) meters in between. Draw dots for lamps. How many lamps line the path?",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "Count gaps first. The path holds \\(180 \\div 15 = 12\\) gaps.",
+     "Dots outnumber the gaps between them by exactly one."
+    ],
+    "sol": "<p>The path divides into \\(180 \\div 15 = 12\\) gaps, and the drawing shows one more lamp than gaps, since both ends hold a lamp.</p><p>$$12 + 1 = \\boxed{13}$$</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Count the gaps, not the things.</b> Cuts, gaps, overlaps, and fences all hide the same off-by-one trap, and one tiny drawing disarms it. Pieces outnumber cuts by one. Lamps outnumber the gaps between them by one. An overlap is length counted twice, so subtract it once. None of these need a formula memorized, because five dots on scratch paper settle the question instantly, and they settle it the right way every time.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"five dots in a row with four gaps between them\"><path d=\"M40,60 L300,60\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"105\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"170\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"235\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"300\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><text x=\"72\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">1</text><text x=\"137\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">2</text><text x=\"202\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">3</text><text x=\"267\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">4</text><text x=\"170\" y=\"100\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">5 lamps, only 4 gaps</text></svg></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 340 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"five islands connected by ferry routes\"><path d=\"M70,60 L250,50 M250,50 L160,130 M160,130 L70,60 M160,130 L90,200 M90,200 L260,200\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2.4\"/><circle cx=\"70\" cy=\"60\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"250\" cy=\"50\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"160\" cy=\"130\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"90\" cy=\"200\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"260\" cy=\"200\" r=\"9\" fill=\"#8a5a08\"/><text x=\"70\" y=\"40\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">Coral</text><text x=\"250\" y=\"30\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Palm</text><text x=\"192\" y=\"136\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Bell</text><text x=\"90\" y=\"228\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Drift</text><text x=\"260\" y=\"228\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">Ebb</text></svg></div>Five islands are served by ferries running both directions on these routes only. Coral to Palm, Palm to Bell, Bell to Coral, Bell to Drift, and Drift to Ebb. What is the smallest number of ferry rides that gets a traveler from Coral to Ebb?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Only Drift connects to Ebb, so any trip to Ebb must arrive through Drift.",
+     "Find the fastest way from Coral to Drift, then add the final ride."
+    ],
+    "sol": "<p>On the drawing, Ebb hangs off the network by a single route from Drift, so the last ride is forced. The question becomes reaching Drift quickly.</p><p>Drift connects only to Bell, and Coral reaches Bell directly. So Coral to Bell to Drift to Ebb uses three rides, and nothing shorter exists, since no single route touches both Coral and Drift or both Coral and Ebb.</p><p>$$\\boxed{3}$$</p><p>A route list is fog. The same list drawn as dots and lines is a map you can walk with a finger.</p>"
+   },
+   {
+    "t": "fact",
+    "x": "Drawing dots and lines for a connection puzzle has a birthday. In \\(1736\\), the city of Konigsberg wondered whether a stroll could cross each of its seven bridges exactly once. Euler drew the land masses as dots and the bridges as lines, proved the stroll impossible, and accidentally founded graph theory, the mathematics behind every map app you have ever used."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 340 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a circle cut by three chords into seven regions\"><circle cx=\"170\" cy=\"115\" r=\"88\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\"/><path d=\"M92,74 L252,142 M100,160 L242,60 M128,196 L222,34\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"170\" y=\"226\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">3 chords, 7 regions</text></svg></div>A straight chord drawn across a circle splits it into \\(2\\) regions. Two chords can make as many as \\(4\\) regions, and three chords, drawn so every pair crosses inside the circle at a fresh point, make \\(7\\), as shown above. Keep drawing and counting. What is the greatest number of regions five chords can make?",
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen"
+    ],
+    "hints": [
+     "List the maximum counts so far, \\(2, 4, 7\\), and look at the jumps between them. Each new chord adds one more region than the chord before it added.",
+     "The jumps run \\(2, 3, 4, 5\\), so the fourth chord brings the count to \\(11\\), and the fifth continues the pattern."
+    ],
+    "sol": "<p>The counts climb \\(2, 4, 7\\), with jumps of \\(2\\), then \\(3\\). The drawing explains the jumps. A new chord crossing \\(k\\) old chords passes through \\(k + 1\\) regions and splits each one, so drawing every chord to cross all previous chords makes the fourth chord add \\(4\\) and the fifth add \\(5\\).</p><p>$$2, \\; 4, \\; 7, \\; 11, \\; \\boxed{16}$$</p><p>The picture generated the small cases, the pattern lesson extended them, and the crossing argument supplied the reason. Three tools from this toolkit, one problem.</p>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Draw small, then trust the count.</b> A sketch is more than a tiebreaker for confusing words. It is an engine for small cases. Draw the one-chord picture, the two-chord picture, the three-chord picture, and the numbers you harvest feed straight into the pattern strategy, while an organized list keeps the harvest tidy. The toolkit works as a team, and the pencil sketch is very often the member that goes first."
+   }
+  ],
+  "review": [
+   {
+    "x": "A parade float rolls \\(12\\) blocks west, \\(5\\) blocks north, and \\(12\\) blocks east. Sketch the route. How many blocks is the float from where it started?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "The west and east legs cancel completely on the sketch."
+    ],
+    "sol": "<p>West \\(12\\) and east \\(12\\) cancel, leaving only the \\(5\\) blocks north.</p><p>$$\\boxed{5}$$</p>"
+   },
+   {
+    "x": "A kayaker paddles \\(9\\) km east, \\(4\\) km west, and \\(12\\) km north. Find the straight-line distance in km back to the launch point.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "Net the east-west motion first, \\(9 - 4 = 5\\) km east.",
+     "Legs of \\(5\\) and \\(12\\) make a familiar right triangle."
+    ],
+    "sol": "<p>The trip nets to \\(5\\) km east and \\(12\\) km north, a right triangle with hypotenuse</p><p>$$\\sqrt{5^2 + 12^2} = \\sqrt{169} = \\boxed{13}$$</p>"
+   },
+   {
+    "x": "In an elevator game, each round moves the marker up \\(6\\) floors and then back down \\(2\\). The marker starts at floor \\(0\\) and wins the moment it touches floor \\(22\\), even mid-round. Draw the floor level round by round. In which round does the marker win?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "The peaks climb \\(6, 10, 14, 18, 22\\), gaining \\(4\\) per round.",
+     "Winning happens at a peak, before the drop back."
+    ],
+    "sol": "<p>The round peaks run \\(6, 10, 14, 18, 22\\). The fifth peak touches \\(22\\) exactly, and the game ends there, no slide back.</p><p>$$\\boxed{5}$$</p>"
+   },
+   {
+    "x": "Four friends finish a race. Nia beats Owen. Pia finishes immediately behind Nia. Owen does not finish last. Quinn is also racing. Draw the four finishing slots. In which place does Owen finish?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Nia and Pia form a glued block, Nia then Pia. Try the block starting at position \\(1\\), then position \\(2\\).",
+     "If the block starts at \\(2\\), Owen must beat no one but still avoid last place. Check whether any slot works."
+    ],
+    "sol": "<p>With the Nia-Pia block at positions \\(1\\) and \\(2\\), Owen must finish after Nia but not last, which forces Owen into \\(3\\) and Quinn into \\(4\\). With the block at \\(2\\) and \\(3\\), Owen would have to take \\(4\\), which the clue forbids. So the order is Nia, Pia, Owen, Quinn.</p><p>$$\\boxed{3}$$</p>"
+   },
+   {
+    "x": "A jeweler cuts a long chain into \\(6\\) sections, and each cut takes \\(2\\) minutes. How many minutes does the job take?",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Sketch the chain. Six sections need one fewer cut than sections."
+    ],
+    "sol": "<p>Six sections come from \\(5\\) cuts, and \\(5 \\times 2 = \\boxed{10}\\) minutes.</p>"
+   },
+   {
+    "x": "Twenty-five trees stand in a straight row with equal gaps of \\(6\\) meters between neighbors. How many meters is it from the first tree to the last?",
+    "ans": "144",
+    "accept": [
+     "144",
+     "144.0"
+    ],
+    "hints": [
+     "Dots first. Twenty-five trees make \\(24\\) gaps, and the distance lives in the gaps."
+    ],
+    "sol": "<p>Between \\(25\\) trees sit \\(24\\) gaps of \\(6\\) meters each,</p><p>$$24 \\times 6 = \\boxed{144}$$</p>"
+   },
+   {
+    "x": "Two boards, each \\(45\\) cm long, are joined with an overlap to form a shelf \\(78\\) cm long. Draw the boards. How many centimeters long is the overlap?",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "End to end the boards would span \\(90\\) cm. The drawing shows the missing length is exactly the doubled-up part."
+    ],
+    "sol": "<p>Without overlap the boards would span \\(90\\) cm, and the shelf lost \\(90 - 78 = 12\\) cm to the doubled section.</p><p>$$\\boxed{12}$$</p>"
+   },
+   {
+    "x": "A subway map lists these two-way lines between six stations. A to B, B to C, C to D, D to E, B to E, and E to F. Draw the network. What is the least number of rides from A to F?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Only E connects to F, so plan the fastest route to E.",
+     "B connects straight to E, and A connects straight to B."
+    ],
+    "sol": "<p>The drawing shows F hanging off station E alone. The quickest way to E from A is A to B, then the direct B to E line, and then E to F.</p><p>$$\\boxed{3}$$</p><p>The B to E shortcut is nearly invisible in the written list and impossible to miss in the picture.</p>"
+   },
+   {
+    "x": "Continuing the circle-and-chords pattern from the lesson, what is the greatest number of regions six chords can create?",
+    "ans": "22",
+    "accept": [
+     "22",
+     "22.0",
+     "twenty two",
+     "twenty-two"
+    ],
+    "hints": [
+     "The counts run \\(2, 4, 7, 11, 16\\), with each new chord adding one more than the last, so the sixth chord adds \\(6\\)."
+    ],
+    "sol": "<p>The jumps climb \\(2, 3, 4, 5, 6\\), so six chords reach</p><p>$$16 + 6 = \\boxed{22}$$</p>"
+   },
+   {
+    "x": "A rectangular garden plot measures \\(50\\) meters by \\(30\\) meters. A gardener plants a flag at one corner and then every \\(10\\) meters around the entire perimeter. How many flags get planted?",
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen"
+    ],
+    "hints": [
+     "First find the perimeter, then count \\(10\\) meter gaps around it.",
+     "The path is a closed loop, not a line. On a loop, the last gap closes back onto the very first flag, so flags equal gaps exactly."
+    ],
+    "sol": "<p>The perimeter is \\(2(50 + 30) = 160\\) meters, which splits into \\(160 \\div 10 = 16\\) gaps.</p><p>On a straight path, flags would outnumber gaps by one. But this path is a loop, and the drawing shows the sixteenth gap ending exactly where the first flag already stands.</p><p>$$\\boxed{16}$$</p><p>Line or loop is the whole question in fencepost problems, and a quick sketch answers it before the off-by-one error gets a chance.</p>"
+   }
+  ]
  }
 }
