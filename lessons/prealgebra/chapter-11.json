@@ -3270,5 +3270,344 @@
     "sol": "By the theorem, \\(c^2 = 81 + 81 = 162\\). The shortcut agrees, since \\((9\\sqrt{2})^2 = 162\\). The answer is \\(\\boxed{162}\\)."
    }
   ]
+ },
+ "11.10": {
+  "title": "Families of Quadrilaterals",
+  "next": "12.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Four-sided shapes come in a whole zoo of varieties, and mathematicians sort them the way biologists sort animals, into families defined by shared traits. Parallel sides, equal sides, right angles. Every member inherits its family's properties for free. In this lesson you will earn each membership card by experiment, starting with a toy you can build from four rods and four bolts."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 350 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a hinged frame of four rods leaning from a rectangle into a parallelogram\"><path d=\"M70,200 L230,200 L230,80 L70,80 Z\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"1.6\" stroke-dasharray=\"6 5\"/><path d=\"M70,200 L230,200 L280,80 L120,80 Z\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/><circle cx=\"70\" cy=\"200\" r=\"4.5\" fill=\"#2f4a6e\"/><circle cx=\"230\" cy=\"200\" r=\"4.5\" fill=\"#2f4a6e\"/><circle cx=\"280\" cy=\"80\" r=\"4.5\" fill=\"#2f4a6e\"/><circle cx=\"120\" cy=\"80\" r=\"4.5\" fill=\"#2f4a6e\"/><path d=\"M243,66 L273,66 L265,58 M273,66 L265,74\" fill=\"none\" stroke=\"#8a5a08\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"150\" y=\"222\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">8</text><text x=\"83\" y=\"140\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">5</text><text x=\"200\" y=\"66\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">8</text><text x=\"269\" y=\"146\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">5</text></svg></div>A picture frame is built from two \\(8\\) inch rods and two \\(5\\) inch rods, hinged loosely at the corners. Push on one corner and the rectangle leans into the slanted shape above, then leans further with another push. The angles keep changing. What is the perimeter of the leaning shape, in inches?",
+    "ans": "26",
+    "accept": [
+     "26",
+     "26.0",
+     "twenty six",
+     "twenty-six"
+    ],
+    "hints": [
+     "Leaning the frame does not change the rods, only the angles at the hinges.",
+     "Add up the four rod lengths, \\(8 + 5 + 8 + 5\\)."
+    ],
+    "sol": "The rods themselves never stretch or shrink, so every leaning position has the same four sides. The perimeter is \\(8 + 5 + 8 + 5 = \\boxed{26}\\) inches."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "In one leaning position, the hinge at the bottom left of the frame reads \\(70\\) degrees. The bottom rod and the top rod stay parallel, and so do the two side rods. Using what you know about parallel lines, how many degrees is the angle at the bottom right hinge?",
+    "ans": "110",
+    "accept": [
+     "110",
+     "110.0"
+    ],
+    "hints": [
+     "The two side rods are parallel, and the bottom rod crosses both of them, so the two bottom angles are co-interior angles.",
+     "Co-interior angles between parallel lines add to \\(180\\) degrees."
+    ],
+    "sol": "The bottom rod is a transversal cutting the two parallel side rods, so the two bottom hinge angles are co-interior and add to \\(180\\) degrees. That leaves \\(180 - 70 = \\boxed{110}\\) degrees."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The parallelogram.</b> A quadrilateral with both pairs of opposite sides parallel is a parallelogram, and the hinged frame is one at every lean. Your two experiments found its family traits. Opposite sides stay equal, opposite angles stay equal, and neighboring angles always add to \\(180\\) degrees, because each side is a transversal crossing two parallel lines. Notice what the frame proves by wobbling. Being a parallelogram is about parallel sides, not about any particular angles, so one shape can lean through infinitely many parallelograms without ever leaving the family."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A parallelogram-shaped stencil has a base of \\(10\\) cm, slanted sides of \\(7\\) cm, and a height of \\(6\\) cm measured straight up from the base. Snip the overhanging triangle off one end and slide it across to plug the gap at the other end. The pieces form a rectangle. What is the stencil's area in square centimeters?",
+    "ans": "60",
+    "accept": [
+     "60",
+     "60.0",
+     "sixty"
+    ],
+    "hints": [
+     "The rectangle you build has the same base and the same height as the stencil.",
+     "A \\(10\\) by \\(6\\) rectangle has area \\(10 \\times 6\\)."
+    ],
+    "sol": "The snipped triangle fills the gap exactly, so no area is gained or lost. The rectangle measures \\(10\\) by \\(6\\), giving \\(10 \\times 6 = \\boxed{60}\\) square centimeters. The \\(7\\) cm slant never entered the calculation."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A solar panel shaped like a parallelogram has sides of \\(12\\) m and \\(5\\) m. The perpendicular distance between its two \\(12\\) m edges is \\(4\\) m. An installer multiplies \\(12 \\times 5 = 60\\) and quotes the area as \\(60\\) square meters. What is the actual area, in square meters?",
+    "ans": "48",
+    "accept": [
+     "48",
+     "48.0",
+     "forty eight",
+     "forty-eight"
+    ],
+    "hints": [
+     "Area needs the base times the height, and the height is the perpendicular distance, not the slanted side.",
+     "The base is \\(12\\) and the height is \\(4\\)."
+    ],
+    "sol": "The \\(5\\) m side is slanted, so it is longer than the true height of \\(4\\) m. The area is base times height, \\(12 \\times 4 = \\boxed{48}\\) square meters. The installer overquoted by \\(12\\) square meters."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Area of a parallelogram.</b> The snip-and-slide move turns any parallelogram into a rectangle with the same base \\(b\\) and the same height \\(h\\), so the area is \\(b \\times h\\). The height must be measured perpendicular to the base, straight across the gap between the parallel sides. The slanted side is a trap. It only agrees with the height when the shape is a genuine rectangle, and leaning the shape flatter makes the slant stay fixed while the true height shrinks toward zero.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"cutting a triangle from one end of a parallelogram and sliding it to the other end makes a rectangle\"><path d=\"M60,190 L240,190 L285,90 L105,90 Z\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/><path d=\"M60,190 L105,190 L105,90 Z\" fill=\"#c8d9f2\" stroke=\"#2f4a6e\" stroke-width=\"1.6\"/><path d=\"M240,190 L285,190 L285,90 Z\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.6\" stroke-dasharray=\"5 4\"/><path d=\"M117,90 L117,102 L105,102\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.4\"/><path d=\"M150,60 L230,60 L222,52 M230,60 L222,68\" fill=\"none\" stroke=\"#8a5a08\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"172\" y=\"212\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">b</text><text x=\"93\" y=\"145\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">h</text></svg></div>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 350 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a rhombus drawn from its two diagonals inside a dashed rectangle\"><path d=\"M85,60 L265,60 L265,195 L85,195 Z\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"1.6\" stroke-dasharray=\"6 5\"/><path d=\"M175,60 L265,127.5 L175,195 L85,127.5 Z\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/><path d=\"M85,127.5 L265,127.5 M175,60 L175,195\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.6\"/><path d=\"M175,115.5 L187,115.5 L187,127.5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.4\"/><text x=\"130\" y=\"122\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">12</text><text x=\"188\" y=\"82\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">9</text></svg></div>A club logo is drawn by marking a horizontal segment of length \\(12\\) and a vertical segment of length \\(9\\) that cross at each other's midpoints, then connecting the four endpoints. The result is the rhombus above, a quadrilateral with four equal sides. It sits inside a dashed \\(12\\) by \\(9\\) rectangle, and in each quarter of that rectangle the logo covers exactly half. What is the area of the logo?",
+    "ans": "54",
+    "accept": [
+     "54",
+     "54.0",
+     "fifty four",
+     "fifty-four"
+    ],
+    "hints": [
+     "The dashed rectangle has area \\(12 \\times 9 = 108\\).",
+     "Each quarter-rectangle is cut along its diagonal, so the logo takes exactly half of the whole rectangle."
+    ],
+    "sol": "In each quarter of the bounding rectangle, one side of the logo is a diagonal, splitting that quarter in half. Half of \\(12 \\times 9 = 108\\) is \\(\\boxed{54}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A rhombus-shaped garden plot has an area of \\(40\\) square feet. One diagonal measures \\(10\\) feet. Using the pattern you just discovered, how many feet long is the other diagonal?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "A rhombus fills half its bounding rectangle, so area \\(=\\) (diagonal \\(\\times\\) diagonal) \\(\\div\\, 2\\).",
+     "Solve \\(10 \\times d \\div 2 = 40\\)."
+    ],
+    "sol": "The diagonals multiply to twice the area, \\(10 \\times d = 80\\), so \\(d = \\boxed{8}\\) feet."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A highway warning sign is a rhombus with diagonals of \\(12\\) inches and \\(16\\) inches. The diagonals cross at right angles at their midpoints, cutting the sign into four identical right triangles. Use one of those triangles and the Pythagorean Theorem to find the side length of the sign, in inches.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Each right triangle has legs equal to half of each diagonal, \\(6\\) and \\(8\\).",
+     "Find the hypotenuse of a \\(6\\)-\\(8\\) right triangle."
+    ],
+    "sol": "Half-diagonals of \\(6\\) and \\(8\\) form the legs, and the sign's side is the hypotenuse. Since \\(6^2 + 8^2 = 36 + 64 = 100\\), the side is \\(\\sqrt{100} = \\boxed{10}\\) inches."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The rhombus.</b> Four equal sides put a shape in the rhombus family, and its diagonals carry the family's secrets. They cross at right angles, they cut each other in half, and they split the rhombus into four matching right triangles. That structure hands you two tools at once. The area is half the product of the diagonals, \\(\\tfrac{1}{2} d_1 d_2\\), because the rhombus fills exactly half of the rectangle its diagonals span, and the side length always comes from the half-diagonals by the Pythagorean Theorem. Every rhombus is a parallelogram, so base times height still works too, whenever you happen to know a height."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A square napkin is folded once along its diagonal, and the crease measures \\(10\\) inches. A square is a rhombus whose diagonals are equal, so both diagonals of the napkin are \\(10\\). What is the napkin's area in square inches?",
+    "ans": "50",
+    "accept": [
+     "50",
+     "50.0",
+     "fifty"
+    ],
+    "hints": [
+     "Use the rhombus area tool with \\(d_1 = d_2 = 10\\).",
+     "Half of \\(10 \\times 10\\)."
+    ],
+    "sol": "With equal diagonals of \\(10\\), the rhombus tool gives \\(\\tfrac{1}{2} \\times 10 \\times 10 = \\boxed{50}\\) square inches. You met this napkin in the last lesson, where the side came out to \\(\\tfrac{10}{\\sqrt{2}}\\), and squaring that side gives the same \\(50\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The family tree.</b> Every experiment so far fits one picture. Start with any quadrilateral. Give it a pair of parallel sides and it joins the trapezoids. Make both pairs parallel and it is a parallelogram. From there, four right angles make a rectangle, four equal sides make a rhombus, and a shape that manages both at once is a square. Membership flows downward, so a square inherits every tool in this lesson, and it is a rectangle and a rhombus at the same time. Classification runs on properties, never on appearance.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 262\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"the family tree of quadrilaterals from quadrilateral down to square\"><path d=\"M175,33 L175,55 M175,85 L175,107 M175,137 L115,159 M175,137 L235,159 M115,189 L175,211 M235,189 L175,211\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2\"/><rect x=\"116.0\" y=\"3\" width=\"118\" height=\"30\" rx=\"9\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"175\" y=\"22.5\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Quadrilateral</text><rect x=\"121.0\" y=\"55\" width=\"108\" height=\"30\" rx=\"9\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"175\" y=\"74.5\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Trapezoid</text><rect x=\"111.0\" y=\"107\" width=\"128\" height=\"30\" rx=\"9\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"175\" y=\"126.5\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Parallelogram</text><rect x=\"65.0\" y=\"159\" width=\"100\" height=\"30\" rx=\"9\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"115\" y=\"178.5\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Rectangle</text><rect x=\"187.0\" y=\"159\" width=\"96\" height=\"30\" rx=\"9\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"235\" y=\"178.5\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Rhombus</text><rect x=\"133.0\" y=\"211\" width=\"84\" height=\"30\" rx=\"9\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"175\" y=\"230.5\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Square</text><text x=\"183\" y=\"48\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">a pair of parallel sides</text><text x=\"183\" y=\"100\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">both pairs parallel</text><text x=\"60\" y=\"150\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">right angles</text><text x=\"243\" y=\"150\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">equal sides</text><text x=\"183\" y=\"207\" font-size=\"9.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">both</text></svg></div>"
+   },
+   {
+    "t": "fact",
+    "x": "Scissor lifts, folding gates, and camera tripods are built from rhombus linkages. Because a rhombus keeps opposite sides parallel at every angle of squeeze, the platform on top stays perfectly level while the whole structure stretches and collapses underneath it."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 350 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"two identical trapezoid tiles, one flipped, joining into a parallelogram\"><path d=\"M55,185 L187,185 L156,117 L96,117 Z\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/><path d=\"M288,117 L156,117 L187,185 L247,185 Z\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.8\" stroke-dasharray=\"5 4\"/><path d=\"M96,117 L96,185 M96,173 L108,173 L108,185\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"1.4\" stroke-dasharray=\"4 3\"/><text x=\"121\" y=\"207\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">11</text><text x=\"126\" y=\"108\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">5</text><text x=\"84\" y=\"155\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">4</text></svg></div>A kitchen backsplash uses trapezoid tiles with parallel edges of \\(5\\) inches and \\(11\\) inches, set \\(4\\) inches apart. Tiles snap together in pairs, one flipped upside down as shown, forming a parallelogram. What is the area of that two-tile parallelogram, in square inches?",
+    "ans": "64",
+    "accept": [
+     "64",
+     "64.0",
+     "sixty four",
+     "sixty-four"
+    ],
+    "hints": [
+     "The flipped tile lays its \\(5\\) inch edge alongside the other tile's \\(11\\) inch edge, so the parallelogram's base is \\(5 + 11\\).",
+     "Base \\(16\\), height \\(4\\), area \\(= 16 \\times 4\\)."
+    ],
+    "sol": "Snapped together, the pair forms a parallelogram with base \\(5 + 11 = 16\\) and the same \\(4\\) inch height, so the area is \\(16 \\times 4 = \\boxed{64}\\) square inches."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "One single tile is half of that two-tile parallelogram. Check the shortcut on a bigger tile. A trapezoid window has parallel edges of \\(9\\) feet and \\(13\\) feet, set \\(6\\) feet apart. What is its area in square feet?",
+    "ans": "66",
+    "accept": [
+     "66",
+     "66.0",
+     "sixty six",
+     "sixty-six"
+    ],
+    "hints": [
+     "Two copies would form a parallelogram of base \\(9 + 13 = 22\\) and height \\(6\\), and the window is half of it.",
+     "Compute \\(\\tfrac{1}{2} \\times 22 \\times 6\\)."
+    ],
+    "sol": "Doubling the window gives a parallelogram of area \\(22 \\times 6 = 132\\), and one window is half of that, \\(\\tfrac{1}{2} \\times 132 = \\boxed{66}\\) square feet. In one line, area \\(= \\tfrac{1}{2}(9+13)(6)\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The trapezoid, and one formula to rule them all.</b> A trapezoid has one pair of parallel sides, its bases. Two identical copies, one flipped, always snap into a parallelogram whose base is the sum of the two bases, so a trapezoid's area is \\(\\tfrac{1}{2}(b_1 + b_2) \\times h\\), the height times the average of the bases. Watch it swallow the whole family. Set the bases equal and it becomes base times height for parallelograms, rectangles, and squares. One idea, discovered with a pair of kitchen tiles, measures every shape in the tree."
+   }
+  ],
+  "review": [
+   {
+    "x": "Here are four claims. (a) Every square is a rhombus. (b) Every rhombus is a square. (c) Every rectangle is a parallelogram. (d) A quadrilateral can have exactly three right angles. How many of the four claims are true?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Test each claim against the definitions. A square has four equal sides, and a rectangle has both pairs of opposite sides parallel.",
+     "For claim (d), remember the four angles of any quadrilateral add to \\(360\\) degrees, so three right angles force the fourth to be \\(360 - 270 = 90\\)."
+    ],
+    "sol": "(a) is true, a square's four equal sides make it a rhombus. (b) is false, a leaning rhombus has no right angles. (c) is true, right angles do not remove parallel sides. (d) is false, three right angles use up \\(270\\) degrees and the fourth must be \\(90\\), giving four right angles, never exactly three. That makes \\(\\boxed{2}\\) true claims."
+   },
+   {
+    "x": "One angle of a parallelogram measures \\(48\\) degrees. How many degrees is the largest angle of the parallelogram?",
+    "ans": "132",
+    "accept": [
+     "132",
+     "132.0"
+    ],
+    "hints": [
+     "Neighboring angles of a parallelogram add to \\(180\\) degrees.",
+     "The four angles come in two matched pairs, \\(48, 132, 48, 132\\)."
+    ],
+    "sol": "A neighbor of the \\(48\\) degree angle measures \\(180 - 48 = 132\\) degrees, and opposite angles repeat the pair. The largest is \\(\\boxed{132}\\)."
+   },
+   {
+    "x": "A rhombus has a perimeter of \\(52\\) cm, and one of its diagonals measures \\(24\\) cm. Use the four right triangles inside the rhombus to find the length of the other diagonal, in centimeters.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "The perimeter gives each side, \\(52 \\div 4 = 13\\), and half the known diagonal is \\(12\\).",
+     "Each inner right triangle has hypotenuse \\(13\\) and one leg \\(12\\). Find the other leg, then double it."
+    ],
+    "sol": "Each side is \\(52 \\div 4 = 13\\), and the half-diagonals are the legs of a right triangle with hypotenuse \\(13\\). One leg is \\(24 \\div 2 = 12\\), so the other satisfies \\(a^2 + 12^2 = 13^2\\), giving \\(a^2 = 169 - 144 = 25\\) and \\(a = 5\\). The full diagonal is \\(2 \\times 5 = \\boxed{10}\\) cm."
+   },
+   {
+    "x": "A stained-glass pane is a rhombus with diagonals of \\(14\\) inches and \\(6\\) inches. What is its area in square inches?",
+    "ans": "42",
+    "accept": [
+     "42",
+     "42.0",
+     "forty two",
+     "forty-two"
+    ],
+    "hints": [
+     "Area of a rhombus \\(= \\tfrac{1}{2} d_1 d_2\\)."
+    ],
+    "sol": "Half the product of the diagonals is \\(\\tfrac{1}{2} \\times 14 \\times 6 = \\boxed{42}\\) square inches."
+   },
+   {
+    "x": "A square coaster has a diagonal of \\(6\\) inches. What is its area in square inches?",
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0",
+     "eighteen"
+    ],
+    "hints": [
+     "A square is a rhombus with two equal diagonals, so use \\(\\tfrac{1}{2} d_1 d_2\\) with both diagonals \\(6\\)."
+    ],
+    "sol": "Treat the square as a rhombus with equal diagonals. Its area is \\(\\tfrac{1}{2} \\times 6 \\times 6 = \\boxed{18}\\) square inches, no side length needed."
+   },
+   {
+    "x": "A parallelogram-shaped field has an area of \\(91\\) square meters and a base of \\(13\\) meters. What is its height, in meters?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "Area \\(=\\) base \\(\\times\\) height, so height \\(=\\) area \\(\\div\\) base."
+    ],
+    "sol": "Height \\(= 91 \\div 13 = \\boxed{7}\\) meters."
+   },
+   {
+    "x": "The cross-section of a drainage channel is a trapezoid with parallel edges of \\(4\\) feet and \\(10\\) feet, set \\(5\\) feet apart. What is the area of the cross-section in square feet?",
+    "ans": "35",
+    "accept": [
+     "35",
+     "35.0",
+     "thirty five",
+     "thirty-five"
+    ],
+    "hints": [
+     "Average the bases, then multiply by the height.",
+     "\\(\\tfrac{1}{2}(4 + 10) \\times 5\\)."
+    ],
+    "sol": "The average base is \\(\\tfrac{4+10}{2} = 7\\), and \\(7 \\times 5 = \\boxed{35}\\) square feet."
+   },
+   {
+    "x": "A trapezoid banner has an area of \\(60\\) square inches, a height of \\(6\\) inches, and one base of \\(7\\) inches. How many inches long is the other base?",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "From area \\(= \\tfrac{1}{2}(b_1+b_2)h\\), the bases must add to \\(2 \\times 60 \\div 6 = 20\\)."
+    ],
+    "sol": "The sum of the bases is \\(\\tfrac{2 \\times 60}{6} = 20\\), so the other base is \\(20 - 7 = \\boxed{13}\\) inches."
+   },
+   {
+    "x": "A pixel-art gem on a screen has corners at \\((0,4)\\), \\((6,0)\\), \\((12,4)\\), and \\((6,8)\\). Its diagonals are the horizontal segment from \\((0,4)\\) to \\((12,4)\\) and the vertical segment from \\((6,0)\\) to \\((6,8)\\). What is the gem's area in square pixels?",
+    "ans": "48",
+    "accept": [
+     "48",
+     "48.0",
+     "forty eight",
+     "forty-eight"
+    ],
+    "hints": [
+     "Read off the diagonal lengths from the coordinates, \\(12\\) across and \\(8\\) up.",
+     "Apply \\(\\tfrac{1}{2} d_1 d_2\\)."
+    ],
+    "sol": "The diagonals measure \\(12\\) and \\(8\\), cross at \\((6,4)\\), and are perpendicular, so the area is \\(\\tfrac{1}{2} \\times 12 \\times 8 = \\boxed{48}\\) square pixels."
+   },
+   {
+    "x": "A tile has four \\(6\\) cm sides and at least one right angle. Explain to yourself which family the tile must belong to, then find its area in square centimeters.",
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0",
+     "thirty six",
+     "thirty-six"
+    ],
+    "hints": [
+     "Four equal sides make it a rhombus, so it is a parallelogram, and neighboring angles add to \\(180\\) degrees.",
+     "One right angle forces its neighbors to be \\(180 - 90 = 90\\) as well, so every angle is right and the tile is a square."
+    ],
+    "sol": "Four equal sides make the tile a rhombus, hence a parallelogram. One \\(90\\) degree angle forces each neighbor to \\(180 - 90 = 90\\), so all four angles are right and the tile is a square. Its area is \\(6^2 = \\boxed{36}\\) square centimeters."
+   }
+  ]
  }
 }
