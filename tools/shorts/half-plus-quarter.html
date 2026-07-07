@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantica short: 1/2 + 1/4 + 1/8 + ... = 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;background:#ededeb;overflow:hidden}
+  .stage{position:relative;height:100vh;width:calc(100vh * 9 / 16);margin:0 auto;background:#ededeb}
+  .guide{position:fixed;top:0;bottom:0;width:1px;background:#d8d8d2}
+  .gL{left:calc(50vw - 100vh * 9 / 32)} .gR{right:calc(50vw - 100vh * 9 / 32)}
+  svg{display:block;width:100%;height:100%}
+  /* ============ 30s master timeline ============ */
+  .sh text{font-family:'Space Grotesk',system-ui,sans-serif;fill:#0a0a0a}
+  .hook{opacity:0;transform-box:fill-box;transform-origin:center;animation:hook 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  @keyframes hook{0%,2.5%{opacity:0;transform:scale(.6)}4.5%{opacity:1;transform:scale(1.04)}6%,53%{opacity:1;transform:scale(1)}57%,100%{opacity:0;transform:scale(1)}}
+  .answerline{opacity:0;transform-box:fill-box;transform-origin:center;animation:ansline 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  @keyframes ansline{0%,57%{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.12)}62.5%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  .tri{fill:none;stroke:#0a0a0a;stroke-width:5;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:tridraw 30s linear infinite}
+  @keyframes tridraw{0%,6%{stroke-dashoffset:1400}12%,95%{stroke-dashoffset:0}96%,100%{stroke-dashoffset:0;opacity:0}}
+  .pc{stroke:#0a0a0a;stroke-width:3;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center}
+  .pl{opacity:0}
+  /* pieces: pop start/peak/settle percentages */
+  .p1{fill:#ff7a5c;animation:pp1 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p2{fill:#ffc84d;animation:pp2 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p3{fill:#59d3c0;animation:pp3 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p4{fill:#a97dff;animation:pp4 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p5{fill:#ff9ad5;animation:pp5 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p6{fill:#7cc7ff;animation:pp6 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p7{fill:#beff8b;animation:pp7 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .p8{fill:#ff7a5c;animation:pp8 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  @keyframes pp1{0%,15%{opacity:0;transform:scale(.25)}17.5%{opacity:1;transform:scale(1.08)}19%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp2{0%,21%{opacity:0;transform:scale(.25)}23.5%{opacity:1;transform:scale(1.08)}25%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp3{0%,27%{opacity:0;transform:scale(.25)}29%{opacity:1;transform:scale(1.08)}30.5%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp4{0%,32%{opacity:0;transform:scale(.25)}34%{opacity:1;transform:scale(1.08)}35.5%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp5{0%,36.5%{opacity:0;transform:scale(.25)}38.5%{opacity:1;transform:scale(1.08)}40%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp6{0%,40%{opacity:0;transform:scale(.25)}42%{opacity:1;transform:scale(1.08)}43.5%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp7{0%,43%{opacity:0;transform:scale(.25)}45%{opacity:1;transform:scale(1.08)}46.5%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  @keyframes pp8{0%,45.5%{opacity:0;transform:scale(.25)}47.5%{opacity:1;transform:scale(1.08)}49%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  /* labels inside first three pieces follow their piece */
+  .l1{animation:pp1 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .l2{animation:pp2 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .l3{animation:pp3 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .l1,.l2,.l3{transform-box:fill-box;transform-origin:center;opacity:0}
+  /* group pulse at the climax */
+  .pieces{transform-box:fill-box;transform-origin:center;animation:pulse 30s ease infinite}
+  @keyframes pulse{0%,58%{transform:scale(1)}61%{transform:scale(1.035)}64%,100%{transform:scale(1)}}
+  /* equation keycap blocks */
+  .dep{fill:#0a0a0a}
+  .face{stroke:#0a0a0a;stroke-width:3}
+  .f1{fill:#ff7a5c}.f2{fill:#ffc84d}.f3{fill:#59d3c0}.f4{fill:#a97dff}.fq{fill:#ffc84d}.fans{fill:#beff8b}
+  .fb{stroke:#0a0a0a;stroke-width:4;stroke-linecap:round}
+  .eqg{opacity:0;transform-box:fill-box;transform-origin:center}
+  .e1{animation:pp1 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .e2{animation:pp2 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .e3{animation:pp3 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .e4{animation:pp4 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .e5{animation:pp6 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  .eqQ{animation:eqq 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  @keyframes eqq{0%,5%{opacity:0;transform:scale(.4)}7.5%{opacity:1;transform:scale(1.1)}9%,55%{opacity:1;transform:scale(1)}58%,100%{opacity:0;transform:scale(1)}}
+  .eqA{animation:eqa 30s cubic-bezier(.4,1.4,.45,1) infinite}
+  @keyframes eqa{0%,57%{opacity:0;transform:scale(.3)}60.5%{opacity:1;transform:scale(1.22)}63%,95%{opacity:1;transform:scale(1)}99%,100%{opacity:0}}
+  /* gentle bob, staggered */
+  .bb{transform-box:fill-box;transform-origin:center;animation:bob 2.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  /* sparkles */
+  .spark{fill:#ffc84d;stroke:#0a0a0a;stroke-width:2.4;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center;animation:sp1 30s ease infinite}
+  .spark.s2{fill:#beff8b;animation-name:sp2}
+  .spark.s3{fill:#ff9ad5;animation-name:sp3}
+  @keyframes sp1{0%,58%{opacity:0;transform:scale(.2) rotate(0deg)}61%{opacity:1;transform:scale(1.25) rotate(20deg)}66%{opacity:1;transform:scale(.95) rotate(30deg)}72%,100%{opacity:0;transform:scale(.3) rotate(42deg)}}
+  @keyframes sp2{0%,60%{opacity:0;transform:scale(.2) rotate(0deg)}63%{opacity:1;transform:scale(1.2) rotate(-18deg)}68%{opacity:1;transform:scale(.9) rotate(-28deg)}74%,100%{opacity:0;transform:scale(.3) rotate(-40deg)}}
+  @keyframes sp3{0%,62%{opacity:0;transform:scale(.2) rotate(0deg)}65%{opacity:1;transform:scale(1.15) rotate(14deg)}70%{opacity:1;transform:scale(.9) rotate(24deg)}76%,100%{opacity:0;transform:scale(.3) rotate(36deg)}}
+  /* end card */
+  .endcard{opacity:0;transform-box:fill-box;transform-origin:center;animation:endc 30s cubic-bezier(.34,1.45,.5,1) infinite}
+  @keyframes endc{0%,67%{opacity:0;transform:translateY(70px)}71%{opacity:1;transform:translateY(-6px)}73%,95%{opacity:1;transform:translateY(0)}99%,100%{opacity:0}}
+  .miloface{transform-box:fill-box;transform-origin:center;animation:mbob 3.4s ease-in-out infinite}
+  @keyframes mbob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-2deg)}}
+</style>
+</head>
+<body>
+<div class="guide gL"></div><div class="guide gR"></div>
+<div class="stage">
+<svg class="sh" viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- HOOK -->
+  <g class="hook">
+    <text x="270" y="120" text-anchor="middle" font-size="42" font-weight="700" letter-spacing="-1">What does this</text>
+    <text x="270" y="172" text-anchor="middle" font-size="42" font-weight="700" letter-spacing="-1">add up to?</text>
+  </g>
+  <g class="answerline">
+    <text x="270" y="150" text-anchor="middle" font-size="60" font-weight="700" letter-spacing="-2">Exactly 1.</text>
+  </g>
+
+  <!-- TRIANGLE (draws itself) -->
+  <polygon class="tri" points="50,720 490,720 490,368"/>
+
+  <!-- PIECES -->
+  <g class="pieces">
+    <polygon class="pc p1" points="270,544 490,368 490,720"/>
+    <polygon class="pc p2" points="270,720 490,720 270,544"/>
+    <polygon class="pc p3" points="160,632 270,544 270,720"/>
+    <polygon class="pc p4" points="160,720 270,720 160,632"/>
+    <polygon class="pc p5" points="105,676 160,632 160,720"/>
+    <polygon class="pc p6" points="105,720 160,720 105,676"/>
+    <polygon class="pc p7" points="77.5,698 105,676 105,720"/>
+    <polygon class="pc p8" points="77.5,720 105,720 77.5,698"/>
+    <!-- labels in the big three -->
+    <g class="l1"><text x="416" y="537" text-anchor="middle" font-size="30" font-weight="700">1</text><line class="fb" x1="396" y1="547" x2="436" y2="547"/><text x="416" y="580" text-anchor="middle" font-size="30" font-weight="700">2</text></g>
+    <g class="l2"><text x="343" y="654" text-anchor="middle" font-size="24" font-weight="700">1</text><line class="fb" x1="327" y1="662" x2="359" y2="662"/><text x="343" y="688" text-anchor="middle" font-size="24" font-weight="700">4</text></g>
+    <g class="l3"><text x="233" y="625" text-anchor="middle" font-size="19" font-weight="700">1</text><line class="fb" x1="220" y1="632" x2="246" y2="632"/><text x="233" y="653" text-anchor="middle" font-size="19" font-weight="700">8</text></g>
+  </g>
+
+  <!-- EQUATION ROW: keycap blocks -->
+  <g class="eqg e1"><g class="bb" style="animation-delay:-.2s"><rect class="dep" x="40" y="788" width="58" height="72" rx="14"/><rect class="face f1" x="40" y="780" width="58" height="72" rx="14"/><text x="69" y="809" text-anchor="middle" font-size="26" font-weight="700">1</text><line class="fb" x1="55" y1="817" x2="83" y2="817"/><text x="69" y="845" text-anchor="middle" font-size="26" font-weight="700">2</text></g></g>
+  <g class="eqg e2"><text x="107" y="828" text-anchor="middle" font-size="30" font-weight="600">+</text><g class="bb" style="animation-delay:-.7s"><rect class="dep" x="116" y="788" width="58" height="72" rx="14"/><rect class="face f2" x="116" y="780" width="58" height="72" rx="14"/><text x="145" y="809" text-anchor="middle" font-size="26" font-weight="700">1</text><line class="fb" x1="131" y1="817" x2="159" y2="817"/><text x="145" y="845" text-anchor="middle" font-size="26" font-weight="700">4</text></g></g>
+  <g class="eqg e3"><text x="183" y="828" text-anchor="middle" font-size="30" font-weight="600">+</text><g class="bb" style="animation-delay:-1.2s"><rect class="dep" x="192" y="788" width="58" height="72" rx="14"/><rect class="face f3" x="192" y="780" width="58" height="72" rx="14"/><text x="221" y="809" text-anchor="middle" font-size="26" font-weight="700">1</text><line class="fb" x1="207" y1="817" x2="235" y2="817"/><text x="221" y="845" text-anchor="middle" font-size="26" font-weight="700">8</text></g></g>
+  <g class="eqg e4"><text x="259" y="828" text-anchor="middle" font-size="30" font-weight="600">+</text><g class="bb" style="animation-delay:-1.7s"><rect class="dep" x="268" y="788" width="66" height="72" rx="14"/><rect class="face f4" x="268" y="780" width="66" height="72" rx="14"/><text x="301" y="809" text-anchor="middle" font-size="24" font-weight="700">1</text><line class="fb" x1="283" y1="817" x2="319" y2="817"/><text x="301" y="845" text-anchor="middle" font-size="24" font-weight="700">16</text></g></g>
+  <g class="eqg e5"><text x="345" y="828" text-anchor="middle" font-size="30" font-weight="600">+</text><text x="379" y="826" text-anchor="middle" font-size="32" font-weight="700">&#8943;</text></g>
+  <text x="414" y="828" text-anchor="middle" font-size="34" font-weight="700">=</text>
+  <!-- the ? block (hook) and the 1 block (answer) share a slot -->
+  <g class="eqg eqQ"><g class="bb" style="animation-delay:-2.2s"><rect class="dep" x="436" y="780" width="82" height="92" rx="18"/><rect class="face fq" x="436" y="770" width="82" height="92" rx="18"/><text x="477" y="833" text-anchor="middle" font-size="46" font-weight="700">?</text></g></g>
+  <g class="eqg eqA"><g class="bb" style="animation-delay:-2.2s"><rect class="dep" x="436" y="780" width="82" height="92" rx="18"/><rect class="face fans" x="436" y="770" width="82" height="92" rx="18"/><text x="477" y="833" text-anchor="middle" font-size="46" font-weight="700">1</text></g></g>
+
+  <!-- sparkles at the climax -->
+  <g transform="translate(430,740)"><path class="spark" d="M0,-14 L3.8,-3.8 L14,0 L3.8,3.8 L0,14 L-3.8,3.8 L-14,0 L-3.8,-3.8 Z"/></g>
+  <g transform="translate(520,752)"><path class="spark s2" d="M0,-11 L3,-3 L11,0 L3,3 L0,11 L-3,3 L-11,0 L-3,-3 Z"/></g>
+  <g transform="translate(500,900)"><path class="spark s3" d="M0,-9 L2.5,-2.5 L9,0 L2.5,2.5 L0,9 L-2.5,2.5 L-9,0 L-2.5,-2.5 Z"/></g>
+
+  <!-- END CARD -->
+  <g class="endcard">
+    <g transform="translate(219,196)"><g class="miloface"><g transform="scale(1.6)">
+      <path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b" stroke="#0a0a0a" stroke-width="1.6"/>
+      <path d="M32 7 C23 7 18 11 15.5 21 C20 14 26 12 32 12 Z" fill="#9dbbc5" opacity=".32"/>
+      <circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/>
+      <circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/>
+      <circle cx="26.4" cy="29" r=".8" fill="#fff"/><circle cx="39.4" cy="29" r=".8" fill="#fff"/>
+      <path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+    </g></g></g>
+    <rect x="120" y="322" width="300" height="58" rx="29" fill="#beff8b" stroke="#0a0a0a" stroke-width="3"/>
+    <text x="270" y="360" text-anchor="middle" font-size="27" font-weight="700" letter-spacing="-0.5">quanticaedu.com</text>
+    <text x="270" y="412" text-anchor="middle" font-size="21" font-weight="600" fill="#55554f">learn math by solving &#183; free</text>
+  </g>
+</svg>
+</div>
+</body>
+</html>
