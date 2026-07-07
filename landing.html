@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics 4 — kids-safe config; only loads on quanticaedu.com and skips founder-flagged devices (/?imfounder=1) -->
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.track=function(n,p){ try{ gtag('event',n,p||{}); }catch(e){} };
+  (function(){try{var h=location.hostname;if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com')return;if(location.search.indexOf('imfounder=1')>-1&&!localStorage.getItem('qa_internal')){localStorage.setItem('qa_internal','1');alert('Got it. Analytics is now off on this device.');}if(localStorage.getItem('qa_internal')==='1')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});}catch(e){}})();
+</script>
 <title>Quantica | Master Mathematics, the Hard Way (Made Joyful)</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%232f6fc0'/%3E%3Cstop%20offset='1'%20stop-color='%235bb8d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='100'%20height='100'%20rx='22'%20fill='url(%23g)'/%3E%3Ctext%20x='50'%20y='53'%20text-anchor='middle'%20dominant-baseline='central'%20font-family='Georgia,serif'%20font-size='80'%20font-weight='600'%20fill='%23fff'%3EQ%3C/text%3E%3Cg%20fill='%23fff'%3E%3Crect%20x='38'%20y='57'%20width='4.4'%20height='8'%20rx='1'/%3E%3Crect%20x='44.5'%20y='53'%20width='4.4'%20height='12'%20rx='1'/%3E%3Crect%20x='51'%20y='48'%20width='4.4'%20height='17'%20rx='1'/%3E%3Crect%20x='57.5'%20y='43'%20width='4.4'%20height='22'%20rx='1'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +110,11 @@
   .auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:var(--line)}
   .auth-google{width:100%;padding:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter';display:flex;align-items:center;justify-content:center;gap:9px;color:var(--navy);transition:border-color .15s,background .15s}
   .auth-google:hover{border-color:var(--mid);background:var(--softer)}
+  .auth-forgot{display:inline-block;margin:6px 0 2px;font-size:12.5px;font-weight:600;color:var(--mid);cursor:pointer;text-decoration:none}
+  .auth-forgot:hover{text-decoration:underline}
+  .auth-consent{margin:12px 0 0;font-size:11.5px;line-height:1.5;color:var(--slate)}
+  .auth-consent a{color:var(--mid)}
+  .auth-err.ok{color:var(--green)}
   .age-gate{margin:14px 0 2px;display:none}
   .age-lbl{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--slate);line-height:1.5;cursor:pointer}
   .age-lbl input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--blue);width:15px;height:15px;cursor:pointer}
@@ -312,6 +324,17 @@
   .pagehead .eyebrow{color:var(--mid)}
   .pagehead h1{font-family:'Fraunces';font-weight:600;font-size:33px;color:var(--navy);line-height:1.12;margin-top:10px;letter-spacing:-.01em}
   @media(max-width:600px){.pagehead h1{font-size:26px}.coursewrap{padding:24px 18px 64px}.coursebar{height:54px;padding:0 14px}}
+  /* mobile course header: keep Home + Exit always visible; reclaim space from the logo,
+     let the HUD shrink/scroll so nothing pushes the Exit button off-screen */
+  @media(max-width:560px){
+    .coursebar{padding:0 10px}
+    .cb-logo{display:none}
+    .cb-rightgrp{min-width:0;overflow:hidden}
+    .hud{min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-right:8px}
+    .hud::-webkit-scrollbar{display:none}
+    .cb-exit{flex:none;padding:8px 12px}
+    .cb-exit .exit-txt{display:none}
+  }
   .modal .mbody{padding:0}
   .modal .mbody p{font-size:15.5px;color:var(--slate);margin-bottom:15px;line-height:1.7}
   .modal .mbody p .hl{color:var(--navy);font-weight:600}
@@ -491,7 +514,7 @@
   .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
   .demo .q sup{font-size:.7em}
 
-  .workspace{--cbh:52px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
+  .workspace{--cbh:52px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));height:calc(100dvh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
   .ws-center{flex:1;display:flex;flex-direction:column;min-height:0;padding:0;transition:margin .32s cubic-bezier(.22,1,.36,1)}
   .workspace.tut-open .ws-center{margin-left:var(--tut-w)}
   .workspace.nb-open .ws-center{margin-right:var(--nb-w)}
@@ -622,6 +645,14 @@
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
   @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px rgba(245,176,32,.55),-66px 2px 22px -9px rgba(245,176,32,.3),-100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
   @keyframes shootTrailBack{0%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(12deg)}40%{box-shadow:34px 1px 14px -6px rgba(245,176,32,.55),66px 2px 22px -9px rgba(245,176,32,.3),100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(-4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
+  /* mobile: content is full-width (no side gutter), so move the floating helper buttons
+     off the lesson text into the bottom-left corner (Next lives bottom-right) */
+  @media(max-width:560px){
+    .ws-fab-group{top:auto;bottom:20px;left:14px}
+    .ws-fab-ideas{top:auto;bottom:76px;left:14px}
+    .workspace.tut-open .ws-fab-ideas{display:none}   /* tutor is full-screen on mobile; hide the floating helper */
+    .ws-fab{width:46px;height:46px;font-size:18px}
+  }
 
   /* tutor panel */
   .ws-tutor .ws-tuthead{flex:none;padding:14px 16px 12px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:9px}
@@ -933,6 +964,12 @@
   .rw-stat .big{font-family:'Fraunces';font-size:30px;color:var(--navy);margin:8px 0 2px}
   .rw-stat .note{font-size:12.5px;color:var(--mute);line-height:1.45}
   .rw-section-h{font-family:'Fraunces';font-size:18px;color:var(--navy);margin:24px 0 12px}
+  .rw-acct{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border:1px solid var(--line);border-radius:13px;margin-bottom:18px;background:var(--soft)}
+  .rw-acct .lbl{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mute)}
+  .rw-acct .who{font-size:14px;font-weight:600;color:var(--ink);margin-top:2px;word-break:break-word}
+  .rw-acct button{flex:0 0 auto;border-radius:999px;padding:9px 17px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)}
+  .rw-acct button:hover{border-color:var(--ink)}
+  .rw-acct button.save{background:#beff8b;border-color:#beff8b;color:#0a0a0a}
   .streakchip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#c25a14;background:rgba(255,122,69,.13);border:1px solid rgba(255,176,32,.42);border-radius:999px;padding:7px 14px}
   .streakchip svg{width:15px;height:15px;color:var(--accent)}
   .rw-legend{display:grid;gap:10px}
@@ -974,21 +1011,21 @@
   }
 </style>
 
-<meta name="description" content="Quantica teaches math from prealgebra to olympiad by having you solve, not memorize. Instant feedback, layered hints, and Milo, a tutor that helps you find the answer yourself.">
+<meta name="description" content="Quantica teaches math from prealgebra to calculus by having you solve, not memorize. Instant feedback, layered hints, and Milo, a tutor that helps you find the answer yourself.">
 <link rel="canonical" href="https://quanticaedu.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Quantica">
 <meta property="og:title" content="Quantica | Learn math by solving">
-<meta property="og:description" content="Prealgebra to olympiad. Learn by solving real problems with instant feedback and Milo, your tutor.">
+<meta property="og:description" content="Prealgebra to calculus. Learn by solving real problems with instant feedback and Milo, your tutor.">
 <meta property="og:url" content="https://quanticaedu.com/">
 <meta property="og:image" content="https://quanticaedu.com/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quantica | Learn math by solving">
-<meta name="twitter:description" content="Prealgebra to olympiad. Learn by solving, with Milo.">
+<meta name="twitter:description" content="Prealgebra to calculus. Learn by solving, with Milo.">
 <meta name="twitter:image" content="https://quanticaedu.com/og-default.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Quantica","url":"https://quanticaedu.com/","logo":"https://quanticaedu.com/og-default.png","sameAs":[],"description":"Quantica teaches math from prealgebra to olympiad by having you solve, not memorize."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Quantica","url":"https://quanticaedu.com/","logo":"https://quanticaedu.com/og-default.png","sameAs":[],"description":"Quantica teaches math from prealgebra to calculus by having you solve, not memorize."}</script>
 
 <style id="app-wembi-theme">
 /* Re-skin the course app to the landing's palette (cream + lime + dark navy + Space Grotesk).
@@ -1024,13 +1061,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .ws-tutor .snd{background:#beff8b !important;color:#0a0a0a !important}
 /* workspace primary "Continue" -> lime (green primary, like the landing) */
 .ws-next{background:#beff8b !important;color:#0a0a0a !important;box-shadow:0 12px 26px -12px rgba(120,190,60,.55) !important}
+/* accent (lime) was being used as TEXT in a few places (e.g. contents lesson links) where it is
+   unreadable/harsh. Recolor those text uses to a deep readable green; buttons keep the lime fill. */
+.toc .sec.open,.toc .sec.open::after,.toc a.ex:hover,.hintbtn2,.peek,.factbox .flabel,.tocnote .tn-label,.hud-pill.mp svg,.streakchip svg{color:#2e7d3a !important}
+/* app background: beige/cream everywhere (override the themed aurora gradient on the overlay) */
+.overlay{background:#ededeb !important}
 </style>
 </head>
 <body>
-
-<div class="site-banner">
-  This site is in its early stages and we are passionately upgrading as you read this. Please excuse any issues and make sure to address them in the <a href="https://docs.google.com/forms/d/e/1FAIpQLSexURn50sc4gdpLUCPxPEKIF31LnxvQee5ipaLEvejZ1zmBAA/viewform" target="_blank">feedback form</a>. Create an account, and our team will personally grant you free access to everything shortly after you sign up, usually within 3 to 12 hours. In the meantime, enjoy the first chapter of prealgebra while our curriculum developers work hard at creating a quality educational experience!
-</div>
 
 <div class="bg" aria-hidden="true">
   <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
@@ -1206,6 +1244,12 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 }
 .wmb .wmb-pill:hover{border-color:var(--wmb-ink);transform:translateY(-1px)}
 .wmb .wmb-pill--on{background:var(--wmb-lime);border-color:var(--wmb-lime)}
+.wmb .wmb-pill--soon{border-style:dashed;border-color:var(--wmb-rule-soft);color:var(--wmb-gray);cursor:default}
+.wmb .wmb-pill--soon:hover{transform:none;border-color:var(--wmb-rule-soft)}
+.wmb .wmb-pill--soon em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--wmb-rule-soft);color:var(--wmb-ink)}
+.acct-menu{position:fixed;z-index:100001;background:#fff;border:1.5px solid rgba(10,10,10,.14);border-radius:14px;box-shadow:0 18px 44px -14px rgba(10,10,10,.4);padding:6px;min-width:184px}
+.acct-menu a{display:block;padding:10px 14px;border-radius:9px;text-decoration:none;color:#0a0a0a;font-weight:600;font-size:14px;font-family:'Space Grotesk',system-ui,sans-serif;cursor:pointer}
+.acct-menu a:hover{background:#f0f0ec}
 
 /* ============================================================
    SLATE IMAGERY PANEL (backdrop for hero art / proofs)
@@ -1258,16 +1302,25 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .wmb .milo-win .av{width:50px;height:50px;flex:none;display:grid;place-items:center;animation:milo-bob 5s ease-in-out infinite}
 .wmb .milo-win .av svg{width:100%;height:auto;display:block}
 @keyframes milo-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.wmb .milo-win .av.talk{animation:milo-wig .5s ease-in-out infinite}
+@keyframes milo-wig{0%,100%{transform:rotate(0)}30%{transform:rotate(-7deg) translateY(-2px)}70%{transform:rotate(6deg)}}
 .wmb .milo-win .who{line-height:1.2}
 .wmb .milo-win .nm{font-weight:600;font-size:16px;color:#f4f8ff}
 .wmb .milo-win .st{font-size:12px;color:#93e6b4;display:flex;align-items:center;gap:6px;margin-top:2px}
 .wmb .milo-win .st::before{content:"";width:7px;height:7px;border-radius:999px;background:#7bd63f;box-shadow:0 0 0 0 rgba(123,214,63,.5);animation:milo-pulse 2s infinite}
 @keyframes milo-pulse{0%{box-shadow:0 0 0 0 rgba(123,214,63,.5)}70%{box-shadow:0 0 0 8px rgba(123,214,63,0)}100%{box-shadow:0 0 0 0 rgba(123,214,63,0)}}
-.wmb .milo-win .body{padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;height:452px;box-sizing:border-box;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%)}
-.wmb .milo-win .mb{max-width:86%;flex:0 0 auto;padding:12px 16px;border-radius:17px;font-size:15.5px;line-height:1.5;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .4s ease,transform .45s cubic-bezier(.3,1.2,.5,1)}
+.wmb .milo-win .body{position:relative;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;height:452px;box-sizing:border-box;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%)}
+.wmb .milo-win .mb{max-width:86%;flex:0 0 auto;padding:12px 16px;border-radius:18px;font-size:15.5px;line-height:1.5;opacity:0;transform:translateY(18px) scale(.75);transition:opacity .32s ease,transform .55s cubic-bezier(.34,1.56,.64,1)}
 .wmb .milo-win .mb.show{opacity:1;transform:none}
-.wmb .milo-win .mb.bot{align-self:flex-start;background:linear-gradient(180deg,#243a54,#1b2e46);color:#e8eef7;border-bottom-left-radius:5px}
-.wmb .milo-win .mb.me{align-self:flex-end;background:#beff8b;color:#0a0a0a;font-weight:500;border-bottom-right-radius:5px}
+.wmb .milo-win .mb.bot{align-self:flex-start;background:linear-gradient(180deg,#2b4468,#1c3049);border:1px solid rgba(124,199,255,.16);color:#eef4fd;border-bottom-left-radius:6px}
+.wmb .milo-win .mb.me{align-self:flex-end;background:linear-gradient(135deg,#d5ff9f,#a8f074);color:#0a0a0a;font-weight:600;border-bottom-right-radius:6px;box-shadow:0 8px 20px -10px rgba(190,255,139,.55)}
+.wmb .milo-win .mb.pop{box-shadow:0 0 0 1.5px rgba(190,255,139,.55),0 10px 32px -10px rgba(190,255,139,.5)}
+.wmb .milo-win .mb.xp{align-self:flex-start;background:linear-gradient(135deg,#ffd36b,#ff9d3c);color:#0a0a0a;font-weight:700;font-size:14px;padding:9px 15px;border-radius:999px;border:1.5px solid rgba(10,10,10,.28);box-shadow:0 8px 22px -8px rgba(255,157,60,.65)}
+.wmb .milo-win .mb.xp.show{animation:xpPop .7s .45s ease}
+@keyframes xpPop{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg) scale(1.07)}60%{transform:rotate(4deg)}}
+.wmb .milo-win .conf{position:absolute;width:8px;height:8px;border-radius:2px;top:0;left:0;pointer-events:none;animation:confFall 1.6s cubic-bezier(.25,.7,.45,1) forwards}
+.wmb .milo-win .conf.rd{border-radius:50%}
+@keyframes confFall{0%{opacity:1;transform:translate(var(--x0),var(--y0)) rotate(0) scale(1)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x1),var(--y1)) rotate(var(--r)) scale(.55)}}
 .wmb .milo-win .mb b{color:inherit}
 .wmb .milo-win .typing{align-self:flex-start;flex:0 0 auto;background:linear-gradient(180deg,#243a54,#1b2e46);border-radius:16px;border-bottom-left-radius:5px;padding:13px 16px;display:none;gap:4px}
 .wmb .milo-win .typing.show{display:flex}
@@ -1277,13 +1330,21 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .wmb .milo-win .compose{display:flex;gap:9px;align-items:center;padding:13px 15px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
 .wmb .milo-win .compose .fi{flex:1;font-size:13px;color:#9fb0c9;background:#17253d;border-radius:999px;padding:10px 15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wmb .milo-win .compose .snd{width:36px;height:36px;flex:none;border-radius:999px;background:#beff8b;color:#0a0a0a;display:grid;place-items:center;font-size:14px}
-@media(prefers-reduced-motion:reduce){.wmb .milo-win .mb{opacity:1;transform:none;transition:none}.wmb .milo-win .av{animation:none}}
+@media(prefers-reduced-motion:reduce){.wmb .milo-win .mb{opacity:1;transform:none;transition:none}.wmb .milo-win .av{animation:none}.wmb .milo-win .mb.xp.show{animation:none}.wmb .milo-win .conf{display:none}}
 
 /* ---- value strip ---- */
 .wmb-strip{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);padding-top:clamp(24px,4vw,52px);border-top:1px solid var(--wmb-rule-soft)}
 .wmb-strip-item .wmb-kicker{margin-bottom:10px}
 .wmb-strip-item h3{font-size:var(--wmb-h3)}
 .wmb-strip-item p{margin-top:8px}
+/* ---- Meet Milo bold intro ---- */
+.mi-sec{position:relative;text-align:center;padding-block:clamp(44px,7vw,110px) clamp(20px,3vw,40px)}
+.mi-beam{position:absolute;left:50%;top:clamp(64px,8vw,130px);bottom:0;transform:translateX(-50%);width:min(150px,32vw);background:linear-gradient(180deg,rgba(190,255,139,.42),rgba(190,255,139,0) 85%);border-radius:999px;filter:blur(10px);pointer-events:none}
+.mi-face{position:relative;width:clamp(116px,16vw,176px);margin:0 auto;animation:miBob 4.5s ease-in-out infinite}
+.mi-face svg{width:100%;height:auto;display:block;filter:drop-shadow(0 20px 34px rgba(10,10,10,.2))}
+@keyframes miBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.mi-h{position:relative;font-size:clamp(34px,6.5vw,74px);letter-spacing:-.035em;line-height:1.06;font-weight:700;margin:clamp(24px,3.4vw,40px) 0 0}
+@media(prefers-reduced-motion:reduce){.mi-face{animation:none}}
 
 /* ---- meet milo ---- */
 .wmb-meet{max-width:20ch}
@@ -1365,8 +1426,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   <div class="wmb-nav-links">
     <a class="wmb-pill" href="#how">How it works</a>
     <a class="wmb-pill" href="/prealgebra">Courses</a>
+    <a class="wmb-pill" href="/blog">Blog</a>
     <a class="wmb-pill" href="#pricing">Pricing</a>
-    <a class="wmb-pill wmb-pill--on" href="#" onclick="openLesson();return false;"><span class="wmb-dot"></span>Start free</a>
+    <a class="wmb-pill" id="navSignin" href="#" onclick="showAuthModal('in');return false;">Sign in</a>
+    <a class="wmb-pill wmb-pill--on" href="/prealgebra"><span class="wmb-dot"></span>Start free</a>
   </div>
 </nav>
 
@@ -1388,49 +1451,83 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       <h1 class="wmb-hero">Understand math.<br>Don&#8217;t <span class="wmb-mark-block">memorize</span> it.</h1>
       <p class="wmb-lead">Learn by solving, with Milo. <span class="wmb-dim">A tutor that helps you find the answer yourself.</span></p>
       <div class="wmb-hero-cta">
-        <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="#" onclick="openLesson();return false;">Start free</a>
+        <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="/prealgebra">Start free</a>
         <a class="wmb-btn wmb-btn--lg" href="#how">See how it works</a>
       </div>
       <p class="wmb-hero-note wmb-muted">No card required &middot; Full Prealgebra unit free</p>
     </div>
     <div class="wmb-hero-milo">
       <div class="wmb-hero-proof"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
-.py .tri{fill:#ededeb;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
-.py .frame{fill:none;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
-.py .cs{fill:#beff8b;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round;animation:pyC 10s cubic-bezier(.65,0,.35,1) infinite}
-.py .ls{fill:#9dbbc5;stroke:#0a0a0a;stroke-width:2;opacity:0;animation:pyL 10s cubic-bezier(.65,0,.35,1) infinite}
-.py .tb{animation:pyTb 10s cubic-bezier(.65,0,.35,1) infinite}
-.py .tc{transform-box:view-box;transform-origin:320px 40px;animation:pyTc 10s cubic-bezier(.65,0,.35,1) infinite}
-.py .td{transform-box:view-box;transform-origin:40px 40px;animation:pyTd 10s cubic-bezier(.65,0,.35,1) infinite}
-.py .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;font-size:20px;fill:#0a0a0a}
-@keyframes pyTb{0%,12%{transform:none}34%,72%{transform:translateY(-160px)}90%,100%{transform:none}}
-@keyframes pyTc{0%,12%{transform:none}34%,72%{transform:translate(-160px,0) rotate(-90deg)}90%,100%{transform:none}}
-@keyframes pyTd{0%,12%{transform:none}34%,72%{transform:translate(120px,120px) rotate(90deg)}90%,100%{transform:none}}
-@keyframes pyC{0%,14%{opacity:1}32%,74%{opacity:0}90%,100%{opacity:1}}
-@keyframes pyL{0%,16%{opacity:0}36%,72%{opacity:1}88%,100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.py *{animation:none!important}.py .cs{opacity:0}.py .ls{opacity:1}.py .tb{transform:translateY(-160px)}.py .tc{transform:translate(-160px,0) rotate(-90deg)}.py .td{transform:translate(120px,120px) rotate(90deg)}}
+.py .tri{stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
+.py .t1{fill:#ff7a5c;animation:pyT1 9s cubic-bezier(.45,1.3,.4,1) infinite}
+.py .t2{fill:#ffc84d;animation:pyT2 9s cubic-bezier(.45,1.3,.4,1) infinite}
+.py .t3{fill:#7cc7ff;transform-box:view-box;transform-origin:320px 40px;animation:pyT3 9s cubic-bezier(.45,1.3,.4,1) infinite}
+.py .t4{fill:#ff9ad5;transform-box:view-box;transform-origin:40px 40px;animation:pyT4 9s cubic-bezier(.45,1.3,.4,1) infinite}
+.py .frame{fill:none;stroke:#0a0a0a;stroke-width:2.5;stroke-linejoin:round}
+.py .cs{fill:#beff8b;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round;animation:pyC 9s ease infinite}
+.py .csl{animation:pyC 9s ease infinite}
+.py .as{fill:#c9b8ff;stroke:#0a0a0a;stroke-width:2}
+.py .bs{fill:#9fe8d8;stroke:#0a0a0a;stroke-width:2}
+.py .ab{opacity:0;transform-box:fill-box;transform-origin:center;animation:pyAB 9s cubic-bezier(.45,1.3,.4,1) infinite}
+.py .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:21px;fill:#0a0a0a}
+.py .sq{font-size:26px}
+.py .eqt{font-size:24px}
+.py .eqrow{transform-box:fill-box;transform-origin:center;animation:pyEq 9s ease infinite}
+.py .dep{fill:#0a0a0a}
+.py .face{stroke:#0a0a0a;stroke-width:2}
+.py .fa{fill:#c9b8ff}.py .fbk{fill:#9fe8d8}.py .fc{fill:#beff8b}
+.py .bb{transform-box:fill-box;transform-origin:center;animation:pyBob 3s ease-in-out infinite}
+@keyframes pyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+.py .spark{fill:#ffc84d;stroke:#0a0a0a;stroke-width:1.4;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center;animation:pySp 9s ease infinite}
+.py .spark.s2{fill:#beff8b;animation-name:pySp2}
+@keyframes pyT1{0%,30%{transform:none}33%{transform:translateY(-5px)}36%,100%{transform:none}}
+@keyframes pyT2{0%,13%{transform:none}24%,64%{transform:translateY(-160px)}75%,100%{transform:none}}
+@keyframes pyT3{0%,16%{transform:none}27%,67%{transform:translate(-160px,0) rotate(-90deg)}78%,100%{transform:none}}
+@keyframes pyT4{0%,19%{transform:none}30%,70%{transform:translate(120px,120px) rotate(90deg)}81%,100%{transform:none}}
+@keyframes pyC{0%,13%{opacity:1}25%,78%{opacity:0}90%,100%{opacity:1}}
+@keyframes pyAB{0%,27%{opacity:0;transform:scale(.85)}34%,66%{opacity:1;transform:scale(1)}76%,100%{opacity:0;transform:scale(.85)}}
+@keyframes pyEq{0%,30%{transform:scale(1)}33.5%{transform:scale(1.13)}37%,100%{transform:scale(1)}}
+@keyframes pySp{0%,29%{opacity:0;transform:scale(.2) rotate(0deg)}33%{opacity:1;transform:scale(1.2) rotate(18deg)}39%{opacity:1;transform:scale(.95) rotate(28deg)}46%,100%{opacity:0;transform:scale(.3) rotate(40deg)}}
+@keyframes pySp2{0%,32%{opacity:0;transform:scale(.2) rotate(0deg)}36%{opacity:1;transform:scale(1.15) rotate(-16deg)}42%{opacity:1;transform:scale(.9) rotate(-26deg)}49%,100%{opacity:0;transform:scale(.3) rotate(-40deg)}}
+@media(prefers-reduced-motion:reduce){.py *{animation:none!important}.py .cs,.py .csl{opacity:0}.py .ab{opacity:1;transform:none}.py .spark{opacity:0}.py .t2{transform:translateY(-160px)}.py .t3{transform:translate(-160px,0) rotate(-90deg)}.py .t4{transform:translate(120px,120px) rotate(90deg)}}
 </style>
-<rect class="ls" x="40" y="40" width="120" height="120"/>
-<rect class="ls" x="160" y="160" width="160" height="160"/>
+<rect class="as ab" x="40" y="40" width="120" height="120"/>
+<rect class="bs ab" x="160" y="160" width="160" height="160"/>
+<text class="lbl sq ab" x="100" y="110" text-anchor="middle">a&#178;</text>
+<text class="lbl sq ab" x="240" y="250" text-anchor="middle">b&#178;</text>
 <polygon class="cs" points="160,320 320,200 200,40 40,160"/>
+<text class="lbl sq csl" x="180" y="189" text-anchor="middle">c&#178;</text>
 <rect class="frame" x="40" y="40" width="280" height="280"/>
-<polygon class="tri" points="40,320 160,320 40,160"/>
-<polygon class="tri tb" points="320,320 320,200 160,320"/>
-<polygon class="tri tc" points="320,40 200,40 320,200"/>
-<polygon class="tri td" points="40,40 40,160 200,40"/>
-<text class="lbl" x="180" y="366" text-anchor="middle">a&#178; + b&#178; = c&#178;</text>
+<polygon class="tri t1" points="40,320 160,320 40,160"/>
+<polygon class="tri t2" points="320,320 320,200 160,320"/>
+<polygon class="tri t3" points="320,40 200,40 320,200"/>
+<polygon class="tri t4" points="40,40 40,160 200,40"/>
+<g transform="translate(176,58)"><path class="spark" d="M0,-8 L2.2,-2.2 L8,0 L2.2,2.2 L0,8 L-2.2,2.2 L-8,0 L-2.2,-2.2 Z"/></g>
+<g transform="translate(331,148)"><path class="spark s2" d="M0,-6.5 L1.8,-1.8 L6.5,0 L1.8,1.8 L0,6.5 L-1.8,1.8 L-6.5,0 L-1.8,-1.8 Z"/></g>
+<g class="eqrow">
+<g class="bb" style="animation-delay:-.3s"><rect class="dep" x="88" y="340" width="46" height="42" rx="9"/><rect class="face fa" x="88" y="336" width="46" height="42" rx="9"/><text class="lbl eqt" x="111" y="365" text-anchor="middle">a&#178;</text></g>
+<text class="lbl eqt" x="145" y="365" text-anchor="middle">+</text>
+<g class="bb" style="animation-delay:-1.1s"><rect class="dep" x="156" y="340" width="46" height="42" rx="9"/><rect class="face fbk" x="156" y="336" width="46" height="42" rx="9"/><text class="lbl eqt" x="179" y="365" text-anchor="middle">b&#178;</text></g>
+<text class="lbl eqt" x="213" y="365" text-anchor="middle">=</text>
+<g class="bb" style="animation-delay:-1.9s"><rect class="dep" x="224" y="340" width="46" height="42" rx="9"/><rect class="face fc" x="224" y="336" width="46" height="42" rx="9"/><text class="lbl eqt" x="247" y="365" text-anchor="middle">c&#178;</text></g>
+</g>
 </svg></div>
     </div>
   </div>
 </section>
 
-<!-- VALUE STRIP -->
-<section class="wmb-wrap">
-  <div class="wmb-strip">
-    <div class="wmb-strip-item"><p class="wmb-kicker">Problem-first</p><h3>You solve, we scaffold.</h3><p class="wmb-muted">Every lesson is a problem to crack, not a worksheet to grind.</p></div>
-    <div class="wmb-strip-item"><p class="wmb-kicker">Guided</p><h3>Never spoiled.</h3><p class="wmb-muted">Layered hints and Milo nudge you toward the answer.</p></div>
-    <div class="wmb-strip-item"><p class="wmb-kicker">One path</p><h3>All access.</h3><p class="wmb-muted">Prealgebra to pre-olympiad, one continuous path.</p></div>
-  </div>
+<!-- MEET MILO (bold intro) -->
+<section class="wmb-wrap wmb-section mi-sec">
+  <div class="mi-beam" aria-hidden="true"></div>
+  <div class="mi-face" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/>
+<path d="M32 7 C23 7 18 11 15.5 21 C20 14 26 12 32 12 Z" fill="#9dbbc5" opacity=".32"/>
+<circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/>
+<circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/>
+<circle cx="26.4" cy="29" r=".8" fill="#fff"/><circle cx="39.4" cy="29" r=".8" fill="#fff"/>
+<path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+</svg></div>
+  <h2 class="mi-h">Meet <span class="wmb-mark">Milo</span>, your personal tutor.</h2>
 </section>
 
 <!-- MEET MILO (chat showcase) -->
@@ -1453,7 +1550,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         </div>
       </div></div>
   <div class="wmb-milo-copy">
-    <span class="wmb-kicker">Meet Milo</span>
+    <span class="wmb-kicker">Milo in action</span>
     <h2 class="wmb-h2">A tutor <span class="wmb-mark">on call</span> for every problem.</h2>
     <p class="wmb-muted">When a problem stops you cold, Milo asks the right question &#8212; not the answer &#8212; and helps you find it yourself.</p>
   </div>
@@ -1463,91 +1560,182 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 <section class="wmb-wrap" id="how">
 
   <div class="wmb-proof-row">
-    <div class="wmb-proof-fig"><svg class="tg wp-svg" viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg"><style>
-.tg .edge{fill:#ededeb;stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
-.tg .given{fill:#9dbbc5;stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round}
-.tg .base{stroke:#0a0a0a;stroke-width:2;stroke-linecap:round}
-.tg .ans{fill:#beff8b;stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round;opacity:0}
-.tg .m1{animation:tgM1 10s cubic-bezier(.65,0,.35,1) infinite}
-.tg .m2{animation:tgM2 10s cubic-bezier(.65,0,.35,1) infinite}
-.tg .m3{animation:tgM3 10s cubic-bezier(.65,0,.35,1) infinite}
-.tg .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;font-size:17px;fill:#0a0a0a;opacity:0;animation:tgLbl 10s cubic-bezier(.65,0,.35,1) infinite}
-@keyframes tgM1{0%,16%{opacity:0}30%,74%{opacity:1}88%,100%{opacity:0}}
-@keyframes tgM2{0%,24%{opacity:0}38%,74%{opacity:1}84%,100%{opacity:0}}
-@keyframes tgM3{0%,32%{opacity:0}46%,74%{opacity:1}80%,100%{opacity:0}}
-@keyframes tgLbl{0%,50%{opacity:0}64%,74%{opacity:1}84%,100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.tg .ans{opacity:1}.tg .lbl{opacity:1}.tg *{animation:none!important}}
+    <div class="wmb-proof-fig"><svg class="sg wp-svg" viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><style>
+.sg .fr{fill:none;stroke:#0a0a0a;stroke-width:2.5;stroke-linejoin:round}
+.sg .pc{stroke:#0a0a0a;stroke-width:1.6;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center}
+.sg .p1{fill:#ff7a5c;animation:sgP1 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p2{fill:#ffc84d;animation:sgP2 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p3{fill:#59d3c0;animation:sgP3 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p4{fill:#a97dff;animation:sgP4 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p5{fill:#ff9ad5;animation:sgP5 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p6{fill:#7cc7ff;animation:sgP6 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p7{fill:#beff8b;animation:sgP7 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .p8{fill:#ff7a5c;animation:sgP8 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg text{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;fill:#0a0a0a;font-size:14px}
+.sg .pls{font-size:17px;font-weight:600}
+.sg .dots{font-size:18px}
+.sg .one{font-size:23px}
+.sg .fb{stroke:#0a0a0a;stroke-width:2;stroke-linecap:round}
+.sg .dep{fill:#0a0a0a}
+.sg .face{stroke:#0a0a0a;stroke-width:1.5}
+.sg .f1{fill:#ff7a5c}.sg .f2{fill:#ffc84d}.sg .f3{fill:#59d3c0}.sg .f4{fill:#a97dff}.sg .fans{fill:#beff8b}
+.sg .bb{transform-box:fill-box;transform-origin:center;animation:sgBob 2.8s ease-in-out infinite}
+@keyframes sgBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+.sg .eqg{opacity:0;transform-box:fill-box;transform-origin:center}
+.sg .e1{animation:sgP1 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .e2{animation:sgP2 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .e3{animation:sgP3 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .e4{animation:sgP4 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .e5{animation:sgP6 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .eqf{animation:sgEq 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.sg .spark{fill:#ffc84d;stroke:#0a0a0a;stroke-width:1.3;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center;animation:sgSp 8s ease infinite}
+.sg .spark.s2{fill:#beff8b;animation-name:sgSp2}
+@keyframes sgP1{0%,5.5%{opacity:0;transform:scale(.25)}8.5%{opacity:1;transform:scale(1.09)}10.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP2{0%,14%{opacity:0;transform:scale(.25)}17%{opacity:1;transform:scale(1.09)}19%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP3{0%,22%{opacity:0;transform:scale(.25)}25%{opacity:1;transform:scale(1.09)}27%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP4{0%,29%{opacity:0;transform:scale(.25)}32%{opacity:1;transform:scale(1.09)}34%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP5{0%,35%{opacity:0;transform:scale(.25)}38%{opacity:1;transform:scale(1.09)}40%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP6{0%,40%{opacity:0;transform:scale(.25)}43%{opacity:1;transform:scale(1.09)}45%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP7{0%,44%{opacity:0;transform:scale(.25)}47%{opacity:1;transform:scale(1.09)}49%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgP8{0%,47.5%{opacity:0;transform:scale(.25)}50.5%{opacity:1;transform:scale(1.09)}52.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgEq{0%,52%{opacity:0;transform:scale(.3)}56%{opacity:1;transform:scale(1.22)}59%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes sgSp{0%,53%{opacity:0;transform:scale(.2) rotate(0deg)}57%{opacity:1;transform:scale(1.2) rotate(18deg)}63%{opacity:1;transform:scale(.95) rotate(28deg)}70%,100%{opacity:0;transform:scale(.3) rotate(40deg)}}
+@keyframes sgSp2{0%,56%{opacity:0;transform:scale(.2) rotate(0deg)}60%{opacity:1;transform:scale(1.15) rotate(-16deg)}66%{opacity:1;transform:scale(.9) rotate(-26deg)}73%,100%{opacity:0;transform:scale(.3) rotate(-40deg)}}
+@media(prefers-reduced-motion:reduce){.sg *{animation:none!important}.sg .pc,.sg .eqg{opacity:1;transform:none}.sg .spark{opacity:0}}
 </style>
-<polygon class="edge" points="70,222 300,222 150,66"/>
-<path class="wg given" d="M70.0,222.0 L104.0,222.0 A34,34 0 0 0 85.5,191.7 Z"/><path class="wg given" d="M300.0,222.0 L276.4,197.5 A34,34 0 0 0 266.0,222.0 Z"/><path class="wg given" d="M150.0,66.0 L134.5,96.3 A34,34 0 0 0 173.6,90.5 Z"/>
-<line class="base" x1="74" y1="270" x2="286" y2="270"/>
-<path class="wg ans m1" d="M180.0,270.0 L214.0,270.0 A34,34 0 0 0 195.5,239.7 Z"/><path class="wg ans m2" d="M180.0,270.0 L195.5,239.7 A34,34 0 0 0 156.4,245.5 Z"/><path class="wg ans m3" d="M180.0,270.0 L156.4,245.5 A34,34 0 0 0 146.0,270.0 Z"/>
-<text class="lbl" x="180" y="296" text-anchor="middle">the three angles make a straight line &#8226; 180&#176;</text>
+<polygon class="pc p1" points="180,132 330,12 330,252"/>
+<polygon class="pc p2" points="180,252 330,252 180,132"/>
+<polygon class="pc p3" points="105,192 180,132 180,252"/>
+<polygon class="pc p4" points="105,252 180,252 105,192"/>
+<polygon class="pc p5" points="67.5,222 105,192 105,252"/>
+<polygon class="pc p6" points="67.5,252 105,252 67.5,222"/>
+<polygon class="pc p7" points="48.75,237 67.5,222 67.5,252"/>
+<polygon class="pc p8" points="48.75,252 67.5,252 48.75,237"/>
+<polygon class="fr" points="30,252 330,252 330,12"/>
+<g class="eqg e1"><g class="bb" style="animation-delay:-.1s"><rect class="dep" x="37" y="282" width="30" height="40" rx="8"/><rect class="face f1" x="37" y="278" width="30" height="40" rx="8"/><text x="52" y="293.5" text-anchor="middle">1</text><line class="fb" x1="44" y1="298.5" x2="60" y2="298.5"/><text x="52" y="313" text-anchor="middle">2</text></g></g>
+<g class="eqg e2"><text class="pls" x="78" y="305" text-anchor="middle">+</text><g class="bb" style="animation-delay:-.5s"><rect class="dep" x="89" y="282" width="30" height="40" rx="8"/><rect class="face f2" x="89" y="278" width="30" height="40" rx="8"/><text x="104" y="293.5" text-anchor="middle">1</text><line class="fb" x1="96" y1="298.5" x2="112" y2="298.5"/><text x="104" y="313" text-anchor="middle">4</text></g></g>
+<g class="eqg e3"><text class="pls" x="130" y="305" text-anchor="middle">+</text><g class="bb" style="animation-delay:-.9s"><rect class="dep" x="141" y="282" width="30" height="40" rx="8"/><rect class="face f3" x="141" y="278" width="30" height="40" rx="8"/><text x="156" y="293.5" text-anchor="middle">1</text><line class="fb" x1="148" y1="298.5" x2="164" y2="298.5"/><text x="156" y="313" text-anchor="middle">8</text></g></g>
+<g class="eqg e4"><text class="pls" x="182" y="305" text-anchor="middle">+</text><g class="bb" style="animation-delay:-1.3s"><rect class="dep" x="194" y="282" width="36" height="40" rx="8"/><rect class="face f4" x="194" y="278" width="36" height="40" rx="8"/><text x="212" y="293.5" text-anchor="middle">1</text><line class="fb" x1="201" y1="298.5" x2="223" y2="298.5"/><text x="212" y="313" text-anchor="middle">16</text></g></g>
+<g class="eqg e5"><text class="pls" x="242" y="305" text-anchor="middle">+</text><text class="dots" x="262" y="304" text-anchor="middle">&#8943;</text></g>
+<g class="eqg eqf"><text class="one" x="284" y="305" text-anchor="middle">=</text><g class="bb" style="animation-delay:-1.7s"><rect class="dep" x="298" y="282" width="40" height="40" rx="9"/><rect class="face fans" x="298" y="278" width="40" height="40" rx="9"/><text class="one" x="318" y="306" text-anchor="middle">1</text></g></g>
+<g transform="translate(300,264)"><path class="spark" d="M0,-7 L1.9,-1.9 L7,0 L1.9,1.9 L0,7 L-1.9,1.9 L-7,0 L-1.9,-1.9 Z"/></g>
+<g transform="translate(346,292)"><path class="spark s2" d="M0,-5.5 L1.5,-1.5 L5.5,0 L1.5,1.5 L0,5.5 L-1.5,1.5 L-5.5,0 L-1.5,-1.5 Z"/></g>
 </svg></div>
     <div class="wmb-proof-txt">
       <span class="wmb-num">01</span>
       <hr class="wmb-rule">
-      <h2>You reach the<br><span class="wmb-mark-block">concept</span>, then we name it.</h2>
+      <h2>A <span class="wmb-mark-block">problem-first</span><br>philosophy.</h2>
       <hr class="wmb-rule">
-      <p class="wmb-muted">The three angles of any triangle fold onto a straight line. You discover the idea by working toward it, so it sticks.</p>
+      <p class="wmb-muted">Instead of slogging through a textbook, we take a problem and guide you through it, with Milo at your fingertips.</p>
     </div>
   </div>
 
   <div class="wmb-proof-row rev">
-    <div class="wmb-proof-fig"><svg class="ci wp-svg" viewBox="0 0 380 214" xmlns="http://www.w3.org/2000/svg"><style>.ci .wd{stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round}
-.ci .up{fill:#beff8b}
-.ci .dn{fill:#9dbbc5}
-.ci .lbl{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;font-size:16px;fill:#0a0a0a;opacity:0;animation:ciLbl 10s cubic-bezier(.65,0,.35,1) infinite}
-@keyframes ciLbl{0%,40%{opacity:0}56%,74%{opacity:1}86%,100%{opacity:0}}
-.ci .w0{transform-box:view-box;transform-origin:94px 106px;animation:ciW0 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW0{0%,12.0%{transform:none}34.0%,72%{transform:translate(73.3px,8.0px) rotate(-75.0deg)}90%,100%{transform:none}}.ci .w1{transform-box:view-box;transform-origin:94px 106px;animation:ciW1 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW1{0%,12.9%{transform:none}34.9%,72%{transform:translate(90.6px,-58.0px) rotate(-225.0deg)}90%,100%{transform:none}}.ci .w2{transform-box:view-box;transform-origin:94px 106px;animation:ciW2 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW2{0%,13.8%{transform:none}35.8%,72%{transform:translate(107.8px,8.0px) rotate(-15.0deg)}90%,100%{transform:none}}.ci .w3{transform-box:view-box;transform-origin:94px 106px;animation:ciW3 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW3{0%,14.7%{transform:none}36.7%,72%{transform:translate(125.1px,-58.0px) rotate(-165.0deg)}90%,100%{transform:none}}.ci .w4{transform-box:view-box;transform-origin:94px 106px;animation:ciW4 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW4{0%,15.6%{transform:none}37.6%,72%{transform:translate(142.4px,8.0px) rotate(45.0deg)}90%,100%{transform:none}}.ci .w5{transform-box:view-box;transform-origin:94px 106px;animation:ciW5 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW5{0%,16.5%{transform:none}38.5%,72%{transform:translate(159.7px,-58.0px) rotate(-105.0deg)}90%,100%{transform:none}}.ci .w6{transform-box:view-box;transform-origin:94px 106px;animation:ciW6 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW6{0%,17.4%{transform:none}39.4%,72%{transform:translate(177.0px,8.0px) rotate(105.0deg)}90%,100%{transform:none}}.ci .w7{transform-box:view-box;transform-origin:94px 106px;animation:ciW7 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW7{0%,18.3%{transform:none}40.3%,72%{transform:translate(194.2px,-58.0px) rotate(-45.0deg)}90%,100%{transform:none}}.ci .w8{transform-box:view-box;transform-origin:94px 106px;animation:ciW8 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW8{0%,19.2%{transform:none}41.2%,72%{transform:translate(211.5px,8.0px) rotate(165.0deg)}90%,100%{transform:none}}.ci .w9{transform-box:view-box;transform-origin:94px 106px;animation:ciW9 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW9{0%,20.1%{transform:none}42.1%,72%{transform:translate(228.8px,-58.0px) rotate(15.0deg)}90%,100%{transform:none}}.ci .w10{transform-box:view-box;transform-origin:94px 106px;animation:ciW10 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW10{0%,21.0%{transform:none}43.0%,72%{transform:translate(246.1px,8.0px) rotate(225.0deg)}90%,100%{transform:none}}.ci .w11{transform-box:view-box;transform-origin:94px 106px;animation:ciW11 10s cubic-bezier(.65,0,.35,1) infinite}@keyframes ciW11{0%,21.9%{transform:none}43.9%,72%{transform:translate(263.3px,-58.0px) rotate(75.0deg)}90%,100%{transform:none}}
-@media(prefers-reduced-motion:reduce){.ci .wd{animation:none!important}.ci .lbl{opacity:1;animation:none!important}.ci .w0{transform:translate(73.3px,8.0px) rotate(-75.0deg)}.ci .w1{transform:translate(90.6px,-58.0px) rotate(-225.0deg)}.ci .w2{transform:translate(107.8px,8.0px) rotate(-15.0deg)}.ci .w3{transform:translate(125.1px,-58.0px) rotate(-165.0deg)}.ci .w4{transform:translate(142.4px,8.0px) rotate(45.0deg)}.ci .w5{transform:translate(159.7px,-58.0px) rotate(-105.0deg)}.ci .w6{transform:translate(177.0px,8.0px) rotate(105.0deg)}.ci .w7{transform:translate(194.2px,-58.0px) rotate(-45.0deg)}.ci .w8{transform:translate(211.5px,8.0px) rotate(165.0deg)}.ci .w9{transform:translate(228.8px,-58.0px) rotate(15.0deg)}.ci .w10{transform:translate(246.1px,8.0px) rotate(225.0deg)}.ci .w11{transform:translate(263.3px,-58.0px) rotate(75.0deg)}}</style>
-<path class="wd up w0" d="M94,106 L160.0,106.0 A66,66 0 0 0 151.2,73.0 Z"/><path class="wd dn w1" d="M94,106 L151.2,73.0 A66,66 0 0 0 127.0,48.8 Z"/><path class="wd up w2" d="M94,106 L127.0,48.8 A66,66 0 0 0 94.0,40.0 Z"/><path class="wd dn w3" d="M94,106 L94.0,40.0 A66,66 0 0 0 61.0,48.8 Z"/><path class="wd up w4" d="M94,106 L61.0,48.8 A66,66 0 0 0 36.8,73.0 Z"/><path class="wd dn w5" d="M94,106 L36.8,73.0 A66,66 0 0 0 28.0,106.0 Z"/><path class="wd up w6" d="M94,106 L28.0,106.0 A66,66 0 0 0 36.8,139.0 Z"/><path class="wd dn w7" d="M94,106 L36.8,139.0 A66,66 0 0 0 61.0,163.2 Z"/><path class="wd up w8" d="M94,106 L61.0,163.2 A66,66 0 0 0 94.0,172.0 Z"/><path class="wd dn w9" d="M94,106 L94.0,172.0 A66,66 0 0 0 127.0,163.2 Z"/><path class="wd up w10" d="M94,106 L127.0,163.2 A66,66 0 0 0 151.2,139.0 Z"/><path class="wd dn w11" d="M94,106 L151.2,139.0 A66,66 0 0 0 160.0,106.0 Z"/>
-<text class="lbl" x="190" y="202" text-anchor="middle">the wedges rearrange &#8594; area = &#960;r&#178;</text>
+    <div class="wmb-proof-fig"><svg class="qt wp-svg" viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><style>
+.qt .fr{fill:none;stroke:#0a0a0a;stroke-width:2.5;stroke-linejoin:round}
+.qt .pc{stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center}
+.qt .gd{fill:#ffc84d}.qt .tl{fill:#59d3c0}.qt .sk{fill:#7cc7ff}
+.qt .g1{animation:qtG1 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .t1{animation:qtT1 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .s1{animation:qtS1 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .g2{animation:qtG2 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .t2{animation:qtT2 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .s2{animation:qtS2 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .g3{animation:qtG3 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .t3{animation:qtT3 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .s3{animation:qtS3 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .g4{animation:qtG4 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .t4{animation:qtT4 8s cubic-bezier(.4,1.4,.45,1) infinite}.qt .s4{animation:qtS4 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .tgrp{transform-box:fill-box;transform-origin:center;animation:qtPulse 8s ease infinite}
+.qt text{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;fill:#0a0a0a;font-size:14px}
+.qt .pls{font-size:17px;font-weight:600}.qt .dots{font-size:18px}.qt .eqs{font-size:20px}
+.qt .fb{stroke:#0a0a0a;stroke-width:2;stroke-linecap:round}
+.qt .eqg{opacity:0;transform-box:fill-box;transform-origin:center}
+.qt .e1{animation:qtT1 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .e2{animation:qtT2 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .e3{animation:qtT3 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .e4{animation:qtS4 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .ans{animation:qtAns 8s cubic-bezier(.4,1.4,.45,1) infinite}
+.qt .dep{fill:#0a0a0a}
+.qt .face{stroke:#0a0a0a;stroke-width:1.5}
+.qt .ftl{fill:#59d3c0}.qt .fans{fill:#beff8b}
+.qt .bb{transform-box:fill-box;transform-origin:center;animation:qtBob 2.8s ease-in-out infinite}
+@keyframes qtBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+.qt .spark{fill:#ffc84d;stroke:#0a0a0a;stroke-width:1.3;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center;animation:qtSp 8s ease infinite}
+.qt .spark.x2{fill:#beff8b;animation-name:qtSp2}
+@keyframes qtG1{0%,6%{opacity:0;transform:scale(.25)}9%{opacity:1;transform:scale(1.09)}11%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtT1{0%,9%{opacity:0;transform:scale(.25)}12%{opacity:1;transform:scale(1.09)}14%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtS1{0%,12%{opacity:0;transform:scale(.25)}15%{opacity:1;transform:scale(1.09)}17%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtG2{0%,19%{opacity:0;transform:scale(.25)}22%{opacity:1;transform:scale(1.09)}24%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtT2{0%,21.5%{opacity:0;transform:scale(.25)}24.5%{opacity:1;transform:scale(1.09)}26.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtS2{0%,24%{opacity:0;transform:scale(.25)}27%{opacity:1;transform:scale(1.09)}29%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtG3{0%,29%{opacity:0;transform:scale(.25)}31.5%{opacity:1;transform:scale(1.09)}33.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtT3{0%,31%{opacity:0;transform:scale(.25)}33.5%{opacity:1;transform:scale(1.09)}35.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtS3{0%,33%{opacity:0;transform:scale(.25)}35.5%{opacity:1;transform:scale(1.09)}37.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtG4{0%,36.5%{opacity:0;transform:scale(.25)}38.5%{opacity:1;transform:scale(1.09)}40.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtT4{0%,38%{opacity:0;transform:scale(.25)}40%{opacity:1;transform:scale(1.09)}42%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtS4{0%,39.5%{opacity:0;transform:scale(.25)}41.5%{opacity:1;transform:scale(1.09)}43.5%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtPulse{0%,46%{transform:scale(1)}49.5%{transform:scale(1.05)}53%,100%{transform:scale(1)}}
+@keyframes qtAns{0%,46%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.25)}53%,84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(1)}}
+@keyframes qtSp{0%,47%{opacity:0;transform:scale(.2) rotate(0deg)}51%{opacity:1;transform:scale(1.2) rotate(18deg)}57%{opacity:1;transform:scale(.95) rotate(28deg)}64%,100%{opacity:0;transform:scale(.3) rotate(40deg)}}
+@keyframes qtSp2{0%,50%{opacity:0;transform:scale(.2) rotate(0deg)}54%{opacity:1;transform:scale(1.15) rotate(-16deg)}60%{opacity:1;transform:scale(.9) rotate(-26deg)}67%,100%{opacity:0;transform:scale(.3) rotate(-40deg)}}
+@media(prefers-reduced-motion:reduce){.qt *{animation:none!important}.qt .pc,.qt .eqg{opacity:1;transform:none}.qt .spark{opacity:0}}
+</style>
+<polygon class="pc gd g1" points="30,282 180,282 105,152"/>
+<polygon class="pc sk s1" points="180,282 330,282 255,152"/>
+<polygon class="pc gd g2" points="105,152 180,152 142.5,87"/>
+<polygon class="pc sk s2" points="180,152 255,152 217.5,87"/>
+<polygon class="pc gd g3" points="142.5,87 180,87 161.25,54.5"/>
+<polygon class="pc sk s3" points="180,87 217.5,87 198.75,54.5"/>
+<polygon class="pc gd g4" points="161.25,54.5 180,54.5 170.625,38.25"/>
+<polygon class="pc sk s4" points="180,54.5 198.75,54.5 189.375,38.25"/>
+<g class="tgrp">
+<polygon class="pc tl t1" points="105,152 255,152 180,282"/>
+<polygon class="pc tl t2" points="142.5,87 217.5,87 180,152"/>
+<polygon class="pc tl t3" points="161.25,54.5 198.75,54.5 180,87"/>
+<polygon class="pc tl t4" points="170.625,38.25 189.375,38.25 180,54.5"/>
+</g>
+<polygon class="fr" points="180,22 30,282 330,282"/>
+<g class="eqg e1"><g class="bb" style="animation-delay:-.3s"><rect class="dep" x="49" y="282" width="30" height="40" rx="8"/><rect class="face ftl" x="49" y="278" width="30" height="40" rx="8"/><text x="64" y="293.5" text-anchor="middle">1</text><line class="fb" x1="56" y1="298.5" x2="72" y2="298.5"/><text x="64" y="313" text-anchor="middle">4</text></g></g>
+<g class="eqg e2"><text class="pls" x="92" y="305" text-anchor="middle">+</text><g class="bb" style="animation-delay:-.7s"><rect class="dep" x="104" y="282" width="36" height="40" rx="8"/><rect class="face ftl" x="104" y="278" width="36" height="40" rx="8"/><text x="122" y="293.5" text-anchor="middle">1</text><line class="fb" x1="111" y1="298.5" x2="133" y2="298.5"/><text x="122" y="313" text-anchor="middle">16</text></g></g>
+<g class="eqg e3"><text class="pls" x="152" y="305" text-anchor="middle">+</text><g class="bb" style="animation-delay:-1.1s"><rect class="dep" x="164" y="282" width="36" height="40" rx="8"/><rect class="face ftl" x="164" y="278" width="36" height="40" rx="8"/><text x="182" y="293.5" text-anchor="middle">1</text><line class="fb" x1="171" y1="298.5" x2="193" y2="298.5"/><text x="182" y="313" text-anchor="middle">64</text></g></g>
+<g class="eqg e4"><text class="pls" x="210" y="305" text-anchor="middle">+</text><text class="dots" x="232" y="304" text-anchor="middle">&#8943;</text></g>
+<g class="eqg ans"><text class="eqs" x="258" y="305" text-anchor="middle">=</text><g class="bb" style="animation-delay:-1.5s"><rect class="dep" x="283" y="282" width="40" height="40" rx="9"/><rect class="face fans" x="283" y="278" width="40" height="40" rx="9"/><text x="303" y="293.5" text-anchor="middle">1</text><line class="fb" x1="294" y1="298.5" x2="312" y2="298.5"/><text x="303" y="313" text-anchor="middle">3</text></g></g>
+<g transform="translate(304,264)"><path class="spark" d="M0,-7 L1.9,-1.9 L7,0 L1.9,1.9 L0,7 L-1.9,1.9 L-7,0 L-1.9,-1.9 Z"/></g>
+<g transform="translate(338,296)"><path class="spark x2" d="M0,-5.5 L1.5,-1.5 L5.5,0 L1.5,1.5 L0,5.5 L-1.5,1.5 L-5.5,0 L-1.5,-1.5 Z"/></g>
 </svg></div>
     <div class="wmb-proof-txt">
       <span class="wmb-num">02</span>
       <hr class="wmb-rule">
-      <h2>Skills that<br><span class="wmb-mark-block">transfer</span>.</h2>
+      <h2>Building mathematical<br><span class="wmb-mark-block">insight</span>.</h2>
       <hr class="wmb-rule">
-      <p class="wmb-muted">Slice a circle finely enough and it unrolls into a rectangle &#8212; that is where &#960;r&#178; comes from. Built from the ground up, it carries to problems you have never seen.</p>
+      <p class="wmb-muted">A rigorous curriculum that runs deeper than school math. When you can see why an idea is true, the hard problems start opening up.</p>
     </div>
   </div>
 </section>
 
 <!-- COURSE PATH -->
 <section class="wmb-wrap wmb-section wmb-path" id="path">
-  <h2 class="wmb-h2">From arithmetic to <span class="wmb-mark">olympiad</span>. One continuous journey.</h2>
+  <h2 class="wmb-h2">From prealgebra to <span class="wmb-mark">calculus</span>. The complete, rigorous mathematics education.</h2>
   <div class="wmb-pills">
     <a class="wmb-pill wmb-pill--on" href="/prealgebra"><span class="wmb-dot"></span>Prealgebra</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Algebra</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Geometry</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Number Theory</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Counting</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Logic</a>
-    <a class="wmb-pill" href="#" onclick="openLesson();return false;">Intermediate</a>
+    <span class="wmb-pill wmb-pill--soon">Algebra <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Geometry <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Number Theory <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Counting <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Logic <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Intermediate <em>Soon</em></span>
+    <span class="wmb-pill wmb-pill--soon">Calculus <em>Soon</em></span>
   </div>
-  <p style="margin-top:28px;font-size:17px"><a href="/prealgebra" style="border-bottom:2px solid var(--wmb-ink);text-decoration:none;font-weight:600">Browse the full Prealgebra syllabus &mdash; 12 chapters, 64 lessons &rarr;</a></p>
+  <p style="margin-top:28px;font-size:17px"><a href="/prealgebra" style="border-bottom:2px solid var(--wmb-ink);text-decoration:none;font-weight:600">Browse the full Prealgebra syllabus &mdash; 12 chapters, 70 lessons &rarr;</a></p>
 </section>
 
 <!-- PRICING -->
 <section class="wmb-wrap wmb-section wmb-pricing" id="pricing">
-  <h2 class="wmb-h2">One price. <span class="wmb-mark">The whole catalog</span>.</h2>
-  <div class="wmb-price-grid">
-    <div class="wmb-price">
-      <div class="wmb-price-name">Monthly</div>
-      <div class="wmb-price-amt">$29.99<span>/mo</span></div>
-      <ul><li>All 10 courses, both tiers</li><li>Mastery map &amp; spaced review</li><li>Cancel anytime</li></ul>
-      <a class="wmb-btn" href="#" onclick="openLesson();return false;">Choose monthly</a>
-    </div>
+  <h2 class="wmb-h2"><span class="wmb-mark">Free</span> while we're in early access.</h2>
+  <div class="wmb-price-grid" style="grid-template-columns:1fr;max-width:480px">
     <div class="wmb-price wmb-price--feat">
-      <div class="wmb-price-tag">Best value &middot; save 50%</div>
-      <div class="wmb-price-name">Annual</div>
-      <div class="wmb-price-amt">$179.99<span>/yr</span></div>
-      <ul><li>Everything in Monthly</li><li>Just ~$15/mo, billed yearly</li><li>Cancel anytime</li></ul>
-      <a class="wmb-btn wmb-btn--solid" href="#" onclick="openLesson();return false;">Choose annual</a>
+      <div class="wmb-price-tag">Early access</div>
+      <div class="wmb-price-name">Everything, free</div>
+      <div class="wmb-price-amt">$0</div>
+      <ul><li>Full Prealgebra course, every lesson</li><li>Milo, your tutor, on every problem</li><li>Mastery map &amp; spaced review</li><li>No card required</li></ul>
+      <a class="wmb-btn wmb-btn--solid" href="/prealgebra">Start free &rarr;</a>
     </div>
   </div>
-  <p class="wmb-price-note wmb-muted">Cheaper than a single tutoring session, and it never expires after one course.</p>
+  <p class="wmb-price-note wmb-muted">No paywall right now. When we do introduce pricing, it will still cost less than a single tutoring session.</p>
 </section>
 
 <!-- FAQ -->
@@ -1557,20 +1745,20 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <details><summary>What makes Quantica different?</summary><p class="wmb-muted">You learn by solving real problems with instant feedback and layered hints, so concepts emerge from your own work instead of being memorized.</p></details>
     <details><summary>Do I need to be good at math already?</summary><p class="wmb-muted">No. Every course is built from the ground up, and Milo is there whenever a problem stops you.</p></details>
     <details><summary>Is it really free to start?</summary><p class="wmb-muted">Yes. The full Prealgebra unit is free, no card required.</p></details>
-    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. One subscription unlocks all ten courses on one continuous path.</p></details>
+    <details><summary>Do I need to buy each course?</summary><p class="wmb-muted">No. Everything on Quantica is free during early access. When pricing launches later, one simple plan will unlock every course.</p></details>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="wmb-wrap wmb-section wmb-final">
   <h2 class="wmb-hero">Start <span class="wmb-mark-block">solving</span>.</h2>
-  <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="#" onclick="openLesson();return false;">Start free &#8594;</a>
+  <a class="wmb-btn wmb-btn--solid wmb-btn--lg" href="/prealgebra">Start free &#8594;</a>
 </section>
 
 <!-- FOOTER -->
 <footer class="wmb-wrap wmb-foot">
   <span class="wmb-nav-brand">QuanticaEdu</span>
-  <div class="wmb-foot-links"><a href="/prealgebra">Prealgebra</a><a href="#pricing">Pricing</a><a href="#how">How it works</a></div>
+  <div class="wmb-foot-links"><a href="/prealgebra">Prealgebra</a><a href="/blog">Blog</a><a href="#pricing">Pricing</a><a href="#how">How it works</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
   <small class="wmb-muted">&#169; 2026 Quantica &middot; Learn math by solving.</small>
 </footer>
 </div>
@@ -1580,36 +1768,59 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var body=document.getElementById('miloBody');
   if(!body) return;
+  var av=document.querySelector('.milo-win .av');
   var script=[
-    {who:'bot',t:"Hi, I&#8217;m Milo. What are you stuck on?"},
-    {who:'me', t:"Why does &#8730;72 become 6&#8730;2?"},
-    {who:'bot',t:"What&#8217;s the largest perfect square that divides 72?"},
-    {who:'me', t:"36?"},
-    {who:'bot',t:"Exactly. So 72 = 36 &#215; 2. Pull the 36 out of the root &#8212; what do you get?"},
-    {who:'me', t:"6&#8730;2!"},
-    {who:'bot',t:"That&#8217;s it. You just did it yourself. &#10024;"}
+    {who:'bot',t:"Hey! I&#8217;m Milo &#128075; What are we cracking today?"},
+    {who:'me', t:"3/4 + 1/6 is melting my brain &#129760;"},
+    {who:'bot',t:"Fractions only add when the pieces match. What size piece fits quarters <b>and</b> sixths?"},
+    {who:'me', t:"hmm&#8230; twelfths?"},
+    {who:'bot',t:"Yes!! Twelfths. So what do 3/4 and 1/6 turn into?"},
+    {who:'me', t:"9/12 + 2/12 &#8230; 11/12!"},
+    {who:'bot',cls:' pop',conf:true,t:"&#128165; Nailed it. You found that yourself, I just asked questions."},
+    {who:'xp', t:"+10 XP &#9889;"}
   ];
+  var CONF=['#beff8b','#ff7a5c','#ffc84d','#7cc7ff','#ff9ad5','#a97dff'];
+  function confetti(){
+    if(rm) return;
+    var w=body.clientWidth||360, h=body.clientHeight||452;
+    for(var k=0;k<16;k++){
+      var p=document.createElement('i');
+      p.className='conf'+(k%3===0?' rd':'');
+      p.style.background=CONF[k%CONF.length];
+      var x0=30+Math.random()*(w-90), y0=h-150+Math.random()*40;
+      p.style.setProperty('--x0',x0+'px'); p.style.setProperty('--y0',y0+'px');
+      p.style.setProperty('--x1',(x0+(Math.random()-.5)*170)+'px');
+      p.style.setProperty('--y1',(y0-40-Math.random()*160)+'px');
+      p.style.setProperty('--r',(Math.random()*720-360)+'deg');
+      p.style.animationDelay=(Math.random()*.18)+'s';
+      body.appendChild(p);
+      setTimeout(function(el){ return function(){ el.remove(); }; }(p),2100);
+    }
+  }
   function run(){
     body.innerHTML='';
     var typing=document.createElement('div'); typing.className='typing'; typing.innerHTML='<i></i><i></i><i></i>';
     body.appendChild(typing);
     var i=0;
     function step(){
-      if(i>=script.length){ setTimeout(run,4200); return; }
+      if(i>=script.length){ setTimeout(run,4400); return; }
       var m=script[i];
       var show=function(){
         typing.classList.remove('show');
-        var b=document.createElement('div'); b.className='mb '+m.who; b.innerHTML=m.t;
+        if(av) av.classList.remove('talk');
+        var b=document.createElement('div'); b.className='mb '+m.who+(m.cls||''); b.innerHTML=m.t;
         body.insertBefore(b,typing);
         requestAnimationFrame(function(){ b.classList.add('show'); });
-        i++; setTimeout(step, m.who==='me'?760:960);
+        if(m.conf) setTimeout(confetti,320);
+        i++; setTimeout(step, m.who==='me'?620:(m.who==='xp'?1100:820));
       };
-      if(m.who==='bot' && !rm){ typing.classList.add('show'); setTimeout(show,820); }
+      if(m.who==='bot' && !rm){ typing.classList.add('show'); if(av) av.classList.add('talk'); setTimeout(show,700); }
+      else if(m.who==='xp'){ setTimeout(show,420); }
       else show();
     }
     step();
   }
-  if(rm){ body.innerHTML=script.map(function(m){return '<div class="mb '+m.who+' show">'+m.t+'</div>';}).join(''); }
+  if(rm){ body.innerHTML=script.map(function(m){return '<div class="mb '+m.who+(m.cls||'')+' show">'+m.t+'</div>';}).join(''); }
   else { run(); }
 })();
 </script>
@@ -1640,7 +1851,7 @@ window.addEventListener('load',function(){
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
       <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
-      <button class="cb-exit" onclick="closeLesson()" aria-label="Exit course">Exit course ✕</button>
+      <button class="cb-exit" onclick="navExit()" aria-label="Exit course"><span class="exit-txt">Exit course </span>✕</button>
     </header>
     <div class="coursescroll" id="courseScroll">
       <div class="coursewrap">
@@ -1802,17 +2013,32 @@ window.addEventListener('load',function(){
     var pwd=document.getElementById('authPwd').value||'';
     var err=document.getElementById('authErr');
     var btn=document.getElementById('authSubmit');
+    if(btn.disabled) return;   // in-flight guard: Enter key can't double-submit
+    err.classList.remove('ok');
     if(!email||!pwd){ err.textContent='Please fill in both fields.'; return; }
     var isUp=document.getElementById('tabUp').classList.contains('on');
     if(isUp){ var ageCb=document.getElementById('ageCb'); if(ageCb&&!ageCb.checked){ err.textContent='Please confirm your age and agree to the terms to create an account.'; return; } }
     btn.disabled=true; btn.textContent='Please wait…'; err.textContent='';
     var p=isUp ? auth.createUserWithEmailAndPassword(email,pwd) : auth.signInWithEmailAndPassword(email,pwd);
     p.then(function(){
+      btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
       // A fresh email/password account always means a brand-new user: walk them through the tools.
       if(isUp && window.AccountTour) setTimeout(function(){ AccountTour.start(); },420);
     }).catch(function(e){
       btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
       var msg={'auth/user-not-found':'No account with that email.','auth/wrong-password':'Incorrect password.','auth/email-already-in-use':'An account with that email already exists.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.'};
+      err.textContent=msg[e.code]||e.message;
+    });
+  };
+  window.fbResetPwd=function(){
+    var email=(document.getElementById('authEmail').value||'').trim();
+    var err=document.getElementById('authErr');
+    err.classList.remove('ok');
+    if(!email){ err.textContent='Type your email above first, then tap Forgot password.'; return; }
+    auth.sendPasswordResetEmail(email).then(function(){
+      err.classList.add('ok'); err.textContent='Reset email sent. Check your inbox (and spam folder).';
+    }).catch(function(e){
+      var msg={'auth/user-not-found':'No account with that email.','auth/invalid-email':'Please enter a valid email address.'};
       err.textContent=msg[e.code]||e.message;
     });
   };
@@ -1829,11 +2055,22 @@ window.addEventListener('load',function(){
         if(result && result.additionalUserInfo && result.additionalUserInfo.isNewUser && window.AccountTour)
           setTimeout(function(){ AccountTour.start(); },420);
       })
-      .catch(function(e){ err.textContent=e.message; });
+      .catch(function(e){
+        if(e.code==='auth/popup-blocked'){ auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()); return; }
+        if(e.code==='auth/popup-closed-by-user'||e.code==='auth/cancelled-popup-request'){ err.textContent='Sign-in window was closed. Tap the button to try again.'; return; }
+        err.textContent=e.message;
+      });
   };
 
   // ── Sign out ──────────────────────────────────────────────────────────────
-  window.fbSignOut=function(){ auth.signOut(); };
+  window.fbSignOut=function(){
+    // Clear this account's local copy so the next person on a shared device starts
+    // fresh instead of inheriting (and cloud-merging) someone else's progress.
+    auth.signOut().then(function(){
+      try{ localStorage.removeItem('quantica.profile.v1'); localStorage.removeItem('quantica_adapt_v1'); localStorage.removeItem('qa_signin_prompt_v2'); }catch(e){}
+      location.reload();
+    });
+  };
 
   // ── Cloud sync hooks ──────────────────────────────────────────────────────
   window.__fbSync=function(P){
@@ -1903,6 +2140,19 @@ window.addEventListener('load',function(){
 
   // ── Header auth UI ────────────────────────────────────────────────────────
   function updateAuthUI(user){
+    // marketing-nav sign-in pill (present on the landing; swaps to the account when signed in)
+    var sp=document.getElementById('navSignin');
+    if(sp){
+      if(user){
+        var fn=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
+        sp.textContent=fn+' ▾'; sp.classList.add('wmb-pill--on');
+        sp.onclick=function(e){ e.preventDefault(); if(window.__acctMenu) __acctMenu.toggle(sp); };
+      } else {
+        sp.textContent='Sign in'; sp.classList.remove('wmb-pill--on');
+        sp.onclick=function(e){ e.preventDefault(); showAuthModal('in'); };
+        if(window.__acctMenu) __acctMenu.hide();
+      }
+    }
     var nav=document.getElementById('authNav'); if(!nav) return;
     if(user){
       var init=(user.displayName||user.email||'U')[0].toUpperCase();
@@ -1936,6 +2186,8 @@ window.addEventListener('load',function(){
   // ── Auth state observer ───────────────────────────────────────────────────
   auth.onAuthStateChanged(function(user){
     updateAuthUI(user);
+    var rv=document.getElementById('rewardsView');
+    if(rv && rv.style.display!=='none' && window.Rewards && Rewards.openPanel) Rewards.openPanel();
     if(!user){ window._access=null; updateStartCTAs(); return; }
     hideAuthModal();
     // Load rewards profile, and create a minimal profile record the first time we see this
@@ -1955,6 +2207,12 @@ window.addEventListener('load',function(){
           createdAt:firebase.firestore.FieldValue.serverTimestamp(),
           authCreatedAt:(user.metadata&&user.metadata.creationTime)||null
         },{merge:true}).catch(function(e){ console.warn('User profile create failed',e); });
+        // brand-new account: push whatever progress they already made (e.g. the first lesson) to the cloud
+        if(window.Rewards && Rewards.syncUp) Rewards.syncUp();
+        // this branch also backfills docs for old accounts, so gate the event on the
+        // auth account actually being minutes old, not just the doc being missing
+        var isNewAcct = user.metadata && user.metadata.creationTime && (Date.now()-new Date(user.metadata.creationTime).getTime() < 5*60*1000);
+        if(isNewAcct && window.track) track('sign_up',{method:prov||'password'});
       }
     }).catch(function(e){ console.warn('Cloud load failed',e); });
     // Load adaptive state
@@ -2482,7 +2740,198 @@ window.addEventListener('load',function(){
     {x:"A soccer team scored 3, 1, 4, 2, and 5 goals across five games. In how many of those games did they score more than their mean number of goals for the five games? Give the number.", ans:"2", accept:["2"], hints:["First find the mean of the five game scores, then count how many individual games land strictly above it."], sol:"<p>The mean is \\(\\frac{3+1+4+2+5}{5} = \\frac{15}{5} = 3\\) goals per game.</p><p>Now compare each game to the mean. The scores strictly greater than \\(3\\) are the games with \\(4\\) and \\(5\\) goals, so that is \\(\\boxed{2}\\) games.</p>"},
     {x:"A small company has five employees, and their annual salaries, in thousands of dollars, are 30, 35, 40, 45, and 250. The single high salary at the top pulls the mean upward and makes it a poor summary of a typical wage, so instead find the median salary, in thousands. Give the number (in thousands).", ans:"40", accept:["40"], hints:["Sort the salaries from smallest to largest and look at the value sitting in the very middle of the list."], sol:"<p>The median ignores how extreme the largest value is and just picks the middle of the sorted list. Ordering the salaries gives \\(30, 35, 40, 45, 250\\), and with five values the middle one is the third.</p><p>That middle value is \\(\\boxed{40}\\).</p>"},
     {x:"A bag holds 4 red marbles and 6 blue marbles. You draw two marbles one after the other, and you do not put the first one back before drawing the second. What is the probability that both marbles are red? Give your answer as a fraction in lowest terms.", ans:"2/15", accept:["2/15"], hints:["The bag changes after the first draw, so multiply the chance of red on the first draw by the chance of red on the second draw given that a red is already gone."], sol:"<p>The first marble is red with probability \\(\\frac{4}{10}\\). After removing that red one, 3 red marbles remain out of 9 total, so the second draw is red with probability \\(\\frac{3}{9}\\).</p><p>Multiply the two stages to get \\(\\frac{4}{10} \\times \\frac{3}{9} = \\frac{12}{90} = \\boxed{\\frac{2}{15}}\\).</p>"}
-  ],challenge:[]}});
+  ],challenge:[
+      {x:"A smoothie stand served \\(40\\) customers one morning. \\(24\\) of them ordered mango, \\(19\\) ordered kale, and \\(7\\) ordered a blend with both. How many customers ordered neither mango nor kale?",
+       ans:"4",
+       accept:["4", "4.0", "four"],
+       hints:["Adding \\(24 + 19\\) counts the \\(7\\) blend customers twice, once in each group.", "Subtract the double-counted overlap to find how many ordered at least one flavor, then compare with \\(40\\)."],
+       sol:"<p>Adding the two groups counts every blend customer twice, so the number who ordered at least one of the flavors is</p><p>$$24 + 19 - 7 = 36$$</p><p>That leaves \\(40 - 36 = \\boxed{4}\\) customers who ordered neither.</p><p>Add the groups, subtract the overlap. Forgetting the subtraction is the single most common counting error there is.</p>"},
+      {x:"A gym locker code has three slots. The first slot is one of the letters A, B, C, D, or E. The second and third slots are each a digit from \\(1\\) to \\(9\\), and the two digits must be different. How many codes are possible?",
+       ans:"360",
+       accept:["360", "360.0"],
+       hints:["Count slot by slot and multiply, since every choice at one slot pairs with every choice at the next.", "The first digit has \\(9\\) options, but the second digit must avoid it, leaving only \\(8\\)."],
+       sol:"<p>Fill the slots in order. The letter has \\(5\\) options. The first digit has \\(9\\). The second digit may be anything except the first digit, so it has \\(8\\).</p><p>$$5 \\times 9 \\times 8 = \\boxed{360}$$</p><p>The restriction only shrinks the slot it touches. Every earlier choice still combines freely with what remains.</p>"},
+      {x:"A security panel accepts \\(3\\) digit codes built from the digits \\(2, 3, 5, 7, 8\\), with no digit repeated. How many of the possible codes are even numbers?",
+       ans:"24",
+       accept:["24", "24.0", "twenty four", "twenty-four"],
+       hints:["A number is even exactly when its last digit is even, and only \\(2\\) and \\(8\\) qualify here.", "Lock in the last digit first, then count the choices remaining for the other two slots."],
+       sol:"<p>Evenness lives entirely in the last digit, so start there. It must be \\(2\\) or \\(8\\), giving \\(2\\) choices.</p><p>Whichever it is, four digits remain for the first slot and then three for the middle slot.</p><p>$$2 \\times 4 \\times 3 = \\boxed{24}$$</p><p>When a slot carries a restriction, fill that slot first. Starting at the front forces messy cases later.</p>"},
+      {x:"Ten founders attend a demo day, and every pair is scheduled to exchange business cards exactly once. Two pairs of founders are bitter rivals, and each rival pair refuses its exchange. How many exchanges actually happen?",
+       ans:"43",
+       accept:["43", "43.0", "forty three", "forty-three"],
+       hints:["First count all possible pairs of \\(10\\) people. Each of the \\(10\\) founders meets \\(9\\) others, but that counts every exchange twice.", "Then remove the refused exchanges."],
+       sol:"<p>Each of the \\(10\\) founders would greet \\(9\\) others, making \\(10 \\times 9 = 90\\) greetings, but that counts each exchange once from each side. The true count of pairs is</p><p>$$\\frac{10 \\times 9}{2} = 45$$</p><p>Two of those pairs refuse, so \\(45 - 2 = \\boxed{43}\\) exchanges happen.</p><p>Count the clean total first, then subtract the exceptions. Weaving the exceptions into the main count invites double trouble.</p>"},
+      {x:"An arcade token machine accepts nickels, dimes, and quarters, in any combination, and a game costs exactly \\(30\\) cents. In how many different ways can a player pay, if two ways are different whenever they use different numbers of some coin?",
+       ans:"5",
+       accept:["5", "5.0", "five"],
+       hints:["Split into cases by the number of quarters. With one quarter, only \\(5\\) cents remains to cover.", "With zero quarters, list the ways nickels and dimes can make \\(30\\), organized by the number of dimes."],
+       sol:"<p>Case one, a quarter is used. Only \\(5\\) cents remains, which must be a single nickel. That is \\(1\\) way.</p><p>Case two, no quarters. The dimes can number \\(0, 1, 2,\\) or \\(3\\), and the nickels fill in the rest with \\(6, 4, 2,\\) or \\(0\\). That is \\(4\\) ways.</p><p>$$1 + 4 = \\boxed{5}$$</p><p>Good casework picks the coin that splits the problem hardest, here the quarter, so each case collapses into something you can simply list.</p>"},
+      {x:"A claw machine holds \\(3\\) gold tokens and \\(5\\) silver tokens, all equally likely to be grabbed. The claw grabs one token, keeps it, then grabs a second from what remains. What is the probability that both grabbed tokens are gold? Give your answer as a fraction in lowest terms.",
+       ans:"3/28",
+       accept:["3/28"],
+       hints:["The first grab is gold with probability \\(\\tfrac{3}{8}\\). After that success, count what is left in the machine.", "With one gold gone, \\(2\\) golds remain among \\(7\\) tokens, and the two probabilities multiply."],
+       sol:"<p>The first grab is gold with probability \\(\\tfrac{3}{8}\\).</p><p>Given that success, the machine holds \\(2\\) golds among \\(7\\) tokens, so the second grab is gold with probability \\(\\tfrac{2}{7}\\).</p><p>$$\\frac{3}{8} \\times \\frac{2}{7} = \\frac{6}{56} = \\boxed{\\tfrac{3}{28}}$$</p><p>The whole trick of drawing without replacement is that the second fraction lives in a smaller world. Both its top and its bottom must shrink.</p>"},
+      {x:"A nine-person studio posts an ad bragging that the average annual bonus is generous. Eight artists each received a bonus of \\(45\\) gift tokens, and the studio head received \\(225\\). By how many tokens does the mean bonus exceed the median bonus?",
+       ans:"20",
+       accept:["20", "20.0", "twenty"],
+       hints:["The mean needs the total, \\(8 \\times 45 + 225\\), divided by \\(9\\).", "For the median, line up all nine bonuses in order and take the fifth one."],
+       sol:"<p>The total paid out is \\(8 \\times 45 + 225 = 360 + 225 = 585\\), so the mean is</p><p>$$585 \\div 9 = 65$$</p><p>Sorted, the bonuses read \\(45\\) eight times, then \\(225\\), so the fifth value, the median, is \\(45\\).</p><p>$$65 - 45 = \\boxed{20}$$</p><p>One enormous value drags the mean upward while the median never budges. Whenever an ad chooses the mean, ask what the median would have confessed.</p>"},
+      {x:"A cafe tallies its morning and evening orders in the table below, but spills ink on some cells.<div style=\"display:flex;justify-content:center;margin:12px 0 14px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:6px 14px;border:1px solid #b8c4d4\"></td><td style=\"padding:6px 14px;border:1px solid #b8c4d4;font-weight:700\">Tea</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4;font-weight:700\">Coffee</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4;font-weight:700\">Total</td></tr><tr><td style=\"padding:6px 14px;border:1px solid #b8c4d4;font-weight:700\">Morning</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">14</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">&mdash;</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">31</td></tr><tr><td style=\"padding:6px 14px;border:1px solid #b8c4d4;font-weight:700\">Evening</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">&mdash;</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4;color:#8a5a08;font-weight:800\">?</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">&mdash;</td></tr><tr><td style=\"padding:6px 14px;border:1px solid #b8c4d4;font-weight:700\">Total</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">&mdash;</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">27</td><td style=\"padding:6px 14px;border:1px solid #b8c4d4\">60</td></tr></table></div>How many coffees were served in the evening?",
+       ans:"10",
+       accept:["10", "10.0", "ten"],
+       hints:["Work inside the morning row first. Its two entries must add to the row total of \\(31\\).", "Then move to the coffee column, whose two entries must add to \\(27\\)."],
+       sol:"<p>The morning row gives morning coffee as \\(31 - 14 = 17\\).</p><p>The coffee column totals \\(27\\), so the evening coffees are</p><p>$$27 - 17 = \\boxed{10}$$</p><p>Every row and column of a totals table is its own little equation. A spilled cell is recoverable whenever some row or column through it has only one blank, and you can hop blank to blank until the whole table refills.</p>"},
+      {x:"Four whole numbers have a mean of \\(10\\) and a median of \\(9\\). The number \\(7\\) appears exactly twice, and no other value repeats. What is the largest of the four numbers?",
+       ans:"15",
+       accept:["15", "15.0", "fifteen"],
+       hints:["A mean of \\(10\\) tells you the four numbers total \\(40\\), and for four numbers the median is the average of the two middle values, so those add to \\(18\\).", "If either middle value were \\(7\\), the other would be \\(11\\). Test where the two sevens can sit without breaking the ordering."],
+       sol:"<p>The mean gives a total of \\(4 \\times 10 = 40\\), and the median makes the two middle numbers add to \\(18\\).</p><p>Both sevens cannot sit in the middle pair, since \\(7 + 7 = 14\\), not \\(18\\). Sorted as \\(a \\le b \\le c \\le d\\), the sevens must be \\(a\\) and \\(b\\), because any seven placed at \\(c\\) or \\(d\\) would force a number below \\(7\\) ahead of it and a second copy elsewhere. With \\(b = 7\\), the median gives \\(c = 11\\).</p><p>$$d = 40 - 7 - 7 - 11 = \\boxed{15}$$</p><p>The set is \\(7, 7, 11, 15\\). Checking every constraint at the end, mean, median, and the exactly-twice condition, is what separates an answer from a guess.</p>"},
+      {x:"A raffle prints one ticket for every number from \\(100\\) through \\(999\\). Any ticket whose number contains the digit \\(7\\) at least once wins a sticker. How many tickets win?",
+       legendary:true,
+       ans:"252",
+       accept:["252", "252.0"],
+       hints:["Counting the winners directly splinters into messy cases. Count the losers instead, the tickets with no \\(7\\) anywhere.", "A no-seven number has \\(8\\) choices for its first digit, since zero and seven are both banned there, and \\(9\\) for each digit after. Subtract the losers from all \\(900\\) tickets."],
+       sol:"<p>Chasing at least one seven directly means juggling tickets with one, two, or three sevens, and the overlaps between those cases. Flip the problem and count tickets with no seven at all.</p><p>The first digit can be \\(1\\) through \\(9\\) except \\(7\\), which is \\(8\\) choices. Each remaining digit can be anything but \\(7\\), which is \\(9\\) choices.</p><p>$$8 \\times 9 \\times 9 = 648 \\text{ losers}$$</p><p>There are \\(900\\) tickets in all, so the winners number</p><p>$$900 - 648 = \\boxed{252}$$</p><p>Whenever a count demands at least one, try counting none instead. The opposite of a tangled condition is often a single clean multiplication.</p>"},
+      {x:"A five-song playlist plays in a random order, every ordering equally likely. Exactly two of the songs are by the same artist. What is the probability that those two songs end up playing back to back? Give your answer as a fraction in lowest terms.",
+       legendary:true,
+       ans:"2/5",
+       accept:["2/5", "0.4", ".4"],
+       hints:["Glue the two songs into one block. Then count arrangements of the block plus the other three songs, remembering the block itself can be ordered two ways.", "Divide by the total number of orderings of five songs, which is \\(5 \\times 4 \\times 3 \\times 2 \\times 1 = 120\\)."],
+       sol:"<p>All \\(5\\) songs can be ordered in \\(5 \\times 4 \\times 3 \\times 2 \\times 1 = 120\\) ways, each equally likely.</p><p>To count the friendly orderings, glue the two matching songs into a single block. The block plus the three other songs make four items, arrangeable in \\(4 \\times 3 \\times 2 \\times 1 = 24\\) ways, and inside the block the two songs can sit in \\(2\\) orders.</p><p>$$\\frac{24 \\times 2}{120} = \\frac{48}{120} = \\boxed{\\tfrac{2}{5}}$$</p><p>The gluing move turns a relationship between two items into a single object you can count normally. It reappears constantly, seating friends together, shelving matched volumes, pairing dance partners.</p>"},
+      {x:"A board game vault opens only when a player rolls three standard six-sided dice, of different colors, and the three results add to exactly \\(10\\). What is the probability the vault opens on a given roll? Give your answer as a fraction in lowest terms.",
+       legendary:true,
+       ans:"1/8",
+       accept:["1/8", "0.125", ".125"],
+       hints:["The three colored dice give \\(6 \\times 6 \\times 6 = 216\\) equally likely outcomes. Count the ones summing to \\(10\\) with casework on the first die.", "Fix the red die at \\(1\\), then \\(2\\), and so on. For each value, count the pairs on the other two dice adding to what remains, and watch the counts form a pattern."],
+       sol:"<p>Three distinguishable dice produce \\(6^3 = 216\\) equally likely outcomes.</p><p>Fix the first die and count pairs for the other two. A first roll of \\(1\\) needs the pair to sum to \\(9\\), which happens \\(4\\) ways, from \\(3+6\\) up to \\(6+3\\). A first roll of \\(2\\) needs \\(8\\), giving \\(5\\) ways. Continuing, a first roll of \\(3\\) gives \\(6\\), of \\(4\\) gives \\(5\\), of \\(5\\) gives \\(4\\), and of \\(6\\) gives \\(3\\).</p><p>$$4 + 5 + 6 + 5 + 4 + 3 = 27 \\text{ winning rolls}$$</p><p>$$\\frac{27}{216} = \\boxed{\\tfrac{1}{8}}$$</p><p>The counts rise then fall in a near-symmetric wave, and spotting that pattern is the real prize. Sums near the middle of the possible range always own the most combinations, which is exactly why the vault was not set to open on \\(3\\) or \\(18\\).</p>"}
+    ]}});
+  Object.assign(PSETS,{11:{practice:[
+      {x:"At exactly 8:00, what is the smaller angle, in degrees, between the hour hand and the minute hand of a clock?",
+       ans:"120",
+       accept:["120", "120.0"],
+       hints:["The twelve hour marks split the full \\(360\\) degrees into twelve equal gaps, so each gap is \\(30\\) degrees."],
+       sol:"<p>Each hour gap on a clock face spans \\(360 \\div 12 = 30\\) degrees. At 8:00 the minute hand points at the 12 and the hour hand points at the 8, which is four gaps away going the short way around.</p><p>$$4 \\times 30 = \\boxed{120}$$</p>"},
+      {x:"A zip line crosses two parallel fence rails. On the uphill side it makes a \\(74\\) degree angle with the top rail. On the same side of the zip line, what angle in degrees does it make with the bottom rail, so that the two angles sit between the rails facing each other?",
+       ans:"106",
+       accept:["106", "106.0"],
+       hints:["Two angles between parallel lines on the same side of a transversal are co-interior, and co-interior angles add to \\(180\\) degrees."],
+       sol:"<p>The zip line is a transversal cutting two parallel lines. The two angles described sit between the rails on the same side, so they are co-interior angles, and co-interior angles always add to \\(180\\) degrees.</p><p>$$180 - 74 = \\boxed{106}$$</p>"},
+      {x:"A hexagonal gazebo floor has corner angles of \\(118\\), \\(121\\), \\(117\\), \\(125\\), and \\(130\\) degrees at five of its corners. How many degrees is the angle at the sixth corner?",
+       ans:"109",
+       accept:["109", "109.0"],
+       hints:["A hexagon splits into four triangles from one corner, so its six angles add to \\(4 \\times 180 = 720\\) degrees."],
+       sol:"<p>Any hexagon can be fanned into four triangles from a single corner, so its interior angles total \\(4 \\times 180 = 720\\) degrees.</p><p>The five known corners use \\(118 + 121 + 117 + 125 + 130 = 611\\) degrees.</p><p>$$720 - 611 = \\boxed{109}$$</p>"},
+      {x:"A garden border is shaped like a pixel staircase. It starts at the bottom left, runs only rightward and upward in small steps, and ends at the top right, closing along a full width of \\(12\\) meters and a full height of \\(7\\) meters. What is the total perimeter of the border, in meters?",
+       ans:"38",
+       accept:["38", "38.0", "thirty eight", "thirty-eight"],
+       hints:["Slide every horizontal step down onto the bottom edge and every vertical step across onto the side edge. The steps rebuild the full rectangle exactly."],
+       sol:"<p>Every horizontal piece of the staircase can slide straight down, and together they cover the full \\(12\\) meter width once. Every vertical piece slides sideways to cover the full \\(7\\) meter height once. So the zigzag has the same perimeter as the plain \\(12\\) by \\(7\\) rectangle.</p><p>$$2(12 + 7) = \\boxed{38}$$</p><p>The number of steps never matters. The staircase only chops the rectangle's edges into pieces, it never adds new length.</p>"},
+      {x:"A plus-sign patio is built from five identical \\(3\\) by \\(3\\) meter squares, one in the center and one attached to each of its four sides. How many square meters of paving does the patio use?",
+       ans:"45",
+       accept:["45", "45.0", "forty five", "forty-five"],
+       hints:["Each square contributes \\(3 \\times 3 = 9\\) square meters, and none of the five overlap."],
+       sol:"<p>The five squares tile the plus sign with no gaps and no overlaps, so the areas simply add.</p><p>$$5 \\times (3 \\times 3) = 5 \\times 9 = \\boxed{45}$$</p>"},
+      {x:"A triangular pennant has a base of \\(9\\) inches and a height of \\(8\\) inches measured perpendicular to that base. What is its area in square inches?",
+       ans:"36",
+       accept:["36", "36.0", "thirty six", "thirty-six"],
+       hints:["A triangle fills exactly half of the rectangle built on the same base and height."],
+       sol:"<p>The pennant is half of a \\(9\\) by \\(8\\) rectangle, so</p><p>$$\\tfrac{1}{2} \\times 9 \\times 8 = \\boxed{36}$$</p>"},
+      {x:"A bicycle wheel has a radius of \\(13\\) inches. Its circumference is a whole number times \\(\\pi\\). Find that whole number.",
+       ans:"26",
+       accept:["26", "26.0", "twenty six", "twenty-six"],
+       hints:["Circumference is \\(\\pi\\) times the diameter, and the diameter is twice the radius."],
+       sol:"<p>The diameter is \\(2 \\times 13 = 26\\), and circumference is diameter times \\(\\pi\\), giving \\(26\\pi\\). The whole number multiplying \\(\\pi\\) is \\(\\boxed{26}\\).</p>"},
+      {x:"A circular rug covers an area of \\(81\\pi\\) square feet. What is its radius, in feet?",
+       ans:"9",
+       accept:["9", "9.0", "nine"],
+       hints:["Area is \\(\\pi r^2\\), so \\(r^2\\) must equal \\(81\\)."],
+       sol:"<p>From \\(\\pi r^2 = 81\\pi\\) we get \\(r^2 = 81\\), and the positive square root gives \\(r = \\boxed{9}\\) feet.</p>"},
+      {x:"A delivery drone flies \\(7\\) km due east, then \\(24\\) km due north, and then returns home in a single straight line. How many kilometers long is the return flight?",
+       ans:"25",
+       accept:["25", "25.0", "twenty five", "twenty-five"],
+       hints:["The two legs of the trip meet at a right angle, so the return path is the hypotenuse of a right triangle."],
+       sol:"<p>East and north are perpendicular, so the outbound legs form a right triangle with the return path as its hypotenuse.</p><p>$$c^2 = 7^2 + 24^2 = 49 + 576 = 625$$</p><p>Since \\(25^2 = 625\\), the straight flight home is \\(\\boxed{25}\\) km.</p>"},
+      {x:"A radio mast is held by a straight support wire \\(26\\) meters long, anchored to the flat ground \\(10\\) meters from the base of the mast. The wire reaches the top of the mast. How tall is the mast, in meters?",
+       ans:"24",
+       accept:["24", "24.0", "twenty four", "twenty-four"],
+       hints:["The mast, the ground, and the wire form a right triangle in which the wire is the hypotenuse."],
+       sol:"<p>The mast meets the ground at a right angle, so the wire is a hypotenuse of length \\(26\\) with one leg of \\(10\\).</p><p>$$h^2 = 26^2 - 10^2 = 676 - 100 = 576$$</p><p>Since \\(24^2 = 576\\), the mast stands \\(\\boxed{24}\\) meters tall.</p>"},
+      {x:"A loading ramp climbs at a \\(30\\) degree angle, so the ramp, the ground, and the wall form a 30-60-90 triangle. The ramp itself, the hypotenuse, is \\(18\\) feet long. How many feet high is the top of the ramp above the ground?",
+       ans:"9",
+       accept:["9", "9.0", "nine"],
+       hints:["The height sits opposite the \\(30\\) degree angle, so it is the short leg, and the short leg is half the hypotenuse."],
+       sol:"<p>In a 30-60-90 triangle the side opposite the \\(30\\) degree angle is the short leg, and the hypotenuse is always exactly twice the short leg.</p><p>$$18 \\div 2 = \\boxed{9}$$</p>"},
+      {x:"A rhombus-shaped pendant has diagonals of \\(10\\) mm and \\(18\\) mm. What is its area in square millimeters?",
+       ans:"90",
+       accept:["90", "90.0", "ninety"],
+       hints:["A rhombus fills exactly half of the rectangle spanned by its two diagonals."],
+       sol:"<p>The area of a rhombus is half the product of its diagonals,</p><p>$$\\tfrac{1}{2} \\times 10 \\times 18 = \\boxed{90}$$</p>"}
+    ],challenge:[
+      {x:"In a triangle, one angle is exactly twice another, and the third angle measures \\(84\\) degrees. How many degrees is the smallest angle of the triangle?",
+       ans:"32",
+       accept:["32", "32.0", "thirty two", "thirty-two"],
+       hints:["Call the smaller unknown angle \\(x\\), so the other unknown is \\(2x\\), and all three angles add to \\(180\\) degrees.", "Solve \\(x + 2x + 84 = 180\\), then check which of the three angles is smallest."],
+       sol:"<p>Let the smaller unknown angle be \\(x\\), making its partner \\(2x\\). The angles of any triangle add to \\(180\\) degrees.</p><p>$$x + 2x + 84 = 180 \\quad\\Longrightarrow\\quad 3x = 96 \\quad\\Longrightarrow\\quad x = 32$$</p><p>The three angles are \\(32\\), \\(64\\), and \\(84\\) degrees, so the smallest is \\(\\boxed{32}\\).</p><p>The check at the end matters. If \\(x\\) had come out larger than \\(84\\), the answer to the question would have been \\(84\\) instead.</p>"},
+      {x:"A pipe drops from a ceiling, bends once, and continues down to the floor, where the ceiling and floor are parallel. The upper section makes a \\(38\\) degree angle with the ceiling, and the lower section makes a \\(45\\) degree angle with the floor. How many degrees is the angle between the two pipe sections at the bend, measured on the side facing the ceiling and floor angles?",
+       ans:"83",
+       accept:["83", "83.0"],
+       hints:["Draw a helper line through the bend, parallel to both the ceiling and the floor. It splits the bend angle into two pieces.", "Each piece is an alternate interior angle with one of the given angles, so the pieces are \\(38\\) and \\(45\\)."],
+       sol:"<p>Slide an imaginary line through the bend point, parallel to the ceiling and the floor. It cuts the bend angle into an upper piece and a lower piece.</p><p>The upper piece and the \\(38\\) degree ceiling angle are alternate interior angles between parallel lines, so the upper piece is \\(38\\) degrees. The same reasoning makes the lower piece \\(45\\) degrees.</p><p>$$38 + 45 = \\boxed{83}$$</p><p>This helper-line move handles any zigzag between parallel lines, no matter how many bends it takes.</p>"},
+      {x:"A decorative floor medallion is a regular polygon, and each of its interior angles measures \\(156\\) degrees. How many sides does the medallion have?",
+       ans:"15",
+       accept:["15", "15.0", "fifteen"],
+       hints:["At each corner, the interior and exterior angles add to \\(180\\) degrees, so each exterior angle is \\(24\\) degrees.", "Walking once around any polygon turns you through \\(360\\) degrees in total, so the exterior angles of a regular polygon are \\(360 \\div n\\)."],
+       sol:"<p>Each exterior angle measures \\(180 - 156 = 24\\) degrees.</p><p>Walking around the whole medallion turns you through one full spin of \\(360\\) degrees, one exterior angle per corner. With every turn equal,</p><p>$$n = \\frac{360}{24} = \\boxed{15}$$</p><p>Counting turns is usually faster than the interior-angle-sum formula, because the total is always \\(360\\), no matter the polygon.</p>"},
+      {x:"A dog run must be a rectangle using exactly \\(36\\) meters of fencing for all four sides. Its owner experiments with different shapes. What is the largest area, in square meters, the run can enclose?",
+       ans:"81",
+       accept:["81", "81.0", "eighty one", "eighty-one"],
+       hints:["A perimeter of \\(36\\) means the length and width add to \\(18\\). Try a few pairs, like \\(1\\) and \\(17\\), \\(5\\) and \\(13\\), and watch the area change.", "The area grows as the two sides get closer together, and it peaks when they are equal."],
+       sol:"<p>Half the perimeter is \\(18\\), so length plus width is \\(18\\). Test the pattern. A \\(1\\) by \\(17\\) run encloses \\(17\\), a \\(5\\) by \\(13\\) encloses \\(65\\), an \\(8\\) by \\(10\\) encloses \\(80\\). Evening out the sides keeps helping.</p><p>The peak comes when the sides are equal, a \\(9\\) by \\(9\\) square.</p><p>$$9 \\times 9 = \\boxed{81}$$</p><p>Among all rectangles with a fixed perimeter, the square always encloses the most area. The lopsided shapes waste fence on skinny, low-area strips.</p>"},
+      {x:"A workshop doorway is a \\(12\\) foot wide by \\(8\\) foot tall rectangle, capped on top with a semicircle whose diameter matches the \\(12\\) foot width. The total area of the doorway can be written as \\(a + b\\pi\\) square feet for whole numbers \\(a\\) and \\(b\\). Find \\(a + b\\).",
+       ans:"114",
+       accept:["114", "114.0"],
+       hints:["Split the doorway into the rectangle and the semicircular cap, and find each area separately.", "The semicircle has radius \\(6\\), and a half circle's area is \\(\\tfrac{1}{2}\\pi r^2\\)."],
+       sol:"<p>The rectangle contributes \\(12 \\times 8 = 96\\) square feet.</p><p>The cap is half a circle of radius \\(12 \\div 2 = 6\\), so its area is</p><p>$$\\tfrac{1}{2} \\pi (6)^2 = 18\\pi$$</p><p>The doorway totals \\(96 + 18\\pi\\), so \\(a = 96\\), \\(b = 18\\), and \\(a + b = \\boxed{114}\\).</p><p>Composite shapes almost always surrender to one clean cut. The only care needed here is using the radius \\(6\\), not the diameter \\(12\\), inside the area formula.</p>"},
+      {x:"A rectangular courtyard measures \\(15\\) meters by \\(20\\) meters. Walking from one corner to the opposite corner along the two edges is the long way. Cutting straight across the diagonal is shorter. How many meters does the diagonal shortcut save?",
+       ans:"10",
+       accept:["10", "10.0", "ten"],
+       hints:["First find the diagonal with the Pythagorean Theorem, using the two edges as legs.", "Compare the diagonal against the full edge route, \\(15 + 20 = 35\\) meters."],
+       sol:"<p>The diagonal is the hypotenuse over legs \\(15\\) and \\(20\\),</p><p>$$d^2 = 15^2 + 20^2 = 225 + 400 = 625, \\qquad d = 25$$</p><p>The edge route covers \\(15 + 20 = 35\\) meters, so the shortcut saves</p><p>$$35 - 25 = \\boxed{10}$$</p><p>That is a \\(3\\)-\\(4\\)-\\(5\\) right triangle scaled by \\(5\\), a pattern worth spotting before reaching for the algebra.</p>"},
+      {x:"The end wall of an attic is an isosceles triangle. Its two sloped edges are each \\(13\\) feet, and the floor between them spans \\(10\\) feet. What is the area of the wall, in square feet?",
+       ans:"60",
+       accept:["60", "60.0", "sixty"],
+       hints:["Drop a line from the peak straight down to the middle of the floor. It splits the wall into two matching right triangles.", "Each half has hypotenuse \\(13\\) and a bottom leg of \\(5\\), so the Pythagorean Theorem gives the height."],
+       sol:"<p>The peak sits directly above the midpoint of the floor, so the height line splits the base into two \\(5\\) foot halves and creates right triangles with hypotenuse \\(13\\).</p><p>$$h^2 = 13^2 - 5^2 = 169 - 25 = 144, \\qquad h = 12$$</p><p>Now the triangle area formula finishes it,</p><p>$$\\tfrac{1}{2} \\times 10 \\times 12 = \\boxed{60}$$</p><p>Isosceles triangles hide their heights this way constantly. Splitting down the middle is nearly always the opening move.</p>"},
+      {x:"A picnic area is an equilateral triangle with \\(8\\) meter sides. Its area can be written as \\(k\\sqrt{3}\\) square meters. What whole number is \\(k\\)?",
+       ans:"16",
+       accept:["16", "16.0", "sixteen"],
+       hints:["The height of an equilateral triangle cuts it into two 30-60-90 halves, each with a short leg of \\(4\\).", "The height is the long leg, short leg times \\(\\sqrt{3}\\), so the height is \\(4\\sqrt{3}\\)."],
+       sol:"<p>The height splits the triangle into two 30-60-90 halves. Each half has short leg \\(8 \\div 2 = 4\\), so the height is the long leg,</p><p>$$h = 4\\sqrt{3}$$</p><p>Then the area is</p><p>$$\\tfrac{1}{2} \\times 8 \\times 4\\sqrt{3} = 16\\sqrt{3}$$</p><p>so \\(k = \\boxed{16}\\).</p><p>The same two moves, halve the side and multiply by \\(\\sqrt{3}\\), measure every equilateral triangle ever drawn.</p>"},
+      {x:"The cross-section of a shop awning is a right trapezoid. Its two horizontal edges measure \\(6\\) feet and \\(14\\) feet, one vertical edge connects their left ends, and the slanted edge on the right makes a \\(45\\) degree angle with the long edge. What is the area of the cross-section, in square feet?",
+       ans:"80",
+       accept:["80", "80.0", "eighty"],
+       hints:["Drop a vertical line from the right end of the short edge. It cuts off a right triangle whose horizontal leg is \\(14 - 6 = 8\\).", "That triangle has a \\(45\\) degree angle, so it is a 45-45-90 triangle and its two legs are equal, which reveals the height."],
+       sol:"<p>Dropping a vertical from the right end of the \\(6\\) foot edge splits the shape into a rectangle and a right triangle. The triangle's horizontal leg is the overhang, \\(14 - 6 = 8\\) feet.</p><p>The \\(45\\) degree angle makes that triangle a 45-45-90, so its vertical leg equals its horizontal leg. The height of the whole trapezoid is therefore \\(8\\) feet.</p><p>$$\\text{Area} = \\tfrac{1}{2}(6 + 14) \\times 8 = 10 \\times 8 = \\boxed{80}$$</p><p>The trap is hunting for the height as if it were missing information. The \\(45\\) degree angle hands it to you, equal legs mean the height equals the overhang.</p>"},
+      {x:"A mosaic snail shell begins with a right triangle whose legs are both \\(1\\). Each new tile is a right triangle built on the previous one, using the previous hypotenuse as one leg and a fresh side of length \\(1\\) as the other. After the eighth tile is placed, how long is the newest hypotenuse?",
+       legendary:true,
+       ans:"3",
+       accept:["3", "3.0", "three"],
+       hints:["Chase the square of the hypotenuse instead of the hypotenuse itself. The first tile gives \\(c^2 = 1^2 + 1^2 = 2\\).", "Each new tile adds \\(1^2 = 1\\) to the previous \\(c^2\\), so the squares march \\(2, 3, 4, \\ldots\\) one per tile."],
+       sol:"<p>Track \\(c^2\\), not \\(c\\). The first tile has \\(c^2 = 1^2 + 1^2 = 2\\).</p><p>Every later tile uses the old hypotenuse as a leg and adds a leg of \\(1\\), so its new hypotenuse satisfies</p><p>$$c_{\\text{new}}^2 = c_{\\text{old}}^2 + 1^2$$</p><p>The squares therefore climb by exactly \\(1\\) per tile, giving \\(2, 3, 4, 5, 6, 7, 8, 9\\) across the eight tiles.</p><p>$$c^2 = 9 \\quad\\Longrightarrow\\quad c = \\boxed{3}$$</p><p>The lesson inside the puzzle is that \\(c^2\\) is often the friendlier quantity. The hypotenuses themselves are ugly square roots at every step until the ninth square, \\(9\\), suddenly comes out whole.</p>"},
+      {x:"A sheet of poster board measures \\(12\\) inches by \\(16\\) inches. Mark the midpoint of each edge, then connect the four midpoints in order to draw a smaller quadrilateral. Every side of that inner shape turns out to be the same length, making it a rhombus. What is the perimeter of the rhombus, in inches?",
+       legendary:true,
+       ans:"40",
+       accept:["40", "40.0", "forty"],
+       hints:["Each side of the inner shape is the hypotenuse of a small right triangle tucked into a corner of the sheet.", "Those corner triangles have legs of \\(12 \\div 2 = 6\\) and \\(16 \\div 2 = 8\\)."],
+       sol:"<p>Each side of the inner quadrilateral cuts across one corner of the sheet, forming a right triangle whose legs are half of each edge of the board, \\(6\\) and \\(8\\).</p><p>$$c^2 = 6^2 + 8^2 = 36 + 64 = 100, \\qquad c = 10$$</p><p>All four corner triangles are identical, so all four sides of the inner shape are \\(10\\) inches, confirming the rhombus, and its perimeter is</p><p>$$4 \\times 10 = \\boxed{40}$$</p><p>Connecting midpoints of any rectangle always produces a rhombus for exactly this reason. The four corner triangles are always carbon copies of each other.</p>"},
+      {x:"A square garden has \\(20\\) meter sides. In each of its four corners stands a sprinkler that waters a quarter circle of radius \\(10\\) meters, so the four watered patches just touch in the middle of each edge without overlapping. The dry region left in the center has an area of \\(a - b\\pi\\) square meters for whole numbers \\(a\\) and \\(b\\). Find \\(a + b\\).",
+       legendary:true,
+       ans:"500",
+       accept:["500", "500.0"],
+       hints:["The four quarter circles have the same radius, so together they make exactly one full circle of radius \\(10\\).", "Subtract that full circle's area from the square's area, then read off \\(a\\) and \\(b\\)."],
+       sol:"<p>Four quarter circles of equal radius assemble into one whole circle, so the watered area equals the area of a single circle of radius \\(10\\),</p><p>$$\\pi (10)^2 = 100\\pi$$</p><p>The square covers \\(20 \\times 20 = 400\\) square meters, so the dry center is</p><p>$$400 - 100\\pi$$</p><p>giving \\(a = 400\\), \\(b = 100\\), and \\(a + b = \\boxed{500}\\).</p><p>Reassembling scattered pieces into one clean shape is the whole trick, and it appears everywhere in geometry. Four quarters make a whole, no matter which corners they live in.</p>"}
+    ]}});
+
 
 
   // --- view switching inside the course modal ---
@@ -2496,6 +2945,7 @@ window.addEventListener('load',function(){
     var cs=document.getElementById('courseScroll'); if(cs){ if(name!=='lessonView'){ cs.classList.remove('ws-mode'); if(window.WS) WS.active=false; } cs.scrollTop=0; }
   }
   function showDashboard(){
+    if(window.navGuard && !navGuard(1,{v:'dash'})) return;
     showView('dashView');
     document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
     document.getElementById('modalTitle').textContent='Course Home';
@@ -2504,15 +2954,45 @@ window.addEventListener('load',function(){
     if(window.Rewards) Rewards.renderHUD();
   }
   function showToc(only){
+    if(window.navGuard && !navGuard(2,{v:'toc',ch:(only!=null?only:null)})) return;
     showView('tocView');
     document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
     var ch=only!=null ? TOC.filter(function(c){ return c.n===only; })[0] : null;
     document.getElementById('modalTitle').textContent= ch ? ('Chapter '+ch.n+' · '+ch.t) : 'Course Contents';
     if(window.renderToc) renderToc(only);
   }
-  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } }
-  function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; }
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLesson(); });
+  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open'); }
+  function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; window._navLevel=0; }
+  window.navExit=function(){ if(window._navLevel>0){ history.go(-window._navLevel); } else { closeLesson(); } };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') navExit(); });
+
+  /* ===== Browser Back walks the course: lesson -> chapter TOC -> course home -> landing.
+     Levels: 0 landing(closed) · 1 dash · 2 toc · 3 lesson. Forward nav pushes a history
+     entry; the browser Back button (popstate) renders the shallower view. ===== */
+  window._navLevel=0; window._navApply=false;
+  function _navUrl(){ return location.pathname + location.search; }
+  window.navGuard=function(level,state){
+    if(window._navApply){ window._navLevel=level; return true; }        // popstate is driving
+    if(level>window._navLevel){ history.pushState(state,'',_navUrl()); window._navLevel=level; return true; }  // deeper
+    if(level===window._navLevel){ history.replaceState(state,'',_navUrl()); return true; }                     // sideways
+    history.go(level-window._navLevel); return false;                  // shallower: pop, popstate renders
+  };
+  window.addEventListener('popstate',function(ev){
+    var s=ev.state||{v:'landing'};
+    window._navApply=true;
+    try{
+      if(s.v==='landing'){ window._navLevel=0; closeLesson(); }
+      else{
+        var ov=document.getElementById('lessonOverlay');
+        if(ov && !ov.classList.contains('open')){ ov.classList.add('open'); document.body.style.overflow='hidden'; }
+        if(s.v==='dash') showDashboard();
+        else if(s.v==='toc') showToc(s.ch);
+        else if(s.v==='lesson') showLesson(s.key,s.title||'',s.chTitle||'',s.chNum);
+      }
+    }catch(e){ console.warn('nav popstate',e); }
+    window._navApply=false;
+  });
+  try{ history.replaceState({v:'landing'},'',_navUrl()); }catch(e){}
 
   // --- progress + locked-path state ---
   var completed={}, lockMode=false;  // Free roam is ON by default; users can toggle to locked path via button
@@ -2525,7 +3005,7 @@ window.addEventListener('load',function(){
     return !!completed[liveOrder[i-1]];
   }
   function completedCount(){ var n=0; liveOrder.forEach(function(k){ if(completed[k]) n++; }); return n; }
-  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); } }
+  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.track) track('lesson_complete',{lesson:key}); if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
   function completeAndGo(key,next){
     try { markDone(key); } catch(e){ console.error('markDone error:',e); }
     setTimeout(function(){
@@ -3171,6 +3651,10 @@ window.addEventListener('load',function(){
   function showLesson(key,title,chTitle,chNum){
     var L=LESSONS[key];
     if(L && !lessonUnlocked(key)){ showToc(); return; }
+    // ensure a chapter-TOC entry sits under this lesson so Back lands on the chapter TOC
+    if(window.navGuard && !window._navApply && window._navLevel<2){ history.pushState({v:'toc',ch:chNum},'',location.pathname+location.search); window._navLevel=2; }
+    if(window.navGuard && !navGuard(3,{v:'lesson',key:key,title:title,chTitle:chTitle,chNum:chNum})) return;
+    if(window.track) track('lesson_start',{lesson:key});
     showView('lessonView');
     currentLessonKey=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
     if(window.Rewards) Rewards.setLastLesson(key);
@@ -3491,6 +3975,10 @@ window.addEventListener('load',function(){
     var host=document.getElementById('rewardsBody'); if(!host) return;
     var li=levelInfo(P.xp), rank=rankFor(li.level), pres=prestigeFor(P.mp);
     var h='';
+    var u=(window.firebase&&firebase.auth&&firebase.auth().currentUser)||null;
+    h+= u
+      ? '<div class="rw-acct"><div><div class="lbl">Signed in</div><div class="who">'+(u.email||u.displayName||'Your account')+'</div></div><button onclick="if(window.fbSignOut)fbSignOut()">Sign out</button></div>'
+      : '<div class="rw-acct"><div><div class="lbl">Not signed in</div><div class="who">Progress is saved on this device only</div></div><button class="save" onclick="if(window.showAuthModal)showAuthModal(\'up\')">Save progress</button></div>';
     h+='<div class="rw-top">'+
        '<div class="rw-ring" style="--p:'+li.pct+'"><div class="lv"><b>'+li.level+'</b><span>Level</span></div></div>'+
        '<div class="rw-id"><div class="rank">'+rank+'</div>'+
@@ -3594,6 +4082,7 @@ window.addEventListener('load',function(){
       }
       if(typeof renderDashHero==='function') renderDashHero();
     },
+    syncUp:function(){ save(); },   // push current local progress to the cloud (used right after sign-up)
     applyTheme:applyTheme,
     renderHUD:renderHUD,
     openPanel:function(){
@@ -4136,10 +4625,11 @@ async function sendTutorMsg() {
     <input class="auth-inp" type="email" id="authEmail" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter')fbEmailAuth()">
     <label class="auth-lbl" for="authPwd">Password</label>
     <input class="auth-inp" type="password" id="authPwd" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')fbEmailAuth()">
+    <a class="auth-forgot" id="authForgot" onclick="fbResetPwd()">Forgot password?</a>
     <div id="ageGate" class="age-gate">
       <label class="age-lbl">
         <input type="checkbox" id="ageCb">
-        <span>I am 13 or older, or a parent/guardian is creating this account for me. I have read and agree to the <a href="/terms.html" target="_blank">Terms of Service</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>.</span>
+        <span>I am 13 or older, or a parent/guardian is creating this account for me. I have read and agree to the <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</span>
       </label>
     </div>
     <button class="auth-btn" id="authSubmit" onclick="fbEmailAuth()">Sign in</button>
@@ -4148,95 +4638,10 @@ async function sendTutorMsg() {
       <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.32-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.68 28.18A13.9 13.9 0 0 1 10.8 24c0-1.45.25-2.86.68-4.18v-5.7H4.34A23.99 23.99 0 0 0 0 24c0 3.88.93 7.55 2.56 10.82z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.34 5.7c1.74-5.2 6.59-9.07 12.32-9.07z"/></svg>
       Continue with Google
     </button>
+    <p class="auth-consent">By continuing, you confirm you are 13 or older (or a parent/guardian has given permission) and agree to the <a href="/terms" target="_blank">Terms</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</p>
   </div>
 </div>
 
-<script>
-/* ---- New-user guided tour: golden coachmarks around the landing ---- */
-(function(){
-  var STEPS=[
-    {sel:'.hero h1', title:'Welcome to Quantica', text:'Here you learn math by actually solving problems, not memorizing steps. Here is a 30 second tour of how it works.', place:'bottom'},
-    {sel:'.cta-row .btn-primary', title:'Start free, right now', text:'Chapter 1 of Prealgebra is completely free. Click this button anytime to jump in and start solving.', place:'bottom'},
-    {sel:'#navCourses', title:'Browse the courses', text:'Open the full catalog from here. Prealgebra is live today, and more courses arrive soon.', place:'bottom'},
-    {sel:'#milo .milo-chat', title:'Meet Milo, your tutor', text:'Stuck on a problem? Milo guides you with hints and questions until it clicks, never just the answer.', place:'top'},
-    {sel:'#pricing .price', title:'One simple plan', text:'A single subscription unlocks every course. Create an account and our team grants you free access shortly.', place:'top'}
-  ];
-  var KEY='quantica_tourSeen_v1';
-  var i=0, spot=null, pop=null, active=false, trackRAF=null, lastKey='';
-
-  function ensureEls(){
-    if(!spot){ spot=document.createElement('div'); spot.className='tour-spot'; document.body.appendChild(spot); }
-    if(!pop){ pop=document.createElement('div'); pop.className='tour-pop'; document.body.appendChild(pop); }
-  }
-  function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
-  function place(){
-    if(!spot||!pop) return;
-    var step=STEPS[i]; var el=document.querySelector(step.sel);
-    if(!el) return;
-    var r=el.getBoundingClientRect(), pad=8, vw=innerWidth, vh=innerHeight;
-    // Skip the style writes when nothing moved, so the big box-shadow isn't repainted every idle frame.
-    var key=r.left+'|'+r.top+'|'+r.width+'|'+r.height+'|'+vw+'|'+vh;
-    if(key===lastKey) return;
-    lastKey=key;
-    spot.style.left=(r.left-pad)+'px'; spot.style.top=(r.top-pad)+'px';
-    spot.style.width=(r.width+pad*2)+'px'; spot.style.height=(r.height+pad*2)+'px';
-    var pw=pop.offsetWidth||300, ph=pop.offsetHeight||150;
-    var below=r.bottom+14, above=r.top-ph-14;
-    var top = step.place==='top' ? (above>=12?above:below) : (below+ph<=vh-12?below:above);
-    top=clamp(top,12,vh-ph-12);
-    var left=clamp(r.left+r.width/2-pw/2,16,vw-pw-16);
-    pop.style.top=top+'px'; pop.style.left=left+'px';
-  }
-  // Continuously re-pin the spotlight to its target every frame while the tour is open.
-  // This tracks the element through any scroll (user or smooth scrollIntoView) with zero lag,
-  // since it never depends on throttled scroll events firing.
-  function track(){
-    if(!active){ trackRAF=null; return; }
-    place();
-    trackRAF=requestAnimationFrame(track);
-  }
-  function render(){
-    var step=STEPS[i];
-    var dots=STEPS.map(function(_,k){return '<span class="tp-dot'+(k===i?' on':'')+'"></span>';}).join('');
-    pop.innerHTML='<div class="tp-step">Step '+(i+1)+' of '+STEPS.length+'</div>'+
-      '<h4>'+step.title+'</h4><p>'+step.text+'</p>'+
-      '<div class="tp-row"><button class="tp-skip" onclick="window.__tourSkip()">Skip</button>'+
-      '<div class="tp-dots">'+dots+'</div>'+
-      '<button class="tp-next" onclick="window.__tourNext()">'+(i===STEPS.length-1?'Done':'Next')+'</button></div>';
-  }
-  function show(){
-    var step=STEPS[i]; var el=document.querySelector(step.sel);
-    if(!el){ next(); return; }
-    lastKey='';            // force a reposition for the new target
-    render();
-    // The rAF loop keeps the spotlight glued to the element as the page smooth-scrolls it into view.
-    el.scrollIntoView({block:'center',behavior:'smooth'});
-  }
-  function next(){ if(i<STEPS.length-1){ i++; show(); } else { end(); } }
-  function end(){
-    active=false;
-    try{ localStorage.setItem(KEY,'1'); }catch(e){}
-    if(trackRAF){ cancelAnimationFrame(trackRAF); trackRAF=null; }
-    if(spot) spot.remove(); if(pop) pop.remove(); spot=null; pop=null;
-  }
-  window.__tourNext=next;
-  window.__tourSkip=end;
-
-  window.startTour=function(){
-    if(active) return; active=true; i=0; lastKey=''; ensureEls();
-    document.addEventListener('keydown',function esc(e){ if(e.key==='Escape'&&active){ end(); document.removeEventListener('keydown',esc); } });
-    track();   // start the continuous tracking loop
-    show();
-  };
-
-  // Auto-start for first-time visitors once the page has settled.
-  window.addEventListener('load',function(){
-    var seen; try{ seen=localStorage.getItem(KEY); }catch(e){ seen='1'; }
-    var inCourse=document.getElementById('lessonOverlay')&&document.getElementById('lessonOverlay').classList.contains('open');
-    if(!seen && !inCourse) setTimeout(window.startTour, 900);
-  });
-})();
-</script>
 
 <script>
 /* ---- New-user onboarding: drop them into a real sample problem and run the golden
@@ -4354,6 +4759,94 @@ async function sendTutorMsg() {
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape' && active){ e.stopImmediatePropagation(); e.preventDefault(); end(); }
   }, true);
+})();
+</script>
+
+<script>
+/* Delayed "save your progress" prompt. Fires once, ~1s after the first lesson is
+   completed, only for signed-out users. Non-blocking and dismissible — a nudge, not a wall. */
+(function(){
+  var KEY='qa_signin_prompt_v2';
+  var MILO='<svg viewBox="0 0 64 64" style="width:100%;height:100%" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  function seen(){ try{ return !!localStorage.getItem(KEY); }catch(e){ return false; } }
+  function mark(){ try{ localStorage.setItem(KEY,'1'); }catch(e){} }
+  function signedIn(){ try{ return !!(window.firebase && firebase.auth && firebase.auth().currentUser); }catch(e){ return false; } }
+  var el=null;
+  function build(){
+    if(el) return;
+    el=document.createElement('div');
+    el.id='signinPrompt'; el.setAttribute('role','dialog'); el.setAttribute('aria-label','Save your progress');
+    el.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(24px);z-index:100000;max-width:440px;width:calc(100% - 32px);opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none';
+    el.innerHTML=
+      '<div style="background:#fff;border:1.5px solid rgba(10,10,10,.14);border-radius:18px;box-shadow:0 24px 60px -18px rgba(10,10,10,.42);padding:20px;font-family:\'Space Grotesk\',system-ui,sans-serif;color:#0a0a0a">'+
+        '<div style="display:flex;gap:12px;align-items:flex-start">'+
+          '<div style="flex:0 0 auto;width:40px;height:40px">'+MILO+'</div>'+
+          '<div style="flex:1;min-width:0">'+
+            '<div style="font-weight:700;font-size:16px;letter-spacing:-.01em;margin-bottom:3px">Nice, your first lesson is done.</div>'+
+            '<div style="font-size:14px;line-height:1.5;color:#55554f">Create a free account to save your progress and streak. Takes a few seconds, and you can keep going either way.</div>'+
+          '</div>'+
+          '<button aria-label="Dismiss" style="flex:0 0 auto;background:none;border:none;font-size:22px;line-height:1;color:#9a9a92;cursor:pointer;padding:0 2px" onclick="__signinPrompt.dismiss()">&times;</button>'+
+        '</div>'+
+        '<div style="display:flex;gap:10px;margin-top:16px">'+
+          '<button style="flex:1;background:#beff8b;border:1.5px solid #beff8b;border-radius:999px;padding:11px 16px;font-family:inherit;font-weight:600;font-size:14px;color:#0a0a0a;cursor:pointer" onclick="__signinPrompt.go()">Create free account</button>'+
+          '<button style="flex:0 0 auto;background:transparent;border:1.5px solid rgba(10,10,10,.2);border-radius:999px;padding:11px 18px;font-family:inherit;font-weight:600;font-size:14px;color:#0a0a0a;cursor:pointer" onclick="__signinPrompt.dismiss()">Maybe later</button>'+
+        '</div>'+
+      '</div>';
+    document.body.appendChild(el);
+  }
+  function show(){ build(); void el.offsetHeight; /* force reflow so the transition fires */ el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; el.style.pointerEvents='auto'; }
+  function hide(){ if(!el) return; el.style.opacity='0'; el.style.transform='translateX(-50%) translateY(24px)'; el.style.pointerEvents='none'; }
+  window.__signinPrompt={
+    afterLesson:function(){
+      if(seen()||signedIn()) return;
+      // only burn the once-flag when we actually show it (not before the delay),
+      // so a failed reveal or a mid-delay sign-in doesn't silently consume the one chance
+      setTimeout(function(){ if(seen()||signedIn()) return; mark(); show(); if(window.track) track('signin_prompt_shown'); }, 1100);
+    },
+    go:function(){ hide(); if(window.track) track('signin_prompt_click'); if(window.showAuthModal) showAuthModal('up'); },
+    dismiss:function(){ hide(); if(window.track) track('signin_prompt_dismiss'); },
+    _force:function(){ try{ localStorage.removeItem(KEY); }catch(e){} show(); }  // for manual testing
+  };
+})();
+</script>
+
+<script>
+/* Account menu for the nav pill: opens under the signed-in user's name, offers
+   "Continue course" and "Sign out". Closes on outside click or Escape. */
+(function(){
+  var menu=null;
+  function build(){
+    if(menu) return menu;
+    menu=document.createElement('div');
+    menu.className='acct-menu'; menu.style.display='none';
+    menu.innerHTML='<a data-act="course">Continue course &rarr;</a><a data-act="out">Sign out</a>';
+    menu.addEventListener('click',function(e){
+      var a=e.target.closest('a'); if(!a) return; e.preventDefault(); hide();
+      if(a.getAttribute('data-act')==='course'){ if(window.openLesson) openLesson(); }
+      else { if(window.fbSignOut) fbSignOut(); }
+    });
+    document.body.appendChild(menu);
+    return menu;
+  }
+  function hide(){ if(menu) menu.style.display='none'; }
+  window.__acctMenu={
+    toggle:function(anchor){
+      var m=build();
+      if(m.style.display==='block'){ hide(); return; }
+      m.style.visibility='hidden'; m.style.display='block';   // show to measure, then place
+      var r=anchor.getBoundingClientRect(), mw=m.offsetWidth||184;
+      var left=Math.max(12, Math.min(r.right-mw, window.innerWidth-mw-12));  // right-align to pill, clamp on-screen
+      m.style.left=left+'px'; m.style.right='auto'; m.style.top=(r.bottom+8)+'px';
+      m.style.visibility='visible';
+    },
+    hide:hide
+  };
+  document.addEventListener('click',function(e){
+    if(!menu || menu.style.display!=='block') return;
+    if(e.target.closest('.acct-menu') || e.target.closest('#navSignin')) return;
+    hide();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
 })();
 </script>
 </body>
