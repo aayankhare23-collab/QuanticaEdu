@@ -360,6 +360,11 @@
   .toc a.ex:hover{color:var(--accent);text-decoration:underline}
 
   /* COURSE DASHBOARD */
+  .course-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .ctab{font:inherit;font-size:14px;font-weight:600;color:var(--slate);background:var(--softer);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+  .ctab:hover{color:var(--navy)}
+  .ctab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .ctab .ctab-soon{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-left:4px}
   .dash-hero{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--softer);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:22px}
   .dash-hero h3{font-size:21px;color:var(--navy);margin:6px 0 4px}
   .dash-hero p{font-size:14px;color:var(--mute);margin:0}
@@ -1825,15 +1830,23 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 })();
 </script>
 <script>
-/* Deep-launch from the SEO pages: ?start=1 opens the course dashboard; ?lesson=KEY opens that specific lesson. */
+/* Deep-launch from the SEO pages: ?start=1 opens the course dashboard; ?lesson=KEY opens that
+   specific lesson; ?course=SLUG picks the course first (defaults to the last one used). */
 window.addEventListener('load',function(){
   var m=location.search.match(/[?&]lesson=([0-9.]+)/);
+  var cm=location.search.match(/[?&]course=([a-z0-9]+)/);
   var wantStart=location.search.indexOf('start=')>=0;
-  if(!m && !wantStart) return;
+  if(!m && !wantStart && !cm) return;
   var n=0,t=setInterval(function(){
     if(typeof window.openLesson==='function'){
       clearInterval(t);
-      try{ window.openLesson(); if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); } }catch(e){}
+      try{
+        // ?lesson= without ?course= is a legacy prealgebra SEO link; don't let a stored course hijack it
+        var slug=cm?cm[1]:(m?'prealgebra':null);
+        if(slug && typeof window.setCourse==='function') window.setCourse(slug,{silent:true});
+        window.openLesson();
+        if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
+      }catch(e){}
     } else if(++n>120){ clearInterval(t); }
   },40);
 });
@@ -1841,9 +1854,9 @@ window.addEventListener('load',function(){
 
 <!-- SIGNUP -->
 
-<!-- LESSON MODAL: Prealgebra -->
+<!-- LESSON MODAL: the course app (all courses share it; setCourse repoints the data) -->
 <div class="overlay" id="lessonOverlay">
-  <div class="modal" role="dialog" aria-modal="true" aria-label="Prealgebra course">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Quantica course">
     <header class="coursebar">
       <div class="cb-left">
         <button class="cb-back" id="mback" onclick="showDashboard()" aria-label="Back to course home">←<span> Home</span></button>
@@ -1862,6 +1875,7 @@ window.addEventListener('load',function(){
 
     <!-- COURSE DASHBOARD / MASTERY MAP -->
     <div class="mbody" id="dashView">
+      <div class="course-tabs" id="courseTabs" role="tablist" aria-label="Choose a course"></div>
       <div class="dash-hero" id="dashHero">
         <div>
           <span class="eyebrow">Continue learning</span>
@@ -2235,7 +2249,7 @@ window.addEventListener('load',function(){
 
 <script src="data/lessons.js"></script>
 <script>
-  // --- Prealgebra course modal: table of contents ---
+  // --- Course tables of contents (one array per course; setCourse points the app at one) ---
   var TOC=[
     {n:1, t:"The Rules of Arithmetic", s:[["1.1","Why Begin with Arithmetic?"],["1.2","Addition, Subtraction, and Negation"],["1.3","Multiplication"],["1.4","Checkpoint Problems"],["1.5","Division"],["1.6","Summary"]]},
     {n:2, t:"Exponents", s:[["2.1","Squares and Cubes"],["2.2","The Laws of Exponents"],["2.3","The Zero Power"],["2.4","Negative Powers"],["2.5","Powers of Powers"],["2.6","Chapter 2 Summary"]]},
@@ -2249,6 +2263,25 @@ window.addEventListener('load',function(){
     {n:10, t:"Counting and Statistics", s:[["10.1","Adding and Subtracting Cases"],["10.2","The Multiplication Principle"],["10.3","Casework"],["10.4","Counting Pairs"],["10.5","An Introduction to Probability"],["10.6","Mean, Median, and Mode"],["10.7","Reading Tables and Graphs"],["10.8","What Statistics Can Hide"]]},
     {n:11, t:"Geometry", s:[["11.1","Measuring Angles"],["11.2","Parallel Lines and Transversals"],["11.3","Angles Inside Polygons"],["11.4","Measuring Length"],["11.5","Perimeter"],["11.6","Area of Common Shapes"],["11.7","Circles"],["11.8","The Pythagorean Theorem"],["11.9","Special Right Triangles"],["11.10","Families of Quadrilaterals"]]},
     {n:12, t:"A Problem-Solving Toolkit", s:[["12.1","Look for a Pattern"],["12.2","Make an Organized List"],["12.3","Draw a Picture"],["12.4","Work Backwards"]]}
+  ];
+
+  // --- Algebra I: course 2. Content is authored chapter by chapter; lessons appear as they ship. ---
+  var TOC_ALG1=[
+    {n:1, t:"The Language of Algebra", s:[["1.1","Numbers and Their Families"],["1.2","Order of Operations"],["1.3","When Order Matters"],["1.4","From Words to Expressions"],["1.5","Evaluating Expressions"]]},
+    {n:2, t:"Working with Expressions", s:[["2.1","The Distributive Property"],["2.2","Factoring Out a Common Factor"],["2.3","Adding and Subtracting Expressions"],["2.4","Fractions with Variables"],["2.5","Expressions with Many Variables"]]},
+    {n:3, t:"Exponents and Radicals", s:[["3.1","The Laws of Exponents with Variables"],["3.2","Zero and Negative Exponents"],["3.3","Fractional Exponents"],["3.4","Radicals and Simplification"],["3.5","Rationalizing Denominators"]]},
+    {n:4, t:"Linear Equations", s:[["4.1","What an Equation Says"],["4.2","Solving Linear Equations"],["4.3","Variables on Both Sides"],["4.4","Equations in Disguise"],["4.5","Word Problems"]]},
+    {n:5, t:"Systems of Equations", s:[["5.1","Two Variables, Two Equations"],["5.2","Substitution"],["5.3","Elimination"],["5.4","Systems in Disguise"],["5.5","Word Problems with Systems"],["5.6","Three or More Variables"]]},
+    {n:6, t:"Ratios, Percents, and Proportion", s:[["6.1","Ratios, Simple and Subtle"],["6.2","Conversion Factors"],["6.3","Percents"],["6.4","Percent Problems"],["6.5","Direct and Inverse Proportion"],["6.6","Joint Proportion and Rates"]]},
+    {n:7, t:"Graphing Lines", s:[["7.1","The Cartesian Plane"],["7.2","Graphing Linear Equations"],["7.3","Slope"],["7.4","Finding the Equation of a Line"],["7.5","Intercepts and Standard Forms"],["7.6","Parallel, Perpendicular, and Comparing Lines"]]},
+    {n:8, t:"Inequalities", s:[["8.1","The Basics of Inequality"],["8.2","Which Is Bigger"],["8.3","Solving Linear Inequalities"],["8.4","Graphing Inequalities"],["8.5","Optimization"]]},
+    {n:9, t:"Quadratics I, Factoring", s:[["9.1","Meet the Quadratic"],["9.2","Factoring x² + bx + c"],["9.3","Factoring ax² + bx + c"],["9.4","Roots, Sums, and Products"],["9.5","Factoring in Action"]]},
+    {n:10, t:"Special Factorizations", s:[["10.1","Squares of Binomials"],["10.2","The Difference of Squares"],["10.3","Sums and Differences of Cubes"],["10.4","Clever Factoring Tricks"]]},
+    {n:11, t:"Quadratics II, Formula and Complex Numbers", s:[["11.1","Completing the Square"],["11.2","The Quadratic Formula"],["11.3","Imaginary Numbers"],["11.4","Complex Numbers"],["11.5","Applications of Quadratics"]]},
+    {n:12, t:"Graphing Quadratics", s:[["12.1","Parabolas"],["12.2","Circles"],["12.3","Quadratic Inequalities"],["12.4","Squares Are Never Negative"],["12.5","Optimization with Quadratics"]]},
+    {n:13, t:"Functions", s:[["13.1","The Function Machine"],["13.2","Combining and Composing Functions"],["13.3","Inverse Functions"],["13.4","Graphing Functions"],["13.5","Transformations of Graphs"],["13.6","Problem Solving with Functions"]]},
+    {n:14, t:"Polynomials, Exponentials, and Logarithms", s:[["14.1","Adding and Subtracting Polynomials"],["14.2","Multiplying Polynomials"],["14.3","Exponential Growth"],["14.4","Compound Interest"],["14.5","What Is a Logarithm"]]},
+    {n:15, t:"Special Functions and Sequences", s:[["15.1","Absolute Value"],["15.2","Floor, Ceiling, and Piecewise Functions"],["15.3","Radical and Rational Functions"],["15.4","Arithmetic Sequences and Series"],["15.5","Geometric Sequences and Series"],["15.6","Telescoping and Symmetry Tricks"]]}
   ];
 
   // --- written lessons, AoPS-style: problem-first, "why" over "how" ---
@@ -3058,6 +3091,52 @@ window.addEventListener('load',function(){
        sol:"<p>The loop has length \\(8\\), and \\(2025 = 253 \\times 8 + 1\\), so \\(253\\) full copies of the word finish at letter \\(2024\\), and letter \\(2025\\) starts the next copy.</p><p>$$\\boxed{\\text{Q}}$$</p><p>One division tamed two thousand letters. That is the whole toolkit in miniature, find the loop, trust the remainder, and let the pattern carry you past any horizon.</p>"}
     ]}});
 
+  /* ===== Multi-course registry. TOC / LESSONS / PSETS stay the app-wide globals the
+     whole engine reads; setCourse() repoints them at one course's data and re-renders.
+     The Rewards engine is already course-agnostic (keys prefixed with COURSE.slug). ===== */
+  var COURSE_REG={
+    prealgebra:{slug:'prealgebra', title:'Prealgebra', toc:TOC, lessons:LESSONS, psets:PSETS,
+      intro:'Twelve chapters carry you from the rules of arithmetic all the way to real problem-solving. Tap any lesson to read it, or open a chapter\'s <b>Practice</b> or <b>Challenge</b> set to try problems yourself.'},
+    algebra1:{slug:'algebra1', title:'Algebra I', toc:TOC_ALG1,
+      lessons:(window.__COURSEDATA&&window.__COURSEDATA.algebra1)||{}, psets:{},
+      intro:'Fifteen chapters run from the language of algebra through quadratics, functions, and logarithms. The first lessons are being written right now, so this page is a preview of the road ahead.'}
+  };
+  var CURRENT_COURSE='prealgebra';
+  window.setCourse=function(slug,opts){
+    var c=COURSE_REG[slug]; if(!c) return false;
+    CURRENT_COURSE=slug;
+    if(!window.COURSE) window.COURSE={slug:c.slug,title:c.title};
+    else { window.COURSE.slug=c.slug; window.COURSE.title=c.title; }
+    TOC=c.toc; LESSONS=c.lessons; PSETS=c.psets;
+    liveOrder=[]; TOC.forEach(function(ch){ ch.s.forEach(function(sec){ if(LESSONS[sec[0]]) liveOrder.push(sec[0]); }); });
+    completed={};
+    if(window.Rewards&&Rewards.getCompletedLessons) Object.assign(completed,Rewards.getCompletedLessons());
+    try{ localStorage.setItem('quantica.course',slug); }catch(e){}
+    // keep the current history entry's course in sync (switching happens on the dashboard)
+    if(window._navLevel>0 && !window._navApply){ try{ history.replaceState({v:'dash',course:slug},'',location.pathname+location.search); }catch(e){} }
+    if(!opts||!opts.silent){
+      if(window.renderDashboard) renderDashboard();
+      if(window.renderToc) renderToc();
+      if(window.renderDashHero) renderDashHero();
+      var eb=document.getElementById('modalEyebrow'); if(eb) eb.textContent='Quantica · '+c.title;
+    }
+    return true;
+  };
+  function renderCourseTabs(){
+    var host=document.getElementById('courseTabs'); if(!host) return; host.innerHTML='';
+    Object.keys(COURSE_REG).forEach(function(slug){
+      var c=COURSE_REG[slug];
+      var live=0; c.toc.forEach(function(ch){ ch.s.forEach(function(sec){ if(c.lessons[sec[0]]) live++; }); });
+      var b=document.createElement('button');
+      b.className='ctab'+(slug===CURRENT_COURSE?' on':'');
+      b.setAttribute('role','tab'); b.setAttribute('aria-selected',slug===CURRENT_COURSE?'true':'false');
+      b.innerHTML=c.title+(live===0?' <span class="ctab-soon">soon</span>':'');
+      b.onclick=function(){ if(slug!==CURRENT_COURSE){ setCourse(slug); if(window.track) track('course_switch',{course:slug}); } };
+      host.appendChild(b);
+    });
+  }
+  window.renderCourseTabs=renderCourseTabs;
+
 
 
 
@@ -3074,7 +3153,7 @@ window.addEventListener('load',function(){
   function showDashboard(){
     if(window.navGuard && !navGuard(1,{v:'dash'})) return;
     showView('dashView');
-    document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
+    document.getElementById('modalEyebrow').textContent='Quantica · '+COURSE_REG[CURRENT_COURSE].title;
     document.getElementById('modalTitle').textContent='Course Home';
     if(window.renderDashboard) renderDashboard();
     if(window.renderDashHero) renderDashHero();
@@ -3083,12 +3162,12 @@ window.addEventListener('load',function(){
   function showToc(only){
     if(window.navGuard && !navGuard(2,{v:'toc',ch:(only!=null?only:null)})) return;
     showView('tocView');
-    document.getElementById('modalEyebrow').textContent='Quantica · Prealgebra';
+    document.getElementById('modalEyebrow').textContent='Quantica · '+COURSE_REG[CURRENT_COURSE].title;
     var ch=only!=null ? TOC.filter(function(c){ return c.n===only; })[0] : null;
     document.getElementById('modalTitle').textContent= ch ? ('Chapter '+ch.n+' · '+ch.t) : 'Course Contents';
     if(window.renderToc) renderToc(only);
   }
-  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open'); }
+  function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open',{course:CURRENT_COURSE}); }
   function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; window._navLevel=0; }
   window.navExit=function(){ if(window._navLevel>0){ history.go(-window._navLevel); } else { closeLesson(); } };
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') navExit(); });
@@ -3099,6 +3178,7 @@ window.addEventListener('load',function(){
   window._navLevel=0; window._navApply=false;
   function _navUrl(){ return location.pathname + location.search; }
   window.navGuard=function(level,state){
+    if(state&&typeof state==='object') state.course=CURRENT_COURSE;     // Back can restore the right course
     if(window._navApply){ window._navLevel=level; return true; }        // popstate is driving
     if(level>window._navLevel){ history.pushState(state,'',_navUrl()); window._navLevel=level; return true; }  // deeper
     if(level===window._navLevel){ history.replaceState(state,'',_navUrl()); return true; }                     // sideways
@@ -3108,6 +3188,7 @@ window.addEventListener('load',function(){
     var s=ev.state||{v:'landing'};
     window._navApply=true;
     try{
+      if(s.course && s.course!==CURRENT_COURSE && window.setCourse) setCourse(s.course,{silent:true});
       if(s.v==='landing'){ window._navLevel=0; closeLesson(); }
       else{
         var ov=document.getElementById('lessonOverlay');
@@ -3132,7 +3213,7 @@ window.addEventListener('load',function(){
     return !!completed[liveOrder[i-1]];
   }
   function completedCount(){ var n=0; liveOrder.forEach(function(k){ if(completed[k]) n++; }); return n; }
-  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.track) track('lesson_complete',{lesson:key}); if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
+  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.track) track('lesson_complete',{lesson:key,course:CURRENT_COURSE}); if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
   function completeAndGo(key,next){
     try { markDone(key); } catch(e){ console.error('markDone error:',e); }
     setTimeout(function(){
@@ -3148,16 +3229,18 @@ window.addEventListener('load',function(){
   // --- course home / mastery map ---
   var CH_ICON={done:'✓',current:'▶',open:'○',soon:'○'};
   function renderDashboard(){
+    if(window.renderCourseTabs) renderCourseTabs();
     var lb=document.getElementById('lockBtn');
     if(lb){
+      lb.style.display=liveOrder.length?'':'none';
       lb.className='lockbtn'+(lockMode?' on':'');
       lb.innerHTML=lockMode
         ? '🔒 Locked path is ON: finish each lesson to unlock the next'
         : '🔓 Free roam is ON: open any lesson in any order';
     }
-    var total=liveOrder.length||1, done=completedCount(), pct=Math.round(done/total*100);
+    var total=liveOrder.length, done=completedCount(), pct=total?Math.round(done/total*100):0;
     var fill=document.getElementById('progFill'); if(fill) fill.style.width=pct+'%';
-    var pt=document.getElementById('progText'); if(pt) pt.textContent=done+' of '+total+' lessons complete';
+    var pt=document.getElementById('progText'); if(pt) pt.textContent= total ? (done+' of '+total+' lessons complete') : 'Lessons are being written';
     var host=document.getElementById('dashGrid'); if(!host) return; host.innerHTML='';
     TOC.forEach(function(ch){
       var live=ch.s.filter(function(sec){ return LESSONS[sec[0]]; });
@@ -3182,7 +3265,7 @@ window.addEventListener('load',function(){
     var host=document.getElementById('tocList'); if(!host) return; host.innerHTML='';
     var single = only!=null;
     var note=document.querySelector('#tocView .tocnote'); if(note) note.style.display=single?'none':'';
-    var intro=document.getElementById('tocIntro'); if(intro) intro.style.display=single?'none':'';
+    var intro=document.getElementById('tocIntro'); if(intro){ intro.style.display=single?'none':''; intro.innerHTML=COURSE_REG[CURRENT_COURSE].intro||''; }
     if(single){
       var ftc=document.createElement('a'); ftc.className='backlink'; ftc.style.cssText='display:inline-block;margin-bottom:18px';
       ftc.textContent='← View full TOC';
@@ -3762,16 +3845,27 @@ window.addEventListener('load',function(){
   window.updateFlow=updateFlow;
   var currentLessonKey=null, currentLessonMeta={};
   function renderDashHero(){
-    var key=(window.Rewards&&Rewards.getLastLesson())||'1.1';
-    var L=LESSONS[key]||{};
-    var ch=parseInt(key,10);
-    var chInfo=TOC.filter(function(c){return c.n===ch;})[0];
+    var hero=document.getElementById('dashHero');
+    var ey=hero?hero.querySelector('.eyebrow'):null;
     var t=document.getElementById('dashResumeTitle');
     var p=document.getElementById('dashResumeChapter');
     var b=document.getElementById('dashResumeBtn');
-    if(t) t.textContent=key+' · '+(L.title||'Why Begin with Arithmetic?');
-    if(p) p.textContent='Chapter '+ch+': '+(chInfo?chInfo.t:'The Rules of Arithmetic');
-    if(b) b.onclick=function(){showLesson(key,L.title||'',chInfo?chInfo.t:'',ch);};
+    var key=(window.Rewards&&Rewards.getLastLesson())||liveOrder[0];
+    if(!key||!LESSONS[key]) key=liveOrder[0];
+    if(!key){  // course has no live lessons yet
+      if(ey) ey.textContent='Coming soon';
+      if(t) t.textContent='The first lessons are being written';
+      if(p) p.textContent='Browse the chapter plan below to see the road ahead.';
+      if(b){ b.textContent='View the syllabus →'; b.onclick=function(){showToc();}; }
+      return;
+    }
+    var L=LESSONS[key]||{};
+    var ch=parseInt(key,10);
+    var chInfo=TOC.filter(function(c){return c.n===ch;})[0];
+    if(ey) ey.textContent='Continue learning';
+    if(t) t.textContent=key+' · '+(L.title||'');
+    if(p) p.textContent='Chapter '+ch+(chInfo?': '+chInfo.t:'');
+    if(b){ b.textContent='Resume lesson →'; b.onclick=function(){showLesson(key,L.title||'',chInfo?chInfo.t:'',ch);}; }
   }
   window.renderDashHero=renderDashHero;
 
@@ -3781,11 +3875,11 @@ window.addEventListener('load',function(){
     // ensure a chapter-TOC entry sits under this lesson so Back lands on the chapter TOC
     if(window.navGuard && !window._navApply && window._navLevel<2){ history.pushState({v:'toc',ch:chNum},'',location.pathname+location.search); window._navLevel=2; }
     if(window.navGuard && !navGuard(3,{v:'lesson',key:key,title:title,chTitle:chTitle,chNum:chNum})) return;
-    if(window.track) track('lesson_start',{lesson:key});
+    if(window.track) track('lesson_start',{lesson:key,course:CURRENT_COURSE});
     showView('lessonView');
     currentLessonKey=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
     if(window.Rewards) Rewards.setLastLesson(key);
-    document.getElementById('modalEyebrow').textContent='Prealgebra · Lesson '+key;
+    document.getElementById('modalEyebrow').textContent=COURSE_REG[CURRENT_COURSE].title+' · Lesson '+key;
     document.getElementById('modalTitle').textContent=(L?L.title:title);
     if(L && L.blocks && L.blocks.length){ wsOpen(key,L,{title:title,chTitle:chTitle,chNum:chNum}); return; }
     var body = L ? (L.blocks?renderBlocks(L.blocks,'L:'+key):L.html) :
@@ -3817,7 +3911,7 @@ window.addEventListener('load',function(){
   function openReview(key){
     showView('reviewView');
     var L=LESSONS[key];
-    document.getElementById('modalEyebrow').textContent='Prealgebra · Lesson '+key+' · Review';
+    document.getElementById('modalEyebrow').textContent=COURSE_REG[CURRENT_COURSE].title+' · Lesson '+key+' · Review';
     document.getElementById('modalTitle').textContent='Review: '+(L?L.title:'');
     var blocks=(L&&L.review?L.review:[]).map(function(r){ return Object.assign({t:'prob'}, r); });
     var body=document.getElementById('reviewBody');
@@ -3856,14 +3950,17 @@ window.addEventListener('load',function(){
       showView('psetView');
       document.getElementById('psetView').setAttribute('data-ptype',type);
       var noteEl=document.getElementById('psetNote'); if(noteEl) noteEl.style.display='none';
-      document.getElementById('modalEyebrow').textContent='Prealgebra · Chapter '+chNum;
+      document.getElementById('modalEyebrow').textContent=COURSE_REG[CURRENT_COURSE].title+' · Chapter '+chNum;
       document.getElementById('modalTitle').textContent=label;
       if(chInfo) document.getElementById('psetName').textContent=chInfo.t;
       document.getElementById('psetIdx').textContent='';
+      var hasCh1=!!(PSETS[1]&&PSETS[1][type]&&PSETS[1][type].length);
       document.getElementById('psetBody').innerHTML='<div class="psetdone"><div class="big">🛠️</div>'+
         '<p style="color:var(--slate);font-size:15px">We\'re still hand-writing the '+(type==='practice'?'practice':'challenge')+' set for this chapter; true to Quantica form, that takes care. It\'ll unlock soon.</p>'+
-        '<p style="color:var(--slate);font-size:15px">In the meantime, <span class="hl">Chapter 1\'s '+(type==='practice'?'practice':'challenge')+' set</span> is fully live; give it a try.</p>'+
-        '<button class="btn btn-ghost" style="margin-top:8px" onclick="openPSet(1,\''+type+'\')">Try Chapter 1\'s set →</button></div>';
+        (hasCh1
+          ? '<p style="color:var(--slate);font-size:15px">In the meantime, <span class="hl">Chapter 1\'s '+(type==='practice'?'practice':'challenge')+' set</span> is fully live; give it a try.</p>'+
+            '<button class="btn btn-ghost" style="margin-top:8px" onclick="openPSet(1,\''+type+'\')">Try Chapter 1\'s set →</button>'
+          : '')+'</div>';
       return;
     }
     // Run Practice/Challenge problems through the full lesson workspace, so they get the
@@ -3880,7 +3977,7 @@ window.addEventListener('load',function(){
     if(type==='challenge'){ blocks.unshift({t:'p', x:'<b>A word before you begin.</b> These are the hard ones, and they are meant to be. A real challenge problem rarely gives itself up on the first read &mdash; expect to sit with one, try an idea that fails, and come back with a sharper one. Reach for a hint only after a genuine attempt, take your time, and enjoy the click when the structure finally shows itself.'}); }
     var L={ title:label, blocks:blocks, _pset:true, _psetType:type, _psetChapter:chNum, _eyebrow:'Chapter '+chNum+(chInfo?' · '+chInfo.t:'') };
     showView('lessonView');
-    document.getElementById('modalEyebrow').textContent='Prealgebra · Chapter '+chNum;
+    document.getElementById('modalEyebrow').textContent=COURSE_REG[CURRENT_COURSE].title+' · Chapter '+chNum;
     document.getElementById('modalTitle').textContent=label;
     wsOpen('pset-'+chNum+'-'+type, L, {title:label, chTitle:(chInfo?chInfo.t:''), chNum:chNum});
   }
@@ -3969,7 +4066,7 @@ window.addEventListener('load',function(){
 
   var SKEY='quantica.profile.v1';
   function def(){ return {xp:0,gems:0,mp:0,awarded:{},lessons:{},chapters:{},sets:{},
-    streak:0,lastActive:null,lastLesson:null,theme:'aurora',avatar:'Q',owned:{aurora:1,Q:1,firststeps:1},
+    streak:0,lastActive:null,lastLesson:null,lastLessonBy:{},theme:'aurora',avatar:'Q',owned:{aurora:1,Q:1,firststeps:1},
     stats:{solved:0,independent:0,attempts:0,hints:0,solutions:0}}; }
   function load(){ try{var s=localStorage.getItem(SKEY); if(s){var p=JSON.parse(s),d=def();
     for(var k in d) if(!(k in p)) p[k]=d[k]; return p;}}catch(e){} return def(); }
@@ -4181,8 +4278,14 @@ window.addEventListener('load',function(){
       P.streak=(P.lastActive===yest)?(P.streak||0)+1:1; P.lastActive=today;
       addGems(CFG.gems.streak,'Day '+P.streak+' streak'); save(); renderHUD();
     },
-    setLastLesson:function(key){ P.lastLesson=key; save(); },
-    getLastLesson:function(){ return P.lastLesson||null; },
+    setLastLesson:function(key){ P.lastLessonBy=P.lastLessonBy||{}; P.lastLessonBy[COURSE.slug]=key; P.lastLesson=COURSE.slug+':'+key; save(); },
+    getLastLesson:function(){
+      if(P.lastLessonBy && P.lastLessonBy[COURSE.slug]) return P.lastLessonBy[COURSE.slug];
+      var v=P.lastLesson||null; if(!v) return null;
+      var i=v.indexOf(':');
+      if(i<0) return COURSE.slug==='prealgebra' ? v : null;   // legacy unprefixed value = prealgebra
+      return v.slice(0,i)===COURSE.slug ? v.slice(i+1) : null;
+    },
     getCompletedLessons:function(){
       var pre=COURSE.slug+':'; var r={};
       Object.keys(P.lessons).forEach(function(k){ if(k.indexOf(pre)===0) r[k.slice(pre.length)]=true; });
@@ -4199,6 +4302,7 @@ window.addEventListener('load',function(){
       Object.assign(P.sets, cloud.sets||{});
       Object.assign(P.owned, cloud.owned||{});
       if(cloud.lastLesson) P.lastLesson=cloud.lastLesson;
+      if(cloud.lastLessonBy) P.lastLessonBy=Object.assign({},P.lastLessonBy||{},cloud.lastLessonBy);
       if(cloud.theme) P.theme=cloud.theme;
       if(cloud.avatar) P.avatar=cloud.avatar;
       if((cloud.streak||0)>(P.streak||0)) P.streak=cloud.streak;
@@ -4261,6 +4365,11 @@ window.addEventListener('load',function(){
     if(typeof renderDashboard==='function'){ renderDashboard(); renderToc(); }
   }
   if(typeof renderDashHero==='function') renderDashHero();
+  // Restore the course the user was last in (after hydration, so progress re-keys correctly)
+  try{
+    var bootCourse=localStorage.getItem('quantica.course');
+    if(bootCourse && bootCourse!==COURSE.slug && window.setCourse) setCourse(bootCourse);
+  }catch(e){}
 })();
 
 </script>
@@ -4601,12 +4710,14 @@ async function sendTutorMsg() {
     return out;
   }
   window.adaptBlocks=function(lessonKey,blocks){
+    if(window.CURRENT_COURSE && CURRENT_COURSE!=='prealgebra') return blocks;  // ADAPT content is keyed by prealgebra lesson keys
     if(!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[lessonKey])||!window.ADAPT) return blocks;
     return _adaptRange(lessonKey,blocks,0,blocks.length);
   };
   // ===== Mid-lesson reflow: keep the current page, rebuild everything after it at the new tiers =====
   window.reflowLesson=function(){
     var WS=window.WS; if(!WS||!WS.active) return;
+    if(window.CURRENT_COURSE && CURRENT_COURSE!=='prealgebra') return;
     if(!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[WS.key])) return;
     var cur=WS.page;
     // cut = highest original-block index already consumed by pages [0..cur]
@@ -4672,7 +4783,7 @@ async function sendTutorMsg() {
   }
   function setTopic(tp,t){ t=Math.round(t); if(!isFinite(t)) return; mode='edit'; working[tp]=Math.max(1,Math.min(5,t)); render(); }
   window.DiffPanel={
-    available:function(key){ return !!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[key]); },
+    available:function(key){ if(window.CURRENT_COURSE && CURRENT_COURSE!=='prealgebra') return false; return !!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[key]); },
     onLessonOpen:function(key){ var b=document.getElementById('cbDiff'); if(b) b.style.display=this.available(key)?'inline-flex':'none'; },
     onLessonClose:function(){ var b=document.getElementById('cbDiff'); if(b) b.style.display='none'; },
     open:function(){ if(!(window.WS&&WS.active)) return; lessonKey=WS.key;

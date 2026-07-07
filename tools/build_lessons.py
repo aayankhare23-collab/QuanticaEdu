@@ -20,27 +20,33 @@ import json, glob, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data', 'lessons.js')
-LESSON_GLOB = os.path.join(ROOT, 'lessons', 'prealgebra', 'chapter-*.json')
-PREFIX = 'window.__CHDATA='
+COURSES = ['prealgebra', 'algebra1']   # course dirs under lessons/; first is the default course
+PREFIX = 'window.__COURSEDATA='
 
 def chapter_num(path):
     base = os.path.basename(path)
     return int(base.replace('chapter-', '').replace('.json', ''))
 
 def main():
-    merged = {}
-    for f in sorted(glob.glob(LESSON_GLOB), key=chapter_num):
-        merged.update(json.load(open(f, encoding='utf-8')))
-    if not merged:
-        sys.exit('no lesson JSON found')
+    courses = {}
+    for course in COURSES:
+        merged = {}
+        for f in sorted(glob.glob(os.path.join(ROOT, 'lessons', course, 'chapter-*.json')), key=chapter_num):
+            merged.update(json.load(open(f, encoding='utf-8')))
+        courses[course] = merged
+    if not courses.get('prealgebra'):
+        sys.exit('no prealgebra lesson JSON found')
 
     # one lesson per line, compact within each (generated asset, not hand-edited).
-    # Byte-for-byte the same literal format the split extracted, so an unchanged
-    # source set regenerates data/lessons.js identically (diff shows only real edits).
-    lines = [json.dumps(k) + ':' + json.dumps(v, ensure_ascii=False, separators=(',', ':'))
-             for k, v in merged.items()]
-    literal = '{\n' + ',\n'.join(lines) + '\n}'
-    out = PREFIX + literal + ';\n'
+    # Courses nest one level deep; window.__CHDATA stays aliased to prealgebra for
+    # back-compat with every existing consumer.
+    course_blocks = []
+    for course in COURSES:
+        lines = [json.dumps(k) + ':' + json.dumps(v, ensure_ascii=False, separators=(',', ':'))
+                 for k, v in courses[course].items()]
+        course_blocks.append(json.dumps(course) + ':{\n' + ',\n'.join(lines) + '\n}')
+    literal = '{\n' + ',\n'.join(course_blocks) + '\n}'
+    out = PREFIX + literal + ';\nwindow.__CHDATA=window.__COURSEDATA["prealgebra"];\n'
 
     # guard against breaking the surrounding <script> tag
     if '</script' in out.lower():
@@ -50,9 +56,11 @@ def main():
     open(DATA, 'w', encoding='utf-8').write(out)
 
     # verify round-trip: re-parse and compare semantically
-    got = json.loads(open(DATA, encoding='utf-8').read()[len(PREFIX):].rstrip().rstrip(';'))
-    assert got == merged, 'round-trip mismatch'
-    print(f'built {len(merged)} lessons into data/lessons.js ({len(out)} bytes)')
+    raw = open(DATA, encoding='utf-8').read()
+    got = json.loads(raw[len(PREFIX):raw.index(';\nwindow.__CHDATA')])
+    assert got == courses, 'round-trip mismatch'
+    counts = ', '.join(f"{c}: {len(courses[c])}" for c in COURSES)
+    print(f'built lessons into data/lessons.js ({counts}; {len(out)} bytes)')
 
 if __name__ == '__main__':
     main()
