@@ -10,8 +10,9 @@ How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established
    separated by a hairline. Generous whitespace. If it feels busy, cut a band.
 3. **Self-contained palette (explicit hex, not CSS vars)** so the pedagogical colors never
    theme-shift. Figures render on a glass-white card, so design on a transparent background.
-4. `viewBox` width **560–600**; height to fit. `font-family="Inter"`. Captions may use KaTeX
-   `\(...\)`.
+4. `viewBox` width **560–600**; height to fit. `font-family="Space Grotesk, sans-serif"` (matches
+   the rest of the course app shell, which is Space Grotesk throughout; Inter is legacy, do not use
+   it in new figures). Captions may use KaTeX `\(...\)`.
 
 ## Palette
 - Blue primary (labels, arrows, braces): `#2f6fe0`  · deep (result text): `#2257c5` · dot: `#3b82f6` · light fill: `#cfe0fa` / pill `#eaf1ff`
