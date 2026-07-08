@@ -231,5 +231,313 @@
     "sol": "By definition \\(\\sqrt{7}\\) squares to exactly \\(7\\), an integer, and every integer is rational. Two irrationals can multiply to something squarely rational, so the answer is \\(\\boxed{\\text{yes}}\\)."
    }
   ]
+ },
+ "1.2": {
+  "title": "Order of Operations",
+  "next": "1.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Written mathematics runs on one deal. A string of symbols names exactly one number, the same number for every careful reader. A string that two honest readers decode to two different values is broken, because a value nobody can agree on settles nothing. One such string is about to surface."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Two students evaluate \\(100-10\\times 9\\). The first works strictly left to right, subtracting before multiplying. The second does the multiplication first, then subtracts. Neither makes a single arithmetic slip, yet they land on different numbers. How far apart are their two answers?",
+    "ans": "800",
+    "accept": [
+     "800"
+    ],
+    "hints": [
+     "Play each reading honestly to the end before comparing anything.",
+     "Left to right means \\((100-10)\\times 9\\). Multiplying first means \\(100-(10\\times 9)\\)."
+    ],
+    "sol": "Reading left to right, \\(100-10=90\\), then \\(90\\times 9=810\\). Multiplying first, \\(10\\times 9=90\\), then \\(100-90=10\\). One string, answers of \\(810\\) and \\(10\\), and the gap is \\(810-10=\\boxed{800}\\)."
+   },
+   {
+    "t": "p",
+    "x": "Neither student slipped, so more arithmetic cannot settle this. What is missing is an agreement about which operation speaks first, and mathematics signed one long ago. From here on multiplication is written \\(3\\cdot 9\\) or with parentheses, because algebra leans hard on the letter x and \\(\\times\\) looks too much like it."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The order of operations.</b> Grouping symbols go first, worked from the inside out when they nest. Then exponents. Then multiplication and division together, left to right. Then addition and subtraction together, left to right. The ranking is not arbitrary. Each stronger operation is a compressed run of a weaker one, an exponent packs repeated multiplication and a product packs repeated addition, and letting the stronger bind tighter spares everyday expressions almost all of their parentheses. Under the agreement, \\(100-10\\cdot 9\\) multiplies first, and the second student's \\(10\\) stands."
+   },
+   {
+    "t": "fig",
+    "cap": "One string, two honest paths, and the agreement keeps exactly one. Grouping first, worked inside out, then exponents, then multiply and divide left to right, then add and subtract left to right.",
+    "x": "<svg viewBox=\"0 0 580 476\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"The expression 30 minus 4 times 7 splits into two readings, left to right giving 26 then 182, both cancelled, and multiply first giving 28 then the kept value 2, above a four-rung ladder, grouping, exponents, multiply divide, add subtract\"><defs><filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter><filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">TWO READINGS</text><rect x=\"200\" y=\"46\" width=\"180\" height=\"46\" rx=\"16\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><text x=\"290\" y=\"77\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"800\" fill=\"#475569\">30 − 4 × 7</text><line x1=\"252\" y1=\"96\" x2=\"170\" y2=\"128\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><line x1=\"328\" y1=\"96\" x2=\"412\" y2=\"128\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><text x=\"164\" y=\"148\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">LEFT TO RIGHT</text><text x=\"418\" y=\"148\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2f6fe0\">MULTIPLY FIRST</text><rect x=\"88\" y=\"162\" width=\"56\" height=\"56\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\"/><text x=\"116\" y=\"199\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#aab4c2\">26</text><line x1=\"94\" y1=\"212\" x2=\"138\" y2=\"168\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><line x1=\"150\" y1=\"190\" x2=\"170\" y2=\"190\" stroke=\"#9fb4d6\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M165 184 L173 190 L165 196\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"184\" y=\"162\" width=\"56\" height=\"56\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\"/><text x=\"212\" y=\"197\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#aab4c2\">182</text><line x1=\"190\" y1=\"212\" x2=\"234\" y2=\"168\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"340\" y=\"162\" width=\"56\" height=\"56\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"368\" y=\"199\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#2257c5\">28</text><line x1=\"402\" y1=\"190\" x2=\"422\" y2=\"190\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M417 184 L425 190 L417 196\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"436\" y=\"160\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"466\" y=\"200\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"30\" font-weight=\"800\" fill=\"#8a5a08\">2</text><line x1=\"30\" y1=\"246\" x2=\"550\" y2=\"246\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"274\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">THE AGREEMENT</text><rect x=\"150\" y=\"290\" width=\"280\" height=\"36\" rx=\"18\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"170\" y=\"313\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2257c5\">GROUPING</text><rect x=\"150\" y=\"334\" width=\"280\" height=\"36\" rx=\"18\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"170\" y=\"357\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2257c5\">EXPONENTS</text><rect x=\"150\" y=\"378\" width=\"280\" height=\"36\" rx=\"18\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"170\" y=\"401\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2257c5\">MULTIPLY DIVIDE</text><line x1=\"374\" y1=\"396\" x2=\"400\" y2=\"396\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M395 390 L403 396 L395 402\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"150\" y=\"422\" width=\"280\" height=\"36\" rx=\"18\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"170\" y=\"445\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2257c5\">ADD SUBTRACT</text><line x1=\"374\" y1=\"440\" x2=\"400\" y2=\"440\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M395 434 L403 440 L395 446\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "All four rungs of the ladder get a turn here. Evaluate $$5+(18-6)\\div 2^2$$ taking the rungs in the order the agreement lists them.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Resolve \\(18-6\\) and \\(2^2\\) before any dividing happens."
+    ],
+    "sol": "The group gives \\(18-6=12\\), the exponent gives \\(2^2=4\\), the division gives \\(12\\div 4=3\\), and the addition closes with \\(5+3=\\boxed{8}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Equal rank, left to right.</b> The ladder has four rungs, not six. Dividing by a number is multiplying by its reciprocal, dividing by \\(4\\) is multiplying by \\(\\frac{1}{4}\\), so division cannot outrank its twin. Subtracting a number is adding its opposite in the same way. Within one rung, ties break by reading order, left to right like any line of text. The six-letter chant many students memorize fails exactly here, because it lists the partners as if one beat the other."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A new dispute. In \\(48\\div 6\\cdot 2\\), one student divides first and gets \\(8\\cdot 2=16\\). The other multiplies \\(6\\cdot 2\\) first and gets \\(48\\div 12=4\\). The convention sides with exactly one of them. Which value is correct?",
+    "ans": "16",
+    "accept": [
+     "16"
+    ],
+    "hints": [
+     "Division and multiplication live on one rung, so rank cannot break the tie.",
+     "When rank ties, reading order decides."
+    ],
+    "sol": "Division and multiplication share a rung, so the tie goes to reading order. Left to right, \\(48\\div 6=8\\), then \\(8\\cdot 2=16\\). The divider is right, and the value is \\(\\boxed{16}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "One multiplication, one subtraction, one addition. Evaluate $$19-8+2\\cdot 3$$ keeping careful track of which of the three moves first, which second, and which last.",
+    "ans": "17",
+    "accept": [
+     "17"
+    ],
+    "hints": [
+     "Only the multiplication outranks the rest, so it goes first.",
+     "Then subtraction and addition share a rung. Read left to right."
+    ],
+    "sol": "The product goes first, \\(2\\cdot 3=6\\), leaving \\(19-8+6\\). Adding first would give \\(19-14=5\\), the chant's wrong answer. Subtraction and addition tie, so read left to right, \\(19-8=11\\), then \\(11+6=\\boxed{17}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Exponents bind tightest.</b> After grouping is settled, powers go before everything else, and an exponent grabs only the single symbol written directly beneath it. A minus sign standing in front is not part of that base. It is an operation still waiting its turn, so \\(-b^2\\) means the opposite of \\(b^2\\), square first and negate after, while \\((-b)^2\\) squares the negative number itself. Nothing widens an exponent's grip except parentheses. When the sign belongs inside, write \\((-b)^2\\), and read \\(-b^2\\) as \\(-(b^2)\\) every time."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Two operations compete for the \\(4\\). Evaluate $$200-3\\cdot 4^2$$ deciding whether the exponent or the multiplication reaches it first.",
+    "ans": "152",
+    "accept": [
+     "152"
+    ],
+    "hints": [
+     "The exponent grabs only the \\(4\\), not the \\(3\\cdot 4\\)."
+    ],
+    "sol": "The power goes first, \\(4^2=16\\). Squaring \\(3\\cdot 4\\) instead would give \\(200-144=56\\), the cost of letting the exponent grab too much. With the exponent taking only the \\(4\\), the product is \\(3\\cdot 16=48\\), and the subtraction closes with \\(200-48=\\boxed{152}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Evaluate \\((-7)^2+\\left(-7^2\\right)\\). The two pieces look identical, so compute each on its own terms before adding.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero"
+    ],
+    "hints": [
+     "The parentheses in \\((-7)^2\\) put the minus sign inside the base.",
+     "In \\(-7^2\\) the exponent grabs only the \\(7\\). Square first, negate after."
+    ],
+    "sol": "The first piece squares the negative itself, \\((-7)^2=(-7)(-7)=49\\). The second squares first and negates after, \\(-7^2=-(7^2)=-49\\). The sum is \\(49+(-49)=\\boxed{0}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Invisible grouping.</b> Two grouping symbols hide in plain sight. A fraction bar is a stretched parenthesis, one wrapped around the whole numerator and another around the whole denominator, and a radical bar groups everything it covers. The bar's physical reach is the grouping, which is why flattening a barred expression onto a single line for a keyboard or a calculator forces a choice. Restore the parentheses by hand, or change the value. \\(\\frac{a+b}{c}\\) flattens to \\((a+b)\\div c\\), never to \\(a+b\\div c\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Not one parenthesis appears in $$\\dfrac{22+2\\cdot 14}{5^2-15}$$ yet two invisible pairs of them are at work. Evaluate the expression.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "The bar wraps the whole top and the whole bottom. Finish each completely before dividing.",
+     "In the denominator, the exponent goes before the subtraction."
+    ],
+    "sol": "The bar seals each level. On top, \\(2\\cdot 14=28\\) and \\(22+28=50\\). Below, \\(5^2=25\\) and \\(25-15=10\\). Only then does the division happen, \\(50\\div 10=\\boxed{5}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Both \\(625\\) and \\(49\\) are perfect squares, which makes a certain shortcut very tempting. Evaluate $$\\sqrt{625-49}$$ and resist it.",
+    "ans": "24",
+    "accept": [
+     "24"
+    ],
+    "hints": [
+     "The radical bar groups everything under it. Subtract before any root is taken."
+    ],
+    "sol": "Rooting each term separately gives \\(25-7=18\\), a confident answer to a different expression. The bar seals the subtraction inside, so \\(625-49=576\\) comes first, and \\(\\sqrt{576}=\\boxed{24}\\)."
+   },
+   {
+    "t": "p",
+    "x": "When groups nest, the innermost speaks first, and its answer passes outward to the next layer. Square brackets help the eye keep the layers apart, but they carry no new power. A bracket is a parenthesis in outdoor clothing, same rank, easier to spot."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Two layers of grouping and one exponent share the stage. Evaluate $$3\\left[\\,47-(11-5)^2\\,\\right]$$ working from the innermost group outward.",
+    "ans": "33",
+    "accept": [
+     "33"
+    ],
+    "hints": [
+     "The parentheses inside speak before the brackets outside.",
+     "Inside the brackets, the exponent still goes before the subtraction."
+    ],
+    "sol": "Innermost first, \\(11-5=6\\). The exponent comes next, \\(6^2=36\\), the bracket closes with \\(47-36=11\\), and the product finishes the job, \\(3\\cdot 11=\\boxed{33}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "The order of operations is an agreement, not a law of nature. A four-function calculator executes keystrokes as they arrive, so \\(3+4\\cdot 20\\) comes back \\(140\\). A scientific calculator reads the whole line first and answers \\(83\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "One expression carries every trap in the lesson, a tight exponent, a radical bar, and a fraction bar. Evaluate $$\\dfrac{-3^4+117}{\\sqrt{45-36}}$$",
+    "ans": "12",
+    "accept": [
+     "12"
+    ],
+    "hints": [
+     "The exponent grabs only the \\(3\\), so \\(-3^4\\) means \\(-(3^4)\\).",
+     "Both bars group. Finish the whole top and the whole bottom before dividing."
+    ],
+    "sol": "On top, \\(-3^4=-(3^4)=-81\\), so the numerator is \\(-81+117=36\\). Below, the radical bar seals \\(45-36=9\\), and \\(\\sqrt{9}=3\\). The fraction bar divides last, \\(36\\div 3=\\boxed{12}\\)."
+   },
+   {
+    "t": "p",
+    "x": "The agreement fits in one breath. Groups first, worked inside out, then exponents, then multiplication and division left to right, then addition and subtraction left to right. It says how to read what is written, nothing more. Which rewritings leave a value untouched, which swaps and regroupings are legal, is exactly where the next lesson goes."
+   }
+  ],
+  "review": [
+   {
+    "x": "First a straight run with nothing hidden. Evaluate \\(46-5\\cdot3^2\\), taking the operations in exactly the order the convention assigns them.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "one"
+    ],
+    "hints": [
+     "Powers before products, products before differences. Then it is just arithmetic."
+    ],
+    "sol": "The power goes first, \\(3^2=9\\), then the multiplication, \\(5\\cdot9=45\\), and last the subtraction, \\(46-45=1\\). The value is \\(\\boxed{1}\\)."
+   },
+   {
+    "x": "In \\(60\\div6\\cdot5\\), a student multiplies \\(6\\cdot5\\) first because the chant told them multiplication comes before division. Evaluate the expression correctly.",
+    "ans": "50",
+    "accept": [
+     "50",
+     "fifty"
+    ],
+    "hints": [
+     "Division and multiplication sit on the same rung, so rank decides nothing here. Reading order does."
+    ],
+    "sol": "Same rank is settled left to right, so divide first because it comes first. \\(60\\div6=10\\), then \\(10\\cdot5=50\\), while multiplying first would give the very different \\(60\\div30=2\\). The value is \\(\\boxed{50}\\)."
+   },
+   {
+    "x": "Evaluate \\(52-37+8\\). The same tie-breaking rule that settled division against multiplication is waiting here for subtraction and addition.",
+    "ans": "23",
+    "accept": [
+     "23"
+    ],
+    "hints": [
+     "Subtraction and addition share a rank too. Break the tie from the left."
+    ],
+    "sol": "Equal rank, so read left to right. \\(52-37=15\\), then \\(15+8=23\\), while adding first would give the wrong \\(52-45=7\\). The value is \\(\\boxed{23}\\)."
+   },
+   {
+    "x": "Evaluate \\(-2^6\\). Before you compute anything, decide exactly what the exponent grabs and what the minus sign is left holding.",
+    "ans": "-64",
+    "accept": [
+     "-64",
+     "−64"
+    ],
+    "hints": [
+     "The exponent grabs only the symbol written directly beneath it. The minus sign is an operation still waiting its turn."
+    ],
+    "sol": "The exponent takes only the \\(2\\), so \\(-2^6\\) means \\(-(2^6)=-64\\), the opposite of a power. Only \\((-2)^6\\), with written parentheses, would put the whole \\(-2\\) under the exponent and come out at positive \\(64\\). The value is \\(\\boxed{-64}\\)."
+   },
+   {
+    "x": "Evaluate \\(34-(-3)^3\\). This time the parentheses are written in, so the exponent's grip is wider than a single symbol.",
+    "ans": "61",
+    "accept": [
+     "61"
+    ],
+    "hints": [
+     "Evaluate \\((-3)^3\\) first, sign and all, then handle the subtraction."
+    ],
+    "sol": "The parentheses hand the exponent the whole \\(-3\\), and an odd power keeps the sign, so \\((-3)^3=-27\\). Then \\(34-(-27)=34+27=61\\). The value is \\(\\boxed{61}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{75-3}{2\\cdot4}\\). Flattened carelessly onto one line this expression would say something different, so respect what the bar is doing.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "The bar wraps the whole top in one invisible parenthesis and the whole bottom in another. Finish both before dividing."
+    ],
+    "sol": "Finish each floor of the fraction before dividing. The top is \\(75-3=72\\) and the bottom is \\(2\\cdot4=8\\), so the value is \\(72\\div8=\\boxed{9}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\sqrt{144+25}\\). Both numbers under the bar happen to be perfect squares, which makes the wrong path look extra inviting.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen"
+    ],
+    "hints": [
+     "The radical bar groups everything beneath it, so the addition happens before any root is taken."
+    ],
+    "sol": "The bar covers the whole sum, so add first, \\(144+25=169\\), and then \\(\\sqrt{169}=13\\). Taking each root separately gives \\(12+5=17\\), a confident answer to a different question. The value is \\(\\boxed{13}\\)."
+   },
+   {
+    "x": "Evaluate \\(84\\div[2\\cdot(9-2)]\\). Two layers of grouping, and only one order of unwrapping gives the value the writer intended.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Work from the innermost group outward, and treat the brackets as ordinary parentheses."
+    ],
+    "sol": "Inside out, \\(9-2=7\\), then \\(2\\cdot7=14\\), and finally \\(84\\div14=6\\). Ignoring the brackets and grinding left to right would balloon the value to \\(294\\), so the answer is \\(\\boxed{6}\\)."
+   },
+   {
+    "x": "Evaluate \\(9+54\\div3^2\\cdot2\\). One short line, and every rung below grouping makes an appearance, including a left-to-right tie.",
+    "ans": "21",
+    "accept": [
+     "21"
+    ],
+    "hints": [
+     "The exponent settles first. What remains in the middle is a division and a multiplication of equal rank.",
+     "After \\(3^2=9\\) the middle reads \\(54\\div9\\cdot2\\), and ties break left to right."
+    ],
+    "sol": "The power settles first, \\(3^2=9\\). The tie in the middle breaks left to right, \\(54\\div9=6\\) and then \\(6\\cdot2=12\\), and adding the front \\(9\\) gives \\(21\\). The value is \\(\\boxed{21}\\)."
+   },
+   {
+    "x": "Parentheses outrank everything, so one well-placed pair can transform a value. Insert a single pair of parentheses into \\(2\\cdot6+3^2\\) to make the result as large as possible, then enter that largest value.",
+    "ans": "225",
+    "accept": [
+     "225"
+    ],
+    "hints": [
+     "There are only a few sensible places the pair can go. Evaluate every candidate honestly before crowning one.",
+     "The largest payoff comes from widening the exponent's grip so it squares more than just the \\(3\\)."
+    ],
+    "sol": "Wrapping everything before the exponent gives \\((2\\cdot6+3)^2=15^2=225\\), which beats \\(2\\cdot(6+3)^2=162\\) and \\(2\\cdot(6+3^2)=30\\). The largest value is \\(\\boxed{225}\\)."
+   }
+  ]
  }
 }
