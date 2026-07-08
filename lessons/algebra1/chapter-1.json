@@ -1,0 +1,235 @@
+{
+ "1.1": {
+  "title": "Numbers and Their Families",
+  "next": "1.2",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Welcome to algebra, the study of what numbers can do. Before putting numbers to work, it pays to know who they are, so this first lesson sorts them into families. Sorting sounds easy. It is not, because numbers love disguises, and the six below are wearing good ones."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Here are six numbers. $$\\sqrt{81},\\qquad \\frac{35}{7},\\qquad 4.0,\\qquad \\frac{-12}{4},\\qquad 0.75,\\qquad \\sqrt{10}$$ How many of them are integers, the numbers \\(\\ldots,-2,-1,0,1,2,\\ldots\\)?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Evaluate each number before you judge it. Some of these are wearing costumes."
+    ],
+    "sol": "Unmasked, \\(\\sqrt{81}=9\\), \\(\\frac{35}{7}=5\\), \\(4.0=4\\), and \\(\\frac{-12}{4}=-3\\), four integers in costume. Only \\(0.75\\) and \\(\\sqrt{10}\\) fail to land on a whole value. A number's family is decided by its value, never by its costume, so the count is \\(\\boxed{4}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "The <b>integers</b> are the counting numbers \\(1,2,3,\\ldots\\), their negatives \\(-1,-2,-3,\\ldots\\), and zero, one unbroken chain \\(\\ldots,-3,-2,-1,0,1,2,3,\\ldots\\) running forever in both directions. Membership is about value, not notation. \\(\\sqrt{81}\\) does not merely resemble \\(9\\), it is \\(9\\), the same point on the number line wearing a radical sign. So before classifying any number, evaluate it, and judge what it equals rather than how it is written."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Call a number <b>nonnegative</b> when it is not negative, and <b>nonpositive</b> when it is not positive. Exactly one integer manages to be both at once. Which integer?",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero"
+    ],
+    "hints": [
+     "Nonnegative rules out one sign. Nonpositive rules out the other. What is left?"
+    ],
+    "sol": "Nonnegative rules out being negative, and nonpositive rules out being positive, so a number that is both must be neither, and every other number picks a side. The lone holdout is \\(\\boxed{0}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Positive</b> means greater than zero, <b>negative</b> means less than zero, and zero itself is neither, the lone number with no side. <b>Nonnegative</b> means zero or positive, and <b>nonpositive</b> means zero or negative. Algebra leans on these last two words constantly, because so many quantities can touch zero without ever dipping below it. A square, for instance, is never negative, an idea that returns again and again in this course, and nonnegative says it in one word."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A <b>ratio</b> is one integer divided by a nonzero integer. The number \\(8\\) wears no fraction bar, yet it is a ratio in many different ways. Write \\(8\\) as a ratio with denominator \\(25\\). What numerator do you need?",
+    "ans": "200",
+    "accept": [
+     "200"
+    ],
+    "hints": [
+     "The fraction must collapse back to \\(8\\) when you divide."
+    ],
+    "sol": "The fraction \\(\\frac{200}{25}\\) collapses back to \\(8\\), and nothing about \\(25\\) was special. The same number is also \\(\\frac{8}{1}\\), \\(\\frac{16}{2}\\), and infinitely many other ratios, so an integer passes the ratio test many ways over. The numerator is \\(\\boxed{200}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "A <b>rational number</b> is any number writable as a ratio, one integer divided by a nonzero integer, and the name comes straight from the word ratio. Every integer is rational, since \\(n\\) equals \\(\\frac{n}{1}\\) along with infinitely many other costumes, so the integer family sits whole inside the rational family. The denominator must be nonzero for a blunt reason. Division by zero names no number, there is no value for such a ratio to equal, so the test refuses that denominator outright."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The decimal \\(0.272727\\ldots\\) repeats the block \\(27\\) forever. It never ends, yet it is secretly a ratio of integers with denominator \\(11\\). Find the numerator.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "A two-digit block repeating forever is that block over \\(99\\). Then reduce."
+    ],
+    "sol": "A repeating two-digit block sits over \\(99\\), so \\(0.272727\\ldots=\\frac{27}{99}\\), and dividing top and bottom by \\(9\\) leaves \\(\\frac{3}{11}\\). An endless decimal can still pass the ratio test as long as it repeats. The numerator is \\(\\boxed{3}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The decimal of any ratio of integers either stops or falls into a block that repeats forever. Now build $$0.31311311131111\\ldots$$ where each \\(3\\) is followed by one more \\(1\\) than the last. Does this decimal ever settle into a block that repeats forever, yes or no?",
+    "ans": "no",
+    "accept": [
+     "no"
+    ],
+    "hints": [
+     "A repeating block has a fixed length. Watch what the growing runs of 1s do to any fixed length."
+    ],
+    "sol": "A repeating block would have some fixed length, but the runs of \\(1\\)s grow without bound and eventually outlast any block of that length, so a repeating block would have to be pure \\(1\\)s, and the \\(3\\)s that keep arriving rule that out. The decimal neither stops nor repeats, which pushes it outside every family met so far, so the answer is \\(\\boxed{\\text{no}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Numbers like that are <b>irrational</b>, decimals that never stop and never repeat, which is the same as saying no ratio of integers equals them. The famous residents are \\(\\sqrt{2}\\) and \\(\\pi\\). Treat the radical sign with care, though. It asks a question, it does not deliver a verdict, and sometimes the answer is perfectly tame, as in \\(\\sqrt{9}=3\\). In fact the square root of a whole number is either a whole number exactly or irrational, never a near-miss fraction, a claim this course will prove later on."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "How many of these four numbers are irrational? $$\\pi \\qquad \\frac{22}{7} \\qquad \\sqrt{5} \\qquad \\sqrt{169}$$",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "\\(\\frac{22}{7}\\) is famous for approximating something irrational. What is it, itself?",
+     "Evaluate \\(\\sqrt{169}\\) before you judge it."
+    ],
+    "sol": "\\(\\frac{22}{7}\\) approximates \\(\\pi\\), but it is an integer over a nonzero integer, rational no matter what it imitates, and \\(\\sqrt{169}=13\\), an integer. That leaves \\(\\pi\\) and \\(\\sqrt{5}\\) as the irrationals, and the count is \\(\\boxed{2}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "The <b>real numbers</b> are all the numbers writable as decimals, ending or endless, repeating or not, and together they fill the entire number line. The families now nest like boxes. Integers sit inside the rationals, rationals sit inside the reals, and the irrationals are exactly the reals left over once the rationals are removed. The nesting runs one way only. Membership in an inner family grants membership in every outer one for free, so an integer is automatically rational and automatically real, never the reverse."
+   },
+   {
+    "t": "fig",
+    "cap": "Three families, one line. \\(-6\\) is an integer, so also rational, so also real. \\(\\frac{7}{4}\\) is rational but not an integer. \\(\\sqrt{17}\\) is real but not rational, one of the irrationals filling the gaps between the fractions.",
+    "x": "<svg viewBox=\"0 0 580 310\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Nested boxes showing integers inside rationals inside reals with irrationals in the leftover strip, and the example numbers minus six, seven fourths, and root seventeen placed on one number line\"> <defs> <filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter> <filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter> </defs> <text x=\"30\" y=\"30\" font-family=\"Inter\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">THE FAMILIES</text> <rect x=\"30\" y=\"44\" width=\"520\" height=\"122\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/> <text x=\"532\" y=\"66\" text-anchor=\"end\" font-family=\"Inter\" font-size=\"11.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">REAL</text> <rect x=\"46\" y=\"74\" width=\"320\" height=\"76\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/> <text x=\"62\" y=\"95\" font-family=\"Inter\" font-size=\"11.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2f6fe0\">RATIONAL</text> <text x=\"300\" y=\"129\" text-anchor=\"middle\" font-family=\"Inter\" font-size=\"17\" font-weight=\"800\" fill=\"#2257c5\">7/4</text> <rect x=\"62\" y=\"104\" width=\"164\" height=\"34\" rx=\"17\" fill=\"#cfe0fa\" stroke=\"#b3cdf6\"/> <text x=\"78\" y=\"126\" font-family=\"Inter\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2257c5\">INTEGER</text> <text x=\"210\" y=\"127\" text-anchor=\"end\" font-family=\"Inter\" font-size=\"16\" font-weight=\"800\" fill=\"#2257c5\">−6</text> <text x=\"458\" y=\"95\" text-anchor=\"middle\" font-family=\"Inter\" font-size=\"11.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#8a5a08\">IRRATIONAL</text> <rect x=\"432\" y=\"104\" width=\"52\" height=\"44\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/> <text x=\"458\" y=\"133\" text-anchor=\"middle\" font-family=\"Inter\" font-size=\"15\" font-weight=\"800\" fill=\"#8a5a08\">√17</text> <line x1=\"30\" y1=\"192\" x2=\"550\" y2=\"192\" stroke=\"#e4e9f1\" stroke-width=\"1\"/> <text x=\"30\" y=\"220\" font-family=\"Inter\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">ONE LINE</text> <line x1=\"40\" y1=\"272\" x2=\"540\" y2=\"272\" stroke=\"#9aa6b6\" stroke-width=\"2.5\" stroke-linecap=\"round\"/> <g stroke=\"#9aa6b6\" stroke-width=\"1.5\"> <line x1=\"40\" y1=\"266\" x2=\"40\" y2=\"278\"/> <line x1=\"81.7\" y1=\"266\" x2=\"81.7\" y2=\"278\"/> <line x1=\"123.3\" y1=\"266\" x2=\"123.3\" y2=\"278\"/> <line x1=\"165\" y1=\"266\" x2=\"165\" y2=\"278\"/> <line x1=\"206.7\" y1=\"266\" x2=\"206.7\" y2=\"278\"/> <line x1=\"248.3\" y1=\"266\" x2=\"248.3\" y2=\"278\"/> <line x1=\"290\" y1=\"266\" x2=\"290\" y2=\"278\"/> <line x1=\"373.3\" y1=\"266\" x2=\"373.3\" y2=\"278\"/> <line x1=\"415\" y1=\"266\" x2=\"415\" y2=\"278\"/> <line x1=\"456.7\" y1=\"266\" x2=\"456.7\" y2=\"278\"/> <line x1=\"498.3\" y1=\"266\" x2=\"498.3\" y2=\"278\"/> <line x1=\"540\" y1=\"266\" x2=\"540\" y2=\"278\"/> </g> <line x1=\"331.7\" y1=\"262\" x2=\"331.7\" y2=\"282\" stroke=\"#9aa6b6\" stroke-width=\"2.5\" stroke-linecap=\"round\"/> <line x1=\"503.5\" y1=\"260\" x2=\"503.5\" y2=\"284\" stroke=\"#e0a52a\" stroke-width=\"3\" stroke-linecap=\"round\"/> <circle cx=\"81.7\" cy=\"272\" r=\"7.5\" fill=\"#3b82f6\"/> <circle cx=\"404.6\" cy=\"272\" r=\"7.5\" fill=\"#3b82f6\"/> <circle cx=\"503.5\" cy=\"272\" r=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/> <text x=\"81.7\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\">−6</text> <text x=\"404.6\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\">7/4</text> <text x=\"503.5\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter\" font-size=\"13\" font-weight=\"800\" fill=\"#8a5a08\">√17</text> </svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "The positive integers have a smallest member, the number \\(1\\). Is there a smallest positive rational number, yes or no?",
+    "ans": "no",
+    "accept": [
+     "no"
+    ],
+    "hints": [
+     "Whatever positive rational a challenger names, cut it in half. What do you get?"
+    ],
+    "sol": "Half of any positive rational is smaller, still positive, and still a ratio of integers, so every candidate for smallest is beaten by its own half. No candidate survives, and the answer is \\(\\boxed{\\text{no}}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "In 1545 Girolamo Cardano hit square roots of negative numbers in a puzzle about splitting \\(10\\), called them useless, and computed with them anyway. They live outside the reals, and in Chapter 11 the family tree grows again to hold them."
+   }
+  ],
+  "review": [
+   {
+    "x": "Count the nonpositive integers that are strictly greater than \\(-5.5\\), every single one of them. How many do you find?",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "List them one by one, and do not stop before you reach zero."
+    ],
+    "sol": "The nonpositive integers greater than \\(-5.5\\) are \\(-5,-4,-3,-2,-1,0\\). Zero counts, since nonpositive means zero or negative, so there are \\(\\boxed{6}\\)."
+   },
+   {
+    "x": "The number \\(\\frac{-56}{14}\\) fits at least one of the three family names integer, rational, and real. Which name is the most exclusive one that fits?",
+    "ans": "integer",
+    "accept": [
+     "integer",
+     "an integer",
+     "integers"
+    ],
+    "hints": [
+     "Simplify before you classify."
+    ],
+    "sol": "\\(\\frac{-56}{14}=-4\\), an integer. Every integer is automatically rational and real, so the tightest label is \\(\\boxed{\\text{integer}}\\)."
+   },
+   {
+    "x": "The decimal \\(0.58\\) stops after two digits, so it is a ratio of integers in disguise. Written in lowest terms, that ratio has what denominator?",
+    "ans": "50",
+    "accept": [
+     "50",
+     "fifty"
+    ],
+    "hints": [
+     "Start from \\(\\frac{58}{100}\\) and reduce."
+    ],
+    "sol": "\\(0.58=\\frac{58}{100}\\), and dividing top and bottom by \\(2\\) gives \\(\\frac{29}{50}\\), which no longer reduces. The denominator is \\(\\boxed{50}\\)."
+   },
+   {
+    "x": "The decimal \\(0.\\overline{2}=0.222\\ldots\\) repeats a single digit forever. Write it as a fraction in lowest terms.",
+    "ans": "2/9",
+    "accept": [
+     "2/9"
+    ],
+    "hints": [
+     "Prealgebra gave you \\(0.111\\ldots=\\frac{1}{9}\\). Scale it."
+    ],
+    "sol": "Since \\(0.111\\ldots=\\frac{1}{9}\\), doubling both sides gives \\(0.222\\ldots=\\frac{2}{9}\\), already in lowest terms. The fraction is \\(\\boxed{\\frac{2}{9}}\\)."
+   },
+   {
+    "x": "The number \\(\\sqrt{225}\\) arrives wearing a radical sign. Look past the costume and classify it, rational or irrational?",
+    "ans": "rational",
+    "accept": [
+     "rational"
+    ],
+    "hints": [
+     "Hunt for a whole number whose square is \\(225\\)."
+    ],
+    "sol": "\\(15^2=225\\), so \\(\\sqrt{225}=15\\), an integer, and every integer is rational. The radical sign asks a question, and here the answer is \\(\\boxed{\\text{rational}}\\)."
+   },
+   {
+    "x": "Every integer is rational, that street runs one way for sure. Does it run both ways, is every rational number an integer, yes or no?",
+    "ans": "no",
+    "accept": [
+     "no"
+    ],
+    "hints": [
+     "Test a fraction that refuses to simplify to a whole number."
+    ],
+    "sol": "\\(\\frac{3}{8}\\) is rational and sits strictly between \\(0\\) and \\(1\\), so it is no integer. The nesting works inward to outward only, and the answer is \\(\\boxed{\\text{no}}\\)."
+   },
+   {
+    "x": "Find the number sitting exactly halfway between \\(\\frac{2}{5}\\) and \\(\\frac{3}{5}\\) on the number line. Answer as a fraction in lowest terms.",
+    "ans": "1/2",
+    "accept": [
+     "1/2",
+     "0.5",
+     ".5"
+    ],
+    "hints": [
+     "Add the two fractions and halve the result."
+    ],
+    "sol": "Add and halve. \\(\\frac{2}{5}+\\frac{3}{5}=1\\), and half of \\(1\\) is \\(\\frac{1}{2}\\), another rational strictly between the two, just as the no-smallest problem promised. The answer is \\(\\boxed{\\frac{1}{2}}\\)."
+   },
+   {
+    "x": "The number \\(\\sqrt{7}\\) is irrational, its decimal never stops and never repeats. Is the product \\(\\sqrt{7}\\times\\sqrt{7}\\) rational, yes or no?",
+    "ans": "yes",
+    "accept": [
+     "yes"
+    ],
+    "hints": [
+     "What does the square root symbol promise about this product?",
+     "\\(\\sqrt{7}\\) is defined as the positive number that squares to exactly \\(7\\)."
+    ],
+    "sol": "By definition \\(\\sqrt{7}\\) squares to exactly \\(7\\), an integer, and every integer is rational. Two irrationals can multiply to something squarely rational, so the answer is \\(\\boxed{\\text{yes}}\\)."
+   }
+  ]
+ }
+}
