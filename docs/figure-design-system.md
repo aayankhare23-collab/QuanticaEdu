@@ -12,7 +12,10 @@ How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established
    theme-shift. Figures render on a glass-white card, so design on a transparent background.
 4. `viewBox` width **560–600**; height to fit. `font-family="Space Grotesk, sans-serif"` (matches
    the rest of the course app shell, which is Space Grotesk throughout; Inter is legacy, do not use
-   it in new figures). Captions may use KaTeX `\(...\)`.
+   it in new figures). **Max `font-weight` is 700.** Space Grotesk ships no 800; browsers fake-bold
+   the 700 face and the smeared result reads as a generic sans (user-flagged). A CSS safety net in
+   landing.html (`.modal svg text`) forces the family, but the weight cap is on you. Captions may
+   use KaTeX `\(...\)`.
 
 ## Palette
 - Blue primary (labels, arrows, braces): `#2f6fe0`  · deep (result text): `#2257c5` · dot: `#3b82f6` · light fill: `#cfe0fa` / pill `#eaf1ff`
@@ -30,7 +33,7 @@ How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established
 - **Section label:** `font-size 12.5 font-weight 700 letter-spacing 1.4` uppercase, fill `#2f6fe0`.
 - **Cancelled tile:** 56×56 rx13, fill `#eef1f6` stroke `#dbe1ea`, digit 26px 700 `#aab4c2`, plus a
   diagonal strike line `#aab4c2` width 2.5 round-cap.
-- **Highlight (gold) tile:** 60×60 rx14, fill `#fcd76a` stroke `#e0a52a` w2, `filter=tilesh`, digit 30px 800 `#8a5a08`.
+- **Highlight (gold) tile:** 60×60 rx14, fill `#fcd76a` stroke `#e0a52a` w2, `filter=tilesh`, digit 30px 700 `#8a5a08`.
 - **Result card:** white rect rx18 stroke `#dbe6fa`, `filter=softsh`, with two small 2-stroke
   `#9fc0f5` sparkles hugging opposite corners. Fraction in `#2257c5`.
 - **Dotted connector:** stroke `#9fb4d6` width 1.6 `stroke-dasharray="2 4"` round-cap.
