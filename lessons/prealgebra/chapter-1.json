@@ -20,6 +20,16 @@
       },
       {
         "t": "prob",
+        "ans": "18",
+        "xp": 6,
+        "hints": [
+          "Pair 7 and 3 to make 10 first!"
+        ],
+        "x": "Add in any order: $$7+8+3.$$",
+        "sol": "Reorder to \\(7+3+8\\). Then \\(7+3=10\\), and \\(10+8=\\boxed{18}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "60",
         "xp": 8,
         "x": "Three jars hold $17$, $3$, and $40$ jellybeans. Maya pours jar 1 into jar 2, then adds jar 3; Theo pours jar 2 into jar 3, then adds jar 1. How many jellybeans does each end up with?",
@@ -45,14 +55,23 @@
       },
       {
         "t": "prob",
-        "ans": "820",
-        "xp": 18,
+        "ans": "55",
+        "xp": 10,
         "hints": [
-          "Pair the smallest number with the largest: \\(1 + 40\\), then \\(2 + 39\\), then \\(3 + 38\\), \u2026",
-          "Every pair adds to the same total. What is it, and how many pairs do 40 numbers make?"
+          "Pair 1 with 10, 2 with 9 \u2014 each pair makes 11!"
         ],
-        "x": "Add every whole number from 1 to 40: $$1 + 2 + 3 + \\cdots + 40.$$",
-        "sol": "Grouping neighbours, \\((1 + 2) + (3 + 4) + \\cdots\\), gives \\(3 + 7 + 11 + \\cdots\\), all different, so nothing collapses. Pair from the ends inward instead.$$(1 + 40) + (2 + 39) + (3 + 38) + \\cdots + (20 + 21).$$Every pair lands on 41, since each step inward grows one partner by 1 and shrinks the other by 1. Twenty pairs:$$20 \\times 41 = \\boxed{820}.$$Turning a long sum into many copies of one number lets multiplication finish it at once."
+        "x": "Add the numbers 1 to 10: $$1+2+3+\\cdots+10.$$",
+        "sol": "Pair from the ends: \\(1+10,\\,2+9,\\,3+8,\\,4+7,\\,5+6\\) \u2014 five pairs of \\(11\\), so \\(5\\times 11=\\boxed{55}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "2004",
+        "xp": 12,
+        "hints": [
+          "Round 998 and 997 up to 1000, then take back what you added."
+        ],
+        "x": "In your head: $$998+997+5+4.$$",
+        "sol": "998 is 2 short of 1000 and 997 is 3 short, and the lonely \\(5\\) covers both gaps exactly: \\(2+3=5\\).$$(998+2)+(997+3)+4 = 1000+1000+4 = \\boxed{2004}.$$Near-round numbers plus small change: let the small numbers complete the big ones."
       },
       {
         "t": "prob",
@@ -75,10 +94,52 @@
       },
       {
         "t": "prob",
+        "ans": "3",
+        "xp": 8,
+        "x": "The temperature reads $8$ degrees, then drops $5$. Every subtraction is an addition in disguise: rewrite the drop as $$8 + (-5)$$ and compute it.",
+        "sol": "Adding \\(-5\\) means stepping 5 to the left of 8 on the number line, landing on \\(\\boxed{3}\\). Subtracting a number and adding its opposite are the same move — that is \\(a-b=a+(-b)\\) in action."
+      },
+      {
+        "t": "prob",
+        "ans": "5",
+        "xp": 6,
+        "hints": [
+          "Take away 3, then take away 2."
+        ],
+        "x": "Compute $$10-3-2.$$",
+        "sol": "Subtracting \\(3\\) then \\(2\\) removes \\(5\\) in all: \\(10-5=\\boxed{5}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "50",
         "xp": 10,
         "x": "Rearrange cleverly to compute $$50 - 17 + 50 - 33.$$",
         "sol": "The subtraction signs block rearranging, so dissolve them: every subtraction is the addition of a negative.$$50 + (-17) + 50 + (-33)$$Now reorder and regroup freely.$$(50 + 50) + ((-17) + (-33)) = 100 - 50 = \\boxed{50}.$$Turning subtraction into adding the opposite unlocks the rearranging freedoms for any expression with minus signs."
+      },
+      {
+        "t": "prob",
+        "ans": "20",
+        "xp": 8,
+        "hints": [
+          "Look at the two 20s, and what 8 and 12 do together."
+        ],
+        "x": "Rearrange: $$20-8+20-12.$$",
+        "sol": "Group: \\(20+20=40\\) and \\(8+12=20\\), so \\(40-20=\\boxed{20}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "23",
+        "xp": 12,
+        "x": "Compute $$83 - 27 - 33.$$",
+        "sol": "Subtract the two together: \\(27 + 33 = 60\\), so \\(83 - 60 = \\boxed{23}\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Challenge",
+        "ans": "50",
+        "xp": 12,
+        "x": "Find $$100 - 99 + 98 - 97 + \\cdots + 2 - 1.$$",
+        "sol": "Group in pairs from the left: \\((100-99),\\,(98-97),\\,\\ldots,\\,(2-1)\\) each equal 1. There are 50 pairs, so the total is \\(\\boxed{50}\\)."
       },
       {
         "t": "imp",
@@ -110,6 +171,33 @@
       },
       {
         "t": "prob",
+        "ans": "7",
+        "xp": 6,
+        "hints": [
+          "The opposite of the opposite is the original."
+        ],
+        "x": "What is $$-(-7)$$?",
+        "sol": "The opposite of \\(-7\\) is \\(7\\), so \\(-(-7)=\\boxed{7}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "7",
+        "xp": 8,
+        "hints": [
+          "Subtracting a negative is the same as adding."
+        ],
+        "x": "Compute $$3-(-4).$$",
+        "sol": "Subtracting \\(-4\\) is the same as adding \\(4\\): \\(3+4=\\boxed{7}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "11",
+        "xp": 8,
+        "x": "Subtracting a negative adds. Convince yourself once, carefully: $$5 - (-6).$$",
+        "sol": "The opposite of \\(-6\\) is \\(6\\), so taking away \\(-6\\) is the same as adding \\(6\\): \\(5 + 6 = \\boxed{11}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "5",
         "xp": 10,
         "x": "Now untangle a nested one; work from the inside out: $$7 - (-(-2)).$$",
@@ -124,26 +212,81 @@
       },
       {
         "t": "prob",
-        "ans": "23",
-        "xp": 12,
-        "x": "Compute $$83 - 27 - 33.$$",
-        "sol": "Subtract the two together: \\(27 + 33 = 60\\), so \\(83 - 60 = \\boxed{23}\\)."
+        "ans": "9",
+        "xp": 10,
+        "hints": [
+          "Count the minus signs \u2014 pairs cancel."
+        ],
+        "x": "Simplify $$-(-(-(-9))).$$",
+        "sol": "There are four minus signs. They cancel in pairs (\\(-(-x)=x\\)), leaving \\(\\boxed{+9}\\)."
+      },
+      {
+        "t": "p",
+        "x": "One last stretch before you go. These closing problems mix everything from this lesson &mdash; every student meets them, whatever pace the lesson took. Use the full toolkit: reorder, regroup, turn subtractions into additions, and let opposites cancel."
       },
       {
         "t": "prob",
-        "label": "Challenge",
-        "ans": "50",
-        "xp": 12,
-        "x": "Find $$100 - 99 + 98 - 97 + \\cdots + 2 - 1.$$",
-        "sol": "Group in pairs from the left: \\((100-99),\\,(98-97),\\,\\ldots,\\,(2-1)\\) each equal 1. There are 50 pairs, so the total is \\(\\boxed{50}\\)."
+        "label": "Capstone",
+        "ans": "820",
+        "xp": 18,
+        "hints": [
+          "Pair the smallest number with the largest: \\(1 + 40\\), then \\(2 + 39\\), then \\(3 + 38\\), \u2026",
+          "Every pair adds to the same total. What is it, and how many pairs do 40 numbers make?"
+        ],
+        "x": "Add every whole number from 1 to 40: $$1 + 2 + 3 + \\cdots + 40.$$",
+        "sol": "Grouping neighbours, \\((1 + 2) + (3 + 4) + \\cdots\\), gives \\(3 + 7 + 11 + \\cdots\\), all different, so nothing collapses. Pair from the ends inward instead.$$(1 + 40) + (2 + 39) + (3 + 38) + \\cdots + (20 + 21).$$Every pair lands on 41, since each step inward grows one partner by 1 and shrinks the other by 1. Twenty pairs:$$20 \\times 41 = \\boxed{820}.$$Turning a long sum into many copies of one number lets multiplication finish it at once."
       },
       {
         "t": "prob",
-        "label": "Challenge",
+        "label": "Capstone",
+        "ans": "5050",
+        "xp": 14,
+        "hints": [
+          "50 pairs, each adding to 101."
+        ],
+        "x": "Add every whole number from 1 to 100: $$1+2+\\cdots+100.$$",
+        "sol": "Pair from the ends: \\(1+100,\\,2+99,\\,\\dots\\) \u2014 fifty pairs, each summing to \\(101\\). So \\(50\\times 101 = \\boxed{5050}\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Capstone",
+        "ans": "0",
+        "xp": 12,
+        "x": "Rearrange before you compute: $$45 - 18 + 55 - 82.$$",
+        "sol": "Dissolve the subtractions into additions and regroup: \\((45 + 55) + ((-18) + (-82)) = 100 - 100 = \\boxed{0}\\). Rearranging works on any expression once every subtraction becomes adding the opposite."
+      },
+      {
+        "t": "prob",
+        "label": "Capstone",
+        "ans": "-50",
+        "accept": [
+          "\u221250"
+        ],
+        "xp": 14,
+        "hints": [
+          "Each pair (1-2),(3-4) makes -1. How many pairs are there?"
+        ],
+        "x": "Find $$1-2+3-4+\\cdots+99-100.$$",
+        "sol": "Group in pairs: \\((1-2)+(3-4)+\\cdots+(99-100)\\). Each pair is \\(-1\\), and there are \\(50\\) pairs, so the total is \\(\\boxed{-50}\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Capstone",
         "ans": "0",
         "xp": 12,
         "x": "Hunt for what cancels: $$30 - (-20) - (-10) - 60.$$",
         "sol": "Rewrite the subtractions of negatives as additions: \\(30 + 20 + 10 - 60\\). The positives make 60, cancelled by the \\(-60\\), leaving \\(\\boxed{0}\\)."
+      },
+      {
+        "t": "prob",
+        "label": "Capstone",
+        "ans": "0",
+        "xp": 12,
+        "hints": [
+          "Hunt for what cancels: the 15s and the 10s."
+        ],
+        "x": "Find $$15-(-10)+(-15)-10.$$",
+        "sol": "Rewrite as \\(15+10-15-10\\). The \\(15\\)s cancel and the \\(10\\)s cancel, giving \\(\\boxed{0}\\)."
       },
       {
         "t": "imp",
