@@ -4329,7 +4329,7 @@ async function sendTutorMsg() {
     _merge:function(data){ if(!data) return; if(data.tiers) Object.assign(st.tiers,data.tiers); if(data.diag) Object.assign(st.diag,data.diag); if(data.diagnosed) Object.assign(st.diagnosed,data.diagnosed); if(data.skipped) Object.assign(st.skipped,data.skipped); }
   };
 
-  // ===== Authored adaptive content (Chapter 1 — lesson 1.2 implemented) =====
+  // ===== Authored adaptive content (Chapter 1 — ladder mode on 1.2, 1.3, 1.5) =====
   window.ADAPT_CONTENT={
     chapters:{ '1':{ topics:['addition','subtraction','negation','multiplication','distributive','signs','division'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
     diagnostic:{
@@ -4372,56 +4372,45 @@ async function sendTutorMsg() {
       },
       '1.3':{
         topics:['multiplication','distributive','signs'],
+        tight:true, /* ladder mode: builds show at [tier, tier+1]; cap:1 problems show for everyone */
         probs:[
-          {topic:'multiplication',diff:1},{topic:'multiplication',diff:3},{topic:'multiplication',diff:4},
+          {topic:'multiplication',diff:1},{topic:'multiplication',diff:1},{topic:'multiplication',diff:2},
+          {topic:'multiplication',diff:2},{topic:'multiplication',diff:3},{topic:'multiplication',diff:4},
+          {topic:'multiplication',diff:5},{topic:'multiplication',diff:4,cap:1},{topic:'multiplication',diff:5,cap:1},
+          {topic:'distributive',diff:1},{topic:'distributive',diff:1},{topic:'distributive',diff:2},
           {topic:'distributive',diff:2},{topic:'distributive',diff:3},{topic:'distributive',diff:4},
-          {topic:'distributive',diff:4},{topic:'signs',diff:1},{topic:'signs',diff:3},
-          {topic:'signs',diff:3}
+          {topic:'distributive',diff:5},{topic:'distributive',diff:4,cap:1},
+          {topic:'signs',diff:1},{topic:'signs',diff:1},{topic:'signs',diff:3},
+          {topic:'signs',diff:2},{topic:'signs',diff:2},{topic:'signs',diff:4},
+          {topic:'signs',diff:5},{topic:'signs',diff:4,cap:1},
+          {topic:'signs',diff:5,cap:1},{topic:'distributive',diff:5,cap:1}
         ],
         keyIdeas:{
           1:{topic:'multiplication', s2:'Multiplying works just like adding: you can use <b>any order</b> and <b>any grouping</b>. So go <b>partner-hunting</b> for pairs that make round numbers: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'When you multiply, you can <b>reorder</b> and <b>regroup</b> the numbers however you like. Look for friendly pairs first: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$. Do those, and the rest is easy!'},
           2:{topic:'distributive', s2:'The <b>distributive property</b> links $\\times$ and $+$: $a(b+c)=ab+ac$. Read forward it <b>splits</b> a hard multiply into easy pieces; read backward it <b>combines</b> two products that share a number.', s1:'One rule connects $\\times$ and $+$: $a(b+c)=ab+ac$. You can <b>break up</b> a tricky multiplication into easy parts, like $7\\times(10+4)=70+28$, or <b>pull out</b> a number that two products share.'},
-          3:{topic:'signs', s2:'Each negative factor <b>flips</b> the answer to the other side of zero. <b>One</b> negative makes the product negative; a <b>second</b> negative flips it back to positive, so $(-a)(-b)=ab$.', s1:'A minus sign flips the answer across zero. <b>One</b> minus &rarr; the answer is negative. <b>Two</b> minuses cancel &rarr; the answer is positive! So $(-4)\\times(-6)=24$.'},
-          4:{topic:'multiplication', s2:'You can <b>swap the order</b> ($ab=ba$) and <b>change the grouping</b> ($(ab)c=a(bc)$) of any product. Rearrange first, then partner-hunt: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'Order and grouping never change a product. Shuffle the numbers, then grab the easy pairs: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.'},
-          5:{topic:'distributive', s2:'$a(b+c)=ab+ac$ is the bridge between $\\times$ and $+$. <b>Split</b> an awkward factor across a sum or difference to multiply quickly, or <b>factor out</b> a number that two products share.', s1:'Keep the bridge $a(b+c)=ab+ac$ handy. <b>Split</b> a hard multiply into easy ones, like $4\\times998=4\\times1000-4\\times2$, or <b>pull out</b> a shared number.'},
-          6:{topic:'signs', s2:'<b>Count the negative factors.</b> An <b>odd</b> count makes the product negative; an <b>even</b> count makes it positive. So $(-2)\\times7=-14$, but $(-2)\\times(-7)=14$.', s1:'Just count the minus signs! An <b>odd</b> number of them &rarr; negative answer. An <b>even</b> number &rarr; positive answer. So $(-2)\\times(-7)=14$.'}
-        },
-        extras:{
-          multiplication:{
-            easy:[ {t:'prob',label:'Warm-up',x:'Multiply in the easy order: $$5 \\times 9 \\times 2.$$',ans:'90',hints:['Pair the 5 and the 2 to make 10 first!'],sol:'Reorder to $(5\\times2)\\times9=10\\times9=90$. Find a pair that makes 10 before multiplying anything.'},
-                   {t:'prob',label:'Warm-up',x:'Partner up: $$4 \\times 7 \\times 25.$$',ans:'700',hints:['4 and 25 are partners &mdash; together they make 100.'],sol:'Group the partners: $(4\\times25)\\times7=100\\times7=700$.'} ],
-            hard:[ {t:'prob',label:'Challenge',x:'In your head: $$2 \\times 17 \\times 5 \\times 4 \\times 25.$$',ans:'17000',hints:['Two partner pairs are hiding in the list.','$2\\times5=10$ and $4\\times25=100$.'],sol:'Pair them off: $(2\\times5)\\times(4\\times25)\\times17=10\\times100\\times17=1000\\times17=17000$.'},
-                   {t:'prob',label:'Challenge',x:'Compute $$8 \\times 625 \\times 125.$$',ans:'625000',hints:['8 and 125 are partners &mdash; they make 1000.'],sol:'$8\\times125=1000$, so $1000\\times625=625000$. Partner-hunting collapses the whole product.'} ]
-          },
-          distributive:{
-            easy:[ {t:'prob',label:'Warm-up',x:'Split the multiply: $$6 \\times 12.$$',ans:'72',hints:['Think of 12 as $10+2$.'],sol:'$6\\times(10+2)=60+12=72$. Breaking a number into easy parts turns one hard multiply into two simple ones.'},
-                   {t:'prob',label:'Warm-up',x:'Use the bridge: $$5 \\times 21.$$',ans:'105',hints:['Write 21 as $20+1$.'],sol:'$5\\times(20+1)=100+5=105$.'} ],
-            hard:[ {t:'prob',label:'Challenge',x:'No pencil: $$7 \\times 1003.$$',ans:'7021',hints:['$1003=1000+3$.'],sol:'$7\\times(1000+3)=7000+21=7021$. Split across the round number, then add the small piece.'},
-                   {t:'prob',label:'Challenge',x:'Collapse it: $$53 \\times 28 + 47 \\times 28.$$',ans:'2800',hints:['Both products share a 28 &mdash; how many 28s in all?'],sol:'Read it as fifty-three 28s plus forty-seven 28s, which is one hundred 28s: $(53+47)\\times28=100\\times28=2800$.'} ]
-          },
-          signs:{
-            easy:[ {t:'prob',label:'Warm-up',x:'Compute $$(-5) \\times 3.$$',ans:'-15',accept:['−15'],hints:['One negative factor &mdash; so the answer is negative.'],sol:'$5\\times3=15$, and one minus sign flips it across zero: $-15$.'},
-                   {t:'prob',label:'Warm-up',x:'Compute $$(-2) \\times (-6).$$',ans:'12',hints:['Two negatives cancel &mdash; the answer is positive.'],sol:'The two minus signs flip back to positive: $2\\times6=12$.'} ],
-            hard:[ {t:'prob',label:'Challenge',x:'Count the signs: $$(-1) \\times (-2) \\times (-5).$$',ans:'-10',accept:['−10'],hints:['Three negatives &mdash; is that odd or even?'],sol:'Three negative factors is an odd count, so the product is negative: $1\\times2\\times5=10$ gives $-10$.'},
-                   {t:'prob',label:'Challenge',x:'Compute $$(-4) \\times (-25) \\times (-1) \\times (-1).$$',ans:'100',hints:['Count the minus signs &mdash; even or odd?'],sol:'Four negative factors is an even count, so the product is positive: $4\\times25\\times1\\times1=100$.'} ]
-          }
+          3:{topic:'signs', s2:'Each negative factor <b>flips</b> the answer to the other side of zero. <b>One</b> negative makes the product negative; a <b>second</b> negative flips it back to positive, so $(-a)(-b)=ab$.', s1:'A minus sign flips the answer across zero. <b>One</b> minus &rarr; the answer is negative. <b>Two</b> minuses cancel &rarr; the answer is positive! So $(-3)\\times(-5)=15$.'},
+          4:{topic:'signs', s2:'<b>Count the negative factors.</b> An <b>odd</b> count makes the product negative; an <b>even</b> count makes it positive. So $(-2)\\times7=-14$, but $(-2)\\times(-7)=14$.', s1:'Just count the minus signs! An <b>odd</b> number of them &rarr; negative answer. An <b>even</b> number &rarr; positive answer. So $(-2)\\times(-7)=14$.'}
         }
       },
       '1.5':{
         topics:['division'],
+        tight:true, /* ladder mode: builds show at [tier, tier+1]; cap:1 problems show for everyone */
         probs:[
-          {topic:'division',diff:1},{topic:'division',diff:2},{topic:'division',diff:3},
-          {topic:'division',diff:4},{topic:'division',diff:2},{topic:'division',diff:3},
-          {topic:'division',diff:3},{topic:'division',diff:3},{topic:'division',diff:4},
-          {topic:'division',diff:4},{topic:'division',diff:5},{topic:'division',diff:5}
+          {topic:'division',diff:1},{topic:'division',diff:2},{topic:'division',diff:3,cap:1},
+          {topic:'division',diff:3},{topic:'division',diff:1},{topic:'division',diff:1},
+          {topic:'division',diff:2},{topic:'division',diff:2},{topic:'division',diff:3},
+          {topic:'division',diff:3},{topic:'division',diff:4},{topic:'division',diff:4},
+          {topic:'division',diff:4},{topic:'division',diff:5},{topic:'division',diff:5},
+          {topic:'division',diff:5,cap:1}
         ],
-        extras:{
-          division:{
-            easy:[ {t:'prob',label:'Warm-up',x:'Undo a $\\times 6$: compute $$24 \\div 6.$$',ans:'4',hints:['Dividing by 6 undoes multiplying by 6.'],sol:'$24\\div 6=4$ &mdash; the number that gives $24$ back when multiplied by $6$.'},
-                   {t:'prob',label:'Warm-up',x:'How many halves fill 6? Find $$6 \\div \\tfrac{1}{2}.$$',ans:'12',hints:['Dividing by $\\tfrac12$ is multiplying by $2$.'],sol:'$6\\div\\tfrac12 = 6\\times 2 = 12$: twelve halves make six.'} ],
-            hard:[ {t:'prob',label:'Challenge',x:'Pair, do not grind: $$(25 \\times 18) \\div (5 \\times 9).$$',ans:'10',hints:['Pair 25 with 5, and 18 with 9.'],sol:'Pair each top factor with a bottom one: $(25\\div5)\\times(18\\div9)=5\\times2=10$.'},
-                   {t:'prob',label:'Challenge',x:'Mind the signs: $$(-56 \\times 9) \\div (7 \\times (-3)).$$',ans:'24',hints:['Negative over negative is positive &mdash; then pair off.'],sol:'The signs cancel to positive, then $(56\\div7)\\times(9\\div3)=8\\times3=24$.'} ]
-          }
+        keyIdeas:{
+          1:{topic:'division', s2:'Every number except $0$ has a <b>reciprocal</b> $\\frac{1}{b}$ &mdash; the partner that multiplies with it to make $1$: $5\\times\\frac15=1$.', s1:'Every number (except $0$) has a partner called its <b>reciprocal</b>. A number times its reciprocal always makes $1$: $5\\times\\frac15=1$.'},
+          2:{topic:'division', s2:'The reciprocal of a fraction is the fraction <b>flipped</b>: $\\frac{a}{b}\\to\\frac{b}{a}$. And flipping twice brings you back: the reciprocal of the reciprocal is the original number.', s1:'To find a fraction&rsquo;s reciprocal, just <b>flip it</b>: $\\frac{2}{3}\\to\\frac{3}{2}$. Flip twice and you are back where you started!'},
+          3:{topic:'division', s2:'A number and its reciprocal always <b>share a sign</b> &mdash; their product is $1$, which is positive.', s1:'A number and its reciprocal always have the <b>same sign</b>: positive with positive, negative with negative.'},
+          4:{topic:'division', s2:'Division is multiplication by the reciprocal: $a\\div b=a\\times\\frac1b$ (for $b\\neq0$) &mdash; the exact twin of $a-b=a+(-b)$.', s1:'Dividing by a number is the same as <b>multiplying by its reciprocal</b>: $12\\div4=12\\times\\frac14$. Every division can become a multiplication!'},
+          5:{topic:'division', s2:'Dividing by a number <b>between 0 and 1</b> gives a bigger result &mdash; you are asking how many small pieces fit, and many do.', s1:'Dividing by a small fraction makes the answer <b>bigger</b>! $6\\div\\frac12=12$, because twelve halves fit inside six.'},
+          6:{topic:'division', s2:'In a quotient of products, <b>pair each top factor with a bottom factor</b> it cancels &mdash; clear the pairs before you multiply anything.', s1:'When the top and bottom are both products, look for <b>matching pairs to cancel first</b>. Cancel, then multiply what is left.'},
+          7:{topic:'division', s2:'Division does not reorder freely &mdash; so <b>convert to multiplication by the reciprocal first</b>, then use all your reorder-and-regroup freedom.', s1:'You cannot shuffle a division around. First turn it into <b>multiplication by the reciprocal</b> &mdash; then you can reorder all you like.'}
         }
       }
     }
