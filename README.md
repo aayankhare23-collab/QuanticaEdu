@@ -1,25 +1,34 @@
 # Quantica
 
-Mastery-based mathematics, on subscription. AoPS-grade rigor delivered the way Brilliant delivers it. Self-paced, interactive, all-access for one monthly price.
+Problem-first mathematics at [quanticaedu.com](https://quanticaedu.com). Students learn by
+solving guided problems with an AI tutor ("Milo") on every problem, AoPS-grade rigor
+delivered the way Brilliant delivers it. Free while in early access.
 
-## Repo contents
+## Working on this project
 
-- `quantica-landing.html` is the marketing landing page (single file, no build step, opens in any browser)
-- `Quantica_Business_Plan.docx` is the business and product build plan
+Start with **[`CLAUDE.md`](CLAUDE.md)** — it is the orientation doc (architecture, golden
+rules, common tasks, current status). Then:
 
-## Working together
+- **[`docs/AUTHORING.md`](docs/AUTHORING.md)** — how to author a lesson end to end.
+- **[`docs/figure-design-system.md`](docs/figure-design-system.md)** — the figure spec.
+- **[`docs/algebra1-syllabus.md`](docs/algebra1-syllabus.md)** — the Algebra I plan.
 
-We use Git + GitHub to collaborate. The typical loop looks like this.
+## Repo layout
 
-1. `git pull` to get the latest before you start
-2. Make your changes
-3. `git add -A && git commit -m "what you changed"`
-4. `git push`
+- `landing.html` — the entire front end (marketing region + course app SPA), single file, no
+  build step.
+- `data/lessons.js` — generated lesson content (`window.__COURSEDATA`). Do not hand-edit.
+- `lessons/<course>/` — source of truth: `chapter-N.json` + `toc.json`.
+- `tools/` — `build_lessons.py`, `finalize_lesson.py`, `gen_seo_pages.py`, the
+  `author_lesson.workflow.js` template, and `archive/` (historical one-shot builders).
+- `prealgebra/*.html` — generated SEO pages.
+- `functions/` — Firebase Cloud Functions backend (Stripe, Firestore). **Never deploy
+  functions or touch `functions/.env`.**
 
-For bigger changes, work on a branch and open a Pull Request so the other person can review before it merges into `main`.
+## Deploy
 
-## Roadmap (near term)
-
-1. Flagship Prealgebra unit (the free funnel content)
-2. Interactive lesson player (the core product)
-3. Wire up email capture + real hosting
+```
+python3 tools/build_lessons.py          # after any chapter JSON change
+git add -A && git commit -m "..." && git push
+firebase deploy --only hosting          # hosting ONLY, never functions
+```
