@@ -4621,7 +4621,7 @@ async function sendTutorMsg() {
   function chapterOf(key){ return String(parseInt(key,10)); }
   function dgContent(ch){ return window.ADAPT_CONTENT && ADAPT_CONTENT.diagnostic && ADAPT_CONTENT.diagnostic[ch]; }
   function dgNorm(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/−/g,'-').replace(/^\+/,''); }
-  var DG={ ch:null, q:[], idx:0, correct:{}, key:null, pending:null };
+  var DG={ ch:null, q:[], idx:0, correct:{}, score:{}, key:null, pending:null };
   function dgEnsureDom(){ if(document.getElementById('dgOverlay')) return; var o=document.createElement('div'); o.className='dg-overlay'; o.id='dgOverlay'; o.innerHTML='<div class="dg-card" id="dgCard"></div>'; document.body.appendChild(o); }
   function dgIntro(){
     var c=dgContent(DG.ch);
@@ -4640,7 +4640,19 @@ async function sendTutorMsg() {
     if(typeof typeset==='function') typeset(document.getElementById('dgQ'));
     var inp=document.getElementById('dgInput'); if(inp) inp.focus();
   }
-  function dgScore(){ var c=dgContent(DG.ch), tiers={}; c.topics.forEach(function(tp){ var cor=DG.correct[tp]||0; tiers[tp]=[1,2,3,5][Math.min(3,cor)]; }); return tiers; }
+  // Weighted scoring so all 5 tiers are reachable from 3 questions. Each question is weighted by its
+  // difficulty rung (easiest=1, medium=2, hardest=3); getting a harder one right counts for more. The
+  // score is bucketed by fraction of the max so it holds up if a topic ever has a different # of questions.
+  function dgScore(){ var c=dgContent(DG.ch), tiers={}; c.topics.forEach(function(tp){
+    var qs=c.questions[tp]||[], max=0; for(var i=0;i<qs.length;i++) max+=(i+1);   // 1+2+3 = 6 for 3 questions
+    var s=DG.score[tp]||0, t;
+    if(s<=0) t=1;                 // missed everything
+    else if(s>=max) t=5;          // aced everything (incl. the hardest)
+    else if(3*s<=max) t=2;        // only an easier one  (score <= 1/3)
+    else if(3*s<2*max) t=3;       // the two easier ones, or just the hard one  (1/3 < score < 2/3)
+    else t=4;                     // the hard one + one other  (2/3 <= score < 1)
+    tiers[tp]=t;
+  }); return tiers; }
   function dgResults(){
     var tiers=dgScore(), TN=['','Gentle','Easier','Normal','Harder','Challenge'];
     var rows=Object.keys(tiers).map(function(tp){ var t=tiers[tp]; return '<div class="dg-rrow"><span class="dg-rt">'+tp+'</span><span class="dg-rv dp-tier-'+t+'">Tier '+t+' &middot; '+TN[t]+'</span></div>'; }).join('');
@@ -4653,14 +4665,14 @@ async function sendTutorMsg() {
     needs:function(key){ var ch=chapterOf(key); if(!dgContent(ch)) return false; return !window.ADAPT.isDiagnosed(ch) && !window.ADAPT.isSkipped(ch); },
     startFor:function(key){
       var ch=chapterOf(key), c=dgContent(ch); if(!c) return;
-      DG.ch=ch; DG.key=key; DG.idx=0; DG.correct={}; DG.pending=null;
+      DG.ch=ch; DG.key=key; DG.idx=0; DG.correct={}; DG.score={}; DG.pending=null;
       var maxLen=0; c.topics.forEach(function(tp){ maxLen=Math.max(maxLen,(c.questions[tp]||[]).length); });
       var list=[]; for(var r=0;r<maxLen;r++){ c.topics.forEach(function(tp){ var qs=c.questions[tp]; if(qs&&qs[r]) list.push({topic:tp,x:qs[r].x,ans:qs[r].ans,diff:qs[r].diff,rung:r}); }); }
       DG.q=list; dgEnsureDom(); dgIntro();
     },
     skip:function(){ window.ADAPT.skip(DG.ch); var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
-    begin:function(){ DG.idx=0; DG.correct={}; dgQuestion(); },
-    submit:function(skipQ){ var q=DG.q[DG.idx]; if(!skipQ){ var inp=document.getElementById('dgInput'); var v=inp?dgNorm(inp.value):''; if(v!=='' && v===dgNorm(q.ans)) DG.correct[q.topic]=(DG.correct[q.topic]||0)+1; } DG.idx++; if(DG.idx>=DG.q.length) dgResults(); else dgQuestion(); },
+    begin:function(){ DG.idx=0; DG.correct={}; DG.score={}; dgQuestion(); },
+    submit:function(skipQ){ var q=DG.q[DG.idx]; if(!skipQ){ var inp=document.getElementById('dgInput'); var v=inp?dgNorm(inp.value):''; if(v!=='' && v===dgNorm(q.ans)){ DG.correct[q.topic]=(DG.correct[q.topic]||0)+1; DG.score[q.topic]=(DG.score[q.topic]||0)+((q.rung||0)+1); } } DG.idx++; if(DG.idx>=DG.q.length) dgResults(); else dgQuestion(); },
     finish:function(){ var tiers=DG.pending||dgScore(); window.ADAPT.recordDiagnostic(DG.ch, tiers); var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
     retake:function(key){ var ch=chapterOf(key); window.ADAPT.clearDiagnostic(ch); if(window.DiffPanel) DiffPanel.close(); this.startFor(key); }
   };
