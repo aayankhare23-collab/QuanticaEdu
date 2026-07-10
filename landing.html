@@ -4384,8 +4384,8 @@ async function sendTutorMsg() {
           {topic:'distributive',diff:1},{topic:'distributive',diff:1},{topic:'distributive',diff:2},
           {topic:'distributive',diff:2},{topic:'distributive',diff:3},{topic:'distributive',diff:4},
           {topic:'distributive',diff:5},{topic:'distributive',diff:4,cap:1},
-          {topic:'signs',diff:1},{topic:'signs',diff:1},{topic:'signs',diff:3},
-          {topic:'signs',diff:2},{topic:'signs',diff:2},{topic:'signs',diff:4},
+          {topic:'signs',diff:1},{topic:'signs',diff:1},{topic:'signs',diff:2},
+          {topic:'signs',diff:3},{topic:'signs',diff:2},{topic:'signs',diff:4},
           {topic:'signs',diff:5},{topic:'signs',diff:4,cap:1},
           {topic:'signs',diff:5,cap:1},{topic:'distributive',diff:5,cap:1}
         ],
@@ -4445,6 +4445,7 @@ async function sendTutorMsg() {
     for(var idx=from; idx<to; idx++){
       var b=fullBlocks[idx];
       if(b.t==='prob'){
+        if(ctx&&ctx.usedSrcs&&ctx.usedSrcs[idx]) continue;           // already on screen as a borrowed warm-up
         var tag=a.pt[idx], topic=tag?tag.topic:null, diff=tag?tag.diff:NORMAL, tier=topic?A.tier(topic):NORMAL;
         if(!topic || (tag&&tag.cap) || includeProb(diff,tier,a.meta.tight)){ var nb=_clone(b); nb.__src=idx; out.push(nb); if(topic){ lastAt[topic]=out.length; keptByTopic[topic]=(keptByTopic[topic]||0)+1; } }
         else if(topic && !keptByTopic[topic] && !fb[topic]){ fb[topic]={at:out.length,b:b,idx:idx}; }
@@ -4478,6 +4479,31 @@ async function sendTutorMsg() {
     });
     inserts.sort(function(a,b){ return b.at-a.at; });
     inserts.forEach(function(ins){ out.splice.apply(out,[ins.at,0].concat(ins.blocks)); });
+    // key-idea spacing: if two key ideas end up literally back-to-back because the practice
+    // between them was filtered as too HARD for this tier, pull back the earliest such problem
+    // as an anchored stretch example between the cards (it has hints/solution). Pairs left by
+    // too-EASY filtering (strong students skimming mastered ideas) are fine and stay.
+    function _bridgePick(a1,a2){
+      for(var bi=a1+1; bi<a2; bi++){
+        var ob=fullBlocks[bi]; if(!ob||ob.t!=='prob') continue;
+        var tg=a.pt[bi]; if(!tg||tg.cap) continue;
+        if(ctx&&ctx.usedSrcs&&ctx.usedSrcs[bi]) continue;            // already on screen as a borrowed warm-up
+        if(tg.diff>A.tier(tg.topic)+1) return bi;   // was filtered as above the window
+      }
+      return null;
+    }
+    // edge of a mid-lesson reflow cut: the student is standing ON a key idea whose follow-ups
+    // were filtered — the tail would otherwise open with the next key idea stacked against it
+    if(ctx&&ctx.edgeImp!=null&&out.length&&out[0].t==='imp'&&out[0].__src!=null){
+      var ep=_bridgePick(ctx.edgeImp,out[0].__src);
+      if(ep!=null){ var eb=_clone(fullBlocks[ep]); eb.__src=ep; out.splice(0,0,eb); }
+    }
+    for(var oi=0; oi<out.length-1; oi++){
+      var i1=out[oi], i2=out[oi+1];
+      if(i1.t!=='imp'||i2.t!=='imp'||i1.__src==null||i2.__src==null||i2.__src<=i1.__src) continue;
+      var bp2=_bridgePick(i1.__src,i2.__src);
+      if(bp2!=null){ var nb3=_clone(fullBlocks[bp2]); nb3.__src=bp2; out.splice(oi+1,0,nb3); oi++; }
+    }
     return out;
   }
   window.adaptBlocks=function(lessonKey,blocks){
@@ -4489,9 +4515,12 @@ async function sendTutorMsg() {
     var WS=window.WS; if(!WS||!WS.active) return;
     if(!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[WS.key])) return;
     var cur=WS.page;
-    // cut = highest original-block index already consumed by pages [0..cur]
+    // cut = highest original-block index already consumed by pages [0..cur].
+    // Scaffold pages are skipped: their __src is a BORROWED block (possibly from ahead of the
+    // student), not lesson progress — counting it would skip never-seen content on rebuild.
     var cut=-1, kiOffset=0;
     for(var i=0;i<=cur;i++){ var pg=WS.pages[i]; if(pg.keyIdea) kiOffset++;
+      if(pg._scaffold) continue;
       var bs=(pg.lead||[]).concat([pg.prob,pg.keyIdea]);
       bs.forEach(function(b){ if(b&&b.__src!=null&&b.__src>cut) cut=b.__src; });
     }
@@ -4499,10 +4528,12 @@ async function sendTutorMsg() {
     if(cut>=orig.length-1) return; // nothing after the current page
     // context: topics + injected extras the student already saw up to the cut, so the tail
     // rebuild never re-adds a guard problem or duplicates a warm-up they already have
-    var ann=_annot(WS.key,orig), ctx={practiced:{},seenX:{}};
-    for(var j=0;j<=cur;j++){ var pp=WS.pages[j]&&WS.pages[j].prob;
+    var ann=_annot(WS.key,orig), ctx={practiced:{},seenX:{},usedSrcs:{}};
+    for(var j=0;j<=cur;j++){ var pj=WS.pages[j], pp=pj&&pj.prob;
       if(pp&&pp.__src!=null){ var tg=ann&&ann.pt[pp.__src]; if(tg&&tg.topic) ctx.practiced[tg.topic]=1;
-        var ob=orig[pp.__src]; if(ob&&pp.x!==ob.x) ctx.seenX[pp.x]=1; } }
+        var ob=orig[pp.__src]; if(ob&&pp.x!==ob.x) ctx.seenX[pp.x]=1;
+        if(pj._scaffold) ctx.usedSrcs[pp.__src]=1; } }               // borrowed warm-up blocks: never re-show in the tail
+    if(orig[cut]&&orig[cut].t==='imp') ctx.edgeImp=cut; // standing on a key idea: keep its anchor in the tail
     var tail=_adaptRange(WS.key,orig,cut+1,orig.length,ctx);
     if(typeof buildPages!=='function') return;
     var bp=buildPages(tail);
