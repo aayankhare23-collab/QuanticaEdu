@@ -405,6 +405,7 @@
   .ansfb{margin-top:8px;font-size:14px;font-weight:600;min-height:18px}
   .ansfb.right{color:var(--green)}
   .ansfb.wrong{color:#d9534f}
+  .ansfb.assist{color:var(--blue,#3a7bd5)}
   .hintbtn2{margin-top:10px;font-family:'Inter';font-size:13px;font-weight:600;color:var(--accent);background:#fff;border:1px solid #ffd9b0;border-radius:8px;padding:6px 13px;cursor:pointer}
   .hintbtn2:hover{background:#fff6ef}
   .hintbtn2:disabled{color:var(--mute);border-color:var(--line);cursor:default;background:#fff}
@@ -3137,6 +3138,8 @@ window.addEventListener('load',function(){
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
       if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
       rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
+      // stuck twice on the same problem → slip in an easier same-topic warm-up (difficulty setting untouched)
+      if(rec.graded && !rec._scaffolded && window.__tryScaffold && window.__tryScaffold(k,rec.attempts)) rec._scaffolded=true;
     }
     var sb=document.getElementById('sb_'+k); if(sb) sb.style.display='inline-block';
   }
@@ -3175,7 +3178,7 @@ window.addEventListener('load',function(){
       var isLeg=isCh&&(!!b.legendary||/legendary/i.test(lab));
       var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
       PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
-        stableId:(ctx||'x')+':'+__bi, cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
+        stableId:(ctx||'x')+':'+(b.__src!=null?((b._scaffold?'sc':'s')+b.__src):__bi), cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
         graded:hasAns, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
       var inner='<div class="probbox cat-'+cat+(isLeg?' legendary':'')+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+(isLeg?'⭐⭐':icon)+' '+lab+(isLeg?' <span class="legbadge">🔥 Legendary</span>':'')+'</div><div class="ptext">'+b.x+'</div>';
       if(hasAns){
@@ -3287,7 +3290,8 @@ window.addEventListener('load',function(){
     if(window.Diagnostic && Diagnostic.needs(key) && window.DiffPanel && DiffPanel.available(key)) Diagnostic.startFor(key);
   }
   // Build (and KaTeX-typeset) the DOM node for a single page. The 3rd renderBlock arg is the page
-  // index, which feeds each problem's stableId — passing it here keeps cross-session progress intact.
+  // index — used as the stableId fallback only for non-adaptive problems (no __src). Adaptive
+  // problems key their stableId off the stable original-block index so inserts/reflows don't renumber XP.
   WS._buildPageNode=function(i){
     var pg=WS.pages[i]; if(!pg) return null;
     var ctx=WS._ctx, isCp=WS._isCp;
@@ -4514,6 +4518,50 @@ async function sendTutorMsg() {
     var segc=document.querySelector('.ws-segs');
     if(segc){ var s=''; for(var j=0;j<WS.pages.length;j++) s+='<span class="ws-seg" data-p="'+j+'"></span>'; segc.innerHTML=s; }
     WS.showPage(cur); // stay exactly where the student was
+  };
+
+  // ===== Performance scaffold =====
+  // When a student misses the SAME problem twice, slip one easier same-topic problem in
+  // right after it. The difficulty setting (tier) is never touched — this is a reactive
+  // helper, not a third setting. Only fires on build problems, never on caps, so the shared
+  // capstones stay the last problems and the "same knowledge" guarantee holds.
+  var SCAFFOLD_MISS_THRESHOLD=2;
+  function findScaffoldBlock(key,topic,curDiff){
+    if(!(WS&&WS.L&&WS.L.blocks)) return null;
+    var orig=WS.L.blocks, ann=_annot(key,orig); if(!ann) return null;
+    var used={}; WS.pages.forEach(function(pg){ if(pg.prob&&pg.prob.__src!=null) used[pg.prob.__src]=1; });
+    var best=null,bestDiff=0;
+    for(var idx=0; idx<orig.length; idx++){
+      var b=orig[idx]; if(b.t!=='prob') continue;
+      var tag=ann.pt[idx]; if(!tag||tag.cap||tag.topic!==topic) continue;
+      if(!(tag.diff<curDiff)) continue;   // must be strictly easier than the one they are stuck on
+      if(used[idx]) continue;             // and not already somewhere in their plan
+      if(tag.diff>bestDiff){ best=idx; bestDiff=tag.diff; }  // pick the hardest rung still below = one step down
+    }
+    if(best==null) return null;
+    var nb=_clone(orig[best]); nb.__src=best; nb._scaffold=true; nb.label='Warm-up'; nb.cat='tryit';
+    return nb;
+  }
+  window.__findScaffold=findScaffoldBlock; // exposed for tests
+  // Called from checkAns on a wrong attempt. Returns true if it inserted a scaffold.
+  window.__tryScaffold=function(k,attempts){
+    if(attempts<SCAFFOLD_MISS_THRESHOLD) return false;
+    if(!(window.WS&&WS.active&&WS.L&&WS.L.blocks)) return false;
+    if(!(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons&&ADAPT_CONTENT.lessons[WS.key])) return false;
+    var cur=WS.page, pg=WS.pages[cur];
+    if(!pg||!pg.prob||pg._scaffold) return false;                 // never scaffold a scaffold
+    var ann=_annot(WS.key,WS.L.blocks); var tag=ann&&ann.pt[pg.prob.__src];
+    if(!tag||!tag.topic||tag.cap) return false;                    // build problems only, never caps
+    var sb=findScaffoldBlock(WS.key,tag.topic,tag.diff); if(!sb) return false;  // none easier available
+    WS.pages.splice(cur+1,0,{lead:[],prob:sb,_scaffold:true});
+    var body=document.getElementById('wsCenterBody');
+    if(body){ [].slice.call(body.children).forEach(function(n){ var p=+n.getAttribute('data-p'); if(p>cur) n.setAttribute('data-p',p+1); }); }
+    var segc=document.querySelector('.ws-segs');
+    if(segc){ var s=''; for(var j=0;j<WS.pages.length;j++) s+='<span class="ws-seg" data-p="'+j+'"></span>'; segc.innerHTML=s; }
+    WS.showPage(cur);                                              // stay put; refreshes counters + prefetches the warm-up
+    var fb=document.getElementById('af_'+k);
+    if(fb){ fb.className='ansfb assist'; fb.innerHTML='That one is tricky — no worries. I have added an easier warm-up next to build up to it. 💪'; }
+    return true;
   };
 
   // ===== Difficulty panel =====
