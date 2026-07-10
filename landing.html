@@ -4220,7 +4220,12 @@ async function sendTutorMsg() {
           if (_solEl) { var _solTxt = (_solEl.innerText || _solEl.textContent || '').replace(/^\s*Solution\s*/i, '').replace(/\s+/g, ' ').trim(); if (_solTxt) internalCtx += '\nIntended method / worked solution (never paste this to the student; use it to steer them one step at a time down the right path): ' + _solTxt.slice(0, 800); }
           internalCtx += '\nStudent status: ' + (_rec.solved ? 'already solved it' : (_rec.solViewed ? 'has viewed the worked solution' : 'still working — ' + (_rec.attempts || 0) + ' wrong attempt(s) so far')) + '.';
           if (_rec.wrongVals && _rec.wrongVals.length) internalCtx += '\nThe exact wrong answers the student has typed for THIS problem, in order: ' + _rec.wrongVals.join(' , ') + '. These are the student\'s OWN past attempts (not the secret answer) - you MAY tell the student what they previously tried if they ask.';
-          internalCtx += '\nBefore replying: double-check any arithmetic you state against these notes. If the student names the correct value or picks the correct option from a list, confirm it — never contradict a correct answer.';
+          internalCtx += '\n\nHOW TO REPLY — follow exactly (this fixes two real complaints: sometimes you make a correct student feel wrong, and sometimes you give the trick away):';
+          internalCtx += '\n1. Double-check any arithmetic you state against the notes above.';
+          internalCtx += '\n2. CONFIRM GENEROUSLY. The moment the student states a CORRECT value — a middle step OR the final answer — open your reply by affirming it in plain words ("Yes, 7 is right"). Never respond to a correct value by re-asking the same question, by saying "let me check that", or by moving on as if they had not answered — any of those makes a student who is RIGHT feel wrong.';
+          internalCtx += '\n3. If the student already has the correct FINAL answer, confirm it is correct first. Do NOT force them to re-derive it as if it might be wrong. After affirming, you may — as genuine curiosity, never as doubt — invite them to explain how they got it or show the quicker method.';
+          internalCtx += '\n4. REVEAL STINGILY. Never announce a step the student has not reached: do NOT tell them which numbers pair up, and do NOT state what a pair or step adds to. Instead ask a question that lets THEM find the pairing and compute it. Point at the terrain; never hand over the step.';
+          internalCtx += '\n5. One small nudge per reply. Lean on a hint only after genuine stuckness (a wrong attempt, or the student says they are stuck / guessed / do not know), and give at most one. Never paste the worked solution.';
         }
       }
     } catch (e) {}
