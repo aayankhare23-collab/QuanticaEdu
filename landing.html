@@ -3249,7 +3249,7 @@ window.addEventListener('load',function(){
   }
   function wsOpen(key,L,meta){
     var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
-    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false;
+    WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false; WS._scaffTopics={};
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var eyebrow=(L&&L._eyebrow)?L._eyebrow:('Lesson '+key);
     var hasKeys=bp.pages.some(function(p){return !!p.keyIdea;});
@@ -4583,7 +4583,11 @@ async function sendTutorMsg() {
     if(!pg||!pg.prob||pg._scaffold) return false;                 // never scaffold a scaffold
     var ann=_annot(WS.key,WS.L.blocks); var tag=ann&&ann.pt[pg.prob.__src];
     if(!tag||!tag.topic||tag.cap) return false;                    // build problems only, never caps
+    WS._scaffTopics=WS._scaffTopics||{};
+    if(WS._scaffTopics[tag.topic]) return false;                   // at most ONE warm-up per topic per lesson —
+                                                                   // repeated struggle in a topic means re-tier, not more padding
     var sb=findScaffoldBlock(WS.key,tag.topic,tag.diff); if(!sb) return false;  // none easier available
+    WS._scaffTopics[tag.topic]=1;
     WS.pages.splice(cur+1,0,{lead:[],prob:sb,_scaffold:true});
     var body=document.getElementById('wsCenterBody');
     if(body){ [].slice.call(body.children).forEach(function(n){ var p=+n.getAttribute('data-p'); if(p>cur) n.setAttribute('data-p',p+1); }); }
