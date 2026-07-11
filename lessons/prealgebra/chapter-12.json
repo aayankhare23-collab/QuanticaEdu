@@ -1,1296 +1,1280 @@
 {
- "12.1": {
-  "title": "Look for a Pattern",
-  "next": "12.2",
-  "blocks": [
-   {
-    "t": "p",
-    "x": "Some problems are too big to attack head on. Nobody multiplies out the five hundredth term of anything. Strong solvers play instead. They compute a few small cases, line the results up, and watch for a rhythm. Once the rhythm is caught, a problem the size of a mountain collapses into one short division. This lesson is about catching rhythms."
-   },
-   {
-    "t": "prob",
-    "xp": 5,
-    "x": "Write out the ones digits of the first several multiples of \\(8\\), that is \\(8, 16, 24, 32, 40, 48, \\ldots\\), and watch what the ones digits do. Then predict the ones digit of the \\(43\\)rd multiple of \\(8\\).",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "The ones digits run \\(8, 6, 4, 2, 0\\) and then start over, a loop of length \\(5\\).",
-     "Divide \\(43\\) by \\(5\\) and let the remainder point to a spot inside the loop."
-    ],
-    "sol": "<p>The ones digits cycle through \\(8, 6, 4, 2, 0\\) forever, repeating every \\(5\\) multiples.</p><p>Since \\(43 = 8 \\times 5 + 3\\), the \\(43\\)rd multiple sits at the third spot of a fresh loop, whose ones digit is \\(4\\).</p><p>The check is sweet. \\(43 \\times 8 = 344\\), which indeed ends in \\(\\boxed{4}\\).</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "A mosaic artist lays tiles along a hallway in a repeating run of nine tiles, five hexagons, then three squares, then one star, over and over. Among the first \\(500\\) tiles, how many are stars?",
-    "ans": "55",
-    "accept": [
-     "55",
-     "55.0",
-     "fifty five",
-     "fifty-five"
-    ],
-    "hints": [
-     "Each full run of \\(9\\) tiles contains exactly one star, so first count complete runs inside \\(500\\).",
-     "Since \\(500 = 55 \\times 9 + 5\\), there are \\(55\\) full runs plus \\(5\\) leftover tiles. Check whether any of those leftovers is a star."
-    ],
-    "sol": "<p>Dividing, \\(500 = 55 \\times 9 + 5\\), so the hallway holds \\(55\\) complete runs and then \\(5\\) extra tiles.</p><p>Each complete run contributes one star, giving \\(55\\) so far. The five leftover tiles are the first five of a new run, all hexagons, so no star joins them.</p><p>$$55 + 0 = \\boxed{55}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Find the loop, then divide.</b> When a pattern repeats every \\(k\\) steps, division with remainder is the whole game. Divide the target position by \\(k\\). The quotient counts finished loops, and the remainder tells you exactly where you stand inside the current one. One division stands in for hundreds of steps of listing. The only care required is the handoff, matching remainder \\(1\\) to the first spot in the loop, remainder \\(2\\) to the second, and a remainder of \\(0\\) to the loop's final spot."
-   },
-   {
-    "t": "prob",
-    "xp": 5,
-    "x": "Compute the ones digit of each of \\(3^1, 3^2, 3^3, 3^4, 3^5\\), and keep going just far enough to see the ones digits repeat. How many steps long is the repeating loop?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "The powers begin \\(3, 9, 27, 81, 243\\). Read off just the ones digits."
-    ],
-    "sol": "<p>The ones digits run \\(3, 9, 7, 1\\), and then \\(3^5 = 243\\) brings the digit back to \\(3\\), restarting the parade.</p><p>The loop is \\(3, 9, 7, 1\\), which is \\(\\boxed{4}\\) steps long.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "Using the loop you just found, determine the ones digit of \\(3^{43}\\).",
-    "ans": "7",
-    "accept": [
-     "7",
-     "7.0",
-     "seven"
-    ],
-    "hints": [
-     "The loop \\(3, 9, 7, 1\\) restarts every \\(4\\) powers, so divide \\(43\\) by \\(4\\).",
-     "A remainder of \\(3\\) lands on the third digit of the loop."
-    ],
-    "sol": "<p>Since \\(43 = 10 \\times 4 + 3\\), the exponent \\(43\\) lands three steps into a fresh loop of \\(3, 9, 7, 1\\).</p><p>The third digit of the loop is \\(\\boxed{7}\\). A forty-three-digit-long monster of a number, and its final digit surrenders to one division.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "The powers of \\(7\\) have their own ones-digit loop. Find it, then find the ones digit of \\(7^7\\).",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "Compute ones digits of \\(7^1, 7^2, 7^3, 7^4\\). Multiplying ones digits only, \\(7, 9, 3, 1\\), then the loop restarts.",
-     "With a loop of length \\(4\\), the exponent \\(7\\) leaves remainder \\(3\\), the third spot."
-    ],
-    "sol": "<p>Tracking only ones digits, \\(7 \\times 7\\) ends in \\(9\\), then \\(9 \\times 7\\) ends in \\(3\\), then \\(3 \\times 7\\) ends in \\(1\\), and the loop \\(7, 9, 3, 1\\) restarts.</p><p>Since \\(7 = 1 \\times 4 + 3\\), the seventh power lands on the loop's third digit.</p><p>$$7^7 \\text{ ends in } \\boxed{3}$$</p><p>Indeed \\(7^7 = 823{,}543\\).</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Track only what matters.</b> The ones digit of a product depends only on the ones digits of the factors, so to follow the ones digit of growing powers you may throw the rest of the number away at every step. That is why a loop must appear. There are only ten possible ones digits, so some digit eventually shows up twice, and from that moment the whole future replays the past. Huge exponents are not obstacles, they are just positions inside a short loop."
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "A vineyard climbs a hillside in terraces. The top terrace holds \\(14\\) vines, and each terrace below holds \\(3\\) more vines than the one above it. How many vines grow on the \\(20\\)th terrace from the top?",
-    "ans": "71",
-    "accept": [
-     "71",
-     "71.0",
-     "seventy one",
-     "seventy-one"
-    ],
-    "hints": [
-     "Make a tiny table. Terrace \\(1\\) has \\(14\\), terrace \\(2\\) has \\(17\\), terrace \\(3\\) has \\(20\\). Each step down adds one \\(3\\).",
-     "Reaching terrace \\(20\\) takes \\(19\\) steps down from the top."
-    ],
-    "sol": "<p>Each terrace adds \\(3\\), and getting from terrace \\(1\\) to terrace \\(20\\) takes \\(19\\) such steps.</p><p>$$14 + 19 \\times 3 = 14 + 57 = \\boxed{71}$$</p><p>The table makes the rule visible. The \\(n\\)th terrace holds the starting \\(14\\) plus \\(n - 1\\) copies of the step.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "How many vines grow on the hillside in total, across all \\(20\\) terraces?",
-    "ans": "850",
-    "accept": [
-     "850",
-     "850.0"
-    ],
-    "hints": [
-     "Pair the terraces from the outside in. The first with the last gives \\(14 + 71 = 85\\), the second with the second to last gives \\(17 + 68 = 85\\) again.",
-     "Twenty terraces form \\(10\\) such pairs."
-    ],
-    "sol": "<p>Pair the top terrace with the bottom one, the second with the second from the bottom, and so on. Every pair totals the same amount,</p><p>$$14 + 71 = 17 + 68 = \\cdots = 85$$</p><p>because each step inward adds \\(3\\) to one partner and removes \\(3\\) from the other. Ten pairs at \\(85\\) apiece give</p><p>$$10 \\times 85 = \\boxed{850}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Small table, bold guess, honest check.</b> For growth patterns, compute the first few values and lay them in a table beside their positions. A steady step means the \\(n\\)th value is the start plus \\(n-1\\) steps, and totals surrender to pairing, where the ends of the list team up into identical sums. But a guessed rule is a suspect, not a verdict. Test it on a case you did not use to build it, or find the reason it works, before trusting it with position five hundred."
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A fidget counter shows \\(3\\). Every button press changes the number by one rule. If the number is even, it is cut in half. If it is odd, \\(5\\) is added. So the display reads \\(3, 8, 4, 2, \\ldots\\) as presses go by. What number shows after the \\(99\\)th press, that is, as the \\(100\\)th number in the list counting the starting \\(3\\)?",
-    "ans": "2",
-    "accept": [
-     "2",
-     "2.0",
-     "two"
-    ],
-    "hints": [
-     "Keep pressing. The list runs \\(3, 8, 4, 2, 1, 6\\) and then returns to \\(3\\), so it loops every \\(6\\) numbers.",
-     "Since \\(100 = 16 \\times 6 + 4\\), the \\(100\\)th number sits at the fourth spot of the loop."
-    ],
-    "sol": "<p>Following the rule, \\(3 \\to 8 \\to 4 \\to 2 \\to 1 \\to 6 \\to 3\\), and the display is trapped in a loop of six numbers, \\(3, 8, 4, 2, 1, 6\\).</p><p>With \\(100 = 16 \\times 6 + 4\\), the \\(100\\)th number is the fourth member of the loop.</p><p>$$\\boxed{2}$$</p><p>Iteration problems almost always fall into a loop, because a rule with limited outputs must eventually revisit a number, and from there history repeats exactly.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "A drummer warms up in bursts. The first burst is \\(1\\) beat, the second is \\(3\\) beats, the third is \\(5\\) beats, each burst two beats longer than the last. Compute the total beats after one burst, after two, after three, and after four, and stare at those totals. Then find the total number of beats after the \\(20\\)th burst.",
-    "ans": "400",
-    "accept": [
-     "400",
-     "400.0"
-    ],
-    "hints": [
-     "The running totals are \\(1, 4, 9, 16, \\ldots\\), which are perfect squares.",
-     "After \\(n\\) bursts the total is \\(n^2\\), so evaluate \\(20^2\\)."
-    ],
-    "sol": "<p>The totals march \\(1, 4, 9, 16\\), the perfect squares. The guess is that \\(n\\) bursts total \\(n^2\\) beats, and a fifth case confirms it, \\(16 + 9 = 25\\).</p><p>$$20^2 = \\boxed{400}$$</p><p>The reason is worth keeping. Each new odd burst wraps one more L-shaped shell around a square of dots, growing it to the next square, as the picture in the next insight shows.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Patterns can hide squares.</b> The sum \\(1 + 3 + 5 + \\cdots\\) of the first \\(n\\) odd numbers is always \\(n^2\\), and the picture explains why. Start with one dot. Adding \\(3\\) dots in an L shape makes a \\(2 \\times 2\\) square, adding \\(5\\) more makes \\(3 \\times 3\\), and every next odd number is exactly the shell needed to reach the next square. A pattern earns full trust only when a reason like this stands behind it. The table finds the rhythm, the reason locks it in.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a four by four square of dots built shell by shell, adding 1 then 3 then 5 then 7 dots\"><circle cx=\"95\" cy=\"178\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"137\" cy=\"178\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"95\" cy=\"136\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"137\" cy=\"136\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"179\" cy=\"178\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"95\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"179\" cy=\"136\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"137\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"179\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"221\" cy=\"178\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"95\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"136\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"137\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"94\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"179\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><text x=\"175\" y=\"225\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">1 + 3 + 5 + 7 = 16</text></svg></div>"
-   },
-   {
-    "t": "fact",
-    "x": "Patterns without reasons can betray you. Place dots on a circle and connect every pair. The regions inside count \\(1, 2, 4, 8, 16\\), and nearly everyone bets the sixth dot gives \\(32\\). It gives \\(31\\). The pattern was a coincidence wearing a costume, which is why solvers always hunt for the why."
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "Two neon signs are switched on at the same moment. One flashes every \\(6\\) seconds, the other every \\(10\\) seconds. Over the next \\(3\\) minutes after switch-on, how many more times will the two signs flash at exactly the same moment?",
-    "ans": "6",
-    "accept": [
-     "6",
-     "6.0",
-     "six"
-    ],
-    "hints": [
-     "The joint flashes are themselves a repeating pattern. They happen at times that are multiples of both \\(6\\) and \\(10\\), and the first is at the least common multiple.",
-     "Shared flashes come every \\(30\\) seconds, and \\(3\\) minutes holds \\(180\\) seconds."
-    ],
-    "sol": "<p>A shared flash needs a time that is a multiple of \\(6\\) and of \\(10\\) at once, and the smallest is \\(\\text{lcm}(6,10) = 30\\). So the signs align every \\(30\\) seconds, at \\(30, 60, 90, 120, 150,\\) and \\(180\\) seconds.</p><p>$$180 \\div 30 = \\boxed{6}$$</p><p>Two separate rhythms always merge into one bigger rhythm, and its length is their least common multiple, an old friend from the divisibility chapter.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>The pattern hunter's routine.</b> Every problem in this lesson fell to the same four moves. Compute small cases, arrange them in a list or table, name the rhythm, then find the reason it must continue. After that, remainders locate positions inside loops, steps and pairings measure growing lists, and least common multiples merge rhythms. The routine matters more than any single answer, because it turns a problem you cannot finish by hand into one you can finish in your head."
-   }
-  ],
-  "review": [
-   {
-    "x": "A road-trip playlist of \\(8\\) songs plays on repeat without shuffle. Counting from the very first play, which song number is the \\(75\\)th song played?",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "Divide \\(75\\) by \\(8\\) and use the remainder to locate the spot inside the current pass."
-    ],
-    "sol": "<p>Since \\(75 = 9 \\times 8 + 3\\), nine full passes finish and the \\(75\\)th play is the third song of the next pass, song \\(\\boxed{3}\\).</p>"
-   },
-   {
-    "x": "A scarf is knitted in a repeating band of \\(12\\) rows, \\(5\\) blue rows followed by \\(7\\) white rows. Among the first \\(400\\) rows, how many are blue?",
-    "ans": "169",
-    "accept": [
-     "169",
-     "169.0"
-    ],
-    "hints": [
-     "Count full bands first, using \\(400 = 33 \\times 12 + 4\\).",
-     "The \\(4\\) leftover rows begin a new band, and a band begins with blue rows."
-    ],
-    "sol": "<p>There are \\(33\\) complete bands, each with \\(5\\) blue rows, for \\(165\\). The \\(4\\) leftover rows are the start of a new band, and the first \\(5\\) rows of any band are blue, so all \\(4\\) leftovers are blue.</p><p>$$165 + 4 = \\boxed{169}$$</p>"
-   },
-   {
-    "x": "What is the ones digit of \\(9^{55}\\)?",
-    "ans": "9",
-    "accept": [
-     "9",
-     "9.0",
-     "nine"
-    ],
-    "hints": [
-     "The ones digits of powers of \\(9\\) alternate, \\(9, 1, 9, 1, \\ldots\\), a loop of length \\(2\\)."
-    ],
-    "sol": "<p>Odd powers of \\(9\\) end in \\(9\\) and even powers end in \\(1\\). Since \\(55\\) is odd, \\(9^{55}\\) ends in \\(\\boxed{9}\\).</p>"
-   },
-   {
-    "x": "What is the ones digit of \\(4^{100}\\)?",
-    "ans": "6",
-    "accept": [
-     "6",
-     "6.0",
-     "six"
-    ],
-    "hints": [
-     "Powers of \\(4\\) end \\(4, 6, 4, 6, \\ldots\\), flipping with each step."
-    ],
-    "sol": "<p>The ones digit alternates, \\(4\\) for odd exponents and \\(6\\) for even ones. The exponent \\(100\\) is even, so the digit is \\(\\boxed{6}\\).</p>"
-   },
-   {
-    "x": "A charm bracelet design puts \\(7\\) charms on the first strand, and every following strand carries \\(4\\) more charms than the one before. How many charms are on the \\(15\\)th strand?",
-    "ans": "63",
-    "accept": [
-     "63",
-     "63.0",
-     "sixty three",
-     "sixty-three"
-    ],
-    "hints": [
-     "Reaching the \\(15\\)th strand takes \\(14\\) steps of \\(+4\\) from the first."
-    ],
-    "sol": "<p>Fourteen steps of \\(4\\) sit between the first and fifteenth strands,</p><p>$$7 + 14 \\times 4 = 7 + 56 = \\boxed{63}$$</p>"
-   },
-   {
-    "x": "A brick staircase has \\(30\\) rows. The top row uses \\(5\\) bricks, and each row below uses \\(2\\) more bricks than the row above. How many bricks does the whole staircase use?",
-    "ans": "1020",
-    "accept": [
-     "1020",
-     "1020.0",
-     "1,020"
-    ],
-    "hints": [
-     "First find the bottom row, \\(5 + 29 \\times 2 = 63\\) bricks.",
-     "Pair the rows from the outside in. Each pair totals \\(5 + 63 = 68\\), and \\(30\\) rows make \\(15\\) pairs."
-    ],
-    "sol": "<p>The bottom row holds \\(5 + 29 \\times 2 = 63\\) bricks. Pairing the top row with the bottom, the second with the second from the bottom, and so on gives \\(15\\) pairs, each totaling \\(68\\).</p><p>$$15 \\times 68 = \\boxed{1020}$$</p>"
-   },
-   {
-    "x": "A game screen starts at \\(6\\) and updates with every tap. If the number on screen is less than \\(20\\), it doubles. Otherwise, \\(15\\) is subtracted. Counting the starting \\(6\\) as the first number, what is the \\(50\\)th number to appear?",
-    "ans": "6",
-    "accept": [
-     "6",
-     "6.0",
-     "six"
-    ],
-    "hints": [
-     "Generate terms until the screen repeats. The list runs \\(6, 12, 24, 9, 18, 36, 21\\) and then returns to \\(6\\), a loop of \\(7\\).",
-     "Use \\(50 = 7 \\times 7 + 1\\), so the \\(50\\)th number sits at the loop's first spot."
-    ],
-    "sol": "<p>The screen cycles through \\(6, 12, 24, 9, 18, 36, 21\\) and then repeats, a loop of length \\(7\\).</p><p>Since \\(50 = 7 \\times 7 + 1\\), the \\(50\\)th number is the first member of the loop, \\(\\boxed{6}\\).</p>"
-   },
-   {
-    "x": "Adding consecutive odd numbers starting from \\(1\\), a student reaches a total of exactly \\(225\\). How many odd numbers did the student add?",
-    "ans": "15",
-    "accept": [
-     "15",
-     "15.0",
-     "fifteen"
-    ],
-    "hints": [
-     "The sum of the first \\(n\\) odd numbers is \\(n^2\\), so ask which square equals \\(225\\)."
-    ],
-    "sol": "<p>The running totals of odd numbers are the perfect squares, so the student stopped when \\(n^2 = 225\\), that is \\(n = \\boxed{15}\\).</p>"
-   },
-   {
-    "x": "Two meshed gears have \\(8\\) teeth and \\(14\\) teeth, and a paint mark sits where they currently touch. As they spin, the marks meet again only after a whole number of teeth have passed on both gears. How many full turns does the small gear make before the two marks first line up again?",
-    "ans": "7",
-    "accept": [
-     "7",
-     "7.0",
-     "seven"
-    ],
-    "hints": [
-     "The marks realign after a number of teeth that both gear sizes divide, the least common multiple of \\(8\\) and \\(14\\).",
-     "That is \\(56\\) teeth. Convert it into turns of the \\(8\\)-tooth gear."
-    ],
-    "sol": "<p>The meeting point must be a multiple of both \\(8\\) and \\(14\\), and \\(\\text{lcm}(8, 14) = 56\\) teeth. The small gear completes</p><p>$$56 \\div 8 = \\boxed{7}$$</p><p>full turns. The big gear makes \\(4\\), and the rhythms reunite.</p>"
-   },
-   {
-    "x": "Using the ones-digit loops of \\(3\\) and \\(7\\), find the ones digit of \\(3^{43} + 7^{43}\\).",
-    "ans": "0",
-    "accept": [
-     "0",
-     "0.0",
-     "zero"
-    ],
-    "hints": [
-     "From the lesson, \\(3^{43}\\) ends in \\(7\\). Run the same remainder argument on \\(7^{43}\\) with its loop \\(7, 9, 3, 1\\).",
-     "Add the two ones digits, and the ones digit of the sum is what remains after any carry."
-    ],
-    "sol": "<p>Both loops have length \\(4\\), and \\(43\\) leaves remainder \\(3\\), landing on the third spot of each. So \\(3^{43}\\) ends in \\(7\\) and \\(7^{43}\\) ends in \\(3\\).</p><p>The sum therefore ends the way \\(7 + 3 = 10\\) ends, in \\(\\boxed{0}\\).</p><p>Two enormous towers, one shared remainder, and a carry that wipes the digit to zero. That is the pattern strategy running at full power.</p>"
-   }
-  ]
- },
- "12.2": {
-  "title": "Make an Organized List",
-  "next": "12.3",
-  "blocks": [
-   {
-    "t": "p",
-    "x": "Some problems have no formula at all. They simply ask what is possible, and the only honest way to answer is to write every possibility down. The danger is missing one. So strong solvers never scribble possibilities at random. They pick an order before they start, march through it, and end with a list that proves itself complete. This lesson is about building lists that cannot leak."
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "At a juice bar, smoothies cost \\(9\\) tokens and juices cost \\(6\\) tokens. A camp counselor spends exactly \\(60\\) tokens and buys at least one drink of some kind, possibly zero of one kind. How many different orders are possible?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "March through the number of smoothies, \\(0, 1, 2, \\ldots\\), and for each one check whether the leftover tokens split evenly into \\(6\\)s."
-    ],
-    "sol": "<p>Walk the smoothie count upward and test the leftovers. Zero smoothies leaves \\(60\\), which is \\(10\\) juices. One smoothie leaves \\(51\\), not a multiple of \\(6\\). Two leave \\(42\\), which is \\(7\\) juices. Three leave \\(33\\), no. Four leave \\(24\\), which is \\(4\\) juices. Five leave \\(15\\), no. Six leave \\(6\\), one juice. Seven would cost too much.</p><p>The complete list has \\(\\boxed{4}\\) orders. Because the smoothie count marched \\(0\\) through \\(6\\) without skipping, nothing was missed.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "At an arcade counter, plushies cost \\(12\\) tickets and keychains cost \\(5\\) tickets. A player spends exactly \\(53\\) tickets. How many plushies did the player buy?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "Try each plushie count in turn, \\(0, 1, 2, 3, 4\\), and check whether the remaining tickets are a multiple of \\(5\\).",
-     "A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), which makes each leftover instant to test."
-    ],
-    "sol": "<p>March the plushie count. Zero plushies leaves \\(53\\), one leaves \\(41\\), two leave \\(29\\), three leave \\(17\\), none of which end in \\(0\\) or \\(5\\). Four plushies leave \\(53 - 48 = 5\\), exactly one keychain.</p><p>Five plushies would cost \\(60\\), too much, so the march is over and the answer is unique, \\(\\boxed{4}\\) plushies.</p><p>The ones-digit shortcut turned each check into a glance. Good lists lean on quick tests like that.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>March one variable.</b> When two unknowns share one total, do not juggle both. Choose one, usually the pricier item, and walk its count step by step from zero. Each step pins the leftover, and the leftover either splits cleanly or it does not. The finished table is the whole truth, every order that exists and none that do not, and the marching order is what makes it airtight.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smoothies</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">juices</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">0</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">10</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">7</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">6</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr></table></div>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A puzzle card reads, find the two-digit number that is a multiple of \\(9\\), has both digits prime, and has a ones digit larger than its tens digit. What is the number?",
-    "ans": "27",
-    "accept": [
-     "27",
-     "27.0",
-     "twenty seven",
-     "twenty-seven"
-    ],
-    "hints": [
-     "Start from the tightest condition. There are only ten two-digit multiples of \\(9\\), so list them.",
-     "The prime digits are \\(2, 3, 5, 7\\). Strike out every multiple of \\(9\\) containing any other digit, then apply the last condition."
-    ],
-    "sol": "<p>The multiples of \\(9\\) give a short master list, \\(18, 27, 36, 45, 54, 63, 72, 81, 90, 99\\).</p><p>Both digits must come from \\(2, 3, 5, 7\\). That single stroke eliminates everything except \\(27\\) and \\(72\\).</p><p>Finally the ones digit must beat the tens digit, and only \\(\\boxed{27}\\) survives.</p><p>Notice the strategy. The multiple-of-nine condition built a world of ten numbers, and the other conditions only had to filter it.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "How many two-digit numbers have digits that multiply to \\(12\\)?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "List the factor pairs of \\(12\\) where both factors are single digits, then remember each pair can appear in two orders."
-    ],
-    "sol": "<p>Digit pairs multiplying to \\(12\\) must be factor pairs with both factors at most \\(9\\), so \\(2 \\times 6\\) and \\(3 \\times 4\\). The pair \\(1 \\times 12\\) fails, since \\(12\\) is not a digit.</p><p>Each surviving pair builds two numbers, \\(26\\) and \\(62\\), \\(34\\) and \\(43\\).</p><p>$$\\boxed{4}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Start where the light is brightest.</b> When a hunt comes with several conditions, rank them by how hard they squeeze. A condition like multiple of \\(9\\) leaves ten candidates, while a condition like ones digit larger than tens leaves dozens, so begin with the squeeze. Build the short master list from the tightest condition, then let the looser ones cross entries off. The same hunt run in the opposite order works, but you would be testing ninety numbers instead of ten."
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A street performer splits \\(7\\) identical juggling rings among \\(3\\) identical trays, with every tray holding at least one ring. Since the trays are identical, only the group sizes matter, not which tray is which. How many different splits are possible?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "Sort each split from largest pile to smallest, and list splits in order of the largest pile, starting from the biggest it could be, which is \\(5\\).",
-     "For each choice of largest pile, march the middle pile downward and let the smallest pile be whatever remains, checking it stays between \\(1\\) and the middle."
-    ],
-    "sol": "<p>Write every split largest pile first. The largest pile can be at most \\(5\\), since the other two trays need a ring each.</p><p>Largest \\(5\\) forces \\(5, 1, 1\\). Largest \\(4\\) gives \\(4, 2, 1\\). Largest \\(3\\) gives \\(3, 3, 1\\) and \\(3, 2, 2\\). A largest pile of \\(2\\) could hold at most \\(2 + 2 + 2 = 6\\) rings, too few.</p><p>$$\\boxed{4}$$</p><p>Sorting each split before writing it is what stops \\(4, 2, 1\\) and \\(1, 2, 4\\) from sneaking in as two different entries.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "A librarian packs \\(8\\) identical books into identical boxes, using at most \\(3\\) boxes, with no box left empty. How many different packings are possible?",
-    "ans": "10",
-    "accept": [
-     "10",
-     "10.0",
-     "ten"
-    ],
-    "hints": [
-     "Split into cases by the number of boxes used, one, two, or three, and handle each case as its own ordered list.",
-     "With two boxes list \\(7{+}1, 6{+}2, 5{+}3, 4{+}4\\) and stop before repeats. With three, march the largest pile from \\(6\\) down."
-    ],
-    "sol": "<p>One box gives a single packing, all \\(8\\) together.</p><p>Two boxes, written larger pile first, give \\(7{+}1\\), \\(6{+}2\\), \\(5{+}3\\), \\(4{+}4\\), and stopping there matters, since \\(3{+}5\\) would repeat \\(5{+}3\\). That is \\(4\\) packings.</p><p>Three boxes, marching the largest pile downward, give \\(6{+}1{+}1\\), \\(5{+}2{+}1\\), \\(4{+}3{+}1\\), \\(4{+}2{+}2\\), \\(3{+}3{+}2\\). That is \\(5\\) more.</p><p>$$1 + 4 + 5 = \\boxed{10}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Give the list a spine.</b> A safe list is sorted by something, largest pile first, smallest number first, alphabetical order, anything consistent. The spine does two jobs at once. It stops the same possibility from sneaking in twice wearing a different order, and it tells you exactly when you are done, because the next entry would break the ordering rule. A list with a spine is a proof. A list without one is a pile of guesses.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">largest tray</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">middle</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smallest</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">5</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td></tr></table></div>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A gym locker's number is between \\(30\\) and \\(60\\). Divided by \\(7\\) it leaves remainder \\(2\\), and divided by \\(4\\) it leaves remainder \\(1\\). What is the locker number?",
-    "ans": "37",
-    "accept": [
-     "37",
-     "37.0",
-     "thirty seven",
-     "thirty-seven"
-    ],
-    "hints": [
-     "The remainder-\\(2\\) condition is the rarer one. List those numbers between \\(30\\) and \\(60\\) first, they climb by \\(7\\)s.",
-     "That short list is \\(30, 37, 44, 51, 58\\). Test each against the divided-by-\\(4\\) condition."
-    ],
-    "sol": "<p>Numbers leaving remainder \\(2\\) under division by \\(7\\) arrive every seven steps, so between \\(30\\) and \\(60\\) the whole list is \\(30, 37, 44, 51, 58\\).</p><p>Now test remainders under \\(4\\). They come out \\(2, 1, 0, 3, 2\\) in turn, and only \\(37\\) leaves the required \\(1\\).</p><p>$$\\boxed{37}$$</p><p>Two overlapping remainder conditions almost always fall to this one-two, list the stingier condition, filter with the looser one.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "How many three-digit numbers have digits adding to exactly \\(4\\)?",
-    "ans": "10",
-    "accept": [
-     "10",
-     "10.0",
-     "ten"
-    ],
-    "hints": [
-     "Organize by the hundreds digit, which can be \\(1, 2, 3,\\) or \\(4\\). Each choice leaves a smaller target for the last two digits.",
-     "With hundreds digit \\(1\\), the last two digits must add to \\(3\\), giving \\(03, 12, 21, 30\\), four numbers. Count the other cases the same way."
-    ],
-    "sol": "<p>Case on the hundreds digit. If it is \\(1\\), the remaining digits sum to \\(3\\), giving \\(103, 112, 121, 130\\), four numbers. If it is \\(2\\), they sum to \\(2\\), giving \\(202, 211, 220\\), three numbers. If it is \\(3\\), two numbers, \\(301, 310\\). If it is \\(4\\), just \\(400\\).</p><p>$$4 + 3 + 2 + 1 = \\boxed{10}$$</p><p>The counts stepping down \\(4, 3, 2, 1\\) are the list rewarding good organization with a pattern, the previous lesson shaking hands with this one.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Casework is a list of lists.</b> Big hunts split along one natural feature, the hundreds digit, the number of boxes, the count of one item. Each case becomes a small list you can finish in one breath, and the case totals add up at the end. Choose the splitting feature so no possibility can belong to two cases at once and none can escape every case. That is the same promise a single list makes, no repeats and no gaps, made at a larger scale."
-   },
-   {
-    "t": "fact",
-    "x": "There is a famous online encyclopedia whose entries are not words but lists of numbers. Type in the start of any sequence you have discovered, like \\(1, 4, 9, 16\\), and it names the pattern, cites who found it, and shows where else it appears. Mathematicians add new lists to it nearly every day."
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A snack stand offers \\(6\\) different toppings, and a frozen yogurt comes with exactly \\(2\\) different toppings. Using an alphabetical list or otherwise, count how many different topping pairs are possible.",
-    "ans": "15",
-    "accept": [
-     "15",
-     "15.0",
-     "fifteen"
-    ],
-    "hints": [
-     "Name the toppings A through F and list pairs alphabetically, all pairs starting with A first, then those starting with B, and so on.",
-     "A starts \\(5\\) pairs, B starts \\(4\\) new ones, and each later letter starts one fewer."
-    ],
-    "sol": "<p>Alphabetical order is the spine. Pairs beginning with A are AB, AC, AD, AE, AF, five of them. Pairs beginning with B add BC, BD, BE, BF, four new ones, since AB is already counted. The pattern steps down from there.</p><p>$$5 + 4 + 3 + 2 + 1 = \\boxed{15}$$</p><p>This is the pairs count from the counting chapter, rebuilt by hand. When a formula slips your mind mid-problem, an organized list will always rebuild it for you.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "A padlock's three-digit code has strictly decreasing digits, is a multiple of \\(5\\), and has digits adding to \\(12\\). How many codes fit all three conditions?",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), so split into those two cases.",
-     "Ending in \\(0\\) needs the first two digits to add to \\(12\\) with first digit larger. Ending in \\(5\\) needs them to add to \\(7\\) with both digits larger than \\(5\\), which is worth checking carefully."
-    ],
-    "sol": "<p>Case one, the code ends in \\(0\\). The first two digits add to \\(12\\), strictly decreasing into the \\(0\\), giving \\(93, 84, 75\\), so the codes \\(930, 840, 750\\).</p><p>Case two, the code ends in \\(5\\). The first two digits would add to \\(7\\) while each stays above \\(5\\), but two digits above \\(5\\) already add to at least \\(13\\). The case is empty.</p><p>$$3 + 0 = \\boxed{3}$$</p><p>An empty case is not wasted work. Proving nothing lives there is exactly what makes the final count trustworthy.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>The complete-list creed.</b> A finished list must answer two challenges. Why does everything on it belong, and why can nothing else exist. The first is easy, check each entry. The second is where the craft lives, and every tool in this lesson serves it, marching a single variable, starting from the tightest condition, sorting by a spine, and splitting into cases that cannot overlap or leak. Build lists that way and what you hand in is not a guess. It is a proof written as a table."
-   }
-  ],
-  "review": [
-   {
-    "x": "A bake sale prices muffins at \\(8\\) tokens and cookies at \\(5\\) tokens. One customer spends exactly \\(67\\) tokens. How many muffins did the customer buy?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "March the muffin count from \\(0\\) to \\(8\\) and check which leftover is a multiple of \\(5\\), meaning it ends in \\(0\\) or \\(5\\)."
-    ],
-    "sol": "<p>Marching muffins from zero, the leftovers run \\(67, 59, 51, 43, 35, 27, 19, 11, 3\\). Only \\(35\\) ends in \\(0\\) or \\(5\\), at four muffins, leaving \\(7\\) cookies.</p><p>$$\\boxed{4}$$</p>"
-   },
-   {
-    "x": "How many two-digit multiples of \\(7\\) have digits adding to \\(10\\)?",
-    "ans": "2",
-    "accept": [
-     "2",
-     "2.0",
-     "two"
-    ],
-    "hints": [
-     "There are only thirteen two-digit multiples of \\(7\\), so list them and check digit sums."
-    ],
-    "sol": "<p>The multiples run \\(14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98\\). Checking digit sums, only \\(28\\) and \\(91\\) reach \\(10\\).</p><p>$$\\boxed{2}$$</p>"
-   },
-   {
-    "x": "Six identical candles are packed into up to \\(3\\) identical gift bags, where a bag may hold any number of candles but empty bags are thrown away. Only the group sizes matter. How many different packings are possible?",
-    "ans": "7",
-    "accept": [
-     "7",
-     "7.0",
-     "seven"
-    ],
-    "hints": [
-     "Case on the number of bags actually used, one, two, or three, listing each case largest bag first.",
-     "One bag gives one way. Two bags give \\(5{+}1, 4{+}2, 3{+}3\\). List the three-bag splits the same careful way."
-    ],
-    "sol": "<p>One bag, just \\(6\\). Two bags, largest first, \\(5{+}1\\), \\(4{+}2\\), \\(3{+}3\\). Three bags, \\(4{+}1{+}1\\), \\(3{+}2{+}1\\), \\(2{+}2{+}2\\).</p><p>$$1 + 3 + 3 = \\boxed{7}$$</p>"
-   },
-   {
-    "x": "A jersey number is less than \\(50\\), leaves remainder \\(3\\) when divided by \\(8\\), and is a multiple of \\(5\\). What is the number?",
-    "ans": "35",
-    "accept": [
-     "35",
-     "35.0",
-     "thirty five",
-     "thirty-five"
-    ],
-    "hints": [
-     "List the numbers under \\(50\\) that leave remainder \\(3\\) under \\(8\\), they climb by eights, then keep the one ending in \\(0\\) or \\(5\\)."
-    ],
-    "sol": "<p>Remainder \\(3\\) under \\(8\\) gives the list \\(3, 11, 19, 27, 35, 43\\). The only multiple of \\(5\\) on it is \\(\\boxed{35}\\).</p>"
-   },
-   {
-    "x": "How many two-digit numbers have digits adding to exactly \\(9\\)?",
-    "ans": "9",
-    "accept": [
-     "9",
-     "9.0",
-     "nine"
-    ],
-    "hints": [
-     "March the tens digit from \\(1\\) to \\(9\\). Each choice forces the ones digit completely."
-    ],
-    "sol": "<p>For each tens digit \\(1\\) through \\(9\\), the ones digit must be \\(9\\) minus it, giving \\(18, 27, 36, 45, 54, 63, 72, 81, 90\\), one number per tens digit.</p><p>$$\\boxed{9}$$</p>"
-   },
-   {
-    "x": "How many three-digit numbers use only the digits \\(1, 2, 3, 4\\) with the digits strictly increasing from left to right?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "Strictly increasing means the number is just a choice of three different digits, written in their only legal order. List the choices."
-    ],
-    "sol": "<p>Choosing which digit to leave out gives every possibility, \\(123, 124, 134, 234\\).</p><p>$$\\boxed{4}$$</p>"
-   },
-   {
-    "x": "An ice-cream cart offers \\(7\\) flavors, and a double cone holds \\(2\\) different flavors, order not mattering. How many different double cones are possible?",
-    "ans": "21",
-    "accept": [
-     "21",
-     "21.0",
-     "twenty one",
-     "twenty-one"
-    ],
-    "hints": [
-     "List pairs with an alphabetical spine. The first flavor starts \\(6\\) pairs, the next starts \\(5\\) new ones, and so on."
-    ],
-    "sol": "<p>With the flavors ordered, the first starts \\(6\\) pairs, the second \\(5\\) new ones, then \\(4, 3, 2, 1\\).</p><p>$$6+5+4+3+2+1 = \\boxed{21}$$</p>"
-   },
-   {
-    "x": "How many three-digit palindromes smaller than \\(300\\) are multiples of \\(4\\)?",
-    "ans": "5",
-    "accept": [
-     "5",
-     "5.0",
-     "five"
-    ],
-    "hints": [
-     "A three-digit palindrome reads the same forward and backward, so below \\(300\\) it looks like \\(1x1\\) or \\(2x2\\). A multiple of \\(4\\) must be even, which kills one family.",
-     "List the ten numbers \\(202, 212, \\ldots, 292\\) and test each for divisibility by \\(4\\) using its last two digits."
-    ],
-    "sol": "<p>Palindromes \\(1x1\\) end in \\(1\\), which is odd, so no multiples of \\(4\\) live there. The \\(2x2\\) family is \\(202, 212, 222, 232, 242, 252, 262, 272, 282, 292\\).</p><p>A number is a multiple of \\(4\\) exactly when its last two digits are, so test \\(02, 12, 22, \\ldots\\) The survivors are \\(212, 232, 252, 272, 292\\).</p><p>$$\\boxed{5}$$</p>"
-   },
-   {
-    "x": "At a fair, rides cost \\(12\\) tickets and games cost \\(7\\) tickets. A visitor spends exactly \\(100\\) tickets. How many rides and games did the visitor enjoy in total?",
-    "ans": "10",
-    "accept": [
-     "10",
-     "10.0",
-     "ten"
-    ],
-    "hints": [
-     "March the ride count from \\(0\\) to \\(8\\) and test whether the leftover splits into \\(7\\)s.",
-     "Only one ride count works. Add its rides and games together."
-    ],
-    "sol": "<p>Marching rides, the leftovers are \\(100, 88, 76, 64, 52, 40, 28, 16, 4\\), and only \\(28\\), at six rides, is a multiple of \\(7\\), giving four games.</p><p>$$6 + 4 = \\boxed{10}$$</p>"
-   },
-   {
-    "x": "A game shop sells power crystals in sizes \\(1\\), \\(5\\), and \\(10\\) gems. In how many different ways can a player spend exactly \\(25\\) gems, where only the number of each size matters?",
-    "ans": "12",
-    "accept": [
-     "12",
-     "12.0",
-     "twelve"
-    ],
-    "hints": [
-     "Case on the number of \\(10\\)-gem crystals, which can be \\(0\\), \\(1\\), or \\(2\\). Inside each case, march the \\(5\\)-gem count.",
-     "Whatever remains after the tens and fives is filled by \\(1\\)s in exactly one way, so just count the legal five-counts in each case."
-    ],
-    "sol": "<p>Case on tens. With two tens, \\(5\\) gems remain, allowing zero or one five, \\(2\\) ways. With one ten, \\(15\\) remain, allowing zero through three fives, \\(4\\) ways. With no tens, \\(25\\) remain, allowing zero through five fives, \\(6\\) ways.</p><p>$$2 + 4 + 6 = \\boxed{12}$$</p><p>The singles are the silent partner. They mop up any remainder in exactly one way, so the whole count lives in the tens and fives.</p>"
-   }
-  ]
- },
- "12.3": {
-  "title": "Draw a Picture",
-  "next": "12.4",
-  "blocks": [
-   {
-    "t": "p",
-    "x": "Some problems arrive as a wall of words, and the words are designed to tangle you. The strongest first move is often not a calculation at all. It is a sketch. A path becomes a map, a schedule becomes a timeline, a set of clues becomes dots and arrows, and suddenly the answer is sitting in plain sight. This lesson is about drawing your way past the tangle."
-   },
-   {
-    "t": "prob",
-    "xp": 5,
-    "x": "On a straight boardwalk, the ice cream stand is \\(40\\) meters east of the pier, and the arcade is \\(25\\) meters west of the ice cream stand. Sketch the boardwalk as a line. How many meters is the arcade from the pier?",
-    "ans": "15",
-    "accept": [
-     "15",
-     "15.0",
-     "fifteen"
-    ],
-    "hints": [
-     "Mark the pier, step \\(40\\) east to the ice cream stand, then step \\(25\\) back west for the arcade."
-    ],
-    "sol": "<p>On the sketch, the arcade lands \\(40 - 25 = 15\\) meters east of the pier.</p><p>$$\\boxed{15}$$</p><p>Without the line, east and west blur together. With it, the subtraction draws itself.</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A park drone takes off, flies \\(9\\) blocks east, \\(2\\) blocks north, \\(3\\) blocks west, and \\(6\\) blocks north, then lands. Sketch the flight, then find the straight-line distance in blocks from takeoff to landing.",
-    "ans": "10",
-    "accept": [
-     "10",
-     "10.0",
-     "ten"
-    ],
-    "hints": [
-     "Total the east-west motion and the north-south motion separately. The wandering collapses to one net east amount and one net north amount.",
-     "Net \\(6\\) east and net \\(8\\) north are the legs of a right triangle, and the straight-line distance is its hypotenuse."
-    ],
-    "sol": "<p>East-west movement nets to \\(9 - 3 = 6\\) blocks east, and north-south nets to \\(2 + 6 = 8\\) blocks north. On the sketch, takeoff and landing sit at two corners of a right triangle with legs \\(6\\) and \\(8\\).</p><p>$$d^2 = 6^2 + 8^2 = 100, \\qquad d = \\boxed{10}$$</p><p>Four legs of flying, one triangle, and the Pythagorean Theorem from the geometry chapter finishes it.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Turn wandering into a map.</b> However tangled a journey sounds, its east-west steps combine into one net east-west amount, and its north-south steps into one net north-south amount, because opposite directions cancel. Drawn on a grid, the whole trip collapses into a single right triangle, and the straight-line distance is just its hypotenuse. The picture does the bookkeeping that words make slippery.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 260\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a wandering path collapsed into one right triangle\"><path d=\"M50,210 L158,210 L158,186 L122,186 L122,114\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2.6\" stroke-linejoin=\"round\"/><circle cx=\"50\" cy=\"210\" r=\"5\" fill=\"#2f4a6e\"/><circle cx=\"122\" cy=\"114\" r=\"5\" fill=\"#8a5a08\"/><path d=\"M50,222 L122,222\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M134,210 L134,114\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M50,210 L122,114\" fill=\"none\" stroke=\"#8a5a08\" stroke-width=\"2.2\" stroke-dasharray=\"6 4\"/><text x=\"86\" y=\"240\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">net 6 east</text><text x=\"163\" y=\"162\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">net 8 north</text><text x=\"64\" y=\"150\" font-size=\"13\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">10</text></svg></div>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A claw crane lifts a prize \\(7\\) cm with each press of the button, but between presses the prize slips back \\(3\\) cm. The prize must rise \\(25\\) cm to clear the bin wall, and once it clears, it is out, no more slipping. Draw the height after each press. How many presses does it take?",
-    "ans": "6",
-    "accept": [
-     "6",
-     "6.0",
-     "six"
-    ],
-    "hints": [
-     "Track the peak height at each press. Press one peaks at \\(7\\), then each later press peaks \\(4\\) higher than the last, since \\(7\\) up and \\(3\\) back gain \\(4\\) per full cycle.",
-     "The story ends the moment a peak reaches \\(25\\). Do not subtract the slip after the winning press."
-    ],
-    "sol": "<p>The peaks climb \\(7, 11, 15, 19, 23, 27\\), each press peaking \\(4\\) above the last.</p><p>The fifth press peaks at \\(23\\), still short. The sixth press peaks at \\(27\\), past the \\(25\\) cm wall, and the prize is out before any slip can happen.</p><p>$$\\boxed{6}$$</p><p>The tempting shortcut, divide \\(25\\) by the net gain of \\(4\\), misses that the final press never gives back its \\(3\\) cm. The drawing catches what the formula fumbles.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Respect the finish line.</b> Progress that gains and gives back, climbing and slipping, filling and leaking, charging and draining, is a timeline problem, and timelines end early. The last step counts in full, with nothing given back, because the story stops at the goal. Sketch the level after every step and circle the first moment the goal line is crossed. Averages and net rates describe the middle of the journey, never its end."
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "Four swimmers line up for a relay in positions \\(1\\) through \\(4\\). Kai swims immediately after Lena. Mira swims somewhere before Lena. Jo does not swim first, and Jo swims somewhere before Kai. Draw four slots and place the swimmers. Which position does Jo swim?",
-    "ans": "2",
-    "accept": [
-     "2",
-     "2.0",
-     "two"
-    ],
-    "hints": [
-     "Kai immediately after Lena glues them into a block, Lena then Kai. Try the block in positions \\(2\\)-\\(3\\) and \\(3\\)-\\(4\\), since Mira must fit before Lena.",
-     "If Lena and Kai take \\(2\\) and \\(3\\), the only slot before Kai that is not first is taken by Lena. Push the block later and see what opens up."
-    ],
-    "sol": "<p>Glue Lena and Kai into a block. If the block sits at positions \\(2\\) and \\(3\\), then Mira takes \\(1\\), and Jo needs a slot before Kai that is not position \\(1\\), but position \\(2\\) is Lena's. Dead end.</p><p>So the block sits at \\(3\\) and \\(4\\). Mira must come before Lena, and Jo cannot be first, so Mira takes \\(1\\) and Jo takes \\(2\\). Every clue checks out with the order Mira, Jo, Lena, Kai.</p><p>$$\\boxed{2}$$</p><p>Drawing the four slots makes each clue a physical constraint you can test in seconds, instead of a sentence you have to keep rereading.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Clues become a picture of a line.</b> Ordering puzzles are pictures waiting to happen. Draw the finishing slots, turn each clue into an arrow or a glued block, and place the most restrictive piece first, exactly like the tightest condition rule from the organized-list lesson. A wrong placement collides with a clue almost immediately, and each collision eliminates a whole branch of possibilities. The sketch is doing casework for you."
-   },
-   {
-    "t": "prob",
-    "xp": 5,
-    "x": "A baker slices a baguette into \\(9\\) pieces, and each cut takes \\(30\\) seconds. Sketch the baguette with its cut marks. How many minutes does the slicing take?",
-    "ans": "4",
-    "accept": [
-     "4",
-     "4.0",
-     "four"
-    ],
-    "hints": [
-     "Draw the loaf and mark the cuts. Nine pieces need one fewer cut than pieces."
-    ],
-    "sol": "<p>The sketch shows \\(8\\) cut marks producing \\(9\\) pieces, since each cut adds exactly one piece to the count.</p><p>$$8 \\times 30 = 240 \\text{ seconds} = \\boxed{4} \\text{ minutes}$$</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "Two boards, each \\(30\\) cm long, are glued together with an \\(8\\) cm overlap to make one longer shelf. Draw the two boards overlapping. How many centimeters long is the shelf?",
-    "ans": "52",
-    "accept": [
-     "52",
-     "52.0",
-     "fifty two",
-     "fifty-two"
-    ],
-    "hints": [
-     "Laid end to end they would span \\(60\\) cm, but the overlapped stretch was counted twice, once inside each board."
-    ],
-    "sol": "<p>End to end, the boards would cover \\(30 + 30 = 60\\) cm, but the drawing shows the \\(8\\) cm overlap belonging to both boards at once, so it was counted twice.</p><p>$$60 - 8 = \\boxed{52}$$</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "A straight garden path is \\(180\\) meters long, with a lamp at each end and lamps every \\(15\\) meters in between. Draw dots for lamps. How many lamps line the path?",
-    "ans": "13",
-    "accept": [
-     "13",
-     "13.0",
-     "thirteen"
-    ],
-    "hints": [
-     "Count gaps first. The path holds \\(180 \\div 15 = 12\\) gaps.",
-     "Dots outnumber the gaps between them by exactly one."
-    ],
-    "sol": "<p>The path divides into \\(180 \\div 15 = 12\\) gaps, and the drawing shows one more lamp than gaps, since both ends hold a lamp.</p><p>$$12 + 1 = \\boxed{13}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Count the gaps, not the things.</b> Cuts, gaps, overlaps, and fences all hide the same off-by-one trap, and one tiny drawing disarms it. Pieces outnumber cuts by one. Lamps outnumber the gaps between them by one. An overlap is length counted twice, so subtract it once. None of these need a formula memorized, because five dots on scratch paper settle the question instantly, and they settle it the right way every time.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"five dots in a row with four gaps between them\"><path d=\"M40,60 L300,60\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"105\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"170\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"235\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"300\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><text x=\"72\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">1</text><text x=\"137\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">2</text><text x=\"202\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">3</text><text x=\"267\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">4</text><text x=\"170\" y=\"100\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">5 lamps, only 4 gaps</text></svg></div>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 340 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"five islands connected by ferry routes\"><path d=\"M70,60 L250,50 M250,50 L160,130 M160,130 L70,60 M160,130 L90,200 M90,200 L260,200\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2.4\"/><circle cx=\"70\" cy=\"60\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"250\" cy=\"50\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"160\" cy=\"130\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"90\" cy=\"200\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"260\" cy=\"200\" r=\"9\" fill=\"#8a5a08\"/><text x=\"70\" y=\"40\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">Coral</text><text x=\"250\" y=\"30\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Palm</text><text x=\"192\" y=\"136\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Bell</text><text x=\"90\" y=\"228\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Drift</text><text x=\"260\" y=\"228\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">Ebb</text></svg></div>Five islands are served by ferries running both directions on these routes only. Coral to Palm, Palm to Bell, Bell to Coral, Bell to Drift, and Drift to Ebb. What is the smallest number of ferry rides that gets a traveler from Coral to Ebb?",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "Only Drift connects to Ebb, so any trip to Ebb must arrive through Drift.",
-     "Find the fastest way from Coral to Drift, then add the final ride."
-    ],
-    "sol": "<p>On the drawing, Ebb hangs off the network by a single route from Drift, so the last ride is forced. The question becomes reaching Drift quickly.</p><p>Drift connects only to Bell, and Coral reaches Bell directly. So Coral to Bell to Drift to Ebb uses three rides, and nothing shorter exists, since no single route touches both Coral and Drift or both Coral and Ebb.</p><p>$$\\boxed{3}$$</p><p>A route list is fog. The same list drawn as dots and lines is a map you can walk with a finger.</p>"
-   },
-   {
-    "t": "fact",
-    "x": "Drawing dots and lines for a connection puzzle has a birthday. In \\(1736\\), the city of Konigsberg wondered whether a stroll could cross each of its seven bridges exactly once. Euler drew the land masses as dots and the bridges as lines, proved the stroll impossible, and accidentally founded graph theory, the mathematics behind every map app you have ever used."
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 340 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a circle cut by three chords into seven regions\"><circle cx=\"170\" cy=\"115\" r=\"88\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\"/><path d=\"M92,74 L252,142 M100,160 L242,60 M128,196 L222,34\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"170\" y=\"226\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">3 chords, 7 regions</text></svg></div>A straight chord drawn across a circle splits it into \\(2\\) regions. Two chords can make as many as \\(4\\) regions, and three chords, drawn so every pair crosses inside the circle at a fresh point, make \\(7\\), as shown above. Keep drawing and counting. What is the greatest number of regions five chords can make?",
-    "ans": "16",
-    "accept": [
-     "16",
-     "16.0",
-     "sixteen"
-    ],
-    "hints": [
-     "List the maximum counts so far, \\(2, 4, 7\\), and look at the jumps between them. Each new chord adds one more region than the chord before it added.",
-     "The jumps run \\(2, 3, 4, 5\\), so the fourth chord brings the count to \\(11\\), and the fifth continues the pattern."
-    ],
-    "sol": "<p>The counts climb \\(2, 4, 7\\), with jumps of \\(2\\), then \\(3\\). The drawing explains the jumps. A new chord crossing \\(k\\) old chords passes through \\(k + 1\\) regions and splits each one, so drawing every chord to cross all previous chords makes the fourth chord add \\(4\\) and the fifth add \\(5\\).</p><p>$$2, \\; 4, \\; 7, \\; 11, \\; \\boxed{16}$$</p><p>The picture generated the small cases, the pattern lesson extended them, and the crossing argument supplied the reason. Three tools from this toolkit, one problem.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Draw small, then trust the count.</b> A sketch is more than a tiebreaker for confusing words. It is an engine for small cases. Draw the one-chord picture, the two-chord picture, the three-chord picture, and the numbers you harvest feed straight into the pattern strategy, while an organized list keeps the harvest tidy. The toolkit works as a team, and the pencil sketch is very often the member that goes first."
-   }
-  ],
-  "review": [
-   {
-    "x": "A parade float rolls \\(12\\) blocks west, \\(5\\) blocks north, and \\(12\\) blocks east. Sketch the route. How many blocks is the float from where it started?",
-    "ans": "5",
-    "accept": [
-     "5",
-     "5.0",
-     "five"
-    ],
-    "hints": [
-     "The west and east legs cancel completely on the sketch."
-    ],
-    "sol": "<p>West \\(12\\) and east \\(12\\) cancel, leaving only the \\(5\\) blocks north.</p><p>$$\\boxed{5}$$</p>"
-   },
-   {
-    "x": "A kayaker paddles \\(9\\) km east, \\(4\\) km west, and \\(12\\) km north. Find the straight-line distance in km back to the launch point.",
-    "ans": "13",
-    "accept": [
-     "13",
-     "13.0",
-     "thirteen"
-    ],
-    "hints": [
-     "Net the east-west motion first, \\(9 - 4 = 5\\) km east.",
-     "Legs of \\(5\\) and \\(12\\) make a familiar right triangle."
-    ],
-    "sol": "<p>The trip nets to \\(5\\) km east and \\(12\\) km north, a right triangle with hypotenuse</p><p>$$\\sqrt{5^2 + 12^2} = \\sqrt{169} = \\boxed{13}$$</p>"
-   },
-   {
-    "x": "In an elevator game, each round moves the marker up \\(6\\) floors and then back down \\(2\\). The marker starts at floor \\(0\\) and wins the moment it touches floor \\(22\\), even mid-round. Draw the floor level round by round. In which round does the marker win?",
-    "ans": "5",
-    "accept": [
-     "5",
-     "5.0",
-     "five"
-    ],
-    "hints": [
-     "The peaks climb \\(6, 10, 14, 18, 22\\), gaining \\(4\\) per round.",
-     "Winning happens at a peak, before the drop back."
-    ],
-    "sol": "<p>The round peaks run \\(6, 10, 14, 18, 22\\). The fifth peak touches \\(22\\) exactly, and the game ends there, no slide back.</p><p>$$\\boxed{5}$$</p>"
-   },
-   {
-    "x": "Four friends finish a race. Nia beats Owen. Pia finishes immediately behind Nia. Owen does not finish last. Quinn is also racing. Draw the four finishing slots. In which place does Owen finish?",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "Nia and Pia form a glued block, Nia then Pia. Try the block starting at position \\(1\\), then position \\(2\\).",
-     "If the block starts at \\(2\\), Owen must beat no one but still avoid last place. Check whether any slot works."
-    ],
-    "sol": "<p>With the Nia-Pia block at positions \\(1\\) and \\(2\\), Owen must finish after Nia but not last, which forces Owen into \\(3\\) and Quinn into \\(4\\). With the block at \\(2\\) and \\(3\\), Owen would have to take \\(4\\), which the clue forbids. So the order is Nia, Pia, Owen, Quinn.</p><p>$$\\boxed{3}$$</p>"
-   },
-   {
-    "x": "A jeweler cuts a long chain into \\(6\\) sections, and each cut takes \\(2\\) minutes. How many minutes does the job take?",
-    "ans": "10",
-    "accept": [
-     "10",
-     "10.0",
-     "ten"
-    ],
-    "hints": [
-     "Sketch the chain. Six sections need one fewer cut than sections."
-    ],
-    "sol": "<p>Six sections come from \\(5\\) cuts, and \\(5 \\times 2 = \\boxed{10}\\) minutes.</p>"
-   },
-   {
-    "x": "Twenty-five trees stand in a straight row with equal gaps of \\(6\\) meters between neighbors. How many meters is it from the first tree to the last?",
-    "ans": "144",
-    "accept": [
-     "144",
-     "144.0"
-    ],
-    "hints": [
-     "Dots first. Twenty-five trees make \\(24\\) gaps, and the distance lives in the gaps."
-    ],
-    "sol": "<p>Between \\(25\\) trees sit \\(24\\) gaps of \\(6\\) meters each,</p><p>$$24 \\times 6 = \\boxed{144}$$</p>"
-   },
-   {
-    "x": "Two boards, each \\(45\\) cm long, are joined with an overlap to form a shelf \\(78\\) cm long. Draw the boards. How many centimeters long is the overlap?",
-    "ans": "12",
-    "accept": [
-     "12",
-     "12.0",
-     "twelve"
-    ],
-    "hints": [
-     "End to end the boards would span \\(90\\) cm. The drawing shows the missing length is exactly the doubled-up part."
-    ],
-    "sol": "<p>Without overlap the boards would span \\(90\\) cm, and the shelf lost \\(90 - 78 = 12\\) cm to the doubled section.</p><p>$$\\boxed{12}$$</p>"
-   },
-   {
-    "x": "A subway map lists these two-way lines between six stations. A to B, B to C, C to D, D to E, B to E, and E to F. Draw the network. What is the least number of rides from A to F?",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "Only E connects to F, so plan the fastest route to E.",
-     "B connects straight to E, and A connects straight to B."
-    ],
-    "sol": "<p>The drawing shows F hanging off station E alone. The quickest way to E from A is A to B, then the direct B to E line, and then E to F.</p><p>$$\\boxed{3}$$</p><p>The B to E shortcut is nearly invisible in the written list and impossible to miss in the picture.</p>"
-   },
-   {
-    "x": "Continuing the circle-and-chords pattern from the lesson, what is the greatest number of regions six chords can create?",
-    "ans": "22",
-    "accept": [
-     "22",
-     "22.0",
-     "twenty two",
-     "twenty-two"
-    ],
-    "hints": [
-     "The counts run \\(2, 4, 7, 11, 16\\), with each new chord adding one more than the last, so the sixth chord adds \\(6\\)."
-    ],
-    "sol": "<p>The jumps climb \\(2, 3, 4, 5, 6\\), so six chords reach</p><p>$$16 + 6 = \\boxed{22}$$</p>"
-   },
-   {
-    "x": "A rectangular garden plot measures \\(50\\) meters by \\(30\\) meters. A gardener plants a flag at one corner and then every \\(10\\) meters around the entire perimeter. How many flags get planted?",
-    "ans": "16",
-    "accept": [
-     "16",
-     "16.0",
-     "sixteen"
-    ],
-    "hints": [
-     "First find the perimeter, then count \\(10\\) meter gaps around it.",
-     "The path is a closed loop, not a line. On a loop, the last gap closes back onto the very first flag, so flags equal gaps exactly."
-    ],
-    "sol": "<p>The perimeter is \\(2(50 + 30) = 160\\) meters, which splits into \\(160 \\div 10 = 16\\) gaps.</p><p>On a straight path, flags would outnumber gaps by one. But this path is a loop, and the drawing shows the sixteenth gap ending exactly where the first flag already stands.</p><p>$$\\boxed{16}$$</p><p>Line or loop is the whole question in fencepost problems, and a quick sketch answers it before the off-by-one error gets a chance.</p>"
-   }
-  ]
- },
- "12.4": {
-  "title": "Work Backwards",
-  "blocks": [
-   {
-    "t": "p",
-    "x": "Some problems tell their story in the wrong order. You are handed the ending, the final amount, the last term, the state after every step, and asked for the beginning. Chasing it forward means guessing a start and hoping. The stronger move is to stand at the ending and rewind, undoing one step at a time until the beginning is simply standing there. This final lesson of the course teaches the rewind."
-   },
-   {
-    "t": "prob",
-    "xp": 5,
-    "x": "A number trick goes like this. Think of a number, double it, then add \\(9\\). Priya follows the steps and lands on \\(41\\). What number did she think of?",
-    "ans": "16",
-    "accept": [
-     "16",
-     "16.0",
-     "sixteen"
-    ],
-    "hints": [
-     "Undo the steps from the end. The last thing done was adding \\(9\\), so the first undo is subtracting \\(9\\)."
-    ],
-    "sol": "<p>Rewind from \\(41\\). Undoing the add-\\(9\\) gives \\(41 - 9 = 32\\), and undoing the doubling gives \\(32 \\div 2 = 16\\).</p><p>Forward check, \\(16\\) doubled is \\(32\\), plus \\(9\\) is \\(41\\). It works.</p><p>$$\\boxed{16}$$</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "Another trick has three steps. Subtract \\(4\\), multiply by \\(5\\), then add \\(7\\). Marcus finishes on \\(52\\). What number did he start with?",
-    "ans": "13",
-    "accept": [
-     "13",
-     "13.0",
-     "thirteen"
-    ],
-    "hints": [
-     "Peel the steps in reverse order. The add \\(7\\) came last, so it is undone first, then the multiply, then the subtract.",
-     "Each undo swaps the operation for its opposite. Adding becomes subtracting, multiplying becomes dividing."
-    ],
-    "sol": "<p>Rewind from \\(52\\). Undo the add \\(7\\) to get \\(45\\). Undo the multiply by \\(5\\) to get \\(9\\). Undo the subtract \\(4\\) to get \\(13\\).</p><p>Forward check, \\(13 - 4 = 9\\), times \\(5\\) is \\(45\\), plus \\(7\\) is \\(52\\).</p><p>$$\\boxed{13}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Undo in reverse order.</b> Rewinding has two rules and they both matter. Each operation flips into its opposite, adding into subtracting, multiplying into dividing. And the order flips too, last step undone first, the way you take off shoes before socks even though they went on socks first. Skipping the order flip is the classic rewind injury. The diagram shows both directions of the same trick.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 190\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a chain of operations run forward on top and undone in reverse underneath\"><rect x=\"23\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#fdf3df\" stroke=\"#8a5a08\" stroke-width=\"2\"/><text x=\"45\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">?</text><path d=\"M70,50 L102,50 M102,50 l-7,-5 M102,50 l-7,5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"90\" y=\"41\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">&#8722; 4</text><rect x=\"111\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"133\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">9</text><path d=\"M158,50 L190,50 M190,50 l-7,-5 M190,50 l-7,5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"178\" y=\"41\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">&#215; 5</text><rect x=\"199\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"221\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">45</text><path d=\"M246,50 L278,50 M278,50 l-7,-5 M278,50 l-7,5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"266\" y=\"41\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">+ 7</text><rect x=\"287\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"309\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">52</text><rect x=\"287\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"309\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">52</text><path d=\"M286,135 L254,135 M254,135 l7,-5 M254,135 l7,5\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"266\" y=\"126\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">&#8722; 7</text><rect x=\"199\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"221\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">45</text><path d=\"M198,135 L166,135 M166,135 l7,-5 M166,135 l7,5\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"178\" y=\"126\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">&#247; 5</text><rect x=\"111\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"133\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">9</text><path d=\"M110,135 L78,135 M78,135 l7,-5 M78,135 l7,5\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"90\" y=\"126\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">+ 4</text><rect x=\"23\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#fdf3df\" stroke=\"#8a5a08\" stroke-width=\"2\"/><text x=\"45\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">13</text><text x=\"175\" y=\"178\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">forward story on top, rewind underneath</text></svg></div>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "Theo bought a rare trading card. He later sold it to Uma, taking a loss of \\(5\\) tokens. Uma then sold it to Vik for \\(32\\) tokens, making a profit of \\(8\\) tokens on her purchase. How many tokens did Theo originally pay?",
-    "ans": "29",
-    "accept": [
-     "29",
-     "29.0",
-     "twenty nine",
-     "twenty-nine"
-    ],
-    "hints": [
-     "Start at the end. Uma sold for \\(32\\) with a profit of \\(8\\), so what she paid comes from undoing that profit.",
-     "What Uma paid is exactly what Theo received. Undo Theo's loss of \\(5\\) from there."
-    ],
-    "sol": "<p>Uma sold at \\(32\\) for a profit of \\(8\\), so she had paid \\(32 - 8 = 24\\) tokens.</p><p>That \\(24\\) is what Theo received, and it was a \\(5\\)-token loss for him, so he had paid \\(24 + 5 = 29\\).</p><p>Forward check, buy at \\(29\\), sell at \\(24\\), a loss of \\(5\\). Uma buys at \\(24\\), sells at \\(32\\), a profit of \\(8\\).</p><p>$$\\boxed{29}$$</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A rain barrel goes through the same routine each day. It loses half its water to the garden, and then the gardener pours \\(6\\) liters back in. After two full days of this, the barrel holds \\(21\\) liters. How many liters did it hold at the start?",
-    "ans": "48",
-    "accept": [
-     "48",
-     "48.0",
-     "forty eight",
-     "forty-eight"
-    ],
-    "hints": [
-     "Rewind day two first. Undo the \\(6\\)-liter pour, then undo the halving by doubling.",
-     "That gives the level after day one, and the same two undos again reach the start."
-    ],
-    "sol": "<p>Rewind day two. Before the pour the barrel held \\(21 - 6 = 15\\), and before losing half it held \\(30\\). So day one ended at \\(30\\).</p><p>Rewind day one the same way, \\(30 - 6 = 24\\) before the pour, and \\(48\\) before the halving.</p><p>Forward check runs the table below and lands on \\(21\\) exactly.</p><p>$$\\boxed{48}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Rewind the ledger.</b> Multi-day routines are just operation chains wearing a calendar, so rewind them day by day, undoing within each day in reverse order too, the pour before the halving. Then spend ten seconds running your answer forward. The forward check is the built-in receipt of every work-backwards problem, and it turns a hopeful answer into a certain one.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\"></td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after losing half</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after adding 6</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">24</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">30</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">15</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">21</td></tr></table></div>"
-   },
-   {
-    "t": "prob",
-    "xp": 6,
-    "x": "A sourdough starter doubles in size every day, and it completely fills its jar on day \\(10\\). On which day was the jar exactly one quarter full?",
-    "ans": "8",
-    "accept": [
-     "8",
-     "8.0",
-     "eight"
-    ],
-    "hints": [
-     "Run the doubling backward. One day earlier the jar was half full.",
-     "One quarter is half of half."
-    ],
-    "sol": "<p>Backward from the end, day \\(9\\) held half a jar, and day \\(8\\) held half of that, one quarter.</p><p>$$\\boxed{8}$$</p><p>Forward instinct begs to start at day one, but the problem gives day \\(10\\), so the fast road runs in reverse. Two halvings, done.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Doubling rewinds as halving.</b> Any process that doubles, rumors, colonies, chain letters, folded paper, is easiest to read from its ending, one halving per step back. This is also why doubling processes finish with a bang. The jar that fills on day ten was only a quarter full on day eight, and the biggest growth always hides in the final steps, not the early ones."
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "In a certain list, every number is the sum of the two numbers just before it. The list ends with \\(\\ldots, \\; a, \\; b, \\; 19, \\; 31, \\; 50\\). Find the value of \\(a\\).",
-    "ans": "7",
-    "accept": [
-     "7",
-     "7.0",
-     "seven"
-    ],
-    "hints": [
-     "The rule runs forward as addition, so it rewinds as subtraction. The number before \\(19\\) and \\(31\\) satisfies \\(b + 19 = 31\\).",
-     "Once \\(b\\) is known, the same subtraction one step earlier finds \\(a\\)."
-    ],
-    "sol": "<p>Since each number is the sum of the two before it, \\(b + 19 = 31\\), so \\(b = 12\\). One step earlier, \\(a + b = 19\\), so \\(a = 7\\).</p><p>Forward check, \\(7, 12, 19, 31, 50\\), and each term is indeed the sum of its two predecessors.</p><p>$$\\boxed{7}$$</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 7,
-    "x": "A bacteria colony in a dish triples every hour. At \\(5\\) in the afternoon the dish holds \\(405\\) colonies. How many colonies did it hold at \\(1\\) in the afternoon?",
-    "ans": "5",
-    "accept": [
-     "5",
-     "5.0",
-     "five"
-    ],
-    "hints": [
-     "Four hours separate the two clock times, so rewind four triplings.",
-     "Each rewind divides by \\(3\\)."
-    ],
-    "sol": "<p>Rewinding one hour divides by \\(3\\), and four hours pass between \\(1\\) and \\(5\\).</p><p>$$405 \\div 3 \\div 3 \\div 3 \\div 3 = 405 \\div 81 = \\boxed{5}$$</p><p>Forward check, \\(5, 15, 45, 135, 405\\), one tripling per hour.</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>Reconstruct from the tail.</b> A sequence built by a forward rule can be rebuilt from its last few terms by inverting the rule, sums rewind to differences, products to quotients, triplings to thirds. Two habits keep the rebuild honest. Write each recovered term into its actual position so the chain stays visible, and when the rewind is finished, replay the whole sequence forward from your answer. If it reproduces the given ending, the reconstruction is airtight."
-   },
-   {
-    "t": "fact",
-    "x": "Working backwards has a distinguished career. Chess players study endgames by starting from checkmate and stepping in reverse, a method called retrograde analysis. Maze designers know their puzzles fall fastest to solvers who begin at the exit. And escape-room writers plot the final door first, then build the clues backward toward the entrance."
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "Two juice pitchers sit on a counter. First, pitcher A pours into pitcher B exactly as much juice as B already contains, doubling B. Then pitcher B pours into pitcher A exactly as much as A contains at that moment, doubling A. Now each pitcher holds \\(36\\) centiliters. How many centiliters did pitcher A hold at the very start?",
-    "ans": "45",
-    "accept": [
-     "45",
-     "45.0",
-     "forty five",
-     "forty-five"
-    ],
-    "hints": [
-     "Undo the second pour first. It doubled A to \\(36\\), so before it A held \\(18\\), and the poured amount came out of B.",
-     "Then undo the first pour, which had doubled B. Half of B's amount at that moment had come from A."
-    ],
-    "sol": "<p>Rewind the second pour. It doubled A to \\(36\\), so A held \\(18\\) before it, and the \\(18\\) that arrived came from B, which therefore held \\(36 + 18 = 54\\).</p><p>Rewind the first pour. It had doubled B to \\(54\\), so B started with \\(27\\), and the \\(27\\) that arrived came from A, which therefore started with \\(18 + 27 = 45\\).</p><p>Forward check. A\\(=45\\), B\\(=27\\). A pours \\(27\\), leaving \\(18\\) and \\(54\\). B pours \\(18\\), leaving \\(36\\) and \\(36\\).</p><p>$$\\boxed{45}$$</p>"
-   },
-   {
-    "t": "prob",
-    "xp": 8,
-    "x": "On a game show, a contestant spends half of her tokens in round one, then pays a \\(7\\)-token entry fee for round two. In round two she spends half of what she has left, then pays a \\(3\\)-token exit fee. She walks away with \\(11\\) tokens. How many tokens did she start with?",
-    "ans": "70",
-    "accept": [
-     "70",
-     "70.0",
-     "seventy"
-    ],
-    "hints": [
-     "Rewind the four events in reverse. Undo the exit fee, undo the round-two halving, undo the entry fee, undo the round-one halving.",
-     "Undoing a fee means adding it back, and undoing a halving means doubling."
-    ],
-    "sol": "<p>Rewind from \\(11\\). Add back the exit fee, \\(14\\). Double away the round-two spending, \\(28\\). Add back the entry fee, \\(35\\). Double away the round-one spending, \\(70\\).</p><p>Forward check. Half of \\(70\\) leaves \\(35\\), the fee leaves \\(28\\), half leaves \\(14\\), the exit fee leaves \\(11\\).</p><p>$$\\boxed{70}$$</p>"
-   },
-   {
-    "t": "imp",
-    "x": "<b>The rewind creed, and the whole toolkit.</b> Work backwards when the ending is known and the beginning is the mystery. Flip every operation, flip the order, and cash the built-in receipt by running your answer forward. And notice what you now carry. Patterns turn giant positions into short divisions, organized lists turn possibility into proof, pictures turn word-tangles into maps, and the rewind turns endings into beginnings. That is the toolkit, and it reaches far past this course. Prealgebra ends here, but these four moves are exactly how mathematicians of every age meet a problem they have never seen before. Go enjoy being dangerous."
-   }
-  ],
-  "review": [
-   {
-    "x": "A number is multiplied by \\(4\\), then \\(9\\) is subtracted, giving \\(39\\). What was the number?",
-    "ans": "12",
-    "accept": [
-     "12",
-     "12.0",
-     "twelve"
-    ],
-    "hints": [
-     "Undo the subtraction first, then the multiplication."
-    ],
-    "sol": "<p>Adding back the \\(9\\) gives \\(48\\), and dividing by \\(4\\) gives \\(\\boxed{12}\\). Forward, \\(12 \\times 4 - 9 = 39\\).</p>"
-   },
-   {
-    "x": "A number has \\(8\\) added to it, the result is divided by \\(3\\), and that result is multiplied by \\(5\\), giving \\(45\\). What was the original number?",
-    "ans": "19",
-    "accept": [
-     "19",
-     "19.0",
-     "nineteen"
-    ],
-    "hints": [
-     "Rewind in reverse order, undoing the multiply by \\(5\\) first.",
-     "The undos are divide by \\(5\\), multiply by \\(3\\), subtract \\(8\\)."
-    ],
-    "sol": "<p>From \\(45\\), dividing by \\(5\\) gives \\(9\\), multiplying by \\(3\\) gives \\(27\\), and subtracting \\(8\\) gives \\(\\boxed{19}\\). Forward, \\((19+8) \\div 3 \\times 5 = 45\\).</p>"
-   },
-   {
-    "x": "Rosa bought a bicycle and later sold it to Sam at a \\(12\\)-token profit. Sam then sold it for \\(87\\) tokens, taking a \\(9\\)-token loss. How many tokens did Rosa pay for the bicycle?",
-    "ans": "84",
-    "accept": [
-     "84",
-     "84.0",
-     "eighty four",
-     "eighty-four"
-    ],
-    "hints": [
-     "Sam sold at \\(87\\) with a \\(9\\)-token loss, so undo the loss to find what Sam paid.",
-     "What Sam paid is what Rosa received, and Rosa's profit was \\(12\\)."
-    ],
-    "sol": "<p>Sam paid \\(87 + 9 = 96\\). Rosa received that \\(96\\) at a \\(12\\)-token profit, so she had paid \\(96 - 12 = \\boxed{84}\\).</p>"
-   },
-   {
-    "x": "A candy jar is visited by two siblings, one after the other. Each takes half the candies in the jar and then, feeling guilty, puts \\(2\\) back. After both visits the jar holds \\(14\\) candies. How many were in the jar before the first visit?",
-    "ans": "44",
-    "accept": [
-     "44",
-     "44.0",
-     "forty four",
-     "forty-four"
-    ],
-    "hints": [
-     "Rewind the second visit. Undo the \\(2\\) put back, then undo the halving.",
-     "Repeat the same two undos for the first visit."
-    ],
-    "sol": "<p>Rewind the second sibling, \\(14 - 2 = 12\\) and doubling gives \\(24\\). Rewind the first, \\(24 - 2 = 22\\) and doubling gives \\(44\\).</p><p>Forward check, \\(44 \\to 22 + 2 = 24 \\to 12 + 2 = 14\\).</p><p>$$\\boxed{44}$$</p>"
-   },
-   {
-    "x": "A video's view count doubles every day. On Friday it reaches \\(96{,}000\\) views. How many days earlier did it stand at \\(12{,}000\\) views?",
-    "ans": "3",
-    "accept": [
-     "3",
-     "3.0",
-     "three"
-    ],
-    "hints": [
-     "Halve backward from \\(96{,}000\\) and count the halvings until you reach \\(12{,}000\\)."
-    ],
-    "sol": "<p>Backward, \\(96{,}000 \\to 48{,}000 \\to 24{,}000 \\to 12{,}000\\), three halvings, so \\(\\boxed{3}\\) days earlier.</p>"
-   },
-   {
-    "x": "In a list where every number is the sum of the two before it, the final three numbers are \\(13, 21, 34\\). What number sits four places before the \\(34\\)?",
-    "ans": "5",
-    "accept": [
-     "5",
-     "5.0",
-     "five"
-    ],
-    "hints": [
-     "Rewind with subtraction, the term before \\(13\\) is \\(21 - 13\\).",
-     "Keep subtracting until you are four places before the \\(34\\)."
-    ],
-    "sol": "<p>Rewinding, before \\(13\\) sits \\(21 - 13 = 8\\), and before that sits \\(13 - 8 = 5\\). The list runs \\(5, 8, 13, 21, 34\\), and four places before the \\(34\\) is \\(\\boxed{5}\\).</p>"
-   },
-   {
-    "x": "A stamp collection's value has tripled twice over the years and now stands at \\(486\\) tokens. What was its value before either tripling?",
-    "ans": "54",
-    "accept": [
-     "54",
-     "54.0",
-     "fifty four",
-     "fifty-four"
-    ],
-    "hints": [
-     "Undo two triplings by dividing by \\(3\\) twice."
-    ],
-    "sol": "<p>Two rewinds give \\(486 \\div 3 = 162\\) and \\(162 \\div 3 = \\boxed{54}\\).</p>"
-   },
-   {
-    "x": "A car enters a parking garage on some level, drives up \\(5\\) levels, down \\(8\\), and up \\(2\\), ending on level \\(6\\). On which level did it enter?",
-    "ans": "7",
-    "accept": [
-     "7",
-     "7.0",
-     "seven"
-    ],
-    "hints": [
-     "Rewind the moves from level \\(6\\), down \\(2\\), up \\(8\\), down \\(5\\)."
-    ],
-    "sol": "<p>Undoing the moves in reverse, \\(6 - 2 = 4\\), then \\(4 + 8 = 12\\), then \\(12 - 5 = 7\\).</p><p>Forward check, \\(7 + 5 - 8 + 2 = 6\\).</p><p>$$\\boxed{7}$$</p>"
-   },
-   {
-    "x": "After giving away half of his stickers and then \\(4\\) more, Leo has \\(26\\) stickers left. How many did he start with?",
-    "ans": "60",
-    "accept": [
-     "60",
-     "60.0",
-     "sixty"
-    ],
-    "hints": [
-     "Undo the \\(4\\) first, then undo the halving."
-    ],
-    "sol": "<p>Adding the \\(4\\) back gives \\(30\\), and doubling gives \\(\\boxed{60}\\). Forward, half of \\(60\\) is \\(30\\), minus \\(4\\) is \\(26\\).</p>"
-   },
-   {
-    "x": "Four integers form a chain in which each number after the first is twice the previous number minus \\(1\\). The fourth number is \\(41\\). What is the first?",
-    "ans": "6",
-    "accept": [
-     "6",
-     "6.0",
-     "six"
-    ],
-    "hints": [
-     "The forward rule is double then subtract \\(1\\), so the rewind is add \\(1\\) then halve.",
-     "Apply the rewind three times, once per link in the chain."
-    ],
-    "sol": "<p>Rewinding one link means adding \\(1\\) and halving. From \\(41\\), the third number is \\((41+1) \\div 2 = 21\\), the second is \\((21+1) \\div 2 = 11\\), and the first is \\((11+1) \\div 2 = 6\\).</p><p>Forward check, \\(6 \\to 11 \\to 21 \\to 41\\).</p><p>$$\\boxed{6}$$</p>"
-   }
-  ]
- }
+  "12.1": {
+    "title": "Look for a Pattern",
+    "next": "12.2",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Some problems are too big to attack head on. Nobody multiplies out the five hundredth term of anything. Strong solvers play instead. They compute a few small cases, line the results up, and watch for a rhythm. Once the rhythm is caught, a problem the size of a mountain collapses into one short division. This lesson is about catching rhythms."
+      },
+      {
+        "t": "prob",
+        "xp": 5,
+        "x": "Write out the ones digits of the first several multiples of \\(8\\), that is \\(8, 16, 24, 32, 40, 48, \\ldots\\), and watch what the ones digits do. Then predict the ones digit of the \\(43\\)rd multiple of \\(8\\).",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "The ones digits run \\(8, 6, 4, 2, 0\\) and then start over, a loop of length \\(5\\).",
+          "Divide \\(43\\) by \\(5\\) and let the remainder point to a spot inside the loop."
+        ],
+        "sol": "<p>The ones digits cycle through \\(8, 6, 4, 2, 0\\) forever, repeating every \\(5\\) multiples.</p><p>Since \\(43 = 8 \\times 5 + 3\\), the \\(43\\)rd multiple sits at the third spot of a fresh loop, whose ones digit is \\(4\\).</p><p>The check is sweet. \\(43 \\times 8 = 344\\), which indeed ends in \\(\\boxed{4}\\).</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A mosaic artist lays tiles along a hallway in a repeating run of nine tiles, five hexagons, then three squares, then one star, over and over. Among the first \\(500\\) tiles, how many are stars?",
+        "ans": "55",
+        "accept": [
+          "55",
+          "55.0",
+          "fifty five",
+          "fifty-five"
+        ],
+        "hints": [
+          "Each full run of \\(9\\) tiles contains exactly one star, so first count complete runs inside \\(500\\).",
+          "Since \\(500 = 55 \\times 9 + 5\\), there are \\(55\\) full runs plus \\(5\\) leftover tiles. Check whether any of those leftovers is a star."
+        ],
+        "sol": "<p>Dividing, \\(500 = 55 \\times 9 + 5\\), so the hallway holds \\(55\\) complete runs and then \\(5\\) extra tiles.</p><p>Each complete run contributes one star, giving \\(55\\) so far. The five leftover tiles are the first five of a new run, all hexagons, so no star joins them.</p><p>$$55 + 0 = \\boxed{55}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 5,
+        "x": "Compute the ones digit of each of \\(3^1, 3^2, 3^3, 3^4, 3^5\\), and keep going just far enough to see the ones digits repeat. How many steps long is the repeating loop?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "The powers begin \\(3, 9, 27, 81, 243\\). Read off just the ones digits."
+        ],
+        "sol": "<p>The ones digits run \\(3, 9, 7, 1\\), and then \\(3^5 = 243\\) brings the digit back to \\(3\\), restarting the parade.</p><p>The loop is \\(3, 9, 7, 1\\), which is \\(\\boxed{4}\\) steps long.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "Using the loop you just found, determine the ones digit of \\(3^{43}\\).",
+        "ans": "7",
+        "accept": [
+          "7",
+          "7.0",
+          "seven"
+        ],
+        "hints": [
+          "The loop \\(3, 9, 7, 1\\) restarts every \\(4\\) powers, so divide \\(43\\) by \\(4\\).",
+          "A remainder of \\(3\\) lands on the third digit of the loop."
+        ],
+        "sol": "<p>Since \\(43 = 10 \\times 4 + 3\\), the exponent \\(43\\) lands three steps into a fresh loop of \\(3, 9, 7, 1\\).</p><p>The third digit of the loop is \\(\\boxed{7}\\). A forty-three-digit-long monster of a number, and its final digit surrenders to one division.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "The powers of \\(7\\) have their own ones-digit loop. Find it, then find the ones digit of \\(7^7\\).",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "Compute ones digits of \\(7^1, 7^2, 7^3, 7^4\\). Multiplying ones digits only, \\(7, 9, 3, 1\\), then the loop restarts.",
+          "With a loop of length \\(4\\), the exponent \\(7\\) leaves remainder \\(3\\), the third spot."
+        ],
+        "sol": "<p>Tracking only ones digits, \\(7 \\times 7\\) ends in \\(9\\), then \\(9 \\times 7\\) ends in \\(3\\), then \\(3 \\times 7\\) ends in \\(1\\), and the loop \\(7, 9, 3, 1\\) restarts.</p><p>Since \\(7 = 1 \\times 4 + 3\\), the seventh power lands on the loop's third digit.</p><p>$$7^7 \\text{ ends in } \\boxed{3}$$</p><p>Indeed \\(7^7 = 823{,}543\\).</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Find the loop, then ride the remainder.</b> Many patterns repeat every \\(k\\) steps, and that repetition is a gift. To follow the ones digit of growing powers, keep only the ones digits and throw the rest of each number away, so a loop is forced, since only ten ones digits exist and one must eventually return. Once you hold the loop, division with remainder is the whole game. Divide the target position by the loop length \\(k\\). The quotient counts finished loops, and the remainder pins your exact spot inside the current one, matching remainder \\(1\\) to the first place, remainder \\(2\\) to the second, and a remainder of \\(0\\) to the final place. One division stands in for hundreds of steps of listing."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A vineyard climbs a hillside in terraces. The top terrace holds \\(14\\) vines, and each terrace below holds \\(3\\) more vines than the one above it. How many vines grow on the \\(20\\)th terrace from the top?",
+        "ans": "71",
+        "accept": [
+          "71",
+          "71.0",
+          "seventy one",
+          "seventy-one"
+        ],
+        "hints": [
+          "Make a tiny table. Terrace \\(1\\) has \\(14\\), terrace \\(2\\) has \\(17\\), terrace \\(3\\) has \\(20\\). Each step down adds one \\(3\\).",
+          "Reaching terrace \\(20\\) takes \\(19\\) steps down from the top."
+        ],
+        "sol": "<p>Each terrace adds \\(3\\), and getting from terrace \\(1\\) to terrace \\(20\\) takes \\(19\\) such steps.</p><p>$$14 + 19 \\times 3 = 14 + 57 = \\boxed{71}$$</p><p>The table makes the rule visible. The \\(n\\)th terrace holds the starting \\(14\\) plus \\(n - 1\\) copies of the step.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "How many vines grow on the hillside in total, across all \\(20\\) terraces?",
+        "ans": "850",
+        "accept": [
+          "850",
+          "850.0"
+        ],
+        "hints": [
+          "Pair the terraces from the outside in. The first with the last gives \\(14 + 71 = 85\\), the second with the second to last gives \\(17 + 68 = 85\\) again.",
+          "Twenty terraces form \\(10\\) such pairs."
+        ],
+        "sol": "<p>Pair the top terrace with the bottom one, the second with the second from the bottom, and so on. Every pair totals the same amount,</p><p>$$14 + 71 = 17 + 68 = \\cdots = 85$$</p><p>because each step inward adds \\(3\\) to one partner and removes \\(3\\) from the other. Ten pairs at \\(85\\) apiece give</p><p>$$10 \\times 85 = \\boxed{850}$$</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Small table, bold guess, honest check.</b> For a growth pattern, compute the first few values and lay them in a table beside their positions. A steady step means the \\(n\\)th value is the start plus \\(n-1\\) steps, and long totals surrender to pairing, where the ends of the list team up into equal sums. But a guessed rule is a suspect, not a verdict. Test it on a case you did not use to build it, or find the reason it works, before trusting it with position five hundred."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A fidget counter shows \\(3\\). Every button press changes the number by one rule. If the number is even, it is cut in half. If it is odd, \\(5\\) is added. So the display reads \\(3, 8, 4, 2, \\ldots\\) as presses go by. What number shows after the \\(99\\)th press, that is, as the \\(100\\)th number in the list counting the starting \\(3\\)?",
+        "ans": "2",
+        "accept": [
+          "2",
+          "2.0",
+          "two"
+        ],
+        "hints": [
+          "Keep pressing. The list runs \\(3, 8, 4, 2, 1, 6\\) and then returns to \\(3\\), so it loops every \\(6\\) numbers.",
+          "Since \\(100 = 16 \\times 6 + 4\\), the \\(100\\)th number sits at the fourth spot of the loop."
+        ],
+        "sol": "<p>Following the rule, \\(3 \\to 8 \\to 4 \\to 2 \\to 1 \\to 6 \\to 3\\), and the display is trapped in a loop of six numbers, \\(3, 8, 4, 2, 1, 6\\).</p><p>With \\(100 = 16 \\times 6 + 4\\), the \\(100\\)th number is the fourth member of the loop.</p><p>$$\\boxed{2}$$</p><p>Iteration problems almost always fall into a loop, because a rule with limited outputs must eventually revisit a number, and from there history repeats exactly.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A drummer warms up in bursts. The first burst is \\(1\\) beat, the second is \\(3\\) beats, the third is \\(5\\) beats, each burst two beats longer than the last. Compute the total beats after one burst, after two, after three, and after four, and stare at those totals. Then find the total number of beats after the \\(20\\)th burst.",
+        "ans": "400",
+        "accept": [
+          "400",
+          "400.0"
+        ],
+        "hints": [
+          "The running totals are \\(1, 4, 9, 16, \\ldots\\), which are perfect squares.",
+          "After \\(n\\) bursts the total is \\(n^2\\), so evaluate \\(20^2\\)."
+        ],
+        "sol": "<p>The totals march \\(1, 4, 9, 16\\), the perfect squares. The guess is that \\(n\\) bursts total \\(n^2\\) beats, and a fifth case confirms it, \\(16 + 9 = 25\\).</p><p>$$20^2 = \\boxed{400}$$</p><p>The reason is worth keeping. Each new odd burst wraps one more L-shaped shell around a square of dots, growing it to the next square, as the picture in the next insight shows.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Patterns can hide squares.</b> The sum \\(1 + 3 + 5 + \\cdots\\) of the first \\(n\\) odd numbers is always \\(n^2\\), and the picture explains why. Start with one dot. Adding \\(3\\) dots in an L shape makes a \\(2 \\times 2\\) square, adding \\(5\\) more makes \\(3 \\times 3\\), and every next odd number is exactly the shell needed to reach the next square. A pattern earns full trust only when a reason like this stands behind it. The table finds the rhythm, the reason locks it in.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a four by four square of dots built shell by shell, adding 1 then 3 then 5 then 7 dots\"><circle cx=\"95\" cy=\"178\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"137\" cy=\"178\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"95\" cy=\"136\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"137\" cy=\"136\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"179\" cy=\"178\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"95\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"179\" cy=\"136\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"137\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"179\" cy=\"94\" r=\"9\" fill=\"#8a5a08\"/><circle cx=\"221\" cy=\"178\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"95\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"136\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"137\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"94\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"179\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><circle cx=\"221\" cy=\"52\" r=\"9\" fill=\"#9fb3c8\"/><text x=\"175\" y=\"225\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">1 + 3 + 5 + 7 = 16</text></svg></div>"
+      },
+      {
+        "t": "fact",
+        "x": "Patterns without reasons can betray you. Place dots on a circle and connect every pair. The regions inside count \\(1, 2, 4, 8, 16\\), and nearly everyone bets the sixth dot gives \\(32\\). It gives \\(31\\). The pattern was a coincidence wearing a costume, which is why solvers always hunt for the why."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Two neon signs are switched on at the same moment. One flashes every \\(6\\) seconds, the other every \\(10\\) seconds. Over the next \\(3\\) minutes after switch-on, how many more times will the two signs flash at exactly the same moment?",
+        "ans": "6",
+        "accept": [
+          "6",
+          "6.0",
+          "six"
+        ],
+        "hints": [
+          "The joint flashes are themselves a repeating pattern. They happen at times that are multiples of both \\(6\\) and \\(10\\), and the first is at the least common multiple.",
+          "Shared flashes come every \\(30\\) seconds, and \\(3\\) minutes holds \\(180\\) seconds."
+        ],
+        "sol": "<p>A shared flash needs a time that is a multiple of \\(6\\) and of \\(10\\) at once, and the smallest is \\(\\text{lcm}(6,10) = 30\\). So the signs align every \\(30\\) seconds, at \\(30, 60, 90, 120, 150,\\) and \\(180\\) seconds.</p><p>$$180 \\div 30 = \\boxed{6}$$</p><p>Two separate rhythms always merge into one bigger rhythm, and its length is their least common multiple, an old friend from the divisibility chapter.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>The pattern hunter\u2019s routine.</b> Every problem in this lesson fell to the same four moves. Compute small cases, arrange them in a list or table, name the rhythm, then find the reason it must continue. After that, remainders locate positions inside loops, steps and pairings measure growing lists, and least common multiples merge two rhythms into one. The routine matters more than any single answer, because it turns a problem you could never finish by hand into one you can finish in your head."
+      }
+    ],
+    "review": [
+      {
+        "x": "A road-trip playlist of \\(8\\) songs plays on repeat without shuffle. Counting from the very first play, which song number is the \\(75\\)th song played?",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "Divide \\(75\\) by \\(8\\) and use the remainder to locate the spot inside the current pass."
+        ],
+        "sol": "<p>Since \\(75 = 9 \\times 8 + 3\\), nine full passes finish and the \\(75\\)th play is the third song of the next pass, song \\(\\boxed{3}\\).</p>"
+      },
+      {
+        "x": "A scarf is knitted in a repeating band of \\(12\\) rows, \\(5\\) blue rows followed by \\(7\\) white rows. Among the first \\(400\\) rows, how many are blue?",
+        "ans": "169",
+        "accept": [
+          "169",
+          "169.0"
+        ],
+        "hints": [
+          "Count full bands first, using \\(400 = 33 \\times 12 + 4\\).",
+          "The \\(4\\) leftover rows begin a new band, and a band begins with blue rows."
+        ],
+        "sol": "<p>There are \\(33\\) complete bands, each with \\(5\\) blue rows, for \\(165\\). The \\(4\\) leftover rows are the start of a new band, and the first \\(5\\) rows of any band are blue, so all \\(4\\) leftovers are blue.</p><p>$$165 + 4 = \\boxed{169}$$</p>"
+      },
+      {
+        "x": "What is the ones digit of \\(9^{55}\\)?",
+        "ans": "9",
+        "accept": [
+          "9",
+          "9.0",
+          "nine"
+        ],
+        "hints": [
+          "The ones digits of powers of \\(9\\) alternate, \\(9, 1, 9, 1, \\ldots\\), a loop of length \\(2\\)."
+        ],
+        "sol": "<p>Odd powers of \\(9\\) end in \\(9\\) and even powers end in \\(1\\). Since \\(55\\) is odd, \\(9^{55}\\) ends in \\(\\boxed{9}\\).</p>"
+      },
+      {
+        "x": "What is the ones digit of \\(4^{100}\\)?",
+        "ans": "6",
+        "accept": [
+          "6",
+          "6.0",
+          "six"
+        ],
+        "hints": [
+          "Powers of \\(4\\) end \\(4, 6, 4, 6, \\ldots\\), flipping with each step."
+        ],
+        "sol": "<p>The ones digit alternates, \\(4\\) for odd exponents and \\(6\\) for even ones. The exponent \\(100\\) is even, so the digit is \\(\\boxed{6}\\).</p>"
+      },
+      {
+        "x": "A charm bracelet design puts \\(7\\) charms on the first strand, and every following strand carries \\(4\\) more charms than the one before. How many charms are on the \\(15\\)th strand?",
+        "ans": "63",
+        "accept": [
+          "63",
+          "63.0",
+          "sixty three",
+          "sixty-three"
+        ],
+        "hints": [
+          "Reaching the \\(15\\)th strand takes \\(14\\) steps of \\(+4\\) from the first."
+        ],
+        "sol": "<p>Fourteen steps of \\(4\\) sit between the first and fifteenth strands,</p><p>$$7 + 14 \\times 4 = 7 + 56 = \\boxed{63}$$</p>"
+      },
+      {
+        "x": "A brick staircase has \\(30\\) rows. The top row uses \\(5\\) bricks, and each row below uses \\(2\\) more bricks than the row above. How many bricks does the whole staircase use?",
+        "ans": "1020",
+        "accept": [
+          "1020",
+          "1020.0",
+          "1,020"
+        ],
+        "hints": [
+          "First find the bottom row, \\(5 + 29 \\times 2 = 63\\) bricks.",
+          "Pair the rows from the outside in. Each pair totals \\(5 + 63 = 68\\), and \\(30\\) rows make \\(15\\) pairs."
+        ],
+        "sol": "<p>The bottom row holds \\(5 + 29 \\times 2 = 63\\) bricks. Pairing the top row with the bottom, the second with the second from the bottom, and so on gives \\(15\\) pairs, each totaling \\(68\\).</p><p>$$15 \\times 68 = \\boxed{1020}$$</p>"
+      },
+      {
+        "x": "A game screen starts at \\(6\\) and updates with every tap. If the number on screen is less than \\(20\\), it doubles. Otherwise, \\(15\\) is subtracted. Counting the starting \\(6\\) as the first number, what is the \\(50\\)th number to appear?",
+        "ans": "6",
+        "accept": [
+          "6",
+          "6.0",
+          "six"
+        ],
+        "hints": [
+          "Generate terms until the screen repeats. The list runs \\(6, 12, 24, 9, 18, 36, 21\\) and then returns to \\(6\\), a loop of \\(7\\).",
+          "Use \\(50 = 7 \\times 7 + 1\\), so the \\(50\\)th number sits at the loop's first spot."
+        ],
+        "sol": "<p>The screen cycles through \\(6, 12, 24, 9, 18, 36, 21\\) and then repeats, a loop of length \\(7\\).</p><p>Since \\(50 = 7 \\times 7 + 1\\), the \\(50\\)th number is the first member of the loop, \\(\\boxed{6}\\).</p>"
+      },
+      {
+        "x": "Adding consecutive odd numbers starting from \\(1\\), a student reaches a total of exactly \\(225\\). How many odd numbers did the student add?",
+        "ans": "15",
+        "accept": [
+          "15",
+          "15.0",
+          "fifteen"
+        ],
+        "hints": [
+          "The sum of the first \\(n\\) odd numbers is \\(n^2\\), so ask which square equals \\(225\\)."
+        ],
+        "sol": "<p>The running totals of odd numbers are the perfect squares, so the student stopped when \\(n^2 = 225\\), that is \\(n = \\boxed{15}\\).</p>"
+      },
+      {
+        "x": "Two meshed gears have \\(8\\) teeth and \\(14\\) teeth, and a paint mark sits where they currently touch. As they spin, the marks meet again only after a whole number of teeth have passed on both gears. How many full turns does the small gear make before the two marks first line up again?",
+        "ans": "7",
+        "accept": [
+          "7",
+          "7.0",
+          "seven"
+        ],
+        "hints": [
+          "The marks realign after a number of teeth that both gear sizes divide, the least common multiple of \\(8\\) and \\(14\\).",
+          "That is \\(56\\) teeth. Convert it into turns of the \\(8\\)-tooth gear."
+        ],
+        "sol": "<p>The meeting point must be a multiple of both \\(8\\) and \\(14\\), and \\(\\text{lcm}(8, 14) = 56\\) teeth. The small gear completes</p><p>$$56 \\div 8 = \\boxed{7}$$</p><p>full turns. The big gear makes \\(4\\), and the rhythms reunite.</p>"
+      },
+      {
+        "x": "Using the ones-digit loops of \\(3\\) and \\(7\\), find the ones digit of \\(3^{43} + 7^{43}\\).",
+        "ans": "0",
+        "accept": [
+          "0",
+          "0.0",
+          "zero"
+        ],
+        "hints": [
+          "From the lesson, \\(3^{43}\\) ends in \\(7\\). Run the same remainder argument on \\(7^{43}\\) with its loop \\(7, 9, 3, 1\\).",
+          "Add the two ones digits, and the ones digit of the sum is what remains after any carry."
+        ],
+        "sol": "<p>Both loops have length \\(4\\), and \\(43\\) leaves remainder \\(3\\), landing on the third spot of each. So \\(3^{43}\\) ends in \\(7\\) and \\(7^{43}\\) ends in \\(3\\).</p><p>The sum therefore ends the way \\(7 + 3 = 10\\) ends, in \\(\\boxed{0}\\).</p><p>Two enormous towers, one shared remainder, and a carry that wipes the digit to zero. That is the pattern strategy running at full power.</p>"
+      }
+    ]
+  },
+  "12.2": {
+    "title": "Make an Organized List",
+    "next": "12.3",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Some problems have no formula at all. They simply ask what is possible, and the only honest way to answer is to write every possibility down. The danger is missing one. So strong solvers never scribble possibilities at random. They pick an order before they start, march through it, and end with a list that proves itself complete. This lesson is about building lists that cannot leak."
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "At an arcade counter, plushies cost \\(12\\) tickets and keychains cost \\(5\\) tickets. A player spends exactly \\(53\\) tickets. How many plushies did the player buy?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "Try each plushie count in turn, \\(0, 1, 2, 3, 4\\), and check whether the remaining tickets are a multiple of \\(5\\).",
+          "A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), which makes each leftover instant to test."
+        ],
+        "sol": "<p>March the plushie count. Zero plushies leaves \\(53\\), one leaves \\(41\\), two leave \\(29\\), three leave \\(17\\), none of which end in \\(0\\) or \\(5\\). Four plushies leave \\(53 - 48 = 5\\), exactly one keychain.</p><p>Five plushies would cost \\(60\\), too much, so the march is over and the answer is unique, \\(\\boxed{4}\\) plushies.</p><p>The ones-digit shortcut turned each check into a glance. Good lists lean on quick tests like that.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "At a juice bar, smoothies cost \\(9\\) tokens and juices cost \\(6\\) tokens. A camp counselor spends exactly \\(60\\) tokens and buys at least one drink of some kind, possibly zero of one kind. How many different orders are possible?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "March through the number of smoothies, \\(0, 1, 2, \\ldots\\), and for each one check whether the leftover tokens split evenly into \\(6\\)s."
+        ],
+        "sol": "<p>Walk the smoothie count upward and test the leftovers. Zero smoothies leaves \\(60\\), which is \\(10\\) juices. One smoothie leaves \\(51\\), not a multiple of \\(6\\). Two leave \\(42\\), which is \\(7\\) juices. Three leave \\(33\\), no. Four leave \\(24\\), which is \\(4\\) juices. Five leave \\(15\\), no. Six leave \\(6\\), one juice. Seven would cost too much.</p><p>The complete list has \\(\\boxed{4}\\) orders. Because the smoothie count marched \\(0\\) through \\(6\\) without skipping, nothing was missed.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>March one variable.</b> When two unknowns share one total, do not juggle both. Pick one, usually the pricier item, and walk its count step by step from zero. Each step pins the leftover, and the leftover either splits cleanly or it does not. The finished table is the whole truth, every order that exists and none that do not, and the marching order is what makes it airtight.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smoothies</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">juices</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">0</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">10</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">7</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">6</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr></table></div>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "How many two-digit numbers have digits that multiply to \\(12\\)?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "List the factor pairs of \\(12\\) where both factors are single digits, then remember each pair can appear in two orders."
+        ],
+        "sol": "<p>Digit pairs multiplying to \\(12\\) must be factor pairs with both factors at most \\(9\\), so \\(2 \\times 6\\) and \\(3 \\times 4\\). The pair \\(1 \\times 12\\) fails, since \\(12\\) is not a digit.</p><p>Each surviving pair builds two numbers, \\(26\\) and \\(62\\), \\(34\\) and \\(43\\).</p><p>$$\\boxed{4}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A puzzle card reads, find the two-digit number that is a multiple of \\(9\\), has both digits prime, and has a ones digit larger than its tens digit. What is the number?",
+        "ans": "27",
+        "accept": [
+          "27",
+          "27.0",
+          "twenty seven",
+          "twenty-seven"
+        ],
+        "hints": [
+          "Start from the tightest condition. There are only ten two-digit multiples of \\(9\\), so list them.",
+          "The prime digits are \\(2, 3, 5, 7\\). Strike out every multiple of \\(9\\) containing any other digit, then apply the last condition."
+        ],
+        "sol": "<p>The multiples of \\(9\\) give a short master list, \\(18, 27, 36, 45, 54, 63, 72, 81, 90, 99\\).</p><p>Both digits must come from \\(2, 3, 5, 7\\). That single stroke eliminates everything except \\(27\\) and \\(72\\).</p><p>Finally the ones digit must beat the tens digit, and only \\(\\boxed{27}\\) survives.</p><p>Notice the strategy. The multiple-of-nine condition built a world of ten numbers, and the other conditions only had to filter it.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Start where the light is brightest.</b> When a hunt comes with several conditions, rank them by how hard they squeeze. A condition like multiple of $9$ leaves only ten candidates, while a condition like ones digit larger than tens leaves dozens, so begin with the squeeze. Build the short master list from the tightest condition, then let the looser ones cross entries off. The same hunt run in the opposite order works, but you would be testing ninety numbers instead of ten."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A snack stand offers \\(6\\) different toppings, and a frozen yogurt comes with exactly \\(2\\) different toppings. Using an alphabetical list or otherwise, count how many different topping pairs are possible.",
+        "ans": "15",
+        "accept": [
+          "15",
+          "15.0",
+          "fifteen"
+        ],
+        "hints": [
+          "Name the toppings A through F and list pairs alphabetically, all pairs starting with A first, then those starting with B, and so on.",
+          "A starts \\(5\\) pairs, B starts \\(4\\) new ones, and each later letter starts one fewer."
+        ],
+        "sol": "<p>Alphabetical order is the spine. Pairs beginning with A are AB, AC, AD, AE, AF, five of them. Pairs beginning with B add BC, BD, BE, BF, four new ones, since AB is already counted. The pattern steps down from there.</p><p>$$5 + 4 + 3 + 2 + 1 = \\boxed{15}$$</p><p>This is the pairs count from the counting chapter, rebuilt by hand. When a formula slips your mind mid-problem, an organized list will always rebuild it for you.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A street performer splits \\(7\\) identical juggling rings among \\(3\\) identical trays, with every tray holding at least one ring. Since the trays are identical, only the group sizes matter, not which tray is which. How many different splits are possible?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "Sort each split from largest pile to smallest, and list splits in order of the largest pile, starting from the biggest it could be, which is \\(5\\).",
+          "For each choice of largest pile, march the middle pile downward and let the smallest pile be whatever remains, checking it stays between \\(1\\) and the middle."
+        ],
+        "sol": "<p>Write every split largest pile first. The largest pile can be at most \\(5\\), since the other two trays need a ring each.</p><p>Largest \\(5\\) forces \\(5, 1, 1\\). Largest \\(4\\) gives \\(4, 2, 1\\). Largest \\(3\\) gives \\(3, 3, 1\\) and \\(3, 2, 2\\). A largest pile of \\(2\\) could hold at most \\(2 + 2 + 2 = 6\\) rings, too few.</p><p>$$\\boxed{4}$$</p><p>Sorting each split before writing it is what stops \\(4, 2, 1\\) and \\(1, 2, 4\\) from sneaking in as two different entries.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Give the list a spine.</b> A safe list is sorted by something, largest pile first, smallest number first, alphabetical order, anything consistent. The spine does two jobs at once. It stops the same possibility from sneaking in twice wearing a different order, and it tells you exactly when you are done, because the next entry would break the ordering rule. A list with a spine is a proof. A list without one is a pile of guesses.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">largest tray</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">middle</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smallest</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">5</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td></tr></table></div>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A gym locker's number is between \\(30\\) and \\(60\\). Divided by \\(7\\) it leaves remainder \\(2\\), and divided by \\(4\\) it leaves remainder \\(1\\). What is the locker number?",
+        "ans": "37",
+        "accept": [
+          "37",
+          "37.0",
+          "thirty seven",
+          "thirty-seven"
+        ],
+        "hints": [
+          "The remainder-\\(2\\) condition is the rarer one. List those numbers between \\(30\\) and \\(60\\) first, they climb by \\(7\\)s.",
+          "That short list is \\(30, 37, 44, 51, 58\\). Test each against the divided-by-\\(4\\) condition."
+        ],
+        "sol": "<p>Numbers leaving remainder \\(2\\) under division by \\(7\\) arrive every seven steps, so between \\(30\\) and \\(60\\) the whole list is \\(30, 37, 44, 51, 58\\).</p><p>Now test remainders under \\(4\\). They come out \\(2, 1, 0, 3, 2\\) in turn, and only \\(37\\) leaves the required \\(1\\).</p><p>$$\\boxed{37}$$</p><p>Two overlapping remainder conditions almost always fall to this one-two, list the stingier condition, filter with the looser one.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "How many three-digit numbers have digits adding to exactly \\(4\\)?",
+        "ans": "10",
+        "accept": [
+          "10",
+          "10.0",
+          "ten"
+        ],
+        "hints": [
+          "Organize by the hundreds digit, which can be \\(1, 2, 3,\\) or \\(4\\). Each choice leaves a smaller target for the last two digits.",
+          "With hundreds digit \\(1\\), the last two digits must add to \\(3\\), giving \\(03, 12, 21, 30\\), four numbers. Count the other cases the same way."
+        ],
+        "sol": "<p>Case on the hundreds digit. If it is \\(1\\), the remaining digits sum to \\(3\\), giving \\(103, 112, 121, 130\\), four numbers. If it is \\(2\\), they sum to \\(2\\), giving \\(202, 211, 220\\), three numbers. If it is \\(3\\), two numbers, \\(301, 310\\). If it is \\(4\\), just \\(400\\).</p><p>$$4 + 3 + 2 + 1 = \\boxed{10}$$</p><p>The counts stepping down \\(4, 3, 2, 1\\) are the list rewarding good organization with a pattern, the previous lesson shaking hands with this one.</p>"
+      },
+      {
+        "t": "fact",
+        "x": "There is a famous online encyclopedia whose entries are not words but lists of numbers. Type in the start of any sequence you have discovered, like \\(1, 4, 9, 16\\), and it names the pattern, cites who found it, and shows where else it appears. Mathematicians add new lists to it nearly every day."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A librarian packs \\(8\\) identical books into identical boxes, using at most \\(3\\) boxes, with no box left empty. How many different packings are possible?",
+        "ans": "10",
+        "accept": [
+          "10",
+          "10.0",
+          "ten"
+        ],
+        "hints": [
+          "Split into cases by the number of boxes used, one, two, or three, and handle each case as its own ordered list.",
+          "With two boxes list \\(7{+}1, 6{+}2, 5{+}3, 4{+}4\\) and stop before repeats. With three, march the largest pile from \\(6\\) down."
+        ],
+        "sol": "<p>One box gives a single packing, all \\(8\\) together.</p><p>Two boxes, written larger pile first, give \\(7{+}1\\), \\(6{+}2\\), \\(5{+}3\\), \\(4{+}4\\), and stopping there matters, since \\(3{+}5\\) would repeat \\(5{+}3\\). That is \\(4\\) packings.</p><p>Three boxes, marching the largest pile downward, give \\(6{+}1{+}1\\), \\(5{+}2{+}1\\), \\(4{+}3{+}1\\), \\(4{+}2{+}2\\), \\(3{+}3{+}2\\). That is \\(5\\) more.</p><p>$$1 + 4 + 5 = \\boxed{10}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "A padlock's three-digit code has strictly decreasing digits, is a multiple of \\(5\\), and has digits adding to \\(12\\). How many codes fit all three conditions?",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), so split into those two cases.",
+          "Ending in \\(0\\) needs the first two digits to add to \\(12\\) with first digit larger. Ending in \\(5\\) needs them to add to \\(7\\) with both digits larger than \\(5\\), which is worth checking carefully."
+        ],
+        "sol": "<p>Case one, the code ends in \\(0\\). The first two digits add to \\(12\\), strictly decreasing into the \\(0\\), giving \\(93, 84, 75\\), so the codes \\(930, 840, 750\\).</p><p>Case two, the code ends in \\(5\\). The first two digits would add to \\(7\\) while each stays above \\(5\\), but two digits above \\(5\\) already add to at least \\(13\\). The case is empty.</p><p>$$3 + 0 = \\boxed{3}$$</p><p>An empty case is not wasted work. Proving nothing lives there is exactly what makes the final count trustworthy.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Casework is a list of lists.</b> Big hunts split along one natural feature, the hundreds digit, the number of boxes, the count of one item. Each case becomes a small list you can finish in one breath, and the case totals add up at the end. Choose the splitting feature so nothing can belong to two cases at once and nothing can escape every case. That is the same promise a single list makes, no repeats and no gaps, made at a larger scale. Answer the two challenges every finished list must meet, why everything on it belongs and why nothing else can exist, and what you hand in is not a guess. It is a proof written as a table."
+      }
+    ],
+    "review": [
+      {
+        "x": "A bake sale prices muffins at \\(8\\) tokens and cookies at \\(5\\) tokens. One customer spends exactly \\(67\\) tokens. How many muffins did the customer buy?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "March the muffin count from \\(0\\) to \\(8\\) and check which leftover is a multiple of \\(5\\), meaning it ends in \\(0\\) or \\(5\\)."
+        ],
+        "sol": "<p>Marching muffins from zero, the leftovers run \\(67, 59, 51, 43, 35, 27, 19, 11, 3\\). Only \\(35\\) ends in \\(0\\) or \\(5\\), at four muffins, leaving \\(7\\) cookies.</p><p>$$\\boxed{4}$$</p>"
+      },
+      {
+        "x": "How many two-digit multiples of \\(7\\) have digits adding to \\(10\\)?",
+        "ans": "2",
+        "accept": [
+          "2",
+          "2.0",
+          "two"
+        ],
+        "hints": [
+          "There are only thirteen two-digit multiples of \\(7\\), so list them and check digit sums."
+        ],
+        "sol": "<p>The multiples run \\(14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98\\). Checking digit sums, only \\(28\\) and \\(91\\) reach \\(10\\).</p><p>$$\\boxed{2}$$</p>"
+      },
+      {
+        "x": "Six identical candles are packed into up to \\(3\\) identical gift bags, where a bag may hold any number of candles but empty bags are thrown away. Only the group sizes matter. How many different packings are possible?",
+        "ans": "7",
+        "accept": [
+          "7",
+          "7.0",
+          "seven"
+        ],
+        "hints": [
+          "Case on the number of bags actually used, one, two, or three, listing each case largest bag first.",
+          "One bag gives one way. Two bags give \\(5{+}1, 4{+}2, 3{+}3\\). List the three-bag splits the same careful way."
+        ],
+        "sol": "<p>One bag, just \\(6\\). Two bags, largest first, \\(5{+}1\\), \\(4{+}2\\), \\(3{+}3\\). Three bags, \\(4{+}1{+}1\\), \\(3{+}2{+}1\\), \\(2{+}2{+}2\\).</p><p>$$1 + 3 + 3 = \\boxed{7}$$</p>"
+      },
+      {
+        "x": "A jersey number is less than \\(50\\), leaves remainder \\(3\\) when divided by \\(8\\), and is a multiple of \\(5\\). What is the number?",
+        "ans": "35",
+        "accept": [
+          "35",
+          "35.0",
+          "thirty five",
+          "thirty-five"
+        ],
+        "hints": [
+          "List the numbers under \\(50\\) that leave remainder \\(3\\) under \\(8\\), they climb by eights, then keep the one ending in \\(0\\) or \\(5\\)."
+        ],
+        "sol": "<p>Remainder \\(3\\) under \\(8\\) gives the list \\(3, 11, 19, 27, 35, 43\\). The only multiple of \\(5\\) on it is \\(\\boxed{35}\\).</p>"
+      },
+      {
+        "x": "How many two-digit numbers have digits adding to exactly \\(9\\)?",
+        "ans": "9",
+        "accept": [
+          "9",
+          "9.0",
+          "nine"
+        ],
+        "hints": [
+          "March the tens digit from \\(1\\) to \\(9\\). Each choice forces the ones digit completely."
+        ],
+        "sol": "<p>For each tens digit \\(1\\) through \\(9\\), the ones digit must be \\(9\\) minus it, giving \\(18, 27, 36, 45, 54, 63, 72, 81, 90\\), one number per tens digit.</p><p>$$\\boxed{9}$$</p>"
+      },
+      {
+        "x": "How many three-digit numbers use only the digits \\(1, 2, 3, 4\\) with the digits strictly increasing from left to right?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "Strictly increasing means the number is just a choice of three different digits, written in their only legal order. List the choices."
+        ],
+        "sol": "<p>Choosing which digit to leave out gives every possibility, \\(123, 124, 134, 234\\).</p><p>$$\\boxed{4}$$</p>"
+      },
+      {
+        "x": "An ice-cream cart offers \\(7\\) flavors, and a double cone holds \\(2\\) different flavors, order not mattering. How many different double cones are possible?",
+        "ans": "21",
+        "accept": [
+          "21",
+          "21.0",
+          "twenty one",
+          "twenty-one"
+        ],
+        "hints": [
+          "List pairs with an alphabetical spine. The first flavor starts \\(6\\) pairs, the next starts \\(5\\) new ones, and so on."
+        ],
+        "sol": "<p>With the flavors ordered, the first starts \\(6\\) pairs, the second \\(5\\) new ones, then \\(4, 3, 2, 1\\).</p><p>$$6+5+4+3+2+1 = \\boxed{21}$$</p>"
+      },
+      {
+        "x": "How many three-digit palindromes smaller than \\(300\\) are multiples of \\(4\\)?",
+        "ans": "5",
+        "accept": [
+          "5",
+          "5.0",
+          "five"
+        ],
+        "hints": [
+          "A three-digit palindrome reads the same forward and backward, so below \\(300\\) it looks like \\(1x1\\) or \\(2x2\\). A multiple of \\(4\\) must be even, which kills one family.",
+          "List the ten numbers \\(202, 212, \\ldots, 292\\) and test each for divisibility by \\(4\\) using its last two digits."
+        ],
+        "sol": "<p>Palindromes \\(1x1\\) end in \\(1\\), which is odd, so no multiples of \\(4\\) live there. The \\(2x2\\) family is \\(202, 212, 222, 232, 242, 252, 262, 272, 282, 292\\).</p><p>A number is a multiple of \\(4\\) exactly when its last two digits are, so test \\(02, 12, 22, \\ldots\\) The survivors are \\(212, 232, 252, 272, 292\\).</p><p>$$\\boxed{5}$$</p>"
+      },
+      {
+        "x": "At a fair, rides cost \\(12\\) tickets and games cost \\(7\\) tickets. A visitor spends exactly \\(100\\) tickets. How many rides and games did the visitor enjoy in total?",
+        "ans": "10",
+        "accept": [
+          "10",
+          "10.0",
+          "ten"
+        ],
+        "hints": [
+          "March the ride count from \\(0\\) to \\(8\\) and test whether the leftover splits into \\(7\\)s.",
+          "Only one ride count works. Add its rides and games together."
+        ],
+        "sol": "<p>Marching rides, the leftovers are \\(100, 88, 76, 64, 52, 40, 28, 16, 4\\), and only \\(28\\), at six rides, is a multiple of \\(7\\), giving four games.</p><p>$$6 + 4 = \\boxed{10}$$</p>"
+      },
+      {
+        "x": "A game shop sells power crystals in sizes \\(1\\), \\(5\\), and \\(10\\) gems. In how many different ways can a player spend exactly \\(25\\) gems, where only the number of each size matters?",
+        "ans": "12",
+        "accept": [
+          "12",
+          "12.0",
+          "twelve"
+        ],
+        "hints": [
+          "Case on the number of \\(10\\)-gem crystals, which can be \\(0\\), \\(1\\), or \\(2\\). Inside each case, march the \\(5\\)-gem count.",
+          "Whatever remains after the tens and fives is filled by \\(1\\)s in exactly one way, so just count the legal five-counts in each case."
+        ],
+        "sol": "<p>Case on tens. With two tens, \\(5\\) gems remain, allowing zero or one five, \\(2\\) ways. With one ten, \\(15\\) remain, allowing zero through three fives, \\(4\\) ways. With no tens, \\(25\\) remain, allowing zero through five fives, \\(6\\) ways.</p><p>$$2 + 4 + 6 = \\boxed{12}$$</p><p>The singles are the silent partner. They mop up any remainder in exactly one way, so the whole count lives in the tens and fives.</p>"
+      }
+    ]
+  },
+  "12.3": {
+    "title": "Draw a Picture",
+    "next": "12.4",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Some problems arrive as a wall of words, and the words are designed to tangle you. The strongest first move is often not a calculation at all. It is a sketch. A path becomes a map, a schedule becomes a timeline, a set of clues becomes dots and arrows, and suddenly the answer is sitting in plain sight. This lesson is about drawing your way past the tangle."
+      },
+      {
+        "t": "prob",
+        "xp": 5,
+        "x": "A baker slices a baguette into \\(9\\) pieces, and each cut takes \\(30\\) seconds. Sketch the baguette with its cut marks. How many minutes does the slicing take?",
+        "ans": "4",
+        "accept": [
+          "4",
+          "4.0",
+          "four"
+        ],
+        "hints": [
+          "Draw the loaf and mark the cuts. Nine pieces need one fewer cut than pieces."
+        ],
+        "sol": "<p>The sketch shows \\(8\\) cut marks producing \\(9\\) pieces, since each cut adds exactly one piece to the count.</p><p>$$8 \\times 30 = 240 \\text{ seconds} = \\boxed{4} \\text{ minutes}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A straight garden path is \\(180\\) meters long, with a lamp at each end and lamps every \\(15\\) meters in between. Draw dots for lamps. How many lamps line the path?",
+        "ans": "13",
+        "accept": [
+          "13",
+          "13.0",
+          "thirteen"
+        ],
+        "hints": [
+          "Count gaps first. The path holds \\(180 \\div 15 = 12\\) gaps.",
+          "Dots outnumber the gaps between them by exactly one."
+        ],
+        "sol": "<p>The path divides into \\(180 \\div 15 = 12\\) gaps, and the drawing shows one more lamp than gaps, since both ends hold a lamp.</p><p>$$12 + 1 = \\boxed{13}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Two boards, each \\(30\\) cm long, are glued together with an \\(8\\) cm overlap to make one longer shelf. Draw the two boards overlapping. How many centimeters long is the shelf?",
+        "ans": "52",
+        "accept": [
+          "52",
+          "52.0",
+          "fifty two",
+          "fifty-two"
+        ],
+        "hints": [
+          "Laid end to end they would span \\(60\\) cm, but the overlapped stretch was counted twice, once inside each board."
+        ],
+        "sol": "<p>End to end, the boards would cover \\(30 + 30 = 60\\) cm, but the drawing shows the \\(8\\) cm overlap belonging to both boards at once, so it was counted twice.</p><p>$$60 - 8 = \\boxed{52}$$</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Count the gaps, not the things.</b> Cuts, gaps, overlaps, and fences all hide the same off-by-one trap, and one tiny drawing disarms it. Pieces outnumber cuts by one. Lamps outnumber the gaps between them by one. An overlap is length counted twice, so subtract it once. None of these need a formula memorized, because five dots on scratch paper settle the question instantly, and they settle it the right way every time.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"five dots in a row with four gaps between them\"><path d=\"M40,60 L300,60\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"105\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"170\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"235\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><circle cx=\"300\" cy=\"60\" r=\"7\" fill=\"#2f4a6e\"/><text x=\"72\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">1</text><text x=\"137\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">2</text><text x=\"202\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">3</text><text x=\"267\" y=\"46\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">4</text><text x=\"170\" y=\"100\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">5 lamps, only 4 gaps</text></svg></div>"
+      },
+      {
+        "t": "prob",
+        "xp": 5,
+        "x": "On a straight boardwalk, the ice cream stand is \\(40\\) meters east of the pier, and the arcade is \\(25\\) meters west of the ice cream stand. Sketch the boardwalk as a line. How many meters is the arcade from the pier?",
+        "ans": "15",
+        "accept": [
+          "15",
+          "15.0",
+          "fifteen"
+        ],
+        "hints": [
+          "Mark the pier, step \\(40\\) east to the ice cream stand, then step \\(25\\) back west for the arcade."
+        ],
+        "sol": "<p>On the sketch, the arcade lands \\(40 - 25 = 15\\) meters east of the pier.</p><p>$$\\boxed{15}$$</p><p>Without the line, east and west blur together. With it, the subtraction draws itself.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A park drone takes off, flies \\(9\\) blocks east, \\(2\\) blocks north, \\(3\\) blocks west, and \\(6\\) blocks north, then lands. Sketch the flight, then find the straight-line distance in blocks from takeoff to landing.",
+        "ans": "10",
+        "accept": [
+          "10",
+          "10.0",
+          "ten"
+        ],
+        "hints": [
+          "Total the east-west motion and the north-south motion separately. The wandering collapses to one net east amount and one net north amount.",
+          "Net \\(6\\) east and net \\(8\\) north are the legs of a right triangle, and the straight-line distance is its hypotenuse."
+        ],
+        "sol": "<p>East-west movement nets to \\(9 - 3 = 6\\) blocks east, and north-south nets to \\(2 + 6 = 8\\) blocks north. On the sketch, takeoff and landing sit at two corners of a right triangle with legs \\(6\\) and \\(8\\).</p><p>$$d^2 = 6^2 + 8^2 = 100, \\qquad d = \\boxed{10}$$</p><p>Four legs of flying, one triangle, and the Pythagorean Theorem from the geometry chapter finishes it.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Turn wandering into a map.</b> However tangled a journey sounds, its east-west steps combine into one net east-west amount, and its north-south steps into one net north-south amount, because opposite directions cancel. Drawn on a grid, the whole trip collapses into a single right triangle, and the straight-line distance is just its hypotenuse. The picture does the bookkeeping that words make slippery.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 340 260\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a wandering path collapsed into one right triangle\"><path d=\"M50,210 L158,210 L158,186 L122,186 L122,114\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2.6\" stroke-linejoin=\"round\"/><circle cx=\"50\" cy=\"210\" r=\"5\" fill=\"#2f4a6e\"/><circle cx=\"122\" cy=\"114\" r=\"5\" fill=\"#8a5a08\"/><path d=\"M50,222 L122,222\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M134,210 L134,114\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><path d=\"M50,210 L122,114\" fill=\"none\" stroke=\"#8a5a08\" stroke-width=\"2.2\" stroke-dasharray=\"6 4\"/><text x=\"86\" y=\"240\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">net 6 east</text><text x=\"163\" y=\"162\" font-size=\"13\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">net 8 north</text><text x=\"64\" y=\"150\" font-size=\"13\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">10</text></svg></div>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A claw crane lifts a prize \\(7\\) cm with each press of the button, but between presses the prize slips back \\(3\\) cm. The prize must rise \\(25\\) cm to clear the bin wall, and once it clears, it is out, no more slipping. Draw the height after each press. How many presses does it take?",
+        "ans": "6",
+        "accept": [
+          "6",
+          "6.0",
+          "six"
+        ],
+        "hints": [
+          "Track the peak height at each press. Press one peaks at \\(7\\), then each later press peaks \\(4\\) higher than the last, since \\(7\\) up and \\(3\\) back gain \\(4\\) per full cycle.",
+          "The story ends the moment a peak reaches \\(25\\). Do not subtract the slip after the winning press."
+        ],
+        "sol": "<p>The peaks climb \\(7, 11, 15, 19, 23, 27\\), each press peaking \\(4\\) above the last.</p><p>The fifth press peaks at \\(23\\), still short. The sixth press peaks at \\(27\\), past the \\(25\\) cm wall, and the prize is out before any slip can happen.</p><p>$$\\boxed{6}$$</p><p>The tempting shortcut, divide \\(25\\) by the net gain of \\(4\\), misses that the final press never gives back its \\(3\\) cm. The drawing catches what the formula fumbles.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Respect the finish line.</b> Progress that gains and gives back, climbing and slipping, filling and leaking, charging and draining, is a timeline problem, and timelines end early. The last step counts in full, with nothing given back, because the story stops at the goal. Sketch the level after every step and circle the first moment the goal line is crossed. Averages and net rates describe the middle of the journey, never its end."
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "Four swimmers line up for a relay in positions \\(1\\) through \\(4\\). Kai swims immediately after Lena. Mira swims somewhere before Lena. Jo does not swim first, and Jo swims somewhere before Kai. Draw four slots and place the swimmers. Which position does Jo swim?",
+        "ans": "2",
+        "accept": [
+          "2",
+          "2.0",
+          "two"
+        ],
+        "hints": [
+          "Kai immediately after Lena glues them into a block, Lena then Kai. Try the block in positions \\(2\\)-\\(3\\) and \\(3\\)-\\(4\\), since Mira must fit before Lena.",
+          "If Lena and Kai take \\(2\\) and \\(3\\), the only slot before Kai that is not first is taken by Lena. Push the block later and see what opens up."
+        ],
+        "sol": "<p>Glue Lena and Kai into a block. If the block sits at positions \\(2\\) and \\(3\\), then Mira takes \\(1\\), and Jo needs a slot before Kai that is not position \\(1\\), but position \\(2\\) is Lena's. Dead end.</p><p>So the block sits at \\(3\\) and \\(4\\). Mira must come before Lena, and Jo cannot be first, so Mira takes \\(1\\) and Jo takes \\(2\\). Every clue checks out with the order Mira, Jo, Lena, Kai.</p><p>$$\\boxed{2}$$</p><p>Drawing the four slots makes each clue a physical constraint you can test in seconds, instead of a sentence you have to keep rereading.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 340 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"five islands connected by ferry routes\"><path d=\"M70,60 L250,50 M250,50 L160,130 M160,130 L70,60 M160,130 L90,200 M90,200 L260,200\" fill=\"none\" stroke=\"#9fb3c8\" stroke-width=\"2.4\"/><circle cx=\"70\" cy=\"60\" r=\"9\" fill=\"#2257c5\"/><circle cx=\"250\" cy=\"50\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"160\" cy=\"130\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"90\" cy=\"200\" r=\"9\" fill=\"#2f4a6e\"/><circle cx=\"260\" cy=\"200\" r=\"9\" fill=\"#8a5a08\"/><text x=\"70\" y=\"40\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">Coral</text><text x=\"250\" y=\"30\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Palm</text><text x=\"192\" y=\"136\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Bell</text><text x=\"90\" y=\"228\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">Drift</text><text x=\"260\" y=\"228\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#8a5a08\" font-family=\"Inter, sans-serif\">Ebb</text></svg></div>Five islands are served by ferries running both directions on these routes only. Coral to Palm, Palm to Bell, Bell to Coral, Bell to Drift, and Drift to Ebb. What is the smallest number of ferry rides that gets a traveler from Coral to Ebb?",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "Only Drift connects to Ebb, so any trip to Ebb must arrive through Drift.",
+          "Find the fastest way from Coral to Drift, then add the final ride."
+        ],
+        "sol": "<p>On the drawing, Ebb hangs off the network by a single route from Drift, so the last ride is forced. The question becomes reaching Drift quickly.</p><p>Drift connects only to Bell, and Coral reaches Bell directly. So Coral to Bell to Drift to Ebb uses three rides, and nothing shorter exists, since no single route touches both Coral and Drift or both Coral and Ebb.</p><p>$$\\boxed{3}$$</p><p>A route list is fog. The same list drawn as dots and lines is a map you can walk with a finger.</p>"
+      },
+      {
+        "t": "fact",
+        "x": "Drawing dots and lines for a connection puzzle has a birthday. In \\(1736\\), the city of Konigsberg wondered whether a stroll could cross each of its seven bridges exactly once. Euler drew the land masses as dots and the bridges as lines, proved the stroll impossible, and accidentally founded graph theory, the mathematics behind every map app you have ever used."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "<div style=\"display:flex;justify-content:center;margin:2px 0 16px\"><svg viewBox=\"0 0 340 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a circle cut by three chords into seven regions\"><circle cx=\"170\" cy=\"115\" r=\"88\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2.4\"/><path d=\"M92,74 L252,142 M100,160 L242,60 M128,196 L222,34\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"170\" y=\"226\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">3 chords, 7 regions</text></svg></div>A straight chord drawn across a circle splits it into \\(2\\) regions. Two chords can make as many as \\(4\\) regions, and three chords, drawn so every pair crosses inside the circle at a fresh point, make \\(7\\), as shown above. Keep drawing and counting. What is the greatest number of regions five chords can make?",
+        "ans": "16",
+        "accept": [
+          "16",
+          "16.0",
+          "sixteen"
+        ],
+        "hints": [
+          "List the maximum counts so far, \\(2, 4, 7\\), and look at the jumps between them. Each new chord adds one more region than the chord before it added.",
+          "The jumps run \\(2, 3, 4, 5\\), so the fourth chord brings the count to \\(11\\), and the fifth continues the pattern."
+        ],
+        "sol": "<p>The counts climb \\(2, 4, 7\\), with jumps of \\(2\\), then \\(3\\). The drawing explains the jumps. A new chord crossing \\(k\\) old chords passes through \\(k + 1\\) regions and splits each one, so drawing every chord to cross all previous chords makes the fourth chord add \\(4\\) and the fifth add \\(5\\).</p><p>$$2, \\; 4, \\; 7, \\; 11, \\; \\boxed{16}$$</p><p>The picture generated the small cases, the pattern lesson extended them, and the crossing argument supplied the reason. Three tools from this toolkit, one problem.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Let the sketch do the reasoning.</b> Relationships and clues are pictures waiting to happen. Draw the finishing slots or the network, turn each clue into an arrow or a glued block, and place the most restrictive piece first, exactly like the tightest-condition rule from the organized-list lesson. A wrong placement collides with a clue almost at once, and each collision wipes out a whole branch of possibilities. The same pencil builds small cases too. Draw the one-chord picture, the two-chord picture, the three-chord picture, and the numbers you harvest feed straight into the pattern strategy, while an organized list keeps the harvest tidy. The toolkit works as a team, and the pencil sketch is very often the member that goes first."
+      }
+    ],
+    "review": [
+      {
+        "x": "A parade float rolls \\(12\\) blocks west, \\(5\\) blocks north, and \\(12\\) blocks east. Sketch the route. How many blocks is the float from where it started?",
+        "ans": "5",
+        "accept": [
+          "5",
+          "5.0",
+          "five"
+        ],
+        "hints": [
+          "The west and east legs cancel completely on the sketch."
+        ],
+        "sol": "<p>West \\(12\\) and east \\(12\\) cancel, leaving only the \\(5\\) blocks north.</p><p>$$\\boxed{5}$$</p>"
+      },
+      {
+        "x": "A kayaker paddles \\(9\\) km east, \\(4\\) km west, and \\(12\\) km north. Find the straight-line distance in km back to the launch point.",
+        "ans": "13",
+        "accept": [
+          "13",
+          "13.0",
+          "thirteen"
+        ],
+        "hints": [
+          "Net the east-west motion first, \\(9 - 4 = 5\\) km east.",
+          "Legs of \\(5\\) and \\(12\\) make a familiar right triangle."
+        ],
+        "sol": "<p>The trip nets to \\(5\\) km east and \\(12\\) km north, a right triangle with hypotenuse</p><p>$$\\sqrt{5^2 + 12^2} = \\sqrt{169} = \\boxed{13}$$</p>"
+      },
+      {
+        "x": "In an elevator game, each round moves the marker up \\(6\\) floors and then back down \\(2\\). The marker starts at floor \\(0\\) and wins the moment it touches floor \\(22\\), even mid-round. Draw the floor level round by round. In which round does the marker win?",
+        "ans": "5",
+        "accept": [
+          "5",
+          "5.0",
+          "five"
+        ],
+        "hints": [
+          "The peaks climb \\(6, 10, 14, 18, 22\\), gaining \\(4\\) per round.",
+          "Winning happens at a peak, before the drop back."
+        ],
+        "sol": "<p>The round peaks run \\(6, 10, 14, 18, 22\\). The fifth peak touches \\(22\\) exactly, and the game ends there, no slide back.</p><p>$$\\boxed{5}$$</p>"
+      },
+      {
+        "x": "Four friends finish a race. Nia beats Owen. Pia finishes immediately behind Nia. Owen does not finish last. Quinn is also racing. Draw the four finishing slots. In which place does Owen finish?",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "Nia and Pia form a glued block, Nia then Pia. Try the block starting at position \\(1\\), then position \\(2\\).",
+          "If the block starts at \\(2\\), Owen must beat no one but still avoid last place. Check whether any slot works."
+        ],
+        "sol": "<p>With the Nia-Pia block at positions \\(1\\) and \\(2\\), Owen must finish after Nia but not last, which forces Owen into \\(3\\) and Quinn into \\(4\\). With the block at \\(2\\) and \\(3\\), Owen would have to take \\(4\\), which the clue forbids. So the order is Nia, Pia, Owen, Quinn.</p><p>$$\\boxed{3}$$</p>"
+      },
+      {
+        "x": "A jeweler cuts a long chain into \\(6\\) sections, and each cut takes \\(2\\) minutes. How many minutes does the job take?",
+        "ans": "10",
+        "accept": [
+          "10",
+          "10.0",
+          "ten"
+        ],
+        "hints": [
+          "Sketch the chain. Six sections need one fewer cut than sections."
+        ],
+        "sol": "<p>Six sections come from \\(5\\) cuts, and \\(5 \\times 2 = \\boxed{10}\\) minutes.</p>"
+      },
+      {
+        "x": "Twenty-five trees stand in a straight row with equal gaps of \\(6\\) meters between neighbors. How many meters is it from the first tree to the last?",
+        "ans": "144",
+        "accept": [
+          "144",
+          "144.0"
+        ],
+        "hints": [
+          "Dots first. Twenty-five trees make \\(24\\) gaps, and the distance lives in the gaps."
+        ],
+        "sol": "<p>Between \\(25\\) trees sit \\(24\\) gaps of \\(6\\) meters each,</p><p>$$24 \\times 6 = \\boxed{144}$$</p>"
+      },
+      {
+        "x": "Two boards, each \\(45\\) cm long, are joined with an overlap to form a shelf \\(78\\) cm long. Draw the boards. How many centimeters long is the overlap?",
+        "ans": "12",
+        "accept": [
+          "12",
+          "12.0",
+          "twelve"
+        ],
+        "hints": [
+          "End to end the boards would span \\(90\\) cm. The drawing shows the missing length is exactly the doubled-up part."
+        ],
+        "sol": "<p>Without overlap the boards would span \\(90\\) cm, and the shelf lost \\(90 - 78 = 12\\) cm to the doubled section.</p><p>$$\\boxed{12}$$</p>"
+      },
+      {
+        "x": "A subway map lists these two-way lines between six stations. A to B, B to C, C to D, D to E, B to E, and E to F. Draw the network. What is the least number of rides from A to F?",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "Only E connects to F, so plan the fastest route to E.",
+          "B connects straight to E, and A connects straight to B."
+        ],
+        "sol": "<p>The drawing shows F hanging off station E alone. The quickest way to E from A is A to B, then the direct B to E line, and then E to F.</p><p>$$\\boxed{3}$$</p><p>The B to E shortcut is nearly invisible in the written list and impossible to miss in the picture.</p>"
+      },
+      {
+        "x": "Continuing the circle-and-chords pattern from the lesson, what is the greatest number of regions six chords can create?",
+        "ans": "22",
+        "accept": [
+          "22",
+          "22.0",
+          "twenty two",
+          "twenty-two"
+        ],
+        "hints": [
+          "The counts run \\(2, 4, 7, 11, 16\\), with each new chord adding one more than the last, so the sixth chord adds \\(6\\)."
+        ],
+        "sol": "<p>The jumps climb \\(2, 3, 4, 5, 6\\), so six chords reach</p><p>$$16 + 6 = \\boxed{22}$$</p>"
+      },
+      {
+        "x": "A rectangular garden plot measures \\(50\\) meters by \\(30\\) meters. A gardener plants a flag at one corner and then every \\(10\\) meters around the entire perimeter. How many flags get planted?",
+        "ans": "16",
+        "accept": [
+          "16",
+          "16.0",
+          "sixteen"
+        ],
+        "hints": [
+          "First find the perimeter, then count \\(10\\) meter gaps around it.",
+          "The path is a closed loop, not a line. On a loop, the last gap closes back onto the very first flag, so flags equal gaps exactly."
+        ],
+        "sol": "<p>The perimeter is \\(2(50 + 30) = 160\\) meters, which splits into \\(160 \\div 10 = 16\\) gaps.</p><p>On a straight path, flags would outnumber gaps by one. But this path is a loop, and the drawing shows the sixteenth gap ending exactly where the first flag already stands.</p><p>$$\\boxed{16}$$</p><p>Line or loop is the whole question in fencepost problems, and a quick sketch answers it before the off-by-one error gets a chance.</p>"
+      }
+    ]
+  },
+  "12.4": {
+    "title": "Work Backwards",
+    "blocks": [
+      {
+        "t": "p",
+        "x": "Some problems tell their story in the wrong order. You are handed the ending, the final amount, the last term, the state after every step, and asked for the beginning. Chasing it forward means guessing a start and hoping. The stronger move is to stand at the ending and rewind, undoing one step at a time until the beginning is simply standing there. This final lesson of the course teaches the rewind."
+      },
+      {
+        "t": "prob",
+        "xp": 5,
+        "x": "A number trick goes like this. Think of a number, double it, then add \\(9\\). Priya follows the steps and lands on \\(41\\). What number did she think of?",
+        "ans": "16",
+        "accept": [
+          "16",
+          "16.0",
+          "sixteen"
+        ],
+        "hints": [
+          "Undo the steps from the end. The last thing done was adding \\(9\\), so the first undo is subtracting \\(9\\)."
+        ],
+        "sol": "<p>Rewind from \\(41\\). Undoing the add-\\(9\\) gives \\(41 - 9 = 32\\), and undoing the doubling gives \\(32 \\div 2 = 16\\).</p><p>Forward check, \\(16\\) doubled is \\(32\\), plus \\(9\\) is \\(41\\). It works.</p><p>$$\\boxed{16}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Another trick has three steps. Subtract \\(4\\), multiply by \\(5\\), then add \\(7\\). Marcus finishes on \\(52\\). What number did he start with?",
+        "ans": "13",
+        "accept": [
+          "13",
+          "13.0",
+          "thirteen"
+        ],
+        "hints": [
+          "Peel the steps in reverse order. The add \\(7\\) came last, so it is undone first, then the multiply, then the subtract.",
+          "Each undo swaps the operation for its opposite. Adding becomes subtracting, multiplying becomes dividing."
+        ],
+        "sol": "<p>Rewind from \\(52\\). Undo the add \\(7\\) to get \\(45\\). Undo the multiply by \\(5\\) to get \\(9\\). Undo the subtract \\(4\\) to get \\(13\\).</p><p>Forward check, \\(13 - 4 = 9\\), times \\(5\\) is \\(45\\), plus \\(7\\) is \\(52\\).</p><p>$$\\boxed{13}$$</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Undo in reverse order.</b> Rewinding has two rules and both matter. Each operation flips into its opposite, adding into subtracting, multiplying into dividing. And the order flips too, the last step is undone first, the way you take off shoes before socks even though they went on socks first. Skipping the order flip is the classic rewind injury. The diagram shows both directions of the same trick.<div style=\"display:flex;justify-content:center;margin:14px 0 2px\"><svg viewBox=\"0 0 350 190\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"a chain of operations run forward on top and undone in reverse underneath\"><rect x=\"23\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#fdf3df\" stroke=\"#8a5a08\" stroke-width=\"2\"/><text x=\"45\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">?</text><path d=\"M70,50 L102,50 M102,50 l-7,-5 M102,50 l-7,5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"90\" y=\"41\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">&#8722; 4</text><rect x=\"111\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"133\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">9</text><path d=\"M158,50 L190,50 M190,50 l-7,-5 M190,50 l-7,5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"178\" y=\"41\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">&#215; 5</text><rect x=\"199\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"221\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">45</text><path d=\"M246,50 L278,50 M278,50 l-7,-5 M278,50 l-7,5\" fill=\"none\" stroke=\"#2f4a6e\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"266\" y=\"41\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2f4a6e\" font-family=\"Inter, sans-serif\">+ 7</text><rect x=\"287\" y=\"34\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"309\" y=\"55\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">52</text><rect x=\"287\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"309\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">52</text><path d=\"M286,135 L254,135 M254,135 l7,-5 M254,135 l7,5\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"266\" y=\"126\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">&#8722; 7</text><rect x=\"199\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"221\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">45</text><path d=\"M198,135 L166,135 M166,135 l7,-5 M166,135 l7,5\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"178\" y=\"126\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">&#247; 5</text><rect x=\"111\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#eef4fc\" stroke=\"#2f4a6e\" stroke-width=\"2\"/><text x=\"133\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">9</text><path d=\"M110,135 L78,135 M78,135 l7,-5 M78,135 l7,5\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"90\" y=\"126\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"800\" fill=\"#2257c5\" font-family=\"Inter, sans-serif\">+ 4</text><rect x=\"23\" y=\"119\" width=\"44\" height=\"32\" rx=\"8\" fill=\"#fdf3df\" stroke=\"#8a5a08\" stroke-width=\"2\"/><text x=\"45\" y=\"140\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"800\" fill=\"#1c2f49\" font-family=\"Inter, sans-serif\">13</text><text x=\"175\" y=\"178\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"700\" fill=\"#5c6f88\" font-family=\"Inter, sans-serif\">forward story on top, rewind underneath</text></svg></div>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "Theo bought a rare trading card. He later sold it to Uma, taking a loss of \\(5\\) tokens. Uma then sold it to Vik for \\(32\\) tokens, making a profit of \\(8\\) tokens on her purchase. How many tokens did Theo originally pay?",
+        "ans": "29",
+        "accept": [
+          "29",
+          "29.0",
+          "twenty nine",
+          "twenty-nine"
+        ],
+        "hints": [
+          "Start at the end. Uma sold for \\(32\\) with a profit of \\(8\\), so what she paid comes from undoing that profit.",
+          "What Uma paid is exactly what Theo received. Undo Theo's loss of \\(5\\) from there."
+        ],
+        "sol": "<p>Uma sold at \\(32\\) for a profit of \\(8\\), so she had paid \\(32 - 8 = 24\\) tokens.</p><p>That \\(24\\) is what Theo received, and it was a \\(5\\)-token loss for him, so he had paid \\(24 + 5 = 29\\).</p><p>Forward check, buy at \\(29\\), sell at \\(24\\), a loss of \\(5\\). Uma buys at \\(24\\), sells at \\(32\\), a profit of \\(8\\).</p><p>$$\\boxed{29}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A rain barrel goes through the same routine each day. It loses half its water to the garden, and then the gardener pours \\(6\\) liters back in. After two full days of this, the barrel holds \\(21\\) liters. How many liters did it hold at the start?",
+        "ans": "48",
+        "accept": [
+          "48",
+          "48.0",
+          "forty eight",
+          "forty-eight"
+        ],
+        "hints": [
+          "Rewind day two first. Undo the \\(6\\)-liter pour, then undo the halving by doubling.",
+          "That gives the level after day one, and the same two undos again reach the start."
+        ],
+        "sol": "<p>Rewind day two. Before the pour the barrel held \\(21 - 6 = 15\\), and before losing half it held \\(30\\). So day one ended at \\(30\\).</p><p>Rewind day one the same way, \\(30 - 6 = 24\\) before the pour, and \\(48\\) before the halving.</p><p>Forward check runs the table below and lands on \\(21\\) exactly.</p><p>$$\\boxed{48}$$</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Rewind the ledger.</b> Multi-day routines are just operation chains wearing a calendar, so rewind them day by day, undoing within each day in reverse order too, the pour before the halving. Then spend ten seconds running your answer forward. The forward check is the built-in receipt of every work-backwards problem, and it turns a hopeful answer into a certain one.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\"></td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after losing half</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after adding 6</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">24</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">30</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">15</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">21</td></tr></table></div>"
+      },
+      {
+        "t": "prob",
+        "xp": 6,
+        "x": "A sourdough starter doubles in size every day, and it completely fills its jar on day \\(10\\). On which day was the jar exactly one quarter full?",
+        "ans": "8",
+        "accept": [
+          "8",
+          "8.0",
+          "eight"
+        ],
+        "hints": [
+          "Run the doubling backward. One day earlier the jar was half full.",
+          "One quarter is half of half."
+        ],
+        "sol": "<p>Backward from the end, day \\(9\\) held half a jar, and day \\(8\\) held half of that, one quarter.</p><p>$$\\boxed{8}$$</p><p>Forward instinct begs to start at day one, but the problem gives day \\(10\\), so the fast road runs in reverse. Two halvings, done.</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "In a certain list, every number is the sum of the two numbers just before it. The list ends with \\(\\ldots, \\; a, \\; b, \\; 19, \\; 31, \\; 50\\). Find the value of \\(a\\).",
+        "ans": "7",
+        "accept": [
+          "7",
+          "7.0",
+          "seven"
+        ],
+        "hints": [
+          "The rule runs forward as addition, so it rewinds as subtraction. The number before \\(19\\) and \\(31\\) satisfies \\(b + 19 = 31\\).",
+          "Once \\(b\\) is known, the same subtraction one step earlier finds \\(a\\)."
+        ],
+        "sol": "<p>Since each number is the sum of the two before it, \\(b + 19 = 31\\), so \\(b = 12\\). One step earlier, \\(a + b = 19\\), so \\(a = 7\\).</p><p>Forward check, \\(7, 12, 19, 31, 50\\), and each term is indeed the sum of its two predecessors.</p><p>$$\\boxed{7}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 7,
+        "x": "A bacteria colony in a dish triples every hour. At \\(5\\) in the afternoon the dish holds \\(405\\) colonies. How many colonies did it hold at \\(1\\) in the afternoon?",
+        "ans": "5",
+        "accept": [
+          "5",
+          "5.0",
+          "five"
+        ],
+        "hints": [
+          "Four hours separate the two clock times, so rewind four triplings.",
+          "Each rewind divides by \\(3\\)."
+        ],
+        "sol": "<p>Rewinding one hour divides by \\(3\\), and four hours pass between \\(1\\) and \\(5\\).</p><p>$$405 \\div 3 \\div 3 \\div 3 \\div 3 = 405 \\div 81 = \\boxed{5}$$</p><p>Forward check, \\(5, 15, 45, 135, 405\\), one tripling per hour.</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>Rewind the rule that built it.</b> Growth processes and sequences carry a rule that runs forward, so rebuild them from the ending by inverting that rule. Doubling rewinds as halving, tripling as dividing by three, and a term made by summing rewinds to a difference. Start at the last known value and step backward, one inverse per step, writing each recovered value into its real position so the chain stays visible. This is also why doubling processes finish with a bang, the jar that fills on day ten was only a quarter full on day eight, and the biggest growth always hides in the final steps, not the early ones. When the rewind is done, replay the whole thing forward, and if it reproduces the given ending the reconstruction is airtight."
+      },
+      {
+        "t": "fact",
+        "x": "Working backwards has a distinguished career. Chess players study endgames by starting from checkmate and stepping in reverse, a method called retrograde analysis. Maze designers know their puzzles fall fastest to solvers who begin at the exit. And escape-room writers plot the final door first, then build the clues backward toward the entrance."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Two juice pitchers sit on a counter. First, pitcher A pours into pitcher B exactly as much juice as B already contains, doubling B. Then pitcher B pours into pitcher A exactly as much as A contains at that moment, doubling A. Now each pitcher holds \\(36\\) centiliters. How many centiliters did pitcher A hold at the very start?",
+        "ans": "45",
+        "accept": [
+          "45",
+          "45.0",
+          "forty five",
+          "forty-five"
+        ],
+        "hints": [
+          "Undo the second pour first. It doubled A to \\(36\\), so before it A held \\(18\\), and the poured amount came out of B.",
+          "Then undo the first pour, which had doubled B. Half of B's amount at that moment had come from A."
+        ],
+        "sol": "<p>Rewind the second pour. It doubled A to \\(36\\), so A held \\(18\\) before it, and the \\(18\\) that arrived came from B, which therefore held \\(36 + 18 = 54\\).</p><p>Rewind the first pour. It had doubled B to \\(54\\), so B started with \\(27\\), and the \\(27\\) that arrived came from A, which therefore started with \\(18 + 27 = 45\\).</p><p>Forward check. A\\(=45\\), B\\(=27\\). A pours \\(27\\), leaving \\(18\\) and \\(54\\). B pours \\(18\\), leaving \\(36\\) and \\(36\\).</p><p>$$\\boxed{45}$$</p>"
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "On a game show, a contestant spends half of her tokens in round one, then pays a \\(7\\)-token entry fee for round two. In round two she spends half of what she has left, then pays a \\(3\\)-token exit fee. She walks away with \\(11\\) tokens. How many tokens did she start with?",
+        "ans": "70",
+        "accept": [
+          "70",
+          "70.0",
+          "seventy"
+        ],
+        "hints": [
+          "Rewind the four events in reverse. Undo the exit fee, undo the round-two halving, undo the entry fee, undo the round-one halving.",
+          "Undoing a fee means adding it back, and undoing a halving means doubling."
+        ],
+        "sol": "<p>Rewind from \\(11\\). Add back the exit fee, \\(14\\). Double away the round-two spending, \\(28\\). Add back the entry fee, \\(35\\). Double away the round-one spending, \\(70\\).</p><p>Forward check. Half of \\(70\\) leaves \\(35\\), the fee leaves \\(28\\), half leaves \\(14\\), the exit fee leaves \\(11\\).</p><p>$$\\boxed{70}$$</p>"
+      },
+      {
+        "t": "imp",
+        "x": "<b>The rewind creed, and the whole toolkit.</b> Work backwards when the ending is known and the beginning is the mystery. Flip every operation, flip the order, and cash the built-in receipt by running your answer forward. And notice what you now carry. Patterns turn giant positions into short divisions, organized lists turn possibility into proof, pictures turn word-tangles into maps, and the rewind turns endings into beginnings. That is the toolkit, and it reaches far past this course. Prealgebra ends here, but these four moves are exactly how mathematicians of every age meet a problem they have never seen before. Go enjoy being dangerous."
+      }
+    ],
+    "review": [
+      {
+        "x": "A number is multiplied by \\(4\\), then \\(9\\) is subtracted, giving \\(39\\). What was the number?",
+        "ans": "12",
+        "accept": [
+          "12",
+          "12.0",
+          "twelve"
+        ],
+        "hints": [
+          "Undo the subtraction first, then the multiplication."
+        ],
+        "sol": "<p>Adding back the \\(9\\) gives \\(48\\), and dividing by \\(4\\) gives \\(\\boxed{12}\\). Forward, \\(12 \\times 4 - 9 = 39\\).</p>"
+      },
+      {
+        "x": "A number has \\(8\\) added to it, the result is divided by \\(3\\), and that result is multiplied by \\(5\\), giving \\(45\\). What was the original number?",
+        "ans": "19",
+        "accept": [
+          "19",
+          "19.0",
+          "nineteen"
+        ],
+        "hints": [
+          "Rewind in reverse order, undoing the multiply by \\(5\\) first.",
+          "The undos are divide by \\(5\\), multiply by \\(3\\), subtract \\(8\\)."
+        ],
+        "sol": "<p>From \\(45\\), dividing by \\(5\\) gives \\(9\\), multiplying by \\(3\\) gives \\(27\\), and subtracting \\(8\\) gives \\(\\boxed{19}\\). Forward, \\((19+8) \\div 3 \\times 5 = 45\\).</p>"
+      },
+      {
+        "x": "Rosa bought a bicycle and later sold it to Sam at a \\(12\\)-token profit. Sam then sold it for \\(87\\) tokens, taking a \\(9\\)-token loss. How many tokens did Rosa pay for the bicycle?",
+        "ans": "84",
+        "accept": [
+          "84",
+          "84.0",
+          "eighty four",
+          "eighty-four"
+        ],
+        "hints": [
+          "Sam sold at \\(87\\) with a \\(9\\)-token loss, so undo the loss to find what Sam paid.",
+          "What Sam paid is what Rosa received, and Rosa's profit was \\(12\\)."
+        ],
+        "sol": "<p>Sam paid \\(87 + 9 = 96\\). Rosa received that \\(96\\) at a \\(12\\)-token profit, so she had paid \\(96 - 12 = \\boxed{84}\\).</p>"
+      },
+      {
+        "x": "A candy jar is visited by two siblings, one after the other. Each takes half the candies in the jar and then, feeling guilty, puts \\(2\\) back. After both visits the jar holds \\(14\\) candies. How many were in the jar before the first visit?",
+        "ans": "44",
+        "accept": [
+          "44",
+          "44.0",
+          "forty four",
+          "forty-four"
+        ],
+        "hints": [
+          "Rewind the second visit. Undo the \\(2\\) put back, then undo the halving.",
+          "Repeat the same two undos for the first visit."
+        ],
+        "sol": "<p>Rewind the second sibling, \\(14 - 2 = 12\\) and doubling gives \\(24\\). Rewind the first, \\(24 - 2 = 22\\) and doubling gives \\(44\\).</p><p>Forward check, \\(44 \\to 22 + 2 = 24 \\to 12 + 2 = 14\\).</p><p>$$\\boxed{44}$$</p>"
+      },
+      {
+        "x": "A video's view count doubles every day. On Friday it reaches \\(96{,}000\\) views. How many days earlier did it stand at \\(12{,}000\\) views?",
+        "ans": "3",
+        "accept": [
+          "3",
+          "3.0",
+          "three"
+        ],
+        "hints": [
+          "Halve backward from \\(96{,}000\\) and count the halvings until you reach \\(12{,}000\\)."
+        ],
+        "sol": "<p>Backward, \\(96{,}000 \\to 48{,}000 \\to 24{,}000 \\to 12{,}000\\), three halvings, so \\(\\boxed{3}\\) days earlier.</p>"
+      },
+      {
+        "x": "In a list where every number is the sum of the two before it, the final three numbers are \\(13, 21, 34\\). What number sits four places before the \\(34\\)?",
+        "ans": "5",
+        "accept": [
+          "5",
+          "5.0",
+          "five"
+        ],
+        "hints": [
+          "Rewind with subtraction, the term before \\(13\\) is \\(21 - 13\\).",
+          "Keep subtracting until you are four places before the \\(34\\)."
+        ],
+        "sol": "<p>Rewinding, before \\(13\\) sits \\(21 - 13 = 8\\), and before that sits \\(13 - 8 = 5\\). The list runs \\(5, 8, 13, 21, 34\\), and four places before the \\(34\\) is \\(\\boxed{5}\\).</p>"
+      },
+      {
+        "x": "A stamp collection's value has tripled twice over the years and now stands at \\(486\\) tokens. What was its value before either tripling?",
+        "ans": "54",
+        "accept": [
+          "54",
+          "54.0",
+          "fifty four",
+          "fifty-four"
+        ],
+        "hints": [
+          "Undo two triplings by dividing by \\(3\\) twice."
+        ],
+        "sol": "<p>Two rewinds give \\(486 \\div 3 = 162\\) and \\(162 \\div 3 = \\boxed{54}\\).</p>"
+      },
+      {
+        "x": "A car enters a parking garage on some level, drives up \\(5\\) levels, down \\(8\\), and up \\(2\\), ending on level \\(6\\). On which level did it enter?",
+        "ans": "7",
+        "accept": [
+          "7",
+          "7.0",
+          "seven"
+        ],
+        "hints": [
+          "Rewind the moves from level \\(6\\), down \\(2\\), up \\(8\\), down \\(5\\)."
+        ],
+        "sol": "<p>Undoing the moves in reverse, \\(6 - 2 = 4\\), then \\(4 + 8 = 12\\), then \\(12 - 5 = 7\\).</p><p>Forward check, \\(7 + 5 - 8 + 2 = 6\\).</p><p>$$\\boxed{7}$$</p>"
+      },
+      {
+        "x": "After giving away half of his stickers and then \\(4\\) more, Leo has \\(26\\) stickers left. How many did he start with?",
+        "ans": "60",
+        "accept": [
+          "60",
+          "60.0",
+          "sixty"
+        ],
+        "hints": [
+          "Undo the \\(4\\) first, then undo the halving."
+        ],
+        "sol": "<p>Adding the \\(4\\) back gives \\(30\\), and doubling gives \\(\\boxed{60}\\). Forward, half of \\(60\\) is \\(30\\), minus \\(4\\) is \\(26\\).</p>"
+      },
+      {
+        "x": "Four integers form a chain in which each number after the first is twice the previous number minus \\(1\\). The fourth number is \\(41\\). What is the first?",
+        "ans": "6",
+        "accept": [
+          "6",
+          "6.0",
+          "six"
+        ],
+        "hints": [
+          "The forward rule is double then subtract \\(1\\), so the rewind is add \\(1\\) then halve.",
+          "Apply the rewind three times, once per link in the chain."
+        ],
+        "sol": "<p>Rewinding one link means adding \\(1\\) and halving. From \\(41\\), the third number is \\((41+1) \\div 2 = 21\\), the second is \\((21+1) \\div 2 = 11\\), and the first is \\((11+1) \\div 2 = 6\\).</p><p>Forward check, \\(6 \\to 11 \\to 21 \\to 41\\).</p><p>$$\\boxed{6}$$</p>"
+      }
+    ]
+  }
 }
