@@ -20,6 +20,16 @@
       },
       {
         "t": "prob",
+        "ans": "18",
+        "xp": 6,
+        "hints": [
+          "Pair 7 and 3 to make 10 first!"
+        ],
+        "x": "Add in any order: $$7+8+3.$$",
+        "sol": "Reorder to \\(7+3+8\\). Then \\(7+3=10\\), and \\(10+8=\\boxed{18}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "60",
         "xp": 8,
         "x": "Three jars hold $17$, $3$, and $40$ jellybeans. Maya pours jar 1 into jar 2, then adds jar 3; Theo pours jar 2 into jar 3, then adds jar 1. How many jellybeans does each end up with?",
@@ -45,6 +55,31 @@
       },
       {
         "t": "prob",
+        "ans": "2004",
+        "xp": 12,
+        "hints": [
+          "Round 998 and 997 up to 1000, then take back what you added."
+        ],
+        "x": "In your head: $$998+997+5+4.$$",
+        "sol": "998 is 2 short of 1000 and 997 is 3 short, and the lonely \\(5\\) covers both gaps exactly: \\(2+3=5\\).$$(998+2)+(997+3)+4 = 1000+1000+4 = \\boxed{2004}.$$Near-round numbers plus small change: let the small numbers complete the big ones."
+      },
+      {
+        "t": "imp",
+        "label": "The pairing shortcut",
+        "x": "To add a long run of numbers, <b>pair from the ends and work inward</b>: smallest with largest, next-smallest with next-largest. Every pair lands on the same total, so the whole sum is just that total times the number of pairs.<span style=\"display:block;margin-top:9px;color:var(--slate);font-weight:400\">For example, 1 + 2 + 3 + \u22ef + 12 pairs into $1+12$, $2+11$, $3+10$, \u2026, six pairs of $13$, so the sum is 6 \u00d7 13 = 78.</span>"
+      },
+      {
+        "t": "prob",
+        "ans": "55",
+        "xp": 10,
+        "hints": [
+          "Pair 1 with 10, 2 with 9 \u2014 each pair makes 11!"
+        ],
+        "x": "Add the numbers 1 to 10: $$1+2+3+\\cdots+10.$$",
+        "sol": "Pair from the ends: \\(1+10,\\,2+9,\\,3+8,\\,4+7,\\,5+6\\) \u2014 five pairs of \\(11\\), so \\(5\\times 11=\\boxed{55}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "820",
         "xp": 18,
         "hints": [
@@ -56,7 +91,65 @@
       },
       {
         "t": "prob",
-        "label": "Extra challenge",
+        "ans": "5050",
+        "xp": 14,
+        "hints": [
+          "50 pairs, each adding to 101."
+        ],
+        "x": "Add every whole number from 1 to 100: $$1+2+\\cdots+100.$$",
+        "sol": "Pair from the ends: \\(1+100,\\,2+99,\\,\\dots\\) \u2014 fifty pairs, each summing to \\(101\\). So \\(50\\times 101 = \\boxed{5050}\\)."
+      },
+      {
+        "t": "p",
+        "x": "Now the twist: subtraction is not a new operation, and negatives are not a new headache. Both are just addition with a direction."
+      },
+      {
+        "t": "prob",
+        "ans": "3",
+        "xp": 8,
+        "x": "The temperature reads $8$ degrees, then drops $5$. Every subtraction is an addition in disguise: rewrite the drop as $$8 + (-5)$$ and compute it.",
+        "sol": "Adding \\(-5\\) means stepping 5 to the left of 8 on the number line, landing on \\(\\boxed{3}\\). Subtracting a number and adding its opposite are the same move \u2014 that is \\(a-b=a+(-b)\\) in action."
+      },
+      {
+        "t": "prob",
+        "ans": "5",
+        "xp": 6,
+        "hints": [
+          "Take away 3, then take away 2."
+        ],
+        "x": "Compute $$10-3-2.$$",
+        "sol": "Subtracting \\(3\\) then \\(2\\) removes \\(5\\) in all: \\(10-5=\\boxed{5}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "Subtracting is adding the opposite: $a-b=a+(-b)$. Once every subtraction is an addition, the order and grouping freedoms apply to the whole expression at once."
+      },
+      {
+        "t": "prob",
+        "ans": "50",
+        "xp": 10,
+        "x": "Rearrange cleverly to compute $$50 - 17 + 50 - 33.$$",
+        "sol": "The subtraction signs block rearranging, so dissolve them: every subtraction is the addition of a negative.$$50 + (-17) + 50 + (-33)$$Now reorder and regroup freely.$$(50 + 50) + ((-17) + (-33)) = 100 - 50 = \\boxed{50}.$$Turning subtraction into adding the opposite unlocks the rearranging freedoms for any expression with minus signs."
+      },
+      {
+        "t": "prob",
+        "ans": "20",
+        "xp": 8,
+        "hints": [
+          "Look at the two 20s, and what 8 and 12 do together."
+        ],
+        "x": "Rearrange: $$20-8+20-12.$$",
+        "sol": "Group: \\(20+20=40\\) and \\(8+12=20\\), so \\(40-20=\\boxed{20}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "23",
+        "xp": 12,
+        "x": "Compute $$83 - 27 - 33.$$",
+        "sol": "Subtract the two together: \\(27 + 33 = 60\\), so \\(83 - 60 = \\boxed{23}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "-6",
         "accept": [
           "\u22126"
@@ -70,19 +163,24 @@
         "sol": "Pairing the ends inward gives \\(-11, 9, -7, 5, -3, 1\\), all different. Pair neighbours instead, each positive with the negative after it.$$(1 - 2) + (3 - 4) + (5 - 6) + (7 - 8) + (9 - 10) + (11 - 12)$$Every bracket is \\(-1\\), and six pairs give$$6 \\times (-1) = \\boxed{-6}.$$Pairing is still the move; which pairing collapses changes from problem to problem."
       },
       {
-        "t": "p",
-        "x": "Now the twist: subtraction is not a new operation, and negatives are not a new headache. Both are just addition with a direction."
+        "t": "prob",
+        "ans": "50",
+        "xp": 12,
+        "x": "Find $$100 - 99 + 98 - 97 + \\cdots + 2 - 1.$$",
+        "sol": "Group in pairs from the left: \\((100-99),\\,(98-97),\\,\\ldots,\\,(2-1)\\) each equal 1. There are 50 pairs, so the total is \\(\\boxed{50}\\)."
       },
       {
         "t": "prob",
-        "ans": "50",
-        "xp": 10,
-        "x": "Rearrange cleverly to compute $$50 - 17 + 50 - 33.$$",
-        "sol": "The subtraction signs block rearranging, so dissolve them: every subtraction is the addition of a negative.$$50 + (-17) + 50 + (-33)$$Now reorder and regroup freely.$$(50 + 50) + ((-17) + (-33)) = 100 - 50 = \\boxed{50}.$$Turning subtraction into adding the opposite unlocks the rearranging freedoms for any expression with minus signs."
-      },
-      {
-        "t": "imp",
-        "x": "Subtracting is adding the opposite: $a-b=a+(-b)$. Once every subtraction is an addition, the order and grouping freedoms apply to the whole expression at once."
+        "ans": "-50",
+        "accept": [
+          "\u221250"
+        ],
+        "xp": 14,
+        "hints": [
+          "Each pair (1-2),(3-4) makes -1. How many pairs are there?"
+        ],
+        "x": "Find $$1-2+3-4+\\cdots+99-100.$$",
+        "sol": "Group in pairs: \\((1-2)+(3-4)+\\cdots+(99-100)\\). Each pair is \\(-1\\), and there are \\(50\\) pairs, so the total is \\(\\boxed{-50}\\)."
       },
       {
         "t": "p",
@@ -110,6 +208,33 @@
       },
       {
         "t": "prob",
+        "ans": "7",
+        "xp": 6,
+        "hints": [
+          "The opposite of the opposite is the original."
+        ],
+        "x": "What is $$-(-7)$$?",
+        "sol": "The opposite of \\(-7\\) is \\(7\\), so \\(-(-7)=\\boxed{7}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "7",
+        "xp": 8,
+        "hints": [
+          "Subtracting a negative is the same as adding."
+        ],
+        "x": "Compute $$3-(-4).$$",
+        "sol": "Subtracting \\(-4\\) is the same as adding \\(4\\): \\(3+4=\\boxed{7}\\)."
+      },
+      {
+        "t": "prob",
+        "ans": "11",
+        "xp": 8,
+        "x": "Subtracting a negative adds. Convince yourself once, carefully: $$5 - (-6).$$",
+        "sol": "The opposite of \\(-6\\) is \\(6\\), so taking away \\(-6\\) is the same as adding \\(6\\): \\(5 + 6 = \\boxed{11}\\)."
+      },
+      {
+        "t": "prob",
         "ans": "5",
         "xp": 10,
         "x": "Now untangle a nested one; work from the inside out: $$7 - (-(-2)).$$",
@@ -123,19 +248,42 @@
         "sol": "Convert everything to addition: subtracting \\(-8\\) adds 8, and subtracting 8 adds \\(-8\\).$$12 + 8 + (-12) + (-8)$$Now scan: 12 with \\(-12\\), 8 with \\(-8\\). Every number arrived with its opposite, so the pairs cancel and the sum is \\(\\boxed{0}\\). When positives and negatives mingle, check for opposites first."
       },
       {
-        "t": "imp",
-        "label": "Recap \u00b7 Reorder freely",
-        "x": "Addition is <b>commutative</b> and <b>associative</b>: $a+b=b+a$ and $(a+b)+c=a+(b+c)$. You may shuffle and regroup any sum to make the arithmetic easy."
+        "t": "prob",
+        "ans": "9",
+        "xp": 10,
+        "hints": [
+          "Count the minus signs \u2014 pairs cancel."
+        ],
+        "x": "Simplify $$-(-(-(-9))).$$",
+        "sol": "There are four minus signs. They cancel in pairs (\\(-(-x)=x\\)), leaving \\(\\boxed{+9}\\)."
       },
       {
-        "t": "imp",
-        "label": "Recap \u00b7 Subtraction is addition",
-        "x": "Every subtraction is an addition in disguise: $a-b=a+(-b)$. So the reorder-and-regroup freedoms work even with negatives, and opposites cancel to zero."
+        "t": "prob",
+        "ans": "0",
+        "xp": 12,
+        "x": "Hunt for what cancels: $$30 - (-20) - (-10) - 60.$$",
+        "sol": "Rewrite the subtractions of negatives as additions: \\(30 + 20 + 10 - 60\\). The positives make 60, cancelled by the \\(-60\\), leaving \\(\\boxed{0}\\)."
       },
       {
-        "t": "imp",
-        "label": "Recap \u00b7 The pairing trick",
-        "x": "To add a long run of numbers, <b>pair from the ends and work inward</b>: smallest with largest, next-smallest with next-largest. Every pair lands on the same total, so the whole sum is just that total times the number of pairs.<span style=\"display:block;margin-top:9px;color:var(--slate);font-weight:400\">For example, 1 + 2 + 3 + \u22ef + 12 pairs into $1+12$, $2+11$, $3+10$, \u2026, six pairs of $13$, so the sum is 6 \u00d7 13 = 78.</span>"
+        "t": "p",
+        "x": "One last stretch before you go. These closing problems mix everything from this lesson &mdash; every student meets them, whatever pace the lesson took. Use the full toolkit: reorder, regroup, turn subtractions into additions, and let opposites cancel."
+      },
+      {
+        "t": "prob",
+        "ans": "0",
+        "xp": 12,
+        "x": "Rearrange before you compute: $$45 - 18 + 55 - 82.$$",
+        "sol": "Dissolve the subtractions into additions and regroup: \\((45 + 55) + ((-18) + (-82)) = 100 - 100 = \\boxed{0}\\). Rearranging works on any expression once every subtraction becomes adding the opposite."
+      },
+      {
+        "t": "prob",
+        "ans": "0",
+        "xp": 12,
+        "hints": [
+          "Hunt for what cancels: the 15s and the 10s."
+        ],
+        "x": "Find $$15-(-10)+(-15)-10.$$",
+        "sol": "Rewrite as \\(15+10-15-10\\). The \\(15\\)s cancel and the \\(10\\)s cancel, giving \\(\\boxed{0}\\)."
       }
     ],
     "review": [
@@ -221,6 +369,37 @@
       },
       {
         "t": "prob",
+        "x": "Multiply in the easy order: $$5 \\times 9 \\times 2.$$",
+        "ans": "90",
+        "hints": [
+          "Pair the 5 and the 2 to make 10 first!"
+        ],
+        "sol": "Reorder to $(5\\times2)\\times9=10\\times9=90$. Find a pair that makes 10 before multiplying anything."
+      },
+      {
+        "t": "imp",
+        "x": "Products enjoy the same two freedoms as sums: any <b>order</b>, any <b>grouping</b>. The winning move is <b>partner-hunting</b>: 2 \u00d7 5 = 10, 4 \u00d7 25 = 100, 8 \u00d7 125 = 1000. Spot a pair like that inside a product and the rest of the problem dissolves."
+      },
+      {
+        "t": "prob",
+        "x": "Partner up: $$4 \\times 7 \\times 25.$$",
+        "ans": "700",
+        "hints": [
+          "4 and 25 are partners &mdash; together they make 100."
+        ],
+        "sol": "Group the partners: $(4\\times25)\\times7=100\\times7=700$."
+      },
+      {
+        "t": "prob",
+        "x": "Find the friendly pair first: $$2 \\times 13 \\times 5.$$",
+        "ans": "130",
+        "hints": [
+          "2 and 5 make 10."
+        ],
+        "sol": "Reorder: $(2\\times5)\\times13=10\\times13=130$."
+      },
+      {
+        "t": "prob",
         "ans": "2600",
         "xp": 10,
         "hints": [
@@ -230,10 +409,6 @@
         "sol": "Order and grouping are free, so pick the friendly pairing: the 2 and the 50 make 100.$$(2 \\times 50) \\times 26 = 100 \\times 26 = \\boxed{2600}.$$Look for a pair that builds a power of ten before multiplying anything."
       },
       {
-        "t": "imp",
-        "x": "Products enjoy the same two freedoms as sums: any <b>order</b>, any <b>grouping</b>. The winning move is <b>partner-hunting</b>: 2 \u00d7 5 = 10, 4 \u00d7 25 = 100, 8 \u00d7 125 = 1000. Spot a pair like that inside a product and the rest of the problem dissolves."
-      },
-      {
         "t": "prob",
         "ans": "73000",
         "xp": 12,
@@ -241,8 +416,54 @@
         "sol": "Ignore the awkward 73 for a moment and look at its companions, 8 and 125, which are partners:$$8 \\times 125 = 1000,$$so \\(73 \\times 1000 = \\boxed{73000}\\). Keep the matchmaking table handy, \\(2 \\times 5 = 10\\), \\(4 \\times 25 = 100\\), \\(8 \\times 125 = 1000\\), and scan for couples before computing."
       },
       {
+        "t": "prob",
+        "x": "All in your head: $$16 \\times 125 \\times 5.$$",
+        "ans": "10000",
+        "hints": [
+          "$16=2\\times8$, and $8$ partners with $125$."
+        ],
+        "sol": "$16\\times125=2\\times(8\\times125)=2\\times1000=2000$, then $2000\\times5=10000$."
+      },
+      {
+        "t": "prob",
+        "x": "Compute $$8 \\times 625 \\times 125.$$",
+        "ans": "625000",
+        "hints": [
+          "8 and 125 are partners &mdash; they make 1000."
+        ],
+        "sol": "$8\\times125=1000$, so $1000\\times625=625000$. Partner-hunting collapses the whole product."
+      },
+      {
+        "t": "prob",
+        "x": "In your head: $$2 \\times 17 \\times 5 \\times 4 \\times 25.$$",
+        "ans": "17000",
+        "hints": [
+          "Two partner pairs are hiding in the list.",
+          "$2\\times5=10$ and $4\\times25=100$."
+        ],
+        "sol": "Pair them off: $(2\\times5)\\times(4\\times25)\\times17=10\\times100\\times17=1000\\times17=17000$."
+      },
+      {
         "t": "p",
         "x": "So far multiplication has only borrowed addition\u2019s tricks. Its own character shows when the two operations meet in the same problem: when a sum must be multiplied, or when two products secretly share a factor."
+      },
+      {
+        "t": "prob",
+        "x": "Split the multiply: $$6 \\times 12.$$",
+        "ans": "72",
+        "hints": [
+          "Think of 12 as $10+2$."
+        ],
+        "sol": "$6\\times(10+2)=60+12=72$. Breaking a number into easy parts turns one hard multiply into two simple ones."
+      },
+      {
+        "t": "prob",
+        "x": "Use the bridge: $$5 \\times 21.$$",
+        "ans": "105",
+        "hints": [
+          "Write 21 as $20+1$."
+        ],
+        "sol": "$5\\times(20+1)=100+5=105$."
       },
       {
         "t": "prob",
@@ -257,6 +478,15 @@
       },
       {
         "t": "prob",
+        "x": "Split the awkward factor: $$8 \\times 43.$$",
+        "ans": "344",
+        "hints": [
+          "$43=40+3$."
+        ],
+        "sol": "$8\\times(40+3)=320+24=344$."
+      },
+      {
+        "t": "prob",
         "ans": "3992",
         "xp": 10,
         "hints": [
@@ -264,6 +494,15 @@
         ],
         "x": "The bridge spans subtractions too. Compute $$4 \\times 998$$ with nothing written down.",
         "sol": "998 is 2 short of 1000, so multiply the round part and take back the overpayment.$$4 \\times 998 = 4 \\times (1000 - 2) = 4000 - 8 = \\boxed{3992}.$$The distributive bridge across a subtraction tames any factor sitting just below a round number."
+      },
+      {
+        "t": "prob",
+        "x": "No pencil: $$7 \\times 1003.$$",
+        "ans": "7021",
+        "hints": [
+          "$1003=1000+3$."
+        ],
+        "sol": "$7\\times(1000+3)=7000+21=7021$. Split across the round number, then add the small piece."
       },
       {
         "t": "prob",
@@ -277,18 +516,28 @@
       },
       {
         "t": "prob",
-        "label": "Extra challenge",
-        "ans": "20250",
+        "x": "Collapse it: $$53 \\times 28 + 47 \\times 28.$$",
+        "ans": "2800",
         "hints": [
-          "Both giant products share the factor 2025.",
-          "\\(2025 \\times 2030\\) is 2030 copies of 2025; \\(2020 \\times 2025\\) is 2020 copies of it. How many copies survive the subtraction?"
+          "Both products share a 28 &mdash; how many 28s in all?"
         ],
-        "x": "Lesson 1.1 promised you would one day do this in your head: $$(2025 \\times 2030) - (2020 \\times 2025).$$ Today is that day.",
-        "sol": "A 2025 sits inside each product, so read it as 2030 copies of 2025 minus 2020 copies, and the subtraction leaves ten copies.$$2025 \\times (2030 - 2020) = 2025 \\times 10 = \\boxed{20250}.$$When look-alike products are subtracted, factor out what they share instead of multiplying."
+        "sol": "Read it as fifty-three 28s plus forty-seven 28s, which is one hundred 28s: $(53+47)\\times28=100\\times28=2800$."
       },
       {
         "t": "p",
         "x": "One door is still closed. The last lesson tamed negative numbers under addition and subtraction. What happens when one walks into a multiplication?"
+      },
+      {
+        "t": "prob",
+        "x": "Compute $$(-5) \\times 3.$$",
+        "ans": "-15",
+        "accept": [
+          "\u221215"
+        ],
+        "hints": [
+          "One negative factor &mdash; so the answer is negative."
+        ],
+        "sol": "$5\\times3=15$, and one minus sign flips it across zero: $-15$."
       },
       {
         "t": "prob",
@@ -328,19 +577,77 @@
         "sol": "Start from \\(4 \\times 6 = 24\\). One minus sign takes the opposite,$$(-4) \\times 6 = -24,$$and the second takes it back.$$(-4) \\times (-6) = \\boxed{24}.$$Each negative factor is one flip across zero, so a product is negative only when its negative factors come in an odd count."
       },
       {
-        "t": "imp",
-        "label": "Recap \u00b7 Reorder freely",
-        "x": "Multiplication is <b>commutative</b> and <b>associative</b>: $ab=ba$ and $(ab)c=a(bc)$. Shuffle and regroup any product, then go partner-hunting: 2 \u00d7 5 = 10, 4 \u00d7 25 = 100, 8 \u00d7 125 = 1000."
+        "t": "prob",
+        "x": "Compute $$(-2) \\times (-6).$$",
+        "ans": "12",
+        "hints": [
+          "Two negatives cancel &mdash; the answer is positive."
+        ],
+        "sol": "The two minus signs flip back to positive: $2\\times6=12$."
       },
       {
         "t": "imp",
-        "label": "Recap \u00b7 The distributive bridge",
-        "x": "$a(b+c)=ab+ac$ is the one rule that links \u00d7 to +. <b>Split</b> an awkward factor across a sum or difference to multiply fast, or <b>factor out</b> a shared factor to collapse a sum of products into one."
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 The sign rules",
+        "label": "Count the signs",
         "x": "Each negative factor flips the product across zero, just as each minus sign flipped a number in the last lesson. An <em>odd</em> number of negative factors leaves a product negative; an <em>even</em> number leaves it positive.<span style=\"display:block;margin-top:9px;color:var(--slate);font-weight:400\">So (\u22122) \u00d7 7 = \u221214, while (\u22122) \u00d7 (\u22127) = 14, and (\u22121) \u00d7 (\u22121) \u00d7 (\u22121) = \u22121.</span>"
+      },
+      {
+        "t": "prob",
+        "x": "Count the signs: $$(-1) \\times (-2) \\times (-5).$$",
+        "ans": "-10",
+        "accept": [
+          "\u221210"
+        ],
+        "hints": [
+          "Three negatives &mdash; is that odd or even?"
+        ],
+        "sol": "Three negative factors is an odd count, so the product is negative: $1\\times2\\times5=10$ gives $-10$."
+      },
+      {
+        "t": "prob",
+        "x": "Count first, then compute: $$(-5) \\times (-7) \\times (-4).$$",
+        "ans": "-140",
+        "accept": [
+          "\u2212140"
+        ],
+        "hints": [
+          "Three negative factors &mdash; odd or even?"
+        ],
+        "sol": "An odd count of negatives makes the product negative: $5\\times7\\times4=140$, so $-140$."
+      },
+      {
+        "t": "prob",
+        "x": "Five signs, one decision: $$(-2) \\times (-2) \\times (-2) \\times (-2) \\times (-2).$$",
+        "ans": "-32",
+        "accept": [
+          "\u221232"
+        ],
+        "hints": [
+          "Count the minus signs first."
+        ],
+        "sol": "Five negatives is an odd count, so the product is negative. $2\\times2\\times2\\times2\\times2=32$, giving $-32$."
+      },
+      {
+        "t": "p",
+        "x": "One last stretch before you go. These closing problems fold the whole lesson together &mdash; partner-hunting, the distributive bridge, and the sign rules, all at once."
+      },
+      {
+        "t": "prob",
+        "x": "Compute $$(-4) \\times (-25) \\times (-1) \\times (-1).$$",
+        "ans": "100",
+        "hints": [
+          "Count the minus signs &mdash; even or odd?"
+        ],
+        "sol": "Four negative factors is an even count, so the product is positive: $4\\times25\\times1\\times1=100$."
+      },
+      {
+        "t": "prob",
+        "ans": "20250",
+        "hints": [
+          "Both giant products share the factor 2025.",
+          "\\(2025 \\times 2030\\) is 2030 copies of 2025; \\(2020 \\times 2025\\) is 2020 copies of it. How many copies survive the subtraction?"
+        ],
+        "x": "Lesson 1.1 promised you would one day do this in your head: $$(2025 \\times 2030) - (2020 \\times 2025).$$ Today is that day.",
+        "sol": "A 2025 sits inside each product, so read it as 2030 copies of 2025 minus 2020 copies, and the subtraction leaves ten copies.$$2025 \\times (2030 - 2020) = 2025 \\times 10 = \\boxed{20250}.$$When look-alike products are subtracted, factor out what they share instead of multiplying."
       }
     ],
     "review": [
@@ -591,7 +898,7 @@
     "blocks": [
       {
         "t": "p",
-        "x": "Two operations are tamed, and each came with a partner that undoes it. Subtraction turned out to be addition in a costume, since a \u2212 b is only a + (\u2212b), and the opposite \u2212b is the number that carries you back to 0. That leaves the fourth and final operation, division. Here is a fair guess to keep in your pocket before we start. If subtraction was addition in disguise, division will be multiplication in disguise, and it will need a partner of its own. The rest of this lesson earns that guess by using it."
+        "x": "Two operations are tamed, and each came with a partner that undoes it. Subtraction was addition in a costume &mdash; $a-b$ is only $a+(-b)$. That leaves the last operation, <b>division</b>. Here is a guess worth pocketing: if subtraction was addition in disguise, division will be multiplication in disguise, and it will need a partner of its own."
       },
       {
         "t": "prob",
@@ -604,23 +911,14 @@
         "ans": "1/5",
         "accept": [
           "1/5",
-          "0.2"
+          "0.2",
+          ".2",
+          "0.20"
         ]
       },
       {
-        "t": "imp",
-        "x": "Every number except 0 has a <b>reciprocal</b>, written \\(\\frac{1}{b}\\), the partner that multiplies with it to give 1, so \\(b \\times \\frac{1}{b} = 1\\). The reciprocal is to multiplication what the opposite was to addition. The opposite carries a number home to 0, the number that does nothing when you add. The reciprocal carries it home to 1, the number that does nothing when you multiply.",
-        "ans": "1/5",
-        "ans_alt": [],
-        "accept": [
-          "1/5",
-          "0.2"
-        ],
-        "xp": 6
-      },
-      {
         "t": "fig",
-        "cap": "Multiplying by 5 stretches 1 out to 5. Multiplying by the reciprocal 1/5 pulls it straight back to 1. A number and its reciprocal undo each other, landing you on 1, exactly as a number and its opposite landed you on 0.",
+        "cap": "Multiplying by 5 stretches 1 out to 5; multiplying by $\\frac15$ pulls it straight back. A number and its reciprocal undo each other, landing on 1 &mdash; just as a number and its opposite land on 0.",
         "x": "<svg viewBox=\"0 0 600 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A number line showing 1 stretched out to 5 by multiplying by 5, then pulled back to 1 by multiplying by one fifth\"><defs><marker id=\"rcA\" markerWidth=\"9\" markerHeight=\"9\" refX=\"5.5\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"var(--mid)\"/></marker><marker id=\"rcB\" markerWidth=\"9\" markerHeight=\"9\" refX=\"5.5\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6 Z\" fill=\"var(--blue)\"/></marker></defs><line x1=\"50\" y1=\"150\" x2=\"560\" y2=\"150\" stroke=\"var(--navy)\" stroke-width=\"2\"/><path d=\"M50,150 l9,-4 M50,150 l9,4\" stroke=\"var(--navy)\" stroke-width=\"2\" fill=\"none\"/><path d=\"M560,150 l-9,-4 M560,150 l-9,4\" stroke=\"var(--navy)\" stroke-width=\"2\" fill=\"none\"/><g stroke=\"var(--line)\" stroke-width=\"1.5\"><line x1=\"240\" y1=\"145\" x2=\"240\" y2=\"155\"/><line x1=\"315\" y1=\"145\" x2=\"315\" y2=\"155\"/><line x1=\"390\" y1=\"145\" x2=\"390\" y2=\"155\"/><line x1=\"540\" y1=\"145\" x2=\"540\" y2=\"155\"/></g><text x=\"90\" y=\"176\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--mute)\" font-family=\"Space Grotesk, sans-serif\">0</text><text x=\"240\" y=\"176\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--mute)\" font-family=\"Space Grotesk, sans-serif\">2</text><text x=\"315\" y=\"176\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--mute)\" font-family=\"Space Grotesk, sans-serif\">3</text><text x=\"390\" y=\"176\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--mute)\" font-family=\"Space Grotesk, sans-serif\">4</text><text x=\"540\" y=\"176\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--mute)\" font-family=\"Space Grotesk, sans-serif\">6</text><circle cx=\"165\" cy=\"150\" r=\"6.5\" fill=\"var(--blue)\"/><text x=\"165\" y=\"178\" text-anchor=\"middle\" font-size=\"14\" fill=\"var(--blue)\" font-weight=\"700\" font-family=\"Space Grotesk, sans-serif\">1</text><circle cx=\"465\" cy=\"150\" r=\"6.5\" fill=\"var(--accent)\"/><text x=\"465\" y=\"178\" text-anchor=\"middle\" font-size=\"14\" fill=\"var(--accent)\" font-weight=\"700\" font-family=\"Space Grotesk, sans-serif\">5</text><path d=\"M171,143 Q315,70 459,143\" fill=\"none\" stroke=\"var(--mid)\" stroke-width=\"2.2\" marker-end=\"url(#rcA)\"/><text x=\"315\" y=\"60\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--mid)\" font-weight=\"600\" font-family=\"Space Grotesk, sans-serif\">\u00d7 5  (stretch 1 out to 5)</text><path d=\"M459,157 Q315,232 171,157\" fill=\"none\" stroke=\"var(--blue)\" stroke-width=\"2.2\" marker-end=\"url(#rcB)\"/><text x=\"315\" y=\"248\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--blue)\" font-weight=\"600\" font-family=\"Space Grotesk, sans-serif\">\u00d7 1/5  (the reciprocal pulls 5 back to 1)</text></svg>"
       },
       {
@@ -633,10 +931,6 @@
         ],
         "x": "Here is a pattern worth predicting before you compute. Last chapter, the opposite of the opposite of a number brought you right back to the number, since two flips across zero return home. Now guess the reciprocal of a reciprocal, then test the guess. <b>What is the reciprocal of \\(\\frac{1}{6}\\)?</b>",
         "sol": "Flip \\(\\frac{1}{6}\\) and it becomes 6.$$\\frac{1}{6} \\times 6 = 1$$So the reciprocal of \\(\\frac{1}{6}\\) is \\(\\boxed{6}\\). Flipping twice returns the original, so the reciprocal of a reciprocal is the number itself."
-      },
-      {
-        "t": "imp",
-        "x": "Two facts fall out at once. The reciprocal of a fraction is that fraction <b>flipped</b>, since the swapped top and bottom always cancel. And the reciprocal of a reciprocal is the <b>original number</b>, since flipping twice returns you home, just as taking the opposite twice did. A reciprocal is a round trip waiting to happen."
       },
       {
         "t": "prob",
@@ -657,11 +951,11 @@
       },
       {
         "t": "imp",
-        "x": "A number and its reciprocal always share a sign, because their product is 1, a positive, and a positive product cannot come from one positive and one negative factor. So the reciprocal of a negative number is itself negative. Two numbers are their own reciprocal, 1 and \u22121, and one number, <b>0</b>, has no reciprocal at all."
+        "x": "Every number except 0 has a <b>reciprocal</b>, written $\\frac{1}{b}$ &mdash; the partner that multiplies with it to give 1, so $b\\times\\frac{1}{b}=1$. It is to multiplication what the opposite was to addition: the opposite carries a number home to 0, the reciprocal carries it home to 1. To find a fraction\u2019s reciprocal, <b>flip it</b> ($\\frac{a}{b}\\to\\frac{b}{a}$); flipping twice returns the original. A number and its reciprocal always <b>share a sign</b>, since their product is a positive 1 &mdash; and 0 alone has no reciprocal."
       },
       {
         "t": "p",
-        "x": "Now we hold the partner, so we can build the operation. Watch the symmetry with subtraction line up. Subtraction added the opposite. Division, as you are about to see, multiplies by the reciprocal. First let\u2019s check the strange sounding rule against the plain division you already trust, and then let\u2019s turn it loose where ordinary division would leave you stuck."
+        "x": "Now we hold the partner, so we can build the operation &mdash; and watch it line up with subtraction. First we check the rule against the plain division you already trust, then turn it loose where ordinary division would leave you stuck."
       },
       {
         "t": "prob",
@@ -671,8 +965,13 @@
         "sol": "Each runner covers one quarter of 12 km, found by multiplying.$$12 \\times \\frac{1}{4} = \\frac{12}{4} = \\boxed{3}$$Dividing 12 by 4 and multiplying 12 by \\(\\frac{1}{4}\\) are two names for one number."
       },
       {
-        "t": "imp",
-        "x": "<b>Division is multiplication by the reciprocal.</b> For any number a and any nonzero b, $a\\div b=a\\times\\frac1b$. This is the twin of subtraction, where $a-b=a+(-b)$. And here at last is why you can never divide by 0. Dividing by b means multiplying by the reciprocal of b, but 0 has no reciprocal, so dividing by 0 is not hard, it is meaningless."
+        "t": "prob",
+        "x": "Undo a $\\times 6$: compute $$24 \\div 6.$$",
+        "ans": "4",
+        "hints": [
+          "Dividing by 6 undoes multiplying by 6."
+        ],
+        "sol": "$24\\div 6=4$ &mdash; the number that gives $24$ back when multiplied by $6$."
       },
       {
         "t": "prob",
@@ -687,12 +986,21 @@
       },
       {
         "t": "fig",
-        "cap": "Each of the twelve cells is one 1/4-cup scoop, and three cups hold all twelve of them. So 3 \u00f7 1/4 = 12. Dividing by a small piece gives a big count.",
+        "cap": "Each of the twelve cells is one $\\frac14$-cup scoop, and three cups hold all twelve. So $3\\div\\frac14=12$ &mdash; dividing by a small piece gives a big count.",
         "x": "<svg viewBox=\"0 0 600 160\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Three cups drawn as one bar split into twelve equal quarter-cup cells numbered 1 through 12\"><g font-family=\"Space Grotesk, sans-serif\"><text x=\"140\" y=\"44\" text-anchor=\"middle\" font-size=\"12.5\" fill=\"var(--mute)\">1 cup</text><text x=\"300\" y=\"44\" text-anchor=\"middle\" font-size=\"12.5\" fill=\"var(--mute)\">1 cup</text><text x=\"460\" y=\"44\" text-anchor=\"middle\" font-size=\"12.5\" fill=\"var(--mute)\">1 cup</text><rect x=\"60\" y=\"58\" width=\"480\" height=\"58\" fill=\"var(--soft)\" stroke=\"var(--navy)\" stroke-width=\"2.5\"/><g stroke=\"var(--line)\" stroke-width=\"1\"><line x1=\"100\" y1=\"58\" x2=\"100\" y2=\"116\"/><line x1=\"140\" y1=\"58\" x2=\"140\" y2=\"116\"/><line x1=\"180\" y1=\"58\" x2=\"180\" y2=\"116\"/><line x1=\"260\" y1=\"58\" x2=\"260\" y2=\"116\"/><line x1=\"300\" y1=\"58\" x2=\"300\" y2=\"116\"/><line x1=\"340\" y1=\"58\" x2=\"340\" y2=\"116\"/><line x1=\"420\" y1=\"58\" x2=\"420\" y2=\"116\"/><line x1=\"460\" y1=\"58\" x2=\"460\" y2=\"116\"/><line x1=\"500\" y1=\"58\" x2=\"500\" y2=\"116\"/></g><g stroke=\"var(--navy)\" stroke-width=\"2.5\"><line x1=\"220\" y1=\"58\" x2=\"220\" y2=\"116\"/><line x1=\"380\" y1=\"58\" x2=\"380\" y2=\"116\"/></g><g font-size=\"13\" fill=\"var(--slate)\" text-anchor=\"middle\" font-weight=\"600\"><text x=\"80\" y=\"92\">1</text><text x=\"120\" y=\"92\">2</text><text x=\"160\" y=\"92\">3</text><text x=\"200\" y=\"92\">4</text><text x=\"240\" y=\"92\">5</text><text x=\"280\" y=\"92\">6</text><text x=\"320\" y=\"92\">7</text><text x=\"360\" y=\"92\">8</text><text x=\"400\" y=\"92\">9</text><text x=\"440\" y=\"92\">10</text><text x=\"480\" y=\"92\">11</text><text x=\"520\" y=\"92\">12</text></g><text x=\"300\" y=\"142\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--slate)\">each cell is one 1/4-cup scoop</text></g></svg>"
       },
       {
+        "t": "prob",
+        "x": "How many halves fill 6? Find $$6 \\div \\tfrac{1}{2}.$$",
+        "ans": "12",
+        "hints": [
+          "Dividing by $\\tfrac12$ is multiplying by $2$."
+        ],
+        "sol": "$6\\div\\tfrac12 = 6\\times 2 = 12$: twelve halves make six."
+      },
+      {
         "t": "imp",
-        "x": "Dividing by a number between 0 and 1 makes the result <b>larger</b>, not smaller. There is no contradiction once you read division correctly. Dividing by 1/4 is multiplying by 4. The smaller the piece you divide by, the more of them fit, so the bigger the count."
+        "x": "<b>Division is multiplication by the reciprocal:</b> $a\\div b=a\\times\\frac1b$ (for $b\\neq0$) &mdash; the exact twin of $a-b=a+(-b)$. It is also why you cannot divide by 0: that would mean multiplying by 0\u2019s reciprocal, and 0 has none. And since $\\frac1b$ can be bigger than 1, <b>dividing by a number between 0 and 1 makes the result larger</b> &mdash; dividing by $\\frac14$ is multiplying by 4."
       },
       {
         "t": "prob",
@@ -721,7 +1029,16 @@
       },
       {
         "t": "imp",
-        "x": "In a quotient of products, pair each factor on top with a factor on the bottom that it cancels with, and clear those pairs before multiplying anything. Each cancelled pair leaves a 1 behind, the do nothing of multiplication, exactly as each opposite pair left a 0 behind under addition. The whole point is to never build the big products at all."
+        "x": "In a quotient of products, <b>pair each top factor with a bottom factor</b> it cancels with, and clear those pairs before you multiply anything. Each cancelled pair leaves a 1 behind &mdash; the whole point is to never build the big products at all."
+      },
+      {
+        "t": "prob",
+        "x": "Pair, do not grind: $$(25 \\times 18) \\div (5 \\times 9).$$",
+        "ans": "10",
+        "hints": [
+          "Pair 25 with 5, and 18 with 9."
+        ],
+        "sol": "Pair each top factor with a bottom one: $(25\\div5)\\times(18\\div9)=5\\times2=10$."
       },
       {
         "t": "prob",
@@ -758,11 +1075,19 @@
       },
       {
         "t": "imp",
-        "x": "Division will not let you shuffle freely, but there is a fix you have used once already. Last chapter, the trick for messy subtractions was to turn every minus into adding the opposite, and then all the addition freedoms came back. Do the same here. Turn every <b>\u00f7 b</b> into <b>\u00d7 1/b</b> first. Once the whole expression is one long product, you may reorder, regroup, and cancel it however you like."
+        "x": "Division will not let you shuffle freely, but you have met the fix. Just as a messy subtraction came apart once every minus became &ldquo;add the opposite,&rdquo; turn every <b>$\\div b$</b> into <b>$\\times\\frac1b$</b> first. Once the whole expression is one long product, you may reorder, regroup, and cancel it however you like."
       },
       {
         "t": "prob",
-        "label": "Star challenge",
+        "x": "Mind the signs: $$(-56 \\times 9) \\div (7 \\times (-3)).$$",
+        "ans": "24",
+        "hints": [
+          "Negative over negative is positive &mdash; then pair off."
+        ],
+        "sol": "The signs cancel to positive, then $(56\\div7)\\times(9\\div3)=8\\times3=24$."
+      },
+      {
+        "t": "prob",
         "xp": 18,
         "ans": "20",
         "hints": [
@@ -771,21 +1096,6 @@
         ],
         "x": "Put every tool in one place. Compute $$(-45 \\times 16) \\div (-9 \\times 4)$$ in your head. Mind the signs, convert the division, then pair off.",
         "sol": "<p>Start with the sign. There is one negative on top and one on the bottom, two negatives in all, so the answer is positive and you can set the signs aside.</p><div class=\"formula\">$$(-45 \\times 16) \\div (-9 \\times 4) = (45 \\times 16) \\div (9 \\times 4)$$</div><p>Now convert and pair. Spread the bottom out as reciprocals and match the factors that cancel.</p><div class=\"formula\">$$45 \\times 16 \\times \\frac{1}{9} \\times \\frac{1}{4} = (45 \\div 9) \\times (16 \\div 4) = 5 \\times 4 = \\boxed{20}$$</div><p>Signs handled by the flip rule, division turned into multiplication, factors paired off to cancel. Three lessons, one short computation.</p>"
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 The reciprocal",
-        "x": "Every number but 0 has a <b>reciprocal</b>, the partner that multiplies with it to give 1. Flip a fraction to find it, $\\frac{a}{b}\\to\\frac{b}{a}$, and flipping twice returns the original. Only 1 and \u22121 are their own reciprocal, a number shares its reciprocal\u2019s sign, and 0 has none."
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 Division is multiplication",
-        "x": "<b>Dividing by b is multiplying by 1/b</b>, so $a\\div b=a\\times\\frac1b$, the twin of $a-b=a+(-b)$. Every sign rule from multiplication carries straight over. And dividing by a number between 0 and 1 makes the result larger, since its reciprocal is bigger than 1."
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 Cancel, and convert first",
-        "x": "In a quotient of products, <b>pair each top factor with a bottom factor that cancels it</b> and clear the pairs before multiplying. Identical factors vanish to 1 whatever their size. Division will not reorder or regroup the way + and \u00d7 do, so turn every \u00f7 into \u00d7 the reciprocal first, then shuffle and cancel freely."
       },
       {
         "t": "goals",
