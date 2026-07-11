@@ -803,5 +803,595 @@
     "sol": "Grouping \\(24-(8-6-2)\\) turns the inner expression into \\(8-6-2=0\\), so the result is \\(24-0=24\\). Other placements do worse, since \\(24-(8-6)-2=20\\) and \\(24-8-(6-2)=12\\), and the ungrouped chain is only \\(8\\). The largest value is \\(\\boxed{24}\\)."
    }
   ]
+ },
+ "1.4": {
+  "title": "Expressions",
+  "next": "1.5",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "An expression is a recipe for a computation. A single letter in that recipe stands for a number, any number at all, and that one move is what gives algebra its reach. One recipe with a letter in it covers every number the letter might be, all at once, instead of one arithmetic problem at a time."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A print shop charges the same way no matter how many posters you order. One poster costs \\(\\$12\\), two cost \\(\\$19\\), and three cost \\(\\$26\\). Each extra poster adds the same amount, and there is a one-time setup charge baked into every order. What does an order of \\(10\\) posters cost, in dollars?",
+    "ans": "75",
+    "accept": [
+     "75"
+    ],
+    "hints": [
+     "From 1 poster to 2, and from 2 to 3, the price climbs by the same fixed step. Find that step first.",
+     "Once you know the per-poster step, work backward to the setup charge hiding inside the price of one poster."
+    ],
+    "sol": "Each new poster adds \\(19-12=7\\) dollars, so ten posters cost \\(70\\) for printing. One poster costs \\(12\\), which is \\(7\\) for the poster plus \\(5\\) of setup, so the setup is \\(5\\) and every order is \\(5+7p\\). At \\(p=10\\) that is \\(5+70=\\boxed{75}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "A <b>variable</b> is a letter standing for a number, and an <b>expression</b> is a recipe for a computation that may use variables. In the last problem the \\(5\\) is a constant setup charge and the \\(7\\) is a per-poster rate, and the whole recipe \\(5+7p\\) prices any order at once, which is exactly what makes an expression worth writing. An expression names a value and carries no equals sign, which is what sets it apart from an equation."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "An expression splits into pieces wherever a \\(+\\) or a \\(-\\) sign falls between them, and each piece is called a term. Someone writes \\(8-3x+5xy+y=4\\). Counting only what sits to the left of the equals sign, how many terms does that expression have?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Slice the expression at every \\(+\\) and every \\(-\\). Each slice is one term, and the leading \\(8\\) counts."
+    ],
+    "sol": "Cutting at each \\(+\\) and \\(-\\) gives \\(8\\), \\(-3x\\), \\(5xy\\), and \\(y\\), with the minus staying on the \\(3x\\). Counting the \\(4\\) beyond the equals sign, or losing the leading \\(8\\), would throw the count off. The number of terms is \\(\\boxed{4}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "The <b>terms</b> of an expression are the pieces separated by \\(+\\) and \\(-\\), and the sign in front belongs to the term it marks. This follows from 1.2 and 1.3, where subtracting a number is adding its opposite, so \\(8-3x\\) is really \\(8+(-3x)\\) and the term is \\(-3x\\), minus and all. A term with no variable, like the \\(8\\), is a <b>constant term</b>. Keeping the sign attached to its term is what lets you shuffle a chain of terms without breaking it."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The coefficient of a term is its numerical factor, and it carries the sign sitting in front of it. In the expression \\(10-6w\\), what is the coefficient of \\(w\\)?",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6"
+    ],
+    "hints": [
+     "Subtracting \\(6w\\) is adding \\(-6w\\), so the sign in front travels with the number multiplying \\(w\\)."
+    ],
+    "sol": "The term containing \\(w\\) is \\(-6w\\), because the \\(-\\) belongs to it. Answering \\(6\\) drops the sign the term carries. Its numerical factor, sign and all, is \\(\\boxed{-6}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Two expressions look almost the same but do very different things. Writing \\(4n\\) means \\(4\\) times \\(n\\), while \\(4+n\\) means \\(4\\) plus \\(n\\). When \\(n=3\\), how much larger is \\(4n\\) than \\(4+n\\)?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "\\(4n\\) is a product and \\(4+n\\) is a sum. Evaluate each at \\(n=3\\) before comparing.",
+     "The little gap between the \\(4\\) and the \\(n\\) is doing all the work. No sign there means multiply, a plus sign means add."
+    ],
+    "sol": "At \\(n=3\\), the product \\(4n=4\\cdot 3=12\\), while the sum \\(4+n=4+3=7\\). Reading \\(4n\\) as \\(4+n\\) is exactly the mistake to avoid. The product runs ahead by \\(12-7=\\boxed{5}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Here is the crux. A \\(+\\) or a \\(-\\) separates <b>terms</b>, the added pieces, while multiplication joins <b>factors</b>, the multiplied pieces inside a single term, and the coefficient is the numeric factor. So \\(4n\\) is one term with factors \\(4\\) and \\(n\\), but \\(4+n\\) is two terms. The two get confused because they share one line of symbols and the multiplication in \\(4n\\) hides between the characters, with no sign to announce it."
+   },
+   {
+    "t": "fig",
+    "cap": "One expression, cut two ways. On top, the plus and minus signs split \\(13+24x-17xy\\) into its three terms, and the minus stays with the term it marks. On the bottom, one of those terms, \\(24x\\), is pried open into the two factors multiplied inside it, the coefficient \\(24\\) and the variable factor \\(x\\). Plus and minus separate terms, multiplication joins factors.",
+    "x": "<svg viewBox=\"0 0 580 372\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"One expression cut two ways, on top the plus and minus signs split thirteen plus twenty-four x minus seventeen x y into three terms, on the bottom the term twenty-four x opens into the coefficient twenty-four and the variable factor x joined by a dot\"><defs><filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter><filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">THREE TERMS</text><rect x=\"150\" y=\"46\" width=\"280\" height=\"52\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><text x=\"290\" y=\"81\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"23\" font-weight=\"700\" fill=\"#475569\">13 + 24x − 17xy</text><path d=\"M156 54 l6 0 M159 51 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M418 90 l6 0 M421 87 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M204 112 q0 8 8 8 h30 q8 0 8 -8\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><path d=\"M258 112 q0 8 8 8 h44 q8 0 8 -8\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><path d=\"M330 112 q0 8 8 8 h58 q8 0 8 -8\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><text x=\"228\" y=\"144\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">TERM</text><text x=\"288\" y=\"144\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">TERM</text><text x=\"367\" y=\"144\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">TERM</text><line x1=\"30\" y1=\"176\" x2=\"550\" y2=\"176\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"206\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">ONE TERM = FACTORS</text><line x1=\"288\" y1=\"150\" x2=\"288\" y2=\"236\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><rect x=\"196\" y=\"246\" width=\"86\" height=\"72\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"239\" y=\"292\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#8a5a08\">24</text><text x=\"311\" y=\"300\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#7c8aa0\">·</text><rect x=\"330\" y=\"246\" width=\"72\" height=\"72\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"366\" y=\"292\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#8a5a08\">x</text><text x=\"239\" y=\"344\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#8a5a08\">COEFFICIENT</text><text x=\"366\" y=\"344\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#8a5a08\">VARIABLE FACTOR</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "At a fair, each ride costs \\(\\$3\\) and each game costs \\(\\$5\\). A single expression, \\(3r+5g\\), gives the total spend for \\(r\\) rides and \\(g\\) games. What is the total, in dollars, for \\(4\\) rides and \\(6\\) games?",
+    "ans": "42",
+    "accept": [
+     "42"
+    ],
+    "hints": [
+     "The \\(3r\\) counts all the ride money and the \\(5g\\) counts all the game money. Find each, then add."
+    ],
+    "sol": "The rides cost \\(3r=3\\cdot 4=12\\) dollars and the games cost \\(5g=5\\cdot 6=30\\) dollars. Pairing the \\(3\\) with the games or the \\(5\\) with the rides would swap the two counts. The total is \\(12+30=\\boxed{42}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Maria writes the total for a party as \\(6(t+2)\\), while Jon writes it as \\(6t+12\\). They insist both give the same number for the same \\(t\\). For \\(t=8\\), what value do both expressions produce?",
+    "ans": "60",
+    "accept": [
+     "60",
+     "sixty"
+    ],
+    "hints": [
+     "Evaluate each expression on its own at \\(t=8\\), and do the grouped one inside first. Do not rewrite one into the other."
+    ],
+    "sol": "Maria's \\(6(t+2)=6\\cdot 10=60\\), and Jon's \\(6t+12=48+12=60\\). Two expressions that look different landed on the same value here, which is a good sign but not yet proof. Both give \\(\\boxed{60}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "Two expressions are <b>equivalent</b> when they give the same value for every value of the variable. A single matching value, like Maria and Jon's \\(60\\), does not prove equivalence, since two expressions can agree at one input and part ways at the next. A single mismatch, on the other hand, disproves it on the spot. The rules for rewriting one form into another arrive in Chapter 2, so for now equivalence is something you observe by evaluating, never by rearranging."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "It is tempting to treat \\(3(n+4)\\) and \\(3n+4\\) as the same expression, but they are not. At \\(n=2\\), by how much do their values differ?",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Evaluate both at \\(n=2\\), the grouped one first, then subtract the smaller from the larger.",
+     "One value that disagrees is enough to prove two expressions are not the same."
+    ],
+    "sol": "At \\(n=2\\), \\(3(n+4)=3\\cdot 6=18\\) while \\(3n+4=6+4=10\\), a difference of \\(8\\). A single disagreement settles it, these are not the same expression, and that same gap of \\(8\\) shows up at every \\(n\\). The difference is \\(\\boxed{8}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A parking garage charges \\(\\$6\\) to enter plus \\(\\$4\\) for every hour parked, but the first hour is validated free, so you pay for one fewer hour than you stay. The charge for staying \\(h\\) hours is \\(6+4(h-1)\\) dollars. What do you pay, in dollars, for staying \\(9\\) hours?",
+    "ans": "38",
+    "accept": [
+     "38"
+    ],
+    "hints": [
+     "The \\(6\\) is a flat entry charge that is not multiplied by anything. The \\(4(h-1)\\) is the hourly charge on the hours you actually pay for.",
+     "With one hour free, staying \\(9\\) hours means paying for \\(8\\) of them."
+    ],
+    "sol": "Staying \\(9\\) hours means paying for \\(h-1=8\\) hours, so the hourly part is \\(4\\cdot 8=32\\) dollars, and the flat \\(6\\) to enter is added on, not multiplied. Multiplying the \\(6\\) into the hours would misread the grouping. That is \\(6+32=\\boxed{38}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "Letters for unknowns are younger than the algebra that uses them. François Viète, around \\(1591\\), was the first to use letters for known and unknown quantities alike, and Descartes later fixed the habit we still keep, early letters like \\(a,b,c\\) for known numbers and late ones like \\(x,y\\) for unknowns."
+   },
+   {
+    "t": "p",
+    "x": "This lesson added seven words to your working vocabulary. A variable is a letter for a number, an expression is a recipe using them, its terms are the pieces split by \\(+\\) and \\(-\\), each term's coefficient is its signed numeric factor, factors are what multiply inside a term, a constant is a term with no variable, and equivalent expressions agree at every value. Next, 1.5 turns to exponents, the shorthand for repeated multiplication."
+   }
+  ],
+  "review": [
+   {
+    "x": "Terms are the pieces of an expression separated by \\(+\\) and \\(-\\) signs. How many terms are in \\(4a+3-b\\)?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "Cut at each \\(+\\) and \\(-\\), and count the pieces. The leading \\(4a\\) counts."
+    ],
+    "sol": "The pieces are \\(4a\\), \\(3\\), and \\(-b\\), so there are \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "In \\(7-4xy\\), what is the coefficient of the term \\(xy\\), sign included?",
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4"
+    ],
+    "hints": [
+     "The minus in front belongs to the term, so it belongs to the coefficient too."
+    ],
+    "sol": "The term is \\(-4xy\\), and its numerical factor, sign and all, is \\(-4\\), not \\(4\\). The coefficient is \\(\\boxed{-4}\\)."
+   },
+   {
+    "x": "A taxi charges \\(\\$4\\) to start plus \\(\\$2\\) for each mile, so a ride of \\(m\\) miles costs \\(4+2m\\) dollars. What does an \\(8\\)-mile ride cost, in dollars?",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "The \\(4\\) is fixed. The \\(2m\\) grows with the miles, so find \\(2\\cdot 8\\) first."
+    ],
+    "sol": "The mileage part is \\(2\\cdot 8=16\\) dollars on top of the flat \\(4\\), so the cost is \\(4+16=\\boxed{20}\\)."
+   },
+   {
+    "x": "A theater fills its rows by a fixed rule. Row \\(1\\) seats \\(6\\), row \\(2\\) seats \\(10\\), and row \\(3\\) seats \\(14\\), each row adding the same number of seats. How many seats are in row \\(20\\)?",
+    "ans": "82",
+    "accept": [
+     "82"
+    ],
+    "hints": [
+     "Each row adds the same step. Find the step, then find the fixed base the step is added to."
+    ],
+    "sol": "Each row adds \\(4\\) seats, so row \\(r\\) seats \\(2+4r\\), since row \\(1\\) gives \\(2+4=6\\). Row \\(20\\) seats \\(2+4\\cdot 20=\\boxed{82}\\)."
+   },
+   {
+    "x": "The constant term of an expression is the term with no variable. What is the constant term of \\(9x-5+2x^2\\)?",
+    "ans": "-5",
+    "accept": [
+     "-5",
+     "−5"
+    ],
+    "hints": [
+     "Both \\(9x\\) and \\(2x^2\\) carry a variable. The third term does not, and it keeps its sign."
+    ],
+    "sol": "Only \\(-5\\) has no variable, and the sign stays with it, so the constant term is \\(\\boxed{-5}\\)."
+   },
+   {
+    "x": "Recall that \\(3n\\) means \\(3\\) times \\(n\\), while \\(3+n\\) means \\(3\\) plus \\(n\\). At \\(n=5\\), how much larger is \\(3n\\) than \\(3+n\\)?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "seven"
+    ],
+    "hints": [
+     "Evaluate the product and the sum separately at \\(n=5\\)."
+    ],
+    "sol": "At \\(n=5\\), the product \\(3n=15\\) and the sum \\(3+n=8\\), so the product leads by \\(15-8=\\boxed{7}\\)."
+   },
+   {
+    "x": "The expressions \\(4(n+3)\\) and \\(4n+3\\) are not equal. At \\(n=1\\), by how much do their values differ?",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "Evaluate both at \\(n=1\\), the grouped one first, then subtract."
+    ],
+    "sol": "At \\(n=1\\), \\(4(n+3)=4\\cdot 4=16\\) while \\(4n+3=4+3=7\\), a difference of \\(9\\) that holds at every \\(n\\). One disagreement proves they differ, so the gap is \\(\\boxed{9}\\)."
+   },
+   {
+    "x": "The expression \\(5a+3b\\) counts two things at once. Find its value when \\(a=7\\) and \\(b=3\\).",
+    "ans": "44",
+    "accept": [
+     "44"
+    ],
+    "hints": [
+     "\\(5a\\) and \\(3b\\) are each a product. Compute both, then add."
+    ],
+    "sol": "Here \\(5a=35\\) and \\(3b=9\\), so \\(5a+3b=35+9=\\boxed{44}\\)."
+   },
+   {
+    "x": "Evaluate \\(10-2(m+1)\\) when \\(m=3\\), keeping the order of operations in mind.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Work inside the parentheses first, then multiply by \\(2\\), then subtract from \\(10\\)."
+    ],
+    "sol": "Inside first, \\(m+1=4\\), then \\(2\\cdot 4=8\\), and finally \\(10-8=2\\). Subtracting before multiplying would misread the grouping, so the value is \\(\\boxed{2}\\)."
+   },
+   {
+    "x": "Three expressions sit side by side, \\(2(n+3)\\), \\(2n+3\\), and \\(2n+6\\). Two of them are equivalent, giving the same value for every \\(n\\), and one is the odd one out. Test all three at \\(n=4\\), and enter the value that the two equivalent ones share.",
+    "ans": "14",
+    "accept": [
+     "14",
+     "fourteen"
+    ],
+    "hints": [
+     "Evaluate all three at \\(n=4\\), the grouped one inside first, and look for the two that match.",
+     "\\(2(n+3)\\) and \\(2n+6\\) agree at every \\(n\\), not just this one, while \\(2n+3\\) does not."
+    ],
+    "sol": "At \\(n=4\\), the three values are \\(2(4+3)=14\\), \\(2\\cdot 4+3=11\\), and \\(2\\cdot 4+6=14\\). The odd one out is \\(2n+3\\), while the matching pair \\(2(n+3)\\) and \\(2n+6\\) agree here and, as Chapter 2 will show, at every \\(n\\). The shared value is \\(\\boxed{14}\\)."
+   }
+  ]
+ },
+ "1.5": {
+  "title": "Exponents",
+  "next": "1.6",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Multiplication compresses repeated addition into one step. This lesson gives repeated multiplication the same treatment, a small raised number with a lot of reach, and every rule that number obeys comes from one habit, counting factors. Insisting the rules never break will then force the meaning of zero, negative, and fractional exponents."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Ten 2s multiplied together is written \\(2^{10}\\). Multiplying them out one at a time works, but it is slow. Instead split the ten factors into two equal groups of five, compute one group, then finish with a single multiplication. What is \\(2^{10}\\)?",
+    "ans": "1024",
+    "accept": [
+     "1024"
+    ],
+    "hints": [
+     "One group of five 2s multiplies out to a number you know well."
+    ],
+    "sol": "One at a time takes nine multiplications. The split needs five, four to find that five 2s make \\(32\\) and one more for the two groups, \\(32\\cdot 32=\\boxed{1024}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Definition.</b> \\(b^n\\) means \\(n\\) factors of \\(b\\) multiplied together. The \\(b\\) is the <b>base</b>, the raised \\(n\\) is the <b>exponent</b>, and \\(b^1\\) is just \\(b\\), a single factor. Read \\(2^{10}\\) as 2 to the tenth. As in 1.2, an exponent binds only to the one symbol it touches. And the grouping move in the last problem, trading ten factors for two blocks of five, works far more generally, for a reason that gets a name shortly."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The product \\(8\\cdot 32\\) is itself a power of 2. Each factor is itself a power of 2, so the whole product must be one too. Write \\(8\\cdot 32\\) as \\(2^x\\) and enter \\(x\\).",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Count the factors of 2 in each piece before multiplying anything."
+    ],
+    "sol": "Multiplying out to \\(256\\) and factoring back down works, but counting is faster. \\(8\\) is three factors of 2 and \\(32\\) is five more, so the product is eight factors of 2 in one row, and \\(x=\\boxed{8}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The product rule.</b> \\(a^m\\cdot a^n=a^{m+n}\\). The reason is a count. \\(a^m\\) is \\(m\\) factors of \\(a\\), \\(a^n\\) is \\(n\\) more, and setting them side by side makes one row of \\(m+n\\) factors. That is the whole proof, exponents add because factor counts add. One caution. The rule needs a shared base, since the count only works when every factor is the same number. \\(2^3\\cdot 5^2\\) mixes 2s with 5s and combines into no single power."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Evaluate \\(\\frac{5^8}{5^5}\\) without ever computing \\(5^8\\) or \\(5^5\\). Write the top and the bottom as strings of factors, cancel the shared ones, then multiply what is left.",
+    "ans": "125",
+    "accept": [
+     "125"
+    ],
+    "hints": [
+     "How many factors of 5 are left after the cancelling?"
+    ],
+    "sol": "Brute force means \\(390625\\div 3125\\), which works and wastes the structure. Five factors on the bottom cancel five of the eight on top, leaving \\(5\\cdot 5\\cdot 5=\\boxed{125}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The quotient rule.</b> \\(\\frac{a^m}{a^n}=a^{m-n}\\). The same count, run in reverse. Each of the \\(n\\) factors on the bottom cancels a matching factor on top, and the subtraction \\(m-n\\) counts exactly what remains. That is why the last problem never needed the giant values, since \\(\\frac{5^8}{5^5}=5^{8-5}=5^3\\) straight away. Like the product rule, this one requires a shared base, because only identical factors cancel."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The expression \\((7^2)^3\\) means three factors of \\(7^2\\). Written out, it is a single power of 7, so \\((7^2)^3=7^x\\) for some \\(x\\). Count the total number of 7s and enter \\(x\\).",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Each copy of \\(7^2\\) contributes two 7s to the row."
+    ],
+    "sol": "Adding to get \\(7^{2+3}=7^5\\) is the tempting wrong turn, since the 3 here counts copies rather than extra factors. Three copies of two 7s is \\(2\\cdot 3=6\\) factors in all, so \\(x=\\boxed{6}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Power of a power.</b> \\((a^m)^n=a^{mn}\\), because \\(n\\) copies of \\(m\\) factors is \\(mn\\) factors, so this time the counts multiply. A cousin comes free. \\((ab)^n=a^nb^n\\), since \\(n\\) copies of \\(ab\\) reorder into \\(n\\) copies of \\(a\\) beside \\(n\\) copies of \\(b\\), and 1.3 says the reordering costs nothing. This rule is also why the opening split worked, since \\(32^2=(2^5)^2=2^{5\\cdot 2}=2^{10}\\) exactly."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Walk down the powers of 3. \\(3^4=81\\), \\(3^3=27\\), \\(3^2=9\\), and each step down divides by 3. Keep the pattern going past \\(3^1\\) to \\(3^0\\). What value does the pattern force?",
+    "ans": "1",
+    "accept": [
+     "1",
+     "one"
+    ],
+    "hints": [
+     "What is 3 divided by 3?"
+    ],
+    "sol": "The reflex answer for \\(3^0\\) is \\(0\\), but each step divides by 3, so \\(3^2=9\\) drops to \\(3^1=3\\), and one more step gives \\(3\\div 3\\). The pattern forces \\(3^0=\\boxed{1}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The pattern does not stop at 1. Take two more steps down from \\(3^0\\), dividing by 3 at each step, to land on \\(3^{-2}\\). Enter its value as a fraction.",
+    "ans": "1/9",
+    "accept": [
+     "1/9"
+    ],
+    "hints": [
+     "Each step still divides by 3, even after the values drop below 1."
+    ],
+    "sol": "The minus sign tempts you toward \\(-9\\), which is the wrong turn. One step below \\(1\\) is \\(\\frac{1}{3}\\), one more is \\(\\frac{1}{9}\\), so \\(3^{-2}=\\boxed{\\frac{1}{9}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Zero and negative exponents.</b> For nonzero \\(a\\), \\(a^0=1\\) and \\(a^{-n}=\\frac{1}{a^n}\\). Nothing here is invented, these are the only values that keep the divide-by-the-base pattern intact, and the quotient rule lands in the same place, since \\(\\frac{3^2}{3^2}\\) equals \\(1\\) by cancelling and \\(3^{2-2}=3^0\\) by the rule. The trap to avoid. A negative exponent makes a reciprocal, never a negative number, so \\(3^{-2}\\) is \\(\\frac{1}{9}\\) and not \\(-9\\)."
+   },
+   {
+    "t": "fig",
+    "cap": "Two rules, one habit of counting. On top, three 6s beside two 6s make five 6s in a row, so \\(6^3\\cdot 6^2=6^5\\), the exponents adding because the factor counts add. Below, each step to the right divides by 10, and keeping that pattern going forces \\(10^0=1\\) and \\(10^{-1}=\\frac{1}{10}\\), the two gold rungs.",
+    "x": "<svg viewBox=\"0 0 580 336\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands, on top five gold tiles of 6 grouped three and two with a brace counting five factors and a dotted connector to a result card reading six to the fifth, below a ladder of powers of ten from ten squared down to ten to the minus one with a divide-by-ten pill between rungs and the last two rungs gold\"><defs><filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter><filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">COUNT THE FACTORS</text><text x=\"137\" y=\"48\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#7c8aa0\">6<tspan font-size=\"9\" dy=\"-5\">3</tspan></text><text x=\"292\" y=\"48\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#7c8aa0\">6<tspan font-size=\"9\" dy=\"-5\">2</tspan></text><rect x=\"60\" y=\"56\" width=\"46\" height=\"46\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"83\" y=\"87\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">6</text><rect x=\"114\" y=\"56\" width=\"46\" height=\"46\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"137\" y=\"87\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">6</text><rect x=\"168\" y=\"56\" width=\"46\" height=\"46\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"191\" y=\"87\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">6</text><text x=\"228\" y=\"86\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#7c8aa0\">·</text><rect x=\"242\" y=\"56\" width=\"46\" height=\"46\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"265\" y=\"87\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">6</text><rect x=\"296\" y=\"56\" width=\"46\" height=\"46\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"319\" y=\"87\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">6</text><path d=\"M60 110 q0 8 8 8 h266 q8 0 8 -8\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><text x=\"201\" y=\"140\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">FIVE FACTORS</text><line x1=\"352\" y1=\"112\" x2=\"428\" y2=\"84\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><rect x=\"436\" y=\"52\" width=\"94\" height=\"56\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M442 60 l6 0 M445 57 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M518 100 l6 0 M521 97 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"483\" y=\"90\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#2257c5\">6<tspan font-size=\"15\" dy=\"-9\">5</tspan></text><line x1=\"30\" y1=\"166\" x2=\"550\" y2=\"166\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"196\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">THE LADDER</text><rect x=\"132\" y=\"210\" width=\"48\" height=\"20\" rx=\"10\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"156\" y=\"224\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2257c5\">÷ 10</text><rect x=\"266\" y=\"210\" width=\"48\" height=\"20\" rx=\"10\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"290\" y=\"224\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2257c5\">÷ 10</text><rect x=\"400\" y=\"210\" width=\"48\" height=\"20\" rx=\"10\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"424\" y=\"224\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2257c5\">÷ 10</text><rect x=\"45\" y=\"240\" width=\"88\" height=\"54\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"89\" y=\"274\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#2257c5\">10<tspan font-size=\"12\" dy=\"-8\">2</tspan></text><rect x=\"179\" y=\"240\" width=\"88\" height=\"54\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"223\" y=\"274\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#2257c5\">10<tspan font-size=\"12\" dy=\"-8\">1</tspan></text><rect x=\"313\" y=\"240\" width=\"88\" height=\"54\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"357\" y=\"274\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#8a5a08\">10<tspan font-size=\"12\" dy=\"-8\">0</tspan></text><rect x=\"447\" y=\"240\" width=\"88\" height=\"54\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"491\" y=\"274\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#8a5a08\">10<tspan font-size=\"12\" dy=\"-8\">−1</tspan></text><line x1=\"139\" y1=\"267\" x2=\"167\" y2=\"267\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M162 261 L170 267 L162 273\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"273\" y1=\"267\" x2=\"301\" y2=\"267\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M296 261 L304 267 L296 273\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"407\" y1=\"267\" x2=\"435\" y2=\"267\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M430 261 L438 267 L430 273\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"89\" y=\"318\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#7c8aa0\">100</text><text x=\"223\" y=\"318\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#7c8aa0\">10</text><text x=\"357\" y=\"318\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">1</text><text x=\"491\" y=\"318\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">1/10</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The product rule keeps working when an exponent is negative. Evaluate \\(2^{-3}\\cdot 2^7\\) by adding the exponents before computing anything.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "Add the exponents first. Only then evaluate the single power that remains."
+    ],
+    "sol": "The long way computes \\(2^{-3}=\\frac{1}{8}\\) and \\(2^7=128\\) separately, then divides \\(128\\) by \\(8\\). Adding first skips all of it, \\(-3+7=4\\), so the product is \\(2^4=\\boxed{16}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Suppose the power-of-a-power rule keeps working when an exponent is \\(\\frac{1}{2}\\). Then \\(\\left(49^{1/2}\\right)^2=49^{\\frac{1}{2}\\cdot 2}=49^1=49\\), so \\(49^{1/2}\\) must be a number whose square is \\(49\\). What positive number is it?",
+    "ans": "7",
+    "accept": [
+     "7",
+     "seven"
+    ],
+    "hints": [
+     "Which positive number, times itself, gives \\(49\\)?"
+    ],
+    "sol": "\\(-7\\) also squares to \\(49\\), and the next block sorts out which of the two the notation names. The positive one is \\(7\\), since \\(7\\cdot 7=49\\), so \\(49^{1/2}=\\boxed{7}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Fractional exponents.</b> \\(a^{1/2}\\) is defined as the nonnegative number whose square is \\(a\\), the familiar square root \\(\\sqrt{a}\\). Nonnegative is part of the definition because both \\(7\\) and \\(-7\\) square to \\(49\\), and notation must name exactly one number, so the convention keeps the nonnegative one. Likewise \\(a^{1/n}\\) is the \\(n\\)th root of \\(a\\), and \\(a^{m/n}=\\left(a^{1/n}\\right)^m\\), root first, then power, which keeps the numbers small. Odd roots of negatives exist, since an odd count of negative factors stays negative, but an even root of a negative names no real number."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Evaluate \\(9^{3/2}\\). The exponent offers two orders, root first or cube first. Both are legal, but only one keeps every number small.",
+    "ans": "27",
+    "accept": [
+     "27"
+    ],
+    "hints": [
+     "Write \\(\\frac{3}{2}\\) as \\(\\frac{1}{2}\\) applied first, then \\(3\\).",
+     "What is \\(9^{1/2}\\)?"
+    ],
+    "sol": "Cube first and you must handle \\(\\left(9^3\\right)^{1/2}=729^{1/2}\\), which is \\(27\\) since \\(27\\cdot 27=729\\), but only after passing through \\(729\\). Root first stays small, \\(9^{1/2}=3\\) and \\(3^3=27\\), so \\(9^{3/2}=\\boxed{27}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "Exponent notation is young. Descartes fixed the raised-number form in La Géométrie in 1637. Before that, writers spelled powers out in words, cubus for a third power, and computations ran on for lines."
+   },
+   {
+    "t": "p",
+    "x": "One definition and one habit, counting factors, produced every rule here, and insisting those rules keep working gave \\(a^0\\), \\(a^{-n}\\), and \\(a^{1/n}\\) their meanings. Next, 1.6 returns to expressions and evaluates them at given values, and Chapter 3 brings variables into the laws you just built."
+   }
+  ],
+  "review": [
+   {
+    "x": "Warm up with the definition. \\(5^4\\) means four factors of \\(5\\) multiplied together, nothing more. Evaluate it as a single number.",
+    "ans": "625",
+    "accept": [
+     "625"
+    ],
+    "hints": [
+     "Pair the factors. \\(5 \\cdot 5\\) is a number you can square."
+    ],
+    "sol": "Group the four \\(5\\)s into two pairs, each worth \\(25\\), so \\(5^4 = 25 \\cdot 25\\). Multiplying one factor at a time works too but invites slips. The value is \\(\\boxed{625}\\)."
+   },
+   {
+    "x": "The product \\(121 \\cdot 11\\) is itself a power of \\(11\\), since each of its two factors is one. Write the product as \\(11^x\\) and enter \\(x\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "\\(121\\) is a power of \\(11\\). Count the factors of \\(11\\) in each piece."
+    ],
+    "sol": "Since \\(121 = 11^2\\) and \\(11 = 11^1\\), the product has \\(2 + 1 = 3\\) factors of \\(11\\). The tempting slip is to multiply out to \\(1331\\) and enter that, but the problem asks for the exponent, not the product itself. So \\(x = \\boxed{3}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\frac{12^9}{12^7}\\). Cancel the shared factors before you multiply anything, and only then compute what is left.",
+    "ans": "144",
+    "accept": [
+     "144"
+    ],
+    "hints": [
+     "Subtract the exponents to count the factors that remain."
+    ],
+    "sol": "Writing out \\(12^9\\), a ten-digit number, is the slow path. The seven shared factors of \\(12\\) cancel, leaving \\(12^{9-7} = 12^2 = \\boxed{144}\\)."
+   },
+   {
+    "x": "\\((17^4)^3\\) collapses to a single power of \\(17\\). Count the total factors of \\(17\\) it contains and enter the exponent \\(x\\) in \\((17^4)^3 = 17^x\\).",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve"
+    ],
+    "hints": [
+     "Three copies of \\(17^4\\), and each copy holds four factors of \\(17\\)."
+    ],
+    "sol": "Each of the three copies of \\(17^4\\) contributes four factors of \\(17\\), so there are \\(4 \\cdot 3 = 12\\) in all. Adding to get \\(4 + 3 = 7\\) confuses this with the product rule. So \\(x = \\boxed{12}\\)."
+   },
+   {
+    "x": "Evaluate \\(14^0 \\cdot 14^2\\). One of the two factors is much simpler than it looks, so pin down its value before you multiply.",
+    "ans": "196",
+    "accept": [
+     "196"
+    ],
+    "hints": [
+     "Settle the value of \\(14^0\\) before multiplying anything."
+    ],
+    "sol": "The reflex answer \\(14^0 = 0\\) is the trap. Any nonzero base to the zero power is \\(1\\). So the product is \\(1 \\cdot 14^2 = 1 \\cdot 196 = \\boxed{196}\\)."
+   },
+   {
+    "x": "Write \\(5^{-2}\\) as a fraction in lowest terms. Decide what the negative exponent actually does to the base before touching any arithmetic.",
+    "ans": "1/25",
+    "accept": [
+     "1/25",
+     "0.04",
+     ".04"
+    ],
+    "hints": [
+     "A negative exponent makes a reciprocal, not a negative number."
+    ],
+    "sol": "The wrong turns are \\(-25\\) and \\(-\\frac{1}{25}\\). The minus in the exponent takes a reciprocal and never attaches a sign. \\(5^{-2} = \\frac{1}{5^2} = \\boxed{\\frac{1}{25}}\\)."
+   },
+   {
+    "x": "Evaluate \\(15^{-4} \\cdot 15^6\\). Add the exponents before computing anything, then evaluate the small power that remains.",
+    "ans": "225",
+    "accept": [
+     "225"
+    ],
+    "hints": [
+     "The product rule holds even when one exponent is negative."
+    ],
+    "sol": "Working out \\(15^6 = 11390625\\) and dividing by \\(15^4\\) gets there the long way. The product rule gives \\(15^{-4+6} = 15^2 = \\boxed{225}\\)."
+   },
+   {
+    "x": "Evaluate \\((-1)^{15} + (-1)^{16}\\). Count the negative factors in each power, decide the sign each count forces, then add the two values.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "0.0"
+    ],
+    "hints": [
+     "Does an odd count of negative factors leave a minus sign behind? Does an even count?"
+    ],
+    "sol": "Fifteen negative factors pair off with one left over, so \\((-1)^{15} = -1\\). Sixteen pair off exactly, so \\((-1)^{16} = 1\\). The trap is assuming a negative base always produces a negative result, which would give \\(-1 + (-1) = -2\\). The even exponent erases the sign, and the sum is \\(-1 + 1 = \\boxed{0}\\)."
+   },
+   {
+    "x": "Evaluate \\(169^{1/2}\\). The exponent names the one nonnegative number whose square is \\(169\\), so search for that number directly.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen"
+    ],
+    "hints": [
+     "An exponent of \\(1/2\\) asks for a square root. Test squares of whole numbers a bit above \\(10\\)."
+    ],
+    "sol": "Both \\(13\\) and \\(-13\\) square to \\(169\\), but \\(169^{1/2}\\) names exactly one number, the nonnegative one. Answering \\(-13\\), or hedging with both, misses the convention. The value is \\(\\boxed{13}\\)."
+   },
+   {
+    "x": "Evaluate \\((-27)^{1/3}\\), the number whose cube is \\(-27\\). Decide first whether such a number can even exist, then find it.",
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "−3",
+     "negative three"
+    ],
+    "hints": [
+     "Cubes of negative numbers are negative, so this root does exist."
+    ],
+    "sol": "An even root of a negative names no real number, but an odd root is fine, since an odd count of negative factors keeps the sign. \\((-3)^3 = -27\\), so \\((-27)^{1/3} = \\boxed{-3}\\)."
+   },
+   {
+    "x": "Evaluate \\(256^{3/4}\\). Take the fourth root first and cube the result, keeping every number in the computation small along the way.",
+    "ans": "64",
+    "accept": [
+     "64"
+    ],
+    "hints": [
+     "What number raised to the fourth power gives \\(256\\)?"
+    ],
+    "sol": "Cubing first means finding \\(256^3 = 16777216\\) and then taking a fourth root, all through ugly numbers. Root first instead, \\(256^{1/4} = 4\\) since \\(4^4 = 256\\), and then \\(4^3 = \\boxed{64}\\)."
+   },
+   {
+    "x": "Find the number \\(x\\) that makes \\(4^x = 8\\) true. The powers of \\(4\\) you know jump right past \\(8\\), yet an \\(x\\) exists. Enter it as a fraction.",
+    "ans": "3/2",
+    "accept": [
+     "3/2",
+     "1.5"
+    ],
+    "hints": [
+     "Write both sides as powers of one smaller base.",
+     "\\(4^x = (2^2)^x = 2^{2x}\\) and \\(8 = 2^3\\), so match the exponents."
+    ],
+    "sol": "Hunting for a whole number fails, since \\(4^1 = 4\\) and \\(4^2 = 16\\) straddle \\(8\\). Write both sides in base \\(2\\), so \\(4^x = 2^{2x}\\) and \\(8 = 2^3\\), forcing \\(2x = 3\\). Then \\(x = \\boxed{\\frac{3}{2}}\\)."
+   }
+  ]
  }
 }
