@@ -138,10 +138,14 @@ a lesson file (memory `legendary-tag-convention`).
 
 ## SEO pages
 
-`tools/gen_seo_pages.py [course]` regenerates one static crawlable page per lesson under
-`/<course>/*.html` from `lessons/<course>/toc.json` + `data/lessons.js`. Run it after lesson
-content changes so the public pages match the app (they embed the same figures, so e.g. a
-font change must be regenerated through them). Currently only prealgebra has SEO pages.
+`tools/gen_seo_pages.py [course]` is course-aware and regenerates two things: a course **hub**
+page at `/<course>` (written to `<course>.html` at the repo root, with Course/FAQ/Breadcrumb
+structured data and a chapter grid that links live lessons and marks the rest "soon"), plus one
+crawlable **lesson** page per live lesson under `/<course>/<slug>.html`. Per-course display
+metadata (title, level, blurb, FAQ) lives in `COURSE_META` in the script; add an entry for a new
+course. Run it after lesson content changes so the public pages match the app (they embed the
+same figures). Both `prealgebra` and `algebra1` have pages. Two manual follow-ups the script does
+NOT do: add the new URLs to `sitemap.xml`, and add a homepage link to the hub in `landing.html`.
 
 ## Historical build scripts
 
