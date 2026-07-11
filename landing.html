@@ -4448,7 +4448,7 @@ async function sendTutorMsg() {
         title:'Chapter 1 · The Rules of Arithmetic',
         topics:['addition','subtraction','negation','multiplication','distributive','signs','division'],
         questions:{
-          addition:[ {x:'$$5 + 8$$',ans:'13',diff:1}, {x:'$$38 + 47$$',ans:'85',diff:3}, {x:'$$39 + 41 + 58 + 62$$',ans:'200',diff:5} ],
+          addition:[ {x:'$$5 + 8$$',ans:'13',diff:1}, {x:'$$17 + 38 + 3$$',ans:'58',diff:3}, {x:'$$39 + 41 + 58 + 62$$',ans:'200',diff:5} ],
           subtraction:[ {x:'$$12 - 5$$',ans:'7',diff:1}, {x:'$$60 - 17 - 23$$',ans:'20',diff:3}, {x:'$$1 - 2 + 3 - 4 + 5 - 6$$',ans:'-3',diff:5} ],
           negation:[ {x:'$$-(-9)$$',ans:'9',diff:1}, {x:'$$7 - (-3)$$',ans:'10',diff:3}, {x:'$$-(-(-(-4)))$$',ans:'4',diff:5} ],
           multiplication:[ {x:'$$6 \\times 7$$',ans:'42',diff:1}, {x:'$$2 \\times 39 \\times 5$$',ans:'390',diff:3}, {x:'$$8 \\times 17 \\times 125$$',ans:'17000',diff:5} ],
@@ -4484,18 +4484,7 @@ async function sendTutorMsg() {
       '1.3':{
         topics:['multiplication','distributive','signs'],
         tight:true, /* ladder mode: builds show at [tier, tier+1]; cap:1 problems show for everyone */
-        probs:[
-          {topic:'multiplication',diff:1},{topic:'multiplication',diff:1},{topic:'multiplication',diff:2},
-          {topic:'multiplication',diff:2},{topic:'multiplication',diff:3},{topic:'multiplication',diff:4},
-          {topic:'multiplication',diff:5},{topic:'multiplication',diff:4,cap:1},{topic:'multiplication',diff:5,cap:1},
-          {topic:'distributive',diff:1},{topic:'distributive',diff:1},{topic:'distributive',diff:2},
-          {topic:'distributive',diff:2},{topic:'distributive',diff:3},{topic:'distributive',diff:4},
-          {topic:'distributive',diff:5},{topic:'distributive',diff:4,cap:1},
-          {topic:'signs',diff:1},{topic:'signs',diff:1},{topic:'signs',diff:2},
-          {topic:'signs',diff:3},{topic:'signs',diff:2},{topic:'signs',diff:4},
-          {topic:'signs',diff:5},{topic:'signs',diff:4,cap:1},
-          {topic:'signs',diff:5,cap:1},{topic:'distributive',diff:5,cap:1}
-        ],
+        probs:[{topic:'multiplication',diff:1},{topic:'multiplication',diff:1},{topic:'multiplication',diff:2},{topic:'multiplication',diff:2},{topic:'multiplication',diff:3},{topic:'multiplication',diff:4},{topic:'multiplication',diff:5},{topic:'multiplication',diff:4,cap:1},{topic:'multiplication',diff:5,cap:1},{topic:'distributive',diff:1},{topic:'distributive',diff:1},{topic:'distributive',diff:2},{topic:'distributive',diff:2},{topic:'distributive',diff:3},{topic:'distributive',diff:4},{topic:'distributive',diff:5},{topic:'distributive',diff:4,cap:1},{topic:'signs',diff:1},{topic:'signs',diff:1},{topic:'signs',diff:2},{topic:'signs',diff:3},{topic:'signs',diff:2},{topic:'signs',diff:4},{topic:'signs',diff:5},{topic:'signs',diff:4,cap:1},{topic:'signs',diff:5,cap:1},{topic:'distributive',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'multiplication', s2:'Multiplying works just like adding: you can use <b>any order</b> and <b>any grouping</b>. So go <b>partner-hunting</b> for pairs that make round numbers: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$.', s1:'When you multiply, you can <b>reorder</b> and <b>regroup</b> the numbers however you like. Look for friendly pairs first: $2\\times5=10$, $4\\times25=100$, $8\\times125=1000$. Do those, and the rest is easy!'},
           2:{topic:'distributive', s2:'The <b>distributive property</b> links $\\times$ and $+$: $a(b+c)=ab+ac$. Read forward it <b>splits</b> a hard multiply into easy pieces; read backward it <b>combines</b> two products that share a number.', s1:'One rule connects $\\times$ and $+$: $a(b+c)=ab+ac$. You can <b>break up</b> a tricky multiplication into easy parts, like $7\\times(10+4)=70+28$, or <b>pull out</b> a number that two products share.'},
@@ -4590,7 +4579,7 @@ async function sendTutorMsg() {
       '3.2':{
         topics:['divis'],
         tight:true,
-        probs:[{topic:'divis',diff:1},{topic:'divis',diff:1},{topic:'divis',diff:1},{topic:'divis',diff:2},{topic:'divis',diff:2},{topic:'divis',diff:2},{topic:'divis',diff:3},{topic:'divis',diff:4},{topic:'divis',diff:5},{topic:'divis',diff:5,cap:1},{topic:'divis',diff:5,cap:1}],
+        probs:[{topic:'divis',diff:1},{topic:'divis',diff:1},{topic:'divis',diff:1},{topic:'divis',diff:2},{topic:'divis',diff:2},{topic:'divis',diff:2},{topic:'divis',diff:3},{topic:'divis',diff:4},{topic:'divis',diff:3},{topic:'divis',diff:5,cap:1},{topic:'divis',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'divis', s2:'Cut off a short tail and the rest falls away. The last digit alone settles $2$, $5$, and $10$, because everything above it is a stack of tens. Climb the ladder for powers of two: the last two digits settle $4$ (since $100=4\\times 25$) and the last three settle $8$ (since $1000=8\\times 125$).', s1:'You do not have to divide the whole number. For $2$, $5$, and $10$, just look at the last digit: even means $2$, a $0$ or $5$ means $5$, a $0$ means $10$. For $4$ read the last two digits, and for $8$ the last three. Everything in front is a tidy pile that never changes the answer.'},
           2:{topic:'divis', s2:'When the last digits will not do, add them instead. Every power of ten is one past a multiple of $9$, so a number is divisible by $9$ (and by $3$) exactly when its digit sum is; keep summing to reach the single-digit digital root. For $11$ the places flip sign, so add the digits with alternating signs from the units.', s1:'For $3$ and $9$, just add up the digits: if that sum is a multiple of $9$, so is the number, and the same for $3$. If the sum is still big, add its digits again until one digit is left. For $11$ there is a cousin: add the digits but flip $+,-,+,-$ starting from the last one.'},
@@ -4601,7 +4590,7 @@ async function sendTutorMsg() {
       '3.3':{
         topics:['primes'],
         tight:true,
-        probs:[{topic:'primes',diff:1},{topic:'primes',diff:1},{topic:'primes',diff:2},{topic:'primes',diff:3},{topic:'primes',diff:3},{topic:'primes',diff:1},{topic:'primes',diff:2},{topic:'primes',diff:4},{topic:'primes',diff:4},{topic:'primes',diff:3,cap:1},{topic:'primes',diff:5,cap:1}],
+        probs:[{topic:'primes',diff:1},{topic:'primes',diff:1},{topic:'primes',diff:2},{topic:'primes',diff:3},{topic:'primes',diff:1},{topic:'primes',diff:1},{topic:'primes',diff:2},{topic:'primes',diff:4},{topic:'primes',diff:4},{topic:'primes',diff:3,cap:1},{topic:'primes',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'primes', s2:'A prime has exactly two factors, 1 and itself, so it draws as a single thin strip. A composite has more, so it can fatten into a wider rectangle. The number 1 is neither prime nor composite, and 2 is the only even prime.', s1:'A prime number splits only as 1 times itself, nothing more, so it stays a lonely single strip. A composite has extra factors, so it can spread into a fatter rectangle. The number 1 is a special case that is neither, and 2 is the one and only even prime.'},
           2:{topic:'primes', s2:'Every composite number carries a prime factor no bigger than its square root, since one partner of each factor pair sits at or below $\\sqrt{N}$. So to test whether $n$ is prime, divide by the primes $2, 3, 5, 7, \\ldots$ up to $\\sqrt{n}$; if none divides it, $n$ is prime. Only primes need testing, and the 3.2 shortcuts clear 2, 3, and 5 fast.', s1:'Here is a big shortcut. If a number can be broken apart at all, one of its factors always sits at or below its square root. So to check whether a number is prime, you only have to try the small primes $2, 3, 5, 7, \\ldots$ up to that square root. If none of them divides it, the number is prime, and you can stop right there.'},
@@ -4632,7 +4621,7 @@ async function sendTutorMsg() {
       '4.1':{
         topics:['fracmean'],
         tight:true,
-        probs:[{topic:'fracmean',diff:1},{topic:'fracmean',diff:1},{topic:'fracmean',diff:2},{topic:'fracmean',diff:3},{topic:'fracmean',diff:1},{topic:'fracmean',diff:2},{topic:'fracmean',diff:2},{topic:'fracmean',diff:3},{topic:'fracmean',diff:4},{topic:'fracmean',diff:5},{topic:'fracmean',diff:4,cap:1},{topic:'fracmean',diff:5,cap:1}],
+        probs:[{topic:'fracmean',diff:1},{topic:'fracmean',diff:1},{topic:'fracmean',diff:2},{topic:'fracmean',diff:1},{topic:'fracmean',diff:1},{topic:'fracmean',diff:2},{topic:'fracmean',diff:2},{topic:'fracmean',diff:3},{topic:'fracmean',diff:4},{topic:'fracmean',diff:3},{topic:'fracmean',diff:4,cap:1},{topic:'fracmean',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'fracmean', s2:'A fraction $\\tfrac{a}{b}$ is one number, the answer to $a\\div b$, and the bar is a hidden divide sign. Read it two ways that always agree: cut one whole into $b$ equal pieces and keep $a$, or share $a$ wholes among $b$. The bottom, the <b>denominator</b>, sets the size of a piece; the top, the <b>numerator</b>, counts how many you took. A bigger bottom means smaller pieces.', s1:'A fraction is just one number. The bar in $\\tfrac{a}{b}$ means divide, so $\\tfrac{a}{b}$ is the answer to $a\\div b$. The bottom number tells you how many equal pieces one whole is cut into, and the top number tells you how many pieces you keep. Cutting into more pieces makes each piece smaller, not bigger.'},
           2:{topic:'fracmean', s2:'On the number line, the <b>denominator</b> sets your step size: it cuts $0$ to $1$ into $b$ equal steps of $\\tfrac{1}{b}$, so a bigger bottom means smaller steps. The <b>numerator</b> counts: walk $a$ steps out from $0$ and you land on $\\tfrac{a}{b}$. The steps keep marching past $1$, so a fraction can be bigger than $1$.', s1:'A fraction tells you how to walk from $0$. The bottom number sets how big each step is, and the top number counts the steps. Take $a$ little steps of size $\\tfrac{1}{b}$ and the spot you stop on is $\\tfrac{a}{b}$. The steps do not stop at $1$, so a fraction can be more than $1$.'},
@@ -4643,7 +4632,7 @@ async function sendTutorMsg() {
       '4.2':{
         topics:['equivfrac'],
         tight:true,
-        probs:[{topic:'equivfrac',diff:1},{topic:'equivfrac',diff:1},{topic:'equivfrac',diff:1},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:3},{topic:'equivfrac',diff:4},{topic:'equivfrac',diff:5},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:3},{topic:'equivfrac',diff:5,cap:1},{topic:'equivfrac',diff:5,cap:1}],
+        probs:[{topic:'equivfrac',diff:1},{topic:'equivfrac',diff:1},{topic:'equivfrac',diff:1},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:3},{topic:'equivfrac',diff:4},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:2},{topic:'equivfrac',diff:3},{topic:'equivfrac',diff:5,cap:1},{topic:'equivfrac',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'equivfrac', s2:'<b>Equivalent fractions.</b> Multiply top and bottom by the same nonzero $k$ and the value never changes: $\\frac{a}{b}=\\frac{a\\times k}{b\\times k}$. You are only cutting each piece into $k$ smaller ones, so there are more pieces but the same total. Doing this on purpose is <b>building the fraction up</b>.', s1:'Multiply the top and the bottom by the same number and the fraction still points at the same spot: $\\frac{a}{b}=\\frac{a\\times k}{b\\times k}$. You only sliced each piece into smaller pieces, so the amount did not change.'},
           2:{topic:'equivfrac', s2:'<b>One move, two directions.</b> The build-up move runs both ways. Multiply top and bottom by the same $k$ to grow the name, $\\frac{a}{b}=\\frac{a\\times k}{b\\times k}$; when some $d$ divides both, divide top and bottom by $d$ to shrink it, $\\frac{a}{b}=\\frac{a\\div d}{b\\div d}$. Sliding a shared factor in or out never moves the value.', s1:'One move, both directions. Multiply top and bottom by the same number to make the name bigger; divide top and bottom by a shared number to make it smaller. The value stays put either way.'},
@@ -4665,7 +4654,7 @@ async function sendTutorMsg() {
       '4.4':{
         topics:['denom'],
         tight:true,
-        probs:[{topic:'denom',diff:1},{topic:'denom',diff:1},{topic:'denom',diff:2},{topic:'denom',diff:3},{topic:'denom',diff:5},{topic:'denom',diff:4},{topic:'denom',diff:1},{topic:'denom',diff:2},{topic:'denom',diff:3},{topic:'denom',diff:2},{topic:'denom',diff:5,cap:1},{topic:'denom',diff:5,cap:1}],
+        probs:[{topic:'denom',diff:1},{topic:'denom',diff:1},{topic:'denom',diff:2},{topic:'denom',diff:3},{topic:'denom',diff:5},{topic:'denom',diff:1},{topic:'denom',diff:1},{topic:'denom',diff:2},{topic:'denom',diff:3},{topic:'denom',diff:2},{topic:'denom',diff:5,cap:1},{topic:'denom',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'denom', s2:'<b>Simplest form: shrink with the gcd.</b> A fraction is simplest when its top and bottom share only $1$. Dividing both by a factor they share is fair, since it scales top and bottom equally and moves the value nowhere. So divide both by their $\\gcd$, the biggest factor they share, and one cut clears them all &mdash; leaving the fraction its smallest private name.', s1:'<b>Simplest form: divide out what they share.</b> A fraction is as simple as it gets when its top and bottom share nothing but $1$. To get there, divide both the top and the bottom by the biggest number that goes into each &mdash; their $\\gcd$. That hands the fraction its smallest, cleanest name, and the value never changes.'},
           2:{topic:'denom', s2:'<b>Cancel first, multiply second.</b> When you multiply fractions (or divide, after flipping the second), every top joins into one top and every bottom into one bottom. So cancel before you multiply: match each top against every bottom, lift off shared factors first, and the answer arrives already simplified. A power is just a stack of copies &mdash; count the copies on top and bottom and cross them off in pairs. A letter follows the same rule, so cancel it like any factor, then plug in its value last.', s1:'<b>Cancel first, then multiply.</b> Before multiplying fractions, look for a factor shared by any top and any bottom and cross it out of both. It is fair, and it keeps the numbers small. A power like $k^4$ is just $k$ written four times, so cancel one top copy against one bottom copy until one side runs out. Fill in a letter&rsquo;s value only at the very end.'},
@@ -4676,7 +4665,7 @@ async function sendTutorMsg() {
       '4.6':{
         topics:['fracadd'],
         tight:true,
-        probs:[{topic:'fracadd',diff:1},{topic:'fracadd',diff:1},{topic:'fracadd',diff:2},{topic:'fracadd',diff:2},{topic:'fracadd',diff:3},{topic:'fracadd',diff:2},{topic:'fracadd',diff:4},{topic:'fracadd',diff:4},{topic:'fracadd',diff:4,cap:1},{topic:'fracadd',diff:5,cap:1}],
+        probs:[{topic:'fracadd',diff:1},{topic:'fracadd',diff:1},{topic:'fracadd',diff:2},{topic:'fracadd',diff:2},{topic:'fracadd',diff:3},{topic:'fracadd',diff:2},{topic:'fracadd',diff:4},{topic:'fracadd',diff:2},{topic:'fracadd',diff:4,cap:1},{topic:'fracadd',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'fracadd', s2:'<b>Same-size pieces: add the tops.</b> When both fractions are made of the same piece, the bottom just names that piece. So add or subtract the top counts and keep the bottom as it is &mdash; never add the bottoms. Then check whether the answer can still be reduced, the way $\\tfrac{7}{8}-\\tfrac{3}{8}$ becomes $\\tfrac12$.', s1:'<b>Same bottoms? Just count.</b> If two fractions share the same bottom, the bottom is only the name of the piece. Add or subtract the top numbers, keep that same bottom, and never add the bottoms. Last, see if the answer shrinks to a simpler name &mdash; like $\\tfrac{7}{8}-\\tfrac{3}{8}=\\tfrac12$.'},
           2:{topic:'fracadd', s2:'<b>Never add the denominators.</b> Adding the bottoms pretends a half and a third are the same size, so the answer means nothing. The bottom is a size name, not a count. Instead, rewrite both fractions over a common denominator &mdash; equal sixths for $\\tfrac12$ and $\\tfrac13$ &mdash; and then you are back to counting.', s1:'<b>Do not add the bottoms.</b> A half and a third are different sizes, so you cannot just stack them. First make the pieces match by writing both over the same bottom &mdash; sixths for $\\tfrac12$ and $\\tfrac13$ &mdash; and then you are simply counting again.'},
@@ -4753,7 +4742,7 @@ async function sendTutorMsg() {
       '5.5':{
         topics:['repeatdec'],
         tight:true,
-        probs:[{topic:'repeatdec',diff:1},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:1},{topic:'repeatdec',diff:1},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:3},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:3},{topic:'repeatdec',diff:4},{topic:'repeatdec',diff:5},{topic:'repeatdec',diff:4,cap:1},{topic:'repeatdec',diff:5,cap:1}],
+        probs:[{topic:'repeatdec',diff:1},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:1},{topic:'repeatdec',diff:1},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:3},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:3},{topic:'repeatdec',diff:2},{topic:'repeatdec',diff:5},{topic:'repeatdec',diff:4,cap:1},{topic:'repeatdec',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'repeatdec', s2:'<b>Why decimals repeat.</b> Long division makes each digit from a remainder and stops only when a remainder hits $0$. Every remainder is smaller than the divisor $b$, so only a few are possible. If $0$ never comes, one has to return, and once a remainder repeats the digits repeat too. So a fraction either stops or falls into a loop, like $\\tfrac{1}{3}=0.\\overline{3}$.', s1:'Each digit in long division comes from the leftover, and the division stops only if the leftover ever reaches $0$. There are only so many leftovers, so if $0$ never appears an old one must come back, and from that moment the digits just repeat. That loop is why $\\tfrac{1}{3}=0.\\overline{3}$.'},
           2:{topic:'repeatdec', s2:'<b>Read the decimal from the denominator.</b> In lowest terms, the $2$s and $5$s are the stopping primes, and the larger of those two counts sets a short non-repeating head. Any other prime forces a repeating tail. Only $2$s and $5$s stops cleanly, none repeats at once, and both give a head then a loop.', s1:'Look at the bottom of the fraction. Factors of $2$ and $5$ let a decimal stop, and they make the few settling digits at the front. Any other prime, like $3$ or $7$, forces the digits to repeat forever.'},
@@ -4873,7 +4862,7 @@ async function sendTutorMsg() {
       '8.1':{
         topics:['squares'],
         tight:true,
-        probs:[{topic:'squares',diff:1},{topic:'squares',diff:1},{topic:'squares',diff:1},{topic:'squares',diff:2},{topic:'squares',diff:3},{topic:'squares',diff:3},{topic:'squares',diff:2},{topic:'squares',diff:3},{topic:'squares',diff:4},{topic:'squares',diff:2},{topic:'squares',diff:4,cap:1},{topic:'squares',diff:5,cap:1}],
+        probs:[{topic:'squares',diff:1},{topic:'squares',diff:1},{topic:'squares',diff:1},{topic:'squares',diff:2},{topic:'squares',diff:1},{topic:'squares',diff:3},{topic:'squares',diff:2},{topic:'squares',diff:3},{topic:'squares',diff:4},{topic:'squares',diff:2},{topic:'squares',diff:4,cap:1},{topic:'squares',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'squares', s2:'<b>Square root.</b> The square root $\\sqrt{n}$ is the number whose square is $n$, so $\\sqrt{196}=14$ because $14^2=196$. It undoes squaring, running the same road backward. A <b>perfect square</b> like $81=9^2$ has a clean whole-number root, so knowing the squares up to about $20$ lets you read most roots on sight.', s1:'A square root undoes squaring. Since $14^2=196$, we say $\\sqrt{196}=14$: the root walks you back from the area of a square to the length of its side. Numbers like $81=9^2$ and $144=12^2$ are perfect squares, and their roots are always whole numbers you can just recognize.'},
           2:{topic:'squares', s2:'<b>Radical vs. equation.</b> The radical $\\sqrt{100}$ names only the nonnegative root, so $\\sqrt{100}=10$, never $-10$. But solving $x^2=100$ asks for every value that works, and there are two: $10$ and $-10$. Context picks which one a story wants. Because a square is never negative, $x^2=-9$ has no real solution.', s1:'The symbol $\\sqrt{\\,}$ always hands back the nonnegative root, so $\\sqrt{100}=10$, not $-10$. Solving $x^2=100$ is different: two numbers work, $10$ and $-10$, since squaring hides the sign. And no real number squares to a negative, so $x^2=-9$ has no answer.'},
@@ -4884,7 +4873,7 @@ async function sendTutorMsg() {
       '8.2':{
         topics:['estroot'],
         tight:true,
-        probs:[{topic:'estroot',diff:1},{topic:'estroot',diff:2},{topic:'estroot',diff:1},{topic:'estroot',diff:1},{topic:'estroot',diff:2},{topic:'estroot',diff:2},{topic:'estroot',diff:3},{topic:'estroot',diff:3},{topic:'estroot',diff:4},{topic:'estroot',diff:5},{topic:'estroot',diff:4,cap:1},{topic:'estroot',diff:5,cap:1}],
+        probs:[{topic:'estroot',diff:1},{topic:'estroot',diff:2},{topic:'estroot',diff:1},{topic:'estroot',diff:1},{topic:'estroot',diff:2},{topic:'estroot',diff:2},{topic:'estroot',diff:3},{topic:'estroot',diff:3},{topic:'estroot',diff:4},{topic:'estroot',diff:2},{topic:'estroot',diff:4,cap:1},{topic:'estroot',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'estroot', s2:'<b>Bracketing a root.</b> When $n$ is not a perfect square, $\\sqrt{n}$ is irrational and its decimal never ends. But a bigger number always has a bigger root, so you can compare roots by comparing the numbers inside them. Find the perfect square just below $n$ and the one just above, and the root is trapped between two whole numbers. The smaller one is the <b>floor</b>. Since $49 \\le 54 < 64$, the root $\\sqrt{54}$ is caught between $7$ and $8$, and its floor is $7$.', s1:'<b>Trapping a root.</b> If $n$ is not a perfect square, $\\sqrt{n}$ has no tidy value, but you can still pin it down. A bigger number always has a bigger root. Find the perfect square just below $n$ and the one just above, and your root is caught between the two whole numbers. Since $49 < 54 < 64$, the root $\\sqrt{54}$ sits between $7$ and $8$, so the biggest whole number below it is $7$.'},
           2:{topic:'estroot', s2:'<b>Rounding a root.</b> To round $\\sqrt{n}$, find the halfway point $m.5$ between the two integers the root is trapped between. Square it and compare to $n$: if $n > (m.5)^2$ the root rounds up, otherwise down. The same move rounds to the nearest tenth. Every step is exact whole-number arithmetic, so you never chase the endless decimal.', s1:'<b>Rounding a root.</b> Once you know $\\sqrt{n}$ sits between two whole numbers, rounding just asks which one is nearer. Take the halfway value, square it, and compare to $n$. If $n$ is bigger, the root has passed the middle and rounds up; if smaller, it rounds down. You compare squares, never the messy decimal.'},
@@ -4970,7 +4959,7 @@ async function sendTutorMsg() {
       '10.2':{
         topics:['multprin'],
         tight:true,
-        probs:[{topic:'multprin',diff:1},{topic:'multprin',diff:1},{topic:'multprin',diff:1},{topic:'multprin',diff:2},{topic:'multprin',diff:2},{topic:'multprin',diff:2},{topic:'multprin',diff:2},{topic:'multprin',diff:3},{topic:'multprin',diff:3},{topic:'multprin',diff:4},{topic:'multprin',diff:4,cap:1},{topic:'multprin',diff:5,cap:1}],
+        probs:[{topic:'multprin',diff:1},{topic:'multprin',diff:1},{topic:'multprin',diff:1},{topic:'multprin',diff:2},{topic:'multprin',diff:2},{topic:'multprin',diff:2},{topic:'multprin',diff:3},{topic:'multprin',diff:2},{topic:'multprin',diff:3},{topic:'multprin',diff:4},{topic:'multprin',diff:4,cap:1},{topic:'multprin',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'multprin', s2:'<b>Multiplication Principle.</b> When a task is a run of independent stages, multiply the per-stage counts: $a$ ways then $b$ ways gives $a \\times b$. Draw one box per stage, write how many options go in each, and multiply straight across, for as many boxes as the problem needs.', s1:'To count outcomes built from steps in a row, draw one box for each step, write how many choices that step has, and multiply the boxes together. Two shirts and three pants make $2 \\times 3 = 6$ outfits.'},
           2:{topic:'multprin', s2:'<b>Repeats vs no repeats.</b> Repeats allowed keeps every box at $k$, so $n$ boxes give $k^n$. No repeats makes the counts step down $k, k-1, k-2, \\ldots$. Lining up all $n$ different things runs it down to $1$: $n \\times (n-1) \\times \\cdots \\times 1 = n!$, called $n$ factorial.', s1:'If options can repeat, every box keeps all $k$ choices, so $n$ boxes give $k^n$. If they cannot repeat, each box has one fewer than the last. Arranging $n$ different things in a row multiplies $n \\times (n-1) \\times \\cdots \\times 1$, written $n!$.'},
@@ -4992,7 +4981,7 @@ async function sendTutorMsg() {
       '10.4':{
         topics:['pairs'],
         tight:true,
-        probs:[{topic:'pairs',diff:1},{topic:'pairs',diff:1},{topic:'pairs',diff:1},{topic:'pairs',diff:1},{topic:'pairs',diff:2},{topic:'pairs',diff:4},{topic:'pairs',diff:2},{topic:'pairs',diff:3},{topic:'pairs',diff:3},{topic:'pairs',diff:4},{topic:'pairs',diff:5,cap:1},{topic:'pairs',diff:5,cap:1}],
+        probs:[{topic:'pairs',diff:1},{topic:'pairs',diff:1},{topic:'pairs',diff:1},{topic:'pairs',diff:1},{topic:'pairs',diff:2},{topic:'pairs',diff:4},{topic:'pairs',diff:2},{topic:'pairs',diff:3},{topic:'pairs',diff:3},{topic:'pairs',diff:2},{topic:'pairs',diff:5,cap:1},{topic:'pairs',diff:5,cap:1}],
         keyIdeas:{
           1:{topic:'pairs', s2:'<b>Count ordered, then halve.</b> To count pairs from $n$ things, multiply $n \\times (n-1)$ for the two picks, then divide by $2$. You halve because A then B and B then A are the same pair counted twice. So the number of pairs is $\\frac{n(n-1)}{2}$.', s1:'<b>Count, then take half.</b> A pair is two things from one group, like two friends shaking hands. Each of the $n$ things reaches out to the other $n-1$, so multiply $n \\times (n-1)$. But that counts every pair twice, so take half. That is the pair formula $\\frac{n(n-1)}{2}$.'},
           2:{topic:'pairs', s2:'<b>Same group or two groups.</b> Same group: every pair counts twice, so multiply and divide by $2$. Two groups you can tell apart: the picks never swap, so just multiply the sizes and do not divide. If some pairs are banned, count them all and subtract the ones not allowed.', s1:'<b>When to halve, when not to.</b> Two picks from one group: halve, because each pair is counted twice. One pick from each of two different groups: do not halve, just multiply the two sizes. If some pairs are not allowed, count every pair and take the banned ones away.'},
@@ -5110,15 +5099,21 @@ async function sendTutorMsg() {
     // key-idea spacing: if two key ideas end up literally back-to-back because the practice
     // between them was filtered as too HARD for this tier, pull back the earliest such problem
     // as an anchored stretch example between the cards (it has hints/solution). Pairs left by
-    // too-EASY filtering (strong students skimming mastered ideas) are fine and stay.
-    function _bridgePick(a1,a2){
+    // too-EASY filtering are fine at tiers 4-5 (strong students skimming mastered ideas) but a
+    // default-or-below student should never meet stacked cards, so easy-filtered bridges also
+    // fire when the candidate's tier is <=3 ('low') — and unconditionally to break a run of
+    // THREE+ cards ('any'), which no tier is allowed to see.
+    function _bridgePick(a1,a2,easy){
+      var best=null, bestD=0;
       for(var bi=a1+1; bi<a2; bi++){
         var ob=fullBlocks[bi]; if(!ob||ob.t!=='prob') continue;
         var tg=a.pt[bi]; if(!tg||tg.cap) continue;
         if(ctx&&ctx.usedSrcs&&ctx.usedSrcs[bi]) continue;            // already on screen as a borrowed warm-up
-        if(tg.diff>A.tier(tg.topic)+1) return bi;   // was filtered as above the window
+        var tr=A.tier(tg.topic);
+        if(tg.diff>tr+1) return bi;   // was filtered as above the window
+        if(easy&&tg.diff<tr&&(easy==='any'||tr<=3)&&tg.diff>bestD){ bestD=tg.diff; best=bi; }   // hardest below-window fallback
       }
-      return null;
+      return best;
     }
     // edge of a mid-lesson reflow cut: the student is standing ON a key idea whose follow-ups
     // were filtered — the tail would otherwise open with the next key idea stacked against it
@@ -5129,8 +5124,16 @@ async function sendTutorMsg() {
     for(var oi=0; oi<out.length-1; oi++){
       var i1=out[oi], i2=out[oi+1];
       if(i1.t!=='imp'||i2.t!=='imp'||i1.__src==null||i2.__src==null||i2.__src<=i1.__src) continue;
-      var bp2=_bridgePick(i1.__src,i2.__src);
+      var bp2=_bridgePick(i1.__src,i2.__src,'low');
       if(bp2!=null){ var nb3=_clone(fullBlocks[bp2]); nb3.__src=bp2; out.splice(oi+1,0,nb3); oi++; }
+    }
+    for(var oi=0; oi<out.length-2; oi++){
+      var k1=out[oi], k2=out[oi+1], k3=out[oi+2];
+      if(k1.t!=='imp'||k2.t!=='imp'||k3.t!=='imp') continue;
+      var bp3=null, at3=oi+2;
+      if(k2.__src!=null&&k3.__src!=null&&k3.__src>k2.__src) bp3=_bridgePick(k2.__src,k3.__src,'any');
+      if(bp3==null&&k1.__src!=null&&k2.__src!=null&&k2.__src>k1.__src){ bp3=_bridgePick(k1.__src,k2.__src,'any'); at3=oi+1; }
+      if(bp3!=null){ var nb4=_clone(fullBlocks[bp3]); nb4.__src=bp3; out.splice(at3,0,nb4); oi++; }
     }
     return out;
   }
