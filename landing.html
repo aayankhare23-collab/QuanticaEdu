@@ -4340,8 +4340,19 @@ async function sendTutorMsg() {
 
   // ===== Authored adaptive content (Chapter 1 — ladder mode on 1.2, 1.3, 1.5) =====
   window.ADAPT_CONTENT={
-    chapters:{ '1':{ topics:['addition','subtraction','negation','multiplication','distributive','signs','division'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
+    chapters:{ '2':{ topics:['squares','explaws','zeropow','negpow','powtower'], lessons:['2.1','2.2','2.3','2.4','2.5'] }, '1':{ topics:['addition','subtraction','negation','multiplication','distributive','signs','division'], lessons:['1.2','1.3','1.4','1.5','1.6'] } },
     diagnostic:{
+      '2':{
+        title:'Chapter 2 &middot; Exponents',
+        topics:['squares','explaws','zeropow','negpow','powtower'],
+        questions:{
+          squares:[ {x:'$4^2$',ans:'16',diff:1},{x:'$-5^2$',ans:'-25',diff:3},{x:'$31^2$',ans:'961',diff:5} ],
+          explaws:[ {x:'$2^3 \\times 2^2$',ans:'32',diff:1},{x:'$(3^2)^3 \\div 3^4$',ans:'9',diff:3},{x:'$\\dfrac{(2^3)^4}{2^5 \\times 2^4}$',ans:'8',diff:5} ],
+          zeropow:[ {x:'$5^0$',ans:'1',diff:1},{x:'$5 \\times 3^0 + 2^2$',ans:'9',diff:3},{x:'$\\dfrac{9^5}{3^{10}}$',ans:'1',diff:5} ],
+          negpow:[ {x:'$4^{-2}$',ans:'1/16',diff:1},{x:'$\\dfrac{2^{2}}{2^{-3}}$',ans:'32',diff:3},{x:'$\\dfrac{(2^{-2})^{-3}}{2^{2}}$',ans:'16',diff:5} ],
+          powtower:[ {x:'$(2^2)^3$',ans:'64',diff:1},{x:'$\\dfrac{(2^4)^2}{2^5}$',ans:'8',diff:3},{x:'$\\dfrac{(2^3)^2 \\times (2^{-2})^3}{(2^{-1})^2}$',ans:'4',diff:5} ]
+        }
+      },
       '1':{
         title:'Chapter 1 · The Rules of Arithmetic',
         topics:['addition','subtraction','negation','multiplication','distributive','signs','division'],
@@ -4417,6 +4428,61 @@ async function sendTutorMsg() {
           2:{topic:'division', s2:'Division is multiplication by the reciprocal: $a\\div b=a\\times\\frac1b$ (for $b\\neq0$), the twin of $a-b=a+(-b)$. And because $\\frac1b$ can exceed 1, <b>dividing by a number between 0 and 1 makes the result larger</b> &mdash; dividing by $\\frac14$ is multiplying by 4.', s1:'Dividing by a number is the same as <b>multiplying by its reciprocal</b>: $12\\div4=12\\times\\frac14$. And dividing by a small fraction makes the answer <b>bigger</b>! $6\\div\\frac12=12$, because twelve halves fit in six.'},
           3:{topic:'division', s2:'In a quotient of products, <b>pair each top factor with a bottom factor</b> it cancels &mdash; clear the pairs before you multiply anything.', s1:'When the top and bottom are both products, look for <b>matching pairs to cancel first</b>. Cancel, then multiply what is left.'},
           4:{topic:'division', s2:'Division does not reorder freely &mdash; so <b>convert to multiplication by the reciprocal first</b>, then use all your reorder-and-regroup freedom.', s1:'You cannot shuffle a division around. First turn it into <b>multiplication by the reciprocal</b> &mdash; then you can reorder all you like.'}
+        }
+      },
+      '2.1':{
+        topics:['squares'],
+        tight:true,
+        probs:[{topic:'squares',diff:1},{topic:'squares',diff:1},{topic:'squares',diff:2},{topic:'squares',diff:3},{topic:'squares',diff:3},{topic:'squares',diff:4},{topic:'squares',diff:2},{topic:'squares',diff:2},{topic:'squares',diff:3},{topic:'squares',diff:5},{topic:'squares',diff:5,cap:1},{topic:'squares',diff:5,cap:1}],
+        keyIdeas:{
+          1:{topic:'squares', s2:'The <b>square</b> of $b$ is $b^2=b\\times b$; the <b>cube</b> is $b^3=b\\times b\\times b$. Whole-number squares are $0,1,4,9,16,25,\\ldots$ and whole-number cubes are $0,1,8,27,64,125,\\ldots$ A square counts the cells in a $b$-by-$b$ square, and a cube counts the little cubes in a $b$-by-$b$-by-$b$ block. Cubes grow faster, because cubing multiplies one extra time.', s1:'Squaring a number means multiplying it by itself: $b^2=b\\times b$. Cubing means using it three times: $b^3=b\\times b\\times b$. So $3^2=9$ fills a $3$-by-$3$ square, and $3^3=27$ fills a $3$-by-$3$-by-$3$ cube. Cubes grow faster than squares, since a cube multiplies one more time.'},
+          2:{topic:'squares', s2:'A power is worked out after parentheses and before $\\times,\\div,+,-$, and the exponent grabs only the base right under it. So $-a^n=-(a^n)$, but $(-a)^n$ raises the negative too. With an <b>even</b> power the two are opposite: $(-5)^2=25$ while $-5^2=-25$. With an <b>odd</b> power they match: $(-2)^3=-2^3=-8$. Cubing keeps the sign.', s1:'An exponent grabs only the number right under it. So $-5^2$ means $-(5^2)=-25$, but $(-5)^2$ squares the whole $-5$ and gives $25$. Two negatives make a positive, so an even power of a negative is positive. An odd power keeps the minus, so $(-2)^3=-8$. Work out powers before you multiply or add.'},
+          3:{topic:'squares', s2:'A power spreads across multiplication and division: $(ab)^2=a^2b^2$, $(ab)^3=a^3b^3$, and $\\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}$. It does <b>not</b> spread across a sum, so $(1+2)^2=9$ is not $1^2+2^2=5$. Gather the bases first and hard products get easy: $25^2\\times4^2=(25\\times4)^2=100^2$.', s1:'You may spread a power across a product: $(ab)^2=a^2b^2$ and $(ab)^3=a^3b^3$, and the same for division. But not across a plus sign: $(1+2)^2=9$, not $1^2+2^2=5$. So combine the bases first, and a messy product turns friendly: $25^2\\times4^2=(25\\times4)^2=100^2=10000$.'},
+          4:{topic:'squares', s2:'<b>$(n+1)^2=n^2+2n+1$.</b> To square a number just above a friendly $n$, square $n$, add $2n$, then add $1$ — the old square plus two strips of $n$ plus one corner. Backward, $(n-1)^2=n^2-2n+1$, handles a number just below a round one. It also explains why one perfect square to the next jumps by the odd number $2n+1$.', s1:'To square a number one more than an easy $n$, use $(n+1)^2=n^2+2n+1$: square $n$, add $n$ twice, add $1$. For $41^2$ take $n=40$: $1600+80+1=1681$. The picture shows why, and it also tells you each perfect square is the odd number $2n+1$ bigger than the one before.'}
+        }
+      },
+      '2.2':{
+        topics:['explaws'],
+        tight:true,
+        probs:[{topic:'explaws',diff:1},{topic:'explaws',diff:2},{topic:'explaws',diff:1},{topic:'explaws',diff:3},{topic:'explaws',diff:2},{topic:'explaws',diff:3},{topic:'explaws',diff:4},{topic:'explaws',diff:2},{topic:'explaws',diff:3},{topic:'explaws',diff:4},{topic:'explaws',diff:5,cap:1},{topic:'explaws',diff:5,cap:1}],
+        keyIdeas:{
+          1:{topic:'explaws', s2:'<b>Product rule.</b> Multiplying powers of the same base adds the exponents. $$a^m \\times a^n = a^{m+n}$$ Because $m$ copies of $a$ then $n$ more make $m+n$ copies in all.', s1:'<b>Product rule.</b> Same base, multiplied together? Add the exponents. $$a^m \\times a^n = a^{m+n}$$ Two runs of the same factor, one after the other, join into one longer run, so $2^3\\times2^4=2^7$.'},
+          2:{topic:'explaws', s2:'<b>Quotient rule.</b> Dividing powers of the same base subtracts the exponents. $$a^m \\div a^n = a^{m-n}$$ Matching factors on top and bottom cancel, and subtraction counts the survivors.', s1:'<b>Quotient rule.</b> Same base, divided? Subtract the exponents. $$a^m \\div a^n = a^{m-n}$$ Every matching factor cancels top with bottom, so $5^7\\div5^4=5^3$.'},
+          3:{topic:'explaws', s2:'<b>Power rule.</b> Raising a power to a power multiplies the exponents. $$(a^m)^n = a^{m \\times n}$$ The outer exponent asks for $n$ copies of $a^m$, and each copy brings $m$ factors, so $m\\times n$ in all.', s1:'<b>Power rule.</b> A power of a power? Multiply the exponents. $$(a^m)^n = a^{m \\times n}$$ So $(2^3)^4=2^{12}$: four copies of $2^3$, each holding three factors, is $3\\times4=12$ factors.'},
+          4:{topic:'explaws', s2:'<b>Power of a product.</b> An exponent spreads across a product. $$(ab)^n = a^n \\times b^n$$ There are $n$ copies of the pair $ab$, so gather the $a$ factors together and the $b$ factors together.', s1:'<b>Power of a product.</b> A power over a product lands on each factor. $$(ab)^n = a^n \\times b^n$$ So $(2\\times5)^3=2^3\\times5^3$: cubing the pair is the same as pairing the cubes.'}
+        }
+      },
+      '2.3':{
+        topics:['zeropow'],
+        tight:true,
+        probs:[{topic:'zeropow',diff:1},{topic:'zeropow',diff:1},{topic:'zeropow',diff:2},{topic:'zeropow',diff:2},{topic:'zeropow',diff:3},{topic:'zeropow',diff:3},{topic:'zeropow',diff:4},{topic:'zeropow',diff:5},{topic:'zeropow',diff:5,cap:1},{topic:'zeropow',diff:5,cap:1}],
+        keyIdeas:{
+          1:{topic:'zeropow', s2:'Any nonzero base to the <b>zero power</b> is \\(1\\): \\(a^0=1\\). Each step down the ladder of powers divides by \\(a\\), and the step from \\(a^1=a\\) to \\(a^0\\) divides \\(a\\) by itself, landing on \\(1\\).', s1:'Any nonzero number to the zero power is just \\(1\\). Count down a ladder of powers: each step down divides by the base. So \\(a^1=a\\) steps down to \\(a\\div a=1\\). That is why \\(a^0=1\\).'},
+          2:{topic:'zeropow', s2:'The quotient rule forces the zero power too. Since \\(\\frac{a^n}{a^n}=a^{n-n}=a^0\\), and any nonzero amount over itself is \\(1\\), we must have \\(a^0=1\\). It is not a special rule, just what the division law requires.', s1:'Here is a second reason \\(a^0=1\\). Dividing powers subtracts exponents, so \\(\\frac{a^n}{a^n}=a^{n-n}=a^0\\). But a number over itself is always \\(1\\). Both readings must match, so \\(a^0=1\\).'},
+          3:{topic:'zeropow', s2:'An exponent grips only the base right beneath it. So \\(c\\,b^0=c\\times 1=c\\), but \\((cb)^0=1\\) because the parentheses hand the whole product to the exponent. And \\(-a^0=-1\\) while \\((-a)^0=1\\). Check what the zero power is holding before you use it.', s1:'A zero power is \\(1\\), but first check what it grips. The exponent touches only the base right below it. So \\(6\\,b^0=6\\times 1=6\\) (the \\(6\\) is left alone), but \\((6b)^0=1\\) because the parentheses pull in everything. Watch the parentheses.'},
+          4:{topic:'zeropow', s2:'The zero can hide inside the exponent. Do the exponent arithmetic first: if it lands on \\(0\\), the power flattens to \\(1\\). So \\(5^{\\,8-8}=5^0=1\\), and \\(k-k=0\\) makes \\(a^{\\,k-k}=1\\) for any \\(k\\). Rewriting to a common base often uncovers a hidden zero exponent.', s1:'Sometimes the exponent has to be computed first. Work it out before touching the base. If it comes to \\(0\\), the whole power is just \\(1\\). So \\(5^{\\,8-8}=5^0=1\\), no matter how big the base looks.'}
+        }
+      },
+      '2.4':{
+        topics:['negpow'],
+        tight:true,
+        probs:[{topic:'negpow',diff:1},{topic:'negpow',diff:1},{topic:'negpow',diff:2},{topic:'negpow',diff:2},{topic:'negpow',diff:3},{topic:'negpow',diff:3},{topic:'negpow',diff:2},{topic:'negpow',diff:3},{topic:'negpow',diff:4},{topic:'negpow',diff:5},{topic:'negpow',diff:4,cap:1},{topic:'negpow',diff:5,cap:1}],
+        keyIdeas:{
+          1:{topic:'negpow', s2:'A nonzero base to a negative exponent is $1$ over that base to the matching positive power: $a^{-n}=\\frac{1}{a^n}$. Each step down the ladder divides by the base, and dividing past $a^0=1$ sends the base under the fraction bar. The quotient rule agrees: when the bottom exponent is larger, the leftover factors land in the denominator.', s1:'A negative exponent just means $1$ over the positive power: $a^{-n}=\\frac{1}{a^n}$. Going down the ladder you keep dividing by the base, and once you pass $a^0=1$ the base slides under the fraction bar. A minus sign in the exponent is the signal to flip the power downstairs.'},
+          2:{topic:'negpow', s2:'A fraction to a negative power flips upright and its exponent turns positive: $\\left(\\frac{1}{a}\\right)^{n}=a^{-n}$. A reciprocal in the base and a minus in the exponent are the same flip, so a power switches the sign of its exponent whenever it crosses the fraction bar.', s1:'A fraction raised to a negative power flips right side up, with a positive exponent: $\\left(\\frac{1}{a}\\right)^{n}=a^{-n}$. Flipping the base and flipping the sign of the exponent are the same move.'},
+          3:{topic:'negpow', s2:'Every exponent law still holds when an exponent goes negative. Multiplying same-base powers adds the exponents and dividing subtracts them, right across zero: $a^{m}\\times a^{-n}=a^{m-n}$. A negative exponent is just a number, so its minus sign rides along with the arithmetic.', s1:'The exponent laws you know keep working even when an exponent is negative. Adding, subtracting, and multiplying exponents all carry the minus sign along. A negative exponent is just a number on the ladder, nothing special.'},
+          4:{topic:'negpow', s2:'Watch the parentheses. In $-a^{-n}$ the exponent touches only the base and the minus stays outside, giving $-\\frac{1}{a^n}$. In $(-a)^{-n}$ the sign is trapped inside, so an even power turns positive and an odd power stays negative.', s1:'Parentheses decide the sign. In $-a^{-n}$ the exponent grabs only the base, so the answer stays negative. In $(-a)^{-n}$ the minus is trapped inside, so an even power is positive and an odd power is negative.'}
+        }
+      },
+      '2.5':{
+        topics:['powtower'],
+        tight:true,
+        probs:[{topic:'powtower',diff:1},{topic:'powtower',diff:1},{topic:'powtower',diff:2},{topic:'powtower',diff:2},{topic:'powtower',diff:3},{topic:'powtower',diff:3},{topic:'powtower',diff:3},{topic:'powtower',diff:4},{topic:'powtower',diff:5},{topic:'powtower',diff:5,cap:1},{topic:'powtower',diff:5,cap:1}],
+        keyIdeas:{
+          1:{topic:'powtower', s2:'<b>Power of a quotient.</b> An exponent on a fraction lands on the top and the bottom both. $$\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}$$ Raising \\(\\frac{a}{b}\\) to the \\(n\\) gathers \\(n\\) tops over \\(n\\) bottoms.', s1:'A power on a fraction hits the top and the bottom. $$\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}$$ Raise the top, raise the bottom, that is all.'},
+          2:{topic:'powtower', s2:'<b>Stacked exponents multiply.</b> A power raised to a power multiplies the exponents, and a taller tower multiplies them all. $$\\big((a^m)^n\\big)^p = a^{m\\times n\\times p}$$ Signs come along for the ride: a negative inner exponent stays negative, and a zero makes it \\(a^0=1\\).', s1:'Stack a power on a power and the exponents multiply. $$(a^m)^n = a^{m\\times n}$$ A taller tower just multiplies them all, and a negative or zero exponent multiplies the same way.'},
+          3:{topic:'powtower', s2:'<b>The coefficient counts.</b> An outer exponent hits the number out front too, not just the variable. $$(c\\,x^{m})^{n} = c^{n}\\,x^{m \\times n}$$ So \\((2x^3)^4 = 16x^{12}\\), never \\(2x^{12}\\).', s1:'The exponent outside grabs the number in front too. $$(c\\,x^{m})^{n} = c^{n}\\,x^{m \\times n}$$ So \\((2x^3)^4 = 16x^{12}\\). Do not leave the \\(2\\) behind.'},
+          4:{topic:'powtower', s2:'<b>A negative outer exponent flips a fraction.</b> A negative power turns the fraction over, then the exponent works as usual. $$\\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^{n} = \\frac{b^{n}}{a^{n}}$$ Flip first, then raise the top and bottom.', s1:'A negative power flips the fraction over. $$\\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^{n}$$ Turn it upside down, then raise as normal.'}
         }
       }
     }

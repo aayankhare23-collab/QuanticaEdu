@@ -17,8 +17,27 @@
         "sol": "The growth from each square to the next is \\(3, 5, 7, 9, 11, \\ldots\\), the odd numbers, each one 2 more than the last. The next two terms are 13 and 15. So \\(7^2 = 36+13=49\\), and $$8^2 = 49+15=\\boxed{64}.$$ Every step from one perfect square to the next adds the next odd number, a pattern that will come back later in this lesson."
       },
       {
+        "t": "p",
+        "x": "A square is what you get when a number meets itself twice. Let it meet itself three times and you get a <b>cube</b>. Where \\(b^2\\) counted the cells of a flat square, \\(b^3\\) counts the little cubes packed inside a solid one."
+      },
+      {
+        "t": "prob",
+        "xp": 8,
+        "x": "Stack unit cubes into a solid block. One cube along each edge is just \\(1\\) cube, two along each edge make \\(8\\), three along each edge make \\(27\\). How many unit cubes are in a block that is \\(4\\) along each edge?",
+        "hints": [
+          "Each flat layer is a \\(4\\times4=16\\) square of cubes, and the block is \\(4\\) layers tall."
+        ],
+        "ans": "64",
+        "sol": "Each layer is a \\(4\\times4=16\\) square of unit cubes, and there are \\(4\\) such layers stacked up. $$4\\times4\\times4=\\boxed{64}$$ That count is \\(4^3\\), and the list \\(1,8,27,64\\) is the start of the perfect cubes."
+      },
+      {
+        "t": "fig",
+        "cap": "A \\(3\\)-by-\\(3\\)-by-\\(3\\) cube is built from \\(3^3=27\\) unit cubes, three to an edge in every direction. Where a square stored \\(b^2\\) cells across two directions, a cube stores \\(b^3\\) cells across three.",
+        "x": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An isometric three by three by three cube built from twenty seven small unit cubes, shown on its three visible faces\"><polygon points=\"100,16 172,55 100,94 28,55\" fill=\"rgba(74,159,224,.14)\"/><polygon points=\"100,94 172,55 172,139 100,178\" fill=\"rgba(46,117,182,.30)\"/><polygon points=\"100,94 28,55 28,139 100,178\" fill=\"rgba(46,117,182,.18)\"/><g stroke=\"rgba(15,44,77,.16)\" stroke-width=\"1\"><line x1=\"100\" y1=\"16\" x2=\"28\" y2=\"55\"/><line x1=\"100\" y1=\"16\" x2=\"172\" y2=\"55\"/><line x1=\"124\" y1=\"29\" x2=\"52\" y2=\"68\"/><line x1=\"76\" y1=\"29\" x2=\"148\" y2=\"68\"/><line x1=\"148\" y1=\"42\" x2=\"76\" y2=\"81\"/><line x1=\"52\" y1=\"42\" x2=\"124\" y2=\"81\"/><line x1=\"172\" y1=\"55\" x2=\"100\" y2=\"94\"/><line x1=\"28\" y1=\"55\" x2=\"100\" y2=\"94\"/><line x1=\"100\" y1=\"94\" x2=\"100\" y2=\"178\"/><line x1=\"124\" y1=\"81\" x2=\"124\" y2=\"165\"/><line x1=\"148\" y1=\"68\" x2=\"148\" y2=\"152\"/><line x1=\"172\" y1=\"55\" x2=\"172\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"172\" y2=\"55\"/><line x1=\"100\" y1=\"122\" x2=\"172\" y2=\"83\"/><line x1=\"100\" y1=\"150\" x2=\"172\" y2=\"111\"/><line x1=\"100\" y1=\"178\" x2=\"172\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"100\" y2=\"178\"/><line x1=\"76\" y1=\"81\" x2=\"76\" y2=\"165\"/><line x1=\"52\" y1=\"68\" x2=\"52\" y2=\"152\"/><line x1=\"28\" y1=\"55\" x2=\"28\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"28\" y2=\"55\"/><line x1=\"100\" y1=\"122\" x2=\"28\" y2=\"83\"/><line x1=\"100\" y1=\"150\" x2=\"28\" y2=\"111\"/><line x1=\"100\" y1=\"178\" x2=\"28\" y2=\"139\"/></g><g fill=\"none\" stroke=\"var(--navy)\" stroke-width=\"2.2\" stroke-linejoin=\"round\"><polygon points=\"100,16 172,55 100,94 28,55\"/><polygon points=\"100,94 172,55 172,139 100,178\"/><polygon points=\"100,94 28,55 28,139 100,178\"/></g></svg>"
+      },
+      {
         "t": "imp",
-        "x": "For any number \\(b\\), the <b>square</b> of \\(b\\) is \\(b\\times b\\), written \\(b^2\\). When \\(b\\) is a whole number, \\(b^2\\) is called a <b>perfect square</b>, one of \\(0,1,4,9,16,25,36,\\ldots\\) Geometrically, \\(b^2\\) is the number of unit cells inside a \\(b\\)-by-\\(b\\) square, the same way ordinary multiplication counted the cells inside any rectangle."
+        "x": "For any number $b$, the <b>square</b> $b^2$ is $b\\times b$ and the <b>cube</b> $b^3$ is $b\\times b\\times b$. When $b$ is a whole number these are the <b>perfect squares</b> $0,1,4,9,16,25,\\ldots$ and the <b>perfect cubes</b> $0,1,8,27,64,125,\\ldots$ Geometrically $b^2$ counts the cells in a $b$-by-$b$ square and $b^3$ counts the unit cubes in a $b$-by-$b$-by-$b$ cube. Cubes climb much faster than squares, since each step multiplies by $b$ one extra time."
       },
       {
         "t": "prob",
@@ -29,10 +48,6 @@
         ],
         "ans": "18",
         "sol": "An exponent applies only to its own base, the symbol written directly underneath it. In \\(2\\times3^2\\), that base is \\(3\\), not \\(2\\times3\\), so the expression means \\(2\\times(3^2)\\). Evaluate the power first. $$2\\times3^2 = 2\\times9 = \\boxed{18}$$ The other reading, \\((2\\times3)^2=36\\), is a genuinely different expression, one with parentheses that this one does not have."
-      },
-      {
-        "t": "imp",
-        "x": "<b>Order of operations</b>, with powers added in. Work inside parentheses first. Then evaluate every power. Then multiply and divide, left to right. Then add and subtract, left to right. A power applies only to the base written directly beneath it, unless parentheses gather more into that base."
       },
       {
         "t": "prob",
@@ -49,8 +64,18 @@
         "sol": "The base in \\(-5^2\\) is just \\(5\\), so the exponent applies to \\(5\\) alone and the minus sign is applied last. $$-5^2 = -(5^2) = \\boxed{-25}$$ The first student is right. Wrapping the \\(-5\\) in parentheses changes the base itself. $$(-5)^2=(-5)\\times(-5)=25$$ Same digits, opposite signs, because one expression has parentheses around the negative and the other does not."
       },
       {
-        "t": "imp",
-        "x": "<b>\\(-a^2\\)</b> means the opposite of \\(a^2\\); the minus sign applies last. <b>\\((-a)^2\\)</b> multiplies two copies of \\(-a\\) together, and two negatives make a positive. The same idea extends to any exponent \\(n\\). With an even exponent, the negatives in \\((-a)^n\\) cancel in pairs and the result is positive; with an odd exponent, one negative is left over. So \\(-a^n\\) and \\((-a)^n\\) are opposites when \\(n\\) is even, and equal when \\(n\\) is odd."
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\((-2)^3\\). Then compute \\(-2^3\\). With squares these two came out opposite, since \\((-2)^2=4\\) but \\(-2^2=-4\\). What happens this time?",
+        "hints": [
+          "\\((-2)^3=(-2)(-2)(-2)\\). Multiply the first two, then bring in the third.",
+          "An exponent still binds only to its own base, so \\(-2^3\\) means \\(-(2^3)\\)."
+        ],
+        "ans": "-8",
+        "accept": [
+          "\u22128"
+        ],
+        "sol": "Multiply the three factors of \\((-2)^3\\) one step at a time. $$(-2)(-2)=4,\\qquad 4\\times(-2)=-8$$ So \\((-2)^3=-8\\). And \\(-2^3=-(2^3)=-8\\) as well, since the exponent binds only to the \\(2\\). This time the two expressions are <b>equal</b>, not opposite. Three negative factors pair off and always leave one minus standing, so the cube of a negative stays negative."
       },
       {
         "t": "prob",
@@ -61,6 +86,10 @@
         ],
         "ans": "21",
         "sol": "Substitute \\(x=-3\\), keeping it inside parentheses. $$2(-3)^2-(-3)$$ The exponent applies to the whole parenthesized \\(-3\\), so \\((-3)^2=9\\). $$2(9)-(-3)=18+3=\\boxed{21}$$ Dropping the parentheses and writing \\(2\\times-3^2\\) would quietly turn the first piece into \\(-2\\times9=-18\\), a different and wrong expression."
+      },
+      {
+        "t": "imp",
+        "x": "Evaluate <b>powers</b> after parentheses but before multiplication, division, addition, and subtraction, and remember that an exponent applies only to the base written directly beneath it. So $-a^n=-(a^n)$, while $(-a)^n$ raises the negative itself. The two are <b>opposite when $n$ is even</b>, which is why $(-5)^2=25$ but $-5^2=-25$, and <b>equal when $n$ is odd</b>, which is why $(-2)^3=-2^3=-8$. Squaring can flip a sign; cubing passes the sign straight through."
       },
       {
         "t": "p",
@@ -77,8 +106,17 @@
         "sol": "Directly, \\(6^2=36\\). Expanding the second way, $$(2\\times3)\\times(2\\times3)=2\\times3\\times2\\times3$$ Reordering and regrouping these four factors gives $$(2\\times2)\\times(3\\times3)=2^2\\times3^2=4\\times9=\\boxed{36}$$ Both routes agree, and along the way \\((2\\times3)^2\\) turned into \\(2^2\\times3^2\\). Squaring a product is the same as squaring each factor and multiplying the results."
       },
       {
-        "t": "imp",
-        "x": "A square <b>distributes</b> over multiplication and division. $$(ab)^2=a^2b^2 \\qquad \\left(\\frac{a}{b}\\right)^2=\\frac{a^2}{b^2}$$ It does <b>not</b> distribute over addition or subtraction. \\((a+b)^2\\) is generally not \\(a^2+b^2\\); for instance \\((1+2)^2=9\\) while \\(1^2+2^2=5\\), two different numbers."
+        "t": "prob",
+        "xp": 10,
+        "x": "Compute \\(2^3\\times5^3\\) without cubing either number on its own first.",
+        "hints": [
+          "A cube distributes over a product, so \\(2^3\\times5^3=(2\\times5)^3\\)."
+        ],
+        "ans": "1000",
+        "accept": [
+          "1,000"
+        ],
+        "sol": "Cubing distributes over multiplication, so gather the bases before cubing. $$2^3\\times5^3=(2\\times5)^3=10^3=\\boxed{1000}$$ The same partner-hunting that turned an awkward product into a round number for squares does it again for cubes."
       },
       {
         "t": "prob",
@@ -94,6 +132,10 @@
         "sol": "Since \\(a^2b^2=(ab)^2\\), $$25^2\\times4^2=(25\\times4)^2=100^2=\\boxed{10000}$$ The same partner-hunting that turned \\(25\\times4\\) into a clean \\(100\\) now turns two awkward squares into one easy one."
       },
       {
+        "t": "imp",
+        "x": "A power <b>distributes over multiplication and division</b>: $$(ab)^2=a^2b^2,\\quad (ab)^3=a^3b^3,\\quad \\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}.$$ The reason is regrouping factors, two copies of each base for a square and three for a cube. A power <b>never</b> splits over addition or subtraction, so $(a+b)^2$ is generally not $a^2+b^2$; for instance $(1+2)^2=9$ but $1^2+2^2=5$. Gathering the bases first turns awkward products into easy ones, since $25^2\\times4^2=(25\\times4)^2=100^2$."
+      },
+      {
         "t": "p",
         "x": "Back at the start of this lesson, the jump from one perfect square to the next was always an odd number, \\(2n+1\\) more than the square before it. That pattern is not just a curiosity. It is a mental-math shortcut waiting to be unwrapped."
       },
@@ -104,7 +146,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>\\((n+1)^2=n^2+2n+1\\).</b> To square a number that is one more than a friendly number \\(n\\), square \\(n\\), add twice \\(n\\), then add \\(1\\). The figure above shows why: the new square is the old square, plus two strips of length \\(n\\), plus the corner cell where the strips meet."
+        "x": "<b>$(n+1)^2=n^2+2n+1$.</b> To square a number one more than a friendly $n$, square $n$, add twice $n$, then add $1$. The figure shows why: the bigger square is the old $n$-by-$n$ square plus two strips of length $n$ plus one corner cell. Run it backward, $(n-1)^2=n^2-2n+1$, to square a number just below a round one. This is also why consecutive perfect squares differ by the odd number $2n+1$."
       },
       {
         "t": "prob",
@@ -118,7 +160,6 @@
       },
       {
         "t": "prob",
-        "label": "Extra challenge",
         "xp": 14,
         "x": "The identity also runs in reverse. If \\(n=m+1\\), then \\(n^2=m^2+2m+1\\), which rearranges to \\((n-1)^2=n^2-2n+1\\) (writing \\(m=n-1\\)). Use this reversed identity to compute \\(99^2\\) from the friendly number \\(100\\).",
         "hints": [
@@ -128,66 +169,7 @@
         "sol": "Take \\(n=100\\). Then \\(n^2=10000\\) and \\(2n=200\\). $$99^2=10000-200+1=\\boxed{9801}$$ One identity, run forward for a number just above a round number and run backward for a number just below one."
       },
       {
-        "t": "p",
-        "x": "A square is what you get when a number meets itself twice. Let it meet itself three times and you get a <b>cube</b>. Where \\(b^2\\) counted the cells of a flat square, \\(b^3\\) counts the little cubes packed inside a solid one."
-      },
-      {
         "t": "prob",
-        "xp": 8,
-        "x": "Stack unit cubes into a solid block. One cube along each edge is just \\(1\\) cube, two along each edge make \\(8\\), three along each edge make \\(27\\). How many unit cubes are in a block that is \\(4\\) along each edge?",
-        "hints": [
-          "Each flat layer is a \\(4\\times4=16\\) square of cubes, and the block is \\(4\\) layers tall."
-        ],
-        "ans": "64",
-        "sol": "Each layer is a \\(4\\times4=16\\) square of unit cubes, and there are \\(4\\) such layers stacked up. $$4\\times4\\times4=\\boxed{64}$$ That count is \\(4^3\\), and the list \\(1,8,27,64\\) is the start of the perfect cubes."
-      },
-      {
-        "t": "imp",
-        "x": "For any number \\(b\\), the <b>cube</b> of \\(b\\) is \\(b\\times b\\times b\\), written \\(b^3\\) and read as \u201cb cubed.\u201d When \\(b\\) is a whole number, \\(b^3\\) is a <b>perfect cube</b>, one of \\(0,1,8,27,64,125,216,\\ldots\\) Geometrically \\(b^3\\) is the number of unit cubes inside a \\(b\\)-by-\\(b\\)-by-\\(b\\) cube, exactly as \\(b^2\\) was the number of cells inside a \\(b\\)-by-\\(b\\) square. Cubes climb much faster than squares, since each step multiplies by \\(b\\) one extra time."
-      },
-      {
-        "t": "fig",
-        "cap": "A \\(3\\)-by-\\(3\\)-by-\\(3\\) cube is built from \\(3^3=27\\) unit cubes, three to an edge in every direction. Where a square stored \\(b^2\\) cells across two directions, a cube stores \\(b^3\\) cells across three.",
-        "x": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"An isometric three by three by three cube built from twenty seven small unit cubes, shown on its three visible faces\"><polygon points=\"100,16 172,55 100,94 28,55\" fill=\"rgba(74,159,224,.14)\"/><polygon points=\"100,94 172,55 172,139 100,178\" fill=\"rgba(46,117,182,.30)\"/><polygon points=\"100,94 28,55 28,139 100,178\" fill=\"rgba(46,117,182,.18)\"/><g stroke=\"rgba(15,44,77,.16)\" stroke-width=\"1\"><line x1=\"100\" y1=\"16\" x2=\"28\" y2=\"55\"/><line x1=\"100\" y1=\"16\" x2=\"172\" y2=\"55\"/><line x1=\"124\" y1=\"29\" x2=\"52\" y2=\"68\"/><line x1=\"76\" y1=\"29\" x2=\"148\" y2=\"68\"/><line x1=\"148\" y1=\"42\" x2=\"76\" y2=\"81\"/><line x1=\"52\" y1=\"42\" x2=\"124\" y2=\"81\"/><line x1=\"172\" y1=\"55\" x2=\"100\" y2=\"94\"/><line x1=\"28\" y1=\"55\" x2=\"100\" y2=\"94\"/><line x1=\"100\" y1=\"94\" x2=\"100\" y2=\"178\"/><line x1=\"124\" y1=\"81\" x2=\"124\" y2=\"165\"/><line x1=\"148\" y1=\"68\" x2=\"148\" y2=\"152\"/><line x1=\"172\" y1=\"55\" x2=\"172\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"172\" y2=\"55\"/><line x1=\"100\" y1=\"122\" x2=\"172\" y2=\"83\"/><line x1=\"100\" y1=\"150\" x2=\"172\" y2=\"111\"/><line x1=\"100\" y1=\"178\" x2=\"172\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"100\" y2=\"178\"/><line x1=\"76\" y1=\"81\" x2=\"76\" y2=\"165\"/><line x1=\"52\" y1=\"68\" x2=\"52\" y2=\"152\"/><line x1=\"28\" y1=\"55\" x2=\"28\" y2=\"139\"/><line x1=\"100\" y1=\"94\" x2=\"28\" y2=\"55\"/><line x1=\"100\" y1=\"122\" x2=\"28\" y2=\"83\"/><line x1=\"100\" y1=\"150\" x2=\"28\" y2=\"111\"/><line x1=\"100\" y1=\"178\" x2=\"28\" y2=\"139\"/></g><g fill=\"none\" stroke=\"var(--navy)\" stroke-width=\"2.2\" stroke-linejoin=\"round\"><polygon points=\"100,16 172,55 100,94 28,55\"/><polygon points=\"100,94 172,55 172,139 100,178\"/><polygon points=\"100,94 28,55 28,139 100,178\"/></g></svg>"
-      },
-      {
-        "t": "prob",
-        "xp": 10,
-        "x": "Compute \\((-2)^3\\). Then compute \\(-2^3\\). With squares these two came out opposite, since \\((-2)^2=4\\) but \\(-2^2=-4\\). What happens this time?",
-        "hints": [
-          "\\((-2)^3=(-2)(-2)(-2)\\). Multiply the first two, then bring in the third.",
-          "An exponent still binds only to its own base, so \\(-2^3\\) means \\(-(2^3)\\)."
-        ],
-        "ans": "-8",
-        "accept": [
-          "\u22128"
-        ],
-        "sol": "Multiply the three factors of \\((-2)^3\\) one step at a time. $$(-2)(-2)=4,\\qquad 4\\times(-2)=-8$$ So \\((-2)^3=-8\\). And \\(-2^3=-(2^3)=-8\\) as well, since the exponent binds only to the \\(2\\). This time the two expressions are <b>equal</b>, not opposite. Three negative factors pair off and always leave one minus standing, so the cube of a negative stays negative."
-      },
-      {
-        "t": "imp",
-        "x": "Cubing keeps the sign. Because \\(3\\) is odd, <b>\\((-a)^3=-a^3\\)</b>: the three negative factors leave one negative behind, so the cube of a negative number is negative and equals \\(-a^3\\) exactly. This is the odd case of the rule from before. An even power of a negative comes out positive, an odd power stays negative. So with cubes, unlike squares, the parentheses around the negative do not change the answer."
-      },
-      {
-        "t": "prob",
-        "xp": 10,
-        "x": "Compute \\(2^3\\times5^3\\) without cubing either number on its own first.",
-        "hints": [
-          "A cube distributes over a product, so \\(2^3\\times5^3=(2\\times5)^3\\)."
-        ],
-        "ans": "1000",
-        "accept": [
-          "1,000"
-        ],
-        "sol": "Cubing distributes over multiplication, so gather the bases before cubing. $$2^3\\times5^3=(2\\times5)^3=10^3=\\boxed{1000}$$ The same partner-hunting that turned an awkward product into a round number for squares does it again for cubes."
-      },
-      {
-        "t": "imp",
-        "x": "A cube distributes over multiplication and division, just as a square did. $$(ab)^3=a^3b^3 \\qquad \\left(\\frac{a}{b}\\right)^3=\\frac{a^3}{b^3}$$ The reason is the same regrouping of factors, now three copies of each instead of two. And like a square, a cube never splits over a sum, so \\((a+b)^3\\) is generally not \\(a^3+b^3\\)."
-      },
-      {
-        "t": "prob",
-        "label": "Extra challenge",
         "xp": 14,
         "x": "Compute \\(12^3\\div3^3\\) without ever finding \\(12^3\\).",
         "hints": [
@@ -195,21 +177,6 @@
         ],
         "ans": "64",
         "sol": "Since \\(\\left(\\frac{a}{b}\\right)^3=\\frac{a^3}{b^3}\\), read the division with the cube on the outside. $$12^3\\div3^3=(12\\div3)^3=4^3=\\boxed{64}$$ One small cube, \\(4^3\\), in place of a four-digit division."
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 Squares and cubes",
-        "x": "The square of \\(b\\) is \\(b\\times b=b^2\\) and the cube is \\(b\\times b\\times b=b^3\\). Perfect squares are \\(0,1,4,9,16,25,\\ldots\\) and perfect cubes are \\(0,1,8,27,64,125,\\ldots\\) Geometrically \\(b^2\\) counts the cells in a \\(b\\)-by-\\(b\\) square and \\(b^3\\) counts the unit cubes in a \\(b\\)-by-\\(b\\)-by-\\(b\\) cube. Consecutive perfect squares differ by the odd numbers \\(3,5,7,9,\\ldots\\), since the jump from \\(n^2\\) to \\((n+1)^2\\) is \\(2n+1\\)."
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 Order of operations and the sign trap",
-        "x": "Powers are evaluated after parentheses and before multiplication, division, addition, and subtraction, and an exponent applies only to the base written directly beneath it. So \\(-a^n=-(a^n)\\) while \\((-a)^n\\) raises the negative itself. The two are opposite when \\(n\\) is even, which is why \\((-a)^2\\) is positive but \\(-a^2\\) is negative, and equal when \\(n\\) is odd, which is why \\((-a)^3=-a^3\\). Cubing passes the sign straight through."
-      },
-      {
-        "t": "imp",
-        "label": "Recap \u00b7 Powers of products and quick mental math",
-        "x": "A power distributes over multiplication and division, \\((ab)^2=a^2b^2\\) and \\((ab)^3=a^3b^3\\), with \\(\\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}\\) for division, but never over addition or subtraction. And \\((n+1)^2=n^2+2n+1\\), run forward or backward, turns squaring a number just above or just below a round number into simple addition or subtraction."
       }
     ],
     "review": [
@@ -372,7 +339,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Product rule.</b> When you multiply two powers with the same base, add the exponents. $$a^m \\times a^n = a^{m+n}$$ Counting explains it: \\(m\\) copies of \\(a\\) followed by \\(n\\) more copies gives \\(m+n\\) copies altogether."
+        "x": "<b>Product rule.</b> When you multiply two powers with the same base, add the exponents. $$a^m \\times a^n = a^{m+n}$$ Counting explains it: $m$ copies of $a$ followed by $n$ more copies gives $m+n$ copies altogether."
       },
       {
         "t": "prob",
@@ -429,7 +396,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Power rule.</b> When you raise a power to another power, multiply the exponents. $$(a^m)^n = a^{m \\times n}$$ The outer exponent calls for \\(n\\) copies of \\(a^m\\). Each copy contributes \\(m\\) factors of \\(a\\), so \\(n\\) copies contribute \\(m \\times n\\) factors altogether."
+        "x": "<b>Power rule.</b> When you raise a power to another power, multiply the exponents. $$(a^m)^n = a^{m \\times n}$$ The outer exponent calls for $n$ copies of $a^m$. Each copy contributes $m$ factors of $a$, so $n$ copies contribute $m \\times n$ factors altogether."
       },
       {
         "t": "prob",
@@ -468,7 +435,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Power of a product.</b> An exponent distributes over multiplication. $$(ab)^n = a^n \\times b^n$$ This works because \\((ab)^n\\) means \\(n\\) copies of the pair \\(a \\cdot b\\), and you can regroup to gather all the \\(a\\)s together and all the \\(b\\)s together."
+        "x": "<b>Power of a product.</b> An exponent distributes over multiplication. $$(ab)^n = a^n \\times b^n$$ This works because $(ab)^n$ means $n$ copies of the pair $a \\cdot b$, and you can regroup to gather all the $a$ factors together and all the $b$ factors together."
       },
       {
         "t": "prob",
@@ -506,7 +473,6 @@
       },
       {
         "t": "prob",
-        "label": "Extra challenge",
         "xp": 14,
         "x": "Compute $$\\frac{6^{20} \\times 4^{15}}{8^{10} \\times 3^{20}}.$$ The result is a power of 2. What is the exponent?",
         "hints": [
@@ -723,7 +689,7 @@
       },
       {
         "t": "imp",
-        "x": "Any nonzero base raised to the <b>zero power</b> equals \\(1\\). $$a^0 = 1 \\quad (a \\neq 0)$$ Walking down the staircase of powers, every step lowers the exponent by \\(1\\) and divides the value by \\(a\\). The step from \\(a^1=a\\) down to \\(a^0\\) divides \\(a\\) by \\(a\\), which is \\(1\\)."
+        "x": "Any nonzero base raised to the <b>zero power</b> equals \\(1\\). $$a^0 = 1 \\quad (a \\neq 0)$$ Walk down the staircase of powers: every step lowers the exponent by \\(1\\) and divides the value by \\(a\\). The step from \\(a^1=a\\) down to \\(a^0\\) divides \\(a\\) by itself, which is \\(1\\)."
       },
       {
         "t": "p",
@@ -741,10 +707,6 @@
         "sol": "Read the fraction the everyday way first. Any nonzero amount divided by itself is \\(1\\), so \\(\\dfrac{7^5}{7^5}=1\\). Now read it through the quotient rule, which subtracts exponents on a common base. $$\\frac{7^5}{7^5}=7^{5-5}=7^0$$ Both readings describe the exact same fraction, so they must be equal. $$7^0 = \\boxed{1}$$ The law forces the same answer the staircase already showed."
       },
       {
-        "t": "imp",
-        "x": "The quotient rule pins down the zero power on its own. For any nonzero \\(a\\), $$\\frac{a^n}{a^n}=a^{n-n}=a^0,$$ and that same fraction is a thing divided by itself, which is \\(1\\). So \\(a^0=1\\) is not a special new rule bolted on. It is the only value that keeps the law for dividing a common base honest."
-      },
-      {
         "t": "prob",
         "xp": 7,
         "x": "Now mix the zero power into ordinary arithmetic so the order of operations gets a say. A jukebox charges \\(9^0\\) tokens for a song and \\(2^3\\) tokens for a movie clip. A student buys five songs and one clip. Evaluate the total \\(5\\times 9^0 + 2^3\\).",
@@ -754,6 +716,10 @@
         ],
         "ans": "13",
         "sol": "Evaluate the powers before anything else. The zero power gives \\(9^0=1\\), and \\(2^3=8\\). $$5\\times 9^0 + 2^3 = 5\\times 1 + 8$$ Multiplication next, then the addition. $$5 + 8 = \\boxed{13}$$ A zero power is worth exactly \\(1\\) wherever it appears, and order of operations treats it like any other power."
+      },
+      {
+        "t": "imp",
+        "x": "The quotient rule pins the zero power down on its own. For any nonzero \\(a\\), $$\\frac{a^n}{a^n}=a^{n-n}=a^0,$$ and that same fraction is a thing divided by itself, which is \\(1\\). So \\(a^0=1\\) is not a new rule bolted on. It is the only value that keeps the law for dividing a common base honest."
       },
       {
         "t": "p",
@@ -786,11 +752,10 @@
       },
       {
         "t": "imp",
-        "x": "An exponent grips only the base directly beneath it. So \\(c\\,b^0 = c\\times 1 = c\\), because the \\(0\\) touches \\(b\\) alone and leaves the coefficient \\(c\\) standing. But \\((cb)^0 = 1\\), because the parentheses hand the whole product \\(cb\\) to the exponent. Likewise \\(-a^0=-(a^0)=-1\\) while \\((-a)^0=1\\). Before you collapse a zero power to \\(1\\), check exactly what it is holding."
+        "x": "An exponent grips only the base directly beneath it, unless parentheses gather more under it. So \\(c\\,b^0 = c\\times 1 = c\\), because the \\(0\\) touches \\(b\\) alone and leaves the coefficient \\(c\\) standing, while \\((cb)^0 = 1\\) hands the whole product to the exponent. Likewise \\(-a^0=-(a^0)=-1\\) but \\((-a)^0=1\\). Before you collapse a zero power to \\(1\\), check exactly what it is holding."
       },
       {
         "t": "fact",
-        "label": "Fun fact",
         "x": "Pocket calculators did not always agree on \\(0^0\\), and even today most math leaves it undefined, since the descending-divide story would force a divide by zero. But almost everywhere else \\(a^0=1\\) is treated as rock solid, and it has a quietly beautiful reason. An empty product, a multiplication with no factors at all, is defined to be \\(1\\), the same way an empty sum is \\(0\\). A power \\(a^0\\) asks for zero copies of \\(a\\) multiplied together, which is exactly an empty product. So \\(a^0\\) being \\(1\\) is the multiplication world starting from its natural blank slate. \ud83d\ude80"
       },
       {
@@ -820,6 +785,14 @@
         "sol": "The exponent is \\(k-k\\), which is \\(0\\) for every value of \\(k\\), no matter how large or small. $$12^{\\,k-k}=12^0=1$$ So the stored power is \\(1\\) for \\(k=37\\), for \\(k=200\\), and for \\(k=1\\) alike. The box opens on all \\(\\boxed{3}\\) settings. The base \\(12\\) never mattered, only that the exponent collapsed to zero."
       },
       {
+        "t": "imp",
+        "x": "Sometimes the zero is not written in plain sight: the exponent is a little expression that works out to \\(0\\). Finish the arithmetic in the exponent first, and once it lands on \\(0\\) the whole power flattens to \\(1\\), whatever the base. So \\(5^{\\,8-8}=5^0=1\\) and \\(a^{\\,k-k}=1\\) for every \\(k\\). Rewriting everything to a common base is what makes a hidden zero exponent appear, as when \\(\\frac{8^4}{2^{12}}=\\frac{2^{12}}{2^{12}}=2^0=1\\)."
+      },
+      {
+        "t": "p",
+        "x": "One last pair to finish. These closers gather everything at once: a zero exponent hidden until you force a common base, an exponent that must be computed before it collapses, and a power that grips only part of a product, with order of operations refereeing every step."
+      },
+      {
         "t": "prob",
         "xp": 10,
         "x": "Rewriting to a common base can hide a zero exponent until you dig it out. Simplify \\(\\dfrac{8^4}{2^{12}}\\) to a single power of \\(2\\), then give its value as a plain number.",
@@ -831,12 +804,7 @@
         "sol": "Put everything on base \\(2\\). Since \\(8=2^3\\), the power rule gives \\(8^4=(2^3)^4=2^{12}\\). Now the fraction shares one base, so subtract exponents. $$\\frac{8^4}{2^{12}}=\\frac{2^{12}}{2^{12}}=2^{12-12}=2^0=\\boxed{1}$$ The disguise lifted, the exponent collapsed to zero, and the value is \\(1\\). Of course \\(\\frac{2^{12}}{2^{12}}\\) had to be \\(1\\) anyway, a thing over itself."
       },
       {
-        "t": "p",
-        "x": "One last assembly. The closer stacks the two ideas that trip people up, an exponent that grips only part of a product and an exponent that has to be computed before it collapses, all inside a single expression that order of operations must referee."
-      },
-      {
         "t": "prob",
-        "label": "Extra challenge",
         "xp": 14,
         "x": "Evaluate $$10 - 3\\,w^{\\,5-5} + (4w)^0$$ for any nonzero \\(w\\). The expression is built so the value never depends on \\(w\\) at all. Find that single value.",
         "hints": [
@@ -1045,10 +1013,6 @@
         "sol": "One more step down divides \\(5^0 = 1\\) by 5, giving \\(1 \\div 5 = \\dfrac{1}{5}\\). So \\(5^{-1} = \\boxed{\\dfrac{1}{5}}\\). A negative exponent has flipped the base into the bottom of a fraction."
       },
       {
-        "t": "imp",
-        "x": "<b>Negative powers.</b> A nonzero base raised to a negative exponent is 1 over the base raised to the matching positive exponent. $$a^{-n} = \\dfrac{1}{a^{n}} \\quad (a \\neq 0)$$ The descending ladder forces it. Each step down divides by the base, and dividing past \\(a^0 = 1\\) sends the base under the fraction bar."
-      },
-      {
         "t": "p",
         "x": "There is a second way to see the same fact, and it uses a law you already own. The quotient rule subtracts exponents when you divide a common base. Let the bottom exponent be the larger one and watch where the rule points."
       },
@@ -1064,12 +1028,6 @@
         "sol": "Writing the factors, two 4s cancel and three remain underneath, so \\(\\dfrac{4^2}{4^5} = \\dfrac{1}{4^3}\\). The quotient rule agrees, \\(4^{2-5} = 4^{-3}\\). The two views match, \\(4^{-3} = \\dfrac{1}{4^3}\\), and the exponent is \\(\\boxed{-3}\\)."
       },
       {
-        "t": "imp",
-        "label": "Why it matches",
-        "x": "Both routes land in the same place. The quotient rule turns \\(\\dfrac{a^m}{a^n}\\) into \\(a^{m-n}\\), and when \\(n\\) is the larger exponent the leftover factors all sit in the denominator. So a negative exponent is just the bookkeeping for factors that ended up downstairs.",
-        "sol": "A negative exponent moves the power to the denominator with a matching positive exponent. $$3^{-4} = \\frac{1}{3^4} = \\frac{1}{81}$$ The pollen grain's width is \\(\\boxed{\\dfrac{1}{81}}\\) of a millimetre. The negative in the exponent is the signal that the base crossed the fraction bar and went downstairs, shrinking the measurement well below 1."
-      },
-      {
         "t": "prob",
         "xp": 8,
         "x": "A pollen grain seen under a microscope has width \\(3^{-4}\\) of a millimetre. Write \\(3^{-4}\\) as a single fraction.",
@@ -1079,6 +1037,10 @@
         ],
         "ans": "1/81",
         "sol": "Flip the base under the bar with its matching positive power. $$3^{-4} = \\dfrac{1}{3^4} = \\dfrac{1}{81}$$ So the width is \\(\\boxed{\\dfrac{1}{81}}\\) of a millimetre."
+      },
+      {
+        "t": "imp",
+        "x": "A nonzero base raised to a negative exponent is $1$ over that base raised to the matching positive power: $a^{-n}=\\frac{1}{a^n}$ (for $a\\neq0$). The descending ladder forces it, since each step down divides by the base, and dividing past $a^0=1$ pushes the base under the fraction bar. The quotient rule tells the same story, $\\frac{a^m}{a^n}=a^{m-n}$: when the bottom exponent is larger, the leftover factors all land downstairs. A negative exponent is just the bookkeeping for factors that ended up in the denominator."
       },
       {
         "t": "p",
@@ -1096,10 +1058,6 @@
         "sol": "A negative exponent flips the base over. The reciprocal of \\(\\dfrac{1}{4}\\) is 4, so $$\\left(\\dfrac{1}{4}\\right)^{-3} = 4^{3} = 64.$$ The fraction turned right side up and grew. The answer is \\(\\boxed{64}\\)."
       },
       {
-        "t": "imp",
-        "x": "<b>Reciprocal bases.</b> A fraction to a negative power flips upright and the exponent turns positive. $$\\left(\\dfrac{1}{a}\\right)^{n} = a^{-n} \\qquad \\left(a^{-1}\\right)^{n} = a^{-n}$$ A power simply flips the sign of its exponent each time it crosses a fraction bar."
-      },
-      {
         "t": "prob",
         "xp": 8,
         "x": "A relay stores the reciprocal of 5 as \\(5^{-1}\\), then a reset raises that stored value to the power \\(-2\\). Evaluate \\(\\left(5^{-1}\\right)^{-2}\\) as a whole number.",
@@ -1115,8 +1073,11 @@
         "sol": "The exponent flips its sign each time it crosses the bar, so \\(5^{-1}\\) raised to \\(-2\\) comes back upright. $$\\left(5^{-1}\\right)^{-2} = 5^{(-1)\\times(-2)} = 5^{2} = 25$$ Two reciprocals undo each other. The answer is \\(\\boxed{25}\\)."
       },
       {
+        "t": "imp",
+        "x": "A fraction raised to a negative power flips upright, and its exponent turns positive: $\\left(\\frac{1}{a}\\right)^{n}=a^{-n}$ and $\\left(a^{-1}\\right)^{n}=a^{-n}$. A reciprocal in the base and a minus sign in the exponent are two names for the same flip, so a power switches the sign of its exponent each time it crosses the fraction bar."
+      },
+      {
         "t": "fact",
-        "label": "Fun fact",
         "x": "Scientists lean on negative powers of ten constantly. A nanometre is \\(10^{-9}\\) of a metre, the rough width of a few atoms side by side, and a picosecond is \\(10^{-12}\\) of a second. Light travels less than a millimetre in one of those. The same negative exponents that shrink fractions also name the smallest things people have ever measured."
       },
       {
@@ -1155,6 +1116,25 @@
         "sol": "The exponents are opposites and add to zero. $$9^{5} \\times 9^{-5} = 9^{5 + (-5)} = 9^{0} = 1$$ A power times its reciprocal collapses to \\(\\boxed{1}\\)."
       },
       {
+        "t": "prob",
+        "xp": 10,
+        "x": "A spinning rotor multiplies its energy by 4 each round. After one round the energy is \\(4^1\\) units, but the formula divides by the rotor's idle reading \\(4^{-3}\\), giving \\(\\dfrac{4^1}{4^{-3}}\\). Write the result as a single power of 4 and give its value.",
+        "hints": [
+          "Dividing by \\(4^{-3}\\) subtracts that exponent, \\(1 - (-3)\\). Subtracting a negative adds.",
+          "\\(1 - (-3) = 4\\), so the result is \\(4^4\\)."
+        ],
+        "ans": "256",
+        "accept": [
+          "4^4",
+          "4^{4}"
+        ],
+        "sol": "The quotient rule subtracts the bottom exponent, and subtracting a negative adds. $$\\dfrac{4^{1}}{4^{-3}} = 4^{1 - (-3)} = 4^{4} = 256$$ Dividing by a negative power climbed the exponent. The value is \\(\\boxed{256}\\)."
+      },
+      {
+        "t": "imp",
+        "x": "Every law of exponents keeps working once the exponents go negative. Multiplying same-base powers still adds the exponents, dividing still subtracts them, and a power of a power still multiplies them, straight across zero: $a^{m}\\times a^{-n}=a^{m-n}$ and $\\frac{a^{m}}{a^{-n}}=a^{m+n}$. A negative exponent is a fully grown number on the ladder, not a special case, so the minus sign simply rides along with ordinary arithmetic."
+      },
+      {
         "t": "p",
         "x": "The sign rules from negative bases meet negative exponents now, and the parentheses matter more than ever. The next problem lines up three look-alikes where only one comes out positive. Read exactly what each exponent grips and what each minus sign covers."
       },
@@ -1173,19 +1153,8 @@
         "sol": "Read each one carefully. In \\(-2^{-4}\\) the exponent touches only the 2, so \\(-2^{-4} = -\\dfrac{1}{2^4} = -\\dfrac{1}{16}\\), which is negative. In \\((-2)^{-3}\\) the sign is inside but the odd power keeps it negative, \\((-2)^{-3} = \\dfrac{1}{(-2)^3} = -\\dfrac{1}{8}\\). Only \\((-5)^{-2}\\) is positive, because the parentheses hold the sign and an even power turns it positive, \\((-5)^{-2} = \\dfrac{1}{(-5)^2} = \\boxed{\\dfrac{1}{25}}\\)."
       },
       {
-        "t": "prob",
-        "xp": 10,
-        "x": "A spinning rotor multiplies its energy by 4 each round. After one round the energy is \\(4^1\\) units, but the formula divides by the rotor's idle reading \\(4^{-3}\\), giving \\(\\dfrac{4^1}{4^{-3}}\\). Write the result as a single power of 4 and give its value.",
-        "hints": [
-          "Dividing by \\(4^{-3}\\) subtracts that exponent, \\(1 - (-3)\\). Subtracting a negative adds.",
-          "\\(1 - (-3) = 4\\), so the result is \\(4^4\\)."
-        ],
-        "ans": "256",
-        "accept": [
-          "4^4",
-          "4^{4}"
-        ],
-        "sol": "The quotient rule subtracts the bottom exponent, and subtracting a negative adds. $$\\dfrac{4^{1}}{4^{-3}} = 4^{1 - (-3)} = 4^{4} = 256$$ Dividing by a negative power climbed the exponent. The value is \\(\\boxed{256}\\)."
+        "t": "imp",
+        "x": "With negative exponents the parentheses matter more than ever. In $-a^{-n}$ the exponent grips only the base and the minus sign waits outside, so it means $-\\frac{1}{a^n}$, a negative. In $(-a)^{-n}$ the parentheses trap the sign inside, and then an even power comes out positive while an odd power stays negative. Read exactly what each exponent touches and what each minus sign covers."
       },
       {
         "t": "p",
@@ -1209,7 +1178,6 @@
       },
       {
         "t": "prob",
-        "label": "Extra challenge",
         "xp": 14,
         "x": "Four dials each set a magnification, all secretly powers of 3. They read $$9^{-3}, \\qquad \\left(\\tfrac{1}{27}\\right)^{2}, \\qquad \\left(\\tfrac{1}{3}\\right)^{-5}, \\qquad \\left(3^{2}\\right)^{-4}.$$ Rewrite each as a single power of 3, then say which dial gives the smallest magnification. Give that dial's value as a power of 3, for example in the form 3^7.",
         "hints": [
@@ -1459,7 +1427,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Power of a quotient.</b> An outer exponent lands on the top and the bottom alike. $$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0)$$ It is the power of a product wearing a fraction. A quotient to the \\(n\\) means \\(n\\) copies of the whole fraction multiplied, so \\(n\\) tops gather over \\(n\\) bottoms."
+        "x": "<b>Power of a quotient.</b> An outer exponent lands on the top and the bottom alike. $$\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n} \\quad (b \\neq 0)$$ A fraction raised to the \\(n\\) means \\(n\\) copies of the whole fraction multiplied together, so \\(n\\) tops gather over \\(n\\) bottoms. It is the power-of-a-product rule wearing a fraction."
       },
       {
         "t": "p",
@@ -1481,8 +1449,18 @@
         "sol": "Work from the outside in, using the power rule each time. $$\\big((2^2)^3\\big)^2 = (2^2)^{3\\times 2} = (2^2)^6 = 2^{2\\times 6} = 2^{12}$$ Every exponent in the tower multiplied together, \\(2\\times 3\\times 2 = 12\\). The exponent is \\(\\boxed{12}\\)."
       },
       {
-        "t": "imp",
-        "x": "<b>Stacked exponents multiply.</b> A tower of powers collapses by multiplying every exponent in it. $$\\big((a^m)^n\\big)^p = a^{m\\times n\\times p}$$ Each outer exponent is just the power rule firing again, so the multiplying never stops no matter how tall the tower grows."
+        "t": "prob",
+        "xp": 8,
+        "x": "An elevator panel shows the reading \\((9^4)^{0}\\). Without a calculator, give its exact value.",
+        "hints": [
+          "Multiply the stacked exponents first, \\(4 \\times 0\\), or recall what any nonzero base to the zero power is.",
+          "Whichever route you take, the panel settles on the value that every nonzero base shares at the zero power."
+        ],
+        "ans": "1",
+        "accept": [
+          "9^0"
+        ],
+        "sol": "Two routes, one answer. Multiplying the exponents gives \\((9^4)^0 = 9^{4\\times 0} = 9^0 = 1\\). Or recall \\(9^0 = 1\\) first. Either way the panel reads \\(\\boxed{1}\\)."
       },
       {
         "t": "p",
@@ -1520,22 +1498,8 @@
         "sol": "Multiply the exponents, sign and all. $$(2^{-3})^2 = 2^{(-3)\\times 2} = 2^{-6}$$ The exponent is \\(\\boxed{-6}\\). Written without a negative that is \\(\\dfrac{1}{2^6} = \\dfrac{1}{64}\\), a very small number, which fits a power that points down twice."
       },
       {
-        "t": "prob",
-        "xp": 8,
-        "x": "An elevator panel shows the reading \\((9^4)^{0}\\). Without a calculator, give its exact value.",
-        "hints": [
-          "Multiply the stacked exponents first, \\(4 \\times 0\\), or recall what any nonzero base to the zero power is.",
-          "Whichever route you take, the panel settles on the value that every nonzero base shares at the zero power."
-        ],
-        "ans": "1",
-        "accept": [
-          "9^0"
-        ],
-        "sol": "Two routes, one answer. Multiplying the exponents gives \\((9^4)^0 = 9^{4\\times 0} = 9^0 = 1\\). Or recall \\(9^0 = 1\\) first. Either way the panel reads \\(\\boxed{1}\\)."
-      },
-      {
         "t": "imp",
-        "x": "<b>The power rule ignores signs.</b> Raising a power to a power multiplies the exponents whether they are positive, negative, or zero. $$(a^m)^n = a^{m\\times n}$$ A negative inner exponent stays negative under a positive outer one, and a zero anywhere in the product collapses the whole thing to \\(a^0 = 1\\)."
+        "x": "<b>Stacked exponents multiply.</b> Raising a power to a power multiplies the exponents, and a whole tower collapses by multiplying every exponent in it. $$\\big((a^m)^n\\big)^p = a^{m\\times n\\times p}$$ Each outer layer is just the power rule firing again, so the multiplying never stops. It does not care about signs either: a negative inner exponent stays negative under a positive outer one, and a zero anywhere makes the whole thing \\(a^0=1\\)."
       },
       {
         "t": "p",
@@ -1557,8 +1521,7 @@
       },
       {
         "t": "imp",
-        "label": "The coefficient counts",
-        "x": "<b>Power of a product with a coefficient.</b> An outer exponent lands on the number out front just as surely as on the variable. $$(c\\,x^{m})^{n} = c^{n}\\,x^{m \\times n}$$ The coefficient is just another factor inside the parentheses, so the exponent grips it the same way it grips \\(x\\). Forgetting it is the classic capstone trap."
+        "x": "<b>The coefficient counts.</b> An outer exponent lands on the number out front just as surely as on the variable. $$(c\\,x^{m})^{n} = c^{n}\\,x^{m \\times n}$$ The coefficient is just another factor inside the parentheses, so the exponent grips it the same way it grips \\(x\\). Leaving it untouched, writing \\((2x^3)^4\\) as \\(2x^{12}\\) instead of \\(16x^{12}\\), is the classic trap."
       },
       {
         "t": "p",
@@ -1577,11 +1540,10 @@
       },
       {
         "t": "imp",
-        "x": "<b>Negative outer exponent flips a fraction.</b> A fraction to a negative power turns over, then the exponent acts as usual. $$\\left(\\dfrac{a}{b}\\right)^{-n} = \\left(\\dfrac{b}{a}\\right)^{n} = \\dfrac{b^{n}}{a^{n}} \\quad (a \\neq 0,\\ b \\neq 0)$$ The negative sign is just a reciprocal asking the fraction to flip, after which the exponent lands on the new top and bottom."
+        "x": "<b>A negative outer exponent flips a fraction.</b> A fraction raised to a negative power turns upside down, and then the exponent acts as usual. $$\\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^{n} = \\frac{b^{n}}{a^{n}} \\quad (a,b \\neq 0)$$ The minus sign is just a reciprocal asking the fraction to flip, after which the exponent lands on the new top and bottom."
       },
       {
         "t": "fact",
-        "label": "Fun fact",
         "x": "Stacked exponents grow at a pace the mind cannot picture. The tidy looking tower \\(\\big((10^3)^3\\big)^3\\) multiplies out to \\(10^{27}\\), a number with twenty seven zeros, already more than the estimated count of every grain of sand on every beach on Earth. And that is the gentle kind of tower. A true tower where each exponent is itself a full power, like \\(2^{2^{2^{2}}}\\), reaches 65536 in just four 2s, and one floor higher the number is too long to write on this page. Mathematicians invented a whole separate notation, called up-arrows, just to tame them."
       },
       {
@@ -1619,7 +1581,6 @@
       },
       {
         "t": "prob",
-        "label": "Extra challenge",
         "xp": 14,
         "x": "Evaluate $$\\left(\\dfrac{(2x^3)^2}{4x^4}\\right)^{3} \\times \\left(\\dfrac{x^2}{2}\\right)^{-3}.$$ It is built so the variable cancels completely and a single number remains. Find that number.",
         "hints": [
