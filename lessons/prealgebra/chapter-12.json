@@ -5,7 +5,7 @@
     "blocks": [
       {
         "t": "p",
-        "x": "Some problems are too big to attack head on. Nobody multiplies out the five hundredth term of anything. Strong solvers play instead. They compute a few small cases, line the results up, and watch for a rhythm. Once the rhythm is caught, a problem the size of a mountain collapses into one short division. This lesson is about catching rhythms."
+        "x": "Some problems are too big to attack head on. Nobody multiplies out the five hundredth term of anything. Strong solvers play instead. They compute a few small cases, line the results up, and watch for a rhythm. Once the rhythm is caught, a huge problem collapses into one short division. This lesson is about catching rhythms."
       },
       {
         "t": "prob",
@@ -21,7 +21,7 @@
           "The ones digits run \\(8, 6, 4, 2, 0\\) and then start over, a loop of length \\(5\\).",
           "Divide \\(43\\) by \\(5\\) and let the remainder point to a spot inside the loop."
         ],
-        "sol": "<p>The ones digits cycle through \\(8, 6, 4, 2, 0\\) forever, repeating every \\(5\\) multiples.</p><p>Since \\(43 = 8 \\times 5 + 3\\), the \\(43\\)rd multiple sits at the third spot of a fresh loop, whose ones digit is \\(4\\).</p><p>The check is sweet. \\(43 \\times 8 = 344\\), which indeed ends in \\(\\boxed{4}\\).</p>"
+        "sol": "<p>The ones digits cycle through \\(8, 6, 4, 2, 0\\) forever, repeating every \\(5\\) multiples.</p><p>Since \\(43 = 8 \\times 5 + 3\\), the \\(43\\)rd multiple sits at the third spot of a fresh loop, whose ones digit is \\(4\\).</p><p>The check confirms it. \\(43 \\times 8 = 344\\), which indeed ends in \\(\\boxed{4}\\).</p>"
       },
       {
         "t": "prob",
@@ -38,7 +38,7 @@
           "Each full run of \\(9\\) tiles contains exactly one star, so first count complete runs inside \\(500\\).",
           "Since \\(500 = 55 \\times 9 + 5\\), there are \\(55\\) full runs plus \\(5\\) leftover tiles. Check whether any of those leftovers is a star."
         ],
-        "sol": "<p>Dividing, \\(500 = 55 \\times 9 + 5\\), so the hallway holds \\(55\\) complete runs and then \\(5\\) extra tiles.</p><p>Each complete run contributes one star, giving \\(55\\) so far. The five leftover tiles are the first five of a new run, all hexagons, so no star joins them.</p><p>$$55 + 0 = \\boxed{55}$$</p>"
+        "sol": "<p>Dividing, \\(500 = 55 \\times 9 + 5\\), so the hallway holds \\(55\\) complete runs and then \\(5\\) extra tiles.</p><p>Each complete run contributes one star, giving \\(55\\) so far. The five leftover tiles are the first five of a new run, all hexagons, so none of them is a star.</p><p>$$55 + 0 = \\boxed{55}$$</p>"
       },
       {
         "t": "prob",
@@ -53,7 +53,7 @@
         "hints": [
           "The powers begin \\(3, 9, 27, 81, 243\\). Read off just the ones digits."
         ],
-        "sol": "<p>The ones digits run \\(3, 9, 7, 1\\), and then \\(3^5 = 243\\) brings the digit back to \\(3\\), restarting the parade.</p><p>The loop is \\(3, 9, 7, 1\\), which is \\(\\boxed{4}\\) steps long.</p>"
+        "sol": "<p>The ones digits run \\(3, 9, 7, 1\\), and then \\(3^5 = 243\\) brings the digit back to \\(3\\), and the loop restarts.</p><p>The loop is \\(3, 9, 7, 1\\), which is \\(\\boxed{4}\\) steps long.</p>"
       },
       {
         "t": "prob",
@@ -69,7 +69,7 @@
           "The loop \\(3, 9, 7, 1\\) restarts every \\(4\\) powers, so divide \\(43\\) by \\(4\\).",
           "A remainder of \\(3\\) lands on the third digit of the loop."
         ],
-        "sol": "<p>Since \\(43 = 10 \\times 4 + 3\\), the exponent \\(43\\) lands three steps into a fresh loop of \\(3, 9, 7, 1\\).</p><p>The third digit of the loop is \\(\\boxed{7}\\). A forty-three-digit-long monster of a number, and its final digit surrenders to one division.</p>"
+        "sol": "<p>Since \\(43 = 10 \\times 4 + 3\\), the exponent \\(43\\) lands three steps into a fresh loop of \\(3, 9, 7, 1\\).</p><p>The third digit of the loop is \\(\\boxed{7}\\). A huge number, yet one division pins down its final digit.</p>"
       },
       {
         "t": "prob",
@@ -89,7 +89,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Find the loop, then ride the remainder.</b> Many patterns repeat every \\(k\\) steps, and that repetition is a gift. To follow the ones digit of growing powers, keep only the ones digits and throw the rest of each number away, so a loop is forced, since only ten ones digits exist and one must eventually return. Once you hold the loop, division with remainder is the whole game. Divide the target position by the loop length \\(k\\). The quotient counts finished loops, and the remainder pins your exact spot inside the current one, matching remainder \\(1\\) to the first place, remainder \\(2\\) to the second, and a remainder of \\(0\\) to the final place. One division stands in for hundreds of steps of listing."
+        "x": "<b>Find the loop, then ride the remainder.</b> Many patterns repeat every \\(k\\) steps, and that repetition is what you exploit. To follow the ones digit of growing powers, keep only the ones digits and throw the rest of each number away, so a loop is forced, since only ten ones digits exist and one must eventually return. Once you hold the loop, division with remainder is the whole game. Divide the target position by the loop length \\(k\\). The quotient counts finished loops, and the remainder pins your exact spot inside the current one, matching remainder \\(1\\) to the first place, remainder \\(2\\) to the second, and a remainder of \\(0\\) to the final place. One division stands in for hundreds of steps of listing."
       },
       {
         "t": "prob",
@@ -125,7 +125,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Small table, bold guess, honest check.</b> For a growth pattern, compute the first few values and lay them in a table beside their positions. A steady step means the \\(n\\)th value is the start plus \\(n-1\\) steps, and long totals surrender to pairing, where the ends of the list team up into equal sums. But a guessed rule is a suspect, not a verdict. Test it on a case you did not use to build it, or find the reason it works, before trusting it with position five hundred."
+        "x": "<b>Small table, bold guess, honest check.</b> For a growth pattern, compute the first few values and lay them in a table beside their positions. A steady step means the \\(n\\)th value is the start plus \\(n-1\\) steps, and long totals fall to pairing, where the ends of the list combine into equal sums. But a guessed rule is only a guess. Test it on a case you did not use to build it, or find the reason it works, before trusting it with position five hundred."
       },
       {
         "t": "prob",
@@ -164,7 +164,7 @@
       },
       {
         "t": "fact",
-        "x": "Patterns without reasons can betray you. Place dots on a circle and connect every pair. The regions inside count \\(1, 2, 4, 8, 16\\), and nearly everyone bets the sixth dot gives \\(32\\). It gives \\(31\\). The pattern was a coincidence wearing a costume, which is why solvers always hunt for the why."
+        "x": "Patterns without reasons can mislead you. Place dots on a circle and connect every pair. The regions inside count \\(1, 2, 4, 8, 16\\), and nearly everyone bets the sixth dot gives \\(32\\). It gives \\(31\\). The pattern was just a coincidence, which is why solvers always hunt for the why."
       },
       {
         "t": "prob",
@@ -180,7 +180,7 @@
           "The joint flashes are themselves a repeating pattern. They happen at times that are multiples of both \\(6\\) and \\(10\\), and the first is at the least common multiple.",
           "Shared flashes come every \\(30\\) seconds, and \\(3\\) minutes holds \\(180\\) seconds."
         ],
-        "sol": "<p>A shared flash needs a time that is a multiple of \\(6\\) and of \\(10\\) at once, and the smallest is \\(\\text{lcm}(6,10) = 30\\). So the signs align every \\(30\\) seconds, at \\(30, 60, 90, 120, 150,\\) and \\(180\\) seconds.</p><p>$$180 \\div 30 = \\boxed{6}$$</p><p>Two separate rhythms always merge into one bigger rhythm, and its length is their least common multiple, an old friend from the divisibility chapter.</p>"
+        "sol": "<p>A shared flash needs a time that is a multiple of \\(6\\) and of \\(10\\) at once, and the smallest is \\(\\text{lcm}(6,10) = 30\\). So the signs align every \\(30\\) seconds, at \\(30, 60, 90, 120, 150,\\) and \\(180\\) seconds.</p><p>$$180 \\div 30 = \\boxed{6}$$</p><p>Two separate rhythms always merge into one bigger rhythm, and its length is their least common multiple, which you met back in the divisibility chapter.</p>"
       },
       {
         "t": "imp",
@@ -189,7 +189,7 @@
     ],
     "review": [
       {
-        "x": "A road-trip playlist of \\(8\\) songs plays on repeat without shuffle. Counting from the very first play, which song number is the \\(75\\)th song played?",
+        "x": "A road-trip playlist of \\(8\\) songs plays on repeat without shuffle. Counting from the first play, which song number is the \\(75\\)th song played?",
         "ans": "3",
         "accept": [
           "3",
@@ -307,7 +307,7 @@
           "The marks realign after a number of teeth that both gear sizes divide, the least common multiple of \\(8\\) and \\(14\\).",
           "That is \\(56\\) teeth. Convert it into turns of the \\(8\\)-tooth gear."
         ],
-        "sol": "<p>The meeting point must be a multiple of both \\(8\\) and \\(14\\), and \\(\\text{lcm}(8, 14) = 56\\) teeth. The small gear completes</p><p>$$56 \\div 8 = \\boxed{7}$$</p><p>full turns. The big gear makes \\(4\\), and the rhythms reunite.</p>"
+        "sol": "<p>The meeting point must be a multiple of both \\(8\\) and \\(14\\), and \\(\\text{lcm}(8, 14) = 56\\) teeth. The small gear completes</p><p>$$56 \\div 8 = \\boxed{7}$$</p><p>full turns. The big gear makes \\(4\\), and the two marks line up again.</p>"
       },
       {
         "x": "Using the ones-digit loops of \\(3\\) and \\(7\\), find the ones digit of \\(3^{43} + 7^{43}\\).",
@@ -398,7 +398,7 @@
           "Start from the tightest condition. There are only ten two-digit multiples of \\(9\\), so list them.",
           "The prime digits are \\(2, 3, 5, 7\\). Strike out every multiple of \\(9\\) containing any other digit, then apply the last condition."
         ],
-        "sol": "<p>The multiples of \\(9\\) give a short master list, \\(18, 27, 36, 45, 54, 63, 72, 81, 90, 99\\).</p><p>Both digits must come from \\(2, 3, 5, 7\\). That single stroke eliminates everything except \\(27\\) and \\(72\\).</p><p>Finally the ones digit must beat the tens digit, and only \\(\\boxed{27}\\) survives.</p><p>Notice the strategy. The multiple-of-nine condition built a world of ten numbers, and the other conditions only had to filter it.</p>"
+        "sol": "<p>The multiples of \\(9\\) give a short master list, \\(18, 27, 36, 45, 54, 63, 72, 81, 90, 99\\).</p><p>Both digits must come from \\(2, 3, 5, 7\\). That single stroke eliminates everything except \\(27\\) and \\(72\\).</p><p>Finally the ones digit must beat the tens digit, and only \\(\\boxed{27}\\) survives.</p><p>Notice the strategy. The multiple-of-nine condition narrowed the field to ten numbers, and the other conditions only had to filter it.</p>"
       },
       {
         "t": "imp",
@@ -438,7 +438,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Give the list a spine.</b> A safe list is sorted by something, largest pile first, smallest number first, alphabetical order, anything consistent. The spine does two jobs at once. It stops the same possibility from sneaking in twice wearing a different order, and it tells you exactly when you are done, because the next entry would break the ordering rule. A list with a spine is a proof. A list without one is a pile of guesses.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">largest tray</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">middle</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smallest</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">5</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td></tr></table></div>"
+        "x": "<b>Give the list a spine.</b> A safe list is sorted by something, largest pile first, smallest number first, alphabetical order, anything consistent. The spine does two jobs at once. It stops the same possibility from being counted twice in a different order, and it tells you exactly when you are done, because the next entry would break the ordering rule. A list with a spine is a proof. A list without one is a pile of guesses.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">largest tray</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">middle</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">smallest</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">5</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">4</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">1</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">3</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">2</td></tr></table></div>"
       },
       {
         "t": "prob",
@@ -471,7 +471,7 @@
           "Organize by the hundreds digit, which can be \\(1, 2, 3,\\) or \\(4\\). Each choice leaves a smaller target for the last two digits.",
           "With hundreds digit \\(1\\), the last two digits must add to \\(3\\), giving \\(03, 12, 21, 30\\), four numbers. Count the other cases the same way."
         ],
-        "sol": "<p>Case on the hundreds digit. If it is \\(1\\), the remaining digits sum to \\(3\\), giving \\(103, 112, 121, 130\\), four numbers. If it is \\(2\\), they sum to \\(2\\), giving \\(202, 211, 220\\), three numbers. If it is \\(3\\), two numbers, \\(301, 310\\). If it is \\(4\\), just \\(400\\).</p><p>$$4 + 3 + 2 + 1 = \\boxed{10}$$</p><p>The counts stepping down \\(4, 3, 2, 1\\) are the list rewarding good organization with a pattern, the previous lesson shaking hands with this one.</p>"
+        "sol": "<p>Case on the hundreds digit. If it is \\(1\\), the remaining digits sum to \\(3\\), giving \\(103, 112, 121, 130\\), four numbers. If it is \\(2\\), they sum to \\(2\\), giving \\(202, 211, 220\\), three numbers. If it is \\(3\\), two numbers, \\(301, 310\\). If it is \\(4\\), just \\(400\\).</p><p>$$4 + 3 + 2 + 1 = \\boxed{10}$$</p><p>The counts stepping down \\(4, 3, 2, 1\\) show organized listing producing a pattern, tying the previous lesson to this one.</p>"
       },
       {
         "t": "fact",
@@ -649,7 +649,7 @@
           "Case on the number of \\(10\\)-gem crystals, which can be \\(0\\), \\(1\\), or \\(2\\). Inside each case, march the \\(5\\)-gem count.",
           "Whatever remains after the tens and fives is filled by \\(1\\)s in exactly one way, so just count the legal five-counts in each case."
         ],
-        "sol": "<p>Case on tens. With two tens, \\(5\\) gems remain, allowing zero or one five, \\(2\\) ways. With one ten, \\(15\\) remain, allowing zero through three fives, \\(4\\) ways. With no tens, \\(25\\) remain, allowing zero through five fives, \\(6\\) ways.</p><p>$$2 + 4 + 6 = \\boxed{12}$$</p><p>The singles are the silent partner. They mop up any remainder in exactly one way, so the whole count lives in the tens and fives.</p>"
+        "sol": "<p>Case on tens. With two tens, \\(5\\) gems remain, allowing zero or one five, \\(2\\) ways. With one ten, \\(15\\) remain, allowing zero through three fives, \\(4\\) ways. With no tens, \\(25\\) remain, allowing zero through five fives, \\(6\\) ways.</p><p>$$2 + 4 + 6 = \\boxed{12}$$</p><p>The singles handle the cleanup, filling any remainder in exactly one way, so the whole count comes down to the tens and fives.</p>"
       }
     ]
   },
@@ -725,7 +725,7 @@
         "hints": [
           "Mark the pier, step \\(40\\) east to the ice cream stand, then step \\(25\\) back west for the arcade."
         ],
-        "sol": "<p>On the sketch, the arcade lands \\(40 - 25 = 15\\) meters east of the pier.</p><p>$$\\boxed{15}$$</p><p>Without the line, east and west blur together. With it, the subtraction draws itself.</p>"
+        "sol": "<p>On the sketch, the arcade lands \\(40 - 25 = 15\\) meters east of the pier.</p><p>$$\\boxed{15}$$</p><p>Without the line, east and west blur together. With it, the subtraction is obvious.</p>"
       },
       {
         "t": "prob",
@@ -765,7 +765,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Respect the finish line.</b> Progress that gains and gives back, climbing and slipping, filling and leaking, charging and draining, is a timeline problem, and timelines end early. The last step counts in full, with nothing given back, because the story stops at the goal. Sketch the level after every step and circle the first moment the goal line is crossed. Averages and net rates describe the middle of the journey, never its end."
+        "x": "<b>Respect the finish line.</b> Progress that gains and gives back, climbing and slipping, filling and leaking, charging and draining, is a timeline problem, and timelines end early. The last step counts in full, with nothing given back, because the story stops at the goal. Sketch the level after every step and circle the first moment the goal line is crossed. Averages and net rates describe the middle of the process, never its end."
       },
       {
         "t": "prob",
@@ -821,7 +821,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Let the sketch do the reasoning.</b> Relationships and clues are pictures waiting to happen. Draw the finishing slots or the network, turn each clue into an arrow or a glued block, and place the most restrictive piece first, exactly like the tightest-condition rule from the organized-list lesson. A wrong placement collides with a clue almost at once, and each collision wipes out a whole branch of possibilities. The same pencil builds small cases too. Draw the one-chord picture, the two-chord picture, the three-chord picture, and the numbers you harvest feed straight into the pattern strategy, while an organized list keeps the harvest tidy. The toolkit works as a team, and the pencil sketch is very often the member that goes first."
+        "x": "<b>Let the sketch do the reasoning.</b> Relationships and clues can almost always be drawn. Draw the finishing slots or the network, turn each clue into an arrow or a glued block, and place the most restrictive piece first, exactly like the tightest-condition rule from the organized-list lesson. A wrong placement collides with a clue almost at once, and each collision wipes out a whole branch of possibilities. The same pencil builds small cases too. Draw the one-chord picture, the two-chord picture, the three-chord picture, and the numbers you harvest feed straight into the pattern strategy, while an organized list keeps the harvest tidy. The toolkit works as a team, and the pencil sketch is very often the member that goes first."
       }
     ],
     "review": [
@@ -956,7 +956,7 @@
         ],
         "hints": [
           "First find the perimeter, then count \\(10\\) meter gaps around it.",
-          "The path is a closed loop, not a line. On a loop, the last gap closes back onto the very first flag, so flags equal gaps exactly."
+          "The path is a closed loop, not a line. On a loop, the last gap closes back onto the first flag, so flags equal gaps exactly."
         ],
         "sol": "<p>The perimeter is \\(2(50 + 30) = 160\\) meters, which splits into \\(160 \\div 10 = 16\\) gaps.</p><p>On a straight path, flags would outnumber gaps by one. But this path is a loop, and the drawing shows the sixteenth gap ending exactly where the first flag already stands.</p><p>$$\\boxed{16}$$</p><p>Line or loop is the whole question in fencepost problems, and a quick sketch answers it before the off-by-one error gets a chance.</p>"
       }
@@ -967,7 +967,7 @@
     "blocks": [
       {
         "t": "p",
-        "x": "Some problems tell their story in the wrong order. You are handed the ending, the final amount, the last term, the state after every step, and asked for the beginning. Chasing it forward means guessing a start and hoping. The stronger move is to stand at the ending and rewind, undoing one step at a time until the beginning is simply standing there. This final lesson of the course teaches the rewind."
+        "x": "Some problems tell their story in the wrong order. You are handed the ending, the final amount, the last term, the state after every step, and asked for the beginning. Chasing it forward means guessing a start and hoping. The stronger move is to stand at the ending and rewind, undoing one step at a time until you reach the beginning. This final lesson of the course teaches the rewind."
       },
       {
         "t": "prob",
@@ -1040,7 +1040,7 @@
       },
       {
         "t": "imp",
-        "x": "<b>Rewind the ledger.</b> Multi-day routines are just operation chains wearing a calendar, so rewind them day by day, undoing within each day in reverse order too, the pour before the halving. Then spend ten seconds running your answer forward. The forward check is the built-in receipt of every work-backwards problem, and it turns a hopeful answer into a certain one.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\"></td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after losing half</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after adding 6</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">24</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">30</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">15</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">21</td></tr></table></div>"
+        "x": "<b>Rewind the ledger.</b> Multi-day routines are just operation chains spread over days, so rewind them day by day, undoing within each day in reverse order too, the pour before the halving. Then spend ten seconds running your answer forward. The forward check is the built-in receipt of every work-backwards problem, and it turns a hopeful answer into a certain one.<div style=\"display:flex;justify-content:center;margin:12px 0 4px\"><table style=\"border-collapse:collapse;font-size:14px;font-family:Inter,sans-serif\"><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\"></td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after losing half</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center;font-weight:700\">after adding 6</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 1</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">24</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">30</td></tr><tr><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">day 2</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">15</td><td style=\"padding:5px 16px;border:1px solid #b8c4d4;text-align:center\">21</td></tr></table></div>"
       },
       {
         "t": "prob",
@@ -1056,7 +1056,7 @@
           "Run the doubling backward. One day earlier the jar was half full.",
           "One quarter is half of half."
         ],
-        "sol": "<p>Backward from the end, day \\(9\\) held half a jar, and day \\(8\\) held half of that, one quarter.</p><p>$$\\boxed{8}$$</p><p>Forward instinct begs to start at day one, but the problem gives day \\(10\\), so the fast road runs in reverse. Two halvings, done.</p>"
+        "sol": "<p>Backward from the end, day \\(9\\) held half a jar, and day \\(8\\) held half of that, one quarter.</p><p>$$\\boxed{8}$$</p><p>Instinct says to start at day one, but the problem gives day \\(10\\), so the fast road runs in reverse. Two halvings, done.</p>"
       },
       {
         "t": "prob",
@@ -1096,12 +1096,12 @@
       },
       {
         "t": "fact",
-        "x": "Working backwards has a distinguished career. Chess players study endgames by starting from checkmate and stepping in reverse, a method called retrograde analysis. Maze designers know their puzzles fall fastest to solvers who begin at the exit. And escape-room writers plot the final door first, then build the clues backward toward the entrance."
+        "x": "Working backwards has a long history. Chess players study endgames by starting from checkmate and stepping in reverse, a method called retrograde analysis. Maze designers know their puzzles fall fastest to solvers who begin at the exit. And escape-room writers plot the final door first, then build the clues backward toward the entrance."
       },
       {
         "t": "prob",
         "xp": 8,
-        "x": "Two juice pitchers sit on a counter. First, pitcher A pours into pitcher B exactly as much juice as B already contains, doubling B. Then pitcher B pours into pitcher A exactly as much as A contains at that moment, doubling A. Now each pitcher holds \\(36\\) centiliters. How many centiliters did pitcher A hold at the very start?",
+        "x": "Two juice pitchers sit on a counter. First, pitcher A pours into pitcher B exactly as much juice as B already contains, doubling B. Then pitcher B pours into pitcher A exactly as much as A contains at that moment, doubling A. Now each pitcher holds \\(36\\) centiliters. How many centiliters did pitcher A hold at the start?",
         "ans": "45",
         "accept": [
           "45",
