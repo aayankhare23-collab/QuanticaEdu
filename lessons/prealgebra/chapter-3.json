@@ -85,7 +85,13 @@
         "accept": [
           "9",
           "nine",
-          "36 has 9 factors (odd); 49 odd, 35 even"
+          "36 has 9 factors (odd); 49 odd, 35 even",
+          "odd even",
+          "odd, even",
+          "odd and even",
+          "49 odd 35 even",
+          "odd,even",
+          "49 odd, 35 even"
         ],
         "sol": "Walk the pairs that fill a \\(36\\)-tile rectangle, each side handing you its partner. $$1\\times36,\\quad 2\\times18,\\quad 3\\times12,\\quad 4\\times9,\\quad 6\\times6$$ The first four pairs each name two <b>different</b> factors, eight factors so far. The last one is different. The square \\(6\\times6\\) uses the same number on both sides, so \\(6\\) is its own partner. It adds a single new factor, not a fresh pair. Counting them all, $$1,2,3,4,6,9,12,18,36,$$ gives \\(\\boxed{9}\\) factors, an <b>odd</b> total. Here is the reason in one breath. Factors come two at a time, a small side and its larger partner, so they would always count up to an even number. The only way to break that is for one factor to pair with itself, \\(d\\times d=n\\), which happens exactly when \\(n\\) is a perfect square. That lone self-paired factor is counted once, tipping the total to odd. So \\(49=7\\times7\\) self-pairs at \\(7\\) and has an odd number of factors, while \\(35\\) splits only into the distinct pairs \\(1\\times35\\) and \\(5\\times7\\), four factors, an even count. Quick check on \\(35\\). Its factors are \\(1,5,7,35\\), and \\(4\\) is indeed even."
       },
@@ -108,7 +114,9 @@
         "ans": "Factors of 20 are finite (1, 2, 4, 5, 10, 20, six of them, largest 20); multiples are infinite; 20 sits on both lists",
         "accept": [
           "Priya finishes, Owen never does",
-          "factors finite, multiples infinite, 20 on both"
+          "factors finite, multiples infinite, 20 on both",
+          "1,2,4,5,10,20",
+          "1, 2, 4, 5, 10, 20"
         ],
         "sol": "Priya finishes, Owen never does. Every factor of \\(20\\) is a side of a rectangle of area \\(20\\), and a side can never be longer than the area allows, so no factor can climb past \\(20\\) itself. Hunting in pairs gives \\(1\\times 20\\), \\(2\\times 10\\), \\(4\\times 5\\), and the list closes. $$1,\\ 2,\\ 4,\\ 5,\\ 10,\\ 20$$ That is six factors, the largest being \\(20\\), and Priya is done. Owen's list has no last entry. The multiples of \\(20\\) are \\(20, 40, 60, 80, 100, \\ldots\\) and from any one of them he can always take one more step of \\(20\\) and reach a new one. There is no biggest multiple, so he never finishes. Notice \\(20\\) appears on both lists at once. It is its own largest factor, since \\(20=1\\times 20\\), and it is its own smallest positive multiple, since \\(20=20\\times 1\\). And right at the front of Priya's list sits \\(1\\), a factor of \\(20\\) because one long row of \\(20\\) is a perfectly good rectangle. The finishable list is $$\\boxed{1,\\ 2,\\ 4,\\ 5,\\ 10,\\ 20}$$ Quick check, each pairs cleanly, \\(2\\times 10=20\\) and \\(4\\times 5=20\\), so nothing is missing and nothing is extra."
       },
@@ -668,7 +676,7 @@
       },
       {
         "t": "imp",
-        "x": "When no power of ten is a clean multiple of the divisor, read the small remainder each place leaves. Every power of ten is one more than a multiple of $9$ ($10=9+1$, $100=99+1$), so closure sweeps the nines away and a number shares its remainder with its <b>digit sum</b>. So it is divisible by $9$ when the digit sum is, and by $3$ as well, since $3$ divides every nine. Summing the digits over and over shrinks any number to a single <b>digital root</b>, its remainder mod $9$. For $11$ the powers of ten land just under then over a multiple ($10=11-1$, $100=99+1$), so the remainders flip $-1,+1,-1,\\ldots$ and the deciding total is the <b>alternating</b> digit sum, signs starting plus at the units."
+        "x": "When no power of ten is a clean multiple of the divisor, read the small remainder each place leaves. Every power of ten is one more than a multiple of $9$ ($10=9+1$, $100=99+1$), so closure sweeps the nines away and a number shares its remainder with its <b>digit sum</b>. So it is divisible by $9$ when the digit sum is, and by $3$ as well, since $3$ divides every nine. Summing the digits over and over shrinks any number to a single <b>digital root</b>, its remainder mod $9$ (or $9$ itself when the number is a multiple of $9$). For $11$ the powers of ten land just under then over a multiple ($10=11-1$, $100=99+1$), so the remainders flip $-1,+1,-1,\\ldots$ and the deciding total is the <b>alternating</b> digit sum, signs starting plus at the units."
       },
       {
         "t": "fact",
