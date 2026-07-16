@@ -1393,5 +1393,327 @@
     "sol": "Hunting for a whole number fails, since \\(4^1 = 4\\) and \\(4^2 = 16\\) straddle \\(8\\). Write both sides in base \\(2\\), so \\(4^x = 2^{2x}\\) and \\(8 = 2^3\\), forcing \\(2x = 3\\). Then \\(x = \\boxed{\\frac{3}{2}}\\)."
    }
   ]
+ },
+ "1.6": {
+  "title": "Evaluating Expressions",
+  "next": "2.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Chapter 1 so far has been about reading. 1.2 fixed the order a computation runs in, 1.4 named the parts of an expression and called the whole thing a recipe, and 1.5 gave exponents their meaning. This lesson runs the recipe. Pick an input, substitute it for the variable, compute, and a single number comes out."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Take the expression \\(7+2n^2\\) and set \\(n=3\\). Replace the letter with its number, then follow the order of operations from 1.2. What single value comes out?",
+    "ans": "25",
+    "accept": [
+     "25",
+     "twenty-five",
+     "twenty five"
+    ],
+    "hints": [
+     "The exponent applies only to \\(n\\), not to \\(2n\\)."
+    ],
+    "sol": "Squaring \\(2n\\) instead of \\(n\\) gives \\((6)^2=36\\) and the wrong total \\(43\\). The exponent binds only to \\(n\\), so \\(7+2(3)^2=7+2\\cdot 9=7+18=\\boxed{25}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Evaluating an expression.</b> To evaluate an expression, replace each variable with its value, then compute by the order of operations from 1.2. The output is a single number. This is the recipe idea from 1.4 in action, since an expression is a recipe and evaluating is running that recipe on one specific input. Run the same recipe on a different input and a different number comes out, so one expression, evaluated wherever you need it, replaces an endless list of separate arithmetic problems."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Now an input with a sign attached. Evaluate \\(5-x\\) at \\(x=-9\\). Two minus signs are in play, one written in the expression and one that is part of the value, and the answer depends on keeping them apart.",
+    "ans": "14",
+    "accept": [
+     "14",
+     "fourteen"
+    ],
+    "hints": [
+     "Write the substitution down on paper before computing anything.",
+     "What exactly replaces \\(x\\), the number \\(9\\) or the number \\(-9\\)?"
+    ],
+    "sol": "The careless substitution reads \\(5-9=-4\\), which is wrong because \\(x\\) is \\(-9\\), sign included. Written out, the expression becomes \\(5-(-9)\\), and subtracting a negative is adding, as covered in 1.3, so the value is \\(5+9=\\boxed{14}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The parentheses habit.</b> When you substitute a value, write it inside parentheses. At \\(x=-9\\), the expression \\(5-x\\) becomes \\(5-(-9)\\), never a bare \\(5-9\\). The habit matters because the minus sign written in the expression and the minus sign that is part of the value are two different objects, and the parentheses keep them apart. One mechanical habit, applied on every substitution, removes most evaluation errors before they can happen."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 424\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top, the expression six minus m at m equals negative seven, a gold route substituting negative seven inside parentheses gives thirteen, while a greyed struck-out route drops the sign, reads six minus seven, and gives negative one. Below, the expression two n plus one drawn as a machine taking the inputs one, two, and three to the outputs three, five, and seven\"><defs><filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter><filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">THE PARENTHESES HABIT</text><rect x=\"169\" y=\"46\" width=\"136\" height=\"50\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M175 54 l6 0 M178 51 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M293 90 l6 0 M296 87 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"237\" y=\"79\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"23\" font-weight=\"700\" fill=\"#475569\">6 − m</text><rect x=\"323\" y=\"59\" width=\"88\" height=\"26\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"367\" y=\"77\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#2257c5\">m = −7</text><line x1=\"215\" y1=\"103\" x2=\"168\" y2=\"126\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><line x1=\"367\" y1=\"92\" x2=\"422\" y2=\"126\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><text x=\"56\" y=\"165\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#475569\">6 −</text><rect x=\"102\" y=\"132\" width=\"76\" height=\"50\" rx=\"13\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"140\" y=\"165\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#8a5a08\">(−7)</text><text x=\"193\" y=\"164\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><rect x=\"210\" y=\"130\" width=\"64\" height=\"54\" rx=\"14\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M216 138 l6 0 M219 135 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M262 176 l6 0 M265 173 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"242\" y=\"167\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#2257c5\">13</text><text x=\"165\" y=\"212\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#8a5a08\">SIGN KEPT</text><text x=\"330\" y=\"165\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#aab4c2\">6 −</text><rect x=\"376\" y=\"132\" width=\"50\" height=\"50\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\"/><text x=\"401\" y=\"165\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#aab4c2\">7</text><line x1=\"383\" y1=\"175\" x2=\"419\" y2=\"139\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"444\" y=\"164\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#aab4c2\">=</text><text x=\"492\" y=\"165\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"#aab4c2\">−1</text><line x1=\"474\" y1=\"176\" x2=\"510\" y2=\"140\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"425\" y=\"212\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#aab4c2\">SIGN DROPPED</text><line x1=\"30\" y1=\"236\" x2=\"550\" y2=\"236\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"266\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">ONE RECIPE, MANY INPUTS</text><text x=\"110\" y=\"294\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">IN</text><text x=\"472\" y=\"294\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">OUT</text><rect x=\"88\" y=\"304\" width=\"44\" height=\"28\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"110\" y=\"323\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#2257c5\">1</text><rect x=\"88\" y=\"340\" width=\"44\" height=\"28\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"110\" y=\"359\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#2257c5\">2</text><rect x=\"88\" y=\"376\" width=\"44\" height=\"28\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"110\" y=\"395\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#2257c5\">3</text><line x1=\"140\" y1=\"318\" x2=\"222\" y2=\"318\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M219 312 L227 318 L219 324\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"140\" y1=\"354\" x2=\"222\" y2=\"354\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M219 348 L227 354 L219 360\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"140\" y1=\"390\" x2=\"222\" y2=\"390\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M219 384 L227 390 L219 396\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"238\" y=\"304\" width=\"104\" height=\"100\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M244 312 l6 0 M247 309 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M330 396 l6 0 M333 393 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"290\" y=\"361\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#2257c5\">2n + 1</text><line x1=\"358\" y1=\"318\" x2=\"440\" y2=\"318\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M437 312 L445 318 L437 324\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"358\" y1=\"354\" x2=\"440\" y2=\"354\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M437 348 L445 354 L437 360\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"358\" y1=\"390\" x2=\"440\" y2=\"390\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M437 384 L445 390 L437 396\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"450\" y=\"304\" width=\"44\" height=\"28\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"472\" y=\"323\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">3</text><rect x=\"450\" y=\"340\" width=\"44\" height=\"28\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"472\" y=\"359\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">5</text><rect x=\"450\" y=\"376\" width=\"44\" height=\"28\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"472\" y=\"395\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">7</text></svg>",
+    "cap": "Substituting \\(m=-7\\) into \\(6-m\\) inside parentheses keeps the value's sign, and \\(6-(-7)\\) comes out to \\(13\\). Dropping the sign reads \\(6-7\\) and gives the wrong \\(-1\\). Below the line, one recipe \\(2n+1\\) runs on the inputs \\(1\\), \\(2\\), and \\(3\\) and returns \\(3\\), \\(5\\), and \\(7\\), which is the point of writing an expression at all."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Evaluate \\(3x^2\\) at \\(x=-5\\). Decide two things before you compute, what exactly the exponent touches, and what squaring does to the sign of the value.",
+    "ans": "75",
+    "accept": [
+     "75",
+     "seventy-five",
+     "seventyfive"
+    ],
+    "hints": [
+     "The exponent binds only to \\(x\\), not to \\(3x\\). That reading came from 1.2.",
+     "The value of \\(x\\) is \\(-5\\), all of it, so the parentheses habit puts the whole thing under the square."
+    ],
+    "sol": "Squaring the product gives \\((-15)^2=225\\), and reading the square as \\(-5^2=-(5^2)\\) gives \\(-75\\), both wrong. Only \\(x\\) is squared, and \\(x\\) is \\(-5\\) with its sign, so \\(3(-5)^2=3\\cdot 25=\\boxed{75}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Exponents under substitution.</b> \\(x^2\\) at \\(x=-5\\) means \\((-5)^2=25\\), because \\(x\\) stands for the whole value, sign included, and squaring multiplies that whole value by itself. Skip the parentheses and the line reads \\(-5^2\\), which 1.2 parses as \\(-(5^2)=-25\\), a different and wrong number. The parentheses habit settles that ambiguity correctly and automatically, which is most of the reason the habit exists."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The letter \\(w\\) appears twice in \\(w(w-5)\\). Evaluate it at \\(w=8\\). Both appearances take the value at the same moment, and the parentheses still group exactly as they did in 1.2.",
+    "ans": "24",
+    "accept": [
+     "24"
+    ],
+    "hints": [
+     "Substitute \\(8\\) at both spots first, then finish inside the parentheses before multiplying."
+    ],
+    "sol": "Reading it as \\(8\\cdot 8-5=59\\) drops the grouping. The substitution is \\(8(8-5)\\), the parentheses finish first, and \\(8\\cdot 3=\\boxed{24}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>One letter, one value.</b> Within a single evaluation, the same letter means the same number at every appearance, so both \\(w\\)s in \\(w(w-5)\\) become \\(8\\) together, and each different letter carries its own value. The reliable routine is substitution first, arithmetic second. Replace every letter before computing anything, and what remains is pure arithmetic, a 1.2 problem with nothing left to interpret."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Two letters, two values, four sign decisions. Evaluate \\(2x-3y\\) at \\(x=-1\\) and \\(y=-4\\), writing each substituted value inside its own parentheses before computing anything.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "After substituting, the line reads \\(2(-1)-3(-4)\\), and the middle minus applies to the whole product \\(3(-4)\\)."
+    ],
+    "sol": "Losing the second sign gives \\(-2-12=-14\\), which is wrong. The products are \\(2(-1)=-2\\) and \\(3(-4)=-12\\), and subtracting \\(-12\\) is adding \\(12\\), so the value is \\(-2+12=\\boxed{10}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Evaluate \\(\\dfrac{m+14}{m-2}\\) at \\(m=6\\). Typed on one line as \\(m+14/m-2\\), the expression loses its grouping, so work it as written, with the whole top as one computation and the whole bottom as another.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "The fraction bar wraps everything above it and everything below it, the invisible grouping from 1.2."
+    ],
+    "sol": "Collapsed onto one line without parentheses, the bar's grouping is lost and the pieces combine in the wrong order. As written, the top is \\(6+14=20\\), the bottom is \\(6-2=4\\), and \\(20\\div 4=\\boxed{5}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Grouping survives substitution.</b> A fraction bar wraps its entire top and its entire bottom, the invisible grouping from 1.2, and substituting values changes nothing about that. Finish the whole top, finish the whole bottom, and divide last. The grouping belongs to the expression, not to the letters, so it stays in force after the letters are gone. The same goes for a radical bar, which groups everything under it before the root is taken."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Nothing about substitution needs whole numbers. Evaluate \\(8g^2+g\\) at \\(g=\\frac{1}{2}\\). The exponent question comes first, what \\(\\left(\\frac{1}{2}\\right)^2\\) is, and 1.5 already answered it. Enter the value as a fraction in lowest terms.",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5"
+    ],
+    "hints": [
+     "Squaring \\(\\frac{1}{2}\\) makes it smaller, not the same and not doubled."
+    ],
+    "sol": "Treating \\(\\left(\\frac{1}{2}\\right)^2\\) as \\(\\frac{1}{2}\\) gives \\(4+\\frac{1}{2}=\\frac{9}{2}\\), which is wrong. Squaring gives \\(\\frac{1}{4}\\), so \\(8\\cdot\\frac{1}{4}=2\\), and \\(2+\\frac{1}{2}=\\boxed{\\frac{5}{2}}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Formulas are expressions somebody already built for you. A dropped object falls \\(16t^2\\) feet in its first \\(t\\) seconds. Evaluate the expression at \\(t=3\\) to find how far, in feet, the object falls in three seconds.",
+    "ans": "144",
+    "accept": [
+     "144"
+    ],
+    "hints": [
+     "The exponent binds only to \\(t\\), so square first, then multiply by \\(16\\)."
+    ],
+    "sol": "Computing \\((16\\cdot 3)^2=2304\\) applies the exponent to the whole product, which misreads the formula. Square first, \\(3^2=9\\), then \\(16\\cdot 9=\\boxed{144}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Formulas.</b> Physics and geometry are full of ready-made expressions, formulas that someone else already wrote, and using one is exactly this lesson. Substitute the given values, follow the order of operations, read off the number. The reading rules do not change just because an expression has a name, so the exponent in \\(16t^2\\) still binds only to \\(t\\), and \\(16(3)^2\\) means \\(16\\cdot 9\\), never \\((16\\cdot 3)^2\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Everything in this lesson at once. Evaluate \\(\\dfrac{x^2-5x}{x+1}\\) at \\(x=-3\\). Substitute in parentheses at every appearance, finish the top and the bottom separately, and divide last.",
+    "ans": "-12",
+    "accept": [
+     "-12",
+     "−12"
+    ],
+    "hints": [
+     "Three appearances of \\(x\\) means three sets of parentheses.",
+     "Both terms on top come out positive."
+    ],
+    "sol": "Reading \\(x^2\\) as \\(-3^2=-9\\) makes the top \\(-9+15=6\\) and gives \\(-3\\), and losing the sign in \\(-5(-3)\\) makes the top \\(9-15=-6\\) and gives \\(3\\), both wrong. Correctly the top is \\((-3)^2-5(-3)=9+15=24\\), the bottom is \\(-3+1=-2\\), and \\(24\\div(-2)=\\boxed{-12}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "Every spreadsheet cell that holds a formula, and every frame of every video game, is a computer doing exactly this, substituting the current values into an expression and computing by the same order of operations you use by hand."
+   },
+   {
+    "t": "p",
+    "x": "That closes Chapter 1. You can read any expression as its writer meant it, name its variables, terms, coefficients, and factors, unwind its exponents, and now run the recipe on any input, whole, negative, or fractional. Chapter 2 begins rewriting expressions themselves into friendlier forms, and it opens with the distributive property in 2.1."
+   }
+  ],
+  "review": [
+   {
+    "x": "Evaluate \\(4n+9\\) at \\(n=5\\).",
+    "ans": "29",
+    "accept": [
+     "29",
+     "twenty-nine",
+     "twentynine"
+    ],
+    "hints": [
+     "Substitute \\(5\\) for \\(n\\), then multiply before adding."
+    ],
+    "sol": "Substituting gives \\(4(5)+9\\). Adding first reads \\(5+9=14\\) and computes \\(4\\cdot 14=56\\), but the product finishes before the sum, so \\(4\\cdot 5=20\\) and \\(20+9=\\boxed{29}\\)."
+   },
+   {
+    "x": "Evaluate \\(30-2k\\) at \\(k=6\\). By the 1.2 order the product finishes before the subtraction.",
+    "ans": "18",
+    "accept": [
+     "18",
+     "eighteen"
+    ],
+    "hints": [
+     "Compute \\(2k\\) first, then subtract the result from \\(30\\)."
+    ],
+    "sol": "Working left to right reads \\(30-2=28\\) and then multiplies by \\(6\\), which misorders the steps. The product goes first, so \\(30-12=\\boxed{18}\\)."
+   },
+   {
+    "x": "Evaluate \\(y^2-y\\) at \\(y=9\\). Both appearances of \\(y\\) take the same value, and the exponent goes first.",
+    "ans": "72",
+    "accept": [
+     "72"
+    ],
+    "hints": [
+     "Substitute \\(9\\) at both spots before computing anything."
+    ],
+    "sol": "Both appearances become \\(9\\) at the same moment, so the expression reads \\(9^2-9\\). The tempting slip is to subtract first and then square, which would give \\((9-9)^2=0\\). The exponent finishes before the subtraction, so \\(81-9=\\boxed{72}\\)."
+   },
+   {
+    "x": "Evaluate \\(7-w\\) at \\(w=-8\\). Write the value inside parentheses, sign included, before computing anything.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "fifteen"
+    ],
+    "hints": [
+     "What exactly replaces \\(w\\), the number \\(8\\) or the number \\(-8\\)?"
+    ],
+    "sol": "The careless route reads \\(7-8=-1\\), which substitutes \\(8\\) and drops the sign that belongs to the value. Written as \\(7-(-8)\\) it is \\(7+8=\\boxed{15}\\)."
+   },
+   {
+    "x": "Evaluate \\(-t\\) at \\(t=-12\\). With the habit the substitution reads \\(-(-12)\\), the opposite of a negative.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve"
+    ],
+    "hints": [
+     "The expression asks for the opposite of whatever \\(t\\) equals."
+    ],
+    "sol": "The tempting answer is \\(-12\\), keeping the value itself. The minus written in \\(-t\\) is not part of the value, it asks for the opposite of \\(t\\), and the opposite of \\(-12\\) is \\(\\boxed{12}\\)."
+   },
+   {
+    "x": "Evaluate \\(5x^2\\) at \\(x=-2\\). Decide exactly what the exponent touches before you multiply.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "Only \\(x\\) gets squared, and \\(x\\) is the whole value \\(-2\\)."
+    ],
+    "sol": "There are two wrong turns, squaring the product to get \\((-10)^2=100\\), and reading the square as \\(-2^2=-4\\) to get \\(-20\\). The exponent binds only to \\(x\\), and \\(x\\) is \\(-2\\) with its sign, so \\(5(-2)^2=5\\cdot 4=\\boxed{20}\\)."
+   },
+   {
+    "x": "Evaluate \\(4a-5b\\) at \\(a=3\\) and \\(b=-2\\). Substitute both values before simplifying.",
+    "ans": "22",
+    "accept": [
+     "22"
+    ],
+    "hints": [
+     "Subtracting \\(5(-2)\\) means subtracting \\(-10\\)."
+    ],
+    "sol": "Losing the sign on \\(b\\) reads the second term as \\(5\\cdot 2\\) and gives \\(12-10=2\\). With parentheses the substitution is \\(4(3)-5(-2)=12+10=\\boxed{22}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{p+11}{p-4}\\) at \\(p=9\\). Finish the whole top and the whole bottom, then divide.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "The bar groups everything above it and everything below it."
+    ],
+    "sol": "Collapsed onto one line the bar's grouping is lost and the pieces combine in the wrong order. The top is \\(9+11=20\\) and the bottom is \\(9-4=5\\), each finished on its own before any dividing. Then \\(20\\div 5=\\boxed{4}\\)."
+   },
+   {
+    "x": "Evaluate \\(6q^2\\) at \\(q=\\frac{1}{2}\\). Enter the value as a fraction in lowest terms.",
+    "ans": "3/2",
+    "accept": [
+     "3/2",
+     "1.5"
+    ],
+    "hints": [
+     "Square first, and \\(\\left(\\frac{1}{2}\\right)^2\\) is not \\(\\frac{1}{2}\\)."
+    ],
+    "sol": "Treating the square of \\(\\frac{1}{2}\\) as \\(\\frac{1}{2}\\) gives \\(3\\), wrong. Squaring makes it smaller, \\(\\left(\\frac{1}{2}\\right)^2=\\frac{1}{4}\\), so the value is \\(6\\cdot\\frac{1}{4}=\\boxed{\\frac{3}{2}}\\)."
+   },
+   {
+    "x": "The expression \\(6s^2\\) gives the surface area of a cube with side length \\(s\\), six square faces of area \\(s^2\\) each. Evaluate it at \\(s=4\\).",
+    "ans": "96",
+    "accept": [
+     "96"
+    ],
+    "hints": [
+     "The exponent binds only to \\(s\\), so square first, then multiply by \\(6\\)."
+    ],
+    "sol": "The tempting slip squares the product, \\((6\\cdot 4)^2=576\\). The exponent binds only to \\(s\\), so \\(6(4)^2=6\\cdot 16=\\boxed{96}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{u^2+3u}{u+9}\\) at \\(u=-4\\). Parentheses at every substitution. Enter the value as a fraction in lowest terms.",
+    "ans": "4/5",
+    "accept": [
+     "4/5",
+     "0.8",
+     ".8"
+    ],
+    "hints": [
+     "\\((-4)^2\\) is positive and \\(3(-4)\\) is negative."
+    ],
+    "sol": "Reading the square as \\(-4^2=-16\\) makes the top \\(-28\\) and everything after it wrong. The correct top is \\((-4)^2+3(-4)=16-12=4\\) over a bottom of \\(-4+9=5\\), so the value is \\(\\boxed{\\frac{4}{5}}\\)."
+   },
+   {
+    "x": "At \\(n=1,2,3,4\\) the expression \\(n^2-n+17\\) gives \\(17,\\ 19,\\ 23,\\ 29\\), a prime every time, and the streak continues for many inputs after that. It is tempting to conclude it always gives a prime. Evaluate it at \\(n=17\\), then look hard at the output.",
+    "ans": "289",
+    "accept": [
+     "289"
+    ],
+    "hints": [
+     "Run the recipe exactly as always, nothing about the input \\(17\\) is special until you see the output.",
+     "Is the output prime? Try dividing it by the input."
+    ],
+    "sol": "Running the recipe gives \\(17^2-17+17=289\\), and \\(289=17\\cdot 17\\), which is not prime, so the pattern breaks at the seventeenth input. Sixteen prime outputs in a row never proved the claim, and one counterexample settles it, the same point 1.4 made about checking values. The output is \\(\\boxed{289}\\)."
+   }
+  ]
  }
 }
