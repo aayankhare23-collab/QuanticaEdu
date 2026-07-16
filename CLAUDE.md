@@ -70,10 +70,10 @@ exceptions.
 ## Current status (2026-07-08)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: in progress. 15-chapter syllabus (`docs/algebra1-syllabus.md`); Chapter 1 has
-  6 lessons planned (1.5 "Exponents" was inserted, pushing Evaluating Expressions to 1.6).
-  Lessons 1.1-1.3 are live; 1.4 "Expressions" and 1.5 "Exponents" are authored, verified, and
-  built locally awaiting deploy. Both courses have SEO hub + lesson pages via
+- **Algebra I**: Chapter 1 complete and live (1.1-1.6, ending with Evaluating Expressions),
+  including the chapter Practice + Challenge sets (`PSETS_ALG1` in `landing.html`, wired via
+  `COURSE_REG.algebra1.psets`). 15-chapter syllabus in `docs/algebra1-syllabus.md`; next up is
+  2.1 "The Distributive Property". Both courses have SEO hub + lesson pages via
   `tools/gen_seo_pages.py` (course-aware; sitemap/homepage links updated manually).
 - Live analytics is GA4 (`G-98WQ2BFR6N`), gated to real visitors only (loads on
   quanticaedu.com/www hostnames; `/?imfounder=1` sets a device opt-out). Funnel events:
