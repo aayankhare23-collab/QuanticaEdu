@@ -3328,6 +3328,17 @@ window.addEventListener('load',function(){
     }catch(e){}
   }
   window.confettiBurst=confettiBurst;
+  // Sprout reacts on the chat launcher: expression swap + a little pop/wobble, then settles
+  window.sproutReact=function(mood){
+    var img=document.getElementById('sproutFabImg'), fab=document.getElementById('wsFabChat');
+    if(!img||!fab) return;
+    var map={excited:'spot-excited',thinking:'spot-thinking',happy:'spot-happy',focused:'spot-focused',encour:'spot-encour'};
+    img.src='paths/assets/spot/'+(map[mood]||'spot-happy')+'.png';
+    fab.classList.remove('react-correct','react-wrong'); void fab.offsetWidth;
+    fab.classList.add(mood==='thinking'||mood==='encour'?'react-wrong':'react-correct');
+    clearTimeout(window.__sproutReactT);
+    window.__sproutReactT=setTimeout(function(){ img.src='paths/assets/spot/spot-happy.png'; fab.classList.remove('react-correct','react-wrong'); },1900);
+  };
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
     var inp=document.getElementById('ai_'+k), fb=document.getElementById('af_'+k);
@@ -3338,6 +3349,7 @@ window.addEventListener('load',function(){
       fb.className='ansfb right'; fb.innerHTML='✓ Correct. Nicely done. View the solution below for the slick way.'; inp.classList.add('okin'); inp.readOnly=true;
       if(pbox){ pbox.classList.remove('ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-correct'); }
       confettiBurst(pbox);
+      if(window.sproutReact) sproutReact('excited');
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
       // struggled first, then got it: have Sprout debrief before they can move on
       if(rec.attempts>0 && !rec._askedAboutFix && window.addTutorBotMsg){
@@ -3350,6 +3362,7 @@ window.addEventListener('load',function(){
     } else {
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
       if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
+      if(window.sproutReact) sproutReact('thinking');
       rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
       // stuck twice on the same problem → slip in an easier same-topic warm-up (difficulty setting untouched)
       if(rec.graded && !rec._scaffolded && window.__tryScaffold && window.__tryScaffold(k,rec.attempts)) rec._scaffolded=true;
@@ -3444,7 +3457,7 @@ window.addEventListener('load',function(){
   var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
   function wsTutorHTML(){
     return '<aside class="ws-pane ws-tutor" id="wsTutor">'+
-      '<div class="ws-tuthead"><span class="av">M</span><span class="nm">Sprout</span>'+
+      '<div class="ws-tuthead"><span class="av"><img src="paths/assets/spot/spot-happy.png" alt="Sprout"></span><span class="nm">Sprout</span>'+
       '<button class="tut-close" onclick="WS.closePanel(\'tutor\')" title="Close">✕</button></div>'+
       '<div class="ws-body" id="tutBody">'+
         '<div class="tut-bub bot">Hi, this is Sprout, your personal Quantica Tutor!</div>'+
@@ -3481,8 +3494,8 @@ window.addEventListener('load',function(){
       wsNotebookHTML()+
       '<div class="ws-scrim" id="wsScrim" onclick="WS.closeAll()"></div>'+
       '<div class="ws-fab-group">'+
-        '<button class="ws-fab ws-fab-chat" id="wsFabChat" onclick="WS.togglePanel(\'tutor\')" title="Ask your tutor">'+
-          '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>'+
+        '<button class="ws-fab ws-fab-chat" id="wsFabChat" onclick="WS.togglePanel(\'tutor\')" title="Ask Sprout">'+
+          '<img id="sproutFabImg" src="paths/assets/spot/spot-happy.png" alt="Sprout" style="width:100%;height:100%;object-fit:contain;padding:2px;pointer-events:none">'+
         '</button>'+
       '</div>'+
       '<button class="ws-fab ws-fab-ideas" id="wsFabIdeas" onclick="WS.togglePanel(\'nb\')" title="Key Ideas">✦</button>'+
@@ -4625,6 +4638,16 @@ async function sendTutorMsg() {
   .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#183c2c 0%,#0d2318 60%,#081b12 100%) !important;border-color:rgba(199,240,154,.24) !important}
   .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#183c2c,#0f2b1e) !important}
   .ws-tutor .tut-input{background:#16341f !important}
+  /* Sprout tutor: avatar art on the chat launcher + reactions */
+  .ws-fab-chat{width:56px !important;height:56px !important;background:var(--paper) !important;border:1.6px solid var(--grass) !important;padding:0 !important;overflow:hidden}
+  .ws-fab-chat img{display:block}
+  .ws-tuthead .av{background:#0f2b1e !important;overflow:hidden}
+  .ws-tuthead .av img{width:100%;height:100%;object-fit:contain;display:block}
+  .ws-fab-chat.react-correct{animation:sproutPop .55s cubic-bezier(.22,1,.36,1)}
+  .ws-fab-chat.react-wrong{animation:sproutWobble .55s ease}
+  @keyframes sproutPop{0%{transform:scale(1)}40%{transform:scale(1.2)}70%{transform:scale(.96)}100%{transform:scale(1)}}
+  @keyframes sproutWobble{0%,100%{transform:rotate(0) translateX(0)}20%{transform:rotate(-8deg) translateX(-2px)}60%{transform:rotate(8deg) translateX(2px)}}
+  @media(prefers-reduced-motion:reduce){.ws-fab-chat.react-correct,.ws-fab-chat.react-wrong{animation:none}}
 </style>
 <script>
 (function(){
@@ -5994,7 +6017,7 @@ async function sendTutorMsg() {
    completed, only for signed-out users. Non-blocking and dismissible — a nudge, not a wall. */
 (function(){
   var KEY='qa_signin_prompt_v2';
-  var MILO='<svg viewBox="0 0 64 64" style="width:100%;height:100%" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  var MILO='<img src="paths/assets/spot/spot-happy.png" alt="Sprout" style="width:100%;height:100%;object-fit:contain">';
   function seen(){ try{ return !!localStorage.getItem(KEY); }catch(e){ return false; } }
   function mark(){ try{ localStorage.setItem(KEY,'1'); }catch(e){} }
   function signedIn(){ try{ return !!(window.firebase && firebase.auth && firebase.auth().currentUser); }catch(e){ return false; } }
