@@ -4083,7 +4083,7 @@ window.addEventListener('load',function(){
 
 
 /* =====================================================================
-   QUANTICA REWARDS ENGINE  ·  XP · Gems · Mastery Points
+   QUANTICA REWARDS ENGINE  ·  XP · Seeds · Mastery Points
    Course-agnostic: keyed by COURSE.slug and persisted to localStorage.
    Every future course reuses the same lessons / problem-set machinery,
    so it earns rewards automatically, no per-course wiring required.
@@ -4127,7 +4127,7 @@ window.addEventListener('load',function(){
   /* ---- icons ---- */
   var I={
     xp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>',
-    gem:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14l3 5-10 13L2 8 5 3Z"/></svg>',
+    gem:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="11" y="12" width="2" height="9" rx="1"/><path d="M11 13.5C6.5 13.5 3.5 10 3.5 5 8 5 11 8.5 11 13.5Z"/><path d="M13 13.5c0-5 3-8.5 7.5-8.5 0 5-3 8.5-7.5 8.5Z"/></svg>',
     mp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.5 4.7 2.8 7 7.5 7.5C14.8 10 12.5 12.3 12 17c-.5-4.7-2.8-7-7.5-7.5C9.2 9 11.5 6.7 12 2Z"/></svg>',
     tip:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm1 15h-2v-6h2Zm0-8h-2V7h2Z"/></svg>',
     fire:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2c1 3-1 5-2 7-1-1-1-2-1-3-2 2-4 4-4 7a6 6 0 0012 0c0-4-3-6-5-11Z"/></svg>'
@@ -4150,7 +4150,7 @@ window.addEventListener('load',function(){
   function addXP(n){ if(n<=0) return; var before=levelInfo(P.xp).level; P.xp+=n; var after=levelInfo(P.xp).level;
     if(after>before){ addGems(CFG.gems.levelUp*(after-before),null,true); celebrate('Level '+after+' · '+rankFor(after)); } bumpHud('xp'); }
   function addMP(n){ if(n<=0) return; var b=prestigeFor(P.mp); P.mp+=n; var a=prestigeFor(P.mp); if(a&&a!==b) celebrate('Prestige unlocked · '+a); bumpHud('mp'); }
-  function addGems(n,label,silent){ if(n<=0) return; P.gems+=n; bumpHud('gem'); if(!silent) toast('gem',n,label||'Gems'); }
+  function addGems(n,label,silent){ if(n<=0) return; P.gems+=n; bumpHud('gem'); if(!silent) toast('gem',n,label||'Seeds'); }
 
   function baseXP(rec){ return rec.xpOverride || CFG.xpBase[rec.legendary?'legendary':rec.cat] || CFG.xpBase.tryit; }
   function baseMP(rec){ return rec.legendary?CFG.mpBase.legendary:(CFG.mpBase[rec.cat]||0); }
@@ -4251,17 +4251,18 @@ window.addEventListener('load',function(){
          '<div class="sub">'+(pres?('Prestige rank · '+pres):'Earn Mastery Points to unlock a prestige rank')+'</div>'+
          '<div class="prog">'+li.into+' / '+li.span+' XP to Level '+(li.level+1)+'</div></div>'+
        '<div class="rw-avatar">'+(P.avatar||'Q')+'</div></div>';
-    h+='<div style="margin-bottom:18px"><span class="streakchip">'+I.fire+' '+(P.streak||0)+'-day streak</span></div>';
+    h+='<div style="margin-bottom:18px"><span class="streakchip">'+I.gem+' '+(P.streak||0)+' days showed up</span></div>';
     h+='<div class="rw-stats">'+
        statCard('xp',I.xp,'Experience',P.xp+' XP','<b>'+rank+'</b> · rewards effort &amp; engagement')+
-       statCard('gem',I.gem,'Gems',P.gems+' Gems','Spend on the cosmetics below')+
+       statCard('gem',I.gem,'Seeds',P.gems+' Seeds','Spend in the Greenhouse below')+
        statCard('mp',I.mp,'Mastery',P.mp+' MP',(pres?'<b>'+pres+'</b> · ':'')+'rewards independent understanding')+
        '</div>';
     h+='<h3 class="rw-section-h">How rewards work</h3><div class="rw-legend">'+
        legendRow('xp',I.xp,'Experience Points','earned on every problem. Full value when you solve on your own; hints lower the share you keep, and a revealed solution gives only a little. XP is never taken away.')+
-       legendRow('gem',I.gem,'Gems','rare bonuses for finishing lessons, clearing challenge sets, daily streaks, level-ups and Legendary solves. Spend them on cosmetics, never on advantages, and never for real money.')+
+       legendRow('gem',I.gem,'Seeds','earned for finishing lessons, clearing challenge sets, level-ups and Legendary solves. Spend them in the Greenhouse on cosmetics only, never on advantages, and never for real money.')+
        legendRow('mp',I.mp,'Mastery Points','awarded only for independent mastery: challenge &amp; review problems solved with no hints or solutions. They power your prestige rank and can\'t be farmed by repetition.')+
        '</div>';
+    h+='<h3 class="rw-section-h" style="margin-top:24px">🌿 The Greenhouse</h3><p style="font-size:13px;color:var(--mute);margin:-4px 0 14px;max-width:54ch">Spend Seeds here on looks &mdash; themes, avatars, badges. Never on advantages, just for delight. More guide characters are coming.</p>';
     h+='<h3 class="rw-section-h">Mastery-map themes</h3><div class="shop-grid">'+THEMES.map(themeCard).join('')+'</div>';
     h+='<h3 class="rw-section-h">Avatars</h3><div class="shop-grid">'+AVATARS.map(avatarCard).join('')+'</div>';
     h+='<h3 class="rw-section-h">Badges</h3><div class="shop-grid">'+BADGES.map(badgeCard).join('')+'</div>';
@@ -4272,7 +4273,7 @@ window.addEventListener('load',function(){
     var li=levelInfo(P.xp);
     hud.innerHTML=
       '<span class="hud-pill xp" title="Level '+li.level+' · '+rankFor(li.level)+'">'+I.xp+'<span class="lvl">Lv '+li.level+'</span>'+P.xp+'<span class="txt-long">&nbsp;XP</span></span>'+
-      '<span class="hud-pill gem" title="Gems">'+I.gem+' '+P.gems+'</span>'+
+      '<span class="hud-pill gem" title="Seeds">'+I.gem+' '+P.gems+'</span>'+
       '<span class="hud-pill mp" title="Mastery Points">'+I.mp+' '+P.mp+'<span class="txt-long">&nbsp;MP</span></span>';
   }
 
@@ -4388,7 +4389,7 @@ window.addEventListener('load',function(){
   };
   window.rwBuy=function(type,id,cost){
     if(P.owned[id]) return;
-    if(P.gems<cost){ toast('tip',null,'Not enough Gems yet'); return; }
+    if(P.gems<cost){ toast('tip',null,'Not enough Seeds yet'); return; }
     P.gems-=cost; P.owned[id]=1;
     if(type==='theme'){ P.theme=id; applyTheme(); }
     else if(type==='avatar'){ P.avatar=id; }
@@ -4610,6 +4611,7 @@ async function sendTutorMsg() {
     --green:#2E7D4F; --green2:#43B063;
     --purple:#5B8A63; --purple2:#84B98C;
     --gold:#C9860B; --gold2:#E7B44B;
+    --gem:#39A85C; --gem2:#7CD68F;
     --line:rgba(22,75,53,.14);
     --soft:rgba(255,255,255,.55);
     --softer:rgba(67,176,99,.10);
