@@ -175,17 +175,17 @@
       <div class="mh">Your courses</div>
       <a class="on" href="/paths/home.html">Prealgebra <span class="tag">Now</span></a>
       <a href="/landing.html?course=algebra1&lesson=1.1">Algebra I <span class="tag">Free</span></a>
-      <a class="soon" href="#">Geometry <span class="tag">Soon</span></a>
-      <a class="soon" href="#">Number Theory <span class="tag">Soon</span></a>
-      <a class="soon" href="#">Counting &amp; Probability <span class="tag">Soon</span></a>
-      <a class="soon" href="#">Calculus <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Geometry <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Number Theory <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Counting &amp; Probability <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Calculus <span class="tag">Soon</span></a>
     </div>
   </div>
-  <nav class="topnav"><a href="/paths/home.html" class="active">Learn</a><a href="/landing.html?course=prealgebra&lesson=1.1">Practice</a><a href="/landing.html?course=prealgebra&lesson=1.1">Progress</a></nav>
+  <nav class="topnav"><a href="/paths/home.html" class="active">Learn</a><a href="/landing.html?course=prealgebra&pset=1&ptype=practice">Practice</a><a href="/landing.html?course=prealgebra&start=1">Progress</a></nav>
   <div class="tb-right">
     <div class="sig" title="Your mastery fills in as you learn — nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
     <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
-    <a class="avatar lift" href="#" aria-label="Your profile"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
+    <a class="avatar lift" href="/landing.html?course=prealgebra&start=1" aria-label="Your progress"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
   </div>
 </div>
 
@@ -217,6 +217,7 @@
 
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
+  function psetUrl(ch,type){ return '/landing.html?course='+COURSE+'&pset='+ch+'&ptype='+type; }
   function nonTeaching(t){ return /checkpoint|summary/i.test(t||''); }
   function chById(n){ for(var i=0;i<state.chapters.length;i++){ if(state.chapters[i].n===n) return state.chapters[i]; } return state.chapters[0]; }
   function chOf(k){ for(var i=0;i<state.chapters.length;i++){ var c=state.chapters[i]; for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c; } } return state.chapters[0]; }
@@ -260,9 +261,8 @@
     var c=chById(state.active), L=c.lessons, n=L.length; var _wt=document.getElementById("wtrail"); if(_wt) _wt.style.aspectRatio = n>6 ? ("100 / "+(n*25)) : "";
     // trail = the chapter's lessons, then two chapter-level stops: Practice, then Challenge
     var stops=L.map(function(les){ return {kind:'lesson', les:les}; });
-    var firstKey=(L[0]&&L[0].k) || (c.n+'.1');
-    stops.push({kind:'practice', key:firstKey});
-    stops.push({kind:'challenge', key:firstKey});
+    stops.push({kind:'practice', ch:c.n});
+    stops.push({kind:'challenge', ch:c.n});
     var m=stops.length;
     if(_wt) _wt.style.aspectRatio="100 / "+(m*25);
     var nodes=stops.map(function(s,i){
@@ -285,7 +285,7 @@
         h+='<a class="wnode'+(done?' done':'')+(cur?' current':'')+'" href="'+url(k)+'" style="'+style+'">'+inner+'</a>';
       } else {
         var isP=(s.kind==='practice');
-        h+='<a class="wnode wnode-set '+(isP?'practice':'challenge')+'" href="'+url(s.key)+'" style="'+style+'" title="'+(isP?'Practice set':'Challenge set')+'">'+(isP?TARGET:TROPHY)+'</a>';
+        h+='<a class="wnode wnode-set '+(isP?'practice':'challenge')+'" href="'+psetUrl(s.ch, isP?'practice':'challenge')+'" style="'+style+'" title="'+(isP?'Practice set':'Challenge set')+'">'+(isP?TARGET:TROPHY)+'</a>';
       }
     });
     // labels

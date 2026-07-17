@@ -1834,26 +1834,42 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 })();
 </script>
 <script>
-/* Deep-launch from the SEO pages: ?start=1 opens the course dashboard; ?lesson=KEY opens that
-   specific lesson; ?course=SLUG picks the course first (defaults to the last one used). */
-window.addEventListener('load',function(){
-  var m=location.search.match(/[?&]lesson=([0-9.]+)/);
-  var cm=location.search.match(/[?&]course=([a-z0-9]+)/);
-  var wantStart=location.search.indexOf('start=')>=0;
-  if(!m && !wantStart && !cm) return;
-  var n=0,t=setInterval(function(){
-    if(typeof window.openLesson==='function'){
+/* 10_paths — this file is the course APP only; marketing lives at /paths/landing.html.
+   Always open the app on load (the old .wmb hero is hidden via CSS), whatever the entry:
+     ?lesson=KEY                       -> that lesson
+     ?pset=CH&ptype=practice|challenge -> that problem set
+     ?course=SLUG                      -> pick the course first
+     (no params / ?start=1)            -> the course dashboard.
+   Runs on DOMContentLoaded (the app boot IIFE has already run synchronously by then) with a
+   load-event fallback; guarded so it applies exactly once. */
+(function(){
+  var launched=false;
+  function launch(){
+    if(launched) return; launched=true;
+    var s=location.search;
+    var m=s.match(/[?&]lesson=([0-9.]+)/);
+    var cm=s.match(/[?&]course=([a-z0-9]+)/);
+    var pm=s.match(/[?&]pset=([0-9]+)/);
+    var pt=s.match(/[?&]ptype=(practice|challenge)/);
+    var n=0,t=setInterval(function(){
+      if(typeof window.openLesson!=='function'){ if(++n>200) clearInterval(t); return; }
       clearInterval(t);
       try{
-        // ?lesson= without ?course= is a legacy prealgebra SEO link; don't let a stored course hijack it
-        var slug=cm?cm[1]:(m?'prealgebra':null);
+        // ?lesson= without ?course= is a legacy prealgebra link; don't let a stored course hijack it
+        var slug=cm?cm[1]:((m||pm)?'prealgebra':null);
         if(slug && typeof window.setCourse==='function') window.setCourse(slug,{silent:true});
-        window.openLesson();
-        if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
+        window.openLesson();                                   // always show the app shell (dashboard)
+        // deep-nav (gotoLesson/openPSet) needs the app fully rendered, so run it after openLesson
+        if(pm && typeof window.openPSet==='function'){ window.openPSet(parseInt(pm[1],10), pt?pt[1]:'practice'); }
+        else if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
       }catch(e){}
-    } else if(++n>120){ clearInterval(t); }
-  },40);
-});
+    },30);
+  }
+  // Fire once the page is fully loaded (deep-nav depends on the rendered TOC); the .wmb hero is
+  // already hidden via CSS from first paint, so nothing of the old site shows during the wait.
+  if(document.readyState==='complete') launch();
+  else window.addEventListener('load',launch);
+})();
 </script>
 
 <!-- SIGNUP -->
@@ -4680,7 +4696,9 @@ async function sendTutorMsg() {
   /* the app's built-in marketing region is unused in our product (our landing is /paths/);
      hide it whenever the course overlay is open so it never flashes behind a lesson or
      forces mobile horizontal overflow (its footer links don't wrap under ~460px). */
-  .wmb:has(~ #lessonOverlay.open){display:none !important}
+  /* 10_paths: marketing now lives at /paths/landing.html — this file is the course APP only,
+     so the old quanticaedu hero must never render (not even a pre-JS flash). */
+  .wmb{display:none !important}
   /* mobile: compact the lesson chrome so it never overflows (icons only) */
   @media(max-width:560px){
     .cb-logo{display:none !important}
