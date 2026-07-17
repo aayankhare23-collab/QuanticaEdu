@@ -3328,6 +3328,26 @@ window.addEventListener('load',function(){
     }catch(e){}
   }
   window.confettiBurst=confettiBurst;
+  // Synthesized answer sounds (no assets): bright rise on correct, soft descent on wrong.
+  window.Sfx=(function(){
+    var ctx=null, muted=(localStorage.getItem('qz_sfx')==='0');
+    function ac(){ if(!ctx){ try{ ctx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return ctx; }
+    function tone(f,start,dur,type,gain){
+      var c=ac(); if(!c) return;
+      var o=c.createOscillator(), g=c.createGain(), t=c.currentTime+start;
+      o.type=type||'sine'; o.frequency.setValueAtTime(f,t);
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(gain,t+0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+dur+0.03);
+    }
+    function play(fn){ if(muted) return; var c=ac(); if(!c) return; if(c.state==='suspended'){ try{c.resume();}catch(e){} } fn(); }
+    return {
+      correct:function(){ play(function(){ tone(659.25,0,0.15,'sine',0.13); tone(987.77,0.085,0.22,'sine',0.12); }); },   // E5 -> B5, bright
+      wrong:function(){ play(function(){ tone(349.23,0,0.17,'triangle',0.10); tone(261.63,0.11,0.30,'triangle',0.09); }); }, // F4 -> C4, soft descent
+      setMuted:function(m){ muted=!!m; localStorage.setItem('qz_sfx',m?'0':'1'); },
+      isMuted:function(){ return muted; }
+    };
+  })();
   // Sprout reacts on the chat launcher: expression swap + a little pop/wobble, then settles
   window.sproutReact=function(mood){
     var img=document.getElementById('sproutFabImg'), fab=document.getElementById('wsFabChat');
@@ -3350,6 +3370,7 @@ window.addEventListener('load',function(){
       if(pbox){ pbox.classList.remove('ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-correct'); }
       confettiBurst(pbox);
       if(window.sproutReact) sproutReact('excited');
+      if(window.Sfx) Sfx.correct();
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
       // struggled first, then got it: have Sprout debrief before they can move on
       if(rec.attempts>0 && !rec._askedAboutFix && window.addTutorBotMsg){
@@ -3363,6 +3384,7 @@ window.addEventListener('load',function(){
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
       if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
       if(window.sproutReact) sproutReact('thinking');
+      if(window.Sfx) Sfx.wrong();
       rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
       // stuck twice on the same problem → slip in an easier same-topic warm-up (difficulty setting untouched)
       if(rec.graded && !rec._scaffolded && window.__tryScaffold && window.__tryScaffold(k,rec.attempts)) rec._scaffolded=true;
