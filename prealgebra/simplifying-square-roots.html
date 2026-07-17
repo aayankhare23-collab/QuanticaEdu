@@ -27,7 +27,7 @@ a{color:inherit}img,svg{max-width:100%}
 .wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
 h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0}
 .mark{background:var(--lime);border-radius:.16em;padding:.02em .2em}
-.milo{width:1em;height:1em;vertical-align:-.18em}
+.milo{width:1em;height:1.15em;vertical-align:-.24em;object-fit:contain}
 .nav{display:flex;align-items:center;gap:12px;padding:20px 0}
 .brand{font-weight:700;font-size:19px;letter-spacing:-.03em;text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:8px}
 .brand .milo{width:24px;height:24px}
@@ -40,8 +40,8 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .content{padding:12px 0 8px;font-size:17px}
 .content p{margin:18px 0}
 .content b{font-weight:700}
-.key{background:linear-gradient(180deg,rgba(190,255,139,.5),rgba(190,255,139,.22));border:1px solid rgba(10,10,10,.14);border-radius:16px;padding:20px 22px;margin:24px 0}
-.fact{background:rgba(157,187,197,.22);border-left:3px solid var(--slate);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0}
+.key{background:linear-gradient(180deg,rgba(199,240,154,.5),rgba(199,240,154,.22));border:1px solid rgba(10,10,10,.14);border-radius:16px;padding:20px 22px;margin:24px 0}
+.fact{background:rgba(95,160,107,.22);border-left:3px solid var(--slate);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0}
 .tag{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
 .prob{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0;background:rgba(255,255,255,.35)}
 .prob-q{font-size:16px}
@@ -55,16 +55,16 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .pager a.next{text-align:right}.pager .t{font-weight:600;margin-top:4px}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--ink);padding:30px 0;margin-top:30px;font-size:14px}
 .foot a{text-decoration:none;margin-left:16px}
-.gate{margin:6px 0 18px;border:1.5px solid var(--ink);border-radius:24px;background:linear-gradient(180deg,rgba(190,255,139,.42),rgba(190,255,139,.15));padding:clamp(30px,5vw,50px) clamp(22px,4vw,40px);text-align:center}
+.gate{margin:6px 0 18px;border:1.5px solid var(--ink);border-radius:24px;background:linear-gradient(180deg,rgba(199,240,154,.42),rgba(199,240,154,.15));padding:clamp(30px,5vw,50px) clamp(22px,4vw,40px);text-align:center}
 .gate-in{max-width:44ch;margin:0 auto}
-.milo-big{width:58px;height:58px;margin:0 auto 12px;display:block}
+.milo-big{width:58px;height:58px;object-fit:contain;margin:0 auto 12px;display:block}
 .gate h2{font-size:clamp(26px,4.6vw,42px);letter-spacing:-.03em;margin:0 0 14px}
 .gate p{font-size:17px;color:#242424;margin:0 0 26px}
 .pill.big{padding:15px 30px;font-size:16px}
 @media(max-width:560px){.pager{grid-template-columns:1fr}.pager a.next{text-align:left}}
 </style></head>
 <body>
-<header class="wrap nav"><a class="brand" href="/"><svg viewBox="0 0 64 64" class="milo" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>Quantica</a><a class="pill" href="/prealgebra">Prealgebra</a><a class="pill solid" href="/?lesson=8.3">Open in the course</a></header>
+<header class="wrap nav"><a class="brand" href="/"><img src="/paths/assets/spot/spot-happy.png" class="milo" alt="Sprout">Quantica</a><a class="pill" href="/prealgebra">Prealgebra</a><a class="pill solid" href="/?lesson=8.3">Open in the course</a></header>
 <div class="wrap">
   <nav class="crumbs"><a href="/">Home</a> › <a href="/prealgebra">Prealgebra</a> › Chapter 8: Square Roots</nav>
   <div class="head"><p class="ey">Prealgebra · Lesson 8.3</p><h1>Simplifying Square Roots</h1></div>
@@ -73,9 +73,9 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
   <p>In 8.2 you estimated \(\sqrt{12} \approx 3.5\). This lesson rewrites it exactly. The number \(12 = 4 \times 3\) hides a perfect square, and \(\sqrt{ab} = \sqrt{a}\sqrt{b}\) lets you pull \(\sqrt{4} = 2\) out front, giving \(2\sqrt{3}\).</p>
 <div class="prob"><div class="prob-q">Compute \(\sqrt{4} \times \sqrt{25}\) and compare it to \(\sqrt{4 \times 25}\). Do they agree? What is \(\sqrt{100}\)?</div></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>Product rule.</b> The square root of a product is the product of the roots, $\sqrt{ab} = \sqrt{a} \times \sqrt{b}$, for nonnegative $a$ and $b$. So a root may split wherever its radicand factors. That is the lever for simplifying: if one factor is a perfect square, its root pops out as a clean whole number while the rest stays under the radical.</div></aside>
-  <aside class="gate"><div class="gate-in"><svg viewBox="0 0 64 64" class="milo-big" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg><h2>Ready to actually <span class="mark">do it</span>?</h2><p>The rest of this lesson, the worked problems, layered hints, and Sprout right beside you, happens inside the course. Free to start.</p><a class="pill solid big" href="/?lesson=8.3">Start this lesson, free &rarr;</a></div></aside>
+  <aside class="gate"><div class="gate-in"><img src="/paths/assets/spot/spot-happy.png" class="milo-big" alt="Sprout"><h2>Ready to actually <span class="mark">do it</span>?</h2><p>The rest of this lesson, the worked problems, layered hints, and Sprout right beside you, happens inside the course. Free to start.</p><a class="pill solid big" href="/?lesson=8.3">Start this lesson, free &rarr;</a></div></aside>
   </article>
   <nav class="pager"><a class="prev" href="/prealgebra/estimating-irrational-roots"><span class="dir">← Previous</span><div class="t">Estimating Irrational Roots</div></a><a class="next" href="/prealgebra/arithmetic-with-roots"><span class="dir">Next →</span><div class="t">Arithmetic with Roots</div></a></nav>
 </div>
-<footer class="wrap foot"><a class="brand" href="/"><svg viewBox="0 0 64 64" class="milo" aria-hidden="true"><path d="M32 7 C46 7 51 12 51 32 C51 52 46 57 32 57 C18 57 13 52 13 32 C13 12 18 7 32 7Z" fill="#beff8b"/><circle cx="25.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="38.5" cy="30" r="4.4" fill="#9dbbc5"/><circle cx="25.5" cy="30" r="2.1" fill="#0a0a0a"/><circle cx="38.5" cy="30" r="2.1" fill="#0a0a0a"/><path d="M26 38 Q32 43.5 38 38" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/></svg>Quantica</a><div><a href="/prealgebra">Prealgebra</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></footer>
+<footer class="wrap foot"><a class="brand" href="/"><img src="/paths/assets/spot/spot-happy.png" class="milo" alt="Sprout">Quantica</a><div><a href="/prealgebra">Prealgebra</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></footer>
 </body></html>
