@@ -3306,7 +3306,7 @@ window.addEventListener('load',function(){
   // --- answer grading + hints for lesson problems ---
   var PROBREG={}, __uid=0;
   function normAns(s){ return (s==null?'':String(s)).trim().toLowerCase().replace(/\s+/g,'').replace(/,/g,'').replace(/^\+/,''); }
-  function confettiBurst(anchorEl){
+  function confettiBurst(anchorEl){ if(window.CALM) return;
     try{
       var r = anchorEl ? anchorEl.getBoundingClientRect() : {left:innerWidth/2,top:innerHeight/2,width:0};
       var cx=r.left+r.width/2, cy=r.top+18;
@@ -3328,6 +3328,10 @@ window.addEventListener('load',function(){
     }catch(e){}
   }
   window.confettiBurst=confettiBurst;
+  // Calm mode: warm default, opt-in restraint. Mutes mascot pops, confetti + sound; math is unchanged.
+  window.CALM=(localStorage.getItem('qz_calm')==='1');
+  window.setCalm=function(on){ window.CALM=!!on; localStorage.setItem('qz_calm', on?'1':'0'); if(document.body) document.body.classList.toggle('calm-on', !!on); };
+  if(window.CALM && document.body) document.body.classList.add('calm-on');
   // Synthesized answer sounds (no assets): bright rise on correct, soft descent on wrong.
   window.Sfx=(function(){
     var ctx=null, muted=(localStorage.getItem('qz_sfx')==='0');
@@ -3340,7 +3344,7 @@ window.addEventListener('load',function(){
       g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
       o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+dur+0.03);
     }
-    function play(fn){ if(muted) return; var c=ac(); if(!c) return; if(c.state==='suspended'){ try{c.resume();}catch(e){} } fn(); }
+    function play(fn){ if(muted || window.CALM) return; var c=ac(); if(!c) return; if(c.state==='suspended'){ try{c.resume();}catch(e){} } fn(); }
     return {
       correct:function(){ play(function(){ tone(659.25,0,0.15,'sine',0.13); tone(987.77,0.085,0.22,'sine',0.12); }); },   // E5 -> B5, bright
       wrong:function(){ play(function(){ tone(349.23,0,0.17,'triangle',0.10); tone(261.63,0.11,0.30,'triangle',0.09); }); }, // F4 -> C4, soft descent
@@ -3355,7 +3359,7 @@ window.addEventListener('load',function(){
     var map={excited:'spot-excited',thinking:'spot-thinking',happy:'spot-happy',focused:'spot-focused',encour:'spot-encour'};
     img.src='paths/assets/spot/'+(map[mood]||'spot-happy')+'.png';
     fab.classList.remove('react-correct','react-wrong'); void fab.offsetWidth;
-    fab.classList.add(mood==='thinking'||mood==='encour'?'react-wrong':'react-correct');
+    if(!window.CALM) fab.classList.add(mood==='thinking'||mood==='encour'?'react-wrong':'react-correct');
     clearTimeout(window.__sproutReactT);
     window.__sproutReactT=setTimeout(function(){ img.src='paths/assets/spot/spot-happy.png'; fab.classList.remove('react-correct','react-wrong'); },1900);
   };
@@ -4245,6 +4249,7 @@ window.addEventListener('load',function(){
     h+= u
       ? '<div class="rw-acct"><div><div class="lbl">Signed in</div><div class="who">'+(u.email||u.displayName||'Your account')+'</div></div><button onclick="if(window.fbSignOut)fbSignOut()">Sign out</button></div>'
       : '<div class="rw-acct"><div><div class="lbl">Not signed in</div><div class="who">Progress is saved on this device only</div></div><button class="save" onclick="if(window.showAuthModal)showAuthModal(\'up\')">Save progress</button></div>';
+    h+='<label class="rw-calm"><input type="checkbox" '+(window.CALM?'checked':'')+' onchange="setCalm(this.checked)"><span><b>Calm mode</b> &mdash; mutes the mascot pops, confetti, and sound. The math is exactly the same.</span></label>';
     h+='<div class="rw-top">'+
        '<div class="rw-ring" style="--p:'+li.pct+'"><div class="lv"><b>'+li.level+'</b><span>Level</span></div></div>'+
        '<div class="rw-id"><div class="rank">'+rank+'</div>'+
@@ -4686,6 +4691,12 @@ async function sendTutorMsg() {
     .hud-pill{padding:5px 8px !important;font-size:11.5px !important}
     .coursebar{padding:0 10px !important;gap:6px}
   }
+  /* calm mode: toggle in the rewards panel + mute the celebratory motion */
+  .rw-calm{display:flex;align-items:flex-start;gap:10px;margin:14px 0 18px;padding:12px 14px;background:var(--glass-strong);border:1px solid var(--glass-line);border-radius:12px;font:500 13px/1.5 'Inter';color:var(--navy);cursor:pointer}
+  .rw-calm input{margin-top:2px;width:16px;height:16px;accent-color:var(--grass);flex:none;cursor:pointer}
+  .rw-calm b{font-weight:700}
+  .calm-on .hud-pill.bump{animation:none !important}
+  .calm-on .ws-fab-chat.fab-glow{animation:none !important}
 </style>
 <script>
 (function(){
