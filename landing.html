@@ -4555,6 +4555,77 @@ async function sendTutorMsg() {
   .dg-rt{font:700 14px/1 'Inter';color:var(--navy);text-transform:capitalize}
   .dg-rv{font:700 12.5px/1 'Inter'}
 </style>
+<style id="sprout-reskin">
+  /* ============================================================
+     SPROUT RESKIN · green/cream sprout look (branch 10_paths)
+     Appended LAST so it layers over base + glassmorphism reskin.
+     Same class hooks + CSS variables, so the whole site (landing,
+     course dashboard, lesson/question page, Milo tutor, problem
+     sets, diagnostic) shifts to the new vibe with no rule rewrites.
+     ============================================================ */
+  :root{
+    /* new named palette */
+    --paper:#F4F9EC; --forest:#164B35; --moss:#2E7D4F; --grass:#43B063;
+    --lime:#C7F09A; --sage:#5FA06B; --btn:#39A85C; --btn-edge:#2C874A; --amber:#E7B44B;
+    /* remap the active (glassmorphism) tokens to greens */
+    --navy:#164B35; --blue:#2E7D4F; --mid:#2E7D4F; --sky:#43B063;
+    --teal:#43B063; --teal2:#7CD68F;
+    --accent:#39A85C; --accent2:#43B063;
+    --ink:#1B2E1F; --slate:#445C48; --mute:#7C907E;
+    --green:#2E7D4F; --green2:#43B063;
+    --purple:#5B8A63; --purple2:#84B98C;
+    --gold:#C9860B; --gold2:#E7B44B;
+    --line:rgba(22,75,53,.14);
+    --soft:rgba(255,255,255,.55);
+    --softer:rgba(67,176,99,.10);
+    --glass:rgba(255,255,255,.72);
+    --glass-strong:rgba(255,255,255,.88);
+    --glass-line:rgba(90,150,110,.32);
+    --hi:inset 0 1px 0 rgba(255,255,255,.75);
+    --shadow:0 26px 60px -28px rgba(20,50,25,.42),0 6px 18px -10px rgba(20,50,25,.14);
+    --shadow-sm:0 12px 30px -16px rgba(20,50,25,.34);
+  }
+  html{background:#F1F8E8}
+  ::selection{background:rgba(67,176,99,.26)}
+
+  /* ambient canvas behind every view → soft greens + warm sun */
+  .bg,.overlay{background:
+      radial-gradient(1200px 820px at 10% -8%,rgba(67,176,99,.22),transparent 58%),
+      radial-gradient(1050px 760px at 96% 4%,rgba(150,211,131,.22),transparent 55%),
+      radial-gradient(980px 760px at 82% 104%,rgba(231,180,75,.12),transparent 55%),
+      radial-gradient(940px 760px at 2% 96%,rgba(46,125,79,.12),transparent 55%),
+      linear-gradient(180deg,#F6FBEC,#EDF6DE)}
+  .bg::after,.overlay::before{
+    background-image:linear-gradient(rgba(34,75,53,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,75,53,.05) 1px,transparent 1px)}
+  .bg .o1{background:radial-gradient(circle,#8fd39a,transparent 70%)}
+  .bg .o2{background:radial-gradient(circle,#b6e6a0,transparent 70%)}
+  .bg .o3{background:radial-gradient(circle,#f0d79a,transparent 70%)}
+  .bg .o4{background:radial-gradient(circle,#7fc98f,transparent 70%)}
+
+  /* pressable primary button (3D solid bottom edge) */
+  .btn-primary{background:var(--btn);border:1px solid var(--btn-edge);color:#fff;
+    box-shadow:0 4px 0 var(--btn-edge),0 14px 26px -12px rgba(20,50,25,.5),var(--hi)}
+  .btn-primary:hover{background:#33984f;transform:translateY(-1px);box-shadow:0 5px 0 var(--btn-edge),0 18px 30px -14px rgba(20,50,25,.55),var(--hi)}
+  .btn-primary:active{transform:translateY(4px);box-shadow:0 0 0 var(--btn-edge),var(--hi)}
+  .btn-ghost:hover{color:var(--moss);border-color:var(--grass)}
+
+  /* dark bands were hardcoded navy → forest green */
+  .why{background:linear-gradient(135deg,rgba(15,52,37,.94),rgba(22,75,53,.92))}
+  .signup{background:linear-gradient(135deg,rgba(15,52,37,.95),rgba(22,75,53,.92))}
+  footer{background:linear-gradient(180deg,rgba(12,42,28,.97),rgba(9,32,20,.99))}
+
+  /* accent tints that were sky-blue / orange */
+  .tier-intro{background:rgba(67,176,99,.18);color:var(--moss)}
+  .tier-mid{background:rgba(231,180,75,.20);color:#8A5A00}
+  .feedback.hintbox{background:rgba(67,176,99,.14);color:var(--moss)}
+  .opt .k{background:rgba(67,176,99,.16)}
+  .dg-overlay{background:linear-gradient(160deg,#EDF6DE,#F3F7E4)}
+  .dp-tier-1{color:#C9860B}.dp-tier-2{color:#B8790B}
+  /* Milo tutor: keep the dark panel but shift navy → forest (lime accents already on-palette) */
+  .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#183c2c 0%,#0d2318 60%,#081b12 100%) !important;border-color:rgba(199,240,154,.24) !important}
+  .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#183c2c,#0f2b1e) !important}
+  .ws-tutor .tut-input{background:#16341f !important}
+</style>
 <script>
 (function(){
   // ===== Adaptive difficulty state (localStorage) =====
