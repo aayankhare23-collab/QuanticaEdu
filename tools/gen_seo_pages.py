@@ -42,8 +42,8 @@ META=COURSE_META.get(COURSE,{"title":COURSE.replace('-',' ').title(),"level":COU
 CTITLE=META["title"]; OGIMG=META["og"]; LEVEL=META["level"]
 
 GA='''<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){try{var h=location.hostname;if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com')return;if(location.search.indexOf('imfounder=1')>-1&&!localStorage.getItem('qa_internal')){localStorage.setItem('qa_internal','1');alert('Got it. Analytics is now off on this device.');}if(localStorage.getItem('qa_internal')==='1')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});}catch(e){}})();</script>'''
-toc=json.load(open(os.path.join(ROOT,"lessons",COURSE,"toc.json")))
-s=open(ROOT+"/data/lessons.js").read()
+toc=json.load(open(os.path.join(ROOT,"lessons",COURSE,"toc.json"),encoding="utf-8"))
+s=open(ROOT+"/data/lessons.js",encoding="utf-8").read()
 DATA=json.loads(s[s.index('{'):s.rindex('}')+1])[COURSE]
 
 # lesson order + chapter lookup from TOC (only lessons that actually have data)
@@ -62,7 +62,7 @@ for k in ORDER:
     sl=base; i=2
     while sl in used: sl=base+'-'+str(i); i+=1
     used.add(sl); SLUG[k]=sl
-json.dump({k:SLUG[k] for k in ORDER}, open(os.path.join(ROOT,"lessons",COURSE,"slugmap.json"),"w"), indent=1)
+json.dump({k:SLUG[k] for k in ORDER}, open(os.path.join(ROOT,"lessons",COURSE,"slugmap.json"),"w",encoding="utf-8"), indent=1)
 
 def strip_text(x):
     x=re.sub(r'<svg.*?</svg>','',x,flags=re.S)
@@ -95,11 +95,11 @@ def gate_html(k):
             f'<a class="pill solid big" href="/?lesson={k}">Start this lesson, free &rarr;</a></div></aside>')
 
 CSS='''
-:root{--bg:#ededeb;--ink:#0a0a0a;--lime:#beff8b;--slate:#9dbbc5;--gray:#5c5c58;--line:rgba(10,10,10,.12)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+:root{--bg:#F4F9EC;--ink:#1B2E1F;--lime:#C7F09A;--slate:#5FA06B;--gray:#556A58;--line:rgba(22,75,53,.14)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit}img,svg{max-width:100%}
 .wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
-h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0}
 .mark{background:var(--lime);border-radius:.16em;padding:.02em .2em}
 .milo{width:1em;height:1em;vertical-align:-.18em}
 .nav{display:flex;align-items:center;gap:12px;padding:20px 0}
@@ -138,12 +138,12 @@ h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0}
 @media(max-width:560px){.pager{grid-template-columns:1fr}.pager a.next{text-align:left}}
 '''
 HUB_CSS='''
-:root{--bg:#ededeb;--ink:#0a0a0a;--lime:#beff8b;--slate:#9dbbc5;--gray:#5c5c58;--line:rgba(10,10,10,.12)}
+:root{--bg:#F4F9EC;--ink:#1B2E1F;--lime:#C7F09A;--slate:#5FA06B;--gray:#556A58;--line:rgba(22,75,53,.14)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
-h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0;font-weight:700;letter-spacing:-.03em;line-height:1}
 .mark{background:var(--lime);border-radius:.16em;padding:.02em .2em}
 .milo{width:1em;height:1em;vertical-align:-.18em}
 .nav{display:flex;align-items:center;gap:12px;padding:22px 0}
@@ -262,7 +262,7 @@ def gen_hub():
 <script type="application/ld+json">{json.dumps(ld_crumb)}</script>
 <script type="application/ld+json">{json.dumps(ld_faq)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{HUB_CSS}</style></head>
 <body>
 <header class="wrap nav">
@@ -359,7 +359,7 @@ for idx,k in enumerate(ORDER):
 <script type="application/ld+json">{json.dumps(ld)}</script>
 <script type="application/ld+json">{json.dumps(crumb)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 {KATEX}
 <style>{CSS}</style></head>
 <body>
@@ -379,7 +379,7 @@ for idx,k in enumerate(ORDER):
     open(f"{ROOT}/{COURSE}/{slug}.html","w",encoding="utf-8").write(page)
 
 gen_hub()
-json.dump(sitemap_urls, open(os.path.join(ROOT,"lessons",COURSE,"lesson_urls.json"),"w"))
+json.dump(sitemap_urls, open(os.path.join(ROOT,"lessons",COURSE,"lesson_urls.json"),"w",encoding="utf-8"))
 print(f"course={COURSE}: wrote {COURSE}.html (hub) + {len(ORDER)} lesson pages -> {COURSE}/*.html")
 if ORDER: print("sample lesson:", ORDER[0], "->", "/"+COURSE+"/"+SLUG[ORDER[0]])
 print("sitemap urls:", len(sitemap_urls), "(hub + lessons) written to lessons/%s/lesson_urls.json"%COURSE)
