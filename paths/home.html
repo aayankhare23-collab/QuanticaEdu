@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quantica — Course Home (concept)</title>
+<title>Quantica — Course Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
@@ -28,9 +28,8 @@
 
   /* top bar */
   .topbar{position:sticky;top:0;z-index:60;height:var(--topbar);display:flex;align-items:center;gap:16px;padding:0 22px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-2)}
-  .brand{display:flex;align-items:center;gap:8px;font-family:var(--ff-display);font-weight:600;font-size:1.12rem;color:var(--forest)}
+  .brand{display:flex;align-items:center;gap:8px;font-family:var(--ff-display);font-weight:600;font-size:1.12rem;color:var(--forest);text-decoration:none}
   .brand svg{width:22px;height:22px}
-  /* course dropdown */
   .coursesel{position:relative}
   .coursesel .cur{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-ui);font-weight:600;font-size:.8rem;color:var(--forest);background:var(--tint);border:1px solid #CFEAC6;padding:5px 10px;border-radius:999px;cursor:pointer}
   .coursesel .cur .cv{transition:transform .15s ease}
@@ -50,7 +49,7 @@
   .tb-right{margin-left:auto;display:flex;align-items:center;gap:14px}
   .sig{display:flex;align-items:center;gap:7px;font-family:var(--ff-ui);font-size:.79rem;color:var(--gray)}
   .sig b{color:var(--ink);font-weight:600}
-  .sig .ring{width:24px;height:24px;border-radius:50%;background:conic-gradient(var(--grass) 62%, #D7E7CC 0);display:grid;place-items:center}
+  .sig .ring{width:24px;height:24px;border-radius:50%;background:conic-gradient(var(--grass) 0%, #D7E7CC 0);display:grid;place-items:center}
   .sig .ring i{width:17px;height:17px;border-radius:50%;background:var(--card)}
   .streak{display:flex;align-items:center;gap:5px;font-family:var(--ff-ui);font-size:.79rem;color:var(--gray)}
   .streak b{color:var(--ink);font-weight:600}
@@ -78,18 +77,19 @@
   .continue{position:relative;overflow:visible;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 26px;box-shadow:0 16px 34px -26px rgba(20,50,25,.34)}
   .continue .eyebrow{color:var(--sage)}
   .continue .lz{font-family:var(--ff-ui);font-size:.76rem;color:var(--gray-soft);margin-top:10px}
-  .continue h2{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:1.08;margin:4px 0 4px;color:var(--forest)}
+  .continue h2{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:1.08;margin:4px 0 4px;color:var(--forest);max-width:24ch}
   .continue p{font-size:.92rem;color:var(--gray);max-width:38ch}
   .continue .cbtn{margin-top:16px;font-size:1rem;padding:13px 24px}
   .continue .spot{position:absolute;right:16px;bottom:0;width:128px;height:160px}
   .continue .spot img{position:absolute;right:0;bottom:0;height:100%;width:auto}
-  @media(max-width:520px){.continue .spot{display:none}}
+  @media(max-width:620px){.continue h2{max-width:16ch}}
+  @media(max-width:520px){.continue .spot{display:none}.continue h2{max-width:none}}
 
   .path-head{margin:26px 2px 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
   .path-head h3{font-family:var(--ff-display);font-weight:600;font-size:1.28rem;color:var(--ink)}
   .path-head .h{font-family:var(--ff-ui);font-size:.72rem;color:var(--gray-soft)}
   .order-note{font-size:.8rem;color:var(--gray-soft);margin:0 2px 4px;display:flex;align-items:center;gap:6px}
-  .order-note svg{width:14px;height:14px;color:var(--sage)}
+  .order-note svg{width:14px;height:14px;color:var(--sage);flex:none}
 
   /* chapter card */
   .chapter{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 22px 20px;text-align:center;box-shadow:0 16px 34px -28px rgba(20,50,25,.4)}
@@ -117,7 +117,7 @@
   .wnode .badge svg{width:12px;height:12px}
   .wnode .cta{position:absolute;top:-23px;left:50%;transform:translateX(-50%);font-family:var(--ff-ui);font-weight:600;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;color:var(--moss);white-space:nowrap}
   .wlabel{position:absolute;transform:translateY(-50%);z-index:2;font-size:.88rem;line-height:1.2;color:var(--ink);font-weight:500;max-width:31%}
-  .wlabel.l{text-align:right;max-width:27%}.wlabel.r{text-align:left}
+  .wlabel.l{text-align:right;max-width:31%}.wlabel.r{text-align:left}
   .wlabel .s{display:block;font-family:var(--ff-ui);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-soft);margin-top:2px;font-weight:600}
   .wlabel.cur{color:var(--forest);font-weight:600}
   .wsub{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
@@ -128,14 +128,8 @@
   .wsub a.ch{color:#8A5A00;background:#FBF1DA;border-color:#EAD9AE}
   .wsub a.ch:hover{background:#F6E7C2}
   .wsub a.done-c{opacity:.62}
-  .wbranch{position:absolute;transform:translateY(-50%);z-index:2;display:inline-flex;gap:9px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 12px;box-shadow:0 4px 0 #EAF1E2,0 10px 18px -14px rgba(20,50,25,.3);cursor:pointer;transition:box-shadow .12s,transform .12s;width:38%;max-width:186px;text-decoration:none}
-  .wbranch:active{transform:translateY(3px);box-shadow:0 1px 0 #EAF1E2}
-  .wbranch .ic{width:30px;height:30px;border-radius:8px;background:var(--tint);display:grid;place-items:center;flex:none;color:var(--forest)}
-  .wbranch .ic svg{width:16px;height:16px}
-  .wbranch .bt{display:block;font-family:var(--ff-display);font-weight:600;font-size:.85rem;line-height:1;color:var(--ink)}
-  .wbranch .bs{display:block;font-size:.67rem;color:var(--gray);margin-top:3px;line-height:1.15}
   @media(prefers-reduced-motion:reduce){.wnode{transition:none}.wnode.current{animation:none}}
-  @media(max-width:560px){.wtrail{max-width:100%;aspect-ratio:100/192}.wbranch{display:none}.wlabel,.wlabel.l{max-width:23%}.wlabel{font-size:.75rem}.wnode{width:48px;height:48px;font-size:.9rem}}
+  @media(max-width:560px){.wtrail{max-width:100%;aspect-ratio:100/192}.wlabel,.wlabel.l{max-width:26%}.wlabel{font-size:.75rem}.wnode{width:48px;height:48px;font-size:.9rem}}
 
   /* next-up card */
   .nextup{margin-top:22px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#F1FAE7,#E7F4D8);border:1px solid #D7EBC7;border-radius:20px;padding:18px 22px;box-shadow:0 16px 34px -28px rgba(20,50,25,.34)}
@@ -154,14 +148,7 @@
   @media(max-width:860px){.rail{position:static}}
   .rc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:0 10px 24px -22px rgba(20,50,25,.3)}
   .rc h4{font-family:var(--ff-ui);font-size:.66rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:12px}
-  .rc .cap{font-size:.72rem;color:var(--gray-soft);margin:-8px 0 12px}
-  .mrow{display:flex;align-items:center;gap:10px;margin-bottom:11px;font-size:.85rem}
-  .mrow:last-child{margin-bottom:0}
-  .mrow .l{width:112px;color:var(--ink);font-weight:500;flex:none}
-  .mrow .bar{flex:1;height:7px;border-radius:4px;background:#E9F1E4;overflow:hidden}
-  .mrow .bar i{display:block;height:100%;border-radius:4px;background:var(--grass)}
-  .mrow.build .bar i{background:var(--amber)}
-  .mrow .pct{font-family:var(--ff-ui);font-size:.7rem;color:var(--gray-soft);width:28px;text-align:right}
+  .rc p.lead{font-size:.88rem;color:var(--gray);line-height:1.5;margin-bottom:14px}
   .daysgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
   .dot{aspect-ratio:1;border-radius:50%;background:#E4EEDE}
   .dot.on{background:var(--grass)}
@@ -174,139 +161,180 @@
 </style>
 
 <div class="topbar">
-  <div class="brand">
+  <a class="brand" href="/paths/home.html">
     <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#164B35"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#43B063"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
     Quantica
-  </div>
+  </a>
   <div class="coursesel" id="coursesel">
     <span class="cur" id="courseCur">Prealgebra <svg class="cv" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
     <div class="menu">
       <div class="mh">Your courses</div>
-      <a class="on" href="#">Prealgebra <span class="tag">Now</span></a>
-      <a href="#">Algebra I <span class="tag">Free</span></a>
+      <a class="on" href="/paths/home.html">Prealgebra <span class="tag">Now</span></a>
+      <a href="/landing.html?course=algebra1&lesson=1.1">Algebra I <span class="tag">Free</span></a>
       <a class="soon" href="#">Geometry <span class="tag">Soon</span></a>
       <a class="soon" href="#">Number Theory <span class="tag">Soon</span></a>
       <a class="soon" href="#">Counting &amp; Probability <span class="tag">Soon</span></a>
       <a class="soon" href="#">Calculus <span class="tag">Soon</span></a>
     </div>
   </div>
-  <nav class="topnav"><a href="#" class="active">Learn</a><a href="#">Practice</a><a href="#">Progress</a></nav>
+  <nav class="topnav"><a href="/paths/home.html" class="active">Learn</a><a href="/landing.html?course=prealgebra&lesson=1.1">Practice</a><a href="/landing.html?course=prealgebra&lesson=1.1">Progress</a></nav>
   <div class="tb-right">
     <div class="sig"><span class="ring"><i></i></span><span>Mastery</span></div>
-    <div class="streak"><span aria-hidden="true">🌱</span><b>12</b>&nbsp;days</div>
-    <div class="avatar lift" aria-label="Your profile"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
+    <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
+    <a class="avatar lift" href="/paths/landing.html" aria-label="Your profile"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
   </div>
 </div>
 
 <div class="shell">
-  <!-- chapter rail -->
-  <aside class="chrail">
-    <span class="rl">Ch</span>
-    <a class="chdot active" href="#" title="Chapter 1 · Introduction">1</a>
-    <a class="chdot" href="#" title="Chapter 2 · Factors &amp; Multiples">2</a>
-    <a class="chdot" href="#" title="Chapter 3">3</a>
-    <a class="chdot" href="#" title="Chapter 4">4</a>
-    <a class="chdot" href="#" title="Chapter 5">5</a>
-    <a class="chdot" href="#" title="Chapter 6">6</a>
-    <a class="chdot" href="#" title="Chapter 7">7</a>
-    <a class="chdot" href="#" title="Chapter 8">8</a>
-    <a class="chdot" href="#" title="Chapter 9">9</a>
-    <a class="chdot" href="#" title="Chapter 10">10</a>
-    <a class="chdot" href="#" title="Chapter 11">11</a>
-    <a class="chdot" href="#" title="Chapter 12">12</a>
-  </aside>
-
-  <!-- main -->
+  <aside class="chrail" id="chrail"></aside>
   <main>
-    <section class="continue">
-      <div class="eyebrow">Pick up where you left off</div>
-      <div class="lz">Chapter 1 · Introduction</div>
-      <h2>1.3 — Multiplication</h2>
-      <p>You're partway through your first chapter. Jump back in whenever you're ready.</p>
-      <a class="cta3d cbtn" href="/landing.html?course=prealgebra&lesson=1.3">Continue&nbsp;<span aria-hidden="true">→</span></a>
-      <span class="spot"><img src="assets/spot/spot-hero.png" alt="Sprout"></span>
-    </section>
-
-    <div class="path-head"><h3>Your path</h3><span class="h">Chapter 1 of 12</span></div>
+    <section class="continue" id="continueCard"></section>
+    <div class="path-head"><h3>Your path</h3><span class="h" id="pathHeadSub"></span></div>
     <div class="order-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Take lessons in any order — we suggest top to bottom.</div>
-
-    <section class="chapter lift">
-      <div class="cnum">Chapter 1</div>
-      <div class="csub">Arithmetic — the foundation</div>
-      <span class="sprig"><svg width="52" height="19" viewBox="0 0 54 20" aria-hidden="true"><path d="M27 19 C27 12 27 8 27 3" stroke="#6FAE5A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M27 9 C20 4 12 5 8 10 C15 15 23 14 27 9Z" fill="#8FC275"/><path d="M27 7 C34 3 42 4 46 9 C39 14 31 12 27 7Z" fill="#7FB565"/></svg></span>
-      <div class="prog"><span class="bar"><i style="width:33%"></i></span><span class="pt">2 of 6 lessons</span></div>
-    </section>
-
-    <div class="wtrail">
-      <img class="wbot" src="assets/botanical/leaf-branch.png" alt="" style="left:-4%;top:5%;width:14%">
-      <img class="wbot" src="assets/botanical/pebble-sprout.png" alt="" style="right:-3%;top:4%;width:14%">
-      <svg class="track" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M46,11 C46,22 30,25 30,35 C30,47 62,46 62,58 C62,71 37,72 37,84 C37,96 49,99 49,109 C49,121 54,123 54,134"/>
-      </svg>
-      <a class="wnode done" href="/landing.html?course=prealgebra&lesson=1.1" style="left:46%;top:7.3%">1.1<span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span></a>
-      <a class="wnode done" href="/landing.html?course=prealgebra&lesson=1.2" style="left:30%;top:23.3%">1.2<span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span></a>
-      <a class="wnode current" href="/landing.html?course=prealgebra&lesson=1.3" style="left:62%;top:38.7%">1.3<span class="cta">Continue</span></a>
-      <a class="wnode" href="/landing.html?course=prealgebra&lesson=1.4" style="left:37%;top:56%">1.4</a>
-      <a class="wnode" href="/landing.html?course=prealgebra&lesson=1.5" style="left:49%;top:72.7%">1.5</a>
-      <a class="wnode" href="/landing.html?course=prealgebra&lesson=1.6" style="left:54%;top:89.3%">1.6</a>
-
-      <div class="wlabel r" style="left:57%;top:7.3%">Why begin with arithmetic?<span class="s">Done</span>
-        <span class="wsub"><a class="done-c" href="/landing.html?course=prealgebra&lesson=1.1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>Practice</a><a class="ch done-c" href="/landing.html?course=prealgebra&lesson=1.1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>Challenge</a></span></div>
-      <div class="wlabel l" style="right:78%;top:23.3%;white-space:nowrap">Add, subtract, negate<span class="s">Done</span>
-        <span class="wsub"><a class="done-c" href="/landing.html?course=prealgebra&lesson=1.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>Practice</a><a class="ch done-c" href="/landing.html?course=prealgebra&lesson=1.2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>Challenge</a></span></div>
-      <div class="wlabel r cur" style="left:73%;top:38.7%">Multiplication<span class="s" style="color:var(--moss)">You're here</span>
-        <span class="wsub"><a href="/landing.html?course=prealgebra&lesson=1.3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>Practice</a><a class="ch" href="/landing.html?course=prealgebra&lesson=1.3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>Challenge</a></span></div>
-      <div class="wlabel l" style="right:71%;top:56%">Checkpoint problems<span class="s">Open</span></div>
-      <div class="wlabel r" style="left:60%;top:72.7%">Division<span class="s">Open</span>
-        <span class="wsub"><a href="/landing.html?course=prealgebra&lesson=1.5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>Practice</a><a class="ch" href="/landing.html?course=prealgebra&lesson=1.5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>Challenge</a></span></div>
-      <div class="wlabel l" style="right:55%;top:89.3%">Summary<span class="s">Open</span></div>
-    </div>
-
-    <!-- next-up nudge -->
-    <section class="nextup lift">
-      <span class="nu-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span>
-      <div class="nu-tx">
-        <div class="ge">Chapter 1 · Arithmetic</div>
-        <h3>4 lessons to go</h3>
-        <div class="gbar"><i style="width:33%"></i></div>
-      </div>
-      <a class="cta3d nu-cta" href="/landing.html?course=prealgebra&lesson=1.3">Keep going&nbsp;<span aria-hidden="true">→</span></a>
-    </section>
+    <section class="chapter lift" id="chapterCard"></section>
+    <div class="wtrail" id="wtrail"></div>
+    <section class="nextup lift" id="nextupCard"></section>
   </main>
-
-  <!-- rail -->
-  <aside class="rail">
-    <div class="rc lift">
-      <h4>Where you stand</h4>
-      <p class="cap">Starting read from your quick check.</p>
-      <div class="mrow"><span class="l">Whole numbers</span><span class="bar"><i style="width:92%"></i></span><span class="pct">92</span></div>
-      <div class="mrow"><span class="l">Multiplication</span><span class="bar"><i style="width:78%"></i></span><span class="pct">78</span></div>
-      <div class="mrow build"><span class="l">Fractions</span><span class="bar"><i style="width:41%"></i></span><span class="pct">41</span></div>
-      <div class="mrow"><span class="l">Ratios</span><span class="bar"><i style="width:64%"></i></span><span class="pct">64</span></div>
-    </div>
-    <div class="rc lift">
-      <h4>Days you showed up</h4>
-      <div class="daysgrid">
-        <span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span>
-        <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot on"></span><span class="dot on"></span><span class="dot today on"></span>
-      </div>
-      <div class="days-cap"><span aria-hidden="true">🌱</span><b>12 days</b> showed up.</div>
-    </div>
-    <div class="rc">
-      <h4>Today's focus</h4>
-      <p style="font-size:.9rem;color:var(--gray);margin-bottom:14px;line-height:1.5">One lesson keeps the momentum. Sprout's ready when you get stuck.</p>
-      <a class="cta3d rc-cta" href="/landing.html?course=prealgebra&lesson=1.3">Start 1.3 &nbsp;<span aria-hidden="true">→</span></a>
-    </div>
-  </aside>
+  <aside class="rail" id="rail"></aside>
 </div>
 
-<p class="note">Concept mockup · Quantica course home — chapter rail + course switcher, any-order path, pressable UI.</p>
+<p class="note" id="footNote">Quantica course home · Prealgebra.</p>
 
 <script>
+(function(){
+  var COURSE='prealgebra';
+  var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+  var TARGET='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>';
+  var TROPHY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>';
+  var BOLT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>';
+  var SPRIG='<svg width="52" height="19" viewBox="0 0 54 20" aria-hidden="true"><path d="M27 19 C27 12 27 8 27 3" stroke="#6FAE5A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M27 9 C20 4 12 5 8 10 C15 15 23 14 27 9Z" fill="#8FC275"/><path d="M27 7 C34 3 42 4 46 9 C39 14 31 12 27 7Z" fill="#7FB565"/></svg>';
+
+  var state={ chapters:[], active:1, done:{}, current:'1.1' };
+
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
+  function nonTeaching(t){ return /checkpoint|summary/i.test(t||''); }
+  function chById(n){ for(var i=0;i<state.chapters.length;i++){ if(state.chapters[i].n===n) return state.chapters[i]; } return state.chapters[0]; }
+  function chOf(k){ for(var i=0;i<state.chapters.length;i++){ var c=state.chapters[i]; for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c; } } return state.chapters[0]; }
+  function lesOf(k){ var c=chOf(k); for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c.lessons[j]; } return c.lessons[0]; }
+  function chDone(c){ return c.lessons.every(function(l){ return state.done[l.k]; }); }
+
+  function renderRail(){
+    var h='<span class="rl">Ch</span>';
+    state.chapters.forEach(function(c){
+      var cls='chdot'+(c.n===state.active?' active':'')+(chDone(c)?' done':'');
+      h+='<a class="'+cls+'" href="#" data-ch="'+c.n+'" title="Chapter '+c.n+' · '+esc(c.t)+'">'+c.n+'</a>';
+    });
+    var el=document.getElementById('chrail'); el.innerHTML=h;
+    el.querySelectorAll('.chdot').forEach(function(d){ d.addEventListener('click',function(e){ e.preventDefault(); setChapter(+d.getAttribute('data-ch')); }); });
+  }
+
+  function renderContinue(){
+    var les=lesOf(state.current), ch=chOf(state.current);
+    var fresh=!Object.keys(state.done).length;
+    document.getElementById('continueCard').innerHTML=
+      '<div class="eyebrow">'+(fresh?'Start here':'Pick up where you left off')+'</div>'+
+      '<div class="lz">Chapter '+ch.n+' · '+esc(ch.t)+'</div>'+
+      '<h2>'+state.current+' — '+esc(les.t)+'</h2>'+
+      '<p>'+(fresh?'Your very first lesson. Sprout will guide you the whole way.':'Jump back in whenever you are ready.')+'</p>'+
+      '<a class="cta3d cbtn" href="'+url(state.current)+'">'+(fresh?'Start learning':'Continue')+'&nbsp;<span aria-hidden="true">&rarr;</span></a>'+
+      '<span class="spot"><img src="assets/spot/spot-hero.png" alt="Sprout"></span>';
+  }
+
+  function renderChapterCard(){
+    var c=chById(state.active);
+    var doneN=c.lessons.filter(function(l){return state.done[l.k];}).length, n=c.lessons.length;
+    document.getElementById('pathHeadSub').textContent='Chapter '+c.n+' of '+state.chapters.length;
+    document.getElementById('chapterCard').innerHTML=
+      '<div class="cnum">Chapter '+c.n+'</div>'+
+      '<div class="csub">'+esc(c.t)+'</div>'+
+      '<span class="sprig">'+SPRIG+'</span>'+
+      '<div class="prog"><span class="bar"><i style="width:'+Math.round(doneN/n*100)+'%"></i></span><span class="pt">'+doneN+' of '+n+' lessons</span></div>';
+  }
+
+  function renderTrail(){
+    var c=chById(state.active), L=c.lessons, n=L.length;
+    var nodes=L.map(function(les,i){
+      return { les:les, i:i, tx:(i%2===0?36:60), ty:(n>1? 7+85*(i/(n-1)) : 50) };
+    });
+    var d='M'+nodes[0].tx.toFixed(1)+','+(nodes[0].ty*1.5).toFixed(1);
+    for(var i=1;i<n;i++){
+      var a=nodes[i-1], b=nodes[i], y0=a.ty*1.5, y1=b.ty*1.5, ym=((y0+y1)/2).toFixed(1);
+      d+=' C'+a.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+y1.toFixed(1);
+    }
+    var h='<img class="wbot" src="assets/botanical/leaf-branch.png" alt="" style="left:-4%;top:5%;width:14%">'+
+          '<img class="wbot" src="assets/botanical/pebble-sprout.png" alt="" style="right:-3%;top:4%;width:14%">'+
+          '<svg class="track" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'"/></svg>';
+    // nodes
+    nodes.forEach(function(nd){
+      var k=nd.les.k, done=!!state.done[k], cur=(k===state.current && !done);
+      var inner=k+(done?'<span class="badge">'+CHECK+'</span>':(cur?'<span class="cta">Start</span>':''));
+      h+='<a class="wnode'+(done?' done':'')+(cur?' current':'')+'" href="'+url(k)+'" style="left:'+nd.tx.toFixed(1)+'%;top:'+nd.ty.toFixed(2)+'%">'+inner+'</a>';
+    });
+    // labels
+    nodes.forEach(function(nd){
+      var k=nd.les.k, t=nd.les.t, done=!!state.done[k], cur=(k===state.current && !done);
+      var side=(nd.tx<=47)?'r':'l';
+      var pos=side==='r'?('left:'+(nd.tx+11).toFixed(1)+'%'):('right:'+(100-nd.tx+9).toFixed(1)+'%');
+      var status=done?'Done':(cur?'Start here':'Open');
+      var chips='';
+      if(!nonTeaching(t)){
+        var dc=done?' done-c':'';
+        chips='<span class="wsub"><a class="'+dc.trim()+'" href="'+url(k)+'" title="Practice set">'+TARGET+'Practice</a>'+
+              '<a class="ch'+dc+'" href="'+url(k)+'" title="Challenge set">'+TROPHY+'Challenge</a></span>';
+      }
+      h+='<div class="wlabel '+side+(cur?' cur':'')+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+esc(t)+
+         '<span class="s"'+(cur?' style="color:var(--moss)"':'')+'>'+status+'</span>'+chips+'</div>';
+    });
+    document.getElementById('wtrail').innerHTML=h;
+  }
+
+  function renderNextup(){
+    var c=chById(state.active);
+    var left=c.lessons.filter(function(l){return !state.done[l.k];}).length, n=c.lessons.length;
+    var target=(c.lessons.filter(function(l){return !state.done[l.k];})[0]||c.lessons[0]).k;
+    document.getElementById('nextupCard').innerHTML=
+      '<span class="nu-ic">'+BOLT+'</span>'+
+      '<div class="nu-tx"><div class="ge">Chapter '+c.n+' · '+esc(c.t)+'</div>'+
+      '<h3>'+(left===0?'Chapter complete':left+' lesson'+(left===1?'':'s')+' to go')+'</h3>'+
+      '<div class="gbar"><i style="width:'+Math.round((n-left)/n*100)+'%"></i></div></div>'+
+      '<a class="cta3d nu-cta" href="'+url(target)+'">'+(left===n?'Start':'Keep going')+'&nbsp;<span aria-hidden="true">&rarr;</span></a>';
+  }
+
+  function renderRail2(){
+    var fresh=!Object.keys(state.done).length;
+    var dotsN=14, dots='';
+    for(var i=0;i<dotsN;i++){ dots+='<span class="dot'+(i===dotsN-1?' today':'')+'"></span>'; }
+    document.getElementById('rail').innerHTML=
+      '<div class="rc"><h4>New here?</h4>'+
+        '<p class="lead">Take a 2-minute check and we&rsquo;ll tune every lesson to your level &mdash; tougher where you&rsquo;re strong, gentler where you&rsquo;re building. Or just dive in.</p>'+
+        '<a class="cta3d rc-cta" href="'+url('1.1')+'">Take the quick check</a></div>'+
+      '<div class="rc"><h4>Days you showed up</h4>'+
+        '<div class="daysgrid">'+dots+'</div>'+
+        '<div class="days-cap"><span aria-hidden="true">🌱</span><b>'+(fresh?'Day 1':'Keep it up')+'</b> '+(fresh?'starts today.':'')+'</div></div>'+
+      '<div class="rc"><h4>Today&rsquo;s focus</h4>'+
+        '<p class="lead">One lesson keeps the momentum. Sprout is ready the moment you get stuck.</p>'+
+        '<a class="cta3d rc-cta" href="'+url(state.current)+'">Start '+state.current+' &nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
+  }
+
+  function renderAll(){ renderRail(); renderContinue(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); }
+  function setChapter(n){ state.active=n; renderRail(); renderChapterCard(); renderTrail(); renderNextup(); window.scrollTo({top:0,behavior:'smooth'}); }
+
   // course dropdown toggle
-  (function(){
-    var sel = document.getElementById('coursesel'), cur = document.getElementById('courseCur');
-    if(cur){ cur.addEventListener('click', function(e){ e.stopPropagation(); sel.classList.toggle('open'); }); }
-    document.addEventListener('click', function(){ sel && sel.classList.remove('open'); });
-  })();
+  var sel=document.getElementById('coursesel'), cur=document.getElementById('courseCur');
+  if(cur){ cur.addEventListener('click',function(e){ e.stopPropagation(); sel.classList.toggle('open'); }); }
+  document.addEventListener('click',function(){ sel&&sel.classList.remove('open'); });
+
+  // load the real course structure, then render
+  fetch('/lessons/'+COURSE+'/toc.json').then(function(r){ return r.json(); }).then(function(toc){
+    state.chapters=toc;
+    // new user: nothing done, first lesson of chapter 1 is the start
+    state.current=(toc[0]&&toc[0].lessons[0]&&toc[0].lessons[0].k)||'1.1';
+    state.active=toc[0]?toc[0].n:1;
+    document.getElementById('footNote').textContent='Quantica course home · Prealgebra · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
+    renderAll();
+  }).catch(function(e){
+    document.getElementById('chapterCard').innerHTML='<div class="csub">Could not load the course outline. Make sure the site is served over http (not opened as a file).</div>';
+  });
+})();
 </script>
