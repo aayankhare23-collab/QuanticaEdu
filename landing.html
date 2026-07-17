@@ -647,7 +647,7 @@
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;top:168px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;top:200px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
@@ -657,7 +657,7 @@
      off the lesson text into the bottom-left corner (Next lives bottom-right) */
   @media(max-width:560px){
     .ws-fab-group{top:auto;bottom:20px;left:14px}
-    .ws-fab-ideas{top:auto;bottom:76px;left:14px}
+    .ws-fab-ideas{top:auto;bottom:108px;left:14px}
     .workspace.tut-open .ws-fab-ideas{display:none}   /* tutor is full-screen on mobile; hide the floating helper */
     .ws-fab{width:46px;height:46px;font-size:18px}
   }
@@ -3377,7 +3377,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     fab.classList.remove('react-correct','react-wrong'); void fab.offsetWidth;
     if(!window.CALM) fab.classList.add(mood==='thinking'||mood==='encour'?'react-wrong':'react-correct');
     clearTimeout(window.__sproutReactT);
-    window.__sproutReactT=setTimeout(function(){ img.src='paths/assets/spot/spot-happy.png'; fab.classList.remove('react-correct','react-wrong'); },1900);
+    window.__sproutReactT=setTimeout(function(){ img.src='paths/assets/spot/spot-hero.png'; fab.classList.remove('react-correct','react-wrong'); },1900);
   };
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
@@ -3537,7 +3537,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       '<div class="ws-scrim" id="wsScrim" onclick="WS.closeAll()"></div>'+
       '<div class="ws-fab-group">'+
         '<button class="ws-fab ws-fab-chat" id="wsFabChat" onclick="WS.togglePanel(\'tutor\')" title="Ask Sprout">'+
-          '<img id="sproutFabImg" src="paths/assets/spot/spot-happy.png" alt="Sprout" style="width:100%;height:100%;object-fit:contain;padding:2px;pointer-events:none">'+
+          '<img id="sproutFabImg" src="paths/assets/spot/spot-hero.png" alt="Sprout" style="width:100%;height:100%;object-fit:contain;pointer-events:none">'+
         '</button>'+
       '</div>'+
       '<button class="ws-fab ws-fab-ideas" id="wsFabIdeas" onclick="WS.togglePanel(\'nb\')" title="Key Ideas">✦</button>'+
@@ -4683,16 +4683,25 @@ async function sendTutorMsg() {
   .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#183c2c 0%,#0d2318 60%,#081b12 100%) !important;border-color:rgba(199,240,154,.24) !important}
   .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#183c2c,#0f2b1e) !important}
   .ws-tutor .tut-input{background:#16341f !important}
-  /* Sprout tutor: avatar art on the chat launcher + reactions */
-  .ws-fab-chat{width:56px !important;height:56px !important;background:var(--paper) !important;border:1.6px solid var(--grass) !important;padding:0 !important;overflow:hidden}
-  .ws-fab-chat img{display:block}
+  /* Sprout chat launcher — the full character standing in the corner (like the landing hero),
+     NOT a cropped circle: transparent, no chrome, soft drop-shadow so it reads as a mascot. */
+  .ws-fab-chat{width:64px !important;height:76px !important;background:none !important;border:none !important;
+    border-radius:0 !important;padding:0 !important;overflow:visible !important;box-shadow:none !important;
+    filter:drop-shadow(0 7px 7px rgba(20,50,30,.24))}
+  .ws-fab-chat:hover{filter:drop-shadow(0 11px 11px rgba(20,50,30,.30)) brightness(1.02) !important;transform:translateY(-3px)}
+  .ws-fab-chat img{width:100% !important;height:100% !important;object-fit:contain !important;padding:0 !important;display:block}
+  /* attention / unread: a gentle green glow via drop-shadow (no boxy ring on the transparent art) */
+  .ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:sproutBreathe 1.5s ease-in-out infinite !important}
+  @keyframes sproutBreathe{0%,100%{filter:drop-shadow(0 7px 7px rgba(20,50,30,.24))}
+    50%{filter:drop-shadow(0 9px 13px rgba(34,197,94,.55)) drop-shadow(0 0 5px rgba(34,197,94,.4));transform:translateY(-2px)}}
   .ws-tuthead .av{background:#0f2b1e !important;overflow:hidden}
   .ws-tuthead .av img{width:100%;height:100%;object-fit:contain;display:block}
-  .ws-fab-chat.react-correct{animation:sproutPop .55s cubic-bezier(.22,1,.36,1)}
-  .ws-fab-chat.react-wrong{animation:sproutWobble .55s ease}
-  @keyframes sproutPop{0%{transform:scale(1)}40%{transform:scale(1.2)}70%{transform:scale(.96)}100%{transform:scale(1)}}
+  /* reactions declared LAST so a right/wrong response wins over the idle glow */
+  .ws-fab-chat.react-correct{animation:sproutPop .55s cubic-bezier(.22,1,.36,1) !important}
+  .ws-fab-chat.react-wrong{animation:sproutWobble .55s ease !important}
+  @keyframes sproutPop{0%{transform:scale(1)}40%{transform:scale(1.16)}70%{transform:scale(.97)}100%{transform:scale(1)}}
   @keyframes sproutWobble{0%,100%{transform:rotate(0) translateX(0)}20%{transform:rotate(-8deg) translateX(-2px)}60%{transform:rotate(8deg) translateX(2px)}}
-  @media(prefers-reduced-motion:reduce){.ws-fab-chat.react-correct,.ws-fab-chat.react-wrong{animation:none}}
+  @media(prefers-reduced-motion:reduce){.ws-fab-chat.react-correct,.ws-fab-chat.react-wrong,.ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:none !important}}
   /* the app's built-in marketing region is unused in our product (our landing is /paths/);
      hide it whenever the course overlay is open so it never flashes behind a lesson or
      forces mobile horizontal overflow (its footer links don't wrap under ~460px). */

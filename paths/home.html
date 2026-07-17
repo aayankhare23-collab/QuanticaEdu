@@ -43,9 +43,6 @@
   .coursesel .menu a.soon{color:var(--gray-soft)}
   .coursesel .menu a .tag{font-family:var(--ff-ui);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-soft)}
   .coursesel .menu a.on .tag{color:var(--moss)}
-  .topnav{display:flex;gap:4px;margin-left:6px}
-  .topnav a{font-family:var(--ff-ui);font-weight:600;font-size:.82rem;color:var(--gray);text-decoration:none;padding:7px 12px;border-radius:9px;transition:background .12s,color .12s}
-  .topnav a:hover,.topnav a.active{color:var(--forest);background:var(--tint)}
   .tb-right{margin-left:auto;display:flex;align-items:center;gap:14px}
   .sig{display:flex;align-items:center;gap:7px;font-family:var(--ff-ui);font-size:.79rem;color:var(--gray)}
   .sig b{color:var(--ink);font-weight:600}
@@ -55,7 +52,7 @@
   .streak b{color:var(--ink);font-weight:600}
   .avatar{width:32px;height:32px;border-radius:50%;background:#E7F4DA;border:1px solid #C6E1B4;display:grid;place-items:center;cursor:pointer}
   .avatar svg{width:22px;height:22px}
-  @media(max-width:860px){.topnav,.sig{display:none}}
+  @media(max-width:860px){.sig{display:none}}
   @media(max-width:520px){.tb-right .sig,.streak{display:none}.topbar{padding:0 14px;gap:12px}}
 
   /* shell: chapter rail | main | rail */
@@ -181,7 +178,6 @@
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Calculus <span class="tag">Soon</span></a>
     </div>
   </div>
-  <nav class="topnav"><a href="/paths/home.html" class="active">Learn</a><a href="/landing.html?course=prealgebra&pset=1&ptype=practice">Practice</a><a href="/landing.html?course=prealgebra&start=1">Progress</a></nav>
   <div class="tb-right">
     <div class="sig" title="Your mastery fills in as you learn — nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
     <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
@@ -195,9 +191,9 @@
     <section class="continue" id="continueCard"></section>
     <div class="path-head"><h3>Your path</h3><span class="h" id="pathHeadSub"></span></div>
     <div class="order-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Take lessons in any order — we suggest top to bottom.</div>
-    <section class="chapter lift" id="chapterCard"></section>
+    <section class="chapter" id="chapterCard"></section>
     <div class="wtrail" id="wtrail"></div>
-    <section class="nextup lift" id="nextupCard"></section>
+    <section class="nextup" id="nextupCard"></section>
   </main>
   <aside class="rail" id="rail"></aside>
 </div>
