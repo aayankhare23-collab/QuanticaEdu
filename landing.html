@@ -1863,7 +1863,7 @@ window.addEventListener('load',function(){
   <div class="modal" role="dialog" aria-modal="true" aria-label="Quantica course">
     <header class="coursebar">
       <div class="cb-left">
-        <button class="cb-back" id="mback" onclick="showDashboard()" aria-label="Back to course home">←<span> Home</span></button>
+        <button class="cb-back" id="mback" onclick="location.assign('/paths/home.html')" aria-label="Back to course home">←<span> Home</span></button>
         <span class="cb-logo"><span class="mark"></span>Quantica</span>
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
@@ -3172,8 +3172,8 @@ window.addEventListener('load',function(){
     if(window.renderToc) renderToc(only);
   }
   function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open',{course:CURRENT_COURSE}); }
-  function closeLesson(){ document.getElementById('lessonOverlay').classList.remove('open'); document.body.style.overflow=''; window._navLevel=0; }
-  window.navExit=function(){ if(window._navLevel>0){ history.go(-window._navLevel); } else { closeLesson(); } };
+  function closeLesson(){ window.location.assign('/paths/home.html'); }  /* leave the course to OUR roadmap home, never the old marketing region */
+  window.navExit=function(){ window.location.assign('/paths/home.html'); };
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') navExit(); });
 
   /* ===== Browser Back walks the course: lesson -> chapter TOC -> course home -> landing.
