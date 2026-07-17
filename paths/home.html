@@ -55,7 +55,7 @@
   .streak b{color:var(--ink);font-weight:600}
   .avatar{width:32px;height:32px;border-radius:50%;background:#E7F4DA;border:1px solid #C6E1B4;display:grid;place-items:center;cursor:pointer}
   .avatar svg{width:22px;height:22px}
-  @media(max-width:860px){.topnav,.sig.xp{display:none}}
+  @media(max-width:860px){.topnav,.sig{display:none}}
   @media(max-width:520px){.tb-right .sig,.streak{display:none}.topbar{padding:0 14px;gap:12px}}
 
   /* shell: chapter rail | main | rail */
@@ -253,7 +253,7 @@
   }
 
   function renderTrail(){
-    var c=chById(state.active), L=c.lessons, n=L.length;
+    var c=chById(state.active), L=c.lessons, n=L.length; var _wt=document.getElementById("wtrail"); if(_wt) _wt.style.aspectRatio = n>6 ? ("100 / "+(n*25)) : "";
     var nodes=L.map(function(les,i){
       return { les:les, i:i, tx:(i%2===0?36:60), ty:(n>1? 7+85*(i/(n-1)) : 50) };
     });
