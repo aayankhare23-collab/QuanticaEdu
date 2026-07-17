@@ -7,8 +7,8 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --paper:#F4F9EC; --card:#FFFFFF; --ink:#1B2E1F;
-    --forest:#164B35; --moss:#2E7D4F; --grass:#43B063; --lime:#C7F09A; --sage:#5FA06B;
+    --paper:#FCFEFB; --card:#FFFFFF; --ink:#16281B;
+    --forest:#14532D; --moss:#1A9E4B; --grass:#22C55E; --lime:#C7F09A; --sage:#5FA06B;
     --btn:#39A85C; --btn-edge:#2C874A; --btn-hover:#33984f;
     --gray:#556A58; --gray-soft:#8AA084; --line:#E4EEDB; --line-2:#EDF6E4;
     --tint:#E8F5DE; --amber:#E7B44B;
@@ -131,6 +131,10 @@
   @media(prefers-reduced-motion:reduce){.wnode{transition:none}.wnode.current{animation:none}}
   @media(max-width:560px){.wtrail{max-width:100%;aspect-ratio:100/192}.wlabel,.wlabel.l{max-width:26%}.wlabel{font-size:.75rem}.wnode{width:48px;height:48px;font-size:.9rem}}
 
+  .wnode-set{font-size:0}
+  .wnode-set svg{width:26px;height:26px}
+  .wnode-set.practice{background:var(--tint);border-color:var(--grass);color:var(--moss)}
+  .wnode-set.challenge{background:#FBF1DA;border-color:#EAD9AE;color:#8A5A00}
   /* next-up card */
   .nextup{margin-top:22px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#F1FAE7,#E7F4D8);border:1px solid #D7EBC7;border-radius:20px;padding:18px 22px;box-shadow:0 16px 34px -28px rgba(20,50,25,.34)}
   .nextup .nu-ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid #D7EBC7;display:grid;place-items:center;color:var(--moss)}
@@ -162,7 +166,7 @@
 
 <div class="topbar">
   <a class="brand" href="/paths/home.html">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#164B35"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#43B063"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
     Quantica
   </a>
   <div class="coursesel" id="coursesel">
@@ -254,11 +258,18 @@
 
   function renderTrail(){
     var c=chById(state.active), L=c.lessons, n=L.length; var _wt=document.getElementById("wtrail"); if(_wt) _wt.style.aspectRatio = n>6 ? ("100 / "+(n*25)) : "";
-    var nodes=L.map(function(les,i){
-      return { les:les, i:i, tx:(i%2===0?36:60), ty:(n>1? 7+85*(i/(n-1)) : 50) };
+    // trail = the chapter's lessons, then two chapter-level stops: Practice, then Challenge
+    var stops=L.map(function(les){ return {kind:'lesson', les:les}; });
+    var firstKey=(L[0]&&L[0].k) || (c.n+'.1');
+    stops.push({kind:'practice', key:firstKey});
+    stops.push({kind:'challenge', key:firstKey});
+    var m=stops.length;
+    if(_wt) _wt.style.aspectRatio="100 / "+(m*25);
+    var nodes=stops.map(function(s,i){
+      return { s:s, i:i, tx:(i%2===0?36:60), ty:(m>1? 7+85*(i/(m-1)) : 50) };
     });
     var d='M'+nodes[0].tx.toFixed(1)+','+(nodes[0].ty*1.5).toFixed(1);
-    for(var i=1;i<n;i++){
+    for(var i=1;i<m;i++){
       var a=nodes[i-1], b=nodes[i], y0=a.ty*1.5, y1=b.ty*1.5, ym=((y0+y1)/2).toFixed(1);
       d+=' C'+a.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+y1.toFixed(1);
     }
@@ -267,24 +278,29 @@
           '<svg class="track" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'"/></svg>';
     // nodes
     nodes.forEach(function(nd){
-      var k=nd.les.k, done=!!state.done[k], cur=(k===state.current && !done);
-      var inner=k+(done?'<span class="badge">'+CHECK+'</span>':(cur?'<span class="cta">Start</span>':''));
-      h+='<a class="wnode'+(done?' done':'')+(cur?' current':'')+'" href="'+url(k)+'" style="left:'+nd.tx.toFixed(1)+'%;top:'+nd.ty.toFixed(2)+'%">'+inner+'</a>';
+      var s=nd.s, style='left:'+nd.tx.toFixed(1)+'%;top:'+nd.ty.toFixed(2)+'%';
+      if(s.kind==='lesson'){
+        var k=s.les.k, done=!!state.done[k], cur=(k===state.current && !done);
+        var inner=k+(done?'<span class="badge">'+CHECK+'</span>':(cur?'<span class="cta">Start</span>':''));
+        h+='<a class="wnode'+(done?' done':'')+(cur?' current':'')+'" href="'+url(k)+'" style="'+style+'">'+inner+'</a>';
+      } else {
+        var isP=(s.kind==='practice');
+        h+='<a class="wnode wnode-set '+(isP?'practice':'challenge')+'" href="'+url(s.key)+'" style="'+style+'" title="'+(isP?'Practice set':'Challenge set')+'">'+(isP?TARGET:TROPHY)+'</a>';
+      }
     });
     // labels
     nodes.forEach(function(nd){
-      var k=nd.les.k, t=nd.les.t, done=!!state.done[k], cur=(k===state.current && !done);
-      var side=(nd.tx<=47)?'r':'l';
+      var s=nd.s, side=(nd.tx<=47)?'r':'l';
       var pos=side==='r'?('left:'+(nd.tx+11).toFixed(1)+'%'):('right:'+(100-nd.tx+9).toFixed(1)+'%');
-      var status=done?'Done':(cur?'Start here':'Open');
-      var chips='';
-      if(!nonTeaching(t)){
-        var dc=done?' done-c':'';
-        chips='<span class="wsub"><a class="'+dc.trim()+'" href="'+url(k)+'" title="Practice set">'+TARGET+'Practice</a>'+
-              '<a class="ch'+dc+'" href="'+url(k)+'" title="Challenge set">'+TROPHY+'Challenge</a></span>';
+      if(s.kind==='lesson'){
+        var k=s.les.k, done=!!state.done[k], cur=(k===state.current && !done);
+        h+='<div class="wlabel '+side+(cur?' cur':'')+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+esc(s.les.t)+
+           '<span class="s"'+(cur?' style="color:var(--moss)"':'')+'>'+(done?'Done':(cur?'Start here':'Open'))+'</span></div>';
+      } else {
+        var isP=(s.kind==='practice');
+        h+='<div class="wlabel '+side+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+(isP?'Practice set':'Challenge set')+
+           '<span class="s">'+(isP?'Sharpen the chapter':'Push yourself')+'</span></div>';
       }
-      h+='<div class="wlabel '+side+(cur?' cur':'')+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+esc(t)+
-         '<span class="s"'+(cur?' style="color:var(--moss)"':'')+'>'+status+'</span>'+chips+'</div>';
     });
     document.getElementById('wtrail').innerHTML=h;
   }

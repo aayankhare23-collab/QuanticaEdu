@@ -41,41 +41,41 @@ def key_and_trim(crop, thresh=55, lcut=231):
     return res
 
 def key_rock(crop):
-    # the pebble is a near-white stone on near-white bg, so plain keying bites a notch
-    # out of its lit face. Close the low-sat rock silhouette (sealing the notch) without
-    # touching the saturated green sprout, then deepen the stone so it reads gray.
-    c = crop.convert('RGB'); w,h = c.size; px = c.load()
-    marker = c.copy(); SENT=(255,0,255)
-    for s in edge_seeds(w,h):
+    # near-white stone on near-white bg: flood-fill the connected background from every
+    # edge, fill any interior holes so the stone stays solid, then deepen it to read gray.
+    c = crop.convert('RGB'); w, h = c.size
+    marker = c.copy(); SENT = (255, 0, 255)
+    seeds = ([(x, 0) for x in range(0, w, 4)] + [(x, h-1) for x in range(0, w, 4)] +
+             [(0, y) for y in range(0, h, 4)] + [(w-1, y) for y in range(0, h, 4)])
+    for s in seeds:
         try: ImageDraw.floodfill(marker, s, SENT, thresh=26)
         except Exception: pass
     mpx = marker.load()
-    keep = Image.new('L',(w,h),0); kp=keep.load()
-    rock = Image.new('L',(w,h),0); rk=rock.load()
+    mask = Image.new('L', (w, h), 255); mp = mask.load()
     for y in range(h):
         for x in range(w):
-            if mpx[x,y]==SENT: continue
-            r,g,b = px[x,y]; sat = max(r,g,b)-min(r,g,b)
-            kp[x,y]=255
-            if sat<24: rk[x,y]=255
-    rock = rock.filter(ImageFilter.MaxFilter(15)).filter(ImageFilter.MinFilter(15))  # close notch
-    fillm = rock.copy(); ImageDraw.floodfill(fillm,(0,0),128,thresh=0)
-    fp=fillm.load(); rk=rock.load()
+            if mpx[x, y] == SENT: mp[x, y] = 0
+    fillm = mask.copy()
+    for corner in [(0, 0), (w-1, 0), (0, h-1), (w-1, h-1)]:
+        if mp[corner[0], corner[1]] == 0:
+            try: ImageDraw.floodfill(fillm, corner, 128, thresh=0)
+            except Exception: pass
+    fp = fillm.load()
     for y in range(h):
         for x in range(w):
-            if rk[x,y]==0 and fp[x,y]!=128: rk[x,y]=255
-    mask = ImageChops.lighter(keep, rock).filter(ImageFilter.GaussianBlur(0.6))
+            if mp[x, y] == 0 and fp[x, y] != 128: mp[x, y] = 255
+    mask = mask.filter(ImageFilter.GaussianBlur(0.6))
     op = c.load()
     for y in range(h):
         for x in range(w):
-            r,g,b = op[x,y]; sat=max(r,g,b)-min(r,g,b); lum=(r+g+b)/3
-            if sat<26 and lum>150:
-                op[x,y]=(int(r*0.86),int(g*0.86),int(b*0.86))
+            r, g, b = op[x, y]; sat = max(r, g, b) - min(r, g, b); lum = (r + g + b) / 3
+            if sat < 26 and lum > 150:
+                op[x, y] = (int(r*0.85), int(g*0.85), int(b*0.85))
     res = c.convert('RGBA'); res.putalpha(mask)
     bbox = mask.getbbox()
     if bbox:
-        l,t,r,b = bbox; pad=3
-        res = res.crop((max(0,l-pad),max(0,t-pad),min(w,r+pad),min(h,b+pad)))
+        l, t, r, b = bbox; pad = 3
+        res = res.crop((max(0, l-pad), max(0, t-pad), min(w, r+pad), min(h, b+pad)))
     return res
 
 for name, box in boxes.items():
