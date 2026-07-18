@@ -53,7 +53,7 @@
   .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces';font-weight:700;font-size:22px;color:var(--navy)}
   .logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:17px;box-shadow:var(--shadow-sm)}
   .logo .mark,.cb-logo .mark{position:relative}
-  .logo .mark::before,.cb-logo .mark::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20x='50'%20y='53'%20text-anchor='middle'%20dominant-baseline='central'%20font-family='Georgia,serif'%20font-size='80'%20font-weight='600'%20fill='%23fff'%3EQ%3C/text%3E%3Cg%20fill='%23fff'%3E%3Crect%20x='38'%20y='57'%20width='4.4'%20height='8'%20rx='1'/%3E%3Crect%20x='44.5'%20y='53'%20width='4.4'%20height='12'%20rx='1'/%3E%3Crect%20x='51'%20y='48'%20width='4.4'%20height='17'%20rx='1'/%3E%3Crect%20x='57.5'%20y='43'%20width='4.4'%20height='22'%20rx='1'/%3E%3C/g%3E%3C/svg%3E") center/100% no-repeat}
+  .logo .mark::before,.cb-logo .mark::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20x='50'%20y='53'%20text-anchor='middle'%20dominant-baseline='central'%20font-family='Georgia,serif'%20font-size='80'%20font-weight='600'%20fill='%23fff'%3EQ%3C/text%3E%3C/svg%3E") center/100% no-repeat}
   .navlinks{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:500;color:var(--slate)}
   .navlinks a:hover{color:var(--navy)}
   @media(max-width:820px){.navlinks{display:none}}
@@ -647,7 +647,7 @@
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;top:200px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;top:224px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
@@ -657,7 +657,7 @@
      off the lesson text into the bottom-left corner (Next lives bottom-right) */
   @media(max-width:560px){
     .ws-fab-group{top:auto;bottom:20px;left:14px}
-    .ws-fab-ideas{top:auto;bottom:108px;left:14px}
+    .ws-fab-ideas{top:auto;bottom:128px;left:14px}
     .workspace.tut-open .ws-fab-ideas{display:none}   /* tutor is full-screen on mobile; hide the floating helper */
     .ws-fab{width:46px;height:46px;font-size:18px}
   }
@@ -1068,7 +1068,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .ws-tutor .tut-input::placeholder{color:#9fb0c9}
 .ws-tutor .snd{background:#beff8b !important;color:#0a0a0a !important}
 /* workspace primary "Continue" -> lime (green primary, like the landing) */
-.ws-next{background:#beff8b !important;color:#0a0a0a !important;box-shadow:0 12px 26px -12px rgba(120,190,60,.55) !important}
+.ws-next{background:linear-gradient(135deg,#22C55E,#1A9E4B) !important;color:#fff !important;box-shadow:0 12px 26px -12px rgba(26,158,75,.55) !important}
 /* accent (lime) was being used as TEXT in a few places (e.g. contents lesson links) where it is
    unreadable/harsh. Recolor those text uses to a deep readable green; buttons keep the lime fill. */
 .toc .sec.open,.toc .sec.open::after,.toc a.ex:hover,.hintbtn2,.peek,.factbox .flabel,.tocnote .tn-label,.hud-pill.mp svg,.streakchip svg{color:#2e7d3a !important}

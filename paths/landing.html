@@ -96,7 +96,7 @@
   .tok{display:inline-block;opacity:0;transform:translateY(12px) scale(.6);transition:opacity .3s ease,transform .5s cubic-bezier(.34,1.56,.64,1);position:relative}
   .tok.in{opacity:1;transform:none}
   .tok.paired::after{content:"";position:absolute;left:-4px;right:-4px;bottom:-4px;height:12px;border-radius:6px;background:var(--grass);opacity:.55;z-index:-1}
-  .tok.tappable{cursor:pointer;border-radius:9px}
+  .tok.tappable{cursor:pointer;border-radius:14px;padding:1px 9px}
   .tok.tappable:not(.picked){box-shadow:0 0 0 2px rgba(34,197,94,.42);animation:tapPulse 1.7s ease-in-out infinite}
   .tok.picked{box-shadow:0 0 0 2px var(--grass);color:var(--forest)}
   @keyframes tapPulse{0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.3)}50%{box-shadow:0 0 0 6px rgba(34,197,94,.09)}}
@@ -109,7 +109,6 @@
   .demo-insight .res{color:var(--accent)}
   .demo-caption{margin-top:20px;font-size:.96rem;color:var(--gray);line-height:1.45}
   .demo-caption b{color:var(--ink);font-weight:600}
-  .companion{position:absolute;right:22px;bottom:18px;width:52px;height:36px;opacity:.8}
 
   /* white inner boxes keep content crisp on the colored panels */
   .demo-inner,.fr-inner,.m-inner{background:#fff;border-radius:16px;box-shadow:0 1px 3px rgba(20,40,25,.05);border:1px solid rgba(20,40,25,.05)}
@@ -295,7 +294,7 @@
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#" aria-label="Quantica home">
+    <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" aria-label="Quantica home">
       <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#2A4A34"/><circle cx="21.5" cy="11" r="3.6" fill="#7CB342"/></svg>
       Quantica
     </a>
@@ -314,7 +313,7 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#how">How it works</a><a href="#tutor">The tutor</a><a href="#click">Why it clicks</a><a href="#adapt">Adapts to you</a><a href="#curriculum">Courses</a><a href="#progress">Progress</a><a href="#parents">For parents</a><a href="/paths/home.html">Sign in</a>
+    <a href="#how">How it works</a><a href="#tutor">The tutor</a><a href="#click">Why it clicks</a><a href="#adapt">Adapts to you</a><a href="#curriculum">Courses</a><a href="#progress">Progress</a><a href="#trust">Why this works</a><a href="/paths/home.html">Sign in</a>
     <a class="btn btn-primary" href="/paths/home.html">Start free</a>
   </div>
 </header>
@@ -322,7 +321,7 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Math for middle school &amp; up</span>
+      <span class="eyebrow">Prealgebra to Calculus &mdash; for every curious learner</span>
       <h1>Don't memorize math.<br><span style="color:var(--accent)">Understand it.</span></h1>
       <p class="lead">Quantica teaches you to break a hard problem into pieces you already understand — the deep, real reasoning top students get, without the intimidation that makes most people quit.</p>
       <div class="hero-cta">
@@ -343,7 +342,6 @@
       </div>
       </div>
       <p class="demo-caption"><b>You don't grind it.</b> You learn to spot the shortcut hiding in the problem.</p>
-      <svg class="companion" viewBox="0 0 80 56" aria-hidden="true"><path d="M8 40c6-2 10-8 18-8 10 0 12 6 22 6 8 0 14-6 22-10-2 8-10 14-20 15-6 12-18 12-26 8-8-4-14-8-16-11z" fill="#c3d3b3"/><circle cx="66" cy="27" r="2.4" fill="#2A4A34"/></svg>
     </div>
   </div>
 </section>
@@ -651,14 +649,15 @@
     <div class="sec-head" style="text-align:center;max-width:none;margin:0 auto">
       <span class="eyebrow" style="justify-content:center">Why this works</span>
       <h2 style="margin:14px auto 0;max-width:24ch">Real learning &mdash; and none of the tricks.</h2>
+      <p style="margin:16px auto 0;max-width:56ch">Built to be trusted with a learner&rsquo;s time &mdash; the honest answers up front, whether you&rsquo;re the one studying or the one watching over their shoulder.</p>
     </div>
     <div class="trust-grid">
       <div class="t"><div class="th">You solve first, then name the idea</div><p>Discovering the pattern yourself builds far stronger memory than copying a formula someone handed you.</p></div>
       <div class="t"><div class="th">Just-hard-enough problems</div><p>The adaptive engine keeps you in the zone where real effort &mdash; not boredom, not panic &mdash; makes it click.</p></div>
       <div class="t"><div class="th">It comes back on a schedule</div><p>Earlier ideas resurface as you go, spaced over time &mdash; the most proven way to make learning last.</p></div>
-      <div class="t"><div class="th">Sprout guides, never just answers</div><p>The AI tutor asks questions and stays on the math &mdash; so the idea stays yours, never a homework shortcut.</p></div>
-      <div class="t"><div class="th">Mastery, not addiction</div><p>No streak-guilt, no leagues, no manipulative pressure. Progress reflects understanding, not time logged.</p></div>
-      <div class="t"><div class="th">Private, and honest about money</div><p>We don&rsquo;t sell your data, and we&rsquo;ll never charge without you choosing a plan first. <a href="#">Who&rsquo;s behind it &rarr;</a></p></div>
+      <div class="t"><div class="th">Sprout guides, never just answers</div><p>The AI tutor asks questions, stays on the math, and won&rsquo;t wander off-topic &mdash; so the idea stays yours, never a homework shortcut.</p></div>
+      <div class="t"><div class="th">Built to teach, not to hook</div><p>No streak-guilt, no leagues, no manipulative pressure. Rewards are cosmetic-only, and progress is a gentle &ldquo;days you showed up&rdquo; &mdash; never a streak you can lose.</p></div>
+      <div class="t"><div class="th">Private, and honest about money</div><p>Work stays private, we don&rsquo;t sell data, and we&rsquo;ll never charge without you choosing a plan first. Younger kids? Set it up together &mdash; details in our <a href="/privacy.html" style="color:var(--accent);font-weight:600">privacy policy</a>.</p></div>
     </div>
   </div>
 </section>
@@ -685,6 +684,24 @@
       </div>
       <div class="dial-labels"><span>Gentle</span><span>Challenge</span></div>
       <div class="dial-note">Tuned to <b>Challenge</b> — fewer hints, tougher problems, because you're strong here.<span class="cog">⚙ Change it whenever you like.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="progress">
+  <div class="wrap prog-grid">
+    <div class="sec-head">
+      <span class="eyebrow">Progress you can see</span>
+      <h2>Mastery, not hours logged.</h2>
+      <p>More than streaks or time spent — real evidence of where you're strong, where you're still building, and that you're getting better at thinking through problems on your own.</p>
+    </div>
+    <div class="mastery" aria-label="Example progress by topic">
+      <div class="m-inner">
+      <div class="mrow"><span class="lbl">Negatives</span><div class="bar"><i style="width:92%"></i></div><span class="pct">92%</span></div>
+      <div class="mrow"><span class="lbl">Multiplication</span><div class="bar"><i style="width:78%"></i></div><span class="pct">78%</span></div>
+      <div class="mrow shaky"><span class="lbl">Fractions</span><div class="bar"><i style="width:41%"></i></div><span class="pct">41%</span></div>
+      <div class="mrow"><span class="lbl">Ratios</span><div class="bar"><i style="width:64%"></i></div><span class="pct">64%</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -731,24 +748,6 @@
   </div>
 </section>
 
-<section id="progress">
-  <div class="wrap prog-grid">
-    <div class="sec-head">
-      <span class="eyebrow">Progress you can see</span>
-      <h2>Mastery, not hours logged.</h2>
-      <p>More than streaks or time spent — real evidence of where you're strong, where you're still building, and that you're getting better at thinking through problems on your own.</p>
-    </div>
-    <div class="mastery" aria-label="Example progress by topic">
-      <div class="m-inner">
-      <div class="mrow"><span class="lbl">Negatives</span><div class="bar"><i style="width:92%"></i></div><span class="pct">92%</span></div>
-      <div class="mrow"><span class="lbl">Multiplication</span><div class="bar"><i style="width:78%"></i></div><span class="pct">78%</span></div>
-      <div class="mrow shaky"><span class="lbl">Fractions</span><div class="bar"><i style="width:41%"></i></div><span class="pct">41%</span></div>
-      <div class="mrow"><span class="lbl">Ratios</span><div class="bar"><i style="width:64%"></i></div><span class="pct">64%</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="faq">
   <div class="wrap">
     <div class="sec-head" style="max-width:none;text-align:center;margin:0 auto 40px">
@@ -761,22 +760,6 @@
       <details><summary>Do I need to be good at math already?</summary><p>No. Every course is built from the ground up, and Sprout is there whenever a problem stops you.</p></details>
       <details><summary>Is it really free to start?</summary><p>Yes &mdash; free for a limited time while we&rsquo;re in early access. The full Prealgebra course (12 chapters, 70 lessons), no card required.</p></details>
       <details><summary>Do I need to buy each course?</summary><p>No. It&rsquo;s all free right now &mdash; a limited-time thing while we&rsquo;re in early access. When we launch, one simple plan will be $30/month for every course, and Prealgebra will always stay free. We&rsquo;ll never charge without you choosing it first.</p></details>
-    </div>
-  </div>
-</section>
-
-<section id="parents">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">For parents</span>
-      <h2>Made to be trusted with your kid&rsquo;s time.</h2>
-      <p>The honest answers, up front &mdash; not a slot machine dressed up as learning.</p>
-    </div>
-    <div class="loop">
-      <div class="step-card"><span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="n">On task</span><h3>A tutor that stays focused</h3><p>Sprout guides with questions and is kept on the math at hand. It won&rsquo;t hand over answers or wander off-topic.</p></div>
-      <div class="step-card"><span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C7 17 4 14 4 9.5A4 4 0 0112 7a4 4 0 018 2.5C20 14 17 17 12 21z"/></svg></span><span class="n">No dark patterns</span><h3>Built to teach, not to hook</h3><p>Cosmetics-only rewards, a gentle &ldquo;days you showed up&rdquo; record instead of a streak you can lose, and we never charge without you choosing a plan.</p></div>
-      <div class="step-card"><span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></span><span class="n">Privacy</span><h3>Your child&rsquo;s work stays private</h3><p>Read exactly what we collect and why in our <a href="/privacy.html" style="color:var(--accent);font-weight:600">privacy policy</a>.</p></div>
-      <div class="step-card"><span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 15c2.6.2 4.5 1.9 4.5 5"/></svg></span><span class="n">Younger learners</span><h3>Set it up together</h3><p>For younger kids, start Quantica with a parent. Account and age details are in our <a href="/privacy.html" style="color:var(--accent);font-weight:600">privacy policy</a>.</p></div>
     </div>
   </div>
 </section>
