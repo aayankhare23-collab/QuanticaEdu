@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 10_paths: kill the legacy .wmb marketing hero as early as possible, in <head>, BEFORE its
+     HTML (line ~1428) is ever parsed — otherwise the browser paints the old "QuanticaEdu"
+     landing while streaming and only hides it 3000 lines later, which flashes on real loads.
+     Marketing now lives at /paths/landing.html; this file is the course app only. -->
+<style>.wmb{display:none!important}</style>
 <!-- Google Analytics 4 — kids-safe config; only loads on quanticaedu.com and skips founder-flagged devices (/?imfounder=1) -->
 <script>
   window.dataLayer=window.dataLayer||[];
@@ -1425,7 +1430,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 }
 </style>
 
-<div class="wmb">
+<div class="wmb" style="display:none" aria-hidden="true">
 <a id="top"></a>
 
 <!-- NAV -->
