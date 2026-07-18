@@ -15,6 +15,27 @@
     --ff-display:'Fraunces',Georgia,serif; --ff-body:'Inter',system-ui,sans-serif; --ff-ui:'Space Grotesk',var(--ff-body);
     --topbar:60px;
   }
+  /* ===== Cove theme (Algebra I) — same layout, ocean palette ===== */
+  :root[data-course="algebra1"]{
+    --paper:#F6FBFE; --card:#FFFFFF; --ink:#123049;
+    --forest:#1C5486; --moss:#2E7CC0; --grass:#4D9EDD; --lime:#BFE2F7; --sage:#6699C0;
+    --btn:#3E8FCE; --btn-edge:#2E6FAE; --btn-hover:#3782C2;
+    --gray:#4E6577; --gray-soft:#8AA1B6; --line:#DBE9F4; --line-2:#EAF3FB; --tint:#E4F1FB;
+  }
+  [data-course="algebra1"] .wnode{box-shadow:0 6px 0 #CFE1F1,0 12px 16px -9px rgba(18,40,60,.28)}
+  [data-course="algebra1"] .wnode:active{box-shadow:0 2px 0 #CFE1F1,0 8px 12px -8px rgba(18,40,60,.28)}
+  [data-course="algebra1"] .wnode.done{box-shadow:0 6px 0 #2E6FAE,0 12px 16px -9px rgba(18,40,60,.3)}
+  [data-course="algebra1"] .wnode.done:active{box-shadow:0 2px 0 #2E6FAE,0 8px 12px -8px rgba(18,40,60,.3)}
+  [data-course="algebra1"] .wnode.current{box-shadow:0 6px 0 #2E6FAE,0 0 0 7px rgba(77,158,221,.16),0 14px 22px -10px rgba(18,40,60,.4);animation-name:breathe-cove}
+  @keyframes breathe-cove{0%,100%{box-shadow:0 6px 0 #2E6FAE,0 0 0 7px rgba(77,158,221,.16),0 14px 22px -10px rgba(18,40,60,.4)}50%{box-shadow:0 6px 0 #2E6FAE,0 0 0 12px rgba(77,158,221,.08),0 14px 22px -10px rgba(18,40,60,.4)}}
+  [data-course="algebra1"] .wtrail .track path{stroke:#BFD9F0}
+  [data-course="algebra1"] .avatar{background:#DCEDFB;border-color:#B9D6F0}
+  [data-course="algebra1"] .avatar svg{stroke:#2E6FAE}
+  [data-course="algebra1"] .sbar{background:#E1EDF7}
+  [data-course="algebra1"] .nextup .gbar{background:#D6E7F6}
+  [data-course="algebra1"] .gtoolbar .seeds{border-color:#C3DBF1}
+  [data-course="algebra1"] .shop-item{background:#F2F8FD}
+  [data-course="algebra1"] .sig .ring{background:conic-gradient(var(--grass) 0%, #CFE1F1 0)}
   body{font-family:var(--ff-body);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:clip}
   .eyebrow{font-family:var(--ff-ui);font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
 
@@ -217,15 +238,15 @@
 
 <div class="topbar">
   <a class="brand" href="/paths/home.html">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    <svg id="brandMark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
     Quantica
   </a>
   <div class="coursesel" id="coursesel">
     <span class="cur" id="courseCur">Prealgebra <svg class="cv" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
     <div class="menu">
       <div class="mh">Your courses</div>
-      <a class="on" href="/paths/home.html">Prealgebra <span class="tag">Now</span></a>
-      <a href="/landing.html?course=algebra1&lesson=1.1">Algebra I <span class="tag">Free</span></a>
+      <a data-c="prealgebra" href="/paths/home.html?course=prealgebra">Prealgebra <span class="tag">Now</span></a>
+      <a data-c="algebra1" href="/paths/home.html?course=algebra1">Algebra I <span class="tag">Free</span></a>
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Geometry <span class="tag">Soon</span></a>
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Number Theory <span class="tag">Soon</span></a>
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Counting &amp; Probability <span class="tag">Soon</span></a>
@@ -257,12 +278,24 @@
 
 <script>
 (function(){
-  var COURSE='prealgebra';
+  // Course-aware home: Prealgebra is Sprout (green), Algebra I is Cove (blue). Same page, re-themed.
+  var _params=new URLSearchParams(location.search);
+  var COURSE=(_params.get('course')||localStorage.getItem('quantica.course')||'prealgebra');
+  if(COURSE!=='prealgebra'&&COURSE!=='algebra1') COURSE='prealgebra';
+  try{ localStorage.setItem('quantica.course',COURSE); }catch(e){}
+  document.documentElement.setAttribute('data-course',COURSE);
+  var IS_ALG=(COURSE==='algebra1');
+  var GUIDE=IS_ALG?'Cove':'Sprout';
+  var MASCOT=IS_ALG?'assets/cove/cove-hero.png':'assets/spot/spot-hero.png';
+  var COURSE_NAME=IS_ALG?'Algebra I':'Prealgebra';
+  var STREAK_ICO=IS_ALG?'🌊':'🌱';
   var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
   var TARGET='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>';
   var TROPHY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>';
   var BOLT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>';
-  var SPRIG='<svg width="52" height="19" viewBox="0 0 54 20" aria-hidden="true"><path d="M27 19 C27 12 27 8 27 3" stroke="#6FAE5A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M27 9 C20 4 12 5 8 10 C15 15 23 14 27 9Z" fill="#8FC275"/><path d="M27 7 C34 3 42 4 46 9 C39 14 31 12 27 7Z" fill="#7FB565"/></svg>';
+  var SPRIG_LEAF='<svg width="52" height="19" viewBox="0 0 54 20" aria-hidden="true"><path d="M27 19 C27 12 27 8 27 3" stroke="#6FAE5A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M27 9 C20 4 12 5 8 10 C15 15 23 14 27 9Z" fill="#8FC275"/><path d="M27 7 C34 3 42 4 46 9 C39 14 31 12 27 7Z" fill="#7FB565"/></svg>';
+  var SPRIG_WAVE='<svg width="52" height="16" viewBox="0 0 54 16" aria-hidden="true"><path d="M2 10 C9 3 15 3 22 10 C29 17 35 17 42 10 C46 6 50 6 52 8" stroke="#4D9EDD" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M2 6 C9 0 15 0 22 6" stroke="#A9D8F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/></svg>';
+  var SPRIG=IS_ALG?SPRIG_WAVE:SPRIG_LEAF;
 
   var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{} };
 
@@ -318,7 +351,7 @@
         '<div class="drange">'+range+'</div>'+
         '<div class="dweek">'+wk+'</div>'+
         '<div class="daysgrid">'+cells+'</div>'+
-        '<div class="days-cap"><span aria-hidden="true">&#127793;</span> '+
+        '<div class="days-cap"><span aria-hidden="true">'+STREAK_ICO+'</span> '+
           (streakN>0?('<b>'+streakN+'-day</b>&nbsp;streak'):'<b>Day 1</b>&nbsp;starts today')+'</div>';
       var p=document.getElementById('dPrev'), n=document.getElementById('dNext');
       if(p) p.onclick=function(){ off++; render(); };
@@ -327,28 +360,40 @@
     return { init:init, render:render };
   })();
 
-  // The garden: earn Seeds from problems, buy plants/critters in the Greenhouse, and drag them
-  // anywhere on your trail. Placements are per-chapter and saved; Seeds live in the shared profile.
+  // The garden: earn Seeds from problems, buy decorations, and drag them anywhere on your trail.
+  // Themed per course — a plant Greenhouse for Sprout, an ocean Tide pool for Cove. Placements are
+  // saved per course+chapter; Seeds live in the shared profile.
   var Garden=(function(){
     var KEY='quantica.garden.v1', PKEY='quantica.profile.v1';
-    var CATALOG=[
-      {id:'sprout',e:'🌱',n:'Sprout',c:3,lock:0},
-      {id:'fern',e:'🌿',n:'Fern',c:4,lock:0},
-      {id:'clover',e:'🍀',n:'Clover',c:4,lock:0},
-      {id:'rock',e:'🪨',n:'Mossy rock',c:5,lock:0},
-      {id:'daisy',e:'🌼',n:'Daisy',c:5,lock:1},
-      {id:'tulip',e:'🌷',n:'Tulip',c:6,lock:1},
-      {id:'toad',e:'🍄',n:'Toadstool',c:6,lock:2},
-      {id:'blossom',e:'🌸',n:'Blossom',c:7,lock:2},
-      {id:'ladybug',e:'🐞',n:'Ladybug',c:7,lock:3},
-      {id:'butterfly',e:'🦋',n:'Butterfly',c:9,lock:4},
-      {id:'bee',e:'🐝',n:'Bee',c:9,lock:4},
-      {id:'tree',e:'🌳',n:'Sapling',c:14,lock:6}
-    ];
+    var CATALOGS={
+      prealgebra:{ shop:'🪴 Greenhouse', sub:'Spend Seeds you earn from problems to grow your trail. Keep learning to unlock more.',
+        items:[
+          {id:'sprout',e:'🌱',n:'Sprout',c:3,lock:0},{id:'fern',e:'🌿',n:'Fern',c:4,lock:0},
+          {id:'clover',e:'🍀',n:'Clover',c:4,lock:0},{id:'rock',e:'🪨',n:'Mossy rock',c:5,lock:0},
+          {id:'daisy',e:'🌼',n:'Daisy',c:5,lock:1},{id:'tulip',e:'🌷',n:'Tulip',c:6,lock:1},
+          {id:'toad',e:'🍄',n:'Toadstool',c:6,lock:2},{id:'blossom',e:'🌸',n:'Blossom',c:7,lock:2},
+          {id:'ladybug',e:'🐞',n:'Ladybug',c:7,lock:3},{id:'butterfly',e:'🦋',n:'Butterfly',c:9,lock:4},
+          {id:'bee',e:'🐝',n:'Bee',c:9,lock:4},{id:'tree',e:'🌳',n:'Sapling',c:14,lock:6}
+        ],
+        welcome:[['fern',9,14],['sprout',91,12],['rock',88,85],['clover',10,50],['daisy',92,50]] },
+      algebra1:{ shop:'🐚 Tide pool', sub:'Spend Seeds you earn from problems to fill your reef. Keep learning to unlock more.',
+        items:[
+          {id:'shell',e:'🐚',n:'Shell',c:3,lock:0},{id:'coral',e:'🪸',n:'Coral',c:4,lock:0},
+          {id:'star',e:'⭐',n:'Starfish',c:4,lock:0},{id:'pebble',e:'🪨',n:'Sea rock',c:5,lock:0},
+          {id:'bubbles',e:'🫧',n:'Bubbles',c:5,lock:1},{id:'fish',e:'🐠',n:'Fish',c:6,lock:1},
+          {id:'crab',e:'🦀',n:'Crab',c:6,lock:2},{id:'wave',e:'🌊',n:'Wavelet',c:7,lock:2},
+          {id:'turtle',e:'🐢',n:'Turtle',c:7,lock:3},{id:'octopus',e:'🐙',n:'Octopus',c:9,lock:4},
+          {id:'dolphin',e:'🐬',n:'Dolphin',c:9,lock:4},{id:'isle',e:'🏝️',n:'Little isle',c:14,lock:6}
+        ],
+        welcome:[['coral',9,14],['shell',91,12],['pebble',88,85],['star',10,50],['bubbles',92,50]] }
+    };
+    var CAT=CATALOGS[COURSE]||CATALOGS.prealgebra;
+    var CATALOG=CAT.items;
     var byId={}; CATALOG.forEach(function(it){ byId[it.id]=it; });
-    var g={placed:{},seq:0,welcomed:false}, editing=false;
+    var g={placed:{},seq:0,welcomed:{}}, editing=false;
+    function pk(ch){ return COURSE+':'+ch; }   // placements are per course+chapter
 
-    function load(){ try{ var v=JSON.parse(localStorage.getItem(KEY)); if(v) g=v; }catch(e){} if(!g.placed) g.placed={}; if(!g.seq) g.seq=0; }
+    function load(){ try{ var v=JSON.parse(localStorage.getItem(KEY)); if(v) g=v; }catch(e){} if(!g.placed) g.placed={}; if(!g.seq) g.seq=0; if(!g.welcomed||typeof g.welcomed!=='object') g.welcomed={}; }
     function save(){ try{ localStorage.setItem(KEY,JSON.stringify(g)); }catch(e){} }
     function seeds(){ try{ return (JSON.parse(localStorage.getItem(PKEY))||{}).gems||0; }catch(e){ return 0; } }
     function spend(nn){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}; if((P.gems||0)<nn) return false; P.gems=(P.gems||0)-nn; localStorage.setItem(PKEY,JSON.stringify(P)); return true; }catch(e){ return false; } }
@@ -356,21 +401,17 @@
 
     function grantStarterSeeds(n){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}; if(!P.__gardenWelcome){ P.gems=(P.gems||0)+n; P.__gardenWelcome=1; localStorage.setItem(PKEY,JSON.stringify(P)); } }catch(e){} }
     function welcome(){
-      if(g.welcomed) return; g.welcomed=true;
-      var ch=(state.chapters[0]&&state.chapters[0].n)||1;
-      // a fuller starter set so the trail looks alive on day one...
-      g.placed[ch]=(g.placed[ch]||[]).concat([
-        {id:'g'+(++g.seq),item:'fern',x:9,y:14},
-        {id:'g'+(++g.seq),item:'sprout',x:91,y:12},
-        {id:'g'+(++g.seq),item:'rock',x:88,y:85},
-        {id:'g'+(++g.seq),item:'clover',x:10,y:50},
-        {id:'g'+(++g.seq),item:'daisy',x:92,y:50}
-      ]);
-      grantStarterSeeds(12);   // ...plus a few Seeds so they can immediately plant their own picks
+      if(g.welcomed[COURSE]) return; g.welcomed[COURSE]=1;
+      var ch=(state.chapters[0]&&state.chapters[0].n)||1, key=pk(ch);
+      // a fuller starter set (themed per course) so the trail looks alive on day one...
+      g.placed[key]=(g.placed[key]||[]).concat(CAT.welcome.map(function(w){
+        return {id:'g'+(++g.seq),item:w[0],x:w[1],y:w[2]};
+      }));
+      grantStarterSeeds(12);   // ...plus a few Seeds so they can immediately place their own picks
       save();
     }
     function itemsHTML(ch){
-      var arr=g.placed[ch]||[], h='';
+      var arr=g.placed[pk(ch)]||[], h='';
       arr.forEach(function(p){ var it=byId[p.item]; if(!it) return;
         h+='<span class="gitem" data-gid="'+p.id+'" style="left:'+p.x+'%;top:'+p.y+'%">'+it.e+
            '<button class="grm" data-rm="'+p.id+'" aria-label="Remove" tabindex="-1">&times;</button></span>'; });
@@ -387,19 +428,19 @@
           try{ el.setPointerCapture(ev.pointerId); }catch(_){}
           function move(e){ var x=((e.clientX-rect.left)/rect.width)*100, y=((e.clientY-rect.top)/rect.height)*100;
             x=Math.max(2,Math.min(98,x)); y=Math.max(1.5,Math.min(98.5,y)); el.style.left=x+'%'; el.style.top=y+'%';
-            var it=(g.placed[ch]||[]).filter(function(p){return p.id===gid;})[0]; if(it){ it.x=x; it.y=y; } }
+            var it=(g.placed[pk(ch)]||[]).filter(function(p){return p.id===gid;})[0]; if(it){ it.x=x; it.y=y; } }
           function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); save(); }
           el.addEventListener('pointermove',move); el.addEventListener('pointerup',up);
         });
       });
     }
-    function removeItem(ch,gid){ g.placed[ch]=(g.placed[ch]||[]).filter(function(p){return p.id!==gid;}); save(); renderTrail(); renderBar(); }
+    function removeItem(ch,gid){ var key=pk(ch); g.placed[key]=(g.placed[key]||[]).filter(function(p){return p.id!==gid;}); save(); renderTrail(); renderBar(); }
     function buy(item){
       var it=byId[item]; if(!it) return;
       if(lessonsDone()<it.lock){ toast('Reach '+it.lock+' lessons to unlock '+it.n); return; }
       if(!spend(it.c)){ toast('Not enough Seeds — earn them by solving problems'); renderShop(); return; }
       editing=true;
-      (g.placed[state.active]=g.placed[state.active]||[]).push({id:'g'+(++g.seq),item:item,x:48+(g.seq%5)*2,y:46+(g.seq%7)*2});
+      var akey=pk(state.active); (g.placed[akey]=g.placed[akey]||[]).push({id:'g'+(++g.seq),item:item,x:48+(g.seq%5)*2,y:46+(g.seq%7)*2});
       save(); closeShop(); renderTrail(); renderBar();
       toast('Planted! Drag '+it.n+' where you like — tap Done when finished');
     }
@@ -423,7 +464,7 @@
     function renderBar(){
       var bar=document.getElementById('gtoolbar'); if(!bar) return;
       bar.innerHTML='<span class="seeds" title="Seeds — earn them by solving problems">🌱 '+seeds()+'</span>'+
-        '<button class="gbtn" id="ghouseBtn">🪴 Greenhouse</button>'+
+        '<button class="gbtn" id="ghouseBtn">'+CAT.shop+'</button>'+
         '<button class="gbtn'+(editing?' on':'')+'" id="geditBtn">'+(editing?'✓ Done':'✎ Arrange')+'</button>';
       document.getElementById('ghouseBtn').onclick=openShop;
       document.getElementById('geditBtn').onclick=toggleEdit;
@@ -431,8 +472,8 @@
     function initDom(){
       if(document.getElementById('shopOv')) return;
       var ov=document.createElement('div'); ov.id='shopOv'; ov.className='shop-ov';
-      ov.innerHTML='<div class="shop" role="dialog" aria-label="Greenhouse"><div class="shop-head"><h3>🪴 Greenhouse</h3><span class="shop-bal">🌱 <b id="shopSeeds">0</b></span><button class="shop-x" id="shopX" aria-label="Close">&times;</button></div>'+
-        '<p class="shop-sub">Spend Seeds you earn from problems to grow your trail. Keep learning to unlock more.</p><div class="shop-grid" id="shopGrid"></div></div>';
+      ov.innerHTML='<div class="shop" role="dialog" aria-label="'+CAT.shop.replace(/^\S+\s/,'')+'"><div class="shop-head"><h3>'+CAT.shop+'</h3><span class="shop-bal">🌱 <b id="shopSeeds">0</b></span><button class="shop-x" id="shopX" aria-label="Close">&times;</button></div>'+
+        '<p class="shop-sub">'+CAT.sub+'</p><div class="shop-grid" id="shopGrid"></div></div>';
       document.body.appendChild(ov);
       ov.addEventListener('click',function(e){ if(e.target===ov) closeShop(); });
       document.getElementById('shopX').onclick=closeShop;
@@ -458,9 +499,9 @@
       '<div class="eyebrow">'+(fresh?'Start here':'Pick up where you left off')+'</div>'+
       '<div class="lz">Chapter '+ch.n+' · '+esc(ch.t)+'</div>'+
       '<h2>'+state.current+' — '+esc(les.t)+'</h2>'+
-      '<p>'+(fresh?'Your very first lesson. Sprout will guide you the whole way.':'Jump back in whenever you are ready.')+'</p>'+
+      '<p>'+(fresh?('Your very first lesson. '+GUIDE+' will guide you the whole way.'):'Jump back in whenever you are ready.')+'</p>'+
       '<a class="cta3d cbtn" href="'+url(state.current)+'">'+(fresh?'Start learning':'Continue')+'&nbsp;<span aria-hidden="true">&rarr;</span></a>'+
-      '<span class="spot"><img src="assets/spot/spot-hero.png" alt="Sprout"></span>';
+      '<span class="spot"><img src="'+MASCOT+'" alt="'+GUIDE+'"></span>';
   }
 
   function renderChapterCard(){
@@ -539,14 +580,16 @@
   function strLabel(s){ return s>=.85?'Strong':(s>=.68?'Solid':(s>=.5?'Building':'Getting started')); }
   function shortSkill(t){ t=String(t||''); var c=t.indexOf(','); if(c>3&&c<=22) t=t.slice(0,c); t=t.replace(/[?.!]$/,''); return t.length>26?t.slice(0,24)+'…':t; }
   function strengthCard(){
-    var sk=state.skill||{}, rows=[];
-    Object.keys(sk).forEach(function(k){
-      var e=sk[k]; if(!e||(e.n||0)<1) return;
+    var sk=state.skill||{}, rows=[], pre=COURSE+':';
+    Object.keys(sk).forEach(function(fullK){
+      if(fullK.indexOf(pre)!==0) return;                 // only this course's skills
+      var k=fullK.slice(pre.length);
+      var e=sk[fullK]; if(!e||(e.n||0)<1) return;
       var les=null;
       for(var i=0;i<state.chapters.length&&!les;i++){ var L=state.chapters[i].lessons;
         for(var j=0;j<L.length;j++){ if(L[j].k===k){ les=L[j]; break; } } }
       if(!les||nonTeaching(les.t)) return;
-      rows.push({ k:k, name:shortSkill(les.t), s:Math.max(0,Math.min(1,e.s)) });
+      rows.push({ k:fullK, name:shortSkill(les.t), s:Math.max(0,Math.min(1,e.s)) });
     });
     if(!rows.length) return null;
     rows.sort(function(a,b){ return b.s-a.s; }); rows=rows.slice(0,4);
@@ -581,7 +624,7 @@
       first+
       '<div class="rc" id="dayCard"></div>'+
       '<div class="rc"><h4>Today&rsquo;s focus</h4>'+
-        '<p class="lead">One lesson keeps the momentum. Sprout is ready the moment you get stuck.</p>'+
+        '<p class="lead">One lesson keeps the momentum. '+GUIDE+' is ready the moment you get stuck.</p>'+
         '<a class="cta3d rc-cta" href="'+url(state.current)+'">'+(fresh?'Start ':'Continue ')+state.current+'&nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
     DayGrid.render();
   }
@@ -594,6 +637,14 @@
   if(cur){ cur.addEventListener('click',function(e){ e.stopPropagation(); sel.classList.toggle('open'); }); }
   document.addEventListener('click',function(){ sel&&sel.classList.remove('open'); });
 
+  // reflect the active course in the chrome (label, active menu item, avatar link, streak icon)
+  if(cur && cur.firstChild && cur.firstChild.nodeType===3) cur.firstChild.nodeValue=COURSE_NAME+' ';
+  document.title='Quantica — '+COURSE_NAME;
+  [].forEach.call(document.querySelectorAll('.coursesel .menu a[data-c]'),function(a){ a.classList.toggle('on', a.getAttribute('data-c')===COURSE); });
+  var _av=document.querySelector('.avatar'); if(_av) _av.setAttribute('href','/landing.html?course='+COURSE+'&start=1');
+  var _si=document.querySelector('#streakPill span'); if(_si) _si.textContent=STREAK_ICO;
+  if(IS_ALG){ var _bm=document.getElementById('brandMark'); if(_bm) _bm.innerHTML='<rect x="3" y="3" width="26" height="26" rx="9" fill="#1C5486"/><path d="M7 19c3-3 5.5-3 9 0 3.5 3 6 3 9 0" stroke="#7FC1EA" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M8 13.5c2.7-2.6 5-2.6 8 0" stroke="#BFE2F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85"/>'; }
+
   // load the real course structure, then render
   fetch('/lessons/'+COURSE+'/toc.json').then(function(r){ return r.json(); }).then(function(toc){
     state.chapters=toc;
@@ -605,7 +656,7 @@
     DayGrid.init(prog.streak, prog.lastActive);
     Garden.init();
     if(prog.streak>0){ var sp=document.getElementById('streakPill'); if(sp){ sp.style.display=''; var b=sp.querySelector('b'); if(b) b.textContent=prog.streak; } }
-    document.getElementById('footNote').textContent='Quantica course home · Prealgebra · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
+    document.getElementById('footNote').textContent='Quantica course home · '+COURSE_NAME+' · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
     renderAll();
   }).catch(function(e){
     document.getElementById('chapterCard').innerHTML='<div class="csub">Could not load the course outline. Make sure the site is served over http (not opened as a file).</div>';

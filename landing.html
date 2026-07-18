@@ -4186,7 +4186,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   //   clean independent solve = 1.0 · solved after wrong tries = 0.78 · with a hint = 0.60 · saw solution = 0.30
   function recordSkillOutcome(rec, saw){
     try{
-      var lk=window.__curLesson; if(!lk) return;
+      var raw=window.__curLesson; if(!raw) return;
+      var lk=((COURSE&&COURSE.slug)?COURSE.slug:'prealgebra')+':'+raw;   // course-scoped so skills don't collide across courses
       var o = saw ? 0.30 : ((rec.hintsUsed>0) ? 0.60 : ((rec.attempts>0) ? 0.78 : 1.0));
       if(!P.skill) P.skill={};
       var e=P.skill[lk], a=0.35;
