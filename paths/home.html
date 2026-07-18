@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quantica — Course Home</title>
+<title>Quantica · Course Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
@@ -254,7 +254,7 @@
     </div>
   </div>
   <div class="tb-right">
-    <div class="sig" title="Your mastery fills in as you learn — nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
+    <div class="sig" title="Your mastery fills in as you learn; nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
     <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
     <a class="avatar lift" href="/landing.html?course=prealgebra&start=1" aria-label="Your progress"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
   </div>
@@ -265,7 +265,7 @@
   <main>
     <section class="continue" id="continueCard"></section>
     <div class="path-head"><h3>Your path</h3><span class="h" id="pathHeadSub"></span></div>
-    <div class="order-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Take lessons in any order — we suggest top to bottom.</div>
+    <div class="order-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Take lessons in any order. Top to bottom works well.</div>
     <section class="chapter" id="chapterCard"></section>
     <div class="gtoolbar" id="gtoolbar"></div>
     <div class="wtrail" id="wtrail"></div>
@@ -438,11 +438,11 @@
     function buy(item){
       var it=byId[item]; if(!it) return;
       if(lessonsDone()<it.lock){ toast('Reach '+it.lock+' lessons to unlock '+it.n); return; }
-      if(!spend(it.c)){ toast('Not enough Seeds — earn them by solving problems'); renderShop(); return; }
+      if(!spend(it.c)){ toast('Not enough Seeds. Earn more by solving problems.'); renderShop(); return; }
       editing=true;
       var akey=pk(state.active); (g.placed[akey]=g.placed[akey]||[]).push({id:'g'+(++g.seq),item:item,x:48+(g.seq%5)*2,y:46+(g.seq%7)*2});
       save(); closeShop(); renderTrail(); renderBar();
-      toast('Planted! Drag '+it.n+' where you like — tap Done when finished');
+      toast('Planted! Drag '+it.n+' where you like, then tap Done.');
     }
     function toast(msg){ var t=document.getElementById('gtoast'); if(!t){ t=document.createElement('div'); t.id='gtoast'; t.className='gtoast'; document.body.appendChild(t); }
       t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },2800); }
@@ -463,7 +463,7 @@
     function toggleEdit(){ editing=!editing; renderTrail(); renderBar(); if(editing) toast('Drag items to move them, × to remove. Tap Done when finished.'); }
     function renderBar(){
       var bar=document.getElementById('gtoolbar'); if(!bar) return;
-      bar.innerHTML='<span class="seeds" title="Seeds — earn them by solving problems">🌱 '+seeds()+'</span>'+
+      bar.innerHTML='<span class="seeds" title="Seeds you earn by solving problems">🌱 '+seeds()+'</span>'+
         '<button class="gbtn" id="ghouseBtn">'+CAT.shop+'</button>'+
         '<button class="gbtn'+(editing?' on':'')+'" id="geditBtn">'+(editing?'✓ Done':'✎ Arrange')+'</button>';
       document.getElementById('ghouseBtn').onclick=openShop;
@@ -604,7 +604,7 @@
          '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+
          '<span class="slab">'+strLabel(r.s)+'</span></div>';
     });
-    h+='</div><p class="strfoot">Grows as you solve &mdash; clean, hint-free solves count most.</p></div>';
+    h+='</div><p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p></div>';
     var snap={}; rows.forEach(function(r){ snap[r.k]=r.s; });
     try{ var hs=JSON.parse(localStorage.getItem('quantica.home.v1'))||{}; hs.skillSnap=snap; localStorage.setItem('quantica.home.v1',JSON.stringify(hs)); }catch(e){}
     return h;
@@ -615,7 +615,7 @@
     var first = strengths ? strengths
       : (fresh
         ? '<div class="rc"><h4>New here?</h4>'+
-            '<p class="lead">Take a 2-minute check and we&rsquo;ll tune every lesson to your level &mdash; tougher where you&rsquo;re strong, gentler where you&rsquo;re building. Or just dive in. Your strengths show up here as you solve.</p>'+
+            '<p class="lead">Take a 2-minute check and we&rsquo;ll tune every lesson to your level, harder where you&rsquo;re strong and gentler where you&rsquo;re building. Or just dive in. Your strengths show up here as you solve.</p>'+
             '<a class="cta3d rc-cta" href="'+url('1.1')+'">Take the quick check</a></div>'
         : '<div class="rc"><h4>Where you are</h4>'+
             '<p class="lead">You&rsquo;re on <b>'+state.current+' &mdash; '+esc(lesOf(state.current).t)+'</b>. Solve a few problems and your strengths will show up here.</p>'+
@@ -639,7 +639,7 @@
 
   // reflect the active course in the chrome (label, active menu item, avatar link, streak icon)
   if(cur && cur.firstChild && cur.firstChild.nodeType===3) cur.firstChild.nodeValue=COURSE_NAME+' ';
-  document.title='Quantica — '+COURSE_NAME;
+  document.title='Quantica · '+COURSE_NAME;
   [].forEach.call(document.querySelectorAll('.coursesel .menu a[data-c]'),function(a){ a.classList.toggle('on', a.getAttribute('data-c')===COURSE); });
   var _av=document.querySelector('.avatar'); if(_av) _av.setAttribute('href','/landing.html?course='+COURSE+'&start=1');
   var _si=document.querySelector('#streakPill span'); if(_si) _si.textContent=STREAK_ICO;
