@@ -675,6 +675,8 @@
   /* concept-only lessons with no Key Ideas: hide that fab and slot the Notebook where it would sit; notebook opens right, chat stays left (shared layouts never apply) */
   .workspace.no-keys .ws-fab-ideas{display:none!important}
   .workspace.no-keys:not(.tut-open) .ws-fab-notes{top:206px}
+  /* only Key Ideas open (its own fab is hidden): shift the Notebook fab up into the Key Ideas slot */
+  .workspace.nb-open:not(.notes-open):not(.tut-open) .ws-fab-notes{top:206px}
   .ws-fab{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:19px;box-shadow:0 6px 20px -6px rgba(18,42,86,.32);transition:filter .15s,transform .15s}
   .ws-fab:hover{filter:brightness(1.1);transform:translateY(-2px)}
   .ws-fab:active{transform:scale(.93)}
@@ -4819,6 +4821,16 @@ async function sendTutorMsg() {
   .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#183c2c 0%,#0d2318 60%,#081b12 100%) !important;border-color:rgba(199,240,154,.24) !important}
   .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#183c2c,#0f2b1e) !important}
   .ws-tutor .tut-input{background:#16341f !important}
+  /* Prealgebra tutor: green-tint the bot bubbles so they match the green panel (base was navy) */
+  .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#204230,#173324) !important}
+  /* Cove (Algebra I) tutor: recolor the whole dark panel from green to blue so the chat matches the course */
+  [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#16324f 0%,#0d2033 60%,#08141f 100%) !important;border-color:rgba(120,190,240,.26) !important}
+  [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#16324f,#0f2740) !important}
+  [data-course="algebra1"] .ws-tuthead .av{background:#0f2740 !important}
+  [data-course="algebra1"] .ws-tutor .tut-input{background:#132a42 !important}
+  [data-course="algebra1"] .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#20456a,#16314c) !important}
+  [data-course="algebra1"] .ws-tutor .tut-bub.me,[data-course="algebra1"] .ws-tutor .tut-bub.usr,[data-course="algebra1"] .ws-tutor .tut-bub.user,[data-course="algebra1"] .ws-tutor .tut-bub.you{background:#5aaee8 !important;color:#06243a !important}
+  [data-course="algebra1"] .ws-tutor .snd{background:#5aaee8 !important;color:#06243a !important}
   /* Sprout chat launcher — the full character standing in the corner (like the landing hero),
      NOT a cropped circle: transparent, no chrome, soft drop-shadow so it reads as a mascot. */
   .ws-fab-chat{width:64px !important;height:76px !important;background:none !important;border:none !important;
