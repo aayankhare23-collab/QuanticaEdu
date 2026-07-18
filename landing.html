@@ -559,7 +559,7 @@
   .notes-sel{width:100%;font-family:'Inter';font-size:12.5px;font-weight:600;color:var(--slate);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:7px 10px;cursor:pointer}
   .notes-ta{flex:1;margin:10px 12px 12px;min-height:0;resize:none;border:1px solid var(--line);border-radius:12px;background:#fffef9;color:var(--ink);font-family:'Inter';font-size:14px;line-height:1.7;padding:13px 15px;outline:none}
   .notes-ta:focus{border-color:var(--grass);box-shadow:0 0 0 3px var(--softer)}
-  .ws-fab-notes{background:linear-gradient(135deg,var(--moss),var(--grass));color:#fff;position:fixed;top:288px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-notes{background:linear-gradient(135deg,var(--moss),var(--grass));color:#fff;position:fixed;top:278px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .ws-fab-notes svg{width:23px;height:23px}
   .workspace.tut-open .ws-fab-notes{top:170px;left:calc(100vw - 72px)}
   .workspace.notes-open .ws-fab-notes{display:none!important}
@@ -672,13 +672,16 @@
   .workspace.nb-open .ws-fab-ideas{display:none!important}
   /* notebook + key ideas both open (no tutor): move the Sprout/Cove chat button to the bottom-left of the question area, beside the notebook */
   .workspace.nb-open.notes-open:not(.tut-open) .ws-fab-group{top:auto;bottom:20px;left:calc(var(--nb-w) + 20px)}
+  /* concept-only lessons with no Key Ideas: hide that fab and slot the Notebook where it would sit; notebook opens right, chat stays left (shared layouts never apply) */
+  .workspace.no-keys .ws-fab-ideas{display:none!important}
+  .workspace.no-keys:not(.tut-open) .ws-fab-notes{top:206px}
   .ws-fab{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:19px;box-shadow:0 6px 20px -6px rgba(18,42,86,.32);transition:filter .15s,transform .15s}
   .ws-fab:hover{filter:brightness(1.1);transform:translateY(-2px)}
   .ws-fab:active{transform:scale(.93)}
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,var(--grass),var(--lime));color:#fff;position:fixed;top:224px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-ideas{background:linear-gradient(135deg,var(--grass),var(--lime));color:#fff;position:fixed;top:206px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
@@ -3609,7 +3612,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var eyebrow=(L&&L._eyebrow)?L._eyebrow:('Lesson '+key);
     var hasKeys=bp.pages.some(function(p){return !!p.keyIdea;});
     var segs=WS.pages.map(function(_,i){return '<span class="ws-seg" data-p="'+i+'"></span>';}).join('');
-    var html='<div class="workspace" id="wsWorkspace">'+
+    var html='<div class="workspace'+(hasKeys?'':' no-keys')+'" id="wsWorkspace">'+
       wsTutorHTML()+
       '<section class="ws-center" id="wsCenter">'+
         '<div class="ws-head"><span class="ws-eyebrow">'+eyebrow+'</span><span class="ws-title">'+(L.title||'')+'</span>'+
