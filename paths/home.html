@@ -454,7 +454,7 @@
         var locked=ld<it.lock, afford=s>=it.c;
         grid+='<div class="shop-item'+(locked?' locked':'')+'"><div class="si-e">'+it.e+'</div><div class="si-n">'+it.n+'</div>'+
           (locked?('<div class="si-lock">🔒 '+it.lock+' lessons</div>')
-                 :('<button class="si-buy'+(afford?'':' cant')+'" data-buy="'+it.id+'"'+(afford?'':' disabled')+'>🌱 '+it.c+'</button>'))+'</div>';
+                 :('<button class="si-buy'+(afford?'':' cant')+'" data-buy="'+it.id+'"'+(afford?'':' disabled')+'>💎 '+it.c+'</button>'))+'</div>';
       });
       var gr=document.getElementById('shopGrid'); if(gr){ gr.innerHTML=grid;
         gr.querySelectorAll('.si-buy').forEach(function(b){ b.addEventListener('click',function(){ buy(b.getAttribute('data-buy')); }); }); }
@@ -463,7 +463,7 @@
     function toggleEdit(){ editing=!editing; renderTrail(); renderBar(); if(editing) toast('Drag items to move them, × to remove. Tap Done when finished.'); }
     function renderBar(){
       var bar=document.getElementById('gtoolbar'); if(!bar) return;
-      bar.innerHTML='<span class="seeds" title="Seeds you earn by solving problems">🌱 '+seeds()+'</span>'+
+      bar.innerHTML='<span class="seeds" title="Seeds you earn by solving problems">💎 '+seeds()+'</span>'+
         '<button class="gbtn" id="ghouseBtn">'+CAT.shop+'</button>'+
         '<button class="gbtn'+(editing?' on':'')+'" id="geditBtn">'+(editing?'✓ Done':'✎ Arrange')+'</button>';
       document.getElementById('ghouseBtn').onclick=openShop;
@@ -472,7 +472,7 @@
     function initDom(){
       if(document.getElementById('shopOv')) return;
       var ov=document.createElement('div'); ov.id='shopOv'; ov.className='shop-ov';
-      ov.innerHTML='<div class="shop" role="dialog" aria-label="'+CAT.shop.replace(/^\S+\s/,'')+'"><div class="shop-head"><h3>'+CAT.shop+'</h3><span class="shop-bal">🌱 <b id="shopSeeds">0</b></span><button class="shop-x" id="shopX" aria-label="Close">&times;</button></div>'+
+      ov.innerHTML='<div class="shop" role="dialog" aria-label="'+CAT.shop.replace(/^\S+\s/,'')+'"><div class="shop-head"><h3>'+CAT.shop+'</h3><span class="shop-bal">💎 <b id="shopSeeds">0</b></span><button class="shop-x" id="shopX" aria-label="Close">&times;</button></div>'+
         '<p class="shop-sub">'+CAT.sub+'</p><div class="shop-grid" id="shopGrid"></div></div>';
       document.body.appendChild(ov);
       ov.addEventListener('click',function(e){ if(e.target===ov) closeShop(); });

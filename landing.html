@@ -318,6 +318,8 @@
   .coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
   .cb-left{display:flex;align-items:center;gap:14px}
   .cb-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--navy)}
+  .cb-course{font-family:'Inter';font-weight:500;font-size:13.5px;color:var(--mute);margin-left:8px;letter-spacing:.01em;white-space:nowrap}
+  @media(max-width:600px){.cb-course{font-size:12px;margin-left:6px}}
   .cb-logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:14px}
   .cb-back{display:none;align-items:center;gap:4px;font-family:'Inter';font-size:13.5px;font-weight:600;color:var(--mid);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer}
   .cb-back:hover{background:var(--softer);border-color:var(--sky)}
@@ -627,12 +629,12 @@
   .nb-idea{border:1px solid var(--glass-line);border-radius:12px;margin:0 0 8px;overflow:hidden;background:rgba(255,255,255,.5);transition:border-color .28s,background .28s,box-shadow .28s}
   .nb-idea.nb-arrive{animation:nbIn .36s cubic-bezier(.22,1,.36,1) both}
   @keyframes nbIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
-  .nb-idea.nb-new{border-color:rgba(245,176,32,.55);background:rgba(255,246,218,.92);box-shadow:0 0 0 2px rgba(245,176,32,.18)}
+  .nb-idea.nb-new{border-color:var(--grass);background:rgba(255,255,255,.92);box-shadow:0 0 0 2px var(--idea3)}
   .nb-idea:not(.nb-new){border-color:rgba(56,145,220,.3);background:rgba(230,240,255,.7)}
   .nb-toggle{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:11px 13px;text-align:left}
   .nb-star{font-size:12px;flex:none;color:var(--mute);transition:color .2s,transform .2s}
-  .nb-idea.nb-new .nb-star{color:#e8930a}
-  .nb-idea.nb-open .nb-star{transform:rotate(20deg);color:#e8930a}
+  .nb-idea.nb-new .nb-star{color:var(--moss)}
+  .nb-idea.nb-open .nb-star{transform:rotate(20deg);color:var(--moss)}
   .nb-label{font:600 12px/1.3 'Inter';color:var(--navy);flex:1}
   .nb-idea.nb-new .nb-label{color:#7a4e00}
   .nb-chevron{font-size:9px;color:var(--mute);flex:none;transition:transform .22s}
@@ -652,12 +654,12 @@
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,#e8930a,#f5c842);color:#fff;position:fixed;top:224px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-ideas{background:linear-gradient(135deg,var(--grass),var(--lime));color:#fff;position:fixed;top:224px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
-  @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px rgba(245,176,32,.55),-66px 2px 22px -9px rgba(245,176,32,.3),-100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  @keyframes shootTrailBack{0%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(12deg)}40%{box-shadow:34px 1px 14px -6px rgba(245,176,32,.55),66px 2px 22px -9px rgba(245,176,32,.3),100px 3px 30px -12px rgba(245,176,32,.14)}70%{transform:scale(1.08) rotate(-4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
+  @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px var(--idea1),-66px 2px 22px -9px var(--idea2),-100px 3px 30px -12px var(--idea3)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
+  @keyframes shootTrailBack{0%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(12deg)}40%{box-shadow:34px 1px 14px -6px var(--idea1),66px 2px 22px -9px var(--idea2),100px 3px 30px -12px var(--idea3)}70%{transform:scale(1.08) rotate(-4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
   /* mobile: content is full-width (no side gutter), so move the floating helper buttons
      off the lesson text into the bottom-left corner (Next lives bottom-right) */
   @media(max-width:560px){
@@ -1073,7 +1075,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .ws-tutor .tut-input::placeholder{color:#9fb0c9}
 .ws-tutor .snd{background:#beff8b !important;color:#0a0a0a !important}
 /* workspace primary "Continue" -> lime (green primary, like the landing) */
-.ws-next{background:linear-gradient(135deg,#22C55E,#1A9E4B) !important;color:#fff !important;box-shadow:0 12px 26px -12px rgba(26,158,75,.55) !important}
+.ws-next{background:linear-gradient(135deg,var(--forest),var(--moss)) !important;color:#fff !important;box-shadow:0 12px 26px -12px rgba(18,36,28,.5) !important}
 /* accent (lime) was being used as TEXT in a few places (e.g. contents lesson links) where it is
    unreadable/harsh. Recolor those text uses to a deep readable green; buttons keep the lime fill. */
 .toc .sec.open,.toc .sec.open::after,.toc a.ex:hover,.hintbtn2,.peek,.factbox .flabel,.tocnote .tn-label,.hud-pill.mp svg,.streakchip svg{color:#2e7d3a !important}
@@ -1885,7 +1887,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <header class="coursebar">
       <div class="cb-left">
         <button class="cb-back" id="mback" onclick="location.assign('/paths/home.html')" aria-label="Back to course home">←<span> Home</span></button>
-        <span class="cb-logo"><span class="mark"></span>Quantica</span>
+        <span class="cb-logo"><span class="mark"></span>Quantica<span class="cb-course" id="cbCourse"></span></span>
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
       <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
@@ -3131,6 +3133,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var c=COURSE_REG[slug]; if(!c) return false;
     CURRENT_COURSE=slug;
     try{ document.documentElement.setAttribute('data-course', slug); }catch(e){}   // drives the per-course theme (Sprout green / Cove blue)
+    try{ var _cc=document.getElementById('cbCourse'); if(_cc) _cc.textContent=' · '+c.title; }catch(e){}   // course label, top-left
     if(!window.COURSE) window.COURSE={slug:c.slug,title:c.title};
     else { window.COURSE.slug=c.slug; window.COURSE.title=c.title; }
     TOC=c.toc; LESSONS=c.lessons; PSETS=c.psets;
@@ -4606,7 +4609,7 @@ async function sendTutorMsg() {
   .dp-fill{position:absolute;top:50%;left:0;height:4px;transform:translateY(-50%);background:linear-gradient(90deg,var(--mid),var(--sky));border-radius:99px;transition:width .16s}
   .dp-notch{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid rgba(120,155,210,.5);z-index:2}
   .dp-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--mid),var(--sky));border:3px solid #fff;box-shadow:0 3px 9px -2px rgba(58,123,213,.7);z-index:4;transition:left .16s}
-  .dp-diag{position:absolute;top:-4px;transform:translateX(-50%);font-size:11px;color:#e8930a;z-index:3;pointer-events:none}
+  .dp-diag{position:absolute;top:-4px;transform:translateX(-50%);font-size:11px;color:var(--moss);z-index:3;pointer-events:none}
   .dp-scale{display:flex;justify-content:space-between;margin-top:4px;font:600 9.5px/1 'Inter';color:var(--mute)}
   .dp-actions{display:flex;gap:10px;align-items:center;margin-top:20px;padding-top:15px;border-top:1px solid var(--glass-line)}
   .dp-reset{font:600 12.5px/1 'Inter';color:var(--slate);background:rgba(255,255,255,.6);border:1px solid var(--glass-line);border-radius:999px;padding:10px 16px;cursor:pointer}
@@ -4667,7 +4670,7 @@ async function sendTutorMsg() {
     --green:#2E7D4F; --green2:#43B063;
     --purple:#5B8A63; --purple2:#84B98C;
     --gold:#C9860B; --gold2:#E7B44B;
-    --gem:#39A85C; --gem2:#7CD68F;
+    --gem:#39A85C; --gem2:#7CD68F; --idea1:rgba(67,176,99,.55); --idea2:rgba(67,176,99,.30); --idea3:rgba(67,176,99,.14);
     --line:rgba(22,75,53,.14);
     --soft:rgba(255,255,255,.55);
     --softer:rgba(67,176,99,.10);
@@ -4688,7 +4691,7 @@ async function sendTutorMsg() {
     --navy:#1C5486; --blue:#2E7CC0; --mid:#3A83C4; --sky:#4D9EDD;
     --teal:#4D9EDD; --teal2:#7FC1EA; --accent:#3E8FCE; --accent2:#4D9EDD;
     --ink:#132F49; --slate:#42607A; --mute:#7C93A8;
-    --gem:#3E8FCE; --gem2:#7FC1EA;
+    --gem:#3E8FCE; --gem2:#7FC1EA; --idea1:rgba(77,158,221,.55); --idea2:rgba(77,158,221,.30); --idea3:rgba(77,158,221,.14);
     --line:rgba(28,84,134,.15); --glass-line:rgba(90,140,200,.32); --softer:rgba(77,158,221,.10);
   }
   html[data-course="algebra1"]{background:#E7F2FC}
