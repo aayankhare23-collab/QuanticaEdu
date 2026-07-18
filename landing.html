@@ -3521,6 +3521,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     '</aside>';
   }
   function wsOpen(key,L,meta){
+    window.__curLesson = (key==='__welcome' || (L && (L._pset || /checkpoint|summary/i.test(L.title||'')))) ? null : key;  // strength records only for single-skill teaching lessons
     var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false; WS._scaffTopics={};
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
@@ -3944,7 +3945,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(window.navGuard && !navGuard(3,{v:'lesson',key:key,title:title,chTitle:chTitle,chNum:chNum})) return;
     if(window.track) track('lesson_start',{lesson:key,course:CURRENT_COURSE});
     showView('lessonView');
-    currentLessonKey=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
+    currentLessonKey=key; window.__curLesson=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
     if(window.Rewards) Rewards.setLastLesson(key);
     document.getElementById('modalEyebrow').textContent=COURSE_REG[CURRENT_COURSE].title+' · Lesson '+key;
     document.getElementById('modalTitle').textContent=(L?L.title:title);
@@ -4180,6 +4181,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   function baseXP(rec){ return rec.xpOverride || CFG.xpBase[rec.legendary?'legendary':rec.cat] || CFG.xpBase.tryit; }
   function baseMP(rec){ return rec.legendary?CFG.mpBase.legendary:(CFG.mpBase[rec.cat]||0); }
 
+  // Per-lesson STRENGTH signal: score each graded problem fairly, then EMA-smooth it so a
+  // student's strength in a skill reflects recent work and climbs as they improve.
+  //   clean independent solve = 1.0 · solved after wrong tries = 0.78 · with a hint = 0.60 · saw solution = 0.30
+  function recordSkillOutcome(rec, saw){
+    try{
+      var lk=window.__curLesson; if(!lk) return;
+      var o = saw ? 0.30 : ((rec.hintsUsed>0) ? 0.60 : ((rec.attempts>0) ? 0.78 : 1.0));
+      if(!P.skill) P.skill={};
+      var e=P.skill[lk], a=0.35;
+      if(!e){ e={s:o,n:1}; } else { e.s=e.s+a*(o-e.s); e.n=(e.n||0)+1; }
+      P.skill[lk]=e;
+    }catch(_){}
+  }
   function award(rec, viaSolution){
     if(!rec || !rec.stableId) return;
     var id=COURSE.slug+'|'+rec.stableId;
@@ -4192,6 +4206,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var mp=Math.round(baseMP(rec)*mpFrac);
     rec._counted=true; P.awarded[id]={xp:xp,mp:mp};
     P.stats.solved++; if(!saw && !(rec.hintsUsed>0)) P.stats.independent++; if(saw) P.stats.solutions++;
+    recordSkillOutcome(rec, saw);
     addXP(xp); if(mp>0) addMP(mp);
     if(rec.legendary && !saw && !(rec.hintsUsed>0)) addGems(CFG.gems.legendary,'Legendary solve');
     toast('xp', xp, (xpFrac<1) ? ('XP'+(saw?' · solution':' · with help')) : 'XP earned');
