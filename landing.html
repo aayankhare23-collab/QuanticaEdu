@@ -3130,6 +3130,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   window.setCourse=function(slug,opts){
     var c=COURSE_REG[slug]; if(!c) return false;
     CURRENT_COURSE=slug;
+    try{ document.documentElement.setAttribute('data-course', slug); }catch(e){}   // drives the per-course theme (Sprout green / Cove blue)
     if(!window.COURSE) window.COURSE={slug:c.slug,title:c.title};
     else { window.COURSE.slug=c.slug; window.COURSE.title=c.title; }
     TOC=c.toc; LESSONS=c.lessons; PSETS=c.psets;
@@ -3382,15 +3383,18 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     };
   })();
   // Sprout reacts on the chat launcher: expression swap + a little pop/wobble, then settles
+  // the guide is course-scoped: Sprout (green) for Prealgebra, Cove (blue) for Algebra I
+  window.guideName=function(){ return CURRENT_COURSE==='algebra1'?'Cove':'Sprout'; };
+  window.guideImg=function(mood){ return 'paths/assets/'+(CURRENT_COURSE==='algebra1'?'cove/cove':'spot/spot')+'-'+mood+'.png'; };
   window.sproutReact=function(mood){
     var img=document.getElementById('sproutFabImg'), fab=document.getElementById('wsFabChat');
     if(!img||!fab) return;
-    var map={excited:'spot-excited',thinking:'spot-thinking',happy:'spot-happy',focused:'spot-focused',encour:'spot-encour'};
-    img.src='paths/assets/spot/'+(map[mood]||'spot-happy')+'.png';
+    var moods={excited:'excited',thinking:'thinking',happy:'happy',focused:'focused',encour:'encour'};
+    img.src=guideImg(moods[mood]||'happy');
     fab.classList.remove('react-correct','react-wrong'); void fab.offsetWidth;
     if(!window.CALM) fab.classList.add(mood==='thinking'||mood==='encour'?'react-wrong':'react-correct');
     clearTimeout(window.__sproutReactT);
-    window.__sproutReactT=setTimeout(function(){ img.src='paths/assets/spot/spot-hero.png'; fab.classList.remove('react-correct','react-wrong'); },1900);
+    window.__sproutReactT=setTimeout(function(){ img.src=guideImg('hero'); fab.classList.remove('react-correct','react-wrong'); },1900);
   };
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
@@ -3512,10 +3516,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
   function wsTutorHTML(){
     return '<aside class="ws-pane ws-tutor" id="wsTutor">'+
-      '<div class="ws-tuthead"><span class="av"><img src="paths/assets/spot/spot-happy.png" alt="Sprout"></span><span class="nm">Sprout</span>'+
+      '<div class="ws-tuthead"><span class="av"><img src="'+guideImg('happy')+'" alt="'+guideName()+'"></span><span class="nm">'+guideName()+'</span>'+
       '<button class="tut-close" onclick="WS.closePanel(\'tutor\')" title="Close">✕</button></div>'+
       '<div class="ws-body" id="tutBody">'+
-        '<div class="tut-bub bot">Hi, this is Sprout, your personal Quantica Tutor!</div>'+
+        '<div class="tut-bub bot">Hi, this is '+guideName()+', your personal Quantica Tutor!</div>'+
       '</div>'+
       '<div class="tut-compose"><textarea class="tut-input" id="tutInput" placeholder="Ask me anything about this problem…" rows="1" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendTutorMsg();}" oninput="this.style.height=\'auto\';this.style.height=Math.min(this.scrollHeight,120)+\'px\';"></textarea><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
     '</aside>';
@@ -3551,7 +3555,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       '<div class="ws-scrim" id="wsScrim" onclick="WS.closeAll()"></div>'+
       '<div class="ws-fab-group">'+
         '<button class="ws-fab ws-fab-chat" id="wsFabChat" onclick="WS.togglePanel(\'tutor\')" title="Ask Sprout">'+
-          '<img id="sproutFabImg" src="paths/assets/spot/spot-hero.png" alt="Sprout" style="width:100%;height:100%;object-fit:contain;pointer-events:none">'+
+          '<img id="sproutFabImg" src="'+guideImg('hero')+'" alt="'+guideName()+'" style="width:100%;height:100%;object-fit:contain;pointer-events:none">'+
         '</button>'+
       '</div>'+
       '<button class="ws-fab ws-fab-ideas" id="wsFabIdeas" onclick="WS.togglePanel(\'nb\')" title="Key Ideas">✦</button>'+
@@ -4502,7 +4506,7 @@ function initTutor(lessonKey, lessonTitle) {
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
   var body = document.getElementById('tutBody');
   if (body) {
-    body.innerHTML = '<div class="tut-bub bot">Hi, this is Sprout, your personal Quantica Tutor!</div>';
+    body.innerHTML = '<div class="tut-bub bot">Hi, this is '+guideName()+', your personal Quantica Tutor!</div>';
   }
 }
 
@@ -4676,6 +4680,27 @@ async function sendTutorMsg() {
   }
   html{background:#F1F8E8}
   ::selection{background:rgba(67,176,99,.26)}
+  /* ===== Cove theme (Algebra I) — same layout & components, ocean palette. Correct stays
+     green, challenge stays gold, wrong stays red (semantic colors are theme-independent). ===== */
+  :root[data-course="algebra1"]{
+    --paper:#EFF7FE; --forest:#1C5486; --moss:#2E7CC0; --grass:#4D9EDD;
+    --lime:#BFE2F7; --sage:#6699C0; --btn:#3E8FCE; --btn-edge:#2E6FAE;
+    --navy:#1C5486; --blue:#2E7CC0; --mid:#3A83C4; --sky:#4D9EDD;
+    --teal:#4D9EDD; --teal2:#7FC1EA; --accent:#3E8FCE; --accent2:#4D9EDD;
+    --ink:#132F49; --slate:#42607A; --mute:#7C93A8;
+    --gem:#3E8FCE; --gem2:#7FC1EA;
+    --line:rgba(28,84,134,.15); --glass-line:rgba(90,140,200,.32); --softer:rgba(77,158,221,.10);
+  }
+  html[data-course="algebra1"]{background:#E7F2FC}
+  html[data-course="algebra1"] ::selection{background:rgba(77,158,221,.26)}
+  [data-course="algebra1"] .bg,[data-course="algebra1"] .overlay{background:
+      radial-gradient(1200px 820px at 10% -8%,rgba(77,158,221,.20),transparent 58%),
+      radial-gradient(1050px 760px at 96% 4%,rgba(169,216,247,.24),transparent 55%),
+      radial-gradient(980px 760px at 82% 104%,rgba(126,193,234,.14),transparent 55%),
+      radial-gradient(940px 760px at 2% 96%,rgba(46,124,192,.12),transparent 55%),
+      linear-gradient(180deg,#F2F9FF,#E6F1FB)}
+  [data-course="algebra1"] .bg::after,[data-course="algebra1"] .overlay::before{
+      background-image:linear-gradient(rgba(19,47,73,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(19,47,73,.05) 1px,transparent 1px)}
 
   /* ambient canvas behind every view → soft greens + warm sun */
   .bg,.overlay{background:
@@ -6137,7 +6162,7 @@ async function sendTutorMsg() {
     el.innerHTML=
       '<div style="background:#fff;border:1.5px solid rgba(10,10,10,.14);border-radius:18px;box-shadow:0 24px 60px -18px rgba(10,10,10,.42);padding:20px;font-family:\'Space Grotesk\',system-ui,sans-serif;color:#0a0a0a">'+
         '<div style="display:flex;gap:12px;align-items:flex-start">'+
-          '<div style="flex:0 0 auto;width:40px;height:40px">'+MILO+'</div>'+
+          '<div style="flex:0 0 auto;width:40px;height:40px"><img src="'+(window.guideImg?guideImg('happy'):'paths/assets/spot/spot-happy.png')+'" alt="'+(window.guideName?guideName():'Sprout')+'" style="width:100%;height:100%;object-fit:contain"></div>'+
           '<div style="flex:1;min-width:0">'+
             '<div style="font-weight:700;font-size:16px;letter-spacing:-.01em;margin-bottom:3px">Nice, your first lesson is done.</div>'+
             '<div style="font-size:14px;line-height:1.5;color:#55554f">Create a free account to save your progress and streak. Takes a few seconds, and you can keep going either way.</div>'+
