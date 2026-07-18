@@ -829,7 +829,11 @@
   var dialCard=document.getElementById('dialCard'), dialCur=document.getElementById('dialCur'), dialFill=document.getElementById('dialFill');
   function setDial(v){ dialCur.style.left=v; dialFill.style.width=v; }
   setDial('22%');
-  if(!reduce){ var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){setDial('78%');},450);io2.disconnect();}});},{threshold:.5}); io2.observe(dialCard); }
+  if(!reduce){
+    var dialShown=false, showDial=function(){ if(dialShown) return; dialShown=true; setDial('78%'); };
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(showDial,450);io2.disconnect();}});},{threshold:.25}); io2.observe(dialCard);
+    setTimeout(showDial, 2600);   // fallback so the needle never stays parked at 'Gentle' while the caption says 'Challenge'
+  }
   else setDial('78%');
 </script>
 <script>

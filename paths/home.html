@@ -399,10 +399,10 @@
     function spend(nn){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}; if((P.gems||0)<nn) return false; P.gems=(P.gems||0)-nn; localStorage.setItem(PKEY,JSON.stringify(P)); return true; }catch(e){ return false; } }
     function lessonsDone(){ return Object.keys(state.done||{}).length; }
 
-    function grantStarterSeeds(n){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}; if(!P.__gardenWelcome){ P.gems=(P.gems||0)+n; P.__gardenWelcome=1; localStorage.setItem(PKEY,JSON.stringify(P)); } }catch(e){} }
+    function grantStarterSeeds(n){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}, fk='__gardenWelcome_'+COURSE; if(!P[fk]){ P.gems=(P.gems||0)+n; P[fk]=1; localStorage.setItem(PKEY,JSON.stringify(P)); } }catch(e){} }
     function welcome(){
       if(g.welcomed[COURSE]) return; g.welcomed[COURSE]=1;
-      var ch=(state.chapters[0]&&state.chapters[0].n)||1, key=pk(ch);
+      var ch=state.active||(state.chapters[0]&&state.chapters[0].n)||1, key=pk(ch);
       // a fuller starter set (themed per course) so the trail looks alive on day one...
       g.placed[key]=(g.placed[key]||[]).concat(CAT.welcome.map(function(w){
         return {id:'g'+(++g.seq),item:w[0],x:w[1],y:w[2]};
@@ -656,6 +656,17 @@
     DayGrid.init(prog.streak, prog.lastActive);
     Garden.init();
     if(prog.streak>0){ var sp=document.getElementById('streakPill'); if(sp){ sp.style.display=''; var b=sp.querySelector('b'); if(b) b.textContent=prog.streak; } }
+    // Mastery ring: fill it with the average of this course's strength scores
+    (function(){
+      var pre=COURSE+':', vals=[];
+      Object.keys(state.skill||{}).forEach(function(k){ if(k.indexOf(pre)===0){ var e=state.skill[k]; if(e&&e.n) vals.push(e.s); } });
+      var ring=document.querySelector('.sig .ring'), sig=document.querySelector('.sig');
+      if(ring && vals.length){
+        var pct=Math.round(vals.reduce(function(a,b){return a+b;},0)/vals.length*100);
+        ring.style.background='conic-gradient(var(--grass) '+pct+'%, var(--line) 0)';
+        if(sig) sig.setAttribute('title','Average mastery across your '+COURSE_NAME+' skills: '+pct+'%');
+      }
+    })();
     document.getElementById('footNote').textContent='Quantica course home · '+COURSE_NAME+' · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
     renderAll();
   }).catch(function(e){

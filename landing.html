@@ -3195,7 +3195,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open',{course:CURRENT_COURSE}); }
   function closeLesson(){ window.location.assign('/paths/home.html'); }  /* leave the course to OUR roadmap home, never the old marketing region */
   window.navExit=function(){ window.location.assign('/paths/home.html'); };
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') navExit(); });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    // Escape should close whatever is open, not blow the student out of the whole course.
+    var dp=document.querySelector('.dp-overlay.on'); if(dp){ if(window.DiffPanel&&DiffPanel.close) DiffPanel.close(); else dp.classList.remove('on'); return; }
+    var auth=document.getElementById('authOv'); if(auth && getComputedStyle(auth).display!=='none'){ if(window.hideAuthModal) hideAuthModal(); return; }
+    var ws=document.querySelector('.workspace'); if(ws && ws.classList.contains('tut-open')){ if(window.WS&&WS.togglePanel) WS.togglePanel('tutor'); return; }
+    var ae=document.activeElement; if(ae && /^(INPUT|TEXTAREA)$/.test(ae.tagName)){ ae.blur(); return; }   // don't exit mid-answer
+    navExit();
+  });
 
   /* ===== Browser Back walks the course: lesson -> chapter TOC -> course home -> landing.
      Levels: 0 landing(closed) · 1 dash · 2 toc · 3 lesson. Forward nav pushes a history
@@ -4357,9 +4365,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       save(); renderHUD();
     },
     touchStreak:function(){
-      var today=new Date().toISOString().slice(0,10);
+      // use LOCAL calendar dates so the home day-counter (also local) lines up exactly
+      var _ld=function(t){ var d=t?new Date(t):new Date(), m=d.getMonth()+1, dd=d.getDate(); return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd; };
+      var today=_ld();
       if(P.lastActive===today) return;
-      var yest=new Date(Date.now()-864e5).toISOString().slice(0,10);
+      var yest=_ld(Date.now()-864e5);
       P.streak=(P.lastActive===yest)?(P.streak||0)+1:1; P.lastActive=today;
       addGems(CFG.gems.streak,'Day '+P.streak+' streak'); save(); renderHUD();
     },
