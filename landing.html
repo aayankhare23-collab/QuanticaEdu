@@ -542,6 +542,27 @@
   .workspace.tut-open .ws-tutor{transform:none}
   .ws-notebook{right:0;width:var(--nb-w);border-left:1px solid var(--glass-line);border-radius:var(--radius) 0 0 var(--radius);transform:translateX(100%)}
   .workspace.nb-open .ws-notebook{transform:none}
+  /* ===== NOTES panel (student notebook) — separate from Key Ideas ===== */
+  .ws-notes{right:0;width:var(--nb-w);border-left:1px solid var(--glass-line);border-radius:var(--radius) 0 0 var(--radius);transform:translateX(100%)}
+  .workspace.notes-open .ws-notes{transform:none}
+  .workspace.notes-open .ws-center{margin-right:var(--nb-w)}
+  /* notes + key ideas, no tutor -> notes LEFT, key ideas RIGHT */
+  .workspace.nb-open.notes-open:not(.tut-open) .ws-notes{left:0;right:auto;transform:none;border-left:none;border-right:1px solid var(--glass-line);border-radius:0 var(--radius) var(--radius) 0}
+  .workspace.nb-open.notes-open:not(.tut-open) .ws-center{margin-left:var(--nb-w);margin-right:var(--nb-w)}
+  /* all three open -> tutor LEFT, key ideas TOP-right, notes BOTTOM-right */
+  .workspace.tut-open.nb-open.notes-open .ws-notebook{top:var(--cbh);height:calc((100dvh - var(--cbh))/2);bottom:auto;border-bottom:1px solid var(--glass-line)}
+  .workspace.tut-open.nb-open.notes-open .ws-notes{top:auto;bottom:0;height:calc((100dvh - var(--cbh))/2);left:auto;right:0;border-radius:0;transform:none}
+  .ws-notes .ws-nbhead{flex:none;padding:14px 16px 10px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:9px}
+  .ws-notes .ws-nbhead .t{font-family:'Space Grotesk';font-weight:600;font-size:14.5px;color:var(--navy);flex:1}
+  .ws-notes .ws-body{display:flex;flex-direction:column;padding:0}
+  .notes-bar{flex:none;padding:10px 12px 0}
+  .notes-sel{width:100%;font-family:'Inter';font-size:12.5px;font-weight:600;color:var(--slate);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:7px 10px;cursor:pointer}
+  .notes-ta{flex:1;margin:10px 12px 12px;min-height:0;resize:none;border:1px solid var(--line);border-radius:12px;background:#fffef9;color:var(--ink);font-family:'Inter';font-size:14px;line-height:1.7;padding:13px 15px;outline:none}
+  .notes-ta:focus{border-color:var(--grass);box-shadow:0 0 0 3px var(--softer)}
+  .ws-fab-notes{background:linear-gradient(135deg,var(--forest),var(--moss));color:#fff;position:fixed;top:288px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .workspace.tut-open .ws-fab-notes{top:170px;left:calc(100vw - 72px)}
+  .workspace.notes-open .ws-fab-notes{display:none!important}
+  @media(max-width:560px){ .ws-fab-notes{top:auto;bottom:190px;left:14px} .workspace.tut-open .ws-fab-notes{display:none} }
   .ws-center .ws-body{padding:14px 48px 14px;overflow-y:auto;flex:1;min-height:0}
   .ws-center .ws-body::-webkit-scrollbar{width:4px}
   .ws-center .ws-body::-webkit-scrollbar-track{background:transparent}
@@ -3517,6 +3538,41 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   }
 
   var WS={active:false,key:null,L:null,meta:null,page:0,pages:[],keys:[]};
+
+  // Notebook: free student notes, saved per course+section (separate from Key Ideas).
+  window.Notes=(function(){
+    var LSK='quantica.notebook.v1', data={};
+    try{ data=JSON.parse(localStorage.getItem(LSK))||{}; }catch(e){}
+    function persist(){ try{ localStorage.setItem(LSK,JSON.stringify(data)); }catch(e){} }
+    function coursePre(){ return (CURRENT_COURSE||'prealgebra')+'::'; }
+    function curKey(){ return coursePre()+((WS&&WS.key)||window.__curLesson||'notes'); }
+    function label(k){
+      var i=k.indexOf('::'); if(i<0) return k;
+      var course=k.slice(0,i), sec=k.slice(i+2);
+      var cn=(typeof COURSE_REG!=='undefined' && COURSE_REG[course]) ? COURSE_REG[course].title : course;
+      if(sec.indexOf('pset-')===0){ var p=sec.split('-'); return cn+' · Ch '+p[1]+' '+(p[2]==='challenge'?'challenge':'practice'); }
+      if(sec==='__welcome') return cn+' · Welcome';
+      return cn+' · '+sec;
+    }
+    var view=null;
+    function render(){
+      var body=document.getElementById('wsNotesBody'); if(!body) return;
+      var pre=coursePre(), ck=curKey(); if(!view) view=ck;
+      var keys={}; keys[ck]=1; Object.keys(data).forEach(function(k){ if(k.indexOf(pre)===0) keys[k]=1; });
+      var opts=Object.keys(keys).sort().map(function(k){
+        var lab=label(k)+((data[k]&&data[k].trim())?'':' — empty');
+        return '<option value="'+k.replace(/"/g,'')+'"'+(k===view?' selected':'')+'>'+lab+'</option>';
+      }).join('');
+      body.innerHTML='<div class="notes-bar"><select class="notes-sel" id="notesSel" aria-label="Notebook section">'+opts+'</select></div>'+
+        '<textarea class="notes-ta" id="notesTA" placeholder="Jot down your own notes for this section — saved automatically, and kept separate per section."></textarea>';
+      var ta=document.getElementById('notesTA'); ta.value=data[view]||'';
+      ta.oninput=function(){ if(ta.value.trim()) data[view]=ta.value; else delete data[view]; persist(); };
+      var sel=document.getElementById('notesSel'); sel.onchange=function(e){ view=e.target.value; var t=document.getElementById('notesTA'); if(t) t.value=data[view]||''; };
+    }
+    function mount(){ view=curKey(); render(); }
+    return { mount:mount };
+  })();
+
   function wsTutorHTML(){
     return '<aside class="ws-pane ws-tutor" id="wsTutor">'+
       '<div class="ws-tuthead"><span class="av"><img src="'+guideImg('happy')+'" alt="'+guideName()+'"></span><span class="nm">'+guideName()+'</span>'+
@@ -3533,6 +3589,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       '<div class="ws-nbhead"><div class="t">✦ Key Ideas</div>'+
       '<button class="nb-close" onclick="WS.closePanel(\'nb\')" title="Close">✕</button></div>'+
       '<div class="ws-body" id="wsNbBody"></div>'+
+    '</aside>';
+  }
+  function wsNotesHTML(){
+    return '<aside class="ws-pane ws-notes" id="wsNotes">'+
+      '<div class="ws-nbhead"><div class="t">📓 Notebook</div>'+
+      '<button class="nb-close" onclick="WS.closePanel(\'notes\')" title="Close">✕</button></div>'+
+      '<div class="ws-body" id="wsNotesBody"></div>'+
     '</aside>';
   }
   function wsOpen(key,L,meta){
@@ -3555,13 +3618,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
           '<button class="ws-next" id="wsNext">Continue →</button></span></div>'+
       '</section>'+
       wsNotebookHTML()+
+      wsNotesHTML()+
       '<div class="ws-scrim" id="wsScrim" onclick="WS.closeAll()"></div>'+
       '<div class="ws-fab-group">'+
-        '<button class="ws-fab ws-fab-chat" id="wsFabChat" onclick="WS.togglePanel(\'tutor\')" title="Ask Sprout">'+
+        '<button class="ws-fab ws-fab-chat" id="wsFabChat" onclick="WS.togglePanel(\'tutor\')" title="Ask '+guideName()+'">'+
           '<img id="sproutFabImg" src="'+guideImg('hero')+'" alt="'+guideName()+'" style="width:100%;height:100%;object-fit:contain;pointer-events:none">'+
         '</button>'+
       '</div>'+
       '<button class="ws-fab ws-fab-ideas" id="wsFabIdeas" onclick="WS.togglePanel(\'nb\')" title="Key Ideas">✦</button>'+
+      '<button class="ws-fab ws-fab-notes" id="wsFabNotes" onclick="WS.togglePanel(\'notes\')" title="Notebook">📓</button>'+
     '</div>';
     document.getElementById('lessonBody').innerHTML=html;
     initTutor(key, L.title);
@@ -3825,6 +3890,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         var chatBtn=document.getElementById('wsFabChat');
         if(chatBtn){ chatBtn.classList.remove('fab-glow'); void chatBtn.offsetWidth; chatBtn.classList.add('fab-glow'); }
       }
+    } else if(which==='notes'){
+      var notesOpening=!ws.classList.contains('notes-open');
+      ws.classList.toggle('notes-open',notesOpening);
+      if(notesOpening && window.Notes) Notes.mount();
     } else {
       var nbOpening=!ws.classList.contains('nb-open');
       ws.classList.toggle('nb-open',nbOpening);
@@ -3843,13 +3912,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         setTimeout(function(){ fab.classList.remove('shoot-back'); },520); }
       var chatBtn=document.getElementById('wsFabChat');
       if(chatBtn){ chatBtn.classList.remove('fab-glow'); void chatBtn.offsetWidth; chatBtn.classList.add('fab-glow'); }
+    } else if(which==='notes'){
+      ws.classList.remove('notes-open');
     } else {
       ws.classList.remove('nb-open');
     }
   };
   WS.closeAll=function(){
     var ws=document.getElementById('wsWorkspace'); if(!ws) return;
-    ws.classList.remove('tut-open','nb-open');
+    ws.classList.remove('tut-open','nb-open','notes-open');
 
   };
   WS.drawer=function(which){ WS.togglePanel(which); };
