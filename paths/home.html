@@ -103,6 +103,39 @@
   .wtrail .track{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1}
   .wtrail .track path{fill:none;stroke:#C7DEB6;stroke-width:2.4;stroke-dasharray:2.5 11;stroke-linecap:round;vector-effect:non-scaling-stroke}
   .wbot{position:absolute;pointer-events:none;z-index:0}
+  /* --- garden: toolbar, placed items, greenhouse shop, toast --- */
+  .gbar{display:flex;align-items:center;gap:9px;margin:16px 2px 0;flex-wrap:wrap}
+  .gbar .seeds{display:inline-flex;align-items:center;gap:5px;font-family:var(--ff-ui);font-weight:600;font-size:.82rem;color:var(--forest);background:var(--tint);border:1px solid #CFEAC6;border-radius:999px;padding:6px 13px}
+  .gbtn{font-family:var(--ff-ui);font-weight:600;font-size:.8rem;border-radius:10px;padding:7px 13px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--forest);display:inline-flex;align-items:center;gap:6px;transition:border-color .12s,color .12s,background .12s,transform .08s}
+  .gbtn:hover{border-color:var(--grass);background:var(--tint)}
+  .gbtn:active{transform:translateY(1px)}
+  .gbtn.on{background:var(--moss);color:#fff;border-color:var(--moss)}
+  .gitem{position:absolute;transform:translate(-50%,-50%);z-index:2;font-size:clamp(22px,4.4vw,32px);line-height:1;filter:drop-shadow(0 4px 4px rgba(20,50,25,.22));user-select:none;pointer-events:none;touch-action:none}
+  .wtrail.editing .gitem{pointer-events:auto;cursor:grab;z-index:6;outline:2px dashed rgba(67,176,99,.55);outline-offset:3px;border-radius:8px}
+  .wtrail.editing .gitem:active{cursor:grabbing}
+  .grm{display:none}
+  .wtrail.editing .grm{display:grid;place-items:center;position:absolute;top:-11px;right:-11px;width:20px;height:20px;border-radius:50%;border:1.5px solid #fff;background:#E1584B;color:#fff;font-size:13px;line-height:1;cursor:pointer;padding:0;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+  .gtoast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(14px);background:var(--forest);color:#fff;font-family:var(--ff-ui);font-size:.84rem;font-weight:500;padding:11px 18px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(20,50,25,.55);z-index:120;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center}
+  .gtoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .shop-ov{position:fixed;inset:0;background:rgba(12,30,18,.44);display:none;place-items:center;z-index:110;padding:20px}
+  .shop-ov.open{display:grid}
+  .shop{background:var(--card);border-radius:20px;padding:22px 22px 24px;max-width:460px;width:100%;box-shadow:0 30px 70px -24px rgba(20,50,25,.5);max-height:88vh;overflow:auto}
+  .shop-head{display:flex;align-items:center;gap:12px}
+  .shop-head h3{font-family:var(--ff-display);font-weight:600;font-size:1.3rem;color:var(--forest);flex:1}
+  .shop-bal{font-family:var(--ff-ui);font-weight:700;font-size:.9rem;color:var(--forest);background:var(--tint);border-radius:999px;padding:5px 12px}
+  .shop-x{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--gray);font-size:18px;cursor:pointer;line-height:1}
+  .shop-x:hover{border-color:var(--grass);color:var(--forest)}
+  .shop-sub{font-size:.84rem;color:var(--gray);margin:8px 0 16px;line-height:1.5}
+  .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+  .shop-item{border:1px solid var(--line);border-radius:14px;padding:12px 8px 11px;text-align:center;background:#F7FBF3}
+  .shop-item.locked{opacity:.62}
+  .si-e{font-size:30px;line-height:1;filter:drop-shadow(0 3px 3px rgba(20,50,25,.18))}
+  .si-n{font-family:var(--ff-ui);font-size:.72rem;color:var(--ink);margin:6px 0 8px;font-weight:500}
+  .si-buy{font-family:var(--ff-ui);font-weight:700;font-size:.76rem;color:#fff;background:var(--moss);border:none;border-radius:8px;padding:6px 10px;cursor:pointer;width:100%}
+  .si-buy:hover{filter:brightness(1.06)}
+  .si-buy.cant{background:#C6D6BE;cursor:not-allowed}
+  .si-lock{font-family:var(--ff-ui);font-size:.66rem;color:var(--gray-soft);padding:6px 0}
+  @media(max-width:560px){.shop-grid{grid-template-columns:repeat(2,1fr)}}
   .wnode{position:absolute;transform:translate(-50%,-50%);z-index:3;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-family:var(--ff-display);font-weight:600;font-size:1.18rem;background:var(--card);border:2px solid var(--line);color:var(--forest);box-shadow:0 6px 0 #E6EEDD,0 12px 16px -9px rgba(20,50,25,.28);cursor:pointer;text-decoration:none;transition:box-shadow .1s ease,transform .1s ease}
   .wnode:hover{box-shadow:0 8px 0 #E6EEDD,0 16px 20px -10px rgba(20,50,25,.32)}
   .wnode:active{transform:translate(-50%,calc(-50% + 4px));box-shadow:0 2px 0 #E6EEDD,0 8px 12px -8px rgba(20,50,25,.28)}
@@ -202,6 +235,7 @@
     <div class="path-head"><h3>Your path</h3><span class="h" id="pathHeadSub"></span></div>
     <div class="order-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Take lessons in any order — we suggest top to bottom.</div>
     <section class="chapter" id="chapterCard"></section>
+    <div class="gbar" id="gbar"></div>
     <div class="wtrail" id="wtrail"></div>
     <section class="nextup" id="nextupCard"></section>
   </main>
@@ -282,6 +316,115 @@
     return { init:init, render:render };
   })();
 
+  // The garden: earn Seeds from problems, buy plants/critters in the Greenhouse, and drag them
+  // anywhere on your trail. Placements are per-chapter and saved; Seeds live in the shared profile.
+  var Garden=(function(){
+    var KEY='quantica.garden.v1', PKEY='quantica.profile.v1';
+    var CATALOG=[
+      {id:'sprout',e:'🌱',n:'Sprout',c:3,lock:0},
+      {id:'fern',e:'🌿',n:'Fern',c:4,lock:0},
+      {id:'clover',e:'🍀',n:'Clover',c:4,lock:0},
+      {id:'rock',e:'🪨',n:'Mossy rock',c:5,lock:0},
+      {id:'daisy',e:'🌼',n:'Daisy',c:5,lock:1},
+      {id:'tulip',e:'🌷',n:'Tulip',c:6,lock:1},
+      {id:'toad',e:'🍄',n:'Toadstool',c:6,lock:2},
+      {id:'blossom',e:'🌸',n:'Blossom',c:7,lock:2},
+      {id:'ladybug',e:'🐞',n:'Ladybug',c:7,lock:3},
+      {id:'butterfly',e:'🦋',n:'Butterfly',c:9,lock:4},
+      {id:'bee',e:'🐝',n:'Bee',c:9,lock:4},
+      {id:'tree',e:'🌳',n:'Sapling',c:14,lock:6}
+    ];
+    var byId={}; CATALOG.forEach(function(it){ byId[it.id]=it; });
+    var g={placed:{},seq:0,welcomed:false}, editing=false;
+
+    function load(){ try{ var v=JSON.parse(localStorage.getItem(KEY)); if(v) g=v; }catch(e){} if(!g.placed) g.placed={}; if(!g.seq) g.seq=0; }
+    function save(){ try{ localStorage.setItem(KEY,JSON.stringify(g)); }catch(e){} }
+    function seeds(){ try{ return (JSON.parse(localStorage.getItem(PKEY))||{}).gems||0; }catch(e){ return 0; } }
+    function spend(nn){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}; if((P.gems||0)<nn) return false; P.gems=(P.gems||0)-nn; localStorage.setItem(PKEY,JSON.stringify(P)); return true; }catch(e){ return false; } }
+    function lessonsDone(){ return Object.keys(state.done||{}).length; }
+
+    function welcome(){
+      if(g.welcomed) return; g.welcomed=true;
+      var ch=(state.chapters[0]&&state.chapters[0].n)||1;
+      g.placed[ch]=(g.placed[ch]||[]).concat([
+        {id:'g'+(++g.seq),item:'fern',x:9,y:15},
+        {id:'g'+(++g.seq),item:'rock',x:90,y:83},
+        {id:'g'+(++g.seq),item:'sprout',x:89,y:13}
+      ]);
+      save();
+    }
+    function itemsHTML(ch){
+      var arr=g.placed[ch]||[], h='';
+      arr.forEach(function(p){ var it=byId[p.item]; if(!it) return;
+        h+='<span class="gitem" data-gid="'+p.id+'" style="left:'+p.x+'%;top:'+p.y+'%">'+it.e+
+           '<button class="grm" data-rm="'+p.id+'" aria-label="Remove" tabindex="-1">&times;</button></span>'; });
+      return h;
+    }
+    function afterRender(ch){
+      var wt=document.getElementById('wtrail'); if(!wt) return;
+      wt.classList.toggle('editing',editing);
+      wt.querySelectorAll('.grm').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); removeItem(ch,b.getAttribute('data-rm')); }); });
+      wt.querySelectorAll('.gitem').forEach(function(el){
+        el.addEventListener('pointerdown',function(ev){
+          if(!editing) return; ev.preventDefault();
+          var rect=wt.getBoundingClientRect(), gid=el.getAttribute('data-gid');
+          try{ el.setPointerCapture(ev.pointerId); }catch(_){}
+          function move(e){ var x=((e.clientX-rect.left)/rect.width)*100, y=((e.clientY-rect.top)/rect.height)*100;
+            x=Math.max(2,Math.min(98,x)); y=Math.max(1.5,Math.min(98.5,y)); el.style.left=x+'%'; el.style.top=y+'%';
+            var it=(g.placed[ch]||[]).filter(function(p){return p.id===gid;})[0]; if(it){ it.x=x; it.y=y; } }
+          function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); save(); }
+          el.addEventListener('pointermove',move); el.addEventListener('pointerup',up);
+        });
+      });
+    }
+    function removeItem(ch,gid){ g.placed[ch]=(g.placed[ch]||[]).filter(function(p){return p.id!==gid;}); save(); renderTrail(); renderBar(); }
+    function buy(item){
+      var it=byId[item]; if(!it) return;
+      if(lessonsDone()<it.lock){ toast('Reach '+it.lock+' lessons to unlock '+it.n); return; }
+      if(!spend(it.c)){ toast('Not enough Seeds — earn them by solving problems'); renderShop(); return; }
+      editing=true;
+      (g.placed[state.active]=g.placed[state.active]||[]).push({id:'g'+(++g.seq),item:item,x:48+(g.seq%5)*2,y:46+(g.seq%7)*2});
+      save(); closeShop(); renderTrail(); renderBar();
+      toast('Planted! Drag '+it.n+' where you like — tap Done when finished');
+    }
+    function toast(msg){ var t=document.getElementById('gtoast'); if(!t){ t=document.createElement('div'); t.id='gtoast'; t.className='gtoast'; document.body.appendChild(t); }
+      t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },2800); }
+    function openShop(){ renderShop(); document.getElementById('shopOv').classList.add('open'); }
+    function closeShop(){ var o=document.getElementById('shopOv'); if(o) o.classList.remove('open'); }
+    function renderShop(){
+      var s=seeds(), ld=lessonsDone(), grid='';
+      CATALOG.forEach(function(it){
+        var locked=ld<it.lock, afford=s>=it.c;
+        grid+='<div class="shop-item'+(locked?' locked':'')+'"><div class="si-e">'+it.e+'</div><div class="si-n">'+it.n+'</div>'+
+          (locked?('<div class="si-lock">🔒 '+it.lock+' lessons</div>')
+                 :('<button class="si-buy'+(afford?'':' cant')+'" data-buy="'+it.id+'"'+(afford?'':' disabled')+'>🌱 '+it.c+'</button>'))+'</div>';
+      });
+      var gr=document.getElementById('shopGrid'); if(gr){ gr.innerHTML=grid;
+        gr.querySelectorAll('.si-buy').forEach(function(b){ b.addEventListener('click',function(){ buy(b.getAttribute('data-buy')); }); }); }
+      var sb=document.getElementById('shopSeeds'); if(sb) sb.textContent=s;
+    }
+    function toggleEdit(){ editing=!editing; renderTrail(); renderBar(); if(editing) toast('Drag items to move them, × to remove. Tap Done when finished.'); }
+    function renderBar(){
+      var bar=document.getElementById('gbar'); if(!bar) return;
+      bar.innerHTML='<span class="seeds" title="Seeds — earn them by solving problems">🌱 '+seeds()+'</span>'+
+        '<button class="gbtn" id="ghouseBtn">🪴 Greenhouse</button>'+
+        '<button class="gbtn'+(editing?' on':'')+'" id="geditBtn">'+(editing?'✓ Done':'✎ Arrange')+'</button>';
+      document.getElementById('ghouseBtn').onclick=openShop;
+      document.getElementById('geditBtn').onclick=toggleEdit;
+    }
+    function initDom(){
+      if(document.getElementById('shopOv')) return;
+      var ov=document.createElement('div'); ov.id='shopOv'; ov.className='shop-ov';
+      ov.innerHTML='<div class="shop" role="dialog" aria-label="Greenhouse"><div class="shop-head"><h3>🪴 Greenhouse</h3><span class="shop-bal">🌱 <b id="shopSeeds">0</b></span><button class="shop-x" id="shopX" aria-label="Close">&times;</button></div>'+
+        '<p class="shop-sub">Spend Seeds you earn from problems to grow your trail. Keep learning to unlock more.</p><div class="shop-grid" id="shopGrid"></div></div>';
+      document.body.appendChild(ov);
+      ov.addEventListener('click',function(e){ if(e.target===ov) closeShop(); });
+      document.getElementById('shopX').onclick=closeShop;
+    }
+    function init(){ load(); initDom(); welcome(); }
+    return { init:init, itemsHTML:itemsHTML, afterRender:afterRender, renderBar:renderBar };
+  })();
+
   function renderRail(){
     var h='<span class="rl">Ch</span>';
     state.chapters.forEach(function(c){
@@ -331,9 +474,8 @@
       var a=nodes[i-1], b=nodes[i], y0=a.ty*1.5, y1=b.ty*1.5, ym=((y0+y1)/2).toFixed(1);
       d+=' C'+a.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+y1.toFixed(1);
     }
-    var h='<img class="wbot" src="assets/botanical/leaf-branch.png" alt="" style="left:-4%;top:5%;width:14%">'+
-          '<img class="wbot" src="assets/botanical/pebble-sprout.png" alt="" style="right:-3%;top:4%;width:14%">'+
-          '<svg class="track" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'"/></svg>';
+    var h='<svg class="track" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'"/></svg>'+
+          Garden.itemsHTML(c.n);   // the student's own garden for this chapter, in place of fixed decor
     // nodes
     nodes.forEach(function(nd){
       var s=nd.s, style='left:'+nd.tx.toFixed(1)+'%;top:'+nd.ty.toFixed(2)+'%';
@@ -361,6 +503,7 @@
       }
     });
     document.getElementById('wtrail').innerHTML=h;
+    Garden.afterRender(c.n);
   }
 
   function renderNextup(){
@@ -393,7 +536,7 @@
     DayGrid.render();
   }
 
-  function renderAll(){ renderRail(); renderContinue(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); }
+  function renderAll(){ renderRail(); renderContinue(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); Garden.renderBar(); }
   function setChapter(n){ state.active=n; renderRail(); renderChapterCard(); renderTrail(); renderNextup(); window.scrollTo({top:0,behavior:'smooth'}); }
 
   // course dropdown toggle
@@ -409,6 +552,7 @@
     state.current=firstUndone();                 // the lesson the student is actually on
     state.active=(chOf(state.current)||toc[0]||{n:1}).n;
     DayGrid.init(prog.streak, prog.lastActive);
+    Garden.init();
     if(prog.streak>0){ var sp=document.getElementById('streakPill'); if(sp){ sp.style.display=''; var b=sp.querySelector('b'); if(b) b.textContent=prog.streak; } }
     document.getElementById('footNote').textContent='Quantica course home · Prealgebra · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
     renderAll();
