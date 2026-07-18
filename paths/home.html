@@ -150,11 +150,21 @@
   .rc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:0 10px 24px -22px rgba(20,50,25,.3)}
   .rc h4{font-family:var(--ff-ui);font-size:.66rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:12px}
   .rc p.lead{font-size:.88rem;color:var(--gray);line-height:1.5;margin-bottom:14px}
+  .dhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+  .dhead h4{margin-bottom:0}
+  .dnav{display:flex;gap:5px}
+  .dnav button{width:23px;height:23px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--gray);cursor:pointer;display:grid;place-items:center;font-size:13px;line-height:1;font-family:var(--ff-ui);transition:border-color .12s,color .12s,background .12s}
+  .dnav button:hover:not(:disabled){border-color:var(--grass);color:var(--forest);background:var(--tint)}
+  .dnav button:disabled{opacity:.32;cursor:default}
+  .drange{font-size:.74rem;color:var(--gray);margin:9px 0 8px;font-family:var(--ff-ui);letter-spacing:.01em}
+  .dweek{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:6px}
+  .dw{font-size:.56rem;color:var(--gray-soft);text-align:center;font-family:var(--ff-ui);font-weight:600;letter-spacing:.04em}
   .daysgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
-  .dot{aspect-ratio:1;border-radius:50%;background:#E4EEDE}
-  .dot.on{background:var(--grass)}
-  .dot.today{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--sage)}
-  .days-cap{display:flex;align-items:center;gap:7px;margin-top:12px;font-size:.81rem;color:var(--gray)}
+  .daydot{aspect-ratio:1;border-radius:50%;background:var(--card);border:1.6px solid var(--line);transition:background .12s,border-color .12s}
+  .daydot.on{background:var(--grass);border-color:var(--grass)}
+  .daydot.today{box-shadow:0 0 0 2px var(--card),0 0 0 3.5px var(--moss)}
+  .daydot.fut{opacity:.4}
+  .days-cap{display:flex;align-items:center;gap:7px;margin-top:13px;font-size:.81rem;color:var(--gray)}
   .days-cap b{color:var(--ink);font-weight:600}
   .rc-cta{width:100%;justify-content:center;margin-top:2px;font-size:.92rem;padding:12px 18px}
 
@@ -219,6 +229,58 @@
   function chOf(k){ for(var i=0;i<state.chapters.length;i++){ var c=state.chapters[i]; for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c; } } return state.chapters[0]; }
   function lesOf(k){ var c=chOf(k); for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c.lessons[j]; } return c.lessons[0]; }
   function chDone(c){ return c.lessons.every(function(l){ return state.done[l.k]; }); }
+
+  // Read the SAME progress the course app saves (localStorage 'quantica.profile.v1'),
+  // so the home reflects where the student actually is instead of always showing 1.1.
+  function loadProgress(){
+    var P={}; try{ P=JSON.parse(localStorage.getItem('quantica.profile.v1'))||{}; }catch(e){ P={}; }
+    var lessons=P.lessons||{}, done={}, pre=COURSE+':';
+    Object.keys(lessons).forEach(function(k){ if(k.indexOf(pre)===0){ done[k.slice(pre.length)]=true; } });
+    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null };
+  }
+  // the lesson the student is on = first not-yet-completed lesson in course order (or the last, if all done)
+  function firstUndone(){
+    for(var i=0;i<state.chapters.length;i++){ var L=state.chapters[i].lessons;
+      for(var j=0;j<L.length;j++){ if(!state.done[L[j].k]) return L[j].k; } }
+    var lc=state.chapters[state.chapters.length-1]; return lc.lessons[lc.lessons.length-1].k;
+  }
+
+  // "Days you showed up" — a scrollable 2-week (14-day) calendar. Green = a day you were active
+  // (derived from the app's streak run), the ring marks today. Arrows page back through past weeks.
+  var DayGrid=(function(){
+    var off=0, active={}, streakN=0, ready=false;
+    var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function iso(d){ var m=d.getMonth()+1, day=d.getDate(); return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(day<10?'0':'')+day; }
+    function init(streak,lastActive){
+      active={}; streakN=streak||0; off=0; ready=true;
+      if(lastActive && streak>0){ var base=new Date(lastActive+'T00:00:00');
+        for(var i=0;i<streak;i++){ var d=new Date(base); d.setDate(base.getDate()-i); active[iso(d)]=true; } }
+    }
+    function winStart(o){ var t=new Date(); t.setHours(0,0,0,0);
+      var end=new Date(t); end.setDate(t.getDate()-t.getDay()+6);   // Saturday of the current week
+      var s=new Date(end); s.setDate(end.getDate()-13-14*o); return s; }   // 14-day window, paged by o
+    function render(){
+      var el=document.getElementById('dayCard'); if(!el||!ready) return;
+      var s=winStart(off), todayISO=iso(new Date()), e=new Date(s); e.setDate(s.getDate()+13);
+      var range=MON[s.getMonth()]+' '+s.getDate()+' – '+MON[e.getMonth()]+' '+e.getDate();
+      var wk=''; ['S','M','T','W','T','F','S'].forEach(function(l){ wk+='<span class="dw">'+l+'</span>'; });
+      var cells='';
+      for(var i=0;i<14;i++){ var d=new Date(s); d.setDate(s.getDate()+i); var di=iso(d);
+        cells+='<span class="daydot'+(active[di]?' on':'')+(di===todayISO?' today':'')+(di>todayISO?' fut':'')+'" title="'+di+'"></span>'; }
+      el.innerHTML='<div class="dhead"><h4>Days you showed up</h4><div class="dnav">'+
+          '<button id="dPrev" aria-label="Earlier weeks">&lsaquo;</button>'+
+          '<button id="dNext" aria-label="Later weeks"'+(off===0?' disabled':'')+'>&rsaquo;</button></div></div>'+
+        '<div class="drange">'+range+'</div>'+
+        '<div class="dweek">'+wk+'</div>'+
+        '<div class="daysgrid">'+cells+'</div>'+
+        '<div class="days-cap"><span aria-hidden="true">&#127793;</span> '+
+          (streakN>0?('<b>'+streakN+'-day</b>&nbsp;streak'):'<b>Day 1</b>&nbsp;starts today')+'</div>';
+      var p=document.getElementById('dPrev'), n=document.getElementById('dNext');
+      if(p) p.onclick=function(){ off++; render(); };
+      if(n) n.onclick=function(){ if(off>0){ off--; render(); } };
+    }
+    return { init:init, render:render };
+  })();
 
   function renderRail(){
     var h='<span class="rl">Ch</span>';
@@ -315,18 +377,20 @@
 
   function renderRail2(){
     var fresh=!Object.keys(state.done).length;
-    var dotsN=14, dots='';
-    for(var i=0;i<dotsN;i++){ dots+='<span class="dot'+(i===dotsN-1?' today':'')+'"></span>'; }
+    var first = fresh
+      ? '<div class="rc"><h4>New here?</h4>'+
+          '<p class="lead">Take a 2-minute check and we&rsquo;ll tune every lesson to your level &mdash; tougher where you&rsquo;re strong, gentler where you&rsquo;re building. Or just dive in.</p>'+
+          '<a class="cta3d rc-cta" href="'+url('1.1')+'">Take the quick check</a></div>'
+      : '<div class="rc"><h4>Where you are</h4>'+
+          '<p class="lead">You&rsquo;re on <b>'+state.current+' &mdash; '+esc(lesOf(state.current).t)+'</b>. Pick up right where you left off.</p>'+
+          '<a class="cta3d rc-cta" href="'+url(state.current)+'">Continue&nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
     document.getElementById('rail').innerHTML=
-      '<div class="rc"><h4>New here?</h4>'+
-        '<p class="lead">Take a 2-minute check and we&rsquo;ll tune every lesson to your level &mdash; tougher where you&rsquo;re strong, gentler where you&rsquo;re building. Or just dive in.</p>'+
-        '<a class="cta3d rc-cta" href="'+url('1.1')+'">Take the quick check</a></div>'+
-      '<div class="rc"><h4>Days you showed up</h4>'+
-        '<div class="daysgrid">'+dots+'</div>'+
-        '<div class="days-cap"><span aria-hidden="true">🌱</span><b>'+(fresh?'Day 1':'Keep it up')+'</b> '+(fresh?'starts today.':'')+'</div></div>'+
+      first+
+      '<div class="rc" id="dayCard"></div>'+
       '<div class="rc"><h4>Today&rsquo;s focus</h4>'+
         '<p class="lead">One lesson keeps the momentum. Sprout is ready the moment you get stuck.</p>'+
-        '<a class="cta3d rc-cta" href="'+url(state.current)+'">Start '+state.current+' &nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
+        '<a class="cta3d rc-cta" href="'+url(state.current)+'">'+(fresh?'Start ':'Continue ')+state.current+'&nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
+    DayGrid.render();
   }
 
   function renderAll(){ renderRail(); renderContinue(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); }
@@ -340,9 +404,12 @@
   // load the real course structure, then render
   fetch('/lessons/'+COURSE+'/toc.json').then(function(r){ return r.json(); }).then(function(toc){
     state.chapters=toc;
-    // new user: nothing done, first lesson of chapter 1 is the start
-    state.current=(toc[0]&&toc[0].lessons[0]&&toc[0].lessons[0].k)||'1.1';
-    state.active=toc[0]?toc[0].n:1;
+    var prog=loadProgress();
+    state.done=prog.done;
+    state.current=firstUndone();                 // the lesson the student is actually on
+    state.active=(chOf(state.current)||toc[0]||{n:1}).n;
+    DayGrid.init(prog.streak, prog.lastActive);
+    if(prog.streak>0){ var sp=document.getElementById('streakPill'); if(sp){ sp.style.display=''; var b=sp.querySelector('b'); if(b) b.textContent=prog.streak; } }
     document.getElementById('footNote').textContent='Quantica course home · Prealgebra · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
     renderAll();
   }).catch(function(e){
