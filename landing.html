@@ -2010,7 +2010,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     document.getElementById('prCount').textContent=solved+' / '+ST.probs.length+' solved';
   }
   function host(){ var h=document.getElementById('practiceOverlay'); if(!h){ h=document.createElement('div'); h.id='practiceOverlay'; h.className='pr-overlay'; document.body.appendChild(h); } return h; }
-  window.Practice={
+  var _legacyPractice={   /* superseded by the workspace-based window.Practice defined in the main app script */
     open:function(key){
       var title=(window.lessonTitle?window.lessonTitle(key):'')||'', fam=famFor(title), h=host();
       ST.key=key; ST.fam=fam; ST.done={}; ST.att={}; ST.level=levelFor(key);
@@ -3633,7 +3633,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
       PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
         stableId:(ctx||'x')+':'+(b.__src!=null?((b._scaffold?'sc':'s')+b.__src):__bi), cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
-        graded:hasAns, stem:b.x, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
+        graded:hasAns, stem:b.x, __ptype:b.__ptype, __plabel:b.__plabel, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
       var inner='<div class="probbox cat-'+cat+(isLeg?' legendary':'')+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+(isLeg?'⭐⭐':icon)+' '+lab+(isLeg?' <span class="legbadge">🔥 Legendary</span>':'')+'</div><div class="ptext">'+b.x+'</div>';
       if(hasAns){
         inner+='<div class="answerrow"><input class="ansinput" id="ai_'+k+'" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')checkAns('+k+')"><button class="checkbtn" onclick="checkAns('+k+')">Check</button></div><div class="ansfb" id="af_'+k+'"></div>';
@@ -3744,7 +3744,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     '</aside>';
   }
   function wsOpen(key,L,meta){
-    window.__curLesson = (key==='__welcome' || (L && (L._pset || /checkpoint|summary/i.test(L.title||'')))) ? null : key;  // strength records only for single-skill teaching lessons
+    window.__curLesson = (L && L._practice) ? L._practiceKey : ((key==='__welcome' || (L && (L._pset || /checkpoint|summary/i.test(L.title||'')))) ? null : key);  // practice records against its topic; other non-teaching pages don't record
     var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false; WS._scaffTopics={};
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
@@ -4281,6 +4281,73 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     document.getElementById('modalTitle').textContent=label;
     wsOpen('pset-'+chNum+'-'+type, L, {title:label, chTitle:(chInfo?chInfo.t:''), chNum:chNum});
   }
+
+  // ---------- generated practice: a fresh problem set run through the real lesson player ----------
+  function _pri(a,b){ return a+Math.floor(Math.random()*(b-a+1)); }
+  function _ppick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function _psn(n){ return n<0?'(-'+(-n)+')':''+n; }
+  var PFAMS=[
+    {kw:['multipl'], name:'Multiplication', gen:function(L){
+      var r=Math.random();
+      if(r<0.3){ var x=_pri(2,9), z=_ppick([10,20,30,50,100,200,400,500]); return {tex:x+' \\times '+z, a:x*z, s:'tens', l:'Times 10s & 100s'}; }
+      if(r<0.68||L>=2){ var a=L>=3?_pri(13,99):_pri(11,29), b=L>=3?_pri(11,49):_pri(3,9); return {tex:a+' \\times '+b, a:a*b, s:'long', l:'Long multiplication'}; }
+      var c=_pri(2,12), d=_pri(2,12); return {tex:c+' \\times '+d, a:c*d, s:'basic', l:'Times tables'};
+    }},
+    {kw:['divi'], name:'Division', gen:function(L){
+      if(Math.random()<0.68){ var d=_pri(2,9), q=L>=2?_pri(11,60):_pri(2,12), n=d*q; return {tex:n+' \\div '+d, a:q, s:n>=100?'long':'basic', l:n>=100?'Long division':'Basic facts'}; }
+      var d2=_pri(3,9), q2=_pri(4,30), rem=_pri(1,d2-1), n2=d2*q2+rem; return {prompt:'What is the remainder of $'+n2+' \\div '+d2+'$?', a:rem, s:'rem', l:'With remainders'};
+    }},
+    {kw:['add','subtract','negation'], name:'Addition & subtraction', gen:function(L){
+      var lo=L>=3?100:(L>=2?20:5), hi=L>=3?999:(L>=2?99:20), a=_pri(lo,hi), b=_pri(lo,hi);
+      if(Math.random()<0.5){ if(b>a){var t=a;a=b;b=t;} return {tex:a+' - '+b, a:a-b, s:a>=100?'multi':'regroup', l:a>=100?'Multi-digit':'Regrouping'}; }
+      return {tex:a+' + '+b, a:a+b, s:(a>=100||b>=100)?'multi':'regroup', l:(a>=100||b>=100)?'Multi-digit':'Regrouping'};
+    }},
+    {kw:['negat','sign','integer'], name:'Negative numbers', gen:function(L){
+      var op=_ppick(['+','-','\\times']), a=_pri(2,12)*(Math.random()<0.6?-1:1), b=_pri(2,12)*(Math.random()<0.6?-1:1), res, s, l;
+      if(op==='\\times'){ res=a*b; s='muldiv'; l='Sign rules (×, ÷)'; }
+      else if(op==='+'){ res=a+b; s='add'; l='Adding negatives'; }
+      else { res=a-b; s='sub'; l='Subtracting negatives'; }
+      return {tex:_psn(a)+' '+op+' '+_psn(b), a:res, s:s, l:l};
+    }},
+    {kw:['distribut'], name:'The distributive property', gen:function(L){
+      var a=_pri(2,9), b=_pri(2,12), c=_pri(2,12); return {tex:a+' \\times ('+b+' + '+c+')', a:a*(b+c), s:'expand', l:'Expanding a(b+c)'};
+    }},
+    {kw:['exponent','power'], name:'Exponents', gen:function(L){
+      if(Math.random()<0.55){ var base=_pri(2,9), e=_pri(2,3); return {tex:base+'^{'+e+'}', a:Math.pow(base,e), s:'eval', l:'Evaluating'}; }
+      var b=_pri(2,4), m=_pri(2,3), n=_pri(1,2); return {tex:b+'^{'+m+'} \\times '+b+'^{'+n+'}', a:Math.pow(b,m+n), s:'prod', l:'Product of powers'};
+    }},
+    {kw:['order','operation'], name:'Order of operations', gen:function(L){
+      var a=_pri(2,9), b=_pri(2,9), c=_pri(2,9), t=_ppick([1,2,3,4]);
+      if(t===1) return {tex:a+' + '+b+' \\times '+c, a:a+b*c, s:'basic', l:'Order of operations'};
+      if(t===2) return {tex:'('+a+' + '+b+') \\times '+c, a:(a+b)*c, s:'nested', l:'Nested parentheses'};
+      if(t===3) return {tex:a+' \\times '+b+' - '+c, a:a*b-c, s:'basic', l:'Order of operations'};
+      var e=_pri(2,3); return {tex:a+' + '+b+'^{'+e+'}', a:a+Math.pow(b,e), s:'exp', l:'With exponents'};
+    }}
+  ];
+  function _pfam(title){ title=String(title||'').toLowerCase(); for(var i=0;i<PFAMS.length;i++){ for(var j=0;j<PFAMS[i].kw.length;j++){ if(title.indexOf(PFAMS[i].kw[j])!==-1) return PFAMS[i]; } } return null; }
+  function _plevel(key){ try{ var Pp=JSON.parse(localStorage.getItem('quantica.profile.v1')||'{}'), e=Pp.skill&&Pp.skill[CURRENT_COURSE+':'+key]; if(e&&e.n) return e.s>=0.8?3:(e.s>=0.55?2:1); }catch(x){} return 2; }
+  function _pround(key, bump){ try{ var K='quantica.practice.v1', o=JSON.parse(localStorage.getItem(K)||'{}'), pk=CURRENT_COURSE+':'+key; if(bump){ o[pk]=(o[pk]||0)+1; localStorage.setItem(K,JSON.stringify(o)); } return o[pk]||0; }catch(e){ return bump?1:0; } }
+  function _pord(n){ var s=['th','st','nd','rd'], v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }
+  function openPractice(key){
+    var title=(LESSONS[key]&&LESSONS[key].title)||(window.lessonTitle?window.lessonTitle(key):'')||'';
+    var fam=_pfam(title);
+    if(!fam){ if(window.gotoLesson) gotoLesson(key); return; }   // no generator for this topic yet -> open the real lesson
+    var round=_pround(key, true), lvl=_plevel(key), blocks=[], seen={}, tries=0;
+    while(blocks.length<6 && tries<90){ tries++;
+      var g=fam.gen(lvl), stmt=g.prompt?g.prompt:('Compute $'+g.tex+'$.'); if(seen[stmt]) continue; seen[stmt]=1;
+      blocks.push({ t:'prob', x:stmt, ans:''+g.a, accept:(g.a<0?[''+g.a,'−'+(-g.a)]:[''+g.a]), cat:'tryit', xp:2, label:'Practice', __ptype:g.s, __plabel:g.l, sol:'The answer is $'+g.a+'$.' });
+    }
+    blocks.unshift({ t:'p', x:'<b>Fresh practice set — your '+_pord(round)+'.</b> Similar to the lesson, but a brand-new set of problems, different every time. Sprout is here if you get stuck, and these still count toward your topic strengths.' });
+    blocks.push({ t:'p', x:'<div style="text-align:center;padding:10px 0"><button onclick="window.Practice&&Practice.newSet()" style="font-family:\'Inter\',sans-serif;font-weight:700;font-size:14px;border:none;border-radius:999px;background:var(--tint);color:var(--forest);padding:11px 20px;cursor:pointer">↻ Another fresh set</button></div>' });
+    var ch=parseInt(key,10), chInfo=TOC.filter(function(c){ return c.n===ch; })[0];
+    var L={ title:fam.name, blocks:blocks, _practice:true, _practiceKey:key, _eyebrow:'Practice · '+_pord(round)+' set' };
+    window.__practiceCur=key;
+    showView('lessonView');
+    try{ document.getElementById('modalEyebrow').textContent=(COURSE_REG[CURRENT_COURSE]?COURSE_REG[CURRENT_COURSE].title:'Quantica')+' · Practice'; document.getElementById('modalTitle').textContent=fam.name; }catch(e){}
+    wsOpen('practice-'+key, L, {title:fam.name, chTitle:(chInfo?chInfo.t:''), chNum:ch});
+  }
+  window.openPractice=openPractice;
+  window.Practice={ open:openPractice, newSet:function(){ if(window.__practiceCur) openPractice(window.__practiceCur); } };
   function renderPSet(){
     var st=psetState, p=st.list[st.i];
     st.solved=false; st.hintUsed=false;
@@ -4508,7 +4575,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   function recordTypeOutcome(rec, lessonKey, q){
     try{
       if(!rec || !rec.graded) return;                       // only graded problems have a right/wrong signal
-      var ty=classifyProblem(rec, (window.WS&&WS.L&&WS.L.title) || ''); if(!ty) return;
+      var ty = rec.__ptype ? {slug:rec.__ptype, label:rec.__plabel} : classifyProblem(rec, (window.WS&&WS.L&&WS.L.title) || ''); if(!ty) return;
       if(!P.typeSkill) P.typeSkill={};
       var key=((COURSE&&COURSE.slug)?COURSE.slug:'prealgebra')+':'+lessonKey+':'+ty.slug, a=0.30;
       var e=P.typeSkill[key];
