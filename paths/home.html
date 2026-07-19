@@ -232,6 +232,9 @@
   .sbar{height:7px;border-radius:999px;background:#E7EFDF;overflow:hidden;margin:5px 0 3px}
   .sbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--grass));transition:width .6s cubic-bezier(.3,.8,.4,1)}
   .slab{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-soft)}
+  .srow-lab{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .prac-link{font-family:var(--ff-ui);font-size:.7rem;font-weight:600;color:var(--moss);text-decoration:none;white-space:nowrap;flex:none}
+  .prac-link:hover{color:var(--forest)}
   .strfoot{font-size:.72rem;color:var(--gray-soft);margin-top:13px;line-height:1.45}
   /* --- top nav tabs (Roadmap / Progress) --- */
   .hnav{display:flex;gap:3px;margin-left:6px}
@@ -384,6 +387,7 @@
 
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
+  function purl(k){ return '/landing.html?course='+COURSE+'&practice='+k; }   // generated practice set for a topic
   function psetUrl(ch,type){ return '/landing.html?course='+COURSE+'&pset='+ch+'&ptype='+type; }
   function nonTeaching(t){ return /checkpoint|summary/i.test(t||''); }
   function chById(n){ for(var i=0;i<state.chapters.length;i++){ if(state.chapters[i].n===n) return state.chapters[i]; } return state.chapters[0]; }
@@ -677,14 +681,16 @@
     rows.sort(function(a,b){ return b.s-a.s; });
     return rows;
   }
-  function masteryBar(r, prev){
+  function masteryBar(r, prev, practice){
     var pct=Math.round(r.s*100), pv=prev?prev[r.k]:null;
     var tr = (pv!=null && r.s-pv>=0.03)?' <span class="up" title="up since last visit">&#9650;</span>'
            : (pv!=null && pv-r.s>=0.03)?' <span class="dn" title="down since last visit">&#9660;</span>' : '';
+    var lab = practice
+      ? '<div class="srow-lab"><span class="slab">'+strLabel(r.s)+'</span><a class="prac-link" href="'+purl(r.lk)+'">Practice &rarr;</a></div>'
+      : '<span class="slab">'+strLabel(r.s)+'</span>';
     return '<div class="srow"><div class="stop"><span class="snm" title="'+esc(r.full||r.name)+'">'+esc(r.name)+'</span>'+
        '<span class="spct">'+pct+'%'+tr+'</span></div>'+
-       '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+
-       '<span class="slab">'+strLabel(r.s)+'</span></div>';
+       '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+lab+'</div>';
   }
   // small rail card — the quick "strengths" read; the full breakdown lives in the Progress tab
   function strengthCard(){
@@ -759,7 +765,7 @@
     rows.forEach(function(r){ if(!byCh[r.ch]){ byCh[r.ch]={t:r.cht,rows:[]}; order.push(r.ch); } byCh[r.ch].rows.push(r); });
     order.sort(function(a,b){return a-b;});
     var topicsHTML=order.map(function(cn){ var g=byCh[cn];
-      return '<div class="pg-chgroup"><div class="cgh">Chapter '+cn+(g.t?' &middot; '+esc(g.t):'')+'</div>'+g.rows.map(function(r){return masteryBar(r,prev);}).join('')+'</div>';
+      return '<div class="pg-chgroup"><div class="cgh">Chapter '+cn+(g.t?' &middot; '+esc(g.t):'')+'</div>'+g.rows.map(function(r){return masteryBar(r,prev,true);}).join('')+'</div>';
     }).join('');
     var qtRows=rows.map(function(r){ return {r:r, types:qtypesFor(r)}; }).filter(function(x){ return x.types.length; });
     var qtHTML = qtRows.length
@@ -771,7 +777,7 @@
     var qtNote = qtRows.length ? '<p class="pg-note">From your actual solves. A new type leans on the topic average until you&rsquo;ve done a few, so early numbers stay honest.</p>' : '';
     var SP=[38,44,41,55,50,58,63,60,71,avg];
     var chart=SP.map(function(h,i){ return '<i style="height:'+Math.max(8,Math.min(100,h))+'%"'+(i===SP.length-1?' class="cur"':'')+'></i>'; }).join('');
-    var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+url(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
+    var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+purl(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
       : '<div class="pg-focus-row"><span class="fnm" style="color:var(--gray-soft);font-weight:500">You&rsquo;re solid across the board — keep it up.</span></div>';
     var strongHTML=strong.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="slab">'+strLabel(r.s)+'</span><span class="fpct" style="color:var(--forest)">'+Math.round(r.s*100)+'%</span></div>'; }).join('');
     // how you solve — clean vs. hint vs. solution (real, from P.stats)

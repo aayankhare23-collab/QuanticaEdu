@@ -1888,6 +1888,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var cm=s.match(/[?&]course=([a-z0-9]+)/);
     var pm=s.match(/[?&]pset=([0-9]+)/);
     var pt=s.match(/[?&]ptype=(practice|challenge)/);
+    var prm=s.match(/[?&]practice=([0-9.]+)/);
     var n=0,t=setInterval(function(){
       if(typeof window.openLesson!=='function'){ if(++n>200) clearInterval(t); return; }
       clearInterval(t);
@@ -1899,6 +1900,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // deep-nav (gotoLesson/openPSet) needs the app fully rendered, so run it after openLesson
         if(pm && typeof window.openPSet==='function'){ window.openPSet(parseInt(pm[1],10), pt?pt[1]:'practice'); }
         else if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
+        if(prm && window.Practice){ setTimeout(function(){ Practice.open(prm[1]); }, 120); }
       }catch(e){}
     },30);
   }
@@ -1906,6 +1908,137 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   // already hidden via CSS from first paint, so nothing of the old site shows during the wait.
   if(document.readyState==='complete') launch();
   else window.addEventListener('load',launch);
+})();
+</script>
+
+<!-- PRACTICE: procedural fresh-problem generator (separate from the authored lesson set) -->
+<style>
+  .pr-overlay{position:fixed;inset:0;z-index:9000;display:none;align-items:flex-start;justify-content:center;background:rgba(16,30,22,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);overflow-y:auto;padding:40px 16px}
+  .pr-overlay.on{display:flex}
+  .pr-modal{background:var(--paper,#fff);width:100%;max-width:560px;border-radius:24px;box-shadow:0 40px 90px -30px rgba(10,30,18,.5);overflow:hidden;animation:prIn .25s ease;margin:auto}
+  @keyframes prIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .pr-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 24px 16px;border-bottom:1px solid var(--line,#e7efdf)}
+  .pr-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss,#2e7d4f)}
+  .pr-title{font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:var(--forest,#164b35);margin-top:3px;line-height:1.1}
+  .pr-sub{font-size:12.5px;color:var(--mute,#6b7a6b);margin-top:6px;max-width:44ch;line-height:1.45}
+  .pr-x{background:none;border:none;font-size:20px;color:var(--mute,#889);cursor:pointer;line-height:1;padding:4px 7px;border-radius:8px;flex:none}
+  .pr-x:hover{color:var(--forest,#164b35);background:rgba(0,0,0,.05)}
+  .pr-list{padding:14px 24px;display:flex;flex-direction:column;gap:11px}
+  .pr-card{display:flex;gap:13px;align-items:flex-start;background:var(--card,#fff);border:1px solid var(--line,#e7efdf);border-radius:16px;padding:13px 15px;transition:border-color .2s,background .2s}
+  .pr-card.pr-ok{border-color:var(--grass,#43b063);background:rgba(67,176,99,.07)}
+  .pr-n{width:25px;height:25px;flex:none;border-radius:50%;background:var(--tint,#eef6e4);color:var(--forest,#164b35);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12.5px;display:grid;place-items:center;margin-top:3px}
+  .pr-body{flex:1;min-width:0}
+  .pr-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:var(--ink,#123322);letter-spacing:.01em}
+  .pr-row{display:flex;gap:8px;margin-top:9px}
+  .pr-in{flex:1;min-width:0;border:1.5px solid var(--line,#e7efdf);border-radius:12px;padding:9px 13px;font-family:'Inter',sans-serif;font-size:15px;color:var(--ink,#123);outline:none;background:#fff;box-sizing:border-box}
+  .pr-in:focus{border-color:var(--grass,#43b063);box-shadow:0 0 0 3px rgba(67,176,99,.18)}
+  .pr-check{flex:none;border:none;border-radius:12px;background:linear-gradient(135deg,var(--moss,#2e7d4f),var(--grass,#43b063));color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;padding:9px 17px;cursor:pointer}
+  .pr-card.pr-ok .pr-check{background:var(--grass,#43b063);cursor:default}
+  .pr-fb{font-size:12.5px;font-weight:600;margin-top:6px;min-height:1px}
+  .pr-fb.ok{color:var(--moss,#2e7d4f)} .pr-fb.no{color:#d9534f}
+  .pr-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 24px 22px;border-top:1px solid var(--line,#e7efdf)}
+  #prCount{font-size:13px;font-weight:600;color:var(--slate,#556655)}
+  .pr-actions{display:flex;gap:9px}
+  .pr-new,.pr-done{border:none;border-radius:999px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;cursor:pointer}
+  .pr-new{background:var(--tint,#eef6e4);color:var(--forest,#164b35)}
+  .pr-new:hover{filter:brightness(.97)}
+  .pr-done{background:linear-gradient(135deg,var(--forest,#164b35),var(--moss,#2e7d4f));color:#fff}
+  .pr-empty{padding:28px 26px 36px;color:var(--mute,#6b7a6b);font-size:14px;line-height:1.55;text-align:center}
+  @media(max-width:520px){ .pr-modal{border-radius:18px} .pr-title{font-size:21px} .pr-q{font-size:18px} }
+</style>
+<script>
+(function(){
+  function ri(a,b){ return a+Math.floor(Math.random()*(b-a+1)); }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function sup(n){ return ({2:'²',3:'³',4:'⁴'})[n]||('^'+n); }
+  function fneg(n){ return n<0 ? '(−'+(-n)+')' : ''+n; }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function pnorm(s){ return String(s==null?'':s).trim().toLowerCase().replace(/−/g,'-').replace(/\s+/g,'').replace(/,/g,'').replace(/^\+/,''); }
+  function courseSlug(){ return (window.COURSE&&window.COURSE.slug)||'prealgebra'; }
+  // each generator returns {q (display), a (answer), slug, label}. Uses × (times), ÷ (div), − (minus).
+  var FAMS=[
+    {kw:['multipl'], name:'Multiplication', gen:function(L){
+      var r=Math.random();
+      if(r<0.3){ var x=ri(2,9), z=pick([10,20,30,50,100,200,400,500]); return {q:x+' × '+z, a:x*z, slug:'tens', label:'Times 10s & 100s'}; }
+      if(r<0.68||L>=2){ var a=L>=3?ri(13,99):ri(11,29), b=L>=3?ri(11,49):ri(3,9); return {q:a+' × '+b, a:a*b, slug:'long', label:'Long multiplication'}; }
+      var c=ri(2,12), d=ri(2,12); return {q:c+' × '+d, a:c*d, slug:'basic', label:'Times tables'};
+    }},
+    {kw:['divi'], name:'Division', gen:function(L){
+      if(Math.random()<0.68){ var d=ri(2,9), q=L>=2?ri(11,60):ri(2,12), n=d*q; return {q:n+' ÷ '+d, a:q, slug:n>=100?'long':'basic', label:n>=100?'Long division':'Basic facts'}; }
+      var d2=ri(3,9), q2=ri(4,30), rem=ri(1,d2-1), n2=d2*q2+rem; return {q:'Remainder of '+n2+' ÷ '+d2+'?', a:rem, slug:'rem', label:'With remainders'};
+    }},
+    {kw:['add','subtract','negation'], name:'Addition & subtraction', gen:function(L){
+      var lo=L>=3?100:(L>=2?20:5), hi=L>=3?999:(L>=2?99:20), a=ri(lo,hi), b=ri(lo,hi);
+      if(Math.random()<0.5){ if(b>a){var t=a;a=b;b=t;} return {q:a+' − '+b, a:a-b, slug:a>=100?'multi':'regroup', label:a>=100?'Multi-digit':'Regrouping'}; }
+      return {q:a+' + '+b, a:a+b, slug:(a>=100||b>=100)?'multi':'regroup', label:(a>=100||b>=100)?'Multi-digit':'Regrouping'};
+    }},
+    {kw:['negat','sign','integer'], name:'Negative numbers', gen:function(L){
+      var op=pick(['+','−','×']), a=ri(2,12)*(Math.random()<0.6?-1:1), b=ri(2,12)*(Math.random()<0.6?-1:1), res, slug, label;
+      if(op==='×'){ res=a*b; slug='muldiv'; label='Sign rules (×, ÷)'; }
+      else if(op==='+'){ res=a+b; slug='add'; label='Adding negatives'; }
+      else { res=a-b; slug='sub'; label='Subtracting negatives'; }
+      return {q:fneg(a)+' '+op+' '+fneg(b), a:res, slug:slug, label:label};
+    }},
+    {kw:['distribut'], name:'The distributive property', gen:function(L){
+      var a=ri(2,9), b=ri(2,12), c=ri(2,12); return {q:a+' × ('+b+' + '+c+')', a:a*(b+c), slug:'expand', label:'Expanding a(b+c)'};
+    }},
+    {kw:['exponent','power'], name:'Exponents', gen:function(L){
+      if(Math.random()<0.55){ var base=ri(2,9), e=ri(2,3); return {q:base+sup(e), a:Math.pow(base,e), slug:'eval', label:'Evaluating'}; }
+      var b=ri(2,4), m=ri(2,3), n=ri(1,2); return {q:b+sup(m)+' × '+b+sup(n), a:Math.pow(b,m+n), slug:'prod', label:'Product of powers'};
+    }},
+    {kw:['order','operation'], name:'Order of operations', gen:function(L){
+      var a=ri(2,9), b=ri(2,9), c=ri(2,9), t=pick([1,2,3,4]);
+      if(t===1) return {q:a+' + '+b+' × '+c, a:a+b*c, slug:'basic', label:'Order of operations'};
+      if(t===2) return {q:'('+a+' + '+b+') × '+c, a:(a+b)*c, slug:'nested', label:'Nested parentheses'};
+      if(t===3) return {q:a+' × '+b+' − '+c, a:a*b-c, slug:'basic', label:'Order of operations'};
+      var e=ri(2,3); return {q:a+' + '+b+sup(e), a:a+Math.pow(b,e), slug:'exp', label:'With exponents'};
+    }}
+  ];
+  function famFor(title){ title=String(title||'').toLowerCase(); for(var i=0;i<FAMS.length;i++){ for(var j=0;j<FAMS[i].kw.length;j++){ if(title.indexOf(FAMS[i].kw[j])!==-1) return FAMS[i]; } } return null; }
+  var ST={key:null, fam:null, probs:[], done:{}, att:{}, level:2};
+  function levelFor(key){ try{ var P=JSON.parse(localStorage.getItem('quantica.profile.v1')||'{}'), e=P.skill&&P.skill[courseSlug()+':'+key]; if(e&&e.n){ return e.s>=0.8?3:(e.s>=0.55?2:1); } }catch(x){} return 2; }
+  function gen(n){ var out=[], seen={}, tries=0; while(out.length<n && tries<n*10){ tries++; var p=ST.fam.gen(ST.level); if(seen[p.q]) continue; seen[p.q]=1; out.push(p); } return out; }
+  function render(){
+    var rows=ST.probs.map(function(p,i){ var st=ST.done[i], q=esc(p.q)+(String(p.q).slice(-1)==='?'?'':' =');
+      return '<div class="pr-card'+(st==='ok'?' pr-ok':'')+'"><span class="pr-n">'+(i+1)+'</span><div class="pr-body">'+
+        '<div class="pr-q">'+q+'</div>'+
+        '<div class="pr-row"><input class="pr-in" id="pr_'+i+'" autocomplete="off"'+(st==='ok'?' disabled':'')+' placeholder="Answer" onkeydown="if(event.key===\'Enter\')Practice.check('+i+')"><button class="pr-check" onclick="Practice.check('+i+')">'+(st==='ok'?'✓':'Check')+'</button></div>'+
+        '<div class="pr-fb" id="prfb_'+i+'"></div></div></div>';
+    }).join('');
+    document.getElementById('prBody').innerHTML=rows;
+    var solved=0; for(var k in ST.done){ if(ST.done[k]==='ok') solved++; }
+    document.getElementById('prCount').textContent=solved+' / '+ST.probs.length+' solved';
+  }
+  function host(){ var h=document.getElementById('practiceOverlay'); if(!h){ h=document.createElement('div'); h.id='practiceOverlay'; h.className='pr-overlay'; document.body.appendChild(h); } return h; }
+  window.Practice={
+    open:function(key){
+      var title=(window.lessonTitle?window.lessonTitle(key):'')||'', fam=famFor(title), h=host();
+      ST.key=key; ST.fam=fam; ST.done={}; ST.att={}; ST.level=levelFor(key);
+      if(!fam){
+        h.innerHTML='<div class="pr-modal"><div class="pr-head"><div><div class="pr-eyebrow">Practice</div><div class="pr-title">'+esc(title||'This topic')+'</div></div><button class="pr-x" onclick="Practice.close()">✕</button></div><div class="pr-empty">Generated practice for this topic is on the way. For now, the lesson has plenty to work through.</div></div>';
+        h.classList.add('on'); document.body.style.overflow='hidden'; return;
+      }
+      ST.probs=gen(6);
+      h.innerHTML='<div class="pr-modal"><div class="pr-head"><div><div class="pr-eyebrow">Practice · fresh set</div><div class="pr-title">'+esc(fam.name)+'</div><div class="pr-sub">Similar to the lesson, never the same set — a new batch every time. This is extra drill; it won’t change your lesson progress.</div></div><button class="pr-x" onclick="Practice.close()">✕</button></div><div class="pr-list" id="prBody"></div><div class="pr-foot"><span id="prCount"></span><div class="pr-actions"><button class="pr-new" onclick="Practice.newSet()">↻ New set</button><button class="pr-done" onclick="Practice.close()">Done</button></div></div></div>';
+      h.classList.add('on'); document.body.style.overflow='hidden'; render();
+      setTimeout(function(){ var f=document.getElementById('pr_0'); if(f) f.focus(); },60);
+    },
+    newSet:function(){ ST.done={}; ST.att={}; ST.probs=gen(6); render(); var m=document.querySelector('#practiceOverlay .pr-modal'); if(m) m.scrollTop=0; },
+    check:function(i){
+      if(ST.done[i]==='ok') return;
+      var inp=document.getElementById('pr_'+i), fb=document.getElementById('prfb_'+i), p=ST.probs[i];
+      var v=pnorm(inp.value); if(!v){ fb.textContent='Type an answer first.'; fb.className='pr-fb'; return; }
+      if(v===pnorm(p.a)){
+        var q=(ST.att[i]>0)?0.78:1.0; ST.done[i]='ok';
+        if(window.Rewards&&Rewards.practiceType) Rewards.practiceType(ST.key, p.slug, p.label, q);
+        render(); var fb2=document.getElementById('prfb_'+i); if(fb2){ fb2.textContent='✓ Nice.'; fb2.className='pr-fb ok'; }
+      } else {
+        ST.att[i]=(ST.att[i]||0)+1;
+        fb.className='pr-fb no'; fb.textContent = ST.att[i]>=2 ? ('Not quite. Answer: '+p.a) : 'Not quite — try again.';
+      }
+    },
+    close:function(){ location.assign('/paths/home.html?course='+courseSlug()); }
+  };
 })();
 </script>
 
@@ -3167,6 +3300,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(!window.COURSE) window.COURSE={slug:c.slug,title:c.title};
     else { window.COURSE.slug=c.slug; window.COURSE.title=c.title; }
     TOC=c.toc; LESSONS=c.lessons; PSETS=c.psets;
+    window.lessonTitle=function(k){ try{ return (LESSONS[k]&&LESSONS[k].title)||''; }catch(e){ return ''; } };
     liveOrder=[]; TOC.forEach(function(ch){ ch.s.forEach(function(sec){ if(LESSONS[sec[0]]) liveOrder.push(sec[0]); }); });
     completed={};
     if(window.Rewards&&Rewards.getCompletedLessons) Object.assign(completed,Rewards.getCompletedLessons());
@@ -4522,6 +4656,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   window.Rewards={
     _onSolved:function(rec){ award(rec,false); },
     _onWrong:function(rec){ P.stats.attempts++; save(); },
+    // record a generated-practice outcome against a problem type (feeds the per-type breakdown)
+    practiceType:function(lessonKey, slug, label, q){
+      try{ if(!slug) return; if(!P.typeSkill) P.typeSkill={};
+        var key=((COURSE&&COURSE.slug)?COURSE.slug:'prealgebra')+':'+lessonKey+':'+slug, a=0.30, e=P.typeSkill[key];
+        if(!e){ e={s:q,n:1,label:label}; } else { e.s=e.s+a*(q-e.s); e.n=(e.n||0)+1; e.label=label; }
+        P.typeSkill[key]=e; save();
+      }catch(_){}
+    },
     // Seed initial per-lesson mastery from the quick check (refined later by real solves).
     seedMastery:function(slug, seeds){
       if(!seeds) return; if(!P.skill) P.skill={};
