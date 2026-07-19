@@ -3591,7 +3591,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       '<div class="ws-body" id="tutBody">'+
         '<div class="tut-bub bot">Hi, this is '+guideName()+', your personal Quantica Tutor!</div>'+
       '</div>'+
-      '<div class="tut-compose"><textarea class="tut-input" id="tutInput" placeholder="Ask me anything about this problem…" rows="1" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendTutorMsg();}" oninput="this.style.height=\'auto\';this.style.height=Math.min(this.scrollHeight,120)+\'px\';"></textarea><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
+      '<div class="tut-compose"><textarea class="tut-input" id="tutInput" placeholder="Ask me anything…" rows="1" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendTutorMsg();}" oninput="this.style.height=\'auto\';this.style.height=Math.min(this.scrollHeight,120)+\'px\';"></textarea><button class="snd" id="tutSend" onclick="sendTutorMsg()">➤</button></div>'+
     '</aside>';
   }
 
@@ -4831,6 +4831,9 @@ async function sendTutorMsg() {
   .ws-tutor .tut-compose{background:rgba(255,255,255,.4) !important;border-top:1px solid rgba(67,176,99,.16) !important}
   .ws-tutor .tut-input{background:#ffffff !important;color:#1d3c2a !important;border-color:rgba(67,176,99,.30) !important}
   .ws-tutor .tut-input::placeholder{color:#83a08f !important}
+  /* Sprout send button + user bubble: medium green with the same friendly feel as Cove's blue (was neon lime) */
+  .ws-tutor .tut-bub.me,.ws-tutor .tut-bub.usr,.ws-tutor .tut-bub.user,.ws-tutor .tut-bub.you{background:#52bf7d !important;color:#06331c !important}
+  .ws-tutor .snd{background:#52bf7d !important;color:#06331c !important}
   /* Cove (Algebra I) = light blue */
   [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#eff7fe 0%,#e3f0fb 60%,#dbe9fa 100%) !important;border-color:rgba(77,158,221,.34) !important;color:#123049 !important}
   [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#e3f0fb,#d6e9f8) !important}
