@@ -700,6 +700,15 @@
   }
   // ---------- Progress dashboard (full-width view) ----------
   function hstr(s){ var h=0; s=String(s); for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+  function pct100(vals, total){                            // integer percentages that always sum to 100 (largest-remainder rounding)
+    if(!total) return vals.map(function(){return 0;});
+    var raw=vals.map(function(v){return v/total*100;});
+    var fl=raw.map(function(r){return Math.floor(r);});
+    var rem=100-fl.reduce(function(a,b){return a+b;},0);
+    var ord=raw.map(function(r,i){return {i:i,f:r-Math.floor(r)};}).sort(function(a,b){return b.f-a.f;});
+    for(var k=0;k<rem && k<ord.length;k++){ fl[ord[k].i]++; }
+    return fl;
+  }
   // actual problem types per topic (matched by keyword in the lesson title)
   var QT_BANK=[
     {kw:['multipl'], t:['Times tables','Long multiplication','Times 10s & 100s','Estimating products','Word problems']},
@@ -785,16 +794,18 @@
       : '<div class="pg-focus-row"><span class="fnm" style="color:var(--gray-soft);font-weight:500">You&rsquo;re solid across the board — keep it up.</span></div>';
     var strongHTML=strong.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="slab">'+strLabel(r.s)+'</span><span class="fpct" style="color:var(--forest)">'+Math.round(r.s*100)+'%</span></div>'; }).join('');
     // how you solve — clean vs. hint vs. solution (real, from P.stats)
-    var solsN=st.solutions||0, hintN=Math.max(0, solved-indep-solsN), pc=function(n){ return solved?Math.round(n/solved*100):0; };
+    // clean / with-a-hint (any number of hints) / saw-solution — a partition of every graded solve, so it always totals 100%
+    var solsN=st.solutions||0, hintN=Math.max(0, solved-indep-solsN);
+    var sp=pct100([indep,hintN,solsN], solved), pClean=sp[0], pHint=sp[1], pSol=sp[2];
     var solveHTML = solved
       ? '<div class="solvebar">'+
-          (indep?'<span class="sb-seg sb-clean" style="width:'+pc(indep)+'%"></span>':'')+
-          (hintN?'<span class="sb-seg sb-hint" style="width:'+pc(hintN)+'%"></span>':'')+
-          (solsN?'<span class="sb-seg sb-sol" style="width:'+pc(solsN)+'%"></span>':'')+
+          (pClean?'<span class="sb-seg sb-clean" style="width:'+pClean+'%"></span>':'')+
+          (pHint?'<span class="sb-seg sb-hint" style="width:'+pHint+'%"></span>':'')+
+          (pSol?'<span class="sb-seg sb-sol" style="width:'+pSol+'%"></span>':'')+
         '</div>'+
-        '<div class="sb-legend"><span><i class="sb-clean"></i>Clean <b>'+pc(indep)+'%</b></span>'+
-          '<span><i class="sb-hint"></i>With a hint <b>'+pc(hintN)+'%</b></span>'+
-          '<span><i class="sb-sol"></i>Saw solution <b>'+pc(solsN)+'%</b></span></div>'
+        '<div class="sb-legend"><span><i class="sb-clean"></i>Clean <b>'+pClean+'%</b></span>'+
+          '<span><i class="sb-hint"></i>With a hint <b>'+pHint+'%</b></span>'+
+          '<span><i class="sb-sol"></i>Saw solution <b>'+pSol+'%</b></span></div>'
       : '<p class="pg-note">Solve a few problems and your clean / hint / solution split shows up here.</p>';
     host.innerHTML=
     '<div class="pgview">'+
