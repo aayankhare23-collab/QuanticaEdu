@@ -4289,7 +4289,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var o = saw ? 0.30 : ((rec.hintsUsed>0) ? 0.60 : ((rec.attempts>0) ? 0.78 : 1.0));
       if(!P.skill) P.skill={};
       var e=P.skill[lk], a=0.35;
-      if(!e){ e={s:o,n:1}; } else { e.s=e.s+a*(o-e.s); e.n=(e.n||0)+1; }
+      if(!e){ e={s:o,n:1}; } else { e.s=e.s+a*(o-e.s); e.n=(e.n||0)+1; e.seeded=false; }
       P.skill[lk]=e;
     }catch(_){}
   }
@@ -4421,6 +4421,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   window.Rewards={
     _onSolved:function(rec){ award(rec,false); },
     _onWrong:function(rec){ P.stats.attempts++; save(); },
+    // Seed initial per-lesson mastery from the quick check (refined later by real solves).
+    seedMastery:function(slug, seeds){
+      if(!seeds) return; if(!P.skill) P.skill={};
+      var changed=false;
+      Object.keys(seeds).forEach(function(lk){
+        var key=slug+':'+lk, e=P.skill[key];
+        if(!e || e.seeded){                       // never overwrite mastery earned by real solving
+          P.skill[key]={ s:Math.max(0,Math.min(1,seeds[lk])), n:1, seeded:true };
+          changed=true;
+        }
+      });
+      if(changed) save();
+    },
     _onHint:function(rec){ P.stats.hints++; save(); },
     _onReveal:function(rec){
       if(!rec) return; var id=COURSE.slug+'|'+rec.stableId;
@@ -6125,7 +6138,20 @@ async function sendTutorMsg() {
     skip:function(){ window.ADAPT.skip(DG.ch); var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
     begin:function(){ DG.idx=0; DG.correct={}; DG.score={}; dgQuestion(); },
     submit:function(skipQ){ var q=DG.q[DG.idx]; if(!skipQ){ var inp=document.getElementById('dgInput'); var v=inp?dgNorm(inp.value):''; if(v!=='' && (v===dgNorm(q.ans) || dgNumEq(v,dgNorm(q.ans)))){ DG.correct[q.topic]=(DG.correct[q.topic]||0)+1; DG.score[q.topic]=(DG.score[q.topic]||0)+((q.rung||0)+1); } } DG.idx++; if(DG.idx>=DG.q.length) dgResults(); else dgQuestion(); },
-    finish:function(){ var tiers=DG.pending||dgScore(); window.ADAPT.recordDiagnostic(DG.ch, tiers); var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
+    finish:function(){ var tiers=DG.pending||dgScore(); window.ADAPT.recordDiagnostic(DG.ch, tiers);
+      // seed per-lesson mastery for this chapter from the diagnostic tiers, so the student's
+      // mastery is "placed" the moment the quick check ends — then refined by real solves.
+      try{
+        var TM=[0,.15,.32,.5,.66,.8], seeds={}, LES=(window.ADAPT_CONTENT&&ADAPT_CONTENT.lessons)||{}, slug=(window.COURSE&&COURSE.slug)||'prealgebra';
+        Object.keys(LES).forEach(function(lk){
+          if(chapterOf(lk)!==String(DG.ch)) return;
+          var tps=(LES[lk].topics)||[], sum=0, cnt=0;
+          tps.forEach(function(tp){ var t=tiers[tp]; if(t){ sum+=(TM[t]||.5); cnt++; } });
+          if(cnt) seeds[lk]=sum/cnt;
+        });
+        if(window.Rewards && Rewards.seedMastery) Rewards.seedMastery(slug, seeds);
+      }catch(e){}
+      var o=document.getElementById('dgOverlay'); if(o) o.classList.remove('on'); if(window.reflowLesson) window.reflowLesson(); },
     retake:function(key){ var ch=chapterOf(key); window.ADAPT.clearDiagnostic(ch); if(window.DiffPanel) DiffPanel.close(); this.startFor(key); }
   };
 })();

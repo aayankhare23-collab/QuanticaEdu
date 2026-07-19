@@ -233,6 +233,25 @@
   .sbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--grass));transition:width .6s cubic-bezier(.3,.8,.4,1)}
   .slab{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-soft)}
   .strfoot{font-size:.72rem;color:var(--gray-soft);margin-top:13px;line-height:1.45}
+  /* --- mastery card tabs --- */
+  .mtabs{display:flex;gap:2px;margin:-2px 0 14px;border-bottom:1px solid var(--line)}
+  .mtab{appearance:none;background:none;border:none;font-family:var(--ff-ui);font-size:.82rem;font-weight:600;color:var(--gray-soft);padding:5px 11px 9px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s}
+  .mtab.on{color:var(--forest);border-bottom-color:var(--grass)}
+  .mtab:hover:not(.on){color:var(--gray)}
+  .mpane{display:none;animation:mfade .25s ease}
+  .mpane.on{display:block}
+  @keyframes mfade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+  /* detailed progress pane */
+  .mstat-row{display:flex;gap:8px;margin-bottom:15px}
+  .mstat{flex:1;background:var(--tint);border-radius:12px;padding:11px 6px 9px;text-align:center}
+  .mstat .v{font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--forest);line-height:1}
+  .mstat .l{font-size:.58rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-soft);margin-top:5px}
+  .mprog-h{font-family:var(--ff-ui);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-soft);margin:16px 0 10px}
+  .mspark{display:flex;align-items:flex-end;gap:5px;height:56px;padding:2px 0}
+  .mspark i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--grass),var(--moss));opacity:.85}
+  .mspark i.dim{background:var(--line);opacity:1}
+  .mprev{margin-top:14px;display:flex;align-items:center;gap:7px}
+  .mprev::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grass);flex:none}
   .rc-cta{width:100%;justify-content:center;margin-top:2px;font-size:.92rem;padding:12px 18px}
 
   .note{max-width:1180px;margin:0 auto;padding:0 22px 34px;font-size:.78rem;color:var(--gray-soft)}
@@ -299,7 +318,7 @@
   var SPRIG_WAVE='<svg width="52" height="16" viewBox="0 0 54 16" aria-hidden="true"><path d="M2 10 C9 3 15 3 22 10 C29 17 35 17 42 10 C46 6 50 6 52 8" stroke="#4D9EDD" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M2 6 C9 0 15 0 22 6" stroke="#A9D8F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/></svg>';
   var SPRIG=IS_ALG?SPRIG_WAVE:SPRIG_LEAF;
 
-  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{} };
+  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{}, stats:{} };
 
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
@@ -316,7 +335,7 @@
     var P={}; try{ P=JSON.parse(localStorage.getItem('quantica.profile.v1'))||{}; }catch(e){ P={}; }
     var lessons=P.lessons||{}, done={}, pre=COURSE+':';
     Object.keys(lessons).forEach(function(k){ if(k.indexOf(pre)===0){ done[k.slice(pre.length)]=true; } });
-    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{} };
+    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{}, stats:P.stats||{} };
   }
   // the lesson the student is on = first not-yet-completed lesson in course order (or the last, if all done)
   function firstUndone(){
@@ -594,23 +613,53 @@
       rows.push({ k:fullK, name:shortSkill(les.t), s:Math.max(0,Math.min(1,e.s)) });
     });
     if(!rows.length) return null;
-    rows.sort(function(a,b){ return b.s-a.s; }); rows=rows.slice(0,4);
+    rows.sort(function(a,b){ return b.s-a.s; });
     var prev={}; try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
-    var h='<div class="rc"><h4>Your strengths</h4><div class="strengths">';
-    rows.forEach(function(r){
+    function barRow(r){
       var pct=Math.round(r.s*100), pv=prev[r.k];
       var tr = (pv!=null && r.s-pv>=0.03)?' <span class="up" title="up since last visit">&#9650;</span>'
              : (pv!=null && pv-r.s>=0.03)?' <span class="dn" title="down since last visit">&#9660;</span>' : '';
-      h+='<div class="srow"><div class="stop"><span class="snm" title="'+esc(r.name)+'">'+esc(r.name)+'</span>'+
+      return '<div class="srow"><div class="stop"><span class="snm" title="'+esc(r.name)+'">'+esc(r.name)+'</span>'+
          '<span class="spct">'+pct+'%'+tr+'</span></div>'+
          '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+
          '<span class="slab">'+strLabel(r.s)+'</span></div>';
-    });
-    h+='</div><p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p></div>';
-    var snap={}; rows.forEach(function(r){ snap[r.k]=r.s; });
+    }
+    // Strengths tab — the strongest few, the quick read
+    var top=rows.slice(0,4);
+    var strPane='<div class="strengths">'+top.map(barRow).join('')+'</div>'+
+      '<p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p>';
+    // Progress tab — fuller breakdown. Mastery is real; the trend chart is a placeholder until per-session data exists.
+    var avg=Math.round(rows.reduce(function(a,r){return a+r.s;},0)/rows.length*100);
+    var st=state.stats||{}, solved=st.solved||0, indep=st.independent||0;
+    var cleanPct = solved? Math.round(indep/solved*100) : null;
+    var SPARK=[34,40,37,52,47,44,61,58,70,66];   // placeholder accuracy trend
+    var spark=SPARK.map(function(h){return '<i style="height:'+h+'%"></i>';}).join('');
+    var progPane=
+      '<div class="mstat-row">'+
+        '<div class="mstat"><div class="v">'+avg+'%</div><div class="l">Avg mastery</div></div>'+
+        '<div class="mstat"><div class="v">'+rows.length+'</div><div class="l">Topics</div></div>'+
+        '<div class="mstat"><div class="v">'+(solved||'—')+'</div><div class="l">Solved</div></div>'+
+      '</div>'+
+      '<div class="mprog-h">Mastery by topic</div>'+
+      '<div class="strengths">'+rows.map(barRow).join('')+'</div>'+
+      '<div class="mprog-h">Accuracy over time</div>'+
+      '<div class="mspark">'+spark+'</div>'+
+      '<p class="strfoot mprev">Preview &mdash; a full breakdown (accuracy, pace, clean-solve rate'+(cleanPct!=null?', currently '+cleanPct+'%':'')+') fills in as you complete more lessons.</p>';
+    var snap={}; top.forEach(function(r){ snap[r.k]=r.s; });
     try{ var hs=JSON.parse(localStorage.getItem('quantica.home.v1'))||{}; hs.skillSnap=snap; localStorage.setItem('quantica.home.v1',JSON.stringify(hs)); }catch(e){}
-    return h;
+    return '<div class="rc">'+
+      '<div class="mtabs"><button class="mtab on" data-mt="str" onclick="mtab(this)">Strengths</button>'+
+      '<button class="mtab" data-mt="prog" onclick="mtab(this)">Progress</button></div>'+
+      '<div class="mpane on" data-mp="str">'+strPane+'</div>'+
+      '<div class="mpane" data-mp="prog">'+progPane+'</div>'+
+    '</div>';
   }
+  window.mtab=function(btn){
+    var card=btn.closest('.rc'); if(!card) return;
+    var name=btn.getAttribute('data-mt');
+    [].forEach.call(card.querySelectorAll('.mtab'),function(b){ b.classList.toggle('on', b===btn); });
+    [].forEach.call(card.querySelectorAll('.mpane'),function(p){ p.classList.toggle('on', p.getAttribute('data-mp')===name); });
+  };
   function renderRail2(){
     var fresh=!Object.keys(state.done).length;
     var strengths=strengthCard();
@@ -653,6 +702,7 @@
     var prog=loadProgress();
     state.done=prog.done;
     state.skill=prog.skill;
+    state.stats=prog.stats;
     state.current=firstUndone();                 // the lesson the student is actually on
     state.active=(chOf(state.current)||toc[0]||{n:1}).n;
     DayGrid.init(prog.streak, prog.lastActive);
