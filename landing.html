@@ -3499,7 +3499,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var icon=isCh?'⭐':(cat==='review'?'📝':(cat==='checkpoint'?'🎯':'⚡'));
       PROBREG[k]={ accept: hasAns ? [normAns(b.ans)].concat((b.accept||[]).map(normAns)) : null, hints:hints, hi:0,
         stableId:(ctx||'x')+':'+(b.__src!=null?((b._scaffold?'sc':'s')+b.__src):__bi), cat:cat, legendary:(!!b.legendary||/legendary/i.test(lab)),
-        graded:hasAns, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
+        graded:hasAns, stem:b.x, xpOverride:b.xp||0, attempts:0, hintsUsed:0, solViewed:false, shownAt:Date.now(), sid:sid };
       var inner='<div class="probbox cat-'+cat+(isLeg?' legendary':'')+'" data-k="'+k+'"><div class="plabel'+(isCh?' challenge':'')+'">'+(isLeg?'⭐⭐':icon)+' '+lab+(isLeg?' <span class="legbadge">🔥 Legendary</span>':'')+'</div><div class="ptext">'+b.x+'</div>';
       if(hasAns){
         inner+='<div class="answerrow"><input class="ansinput" id="ai_'+k+'" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')checkAns('+k+')"><button class="checkbtn" onclick="checkAns('+k+')">Check</button></div><div class="ansfb" id="af_'+k+'"></div>';
@@ -4282,6 +4282,106 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   // Per-lesson STRENGTH signal: score each graded problem fairly, then EMA-smooth it so a
   // student's strength in a skill reflects recent work and climbs as they improve.
   //   clean independent solve = 1.0 · solved after wrong tries = 0.78 · with a hint = 0.60 · saw solution = 0.30
+  // ---------- per-type problem classifier + recording (bootstrap heuristics; authored tags can override later) ----------
+  // Pull light features out of a problem's stem so we can bucket it into a specific type within its topic.
+  function typeFeats(rec){
+    var raw=String(rec&&rec.stem||'').replace(/<[^>]+>/g,' ');
+    var plain=raw.replace(/\\[a-zA-Z]+/g,' ').replace(/[{}$\\]/g,' ');
+    var mm=raw.match(/\$\$[\s\S]*?\$\$/)||raw.match(/\\\([\s\S]*?\\\)/)||raw.match(/\$[^$]*\$/);   // operands from the main expression, not incidental prose numbers
+    var nums=((mm?mm[0]:plain).replace(/\\[a-zA-Z]+/g,' ').replace(/[{}$\\]/g,' ').match(/-?\d+(?:\.\d+)?/g)||[]).map(Number), abs=nums.map(function(n){return Math.abs(n);});
+    var words=(plain.match(/[A-Za-z]{3,}/g)||[]);
+    return { raw:raw, plain:plain, nums:nums, abs:abs,
+      max:abs.length?Math.max.apply(null,abs):0, min:abs.length?Math.min.apply(null,abs):0,
+      isWord: (/\?/.test(plain) && words.length>=6) || words.length>=16,   // real scenarios, not "compute X" prose
+      hasNeg: /-\s*\d|negative|minus/i.test(raw),
+      hasBlank: /_{2,}|\\square|\bblank\b/i.test(raw),
+      hasFrac: /\\frac|\/|\bfraction\b|\bover\b/i.test(raw),
+      ans: String((rec&&rec.accept&&rec.accept[0])||'') };
+  }
+  // family (by lesson-title keyword) -> ordered types; first matching test wins, last (test:null) is the default
+  var TYPE_TAX=[
+    {kw:['multipl'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'tens',label:'Times 10s & 100s',test:function(f){return f.abs.some(function(n){return n>=10 && n%10===0;});}},
+      {slug:'long',label:'Long multiplication',test:function(f){return f.max>=13;}},
+      {slug:'basic',label:'Times tables',test:null}
+    ]},
+    {kw:['divi'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'rem',label:'With remainders',test:function(f){return /remainder|(^|[^a-z])r\s*\d/i.test(f.ans)||/remainder/i.test(f.plain);}},
+      {slug:'long',label:'Long division',test:function(f){return f.max>=100;}},
+      {slug:'basic',label:'Basic facts',test:null}
+    ]},
+    {kw:['add','subtract','negation'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'missing',label:'Missing addends',test:function(f){return f.hasBlank;}},
+      {slug:'multi',label:'Multi-digit',test:function(f){return f.max>=100;}},
+      {slug:'regroup',label:'Regrouping',test:null}
+    ]},
+    {kw:['negat','sign','integer'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'muldiv',label:'Sign rules (×, ÷)',test:function(f){return /×|÷|\\times|\\div|\*|\//.test(f.raw);}},
+      {slug:'sub',label:'Subtracting negatives',test:function(f){return /-\s*\(\s*-|--/.test(f.raw);}},
+      {slug:'add',label:'Adding negatives',test:null}
+    ]},
+    {kw:['distribut'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'factor',label:'Factoring out',test:function(f){return /factor|gcf/i.test(f.plain);}},
+      {slug:'neg',label:'With negatives',test:function(f){return f.hasNeg;}},
+      {slug:'expand',label:'Expanding a(b+c)',test:null}
+    ]},
+    {kw:['exponent','power'], types:[
+      {slug:'zero',label:'Zero exponent',test:function(f){return /\^\s*0(\D|$)/.test(f.raw);}},
+      {slug:'neg',label:'Negative exponents',test:function(f){return /\^\s*-\s*\d|negative exponent/i.test(f.raw);}},
+      {slug:'prod',label:'Product of powers',test:function(f){return /×|·|\\cdot|\\times|\*/.test(f.raw);}},
+      {slug:'eval',label:'Evaluating',test:null}
+    ]},
+    {kw:['order','operation'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'nested',label:'Nested parentheses',test:function(f){return /\([^)]*\(/.test(f.raw);}},
+      {slug:'exp',label:'With exponents',test:function(f){return /\^/.test(f.raw);}},
+      {slug:'basic',label:'Order of operations',test:null}
+    ]},
+    {kw:['fraction'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'simplify',label:'Simplifying',test:function(f){return /simplif|lowest terms|reduce/i.test(f.plain);}},
+      {slug:'compare',label:'Comparing',test:function(f){return /compare|greater|less|<|>/.test(f.raw);}},
+      {slug:'addsub',label:'Add & subtract',test:null}
+    ]},
+    {kw:['decimal'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'round',label:'Rounding',test:function(f){return /round|nearest/i.test(f.plain);}},
+      {slug:'muldiv',label:'Multiply & divide',test:function(f){return /×|÷|\\times|\\div/.test(f.raw);}},
+      {slug:'addsub',label:'Add & subtract',test:null}
+    ]},
+    {kw:['percent'], types:[
+      {slug:'word',label:'Word problems',test:function(f){return f.isWord;}},
+      {slug:'change',label:'Percent change',test:function(f){return /increase|decrease|change/i.test(f.plain);}},
+      {slug:'convert',label:'Fraction to percent',test:function(f){return f.hasFrac||/convert/i.test(f.plain);}},
+      {slug:'ofnum',label:'Percent of a number',test:null}
+    ]}
+  ];
+  function classifyProblem(rec, title){
+    title=String(title||'').toLowerCase(); var fam=null;
+    for(var i=0;i<TYPE_TAX.length && !fam;i++){ var F=TYPE_TAX[i];
+      for(var j=0;j<F.kw.length;j++){ if(title.indexOf(F.kw[j])!==-1){ fam=F; break; } } }
+    if(!fam) return null;                                   // no taxonomy for this lesson family yet
+    var f=typeFeats(rec);
+    for(var t=0;t<fam.types.length;t++){ var T=fam.types[t]; if(!T.test || T.test(f)) return {slug:T.slug,label:T.label}; }
+    return null;
+  }
+  // record one graded outcome against its problem type (EMA of quality q, same scale as mastery)
+  function recordTypeOutcome(rec, lessonKey, q){
+    try{
+      if(!rec || !rec.graded) return;                       // only graded problems have a right/wrong signal
+      var ty=classifyProblem(rec, (window.WS&&WS.L&&WS.L.title) || ''); if(!ty) return;
+      if(!P.typeSkill) P.typeSkill={};
+      var key=((COURSE&&COURSE.slug)?COURSE.slug:'prealgebra')+':'+lessonKey+':'+ty.slug, a=0.30;
+      var e=P.typeSkill[key];
+      if(!e){ e={s:q,n:1,label:ty.label}; } else { e.s=e.s+a*(q-e.s); e.n=(e.n||0)+1; e.label=ty.label; }
+      P.typeSkill[key]=e;
+    }catch(_){}
+  }
   function recordSkillOutcome(rec, saw){
     try{
       var raw=window.__curLesson; if(!raw) return;
@@ -4291,6 +4391,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var e=P.skill[lk], a=0.35;
       if(!e){ e={s:o,n:1}; } else { e.s=e.s+a*(o-e.s); e.n=(e.n||0)+1; e.seeded=false; }
       P.skill[lk]=e;
+      recordTypeOutcome(rec, raw, o);                        // per-type breakdown, same quality signal
     }catch(_){}
   }
   function award(rec, viaSolution){
