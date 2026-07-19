@@ -4826,7 +4826,7 @@ async function sendTutorMsg() {
   /* Cove (Algebra I) tutor: recolor the whole dark panel from green to blue so the chat matches the course */
   [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#16324f 0%,#0d2033 60%,#08141f 100%) !important;border-color:rgba(120,190,240,.26) !important}
   [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#16324f,#0f2740) !important}
-  [data-course="algebra1"] .ws-tuthead .av{background:#0f2740 !important}
+  [data-course="algebra1"] .ws-tuthead .av{background:none !important}
   [data-course="algebra1"] .ws-tutor .tut-input{background:#132a42 !important}
   [data-course="algebra1"] .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#20456a,#16314c) !important}
   [data-course="algebra1"] .ws-tutor .tut-bub.me,[data-course="algebra1"] .ws-tutor .tut-bub.usr,[data-course="algebra1"] .ws-tutor .tut-bub.user,[data-course="algebra1"] .ws-tutor .tut-bub.you{background:#5aaee8 !important;color:#06243a !important}
@@ -4842,7 +4842,8 @@ async function sendTutorMsg() {
   .ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:sproutBreathe 1.5s ease-in-out infinite !important}
   @keyframes sproutBreathe{0%,100%{filter:drop-shadow(0 7px 7px rgba(20,50,30,.24))}
     50%{filter:drop-shadow(0 9px 13px rgba(34,197,94,.55)) drop-shadow(0 0 5px rgba(34,197,94,.4));transform:translateY(-2px)}}
-  .ws-tuthead .av{background:#0f2b1e !important;overflow:hidden}
+  /* tutor header avatar: show the whole mascot shrunk (no circular clip that would cut feet/leaf) */
+  .ws-tuthead .av{width:36px !important;height:40px !important;background:none !important;overflow:visible !important;border-radius:0 !important}
   .ws-tuthead .av img{width:100%;height:100%;object-fit:contain;display:block}
   /* reactions declared LAST so a right/wrong response wins over the idle glow */
   .ws-fab-chat.react-correct{animation:sproutPop .55s cubic-bezier(.22,1,.36,1) !important}
