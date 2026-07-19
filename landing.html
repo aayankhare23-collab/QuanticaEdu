@@ -667,7 +667,7 @@
   .nb-body-inner b{color:var(--blue)}
   .nb-new-badge{display:inline-block;font:700 8.5px/1 'Inter';letter-spacing:.06em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#d97b0a,#f5b020);border-radius:999px;padding:3px 7px;margin-left:6px;vertical-align:middle}
   /* floating action buttons */
-  .ws-fab-group{position:fixed;top:108px;left:22px;z-index:60}
+  .ws-fab-group{position:fixed;top:108px;left:15px;z-index:60}
   .workspace.tut-open .ws-fab-chat{display:none}
   .workspace.nb-open .ws-fab-ideas{display:none!important}
   /* notebook + key ideas both open (no tutor): move the Sprout/Cove chat button to the bottom-left of the question area, beside the notebook */
@@ -692,7 +692,7 @@
   /* mobile: content is full-width (no side gutter), so move the floating helper buttons
      off the lesson text into the bottom-left corner (Next lives bottom-right) */
   @media(max-width:560px){
-    .ws-fab-group{top:auto;bottom:20px;left:14px}
+    .ws-fab-group{top:auto;bottom:20px;left:5px}
     .ws-fab-ideas{top:auto;bottom:128px;left:14px}
     .workspace.tut-open .ws-fab-ideas{display:none}   /* tutor is full-screen on mobile; hide the floating helper */
     .ws-fab{width:46px;height:46px;font-size:18px}
@@ -1104,7 +1104,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .ws-tutor .tut-input::placeholder{color:#9fb0c9}
 .ws-tutor .snd{background:#beff8b !important;color:#0a0a0a !important}
 /* workspace primary "Continue" -> lime (green primary, like the landing) */
-.ws-next{background:linear-gradient(135deg,var(--forest),var(--moss)) !important;color:#fff !important;box-shadow:0 12px 26px -12px rgba(18,36,28,.5) !important}
+.ws-next{background:linear-gradient(135deg,var(--moss),var(--grass)) !important;color:#fff !important;box-shadow:0 12px 26px -12px rgba(18,36,28,.5) !important}
 /* accent (lime) was being used as TEXT in a few places (e.g. contents lesson links) where it is
    unreadable/harsh. Recolor those text uses to a deep readable green; buttons keep the lime fill. */
 .toc .sec.open,.toc .sec.open::after,.toc a.ex:hover,.hintbtn2,.peek,.factbox .flabel,.tocnote .tn-label,.hud-pill.mp svg,.streakchip svg{color:var(--moss) !important}
@@ -4818,17 +4818,17 @@ async function sendTutorMsg() {
   .dg-overlay{background:linear-gradient(160deg,#EDF6DE,#F3F7E4)}
   .dp-tier-1{color:#C9860B}.dp-tier-2{color:#B8790B}
   /* Sprout tutor: keep the dark panel but shift navy → forest (lime accents already on-palette) */
-  .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#183c2c 0%,#0d2318 60%,#081b12 100%) !important;border-color:rgba(199,240,154,.24) !important}
-  .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#183c2c,#0f2b1e) !important}
-  .ws-tutor .tut-input{background:#16341f !important}
+  .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#347d51 0%,#2b6845 58%,#255c3d 100%) !important;border-color:rgba(199,240,154,.30) !important}
+  .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#2f7048,#26613e) !important}
+  .ws-tutor .tut-input{background:#2b6845 !important}
   /* Prealgebra tutor: green-tint the bot bubbles so they match the green panel (base was navy) */
-  .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#204230,#173324) !important}
+  .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#3e8862,#357653) !important}
   /* Cove (Algebra I) tutor: recolor the whole dark panel from green to blue so the chat matches the course */
-  [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#16324f 0%,#0d2033 60%,#08141f 100%) !important;border-color:rgba(120,190,240,.26) !important}
-  [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#16324f,#0f2740) !important}
+  [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#35709f 0%,#2c5e86 58%,#285674 100%) !important;border-color:rgba(120,190,240,.32) !important}
+  [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#316791,#2a5878) !important}
   [data-course="algebra1"] .ws-tuthead .av{background:none !important}
-  [data-course="algebra1"] .ws-tutor .tut-input{background:#132a42 !important}
-  [data-course="algebra1"] .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#20456a,#16314c) !important}
+  [data-course="algebra1"] .ws-tutor .tut-input{background:#2c5e86 !important}
+  [data-course="algebra1"] .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#3f83bc,#356f9f) !important}
   [data-course="algebra1"] .ws-tutor .tut-bub.me,[data-course="algebra1"] .ws-tutor .tut-bub.usr,[data-course="algebra1"] .ws-tutor .tut-bub.user,[data-course="algebra1"] .ws-tutor .tut-bub.you{background:#5aaee8 !important;color:#06243a !important}
   [data-course="algebra1"] .ws-tutor .snd{background:#5aaee8 !important;color:#06243a !important}
   /* Sprout chat launcher — the full character standing in the corner (like the landing hero),
@@ -4839,7 +4839,7 @@ async function sendTutorMsg() {
   .ws-fab-chat:hover{filter:drop-shadow(0 11px 11px rgba(20,50,30,.30)) brightness(1.02) !important;transform:translateY(-3px)}
   .ws-fab-chat img{width:100% !important;height:100% !important;object-fit:contain !important;padding:0 !important;display:block}
   /* attention / unread: a gentle green glow via drop-shadow (no boxy ring on the transparent art) */
-  .ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:sproutBreathe 1.5s ease-in-out infinite !important}
+  .ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:none !important}
   @keyframes sproutBreathe{0%,100%{filter:drop-shadow(0 7px 7px rgba(20,50,30,.24))}
     50%{filter:drop-shadow(0 9px 13px rgba(34,197,94,.55)) drop-shadow(0 0 5px rgba(34,197,94,.4));transform:translateY(-2px)}}
   /* tutor header avatar: show the whole mascot shrunk (no circular clip that would cut feet/leaf) */
