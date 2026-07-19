@@ -380,7 +380,7 @@
   var SPRIG_WAVE='<svg width="52" height="16" viewBox="0 0 54 16" aria-hidden="true"><path d="M2 10 C9 3 15 3 22 10 C29 17 35 17 42 10 C46 6 50 6 52 8" stroke="#4D9EDD" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M2 6 C9 0 15 0 22 6" stroke="#A9D8F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/></svg>';
   var SPRIG=IS_ALG?SPRIG_WAVE:SPRIG_LEAF;
 
-  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{}, stats:{} };
+  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{}, stats:{}, typeSkill:{} };
 
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
@@ -397,7 +397,7 @@
     var P={}; try{ P=JSON.parse(localStorage.getItem('quantica.profile.v1'))||{}; }catch(e){ P={}; }
     var lessons=P.lessons||{}, done={}, pre=COURSE+':';
     Object.keys(lessons).forEach(function(k){ if(k.indexOf(pre)===0){ done[k.slice(pre.length)]=true; } });
-    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{}, stats:P.stats||{} };
+    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{}, stats:P.stats||{}, typeSkill:P.typeSkill||{} };
   }
   // the lesson the student is on = first not-yet-completed lesson in course order (or the last, if all done)
   function firstUndone(){
@@ -709,40 +709,17 @@
     for(var k=0;k<rem && k<ord.length;k++){ fl[ord[k].i]++; }
     return fl;
   }
-  // actual problem types per topic (matched by keyword in the lesson title)
-  var QT_BANK=[
-    {kw:['multipl'], t:['Times tables','Long multiplication','Times 10s & 100s','Estimating products','Word problems']},
-    {kw:['divi'], t:['Basic facts','Long division','With remainders','Two-digit divisors','Word problems']},
-    {kw:['add','subtract','negation'], t:['Regrouping','Multi-digit','Missing addends','Number-line jumps','Word problems']},
-    {kw:['negat','sign','integer'], t:['Adding negatives','Subtracting negatives','Sign rules','Absolute value','Number-line moves']},
-    {kw:['fraction'], t:['Common denominators','Add & subtract','Simplifying','Comparing','Mixed numbers']},
-    {kw:['decimal'], t:['Aligning places','Add & subtract','Multiplying','Dividing','Rounding']},
-    {kw:['percent'], t:['Percent of a number','Fraction to percent','Percent change','Discounts','Word problems']},
-    {kw:['ratio','proportion'], t:['Simplifying ratios','Equivalent ratios','Unit rates','Solving proportions']},
-    {kw:['exponent','power'], t:['Product of powers','Power of a power','Negative exponents','Zero exponent','Evaluating']},
-    {kw:['square','cube','root'], t:['Perfect squares','Perfect cubes','Estimating roots','Squares vs. area']},
-    {kw:['order','operation'], t:['Order of operations','Nested parentheses','Exponents first','Left to right','Multi-step']},
-    {kw:['distribut'], t:['Expanding a(b+c)','Factoring out','Combining like terms','With negatives']},
-    {kw:['prime','factor','multiple','gcd','lcm','divisor'], t:['Prime factorization','Listing factors','GCD','LCM','Divisibility']},
-    {kw:['angle','polygon','triangle','quadrilateral'], t:['Angle sums','Missing angles','Classifying shapes','Complementary & supplementary']},
-    {kw:['area','perimeter','circle'], t:['Rectangles','Triangles','Circles','Composite shapes','Word problems']},
-    {kw:['probab','counting','combinat'], t:['Simple probability','Counting outcomes','Combinations','Complement events']},
-    {kw:['inequalit'], t:['Solving','Graphing on a line','Compound','Word problems']},
-    {kw:['express','variable','equation','building'], t:['Substituting values','Combining like terms','Solving for x','Translating words']},
-    {kw:['number','famil','rational','irrational'], t:['Whole vs. integer','Rational vs. irrational','Classifying','On the number line']},
-    {kw:['unit','convert','measur'], t:['Metric conversions','Length, mass & volume','Rates','Word problems']}
-  ];
-  var QT_FALLBACK=['Core skills','Word problems','Multi-step','Trickier variants'];
-  function qtypeLabels(r){
-    var t=(r.full||r.name||'').toLowerCase();
-    for(var i=0;i<QT_BANK.length;i++){ var b=QT_BANK[i];
-      for(var j=0;j<b.kw.length;j++){ if(t.indexOf(b.kw[j])!==-1) return b.t; } }
-    return QT_FALLBACK;
-  }
-  function qtypesFor(r){                                   // placeholder accuracies (deterministic per topic) on the topic's real problem types
-    var labels=qtypeLabels(r), base=r.s*100, h=hstr(r.lk), n=Math.min(labels.length, 3+(h%2));
-    var OFF=[[15,-3,-19,7,-11],[9,-7,-17,5,-13],[19,3,-13,-5,-9]][h%3], out=[];
-    for(var i=0;i<n;i++){ out.push({ t:labels[i], acc:Math.round(Math.max(31,Math.min(98, base+OFF[i]))) }); }
+  // real per-type accuracy from P.typeSkill: the type's own EMA shrunk toward the topic mastery,
+  // so it starts near the topic average and sharpens as attempts accumulate (stable with few samples).
+  function qtypesFor(r){
+    var ts=state.typeSkill||{}, pre=COURSE+':'+r.lk+':', k=2, out=[];
+    Object.keys(ts).forEach(function(key){
+      if(key.indexOf(pre)!==0) return;
+      var e=ts[key]; if(!e||!(e.n>0)) return;
+      var pct=Math.round(100*(e.n*e.s + k*r.s)/(e.n + k));   // n·s_type + k·m_topic over n + k
+      out.push({ t:e.label||key.slice(pre.length), acc:Math.max(1,Math.min(100,pct)), n:e.n });
+    });
+    out.sort(function(a,b){ return b.acc-a.acc; });
     return out;
   }
   function qchipCls(a){ return a>=80?'qt-hi':(a>=55?'qt-mid':'qt-lo'); }
@@ -784,10 +761,14 @@
     var topicsHTML=order.map(function(cn){ var g=byCh[cn];
       return '<div class="pg-chgroup"><div class="cgh">Chapter '+cn+(g.t?' &middot; '+esc(g.t):'')+'</div>'+g.rows.map(function(r){return masteryBar(r,prev);}).join('')+'</div>';
     }).join('');
-    var qtHTML=rows.slice(0,6).map(function(r){
-      var chips=qtypesFor(r).map(function(q){ return '<span class="qt-chip '+qchipCls(q.acc)+'">'+esc(q.t)+' <b class="qa">'+q.acc+'%</b></span>'; }).join('');
-      return '<div class="qt-topic"><div class="qt-nm">'+esc(r.name)+'</div><div class="qt-chips">'+chips+'</div></div>';
-    }).join('');
+    var qtRows=rows.map(function(r){ return {r:r, types:qtypesFor(r)}; }).filter(function(x){ return x.types.length; });
+    var qtHTML = qtRows.length
+      ? qtRows.slice(0,8).map(function(x){
+          var chips=x.types.map(function(q){ return '<span class="qt-chip '+qchipCls(q.acc)+'">'+esc(q.t)+' <b class="qa">'+q.acc+'%</b></span>'; }).join('');
+          return '<div class="qt-topic"><div class="qt-nm">'+esc(x.r.name)+'</div><div class="qt-chips">'+chips+'</div></div>';
+        }).join('')
+      : '<p class="pg-note" style="margin-top:2px">Solve a handful of problems and your right/wrong split by problem type shows up here.</p>';
+    var qtNote = qtRows.length ? '<p class="pg-note">From your actual solves. A new type leans on the topic average until you&rsquo;ve done a few, so early numbers stay honest.</p>' : '';
     var SP=[38,44,41,55,50,58,63,60,71,avg];
     var chart=SP.map(function(h,i){ return '<i style="height:'+Math.max(8,Math.min(100,h))+'%"'+(i===SP.length-1?' class="cur"':'')+'></i>'; }).join('');
     var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+url(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
@@ -822,7 +803,7 @@
           '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div><div class="mspark">'+chart+'</div><p class="pg-note">Preview &mdash; per-session accuracy starts logging as you go.</p></div>'+
         '</div>'+
         '<div class="pg-col">'+
-          '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+'<p class="pg-note">Sample split for now &mdash; the real right/wrong-by-type data logs as you solve more.</p></div>'+
+          '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+qtNote+'</div>'+
           '<div class="pg-card"><h3>Strong &amp; where to focus</h3><div class="ch">Lean on your strengths; give these a little love.</div>'+
             '<div class="pg-two"><div><div class="pg-mini-h">Strongest</div>'+strongHTML+'</div>'+
             '<div><div class="pg-mini-h">Focus next</div>'+focusHTML+'</div></div></div>'+
@@ -873,6 +854,7 @@
     state.done=prog.done;
     state.skill=prog.skill;
     state.stats=prog.stats;
+    state.typeSkill=prog.typeSkill;
     state.current=firstUndone();                 // the lesson the student is actually on
     state.active=(chOf(state.current)||toc[0]||{n:1}).n;
     DayGrid.init(prog.streak, prog.lastActive);
