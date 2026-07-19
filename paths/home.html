@@ -233,25 +233,68 @@
   .sbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--grass));transition:width .6s cubic-bezier(.3,.8,.4,1)}
   .slab{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-soft)}
   .strfoot{font-size:.72rem;color:var(--gray-soft);margin-top:13px;line-height:1.45}
-  /* --- mastery card tabs --- */
-  .mtabs{display:flex;gap:2px;margin:-2px 0 14px;border-bottom:1px solid var(--line)}
-  .mtab{appearance:none;background:none;border:none;font-family:var(--ff-ui);font-size:.82rem;font-weight:600;color:var(--gray-soft);padding:5px 11px 9px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s}
-  .mtab.on{color:var(--forest);border-bottom-color:var(--grass)}
-  .mtab:hover:not(.on){color:var(--gray)}
-  .mpane{display:none;animation:mfade .25s ease}
-  .mpane.on{display:block}
-  @keyframes mfade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
-  /* detailed progress pane */
-  .mstat-row{display:flex;gap:8px;margin-bottom:15px}
-  .mstat{flex:1;background:var(--tint);border-radius:12px;padding:11px 6px 9px;text-align:center}
-  .mstat .v{font-family:var(--ff-display);font-weight:700;font-size:1.35rem;color:var(--forest);line-height:1}
-  .mstat .l{font-size:.58rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-soft);margin-top:5px}
-  .mprog-h{font-family:var(--ff-ui);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-soft);margin:16px 0 10px}
-  .mspark{display:flex;align-items:flex-end;gap:5px;height:56px;padding:2px 0}
-  .mspark i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--grass),var(--moss));opacity:.85}
-  .mspark i.dim{background:var(--line);opacity:1}
-  .mprev{margin-top:14px;display:flex;align-items:center;gap:7px}
-  .mprev::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grass);flex:none}
+  /* --- top nav tabs (Roadmap / Progress) --- */
+  .hnav{display:flex;gap:3px;margin-left:6px}
+  .hnav-tab{appearance:none;background:none;border:none;font-family:var(--ff-ui);font-size:.85rem;font-weight:600;color:var(--gray-soft);padding:7px 14px;border-radius:999px;cursor:pointer;transition:color .15s,background .15s}
+  .hnav-tab.on{color:var(--forest);background:var(--tint)}
+  .hnav-tab:hover:not(.on){color:var(--gray)}
+  @media(max-width:640px){ .hnav-tab{padding:6px 11px;font-size:.8rem} }
+  /* small strengths card header */
+  .rc-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
+  .rc-more{appearance:none;background:none;border:none;font-family:var(--ff-ui);font-size:.76rem;font-weight:600;color:var(--moss);cursor:pointer;padding:2px 0}
+  .rc-more:hover{color:var(--forest)}
+  /* reusable stat tiles + sparkline */
+  .mstat-row{display:flex;gap:10px;flex-wrap:wrap}
+  .mstat{flex:1;min-width:92px;background:var(--tint);border-radius:14px;padding:14px 8px 11px;text-align:center}
+  .mstat .v{font-family:var(--ff-display);font-weight:700;font-size:1.65rem;color:var(--forest);line-height:1}
+  .mstat .l{font-size:.58rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-soft);margin-top:6px}
+  .mspark{display:flex;align-items:flex-end;gap:6px;height:112px;padding:2px 0}
+  .mspark i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--grass),var(--moss));opacity:.85}
+  .mspark i.cur{opacity:1;box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--grass)}
+  /* --- progress dashboard --- */
+  .pgview{max-width:1180px;margin:0 auto;padding:6px 22px 64px;animation:mfade .3s ease}
+  @keyframes mfade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  .pg-eyebrow{font-family:var(--ff-ui);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss)}
+  .pg-hd{display:flex;align-items:center;justify-content:space-between;gap:26px;margin:6px 0 26px;flex-wrap:wrap}
+  .pg-title{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.9rem,3.4vw,2.6rem);letter-spacing:-.02em;color:var(--ink);margin:6px 0 9px}
+  .pg-sub{font-size:1.02rem;color:var(--gray);max-width:48ch;line-height:1.5}
+  .pg-sub b{color:var(--forest);font-weight:700}
+  .pg-ring{position:relative;width:122px;height:122px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--grass) var(--p,0%),var(--line) 0)}
+  .pg-ring::before{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--card)}
+  .pg-ring b{position:relative;font-family:var(--ff-display);font-weight:700;font-size:2rem;color:var(--forest);line-height:1}
+  .pg-ring span{position:relative;font-size:.56rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-soft);margin-top:3px}
+  .pg-tiles{margin-bottom:20px}
+  .pg-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;align-items:start}
+  @media(max-width:860px){ .pg-grid{grid-template-columns:1fr} }
+  .pg-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 22px 20px;box-shadow:0 22px 46px -36px rgba(20,50,25,.32)}
+  .pg-card h3{font-family:var(--ff-display);font-weight:600;font-size:1.16rem;color:var(--ink);margin:0}
+  .pg-card .ch{font-size:.82rem;color:var(--gray-soft);margin:4px 0 15px}
+  .pg-note{font-size:.72rem;color:var(--gray-soft);margin:15px 0 0;display:flex;align-items:center;gap:7px;line-height:1.4}
+  .pg-note::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grass);flex:none}
+  .pg-chgroup{margin-bottom:15px}
+  .pg-chgroup:last-child{margin-bottom:0}
+  .pg-chgroup .cgh{font-family:var(--ff-ui);font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--moss);margin-bottom:9px}
+  .qt-topic{padding:12px 0;border-bottom:1px solid var(--line)}
+  .qt-topic:last-child{border-bottom:none;padding-bottom:2px}
+  .qt-topic:first-child{padding-top:2px}
+  .qt-nm{font-family:var(--ff-ui);font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:9px}
+  .qt-chips{display:flex;flex-wrap:wrap;gap:7px}
+  .qt-chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;border:1px solid}
+  .qt-chip .qa{font-weight:700}
+  .qt-hi{background:rgba(67,176,99,.12);border-color:rgba(67,176,99,.32);color:#2C7A47}
+  .qt-mid{background:rgba(231,180,75,.15);border-color:rgba(231,180,75,.42);color:#8a5a00}
+  .qt-lo{background:rgba(217,83,79,.1);border-color:rgba(217,83,79,.32);color:#b0463f}
+  [data-course="algebra1"] .qt-hi{background:rgba(77,158,221,.13);border-color:rgba(77,158,221,.34);color:#1C5486}
+  .pg-two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:520px){ .pg-two{grid-template-columns:1fr} }
+  .pg-mini-h{font-family:var(--ff-ui);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:4px}
+  .pg-focus-row{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .pg-focus-row:last-child{border-bottom:none}
+  .pg-focus-row .fnm{flex:1;font-weight:600;font-size:.88rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pg-focus-row .fpct{font-weight:700;font-size:.82rem;color:var(--gray)}
+  .pg-focus-row .fgo{font-size:.76rem;font-weight:600;color:var(--moss);text-decoration:none;white-space:nowrap}
+  .pg-focus-row .fgo:hover{color:var(--forest)}
+  .pg-empty{text-align:center;max-width:440px;margin:60px auto;padding:0 20px}
   .rc-cta{width:100%;justify-content:center;margin-top:2px;font-size:.92rem;padding:12px 18px}
 
   .note{max-width:1180px;margin:0 auto;padding:0 22px 34px;font-size:.78rem;color:var(--gray-soft)}
@@ -274,6 +317,10 @@
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Calculus <span class="tag">Soon</span></a>
     </div>
   </div>
+  <nav class="hnav">
+    <button class="hnav-tab on" data-v="roadmap" onclick="showView('roadmap')">Roadmap</button>
+    <button class="hnav-tab" data-v="progress" onclick="showView('progress')">Progress</button>
+  </nav>
   <div class="tb-right">
     <div class="sig" title="Your mastery fills in as you learn; nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
     <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
@@ -296,6 +343,7 @@
 </div>
 
 <p class="note" id="footNote">Quantica course home · Prealgebra.</p>
+<section id="viewProgress" style="display:none"></section>
 
 <script>
 (function(){
@@ -600,66 +648,119 @@
   // records (EMA of graded problems). Shows the strongest few, with a trend arrow vs last visit.
   function strLabel(s){ return s>=.85?'Strong':(s>=.68?'Solid':(s>=.5?'Building':'Getting started')); }
   function shortSkill(t){ t=String(t||''); var c=t.indexOf(','); if(c>3&&c<=22) t=t.slice(0,c); t=t.replace(/[?.!]$/,''); return t.length>26?t.slice(0,24)+'…':t; }
-  function strengthCard(){
+  function masteryRows(){
     var sk=state.skill||{}, rows=[], pre=COURSE+':';
     Object.keys(sk).forEach(function(fullK){
       if(fullK.indexOf(pre)!==0) return;                 // only this course's skills
       var k=fullK.slice(pre.length);
       var e=sk[fullK]; if(!e||(e.n||0)<1) return;
-      var les=null;
-      for(var i=0;i<state.chapters.length&&!les;i++){ var L=state.chapters[i].lessons;
-        for(var j=0;j<L.length;j++){ if(L[j].k===k){ les=L[j]; break; } } }
+      var les=null, chn=null;
+      for(var i=0;i<state.chapters.length&&!les;i++){ var C=state.chapters[i], L=C.lessons;
+        for(var j=0;j<L.length;j++){ if(L[j].k===k){ les=L[j]; chn=C; break; } } }
       if(!les||nonTeaching(les.t)) return;
-      rows.push({ k:fullK, name:shortSkill(les.t), s:Math.max(0,Math.min(1,e.s)) });
+      rows.push({ k:fullK, lk:k, ch:(chn?chn.n:0), cht:(chn?chn.t:''), name:shortSkill(les.t), full:les.t, s:Math.max(0,Math.min(1,e.s)) });
     });
-    if(!rows.length) return null;
     rows.sort(function(a,b){ return b.s-a.s; });
+    return rows;
+  }
+  function masteryBar(r, prev){
+    var pct=Math.round(r.s*100), pv=prev?prev[r.k]:null;
+    var tr = (pv!=null && r.s-pv>=0.03)?' <span class="up" title="up since last visit">&#9650;</span>'
+           : (pv!=null && pv-r.s>=0.03)?' <span class="dn" title="down since last visit">&#9660;</span>' : '';
+    return '<div class="srow"><div class="stop"><span class="snm" title="'+esc(r.full||r.name)+'">'+esc(r.name)+'</span>'+
+       '<span class="spct">'+pct+'%'+tr+'</span></div>'+
+       '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+
+       '<span class="slab">'+strLabel(r.s)+'</span></div>';
+  }
+  // small rail card — the quick "strengths" read; the full breakdown lives in the Progress tab
+  function strengthCard(){
+    var rows=masteryRows(); if(!rows.length) return null;
     var prev={}; try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
-    function barRow(r){
-      var pct=Math.round(r.s*100), pv=prev[r.k];
-      var tr = (pv!=null && r.s-pv>=0.03)?' <span class="up" title="up since last visit">&#9650;</span>'
-             : (pv!=null && pv-r.s>=0.03)?' <span class="dn" title="down since last visit">&#9660;</span>' : '';
-      return '<div class="srow"><div class="stop"><span class="snm" title="'+esc(r.name)+'">'+esc(r.name)+'</span>'+
-         '<span class="spct">'+pct+'%'+tr+'</span></div>'+
-         '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+
-         '<span class="slab">'+strLabel(r.s)+'</span></div>';
-    }
-    // Strengths tab — the strongest few, the quick read
     var top=rows.slice(0,4);
-    var strPane='<div class="strengths">'+top.map(barRow).join('')+'</div>'+
-      '<p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p>';
-    // Progress tab — fuller breakdown. Mastery is real; the trend chart is a placeholder until per-session data exists.
+    var snap={}; top.forEach(function(r){ snap[r.k]=r.s; });
+    try{ var hs=JSON.parse(localStorage.getItem('quantica.home.v1'))||{}; hs.skillSnap=snap; localStorage.setItem('quantica.home.v1',JSON.stringify(hs)); }catch(e){}
+    return '<div class="rc"><div class="rc-hd"><h4>Your strengths</h4>'+
+      '<button class="rc-more" onclick="showView(\'progress\')">See progress &rarr;</button></div>'+
+      '<div class="strengths">'+top.map(function(r){return masteryBar(r,prev);}).join('')+'</div>'+
+      '<p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p></div>';
+  }
+  // ---------- Progress dashboard (full-width view) ----------
+  function hstr(s){ var h=0; s=String(s); for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+  var QTYPES=['Straightforward','Word problems','Multi-step','Tricky cases','Speed drills'];
+  function qtypesFor(r){                                   // placeholder split, deterministic per topic
+    var base=r.s*100, h=hstr(r.lk), n=3+(h%2);
+    var OFF=[[15,-3,-19,7,-11],[9,-7,-17,5,-13],[19,3,-13,-5,-9]][h%3], out=[];
+    for(var i=0;i<n;i++){ out.push({ t:QTYPES[i], acc:Math.round(Math.max(31,Math.min(98, base+OFF[i]))) }); }
+    return out;
+  }
+  function qchipCls(a){ return a>=80?'qt-hi':(a>=55?'qt-mid':'qt-lo'); }
+  window.showView=function(name){
+    var isP=(name==='progress'), sh=document.querySelector('.shell'), fn=document.getElementById('footNote'), pv=document.getElementById('viewProgress');
+    if(sh) sh.style.display=isP?'none':'';
+    if(fn) fn.style.display=isP?'none':'';
+    if(pv) pv.style.display=isP?'block':'none';
+    [].forEach.call(document.querySelectorAll('.hnav-tab'),function(t){ t.classList.toggle('on', t.getAttribute('data-v')===name); });
+    if(isP) renderProgress();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+  function renderProgress(){
+    var host=document.getElementById('viewProgress'); if(!host) return;
+    var rows=masteryRows();
+    if(!rows.length){
+      host.innerHTML='<div class="pgview"><div class="pg-empty"><span class="pg-eyebrow">Your progress</span>'+
+        '<h1 class="pg-title">Nothing to show yet</h1>'+
+        '<p class="pg-sub">Take the quick check or solve a few problems, and your mastery, question-type breakdowns, and trends will fill in right here.</p>'+
+        '<a class="cta3d" style="margin-top:18px;display:inline-flex" href="'+url(state.current)+'">Start '+state.current+' &rarr;</a></div></div>';
+      return;
+    }
+    var prev={}; try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
     var avg=Math.round(rows.reduce(function(a,r){return a+r.s;},0)/rows.length*100);
     var st=state.stats||{}, solved=st.solved||0, indep=st.independent||0;
     var cleanPct = solved? Math.round(indep/solved*100) : null;
-    var SPARK=[34,40,37,52,47,44,61,58,70,66];   // placeholder accuracy trend
-    var spark=SPARK.map(function(h){return '<i style="height:'+h+'%"></i>';}).join('');
-    var progPane=
-      '<div class="mstat-row">'+
-        '<div class="mstat"><div class="v">'+avg+'%</div><div class="l">Avg mastery</div></div>'+
-        '<div class="mstat"><div class="v">'+rows.length+'</div><div class="l">Topics</div></div>'+
-        '<div class="mstat"><div class="v">'+(solved||'—')+'</div><div class="l">Solved</div></div>'+
+    var strong=rows.slice(0,3), focus=rows.slice().reverse().filter(function(r){return strong.indexOf(r)===-1;}).slice(0,3);
+    var read='You&rsquo;re strongest on <b>'+esc(strong[0].name)+'</b>'+
+      ((focus[0]&&focus[0].s<0.62)?', with the most room to grow on <b>'+esc(focus[0].name)+'</b>':'')+'.';
+    var tiles='<div class="mstat-row">'+
+      '<div class="mstat"><div class="v">'+avg+'%</div><div class="l">Avg mastery</div></div>'+
+      '<div class="mstat"><div class="v">'+rows.length+'</div><div class="l">Topics practiced</div></div>'+
+      '<div class="mstat"><div class="v">'+(solved||'—')+'</div><div class="l">Problems solved</div></div>'+
+      '<div class="mstat"><div class="v">'+(cleanPct!=null?cleanPct+'%':'—')+'</div><div class="l">Clean-solve rate</div></div>'+
+    '</div>';
+    var byCh={}, order=[];
+    rows.forEach(function(r){ if(!byCh[r.ch]){ byCh[r.ch]={t:r.cht,rows:[]}; order.push(r.ch); } byCh[r.ch].rows.push(r); });
+    order.sort(function(a,b){return a-b;});
+    var topicsHTML=order.map(function(cn){ var g=byCh[cn];
+      return '<div class="pg-chgroup"><div class="cgh">Chapter '+cn+(g.t?' &middot; '+esc(g.t):'')+'</div>'+g.rows.map(function(r){return masteryBar(r,prev);}).join('')+'</div>';
+    }).join('');
+    var qtHTML=rows.slice(0,6).map(function(r){
+      var chips=qtypesFor(r).map(function(q){ return '<span class="qt-chip '+qchipCls(q.acc)+'">'+esc(q.t)+' <b class="qa">'+q.acc+'%</b></span>'; }).join('');
+      return '<div class="qt-topic"><div class="qt-nm">'+esc(r.name)+'</div><div class="qt-chips">'+chips+'</div></div>';
+    }).join('');
+    var SP=[38,44,41,55,50,58,63,60,71,avg];
+    var chart=SP.map(function(h,i){ return '<i style="height:'+Math.max(8,Math.min(100,h))+'%"'+(i===SP.length-1?' class="cur"':'')+'></i>'; }).join('');
+    var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+url(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
+      : '<div class="pg-focus-row"><span class="fnm" style="color:var(--gray-soft);font-weight:500">You&rsquo;re solid across the board — keep it up.</span></div>';
+    var strongHTML=strong.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="slab">'+strLabel(r.s)+'</span><span class="fpct" style="color:var(--forest)">'+Math.round(r.s*100)+'%</span></div>'; }).join('');
+    host.innerHTML=
+    '<div class="pgview">'+
+      '<div class="pg-hd"><div>'+
+        '<span class="pg-eyebrow">Your progress &middot; '+esc(COURSE_NAME)+'</span>'+
+        '<h1 class="pg-title">How you&rsquo;re doing</h1>'+
+        '<p class="pg-sub">'+read+'</p>'+
+      '</div><div class="pg-ring" style="--p:'+avg+'%"><b>'+avg+'%</b><span>Mastery</span></div></div>'+
+      '<div class="pg-tiles">'+tiles+'</div>'+
+      '<div class="pg-grid">'+
+        '<div class="pg-card"><h3>Mastery by topic</h3><div class="ch">Where you stand across every topic you&rsquo;ve practiced.</div>'+topicsHTML+'</div>'+
+        '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+'<p class="pg-note">Sample split for now &mdash; the real right/wrong-by-type data logs as you solve more.</p></div>'+
       '</div>'+
-      '<div class="mprog-h">Mastery by topic</div>'+
-      '<div class="strengths">'+rows.map(barRow).join('')+'</div>'+
-      '<div class="mprog-h">Accuracy over time</div>'+
-      '<div class="mspark">'+spark+'</div>'+
-      '<p class="strfoot mprev">Preview &mdash; a full breakdown (accuracy, pace, clean-solve rate'+(cleanPct!=null?', currently '+cleanPct+'%':'')+') fills in as you complete more lessons.</p>';
-    var snap={}; top.forEach(function(r){ snap[r.k]=r.s; });
-    try{ var hs=JSON.parse(localStorage.getItem('quantica.home.v1'))||{}; hs.skillSnap=snap; localStorage.setItem('quantica.home.v1',JSON.stringify(hs)); }catch(e){}
-    return '<div class="rc">'+
-      '<div class="mtabs"><button class="mtab on" data-mt="str" onclick="mtab(this)">Strengths</button>'+
-      '<button class="mtab" data-mt="prog" onclick="mtab(this)">Progress</button></div>'+
-      '<div class="mpane on" data-mp="str">'+strPane+'</div>'+
-      '<div class="mpane" data-mp="prog">'+progPane+'</div>'+
+      '<div class="pg-grid">'+
+        '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div><div class="mspark">'+chart+'</div><p class="pg-note">Preview &mdash; per-session accuracy starts logging as you go.</p></div>'+
+        '<div class="pg-card"><h3>Strong &amp; where to focus</h3><div class="ch">Lean on your strengths; give these a little love.</div>'+
+          '<div class="pg-two"><div><div class="pg-mini-h">Strongest</div>'+strongHTML+'</div>'+
+          '<div><div class="pg-mini-h">Focus next</div>'+focusHTML+'</div></div></div>'+
+      '</div>'+
     '</div>';
   }
-  window.mtab=function(btn){
-    var card=btn.closest('.rc'); if(!card) return;
-    var name=btn.getAttribute('data-mt');
-    [].forEach.call(card.querySelectorAll('.mtab'),function(b){ b.classList.toggle('on', b===btn); });
-    [].forEach.call(card.querySelectorAll('.mpane'),function(p){ p.classList.toggle('on', p.getAttribute('data-mp')===name); });
-  };
   function renderRail2(){
     var fresh=!Object.keys(state.done).length;
     var strengths=strengthCard();
