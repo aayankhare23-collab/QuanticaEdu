@@ -256,6 +256,8 @@
   .mspark i.cur{opacity:1;box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--grass)}
   /* --- progress dashboard --- */
   .pgview{max-width:1180px;margin:0 auto;padding:6px 22px 64px;animation:mfade .3s ease}
+  .shell #viewProgress{grid-column:2 / -1;min-width:0}      /* dashboard spans main+rail; chapter sidebar stays */
+  #viewProgress .pgview{max-width:none;margin:0;padding:2px 0 44px}
   @keyframes mfade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
   .pg-eyebrow{font-family:var(--ff-ui);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss)}
   .pg-hd{display:flex;align-items:center;justify-content:space-between;gap:26px;margin:6px 0 26px;flex-wrap:wrap}
@@ -357,10 +359,10 @@
     <section class="nextup" id="nextupCard"></section>
   </main>
   <aside class="rail" id="rail"></aside>
+  <section id="viewProgress" style="display:none"></section>
 </div>
 
 <p class="note" id="footNote">Quantica course home · Prealgebra.</p>
-<section id="viewProgress" style="display:none"></section>
 
 <script>
 (function(){
@@ -383,7 +385,7 @@
   var SPRIG_WAVE='<svg width="52" height="16" viewBox="0 0 54 16" aria-hidden="true"><path d="M2 10 C9 3 15 3 22 10 C29 17 35 17 42 10 C46 6 50 6 52 8" stroke="#4D9EDD" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M2 6 C9 0 15 0 22 6" stroke="#A9D8F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/></svg>';
   var SPRIG=IS_ALG?SPRIG_WAVE:SPRIG_LEAF;
 
-  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{}, stats:{}, typeSkill:{} };
+  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{}, stats:{}, typeSkill:{}, view:'roadmap' };
 
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
@@ -666,7 +668,7 @@
   // records (EMA of graded problems). Shows the strongest few, with a trend arrow vs last visit.
   function strLabel(s){ return s>=.85?'Strong':(s>=.68?'Solid':(s>=.5?'Building':'Getting started')); }
   function shortSkill(t){ t=String(t||''); var c=t.indexOf(','); if(c>3&&c<=22) t=t.slice(0,c); t=t.replace(/[?.!]$/,''); return t.length>26?t.slice(0,24)+'…':t; }
-  function masteryRows(){
+  function masteryRows(chapterN){
     var sk=state.skill||{}, rows=[], pre=COURSE+':';
     Object.keys(sk).forEach(function(fullK){
       if(fullK.indexOf(pre)!==0) return;                 // only this course's skills
@@ -676,11 +678,13 @@
       for(var i=0;i<state.chapters.length&&!les;i++){ var C=state.chapters[i], L=C.lessons;
         for(var j=0;j<L.length;j++){ if(L[j].k===k){ les=L[j]; chn=C; break; } } }
       if(!les||nonTeaching(les.t)) return;
+      if(chapterN && (!chn || chn.n!==chapterN)) return;  // scope to a single chapter when asked
       rows.push({ k:fullK, lk:k, ch:(chn?chn.n:0), cht:(chn?chn.t:''), name:shortSkill(les.t), full:les.t, s:Math.max(0,Math.min(1,e.s)) });
     });
     rows.sort(function(a,b){ return b.s-a.s; });
     return rows;
   }
+  function chTitle(n){ var c=null; state.chapters.forEach(function(x){ if(x.n===n) c=x; }); return c?c.t:''; }
   function masteryBar(r, prev, practice){
     var pct=Math.round(r.s*100), pv=prev?prev[r.k]:null;
     var tr = (pv!=null && r.s-pv>=0.03)?' <span class="up" title="up since last visit">&#9650;</span>'
@@ -694,13 +698,18 @@
   }
   // small rail card — the quick "strengths" read; the full breakdown lives in the Progress tab
   function strengthCard(){
-    var rows=masteryRows(); if(!rows.length) return null;
-    var prev={}; try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
+    var rows=masteryRows(state.active), prev={};
+    try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
+    var hd='<div class="rc-hd"><h4>Chapter '+state.active+' strengths</h4>'+
+      '<button class="rc-more" onclick="showView(\'progress\')">See progress &rarr;</button></div>';
+    if(!rows.length){
+      if(!masteryRows().length) return null;   // no data anywhere -> renderRail2 shows the "New here?" prompt
+      return '<div class="rc">'+hd+'<p class="lead" style="margin:0">No strengths logged in this chapter yet. Do a lesson or a practice set here and they&rsquo;ll show up.</p></div>';
+    }
     var top=rows.slice(0,4);
     var snap={}; top.forEach(function(r){ snap[r.k]=r.s; });
     try{ var hs=JSON.parse(localStorage.getItem('quantica.home.v1'))||{}; hs.skillSnap=snap; localStorage.setItem('quantica.home.v1',JSON.stringify(hs)); }catch(e){}
-    return '<div class="rc"><div class="rc-hd"><h4>Your strengths</h4>'+
-      '<button class="rc-more" onclick="showView(\'progress\')">See progress &rarr;</button></div>'+
+    return '<div class="rc">'+hd+
       '<div class="strengths">'+top.map(function(r){return masteryBar(r,prev);}).join('')+'</div>'+
       '<p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p></div>';
   }
@@ -730,22 +739,26 @@
   }
   function qchipCls(a){ return a>=80?'qt-hi':(a>=55?'qt-mid':'qt-lo'); }
   window.showView=function(name){
-    var isP=(name==='progress'), sh=document.querySelector('.shell'), fn=document.getElementById('footNote'), pv=document.getElementById('viewProgress');
-    if(sh) sh.style.display=isP?'none':'';
-    if(fn) fn.style.display=isP?'none':'';
+    var isP=(name==='progress');
+    var main=document.querySelector('.shell main'), rail=document.getElementById('rail'), pv=document.getElementById('viewProgress'), fn=document.getElementById('footNote');
+    if(main) main.style.display=isP?'none':'';   // keep the chapter sidebar visible; swap the main + right rail for the dashboard
+    if(rail) rail.style.display=isP?'none':'';
     if(pv) pv.style.display=isP?'block':'none';
+    if(fn) fn.style.display=isP?'none':'';
     [].forEach.call(document.querySelectorAll('.hnav-tab'),function(t){ t.classList.toggle('on', t.getAttribute('data-v')===name); });
+    state.view=name;
     if(isP) renderProgress();
     window.scrollTo({top:0,behavior:'smooth'});
   };
   function renderProgress(){
     var host=document.getElementById('viewProgress'); if(!host) return;
-    var rows=masteryRows();
+    var rows=masteryRows(state.active);
     if(!rows.length){
-      host.innerHTML='<div class="pgview"><div class="pg-empty"><span class="pg-eyebrow">Your progress</span>'+
-        '<h1 class="pg-title">Nothing to show yet</h1>'+
-        '<p class="pg-sub">Take the quick check or solve a few problems, and your mastery, question-type breakdowns, and trends will fill in right here.</p>'+
-        '<a class="cta3d" style="margin-top:18px;display:inline-flex" href="'+url(state.current)+'">Start '+state.current+' &rarr;</a></div></div>';
+      var firstK=((chById(state.active).lessons||[])[0]||{}).k||state.current;
+      host.innerHTML='<div class="pgview"><div class="pg-empty"><span class="pg-eyebrow">Chapter '+state.active+' &middot; '+esc(chTitle(state.active))+'</span>'+
+        '<h1 class="pg-title">Nothing here yet</h1>'+
+        '<p class="pg-sub">No data for this chapter yet. Do a lesson or a practice set in Chapter '+state.active+' and its mastery, question-type breakdown, and trends fill in here. Pick another chapter on the left anytime.</p>'+
+        '<a class="cta3d" style="margin-top:18px;display:inline-flex" href="'+url(firstK)+'">Start '+firstK+' &rarr;</a></div></div>';
       return;
     }
     var prev={}; try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
@@ -761,12 +774,7 @@
       '<div class="mstat"><div class="v">'+(solved||'—')+'</div><div class="l">Problems solved</div></div>'+
       '<div class="mstat"><div class="v">'+(cleanPct!=null?cleanPct+'%':'—')+'</div><div class="l">Clean-solve rate</div></div>'+
     '</div>';
-    var byCh={}, order=[];
-    rows.forEach(function(r){ if(!byCh[r.ch]){ byCh[r.ch]={t:r.cht,rows:[]}; order.push(r.ch); } byCh[r.ch].rows.push(r); });
-    order.sort(function(a,b){return a-b;});
-    var topicsHTML=order.map(function(cn){ var g=byCh[cn];
-      return '<div class="pg-chgroup"><div class="cgh">Chapter '+cn+(g.t?' &middot; '+esc(g.t):'')+'</div>'+g.rows.map(function(r){return masteryBar(r,prev,true);}).join('')+'</div>';
-    }).join('');
+    var topicsHTML=rows.map(function(r){return masteryBar(r,prev,true);}).join('');
     var qtRows=rows.map(function(r){ return {r:r, types:qtypesFor(r)}; }).filter(function(x){ return x.types.length; });
     var qtHTML = qtRows.length
       ? qtRows.slice(0,8).map(function(x){
@@ -797,7 +805,7 @@
     host.innerHTML=
     '<div class="pgview">'+
       '<div class="pg-hd"><div>'+
-        '<span class="pg-eyebrow">Your progress &middot; '+esc(COURSE_NAME)+'</span>'+
+        '<span class="pg-eyebrow">Chapter '+state.active+' &middot; '+esc(chTitle(state.active))+'</span>'+
         '<h1 class="pg-title">How you&rsquo;re doing</h1>'+
         '<p class="pg-sub">'+read+'</p>'+
       '</div><div class="pg-ring" style="--p:'+avg+'%"><b>'+avg+'%</b><span>Mastery</span></div></div>'+
@@ -838,7 +846,7 @@
   }
 
   function renderAll(){ renderRail(); renderContinue(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); Garden.renderBar(); }
-  function setChapter(n){ state.active=n; renderRail(); renderChapterCard(); renderTrail(); renderNextup(); window.scrollTo({top:0,behavior:'smooth'}); }
+  function setChapter(n){ state.active=n; renderRail(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); if(state.view==='progress') renderProgress(); window.scrollTo({top:0,behavior:'smooth'}); }
 
   // course dropdown toggle
   var sel=document.getElementById('coursesel'), cur=document.getElementById('courseCur');
