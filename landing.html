@@ -4328,6 +4328,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   function _plevel(key){ try{ var Pp=JSON.parse(localStorage.getItem('quantica.profile.v1')||'{}'), e=Pp.skill&&Pp.skill[CURRENT_COURSE+':'+key]; if(e&&e.n) return e.s>=0.8?3:(e.s>=0.55?2:1); }catch(x){} return 2; }
   function _pround(key, bump){ try{ var K='quantica.practice.v1', o=JSON.parse(localStorage.getItem(K)||'{}'), pk=CURRENT_COURSE+':'+key; if(bump){ o[pk]=(o[pk]||0)+1; localStorage.setItem(K,JSON.stringify(o)); } return o[pk]||0; }catch(e){ return bump?1:0; } }
   function _pord(n){ var s=['th','st','nd','rd'], v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }
+  // pre-fill the ✦ Key Ideas panel with the real topic's key ideas, so they're there to scroll while practicing
+  function _pfileKeys(topicKey){
+    try{
+      var L=LESSONS[topicKey]; if(!L||!L.blocks) return;
+      var keys=[]; L.blocks.forEach(function(b){ if(b.t==='imp') keys.push(b); });
+      if(!keys.length) return;
+      var nb=document.getElementById('wsNbBody'); if(!nb || !WS._buildIdeaNode) return;
+      nb.innerHTML='';
+      keys.forEach(function(b,i){ var node=WS._buildIdeaNode(b, i+1); if(node){ var bd=node.querySelector('.nb-new-badge'); if(bd) bd.remove(); node.classList.remove('nb-new','nb-arrive','nb-open'); nb.appendChild(node); if(typeof typeset==='function') typeset(node); } });
+      var ws=document.getElementById('wsWorkspace'); if(ws) ws.classList.remove('no-keys');   // show the ✦ panel even though generated problems have no keys of their own
+      var fab=document.getElementById('wsFabIdeas'); if(fab) fab.style.display='';
+    }catch(e){}
+  }
   function openPractice(key){
     var title=(LESSONS[key]&&LESSONS[key].title)||(window.lessonTitle?window.lessonTitle(key):'')||'';
     var fam=_pfam(title);
@@ -4337,7 +4350,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var g=fam.gen(lvl), stmt=g.prompt?g.prompt:('Compute $'+g.tex+'$.'); if(seen[stmt]) continue; seen[stmt]=1;
       blocks.push({ t:'prob', x:stmt, ans:''+g.a, accept:(g.a<0?[''+g.a,'−'+(-g.a)]:[''+g.a]), cat:'tryit', xp:2, label:'Practice', __ptype:g.s, __plabel:g.l, sol:'The answer is $'+g.a+'$.' });
     }
-    blocks.unshift({ t:'p', x:'<b>Fresh practice set — your '+_pord(round)+'.</b> Similar to the lesson, but a brand-new set of problems, different every time. Sprout is here if you get stuck, and these still count toward your topic strengths.' });
+    blocks.unshift({ t:'p', x:'<b>Fresh practice set — your '+_pord(round)+'.</b> Similar to the lesson, but a brand-new set of problems, different every time. Sprout is here if you get stuck, the topic&rsquo;s key ideas are in the ✦ panel to scroll anytime, and these still count toward your topic strengths.' });
     blocks.push({ t:'p', x:'<div style="text-align:center;padding:10px 0"><button onclick="window.Practice&&Practice.newSet()" style="font-family:\'Inter\',sans-serif;font-weight:700;font-size:14px;border:none;border-radius:999px;background:var(--tint);color:var(--forest);padding:11px 20px;cursor:pointer">↻ Another fresh set</button></div>' });
     var ch=parseInt(key,10), chInfo=TOC.filter(function(c){ return c.n===ch; })[0];
     var L={ title:fam.name, blocks:blocks, _practice:true, _practiceKey:key, _eyebrow:'Practice · '+_pord(round)+' set' };
@@ -4345,6 +4358,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     showView('lessonView');
     try{ document.getElementById('modalEyebrow').textContent=(COURSE_REG[CURRENT_COURSE]?COURSE_REG[CURRENT_COURSE].title:'Quantica')+' · Practice'; document.getElementById('modalTitle').textContent=fam.name; }catch(e){}
     wsOpen('practice-'+key, L, {title:fam.name, chTitle:(chInfo?chInfo.t:''), chNum:ch});
+    _pfileKeys(key);
   }
   window.openPractice=openPractice;
   window.Practice={ open:openPractice, newSet:function(){ if(window.__practiceCur) openPractice(window.__practiceCur); } };
