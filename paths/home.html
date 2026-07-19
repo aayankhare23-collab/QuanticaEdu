@@ -295,6 +295,20 @@
   .pg-focus-row .fgo{font-size:.76rem;font-weight:600;color:var(--moss);text-decoration:none;white-space:nowrap}
   .pg-focus-row .fgo:hover{color:var(--forest)}
   .pg-empty{text-align:center;max-width:440px;margin:60px auto;padding:0 20px}
+  /* two independent columns so cards pack tightly (no cross-row gap) */
+  .pg-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  @media(max-width:860px){ .pg-cols{grid-template-columns:1fr} }
+  .pg-col{display:flex;flex-direction:column;gap:18px;min-width:0}
+  /* how-you-solve breakdown */
+  .solvebar{display:flex;height:15px;border-radius:999px;overflow:hidden;background:var(--line);margin:2px 0 15px}
+  .solvebar .sb-seg{height:100%}
+  .sb-clean{background:linear-gradient(90deg,var(--moss),var(--grass))}
+  .sb-hint{background:#E7B44B}
+  .sb-sol{background:#C6A59F}
+  .sb-legend{display:flex;flex-wrap:wrap;gap:8px 16px}
+  .sb-legend span{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:500;color:var(--gray)}
+  .sb-legend i{width:10px;height:10px;border-radius:3px;flex:none;display:inline-block}
+  .sb-legend b{color:var(--ink);font-weight:700}
   .rc-cta{width:100%;justify-content:center;margin-top:2px;font-size:.92rem;padding:12px 18px}
 
   .note{max-width:1180px;margin:0 auto;padding:0 22px 34px;font-size:.78rem;color:var(--gray-soft)}
@@ -741,6 +755,18 @@
     var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+url(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
       : '<div class="pg-focus-row"><span class="fnm" style="color:var(--gray-soft);font-weight:500">You&rsquo;re solid across the board — keep it up.</span></div>';
     var strongHTML=strong.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="slab">'+strLabel(r.s)+'</span><span class="fpct" style="color:var(--forest)">'+Math.round(r.s*100)+'%</span></div>'; }).join('');
+    // how you solve — clean vs. hint vs. solution (real, from P.stats)
+    var solsN=st.solutions||0, hintN=Math.max(0, solved-indep-solsN), pc=function(n){ return solved?Math.round(n/solved*100):0; };
+    var solveHTML = solved
+      ? '<div class="solvebar">'+
+          (indep?'<span class="sb-seg sb-clean" style="width:'+pc(indep)+'%"></span>':'')+
+          (hintN?'<span class="sb-seg sb-hint" style="width:'+pc(hintN)+'%"></span>':'')+
+          (solsN?'<span class="sb-seg sb-sol" style="width:'+pc(solsN)+'%"></span>':'')+
+        '</div>'+
+        '<div class="sb-legend"><span><i class="sb-clean"></i>Clean <b>'+pc(indep)+'%</b></span>'+
+          '<span><i class="sb-hint"></i>With a hint <b>'+pc(hintN)+'%</b></span>'+
+          '<span><i class="sb-sol"></i>Saw solution <b>'+pc(solsN)+'%</b></span></div>'
+      : '<p class="pg-note">Solve a few problems and your clean / hint / solution split shows up here.</p>';
     host.innerHTML=
     '<div class="pgview">'+
       '<div class="pg-hd"><div>'+
@@ -749,15 +775,18 @@
         '<p class="pg-sub">'+read+'</p>'+
       '</div><div class="pg-ring" style="--p:'+avg+'%"><b>'+avg+'%</b><span>Mastery</span></div></div>'+
       '<div class="pg-tiles">'+tiles+'</div>'+
-      '<div class="pg-grid">'+
-        '<div class="pg-card"><h3>Mastery by topic</h3><div class="ch">Where you stand across every topic you&rsquo;ve practiced.</div>'+topicsHTML+'</div>'+
-        '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+'<p class="pg-note">Sample split for now &mdash; the real right/wrong-by-type data logs as you solve more.</p></div>'+
-      '</div>'+
-      '<div class="pg-grid">'+
-        '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div><div class="mspark">'+chart+'</div><p class="pg-note">Preview &mdash; per-session accuracy starts logging as you go.</p></div>'+
-        '<div class="pg-card"><h3>Strong &amp; where to focus</h3><div class="ch">Lean on your strengths; give these a little love.</div>'+
-          '<div class="pg-two"><div><div class="pg-mini-h">Strongest</div>'+strongHTML+'</div>'+
-          '<div><div class="pg-mini-h">Focus next</div>'+focusHTML+'</div></div></div>'+
+      '<div class="pg-cols">'+
+        '<div class="pg-col">'+
+          '<div class="pg-card"><h3>Mastery by topic</h3><div class="ch">Where you stand across every topic you&rsquo;ve practiced.</div>'+topicsHTML+'</div>'+
+          '<div class="pg-card"><h3>How you solve</h3><div class="ch">Every graded solve, by how you got there &mdash; clean solves build the most mastery.</div>'+solveHTML+'</div>'+
+          '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div><div class="mspark">'+chart+'</div><p class="pg-note">Preview &mdash; per-session accuracy starts logging as you go.</p></div>'+
+        '</div>'+
+        '<div class="pg-col">'+
+          '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+'<p class="pg-note">Sample split for now &mdash; the real right/wrong-by-type data logs as you solve more.</p></div>'+
+          '<div class="pg-card"><h3>Strong &amp; where to focus</h3><div class="ch">Lean on your strengths; give these a little love.</div>'+
+            '<div class="pg-two"><div><div class="pg-mini-h">Strongest</div>'+strongHTML+'</div>'+
+            '<div><div class="pg-mini-h">Focus next</div>'+focusHTML+'</div></div></div>'+
+        '</div>'+
       '</div>'+
     '</div>';
   }
