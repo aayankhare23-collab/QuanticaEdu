@@ -318,7 +318,8 @@
   .coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
   .cb-left{display:flex;align-items:center;gap:14px}
   .cb-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--navy)}
-  .cb-course{font-family:'Inter';font-weight:500;font-size:13.5px;color:var(--mute);margin-left:8px;letter-spacing:.01em;white-space:nowrap}
+  .cb-course{display:inline-flex;align-items:center;gap:9px;font-family:'Inter';font-weight:500;font-size:13.5px;color:var(--mute);margin-left:9px;letter-spacing:.01em;white-space:nowrap}
+  .cb-course:not(:empty)::before{content:"";width:3.5px;height:3.5px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
   @media(max-width:600px){.cb-course{font-size:12px;margin-left:6px}}
   .cb-logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:14px}
   .cb-back{display:none;align-items:center;gap:4px;font-family:'Inter';font-size:13.5px;font-weight:600;color:var(--mid);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer}
@@ -529,7 +530,7 @@
   .chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
   .demo .q sup{font-size:.7em}
 
-  .workspace{--cbh:52px;--tut-w:380px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));height:calc(100dvh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
+  .workspace{--cbh:52px;--tut-w:280px;--nb-w:280px;position:relative;height:calc(100vh - var(--cbh));height:calc(100dvh - var(--cbh));display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
   .ws-center{flex:1;display:flex;flex-direction:column;min-height:0;padding:0;transition:margin .32s cubic-bezier(.22,1,.36,1)}
   .workspace.tut-open .ws-center{margin-left:var(--tut-w)}
   .workspace.nb-open .ws-center{margin-right:var(--nb-w)}
@@ -550,8 +551,8 @@
   .workspace.nb-open.notes-open:not(.tut-open) .ws-notes{left:0;right:auto;transform:none;border-left:none;border-right:1px solid var(--glass-line);border-radius:0 var(--radius) var(--radius) 0}
   .workspace.nb-open.notes-open:not(.tut-open) .ws-center{margin-left:var(--nb-w);margin-right:var(--nb-w)}
   /* all three open -> tutor LEFT, key ideas TOP-right, notes BOTTOM-right */
-  .workspace.tut-open.nb-open.notes-open .ws-notebook{top:var(--cbh);height:calc((100dvh - var(--cbh))/2);bottom:auto;border-bottom:1px solid var(--glass-line)}
-  .workspace.tut-open.nb-open.notes-open .ws-notes{top:auto;bottom:0;height:calc((100dvh - var(--cbh))/2);left:auto;right:0;border-radius:0;transform:none}
+  .workspace.tut-open.nb-open.notes-open .ws-notebook{top:var(--cbh);height:calc((100dvh - var(--cbh))/2);bottom:auto;border-bottom:1px solid var(--glass-line);border-radius:var(--radius) 0 0 0}
+  .workspace.tut-open.nb-open.notes-open .ws-notes{top:auto;bottom:0;height:calc((100dvh - var(--cbh))/2);left:auto;right:0;border-radius:0 0 0 var(--radius);transform:none}
   .ws-notes .ws-nbhead{flex:none;padding:14px 16px 10px;border-bottom:1px solid var(--glass-line);display:flex;align-items:center;gap:9px}
   .ws-notes .ws-nbhead .t{font-family:'Space Grotesk';font-weight:600;font-size:14.5px;color:var(--navy);flex:1}
   .ws-notes .ws-body{display:flex;flex-direction:column;padding:0}
@@ -559,7 +560,7 @@
   .notes-sel{width:100%;font-family:'Inter';font-size:12.5px;font-weight:600;color:var(--slate);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:7px 10px;cursor:pointer}
   .notes-ta{flex:1;margin:10px 12px 12px;min-height:0;resize:none;border:1px solid var(--line);border-radius:12px;background:#fffef9;color:var(--ink);font-family:'Inter';font-size:14px;line-height:1.7;padding:13px 15px;outline:none}
   .notes-ta:focus{border-color:var(--grass);box-shadow:0 0 0 3px var(--softer)}
-  .ws-fab-notes{background:linear-gradient(135deg,var(--moss),var(--grass));color:#fff;position:fixed;top:278px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-notes{background:linear-gradient(135deg,var(--moss),var(--grass));color:#fff;position:fixed;top:288px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .ws-fab-notes svg{width:23px;height:23px}
   .workspace.tut-open .ws-fab-notes{top:170px;left:calc(100vw - 72px)}
   .workspace.notes-open .ws-fab-notes{display:none!important}
@@ -674,16 +675,16 @@
   .workspace.nb-open.notes-open:not(.tut-open) .ws-fab-group{top:auto;bottom:20px;left:calc(var(--nb-w) + 20px)}
   /* concept-only lessons with no Key Ideas: hide that fab and slot the Notebook where it would sit; notebook opens right, chat stays left (shared layouts never apply) */
   .workspace.no-keys .ws-fab-ideas{display:none!important}
-  .workspace.no-keys:not(.tut-open) .ws-fab-notes{top:206px}
+  .workspace.no-keys:not(.tut-open) .ws-fab-notes{top:216px}
   /* only Key Ideas open (its own fab is hidden): shift the Notebook fab up into the Key Ideas slot */
-  .workspace.nb-open:not(.notes-open):not(.tut-open) .ws-fab-notes{top:206px}
+  .workspace.nb-open:not(.notes-open):not(.tut-open) .ws-fab-notes{top:216px}
   .ws-fab{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:19px;box-shadow:0 6px 20px -6px rgba(18,42,86,.32);transition:filter .15s,transform .15s}
   .ws-fab:hover{filter:brightness(1.1);transform:translateY(-2px)}
   .ws-fab:active{transform:scale(.93)}
   .ws-fab-chat{background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff}
   .ws-fab-chat.fab-glow{animation:fabGlow .75s ease-out}
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
-  .ws-fab-ideas{background:linear-gradient(135deg,var(--grass),var(--lime));color:#fff;position:fixed;top:206px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
+  .ws-fab-ideas{background:linear-gradient(135deg,var(--grass),var(--lime));color:#fff;position:fixed;top:216px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
@@ -3162,7 +3163,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var c=COURSE_REG[slug]; if(!c) return false;
     CURRENT_COURSE=slug;
     try{ document.documentElement.setAttribute('data-course', slug); }catch(e){}   // drives the per-course theme (Sprout green / Cove blue)
-    try{ var _cc=document.getElementById('cbCourse'); if(_cc) _cc.textContent=' · '+c.title; }catch(e){}   // course label, top-left
+    try{ var _cc=document.getElementById('cbCourse'); if(_cc) _cc.textContent=c.title; }catch(e){}   // course label, top-left (dot separator drawn via CSS ::before, vertically centered)
     if(!window.COURSE) window.COURSE={slug:c.slug,title:c.title};
     else { window.COURSE.slug=c.slug; window.COURSE.title=c.title; }
     TOC=c.toc; LESSONS=c.lessons; PSETS=c.psets;
@@ -4820,18 +4821,27 @@ async function sendTutorMsg() {
   .opt .k{background:rgba(67,176,99,.16)}
   .dg-overlay{background:linear-gradient(160deg,#EDF6DE,#F3F7E4)}
   .dp-tier-1{color:#C9860B}.dp-tier-2{color:#B8790B}
-  /* Sprout tutor: keep the dark panel but shift navy → forest (lime accents already on-palette) */
-  .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#347d51 0%,#2b6845 58%,#255c3d 100%) !important;border-color:rgba(199,240,154,.30) !important}
-  .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#2f7048,#26613e) !important}
-  .ws-tutor .tut-input{background:#2b6845 !important}
-  /* Prealgebra tutor: green-tint the bot bubbles so they match the green panel (base was navy) */
-  .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#3e8862,#357653) !important}
-  /* Cove (Algebra I) tutor: recolor the whole dark panel from green to blue so the chat matches the course */
-  [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#35709f 0%,#2c5e86 58%,#285674 100%) !important;border-color:rgba(120,190,240,.32) !important}
-  [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#316791,#2a5878) !important}
+  /* light, friendly tutor chat — soft tinted panel with dark text + white bubbles (Prealgebra = green) */
+  .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#f4fbf5 0%,#eaf6ed 60%,#e2f2e6 100%) !important;border-color:rgba(67,176,99,.32) !important;color:#1d3c2a !important}
+  .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#e9f5ec,#dcefe1) !important;border-bottom:1px solid rgba(67,176,99,.16) !important}
+  .ws-tutor .ws-tuthead .nm{color:#153021 !important}
+  .ws-tutor .tut-close{color:#6b8675 !important}
+  .ws-tutor .tut-bub{color:#1d3c2a !important}
+  .ws-tutor .tut-bub.bot{background:#ffffff !important;border:1px solid rgba(67,176,99,.20) !important}
+  .ws-tutor .tut-compose{background:rgba(255,255,255,.4) !important;border-top:1px solid rgba(67,176,99,.16) !important}
+  .ws-tutor .tut-input{background:#ffffff !important;color:#1d3c2a !important;border-color:rgba(67,176,99,.30) !important}
+  .ws-tutor .tut-input::placeholder{color:#83a08f !important}
+  /* Cove (Algebra I) = light blue */
+  [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#eff7fe 0%,#e3f0fb 60%,#dbe9fa 100%) !important;border-color:rgba(77,158,221,.34) !important;color:#123049 !important}
+  [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#e3f0fb,#d6e9f8) !important}
+  [data-course="algebra1"] .ws-tutor .ws-tuthead .nm{color:#123049 !important}
+  [data-course="algebra1"] .ws-tutor .tut-close{color:#5f7f9a !important}
   [data-course="algebra1"] .ws-tuthead .av{background:none !important}
-  [data-course="algebra1"] .ws-tutor .tut-input{background:#2c5e86 !important}
-  [data-course="algebra1"] .ws-tutor .tut-bub.bot{background:linear-gradient(180deg,#3f83bc,#356f9f) !important}
+  [data-course="algebra1"] .ws-tutor .tut-bub{color:#123049 !important}
+  [data-course="algebra1"] .ws-tutor .tut-bub.bot{background:#ffffff !important;border:1px solid rgba(77,158,221,.22) !important}
+  [data-course="algebra1"] .ws-tutor .tut-compose{border-top:1px solid rgba(77,158,221,.16) !important}
+  [data-course="algebra1"] .ws-tutor .tut-input{color:#123049 !important;border-color:rgba(77,158,221,.32) !important}
+  [data-course="algebra1"] .ws-tutor .tut-input::placeholder{color:#7c9bb5 !important}
   [data-course="algebra1"] .ws-tutor .tut-bub.me,[data-course="algebra1"] .ws-tutor .tut-bub.usr,[data-course="algebra1"] .ws-tutor .tut-bub.user,[data-course="algebra1"] .ws-tutor .tut-bub.you{background:#5aaee8 !important;color:#06243a !important}
   [data-course="algebra1"] .ws-tutor .snd{background:#5aaee8 !important;color:#06243a !important}
   /* Sprout chat launcher — the full character standing in the corner (like the landing hero),
