@@ -3439,6 +3439,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       if(pbox){ pbox.classList.remove('ans-wrong'); void pbox.offsetWidth; pbox.classList.add('ans-correct'); }
       confettiBurst(pbox);
       if(window.sproutReact) sproutReact('excited');
+      var _cfc=document.getElementById('wsFabChat'); if(_cfc) _cfc.classList.remove('help-glow');
       if(window.Sfx) Sfx.correct();
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
       // struggled first, then got it: have Sprout debrief before they can move on
@@ -3453,6 +3454,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       fb.className='ansfb wrong'; fb.innerHTML='Not quite — give it another try.';
       if(pbox){ pbox.classList.remove('ans-correct'); pbox.classList.add('ans-wrong'); pbox.classList.remove('shake'); void pbox.offsetWidth; pbox.classList.add('shake'); setTimeout(function(){ pbox.classList.remove('shake'); },420); }
       if(window.sproutReact) sproutReact('thinking');
+      var _cfw=document.getElementById('wsFabChat'); if(_cfw && !(window.WS&&document.getElementById('wsWorkspace')&&document.getElementById('wsWorkspace').classList.contains('tut-open'))){ _cfw.classList.remove('help-glow'); void _cfw.offsetWidth; _cfw.classList.add('help-glow'); }
       if(window.Sfx) Sfx.wrong();
       rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
       // stuck twice on the same problem → slip in an easier same-topic warm-up (difficulty setting untouched)
@@ -3682,6 +3684,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   };
   WS.showPage=function(i){
     if(i<0)i=0; if(i>WS.pages.length-1)i=WS.pages.length-1; WS.page=i;
+    var _cfn=document.getElementById('wsFabChat'); if(_cfn) _cfn.classList.remove('help-glow');  // clear any stale wrong-answer glow when moving between pages
     var body=document.getElementById('wsCenterBody'); if(!body) return;
     WS._ensurePage(i);                       // build this page on demand if it isn't built yet
     [].slice.call(body.children).forEach(function(node){
@@ -3889,7 +3892,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(which==='tutor'){
       var opening=!ws.classList.contains('tut-open');
       ws.classList.toggle('tut-open',opening);
-      if(opening){ var cf=document.getElementById('wsFabChat'); if(cf) cf.classList.remove('unread-glow'); WS.notifyChatOpened(); }
+      if(opening){ var cf=document.getElementById('wsFabChat'); if(cf){ cf.classList.remove('unread-glow'); cf.classList.remove('help-glow'); } WS.notifyChatOpened(); }
       var fab=document.getElementById('wsFabIdeas');
       if(fab){ fab.classList.remove('shooting','shoot-back'); void fab.offsetWidth;
         fab.classList.add(opening?'shooting':'shoot-back');
@@ -4840,6 +4843,10 @@ async function sendTutorMsg() {
   .ws-fab-chat img{width:100% !important;height:100% !important;object-fit:contain !important;padding:0 !important;display:block}
   /* attention / unread: a gentle green glow via drop-shadow (no boxy ring on the transparent art) */
   .ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:none !important}
+  /* wrong-answer cue: a gentle steady glow inviting the student to open the tutor for help (announces itself once, then holds — not a constant flash) */
+  .ws-fab-chat.help-glow{filter:drop-shadow(0 6px 6px rgba(20,50,30,.22)) drop-shadow(0 0 12px rgba(63,168,96,.95)) drop-shadow(0 0 5px rgba(63,168,96,.72)) !important;animation:helpGlowIn .5s ease-out !important}
+  [data-course="algebra1"] .ws-fab-chat.help-glow{filter:drop-shadow(0 6px 6px rgba(18,40,60,.24)) drop-shadow(0 0 12px rgba(77,158,221,.97)) drop-shadow(0 0 5px rgba(77,158,221,.74)) !important}
+  @keyframes helpGlowIn{0%{transform:scale(.9)}55%{transform:scale(1.08)}100%{transform:scale(1)}}
   @keyframes sproutBreathe{0%,100%{filter:drop-shadow(0 7px 7px rgba(20,50,30,.24))}
     50%{filter:drop-shadow(0 9px 13px rgba(34,197,94,.55)) drop-shadow(0 0 5px rgba(34,197,94,.4));transform:translateY(-2px)}}
   /* tutor header avatar: show the whole mascot shrunk (no circular clip that would cut feet/leaf) */
@@ -4850,7 +4857,7 @@ async function sendTutorMsg() {
   .ws-fab-chat.react-wrong{animation:sproutWobble .55s ease !important}
   @keyframes sproutPop{0%{transform:scale(1)}40%{transform:scale(1.16)}70%{transform:scale(.97)}100%{transform:scale(1)}}
   @keyframes sproutWobble{0%,100%{transform:rotate(0) translateX(0)}20%{transform:rotate(-8deg) translateX(-2px)}60%{transform:rotate(8deg) translateX(2px)}}
-  @media(prefers-reduced-motion:reduce){.ws-fab-chat.react-correct,.ws-fab-chat.react-wrong,.ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow{animation:none !important}}
+  @media(prefers-reduced-motion:reduce){.ws-fab-chat.react-correct,.ws-fab-chat.react-wrong,.ws-fab-chat.fab-glow,.ws-fab-chat.unread-glow,.ws-fab-chat.help-glow{animation:none !important}}
   /* the app's built-in marketing region is unused in our product (our landing is /paths/);
      hide it whenever the course overlay is open so it never flashes behind a lesson or
      forces mobile horizontal overflow (its footer links don't wrap under ~460px). */
