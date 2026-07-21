@@ -1,4 +1,4 @@
-# Algebra I — Syllabus (15 chapters, 80 lessons)
+# Algebra I — Syllabus (15 chapters, 81 lessons)
 
 Course 2 of the Quantica path. Named **Algebra I** to match school curricula.
 Machine-readable source of truth: `lessons/algebra1/toc.json`.
@@ -13,7 +13,7 @@ nearly completely; 22 chapters condense to 15 by merging natural neighbors.
 | # | Chapter | Lessons | Condenses reference chapters |
 |---|---------|---------|------------------------------|
 | 1 | The Language of Algebra | 6 | 1 (rules/order, exponents, fractional exponents), 2 (expressions intro) |
-| 2 | Working with Expressions | 5 | 2 (manipulation), 4 (multi-variable expressions) |
+| 2 | Working with Expressions | 6 | 2 (manipulation, deeper evaluation), 4 (multi-variable expressions) |
 | 3 | Exponents and Radicals | 5 | 1 (exponents, fractional exponents, radicals), 11.4 (rationalizing) |
 | 4 | Linear Equations | 5 | 3 (all), 4.5 |
 | 5 | Systems of Equations | 6 | 5 (all) |

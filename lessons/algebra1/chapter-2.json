@@ -1,0 +1,575 @@
+{
+ "2.1": {
+  "title": "The Distributive Property",
+  "next": "2.2",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Chapter 1 ended on a promise. 1.4 called two expressions equivalent when they agree at every value, and said the rules for rewriting one form into another would arrive in Chapter 2. This lesson delivers the first one, and it begins as a way to multiply ugly numbers in your head."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Compute \\(9\\cdot 204\\) in your head. The number \\(204\\) splits into \\(200+4\\), and each piece is easy to multiply by \\(9\\). Multiply both pieces, then add. What do you get?",
+    "ans": "1836",
+    "accept": [
+     "1836"
+    ],
+    "hints": [
+     "Multiply the easy pieces, \\(9\\cdot 200\\) and \\(9\\cdot 4\\), then add the two results."
+    ],
+    "sol": "Working \\(9\\cdot 204\\) digit by digit gets there, but slowly. The split gives \\(9\\cdot 200=1800\\) and \\(9\\cdot 4=36\\), and \\(1800+36=\\boxed{1836}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The distributive property.</b> For any numbers, \\(a(b+c)=ab+ac\\). The reason is one count taken two ways. Take \\(a\\) groups, each holding \\(b+c\\) items. Counting whole groups gives \\(a(b+c)\\) items, while counting the \\(b\\)s and the \\(c\\)s separately gives \\(ab+ac\\), and the totals must match because they count the same items. That is what the last problem did with \\(9(200+4)\\). The rules in 1.3 each concerned a single operation, and this is the first law connecting addition and multiplication to each other. As an instruction it reads, the outside factor multiplies each inside piece."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Compute \\(6\\cdot 398\\) the same way, but treat \\(398\\) as \\(400-2\\). Multiply each piece by \\(6\\), then correct for the extra. What is the product?",
+    "ans": "2388",
+    "accept": [
+     "2388"
+    ],
+    "hints": [
+     "Round \\(398\\) up to \\(400\\), multiply, then pay back the \\(6\\cdot 2\\) you borrowed."
+    ],
+    "sol": "The pieces give \\(6\\cdot 400=2400\\) and \\(6\\cdot 2=12\\). Adding the \\(12\\) is the wrong turn, since \\(398\\) sits \\(2\\) below \\(400\\), so the correction comes off, \\(2400-12=\\boxed{2388}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Distribution over subtraction.</b> The companion form \\(a(b-c)=ab-ac\\) is not a second law. By 1.3, subtracting \\(c\\) is adding \\(-c\\), so \\(a(b-c)=a(b+(-c))=ab+a(-c)=ab-ac\\), the same property applied to a sum. One sentence now covers both forms. The outside factor multiplies each inside piece, and each piece keeps the sign it came with. In \\(6(400-2)\\) the second piece is \\(-2\\), which is why the \\(12\\) was subtracted rather than added."
+   },
+   {
+    "t": "fig",
+    "cap": "Both bands show one fact. On top, a sheet's area is counted whole as \\(7(x+4)\\) or piece by piece as \\(7x+28\\), and the two counts measure the same sheet. Below, four rows of dots are counted row by row as \\(4(10+2)\\) or by color as \\(40+8\\), landing on \\(48\\) either way. One thing counted two ways must give one total, and that is the whole proof of \\(a(b+c)=ab+ac\\).",
+    "x": "<svg viewBox=\"0 0 580 440\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top, a rectangle seven tall and x plus four long is cut into a seven by x piece labeled seven x and a seven by four piece labeled twenty-eight, with the whole length braced as seven times the quantity x plus four. Below, four rows of dots, ten blue then two gold in each row, labeled four times the quantity ten plus two, forty plus eight, and forty-eight\"><defs><filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">ONE AREA, TWO CUTS</text><text x=\"242\" y=\"68\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#475569\">x</text><text x=\"414\" y=\"68\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#475569\">4</text><text x=\"104\" y=\"134\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#475569\">7</text><rect x=\"130\" y=\"80\" width=\"224\" height=\"96\" rx=\"10\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"242\" y=\"137\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#8a5a08\">7x</text><rect x=\"362\" y=\"80\" width=\"104\" height=\"96\" rx=\"10\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"414\" y=\"137\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#8a5a08\">28</text><path d=\"M130 192 q0 8 8 8 h320 q8 0 8 -8\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><text x=\"298\" y=\"226\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"19\" font-weight=\"700\" fill=\"#475569\">7(x + 4)</text><line x1=\"30\" y1=\"248\" x2=\"550\" y2=\"248\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"278\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">ONE COUNT, TWO WAYS</text><circle cx=\"56\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"90\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"124\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"158\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"192\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"226\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"260\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"294\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"328\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"362\" cy=\"306\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"396\" cy=\"306\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"430\" cy=\"306\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"56\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"90\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"124\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"158\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"192\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"226\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"260\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"294\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"328\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"362\" cy=\"340\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"396\" cy=\"340\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"430\" cy=\"340\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"56\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"90\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"124\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"158\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"192\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"226\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"260\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"294\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"328\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"362\" cy=\"374\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"396\" cy=\"374\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"430\" cy=\"374\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"56\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"90\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"124\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"158\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"192\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"226\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"260\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"294\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"328\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"362\" cy=\"408\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"396\" cy=\"408\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"430\" cy=\"408\" r=\"7.5\" fill=\"#f0b429\"/><text x=\"500\" y=\"330\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#2257c5\">4(10 + 2)</text><text x=\"500\" y=\"362\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#2257c5\">40 + 8</text><text x=\"500\" y=\"396\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">48</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Nothing in the rule requires the inside pieces to be plain numbers. Expand \\(7(n+6)\\). The result has two terms, one with \\(n\\) and one without. Enter the constant term of the result, the term with no \\(n\\).",
+    "ans": "42",
+    "accept": [
+     "42",
+     "forty-two",
+     "fortytwo"
+    ],
+    "hints": [
+     "The \\(7\\) multiplies both pieces inside, the \\(n\\) and the \\(6\\), not just the first."
+    ],
+    "sol": "Writing \\(7n+6\\), with the \\(7\\) multiplying only the first piece, is the classic mistake. Distributing to both pieces gives \\(7\\cdot n+7\\cdot 6=7n+42\\), and the term with no \\(n\\) is \\(\\boxed{42}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Expanding.</b> Rewriting \\(7(n+6)\\) as \\(7n+42\\) is called expanding, and the outside factor multiplies every term inside. The result is not merely similar, it is equivalent, equal at every value of \\(n\\). That settles a debt from 1.4, where \\(6(t+2)\\) and \\(6t+12\\) matched at one input, a good sign but not proof. One application of the distributive property now proves it, \\(6(t+2)=6t+12\\) at every \\(t\\). Checking values can disprove, distribution can prove. One reading note, an expanded result has a coefficient and a constant term, so enter the part the question names."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Expand \\(5(3w-4)\\). The first inside piece already carries a coefficient, and the second carries a minus sign. Enter the coefficient of \\(w\\) in the result.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "fifteen"
+    ],
+    "hints": [
+     "The minus belongs to the \\(4\\). Multiply \\(5\\) by \\(3w\\), then \\(5\\) by \\(-4\\), keeping that sign."
+    ],
+    "sol": "Two wrong turns are on offer, entering the constant \\(-20\\) instead of the coefficient, and dropping the minus to get \\(+20\\). Distributing gives \\(5\\cdot 3w=15w\\) and \\(5\\cdot(-4)=-20\\), so the result is \\(15w-20\\) and the coefficient of \\(w\\) is \\(\\boxed{15}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Expand \\(g(g+11)\\). The outside factor is now the variable itself, and 1.5 already settled what \\(g\\cdot g\\) is. Enter the coefficient of the plain-\\(g\\) term of the result, not the \\(g^2\\) term.",
+    "ans": "11",
+    "accept": [
+     "11",
+     "eleven"
+    ],
+    "hints": [
+     "By 1.5, \\(g\\cdot g=g^2\\). The other product is \\(g\\cdot 11\\)."
+    ],
+    "sol": "Distributing gives \\(g\\cdot g+g\\cdot 11=g^2+11g\\). Entering \\(1\\), the coefficient of \\(g^2\\), answers the wrong part of the result. The plain-\\(g\\) term is \\(11g\\), so its coefficient is \\(\\boxed{11}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The outside factor can be a variable.</b> The rule holds for any numbers, and a variable stands for a number, so the factor outside the parentheses can be a letter, \\(g(g+11)=g\\cdot g+g\\cdot 11=g^2+11g\\). Each product follows rules already in hand, \\(g\\cdot g=g^2\\) by 1.5's count of factors, and \\(g\\cdot 11\\) is written \\(11g\\) with the coefficient first. Every term inside still gets multiplied. Nothing in the rule depends on what the outside factor is, a number, a letter, or a larger expression built from both."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A student expands \\(8(y+3)\\) and writes \\(8y+3\\), multiplying only the first term inside. Evaluate both expressions at \\(y=2\\), each on its own. How far apart are their values?",
+    "ans": "21",
+    "accept": [
+     "21",
+     "twenty-one",
+     "twentyone"
+    ],
+    "hints": [
+     "Substitute \\(y=2\\) into \\(8(y+3)\\) and into \\(8y+3\\) separately, then compare the two numbers."
+    ],
+    "sol": "At \\(y=2\\), the original is \\(8(2+3)=8\\cdot 5=40\\), while the student's version is \\(8\\cdot 2+3=19\\). Entering \\(40\\) or \\(19\\) alone answers a different question, the ask is how far apart they sit. By 1.4, one disagreement is all it takes, and the gap is \\(40-19=\\boxed{21}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Partial distribution.</b> The most common expanding error is multiplying only the first term, claiming \\(a(b+c)=ab+c\\). That claim is false, and one evaluation at any convenient value exposes it, the same checking move 1.6 practiced. One input, two different outputs, and the claim fails. The fix is mechanical. A factor sitting against parentheses multiplies every term inside, every time, however many terms there are."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A bare minus sign directly in front of parentheses means multiplication by \\(-1\\), so \\(-(4d-7)\\) means \\((-1)(4d-7)\\). Rewrite it by distributing that \\(-1\\) over both inside terms. Enter the constant term of the result.",
+    "ans": "7",
+    "accept": [
+     "7",
+     "+7",
+     "seven"
+    ],
+    "hints": [
+     "Both inside terms get multiplied by \\(-1\\), so both signs flip, not just the first."
+    ],
+    "sol": "Flipping only the first sign gives \\(-4d-7\\), the standard error. Distributing hits both terms, \\((-1)(4d)=-4d\\) and \\((-1)(-7)=+7\\), so the result is \\(-4d+7\\) and the constant term is \\(\\boxed{7}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Distributing \\(-1\\).</b> A bare minus in front of parentheses is multiplication by \\(-1\\), so every sign inside flips, positive terms turning negative and negative terms turning positive. Nothing new is involved, this is the distributive property with \\(a=-1\\), and since the product of two negatives is positive, the \\(-7\\) inside came out as \\(+7\\). Make the full flip a habit now. You will use it constantly when 2.3 subtracts whole expressions, and flipping only the first sign is among the most common sign errors in all of algebra."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "The rule works for any number of inside terms. Compute \\(12\\left(\\frac{1}{2}+\\frac{1}{3}+\\frac{1}{4}\\right)\\) by distributing the \\(12\\) over all three terms. What value comes out?",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen"
+    ],
+    "hints": [
+     "Each product, \\(12\\cdot\\frac{1}{2}\\), \\(12\\cdot\\frac{1}{3}\\), and \\(12\\cdot\\frac{1}{4}\\), is a whole number."
+    ],
+    "sol": "Adding the fractions first gives \\(\\frac{13}{12}\\), and \\(12\\cdot\\frac{13}{12}=13\\) works, at the cost of a common denominator. Distributing skips all of that, \\(12\\cdot\\frac{1}{2}+12\\cdot\\frac{1}{3}+12\\cdot\\frac{1}{4}=6+4+3=\\boxed{13}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A number trick. Think of a number, add \\(5\\), triple the result, subtract \\(15\\), then divide by \\(3\\). Start with \\(47\\) and follow the four steps in order. What number comes out?",
+    "ans": "47",
+    "accept": [
+     "47",
+     "forty-seven",
+     "fortyseven"
+    ],
+    "hints": [
+     "Follow the four steps one at a time, keeping each intermediate result.",
+     "When you finish, compare the number that came out with the number that went in."
+    ],
+    "sol": "The steps take \\(47\\) to \\(52\\) to \\(156\\) to \\(141\\) and back to \\(47\\). A common slip is to subtract \\(15\\) before tripling, which turns \\(52\\) into \\(37\\) and ends at \\(37\\), so keep the steps in the stated order. Writing the start as \\(n\\), the first three steps build \\(3(n+5)-15\\), which expands to \\(3n+15-15=3n\\), and dividing by \\(3\\) leaves \\(n\\). Whatever number goes in comes back out, so the result is \\(\\boxed{47}\\)."
+   },
+   {
+    "t": "fact",
+    "x": "When two parenthesized expressions multiply each other, as in \\((x+2)(x+3)\\), the distributive property simply runs twice, once for each term of the first factor. That door opens with quadratics in Chapter 9."
+   },
+   {
+    "t": "p",
+    "x": "The first rewriting tool is in hand. Ugly products split into easy pieces, and parentheses open without changing an expression's value at any input, which is exactly what 1.4 meant by equivalent. Next, 2.2 puts evaluation to work on heavier expressions, and in 2.3 this rule runs in reverse, reading \\(ab+ac\\) as \\(a(b+c)\\), a move called factoring."
+   }
+  ],
+  "review": [
+   {
+    "x": "Mental math first. Compute \\(8\\cdot 306\\) in your head by splitting \\(306\\) into \\(300+6\\) and multiplying each piece by \\(8\\). Enter the product.",
+    "ans": "2448",
+    "accept": [
+     "2448"
+    ],
+    "hints": [
+     "\\(8\\cdot 300\\) and \\(8\\cdot 6\\) are both easy. Add the two results."
+    ],
+    "sol": "A common slip is to lose the middle zero and compute \\(8\\cdot 36=288\\), which is way too small for eight copies of a number near \\(300\\). Keep the pieces as \\(300\\) and \\(6\\). Then \\(8\\cdot 300=2400\\) and \\(8\\cdot 6=48\\), so \\(8\\cdot 306=2400+48=\\boxed{2448}\\)."
+   },
+   {
+    "x": "Compute \\(4\\cdot 997\\) by treating \\(997\\) as \\(1000-3\\). Multiply each piece by \\(4\\), then correct for the overshoot. Enter the product.",
+    "ans": "3988",
+    "accept": [
+     "3988"
+    ],
+    "hints": [
+     "The product \\(4\\cdot 1000\\) overshoots, and \\(4\\cdot 3\\) measures by how much."
+    ],
+    "sol": "Over subtraction the rule reads \\(4(1000-3)=4\\cdot 1000-4\\cdot 3\\). Adding the correction instead of subtracting it gives \\(4012\\), the wrong direction, since \\(997\\) sits below \\(1000\\). The product is \\(4000-12=\\boxed{3988}\\)."
+   },
+   {
+    "x": "Expand \\(9(u+7)\\) by multiplying each inside term by \\(9\\). Enter the constant term of the result, the term with no \\(u\\).",
+    "ans": "63",
+    "accept": [
+     "63",
+     "sixty-three",
+     "sixtythree"
+    ],
+    "hints": [
+     "The \\(9\\) multiplies both pieces inside the parentheses, not just the \\(u\\)."
+    ],
+    "sol": "Multiplying only the first term gives \\(9u+7\\), the partial-distribution error, and \\(9u+7\\) is not equivalent to \\(9(u+7)\\). The \\(9\\) multiplies the \\(7\\) as well, so the expansion is \\(9u+63\\) and the constant term is \\(\\boxed{63}\\)."
+   },
+   {
+    "x": "Expand \\(6(5h-9)\\), keeping each inside term's sign as you distribute. Enter the coefficient of \\(h\\) in the result, the number multiplying it.",
+    "ans": "30",
+    "accept": [
+     "30",
+     "thirty"
+    ],
+    "hints": [
+     "The minus belongs to the \\(9\\), so the second product comes out negative."
+    ],
+    "sol": "Both products keep their signs, \\(6\\cdot 5h=30h\\) and \\(6\\cdot(-9)=-54\\), so the expansion is \\(30h-54\\). Entering \\(-54\\) answers the wrong part, and writing \\(+54\\) loses the sign. The coefficient of \\(h\\) is \\(\\boxed{30}\\)."
+   },
+   {
+    "x": "Expand \\(t(t+17)\\). The outside factor is a variable this time. Enter the coefficient of the plain-\\(t\\) term of the result, not the \\(t^2\\) term.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "seventeen"
+    ],
+    "hints": [
+     "The outside factor multiplies both terms inside. One product is \\(t\\) times \\(t\\), and the other product is the one that makes the plain-\\(t\\) term."
+    ],
+    "sol": "The outside factor multiplies both terms, \\(t\\cdot t=t^2\\) and \\(t\\cdot 17=17t\\), so the expansion is \\(t^2+17t\\). It is tempting to answer with the coefficient of \\(t^2\\), which is \\(1\\), or to type the whole term \\(17t\\), but the question asks only for the coefficient of the plain-\\(t\\) term. That term is \\(17t\\), so the answer is \\(\\boxed{17}\\)."
+   },
+   {
+    "x": "Rewrite \\(-(6p-19)\\) by distributing the minus. A bare minus in front of parentheses means multiplication by \\(-1\\). Enter the constant term of the result.",
+    "ans": "19",
+    "accept": [
+     "19",
+     "+19",
+     "nineteen"
+    ],
+    "hints": [
+     "The bare minus means multiply by \\(-1\\), so both inside signs flip."
+    ],
+    "sol": "Flipping only the first sign gives \\(-6p-19\\), the usual error. Multiplying each term by \\(-1\\) gives \\(-6p\\) and \\((-1)(-19)=+19\\), so the result is \\(-6p+19\\) and the constant term is \\(\\boxed{19}\\)."
+   },
+   {
+    "x": "A student claims that \\(5(x+8)=5x+8\\). Settle it the 1.4 way, evaluate both expressions at \\(x=3\\). How far apart are their values?",
+    "ans": "32",
+    "accept": [
+     "32",
+     "thirty-two",
+     "thirtytwo"
+    ],
+    "hints": [
+     "Substitute \\(3\\) into each expression separately, the grouped one inside first."
+    ],
+    "sol": "At \\(x=3\\), \\(5(x+8)=5\\cdot 11=55\\) while \\(5x+8=15+8=23\\). Entering \\(55\\) or \\(23\\) alone answers a different question, the ask is the gap between them. One disagreement proves the claim false, and the gap is \\(55-23=\\boxed{32}\\)."
+   },
+   {
+    "x": "Three terms and two letters this time. Expand \\(5(2a+9b-7)\\), multiplying every term by \\(5\\). Enter the coefficient of \\(a\\).",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "Three terms inside means three products, and only one of them involves \\(a\\)."
+    ],
+    "sol": "The \\(5\\) multiplies all three terms, giving \\(10a+45b-35\\). The ask names the coefficient of \\(a\\), so \\(45\\) and \\(-35\\) answer the wrong part. It is \\(5\\cdot 2=\\boxed{10}\\)."
+   },
+   {
+    "x": "Compute \\(15\\left(\\frac{2}{3}+\\frac{2}{5}\\right)\\) by distributing the \\(15\\) over both fractions. Done this way, no common denominator is needed.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "\\(15\\) times each fraction comes out whole."
+    ],
+    "sol": "Adding the fractions first gives \\(\\frac{16}{15}\\) and also works, but distributing skips the common denominator entirely. \\(15\\cdot\\frac{2}{3}=10\\) and \\(15\\cdot\\frac{2}{5}=6\\), so the value is \\(10+6=\\boxed{16}\\)."
+   },
+   {
+    "x": "Compute \\(7\\cdot 8.03\\) by splitting \\(8.03\\) into \\(8+0.03\\). Decimals distribute the same way whole numbers do. Enter the exact product.",
+    "ans": "56.21",
+    "accept": [
+     "56.21"
+    ],
+    "hints": [
+     "Two products, \\(7\\cdot 8\\) and \\(7\\cdot 0.03\\), then add them."
+    ],
+    "sol": "The split gives \\(7\\cdot 8=56\\) and \\(7\\cdot 0.03=0.21\\). Misplacing the decimal point to get \\(2.1\\) ruins the sum, so keep \\(0.21\\) and the product is \\(56+0.21=\\boxed{56.21}\\)."
+   },
+   {
+    "x": "Expand \\(3(z^2+6z+9)\\). The inside has three terms, one of them squared, so the result has three terms too. Enter the constant term.",
+    "ans": "27",
+    "accept": [
+     "27",
+     "twenty-seven",
+     "twentyseven"
+    ],
+    "hints": [
+     "The \\(3\\) multiplies all three terms, the squared one included."
+    ],
+    "sol": "Every term gets the factor, so the expansion is \\(3z^2+18z+27\\). Stopping after two terms and leaving the \\(9\\) untouched is the partial-distribution error again. The constant term is \\(\\boxed{27}\\)."
+   },
+   {
+    "x": "Whatever number \\(k\\) stands for, the expression \\(4(k+6)-4k\\) comes out to the same value every time. Enter that value.",
+    "ans": "24",
+    "accept": [
+     "24",
+     "twenty-four",
+     "twentyfour"
+    ],
+    "hints": [
+     "Distribute the \\(4\\) over \\(k+6\\) first.",
+     "After distributing, look at the two \\(k\\) terms side by side."
+    ],
+    "sol": "The tempting slip is to distribute the \\(4\\) onto \\(k\\) only and write \\(4k+6-4k\\), which would leave \\(6\\). The \\(4\\) multiplies both terms inside the parentheses, so distributing gives \\(4k+24-4k\\). The \\(4k\\) and \\(-4k\\) cancel completely, leaving \\(24\\) no matter what \\(k\\) is. That is the same cancellation that forced the number trick's output earlier in the lesson. The value is \\(\\boxed{24}\\)."
+   }
+  ]
+ },
+ "2.2": {
+  "title": "Evaluating in Practice",
+  "next": "2.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Evaluating was settled in 1.6, so nothing about the method changes here, the expressions just get heavier. Substitute in parentheses, compute by the order of operations, read off one number. This lesson is six problems, and each one adds a step the last did not have."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Evaluate \\(5-4y\\) at \\(y=-7\\). There are two minus signs in the second term, one printed in the expression and one that comes with the value, so write the substitution with parentheses to keep them separate.",
+    "ans": "33",
+    "accept": [
+     "33",
+     "thirty-three",
+     "thirtythree"
+    ],
+    "hints": [
+     "Read \\(4(-7)\\) as one finished product before subtracting anything."
+    ],
+    "sol": "The careless line reads \\(5-28=-23\\), which loses the value's sign. Substituted in parentheses, the term is \\(4(-7)=-28\\), and subtracting \\(-28\\) is adding \\(28\\), so \\(5-4(-7)=5+28=\\boxed{33}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Evaluate \\(\\dfrac{3k}{4}+\\dfrac{20}{k}\\) at \\(k=8\\). The variable sits under a fraction bar this time, and it appears in two places at once. Enter the value as a fraction in lowest terms.",
+    "ans": "17/2",
+    "accept": [
+     "17/2",
+     "8.5"
+    ],
+    "hints": [
+     "Both \\(k\\)s become \\(8\\) at the same moment, one above a bar and one below, and each bar finishes as its own division."
+    ],
+    "sol": "Combining across the bars into \\(\\frac{24+20}{4+8}=\\frac{44}{12}\\) merges two separate divisions and is wrong. Each bar finishes on its own, \\(\\frac{24}{4}=6\\) and \\(\\frac{20}{8}=\\frac{5}{2}\\), so the value is \\(6+\\frac{5}{2}=\\boxed{\\dfrac{17}{2}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Same habits, heavier loads.</b> Every problem here runs on the routine from 1.6, substitute in parentheses at every appearance, then work by the order from 1.2, writing each intermediate value down. What changes is where the variable sits. A letter can stand anywhere a number can, including under a fraction bar, and the bar still groups its whole top and its whole bottom. Writing the middle values down costs a few seconds and catches most sign errors before they compound."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Evaluate \\(\\sqrt{-12w}\\) at \\(w=-3\\). The minus printed under the bar looks like the even-root trouble from 1.5. Substitute first, then decide whether the root exists.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Compute the number actually under the bar once \\(w\\) is replaced, then judge."
+    ],
+    "sol": "Rejecting the root on sight is the tempting wrong turn, since the printed minus is not the value's sign. Substituting gives \\(-12(-3)=36\\) under the bar, and \\(\\sqrt{36}=\\boxed{6}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Judge after substituting.</b> An even root needs a nonnegative value under its bar, the rule from 1.5, and the sign that matters is the sign of the value after substituting, never the sign printed in the expression. \\(-12w\\) opens with a minus on the page, yet it is positive whenever \\(w\\) is negative. This is the value-not-appearance idea from 1.1 working under a radical bar. Compute what sits under the bar first, and only then decide whether the root exists."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 444\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top, the square root of negative four q at q equals negative twenty-five, a gold route substitutes to one hundred under the bar and reaches ten, while a greyed struck-out route rejects the root at sight from the printed minus. Below, the expression two u plus three, all squared, at u equals nine evaluated from the inside out, nine then twenty-one then four hundred forty-one\"><defs><filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter><filter id=\"tilesh\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">JUDGE AFTER SUBSTITUTING</text><rect x=\"168\" y=\"46\" width=\"140\" height=\"50\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M174 54 l6 0 M177 51 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M296 90 l6 0 M299 87 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"238\" y=\"80\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#475569\">√(−4q)</text><rect x=\"326\" y=\"59\" width=\"92\" height=\"26\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"372\" y=\"77\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#2257c5\">q = −25</text><line x1=\"216\" y1=\"103\" x2=\"156\" y2=\"126\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><line x1=\"372\" y1=\"92\" x2=\"474\" y2=\"126\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><rect x=\"44\" y=\"132\" width=\"112\" height=\"50\" rx=\"13\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"100\" y=\"164\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"18\" font-weight=\"700\" fill=\"#8a5a08\">−4(−25)</text><line x1=\"164\" y1=\"157\" x2=\"196\" y2=\"157\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M193 151 L201 157 L193 163\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"206\" y=\"132\" width=\"86\" height=\"50\" rx=\"13\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"249\" y=\"165\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#8a5a08\">√100</text><line x1=\"300\" y1=\"157\" x2=\"332\" y2=\"157\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M329 151 L337 157 L329 163\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"342\" y=\"129\" width=\"66\" height=\"56\" rx=\"14\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M348 137 l6 0 M351 134 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M396 177 l6 0 M399 174 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"375\" y=\"166\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#2257c5\">10</text><text x=\"226\" y=\"212\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#8a5a08\">ROOT EXISTS</text><rect x=\"452\" y=\"132\" width=\"76\" height=\"50\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\"/><text x=\"490\" y=\"165\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#aab4c2\">−4q</text><line x1=\"459\" y1=\"174\" x2=\"521\" y2=\"140\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"490\" y=\"212\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#aab4c2\">AT SIGHT</text><line x1=\"30\" y1=\"236\" x2=\"550\" y2=\"236\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"266\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">INSIDE OUT</text><rect x=\"152\" y=\"248\" width=\"64\" height=\"26\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"184\" y=\"266\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#2257c5\">u = 9</text><text x=\"146\" y=\"288\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">(2u + 3)²</text><rect x=\"44\" y=\"296\" width=\"204\" height=\"124\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><text x=\"234\" y=\"318\" font-family=\"Space Grotesk, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#7c8aa0\">²</text><rect x=\"68\" y=\"322\" width=\"156\" height=\"82\" rx=\"14\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"146\" y=\"342\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">2u + 3</text><rect x=\"118\" y=\"352\" width=\"56\" height=\"40\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#tilesh)\"/><text x=\"146\" y=\"379\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#8a5a08\">9</text><line x1=\"256\" y1=\"358\" x2=\"284\" y2=\"358\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M281 352 L289 358 L281 364\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"296\" y=\"336\" width=\"58\" height=\"44\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><text x=\"325\" y=\"366\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#2257c5\">21</text><text x=\"325\" y=\"404\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"10.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">INNER FIRST</text><line x1=\"362\" y1=\"358\" x2=\"390\" y2=\"358\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M387 352 L395 358 L387 364\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"400\" y=\"330\" width=\"92\" height=\"56\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M406 338 l6 0 M409 335 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M484 378 l6 0 M487 375 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"446\" y=\"367\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#2257c5\">441</text><text x=\"446\" y=\"404\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"10.5\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#7c8aa0\">SQUARE LAST</text></svg>",
+    "cap": "On top, the grey route rejects \\(\\sqrt{-4q}\\) at sight from the printed minus, which judges the expression instead of the value. Substituting \\(q=-25\\) puts \\(-4(-25)=100\\) under the bar, so the root exists and equals \\(10\\). Below, \\((2u+3)^2\\) at \\(u=9\\) runs inside out, the innermost \\(u\\) becomes \\(9\\), the parentheses finish as \\(21\\), and squaring last gives \\(441\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Evaluate \\(n^2-5n+3\\) at \\(n=-2\\). Three terms, three sign decisions, one value, and every appearance of \\(n\\) gets its own parentheses.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "seventeen"
+    ],
+    "hints": [
+     "Write the parentheses at both appearances of \\(n\\) before doing any arithmetic.",
+     "Subtracting \\(5(-2)\\) is subtracting a negative."
+    ],
+    "sol": "Reading the square as \\(-2^2=-4\\) gives a total of \\(9\\), and dropping the middle term's sign gives \\(4-10+3=-3\\), both wrong. Correctly \\((-2)^2=4\\) and \\(-5(-2)=+10\\), so the value is \\(4+10+3=\\boxed{17}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Evaluate \\((2h-3)^2+h\\) at \\(h=6\\). The parentheses hold a whole expression this time. Build the inside value first, square the result, then finish the sum.",
+    "ans": "87",
+    "accept": [
+     "87",
+     "eighty-seven",
+     "eightyseven"
+    ],
+    "hints": [
+     "The exponent applies to the whole parenthesized value, so finish \\(2h-3\\) before squaring anything."
+    ],
+    "sol": "Squaring term by term gives \\(144-9+6=141\\), which is wrong because the exponent takes the finished inside value. That value is \\(2(6)-3=9\\), and \\(9^2=81\\), so the total is \\(81+6=\\boxed{87}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Inside out with variables.</b> A compound expression evaluates as a chain of small evaluations, innermost pieces first, which is the inside-out rule from 1.2 applied to substituted values. In \\((2h-3)^2+h\\), the inside finished as \\(9\\), the \\(9\\) fed the square, and the \\(81\\) fed the final sum. Each intermediate number is the input to the next layer, so a long expression is never one giant computation, it is many short ones in a row."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "This one uses every skill from the lesson. Evaluate \\(\\dfrac{\\sqrt{1-12v}}{v}\\) at \\(v=-4\\). The bar covers all of \\(1-12v\\), the input is negative, and a division finishes the job. Enter the value as a fraction in lowest terms.",
+    "ans": "-7/4",
+    "accept": [
+     "-7/4",
+     "-1.75",
+     "−7/4",
+     "−1.75"
+    ],
+    "hints": [
+     "Substitute before touching the root, so compute \\(1-12(-4)\\) under the bar first.",
+     "After taking the root, divide by \\(v\\) itself. Its value is \\(-4\\), sign included."
+    ],
+    "sol": "Two mistakes are tempting here. Stopping at the radical because of the minus sign in \\(1-12v\\) is one, but \\(1-12(-4)=1+48=49\\), which is fine under the bar. Dropping the sign of the denominator is the other, and it gives \\(\\dfrac{7}{4}\\), also wrong. The top is \\(\\sqrt{49}=7\\), the bottom is \\(-4\\), and \\(7\\div(-4)=\\boxed{-\\dfrac{7}{4}}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "A GPS receiver finds your distance from each satellite by evaluating a compound expression, squared differences feeding a square root, inside out, many times every second."
+   },
+   {
+    "t": "p",
+    "x": "The expressions got heavier and the method never changed. Parentheses on every substitution, signs judged after substituting, computation run from the inside out. Next, 2.3 turns the distributive property around, reading \\(ab+ac\\) as \\(a(b+c)\\), a rewrite called factoring."
+   }
+  ],
+  "review": [
+   {
+    "x": "Evaluate \\(9-2t\\) at \\(t=-3\\).",
+    "ans": "15",
+    "accept": [
+     "15",
+     "fifteen"
+    ],
+    "hints": [
+     "Substitute with parentheses, then finish the product \\(2(-3)\\) before subtracting it."
+    ],
+    "sol": "Dropping the sign reads the second term as \\(2\\cdot 3\\) and gives \\(9-6=3\\). With parentheses the substitution is \\(9-2(-3)=9+6=\\boxed{15}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{m}{3}+m\\) at \\(m=12\\).",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "Only the first \\(m\\) sits under the bar. The second one is a plain \\(12\\) added on."
+    ],
+    "sol": "Pulling the lone \\(m\\) under the bar reads \\(\\frac{12+12}{3}=8\\), but the bar groups only its own top. The first term is \\(12\\div 3=4\\), and \\(4+12=\\boxed{16}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\sqrt{2-7d}\\) at \\(d=-2\\). Substitute before judging the root.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Find the number actually under the bar once \\(d\\) is replaced."
+    ],
+    "sol": "Rejecting at sight because of the printed \\(-7d\\) is the tempting wrong turn, but the sign that matters is the value's after substituting. Since \\(-7(-2)=14\\), the bar holds \\(2+14=16\\), and \\(\\sqrt{16}=\\boxed{4}\\)."
+   },
+   {
+    "x": "Evaluate \\(w^2+3w\\) at \\(w=-18\\).",
+    "ans": "270",
+    "accept": [
+     "270"
+    ],
+    "hints": [
+     "The square takes the whole value, sign included."
+    ],
+    "sol": "Reading the square as \\(-18^2=-324\\) makes the total \\(-378\\). With parentheses, \\((-18)^2=324\\) and \\(3(-18)=-54\\), so the value is \\(324-54=\\boxed{270}\\)."
+   },
+   {
+    "x": "Evaluate \\((3g-4)^2\\) at \\(g=5\\).",
+    "ans": "121",
+    "accept": [
+     "121"
+    ],
+    "hints": [
+     "Finish the whole inside \\(3g-4\\) before squaring anything."
+    ],
+    "sol": "Squaring \\(g\\) first reads \\(3(25)-4=71\\), but the exponent applies to the whole parenthesized value. Inside first, \\(3(5)-4=11\\), and \\(11^2=\\boxed{121}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{40}{p}-p\\) at \\(p=-5\\).",
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "−3",
+     "negative three"
+    ],
+    "hints": [
+     "The divisor keeps its sign, and so does the subtracted \\(p\\)."
+    ],
+    "sol": "The tempting slip is to drop the negative in the division, read \\(40\\div 5=8\\), and land on \\(8+5=13\\). The first term is really \\(40\\div(-5)=-8\\), and subtracting \\(p\\) means subtracting \\(-5\\), so \\(-8+5=\\boxed{-3}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\sqrt{h^2+63}\\) at \\(h=-1\\).",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "\\(h^2\\) means \\((-1)^2\\). Judge its sign after substituting."
+    ],
+    "sol": "Reading the square as \\(-1^2=-1\\) leaves \\(62\\) under the bar, which has no clean root. Correctly \\((-1)^2=1\\), so the bar holds \\(1+63=64\\), and \\(\\sqrt{64}=\\boxed{8}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{a^2+b}{a+b}\\) at \\(a=-3\\) and \\(b=6\\).",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "Finish the whole top and the whole bottom before dividing."
+    ],
+    "sol": "Reading \\(a^2\\) as \\(-3^2=-9\\) makes the top \\(-3\\) and the value \\(-1\\). With parentheses the top is \\((-3)^2+6=15\\) over a bottom of \\(-3+6=3\\), so the value is \\(15\\div 3=\\boxed{5}\\)."
+   },
+   {
+    "x": "Evaluate \\(2c^2-c^3\\) at \\(c=-3\\).",
+    "ans": "45",
+    "accept": [
+     "45",
+     "forty-five",
+     "fortyfive"
+    ],
+    "hints": [
+     "An odd power of a negative keeps the sign, an even power clears it."
+    ],
+    "sol": "Treating the cube as \\(+27\\) gives \\(18-27=-9\\). The even power clears the sign, so \\(2(-3)^2=18\\), while the odd power keeps it, so \\((-3)^3=-27\\), and \\(18-(-27)=18+27=\\boxed{45}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{\\sqrt{50-t^2}}{t+12}\\) at \\(t=-5\\). Enter the value as a fraction in lowest terms.",
+    "ans": "5/7",
+    "accept": [
+     "5/7"
+    ],
+    "hints": [
+     "\\(t^2\\) means \\((-5)^2\\). Settle what sits under the bar first.",
+     "Finish the whole top, then the whole bottom, and divide last."
+    ],
+    "sol": "Reading \\((-5)^2\\) as \\(-25\\) puts \\(75\\) under the bar with no clean root, and reading the bottom as \\(-5-12\\) breaks the other half. The bar holds \\(50-25=25\\), so the top is \\(5\\), the bottom is \\(-5+12=7\\), and the value is \\(\\boxed{\\dfrac{5}{7}}\\)."
+   }
+  ]
+ }
+}
