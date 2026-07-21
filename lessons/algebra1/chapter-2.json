@@ -571,5 +571,322 @@
     "sol": "Reading \\((-5)^2\\) as \\(-25\\) puts \\(75\\) under the bar with no clean root, and reading the bottom as \\(-5-12\\) breaks the other half. The bar holds \\(50-25=25\\), so the top is \\(5\\), the bottom is \\(-5+12=7\\), and the value is \\(\\boxed{\\dfrac{5}{7}}\\)."
    }
   ]
+ },
+ "2.3": {
+  "title": "Factoring Out a Common Factor",
+  "next": "2.4",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Lesson 2.1 ended with a promise, and 2.2 repeated it. The distributive property turns \\(a(b+c)\\) into \\(ab+ac\\), and one day the rule would run backward. This is that day. Reading \\(ab+ac\\) as \\(a(b+c)\\) is called factoring, and before a single letter appears it is pure arithmetic muscle."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Compute \\(57\\cdot 69+57\\cdot 31\\) without working out either product. Both terms contain the factor \\(57\\), so pull it out front and see what the leftover sum becomes.",
+    "ans": "5700",
+    "accept": [
+     "5700"
+    ],
+    "hints": [
+     "The first term is \\(57\\) copies of \\(69\\), and the second is \\(57\\) more copies of \\(31\\). Count copies before multiplying anything."
+    ],
+    "sol": "Grinding out both products works but wastes the structure. Both terms share the factor \\(57\\), so the whole sum is \\(57\\) copies of \\(69+31\\), and $$57\\cdot 69+57\\cdot 31=57(69+31)=57\\cdot 100=\\boxed{5700}.$$"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Factoring.</b> Reading \\(ab+ac\\) as \\(a(b+c)\\) is called factoring, the distributive property read right to left. Expanding opens parentheses, factoring builds them, one equality with two directions of travel. The rewrite is worth having because a shared factor collapses a sum of products into a single product, which is exactly what turned the last problem into a one-step computation, \\(57\\) copies of \\(69\\) plus \\(57\\) copies of \\(31\\) making \\(57\\) copies of \\(100\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Compute \\(58\\cdot 91-58\\cdot 81\\) the same way. The shared factor comes out front, and this time a subtraction is left behind it. What is the value of the whole expression?",
+    "ans": "580",
+    "accept": [
+     "580"
+    ],
+    "hints": [
+     "The first product is \\(58\\) copies of \\(91\\) and the second is \\(58\\) copies of \\(81\\), so subtracting leaves \\(58\\) copies of some difference."
+    ],
+    "sol": "Working both products gives \\(5278-4698=580\\), the long way around. Pulling the \\(58\\) out front keeps the subtraction inside, $$58\\cdot 91-58\\cdot 81=58(91-81)=58\\cdot 10=\\boxed{580}.$$"
+   },
+   {
+    "t": "imp",
+    "x": "<b>The round trip.</b> The subtraction form \\(ab-ac=a(b-c)\\) is not a second law, since 1.3 made subtracting \\(c\\) the same as adding \\(-c\\). More important is the habit this lesson runs on. Every proposed factoring gets checked by expanding it back, and 2.1 already made you fluent at expanding, so the answer key is always in your hands. The match must be exact, every term and every sign, or the factoring is wrong. The check matters most against the factoring twin of partial distribution, dividing only the first term by the shared factor, and one expansion exposes that slip immediately."
+   },
+   {
+    "t": "fig",
+    "cap": "The top band is this lesson's habit. \\(3(y+8)\\) and \\(3y+24\\) are the same equality read in opposite directions, expanding opens the parentheses and factoring rebuilds them, so any proposed factoring is checked by expanding it back and demanding an exact match. The bottom band is why factoring changes nothing. The same \\(20\\) tiles are counted loose as \\(8+12\\) or in four matching groups as \\(4(2+3)\\), regrouped but never changed.",
+    "x": "<svg viewBox=\"0 0 580 430\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top, a white card holding 3 times the quantity y plus 8 and a white card holding 3 y plus 24, joined by a gold arrow labeled expand running left to right and a blue arrow labeled factor running right to left. Below, a loose pile of 8 blue and 12 gold tiles labeled 8 plus 12, and the same 20 tiles regrouped into 4 pills, each holding 2 blue and 3 gold, labeled 4 times the quantity 2 plus 3, with the shared total 20 between the labels\"><defs><filter id=\"softsh\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter></defs><text x=\"30\" y=\"30\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">THE ROUND TRIP</text><text x=\"288\" y=\"56\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#8a5a08\">EXPAND</text><line x1=\"140\" y1=\"70\" x2=\"432\" y2=\"70\" stroke=\"#f0b429\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M429 64 L437 70 L429 76\" fill=\"none\" stroke=\"#f0b429\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"58\" y=\"92\" width=\"160\" height=\"58\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M64 100 l6 0 M67 97 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M206 140 l6 0 M209 137 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"138\" y=\"129\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#475569\">3(y + 8)</text><rect x=\"362\" y=\"92\" width=\"160\" height=\"58\" rx=\"18\" fill=\"#fff\" stroke=\"#dbe6fa\" filter=\"url(#softsh)\"/><path d=\"M368 100 l6 0 M371 97 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M510 140 l6 0 M513 137 l0 6\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"442\" y=\"129\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"22\" font-weight=\"700\" fill=\"#475569\">3y + 24</text><line x1=\"440\" y1=\"172\" x2=\"148\" y2=\"172\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M151 166 L143 172 L151 178\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"288\" y=\"198\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"11\" font-weight=\"700\" letter-spacing=\"1.2\" fill=\"#2f6fe0\">FACTOR</text><line x1=\"30\" y1=\"220\" x2=\"550\" y2=\"220\" stroke=\"#e4e9f1\" stroke-width=\"1\"/><text x=\"30\" y=\"250\" font-family=\"Space Grotesk, sans-serif\" font-size=\"12.5\" font-weight=\"700\" letter-spacing=\"1.4\" fill=\"#2f6fe0\">REGROUPED</text><circle cx=\"66\" cy=\"282\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"108\" cy=\"272\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"149\" cy=\"286\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"190\" cy=\"274\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"228\" cy=\"288\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"58\" cy=\"318\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"100\" cy=\"326\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"142\" cy=\"312\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"184\" cy=\"322\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"226\" cy=\"316\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"70\" cy=\"352\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"112\" cy=\"344\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"152\" cy=\"356\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"194\" cy=\"350\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"232\" cy=\"346\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"64\" cy=\"386\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"106\" cy=\"378\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"148\" cy=\"388\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"190\" cy=\"384\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"230\" cy=\"380\" r=\"7.5\" fill=\"#f0b429\"/><rect x=\"296\" y=\"268\" width=\"120\" height=\"34\" rx=\"17\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><rect x=\"428\" y=\"268\" width=\"120\" height=\"34\" rx=\"17\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><rect x=\"296\" y=\"314\" width=\"120\" height=\"34\" rx=\"17\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><rect x=\"428\" y=\"314\" width=\"120\" height=\"34\" rx=\"17\" fill=\"#eaf1ff\" stroke=\"#cdddf7\"/><circle cx=\"314\" cy=\"285\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"335\" cy=\"285\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"356\" cy=\"285\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"377\" cy=\"285\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"398\" cy=\"285\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"446\" cy=\"285\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"467\" cy=\"285\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"488\" cy=\"285\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"509\" cy=\"285\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"530\" cy=\"285\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"314\" cy=\"331\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"335\" cy=\"331\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"356\" cy=\"331\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"377\" cy=\"331\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"398\" cy=\"331\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"446\" cy=\"331\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"467\" cy=\"331\" r=\"7.5\" fill=\"#3b82f6\"/><circle cx=\"488\" cy=\"331\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"509\" cy=\"331\" r=\"7.5\" fill=\"#f0b429\"/><circle cx=\"530\" cy=\"331\" r=\"7.5\" fill=\"#f0b429\"/><text x=\"146\" y=\"414\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#2257c5\">8 + 12</text><text x=\"290\" y=\"414\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">20</text><text x=\"422\" y=\"414\" text-anchor=\"middle\" font-family=\"Space Grotesk, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#2257c5\">4(2 + 3)</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Letters change nothing. The expression \\(4w+36\\) factors as \\(4(w+c)\\) for one constant \\(c\\). Divide each term by the shared \\(4\\), then enter \\(c\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "Both terms get divided by the \\(4\\), not just the first one."
+    ],
+    "sol": "Writing \\(4(w+36)\\) divides only the first term, and expanding it gives \\(4w+144\\), not the original, so it fails the round trip. Dividing both terms gives \\(4(w+9)\\), and expanding lands exactly back on \\(4w+36\\), so \\(c=\\boxed{9}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>How to factor.</b> Find a factor shared by every term, divide each term by it, and write the leftovers inside the parentheses. Each leftover keeps the sign of the term it came from, so a negative term leaves a negative leftover. The search runs on the parts vocabulary from 1.4, since what you scan is each term's factors, hunting for one that appears in every term. Then the round trip settles the result, expanding it must reproduce the original exactly."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Dana factors \\(12h+30\\) as \\(2(6h+15)\\), and expanding it back checks out. But inside the parentheses, \\(6h\\) and \\(15\\) still share a factor, so the job is unfinished. Enter the largest number that divides both \\(12h\\) and \\(30\\).",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "What is the largest number that divides both \\(12\\) and \\(30\\)?"
+    ],
+    "sol": "Settling for the \\(2\\) is tempting since the round trip passed, but \\(\\gcd(12,30)=6\\), and the complete form is \\(6(2h+5)\\), whose leftovers share nothing but \\(1\\). The largest common factor is \\(\\boxed{6}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Factor completely.</b> A partial factoring like \\(2(6h+15)\\) passes the round trip, since it really does equal \\(12h+30\\), so completeness needs its own check. Look at the leftovers inside the parentheses, and if they still share a factor bigger than \\(1\\), pull it out too. An expression is factored completely once the leftovers share nothing but \\(1\\). The number part of the largest common factor is the GCD from Prealgebra 3.5, which is why \\(\\gcd(12,30)=6\\) finished the job in one pull as \\(6(2h+5)\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A letter can be the shared factor. Since \\(y^2\\) means \\(y\\cdot y\\) (1.5), both terms of \\(y^2+10y\\) contain \\(y\\), so the expression factors as \\(y(y+c)\\). Enter \\(c\\).",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "Divide each term by \\(y\\) and see what each one leaves behind."
+    ],
+    "sol": "Stopping because no number bigger than \\(1\\) is shared misses that \\(y\\) itself is shared. Dividing each term by \\(y\\) leaves \\(y+10\\), and the round trip \\(y(y+10)=y^2+10y\\) confirms \\(c=\\boxed{10}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Number and letter combine. Enter the greatest common factor of the two terms of \\(8t^2+20t\\), typed like a term, for example \\(6z\\).",
+    "ans": "4t",
+    "accept": [
+     "4t"
+    ],
+    "hints": [
+     "Find the number part and the letter part separately, then put them together."
+    ],
+    "sol": "Entering just \\(4\\) or just \\(t\\) stops halfway. The number part is \\(\\gcd(8,20)=4\\), both terms share one \\(t\\), and the complete form is \\(4t(2t+5)\\), so the greatest common factor is \\(\\boxed{4t}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The full scan.</b> The greatest common factor of a set of terms collects two things, the GCD of the number parts and every letter all the terms share. Pulling \\(4t\\) out of \\(8t^2+20t\\) leaves \\(2t+5\\), and since \\(2t\\) and \\(5\\) share nothing but \\(1\\), the factoring is complete. One expansion, \\(4t(2t+5)=8t^2+20t\\), confirms the whole thing in a line."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A student factors \\(8n+36\\) as \\(4(2n+8)\\). Test it the 1.4 way, evaluate the original and the claimed factoring at \\(n=1\\), each on its own. How far apart are their values?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Work out each expression at \\(n=1\\) separately, then subtract the results."
+    ],
+    "sol": "Trusting the factoring because \\(4\\) really does divide both \\(8n\\) and \\(36\\) is the trap, since the leftover constant is wrong. The original gives \\(8+36=44\\) while the claim gives \\(4(2+8)=40\\), a gap of \\(4\\). Expanding catches it faster, since \\(4(2n+8)=8n+32\\) rather than \\(8n+36\\), so the factoring is wrong either way. The gap is \\(\\boxed{4}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Nothing survives the check.</b> A wrong factoring cannot pass the round trip, and by 1.4's one-mismatch rule it cannot even survive a single evaluation, since one input with two different outputs proves the claim false. The expansion check is stronger and usually faster, one distribution compared against the original, term by term and sign by sign. Check every factoring, every time, by expanding. It costs five seconds and catches everything."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Three terms this time. The expression \\(9a+27b-18\\) factors as \\(9(a+3b+c)\\), and each term keeps its sign as the \\(9\\) comes out. Enter \\(c\\), sign included.",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "negative two"
+    ],
+    "hints": [
+     "What is \\(-18\\) divided by \\(9\\), sign and all?"
+    ],
+    "sol": "Dropping the minus and entering \\(2\\) is the trap. The third term is \\(-18\\), and \\(-18\\div 9=-2\\), so the round trip \\(9(a+3b-2)=9a+27b-18\\) confirms \\(c=\\boxed{-2}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "In \\(m(m-6)+8(m-6)\\), both terms contain the whole factor \\(m-6\\). Pull the chunk out front exactly the way the \\(57\\) came out in this lesson's first problem. The result is \\((m+a)(m-6)\\). Enter \\(a\\).",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Treat \\(m-6\\) as a single object, like the shared \\(57\\) in the hook problem.",
+     "The first term is \\(m\\) copies of \\(m-6\\), and the second term adds some more copies of the same thing. Count the total number of copies."
+    ],
+    "sol": "It is tempting to expand \\(m(m-6)\\) and \\(8(m-6)\\) into four separate terms first, but that erases the shared chunk and leaves nothing to pull out. Instead treat \\(m-6\\) as one object. The first term is \\(m\\) copies of it and the second is \\(8\\) copies of it, which is \\(m+8\\) copies in all, so the expression equals \\((m+8)(m-6)\\). Distributing \\(m-6\\) back over \\(m+8\\) reproduces the original in a single step, and chapter 9 factors quadratics with exactly this chunk move, so \\(a=\\boxed{8}\\)."
+   },
+   {
+    "t": "fact",
+    "label": "Fun fact",
+    "x": "The padlock in your browser's address bar rests on factoring being hard. Multiplying two enormous primes takes a computer an instant, but recovering them from the product alone would outlast the age of the universe."
+   },
+   {
+    "t": "p",
+    "x": "Factoring reads distribution backward, the round trip checks it, completeness finishes it, and even a whole parenthesized chunk can be the shared factor. Next, 2.4 adds and subtracts entire expressions, and the full sign flip from distributing \\(-1\\) in 2.1 becomes the main skill."
+   }
+  ],
+  "review": [
+   {
+    "x": "Compute \\(34\\cdot 67+34\\cdot 33\\) without working out either product. Factor out the shared \\(34\\) first and see what sum is left behind it.",
+    "ans": "3400",
+    "accept": [
+     "3400"
+    ],
+    "hints": [
+     "The sum left behind the \\(34\\) is \\(67+33\\), a friendly number."
+    ],
+    "sol": "Grinding out \\(2278+1122\\) works, just slowly. Both terms contain \\(34\\), so the sum is \\(34(67+33)=34\\cdot 100=\\boxed{3400}\\)."
+   },
+   {
+    "x": "Compute \\(76\\cdot 53-76\\cdot 43\\) by factoring first. Both products are ugly, but the difference left behind the shared factor is not.",
+    "ans": "760",
+    "accept": [
+     "760"
+    ],
+    "hints": [
+     "Pull the \\(76\\) out front and subtract inside the parentheses."
+    ],
+    "sol": "Working out \\(4028-3268\\) gets there the slow way. The shared \\(76\\) comes out front instead, since \\(76(53-43)=76\\cdot 10=\\boxed{760}\\)."
+   },
+   {
+    "x": "The expression \\(5q+60\\) factors as \\(5(q+c)\\) for one constant \\(c\\). Divide each term by the shared \\(5\\), then enter \\(c\\).",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve"
+    ],
+    "hints": [
+     "Divide each term by \\(5\\), the second one included."
+    ],
+    "sol": "Writing \\(5(q+60)\\) divides only the first term and fails the round trip. Since \\(60\\div 5=12\\), the factoring is \\(5(q+12)\\), and expanding gives back \\(5q+60\\), so \\(c=\\boxed{12}\\)."
+   },
+   {
+    "x": "Enter the largest number that divides both terms of \\(38x+95\\). Neither number is small, so factor each one before searching for what they share.",
+    "ans": "19",
+    "accept": [
+     "19",
+     "nineteen"
+    ],
+    "hints": [
+     "Both \\(38\\) and \\(95\\) are a prime times a small number."
+    ],
+    "sol": "Testing small numbers stalls, since \\(2\\) misses \\(95\\) and \\(5\\) misses \\(38\\). Factoring instead, \\(38=2\\cdot 19\\) and \\(95=5\\cdot 19\\), so the complete form is \\(19(2x+5)\\) and the largest common factor is \\(\\boxed{19}\\)."
+   },
+   {
+    "x": "Ravi factors \\(44h+66\\) as \\(11(4h+6)\\), and the expansion checks out. Even so, \\(4h\\) and \\(6\\) still share a factor, so the factoring is not complete. Enter the largest common factor of the two original terms.",
+    "ans": "22",
+    "accept": [
+     "22",
+     "twenty-two",
+     "twentytwo"
+    ],
+    "hints": [
+     "Passing the round trip is not the same as being finished. Look at what \\(4h\\) and \\(6\\) still share."
+    ],
+    "sol": "Accepting \\(11\\) because the expansion checks out is the trap, since the leftovers \\(4h\\) and \\(6\\) still share \\(2\\). The full factor is \\(\\gcd(44,66)=22\\), the complete form \\(22(2h+3)\\) expands back to \\(44h+66\\), and the answer is \\(\\boxed{22}\\)."
+   },
+   {
+    "x": "The shared factor is a letter this time. Since \\(n^2\\) is \\(n\\cdot n\\), both terms of \\(n^2+13n\\) contain \\(n\\), so the expression factors as \\(n(n+c)\\). Enter \\(c\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen"
+    ],
+    "hints": [
+     "Divide each term by \\(n\\)."
+    ],
+    "sol": "The terms share no number, but both contain \\(n\\). Dividing each by \\(n\\) leaves \\(n+13\\), and the round trip \\(n(n+13)=n^2+13n\\) confirms \\(c=\\boxed{13}\\)."
+   },
+   {
+    "x": "Number and letter both matter here. Enter the greatest common factor of the two terms of \\(15u^2+25u\\), typed like a term, for example \\(8w\\).",
+    "ans": "5u",
+    "accept": [
+     "5u"
+    ],
+    "hints": [
+     "The number part comes from \\(15\\) and \\(25\\), and the letter part from what both terms share."
+    ],
+    "sol": "Entering only \\(5\\) or only \\(u\\) stops halfway. The number part is \\(\\gcd(15,25)=5\\) and both terms contain \\(u\\), so the complete form is \\(5u(3u+5)\\) and the greatest common factor is \\(\\boxed{5u}\\)."
+   },
+   {
+    "x": "The expression \\(26x+39y-52\\) factors as \\(13(2x+3y+e)\\). Enter \\(e\\), sign included.",
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4",
+     "negative four"
+    ],
+    "hints": [
+     "Divide the last term by \\(13\\), sign and all."
+    ],
+    "sol": "Dropping the minus and entering \\(4\\) is the trap. Since \\(-52\\div 13=-4\\), the factoring is \\(13(2x+3y-4)\\), and expanding gives back \\(26x+39y-52\\), so \\(e=\\boxed{-4}\\)."
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{7\\cdot 93+7\\cdot 7}{10}\\) without any long multiplication. The top is a sum of two products with a shared factor, so factor it before dividing anything.",
+    "ans": "70",
+    "accept": [
+     "70",
+     "seventy"
+    ],
+    "hints": [
+     "The top is \\(7\\) copies of a friendly sum."
+    ],
+    "sol": "Multiplying out \\(651+49\\) reaches \\(700\\) the slow way. Factoring the top gives \\(7(93+7)=7\\cdot 100=700\\), and \\(700\\div 10=\\boxed{70}\\)."
+   },
+   {
+    "x": "Both terms of \\(d(d+5)+3(d+5)\\) contain the whole chunk \\(d+5\\), so it can come out front like any shared factor. Factoring it out gives \\((d+a)(d+5)\\). Enter \\(a\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "Count copies of \\(d+5\\), treating the chunk as a single object."
+    ],
+    "sol": "The tempting answer is \\(5\\), since it is the other number in sight, but \\(5\\) sits inside the shared chunk \\(d+5\\), not in the leftover factor. Count copies of the chunk instead. The first term is \\(d\\) copies of \\(d+5\\) and the second is \\(3\\) more, so the expression is \\(d+3\\) copies of the chunk, \\((d+3)(d+5)\\). Distributing the chunk back over \\(d+3\\) reproduces the original, and \\(a=\\boxed{3}\\)."
+   },
+   {
+    "x": "One more full scan, this one on \\(6t^2+9t\\). Enter the greatest common factor of its two terms, typed like a term. Check that the leftovers share nothing before you commit.",
+    "ans": "3t",
+    "accept": [
+     "3t"
+    ],
+    "hints": [
+     "Find the number part first, then bring along the letter both terms share."
+    ],
+    "sol": "Stopping at \\(3\\) leaves the shared \\(t\\) behind. Since \\(\\gcd(6,9)=3\\) and both terms contain \\(t\\), the complete form is \\(3t(2t+3)\\), whose leftovers share only \\(1\\), so the greatest common factor is \\(\\boxed{3t}\\)."
+   },
+   {
+    "x": "Evaluate \\(41^2+41\\) by factoring before you compute anything. Done right, one clean product replaces a square plus an addition.",
+    "ans": "1722",
+    "accept": [
+     "1722"
+    ],
+    "hints": [
+     "Both terms contain \\(41\\), since \\(41^2\\) means \\(41\\cdot 41\\).",
+     "After the \\(41\\) comes out, the parentheses hold \\(41+1\\)."
+    ],
+    "sol": "Squaring first gives \\(1681+41=1722\\) and works, but factoring is cleaner, \\(41^2+41=41(41+1)=41\\cdot 42=1722\\). The shape is general, since \\(n^2+n\\) is always \\(n(n+1)\\), a product of two consecutive whole numbers, and the value is \\(\\boxed{1722}\\)."
+   }
+  ]
  }
 }
