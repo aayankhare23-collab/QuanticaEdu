@@ -157,8 +157,9 @@
   .proof-row.rev .proof-fig{order:2}
   .proof-fig{display:flex;justify-content:center}
   .proof-fig svg{width:100%;max-width:460px;height:auto;display:block;filter:drop-shadow(0 24px 42px rgba(20,60,30,.18))}
-  .proof-num{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.7rem,3vw,2.6rem);line-height:.95;color:var(--moss);display:block;margin-bottom:8px}
-  .proof-txt h3{font-size:clamp(1.4rem,2.2vw,1.9rem);font-family:var(--ff-display);margin:6px 0 12px;letter-spacing:-.02em;line-height:1.1}
+  .proof-num{font-family:var(--ff-display);font-weight:700;font-size:clamp(2.5rem,6vw,5.25rem);line-height:.9;letter-spacing:-.04em;color:var(--ink);display:block}
+  .proof-hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+  .proof-txt h3{font-size:clamp(1.9rem,3.2vw,2.6rem);font-family:var(--ff-display);font-weight:700;margin:0;letter-spacing:-.03em;line-height:.96}
   .proof-txt p{color:var(--gray);font-size:1.05rem}
 
   /* course pills (carried over from the original design, recolored) */
@@ -238,6 +239,9 @@
 .wmb .milo-win .mb.bot{align-self:flex-start;background:#EDF4E9;border:1px solid rgba(16,40,25,.08);color:#1b3025;border-bottom-left-radius:6px}
 .wmb .milo-win .mb.me{align-self:flex-end;background:#1A9E4B;color:#ffffff;font-weight:600;border-bottom-right-radius:6px;box-shadow:0 8px 20px -10px rgba(26,158,75,.5)}
 .wmb .milo-win .mb.pop{box-shadow:0 0 0 1.5px rgba(26,158,75,.5),0 10px 32px -10px rgba(26,158,75,.4)}
+.wmb .milo-win .mb.xp{align-self:flex-start;background:linear-gradient(135deg,#ffd36b,#ff9d3c);color:#0a0a0a;font-weight:700;font-size:14px;padding:9px 15px;border-radius:999px;border:1.5px solid rgba(10,10,10,.28);box-shadow:0 8px 22px -8px rgba(255,157,60,.65)}
+.wmb .milo-win .mb.xp.show{animation:xpPop .7s .45s ease}
+@keyframes xpPop{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg) scale(1.07)}60%{transform:rotate(4deg)}}
 .wmb .milo-win .conf{position:absolute;width:8px;height:8px;border-radius:2px;top:0;left:0;pointer-events:none;animation:confFall 1.6s cubic-bezier(.25,.7,.45,1) forwards}
 .wmb .milo-win .conf.rd{border-radius:50%}
 @keyframes confFall{0%{opacity:1;transform:translate(var(--x0),var(--y0)) rotate(0) scale(1)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x1),var(--y1)) rotate(var(--r)) scale(.55)}}
@@ -260,7 +264,6 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" aria-label="Quantica home">
-      <img class="mark-img" src="assets/spot/spot-hero.png" alt="Sprout">
       Quantica
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -286,7 +289,7 @@
   <div class="wrap hero-grid">
     <div>
       <h1>Understand math.<br>Don&rsquo;t <span class="mark-block">memorize</span> it.</h1>
-      <p class="lead">Learn by solving, with Sprout. A tutor that helps you find the answer yourself.</p>
+      <p class="lead">Learn by solving, with Milo. A tutor that helps you find the answer yourself.</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-lg" href="/landing.html?signin=1">Start free</a>
         <a class="btn btn-ghost btn-lg" href="#tutor">See how it works</a>
@@ -351,26 +354,44 @@
     </div>
 </section>
 
-<section id="why">
-  <div class="wrap problem-grid">
-    <div class="sec-head">
-      <h2>You can follow the example. Then the numbers change.</h2>
-      <p>Most classes hand you a formula and say <em>trust it</em>. The moment a problem looks unfamiliar, you freeze.</p>
-    </div>
-    <div class="freeze" aria-hidden="true">
-      <div class="fr-inner">
-      <div class="fr-row done"><span class="fr-lbl">The lesson</span><span class="fr-eq">4 &times; 25 <b>= 100</b></span><span class="fr-mk">&#10003;</span></div>
-      <div class="fr-row now"><span class="fr-lbl">The test</span><span class="fr-eq">16 &times; 25 = <span class="cur">?</span></span></div>
-      </div>
-      <p class="cue">You followed every step. Then one number changed, and the method did not come with it.</p>
-    </div>
-  </div>
-</section>
-
 <section class="mi-sec">
   <div class="mi-beam" aria-hidden="true"></div>
-  <div class="mi-face" aria-hidden="true"><img src="assets/spot/spot-hero.png" alt="Sprout"></div>
-  <h2 class="mi-h">Meet <span class="mark">Sprout</span>, your personal tutor.</h2>
+  <div class="mi-face" aria-hidden="true"><svg viewBox="0 0 128 148" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<radialGradient id="mBody" cx="42%" cy="32%" r="78%">
+<stop offset="0%" stop-color="#e3f0c0"/><stop offset="55%" stop-color="#cde29e"/><stop offset="100%" stop-color="#b2cd83"/>
+</radialGradient>
+<linearGradient id="mLeaf" x1="0%" y1="100%" x2="70%" y2="0%">
+<stop offset="0%" stop-color="#8db956"/><stop offset="100%" stop-color="#b3d87b"/>
+</linearGradient>
+<radialGradient id="mLimb" cx="40%" cy="30%" r="80%">
+<stop offset="0%" stop-color="#d5e6a8"/><stop offset="100%" stop-color="#b0cb81"/>
+</radialGradient>
+<filter id="mSh" x="-30%" y="-20%" width="160%" height="140%">
+<feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#5a7038" flood-opacity="0.25"/>
+</filter>
+</defs>
+<g filter="url(#mSh)">
+<path d="M62 30 C60 24 60 18 64 12" fill="none" stroke="#8fb95e" stroke-width="5" stroke-linecap="round"/>
+<path d="M60 20 C52 8 38 6 30 12 C32 22 46 28 60 20 Z" fill="url(#mLeaf)"/>
+<path d="M64 13 C68 -2 92 -6 104 4 C102 20 80 26 64 13 Z" fill="url(#mLeaf)"/>
+<path d="M46 128 q-1 12 4 14 q8 3 12 -2 l0 -14 Z" fill="url(#mLimb)"/>
+<path d="M82 128 q1 12 -4 14 q-8 3 -12 -2 l0 -14 Z" fill="url(#mLimb)"/>
+<path d="M24 84 q-9 4 -8 14 q1 9 9 8 q7 -1 9 -10 Z" fill="url(#mLimb)"/>
+<path d="M104 84 q9 4 8 14 q-1 9 -9 8 q-7 -1 -9 -10 Z" fill="url(#mLimb)"/>
+<path d="M64 28 C90 28 104 50 104 84 C104 116 88 132 64 132 C40 132 24 116 24 84 C24 50 38 28 64 28 Z" fill="url(#mBody)"/>
+<ellipse cx="47" cy="72" rx="7.6" ry="9.2" fill="#22261c"/>
+<ellipse cx="81" cy="72" rx="7.6" ry="9.2" fill="#22261c"/>
+<circle cx="44.6" cy="68.4" r="3" fill="#fff" opacity="0.95"/>
+<circle cx="78.6" cy="68.4" r="3" fill="#fff" opacity="0.95"/>
+<circle cx="50" cy="76" r="1.3" fill="#fff" opacity="0.6"/>
+<circle cx="84" cy="76" r="1.3" fill="#fff" opacity="0.6"/>
+<path d="M57 82 Q64 88.5 71 82" fill="none" stroke="#22261c" stroke-width="3.4" stroke-linecap="round"/>
+<ellipse cx="35" cy="83" rx="7" ry="5" fill="#a3c26e" opacity="0.75"/>
+<ellipse cx="93" cy="83" rx="7" ry="5" fill="#a3c26e" opacity="0.75"/>
+</g>
+</svg></div>
+  <h2 class="mi-h">Meet <span class="mark">Milo</span>, your personal tutor.</h2>
 </section>
 
 <section id="tutor">
@@ -378,26 +399,57 @@
     <div class="milo-card">
       <div class="milo-win">
         <div class="top">
-          <span class="av"><img src="assets/spot/spot-happy.png" alt="Sprout"></span>
-          <div class="who"><div class="nm">Sprout</div><div class="st">your Quantica tutor</div></div>
+          <span class="av"><svg viewBox="0 0 128 148" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<radialGradient id="mBody2" cx="42%" cy="32%" r="78%">
+<stop offset="0%" stop-color="#e3f0c0"/><stop offset="55%" stop-color="#cde29e"/><stop offset="100%" stop-color="#b2cd83"/>
+</radialGradient>
+<linearGradient id="mLeaf2" x1="0%" y1="100%" x2="70%" y2="0%">
+<stop offset="0%" stop-color="#8db956"/><stop offset="100%" stop-color="#b3d87b"/>
+</linearGradient>
+<radialGradient id="mLimb2" cx="40%" cy="30%" r="80%">
+<stop offset="0%" stop-color="#d5e6a8"/><stop offset="100%" stop-color="#b0cb81"/>
+</radialGradient>
+<filter id="mSh2" x="-30%" y="-20%" width="160%" height="140%">
+<feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#5a7038" flood-opacity="0.25"/>
+</filter>
+</defs>
+<g filter="url(#mSh2)">
+<path d="M62 30 C60 24 60 18 64 12" fill="none" stroke="#8fb95e" stroke-width="5" stroke-linecap="round"/>
+<path d="M60 20 C52 8 38 6 30 12 C32 22 46 28 60 20 Z" fill="url(#mLeaf2)"/>
+<path d="M64 13 C68 -2 92 -6 104 4 C102 20 80 26 64 13 Z" fill="url(#mLeaf2)"/>
+<path d="M46 128 q-1 12 4 14 q8 3 12 -2 l0 -14 Z" fill="url(#mLimb2)"/>
+<path d="M82 128 q1 12 -4 14 q-8 3 -12 -2 l0 -14 Z" fill="url(#mLimb2)"/>
+<path d="M24 84 q-9 4 -8 14 q1 9 9 8 q7 -1 9 -10 Z" fill="url(#mLimb2)"/>
+<path d="M104 84 q9 4 8 14 q-1 9 -9 8 q-7 -1 -9 -10 Z" fill="url(#mLimb2)"/>
+<path d="M64 28 C90 28 104 50 104 84 C104 116 88 132 64 132 C40 132 24 116 24 84 C24 50 38 28 64 28 Z" fill="url(#mBody2)"/>
+<ellipse cx="47" cy="72" rx="7.6" ry="9.2" fill="#22261c"/>
+<ellipse cx="81" cy="72" rx="7.6" ry="9.2" fill="#22261c"/>
+<circle cx="44.6" cy="68.4" r="3" fill="#fff" opacity="0.95"/>
+<circle cx="78.6" cy="68.4" r="3" fill="#fff" opacity="0.95"/>
+<circle cx="50" cy="76" r="1.3" fill="#fff" opacity="0.6"/>
+<circle cx="84" cy="76" r="1.3" fill="#fff" opacity="0.6"/>
+<path d="M57 82 Q64 88.5 71 82" fill="none" stroke="#22261c" stroke-width="3.4" stroke-linecap="round"/>
+<ellipse cx="35" cy="83" rx="7" ry="5" fill="#a3c26e" opacity="0.75"/>
+<ellipse cx="93" cy="83" rx="7" ry="5" fill="#a3c26e" opacity="0.75"/>
+</g>
+</svg></span>
+          <div class="who"><div class="nm">Milo</div><div class="st">your Quantica tutor</div></div>
         </div>
         <div class="body" id="miloBody"></div>
         <div class="compose"><span class="fi">Ask me anything about this problem&hellip;</span><span class="snd">&#10148;</span></div>
       </div>
     </div>
     <div class="sec-head">
+      <span class="eyebrow">Milo in action</span>
       <h2>A tutor <span class="never">on call</span> for every problem.</h2>
-      <p>When a problem stops you cold, Sprout asks the right question, not the answer, and helps you find it yourself.</p>
+      <p>When a problem stops you cold, Milo asks the right question, not the answer, and helps you find it yourself.</p>
     </div>
   </div>
 </section>
 
 <section id="click">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>When you see <em>why</em>, it sticks.</h2>
-      <p>Watch an idea prove itself, from the basics to the big stuff. Once you&rsquo;ve seen why it works, you stop memorizing it. You just know it.</p>
-    </div>
     <div class="proof-row reveal">
       <div class="proof-fig"><svg class="sg wp-svg" viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><style>
 .sg .fr{fill:none;stroke:#0a0a0a;stroke-width:2.5;stroke-linejoin:round}
@@ -460,7 +512,7 @@
 <g transform="translate(300,264)"><path class="spark" d="M0,-7 L1.9,-1.9 L7,0 L1.9,1.9 L0,7 L-1.9,1.9 L-7,0 L-1.9,-1.9 Z"/></g>
 <g transform="translate(346,292)"><path class="spark s2" d="M0,-5.5 L1.5,-1.5 L5.5,0 L1.5,1.5 L0,5.5 L-1.5,1.5 L-5.5,0 L-1.5,-1.5 Z"/></g>
 </svg></div>
-      <div class="proof-txt"><span class="proof-num">= 1</span><h3>Every lesson works like this.</h3><p>Nobody tells you the pattern holds. You watch it hold, and that&rsquo;s the method behind every lesson on Quantica, not just this proof.</p></div>
+      <div class="proof-txt"><span class="proof-num">01</span><hr class="proof-hr"><h3>A <span class="mark-block">problem-first</span> philosophy.</h3><hr class="proof-hr"><p>Instead of slogging through a textbook, we take a problem and guide you through it, with Milo at your fingertips.</p></div>
     </div>
     <div class="proof-row rev reveal">
       <div class="proof-fig"><svg class="qt wp-svg" viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><style>
@@ -529,7 +581,7 @@
 <g transform="translate(304,264)"><path class="spark" d="M0,-7 L1.9,-1.9 L7,0 L1.9,1.9 L0,7 L-1.9,1.9 L-7,0 L-1.9,-1.9 Z"/></g>
 <g transform="translate(338,296)"><path class="spark x2" d="M0,-5.5 L1.5,-1.5 L5.5,0 L1.5,1.5 L0,5.5 L-1.5,1.5 L-5.5,0 L-1.5,-1.5 Z"/></g>
 </svg></div>
-      <div class="proof-txt"><span class="proof-num">= &#8531;</span><h3>The pattern carries over.</h3><p>Once you&rsquo;ve seen one pattern settle, you start spotting it everywhere else. That&rsquo;s what Quantica teaches, a way of seeing, not a list of answers.</p></div>
+      <div class="proof-txt"><span class="proof-num">02</span><hr class="proof-hr"><h3>Building mathematical <span class="mark-block">insight</span>.</h3><hr class="proof-hr"><p>A rigorous curriculum that runs deeper than school math. When you can see why an idea is true, the hard problems start opening up.</p></div>
     </div>
   </div>
 </section>
@@ -539,7 +591,7 @@
     <h2 style="max-width:16ch">From prealgebra to <span class="mark">calculus</span>. The complete, rigorous mathematics education.</h2>
     <div class="path-pills">
       <a class="p-pill p-pill--on" href="/prealgebra"><span class="p-dot"></span>Prealgebra</a>
-      <a class="p-pill" href="/algebra1">Algebra I</a>
+      <a class="p-pill p-pill--on" href="/algebra1"><span class="p-dot"></span>Algebra I</a>
       <span class="p-pill p-pill--soon">Geometry <em>Soon</em></span>
       <span class="p-pill p-pill--soon">Number Theory <em>Soon</em></span>
       <span class="p-pill p-pill--soon">Counting <em>Soon</em></span>
@@ -549,7 +601,7 @@
     </div>
     <div class="path-links">
       <a href="/prealgebra">Browse the full Prealgebra syllabus &mdash; 12 chapters, 70 lessons &rarr;</a>
-      <a href="/algebra1">Browse the full Algebra I syllabus &mdash; early lessons live &rarr;</a>
+      <a href="/algebra1">Browse the full Algebra I syllabus, 15 chapters and 81 lessons &rarr;</a>
     </div>
   </div>
 </section>
@@ -563,7 +615,7 @@
       <div class="price-amt">$0</div>
       <ul>
         <li>Full Prealgebra course, every lesson</li>
-        <li>Sprout, your tutor, on every problem</li>
+        <li>Milo, your tutor, on every problem</li>
         <li>Mastery map &amp; spaced review</li>
         <li>No card required</li>
       </ul>
@@ -576,11 +628,11 @@
 <section id="faq">
   <div class="wrap">
     <div class="sec-head" style="max-width:none;text-align:center;margin:0 auto 40px">
-      <h2>Good to know.</h2>
+      <h2>Good to know</h2>
     </div>
     <div class="faq">
       <details><summary>What makes Quantica different?</summary><p>You learn by solving real problems with instant feedback and layered hints, so concepts emerge from your own work instead of being memorized.</p></details>
-      <details><summary>Do I need to be good at math already?</summary><p>No. Every course is built from the ground up, and Sprout is there whenever a problem stops you.</p></details>
+      <details><summary>Do I need to be good at math already?</summary><p>No. Every course is built from the ground up, and Milo is there whenever a problem stops you.</p></details>
       <details><summary>Is it really free to start?</summary><p>Yes. The full Prealgebra unit is free, no card required.</p></details>
       <details><summary>Do I need to buy each course?</summary><p>No. Everything on Quantica is free during early access. When pricing launches later, one simple plan will unlock every course.</p></details>
     </div>
@@ -597,10 +649,9 @@
 <footer>
   <div class="wrap foot-in">
     <div class="brand" style="font-size:1.15rem">
-      <img class="mark-img" style="width:26px;height:26px;object-fit:contain" src="assets/spot/spot-hero.png" alt="Sprout">
       Quantica
     </div>
-    <div class="foot-links"><a href="/prealgebra">Prealgebra</a><a href="/blog">Blog</a><a href="#pricing">Pricing</a><a href="#tutor">How it works</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
+    <div class="foot-links"><a href="/prealgebra">Prealgebra</a><a href="/algebra1">Algebra I</a><a href="/blog">Blog</a><a href="#pricing">Pricing</a><a href="#tutor">How it works</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
   </div>
   <div class="wrap" style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line-2);font-size:.86rem"><small>&copy; 2026 Quantica &middot; Learn math by solving.</small></div>
 </footer>
@@ -662,13 +713,14 @@
   if(!body) return;
   var av=document.querySelector('.milo-win .av');
   var script=[
-    {who:'bot',t:"Hey! I&#8217;m Sprout &#127793; Let&#8217;s break this one down together."},
-    {who:'me', t:"16 &times; 25&#8230; I don&#8217;t have that one memorized &#128548;"},
-    {who:'bot',t:"You don&#8217;t need to. You already know 4 &times; 25. How could 16 lean on that?"},
-    {who:'me', t:"16 is four 4s&#8230; so 4 &times; 4 &times; 25?"},
-    {who:'bot',t:"Exactly. Group the friendly pair first. What&#8217;s 4 &times; 25?"},
-    {who:'me', t:"100&#8230; oh, so 4 &times; 100 = 400!"},
-    {who:'bot',cls:' pop',conf:true,t:"&#128165; Nailed it. You found that yourself. I just asked the questions."}
+    {who:'bot',t:"Hey! I&#8217;m Milo &#128075; What are we cracking today?"},
+    {who:'me', t:"3/4 + 1/6 is melting my brain &#129760;"},
+    {who:'bot',t:"Fractions only add when the pieces match. What size piece fits quarters <b>and</b> sixths?"},
+    {who:'me', t:"hmm&#8230; twelfths?"},
+    {who:'bot',t:"Yes!! Twelfths. So what do 3/4 and 1/6 turn into?"},
+    {who:'me', t:"9/12 + 2/12 &#8230; 11/12!"},
+    {who:'bot',cls:' pop',conf:true,t:"&#128165; Nailed it. You found that yourself, I just asked questions."},
+    {who:'xp', t:"+10 XP &#9889;"}
   ];
   var CONF=['#8FD66A','#B9F18D','#5FA06B','#C7F09A'];
   function confetti(){
