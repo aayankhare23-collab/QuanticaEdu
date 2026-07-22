@@ -3994,31 +3994,41 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   WS.complete=function(){ if(WS._chatLocked()){ WS._promptChat(); return; } WS.close(); completeAndGo(WS.key, WS.L.next); };
   WS.finish=function(){ if(WS._chatLocked()){ WS._promptChat(); return; }
     if(WS.L&&WS.L._pset){ if(WS.L._psetType==='challenge'&&window.Rewards&&Rewards.onChallengeSetComplete){ try{Rewards.onChallengeSetComplete(WS.L._psetChapter);}catch(e){} } }
-    else { markDone(WS.key); }
+    else if(!(WS.L&&WS.L._practice)){ markDone(WS.key); }   // real lessons mark done; generated practice sets do not (their key isn't a lesson)
     WS.showDone(); };
   WS.showDone=function(){
     var c=document.getElementById('wsCenterBody'); if(!c) return;
-    var isP=WS.L&&WS.L._pset;
+    var isP=WS.L&&(WS.L._pset||WS.L._practice);   // authored set OR generated practice set both read as "Set complete"
     var hasReview=!isP&&WS.L.review&&WS.L.review.length;
     var heading=isP?'Set complete':'Lesson complete';
     var sub=isP?'Nice work &mdash; that\'s every problem in this set. Head back to the contents to keep moving through the chapter.'
-      :(hasReview?'Beautiful work &mdash; you\'ve got the ideas down.'
-                 :'Beautiful work. Your key ideas are saved in your notebook for whenever you need them.');
+                :'Beautiful work. Your key ideas are saved in your notebook &mdash; now make them stick.';
     var body;
-    if(hasReview){
-      var n=WS.L.review.length;
-      // A dedicated "recommended next step" card makes practice the obvious, single path forward.
-      body='<div style="display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:20px">'+
-        '<div style="background:linear-gradient(135deg,#fff8e8,#fff);border:2px solid var(--gold);border-radius:18px;padding:22px 24px;max-width:430px;width:100%;box-shadow:0 16px 38px -18px rgba(199,145,0,.55)">'+
-          '<div style="font:700 12px/1 \'Inter\';letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px">▸ Recommended next step</div>'+
-          '<div style="font-family:\'Fraunces\';font-size:21px;color:var(--navy);margin-bottom:5px">Practice what you just learned</div>'+
-          '<div style="font-size:14.5px;line-height:1.55;color:var(--slate);margin-bottom:18px">'+n+' practice problems built on this exact lesson, with Sprout on call if you get stuck. This is where it sticks.</div>'+
-          '<button class="ws-next is-finish" style="width:100%;justify-content:center;font-size:16px;padding:15px" onclick="openReview(\''+WS.key+'\')">📝 Start practice &rarr;</button>'+
-        '</div>'+
-        '<button class="lnk-skip" onclick="showToc()" style="background:none;border:none;color:var(--mute);font:500 14px/1 \'Inter\';cursor:pointer;padding:6px;text-decoration:underline;text-underline-offset:3px">Skip for now, back to contents</button>'+
-      '</div>';
-    } else {
+    if(isP){
       body='<div style="margin-top:20px"><button class="ws-next is-finish" onclick="showToc()">Back to contents &rarr;</button></div>';
+    } else {
+      // End of a real lesson: offer practice + challenge AS PART OF the lesson, showing only what actually exists for this topic/chapter.
+      var chNum=(WS.meta&&WS.meta.chNum)||parseInt(String(WS.key),10)||1;
+      var PS=(typeof PSETS!=='undefined'&&PSETS[chNum])||null, acts=[];
+      if(hasReview) acts.push({t:'📝 Practice what you just learned',d:WS.L.review.length+' problems built on this exact lesson',on:"openReview('"+WS.key+"')"});
+      if(window.__practiceAvail&&window.__practiceAvail(WS.key)) acts.push({t:'↻ Fresh practice set',d:'A brand-new set on this topic, different every time',on:"window.Practice&&Practice.open('"+WS.key+"')"});
+      if(PS&&PS.challenge) acts.push({t:'🏆 Chapter challenge',d:'Tougher problems to push yourself',on:"window.openPSet&&openPSet("+chNum+",'challenge')"});
+      if(PS&&PS.practice) acts.push({t:'🎯 Chapter practice set',d:'Mixed practice across the whole chapter',on:"window.openPSet&&openPSet("+chNum+",'practice')"});
+      if(!acts.length){
+        body='<div style="margin-top:20px"><button class="ws-next is-finish" onclick="showToc()">Back to contents &rarr;</button></div>';
+      } else {
+        var prim=acts[0], sec=acts.slice(1,3);
+        body='<div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:20px">'+
+          '<div style="background:linear-gradient(135deg,#fff8e8,#fff);border:2px solid var(--gold);border-radius:18px;padding:22px 24px;max-width:440px;width:100%;box-shadow:0 16px 38px -18px rgba(199,145,0,.55)">'+
+            '<div style="font:700 12px/1 \'Inter\';letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px">▸ Keep the momentum</div>'+
+            '<div style="font-family:\'Fraunces\';font-size:20px;color:var(--navy);margin-bottom:5px">'+prim.t+'</div>'+
+            '<div style="font-size:14px;line-height:1.55;color:var(--slate);margin-bottom:16px">'+prim.d+'. Sprout is on call if you get stuck.</div>'+
+            '<button class="ws-next is-finish" style="width:100%;justify-content:center;font-size:16px;padding:15px" onclick="'+prim.on+'">Start &rarr;</button>'+
+            (sec.length?('<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px">'+sec.map(function(a){return '<button onclick="'+a.on+'" title="'+a.d+'" style="flex:1;min-width:148px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;font:600 13.5px/1.25 \'Inter\';color:var(--navy);cursor:pointer">'+a.t+'</button>';}).join('')+'</div>'):'')+
+          '</div>'+
+          '<button class="lnk-skip" onclick="showToc()" style="background:none;border:none;color:var(--mute);font:500 14px/1 \'Inter\';cursor:pointer;padding:6px;text-decoration:underline;text-underline-offset:3px">Skip for now, back to contents</button>'+
+        '</div>';
+      }
     }
     c.innerHTML='<div class="ws-page" style="text-align:center;padding-top:30px"><div style="font-size:46px">🎉</div>'+
       '<h3 style="font-family:\'Fraunces\';color:var(--navy);font-size:24px;margin:10px 0 6px">'+heading+'</h3>'+
@@ -4366,6 +4376,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   }
   window.openPractice=openPractice;
   window.Practice={ open:openPractice, newSet:function(){ if(window.__practiceCur) openPractice(window.__practiceCur); } };
+  // does a generated-practice family exist for this topic? (used to decide whether to offer "Fresh practice set" at lesson end)
+  window.__practiceAvail=function(key){ try{ var t=(LESSONS[key]&&LESSONS[key].title)||(window.lessonTitle?window.lessonTitle(key):'')||''; return !!_pfam(t); }catch(e){ return false; } };
   function renderPSet(){
     var st=psetState, p=st.list[st.i];
     st.solved=false; st.hintUsed=false;
