@@ -50,7 +50,7 @@
   /* top bar */
   .topbar{position:sticky;top:0;z-index:60;height:var(--topbar);display:flex;align-items:center;gap:16px;padding:0 22px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-2)}
   .brand{display:flex;align-items:center;gap:8px;font-family:var(--ff-display);font-weight:600;font-size:1.12rem;color:var(--forest);text-decoration:none}
-  .brand svg{width:22px;height:22px}
+  .brand svg,.brand img{width:26px;height:26px;object-fit:contain}
   .coursesel{position:relative}
   .coursesel .cur{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-ui);font-weight:600;font-size:.8rem;color:var(--forest);background:var(--tint);border:1px solid #CFEAC6;padding:5px 10px;border-radius:999px;cursor:pointer}
   [data-course="algebra1"] .coursesel .cur{border-color:#BFDCF3}
@@ -355,7 +355,7 @@
 <!-- Sign-in gate: the home needs an account, so cover it until auth resolves (fail-open after 7s so a Firebase hiccup can't lock you out). -->
 <div id="bootGate" style="position:fixed;inset:0;z-index:9998;background:#FCFEFB;display:grid;place-items:center;font-family:system-ui,sans-serif">
   <div style="text-align:center">
-    <svg viewBox="0 0 32 32" width="46" height="46" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    <img src="/paths/assets/spot/spot-hero.png" alt="Sprout" style="height:74px;width:auto;display:block;margin:0 auto">
     <div style="margin-top:14px;font-size:14px;color:#52685A">Loading your course&hellip;</div>
   </div>
 </div>
@@ -363,7 +363,7 @@
 
 <div class="topbar">
   <a class="brand" href="/paths/home.html">
-    <svg id="brandMark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    <img id="brandMark" src="/paths/assets/spot/spot-hero.png" alt="Sprout">
     Quantica
   </a>
   <div class="coursesel" id="coursesel">
@@ -958,7 +958,7 @@
   document.title='Quantica · '+COURSE_NAME;
   [].forEach.call(document.querySelectorAll('.coursesel .menu a[data-c]'),function(a){ a.classList.toggle('on', a.getAttribute('data-c')===COURSE); });
   var _si=document.querySelector('#streakPill span'); if(_si) _si.textContent=STREAK_ICO;
-  if(IS_ALG){ var _bm=document.getElementById('brandMark'); if(_bm) _bm.innerHTML='<rect x="3" y="3" width="26" height="26" rx="9" fill="#1C5486"/><path d="M7 19c3-3 5.5-3 9 0 3.5 3 6 3 9 0" stroke="#7FC1EA" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M8 13.5c2.7-2.6 5-2.6 8 0" stroke="#BFE2F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85"/>'; }
+  if(IS_ALG){ var _bm=document.getElementById('brandMark'); if(_bm && _bm.tagName.toLowerCase()==='img') _bm.src='/paths/assets/cove/cove-hero.png'; }   // Algebra home shows Cove, not Sprout
 
   // load the real course structure, then render
   fetch('/lessons/'+COURSE+'/toc.json').then(function(r){ return r.json(); }).then(function(toc){
