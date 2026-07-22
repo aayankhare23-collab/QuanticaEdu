@@ -1905,6 +1905,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         if(pm && typeof window.openPSet==='function'){ window.openPSet(parseInt(pm[1],10), pt?pt[1]:'practice'); }
         else if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
         if(prm && window.Practice){ setTimeout(function(){ Practice.open(prm[1]); }, 120); }
+        if(/[?&]signin=1/.test(s) && window.showAuthModal){ setTimeout(function(){ window.showAuthModal('in'); }, 150); }   // from the home account menu's "Sign in"
       }catch(e){}
     },30);
   }

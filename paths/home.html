@@ -61,6 +61,8 @@
   .coursesel .menu .mh{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-soft);padding:6px 10px 4px}
   .coursesel .menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:13px;font-size:.86rem;color:var(--ink);text-decoration:none;font-weight:500}
   .coursesel .menu a:hover{background:var(--tint)}
+  .coursesel .menu a.soon{cursor:default;opacity:.72}
+  .coursesel .menu a.soon:hover{background:none}
   .coursesel .menu a.on{color:var(--forest);font-weight:600}
   .coursesel .menu a.soon{color:var(--gray-soft)}
   .coursesel .menu a .tag{font-family:var(--ff-ui);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-soft)}
@@ -74,6 +76,33 @@
   .streak b{color:var(--ink);font-weight:600}
   .avatar{width:32px;height:32px;border-radius:50%;background:#E7F4DA;border:1px solid #C6E1B4;display:grid;place-items:center;cursor:pointer}
   .avatar svg{width:22px;height:22px}
+  .avatar{background:#E7F4DA}
+  .acct{position:relative}
+  .acct-menu{position:absolute;top:calc(100% + 10px);right:0;width:236px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 22px 50px -20px rgba(20,60,40,.4);padding:7px;z-index:90;animation:acctpop .13s ease-out}
+  .acct-menu[hidden]{display:none}
+  @keyframes acctpop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .acct-head{padding:9px 11px 10px;border-bottom:1px solid var(--line-2);margin-bottom:6px}
+  .acct-nm{font-weight:700;font-size:.9rem;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .acct-sub{font-size:.76rem;color:var(--gray);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .acct-item{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;border-radius:9px;padding:10px 11px;font-family:var(--ff-ui);font-weight:600;font-size:.875rem;color:var(--ink);cursor:pointer;text-align:left}
+  .acct-item:hover{background:var(--line-2)}
+  .acct-item svg{flex:none;color:var(--gray)}
+  .acct-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(20,40,25,.34);backdrop-filter:blur(3px)}
+  .acct-modal[hidden]{display:none}
+  .acct-card{width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 70px -24px rgba(20,60,40,.5);overflow:hidden}
+  .acct-card-hd{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;border-bottom:1px solid var(--line-2)}
+  .acct-card-hd h3{margin:0;font-family:var(--ff-display);font-weight:600;font-size:1.3rem;color:var(--ink)}
+  .acct-x{background:none;border:none;font-size:1.05rem;color:var(--gray);cursor:pointer;line-height:1;padding:4px}
+  .acct-sec{padding:16px 22px;border-bottom:1px solid var(--line-2)}
+  .acct-sec-h{font-family:var(--ff-ui);font-weight:700;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:11px}
+  .acct-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.92rem;color:var(--ink);margin-bottom:10px}
+  .acct-btn{display:block;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-family:var(--ff-ui);font-weight:600;font-size:.875rem;color:var(--ink);cursor:pointer;text-align:center}
+  .acct-btn:hover{border-color:var(--accent)}
+  .acct-btn.danger{color:#B42318;border-color:#F3C9C4}
+  .acct-btn.danger:hover{background:#FEF3F2;border-color:#B42318}
+  .acct-note{font-size:.76rem;line-height:1.5;color:var(--gray);margin:9px 0 0}
+  .acct-links{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;font-size:.8rem}
+  .acct-links a{color:var(--gray);text-decoration:none}.acct-links a:hover{color:var(--accent)}.acct-links span{color:var(--line)}
   @media(max-width:860px){.sig{display:none}}
   @media(max-width:520px){.tb-right .sig,.streak{display:none}.topbar{padding:0 14px;gap:12px}}
 
@@ -333,7 +362,7 @@
     <div class="menu">
       <div class="mh">Your courses</div>
       <a data-c="prealgebra" href="/paths/home.html?course=prealgebra">Prealgebra <span class="tag">Now</span></a>
-      <a data-c="algebra1" href="/paths/home.html?course=algebra1">Algebra I <span class="tag">Free</span></a>
+      <a data-c="algebra1" href="/paths/home.html?course=algebra1">Algebra I <span class="tag">New</span></a>
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Geometry <span class="tag">Soon</span></a>
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Number Theory <span class="tag">Soon</span></a>
       <a class="soon" href="#" onclick="return false" aria-disabled="true">Counting &amp; Probability <span class="tag">Soon</span></a>
@@ -347,7 +376,14 @@
   <div class="tb-right">
     <div class="sig" title="Your mastery fills in as you learn; nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
     <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
-    <a class="avatar lift" href="/landing.html?course=prealgebra&start=1" aria-label="Your progress"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
+    <div class="acct" id="acct">
+      <button class="avatar lift" id="acctBtn" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></button>
+      <div class="acct-menu" id="acctMenu" role="menu" hidden>
+        <div class="acct-head"><div class="acct-nm" id="acctName">Your account</div><div class="acct-sub" id="acctSub">Browsing as guest</div></div>
+        <button class="acct-item" id="miSettings" role="menuitem"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 6 19.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 3 13.6H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.7 6l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 10 4.4V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Settings</button>
+        <button class="acct-item" id="miAuth" role="menuitem"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span id="miAuthLabel">Sign in</span></button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -910,7 +946,6 @@
   if(cur && cur.firstChild && cur.firstChild.nodeType===3) cur.firstChild.nodeValue=COURSE_NAME+' ';
   document.title='Quantica · '+COURSE_NAME;
   [].forEach.call(document.querySelectorAll('.coursesel .menu a[data-c]'),function(a){ a.classList.toggle('on', a.getAttribute('data-c')===COURSE); });
-  var _av=document.querySelector('.avatar'); if(_av) _av.setAttribute('href','/landing.html?course='+COURSE+'&start=1');
   var _si=document.querySelector('#streakPill span'); if(_si) _si.textContent=STREAK_ICO;
   if(IS_ALG){ var _bm=document.getElementById('brandMark'); if(_bm) _bm.innerHTML='<rect x="3" y="3" width="26" height="26" rx="9" fill="#1C5486"/><path d="M7 19c3-3 5.5-3 9 0 3.5 3 6 3 9 0" stroke="#7FC1EA" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M8 13.5c2.7-2.6 5-2.6 8 0" stroke="#BFE2F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85"/>'; }
 
@@ -943,6 +978,81 @@
     renderAll();
   }).catch(function(e){
     document.getElementById('chapterCard').innerHTML='<div class="csub">Could not load the course outline. Make sure the site is served over http (not opened as a file).</div>';
+  });
+})();
+</script>
+
+<!-- Account settings modal -->
+<div class="acct-modal" id="settingsModal" hidden>
+  <div class="acct-card" role="dialog" aria-modal="true" aria-label="Settings">
+    <div class="acct-card-hd"><h3>Settings</h3><button class="acct-x" id="settingsX" aria-label="Close settings">&#10005;</button></div>
+    <div class="acct-sec">
+      <div class="acct-sec-h">Account</div>
+      <div class="acct-row"><span id="setAcctEmail">Browsing as guest</span></div>
+      <button class="acct-btn" id="setAuthBtn">Sign in to save your progress</button>
+    </div>
+    <div class="acct-sec">
+      <div class="acct-sec-h">Progress</div>
+      <button class="acct-btn danger" id="setReset">Reset my progress on this device</button>
+      <p class="acct-note">Clears your local mastery, streak, and garden on this device. If you&rsquo;re signed in, your saved copy syncs back the next time you practice.</p>
+    </div>
+    <div class="acct-links"><a href="/privacy.html">Privacy</a><span>&middot;</span><a href="/terms.html">Terms</a><span>&middot;</span><a href="mailto:support@quanticaedu.com">Contact</a></div>
+  </div>
+</div>
+
+<!-- Firebase auth (same project as the course app) so the account menu knows who you are and can sign out for real -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+(function(){
+  var auth=null;
+  try{
+    if(window.firebase){
+      if(!firebase.apps.length) firebase.initializeApp({apiKey:"AIzaSyC2AN8cOYEc182kqpi6ggnoBx9VGCfEsFM",authDomain:"quanticaedu-a077d.firebaseapp.com",projectId:"quanticaedu-a077d",storageBucket:"quanticaedu-a077d.firebasestorage.app",messagingSenderId:"222813426084",appId:"1:222813426084:web:a6af0e0de7af278ee43131",measurementId:"G-98WQ2BFR6N"});
+      auth=firebase.auth();
+    }
+  }catch(e){ auth=null; }
+
+  var user=null;
+  var btn=document.getElementById('acctBtn'), menu=document.getElementById('acctMenu');
+  var nm=document.getElementById('acctName'), sub=document.getElementById('acctSub'), miAuthLabel=document.getElementById('miAuthLabel');
+  var setEmail=document.getElementById('setAcctEmail'), setAuthBtn=document.getElementById('setAuthBtn');
+  function render(){
+    var on=!!(user&&user.email);
+    if(nm) nm.textContent = on ? (user.displayName||'Your account') : 'Your account';
+    if(sub) sub.textContent = on ? user.email : 'Browsing as guest';
+    if(miAuthLabel) miAuthLabel.textContent = on ? 'Sign out' : 'Sign in';
+    if(setEmail) setEmail.textContent = on ? user.email : 'Browsing as guest';
+    if(setAuthBtn) setAuthBtn.textContent = on ? 'Sign out' : 'Sign in to save your progress';
+  }
+  if(auth) auth.onAuthStateChanged(function(u){ user=u||null; render(); });
+  render();
+
+  function openMenu(o){ if(!menu) return; if(o===undefined) o=menu.hidden; menu.hidden=!o; if(btn) btn.setAttribute('aria-expanded', String(!menu.hidden)); }
+  if(btn) btn.addEventListener('click', function(e){ e.stopPropagation(); openMenu(); });
+  document.addEventListener('click', function(e){ if(menu && !menu.hidden && !menu.contains(e.target) && !btn.contains(e.target)) openMenu(false); });
+
+  var modal=document.getElementById('settingsModal');
+  function openSettings(){ if(modal) modal.hidden=false; }
+  function closeSettings(){ if(modal) modal.hidden=true; }
+  var mis=document.getElementById('miSettings'); if(mis) mis.addEventListener('click', function(){ openMenu(false); openSettings(); });
+  var sx=document.getElementById('settingsX'); if(sx) sx.addEventListener('click', closeSettings);
+  if(modal) modal.addEventListener('click', function(e){ if(e.target===modal) closeSettings(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ openMenu(false); closeSettings(); } });
+
+  function signOut(){
+    var done=function(){ try{ ['quantica.profile.v1','quantica_adapt_v1','quantica.home.v1','quantica.practice.v1','quantica.garden.v1','qa_signin_prompt_v2'].forEach(function(k){ localStorage.removeItem(k); }); }catch(e){} location.reload(); };
+    if(auth && auth.signOut){ auth.signOut().then(done).catch(done); } else { done(); }
+  }
+  function doAuth(){ if(user && user.email) signOut(); else location.assign('/landing.html?signin=1'); }
+  var mia=document.getElementById('miAuth'); if(mia) mia.addEventListener('click', function(){ openMenu(false); doAuth(); });
+  if(setAuthBtn) setAuthBtn.addEventListener('click', function(){ closeSettings(); doAuth(); });
+
+  var reset=document.getElementById('setReset');
+  if(reset) reset.addEventListener('click', function(){
+    if(!confirm('Reset your progress on this device? This clears your local mastery, streak, and garden.')) return;
+    try{ Object.keys(localStorage).forEach(function(k){ if(/quantica/i.test(k)) localStorage.removeItem(k); }); }catch(e){}
+    location.reload();
   });
 })();
 </script>
