@@ -866,6 +866,18 @@
       '</div>'+
     '</div>';
   }
+  // "Today's focus" copy that moves with the student — streak, whether they've shown up today, lessons left in the chapter
+  function todayFocusLead(){
+    var d=new Date(), m=d.getMonth()+1, dd=d.getDate();
+    var todayISO=d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd;
+    var shownToday=!!(state.days&&state.days[todayISO]), sk=state.streak||0;
+    var curCh=chOf(state.current), leftInCh=(curCh&&curCh.lessons)? curCh.lessons.filter(function(l){return !state.done[l.k];}).length : 0;
+    if(shownToday) return sk>1 ? ('That&rsquo;s '+sk+' days in a row &mdash; nice. '+GUIDE+' is here whenever the next problem gets tricky.')
+                               : ('You&rsquo;ve shown up today. '+GUIDE+' is here whenever the next problem gets tricky.');
+    if(sk>1) return 'One lesson keeps your '+sk+'-day streak alive. '+GUIDE+' is ready the moment you get stuck.';
+    if(leftInCh>0) return leftInCh+' lesson'+(leftInCh>1?'s':'')+' left in this chapter. '+GUIDE+' is ready the moment you get stuck.';
+    return 'One lesson keeps the momentum. '+GUIDE+' is ready the moment you get stuck.';
+  }
   function renderRail2(){
     var fresh=!Object.keys(state.done).length;
     var strengths=strengthCard();
@@ -881,7 +893,7 @@
       first+
       '<div class="rc" id="dayCard"></div>'+
       '<div class="rc"><h4>Today&rsquo;s focus</h4>'+
-        '<p class="lead">One lesson keeps the momentum. '+GUIDE+' is ready the moment you get stuck.</p>'+
+        '<p class="lead">'+todayFocusLead()+'</p>'+
         '<a class="cta3d rc-cta" href="'+url(state.current)+'">'+(fresh?'Start ':'Continue ')+state.current+'&nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
     DayGrid.render();
   }
@@ -910,7 +922,7 @@
     state.skill=prog.skill;
     state.stats=prog.stats;
     state.typeSkill=prog.typeSkill;
-    state.accLog=prog.accLog; state.days=prog.days; state.awarded=prog.awarded; state.sets=prog.sets;
+    state.accLog=prog.accLog; state.days=prog.days; state.awarded=prog.awarded; state.sets=prog.sets; state.streak=prog.streak;
     state.current=firstUndone();                 // the lesson the student is actually on
     state.active=(chOf(state.current)||toc[0]||{n:1}).n;
     DayGrid.init(prog.streak, prog.lastActive, prog.days);
