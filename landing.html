@@ -4625,7 +4625,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var mp=Math.round(baseMP(rec)*mpFrac);
     rec._counted=true; P.awarded[id]={xp:xp,mp:mp};
     P.stats.solved++; if(!saw && !(rec.hintsUsed>0)) P.stats.independent++; if(saw) P.stats.solutions++;
-    recordSkillOutcome(rec, saw);
+    recordSkillOutcome(rec, saw); logDayAccuracy();
     addXP(xp); if(mp>0) addMP(mp);
     if(rec.legendary && !saw && !(rec.hintsUsed>0)) addGems(CFG.gems.legendary,'Legendary solve');
     toast('xp', xp, (xpFrac<1) ? ('XP'+(saw?' · solution':' · with help')) : 'XP earned');
@@ -4638,7 +4638,22 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(rec._counted || P.awarded[id]) return;
     var xp=Math.max(1, Math.round(baseXP(rec)*CFG.ungradedReveal));
     rec._counted=true; P.awarded[id]={xp:xp,mp:0}; P.stats.solved++;
+    logDayAccuracy();
     addXP(xp); toast('xp', xp, 'XP · effort'); save(); renderHUD();
+  }
+  // real per-day accuracy log — snapshots cumulative solved/independent once per local day, per course.
+  // the home Progress "accuracy over time" chart reads this (no more placeholder curve).
+  function logDayAccuracy(){
+    try{
+      var d=new Date(), m=d.getMonth()+1, dd=d.getDate();
+      var today=d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd;
+      var slug=(COURSE&&COURSE.slug)?COURSE.slug:'prealgebra';
+      P.accLog=P.accLog||{}; var arr=P.accLog[slug]||(P.accLog[slug]=[]);
+      var snap={d:today, solved:(P.stats&&P.stats.solved)||0, indep:(P.stats&&P.stats.independent)||0};
+      var last=arr[arr.length-1];
+      if(last && last.d===today) arr[arr.length-1]=snap;
+      else { arr.push(snap); if(arr.length>30) arr.shift(); }
+    }catch(_){}
   }
 
   /* chapter completion (reads global TOC / LESSONS / completed) */
@@ -4790,6 +4805,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var mpB=leg?CFG.mpBase.legendary:CFG.mpBase[cat];
       var mp=Math.round(mpB*(st.hintUsed?CFG.hintMP[1]:1));
       P.awarded[id]={xp:xp,mp:mp}; P.stats.solved++; if(!st.hintUsed) P.stats.independent++;
+      logDayAccuracy();
       addXP(xp); if(mp>0) addMP(mp);
       if(leg && !st.hintUsed) addGems(CFG.gems.legendary,'Legendary solve');
       toast('xp',xp, st.hintUsed?'XP · with help':'XP earned'); if(mp>0) toast('mp',mp,'Mastery');
@@ -4799,6 +4815,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       // use LOCAL calendar dates so the home day-counter (also local) lines up exactly
       var _ld=function(t){ var d=t?new Date(t):new Date(), m=d.getMonth()+1, dd=d.getDate(); return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd; };
       var today=_ld();
+      P.days=P.days||{}; if(!P.days[today]){ P.days[today]=1; save(); }   // real per-day attendance log — the home day-grid reads this (every visit, gaps included)
       if(P.lastActive===today) return;
       var yest=_ld(Date.now()-864e5);
       P.streak=(P.lastActive===yest)?(P.streak||0)+1:1; P.lastActive=today;

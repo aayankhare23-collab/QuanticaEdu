@@ -188,6 +188,8 @@
   .wnode-set svg{width:26px;height:26px}
   .wnode-set.practice{background:var(--tint);border-color:var(--grass);color:var(--moss)}
   .wnode-set.challenge{background:#FBF1DA;border-color:#EAD9AE;color:#8A5A00}
+  .wnode-set.setdone{box-shadow:0 6px 16px -8px rgba(46,125,58,.55)}
+  .wnode-set.setdone .badge svg{width:12px;height:12px}
   /* next-up card */
   .nextup{margin-top:22px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#F1FAE7,#E7F4D8);border:1px solid #D7EBC7;border-radius:20px;padding:18px 22px;box-shadow:0 16px 34px -28px rgba(20,50,25,.34)}
   .nextup .nu-ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid #D7EBC7;display:grid;place-items:center;color:var(--moss)}
@@ -403,7 +405,7 @@
     var P={}; try{ P=JSON.parse(localStorage.getItem('quantica.profile.v1'))||{}; }catch(e){ P={}; }
     var lessons=P.lessons||{}, done={}, pre=COURSE+':';
     Object.keys(lessons).forEach(function(k){ if(k.indexOf(pre)===0){ done[k.slice(pre.length)]=true; } });
-    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{}, stats:P.stats||{}, typeSkill:P.typeSkill||{} };
+    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{}, stats:P.stats||{}, typeSkill:P.typeSkill||{}, days:P.days||{}, accLog:(P.accLog&&P.accLog[COURSE])||[], awarded:P.awarded||{}, sets:P.sets||{} };
   }
   // the lesson the student is on = first not-yet-completed lesson in course order (or the last, if all done)
   function firstUndone(){
@@ -418,9 +420,11 @@
     var off=0, active={}, streakN=0, ready=false;
     var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     function iso(d){ var m=d.getMonth()+1, day=d.getDate(); return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(day<10?'0':'')+day; }
-    function init(streak,lastActive){
+    function init(streak,lastActive,days){
       active={}; streakN=streak||0; off=0; ready=true;
-      if(lastActive && streak>0){ var base=new Date(lastActive+'T00:00:00');
+      if(days && Object.keys(days).length){                       // real per-day attendance log (every visit, gaps included)
+        for(var k in days){ if(days[k]) active[k]=true; }
+      } else if(lastActive && streak>0){ var base=new Date(lastActive+'T00:00:00');   // fallback for users whose streak predates the visit log
         for(var i=0;i<streak;i++){ var d=new Date(base); d.setDate(base.getDate()-i); active[iso(d)]=true; } }
     }
     function winStart(o){ var t=new Date(); t.setHours(0,0,0,0);
@@ -604,6 +608,13 @@
       '<div class="prog"><span class="bar"><i style="width:'+Math.round(doneN/n*100)+'%"></i></span><span class="pt">'+doneN+' of '+n+' lessons</span></div>';
   }
 
+  // has the student engaged with a chapter's authored practice / challenge set? (real, from P.awarded / P.sets)
+  function psetState(ch,isP){
+    var pfx=COURSE+'|pset:'+ch+':'+(isP?'practice':'challenge')+':';
+    var touched=Object.keys(state.awarded||{}).some(function(k){ return k.indexOf(pfx)===0; });
+    var cleared=!isP && !!(state.sets&&state.sets[COURSE+':set:'+ch]);
+    return {touched:touched, cleared:cleared, done:(touched||cleared)};
+  }
   function renderTrail(){
     var c=chById(state.active), L=c.lessons, n=L.length; var _wt=document.getElementById("wtrail"); if(_wt) _wt.style.aspectRatio = n>6 ? ("100 / "+(n*25)) : "";
     // trail = the chapter's lessons, then two chapter-level stops: Practice, then Challenge
@@ -630,8 +641,8 @@
         var inner=k+(done?'<span class="badge">'+CHECK+'</span>':(cur?'<span class="cta">Start</span>':''));
         h+='<a class="wnode'+(done?' done':'')+(cur?' current':'')+'" href="'+url(k)+'" style="'+style+'">'+inner+'</a>';
       } else {
-        var isP=(s.kind==='practice');
-        h+='<a class="wnode wnode-set '+(isP?'practice':'challenge')+'" href="'+psetUrl(s.ch, isP?'practice':'challenge')+'" style="'+style+'" title="'+(isP?'Practice set':'Challenge set')+'">'+(isP?TARGET:TROPHY)+'</a>';
+        var isP=(s.kind==='practice'), pst=psetState(s.ch,isP);
+        h+='<a class="wnode wnode-set '+(isP?'practice':'challenge')+(pst.done?' setdone':'')+'" href="'+psetUrl(s.ch, isP?'practice':'challenge')+'" style="'+style+'" title="'+(isP?'Practice set':'Challenge set')+'">'+(isP?TARGET:TROPHY)+(pst.done?'<span class="badge">'+CHECK+'</span>':'')+'</a>';
       }
     });
     // labels
@@ -643,9 +654,10 @@
         h+='<div class="wlabel '+side+(cur?' cur':'')+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+esc(s.les.t)+
            '<span class="s"'+(cur?' style="color:var(--moss)"':'')+'>'+(done?'Done':(cur?'Start here':'Open'))+'</span></div>';
       } else {
-        var isP=(s.kind==='practice');
+        var isP=(s.kind==='practice'), pst=psetState(s.ch,isP);
+        var sub = isP ? (pst.touched?'Practiced':'Sharpen the chapter') : (pst.cleared?'Cleared':(pst.touched?'In progress':'Push yourself'));
         h+='<div class="wlabel '+side+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+(isP?'Practice set':'Challenge set')+
-           '<span class="s">'+(isP?'Sharpen the chapter':'Push yourself')+'</span></div>';
+           '<span class="s">'+sub+'</span></div>';
       }
     });
     document.getElementById('wtrail').innerHTML=h;
@@ -783,8 +795,14 @@
         }).join('')
       : '<p class="pg-note" style="margin-top:2px">Solve a handful of problems and your right/wrong split by problem type shows up here.</p>';
     var qtNote = qtRows.length ? '<p class="pg-note">From your actual solves. A new type leans on the topic average until you&rsquo;ve done a few, so early numbers stay honest.</p>' : '';
-    var SP=[38,44,41,55,50,58,63,60,71,avg];
-    var chart=SP.map(function(h,i){ return '<i style="height:'+Math.max(8,Math.min(100,h))+'%"'+(i===SP.length-1?' class="cur"':'')+'></i>'; }).join('');
+    // real accuracy trend: one bar per day the student practiced, = that day's clean-solve rate (from P.accLog deltas). No placeholder curve.
+    var accSeries=(function(){ var log=state.accLog||[], out=[], ps=0, pi=0;
+      log.forEach(function(e){ var ds=(e.solved||0)-ps, di=(e.indep||0)-pi; if(ds>0) out.push(Math.max(0,Math.min(100,Math.round(100*di/ds)))); ps=e.solved||0; pi=e.indep||0; });
+      return out; })();
+    var accHTML = accSeries.length>=2
+      ? '<div class="mspark">'+accSeries.slice(-12).map(function(h,i,a){ return '<i style="height:'+Math.max(8,Math.min(100,h))+'%"'+(i===a.length-1?' class="cur"':'')+'></i>'; }).join('')+'</div>'
+          +'<p class="pg-note">Each bar is a day you practiced &mdash; your clean-solve rate that day.</p>'
+      : '<p class="pg-note">Practice on a couple of different days and your accuracy trend shows up here.</p>';
     var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+purl(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
       : '<div class="pg-focus-row"><span class="fnm" style="color:var(--gray-soft);font-weight:500">You&rsquo;re solid across the board — keep it up.</span></div>';
     var strongHTML=strong.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="slab">'+strLabel(r.s)+'</span><span class="fpct" style="color:var(--forest)">'+Math.round(r.s*100)+'%</span></div>'; }).join('');
@@ -814,7 +832,7 @@
         '<div class="pg-col">'+
           '<div class="pg-card"><h3>Mastery by topic</h3><div class="ch">Where you stand across every topic you&rsquo;ve practiced.</div>'+topicsHTML+'</div>'+
           '<div class="pg-card"><h3>How you solve</h3><div class="ch">Every graded solve, by how you got there &mdash; clean solves build the most mastery.</div>'+solveHTML+'</div>'+
-          '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div><div class="mspark">'+chart+'</div><p class="pg-note">Preview &mdash; per-session accuracy starts logging as you go.</p></div>'+
+          '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div>'+accHTML+'</div>'+
         '</div>'+
         '<div class="pg-col">'+
           '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+qtNote+'</div>'+
@@ -869,9 +887,10 @@
     state.skill=prog.skill;
     state.stats=prog.stats;
     state.typeSkill=prog.typeSkill;
+    state.accLog=prog.accLog; state.days=prog.days; state.awarded=prog.awarded; state.sets=prog.sets;
     state.current=firstUndone();                 // the lesson the student is actually on
     state.active=(chOf(state.current)||toc[0]||{n:1}).n;
-    DayGrid.init(prog.streak, prog.lastActive);
+    DayGrid.init(prog.streak, prog.lastActive, prog.days);
     Garden.init();
     if(prog.streak>0){ var sp=document.getElementById('streakPill'); if(sp){ sp.style.display=''; var b=sp.querySelector('b'); if(b) b.textContent=prog.streak; } }
     // Mastery ring: fill it with the average of this course's strength scores
