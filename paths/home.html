@@ -136,6 +136,8 @@
   .gitem{position:absolute;transform:translate(-50%,-50%);z-index:2;font-size:clamp(22px,4.4vw,32px);line-height:1;filter:drop-shadow(0 4px 4px rgba(20,50,25,.22));user-select:none;pointer-events:none;touch-action:none}
   .wtrail.editing .gitem{pointer-events:auto;cursor:grab;z-index:6;outline:2px dashed rgba(67,176,99,.55);outline-offset:3px;border-radius:8px}
   .wtrail.editing .gitem:active{cursor:grabbing}
+  .gitem.gjust{animation:gjustpop 1.8s ease-out;z-index:7}
+  @keyframes gjustpop{0%{transform:translate(-50%,-50%) scale(.4);opacity:0}18%{transform:translate(-50%,-50%) scale(1.25);opacity:1}40%,100%{transform:translate(-50%,-50%) scale(1)}0%,60%{filter:drop-shadow(0 0 0 rgba(67,176,99,.9)) drop-shadow(0 4px 4px rgba(20,50,25,.22))}30%{filter:drop-shadow(0 0 12px rgba(67,176,99,.95)) drop-shadow(0 4px 4px rgba(20,50,25,.22))}}
   .grm{display:none}
   .wtrail.editing .grm{display:grid;place-items:center;position:absolute;top:-11px;right:-11px;width:20px;height:20px;border-radius:50%;border:1.5px solid #fff;background:#E1584B;color:#fff;font-size:13px;line-height:1;cursor:pointer;padding:0;box-shadow:0 2px 5px rgba(0,0,0,.25)}
   .gtoast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(14px);background:var(--forest);color:#fff;font-family:var(--ff-ui);font-size:.84rem;font-weight:500;padding:11px 18px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(20,50,25,.55);z-index:120;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center}
@@ -517,13 +519,26 @@
       wt.querySelectorAll('.gitem').forEach(function(el){
         el.addEventListener('pointerdown',function(ev){
           if(!editing) return; ev.preventDefault();
-          var rect=wt.getBoundingClientRect(), gid=el.getAttribute('data-gid');
+          var gid=el.getAttribute('data-gid');
           try{ el.setPointerCapture(ev.pointerId); }catch(_){}
-          function move(e){ var x=((e.clientX-rect.left)/rect.width)*100, y=((e.clientY-rect.top)/rect.height)*100;
+          var lastX=ev.clientX, lastY=ev.clientY, raf=0;
+          function place(){
+            var rect=wt.getBoundingClientRect();   // recompute each frame so page-scroll during the drag doesn't drift the mapping
+            var x=((lastX-rect.left)/rect.width)*100, y=((lastY-rect.top)/rect.height)*100;
             x=Math.max(2,Math.min(98,x)); y=Math.max(1.5,Math.min(98.5,y)); el.style.left=x+'%'; el.style.top=y+'%';
-            var it=(g.placed[pk(ch)]||[]).filter(function(p){return p.id===gid;})[0]; if(it){ it.x=x; it.y=y; } }
-          function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); save(); }
+            var it=(g.placed[pk(ch)]||[]).filter(function(p){return p.id===gid;})[0]; if(it){ it.x=x; it.y=y; }
+          }
+          function tick(){                          // hold near a viewport edge → the page scrolls with you
+            var vh=window.innerHeight, edge=90, sp=0;
+            if(lastY>vh-edge) sp=Math.min(20,(lastY-(vh-edge))/edge*20);
+            else if(lastY<edge) sp=-Math.min(20,(edge-lastY)/edge*20);
+            if(sp){ window.scrollBy(0,sp); place(); }
+            raf=requestAnimationFrame(tick);
+          }
+          function move(e){ lastX=e.clientX; lastY=e.clientY; place(); }
+          function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); if(raf) cancelAnimationFrame(raf); save(); }
           el.addEventListener('pointermove',move); el.addEventListener('pointerup',up);
+          raf=requestAnimationFrame(tick);
         });
       });
     }
@@ -533,9 +548,17 @@
       if(lessonsDone()<it.lock){ toast('Reach '+it.lock+' lessons to unlock '+it.n); return; }
       if(!spend(it.c)){ toast('Not enough Seeds. Earn more by solving problems.'); renderShop(); return; }
       editing=true;
-      var akey=pk(state.active); (g.placed[akey]=g.placed[akey]||[]).push({id:'g'+(++g.seq),item:item,x:48+(g.seq%5)*2,y:46+(g.seq%7)*2});
+      var nid='g'+(++g.seq);
+      // spawn at the TOP of the trail, over toward the right where the Arrange button sits, so it lands right by the controls
+      var akey=pk(state.active); (g.placed[akey]=g.placed[akey]||[]).push({id:nid,item:item,x:78+(g.seq%3)*5,y:4+(g.seq%3)*3});
       save(); closeShop(); renderTrail(); renderBar();
-      toast('Planted! Drag '+it.n+' where you like, then tap Done.');
+      setTimeout(function(){                                  // flag the new item; scroll it + the Arrange button into view only if it isn't already visible
+        var nel=document.querySelector('.gitem[data-gid="'+nid+'"]'); if(!nel) return;
+        var r=nel.getBoundingClientRect();
+        if(r.top<8 || r.bottom>window.innerHeight-8){ (document.getElementById('gtoolbar')||nel).scrollIntoView({block:'start'}); }
+        nel.classList.add('gjust'); setTimeout(function(){ nel.classList.remove('gjust'); },1800);
+      },60);
+      toast('Planted '+it.n+' up top — drag it where you like, then tap Done.');
     }
     function toast(msg){ var t=document.getElementById('gtoast'); if(!t){ t=document.createElement('div'); t.id='gtoast'; t.className='gtoast'; document.body.appendChild(t); }
       t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },2800); }
