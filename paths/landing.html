@@ -88,8 +88,16 @@
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 16px}
   .hero-note{font-size:.94rem;color:var(--gray)}
   .hero-note b{color:var(--accent);font-weight:600}
-  .hero-proof{width:100%;max-width:510px;margin:0 auto;display:flex;justify-content:center}
-  .hero-proof svg{width:100%;height:auto;display:block}
+  .hero-proof{width:100%;max-width:580px;margin:0 auto;display:flex;justify-content:center}
+  .hero-proof svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 50px rgba(20,60,30,.2))}
+
+  /* scroll reveal: fades/slides/pops in on first intersection, and holds the SVG's own
+     keyframe animations paused until then so nothing runs off-screen or on page load */
+  .reveal{opacity:0;transform:translateY(30px) scale(.94);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+  .reveal.in-view{opacity:1;transform:none}
+  .reveal svg *{animation-play-state:paused!important}
+  .reveal.in-view svg *{animation-play-state:running!important}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal svg *{animation-play-state:running!important}}
 
   .demo{background:var(--box);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:0 1px 2px rgba(20,40,25,.04),0 40px 80px -44px rgba(20,40,25,.24);padding:30px 30px 26px;position:relative;min-height:252px}
   .demo-tag{position:absolute;top:-15px;left:26px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:6px 12px;font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.05em;color:var(--gray);box-shadow:0 6px 16px -10px rgba(20,40,25,.3)}
@@ -149,7 +157,7 @@
   .proof-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(28px,4vw,50px) 0;border-top:1px solid var(--line-2)}
   .proof-row.rev .proof-fig{order:2}
   .proof-fig{display:flex;justify-content:center}
-  .proof-fig svg{width:100%;max-width:380px;height:auto;display:block}
+  .proof-fig svg{width:100%;max-width:460px;height:auto;display:block;filter:drop-shadow(0 24px 42px rgba(20,60,30,.18))}
   .proof-num{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.7rem,3vw,2.6rem);line-height:.95;color:var(--moss);display:block;margin-bottom:8px}
   .proof-txt h3{font-size:clamp(1.4rem,2.2vw,1.9rem);font-family:var(--ff-display);margin:6px 0 12px;letter-spacing:-.02em;line-height:1.1}
   .proof-txt p{color:var(--gray);font-size:1.05rem}
@@ -287,7 +295,7 @@
       </div>
       <p class="hero-note"><b>No card required.</b> Full Prealgebra unit free.</p>
     </div>
-    <div class="hero-proof"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
+    <div class="hero-proof reveal"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
 .py .tri{stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
 .py .t1{fill:#ff7a5c;animation:pyT1 9s cubic-bezier(.45,1.3,.4,1) infinite}
 .py .t2{fill:#ffc84d;animation:pyT2 9s cubic-bezier(.45,1.3,.4,1) infinite}
@@ -395,7 +403,7 @@
       <h2>When you see <em>why</em>, it sticks.</h2>
       <p>Watch an idea prove itself, from the basics to the big stuff. Once you&rsquo;ve seen why it works, you stop memorizing it. You just know it.</p>
     </div>
-    <div class="proof-row">
+    <div class="proof-row reveal">
       <div class="proof-fig"><svg class="sg wp-svg" viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><style>
 .sg .fr{fill:none;stroke:#0a0a0a;stroke-width:2.5;stroke-linejoin:round}
 .sg .pc{stroke:#0a0a0a;stroke-width:1.6;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center}
@@ -457,9 +465,9 @@
 <g transform="translate(300,264)"><path class="spark" d="M0,-7 L1.9,-1.9 L7,0 L1.9,1.9 L0,7 L-1.9,1.9 L-7,0 L-1.9,-1.9 Z"/></g>
 <g transform="translate(346,292)"><path class="spark s2" d="M0,-5.5 L1.5,-1.5 L5.5,0 L1.5,1.5 L0,5.5 L-1.5,1.5 L-5.5,0 L-1.5,-1.5 Z"/></g>
 </svg></div>
-      <div class="proof-txt"><span class="proof-num">= 1</span><h3>Halve, then halve again, forever.</h3><p>Add half, a quarter, an eighth, and keep going, and the pieces fill exactly one whole. Infinity, landing on a number you can hold.</p></div>
+      <div class="proof-txt"><span class="proof-num">= 1</span><h3>Every lesson works like this.</h3><p>Nobody tells you the pattern holds. You watch it hold, piece by piece, until the answer is obvious on its own. That&rsquo;s the actual method behind every lesson on Quantica, not just this one proof.</p></div>
     </div>
-    <div class="proof-row rev">
+    <div class="proof-row rev reveal">
       <div class="proof-fig"><svg class="qt wp-svg" viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><style>
 .qt .fr{fill:none;stroke:#0a0a0a;stroke-width:2.5;stroke-linejoin:round}
 .qt .pc{stroke:#0a0a0a;stroke-width:1.5;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:center}
@@ -526,7 +534,7 @@
 <g transform="translate(304,264)"><path class="spark" d="M0,-7 L1.9,-1.9 L7,0 L1.9,1.9 L0,7 L-1.9,1.9 L-7,0 L-1.9,-1.9 Z"/></g>
 <g transform="translate(338,296)"><path class="spark x2" d="M0,-5.5 L1.5,-1.5 L5.5,0 L1.5,1.5 L0,5.5 L-1.5,1.5 L-5.5,0 L-1.5,-1.5 Z"/></g>
 </svg></div>
-      <div class="proof-txt"><span class="proof-num">= &#8531;</span><h3>A quarter of a quarter of a quarter.</h3><p>The same trick with quarters settles on exactly one third. Different pattern, same payoff: the moment it clicks.</p></div>
+      <div class="proof-txt"><span class="proof-num">= &#8531;</span><h3>The pattern carries over.</h3><p>Once you&rsquo;ve watched one series settle, you start spotting the same shape in problems that look nothing alike. That&rsquo;s what Quantica actually teaches, not a list of answers, but a way of seeing them coming.</p></div>
     </div>
   </div>
 </section>
@@ -611,6 +619,18 @@
   mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.style.display='none';mb.setAttribute('aria-expanded','false');});});
   window.addEventListener('resize',function(){ if(window.innerWidth>900 && mm.style.display==='flex'){ mm.style.display=''; mb.setAttribute('aria-expanded','false'); } });
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var revealEls=document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var revealIO=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); revealIO.unobserve(entry.target); }
+      });
+    },{threshold:.25, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ revealIO.observe(el); });
+  }
 </script>
 <script>
 (function(){
