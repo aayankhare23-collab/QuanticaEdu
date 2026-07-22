@@ -1,0 +1,894 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantica · Course Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --paper:#FCFEFB; --card:#FFFFFF; --ink:#16281B;
+    --forest:#14532D; --moss:#1A9E4B; --grass:#22C55E; --lime:#C7F09A; --sage:#5FA06B;
+    --btn:#39A85C; --btn-edge:#2C874A; --btn-hover:#33984f;
+    --gray:#556A58; --gray-soft:#8AA084; --line:#E4EEDB; --line-2:#EDF6E4;
+    --tint:#E8F5DE; --amber:#E7B44B;
+    --ff-display:'Fraunces',Georgia,serif; --ff-body:'Inter',system-ui,sans-serif; --ff-ui:'Space Grotesk',var(--ff-body);
+    --topbar:60px;
+  }
+  /* ===== Cove theme (Algebra I) — same layout, ocean palette ===== */
+  :root[data-course="algebra1"]{
+    --paper:#F6FBFE; --card:#FFFFFF; --ink:#123049;
+    --forest:#1C5486; --moss:#2E7CC0; --grass:#4D9EDD; --lime:#BFE2F7; --sage:#6699C0;
+    --btn:#3E8FCE; --btn-edge:#2E6FAE; --btn-hover:#3782C2;
+    --gray:#4E6577; --gray-soft:#8AA1B6; --line:#DBE9F4; --line-2:#EAF3FB; --tint:#E4F1FB;
+  }
+  [data-course="algebra1"] .wnode{box-shadow:0 6px 0 #CFE1F1,0 12px 16px -9px rgba(18,40,60,.28)}
+  [data-course="algebra1"] .wnode:active{box-shadow:0 2px 0 #CFE1F1,0 8px 12px -8px rgba(18,40,60,.28)}
+  [data-course="algebra1"] .wnode.done{box-shadow:0 6px 0 #2E6FAE,0 12px 16px -9px rgba(18,40,60,.3)}
+  [data-course="algebra1"] .wnode.done:active{box-shadow:0 2px 0 #2E6FAE,0 8px 12px -8px rgba(18,40,60,.3)}
+  [data-course="algebra1"] .wnode.current{box-shadow:0 6px 0 #2E6FAE,0 0 0 7px rgba(77,158,221,.16),0 14px 22px -10px rgba(18,40,60,.4);animation-name:breathe-cove}
+  @keyframes breathe-cove{0%,100%{box-shadow:0 6px 0 #2E6FAE,0 0 0 7px rgba(77,158,221,.16),0 14px 22px -10px rgba(18,40,60,.4)}50%{box-shadow:0 6px 0 #2E6FAE,0 0 0 12px rgba(77,158,221,.08),0 14px 22px -10px rgba(18,40,60,.4)}}
+  [data-course="algebra1"] .wtrail .track path{stroke:#BFD9F0}
+  [data-course="algebra1"] .avatar{background:#DCEDFB;border-color:#B9D6F0}
+  [data-course="algebra1"] .avatar svg{stroke:#2E6FAE}
+  [data-course="algebra1"] .sbar{background:#E1EDF7}
+  [data-course="algebra1"] .nextup .gbar{background:#D6E7F6}
+  [data-course="algebra1"] .gtoolbar .seeds{border-color:#C3DBF1}
+  [data-course="algebra1"] .shop-item{background:#F2F8FD}
+  [data-course="algebra1"] .sig .ring{background:conic-gradient(var(--grass) 0%, #CFE1F1 0)}
+  body{font-family:var(--ff-body);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:clip}
+  .eyebrow{font-family:var(--ff-ui);font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+
+  /* pressable premium */
+  .lift{cursor:pointer;transition:transform .13s cubic-bezier(.3,.8,.4,1),box-shadow .13s ease}
+  .lift:hover{transform:translateY(-2px)}.lift:active{transform:translateY(0)}
+  .cta3d{cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:9px;background:var(--btn);color:#fff;font-family:var(--ff-ui);font-weight:600;border-radius:14px;box-shadow:0 4px 0 var(--btn-edge),0 12px 22px -12px rgba(20,50,25,.42);transition:transform .09s ease,box-shadow .09s ease,background .12s ease}
+  .cta3d:hover{background:var(--btn-hover)}
+  .cta3d:active{transform:translateY(4px);box-shadow:0 0 0 var(--btn-edge)}
+  @media(prefers-reduced-motion:reduce){.lift,.cta3d{transition:none}.lift:hover{transform:none}}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:60;height:var(--topbar);display:flex;align-items:center;gap:16px;padding:0 22px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-2)}
+  .brand{display:flex;align-items:center;gap:8px;font-family:var(--ff-display);font-weight:600;font-size:1.12rem;color:var(--forest);text-decoration:none}
+  .brand svg{width:22px;height:22px}
+  .coursesel{position:relative}
+  .coursesel .cur{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-ui);font-weight:600;font-size:.8rem;color:var(--forest);background:var(--tint);border:1px solid #CFEAC6;padding:5px 10px;border-radius:999px;cursor:pointer}
+  [data-course="algebra1"] .coursesel .cur{border-color:#BFDCF3}
+  .coursesel .cur .cv{transition:transform .15s ease}
+  .coursesel.open .cur .cv{transform:rotate(180deg)}
+  .coursesel .menu{position:absolute;top:calc(100% + 8px);left:0;min-width:216px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 50px -20px rgba(20,50,25,.34);padding:9px;display:none;z-index:80}
+  .coursesel.open .menu{display:block}
+  .coursesel .menu .mh{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-soft);padding:6px 10px 4px}
+  .coursesel .menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:13px;font-size:.86rem;color:var(--ink);text-decoration:none;font-weight:500}
+  .coursesel .menu a:hover{background:var(--tint)}
+  .coursesel .menu a.on{color:var(--forest);font-weight:600}
+  .coursesel .menu a.soon{color:var(--gray-soft)}
+  .coursesel .menu a .tag{font-family:var(--ff-ui);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-soft)}
+  .coursesel .menu a.on .tag{color:var(--moss)}
+  .tb-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .sig{display:flex;align-items:center;gap:7px;font-family:var(--ff-ui);font-size:.79rem;color:var(--gray)}
+  .sig b{color:var(--ink);font-weight:600}
+  .sig .ring{width:24px;height:24px;border-radius:50%;background:conic-gradient(var(--grass) 0%, #D7E7CC 0);display:grid;place-items:center}
+  .sig .ring i{width:17px;height:17px;border-radius:50%;background:var(--card)}
+  .streak{display:flex;align-items:center;gap:5px;font-family:var(--ff-ui);font-size:.79rem;color:var(--gray)}
+  .streak b{color:var(--ink);font-weight:600}
+  .avatar{width:32px;height:32px;border-radius:50%;background:#E7F4DA;border:1px solid #C6E1B4;display:grid;place-items:center;cursor:pointer}
+  .avatar svg{width:22px;height:22px}
+  @media(max-width:860px){.sig{display:none}}
+  @media(max-width:520px){.tb-right .sig,.streak{display:none}.topbar{padding:0 14px;gap:12px}}
+
+  /* shell: chapter rail | main | rail */
+  .shell{max-width:1180px;margin:0 auto;padding:22px 22px 60px;display:grid;grid-template-columns:60px 1fr 296px;gap:22px;align-items:start}
+  @media(max-width:860px){.shell{grid-template-columns:1fr;gap:20px}.chrail{display:none}}
+  main{position:relative;min-width:0}
+
+  /* chapter rail */
+  .chrail{position:sticky;top:calc(var(--topbar) + 20px);max-height:calc(100vh - var(--topbar) - 44px);overflow-y:auto;display:flex;flex-direction:column;gap:8px;align-items:center;scrollbar-width:none}
+  .chrail::-webkit-scrollbar{display:none}
+  .chrail .rl{font-family:var(--ff-ui);font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:2px}
+  .chdot{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:var(--ff-ui);font-weight:600;font-size:.85rem;background:var(--card);border:1.5px solid var(--line);color:var(--gray);cursor:pointer;text-decoration:none;transition:transform .1s,border-color .12s,color .12s}
+  .chdot:hover{transform:translateY(-2px);border-color:var(--grass);color:var(--forest)}
+  .chdot.active{background:var(--moss);color:#fff;border-color:var(--moss)}
+  .chdot.done{border-color:var(--grass);color:var(--moss)}
+  @media(max-width:860px){.chrail{display:none}}
+
+  /* continue card */
+  .continue{position:relative;overflow:visible;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 26px;box-shadow:0 16px 34px -26px rgba(20,50,25,.34)}
+  .continue .eyebrow{color:var(--sage)}
+  .continue .lz{font-family:var(--ff-ui);font-size:.76rem;color:var(--gray-soft);margin-top:10px}
+  .continue h2{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:1.08;margin:4px 0 4px;color:var(--forest);max-width:24ch}
+  .continue p{font-size:.92rem;color:var(--gray);max-width:38ch}
+  .continue .cbtn{margin-top:16px;font-size:1rem;padding:13px 24px}
+  .continue .spot{position:absolute;right:24px;bottom:24px;width:128px;height:150px}
+  .continue .spot img{position:absolute;right:0;bottom:0;height:100%;width:auto}
+  @media(max-width:620px){.continue h2{max-width:16ch}}
+  @media(max-width:520px){.continue .spot{display:none}.continue h2{max-width:none}}
+
+  .path-head{margin:26px 2px 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .path-head h3{font-family:var(--ff-display);font-weight:600;font-size:1.28rem;color:var(--ink)}
+  .path-head .h{font-family:var(--ff-ui);font-size:.72rem;color:var(--gray-soft)}
+  .order-note{font-size:.8rem;color:var(--gray-soft);margin:0 2px 4px;display:flex;align-items:center;gap:6px}
+  .order-note svg{width:14px;height:14px;color:var(--sage);flex:none}
+
+  /* chapter card */
+  .chapter{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 22px 20px;text-align:center;box-shadow:0 16px 34px -28px rgba(20,50,25,.4)}
+  .chapter .cnum{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.9rem,4.4vw,2.5rem);color:var(--forest);line-height:1}
+  .chapter .csub{font-size:.98rem;color:var(--gray);margin-top:5px}
+  .chapter .sprig{margin-top:10px;display:inline-block}
+  .chapter .prog{margin-top:14px;display:flex;align-items:center;gap:10px;justify-content:center}
+  .chapter .prog .bar{width:150px;height:7px;border-radius:5px;background:#E7F1E0;overflow:hidden}
+  .chapter .prog .bar i{display:block;height:100%;background:var(--grass);border-radius:5px}
+  [data-course="algebra1"] .chapter .prog .bar{background:#DCEBF9}
+  .chapter .prog .pt{font-family:var(--ff-ui);font-size:.74rem;font-weight:600;color:var(--moss)}
+
+  /* winding trail */
+  .wtrail{position:relative;width:100%;max-width:600px;margin:10px auto 4px;aspect-ratio:100/150}
+  .wtrail .track{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1}
+  .wtrail .track path{fill:none;stroke:#C7DEB6;stroke-width:2.4;stroke-dasharray:2.5 11;stroke-linecap:round;vector-effect:non-scaling-stroke}
+  .wbot{position:absolute;pointer-events:none;z-index:0}
+  /* --- garden: toolbar, placed items, greenhouse shop, toast --- */
+  .gtoolbar{display:flex;align-items:center;gap:9px;margin:16px 2px 0;flex-wrap:wrap}
+  .gtoolbar .seeds{display:inline-flex;align-items:center;gap:5px;font-family:var(--ff-ui);font-weight:600;font-size:.82rem;color:var(--forest);background:var(--tint);border:1px solid #CFEAC6;border-radius:999px;padding:6px 13px}
+  .gbtn{font-family:var(--ff-ui);font-weight:600;font-size:.8rem;border-radius:10px;padding:7px 13px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--forest);display:inline-flex;align-items:center;gap:6px;transition:border-color .12s,color .12s,background .12s,transform .08s}
+  .gbtn:hover{border-color:var(--grass);background:var(--tint)}
+  .gbtn:active{transform:translateY(1px)}
+  .gbtn.on{background:var(--moss);color:#fff;border-color:var(--moss)}
+  .gitem{position:absolute;transform:translate(-50%,-50%);z-index:2;font-size:clamp(22px,4.4vw,32px);line-height:1;filter:drop-shadow(0 4px 4px rgba(20,50,25,.22));user-select:none;pointer-events:none;touch-action:none}
+  .wtrail.editing .gitem{pointer-events:auto;cursor:grab;z-index:6;outline:2px dashed rgba(67,176,99,.55);outline-offset:3px;border-radius:8px}
+  .wtrail.editing .gitem:active{cursor:grabbing}
+  .grm{display:none}
+  .wtrail.editing .grm{display:grid;place-items:center;position:absolute;top:-11px;right:-11px;width:20px;height:20px;border-radius:50%;border:1.5px solid #fff;background:#E1584B;color:#fff;font-size:13px;line-height:1;cursor:pointer;padding:0;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+  .gtoast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(14px);background:var(--forest);color:#fff;font-family:var(--ff-ui);font-size:.84rem;font-weight:500;padding:11px 18px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(20,50,25,.55);z-index:120;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center}
+  .gtoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .shop-ov{position:fixed;inset:0;background:rgba(12,30,18,.44);display:none;place-items:center;z-index:110;padding:20px}
+  .shop-ov.open{display:grid}
+  .shop{background:var(--card);border-radius:20px;padding:22px 22px 24px;max-width:460px;width:100%;box-shadow:0 30px 70px -24px rgba(20,50,25,.5);max-height:88vh;overflow:auto}
+  .shop-head{display:flex;align-items:center;gap:12px}
+  .shop-head h3{font-family:var(--ff-display);font-weight:600;font-size:1.3rem;color:var(--forest);flex:1}
+  .shop-bal{font-family:var(--ff-ui);font-weight:700;font-size:.9rem;color:var(--forest);background:var(--tint);border-radius:999px;padding:5px 12px}
+  .shop-x{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--gray);font-size:18px;cursor:pointer;line-height:1}
+  .shop-x:hover{border-color:var(--grass);color:var(--forest)}
+  .shop-sub{font-size:.84rem;color:var(--gray);margin:8px 0 16px;line-height:1.5}
+  .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+  .shop-item{border:1px solid var(--line);border-radius:14px;padding:12px 8px 11px;text-align:center;background:#F7FBF3}
+  .shop-item.locked{opacity:.62}
+  .si-e{font-size:30px;line-height:1;filter:drop-shadow(0 3px 3px rgba(20,50,25,.18))}
+  .si-n{font-family:var(--ff-ui);font-size:.72rem;color:var(--ink);margin:6px 0 8px;font-weight:500}
+  .si-buy{font-family:var(--ff-ui);font-weight:700;font-size:.76rem;color:#fff;background:var(--moss);border:none;border-radius:8px;padding:6px 10px;cursor:pointer;width:100%}
+  .si-buy:hover{filter:brightness(1.06)}
+  .si-buy.cant{background:#C6D6BE;cursor:not-allowed}
+  .si-lock{font-family:var(--ff-ui);font-size:.66rem;color:var(--gray-soft);padding:6px 0}
+  @media(max-width:560px){.shop-grid{grid-template-columns:repeat(2,1fr)}}
+  .wnode{position:absolute;transform:translate(-50%,-50%);z-index:3;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-family:var(--ff-display);font-weight:600;font-size:1.18rem;background:var(--card);border:2px solid var(--line);color:var(--forest);box-shadow:0 6px 0 #E6EEDD,0 12px 16px -9px rgba(20,50,25,.28);cursor:pointer;text-decoration:none;transition:box-shadow .1s ease,transform .1s ease}
+  .wnode:hover{box-shadow:0 8px 0 #E6EEDD,0 16px 20px -10px rgba(20,50,25,.32)}
+  .wnode:active{transform:translate(-50%,calc(-50% + 4px));box-shadow:0 2px 0 #E6EEDD,0 8px 12px -8px rgba(20,50,25,.28)}
+  .wnode.done{background:var(--grass);border-color:var(--grass);color:#fff;box-shadow:0 6px 0 #2f8f4c,0 12px 16px -9px rgba(20,50,25,.3)}
+  .wnode.done:active{box-shadow:0 2px 0 #2f8f4c,0 8px 12px -8px rgba(20,50,25,.3)}
+  .wnode.current{background:var(--grass);border-color:var(--lime);color:#0c2b16;box-shadow:0 6px 0 #2f8f4c,0 0 0 7px rgba(67,176,99,.16),0 14px 22px -10px rgba(20,50,25,.4);animation:breathe 3.6s ease-in-out infinite}
+  @keyframes breathe{0%,100%{box-shadow:0 6px 0 #2f8f4c,0 0 0 7px rgba(67,176,99,.16),0 14px 22px -10px rgba(20,50,25,.4)}50%{box-shadow:0 6px 0 #2f8f4c,0 0 0 12px rgba(67,176,99,.08),0 14px 22px -10px rgba(20,50,25,.4)}}
+  .wnode .badge{position:absolute;top:-4px;right:-4px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:var(--moss);border:2px solid var(--paper)}
+  .wnode .badge svg{width:12px;height:12px}
+  .wnode .cta{position:absolute;top:-23px;left:50%;transform:translateX(-50%);font-family:var(--ff-ui);font-weight:600;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;color:var(--moss);white-space:nowrap}
+  .wlabel{position:absolute;transform:translateY(-50%);z-index:2;font-size:.88rem;line-height:1.2;color:var(--ink);font-weight:500;max-width:31%}
+  .wlabel.l{text-align:right;max-width:31%}.wlabel.r{text-align:left}
+  .wlabel .s{display:block;font-family:var(--ff-ui);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-soft);margin-top:2px;font-weight:600}
+  .wlabel.cur{color:var(--forest);font-weight:600}
+  .wsub{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+  .wlabel.l .wsub{justify-content:flex-end}
+  .wsub a{display:inline-flex;align-items:center;gap:4px;font-family:var(--ff-ui);font-size:.58rem;font-weight:600;letter-spacing:.02em;color:var(--moss);background:var(--tint);border:1px solid #CFEAC6;border-radius:999px;padding:2px 8px 2px 7px;text-decoration:none;white-space:nowrap;transition:background .12s,transform .1s,box-shadow .12s}
+  .wsub a svg{width:10px;height:10px}
+  .wsub a:hover{background:#DBF0CD;transform:translateY(-1px)}
+  .wsub a.ch{color:#8A5A00;background:#FBF1DA;border-color:#EAD9AE}
+  .wsub a.ch:hover{background:#F6E7C2}
+  .wsub a.done-c{opacity:.62}
+  @media(prefers-reduced-motion:reduce){.wnode{transition:none}.wnode.current{animation:none}}
+  @media(max-width:560px){.wtrail{max-width:100%;aspect-ratio:100/192}.wlabel,.wlabel.l{max-width:26%}.wlabel{font-size:.75rem}.wnode{width:48px;height:48px;font-size:.9rem}}
+
+  .wnode-set{font-size:0}
+  .wnode-set svg{width:26px;height:26px}
+  .wnode-set.practice{background:var(--tint);border-color:var(--grass);color:var(--moss)}
+  .wnode-set.challenge{background:#FBF1DA;border-color:#EAD9AE;color:#8A5A00}
+  /* next-up card */
+  .nextup{margin-top:22px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#F1FAE7,#E7F4D8);border:1px solid #D7EBC7;border-radius:20px;padding:18px 22px;box-shadow:0 16px 34px -28px rgba(20,50,25,.34)}
+  .nextup .nu-ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid #D7EBC7;display:grid;place-items:center;color:var(--moss)}
+  .nextup .nu-ic svg{width:24px;height:24px}
+  .nextup .nu-tx{flex:1;min-width:0}
+  .nextup .ge{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage)}
+  .nextup h3{font-family:var(--ff-display);font-weight:600;font-size:1.18rem;color:var(--ink);margin:2px 0 8px}
+  .nextup .gbar{height:8px;border-radius:6px;background:#DDECCD;overflow:hidden;max-width:280px}
+  .nextup .gbar i{display:block;height:100%;border-radius:6px;background:var(--grass)}
+  .nextup .nu-cta{flex:none;font-size:.9rem;padding:11px 18px}
+  @media(max-width:560px){.nextup{flex-direction:column;text-align:center;align-items:stretch}.nextup .gbar{max-width:none}}
+
+  /* rail */
+  .rail{position:sticky;top:calc(var(--topbar) + 20px);display:flex;flex-direction:column;gap:16px}
+  @media(max-width:860px){.rail{position:static}}
+  .rc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:0 10px 24px -22px rgba(20,50,25,.3)}
+  .rc h4{font-family:var(--ff-ui);font-size:.66rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:12px}
+  .rc p.lead{font-size:.88rem;color:var(--gray);line-height:1.5;margin-bottom:14px}
+  .dhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+  .dhead h4{margin-bottom:0}
+  .dnav{display:flex;gap:5px}
+  .dnav button{width:23px;height:23px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--gray);cursor:pointer;display:grid;place-items:center;font-size:13px;line-height:1;font-family:var(--ff-ui);transition:border-color .12s,color .12s,background .12s}
+  .dnav button:hover:not(:disabled){border-color:var(--grass);color:var(--forest);background:var(--tint)}
+  .dnav button:disabled{opacity:.32;cursor:default}
+  .drange{font-size:.74rem;color:var(--gray);margin:9px 0 8px;font-family:var(--ff-ui);letter-spacing:.01em}
+  .dweek{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:6px}
+  .dw{font-size:.56rem;color:var(--gray-soft);text-align:center;font-family:var(--ff-ui);font-weight:600;letter-spacing:.04em}
+  .daysgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+  .daydot{aspect-ratio:1;border-radius:50%;background:var(--card);border:1.6px solid var(--line);transition:background .12s,border-color .12s}
+  .daydot.on{background:var(--grass);border-color:var(--grass)}
+  .daydot.today{box-shadow:0 0 0 2px var(--card),0 0 0 3.5px var(--moss)}
+  .daydot.fut{opacity:.4}
+  .days-cap{display:flex;align-items:center;gap:7px;margin-top:13px;font-size:.81rem;color:var(--gray)}
+  .days-cap b{color:var(--ink);font-weight:600}
+  /* --- strengths bars --- */
+  .strengths{display:flex;flex-direction:column;gap:12px}
+  .srow .stop{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .snm{font-family:var(--ff-ui);font-size:.82rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:66%}
+  .spct{font-family:var(--ff-ui);font-size:.76rem;font-weight:700;color:var(--forest);flex:none;white-space:nowrap}
+  .spct .up{color:var(--moss);font-size:.6rem}
+  .spct .dn{color:#C67B5C;font-size:.6rem}
+  .sbar{height:7px;border-radius:999px;background:#E7EFDF;overflow:hidden;margin:5px 0 3px}
+  .sbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--moss),var(--grass));transition:width .6s cubic-bezier(.3,.8,.4,1)}
+  .slab{font-family:var(--ff-ui);font-size:.6rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-soft)}
+  .srow-lab{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .prac-link{font-family:var(--ff-ui);font-size:.7rem;font-weight:600;color:var(--moss);text-decoration:none;white-space:nowrap;flex:none}
+  .prac-link:hover{color:var(--forest)}
+  .strfoot{font-size:.72rem;color:var(--gray-soft);margin-top:13px;line-height:1.45}
+  /* --- top nav tabs (Roadmap / Progress) --- */
+  .hnav{display:flex;gap:3px;margin-left:6px}
+  .hnav-tab{appearance:none;background:none;border:none;font-family:var(--ff-ui);font-size:.85rem;font-weight:600;color:var(--gray-soft);padding:7px 14px;border-radius:999px;cursor:pointer;transition:color .15s,background .15s}
+  .hnav-tab.on{color:var(--forest);background:var(--tint)}
+  .hnav-tab:hover:not(.on){color:var(--gray)}
+  @media(max-width:640px){ .hnav-tab{padding:6px 11px;font-size:.8rem} }
+  /* small strengths card header */
+  .rc-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
+  .rc-more{appearance:none;background:none;border:none;font-family:var(--ff-ui);font-size:.76rem;font-weight:600;color:var(--moss);cursor:pointer;padding:2px 0}
+  .rc-more:hover{color:var(--forest)}
+  /* reusable stat tiles + sparkline */
+  .mstat-row{display:flex;gap:10px;flex-wrap:wrap}
+  .mstat{flex:1;min-width:92px;background:var(--tint);border-radius:14px;padding:14px 8px 11px;text-align:center}
+  .mstat .v{font-family:var(--ff-display);font-weight:700;font-size:1.65rem;color:var(--forest);line-height:1}
+  .mstat .l{font-size:.58rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-soft);margin-top:6px}
+  .mspark{display:flex;align-items:flex-end;gap:6px;height:112px;padding:2px 0}
+  .mspark i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--grass),var(--moss));opacity:.85}
+  .mspark i.cur{opacity:1;box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--grass)}
+  /* --- progress dashboard --- */
+  .pgview{max-width:1180px;margin:0 auto;padding:6px 22px 64px;animation:mfade .3s ease}
+  .shell #viewProgress{grid-column:2 / -1;min-width:0}      /* dashboard spans main+rail; chapter sidebar stays */
+  #viewProgress .pgview{max-width:none;margin:0;padding:2px 0 44px}
+  @keyframes mfade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  .pg-eyebrow{font-family:var(--ff-ui);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss)}
+  .pg-hd{display:flex;align-items:center;justify-content:space-between;gap:26px;margin:6px 0 26px;flex-wrap:wrap}
+  .pg-title{font-family:var(--ff-display);font-weight:700;font-size:clamp(1.9rem,3.4vw,2.6rem);letter-spacing:-.02em;color:var(--ink);margin:6px 0 9px}
+  .pg-sub{font-size:1.02rem;color:var(--gray);max-width:48ch;line-height:1.5}
+  .pg-sub b{color:var(--forest);font-weight:700}
+  .pg-ring{position:relative;width:122px;height:122px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:conic-gradient(var(--grass) var(--p,0%),var(--line) 0)}
+  .pg-ring::before{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--card)}
+  .pg-ring b{position:relative;font-family:var(--ff-display);font-weight:700;font-size:2rem;color:var(--forest);line-height:1}
+  .pg-ring span{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:.55rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-soft)}
+  .pg-tiles{margin-bottom:20px}
+  .pg-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;align-items:start}
+  @media(max-width:860px){ .pg-grid{grid-template-columns:1fr} }
+  .pg-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 22px 20px;box-shadow:0 22px 46px -36px rgba(20,50,25,.32)}
+  .pg-card h3{font-family:var(--ff-display);font-weight:600;font-size:1.16rem;color:var(--ink);margin:0}
+  .pg-card .ch{font-size:.82rem;color:var(--gray-soft);margin:4px 0 15px}
+  .pg-note{font-size:.72rem;color:var(--gray-soft);margin:15px 0 0;display:flex;align-items:center;gap:7px;line-height:1.4}
+  .pg-note::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grass);flex:none}
+  .pg-chgroup{margin-bottom:15px}
+  .pg-chgroup:last-child{margin-bottom:0}
+  .pg-chgroup .cgh{font-family:var(--ff-ui);font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--moss);margin-bottom:9px}
+  .qt-topic{padding:12px 0;border-bottom:1px solid var(--line)}
+  .qt-topic:last-child{border-bottom:none;padding-bottom:2px}
+  .qt-topic:first-child{padding-top:2px}
+  .qt-nm{font-family:var(--ff-ui);font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:9px}
+  .qt-chips{display:flex;flex-wrap:wrap;gap:7px}
+  .qt-chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;border:1px solid}
+  .qt-chip .qa{font-weight:700}
+  .qt-hi{background:rgba(67,176,99,.12);border-color:rgba(67,176,99,.32);color:#2C7A47}
+  .qt-mid{background:rgba(231,180,75,.15);border-color:rgba(231,180,75,.42);color:#8a5a00}
+  .qt-lo{background:rgba(217,83,79,.1);border-color:rgba(217,83,79,.32);color:#b0463f}
+  [data-course="algebra1"] .qt-hi{background:rgba(77,158,221,.13);border-color:rgba(77,158,221,.34);color:#1C5486}
+  .pg-two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:520px){ .pg-two{grid-template-columns:1fr} }
+  .pg-mini-h{font-family:var(--ff-ui);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-soft);margin-bottom:4px}
+  .pg-focus-row{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .pg-focus-row:last-child{border-bottom:none}
+  .pg-focus-row .fnm{flex:1;font-weight:600;font-size:.88rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pg-focus-row .fpct{font-weight:700;font-size:.82rem;color:var(--gray)}
+  .pg-focus-row .fgo{font-size:.76rem;font-weight:600;color:var(--moss);text-decoration:none;white-space:nowrap}
+  .pg-focus-row .fgo:hover{color:var(--forest)}
+  .pg-empty{text-align:center;max-width:440px;margin:60px auto;padding:0 20px}
+  /* two independent columns so cards pack tightly (no cross-row gap) */
+  .pg-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  @media(max-width:860px){ .pg-cols{grid-template-columns:1fr} }
+  .pg-col{display:flex;flex-direction:column;gap:18px;min-width:0}
+  /* how-you-solve breakdown */
+  .solvebar{display:flex;height:15px;border-radius:999px;overflow:hidden;background:var(--line);margin:2px 0 15px}
+  .solvebar .sb-seg{height:100%}
+  .sb-clean{background:linear-gradient(90deg,var(--moss),var(--grass))}
+  .sb-hint{background:#E7B44B}
+  .sb-sol{background:#C6A59F}
+  .sb-legend{display:flex;flex-wrap:wrap;gap:8px 16px}
+  .sb-legend span{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:500;color:var(--gray)}
+  .sb-legend i{width:10px;height:10px;border-radius:3px;flex:none;display:inline-block}
+  .sb-legend b{color:var(--ink);font-weight:700}
+  .rc-cta{width:100%;justify-content:center;margin-top:2px;font-size:.92rem;padding:12px 18px}
+
+  .note{max-width:1180px;margin:0 auto;padding:0 22px 34px;font-size:.78rem;color:var(--gray-soft)}
+</style>
+
+<div class="topbar">
+  <a class="brand" href="/paths/home.html">
+    <svg id="brandMark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    Quantica
+  </a>
+  <div class="coursesel" id="coursesel">
+    <span class="cur" id="courseCur">Prealgebra <svg class="cv" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+    <div class="menu">
+      <div class="mh">Your courses</div>
+      <a data-c="prealgebra" href="/paths/home.html?course=prealgebra">Prealgebra <span class="tag">Now</span></a>
+      <a data-c="algebra1" href="/paths/home.html?course=algebra1">Algebra I <span class="tag">Free</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Geometry <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Number Theory <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Counting &amp; Probability <span class="tag">Soon</span></a>
+      <a class="soon" href="#" onclick="return false" aria-disabled="true">Calculus <span class="tag">Soon</span></a>
+    </div>
+  </div>
+  <nav class="hnav">
+    <button class="hnav-tab on" data-v="roadmap" onclick="showView('roadmap')">Roadmap</button>
+    <button class="hnav-tab" data-v="progress" onclick="showView('progress')">Progress</button>
+  </nav>
+  <div class="tb-right">
+    <div class="sig" title="Your mastery fills in as you learn; nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
+    <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
+    <a class="avatar lift" href="/landing.html?course=prealgebra&start=1" aria-label="Your progress"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
+  </div>
+</div>
+
+<div class="shell">
+  <aside class="chrail" id="chrail"></aside>
+  <main>
+    <section class="continue" id="continueCard"></section>
+    <div class="path-head"><h3>Your path</h3><span class="h" id="pathHeadSub"></span></div>
+    <div class="order-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Take lessons in any order. Top to bottom works well.</div>
+    <section class="chapter" id="chapterCard"></section>
+    <div class="gtoolbar" id="gtoolbar"></div>
+    <div class="wtrail" id="wtrail"></div>
+    <section class="nextup" id="nextupCard"></section>
+  </main>
+  <aside class="rail" id="rail"></aside>
+  <section id="viewProgress" style="display:none"></section>
+</div>
+
+<p class="note" id="footNote">Quantica course home · Prealgebra.</p>
+
+<script>
+(function(){
+  // Course-aware home: Prealgebra is Sprout (green), Algebra I is Cove (blue). Same page, re-themed.
+  var _params=new URLSearchParams(location.search);
+  var COURSE=(_params.get('course')||localStorage.getItem('quantica.course')||'prealgebra');
+  if(COURSE!=='prealgebra'&&COURSE!=='algebra1') COURSE='prealgebra';
+  try{ localStorage.setItem('quantica.course',COURSE); }catch(e){}
+  document.documentElement.setAttribute('data-course',COURSE);
+  var IS_ALG=(COURSE==='algebra1');
+  var GUIDE=IS_ALG?'Cove':'Sprout';
+  var MASCOT=IS_ALG?'assets/cove/cove-hero.png':'assets/spot/spot-hero.png';
+  var COURSE_NAME=IS_ALG?'Algebra I':'Prealgebra';
+  var STREAK_ICO=IS_ALG?'🌊':'🌱';
+  var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+  var TARGET='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/></svg>';
+  var TROPHY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v4a6 6 0 0 1-12 0zM10 20h4M12 20v-5"/></svg>';
+  var BOLT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>';
+  var SPRIG_LEAF='<svg width="52" height="19" viewBox="0 0 54 20" aria-hidden="true"><path d="M27 19 C27 12 27 8 27 3" stroke="#6FAE5A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M27 9 C20 4 12 5 8 10 C15 15 23 14 27 9Z" fill="#8FC275"/><path d="M27 7 C34 3 42 4 46 9 C39 14 31 12 27 7Z" fill="#7FB565"/></svg>';
+  var SPRIG_WAVE='<svg width="52" height="16" viewBox="0 0 54 16" aria-hidden="true"><path d="M2 10 C9 3 15 3 22 10 C29 17 35 17 42 10 C46 6 50 6 52 8" stroke="#4D9EDD" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M2 6 C9 0 15 0 22 6" stroke="#A9D8F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/></svg>';
+  var SPRIG=IS_ALG?SPRIG_WAVE:SPRIG_LEAF;
+
+  var state={ chapters:[], active:1, done:{}, current:'1.1', skill:{}, stats:{}, typeSkill:{}, view:'roadmap' };
+
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function url(k){ return '/landing.html?course='+COURSE+'&lesson='+k; }
+  function purl(k){ return '/landing.html?course='+COURSE+'&practice='+k; }   // generated practice set for a topic
+  function psetUrl(ch,type){ return '/landing.html?course='+COURSE+'&pset='+ch+'&ptype='+type; }
+  function nonTeaching(t){ return /checkpoint|summary/i.test(t||''); }
+  function chById(n){ for(var i=0;i<state.chapters.length;i++){ if(state.chapters[i].n===n) return state.chapters[i]; } return state.chapters[0]; }
+  function chOf(k){ for(var i=0;i<state.chapters.length;i++){ var c=state.chapters[i]; for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c; } } return state.chapters[0]; }
+  function lesOf(k){ var c=chOf(k); for(var j=0;j<c.lessons.length;j++){ if(c.lessons[j].k===k) return c.lessons[j]; } return c.lessons[0]; }
+  function chDone(c){ return c.lessons.every(function(l){ return state.done[l.k]; }); }
+
+  // Read the SAME progress the course app saves (localStorage 'quantica.profile.v1'),
+  // so the home reflects where the student actually is instead of always showing 1.1.
+  function loadProgress(){
+    var P={}; try{ P=JSON.parse(localStorage.getItem('quantica.profile.v1'))||{}; }catch(e){ P={}; }
+    var lessons=P.lessons||{}, done={}, pre=COURSE+':';
+    Object.keys(lessons).forEach(function(k){ if(k.indexOf(pre)===0){ done[k.slice(pre.length)]=true; } });
+    return { done:done, xp:P.xp||0, gems:P.gems||0, streak:P.streak||0, lastActive:P.lastActive||null, skill:P.skill||{}, stats:P.stats||{}, typeSkill:P.typeSkill||{} };
+  }
+  // the lesson the student is on = first not-yet-completed lesson in course order (or the last, if all done)
+  function firstUndone(){
+    for(var i=0;i<state.chapters.length;i++){ var L=state.chapters[i].lessons;
+      for(var j=0;j<L.length;j++){ if(!state.done[L[j].k]) return L[j].k; } }
+    var lc=state.chapters[state.chapters.length-1]; return lc.lessons[lc.lessons.length-1].k;
+  }
+
+  // "Days you showed up" — a scrollable 2-week (14-day) calendar. Green = a day you were active
+  // (derived from the app's streak run), the ring marks today. Arrows page back through past weeks.
+  var DayGrid=(function(){
+    var off=0, active={}, streakN=0, ready=false;
+    var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function iso(d){ var m=d.getMonth()+1, day=d.getDate(); return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(day<10?'0':'')+day; }
+    function init(streak,lastActive){
+      active={}; streakN=streak||0; off=0; ready=true;
+      if(lastActive && streak>0){ var base=new Date(lastActive+'T00:00:00');
+        for(var i=0;i<streak;i++){ var d=new Date(base); d.setDate(base.getDate()-i); active[iso(d)]=true; } }
+    }
+    function winStart(o){ var t=new Date(); t.setHours(0,0,0,0);
+      var end=new Date(t); end.setDate(t.getDate()-t.getDay()+6);   // Saturday of the current week
+      var s=new Date(end); s.setDate(end.getDate()-13-14*o); return s; }   // 14-day window, paged by o
+    function render(){
+      var el=document.getElementById('dayCard'); if(!el||!ready) return;
+      var s=winStart(off), todayISO=iso(new Date()), e=new Date(s); e.setDate(s.getDate()+13);
+      var range=MON[s.getMonth()]+' '+s.getDate()+' – '+MON[e.getMonth()]+' '+e.getDate();
+      var wk=''; ['S','M','T','W','T','F','S'].forEach(function(l){ wk+='<span class="dw">'+l+'</span>'; });
+      var cells='';
+      for(var i=0;i<14;i++){ var d=new Date(s); d.setDate(s.getDate()+i); var di=iso(d);
+        cells+='<span class="daydot'+(active[di]?' on':'')+(di===todayISO?' today':'')+(di>todayISO?' fut':'')+'" title="'+di+'"></span>'; }
+      el.innerHTML='<div class="dhead"><h4>Days you showed up</h4><div class="dnav">'+
+          '<button id="dPrev" aria-label="Earlier weeks">&lsaquo;</button>'+
+          '<button id="dNext" aria-label="Later weeks"'+(off===0?' disabled':'')+'>&rsaquo;</button></div></div>'+
+        '<div class="drange">'+range+'</div>'+
+        '<div class="dweek">'+wk+'</div>'+
+        '<div class="daysgrid">'+cells+'</div>'+
+        '<div class="days-cap"><span aria-hidden="true">'+STREAK_ICO+'</span> '+
+          (streakN>0?('<b>'+streakN+'-day</b>&nbsp;streak'):'<b>Day 1</b>&nbsp;starts today')+'</div>';
+      var p=document.getElementById('dPrev'), n=document.getElementById('dNext');
+      if(p) p.onclick=function(){ off++; render(); };
+      if(n) n.onclick=function(){ if(off>0){ off--; render(); } };
+    }
+    return { init:init, render:render };
+  })();
+
+  // The garden: earn Seeds from problems, buy decorations, and drag them anywhere on your trail.
+  // Themed per course — a plant Greenhouse for Sprout, an ocean Tide pool for Cove. Placements are
+  // saved per course+chapter; Seeds live in the shared profile.
+  var Garden=(function(){
+    var KEY='quantica.garden.v1', PKEY='quantica.profile.v1';
+    var CATALOGS={
+      prealgebra:{ shop:'🪴 Greenhouse', sub:'Spend Seeds you earn from problems to grow your trail. Keep learning to unlock more.',
+        items:[
+          {id:'sprout',e:'🌱',n:'Sprout',c:3,lock:0},{id:'fern',e:'🌿',n:'Fern',c:4,lock:0},
+          {id:'clover',e:'🍀',n:'Clover',c:4,lock:0},{id:'rock',e:'🪨',n:'Mossy rock',c:5,lock:0},
+          {id:'daisy',e:'🌼',n:'Daisy',c:5,lock:1},{id:'tulip',e:'🌷',n:'Tulip',c:6,lock:1},
+          {id:'toad',e:'🍄',n:'Toadstool',c:6,lock:2},{id:'blossom',e:'🌸',n:'Blossom',c:7,lock:2},
+          {id:'ladybug',e:'🐞',n:'Ladybug',c:7,lock:3},{id:'butterfly',e:'🦋',n:'Butterfly',c:9,lock:4},
+          {id:'bee',e:'🐝',n:'Bee',c:9,lock:4},{id:'tree',e:'🌳',n:'Sapling',c:14,lock:6}
+        ],
+        welcome:[['fern',9,14],['sprout',91,12],['rock',88,85],['clover',10,50],['daisy',92,50]] },
+      algebra1:{ shop:'🐚 Tide pool', sub:'Spend Seeds you earn from problems to fill your reef. Keep learning to unlock more.',
+        items:[
+          {id:'shell',e:'🐚',n:'Shell',c:3,lock:0},{id:'coral',e:'🪸',n:'Coral',c:4,lock:0},
+          {id:'star',e:'⭐',n:'Starfish',c:4,lock:0},{id:'pebble',e:'🪨',n:'Sea rock',c:5,lock:0},
+          {id:'bubbles',e:'🫧',n:'Bubbles',c:5,lock:1},{id:'fish',e:'🐠',n:'Fish',c:6,lock:1},
+          {id:'crab',e:'🦀',n:'Crab',c:6,lock:2},{id:'wave',e:'🌊',n:'Wavelet',c:7,lock:2},
+          {id:'turtle',e:'🐢',n:'Turtle',c:7,lock:3},{id:'octopus',e:'🐙',n:'Octopus',c:9,lock:4},
+          {id:'dolphin',e:'🐬',n:'Dolphin',c:9,lock:4},{id:'isle',e:'🏝️',n:'Little isle',c:14,lock:6}
+        ],
+        welcome:[['coral',9,14],['shell',91,12],['pebble',88,85],['star',10,50],['bubbles',92,50]] }
+    };
+    var CAT=CATALOGS[COURSE]||CATALOGS.prealgebra;
+    var CATALOG=CAT.items;
+    var byId={}; CATALOG.forEach(function(it){ byId[it.id]=it; });
+    var g={placed:{},seq:0,welcomed:{}}, editing=false;
+    function pk(ch){ return COURSE+':'+ch; }   // placements are per course+chapter
+
+    function load(){ try{ var v=JSON.parse(localStorage.getItem(KEY)); if(v) g=v; }catch(e){} if(!g.placed) g.placed={}; if(!g.seq) g.seq=0; if(!g.welcomed||typeof g.welcomed!=='object') g.welcomed={}; }
+    function save(){ try{ localStorage.setItem(KEY,JSON.stringify(g)); }catch(e){} }
+    function seeds(){ try{ return (JSON.parse(localStorage.getItem(PKEY))||{}).gems||0; }catch(e){ return 0; } }
+    function spend(nn){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}; if((P.gems||0)<nn) return false; P.gems=(P.gems||0)-nn; localStorage.setItem(PKEY,JSON.stringify(P)); return true; }catch(e){ return false; } }
+    function lessonsDone(){ return Object.keys(state.done||{}).length; }
+
+    function grantStarterSeeds(n){ try{ var P=JSON.parse(localStorage.getItem(PKEY))||{}, fk='__gardenWelcome_'+COURSE; if(!P[fk]){ P.gems=(P.gems||0)+n; P[fk]=1; localStorage.setItem(PKEY,JSON.stringify(P)); } }catch(e){} }
+    function welcome(){
+      if(g.welcomed[COURSE]) return; g.welcomed[COURSE]=1;
+      var ch=state.active||(state.chapters[0]&&state.chapters[0].n)||1, key=pk(ch);
+      // a fuller starter set (themed per course) so the trail looks alive on day one...
+      g.placed[key]=(g.placed[key]||[]).concat(CAT.welcome.map(function(w){
+        return {id:'g'+(++g.seq),item:w[0],x:w[1],y:w[2]};
+      }));
+      grantStarterSeeds(12);   // ...plus a few Seeds so they can immediately place their own picks
+      save();
+    }
+    function itemsHTML(ch){
+      var arr=g.placed[pk(ch)]||[], h='';
+      arr.forEach(function(p){ var it=byId[p.item]; if(!it) return;
+        h+='<span class="gitem" data-gid="'+p.id+'" style="left:'+p.x+'%;top:'+p.y+'%">'+it.e+
+           '<button class="grm" data-rm="'+p.id+'" aria-label="Remove" tabindex="-1">&times;</button></span>'; });
+      return h;
+    }
+    function afterRender(ch){
+      var wt=document.getElementById('wtrail'); if(!wt) return;
+      wt.classList.toggle('editing',editing);
+      wt.querySelectorAll('.grm').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); removeItem(ch,b.getAttribute('data-rm')); }); });
+      wt.querySelectorAll('.gitem').forEach(function(el){
+        el.addEventListener('pointerdown',function(ev){
+          if(!editing) return; ev.preventDefault();
+          var rect=wt.getBoundingClientRect(), gid=el.getAttribute('data-gid');
+          try{ el.setPointerCapture(ev.pointerId); }catch(_){}
+          function move(e){ var x=((e.clientX-rect.left)/rect.width)*100, y=((e.clientY-rect.top)/rect.height)*100;
+            x=Math.max(2,Math.min(98,x)); y=Math.max(1.5,Math.min(98.5,y)); el.style.left=x+'%'; el.style.top=y+'%';
+            var it=(g.placed[pk(ch)]||[]).filter(function(p){return p.id===gid;})[0]; if(it){ it.x=x; it.y=y; } }
+          function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); save(); }
+          el.addEventListener('pointermove',move); el.addEventListener('pointerup',up);
+        });
+      });
+    }
+    function removeItem(ch,gid){ var key=pk(ch); g.placed[key]=(g.placed[key]||[]).filter(function(p){return p.id!==gid;}); save(); renderTrail(); renderBar(); }
+    function buy(item){
+      var it=byId[item]; if(!it) return;
+      if(lessonsDone()<it.lock){ toast('Reach '+it.lock+' lessons to unlock '+it.n); return; }
+      if(!spend(it.c)){ toast('Not enough Seeds. Earn more by solving problems.'); renderShop(); return; }
+      editing=true;
+      var akey=pk(state.active); (g.placed[akey]=g.placed[akey]||[]).push({id:'g'+(++g.seq),item:item,x:48+(g.seq%5)*2,y:46+(g.seq%7)*2});
+      save(); closeShop(); renderTrail(); renderBar();
+      toast('Planted! Drag '+it.n+' where you like, then tap Done.');
+    }
+    function toast(msg){ var t=document.getElementById('gtoast'); if(!t){ t=document.createElement('div'); t.id='gtoast'; t.className='gtoast'; document.body.appendChild(t); }
+      t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){ t.classList.remove('show'); },2800); }
+    function openShop(){ renderShop(); document.getElementById('shopOv').classList.add('open'); }
+    function closeShop(){ var o=document.getElementById('shopOv'); if(o) o.classList.remove('open'); }
+    function renderShop(){
+      var s=seeds(), ld=lessonsDone(), grid='';
+      CATALOG.forEach(function(it){
+        var locked=ld<it.lock, afford=s>=it.c;
+        grid+='<div class="shop-item'+(locked?' locked':'')+'"><div class="si-e">'+it.e+'</div><div class="si-n">'+it.n+'</div>'+
+          (locked?('<div class="si-lock">🔒 '+it.lock+' lessons</div>')
+                 :('<button class="si-buy'+(afford?'':' cant')+'" data-buy="'+it.id+'"'+(afford?'':' disabled')+'>💎 '+it.c+'</button>'))+'</div>';
+      });
+      var gr=document.getElementById('shopGrid'); if(gr){ gr.innerHTML=grid;
+        gr.querySelectorAll('.si-buy').forEach(function(b){ b.addEventListener('click',function(){ buy(b.getAttribute('data-buy')); }); }); }
+      var sb=document.getElementById('shopSeeds'); if(sb) sb.textContent=s;
+    }
+    function toggleEdit(){ editing=!editing; renderTrail(); renderBar(); if(editing) toast('Drag items to move them, × to remove. Tap Done when finished.'); }
+    function renderBar(){
+      var bar=document.getElementById('gtoolbar'); if(!bar) return;
+      bar.innerHTML='<span class="seeds" title="Seeds you earn by solving problems">💎 '+seeds()+'</span>'+
+        '<button class="gbtn" id="ghouseBtn">'+CAT.shop+'</button>'+
+        '<button class="gbtn'+(editing?' on':'')+'" id="geditBtn">'+(editing?'✓ Done':'✎ Arrange')+'</button>';
+      document.getElementById('ghouseBtn').onclick=openShop;
+      document.getElementById('geditBtn').onclick=toggleEdit;
+    }
+    function initDom(){
+      if(document.getElementById('shopOv')) return;
+      var ov=document.createElement('div'); ov.id='shopOv'; ov.className='shop-ov';
+      ov.innerHTML='<div class="shop" role="dialog" aria-label="'+CAT.shop.replace(/^\S+\s/,'')+'"><div class="shop-head"><h3>'+CAT.shop+'</h3><span class="shop-bal">💎 <b id="shopSeeds">0</b></span><button class="shop-x" id="shopX" aria-label="Close">&times;</button></div>'+
+        '<p class="shop-sub">'+CAT.sub+'</p><div class="shop-grid" id="shopGrid"></div></div>';
+      document.body.appendChild(ov);
+      ov.addEventListener('click',function(e){ if(e.target===ov) closeShop(); });
+      document.getElementById('shopX').onclick=closeShop;
+    }
+    function init(){ load(); initDom(); welcome(); }
+    return { init:init, itemsHTML:itemsHTML, afterRender:afterRender, renderBar:renderBar };
+  })();
+
+  function renderRail(){
+    var h='<span class="rl">Ch</span>';
+    state.chapters.forEach(function(c){
+      var cls='chdot'+(c.n===state.active?' active':'')+(chDone(c)?' done':'');
+      h+='<a class="'+cls+'" href="#" data-ch="'+c.n+'" title="Chapter '+c.n+' · '+esc(c.t)+'">'+c.n+'</a>';
+    });
+    var el=document.getElementById('chrail'); el.innerHTML=h;
+    el.querySelectorAll('.chdot').forEach(function(d){ d.addEventListener('click',function(e){ e.preventDefault(); setChapter(+d.getAttribute('data-ch')); }); });
+  }
+
+  function renderContinue(){
+    var les=lesOf(state.current), ch=chOf(state.current);
+    var fresh=!Object.keys(state.done).length;
+    document.getElementById('continueCard').innerHTML=
+      '<div class="eyebrow">'+(fresh?'Start here':'Pick up where you left off')+'</div>'+
+      '<div class="lz">Chapter '+ch.n+' · '+esc(ch.t)+'</div>'+
+      '<h2>'+state.current+' — '+esc(les.t)+'</h2>'+
+      '<p>'+(fresh?('Your very first lesson. '+GUIDE+' will guide you the whole way.'):'Jump back in whenever you are ready.')+'</p>'+
+      '<a class="cta3d cbtn" href="'+url(state.current)+'">'+(fresh?'Start learning':'Continue')+'&nbsp;<span aria-hidden="true">&rarr;</span></a>'+
+      '<span class="spot"><img src="'+MASCOT+'" alt="'+GUIDE+'"></span>';
+  }
+
+  function renderChapterCard(){
+    var c=chById(state.active);
+    var doneN=c.lessons.filter(function(l){return state.done[l.k];}).length, n=c.lessons.length;
+    document.getElementById('pathHeadSub').textContent='Chapter '+c.n+' of '+state.chapters.length;
+    document.getElementById('chapterCard').innerHTML=
+      '<div class="cnum">Chapter '+c.n+'</div>'+
+      '<div class="csub">'+esc(c.t)+'</div>'+
+      '<span class="sprig">'+SPRIG+'</span>'+
+      '<div class="prog"><span class="bar"><i style="width:'+Math.round(doneN/n*100)+'%"></i></span><span class="pt">'+doneN+' of '+n+' lessons</span></div>';
+  }
+
+  function renderTrail(){
+    var c=chById(state.active), L=c.lessons, n=L.length; var _wt=document.getElementById("wtrail"); if(_wt) _wt.style.aspectRatio = n>6 ? ("100 / "+(n*25)) : "";
+    // trail = the chapter's lessons, then two chapter-level stops: Practice, then Challenge
+    var stops=L.map(function(les){ return {kind:'lesson', les:les}; });
+    stops.push({kind:'practice', ch:c.n});
+    stops.push({kind:'challenge', ch:c.n});
+    var m=stops.length;
+    if(_wt) _wt.style.aspectRatio="100 / "+(m*25);
+    var nodes=stops.map(function(s,i){
+      return { s:s, i:i, tx:(i%2===0?36:60), ty:(m>1? 7+85*(i/(m-1)) : 50) };
+    });
+    var d='M'+nodes[0].tx.toFixed(1)+','+(nodes[0].ty*1.5).toFixed(1);
+    for(var i=1;i<m;i++){
+      var a=nodes[i-1], b=nodes[i], y0=a.ty*1.5, y1=b.ty*1.5, ym=((y0+y1)/2).toFixed(1);
+      d+=' C'+a.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+ym+' '+b.tx.toFixed(1)+','+y1.toFixed(1);
+    }
+    var h='<svg class="track" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path d="'+d+'"/></svg>'+
+          Garden.itemsHTML(c.n);   // the student's own garden for this chapter, in place of fixed decor
+    // nodes
+    nodes.forEach(function(nd){
+      var s=nd.s, style='left:'+nd.tx.toFixed(1)+'%;top:'+nd.ty.toFixed(2)+'%';
+      if(s.kind==='lesson'){
+        var k=s.les.k, done=!!state.done[k], cur=(k===state.current && !done);
+        var inner=k+(done?'<span class="badge">'+CHECK+'</span>':(cur?'<span class="cta">Start</span>':''));
+        h+='<a class="wnode'+(done?' done':'')+(cur?' current':'')+'" href="'+url(k)+'" style="'+style+'">'+inner+'</a>';
+      } else {
+        var isP=(s.kind==='practice');
+        h+='<a class="wnode wnode-set '+(isP?'practice':'challenge')+'" href="'+psetUrl(s.ch, isP?'practice':'challenge')+'" style="'+style+'" title="'+(isP?'Practice set':'Challenge set')+'">'+(isP?TARGET:TROPHY)+'</a>';
+      }
+    });
+    // labels
+    nodes.forEach(function(nd){
+      var s=nd.s, side=(nd.tx<=47)?'r':'l';
+      var pos=side==='r'?('left:'+(nd.tx+11).toFixed(1)+'%'):('right:'+(100-nd.tx+9).toFixed(1)+'%');
+      if(s.kind==='lesson'){
+        var k=s.les.k, done=!!state.done[k], cur=(k===state.current && !done);
+        h+='<div class="wlabel '+side+(cur?' cur':'')+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+esc(s.les.t)+
+           '<span class="s"'+(cur?' style="color:var(--moss)"':'')+'>'+(done?'Done':(cur?'Start here':'Open'))+'</span></div>';
+      } else {
+        var isP=(s.kind==='practice');
+        h+='<div class="wlabel '+side+'" style="'+pos+';top:'+nd.ty.toFixed(2)+'%">'+(isP?'Practice set':'Challenge set')+
+           '<span class="s">'+(isP?'Sharpen the chapter':'Push yourself')+'</span></div>';
+      }
+    });
+    document.getElementById('wtrail').innerHTML=h;
+    Garden.afterRender(c.n);
+  }
+
+  function renderNextup(){
+    var c=chById(state.active);
+    var left=c.lessons.filter(function(l){return !state.done[l.k];}).length, n=c.lessons.length;
+    var target=(c.lessons.filter(function(l){return !state.done[l.k];})[0]||c.lessons[0]).k;
+    document.getElementById('nextupCard').innerHTML=
+      '<span class="nu-ic">'+BOLT+'</span>'+
+      '<div class="nu-tx"><div class="ge">Chapter '+c.n+' · '+esc(c.t)+'</div>'+
+      '<h3>'+(left===0?'Chapter complete':left+' lesson'+(left===1?'':'s')+' to go')+'</h3>'+
+      '<div class="gbar"><i style="width:'+Math.round((n-left)/n*100)+'%"></i></div></div>'+
+      '<a class="cta3d nu-cta" href="'+url(target)+'">'+(left===n?'Start':'Keep going')+'&nbsp;<span aria-hidden="true">&rarr;</span></a>';
+  }
+
+  // A fair, readable read of the student's strengths, from the per-lesson skill scores the app
+  // records (EMA of graded problems). Shows the strongest few, with a trend arrow vs last visit.
+  function strLabel(s){ return s>=.85?'Strong':(s>=.68?'Solid':(s>=.5?'Building':'Getting started')); }
+  function shortSkill(t){ t=String(t||''); var c=t.indexOf(','); if(c>3&&c<=22) t=t.slice(0,c); t=t.replace(/[?.!]$/,''); return t.length>26?t.slice(0,24)+'…':t; }
+  function masteryRows(chapterN){
+    var sk=state.skill||{}, rows=[], pre=COURSE+':';
+    Object.keys(sk).forEach(function(fullK){
+      if(fullK.indexOf(pre)!==0) return;                 // only this course's skills
+      var k=fullK.slice(pre.length);
+      var e=sk[fullK]; if(!e||(e.n||0)<1) return;
+      var les=null, chn=null;
+      for(var i=0;i<state.chapters.length&&!les;i++){ var C=state.chapters[i], L=C.lessons;
+        for(var j=0;j<L.length;j++){ if(L[j].k===k){ les=L[j]; chn=C; break; } } }
+      if(!les||nonTeaching(les.t)) return;
+      if(chapterN && (!chn || chn.n!==chapterN)) return;  // scope to a single chapter when asked
+      rows.push({ k:fullK, lk:k, ch:(chn?chn.n:0), cht:(chn?chn.t:''), name:shortSkill(les.t), full:les.t, s:Math.max(0,Math.min(1,e.s)) });
+    });
+    rows.sort(function(a,b){ return b.s-a.s; });
+    return rows;
+  }
+  function chTitle(n){ var c=null; state.chapters.forEach(function(x){ if(x.n===n) c=x; }); return c?c.t:''; }
+  function masteryBar(r, prev, practice){
+    var pct=Math.round(r.s*100), pv=prev?prev[r.k]:null;
+    var tr = (pv!=null && r.s-pv>=0.03)?' <span class="up" title="up since last visit">&#9650;</span>'
+           : (pv!=null && pv-r.s>=0.03)?' <span class="dn" title="down since last visit">&#9660;</span>' : '';
+    var lab = practice
+      ? '<div class="srow-lab"><span class="slab">'+strLabel(r.s)+'</span><a class="prac-link" href="'+purl(r.lk)+'">Practice &rarr;</a></div>'
+      : '<span class="slab">'+strLabel(r.s)+'</span>';
+    return '<div class="srow"><div class="stop"><span class="snm" title="'+esc(r.full||r.name)+'">'+esc(r.name)+'</span>'+
+       '<span class="spct">'+pct+'%'+tr+'</span></div>'+
+       '<div class="sbar"><i style="width:'+pct+'%"></i></div>'+lab+'</div>';
+  }
+  // small rail card — the quick "strengths" read; the full breakdown lives in the Progress tab
+  function strengthCard(){
+    var rows=masteryRows(state.active), prev={};
+    try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
+    var hd='<div class="rc-hd"><h4>Chapter '+state.active+' strengths</h4>'+
+      '<button class="rc-more" onclick="showView(\'progress\')">See progress &rarr;</button></div>';
+    if(!rows.length){
+      if(!masteryRows().length) return null;   // no data anywhere -> renderRail2 shows the "New here?" prompt
+      return '<div class="rc">'+hd+'<p class="lead" style="margin:0">No strengths logged in this chapter yet. Do a lesson or a practice set here and they&rsquo;ll show up.</p></div>';
+    }
+    var top=rows.slice(0,4);
+    var snap={}; top.forEach(function(r){ snap[r.k]=r.s; });
+    try{ var hs=JSON.parse(localStorage.getItem('quantica.home.v1'))||{}; hs.skillSnap=snap; localStorage.setItem('quantica.home.v1',JSON.stringify(hs)); }catch(e){}
+    return '<div class="rc">'+hd+
+      '<div class="strengths">'+top.map(function(r){return masteryBar(r,prev);}).join('')+'</div>'+
+      '<p class="strfoot">Grows as you solve. Clean, hint-free solves count most.</p></div>';
+  }
+  // ---------- Progress dashboard (full-width view) ----------
+  function hstr(s){ var h=0; s=String(s); for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+  function pct100(vals, total){                            // integer percentages that always sum to 100 (largest-remainder rounding)
+    if(!total) return vals.map(function(){return 0;});
+    var raw=vals.map(function(v){return v/total*100;});
+    var fl=raw.map(function(r){return Math.floor(r);});
+    var rem=100-fl.reduce(function(a,b){return a+b;},0);
+    var ord=raw.map(function(r,i){return {i:i,f:r-Math.floor(r)};}).sort(function(a,b){return b.f-a.f;});
+    for(var k=0;k<rem && k<ord.length;k++){ fl[ord[k].i]++; }
+    return fl;
+  }
+  // real per-type accuracy from P.typeSkill: the type's own EMA shrunk toward the topic mastery,
+  // so it starts near the topic average and sharpens as attempts accumulate (stable with few samples).
+  function qtypesFor(r){
+    var ts=state.typeSkill||{}, pre=COURSE+':'+r.lk+':', k=2, out=[];
+    Object.keys(ts).forEach(function(key){
+      if(key.indexOf(pre)!==0) return;
+      var e=ts[key]; if(!e||!(e.n>0)) return;
+      var pct=Math.round(100*(e.n*e.s + k*r.s)/(e.n + k));   // n·s_type + k·m_topic over n + k
+      out.push({ t:e.label||key.slice(pre.length), acc:Math.max(1,Math.min(100,pct)), n:e.n });
+    });
+    out.sort(function(a,b){ return b.acc-a.acc; });
+    return out;
+  }
+  function qchipCls(a){ return a>=80?'qt-hi':(a>=55?'qt-mid':'qt-lo'); }
+  window.showView=function(name){
+    var isP=(name==='progress');
+    var main=document.querySelector('.shell main'), rail=document.getElementById('rail'), pv=document.getElementById('viewProgress'), fn=document.getElementById('footNote');
+    if(main) main.style.display=isP?'none':'';   // keep the chapter sidebar visible; swap the main + right rail for the dashboard
+    if(rail) rail.style.display=isP?'none':'';
+    if(pv) pv.style.display=isP?'block':'none';
+    if(fn) fn.style.display=isP?'none':'';
+    [].forEach.call(document.querySelectorAll('.hnav-tab'),function(t){ t.classList.toggle('on', t.getAttribute('data-v')===name); });
+    state.view=name;
+    if(isP) renderProgress();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+  function renderProgress(){
+    var host=document.getElementById('viewProgress'); if(!host) return;
+    var rows=masteryRows(state.active);
+    if(!rows.length){
+      var firstK=((chById(state.active).lessons||[])[0]||{}).k||state.current;
+      host.innerHTML='<div class="pgview"><div class="pg-empty"><span class="pg-eyebrow">Chapter '+state.active+' &middot; '+esc(chTitle(state.active))+'</span>'+
+        '<h1 class="pg-title">Nothing here yet</h1>'+
+        '<p class="pg-sub">No data for this chapter yet. Do a lesson or a practice set in Chapter '+state.active+' and its mastery, question-type breakdown, and trends fill in here. Pick another chapter on the left anytime.</p>'+
+        '<a class="cta3d" style="margin-top:18px;display:inline-flex" href="'+url(firstK)+'">Start '+firstK+' &rarr;</a></div></div>';
+      return;
+    }
+    var prev={}; try{ prev=(JSON.parse(localStorage.getItem('quantica.home.v1'))||{}).skillSnap||{}; }catch(e){}
+    var avg=Math.round(rows.reduce(function(a,r){return a+r.s;},0)/rows.length*100);
+    var st=state.stats||{}, solved=st.solved||0, indep=st.independent||0;
+    var cleanPct = solved? Math.round(indep/solved*100) : null;
+    var strong=rows.slice(0,3), focus=rows.slice().reverse().filter(function(r){return strong.indexOf(r)===-1;}).slice(0,3);
+    var read='You&rsquo;re strongest on <b>'+esc(strong[0].name)+'</b>'+
+      ((focus[0]&&focus[0].s<0.62)?', with the most room to grow on <b>'+esc(focus[0].name)+'</b>':'')+'.';
+    var tiles='<div class="mstat-row">'+
+      '<div class="mstat"><div class="v">'+avg+'%</div><div class="l">Avg mastery</div></div>'+
+      '<div class="mstat"><div class="v">'+rows.length+'</div><div class="l">Topics practiced</div></div>'+
+      '<div class="mstat"><div class="v">'+(solved||'—')+'</div><div class="l">Problems solved</div></div>'+
+      '<div class="mstat"><div class="v">'+(cleanPct!=null?cleanPct+'%':'—')+'</div><div class="l">Clean-solve rate</div></div>'+
+    '</div>';
+    var topicsHTML=rows.map(function(r){return masteryBar(r,prev,true);}).join('');
+    var qtRows=rows.map(function(r){ return {r:r, types:qtypesFor(r)}; }).filter(function(x){ return x.types.length; });
+    var qtHTML = qtRows.length
+      ? qtRows.slice(0,8).map(function(x){
+          var chips=x.types.map(function(q){ return '<span class="qt-chip '+qchipCls(q.acc)+'">'+esc(q.t)+' <b class="qa">'+q.acc+'%</b></span>'; }).join('');
+          return '<div class="qt-topic"><div class="qt-nm">'+esc(x.r.name)+'</div><div class="qt-chips">'+chips+'</div></div>';
+        }).join('')
+      : '<p class="pg-note" style="margin-top:2px">Solve a handful of problems and your right/wrong split by problem type shows up here.</p>';
+    var qtNote = qtRows.length ? '<p class="pg-note">From your actual solves. A new type leans on the topic average until you&rsquo;ve done a few, so early numbers stay honest.</p>' : '';
+    var SP=[38,44,41,55,50,58,63,60,71,avg];
+    var chart=SP.map(function(h,i){ return '<i style="height:'+Math.max(8,Math.min(100,h))+'%"'+(i===SP.length-1?' class="cur"':'')+'></i>'; }).join('');
+    var focusHTML=focus.length? focus.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="fpct">'+Math.round(r.s*100)+'%</span><a class="fgo" href="'+purl(r.lk)+'">Practice &rarr;</a></div>'; }).join('')
+      : '<div class="pg-focus-row"><span class="fnm" style="color:var(--gray-soft);font-weight:500">You&rsquo;re solid across the board — keep it up.</span></div>';
+    var strongHTML=strong.map(function(r){ return '<div class="pg-focus-row"><span class="fnm">'+esc(r.name)+'</span><span class="slab">'+strLabel(r.s)+'</span><span class="fpct" style="color:var(--forest)">'+Math.round(r.s*100)+'%</span></div>'; }).join('');
+    // how you solve — clean vs. hint vs. solution (real, from P.stats)
+    // clean / with-a-hint (any number of hints) / saw-solution — a partition of every graded solve, so it always totals 100%
+    var solsN=st.solutions||0, hintN=Math.max(0, solved-indep-solsN);
+    var sp=pct100([indep,hintN,solsN], solved), pClean=sp[0], pHint=sp[1], pSol=sp[2];
+    var solveHTML = solved
+      ? '<div class="solvebar">'+
+          (pClean?'<span class="sb-seg sb-clean" style="width:'+pClean+'%"></span>':'')+
+          (pHint?'<span class="sb-seg sb-hint" style="width:'+pHint+'%"></span>':'')+
+          (pSol?'<span class="sb-seg sb-sol" style="width:'+pSol+'%"></span>':'')+
+        '</div>'+
+        '<div class="sb-legend"><span><i class="sb-clean"></i>Clean <b>'+pClean+'%</b></span>'+
+          '<span><i class="sb-hint"></i>With a hint <b>'+pHint+'%</b></span>'+
+          '<span><i class="sb-sol"></i>Saw solution <b>'+pSol+'%</b></span></div>'
+      : '<p class="pg-note">Solve a few problems and your clean / hint / solution split shows up here.</p>';
+    host.innerHTML=
+    '<div class="pgview">'+
+      '<div class="pg-hd"><div>'+
+        '<span class="pg-eyebrow">Chapter '+state.active+' &middot; '+esc(chTitle(state.active))+'</span>'+
+        '<h1 class="pg-title">How you&rsquo;re doing</h1>'+
+        '<p class="pg-sub">'+read+'</p>'+
+      '</div><div class="pg-ring" style="--p:'+avg+'%"><b>'+avg+'%</b><span>Mastery</span></div></div>'+
+      '<div class="pg-tiles">'+tiles+'</div>'+
+      '<div class="pg-cols">'+
+        '<div class="pg-col">'+
+          '<div class="pg-card"><h3>Mastery by topic</h3><div class="ch">Where you stand across every topic you&rsquo;ve practiced.</div>'+topicsHTML+'</div>'+
+          '<div class="pg-card"><h3>How you solve</h3><div class="ch">Every graded solve, by how you got there &mdash; clean solves build the most mastery.</div>'+solveHTML+'</div>'+
+          '<div class="pg-card"><h3>Accuracy over time</h3><div class="ch">How your solve accuracy is trending.</div><div class="mspark">'+chart+'</div><p class="pg-note">Preview &mdash; per-session accuracy starts logging as you go.</p></div>'+
+        '</div>'+
+        '<div class="pg-col">'+
+          '<div class="pg-card"><h3>Question types you nail vs. miss</h3><div class="ch">The kinds of problems each topic throws at you.</div>'+qtHTML+qtNote+'</div>'+
+          '<div class="pg-card"><h3>Strong &amp; where to focus</h3><div class="ch">Lean on your strengths; give these a little love.</div>'+
+            '<div class="pg-two"><div><div class="pg-mini-h">Strongest</div>'+strongHTML+'</div>'+
+            '<div><div class="pg-mini-h">Focus next</div>'+focusHTML+'</div></div></div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+  function renderRail2(){
+    var fresh=!Object.keys(state.done).length;
+    var strengths=strengthCard();
+    var first = strengths ? strengths
+      : (fresh
+        ? '<div class="rc"><h4>New here?</h4>'+
+            '<p class="lead">Take a 2-minute check and we&rsquo;ll tune every lesson to your level, harder where you&rsquo;re strong and gentler where you&rsquo;re building. Or just dive in. Your strengths show up here as you solve.</p>'+
+            '<a class="cta3d rc-cta" href="'+url('1.1')+'">Take the quick check</a></div>'
+        : '<div class="rc"><h4>Where you are</h4>'+
+            '<p class="lead">You&rsquo;re on <b>'+state.current+' &mdash; '+esc(lesOf(state.current).t)+'</b>. Solve a few problems and your strengths will show up here.</p>'+
+            '<a class="cta3d rc-cta" href="'+url(state.current)+'">Continue&nbsp;<span aria-hidden="true">&rarr;</span></a></div>');
+    document.getElementById('rail').innerHTML=
+      first+
+      '<div class="rc" id="dayCard"></div>'+
+      '<div class="rc"><h4>Today&rsquo;s focus</h4>'+
+        '<p class="lead">One lesson keeps the momentum. '+GUIDE+' is ready the moment you get stuck.</p>'+
+        '<a class="cta3d rc-cta" href="'+url(state.current)+'">'+(fresh?'Start ':'Continue ')+state.current+'&nbsp;<span aria-hidden="true">&rarr;</span></a></div>';
+    DayGrid.render();
+  }
+
+  function renderAll(){ renderRail(); renderContinue(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); Garden.renderBar(); }
+  function setChapter(n){ state.active=n; renderRail(); renderChapterCard(); renderTrail(); renderNextup(); renderRail2(); if(state.view==='progress') renderProgress(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+  // course dropdown toggle
+  var sel=document.getElementById('coursesel'), cur=document.getElementById('courseCur');
+  if(cur){ cur.addEventListener('click',function(e){ e.stopPropagation(); sel.classList.toggle('open'); }); }
+  document.addEventListener('click',function(){ sel&&sel.classList.remove('open'); });
+
+  // reflect the active course in the chrome (label, active menu item, avatar link, streak icon)
+  if(cur && cur.firstChild && cur.firstChild.nodeType===3) cur.firstChild.nodeValue=COURSE_NAME+' ';
+  document.title='Quantica · '+COURSE_NAME;
+  [].forEach.call(document.querySelectorAll('.coursesel .menu a[data-c]'),function(a){ a.classList.toggle('on', a.getAttribute('data-c')===COURSE); });
+  var _av=document.querySelector('.avatar'); if(_av) _av.setAttribute('href','/landing.html?course='+COURSE+'&start=1');
+  var _si=document.querySelector('#streakPill span'); if(_si) _si.textContent=STREAK_ICO;
+  if(IS_ALG){ var _bm=document.getElementById('brandMark'); if(_bm) _bm.innerHTML='<rect x="3" y="3" width="26" height="26" rx="9" fill="#1C5486"/><path d="M7 19c3-3 5.5-3 9 0 3.5 3 6 3 9 0" stroke="#7FC1EA" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M8 13.5c2.7-2.6 5-2.6 8 0" stroke="#BFE2F7" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85"/>'; }
+
+  // load the real course structure, then render
+  fetch('/lessons/'+COURSE+'/toc.json').then(function(r){ return r.json(); }).then(function(toc){
+    state.chapters=toc;
+    var prog=loadProgress();
+    state.done=prog.done;
+    state.skill=prog.skill;
+    state.stats=prog.stats;
+    state.typeSkill=prog.typeSkill;
+    state.current=firstUndone();                 // the lesson the student is actually on
+    state.active=(chOf(state.current)||toc[0]||{n:1}).n;
+    DayGrid.init(prog.streak, prog.lastActive);
+    Garden.init();
+    if(prog.streak>0){ var sp=document.getElementById('streakPill'); if(sp){ sp.style.display=''; var b=sp.querySelector('b'); if(b) b.textContent=prog.streak; } }
+    // Mastery ring: fill it with the average of this course's strength scores
+    (function(){
+      var pre=COURSE+':', vals=[];
+      Object.keys(state.skill||{}).forEach(function(k){ if(k.indexOf(pre)===0){ var e=state.skill[k]; if(e&&e.n) vals.push(e.s); } });
+      var ring=document.querySelector('.sig .ring'), sig=document.querySelector('.sig');
+      if(ring && vals.length){
+        var pct=Math.round(vals.reduce(function(a,b){return a+b;},0)/vals.length*100);
+        ring.style.background='conic-gradient(var(--grass) '+pct+'%, var(--line) 0)';
+        if(sig) sig.setAttribute('title','Average mastery across your '+COURSE_NAME+' skills: '+pct+'%');
+      }
+    })();
+    document.getElementById('footNote').textContent='Quantica course home · '+COURSE_NAME+' · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
+    renderAll();
+  }).catch(function(e){
+    document.getElementById('chapterCard').innerHTML='<div class="csub">Could not load the course outline. Make sure the site is served over http (not opened as a file).</div>';
+  });
+})();
+</script>
