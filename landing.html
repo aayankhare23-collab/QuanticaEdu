@@ -1127,7 +1127,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <div style="margin-top:14px;font-size:14px;color:#52685A">Checking your account&hellip;</div>
   </div>
 </div>
-<script>setTimeout(function(){var b=document.getElementById('bootGate'); if(b && !window.__authResolved) b.remove();},7000);</script>
+<script>setTimeout(function(){ if(!window.__authResolved){ window.__notSignedIn=true; var b=document.getElementById('bootGate'); if(b) b.style.zIndex=3999; if(window.showAuthModal) showAuthModal('in'); } },7000);</script>
 
 <div class="bg" aria-hidden="true">
   <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
@@ -2399,9 +2399,6 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var d=document.getElementById('authDrop');
     if(d && !e.target.closest('#userPill')) d.style.display='none';
   });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape') hideAuthModal();
-  });
 
   // ── Auth state observer ───────────────────────────────────────────────────
   auth.onAuthStateChanged(function(user){
@@ -3395,10 +3392,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape') return;
     // Escape should close whatever is open, not blow the student out of the whole course.
+    var ae=document.activeElement; if(ae && /^(INPUT|TEXTAREA)$/.test(ae.tagName)){ ae.blur(); return; }   // typing (incl. the sign-in form) -> just drop focus, never navigate away
     var dp=document.querySelector('.dp-overlay.on'); if(dp){ if(window.DiffPanel&&DiffPanel.close) DiffPanel.close(); else dp.classList.remove('on'); return; }
+    var dg=document.querySelector('.dg-overlay.on'); if(dg){ dg.classList.remove('on'); return; }   // let Escape leave the diagnostic quiz
     var auth=document.getElementById('authOv'); if(auth && getComputedStyle(auth).display!=='none'){ if(window.hideAuthModal) hideAuthModal(); return; }
     var ws=document.querySelector('.workspace'); if(ws && ws.classList.contains('tut-open')){ if(window.WS&&WS.togglePanel) WS.togglePanel('tutor'); return; }
-    var ae=document.activeElement; if(ae && /^(INPUT|TEXTAREA)$/.test(ae.tagName)){ ae.blur(); return; }   // don't exit mid-answer
     navExit();
   });
 
@@ -3594,6 +3592,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   };
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
+    if(rec.solved) return;   // already correct -> don't re-fire confetti/sound/rewards on repeat or double clicks
     var inp=document.getElementById('ai_'+k), fb=document.getElementById('af_'+k);
     var v=normAns(inp.value);
     if(v===''){ fb.className='ansfb'; fb.textContent='Type an answer first.'; return; }
@@ -6482,7 +6481,7 @@ async function sendTutorMsg() {
     document.getElementById('dgCard').innerHTML='<div class="dg-quiz"><div class="dg-prog"><span class="dg-progfill" style="width:'+(DG.idx/DG.q.length*100)+'%"></span></div>'+
       '<div class="dg-count">Question '+(DG.idx+1)+' of '+DG.q.length+'</div><div class="dg-topic">'+q.topic+'</div>'+
       '<div class="dg-q" id="dgQ">'+q.x+'</div>'+
-      '<div class="dg-answer"><input class="dg-input" id="dgInput" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\')Diagnostic.submit()"><button class="dg-next" onclick="Diagnostic.submit()">'+(DG.idx===DG.q.length-1?'Finish':'Next')+'</button></div>'+
+      '<div class="dg-answer"><input class="dg-input" id="dgInput" type="text" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key===\'Enter\'&&!event.repeat)Diagnostic.submit()"><button class="dg-next" onclick="Diagnostic.submit()">'+(DG.idx===DG.q.length-1?'Finish':'Next')+'</button></div>'+
       '<div class="dg-skipq"><a onclick="Diagnostic.submit(true)">Not sure &mdash; skip this one</a></div></div>';
     if(typeof typeset==='function') typeset(document.getElementById('dgQ'));
     var inp=document.getElementById('dgInput'); if(inp) inp.focus();

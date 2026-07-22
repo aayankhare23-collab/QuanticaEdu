@@ -359,7 +359,7 @@
     <div style="margin-top:14px;font-size:14px;color:#52685A">Loading your course&hellip;</div>
   </div>
 </div>
-<script>setTimeout(function(){var b=document.getElementById('bootGate'); if(b && !window.__authResolved) b.remove();},7000);</script>
+<script>setTimeout(function(){ if(!window.__authResolved) location.assign('/paths/landing.html'); },7000);</script>
 
 <div class="topbar">
   <a class="brand" href="/paths/home.html">
@@ -581,8 +581,8 @@
             raf=requestAnimationFrame(tick);
           }
           function move(e){ lastX=e.clientX; lastY=e.clientY; place(); }
-          function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); if(raf) cancelAnimationFrame(raf); save(); }
-          el.addEventListener('pointermove',move); el.addEventListener('pointerup',up);
+          function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); el.removeEventListener('pointercancel',up); el.removeEventListener('lostpointercapture',up); if(raf){ cancelAnimationFrame(raf); raf=0; } save(); }
+          el.addEventListener('pointermove',move); el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up); el.addEventListener('lostpointercapture',up);   // release drag on interrupted gestures so the auto-scroll rAF can't leak
           raf=requestAnimationFrame(tick);
         });
       });
@@ -819,6 +819,8 @@
   }
   function qchipCls(a){ return a>=80?'qt-hi':(a>=55?'qt-mid':'qt-lo'); }
   window.showView=function(name){
+    var so=document.getElementById('shopOv'); if(so) so.classList.remove('open');   // don't leave the shop overlay / toast orphaned when switching views
+    var gt=document.getElementById('gtoast'); if(gt) gt.classList.remove('show');
     var isP=(name==='progress');
     var main=document.querySelector('.shell main'), rail=document.getElementById('rail'), pv=document.getElementById('viewProgress'), fn=document.getElementById('footNote');
     if(main) main.style.display=isP?'none':'';   // keep the chapter sidebar visible; swap the main + right rail for the dashboard
@@ -948,7 +950,7 @@
 
   // course dropdown toggle
   var sel=document.getElementById('coursesel'), cur=document.getElementById('courseCur');
-  if(cur){ cur.addEventListener('click',function(e){ e.stopPropagation(); sel.classList.toggle('open'); }); }
+  if(cur){ cur.addEventListener('click',function(e){ e.stopPropagation(); var am=document.getElementById('acctMenu'); if(am) am.hidden=true; sel.classList.toggle('open'); }); }
   document.addEventListener('click',function(){ sel&&sel.classList.remove('open'); });
 
   // reflect the active course in the chrome (label, active menu item, avatar link, streak icon)
@@ -1040,11 +1042,11 @@
     if(!u){ location.assign('/paths/landing.html'); return; }        // the home needs an account
     var bg=document.getElementById('bootGate'); if(bg) bg.remove();
   }); }
-  else { window.__authResolved=true; var bg0=document.getElementById('bootGate'); if(bg0) bg0.remove(); }  // Firebase unavailable -> fail open, don't lock out
+  else { location.assign('/paths/landing.html'); }  // Firebase unavailable -> can't confirm an account, so fail CLOSED to the public landing (never expose the home)
   render();
 
   function openMenu(o){ if(!menu) return; if(o===undefined) o=menu.hidden; menu.hidden=!o; if(btn) btn.setAttribute('aria-expanded', String(!menu.hidden)); }
-  if(btn) btn.addEventListener('click', function(e){ e.stopPropagation(); openMenu(); });
+  if(btn) btn.addEventListener('click', function(e){ e.stopPropagation(); var cs=document.getElementById('coursesel'); if(cs) cs.classList.remove('open'); openMenu(); });
   document.addEventListener('click', function(e){ if(menu && !menu.hidden && !menu.contains(e.target) && !btn.contains(e.target)) openMenu(false); });
 
   var modal=document.getElementById('settingsModal');
@@ -1066,8 +1068,9 @@
   var reset=document.getElementById('setReset');
   if(reset) reset.addEventListener('click', function(){
     if(!confirm('Reset your progress on this device? This clears your local mastery, streak, and garden.')) return;
+    var _c=document.documentElement.getAttribute('data-course')||(new URLSearchParams(location.search)).get('course')||'prealgebra';
     try{ Object.keys(localStorage).forEach(function(k){ if(/quantica/i.test(k)) localStorage.removeItem(k); }); }catch(e){}
-    location.reload();
+    location.assign('/paths/home.html?course='+_c);   // keep them on their current course after a reset
   });
 })();
 </script>
