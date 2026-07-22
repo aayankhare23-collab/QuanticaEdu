@@ -65,7 +65,7 @@
   header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line-2)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
   .brand{display:flex;align-items:center;gap:.55em;font-family:var(--ff-display);font-weight:600;font-size:1.42rem;letter-spacing:-.03em}
-  .brand .mark{width:32px;height:32px;flex:0 0 auto;object-fit:contain}
+  .brand .mark{width:30px;height:30px;flex:0 0 auto}
   .nav-links{display:flex;align-items:center;gap:2rem}
   .nav-links a.link{font-size:.98rem;color:var(--gray);font-weight:500}
   .nav-links a.link:hover{color:var(--forest)}
@@ -77,7 +77,6 @@
   .mobile-menu{display:none;flex-direction:column;gap:.2rem;padding:12px var(--gutter) 22px;border-bottom:1px solid var(--line);background:var(--paper)}
   .mobile-menu a{padding:.75em 0;font-weight:500;border-bottom:1px solid var(--line-2)}
   .mobile-menu .btn{margin-top:12px;justify-content:center}
-  @media(min-width:901px){.mobile-menu{display:none!important}}   /* desktop guard: hide the drawer even if an inline display:flex was left on it */
 
   .hero{padding-top:clamp(44px,5vw,80px)}
   .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(40px,5vw,72px);align-items:center}
@@ -161,21 +160,12 @@
   .dial-card{background:var(--box);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 30px 60px -44px rgba(20,40,25,.22);padding:28px}
   .dial-topic{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-soft)}
   .dial-name{font-family:var(--ff-display);font-weight:600;font-size:1.35rem;margin:6px 0 30px}
-  .dial{position:relative;height:22px;margin:0 10px 12px;cursor:pointer;touch-action:none;outline:none}
-  .dial:focus-visible{box-shadow:0 0 0 3px rgba(124,179,66,.3);border-radius:14px}
+  .dial{position:relative;height:22px;margin:0 10px 12px}
   .dial-track{position:absolute;left:0;right:0;top:9px;height:4px;background:var(--paper-2);border-radius:4px}
   .dial-fill{position:absolute;left:0;top:9px;height:4px;background:var(--moss);border-radius:4px;width:22%;transition:width .8s cubic-bezier(.5,1.4,.5,1)}
-  .dnode{position:absolute;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--tint-2);transform:translateX(-50%);transition:transform .2s,background .25s,border-color .25s;z-index:2}
+  .dnode{position:absolute;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--tint-2);transform:translateX(-50%)}
   .dnode.done{background:var(--moss);border-color:var(--moss)}
-  .dnode:hover{transform:translateX(-50%) scale(1.28)}
-  .dcur{position:absolute;top:0;width:22px;height:22px;border-radius:50%;background:var(--grass);border:3px solid #fff;box-shadow:0 0 0 4px rgba(124,179,66,.2),0 6px 14px -6px rgba(20,40,25,.4);transform:translateX(-50%);left:50%;z-index:3;cursor:grab;transition:left .35s cubic-bezier(.5,1.4,.5,1)}
-  .dial:active .dcur{cursor:grabbing}
-  .dial.intro .dnode{animation:dpulse .85s ease-out both}
-  .dial.intro .dnode[data-i="1"]{animation-delay:.07s}
-  .dial.intro .dnode[data-i="2"]{animation-delay:.14s}
-  .dial.intro .dnode[data-i="3"]{animation-delay:.21s}
-  .dial.intro .dnode[data-i="4"]{animation-delay:.28s}
-  @keyframes dpulse{0%,100%{transform:translateX(-50%) scale(1)}45%{transform:translateX(-50%) scale(1.7)}}
+  .dcur{position:absolute;top:0;width:22px;height:22px;border-radius:50%;background:var(--grass);border:3px solid #fff;box-shadow:0 0 0 4px rgba(124,179,66,.2),0 6px 14px -6px rgba(20,40,25,.4);transform:translateX(-50%);left:22%;transition:left .8s cubic-bezier(.5,1.4,.5,1)}
   .dial-labels{display:flex;justify-content:space-between;font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-soft);margin-top:14px}
   .dial-note{margin-top:20px;padding-top:18px;border-top:1px solid var(--line-2);font-size:.98rem;color:var(--gray)}
   .dial-note b{color:var(--forest);font-weight:600}
@@ -206,7 +196,7 @@
   .mrow.shaky .bar i{background:var(--honey)}
 
   /* curriculum catalog — the AoPS-style breadth signal */
-  .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:40px auto 0;max-width:760px}
+  .courses{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
   .course{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 18px;display:flex;flex-direction:column;gap:6px;min-height:118px}
   .course.now{border-color:var(--tint-2);box-shadow:0 14px 30px -22px rgba(20,40,25,.35)}
   .course.soon{opacity:.66}
@@ -214,12 +204,16 @@
   .c-meta{font-size:.9rem;color:var(--gray)}
   .c-tag{margin-top:auto;font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-soft)}
   .c-tag.free{color:var(--accent);font-weight:700}
-  @media(max-width:900px){.courses{grid-template-columns:repeat(2,1fr);max-width:520px}}
+  @media(max-width:900px){.courses{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:540px){.courses{grid-template-columns:1fr}}
   .final{text-align:center}
   .final h2{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:20px}
   .final p{font-size:1.16rem;color:var(--gray);max-width:46ch;margin:0 auto 30px}
   .final .btn{margin:0 6px 10px}
+
+  .contact{border-top:1px solid var(--line-2)}
+  .contact .sec-head{max-width:none;text-align:center;margin:0 auto}
+  .contact-shell{margin-top:34px;min-height:180px;border:1.5px dashed var(--line);border-radius:var(--radius);display:grid;place-items:center;color:var(--gray-soft);font-family:var(--ff-mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
 
   footer{border-top:1px solid var(--line-2);padding:44px 0 52px;color:var(--gray);font-size:.9rem}
   .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
@@ -301,7 +295,7 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" aria-label="Quantica home">
-      <img class="mark" src="assets/spot/spot-hero.png" alt="Sprout">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#2A4A34"/><circle cx="21.5" cy="11" r="3.6" fill="#7CB342"/></svg>
       Quantica
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -311,7 +305,6 @@
       <a class="link" href="#adapt">Adapts to you</a>
       <a class="link" href="#curriculum">Courses</a>
       <a class="link" href="#progress">Progress</a>
-      <a class="link" href="#blog">Blog</a>
     </nav>
     <div class="nav-cta">
       <a class="signin" href="/landing.html?signin=1">Sign in</a>
@@ -320,7 +313,7 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#how">How it works</a><a href="#tutor">The tutor</a><a href="#click">Why it clicks</a><a href="#adapt">Adapts to you</a><a href="#curriculum">Courses</a><a href="#progress">Progress</a><a href="#blog">Blog</a><a href="/landing.html?signin=1">Sign in</a>
+    <a href="#how">How it works</a><a href="#tutor">The tutor</a><a href="#click">Why it clicks</a><a href="#adapt">Adapts to you</a><a href="#curriculum">Courses</a><a href="#progress">Progress</a><a href="#trust">Why this works</a><a href="/landing.html?signin=1">Sign in</a>
     <a class="btn btn-primary" href="/landing.html?signin=1">Start free</a>
   </div>
 </header>
@@ -375,7 +368,7 @@
     <div class="sec-head">
       <span class="eyebrow">How it works</span>
       <h2>A loop that builds real understanding.</h2>
-      <p>Every lesson is a problem to crack, not a worksheet to grind. The idea shows up as you work toward it, so it&rsquo;s yours.</p>
+      <p>Every lesson is a problem to crack, not a worksheet to grind. The idea shows up as you work toward it, so it belongs to you instead of being something you were told to trust.</p>
     </div>
     <div class="loop">
       <div class="step-card"><span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><span class="n">01 · Discover</span><h3>Meet a real problem</h3><p>You start on a real problem, and the idea reveals itself as you work.</p></div>
@@ -403,7 +396,7 @@
     <div class="spot-copy">
       <span class="eyebrow">Meet your companion</span>
       <h2>This is <span class="serif-i">Sprout.</span></h2>
-      <p>A calm, curious guide through every Prealgebra lesson. Sprout cheers your wins and grows right alongside you, one idea at a time.</p>
+      <p>A calm, curious guide through every Prealgebra lesson. Sprout cheers your wins, asks the right question when you're stuck, and grows right alongside you, one idea at a time.</p>
       <div class="spot-traits">
         <span class="trait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-8 6-14 16-14 0 10-6 16-16 14z"/><path d="M4 20c4-6 8-8 12-9"/></svg>Curious</span>
         <span class="trait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 5c-2.5 4.5-9.5 9-9.5 9z"/></svg>Encouraging</span>
@@ -423,13 +416,13 @@
     <div class="sec-head">
       <span class="eyebrow">Your tutor</span>
       <h2>Sprout asks the right question.<br><span class="never">Never the answer.</span></h2>
-      <p>When a problem stops you cold, Sprout breaks it down one question at a time, starting from what you already know. Hints come in layers, and if you&rsquo;re truly stuck, the full solution is one tap away.</p>
+      <p>When a problem stops you cold, Sprout helps you break it down one question at a time, starting from what you already know. Hints arrive in layers, and the answer stays yours to find. If you get truly stuck, the full worked solution is always one tap away.</p>
     </div>
     <div class="milo-block">
         <div class="wmb-milo-chat"><div class="milo-card">
         <div class="milo-win">
           <div class="top">
-            <span class="av"><img src="assets/spot/spot-hero.png" alt="Sprout"></span>
+            <span class="av"><img src="assets/spot/spot-happy.png" alt="Sprout"></span>
             <div class="who"><div class="nm">Sprout</div><div class="st">your Prealgebra guide</div></div>
           </div>
           <div class="body" id="miloBody"></div>
@@ -656,12 +649,15 @@
     <div class="sec-head" style="text-align:center;max-width:none;margin:0 auto">
       <span class="eyebrow" style="justify-content:center">Why this works</span>
       <h2 style="margin:14px auto 0;max-width:24ch">Real learning, without the tricks.</h2>
-      <p style="margin:16px auto 0;max-width:56ch">Built to earn a learner&rsquo;s time, with the honest answers up front.</p>
+      <p style="margin:16px auto 0;max-width:56ch">Built to be trusted with a learner&rsquo;s time. Here are the honest answers up front, whether you are the one studying or the one watching over their shoulder.</p>
     </div>
     <div class="trust-grid">
-      <div class="t"><div class="th">You solve first, then name the idea</div><p>Finding the pattern yourself sticks far better than copying a formula someone handed you.</p></div>
-      <div class="t"><div class="th">The pull is the click</div><p>What brings you back isn&rsquo;t a streak guilting you into it &mdash; it&rsquo;s the moment a problem you couldn&rsquo;t start suddenly makes sense, and you reach for the next one. That feeling is Quantica.</p></div>
-      <div class="t"><div class="th">Private, and honest about money</div><p>Your work stays private, we don&rsquo;t sell data, and we&rsquo;ll never charge without you choosing a plan. Younger kids? Set it up together; details are in our <a href="/privacy.html" style="color:var(--accent);font-weight:600">privacy policy</a>.</p></div>
+      <div class="t"><div class="th">You solve first, then name the idea</div><p>Discovering the pattern yourself builds far stronger memory than copying a formula someone handed you.</p></div>
+      <div class="t"><div class="th">Just-hard-enough problems</div><p>The adaptive engine keeps you in the zone where real effort makes it click, with none of the boredom or panic.</p></div>
+      <div class="t"><div class="th">It comes back on a schedule</div><p>Earlier ideas resurface as you go, spaced out over time. It is the most proven way to make learning stick.</p></div>
+      <div class="t"><div class="th">Sprout guides, never just answers</div><p>The AI tutor asks questions, stays on the math, and won&rsquo;t wander off-topic, so the idea stays yours instead of turning into a homework shortcut.</p></div>
+      <div class="t"><div class="th">Built to teach, not to hook</div><p>No streak-guilt, no leagues, no manipulative pressure. Rewards are cosmetic-only, and progress is a gentle &ldquo;days you showed up&rdquo; count that you cannot lose.</p></div>
+      <div class="t"><div class="th">Private, and honest about money</div><p>Work stays private, we don&rsquo;t sell data, and we&rsquo;ll never charge without you choosing a plan first. Younger kids? Set it up together. The details are in our <a href="/privacy.html" style="color:var(--accent);font-weight:600">privacy policy</a>.</p></div>
     </div>
   </div>
 </section>
@@ -671,23 +667,23 @@
     <div class="sec-head">
       <span class="eyebrow">Adapts to you</span>
       <h2>Every lesson meets you where you are.</h2>
-      <p>A two-minute check places you, then each lesson quietly adjusts, adding support where you&rsquo;re building and harder problems where you&rsquo;re ready. Nudge it any time.</p>
+      <p>A two-minute check places you, then each lesson quietly adjusts, adding support where you are building and harder problems where you are ready. You will not sit bored or feel lost, and you can nudge it any time.</p>
     </div>
     <div class="dial-card" id="dialCard" aria-label="Difficulty tuned to the student">
       <div class="dial-topic">Your level · Fractions</div>
       <div class="dial-name">Multiplying &amp; dividing</div>
-      <div class="dial" id="dialWidget" role="slider" aria-label="Difficulty level, gentle to challenge" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" tabindex="0">
+      <div class="dial" aria-hidden="true">
         <span class="dial-track"></span>
         <span class="dial-fill" id="dialFill"></span>
-        <span class="dnode" data-i="0" style="left:0%"></span>
-        <span class="dnode" data-i="1" style="left:25%"></span>
-        <span class="dnode" data-i="2" style="left:50%"></span>
-        <span class="dnode" data-i="3" style="left:75%"></span>
-        <span class="dnode" data-i="4" style="left:100%"></span>
+        <span class="dnode done" style="left:0%"></span>
+        <span class="dnode" style="left:25%"></span>
+        <span class="dnode" style="left:50%"></span>
+        <span class="dnode" style="left:75%"></span>
+        <span class="dnode" style="left:100%"></span>
         <span class="dcur" id="dialCur"></span>
       </div>
       <div class="dial-labels"><span>Gentle</span><span>Challenge</span></div>
-      <div class="dial-note" id="dialNote"></div>
+      <div class="dial-note">Tuned to <b>Challenge</b>: fewer hints and tougher problems, because you are strong here.<span class="cog">⚙ Change it whenever you like.</span></div>
     </div>
   </div>
 </section>
@@ -697,7 +693,7 @@
     <div class="sec-head">
       <span class="eyebrow">Progress you can see</span>
       <h2>Mastery, not hours logged.</h2>
-      <p>Not streaks or hours logged. Real evidence of where you&rsquo;re strong and where you&rsquo;re still building.</p>
+      <p>More than streaks or time spent. Real evidence of where you are strong, where you are still building, and how much better you are getting at working through problems on your own.</p>
     </div>
     <div class="mastery" aria-label="Example progress by topic">
       <div class="m-inner">
@@ -718,7 +714,7 @@
         <div>
           <span class="eyebrow">Your path</span>
           <h2>A trail through the whole course.</h2>
-          <p>Every lesson is one step on a winding trail, so you always know where you are and what&rsquo;s next. Master ideas and your rainforest fills in around you.</p>
+          <p>Every lesson is one step on a winding trail, so you always know where you are and what comes next. As you master ideas, your rainforest fills in around you. Progress you can see, not a score you chase.</p>
           <div class="habichip"><svg width="16" height="14" viewBox="0 0 80 56" aria-hidden="true"><path d="M8 40c6-2 10-8 18-8 10 0 12 6 22 6 8 0 14-6 22-10-2 8-10 14-20 15-6 12-18 12-26 8-8-4-14-8-16-11z" fill="#1A9E4B"/></svg> Guided by Sprout · Prealgebra</div>
         </div>
         <div class="trail" aria-hidden="true">
@@ -739,43 +735,16 @@
     <div class="sec-head" style="max-width:none;text-align:center;margin:0 auto">
       <span class="eyebrow" style="justify-content:center">The curriculum</span>
       <h2 style="margin:14px 0 14px">From Prealgebra to Calculus.</h2>
-      <p style="margin:0 auto;max-width:54ch">The same ground the strongest math students cover, built so far more people can actually climb it. Free while we&rsquo;re in early access: Prealgebra is complete, Algebra I is rolling out now.</p>
+      <p style="margin:0 auto;max-width:54ch">The same ground the strongest math students cover, built so a much wider range can actually climb it. Everything is free right now, for a limited time, while we are in early access: Prealgebra is complete, and Algebra I is rolling out now.</p>
     </div>
     <div class="courses">
-      <div class="course now"><span class="c-name">Prealgebra</span><span class="c-meta">12 chapters &middot; 70 lessons &middot; 24 practice &amp; challenge sets</span><span class="c-tag free">Free now</span></div>
+      <div class="course now"><span class="c-name">Prealgebra</span><span class="c-meta">12 chapters &middot; 70 lessons</span><span class="c-tag free">Free now</span></div>
       <div class="course now"><span class="c-name">Algebra I</span><span class="c-meta">Early lessons live</span><span class="c-tag free">Free now</span></div>
       <div class="course soon"><span class="c-name">Geometry</span><span class="c-tag">Coming soon</span></div>
       <div class="course soon"><span class="c-name">Number Theory</span><span class="c-tag">Coming soon</span></div>
       <div class="course soon"><span class="c-name">Counting &amp; Probability</span><span class="c-tag">Coming soon</span></div>
       <div class="course soon"><span class="c-name">Calculus</span><span class="c-tag">Coming soon</span></div>
     </div>
-  </div>
-</section>
-
-<style>
-  #blog{padding:clamp(64px,9vw,110px) 0}
-  #blog .blog-card{display:block;max-width:640px;margin:34px auto 0;background:linear-gradient(180deg,#fff,#fbfef8);border:1px solid var(--line);border-radius:22px;padding:26px 30px;text-decoration:none;color:inherit;box-shadow:0 22px 46px -32px rgba(20,60,40,.5);transition:transform .18s ease,box-shadow .18s ease}
-  #blog .blog-card:hover{transform:translateY(-3px);box-shadow:0 30px 58px -30px rgba(20,60,40,.55)}
-  #blog .blog-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:13px}
-  #blog .blog-meta .dot{color:var(--gray);opacity:.45}
-  #blog .blog-card h3{font-family:var(--ff-display);font-weight:600;font-size:1.5rem;line-height:1.22;margin:0 0 11px;color:var(--ink);letter-spacing:-.01em}
-  #blog .blog-card p{margin:0 0 17px;color:var(--gray);line-height:1.62;font-size:1.02rem}
-  #blog .blog-more{font-weight:700;color:var(--accent)}
-  @media(max-width:560px){ #blog .blog-card{padding:22px 20px} #blog .blog-card h3{font-size:1.28rem} }
-</style>
-<section id="blog">
-  <div class="wrap">
-    <div class="sec-head" style="text-align:center;max-width:none;margin:0 auto">
-      <span class="eyebrow" style="justify-content:center">From the blog</span>
-      <h2 style="margin:14px auto 0;max-width:20ch">Notes on learning math.</h2>
-      <p style="margin:16px auto 0;max-width:52ch">Occasional writing on how real understanding takes root &mdash; for the students doing the work, and the people cheering them on.</p>
-    </div>
-    <a class="blog-card" href="/blog/watching-your-child-struggle-with-math.html">
-      <div class="blog-meta"><span>Learning</span><span class="dot">&bull;</span><span>Jul 4, 2026</span><span class="dot">&bull;</span><span>6 min read</span></div>
-      <h3>Why Watching Your Child Struggle with Math Is Actually a Good Thing</h3>
-      <p>Why letting your child wrestle with a hard problem, instead of rescuing them, builds the persistence and growth mindset that lasts well beyond the worksheet.</p>
-      <span class="blog-more">Read the essay &rarr;</span>
-    </a>
   </div>
 </section>
 
@@ -786,10 +755,11 @@
       <h2 style="margin-top:14px">Good to know.</h2>
     </div>
     <div class="faq">
-      <details><summary>What makes Quantica different?</summary><p>Most apps show you the method, then have you drill it. Quantica has you find the idea yourself, so it&rsquo;s actually yours.</p></details>
-      <details><summary>Is Sprout an AI? What if I get really stuck?</summary><p>Yes. Sprout is an AI tutor that guides with questions and stays on the math. Hints come in layers, and if you&rsquo;re truly stuck, it walks the full solution. No one gets stranded.</p></details>
-      <details><summary>Do I need to be good at math already?</summary><p>No. Every course starts from the ground up, and Sprout is there whenever a problem stops you.</p></details>
-      <details><summary>Is it free? Will I have to pay later?</summary><p>Free while we&rsquo;re in early access, no card. At launch, one $30/month plan covers every course, and Prealgebra stays free. We&rsquo;ll never charge without you choosing it.</p></details>
+      <details><summary>What makes Quantica different?</summary><p>Most apps show you the method, then have you drill it. Quantica never just hands you the answer. Sprout asks questions until you find it yourself, so the idea is actually yours.</p></details>
+      <details><summary>Is Sprout an AI? What if I get really stuck?</summary><p>Yes. Sprout is an AI tutor, built to guide with questions and kept on the math at hand. Hints arrive in layers, and if you get truly stuck, Sprout walks through the full worked solution, so no one ends up stranded.</p></details>
+      <details><summary>Do I need to be good at math already?</summary><p>No. Every course is built from the ground up, and Sprout is there whenever a problem stops you.</p></details>
+      <details><summary>Is it really free to start?</summary><p>Yes. It is free for a limited time while we are in early access: the full Prealgebra course, 12 chapters and 70 lessons, no card required.</p></details>
+      <details><summary>Do I need to buy each course?</summary><p>No. It is all free right now while we are in early access. When we launch, one simple plan will cover every course at $30 a month, and Prealgebra will always stay free. We will never charge without you choosing it first.</p></details>
     </div>
   </div>
 </section>
@@ -809,13 +779,12 @@
 <footer>
   <div class="wrap foot-in">
     <div class="brand" style="font-size:1.15rem">
-      <img class="mark" style="width:26px;height:26px;object-fit:contain" src="assets/spot/spot-hero.png" alt="Sprout">
+      <svg class="mark" style="width:24px;height:24px" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#2A4A34"/><circle cx="21.5" cy="11" r="3.6" fill="#7CB342"/></svg>
       Quantica
     </div>
     <div class="foot-links"><a href="#how">How it works</a><a href="#tutor">The tutor</a><a href="#curriculum">Courses</a><a href="#faq">Good to know</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
   </div>
-  <div class="wrap" style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line-2);font-size:.86rem;color:var(--gray);max-width:74ch">Quantica is built to make math genuinely click &mdash; to leave you understanding it, not just getting through it. Sprout is an AI tutor, kept focused and on-topic, and your work stays private.</div>
-  <div class="wrap" style="margin-top:14px;font-size:.86rem;color:var(--gray);max-width:74ch">Questions? Reach us anytime at <a href="tel:+13237972346" style="color:var(--accent);font-weight:600">(323)&nbsp;797-2346</a>.</div>
+  <div class="wrap" style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line-2);font-size:.86rem;color:var(--gray);max-width:74ch">Quantica is built to actually teach math, not to hook you. Sprout is an AI tutor, kept focused and on-topic, and your work stays private. Questions?<a href="mailto:support@quanticaedu.com" style="color:var(--accent);font-weight:600">Reach us anytime</a>.</div>
 </footer>
 
 </div>
@@ -824,7 +793,6 @@
   var mb=document.getElementById('menuBtn'), mm=document.getElementById('mobileMenu');
   mb.addEventListener('click',function(){var open=mm.style.display==='flex';mm.style.display=open?'none':'flex';mb.setAttribute('aria-expanded',String(!open));});
   mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.style.display='none';mb.setAttribute('aria-expanded','false');});});
-  window.addEventListener('resize',function(){ if(window.innerWidth>900 && mm.style.display==='flex'){ mm.style.display=''; mb.setAttribute('aria-expanded','false'); } });   // don't let the mobile drawer linger after widening to desktop
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var demo=document.getElementById('demo'), demoEq=document.getElementById('demoEq'), demoIns=document.getElementById('demoIns');
@@ -858,43 +826,15 @@
     try{ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){showTokens();io.disconnect();}});},{threshold:.4}); io.observe(demo); }catch(e){ showTokens(); }
   }
 
-  (function(){
-    var widget=document.getElementById('dialWidget'), cur=document.getElementById('dialCur'), fill=document.getElementById('dialFill'), note=document.getElementById('dialNote'), card=document.getElementById('dialCard');
-    if(!widget||!cur||!fill||!note) return;
-    var nodes=[].slice.call(widget.querySelectorAll('.dnode'));
-    var LV=[
-      {n:'Gentle', d:'A calm warm-up &mdash; worked steps and hints right there while an idea is brand new.'},
-      {n:'Easing in', d:'A gentle ramp: support stays close while the problems start to stand on their own.'},
-      {n:'Steady', d:'Balanced for where you are &mdash; enough stretch to grow, enough backup to stay unstuck.'},
-      {n:'Stretch', d:'Fewer hints and tougher problems that push you just past comfortable.'},
-      {n:'Challenge', d:'The deep end &mdash; the hardest problems, barely any hints. Diving in.'}
-    ];
-    var sel=2, touched=false, COG='<span class="cog">⚙ Drag or tap the dots to feel each level.</span>';
-    function apply(i, viaUser){
-      sel=Math.max(0,Math.min(4,i|0));
-      var pct=(sel*25)+'%'; cur.style.left=pct; fill.style.width=pct;
-      nodes.forEach(function(n,k){ n.classList.toggle('done', k<=sel); });
-      if(viaUser) touched=true;
-      note.innerHTML = touched ? ('Tuned to <b>'+LV[sel].n+'</b>: '+LV[sel].d+COG)
-        : 'Tap or drag the dots to feel each level &mdash; a gentle warm-up on the left, diving into the deep end on the right.';
-      widget.setAttribute('aria-valuenow', sel); widget.setAttribute('aria-valuetext', LV[sel].n);
-    }
-    function fromX(x){ var r=widget.getBoundingClientRect(); return Math.round(Math.max(0,Math.min(1,(x-r.left)/r.width))*4); }
-    nodes.forEach(function(n){ n.addEventListener('click', function(e){ e.stopPropagation(); apply(+n.getAttribute('data-i'), true); }); });
-    var drag=false;
-    widget.addEventListener('pointerdown', function(e){ drag=true; try{widget.setPointerCapture(e.pointerId);}catch(_){}; apply(fromX(e.clientX), true); });
-    widget.addEventListener('pointermove', function(e){ if(drag) apply(fromX(e.clientX), true); });
-    widget.addEventListener('pointerup', function(){ drag=false; });
-    widget.addEventListener('pointercancel', function(){ drag=false; });
-    widget.addEventListener('lostpointercapture', function(){ drag=false; });
-    widget.addEventListener('keydown', function(e){ var k=e.key; if(k==='ArrowLeft'||k==='ArrowDown'){ e.preventDefault(); apply(sel-1,true); } else if(k==='ArrowRight'||k==='ArrowUp'){ e.preventDefault(); apply(sel+1,true); } });
-    apply(reduce?3:2);
-    if(!reduce){
-      var shown=false, reveal=function(){ if(shown) return; shown=true; widget.classList.add('intro'); setTimeout(function(){ widget.classList.remove('intro'); }, 1300); };
-      var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ setTimeout(reveal,250); io2.disconnect(); }});},{threshold:.25}); if(card) io2.observe(card);
-      setTimeout(reveal, 2600);
-    }
-  })();
+  var dialCard=document.getElementById('dialCard'), dialCur=document.getElementById('dialCur'), dialFill=document.getElementById('dialFill');
+  function setDial(v){ dialCur.style.left=v; dialFill.style.width=v; }
+  setDial('22%');
+  if(!reduce){
+    var dialShown=false, showDial=function(){ if(dialShown) return; dialShown=true; setDial('78%'); };
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(showDial,450);io2.disconnect();}});},{threshold:.25}); io2.observe(dialCard);
+    setTimeout(showDial, 2600);   // fallback so the needle never stays parked at 'Gentle' while the caption says 'Challenge'
+  }
+  else setDial('78%');
 </script>
 <script>
 (function(){
@@ -929,14 +869,13 @@
       setTimeout(function(el){ return function(){ el.remove(); }; }(p),2100);
     }
   }
-  var __chatFirst=true, __chatVisible=false, __chatPending=false, __chatStarted=false;
   function run(){
     body.innerHTML='';
     var typing=document.createElement('div'); typing.className='typing'; typing.innerHTML='<i></i><i></i><i></i>';
     body.appendChild(typing);
     var i=0;
     function step(){
-      if(i>=script.length){ __chatFirst=false; if(__chatVisible && !document.hidden){ setTimeout(run,4400); } else { __chatPending=true; } return; }
+      if(i>=script.length){ setTimeout(run,4400); return; }
       var m=script[i];
       var show=function(){
         typing.classList.remove('show');
@@ -944,7 +883,7 @@
         var b=document.createElement('div'); b.className='mb '+m.who+(m.cls||''); b.innerHTML=m.t;
         body.insertBefore(b,typing);
         requestAnimationFrame(function(){ b.classList.add('show'); });
-        if(m.conf && __chatFirst) setTimeout(confetti,320);
+        if(m.conf) setTimeout(confetti,320);
         i++; setTimeout(step, m.who==='me'?620:(m.who==='xp'?1100:820));
       };
       if(m.who==='bot' && !rm){ typing.classList.add('show'); if(av) av.classList.add('talk'); setTimeout(show,700); }
@@ -954,17 +893,7 @@
     step();
   }
   if(rm){ body.innerHTML=script.map(function(m){return '<div class="mb '+m.who+(m.cls||'')+' show">'+m.t+'</div>';}).join(''); }
-  else {
-    // only run the chat demo while the tutor section is on screen (and pause while the tab is hidden), so it isn't churning timers/confetti offscreen forever
-    var sec=document.getElementById('tutor')||body;
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){ es.forEach(function(e){
-        __chatVisible=e.isIntersecting;
-        if(e.isIntersecting){ if(!__chatStarted){ __chatStarted=true; run(); } else if(__chatPending && !document.hidden){ __chatPending=false; run(); } }
-      }); },{threshold:.2}).observe(sec);
-    } else { __chatVisible=true; __chatStarted=true; run(); }
-    document.addEventListener('visibilitychange',function(){ if(!document.hidden && __chatVisible && __chatPending){ __chatPending=false; run(); } });
-  }
+  else { run(); }
 })();
 </script>
 </body>
