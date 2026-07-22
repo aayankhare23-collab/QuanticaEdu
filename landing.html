@@ -322,6 +322,7 @@
   .cb-course:not(:empty)::before{content:"";width:3.5px;height:3.5px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
   @media(max-width:600px){.cb-course{font-size:12px;margin-left:6px}}
   .cb-logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:14px}
+  .cb-logo .cb-spr{flex:none;display:block}
   .cb-back{display:none;align-items:center;gap:4px;font-family:'Inter';font-size:13.5px;font-weight:600;color:var(--mid);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer}
   .cb-back:hover{background:var(--softer);border-color:var(--sky)}
   .cb-exit{font-family:'Inter';font-size:13px;font-weight:600;color:var(--slate);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer}
@@ -1118,6 +1119,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 </style>
 </head>
 <body>
+
+<!-- Sign-in gate: covers the app until we know who you are, so the course never flashes before auth resolves. -->
+<div id="bootGate" style="position:fixed;inset:0;z-index:9998;background:#FCFEFB;display:grid;place-items:center;font-family:system-ui,sans-serif">
+  <div style="text-align:center">
+    <svg viewBox="0 0 32 32" width="46" height="46" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    <div style="margin-top:14px;font-size:14px;color:#52685A">Checking your account&hellip;</div>
+  </div>
+</div>
+<script>setTimeout(function(){var b=document.getElementById('bootGate'); if(b && !window.__authResolved) b.remove();},7000);</script>
 
 <div class="bg" aria-hidden="true">
   <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
@@ -2055,7 +2065,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <header class="coursebar">
       <div class="cb-left">
         <button class="cb-back" id="mback" onclick="location.assign('/paths/home.html')" aria-label="Back to course home">←<span> Home</span></button>
-        <span class="cb-logo"><span class="mark"></span>Quantica<span class="cb-course" id="cbCourse"></span></span>
+        <span class="cb-logo"><svg class="cb-spr" viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>Quantica<span class="cb-course" id="cbCourse"></span></span>
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
       <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
@@ -2201,6 +2211,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     setTimeout(function(){ var e=document.getElementById('authEmail'); if(e) e.focus(); },80);
   };
   window.hideAuthModal=function(){
+    if(window.__notSignedIn){ location.assign('/paths/landing.html'); return; }   // no account -> can't dismiss into the course
     var o=document.getElementById('authOv'); if(o) o.style.display='none';
     document.getElementById('authErr').textContent='';
   };
@@ -2277,7 +2288,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     // fresh instead of inheriting (and cloud-merging) someone else's progress.
     auth.signOut().then(function(){
       try{ localStorage.removeItem('quantica.profile.v1'); localStorage.removeItem('quantica_adapt_v1'); localStorage.removeItem('qa_signin_prompt_v2'); }catch(e){}
-      location.reload();
+      location.assign('/paths/landing.html');
     });
   };
 
@@ -2397,8 +2408,20 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     updateAuthUI(user);
     var rv=document.getElementById('rewardsView');
     if(rv && rv.style.display!=='none' && window.Rewards && Rewards.openPanel) Rewards.openPanel();
-    if(!user){ window._access=null; updateStartCTAs(); return; }
+    window.__authResolved=true;
+    if(!user){
+      window._access=null; updateStartCTAs(); window.__notSignedIn=true;
+      // Hard gate: the course needs an account (to save diagnostic + progress). Keep the opaque boot screen hiding the app,
+      // but drop it just below the sign-in modal (z 4000) so the modal shows on top; dismissing the modal returns to the landing.
+      var _bg=document.getElementById('bootGate'); if(_bg) _bg.style.zIndex=3999;
+      showAuthModal('in');
+      return;
+    }
+    window.__notSignedIn=false;
+    var _bg=document.getElementById('bootGate'); if(_bg) _bg.remove();
     hideAuthModal();
+    // Signed in via "Start free" / "Sign in" (no specific lesson) -> land on the home roadmap.
+    if(/[?&]signin=1/.test(location.search) && !/[?&](lesson|pset|practice)=/.test(location.search)){ location.assign('/paths/home.html'); return; }
     // Load rewards profile, and create a minimal profile record the first time we see this
     // account in Firestore. The users/{uid} doc is otherwise only written lazily on the first
     // progress sync, so accounts that never make progress never get a row. This backfills them.
@@ -3366,8 +3389,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(window.renderToc) renderToc(only);
   }
   function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open',{course:CURRENT_COURSE}); }
-  function closeLesson(){ window.location.assign('/paths/home.html'); }  /* leave the course to OUR roadmap home, never the old marketing region */
-  window.navExit=function(){ window.location.assign('/paths/home.html'); };
+  function _homeUrl(){ var c=(typeof courseSlug==='function'?courseSlug():(typeof CURRENT_COURSE!=='undefined'?CURRENT_COURSE:'prealgebra')); return '/paths/home.html?course='+(c||'prealgebra'); }
+  function closeLesson(){ window.location.assign(_homeUrl()); }  /* leave the course to OUR roadmap home, for THIS course (never default to another) */
+  window.navExit=function(){ window.location.assign(_homeUrl()); };
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape') return;
     // Escape should close whatever is open, not blow the student out of the whole course.
@@ -4459,7 +4483,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     solutionXP: 0.15,             // small XP share for a revealed solution
     ungradedReveal: 0.45,         // effort XP for ungraded "thinking" problems
     minAttempt: 1, solDelayMs: 5000,
-    gems: { lesson:5, chapter:25, challengeSet:15, legendary:25, streak:3, levelUp:10 }
+    gems: { lesson:6, chapter:30, challengeSet:20, legendary:25, streak:3, levelUp:10 }
   };
 
   var SKEY='quantica.profile.v1';

@@ -352,6 +352,15 @@
   .note{max-width:1180px;margin:0 auto;padding:0 22px 34px;font-size:.78rem;color:var(--gray-soft)}
 </style>
 
+<!-- Sign-in gate: the home needs an account, so cover it until auth resolves (fail-open after 7s so a Firebase hiccup can't lock you out). -->
+<div id="bootGate" style="position:fixed;inset:0;z-index:9998;background:#FCFEFB;display:grid;place-items:center;font-family:system-ui,sans-serif">
+  <div style="text-align:center">
+    <svg viewBox="0 0 32 32" width="46" height="46" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
+    <div style="margin-top:14px;font-size:14px;color:#52685A">Loading your course&hellip;</div>
+  </div>
+</div>
+<script>setTimeout(function(){var b=document.getElementById('bootGate'); if(b && !window.__authResolved) b.remove();},7000);</script>
+
 <div class="topbar">
   <a class="brand" href="/paths/home.html">
     <svg id="brandMark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>
@@ -538,7 +547,7 @@
       g.placed[key]=(g.placed[key]||[]).concat(CAT.welcome.map(function(w){
         return {id:'g'+(++g.seq),item:w[0],x:w[1],y:w[2]};
       }));
-      grantStarterSeeds(12);   // ...plus a few Seeds so they can immediately place their own picks
+      grantStarterSeeds(25);   // ...plus a starter pile of Seeds so they can decorate the first chapter right away
       save();
     }
     function itemsHTML(ch){
@@ -974,7 +983,8 @@
         if(sig) sig.setAttribute('title','Average mastery across your '+COURSE_NAME+' skills: '+pct+'%');
       }
     })();
-    document.getElementById('footNote').textContent='Quantica course home · '+COURSE_NAME+' · '+toc.length+' chapters, '+toc.reduce(function(s,c){return s+c.lessons.length;},0)+' lessons.';
+    var _les=toc.reduce(function(s,c){return s+c.lessons.length;},0), _sets=toc.length*2;   // each chapter adds a practice set + a challenge set
+    document.getElementById('footNote').textContent='Quantica course home · '+COURSE_NAME+' · '+toc.length+' chapters, '+_les+' lessons + '+_sets+' practice & challenge sets.';
     renderAll();
   }).catch(function(e){
     document.getElementById('chapterCard').innerHTML='<div class="csub">Could not load the course outline. Make sure the site is served over http (not opened as a file).</div>';
@@ -1025,7 +1035,12 @@
     if(setEmail) setEmail.textContent = on ? user.email : 'Browsing as guest';
     if(setAuthBtn) setAuthBtn.textContent = on ? 'Sign out' : 'Sign in to save your progress';
   }
-  if(auth) auth.onAuthStateChanged(function(u){ user=u||null; render(); });
+  if(auth){ auth.onAuthStateChanged(function(u){ user=u||null; render();
+    window.__authResolved=true;
+    if(!u){ location.assign('/paths/landing.html'); return; }        // the home needs an account
+    var bg=document.getElementById('bootGate'); if(bg) bg.remove();
+  }); }
+  else { window.__authResolved=true; var bg0=document.getElementById('bootGate'); if(bg0) bg0.remove(); }  // Firebase unavailable -> fail open, don't lock out
   render();
 
   function openMenu(o){ if(!menu) return; if(o===undefined) o=menu.hidden; menu.hidden=!o; if(btn) btn.setAttribute('aria-expanded', String(!menu.hidden)); }
