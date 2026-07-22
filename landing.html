@@ -2411,7 +2411,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       // Hard gate: the course needs an account (to save diagnostic + progress). Keep the opaque boot screen hiding the app,
       // but drop it just below the sign-in modal (z 4000) so the modal shows on top; dismissing the modal returns to the landing.
       var _bg=document.getElementById('bootGate'); if(_bg) _bg.style.zIndex=3999;
-      showAuthModal('in');
+      // The auth callback can fire before the parser reaches the auth-modal markup further down
+      // this file (#authOv etc.) — showAuthModal would silently no-op and strand the boot gate
+      // forever. Defer to DOMContentLoaded when that's the case.
+      if(document.getElementById('authOv')) showAuthModal('in');
+      else document.addEventListener('DOMContentLoaded',function(){ showAuthModal('in'); });
       return;
     }
     window.__notSignedIn=false;
