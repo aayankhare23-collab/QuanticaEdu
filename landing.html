@@ -563,6 +563,8 @@
   .ws-fab-notes{background:linear-gradient(135deg,var(--moss),var(--grass));color:#fff;position:fixed;top:288px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .ws-fab-notes svg{width:23px;height:23px}
   .workspace.tut-open .ws-fab-notes{top:170px;left:calc(100vw - 72px)}
+  /* tutor + key-ideas open: don't land the notes fab on the right-hand key-ideas panel; dock it bottom, beside the tutor */
+  .workspace.tut-open.nb-open:not(.notes-open) .ws-fab-notes{top:auto;bottom:20px;left:calc(var(--tut-w) + 20px)}
   .workspace.notes-open .ws-fab-notes{display:none!important}
   @media(max-width:560px){ .ws-fab-notes{top:auto;bottom:190px;left:14px} .workspace.tut-open .ws-fab-notes{display:none} }
   .ws-center .ws-body{padding:14px 48px 14px;overflow-y:auto;flex:1;min-height:0}
@@ -686,6 +688,8 @@
   @keyframes fabGlow{0%{box-shadow:0 0 0 0 rgba(74,159,224,.75)}65%{box-shadow:0 0 0 16px rgba(74,159,224,0)}100%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
   .ws-fab-ideas{background:linear-gradient(135deg,var(--grass),var(--lime));color:#fff;position:fixed;top:216px;left:22px;z-index:60;transition:top .5s cubic-bezier(.5,0,.18,1),left .5s cubic-bezier(.5,0,.18,1),filter .15s,transform .15s}
   .workspace.tut-open .ws-fab-ideas{top:108px;left:calc(100vw - 72px)}
+  /* tutor + notes open: don't land the ideas fab on the right-hand notes panel; dock it bottom, beside the tutor */
+  .workspace.tut-open.notes-open:not(.nb-open) .ws-fab-ideas{top:auto;bottom:20px;left:calc(var(--tut-w) + 20px)}
   .ws-fab-ideas.shooting{animation:shootTrail .5s ease-out}
   .ws-fab-ideas.shoot-back{animation:shootTrailBack .5s ease-out}
   @keyframes shootTrail{0%{box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}18%{transform:scale(.86) rotate(-12deg)}40%{box-shadow:-34px 1px 14px -6px var(--idea1),-66px 2px 22px -9px var(--idea2),-100px 3px 30px -12px var(--idea3)}70%{transform:scale(1.08) rotate(4deg)}100%{transform:scale(1) rotate(0);box-shadow:0 6px 20px -6px rgba(18,42,86,.32)}}
