@@ -22,6 +22,8 @@
     --moss:#1A9E4B;
     --grass:#22C55E;        /* fresh -- highlights, checkmarks */
     --sage:#5FA06B;
+    --lime:#BEFF8B;         /* bright lime -- solid button fill, bold highlighter */
+    --lime-deep:#96E85C;    /* hover state for lime buttons */
     --tint:#E6F5E2;         /* pale sage -- chips, icon beds */
     --tint-2:#D2ECCB;       /* deeper pale sage -- highlighter marker */
     --gray:#52685A;
@@ -53,15 +55,15 @@
   .eyebrow::before{content:"";width:22px;height:2px;background:var(--grass);border-radius:2px}
 
   /* signature highlighter-marker treatment, carried over from the original design */
-  .mark{display:inline;background:var(--tint-2);color:var(--ink);border-radius:.28em;padding:.02em .22em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-  .mark-block{display:inline-block;background:var(--tint-2);color:var(--ink);border-radius:.18em;padding:.04em .24em .12em;line-height:.98;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .mark{display:inline;background:var(--lime);color:var(--ink);border-radius:.28em;padding:.02em .22em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .mark-block{display:inline-block;background:var(--lime);color:var(--ink);border-radius:.18em;padding:.04em .24em .12em;line-height:.98;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
-  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--ff-body);font-weight:600;font-size:1rem;padding:.9em 1.5em;border-radius:13px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;line-height:1;white-space:nowrap}
-  .btn-primary{background:var(--moss);color:#fff;box-shadow:0 1px 0 rgba(16,80,40,.35)}
-  .btn-primary:hover{background:#15833f;transform:translateY(-1px);box-shadow:0 12px 26px -14px rgba(42,74,52,.7)}
-  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-  .btn-ghost:hover{border-color:var(--forest);color:var(--forest)}
-  .btn-lg{padding:1.02em 1.7em;font-size:1.06rem}
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--ff-body);font-weight:700;font-size:1rem;padding:.85em 1.7em;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;line-height:1;white-space:nowrap}
+  .btn-primary{background:var(--lime);color:var(--ink);box-shadow:0 1px 0 rgba(10,10,10,.1)}
+  .btn-primary:hover{background:var(--lime-deep);transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(20,40,25,.45)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:rgba(10,10,10,.05);transform:translateY(-2px)}
+  .btn-lg{padding:.95em 1.9em;font-size:1.06rem}
   :focus-visible{outline:3px solid var(--grass);outline-offset:2px;border-radius:6px}
 
   header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line-2)}
@@ -166,17 +168,17 @@
   .path-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
   .p-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-body);font-weight:500;font-size:.92rem;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);text-decoration:none;transition:border-color .18s ease,background .18s ease,transform .18s ease}
   .p-pill:hover{border-color:var(--forest);transform:translateY(-1px)}
-  .p-pill--on{background:var(--tint-2);border-color:var(--tint-2);font-weight:600}
+  .p-pill--on{background:var(--lime);border-color:var(--lime);font-weight:600}
   .p-pill--soon{border-style:dashed;color:var(--gray);cursor:default}
   .p-pill--soon:hover{transform:none;border-color:var(--line)}
   .p-pill--soon em{font-style:normal;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--line-2);color:var(--gray)}
-  .p-dot{width:8px;height:8px;border-radius:999px;background:var(--moss);flex:none}
+  .p-dot{width:8px;height:8px;border-radius:999px;background:var(--lime-deep);flex:none}
   .path-links{margin-top:26px;display:flex;flex-direction:column;gap:10px}
   .path-links a{font-size:1.02rem;font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:1px;display:inline-block;width:fit-content}
 
   /* pricing card (carried over from the original design, recolored) */
   .price-card{border:1.5px solid var(--forest);border-radius:var(--radius);padding:clamp(24px,3vw,36px);position:relative;background:var(--card);max-width:440px}
-  .price-tag{position:absolute;top:-13px;left:24px;background:var(--tint-2);color:var(--ink);font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:999px}
+  .price-tag{position:absolute;top:-13px;left:24px;background:var(--lime);color:var(--ink);font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:999px}
   .price-name{font-weight:600;font-size:.9rem;letter-spacing:.02em;text-transform:uppercase;color:var(--gray)}
   .price-amt{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:700;letter-spacing:-.03em;line-height:1;margin:12px 0 4px;color:var(--ink)}
   .price-amt span{font-size:1rem;font-weight:500;color:var(--gray)}
@@ -271,7 +273,7 @@
       <a class="link" href="#click">Why it clicks</a>
       <a class="link" href="#path">Courses</a>
       <a class="link" href="#pricing">Pricing</a>
-      <a class="link" href="/blog">Blog</a>
+      <a class="link" href="/blog/watching-your-child-struggle-with-math.html">Blog</a>
     </nav>
     <div class="nav-cta">
       <a class="signin" href="/landing.html?signin=1">Sign in</a>
@@ -280,7 +282,7 @@
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#tutor">The tutor</a><a href="#click">Why it clicks</a><a href="#path">Courses</a><a href="#pricing">Pricing</a><a href="/blog">Blog</a><a href="/landing.html?signin=1">Sign in</a>
+    <a href="#tutor">The tutor</a><a href="#click">Why it clicks</a><a href="#path">Courses</a><a href="#pricing">Pricing</a><a href="/blog/watching-your-child-struggle-with-math.html">Blog</a><a href="/landing.html?signin=1">Sign in</a>
     <a class="btn btn-primary" href="/landing.html?signin=1">Start free</a>
   </div>
 </header>
@@ -294,7 +296,7 @@
         <a class="btn btn-primary btn-lg" href="/landing.html?signin=1">Start free</a>
         <a class="btn btn-ghost btn-lg" href="#tutor">See how it works</a>
       </div>
-      <p class="hero-note"><b>No card required.</b> Full Prealgebra unit free.</p>
+      <p class="hero-note">Full Prealgebra unit free.</p>
     </div>
     <div class="hero-proof reveal"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
 .py .tri{stroke:#0a0a0a;stroke-width:2;stroke-linejoin:round}
@@ -583,7 +585,7 @@
     <div class="brand" style="font-size:1.15rem">
       Quantica
     </div>
-    <div class="foot-links"><a href="/prealgebra">Prealgebra</a><a href="/algebra1">Algebra I</a><a href="/blog">Blog</a><a href="#pricing">Pricing</a><a href="#tutor">How it works</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
+    <div class="foot-links"><a href="/prealgebra">Prealgebra</a><a href="/algebra1">Algebra I</a><a href="/blog/watching-your-child-struggle-with-math.html">Blog</a><a href="#pricing">Pricing</a><a href="#tutor">How it works</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="mailto:support@quanticaedu.com">Contact</a></div>
   </div>
   <div class="wrap" style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line-2);font-size:.86rem"><small>&copy; 2026 Quantica &middot; Learn math by solving.</small></div>
 </footer>
