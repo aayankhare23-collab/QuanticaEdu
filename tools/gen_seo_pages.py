@@ -92,7 +92,7 @@ def gate_html(k):
     return ('<aside class="gate"><div class="gate-in">'+MILO_BIG+
             '<h2>Ready to actually <span class="mark">do it</span>?</h2>'
             '<p>The rest of this lesson, the worked problems, layered hints, and Sprout right beside you, happens inside the course. Free to start.</p>'
-            f'<a class="pill solid big" href="/landing.html?lesson={k}">Start this lesson, free &rarr;</a></div></aside>')
+            f'<a class="pill solid big" href="/landing.html?course={COURSE}&amp;lesson={k}">Start this lesson, free &rarr;</a></div></aside>')
 
 CSS='''
 :root{--bg:#F4F9EC;--ink:#1B2E1F;--lime:#C7F09A;--slate:#5FA06B;--gray:#556A58;--line:rgba(22,75,53,.14)}
@@ -362,11 +362,11 @@ for idx,k in enumerate(ORDER):
 {KATEX}
 <style>{CSS}</style></head>
 <body>
-<header class="wrap nav"><a class="brand" href="/paths/landing.html">{MILO}Quantica</a><a class="pill" href="/{COURSE}">{H.escape(CTITLE)}</a><a class="pill solid" href="/landing.html?lesson={k}">Open in the course</a></header>
+<header class="wrap nav"><a class="brand" href="/paths/landing.html">{MILO}Quantica</a><a class="pill" href="/{COURSE}">{H.escape(CTITLE)}</a><a class="pill solid" href="/landing.html?course={COURSE}&amp;lesson={k}">Open in the course</a></header>
 <div class="wrap">
   <nav class="crumbs"><a href="/paths/landing.html">Home</a> › <a href="/{COURSE}">{H.escape(CTITLE)}</a> › Chapter {chn}: {H.escape(cht)}</nav>
   <div class="head"><p class="ey">{H.escape(CTITLE)} · Lesson {k}</p><h1>{H.escape(title)}</h1></div>
-  <div class="startbar"><a class="pill solid" href="/landing.html?lesson={k}">Solve this lesson, free &rarr;</a><a class="pill" href="/{COURSE}">All lessons</a></div>
+  <div class="startbar"><a class="pill solid" href="/landing.html?course={COURSE}&amp;lesson={k}">Solve this lesson, free &rarr;</a><a class="pill" href="/{COURSE}">All lessons</a></div>
   <article class="content">
   {body}
   {gate_html(k)}
