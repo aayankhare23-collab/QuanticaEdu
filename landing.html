@@ -4985,6 +4985,23 @@ function tutMd(s){
 }
 window.tutMd=tutMd;
 
+// House voice has no em-dashes. Models reach for them constantly, so scrub every tutor reply
+// deterministically before it is shown (and before it goes into history, so the model sees its
+// own past turns dash-free). An em-dash between clauses becomes a comma; math stays in $...$ and
+// uses a hyphen, so nothing mathematical is touched.
+function deDash(s){
+  return String(s==null?'':s)
+    .replace(/\s*[—―]\s*/g, function(m, off, str){
+      // comma when the dash joins two words; a plain space when it already sits next to
+      // punctuation (so we never make ",," or ". ,"), which also leaves math ellipses "..." intact
+      var prev = str.slice(0, off).replace(/\s+$/, '').slice(-1);
+      return /[,.;:!?]/.test(prev) ? ' ' : ', ';
+    })
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+window.deDash=deDash;
+
 function initTutor(lessonKey, lessonTitle) {
   tutorHistory = [];
   tutorContext = lessonTitle || lessonKey || 'math problem solving';
@@ -5046,6 +5063,7 @@ async function sendTutorMsg() {
       }
     } catch (e) {}
     var fullContext = tutorContext + (pageText ? '\n\nProblem the student is viewing:\n' + pageText.trim() : '') + internalCtx;
+    fullContext += '\n\nWRITING STYLE (always): talk like a warm, plain-spoken person in short sentences. Never use an em-dash (—); use a period or a comma, or the word "but". Go easy on colons and semicolons.';
     var res = await fetch(TUTOR_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -5056,7 +5074,7 @@ async function sendTutorMsg() {
       })
     });
     var data = await res.json();
-    var reply = data.feedback || (data.error ? 'Tutor error: ' + data.error : 'No response received.');
+    var reply = deDash(data.feedback || (data.error ? 'Tutor error: ' + data.error : 'No response received.'));
     loadBub.innerHTML = tutMd(reply);
     tutorHistory.push({ role: 'assistant', content: reply });
     if (window.renderMathInElement) try { renderMathInElement(loadBub, {delimiters:[{left:'$',right:'$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); } catch(e) {}
