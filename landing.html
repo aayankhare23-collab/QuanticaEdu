@@ -99,31 +99,32 @@
   .tour-pop .tp-x{position:absolute;top:9px;right:11px;background:none;border:none;color:var(--mute);font-size:18px;line-height:1;cursor:pointer;padding:3px 6px;border-radius:6px;transition:color .12s,background .12s}
   .tour-pop .tp-x:hover{color:var(--navy);background:rgba(120,79,0,.08)}
   .auth-x:hover{color:var(--navy);background:var(--softer)}
-  .auth-card h2{font-family:'Fraunces';font-size:22px;color:var(--navy);margin:0 0 4px}
-  .auth-card .auth-sub{font-size:13.5px;color:var(--slate);margin:0 0 22px;line-height:1.5}
+  .auth-spot{width:54px;height:54px;object-fit:contain;display:block;margin:0 auto 10px}
+  .auth-card h2{font-family:'Fraunces';font-size:23px;color:#16281B;margin:0 0 4px;text-align:center}
+  .auth-card .auth-sub{font-size:13.5px;color:var(--slate);margin:0 0 22px;line-height:1.5;text-align:center}
   .auth-tabs{display:flex;border-bottom:1.5px solid var(--line);margin-bottom:20px}
   .auth-tab{flex:1;padding:9px;font-size:14px;font-weight:600;background:none;border:none;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;cursor:pointer;color:var(--mute);font-family:'Inter';transition:color .15s}
-  .auth-tab.on{color:var(--mid);border-bottom-color:var(--mid)}
+  .auth-tab.on{color:#15803D;border-bottom-color:#15803D}
   .auth-err{font-size:12.5px;color:#d63a3a;min-height:18px;margin:-4px 0 8px}
   .auth-lbl{display:block;font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:5px;margin-top:12px}
-  .auth-inp{width:100%;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;font-family:'Inter';color:var(--navy);box-sizing:border-box;transition:border-color .15s;outline:none}
-  .auth-inp:focus{border-color:var(--mid)}
-  .auth-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--mid),var(--sky));color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter';margin-top:16px;transition:filter .15s}
-  .auth-btn:hover{filter:brightness(1.08)}
-  .auth-btn:disabled{opacity:.55;cursor:default;filter:none}
+  .auth-inp{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;font-size:15px;font-family:'Inter';color:#16281B;box-sizing:border-box;transition:border-color .15s,box-shadow .15s;outline:none}
+  .auth-inp:focus{border-color:#15803D;box-shadow:0 0 0 3px rgba(21,128,61,.12)}
+  .auth-btn{width:100%;padding:13px;background:#BEFF8B;color:#16281B;border:1.5px solid #BEFF8B;border-radius:999px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter';margin-top:16px;transition:background .15s,transform .15s}
+  .auth-btn:hover{background:#96E85C;border-color:#96E85C;transform:translateY(-1px)}
+  .auth-btn:disabled{opacity:.55;cursor:default;transform:none;background:#BEFF8B;border-color:#BEFF8B}
   .auth-div{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--mute);font-size:12px}
   .auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:var(--line)}
-  .auth-google{width:100%;padding:10px;background:#fff;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter';display:flex;align-items:center;justify-content:center;gap:9px;color:var(--navy);transition:border-color .15s,background .15s}
-  .auth-google:hover{border-color:var(--mid);background:var(--softer)}
-  .auth-forgot{display:inline-block;margin:6px 0 2px;font-size:12.5px;font-weight:600;color:var(--mid);cursor:pointer;text-decoration:none}
+  .auth-google{width:100%;padding:11px;background:#fff;border:1.5px solid var(--line);border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter';display:flex;align-items:center;justify-content:center;gap:9px;color:#16281B;transition:border-color .15s,background .15s}
+  .auth-google:hover{border-color:#15803D;background:#F2FBEC}
+  .auth-forgot{display:inline-block;margin:6px 0 2px;font-size:12.5px;font-weight:600;color:#15803D;cursor:pointer;text-decoration:none}
   .auth-forgot:hover{text-decoration:underline}
   .auth-consent{margin:12px 0 0;font-size:11.5px;line-height:1.5;color:var(--slate)}
-  .auth-consent a{color:var(--mid)}
+  .auth-consent a{color:#15803D}
   .auth-err.ok{color:var(--green)}
   .age-gate{margin:14px 0 2px;display:none}
   .age-lbl{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--slate);line-height:1.5;cursor:pointer}
-  .age-lbl input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--blue);width:15px;height:15px;cursor:pointer}
-  .age-lbl a{color:var(--blue);text-decoration:underline}
+  .age-lbl input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:#15803D;width:15px;height:15px;cursor:pointer}
+  .age-lbl a{color:#15803D;text-decoration:underline}
   .foot-links{display:flex;gap:20px}
   .foot-links a{color:#8ea7c4;text-decoration:none;font-size:13px}
   .foot-links a:hover{color:#fff}
@@ -6008,6 +6009,7 @@ async function sendTutorMsg() {
 <div id="authOv" class="auth-ov" style="display:none" role="dialog" aria-modal="true" aria-label="Sign in to Quantica" onclick="if(event.target===this)hideAuthModal()">
   <div class="auth-card">
     <button class="auth-x" onclick="hideAuthModal()" aria-label="Close">&#215;</button>
+    <img class="auth-spot" src="/paths/assets/spot/spot-happy.png" alt="Sprout">
     <h2>Welcome to Quantica</h2>
     <p class="auth-sub">Sign in to save your progress and sync across devices.</p>
     <div class="auth-tabs">
