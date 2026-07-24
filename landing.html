@@ -1127,7 +1127,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <div style="margin-top:14px;font-size:14px;color:#52685A">Checking your account&hellip;</div>
   </div>
 </div>
-<script>setTimeout(function(){ if(!window.__authResolved){ window.__notSignedIn=true; var b=document.getElementById('bootGate'); if(b) b.style.zIndex=3999; if(window.showAuthModal) showAuthModal('in'); } },7000);</script>
+<script>setTimeout(function(){ if(!window.__authResolved){ window.__notSignedIn=true; var b=document.getElementById('bootGate'); if(b) b.remove(); } },7000);</script>
 
 <div class="bg" aria-hidden="true">
   <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
@@ -2407,15 +2407,17 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(rv && rv.style.display!=='none' && window.Rewards && Rewards.openPanel) Rewards.openPanel();
     window.__authResolved=true;
     if(!user){
-      window._access=null; updateStartCTAs(); window.__notSignedIn=true;
-      // Hard gate: the course needs an account (to save diagnostic + progress). Keep the opaque boot screen hiding the app,
-      // but drop it just below the sign-in modal (z 4000) so the modal shows on top; dismissing the modal returns to the landing.
-      var _bg=document.getElementById('bootGate'); if(_bg) _bg.style.zIndex=3999;
-      // The auth callback can fire before the parser reaches the auth-modal markup further down
-      // this file (#authOv etc.) — showAuthModal would silently no-op and strand the boot gate
-      // forever. Defer to DOMContentLoaded when that's the case.
-      if(document.getElementById('authOv')) showAuthModal('in');
-      else document.addEventListener('DOMContentLoaded',function(){ showAuthModal('in'); });
+      // Guest mode: no account needed to use the course. Progress is saved on this device
+      // (localStorage) and syncs to the cloud if they create an account later. The
+      // after-first-lesson prompt (__signinPrompt, fired from markDone) invites them to save;
+      // declining keeps them going as a guest. Drop the boot screen and render the app.
+      window._access={type:'none'}; window.__notSignedIn=true; updateStartCTAs();
+      var _showGuest=function(){
+        if(typeof renderDashboard==='function') renderDashboard();
+        if(typeof renderToc==='function') renderToc();
+        var _bg=document.getElementById('bootGate'); if(_bg) _bg.remove();
+      };
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',_showGuest); else _showGuest();
       return;
     }
     window.__notSignedIn=false;
@@ -3310,6 +3312,322 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
        sol:"<p>The loop has length \\(8\\), and \\(2025 = 253 \\times 8 + 1\\), so \\(253\\) full copies of the word finish at letter \\(2024\\), and letter \\(2025\\) starts the next copy.</p><p>$$\\boxed{\\text{Q}}$$</p><p>One division tamed two thousand letters. That is the whole toolkit in miniature, find the loop, trust the remainder, and let the pattern carry you past any horizon.</p>"}
     ]}});
 
+  var PSETS_ALG1 = {
+ "2": {
+  "practice": [
+   {
+    "x": "Use the distributive property to compute \\(8\\times 104\\) by writing \\(104=100+4\\).",
+    "ans": "832",
+    "accept": [
+     "832"
+    ],
+    "hints": [
+     "Distribute the 8 over 100 and over 4, then add the two pieces."
+    ],
+    "sol": "<p>Split \\(104=100+4\\), so \\(8\\times 104=8\\times 100+8\\times 4=800+32=\\boxed{832}\\).</p>"
+   },
+   {
+    "x": "Expand \\(4(5m+3)\\). Type the <b>coefficient of \\(m\\)</b> in the result.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "Multiply the 6 by the number in front of \\(m\\) inside."
+    ],
+    "sol": "<p>Distributing, \\(4(5m+3)=20m+12\\), so the coefficient of \\(m\\) is \\(\\boxed{20}\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(3a+8\\) when \\(a=5\\).",
+    "ans": "23",
+    "accept": [
+     "23",
+     "twenty-three"
+    ],
+    "hints": [
+     "Do the multiplication \\(3\\times 5\\) before adding 8."
+    ],
+    "sol": "<p>Substitute \\(a=5\\) and multiply before adding, \\(3\\times 5=15\\), then \\(15+8=\\boxed{23}\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(5a-3b\\) when \\(a=4\\) and \\(b=-2\\).",
+    "ans": "26",
+    "accept": [
+     "26",
+     "twenty-six"
+    ],
+    "hints": [
+     "Substitute both values first, and watch the sign on \\(-3b\\) once \\(b\\) is negative."
+    ],
+    "sol": "<p>The trap is treating \\(-3b\\) as negative once \\(b=-2\\); it becomes \\(-3(-2)=+6\\). So \\(5(4)-3(-2)=20+6=\\boxed{26}\\).</p>"
+   },
+   {
+    "x": "Factor \\(18x+24\\) completely. Type the <b>number</b> you factor out.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Find the largest number that divides both 18 and 24."
+    ],
+    "sol": "<p>The greatest common factor of 18 and 24 is 6, and \\(18x+24=6(3x+4)\\), so the number pulled out is \\(\\boxed{6}\\).</p>"
+   },
+   {
+    "x": "Factor \\(15ab+20a\\) completely. Type the common factor you pull out, formatted like \\(7cd\\).",
+    "ans": "5a",
+    "accept": [
+     "5a"
+    ],
+    "hints": [
+     "Take the number GCF of 15 and 20, then the letter shared by both terms."
+    ],
+    "sol": "<p>The number GCF is 5, and both terms share an \\(a\\), so \\(15ab+20a=5a(3b+4)\\) and the common factor is \\(\\boxed{5a}\\).</p>"
+   },
+   {
+    "x": "Simplify \\(9t+4-5t-12\\). Type the <b>constant term</b> of the result.",
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "−8",
+     "negative eight"
+    ],
+    "hints": [
+     "Combine the \\(t\\) terms and the plain numbers separately; the constant is the numbers."
+    ],
+    "sol": "<p>Combining, \\(9t-5t=4t\\) and \\(4-12=-8\\), giving \\(4t-8\\), so the constant term is \\(\\boxed{-8}\\).</p>"
+   },
+   {
+    "x": "Simplify \\((7k+3)-(2k+9)\\). Type the <b>constant term</b> of the result.",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "negative six"
+    ],
+    "hints": [
+     "Subtracting the group flips the sign of every term inside it."
+    ],
+    "sol": "<p>The trap is dropping only the first sign; the minus flips both, so \\((7k+3)-(2k+9)=7k+3-2k-9=5k-6\\), and the constant is \\(\\boxed{-6}\\).</p>"
+   },
+   {
+    "x": "Add \\(\\frac{4}{n}+\\frac{9}{n}\\) and write it as \\(\\frac{k}{n}\\). Type \\(k\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen"
+    ],
+    "hints": [
+     "Same bottom \\(n\\), so add the tops."
+    ],
+    "sol": "<p>Same denominator, so add the numerators, \\(\\frac{4}{n}+\\frac{9}{n}=\\frac{13}{n}\\), giving \\(k=\\boxed{13}\\).</p>"
+   },
+   {
+    "x": "Reduce \\(\\frac{6x}{8x}\\) to lowest terms. Type the fraction.",
+    "ans": "3/4",
+    "accept": [
+     "3/4",
+     "0.75"
+    ],
+    "hints": [
+     "Cancel the shared \\(x\\) factor, then reduce the number fraction."
+    ],
+    "sol": "<p>The \\(x\\) is a shared factor top and bottom, so it cancels, leaving \\(\\frac{6}{8}=\\boxed{\\frac{3}{4}}\\).</p>"
+   },
+   {
+    "x": "Combine \\(6mn+7mn\\). Type your answer as a single term, formatted like \\(3pq\\).",
+    "ans": "13mn",
+    "accept": [
+     "13mn",
+     "13nm"
+    ],
+    "hints": [
+     "The variable part \\(mn\\) matches, so add the coefficients."
+    ],
+    "sol": "<p>Both terms have the same variable part \\(mn\\), so \\(6mn+7mn=\\boxed{13mn}\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(2xy+z\\) when \\(x=3\\), \\(y=-1\\), and \\(z=5\\).",
+    "ans": "-1",
+    "accept": [
+     "-1",
+     "−1",
+     "negative one"
+    ],
+    "hints": [
+     "Multiply the three factors of \\(2xy\\) first, keeping track of the sign."
+    ],
+    "sol": "<p>Here \\(2xy=2(3)(-1)=-6\\), so \\(-6+5=\\boxed{-1}\\).</p>"
+   }
+  ],
+  "challenge": [
+   {
+    "x": "Expand and combine \\(5(3a-2)-2(4a-7)\\). Type the <b>constant term</b> of the simplified expression.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Distribute both numbers fully before combining anything.",
+     "Watch \\(-2\\) times \\(-7\\); it is positive."
+    ],
+    "sol": "<p>The trap is the sign on the second group; \\(-2(4a-7)=-8a+14\\), not \\(-8a-14\\). Expanding gives \\(15a-10-8a+14=7a+4\\), so the constant term is \\(\\boxed{4}\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(2(x-y)-3(y-x)\\) when \\(x=5\\) and \\(y=8\\).",
+    "ans": "-15",
+    "accept": [
+     "-15",
+     "−15",
+     "negative fifteen"
+    ],
+    "hints": [
+     "Compute \\(x-y\\) and \\(y-x\\) on their own; they are opposites.",
+     "\\(x-y=-3\\) while \\(y-x=3\\)."
+    ],
+    "sol": "<p>The trap is assuming \\(x-y\\) and \\(y-x\\) are equal; they are opposites. With \\(x-y=-3\\) and \\(y-x=3\\), \\(2(-3)-3(3)=-6-9=\\boxed{-15}\\).</p>"
+   },
+   {
+    "x": "Factor \\(24xyz+16xy\\) completely. Type the common factor you pull out, formatted like \\(5pq\\).",
+    "ans": "8xy",
+    "accept": [
+     "8xy",
+     "8yx"
+    ],
+    "hints": [
+     "Take the number GCF of 24 and 16, then the letters in BOTH terms.",
+     "Is \\(z\\) in the first term?"
+    ],
+    "sol": "<p>The trap is grabbing \\(z\\) too; it appears only in the first term. The number GCF is 8 and both terms share \\(x\\) and \\(y\\), so \\(24xyz+16xy=8xy(3z+2)\\) and the common factor is \\(\\boxed{8xy}\\).</p>"
+   },
+   {
+    "x": "Simplify \\(5x\\cdot x+7x-2x\\cdot x-x\\). Type the <b>coefficient of the \\(x\\cdot x\\) term</b>.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "\\(x\\cdot x\\) terms and plain \\(x\\) terms are not like terms.",
+     "Combine the \\(x\\cdot x\\) terms only among themselves."
+    ],
+    "sol": "<p>The trap is merging \\(x\\cdot x\\) with \\(x\\); they are unlike. The \\(x\\cdot x\\) terms give \\(5-2=3\\), so that coefficient is \\(\\boxed{3}\\).</p>",
+    "legendary": true
+   },
+   {
+    "x": "Write \\(\\frac{5}{x}+\\frac{4}{3x}\\) as a single fraction \\(\\frac{k}{3x}\\). Type \\(k\\).",
+    "ans": "19",
+    "accept": [
+     "19",
+     "nineteen"
+    ],
+    "hints": [
+     "Make both denominators \\(3x\\) first.",
+     "\\(\\frac{5}{x}\\) is the same as \\(\\frac{15}{3x}\\)."
+    ],
+    "sol": "<p>The trap is adding over \\(x\\) directly; the bottoms differ. Rewrite \\(\\frac{5}{x}=\\frac{15}{3x}\\), then \\(\\frac{15}{3x}+\\frac{4}{3x}=\\frac{19}{3x}\\), so \\(k=\\boxed{19}\\).</p>"
+   },
+   {
+    "x": "Reduce \\(\\frac{6(x+1)}{15(x+1)}\\) to lowest terms. Type the fraction.",
+    "ans": "2/5",
+    "accept": [
+     "2/5",
+     "0.4"
+    ],
+    "hints": [
+     "The whole chunk \\((x+1)\\) is a factor top and bottom.",
+     "After it cancels, reduce the leftover numbers."
+    ],
+    "sol": "<p>You may only cancel a shared factor, and the whole chunk \\((x+1)\\) is a factor of both, so it cancels, leaving \\(\\frac{6}{15}=\\boxed{\\frac{2}{5}}\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(4pq-3r+pqr\\) when \\(p=2\\), \\(q=-1\\), and \\(r=3\\).",
+    "ans": "-23",
+    "accept": [
+     "-23",
+     "−23",
+     "negative twenty-three"
+    ],
+    "hints": [
+     "Handle each of the three terms on its own.",
+     "The triple product \\(pqr\\) carries one negative factor."
+    ],
+    "sol": "<p>Term by term, \\(4pq=4(2)(-1)=-8\\), \\(-3r=-9\\), and \\(pqr=(2)(-1)(3)=-6\\), so the total is \\(-8-9-6=\\boxed{-23}\\).</p>"
+   },
+   {
+    "x": "Expand and combine \\(2a(3b+1)+4ab\\). Type the <b>coefficient of \\(ab\\)</b>.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "Distribute \\(2a\\) over both terms in the parentheses.",
+     "Only the \\(ab\\) terms combine; \\(2a\\) is a different kind of term."
+    ],
+    "sol": "<p>Distribute first, \\(2a(3b+1)=6ab+2a\\), then add \\(4ab\\) to get \\(10ab+2a\\). The \\(2a\\) is unlike \\(ab\\), so the coefficient of \\(ab\\) is \\(\\boxed{10}\\).</p>"
+   },
+   {
+    "x": "Simplify \\((9m+4m)-(2m+11m)\\). Type the <b>coefficient of \\(m\\)</b> in the result.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero"
+    ],
+    "hints": [
+     "Collect each group into a single \\(m\\) term first.",
+     "Then subtract, and notice both groups carry the same total."
+    ],
+    "sol": "<p>The first group is \\(13m\\) and the second is also \\(13m\\), so \\(13m-13m=0m\\). The whole \\(m\\) family cancels, leaving coefficient \\(\\boxed{0}\\).</p>"
+   },
+   {
+    "x": "Simplify \\(4(x+y)-(4x+4y+7)\\). The result is a single number; type it.",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "negative seven"
+    ],
+    "hints": [
+     "Distribute the 4, then flip every sign in the subtracted group.",
+     "Line up the \\(x\\) terms and the \\(y\\) terms and see what remains."
+    ],
+    "sol": "<p>Expanding, \\(4(x+y)=4x+4y\\), and subtracting flips every sign to \\(-4x-4y-7\\). Every \\(x\\) and \\(y\\) term cancels no matter what \\(x\\) and \\(y\\) are, leaving the constant \\(\\boxed{-7}\\).</p>",
+    "legendary": true
+   },
+   {
+    "x": "Factor \\(x(y+4)+5(y+4)\\) by pulling out the shared \\((y+4)\\), then evaluate the factored form at \\(x=6\\) and \\(y=-1\\).",
+    "ans": "33",
+    "accept": [
+     "33",
+     "thirty-three"
+    ],
+    "hints": [
+     "Both terms share the whole chunk \\((y+4)\\); pull it out.",
+     "The factored form is a product of two simple pieces to plug into."
+    ],
+    "sol": "<p>Both terms share \\((y+4)\\), so \\(x(y+4)+5(y+4)=(y+4)(x+5)\\). At \\(x=6\\), \\(y=-1\\) this is \\((3)(11)=\\boxed{33}\\).</p>",
+    "legendary": true
+   },
+   {
+    "x": "Expand \\(4(3x+6)\\), then factor the result completely. Type the <b>number</b> you factor out.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve"
+    ],
+    "hints": [
+     "Multiply out \\(4(3x+6)\\) first.",
+     "Now find the largest number dividing both 12 and 24."
+    ],
+    "sol": "<p>The trap is stopping at the 4 you started with. Expanding gives \\(12x+24\\), and the greatest common factor of 12 and 24 is 12, so \\(12x+24=12(x+2)\\) and you pull out \\(\\boxed{12}\\).</p>"
+   }
+  ]
+ }
+};
+
   /* ===== Multi-course registry. TOC / LESSONS / PSETS stay the app-wide globals the
      whole engine reads; setCourse() repoints them at one course's data and re-renders.
      The Rewards engine is already course-agnostic (keys prefixed with COURSE.slug). ===== */
@@ -3317,7 +3635,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     prealgebra:{slug:'prealgebra', title:'Prealgebra', toc:TOC, lessons:LESSONS, psets:PSETS,
       intro:'Twelve chapters carry you from the rules of arithmetic all the way to real problem-solving. Tap any lesson to read it, or open a chapter\'s <b>Practice</b> or <b>Challenge</b> set to try problems yourself.'},
     algebra1:{slug:'algebra1', title:'Algebra I', toc:TOC_ALG1,
-      lessons:(window.__COURSEDATA&&window.__COURSEDATA.algebra1)||{}, psets:{},
+      lessons:(window.__COURSEDATA&&window.__COURSEDATA.algebra1)||{}, psets:PSETS_ALG1,
       intro:'Fifteen chapters run from the language of algebra through quadratics, functions, and logarithms. The first lessons are being written right now, so this page is a preview of the road ahead.'}
   };
   var CURRENT_COURSE='prealgebra';
