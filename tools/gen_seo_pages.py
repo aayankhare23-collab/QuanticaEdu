@@ -73,26 +73,49 @@ def strip_text(x):
 def _wc(x):
     return len(re.sub('<[^>]+>',' ',re.sub(r'<svg.*?</svg>','',x,flags=re.S)).split())
 
-def render_intro(L):
-    # The lesson's opening only (a real intro, ~90+ words for SEO), problem PROMPTS shown but no
-    # solutions and no full dump. The worked problems, hints, and Sprout live in the app.
-    out=[]; words=0
-    for b in L.get('blocks',[]):
-        t=b.get('t'); x=b.get('x') or ''
-        if t=='p':    out.append(f'<p>{x}</p>')
-        elif t=='imp':out.append(f'<aside class="key"><span class="tag">Key idea</span><div>{x}</div></aside>')
-        elif t=='fact':out.append(f'<aside class="fact"><span class="tag">{H.escape(b.get("label") or "Fun fact")}</span><div>{x}</div></aside>')
-        elif t=='prob':out.append(f'<div class="prob"><div class="prob-q">{x}</div></div>')
-        words+=_wc(x)
-        if len(out)>=2 and words>=90: break
-        if len(out)>=4: break
+def _block_html(b):
+    # Render one lesson block as crawlable HTML. Problems show the prompt plus their hints and full
+    # worked solution inside <details> (collapsed for readers, still fully indexable by Google).
+    t=b.get('t'); x=b.get('x') or ''
+    if t=='p':    return f'<p>{x}</p>'
+    if t=='imp':  return f'<aside class="key"><span class="tag">Key idea</span><div>{x}</div></aside>'
+    if t=='fact': return f'<aside class="fact"><span class="tag">{H.escape(b.get("label") or "Fun fact")}</span><div>{x}</div></aside>'
+    if t=='fig':
+        cap=b.get('cap') or ''
+        return f'<figure class="fig">{x}{f"<figcaption>{cap}</figcaption>" if cap else ""}</figure>'
+    if t=='prob':
+        parts=[f'<span class="tag">Problem</span><div class="prob-q">{x}</div>']
+        hints=b.get('hints') or []
+        if hints:
+            hl="".join(f"<li>{h}</li>" for h in hints)
+            parts.append(f'<details class="sol"><summary>Show a hint</summary><ul class="hintlist">{hl}</ul></details>')
+        sol=b.get('sol') or ''
+        if sol:
+            parts.append(f'<details class="sol"><summary>Show the full solution</summary><div>{sol}</div></details>')
+        return f'<div class="prob">{"".join(parts)}</div>'
+    return ''
+
+def render_full(L):
+    # The WHOLE lesson as real HTML: teaching prose, key ideas, the figure, and every problem with
+    # its worked solution, then the practice set. This is the crawlable, indexable version of the
+    # lesson; the app is the interactive, tutored version.
+    out=[h for h in (_block_html(b) for b in L.get('blocks',[])) if h]
+    rev=L.get('review') or []
+    if rev:
+        out.append('<h2 class="sec-h">Practice these ideas</h2>')
+        for r in rev:
+            sol=r.get('sol') or ''
+            blk=f'<div class="prob"><span class="tag">Practice</span><div class="prob-q">{r.get("x","")}</div>'
+            if sol: blk+=f'<details class="sol"><summary>Show the solution</summary><div>{sol}</div></details>'
+            out.append(blk+'</div>')
     return "\n".join(out)
 
 def gate_html(k):
+    # Not a content wall (the full lesson is above). A conversion CTA into the interactive app.
     return ('<aside class="gate"><div class="gate-in">'+MILO_BIG+
-            '<h2>Ready to actually <span class="mark">do it</span>?</h2>'
-            '<p>The rest of this lesson, the worked problems, layered hints, and Sprout right beside you, happens inside the course. Free to start.</p>'
-            f'<a class="pill solid big" href="/landing.html?course={COURSE}&amp;lesson={k}">Start this lesson, free &rarr;</a></div></aside>')
+            '<h2>Learn it by <span class="mark">doing it</span></h2>'
+            '<p>Reading is a start. In the course you solve each problem yourself, with instant feedback, layered hints, and Sprout right beside you when you get stuck. Free to start.</p>'
+            f'<a class="pill solid big" href="/landing.html?course={COURSE}&amp;lesson={k}">Open this lesson in the course &rarr;</a></div></aside>')
 
 CSS='''
 :root{--bg:#F4F9EC;--ink:#1B2E1F;--lime:#C7F09A;--slate:#5FA06B;--gray:#556A58;--line:rgba(22,75,53,.14)}
@@ -119,8 +142,12 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .tag{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
 .prob{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0;background:rgba(255,255,255,.35)}
 .prob-q{font-size:16px}
-.sol{margin-top:12px}.sol summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--gray)}
+.sol{margin-top:12px}.sol summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);user-select:none}
 .sol[open] summary{margin-bottom:10px}.sol>div{font-size:15px;color:#242424}
+.hintlist{margin:8px 0 0;padding-left:20px}.hintlist li{margin:6px 0;font-size:15px;color:#242424}
+.fig{margin:28px 0;text-align:center}.fig svg{max-width:100%;height:auto}
+.fig figcaption{font-size:14px;color:var(--gray);margin-top:10px;text-align:left;line-height:1.6}
+.prob .tag{color:var(--slate)}
 .sec-h{font-size:clamp(24px,4vw,38px);letter-spacing:-.03em;margin:44px 0 8px}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
 .pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 10px}
@@ -340,7 +367,7 @@ for idx,k in enumerate(ORDER):
         {"@type":"ListItem","position":1,"name":"Quantica","item":BASE+"/"},
         {"@type":"ListItem","position":2,"name":CTITLE,"item":BASE+"/"+COURSE},
         {"@type":"ListItem","position":3,"name":title,"item":url}]}
-    body=render_intro(L)
+    body=render_full(L)
     page=f'''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -358,7 +385,7 @@ for idx,k in enumerate(ORDER):
 <script type="application/ld+json">{json.dumps(ld)}</script>
 <script type="application/ld+json">{json.dumps(crumb)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 {KATEX}
 <style>{CSS}</style></head>
 <body>

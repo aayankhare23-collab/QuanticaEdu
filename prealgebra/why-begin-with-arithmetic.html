@@ -15,7 +15,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Why Begin with Arithmetic?", "url": "https://quanticaedu.com/prealgebra/why-begin-with-arithmetic", "description": "Why Begin with Arithmetic?: You already know how to add, subtract, multiply, and divide. Honestly, you could probably solve a fair number of the problems in t", "inLanguage": "en", "learningResourceType": "lesson", "educationalLevel": "Prealgebra", "isPartOf": {"@type": "Course", "name": "Prealgebra", "url": "https://quanticaedu.com/prealgebra"}, "provider": {"@type": "Organization", "name": "Quantica", "url": "https://quanticaedu.com/"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Quantica", "item": "https://quanticaedu.com/"}, {"@type": "ListItem", "position": 2, "name": "Prealgebra", "item": "https://quanticaedu.com/prealgebra"}, {"@type": "ListItem", "position": 3, "name": "Why Begin with Arithmetic?", "item": "https://quanticaedu.com/prealgebra/why-begin-with-arithmetic"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
@@ -45,8 +45,12 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .tag{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
 .prob{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0;background:rgba(255,255,255,.35)}
 .prob-q{font-size:16px}
-.sol{margin-top:12px}.sol summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--gray)}
+.sol{margin-top:12px}.sol summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);user-select:none}
 .sol[open] summary{margin-bottom:10px}.sol>div{font-size:15px;color:#242424}
+.hintlist{margin:8px 0 0;padding-left:20px}.hintlist li{margin:6px 0;font-size:15px;color:#242424}
+.fig{margin:28px 0;text-align:center}.fig svg{max-width:100%;height:auto}
+.fig figcaption{font-size:14px;color:var(--gray);margin-top:10px;text-align:left;line-height:1.6}
+.prob .tag{color:var(--slate)}
 .sec-h{font-size:clamp(24px,4vw,38px);letter-spacing:-.03em;margin:44px 0 8px}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
 .pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 10px}
@@ -71,9 +75,20 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
   <div class="startbar"><a class="pill solid" href="/landing.html?course=prealgebra&amp;lesson=1.1">Solve this lesson, free &rarr;</a><a class="pill" href="/prealgebra">All lessons</a></div>
   <article class="content">
   <p>You already know how to add, subtract, multiply, and divide. Honestly, you could probably solve a fair number of the problems in this course on sight. So why would we open an entire course with a chapter on arithmetic?</p>
-<div class="prob"><div class="prob-q">You said you already know this stuff, so here is a quick one, no pencil: what is $4 \times 19 \times 25$? Look for a friendly pair before you multiply.</div></div>
+<div class="prob"><span class="tag">Problem</span><div class="prob-q">You said you already know this stuff, so here is a quick one, no pencil: what is $4 \times 19 \times 25$? Look for a friendly pair before you multiply.</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Which two of $4$, $19$, $25$ multiply to a round number?</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>You may multiply in any order, so reach for the pair that makes life easy: $4 \times 25 = 100$, and then $100 \times 19 = \boxed{1900}$. You never had to face $19 \times 25$ head-on. That is the whole game: spotting the structure that turns a hard-looking problem into an easy one.</div></details></div>
 <p>Start with the name on the door: <span class="hl">Prealgebra</span>. People don't fully agree on what the word means, but here's how we think of it: prealgebra is the bridge between arithmetic and algebra.</p>
-  <aside class="gate"><div class="gate-in"><img src="/paths/assets/spot/spot-happy.png" class="milo-big" alt="Sprout"><h2>Ready to actually <span class="mark">do it</span>?</h2><p>The rest of this lesson, the worked problems, layered hints, and Sprout right beside you, happens inside the course. Free to start.</p><a class="pill solid big" href="/landing.html?course=prealgebra&amp;lesson=1.1">Start this lesson, free &rarr;</a></div></aside>
+<p>Arithmetic is the world of adding, subtracting, multiplying, and dividing, plus a few bolder moves like squaring a number or taking a square root. You've met most of it already. The hardest part is usually a word problem: <em>“If Maya has 6 stickers and Theo has 9, how many do they have together?”</em> As you get older the numbers grow larger, but problems like that never really get harder.</p>
+<p>Arithmetic is perfect for counting stickers. But the moment a question gets richer (forecasting a satellite's orbit, modeling how a rumor spreads through a school, or counting the routes a single message can take across the internet), we need a bigger toolbox.</p>
+<p><span class="hl">That toolbox is algebra.</span> Algebra is the language of all higher mathematics. It takes the ideas you already trust from arithmetic and makes them <em>general</em>, so they work far beyond the one problem where you first met them.</p>
+<p>Here's a small taste. With arithmetic, you can check a single case.</p>
+<p>Algebra hands you the far more powerful statement.</p>
+<div class="prob"><span class="tag">Problem</span><div class="prob-q">Now use that same splitting idea. A fast way to compute $7 \times 99$ is to write it as $7 \times (100 - 1)$. What do you get?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>$7 \times 100$ is easy. Now take away $7 \times 1$.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Distribute across the subtraction: $7 \times (100 - 1) = 7 \times 100 - 7 \times 1 = 700 - 7 = \boxed{693}$. The same law that looked abstract with letters just saved you from multiplying by $99$.</div></details></div>
+<p>And in more advanced mathematics, <em>a</em>, <em>b</em>, and <em>c</em> might not even be ordinary numbers, and “+” and “×” might not be the addition and multiplication you know today. But we're getting a little ahead of ourselves.</p>
+<p>So our first goal is simple to state: lay down the rules of arithmetic carefully, and show you <span class="hl">why</span> each one is true.</p>
+<p>That word, <em>why</em>, is the heart of this course. You're ready now to ask not just <em>how</em> a calculation works, but <em>why</em> it works. That's the difference that lets you bend a familiar technique to crack an unfamiliar problem. So throughout, we'll rarely just tell you how something works; we'll show you why.</p>
+<p>You'll be able to explain (really explain, not just compute) each of these.</p>
+<p>You'll know these not because you memorized a rule or tapped buttons on a calculator, but because you understand the mathematics underneath them.</p>
+  <aside class="gate"><div class="gate-in"><img src="/paths/assets/spot/spot-happy.png" class="milo-big" alt="Sprout"><h2>Learn it by <span class="mark">doing it</span></h2><p>Reading is a start. In the course you solve each problem yourself, with instant feedback, layered hints, and Sprout right beside you when you get stuck. Free to start.</p><a class="pill solid big" href="/landing.html?course=prealgebra&amp;lesson=1.1">Open this lesson in the course &rarr;</a></div></aside>
   </article>
   <nav class="pager"><span></span><a class="next" href="/prealgebra/addition-subtraction-and-negation"><span class="dir">Next →</span><div class="t">Addition, Subtraction, and Negation</div></a></nav>
 </div>
