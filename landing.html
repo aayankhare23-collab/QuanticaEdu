@@ -2212,9 +2212,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     setTimeout(function(){ var e=document.getElementById('authEmail'); if(e) e.focus(); },80);
   };
   window.hideAuthModal=function(){
-    if(window.__notSignedIn){ location.assign('/paths/landing.html'); return; }   // no account -> can't dismiss into the course
+    // Guests are welcome in the course, so dismissing just closes the modal and leaves them
+    // where they were. (This used to eject them to the marketing page, back when an account
+    // was required to enter at all.)
     var o=document.getElementById('authOv'); if(o) o.style.display='none';
-    document.getElementById('authErr').textContent='';
+    var e=document.getElementById('authErr'); if(e) e.textContent='';
   };
   window.authTab=function(t){
     document.getElementById('tabIn').classList.toggle('on',t==='in');
@@ -5216,6 +5218,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       if(typeof renderDashHero==='function') renderDashHero();
     },
     syncUp:function(){ save(); },   // push current local progress to the cloud (used right after sign-up)
+    // stash a small piece of profile metadata (e.g. the onboarding answers) so it syncs with progress
+    setMeta:function(k,v){ try{ P[k]=v; save(); }catch(e){} },
+    getMeta:function(k){ try{ return P[k]; }catch(e){ return undefined; } },
     applyTheme:applyTheme,
     renderHUD:renderHUD,
     openPanel:function(){
@@ -6245,5 +6250,197 @@ async function sendTutorMsg() {
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
 })();
 </script>
+
+<style>
+  /* ===== First-run onboarding ===== */
+  .ob-ov{position:fixed;inset:0;z-index:4200;background:rgba(18,40,28,.55);backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);display:none;place-items:center;padding:20px}
+  .ob-ov.on{display:grid}
+  .ob-card{background:#FCFEFB;background-image:linear-gradient(rgba(21,128,61,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(21,128,61,.07) 1px,transparent 1px);background-size:24px 24px;
+    border-radius:24px;padding:34px 32px 28px;width:100%;max-width:560px;position:relative;
+    box-shadow:0 30px 70px -18px rgba(15,40,25,.42);animation:obIn .24s ease}
+  @keyframes obIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .ob-top{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .ob-sprout{width:34px;height:34px;object-fit:contain;flex:none}
+  .ob-dots{display:flex;gap:6px;margin-left:auto;margin-right:14px}
+  .ob-dot{width:26px;height:5px;border-radius:999px;background:#DCEBD5;transition:background .2s}
+  .ob-dot.on{background:#15803D}
+  .ob-skip{background:none;border:none;font-family:'Inter';font-size:13.5px;color:#7C907E;
+    cursor:pointer;padding:4px 2px;text-decoration:underline;text-underline-offset:3px}
+  .ob-q{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:600;color:#16281B;
+    letter-spacing:-.01em;line-height:1.15;margin:0 0 6px}
+  .ob-sub{font-family:'Inter';font-size:14.5px;color:#52685A;margin:0 0 20px;line-height:1.5}
+  .ob-opts{display:grid;gap:10px}
+  .ob-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;
+    border:1.5px solid #E1EEDB;border-radius:14px;padding:14px 16px;font-family:'Inter';font-size:15.5px;
+    font-weight:600;color:#16281B;cursor:pointer;transition:border-color .14s,background .14s,transform .14s}
+  .ob-opt:hover{border-color:#15803D;background:#F4FBEF;transform:translateY(-1px)}
+  .ob-opt .ob-tick{width:22px;height:22px;border-radius:50%;border:1.8px solid #CFE3C6;flex:none;
+    display:grid;place-items:center}
+  .ob-opt:hover .ob-tick{border-color:#15803D}
+  .ob-back{margin-top:18px}
+  /* result */
+  .ob-rec{background:#fff;border:2px solid #15803D;border-radius:18px;padding:20px 22px;margin:2px 0 14px}
+  .ob-rec-name{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:600;color:#16281B;margin:0 0 4px}
+  .ob-rec-why{font-family:'Inter';font-size:14.5px;color:#3a5142;margin:0 0 14px;line-height:1.55}
+  .ob-facts{display:flex;gap:18px;flex-wrap:wrap;font-family:'Inter';font-size:13.5px;color:#52685A}
+  .ob-facts b{display:block;font-size:19px;color:#16281B;font-weight:700;font-family:'Fraunces',Georgia,serif}
+  .ob-alt{font-family:'Inter';font-size:14px;color:#52685A;margin:0 0 18px;line-height:1.5}
+  .ob-alt button{background:none;border:none;padding:0;font:inherit;color:#15803D;font-weight:600;
+    cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .ob-go{width:100%;padding:14px;background:#BEFF8B;color:#16281B;border:1.5px solid #BEFF8B;
+    border-radius:999px;font-family:'Inter';font-size:15.5px;font-weight:700;cursor:pointer;
+    transition:background .15s,transform .15s}
+  .ob-go:hover{background:#96E85C;transform:translateY(-1px)}
+  @media(max-width:560px){.ob-card{padding:26px 20px 22px}.ob-q{font-size:22px}}
+</style>
+
+<div id="obOv" class="ob-ov" role="dialog" aria-modal="true" aria-label="Getting started">
+  <div class="ob-card">
+    <div class="ob-top">
+      <img class="ob-sprout" src="/paths/assets/spot/spot-happy.png" alt="Sprout">
+      <div class="ob-dots" id="obDots"></div>
+      <button class="ob-skip" onclick="Onboard.skip()">Skip</button>
+    </div>
+    <div id="obBody"></div>
+  </div>
+</div>
+
+<script>
+/* First-run onboarding. Asks who is learning, roughly where they are, and why they came,
+   then recommends a course. Answers live in localStorage, ride along to Firestore on sign-up,
+   and fire GA4 events so the funnel finally says WHO is showing up. */
+(function(){
+  var KEY='quantica.onboarding.v1';
+  var A={}, i=0;
+
+  var COURSES={
+    prealgebra:{name:'Prealgebra', slug:'prealgebra',
+      facts:[['12','chapters'],['70','lessons'],['Complete','and live']]},
+    algebra1:{name:'Algebra I', slug:'algebra1',
+      facts:[['15','chapters planned'],['13','lessons live'],['Being written','right now']]}
+  };
+
+  function steps(){
+    var forChild = A.who==='parent' || A.who==='teacher';
+    var whose = A.who==='parent' ? 'your child' : (A.who==='teacher' ? 'your students' : 'you');
+    return [
+      {key:'who', q:'Who is learning?', sub:'So the course speaks to the right person.',
+       opts:[['student','I am a student'],['parent','I am a parent or guardian'],
+             ['self','I am learning on my own'],['teacher','I teach']]},
+      {key:'level', q:'Where '+(forChild?'is '+whose:'are you')+' in math right now?',
+       sub:'A rough answer is fine. Nothing here is locked in.',
+       opts:[['pre','Fractions, decimals and percents are still shaky'],
+             ['ready','Comfortable with arithmetic, ready to start algebra'],
+             ['alg','Already doing algebra and want to go deeper'],
+             ['unsure','Not sure, help me pick']]},
+      {key:'goal', q:'What brings '+(forChild?whose:'you')+' here?',
+       opts:[['catchup','Catching up on things that were missed'],
+             ['keepup','Keeping up with class'],
+             ['ahead','Getting ahead'],
+             ['test','Preparing for a test'],
+             ['curious','Just curious about math']]},
+      {key:'source', q:'How did you find Quantica?', sub:'Optional, and genuinely useful to know.',
+       opts:[['search','A search engine'],['social','YouTube, TikTok or Instagram'],
+             ['forum','Reddit or a forum'],['friend','Someone told me'],['other','Somewhere else']]}
+    ];
+  }
+
+  function recommend(){
+    var third = A.who==='parent' || A.who==='teacher';
+    var they  = A.who==='parent' ? 'your child' : (A.who==='teacher' ? 'your students' : 'you');
+    var are   = A.who==='teacher' ? 'are' : 'is';
+    if(A.level==='alg')   return {main:'algebra1', alt:'prealgebra',
+      why:(third? they.charAt(0).toUpperCase()+they.slice(1)+' '+are+' past the arithmetic'
+                : 'You are past the arithmetic')+
+          ', so this picks up at the language of algebra and builds toward quadratics and functions.'};
+    if(A.level==='ready') return {main:'algebra1', alt:'prealgebra',
+      why:'Arithmetic is already behind '+(third? they : 'you')+
+          ', so algebra is the right next step. If a topic turns out to be shaky, Prealgebra is there to fall back on.'};
+    return {main:'prealgebra', alt:'algebra1',
+      why:'This starts from the rules of arithmetic and builds up through fractions, percents and geometry, so nothing is assumed.'};
+  }
+
+  function dots(n,at){
+    var d=document.getElementById('obDots'); if(!d) return;
+    var h=''; for(var k=0;k<n;k++) h+='<span class="ob-dot'+(k<=at?' on':'')+'"></span>';
+    d.innerHTML=h;
+  }
+
+  function render(){
+    var S=steps(), body=document.getElementById('obBody');
+    if(i>=S.length){ return renderResult(); }
+    var s=S[i];
+    dots(S.length+1,i);
+    body.innerHTML='<h2 class="ob-q">'+s.q+'</h2>'+
+      (s.sub?'<p class="ob-sub">'+s.sub+'</p>':'')+
+      '<div class="ob-opts">'+s.opts.map(function(o,k){
+        return '<button class="ob-opt" data-v="'+o[0]+'"><span class="ob-tick"></span>'+o[1]+'</button>';
+      }).join('')+'</div>'+
+      (i>0?'<div class="ob-back"><button class="ob-skip" onclick="Onboard.back()">Back</button></div>':'');
+    [].forEach.call(body.querySelectorAll('.ob-opt'),function(b){
+      b.onclick=function(){ A[s.key]=b.getAttribute('data-v'); i++; render(); };
+    });
+  }
+
+  function renderResult(){
+    var S=steps(), r=recommend(), c=COURSES[r.main], alt=COURSES[r.alt];
+    dots(S.length+1,S.length);
+    save();
+    document.getElementById('obBody').innerHTML=
+      '<h2 class="ob-q">Start here</h2>'+
+      '<p class="ob-sub">Based on what you told us. You can switch courses whenever you like.</p>'+
+      '<div class="ob-rec"><p class="ob-rec-name">'+c.name+'</p>'+
+        '<p class="ob-rec-why">'+r.why+'</p>'+
+        '<div class="ob-facts">'+c.facts.map(function(f){
+          return '<div><b>'+f[0]+'</b>'+f[1]+'</div>'; }).join('')+'</div></div>'+
+      '<p class="ob-alt">Would you rather begin with '+alt.name+'? '+
+        '<button onclick="Onboard.go(\''+alt.slug+'\')">Start '+alt.name+' instead</button></p>'+
+      '<button class="ob-go" onclick="Onboard.go(\''+c.slug+'\')">Start '+c.name+'</button>';
+    if(window.track) track('onboarding_complete',{who:A.who||'',level:A.level||'',goal:A.goal||'',source:A.source||'',recommended:r.main});
+  }
+
+  function save(){
+    A.done=1; A.at=new Date().toISOString().slice(0,10);
+    try{ localStorage.setItem(KEY,JSON.stringify(A)); }catch(e){}
+    // ride the profile's own cloud sync, so this reaches Firestore whenever the account does
+    if(window.Rewards && Rewards.setMeta) try{ Rewards.setMeta('onboarding',A); }catch(e){}
+  }
+  function close(){ var o=document.getElementById('obOv'); if(o) o.classList.remove('on'); }
+
+  window.Onboard={
+    answers:function(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ return {}; } },
+    seen:function(){ return !!this.answers().done; },
+    back:function(){ if(i>0){ i--; render(); } },
+    skip:function(){ A.skipped=1; save(); close(); if(window.track) track('onboarding_skip',{step:i}); },
+    go:function(slug){
+      save(); close();
+      try{ if(window.setCourse) setCourse(slug); }catch(e){}
+      if(window.track) track('onboarding_start_course',{course:slug});
+    },
+    open:function(force){
+      if(!force && this.seen()) return false;
+      A={}; i=0;
+      var o=document.getElementById('obOv'); if(!o) return false;
+      o.classList.add('on'); render();
+      if(window.track) track('onboarding_open',{});
+      return true;
+    }
+  };
+
+  // Fire on first entry into the app, once the shell is up and no other overlay owns the screen.
+  function maybeOpen(){
+    if(Onboard.seen()) return;
+    if(document.getElementById('bootGate')) return;                 // still booting
+    var au=document.getElementById('authOv');
+    if(au && getComputedStyle(au).display!=='none') return;          // sign-in is showing
+    Onboard.open();
+  }
+  if(document.readyState==='complete') setTimeout(maybeOpen,700);
+  else window.addEventListener('load',function(){ setTimeout(maybeOpen,700); });
+})();
+</script>
+
 </body>
 </html>
