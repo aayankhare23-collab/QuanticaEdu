@@ -56,18 +56,17 @@
    {
     "t": "prob",
     "xp": 7,
-    "x": "For each pair, decide whether the first is a <b>factor</b> of the second, a <b>multiple</b>, <b>both</b>, or <b>neither</b>. (a) 4 and 12 (b) 15 and 5 (c) 8 and 8 (d) 6 and 9",
+    "x": "For each pair, decide whether the first number is a <b>factor</b> of the second, a <b>multiple</b> of it, <b>both</b>, or <b>neither</b>. (a) 4 and 12 (b) 15 and 5 (c) 8 and 8 (d) 6 and 9. In how many of the four pairs is the first number a factor of the second?",
     "hints": [
-     "For each pair, ask two separate questions. Does the first number divide the second evenly, and is the first number itself a whole-number times the second?",
-     "\\(a\\) is a factor of \\(b\\) when \\(b = a \\times (\\text{whole number})\\). \\(a\\) is a multiple of \\(b\\) when \\(a = b \\times (\\text{whole number})\\). A pair can satisfy both, one, or neither.",
-     "Try the pair where both numbers are equal. Does \\(8\\) divide \\(8\\), and is \\(8\\) a whole-number times \\(8\\)?"
+     "For each pair ask two separate questions. Does the first number divide the second evenly, and is the first number itself a whole number times the second?",
+     "\\(a\\) is a factor of \\(b\\) when \\(b=a\\times(\\text{whole number})\\). Check the pair where both numbers are equal carefully."
     ],
-    "ans": "(a) factor, (b) multiple, (c) both, (d) neither",
+    "ans": "2",
     "accept": [
-     "a factor b multiple c both d neither",
-     "factor, multiple, both, neither"
+     "2",
+     "two"
     ],
-    "sol": "(a) \\(12=4\\times3\\), so \\(4\\) is a <b>factor</b> of 12. (b) \\(15=5\\times3\\), so 15 is a <b>multiple</b> of 5. (c) \\(8=8\\times1\\), so 8 is <b>both</b> a factor and a multiple of itself. (d) 6 does not divide 9 evenly, and 6 is smaller than 9, so <b>neither</b>. $$\\boxed{\\text{(a) factor, (b) multiple, (c) both, (d) neither}}$$ Parts (a) and (b) are the same fact told from opposite ends. Whenever one number is a factor of another, that other number is automatically a multiple of the first."
+    "sol": "(a) \\(12=4\\times3\\), so 4 is a factor of 12. (b) 15 does not divide 5, so 15 is a multiple of 5 rather than a factor. (c) \\(8=8\\times1\\), so 8 is both a factor and a multiple of itself. (d) 6 does not divide 9 evenly, so neither. Only (a) and (c) qualify, giving \\(\\boxed{2}\\) pairs. Parts (a) and (b) are the same fact told from opposite ends, and (c) shows every number is both a factor and a multiple of itself."
    },
    {
     "t": "imp",
@@ -76,24 +75,17 @@
    {
     "t": "prob",
     "xp": 10,
-    "x": "The factors of 36 pair as \\(1\\times36, 2\\times18, 3\\times12, 4\\times9, 6\\times6\\). Does 49 have an odd or even number of factors? What about 35?",
+    "x": "The factors of 36 pair up as \\(1\\times36,\\ 2\\times18,\\ 3\\times12,\\ 4\\times9,\\ 6\\times6\\), nine factors in all. How many factors does 49 have?",
     "hints": [
-     "Every pair so far has used two different side lengths. Look hard at \\(6\\times6\\). How many new factors does that arrangement actually contribute?",
-     "\\(49=7\\times7\\) and \\(35=5\\times7\\). In which one does a side pair with itself?"
+     "Every pair so far used two different side lengths. Look hard at \\(6\\times6\\), and note that \\(49=7\\times7\\).",
+     "List every whole number that divides 49 evenly."
     ],
-    "ans": "36 has nine factors, an odd count, because the 6-by-6 square self-pairs; 49 has an odd count, 35 has an even count",
+    "ans": "3",
     "accept": [
-     "9",
-     "nine",
-     "36 has 9 factors (odd); 49 odd, 35 even",
-     "odd even",
-     "odd, even",
-     "odd and even",
-     "49 odd 35 even",
-     "odd,even",
-     "49 odd, 35 even"
+     "3",
+     "three"
     ],
-    "sol": "Pair the factors of 36 off. \\(1\\times36,\\ 2\\times18,\\ 3\\times12,\\ 4\\times9,\\ 6\\times6\\). The first four pairs name eight different factors, and the square \\(6\\times6\\) adds only one more, since 6 is its own partner. That gives \\(1,2,3,4,6,9,12,18,36\\), nine factors, an odd count. \\(49=7\\times7\\) self-pairs the same way, so its count is odd too, while 35 splits only into \\(1\\times35\\) and \\(5\\times7\\), four factors, an even count. $$\\boxed{\\text{36 has nine factors, an odd count, because the 6-by-6 square self-pairs; 49 has an odd count, 35 has an even count}}$$ Factors normally arrive two at a time, so the total is even unless one factor pairs with itself, and that happens exactly when the number is a perfect square."
+    "sol": "The pairs are \\(1\\times49\\) and \\(7\\times7\\), and the second adds only one new factor because 7 is its own partner. The factors are \\(1,\\ 7,\\ 49\\), so 49 has \\(\\boxed{3}\\). Factors normally arrive two at a time, so a count is even unless one factor pairs with itself, which happens exactly for perfect squares. That is why 36 and 49 come out odd while 35, splitting only as \\(1\\times35\\) and \\(5\\times7\\), has four."
    },
    {
     "t": "fig",
@@ -107,18 +99,17 @@
    {
     "t": "prob",
     "xp": 8,
-    "x": "Priya lists every factor of 20, and Owen lists every multiple of 20. Who finishes, who never does, and why? Write the list that can be finished, and say whether 20 appears on both lists.",
+    "x": "Priya lists every factor of 20, and Owen lists every multiple of 20. Only one of them can ever finish. How many numbers are on that finished list?",
     "hints": [
-     "A factor of \\(20\\) is a side of a rectangle with area \\(20\\). Can a side ever be longer than \\(20\\)? Now think about multiples instead. After \\(20, 40, 60\\), is there ever a last one?"
+     "A factor of 20 is a side of a rectangle with area 20, so no factor can be longer than 20. Owen's list has no such ceiling.",
+     "Hunt the factors in pairs, \\(1\\times20\\), \\(2\\times10\\), \\(4\\times5\\)."
     ],
-    "ans": "Factors of 20 are finite (1, 2, 4, 5, 10, 20, six of them, largest 20); multiples are infinite; 20 sits on both lists",
+    "ans": "6",
     "accept": [
-     "Priya finishes, Owen never does",
-     "factors finite, multiples infinite, 20 on both",
-     "1,2,4,5,10,20",
-     "1, 2, 4, 5, 10, 20"
+     "6",
+     "six"
     ],
-    "sol": "Priya finishes, Owen never does. No factor of 20 can be bigger than 20 itself, so hunting in pairs, \\(1\\times20\\), \\(2\\times10\\), \\(4\\times5\\), closes the list at \\(1,\\ 2,\\ 4,\\ 5,\\ 10,\\ 20\\), six factors. Owen's list runs \\(20, 40, 60, 80, \\ldots\\) with no last entry, since from any multiple he can always take one more step of 20. And 20 shows up on both lists, as its own largest factor and its own smallest positive multiple. $$\\boxed{\\text{Factors of 20 are finite (1, 2, 4, 5, 10, 20, six of them, largest 20); multiples are infinite; 20 sits on both lists}}$$ A factor list is trapped between 1 and the number, so it always ends. A multiple list has no ceiling."
+    "sol": "Priya is the one who finishes, since no factor of 20 can be bigger than 20 itself. Hunting in pairs gives \\(1\\times20\\), \\(2\\times10\\), \\(4\\times5\\), so her list is \\(1,\\ 2,\\ 4,\\ 5,\\ 10,\\ 20\\), which is \\(\\boxed{6}\\) numbers. Owen never finishes, because from any multiple he can always take one more step of 20. Note that 20 sits on both lists, as its own largest factor and its own smallest positive multiple."
    },
    {
     "t": "prob",
@@ -173,17 +164,17 @@
    {
     "t": "prob",
     "xp": 9,
-    "x": "Envelope \\(A\\) holds a multiple of 8 dollars, and envelope \\(B\\) holds a multiple of 8 dollars. Show that the two cannot total exactly 250 dollars, and find the nearest achievable total.",
+    "x": "Envelope \\(A\\) holds a multiple of 8 dollars and envelope \\(B\\) holds a multiple of 8 dollars, so the two can never total exactly 250 dollars. What is the closest total they can reach?",
     "hints": [
      "By closure, what kind of number is \\(A+B\\) forced to be, whatever \\(A\\) and \\(B\\) are?",
-     "Is \\(250\\) a multiple of \\(8\\)? Compare it with \\(8\\times31\\) and \\(8\\times32\\)."
+     "Compare 250 with \\(8\\times31\\) and \\(8\\times32\\)."
     ],
-    "ans": "Impossible; the nearest reachable total is 248",
+    "ans": "248",
     "accept": [
      "248",
-     "impossible, 248"
+     "$248"
     ],
-    "sol": "Both envelopes hold multiples of 8, so their sum is a multiple of 8 too. But \\(8\\times31=248\\) and \\(8\\times32=256\\), so 250 lands between two neighbouring multiples of 8 and is not one of them. No two such envelopes can total 250. The closest total they can reach is 248, for instance with \\(A=240\\) and \\(B=8\\). $$\\boxed{\\text{Impossible; the nearest reachable total is 248}}$$ Closure settled a question about the sum without either amount ever being known."
+    "sol": "Both envelopes hold multiples of 8, so the total is a multiple of 8 as well. Since \\(8\\times31=248\\) and \\(8\\times32=256\\), the total skips straight past 250, and the closest it can come is \\(\\boxed{248}\\), for instance with \\(A=240\\) and \\(B=8\\). Closure settled the question without either amount ever being known."
    },
    {
     "t": "p",
