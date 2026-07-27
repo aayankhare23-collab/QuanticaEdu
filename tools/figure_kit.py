@@ -220,3 +220,65 @@ def eqrow(x, y, left, right, pal, fs=21, w=300):
             f'<text x="{x+w*0.62:.0f}" y="{y}" font-size="{fs}" font-weight="700" fill="{pal["mid"]}">=</text>'
             f'<text x="{x+w:.0f}" y="{y}" text-anchor="end" font-size="{fs}" font-weight="700" '
             f'fill="{pal["ink"]}">{right}</text>')
+
+
+def grid(x, y, cw, rows, cols, pal, hi=None, hipal=None, labels=None, fs=17):
+    """Grid of cw-sized cells. hi = set of (r,c) drawn in hipal. labels = {(r,c): text}."""
+    hi = hi or set(); hipal = hipal or GOLD; labels = labels or {}
+    o = []
+    for r in range(rows):
+        for c in range(cols):
+            pp = hipal if (r, c) in hi else pal
+            gx, gy = x + c*cw, y + r*cw
+            o.append(f'<rect x="{gx}" y="{gy}" width="{cw}" height="{cw}" rx="5" '
+                     f'fill="{pp["soft"]}" stroke="{pp["line"]}" stroke-width="1.4"/>')
+            t = labels.get((r, c))
+            if t is not None:
+                o.append(f'<text x="{gx+cw/2}" y="{gy+cw/2+fs*0.35}" text-anchor="middle" '
+                         f'font-size="{fs}" font-weight="700" fill="{pp["ink"]}">{t}</text>')
+    return ''.join(o)
+
+def node(cx, cy, txt, pal, r=25, fs=19):
+    return (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{pal["soft"]}" stroke="{pal["line"]}" '
+            f'stroke-width="1.8"/>'
+            f'<text x="{cx}" y="{cy+fs*0.35}" text-anchor="middle" font-size="{fs}" '
+            f'font-weight="700" fill="{pal["ink"]}">{txt}</text>')
+
+def edge(x1, y1, x2, y2, colour, w=2):
+    return f'<path d="M{x1} {y1} L{x2} {y2}" fill="none" stroke="{colour}" stroke-width="{w}" stroke-linecap="round"/>'
+
+def venn(cx, cy, r, gapf, palA, palB, palM):
+    """Two overlapping discs centred about cx. gapf = centre offset as a fraction of r."""
+    off = r * gapf
+    return (f'<circle cx="{cx-off}" cy="{cy}" r="{r}" fill="{palA["soft"]}" stroke="{palA["line"]}" '
+            f'stroke-width="2" fill-opacity="0.75"/>'
+            f'<circle cx="{cx+off}" cy="{cy}" r="{r}" fill="{palB["soft"]}" stroke="{palB["line"]}" '
+            f'stroke-width="2" fill-opacity="0.75"/>')
+
+def cube(x, y, s, n, pal):
+    """Isometric n^3 cube of unit cells. (x, y) is the topmost (back) corner.
+    Basis: R = right-and-down, L = left-and-down, D = straight down."""
+    dx, dy, h = s * 0.866, s * 0.5, s
+    def P(a, b, c):                       # a along R, b along L, c along D
+        return (x + (a - b) * dx, y + (a + b) * dy + c * h)
+    def quad(p0, p1, p2, p3, fill, stroke):
+        return (f'<path d="M{p0[0]:.1f} {p0[1]:.1f} L{p1[0]:.1f} {p1[1]:.1f} '
+                f'L{p2[0]:.1f} {p2[1]:.1f} L{p3[0]:.1f} {p3[1]:.1f} Z" '
+                f'fill="{fill}" stroke="{stroke}" stroke-width="1.2" stroke-linejoin="round"/>')
+    o = []
+    # top face (lightest)
+    for a in range(n):
+        for b in range(n):
+            o.append(quad(P(a, b, 0), P(a + 1, b, 0), P(a + 1, b + 1, 0), P(a, b + 1, 0),
+                          pal['soft'], pal['line']))
+    # left face, anchored on the n*L edge, running along R and down
+    for a in range(n):
+        for c in range(n):
+            o.append(quad(P(a, n, c), P(a + 1, n, c), P(a + 1, n, c + 1), P(a, n, c + 1),
+                          pal['line'], pal['mid']))
+    # right face, anchored on the n*R edge, running along L and down
+    for b in range(n):
+        for c in range(n):
+            o.append(quad(P(n, b, c), P(n, b + 1, c), P(n, b + 1, c + 1), P(n, b, c + 1),
+                          pal['soft'], pal['mid']))
+    return ''.join(o)
