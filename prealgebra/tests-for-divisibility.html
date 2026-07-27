@@ -84,51 +84,51 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 <p>Try the same tail trick on 9. It would need a power of ten that 9 divides, and there is none, since \(10=9+1\), \(100=99+1\), and \(1000=999+1\). Every power of ten misses a multiple of 9 by exactly 1, and because the miss is the same size every time, we can still build a test out of it.</p>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">The stamp number is 5,742. Break it by place value, write each power of ten as a multiple of 9 plus 1, and let the multiples fall away. What leftover decides whether 9 divides 5,742?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Do not divide the whole 5,742 at once. Split it by place value, \(5742 = 5\times 1000 + 7\times 100 + 4\times 10 + 2\), and look at each power of ten on its own.</li><li>Write each power of ten as a multiple of 9 plus 1, so \(1000 = 999 + 1\), \(100 = 99 + 1\), \(10 = 9 + 1\). Every '\(+1\)' hands its digit straight back to you.</li><li>After the \(999\), \(99\), and \(9\) chunks fall away as multiples of 9, the only piece left to check is \(5 + 7 + 4 + 2\).</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Spread \(5742\) out by place value and write each power of ten as a multiple of 9 plus 1. $$5742 = 5(999+1) + 7(99+1) + 4(9+1) + 2 = \big(5\times 999 + 7\times 99 + 4\times 9\big) + \big(5 + 7 + 4 + 2\big)$$ The first group is built from \(999\), \(99\), and \(9\), so closure drops it as a multiple of 9. What decides the question is the <b>digit sum</b> \(5 + 7 + 4 + 2 = \boxed{18}\). Since \(18 = 9\times 2\), the stamp number is divisible by 9, and \(5742 \div 9 = 638\) confirms it.</div></details></div>
 <figure class="fig"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top, three rows showing 10 equals 9 plus 1, 100 equals 99 plus 1, and 1000 equals 999 plus 1, with the runs of nines tinted green as a multiple of 9 and the plus 1 parts highlighted in gold. Bottom, the number 4,152 written as each digit times a run of nines plus the digit itself, where the nine parts gather into one big multiple of 9 and the leftover digits gather into the digit sum 4 plus 1 plus 5 plus 2 equals 12, which is not a multiple of 9.">
-<text x="200" y="16" text-anchor="middle" font-size="13" font-weight="700" fill="var(--mid)" font-family="Space Grotesk, sans-serif">Every power of ten is a run of nines, plus 1</text>
-<rect x="92" y="26" width="46" height="26" rx="5" fill="rgba(31,157,107,.16)" stroke="var(--green)" stroke-width="1.5"/>
-<text x="40" y="44" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">10</text>
-<text x="68" y="44" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">=</text>
-<text x="115" y="45" text-anchor="middle" font-size="16" font-weight="700" fill="var(--green)" font-family="Space Grotesk, sans-serif">9</text>
-<text x="148" y="44" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">+</text>
-<rect x="160" y="26" width="26" height="26" rx="5" fill="rgba(199,145,0,.30)" stroke="var(--gold)" stroke-width="1.5"/>
-<text x="173" y="45" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">1</text>
-<rect x="92" y="58" width="46" height="26" rx="5" fill="rgba(31,157,107,.16)" stroke="var(--green)" stroke-width="1.5"/>
-<text x="40" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">100</text>
-<text x="68" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">=</text>
-<text x="115" y="77" text-anchor="middle" font-size="16" font-weight="700" fill="var(--green)" font-family="Space Grotesk, sans-serif">99</text>
-<text x="148" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">+</text>
-<rect x="160" y="58" width="26" height="26" rx="5" fill="rgba(199,145,0,.30)" stroke="var(--gold)" stroke-width="1.5"/>
-<text x="173" y="77" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">1</text>
-<rect x="92" y="90" width="46" height="26" rx="5" fill="rgba(31,157,107,.16)" stroke="var(--green)" stroke-width="1.5"/>
-<text x="40" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">1000</text>
-<text x="68" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">=</text>
-<text x="115" y="109" text-anchor="middle" font-size="16" font-weight="700" fill="var(--green)" font-family="Space Grotesk, sans-serif">999</text>
-<text x="148" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">+</text>
-<rect x="160" y="90" width="26" height="26" rx="5" fill="rgba(199,145,0,.30)" stroke="var(--gold)" stroke-width="1.5"/>
-<text x="173" y="109" text-anchor="middle" font-size="16" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">1</text>
-<text x="290" y="44" text-anchor="middle" font-size="12" fill="var(--mid)" font-family="Space Grotesk, sans-serif">the green part is</text>
-<text x="290" y="60" text-anchor="middle" font-size="12" fill="var(--mid)" font-family="Space Grotesk, sans-serif">a multiple of 9,</text>
-<text x="290" y="80" text-anchor="middle" font-size="12" fill="var(--mid)" font-family="Space Grotesk, sans-serif">the gold part is</text>
-<text x="290" y="96" text-anchor="middle" font-size="12" fill="var(--mid)" font-family="Space Grotesk, sans-serif">just the digit, 1</text>
-<line x1="18" y1="130" x2="382" y2="130" stroke="var(--line)" stroke-width="1"/>
-<text x="200" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="var(--mid)" font-family="Space Grotesk, sans-serif">So for 4,152 each digit leaves behind only itself</text>
-<rect x="18" y="162" width="232" height="30" rx="6" fill="rgba(31,157,107,.16)" stroke="var(--green)" stroke-width="1.5"/>
-<text x="44" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="var(--green)" font-family="Space Grotesk, sans-serif">4·999</text>
-<text x="84" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">+</text>
-<text x="118" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="var(--green)" font-family="Space Grotesk, sans-serif">1·99</text>
-<text x="152" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">+</text>
-<text x="186" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="var(--green)" font-family="Space Grotesk, sans-serif">5·9</text>
-<text x="263" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">+</text>
-<rect x="276" y="162" width="106" height="30" rx="6" fill="rgba(199,145,0,.30)" stroke="var(--gold)" stroke-width="1.5"/>
-<text x="329" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">4+1+5+2</text>
-<path d="M 18 198 L 18 204 L 250 204 L 250 198" fill="none" stroke="var(--green)" stroke-width="1.5"/>
-<text x="134" y="220" text-anchor="middle" font-size="12" fill="var(--green)" font-family="Space Grotesk, sans-serif">one big multiple of 9</text>
-<path d="M 276 198 L 276 204 L 382 204 L 382 198" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
-<text x="329" y="220" text-anchor="middle" font-size="12" fill="var(--gold-deep)" font-family="Space Grotesk, sans-serif">the digit sum</text>
-<text x="270" y="246" text-anchor="end" font-size="14" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">=</text>
-<rect x="276" y="230" width="48" height="22" rx="5" fill="rgba(199,145,0,.30)" stroke="var(--gold)" stroke-width="1.5"/>
-<text x="300" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="var(--navy)" font-family="Space Grotesk, sans-serif">12</text>
-<text x="200" y="246" text-anchor="end" font-size="12" fill="var(--mid)" font-family="Space Grotesk, sans-serif">12 is a multiple of 9? No.</text>
+<text x="200" y="16" text-anchor="middle" font-size="13" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">Every power of ten is a run of nines, plus 1</text>
+<rect x="92" y="26" width="46" height="26" rx="5" fill="rgba(31,157,107,.16)" stroke="#2E7D4F" stroke-width="1.5"/>
+<text x="40" y="44" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">10</text>
+<text x="68" y="44" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">=</text>
+<text x="115" y="45" text-anchor="middle" font-size="16" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">9</text>
+<text x="148" y="44" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">+</text>
+<rect x="160" y="26" width="26" height="26" rx="5" fill="rgba(199,145,0,.30)" stroke="#C9860B" stroke-width="1.5"/>
+<text x="173" y="45" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">1</text>
+<rect x="92" y="58" width="46" height="26" rx="5" fill="rgba(31,157,107,.16)" stroke="#2E7D4F" stroke-width="1.5"/>
+<text x="40" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">100</text>
+<text x="68" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">=</text>
+<text x="115" y="77" text-anchor="middle" font-size="16" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">99</text>
+<text x="148" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">+</text>
+<rect x="160" y="58" width="26" height="26" rx="5" fill="rgba(199,145,0,.30)" stroke="#C9860B" stroke-width="1.5"/>
+<text x="173" y="77" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">1</text>
+<rect x="92" y="90" width="46" height="26" rx="5" fill="rgba(31,157,107,.16)" stroke="#2E7D4F" stroke-width="1.5"/>
+<text x="40" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">1000</text>
+<text x="68" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">=</text>
+<text x="115" y="109" text-anchor="middle" font-size="16" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">999</text>
+<text x="148" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">+</text>
+<rect x="160" y="90" width="26" height="26" rx="5" fill="rgba(199,145,0,.30)" stroke="#C9860B" stroke-width="1.5"/>
+<text x="173" y="109" text-anchor="middle" font-size="16" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">1</text>
+<text x="290" y="44" text-anchor="middle" font-size="12" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">the green part is</text>
+<text x="290" y="60" text-anchor="middle" font-size="12" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">a multiple of 9,</text>
+<text x="290" y="80" text-anchor="middle" font-size="12" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">the gold part is</text>
+<text x="290" y="96" text-anchor="middle" font-size="12" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">just the digit, 1</text>
+<line x1="18" y1="130" x2="382" y2="130" stroke="rgba(22,75,53,.14)" stroke-width="1"/>
+<text x="200" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">So for 4,152 each digit leaves behind only itself</text>
+<rect x="18" y="162" width="232" height="30" rx="6" fill="rgba(31,157,107,.16)" stroke="#2E7D4F" stroke-width="1.5"/>
+<text x="44" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">4·999</text>
+<text x="84" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">+</text>
+<text x="118" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">1·99</text>
+<text x="152" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">+</text>
+<text x="186" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">5·9</text>
+<text x="263" y="182" text-anchor="middle" font-size="14" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">+</text>
+<rect x="276" y="162" width="106" height="30" rx="6" fill="rgba(199,145,0,.30)" stroke="#C9860B" stroke-width="1.5"/>
+<text x="329" y="183" text-anchor="middle" font-size="15" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">4+1+5+2</text>
+<path d="M 18 198 L 18 204 L 250 204 L 250 198" fill="none" stroke="#2E7D4F" stroke-width="1.5"/>
+<text x="134" y="220" text-anchor="middle" font-size="12" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">one big multiple of 9</text>
+<path d="M 276 198 L 276 204 L 382 204 L 382 198" fill="none" stroke="#C9860B" stroke-width="1.5"/>
+<text x="329" y="220" text-anchor="middle" font-size="12" fill="#7a4f00" font-family="Space Grotesk, sans-serif">the digit sum</text>
+<text x="270" y="246" text-anchor="end" font-size="14" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">=</text>
+<rect x="276" y="230" width="48" height="22" rx="5" fill="rgba(199,145,0,.30)" stroke="#C9860B" stroke-width="1.5"/>
+<text x="300" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#164B35" font-family="Space Grotesk, sans-serif">12</text>
+<text x="200" y="246" text-anchor="end" font-size="12" fill="#2E7D4F" font-family="Space Grotesk, sans-serif">12 is a multiple of 9? No.</text>
 </svg><figcaption>Here is the whole idea in one picture. Every power of ten is one short step above a run of nines, since \(10=9+1\), \(100=99+1\), and \(1000=999+1\), and a run of nines is always a multiple of \(9\). So when you write a number as its digits times those powers of ten, each digit splits into two pieces, a chunk of nines that the digit rides on and the bare digit left over. The nine chunks all gather into one big multiple of \(9\), which closure lets us set aside, and what stays behind is nothing but the digits added up. That leftover is the <b>digit sum</b>, which is why for \(4{,}152\) you only ever have to check \(4+1+5+2=12\). The number is divisible by \(9\) exactly when its digit sum is, because the digit sum is the one piece the multiple of \(9\) never carried away.</figcaption></figure>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">A view counter reads 5,839,206. Sum its digits, and if the result has more than one digit, sum again. What single digit do you land on, and what does it say about divisibility by 3 and by 9?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Add the seven digits of 5,839,206 together. You should get a two-digit number, so do not stop there.</li><li>Your first total is 33. Now add ITS digits, 3 + 3, to crush it down to one digit.</li><li>The single digit you reach is the remainder when 5,839,206 is divided by 9. Compare that digit to 3 and to 9 to read off which one divides the count.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Add the digits, \(5+8+3+9+2+0+6 = 33\). That is still two digits, so add again, \(3+3=\boxed{6}\). A number and its digit sum leave the same remainder under 9, so this single digit is that remainder. It is a multiple of 3 but not of 9, so \(5{,}839{,}206\) is divisible by 3 and not by 9.</div></details></div>
 <p>Try 11 next. We have \(10=11-1\), so ten leaves remainder \(-1\). Then \(100=99+1\) leaves \(+1\), and \(1000=1001-1\) leaves \(-1\). The remainders flip between \(-1\) and \(+1\) as you climb the places, so the digits will need alternating signs.</p>

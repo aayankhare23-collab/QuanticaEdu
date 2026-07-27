@@ -77,139 +77,139 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
   <p>Last lesson we counted by adding and subtracting whole piles of items. Now we count outcomes that get built up in steps, like an outfit picked one piece at a time, where each step has its own set of options.</p>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">You have \(5\) shirts and \(4\) pairs of pants. How many different shirt-and-pants outfits can you make?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Pick just one shirt for a moment and hold it still. With that single shirt in your hand, how many different outfits can you build by trying each of the \(4\) pairs of pants with it?</li><li>One shirt gives \(4\) outfits. Now you have \(5\) shirts, and every shirt gets its own group of \(4\) outfits, with no outfit ever shared between two shirts. So you are stacking up \(5\) groups that each hold \(4\) outfits.</li><li>You have \(5\) equal groups of \(4\) outfits, so add \(4+4+4+4+4\), which is the same as the product \(5 \times 4\).</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Hold one shirt still. It pairs with each of the \(4\) pairs of pants, so that single shirt gives \(4\) outfits. Every one of the \(5\) shirts gives its own \(4\), and none of those repeat, so the total is \(5 \times 4 = \boxed{20}\). Equal-sized groups get multiplied, which beats adding \(4+4+4+4+4\) by hand.</div></details></div>
 <figure class="fig"><svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A branching tree for building an outfit from 4 shirts and 2 pants. On the left a single start dot splits into 4 shirt branches, labelled S1, S2, S3, and S4. From the tip of each shirt branch, 2 fresh pant branches sprout, each ending in a pants choice A or B, so every shirt fans out into the same 2 pants. This makes 4 identical groups of 2 endpoints, which is 8 endpoints in all. The arithmetic below reads 4 groups of 2 equals 4 times 2 equals 8 outfits.">
-  <text x="220" y="20" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="var(--mid)">EACH SHIRT FANS OUT INTO THE SAME 2 PANTS</text>
+  <text x="220" y="20" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#2E7D4F">EACH SHIRT FANS OUT INTO THE SAME 2 PANTS</text>
 
-  <circle cx="38" cy="160" r="6" fill="var(--slate)"/>
-  <text x="38" y="186" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="var(--mid)">start</text>
+  <circle cx="38" cy="160" r="6" fill="#445C48"/>
+  <text x="38" y="186" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="600" fill="#2E7D4F">start</text>
 
-  <line x1="44" y1="160" x2="148" y2="58" stroke="var(--slate)" stroke-width="1.8"/>
-  <line x1="44" y1="160" x2="148" y2="126" stroke="var(--slate)" stroke-width="1.8"/>
-  <line x1="44" y1="160" x2="148" y2="194" stroke="var(--slate)" stroke-width="1.8"/>
-  <line x1="44" y1="160" x2="148" y2="262" stroke="var(--slate)" stroke-width="1.8"/>
+  <line x1="44" y1="160" x2="148" y2="58" stroke="#445C48" stroke-width="1.8"/>
+  <line x1="44" y1="160" x2="148" y2="126" stroke="#445C48" stroke-width="1.8"/>
+  <line x1="44" y1="160" x2="148" y2="194" stroke="#445C48" stroke-width="1.8"/>
+  <line x1="44" y1="160" x2="148" y2="262" stroke="#445C48" stroke-width="1.8"/>
 
-  <g font-size="10.5" font-weight="700" fill="var(--ink)" text-anchor="middle">
-    <circle cx="158" cy="58" r="15" fill="var(--soft)" stroke="var(--slate)" stroke-width="1.6"/><text x="158" y="62" font-family="Space Grotesk, sans-serif">S1</text>
-    <circle cx="158" cy="126" r="15" fill="var(--soft)" stroke="var(--slate)" stroke-width="1.6"/><text x="158" y="130" font-family="Space Grotesk, sans-serif">S2</text>
-    <circle cx="158" cy="194" r="15" fill="var(--soft)" stroke="var(--slate)" stroke-width="1.6"/><text x="158" y="198" font-family="Space Grotesk, sans-serif">S3</text>
-    <circle cx="158" cy="262" r="15" fill="var(--soft)" stroke="var(--slate)" stroke-width="1.6"/><text x="158" y="266" font-family="Space Grotesk, sans-serif">S4</text>
+  <g font-size="10.5" font-weight="700" fill="#1B2E1F" text-anchor="middle">
+    <circle cx="158" cy="58" r="15" fill="rgba(255,255,255,.55)" stroke="#445C48" stroke-width="1.6"/><text x="158" y="62" font-family="Space Grotesk, sans-serif">S1</text>
+    <circle cx="158" cy="126" r="15" fill="rgba(255,255,255,.55)" stroke="#445C48" stroke-width="1.6"/><text x="158" y="130" font-family="Space Grotesk, sans-serif">S2</text>
+    <circle cx="158" cy="194" r="15" fill="rgba(255,255,255,.55)" stroke="#445C48" stroke-width="1.6"/><text x="158" y="198" font-family="Space Grotesk, sans-serif">S3</text>
+    <circle cx="158" cy="262" r="15" fill="rgba(255,255,255,.55)" stroke="#445C48" stroke-width="1.6"/><text x="158" y="266" font-family="Space Grotesk, sans-serif">S4</text>
   </g>
 
-  <line x1="173" y1="58"  x2="286" y2="40"  stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="58"  x2="286" y2="78"  stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="126" x2="286" y2="108" stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="126" x2="286" y2="146" stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="194" x2="286" y2="176" stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="194" x2="286" y2="214" stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="262" x2="286" y2="244" stroke="var(--gold-deep)" stroke-width="1.6"/>
-  <line x1="173" y1="262" x2="286" y2="282" stroke="var(--gold-deep)" stroke-width="1.6"/>
+  <line x1="173" y1="58"  x2="286" y2="40"  stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="58"  x2="286" y2="78"  stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="126" x2="286" y2="108" stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="126" x2="286" y2="146" stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="194" x2="286" y2="176" stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="194" x2="286" y2="214" stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="262" x2="286" y2="244" stroke="#7a4f00" stroke-width="1.6"/>
+  <line x1="173" y1="262" x2="286" y2="282" stroke="#7a4f00" stroke-width="1.6"/>
 
-  <g font-size="9.5" font-weight="700" fill="var(--gold-deep)" text-anchor="middle">
-    <circle cx="299" cy="40"  r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="43" font-family="Space Grotesk, sans-serif">A</text>
-    <circle cx="299" cy="78"  r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="81" font-family="Space Grotesk, sans-serif">B</text>
-    <circle cx="299" cy="108" r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="111" font-family="Space Grotesk, sans-serif">A</text>
-    <circle cx="299" cy="146" r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="149" font-family="Space Grotesk, sans-serif">B</text>
-    <circle cx="299" cy="176" r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="179" font-family="Space Grotesk, sans-serif">A</text>
-    <circle cx="299" cy="214" r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="217" font-family="Space Grotesk, sans-serif">B</text>
-    <circle cx="299" cy="244" r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="247" font-family="Space Grotesk, sans-serif">A</text>
-    <circle cx="299" cy="282" r="13" fill="var(--softer)" stroke="var(--gold-deep)" stroke-width="1.4"/><text x="299" y="285" font-family="Space Grotesk, sans-serif">B</text>
+  <g font-size="9.5" font-weight="700" fill="#7a4f00" text-anchor="middle">
+    <circle cx="299" cy="40"  r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="43" font-family="Space Grotesk, sans-serif">A</text>
+    <circle cx="299" cy="78"  r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="81" font-family="Space Grotesk, sans-serif">B</text>
+    <circle cx="299" cy="108" r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="111" font-family="Space Grotesk, sans-serif">A</text>
+    <circle cx="299" cy="146" r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="149" font-family="Space Grotesk, sans-serif">B</text>
+    <circle cx="299" cy="176" r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="179" font-family="Space Grotesk, sans-serif">A</text>
+    <circle cx="299" cy="214" r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="217" font-family="Space Grotesk, sans-serif">B</text>
+    <circle cx="299" cy="244" r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="247" font-family="Space Grotesk, sans-serif">A</text>
+    <circle cx="299" cy="282" r="13" fill="rgba(67,176,99,.10)" stroke="#7a4f00" stroke-width="1.4"/><text x="299" y="285" font-family="Space Grotesk, sans-serif">B</text>
   </g>
 
   <g>
-    <path d="M 320 30 C 330 30 330 59 340 59 C 330 59 330 88 320 88" fill="none" stroke="var(--gold2)" stroke-width="1.4"/>
-    <text x="350" y="63" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="var(--gold-deep)">2</text>
-    <path d="M 320 98 C 330 98 330 127 340 127 C 330 127 330 156 320 156" fill="none" stroke="var(--gold2)" stroke-width="1.4"/>
-    <text x="350" y="131" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="var(--gold-deep)">2</text>
-    <path d="M 320 166 C 330 166 330 195 340 195 C 330 195 330 224 320 224" fill="none" stroke="var(--gold2)" stroke-width="1.4"/>
-    <text x="350" y="199" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="var(--gold-deep)">2</text>
-    <path d="M 320 234 C 330 234 330 263 340 263 C 330 263 330 292 320 292" fill="none" stroke="var(--gold2)" stroke-width="1.4"/>
-    <text x="350" y="267" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="var(--gold-deep)">2</text>
+    <path d="M 320 30 C 330 30 330 59 340 59 C 330 59 330 88 320 88" fill="none" stroke="#E7B44B" stroke-width="1.4"/>
+    <text x="350" y="63" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="#7a4f00">2</text>
+    <path d="M 320 98 C 330 98 330 127 340 127 C 330 127 330 156 320 156" fill="none" stroke="#E7B44B" stroke-width="1.4"/>
+    <text x="350" y="131" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="#7a4f00">2</text>
+    <path d="M 320 166 C 330 166 330 195 340 195 C 330 195 330 224 320 224" fill="none" stroke="#E7B44B" stroke-width="1.4"/>
+    <text x="350" y="199" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="#7a4f00">2</text>
+    <path d="M 320 234 C 330 234 330 263 340 263 C 330 263 330 292 320 292" fill="none" stroke="#E7B44B" stroke-width="1.4"/>
+    <text x="350" y="267" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700" fill="#7a4f00">2</text>
   </g>
 
-  <text x="220" y="310" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">4 groups of 2 = 4 &#215; 2 = 8 outfits</text>
+  <text x="220" y="310" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#1B2E1F">4 groups of 2 = 4 &#215; 2 = 8 outfits</text>
 </svg><figcaption>Building an outfit from \(4\) shirts and \(2\) pants, drawn as a tree. The trunk splits into \(4\) shirt branches, one for each shirt. Then from the tip of every shirt the same \(2\) pant branches sprout, A and B. So each shirt makes its own little group of \(2\) endpoints, and there are \(4\) of those identical groups. Counting the tips gives \(4\) groups of \(2\), which is \(4 \times 2 = 8\) outfits in all.</figcaption></figure>
-<figure class="fig"><svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid showing outfit choices. Across the top are two columns headed Jeans and Shorts, the two pants. Down the left side are three rows headed Red, Blue, and Green, the three shirts. The six inner cells are each one outfit, such as Red with Jeans or Blue with Shorts. A label on the left reads 3 shirts and a label on the top reads 2 pants. Below the grid the math reads 3 rows times 2 columns equals 6 cells, so there are 6 outfits, the same as counting the area of the grid."><text x="220" y="26" font-family="Space Grotesk, sans-serif" font-size="17" font-weight="700" fill="var(--ink)" text-anchor="middle">The outfit grid</text><text x="270" y="55" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="var(--gold-deep)" text-anchor="middle">2 pants</text><rect x="150" y="62" width="105" height="34" rx="5" fill="var(--softer)" stroke="var(--line)" stroke-width="1.5"/><text x="202.5" y="84" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)" text-anchor="middle">Jeans</text><rect x="262" y="62" width="105" height="34" rx="5" fill="var(--softer)" stroke="var(--line)" stroke-width="1.5"/><text x="314.5" y="84" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)" text-anchor="middle">Shorts</text><text x="56" y="178" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="var(--gold-deep)" text-anchor="middle" transform="rotate(-90 56 178)">3 shirts</text><rect x="72" y="104" width="70" height="40" rx="5" fill="var(--softer)" stroke="var(--line)" stroke-width="1.5"/><text x="107" y="129" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)" text-anchor="middle">Red</text><rect x="150" y="104" width="105" height="40" rx="5" fill="var(--soft)" stroke="var(--mid)" stroke-width="1.5"/><text x="202.5" y="129" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle">Red, Jeans</text><rect x="262" y="104" width="105" height="40" rx="5" fill="var(--soft)" stroke="var(--mid)" stroke-width="1.5"/><text x="314.5" y="129" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle">Red, Shorts</text><rect x="72" y="148" width="70" height="40" rx="5" fill="var(--softer)" stroke="var(--line)" stroke-width="1.5"/><text x="107" y="173" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)" text-anchor="middle">Blue</text><rect x="150" y="148" width="105" height="40" rx="5" fill="var(--soft)" stroke="var(--mid)" stroke-width="1.5"/><text x="202.5" y="173" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle">Blue, Jeans</text><rect x="262" y="148" width="105" height="40" rx="5" fill="var(--soft)" stroke="var(--mid)" stroke-width="1.5"/><text x="314.5" y="173" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle">Blue, Shorts</text><rect x="72" y="192" width="70" height="40" rx="5" fill="var(--softer)" stroke="var(--line)" stroke-width="1.5"/><text x="107" y="217" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)" text-anchor="middle">Green</text><rect x="150" y="192" width="105" height="40" rx="5" fill="var(--soft)" stroke="var(--mid)" stroke-width="1.5"/><text x="202.5" y="217" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle">Green, Jeans</text><rect x="262" y="192" width="105" height="40" rx="5" fill="var(--soft)" stroke="var(--mid)" stroke-width="1.5"/><text x="314.5" y="217" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle">Green, Shorts</text><text x="220" y="268" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">3 rows &#215; 2 columns = 6 cells</text><text x="220" y="288" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--slate)" text-anchor="middle">6 squares means 6 outfits</text></svg><figcaption>Here the same outfits sit in a grid instead of a tree. The \(3\) shirts run down the side as rows and the \(2\) pants run across the top as columns. Every inner square is one outfit, like Red with Jeans, and there are \(3\) rows of \(2\), so the squares fill an area of \(3 \times 2 = 6\). Counting the grid gives the same \(6\) outfits the tree found, which is why we just multiply.</figcaption></figure>
+<figure class="fig"><svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid showing outfit choices. Across the top are two columns headed Jeans and Shorts, the two pants. Down the left side are three rows headed Red, Blue, and Green, the three shirts. The six inner cells are each one outfit, such as Red with Jeans or Blue with Shorts. A label on the left reads 3 shirts and a label on the top reads 2 pants. Below the grid the math reads 3 rows times 2 columns equals 6 cells, so there are 6 outfits, the same as counting the area of the grid."><text x="220" y="26" font-family="Space Grotesk, sans-serif" font-size="17" font-weight="700" fill="#1B2E1F" text-anchor="middle">The outfit grid</text><text x="270" y="55" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#7a4f00" text-anchor="middle">2 pants</text><rect x="150" y="62" width="105" height="34" rx="5" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="1.5"/><text x="202.5" y="84" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48" text-anchor="middle">Jeans</text><rect x="262" y="62" width="105" height="34" rx="5" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="1.5"/><text x="314.5" y="84" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48" text-anchor="middle">Shorts</text><text x="56" y="178" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#7a4f00" text-anchor="middle" transform="rotate(-90 56 178)">3 shirts</text><rect x="72" y="104" width="70" height="40" rx="5" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="1.5"/><text x="107" y="129" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48" text-anchor="middle">Red</text><rect x="150" y="104" width="105" height="40" rx="5" fill="rgba(255,255,255,.55)" stroke="#2E7D4F" stroke-width="1.5"/><text x="202.5" y="129" font-family="Space Grotesk, sans-serif" font-size="12" fill="#1B2E1F" text-anchor="middle">Red, Jeans</text><rect x="262" y="104" width="105" height="40" rx="5" fill="rgba(255,255,255,.55)" stroke="#2E7D4F" stroke-width="1.5"/><text x="314.5" y="129" font-family="Space Grotesk, sans-serif" font-size="12" fill="#1B2E1F" text-anchor="middle">Red, Shorts</text><rect x="72" y="148" width="70" height="40" rx="5" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="1.5"/><text x="107" y="173" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48" text-anchor="middle">Blue</text><rect x="150" y="148" width="105" height="40" rx="5" fill="rgba(255,255,255,.55)" stroke="#2E7D4F" stroke-width="1.5"/><text x="202.5" y="173" font-family="Space Grotesk, sans-serif" font-size="12" fill="#1B2E1F" text-anchor="middle">Blue, Jeans</text><rect x="262" y="148" width="105" height="40" rx="5" fill="rgba(255,255,255,.55)" stroke="#2E7D4F" stroke-width="1.5"/><text x="314.5" y="173" font-family="Space Grotesk, sans-serif" font-size="12" fill="#1B2E1F" text-anchor="middle">Blue, Shorts</text><rect x="72" y="192" width="70" height="40" rx="5" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="1.5"/><text x="107" y="217" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48" text-anchor="middle">Green</text><rect x="150" y="192" width="105" height="40" rx="5" fill="rgba(255,255,255,.55)" stroke="#2E7D4F" stroke-width="1.5"/><text x="202.5" y="217" font-family="Space Grotesk, sans-serif" font-size="12" fill="#1B2E1F" text-anchor="middle">Green, Jeans</text><rect x="262" y="192" width="105" height="40" rx="5" fill="rgba(255,255,255,.55)" stroke="#2E7D4F" stroke-width="1.5"/><text x="314.5" y="217" font-family="Space Grotesk, sans-serif" font-size="12" fill="#1B2E1F" text-anchor="middle">Green, Shorts</text><text x="220" y="268" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#1B2E1F" text-anchor="middle">3 rows &#215; 2 columns = 6 cells</text><text x="220" y="288" font-family="Space Grotesk, sans-serif" font-size="12" fill="#445C48" text-anchor="middle">6 squares means 6 outfits</text></svg><figcaption>Here the same outfits sit in a grid instead of a tree. The \(3\) shirts run down the side as rows and the \(2\) pants run across the top as columns. Every inner square is one outfit, like Red with Jeans, and there are \(3\) rows of \(2\), so the squares fill an area of \(3 \times 2 = 6\). Counting the grid gives the same \(6\) outfits the tree found, which is why we just multiply.</figcaption></figure>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">A game lets you pick one of \(2\) body types, \(3\) hair styles, \(4\) outfits, and \(6\) weapons. How many different heroes can you build?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Building a hero is four separate decisions in a row, one for each menu, so set up four slots and write the number of choices that fit in each one.</li><li>When a job is made of stages done one after another, and the choices at each stage do not change the choices at the next, you multiply the slot numbers together instead of adding them.</li><li>Your four slots hold \(2\), \(3\), \(4\), and \(6\), so multiply \(2 \times 3 \times 4 \times 6\) to get the total.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Four menus means four slots, holding \(2\), \(3\), \(4\), and \(6\) choices. Multiply straight across. \(2 \times 3 = 6\), then \(6 \times 4 = 24\), then \(24 \times 6 = 144\), so you can build \(\boxed{144}\) heroes. Picking a body type does not remove any hair or outfit options, so every stage keeps its full count and the slots multiply.</div></details></div>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">A lock has \(3\) dials, each showing one of \(6\) colored symbols. Repeats are allowed. How many \(3\)-symbol codes are possible?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Picture the lock as \(3\) slots side by side. For each slot, ask how many symbols could go there. Since a symbol can repeat, choosing it for one dial does not stop you from using it again on the next.</li><li>Use the multiplication principle. Count the choices for the first dial, then the second, then the third, and multiply those counts together to get the total number of codes.</li><li>Each dial has \(6\) choices, and the choices stay the same because repeats are allowed. So the total is \(6 \times 6 \times 6\). Work out that product.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Each of the \(3\) dials can show any of the \(6\) symbols, so multiply \(6 \times 6 \times 6 = 6^3 = 216\). The lock has \(\boxed{216}\) codes. Repeats being allowed is what keeps the count at \(6\) every time, since using a symbol on one dial does not use it up.</div></details></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>The Multiplication Principle.</b> When a task is built from independent stages, the total number of ways is the <b>product</b> of the per-stage counts. So $a$ ways for the first stage and $b$ ways for the second give $a \times b$ in all. Every problem in this lesson runs on the same <b>slot-and-box</b> habit. Draw one box for each stage, write inside it how many options that stage has, and multiply straight across. Each choice you make still leaves a full set of choices at the next stage, so the counts multiply rather than add, and the row of boxes can be as long as the problem needs.</div></aside>
 <figure class="fig"><svg viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A row of three labeled boxes for building a lunch. The first box is drink and holds the number 4, the second box is sandwich and holds the number 2, the third box is side and holds the number 2. A small times sign sits between each box. Below the row the product reads 4 times 2 times 2 equals 16.">
-  <text x="220" y="28" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700" fill="var(--ink)" text-anchor="middle">Build a lunch</text>
+  <text x="220" y="28" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700" fill="#1B2E1F" text-anchor="middle">Build a lunch</text>
 
   <!-- Box 1: drink -->
-  <rect x="24" y="58" width="96" height="72" rx="10" fill="var(--softer)" stroke="var(--line)" stroke-width="2"/>
-  <text x="72" y="50" font-family="Space Grotesk, sans-serif" font-size="13" fill="var(--slate)" text-anchor="middle">drink</text>
-  <text x="72" y="106" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" fill="var(--gold-deep)" text-anchor="middle">4</text>
+  <rect x="24" y="58" width="96" height="72" rx="10" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="2"/>
+  <text x="72" y="50" font-family="Space Grotesk, sans-serif" font-size="13" fill="#445C48" text-anchor="middle">drink</text>
+  <text x="72" y="106" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" fill="#7a4f00" text-anchor="middle">4</text>
 
   <!-- times -->
-  <text x="148" y="104" font-family="Space Grotesk, sans-serif" font-size="24" fill="var(--mid)" text-anchor="middle">&#215;</text>
+  <text x="148" y="104" font-family="Space Grotesk, sans-serif" font-size="24" fill="#2E7D4F" text-anchor="middle">&#215;</text>
 
   <!-- Box 2: sandwich -->
-  <rect x="176" y="58" width="96" height="72" rx="10" fill="var(--softer)" stroke="var(--line)" stroke-width="2"/>
-  <text x="224" y="50" font-family="Space Grotesk, sans-serif" font-size="13" fill="var(--slate)" text-anchor="middle">sandwich</text>
-  <text x="224" y="106" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" fill="var(--gold-deep)" text-anchor="middle">2</text>
+  <rect x="176" y="58" width="96" height="72" rx="10" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="2"/>
+  <text x="224" y="50" font-family="Space Grotesk, sans-serif" font-size="13" fill="#445C48" text-anchor="middle">sandwich</text>
+  <text x="224" y="106" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" fill="#7a4f00" text-anchor="middle">2</text>
 
   <!-- times -->
-  <text x="300" y="104" font-family="Space Grotesk, sans-serif" font-size="24" fill="var(--mid)" text-anchor="middle">&#215;</text>
+  <text x="300" y="104" font-family="Space Grotesk, sans-serif" font-size="24" fill="#2E7D4F" text-anchor="middle">&#215;</text>
 
   <!-- Box 3: side (adding it changes nothing) -->
-  <rect x="328" y="58" width="96" height="72" rx="10" fill="var(--soft)" stroke="var(--gold2)" stroke-width="2.5"/>
-  <text x="376" y="50" font-family="Space Grotesk, sans-serif" font-size="13" fill="var(--slate)" text-anchor="middle">side</text>
-  <text x="376" y="106" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" fill="var(--gold-deep)" text-anchor="middle">2</text>
+  <rect x="328" y="58" width="96" height="72" rx="10" fill="rgba(255,255,255,.55)" stroke="#E7B44B" stroke-width="2.5"/>
+  <text x="376" y="50" font-family="Space Grotesk, sans-serif" font-size="13" fill="#445C48" text-anchor="middle">side</text>
+  <text x="376" y="106" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="700" fill="#7a4f00" text-anchor="middle">2</text>
 
   <!-- product line -->
-  <text x="220" y="172" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="var(--ink)" text-anchor="middle">4 &#215; 2 &#215; 2 = 16</text>
-  <text x="376" y="150" font-family="Space Grotesk, sans-serif" font-size="11" fill="var(--gold-deep)" text-anchor="middle" font-style="italic">same habit</text>
+  <text x="220" y="172" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="#1B2E1F" text-anchor="middle">4 &#215; 2 &#215; 2 = 16</text>
+  <text x="376" y="150" font-family="Space Grotesk, sans-serif" font-size="11" fill="#7a4f00" text-anchor="middle" font-style="italic">same habit</text>
 </svg><figcaption>Each box is one choice you make. There are \(4\) drinks, then \(2\) sandwiches, then \(2\) sides. A third box does not change the habit one bit, you still multiply straight across, and you get \(4 \times 2 \times 2 = 16\) different lunches.</figcaption></figure>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">A license plate is 2 letters then 2 digits. Repeats allowed. How many different plates are possible?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Picture the plate as four empty slots in a row, two for letters and two for digits. Each slot gets filled on its own, so think about how many choices live in each one.</li><li>Use the multiplication principle. Count the choices for each slot separately, then multiply all four counts together. Because repeats are allowed, a slot does not lose any choices from the slots before it.</li><li>A letter slot has \(26\) choices and a digit slot has \(10\) choices, so the count is \(26 \times 26 \times 10 \times 10\). Multiply these to finish.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Four slots, letter, letter, digit, digit. A letter slot has \(26\) choices and a digit slot has \(10\), and repeats are allowed so no slot loses anything to the ones before it. The two letters give \(26 \times 26 = 676\), the two digits give \(10 \times 10 = 100\), and \(676 \times 100 = 67600\). There are \(\boxed{67600}\) plates.</div></details></div>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">How many different orders can \(6\) different books be arranged on a shelf?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Picture the shelf as \(6\) empty slots in a row, one for each spot from left to right. Filling the slots one at a time is far easier than trying to list every arrangement by hand.</li><li>Use the slot-and-box habit. Count the choices for the first slot, then the second, and so on, and multiply all the counts together. The key is that once a book is placed it is gone, so each slot has one fewer choice than the slot before it.</li><li>The first slot has \(6\) books to choose from, the next has \(5\) left, then \(4\), then \(3\), then \(2\), and the last slot has just \(1\) book remaining, so multiply \(6 \times 5 \times 4 \times 3 \times 2 \times 1\).</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Fill \(6\) shelf slots left to right. The first slot has \(6\) books to choose from, then \(5\) are left, then \(4\), \(3\), \(2\), and \(1\). Multiply, $$6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720,$$ so there are \(\boxed{720}\) orders. Placing a book uses it up, so each slot has one fewer choice than the last. That countdown product is \(6!\).</div></details></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>Repeats or no repeats.</b> When repeats are <b>allowed</b>, using an option in one box does not use it up, so every box stays full at $k$ options and $n$ boxes give $k^n$. When repeats are <b>not allowed</b>, each pick gets used up, so the counts step down $k, k-1, k-2, \ldots$, one fewer each time. Arranging all $n$ different things in a row runs that stepping all the way down to $1$, giving $n \times (n-1) \times \cdots \times 1 = n!$, called $n$ <b>factorial</b>.</div></aside>
 <figure class="fig"><svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two rows of four boxes compare codes made from four symbols. The top row, repeats allowed, has the number four in every box, so four times four times four times four equals 256. The bottom row, no repeats, steps down four, three, two, one because each symbol gets used up, which is four factorial.">
-  <text x="220" y="26" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--ink)" text-anchor="middle">A 4-spot code from 4 symbols</text>
+  <text x="220" y="26" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#1B2E1F" text-anchor="middle">A 4-spot code from 4 symbols</text>
 
-  <text x="20" y="62" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)">Repeats allowed</text>
-
-  <g>
-    <rect x="20" y="72" width="58" height="58" rx="8" fill="var(--softer)" stroke="var(--line)" stroke-width="2"/>
-    <text x="49" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">4</text>
-    <text x="92" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">&#215;</text>
-
-    <rect x="106" y="72" width="58" height="58" rx="8" fill="var(--softer)" stroke="var(--line)" stroke-width="2"/>
-    <text x="135" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">4</text>
-    <text x="178" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">&#215;</text>
-
-    <rect x="192" y="72" width="58" height="58" rx="8" fill="var(--softer)" stroke="var(--line)" stroke-width="2"/>
-    <text x="221" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">4</text>
-    <text x="264" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">&#215;</text>
-
-    <rect x="278" y="72" width="58" height="58" rx="8" fill="var(--softer)" stroke="var(--line)" stroke-width="2"/>
-    <text x="307" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">4</text>
-    <text x="350" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">=</text>
-
-    <text x="396" y="108" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="var(--gold-deep)" text-anchor="middle">256</text>
-  </g>
-
-  <text x="20" y="180" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="var(--slate)">No repeats</text>
+  <text x="20" y="62" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48">Repeats allowed</text>
 
   <g>
-    <rect x="20" y="190" width="58" height="58" rx="8" fill="var(--soft)" stroke="var(--gold2)" stroke-width="2"/>
-    <text x="49" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">4</text>
-    <text x="92" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">&#215;</text>
+    <rect x="20" y="72" width="58" height="58" rx="8" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="2"/>
+    <text x="49" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">4</text>
+    <text x="92" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">&#215;</text>
 
-    <rect x="106" y="190" width="58" height="58" rx="8" fill="var(--soft)" stroke="var(--gold2)" stroke-width="2"/>
-    <text x="135" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">3</text>
-    <text x="178" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">&#215;</text>
+    <rect x="106" y="72" width="58" height="58" rx="8" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="2"/>
+    <text x="135" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">4</text>
+    <text x="178" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">&#215;</text>
 
-    <rect x="192" y="190" width="58" height="58" rx="8" fill="var(--soft)" stroke="var(--gold2)" stroke-width="2"/>
-    <text x="221" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">2</text>
-    <text x="264" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">&#215;</text>
+    <rect x="192" y="72" width="58" height="58" rx="8" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="2"/>
+    <text x="221" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">4</text>
+    <text x="264" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">&#215;</text>
 
-    <rect x="278" y="190" width="58" height="58" rx="8" fill="var(--soft)" stroke="var(--gold2)" stroke-width="2"/>
-    <text x="307" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="var(--ink)" text-anchor="middle">1</text>
-    <text x="350" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="var(--mid)" text-anchor="middle">=</text>
+    <rect x="278" y="72" width="58" height="58" rx="8" fill="rgba(67,176,99,.10)" stroke="rgba(22,75,53,.14)" stroke-width="2"/>
+    <text x="307" y="109" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">4</text>
+    <text x="350" y="108" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">=</text>
 
-    <text x="396" y="226" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="var(--gold-deep)" text-anchor="middle">4!</text>
+    <text x="396" y="108" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#7a4f00" text-anchor="middle">256</text>
   </g>
 
-  <text x="220" y="278" font-family="Space Grotesk, sans-serif" font-size="12" fill="var(--mid)" text-anchor="middle">Each pick uses up a symbol, so the choices step down.</text>
+  <text x="20" y="180" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#445C48">No repeats</text>
+
+  <g>
+    <rect x="20" y="190" width="58" height="58" rx="8" fill="rgba(255,255,255,.55)" stroke="#E7B44B" stroke-width="2"/>
+    <text x="49" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">4</text>
+    <text x="92" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">&#215;</text>
+
+    <rect x="106" y="190" width="58" height="58" rx="8" fill="rgba(255,255,255,.55)" stroke="#E7B44B" stroke-width="2"/>
+    <text x="135" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">3</text>
+    <text x="178" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">&#215;</text>
+
+    <rect x="192" y="190" width="58" height="58" rx="8" fill="rgba(255,255,255,.55)" stroke="#E7B44B" stroke-width="2"/>
+    <text x="221" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">2</text>
+    <text x="264" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">&#215;</text>
+
+    <rect x="278" y="190" width="58" height="58" rx="8" fill="rgba(255,255,255,.55)" stroke="#E7B44B" stroke-width="2"/>
+    <text x="307" y="227" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#1B2E1F" text-anchor="middle">1</text>
+    <text x="350" y="226" font-family="Space Grotesk, sans-serif" font-size="18" fill="#2E7D4F" text-anchor="middle">=</text>
+
+    <text x="396" y="226" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#7a4f00" text-anchor="middle">4!</text>
+  </g>
+
+  <text x="220" y="278" font-family="Space Grotesk, sans-serif" font-size="12" fill="#2E7D4F" text-anchor="middle">Each pick uses up a symbol, so the choices step down.</text>
 </svg><figcaption>Both strips fill the same four boxes, but the rule for each box is different. On the top strip repeats are allowed, so every box still has all \(4\) symbols to choose from, and you get \(4 \times 4 \times 4 \times 4 = 256\). On the bottom strip no repeats are allowed, so once a symbol is used it is gone. The first box has \(4\) choices, then \(3\), then \(2\), then the last box has only \(1\) symbol left, which gives \(4 \times 3 \times 2 \times 1\). That stepping-down product is exactly what \(4!\) means.</figcaption></figure>
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">\(9\) club members compete for president, vice president, and treasurer. Nobody holds two jobs. How many ways can the three jobs be filled?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Think of three empty boxes in a row, one for president, one for vice president, and one for treasurer. You are filling them one at a time from the \(9\) members, and someone who takes a job cannot be picked again.</li><li>Count the choices for each box in turn. Any of the \(9\) members could be president. Once that person is chosen, only \(8\) people are left to be vice president, and after that only \(7\) are left to be treasurer. Then multiply the box counts together.</li><li>You only have three boxes, so you stop after three steps and multiply \(9 \times 8 \times 7\).</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Any of the \(9\) members could be president. That leaves \(8\) people for vice president and \(7\) for treasurer, so multiply \(9 \times 8 \times 7\). Since \(9 \times 8 = 72\) and \(72 \times 7 = 504\), the jobs can be filled in \(\boxed{504}\) ways. Three jobs means three factors, so stop the countdown after three instead of running it down to \(1\).</div></details></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>Partial arrangement.</b> To fill $r$ slots from $n$ items in order with no repeats, take exactly $r$ descending factors and then stop. Write $n \times (n-1) \times (n-2) \times \cdots$ for $r$ factors. Each new box drops the count by one, because one more item is already placed and cannot be reused. Do not run all the way down to $1$, and do not use the full $n!$. Fill $r$ boxes, take $r$ factors, stop.</div></aside>
