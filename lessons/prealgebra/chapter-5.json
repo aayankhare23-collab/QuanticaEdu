@@ -4,7 +4,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "Each column in the place-value machine is ten times the one on its right, landing on whole numbers. But a length between \\(14\\) and \\(15\\) has no whole-number name. What if columns kept going right, each worth one tenth of the one before?"
+    "x": "Each place-value column is worth ten times the one on its right, and those columns only ever build whole numbers. But a length between \\(14\\) and \\(15\\) has no whole-number name. So keep the columns running to the right, each one worth a tenth of the one before it."
    },
    {
     "t": "prob",
@@ -27,7 +27,7 @@
      "eight tenths",
      "eight/ten"
     ],
-    "sol": "First pin down what place the \\(8\\) lives in. In \\(5.83\\), the digit right after the decimal point is the <b>tenths place</b>, the first stop past the point. One single unit of that place is worth \\(10^{-1} = \\tfrac{1}{10}\\). The value of any digit is the digit itself multiplied by the worth of its place, so for the \\(8\\) you get $$8 \\times \\tfrac{1}{10} = \\tfrac{8}{10}.$$ Another way to see it. The number \\(8\\) up there does not mean 8 whole ones, it means 8 of the tiny tenth sized pieces, and 8 copies of \\(\\tfrac{1}{10}\\) is \\(\\tfrac{8}{10}\\). Notice the \\(3\\) further right and the \\(5\\) on the left do not matter here, because we only asked what the \\(8\\) is worth on its own. So the value of the \\(8\\) by itself is \\(\\boxed{\\tfrac{8}{10}}\\)."
+    "sol": "The \\(8\\) sits one step past the point, in the tenths place, and one unit of that place is worth \\(10^{-1}=\\tfrac{1}{10}\\). Eight of those is \\(8 \\times \\tfrac{1}{10} = \\boxed{\\tfrac{8}{10}}\\). A digit's value is always the digit times the worth of its place, so the \\(5\\) and the \\(3\\) do not affect this one."
    },
    {
     "t": "prob",
@@ -47,7 +47,7 @@
      "3/100ths",
      "three hundredths"
     ],
-    "sol": "Start from what you already trust. The \\(8\\) sits in the tenths place, worth \\(\\tfrac{1}{10}\\). To find the next place, take one step right and divide that value by \\(10\\) one more time. So the place where the \\(3\\) lives is worth \\(\\tfrac{1}{10}\\) of \\(\\tfrac{1}{10}\\), and \\(\\tfrac{1}{10}\\times\\tfrac{1}{10}=\\tfrac{1}{100}\\). That matches \\(10^{-2}=\\tfrac{1}{100}\\) from Chapter 2, the hundredths place. Now the digit there is not a \\(1\\), it is a \\(3\\), so we have three of those hundredths. That gives \\(3\\times\\tfrac{1}{100}=\\tfrac{3}{100}\\). A quick gut check, \\(\\tfrac{3}{100}\\) is a small slice, smaller than the \\(8\\) tenths next door, which is exactly what you want for a place that sits further to the right. So the \\(3\\) in \\(5.83\\) is worth \\(\\boxed{3/100}\\)."
+    "sol": "Step one place right from the tenths and the place value divides by \\(10\\) again, so the \\(3\\) sits in the hundredths place, worth \\(\\tfrac{1}{10}\\times\\tfrac{1}{10}=\\tfrac{1}{100}\\). Three of those is \\(3\\times\\tfrac{1}{100}=\\boxed{3/100}\\). That is \\(10^{-2}\\), and it should come out smaller than the \\(8\\) tenths next door, since places shrink as you move right."
    },
    {
     "t": "fig",
@@ -68,7 +68,7 @@
      "05.703",
      "5.7030"
     ],
-    "sol": "Build the number one column at a time, going left to right exactly as the parts were named. The whole-number part is the 5 in the ones place, so the digits to the left of the point are just \\(5\\). Then the decimal point, then the fractional columns. The tenths get a 7, the hundredths get a 0, and the thousandths get a 3. Lining those up gives \\(5\\) point \\(7\\), \\(0\\), \\(3\\). Now look at why that middle zero earns its spot. The 3 means three thousandths, and a thousandth lives three columns to the right of the point. If you wrote \\(5.73\\) instead, that 3 would be sitting only two columns to the right, in the hundredths place, which is three hundredths, ten times bigger than what you wanted. The zero is the placeholder that holds the 3 down in its proper thousandths column so nothing shifts left. You can check by adding the pieces back up. \\(5 + \\frac{7}{10} + \\frac{0}{100} + \\frac{3}{1000} = 5 + 0.7 + 0 + 0.003 = 5.703\\), which matches column for column. So the decimal is \\(\\boxed{5.703}\\)."
+    "sol": "Drop each digit into its own column, left to right. Ones \\(5\\), then the point, then tenths \\(7\\), hundredths \\(0\\), thousandths \\(3\\). Reading straight across gives \\(\\boxed{5.703}\\). That middle zero is doing real work. Without it you would write \\(5.73\\), which puts the \\(3\\) in the hundredths place, ten times bigger than intended."
    },
    {
     "t": "prob",
@@ -87,11 +87,11 @@
      ".27",
      "0.270"
     ],
-    "sol": "Start by splitting \\(0.27\\) into the value of each digit. The \\(2\\) is in the tenths place, worth \\(\\frac{2}{10}\\), and the \\(7\\) is in the hundredths place, worth \\(\\frac{7}{100}\\). So \\(0.27=\\frac{2}{10}+\\frac{7}{100}\\). These are two fractions, and to add them they need a shared denominator. The hundredths denominator \\(100\\) is the bigger one, and \\(10\\) divides into it, so \\(100\\) is our common denominator. Convert the tenths piece by multiplying top and bottom by \\(10\\), which gives \\(\\frac{2}{10}=\\frac{20}{100}\\). Now both pieces are hundredths, so add the numerators and keep the denominator. That is \\(\\frac{20}{100}+\\frac{7}{100}=\\frac{27}{100}\\). Notice what happened. The two digits after the point, \\(2\\) and \\(7\\), became the number \\(27\\) on top, and because there were \\(2\\) decimal places the bottom is \\(10^{2}=100\\). The decimal was a hundredths fraction the whole time. \\(\\boxed{\\frac{27}{100}}\\)"
+    "sol": "The \\(2\\) is in tenths and the \\(7\\) is in hundredths, so \\(0.27=\\frac{2}{10}+\\frac{7}{100}\\). Rewrite the first piece over \\(100\\) as \\(\\frac{20}{100}\\) and add, \\(\\frac{20}{100}+\\frac{7}{100}=\\boxed{\\frac{27}{100}}\\). Two decimal places always give a denominator of \\(10^{2}=100\\), with the digits after the point read as the numerator."
    },
    {
     "t": "imp",
-    "x": "<b>Decimal place value.</b> A decimal is ordinary place value carried past the ones. Each place is one tenth of the place to its left, so stepping right walks down the negative powers of ten, tenths $10^{-1}=\\tfrac{1}{10}$, hundredths $10^{-2}=\\tfrac{1}{100}$, thousandths $10^{-3}=\\tfrac{1}{1000}$. The point is not a wall but a hinge marking where the ones end. And because a decimal and a power-of-ten fraction are the same number in two forms, you convert by <b>reading</b>, never dividing. The last filled place names the bottom (one place $10$, two places $100$, three places $1000$) and the digits after the point, read as one whole number, are the top. So $0.27=\\tfrac{27}{100}$ and $0.009=\\tfrac{9}{1000}$."
+    "x": "<b>Decimal place value.</b> A decimal is ordinary place value carried past the ones. Each place is one tenth of the place to its left, so stepping right walks down the negative powers of ten, tenths $10^{-1}=\\tfrac{1}{10}$, hundredths $10^{-2}=\\tfrac{1}{100}$, thousandths $10^{-3}=\\tfrac{1}{1000}$. The point does not interrupt that pattern, it only marks where the ones place ends. A decimal and a power-of-ten fraction are the same number written two ways, so you convert by <b>reading</b>, never dividing. The last filled place names the bottom (one place $10$, two places $100$, three places $1000$) and the digits after the point, read as one whole number, are the top. So $0.27=\\tfrac{27}{100}$ and $0.009=\\tfrac{9}{1000}$."
    },
    {
     "t": "prob",
@@ -109,7 +109,7 @@
      ".90",
      "9/10"
     ],
-    "sol": "The fraction \\(\\frac{9}{10}\\) already carries a power-of-ten denominator, so no conversion work is needed. The job is just to read it. A denominator of \\(10\\) names the <b>tenths</b>, and the tenths place is the first position to the right of the decimal point. That tells you exactly where the \\(9\\) belongs. There are no whole grams here, so a \\(0\\) fills the ones place to the left of the point, guarding it so the answer does not arrive as a bare \\(.9\\) that is easy to misread. Putting the \\(9\\) one step past the point gives \\(0.9\\). You can check the direction by going back the other way. The digit \\(9\\) sitting in the tenths place means \\(\\frac{9}{10}\\), which is right where you started. \\(\\boxed{0.9}\\)"
+    "sol": "A denominator of \\(10\\) means tenths, and tenths is the first place past the point, so the \\(9\\) goes there. There are no whole grams, so a \\(0\\) fills the ones place, giving \\(\\boxed{0.9}\\). That leading zero is only there so the answer does not arrive as a bare \\(.9\\) that is easy to misread."
    },
    {
     "t": "prob",
@@ -134,7 +134,7 @@
      "same",
      "true"
     ],
-    "sol": "The fastest way to be sure is to read each decimal as a fraction and compare. Reading \\(0.3\\) by its place value gives \\(\\frac{3}{10}\\), since the lone digit \\(3\\) sits in the tenths place. Now read \\(0.30\\). The \\(3\\) is still in the tenths place and the new \\(0\\) is in the hundredths place, so the reading is \\(\\frac{3}{10}+\\frac{0}{100}\\). That second piece is \\(\\frac{0}{100}=0\\), which adds nothing, so \\(0.30=\\frac{3}{10}\\) as well. Both decimals are the same fraction \\(\\frac{3}{10}\\), so they are the same number. Here is another angle that shows it cleanly. Write \\(0.30\\) over a common denominator as \\(\\frac{30}{100}\\), then divide the top and bottom by \\(10\\) to reach \\(\\frac{3}{10}\\). Tacking a trailing zero onto a decimal is the same move as multiplying the top and bottom of its fraction by \\(10\\), and multiplying a fraction by \\(\\frac{10}{10}=1\\) never changes its value. The extra place is real, but it holds a \\(0\\), so it is an empty slot worth nothing. The same reasoning makes \\(0.300=\\frac{300}{1000}=\\frac{3}{10}\\) too, so all three scales report one identical mass. So yes, \\(0.3\\) and \\(0.30\\) are equal. \\(\\boxed{\\text{yes}}\\)"
+    "sol": "Read each one as a fraction. \\(0.3\\) is \\(\\frac{3}{10}\\). In \\(0.30\\) the \\(3\\) is still in tenths and the new \\(0\\) sits in hundredths, adding \\(\\frac{0}{100}=0\\), so \\(0.30=\\frac{3}{10}\\) as well. Same fraction, same number, so \\(\\boxed{\\text{yes}}\\). Tacking on a trailing zero is the same move as multiplying top and bottom by \\(10\\), which never changes a value."
    },
    {
     "t": "fact",
@@ -143,11 +143,11 @@
    },
    {
     "t": "imp",
-    "x": "<b>Trailing versus inner zeros.</b> A zero after the point does one of two opposite things, decided by where it sits. Tacked on at the end it is empty padding, filling a place with nothing, so $0.5=0.50=0.500$ and you may add or drop trailing zeros freely to line decimals up. But a zero wedged between the point and a real digit steals a place that digit would have used, shoving everything after it one column further from the point and making it ten times smaller, so $0.5$ and $0.05$ are nowhere near equal."
+    "x": "<b>Trailing versus inner zeros.</b> Where a zero sits after the point decides what it does. Tacked on at the end it is empty padding, filling a place with nothing, so $0.5=0.50=0.500$ and you may add or drop trailing zeros freely to line decimals up. But a zero between the point and a real digit takes a place that digit would have used, pushing everything after it one column further from the point and making it ten times smaller, so $0.5$ and $0.05$ are nowhere near equal."
    },
    {
     "t": "p",
-    "x": "A whole number has an exact spot on the number line, but \\(7.4\\) falls between \\(7\\) and \\(8\\). Zoom in on that gap. Chop it into ten tenths, then each tenth into ten hundredths. The divide-by-ten idea that built the columns pins any decimal."
+    "x": "A whole number has an exact spot on the number line, but \\(7.4\\) falls between \\(7\\) and \\(8\\). Zoom in on that gap. Chop it into ten tenths, then chop each tenth into ten hundredths. The same divide-by-ten step that built the columns lets you land on any decimal."
    },
    {
     "t": "prob",
@@ -162,7 +162,7 @@
      "7",
      "seven"
     ],
-    "sol": "Splitting the gap from \\(0\\) to \\(1\\) into ten equal steps puts the labeled tenths at \\(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0\\). The number \\(0.7\\) means seven tenths, \\(7 \\times \\tfrac{1}{10}\\), so counting one tenth at a time it lands squarely on the seventh of those marks. The neat part is that the digit in the tenths place tells you the count directly. A \\(7\\) in the tenths place means \\(7\\) tenth-steps from \\(0\\), no walking required. So \\(0.7\\) sits on mark number \\(\\boxed{7}\\)."
+    "sol": "\\(0.7\\) means seven tenths, that is \\(7 \\times \\tfrac{1}{10}\\), so it sits seven one-tenth steps from \\(0\\) and lands on mark \\(\\boxed{7}\\). The digit in the tenths place gives the count directly, so you never have to walk the marks."
    },
    {
     "t": "fig",
@@ -186,7 +186,7 @@
      "7/10",
      "70/100"
     ],
-    "sol": "Stack the numbers with their decimal points aligned. To keep the columns honest, you can pad \\(0.7\\) with a zero so both numbers show the same places, giving \\(0.70\\) and \\(0.68\\). Now read from the left, the largest place first. In the tenths place, \\(0.70\\) has a \\(7\\) and \\(0.68\\) has a \\(6\\). That is the first place where the digits differ, so the comparison is already settled here. Seven tenths is more than six tenths, full stop. The hundredths place cannot rescue \\(0.68\\), because the most a hundredths digit can ever be worth is \\(9\\) hundredths, and \\(9\\) hundredths is still less than one whole tenth. So no amount of \"stuff past the tenths\" can make up the gap that the tenths place already created. The number with \\(7\\) in the tenths place is the larger one. \\(\\boxed{0.7}\\)"
+    "sol": "Pad \\(0.7\\) to \\(0.70\\) so both numbers show the same places, then read from the left. The tenths place has a \\(7\\) against a \\(6\\), and that first disagreement settles it, so \\(\\boxed{0.7}\\) is larger. The most a hundredths digit can be worth is \\(9\\) hundredths, still less than one whole tenth, so nothing to the right can close a gap opened in the tenths."
    },
    {
     "t": "prob",
@@ -208,7 +208,7 @@
      "0.5 m",
      "0.5000"
     ],
-    "sol": "Pad the shorter one with zeros so both decimals have the same length, which changes nothing about their value. That turns \\(0.5\\) into \\(0.5000\\), and now we compare \\(0.5000\\) with \\(0.4999\\) column by column. Reading from the left, the first place is the tenths. There \\(0.5000\\) has a \\(5\\) and \\(0.4999\\) has a \\(4\\). The contest is already over right here, because \\(5\\) tenths is more than \\(4\\) tenths and no smaller place can climb back up to close a full tenth of a gap. To see exactly how small that gap is, rewrite both over the same denominator. \\(0.5 = \\frac{5000}{10000}\\) and \\(0.4999 = \\frac{4999}{10000}\\), so the difference is \\(\\frac{5000}{10000} - \\frac{4999}{10000} = \\frac{1}{10000} = 0.0001\\). The three \\(9\\)s cannot close the gap, since the most they add is a sliver, one ten-thousandth short. More digits means finer detail, not greater size. The larger number is \\(\\boxed{0.5}\\)."
+    "sol": "Pad to the same length and compare \\(0.5000\\) with \\(0.4999\\) from the left. The tenths place has a \\(5\\) against a \\(4\\), so \\(\\boxed{0.5}\\) is larger. Over a common denominator the gap is \\(\\frac{5000}{10000}-\\frac{4999}{10000}=\\frac{1}{10000}\\). Those three \\(9\\)s buy finer detail, not more size."
    },
    {
     "t": "prob",
@@ -223,11 +223,11 @@
      "0.4009",
      ".4009"
     ],
-    "sol": "Order the splits first, reading from the left where the heaviest place sits. The tenths digit decides everything before any digit to its right gets a vote. Four splits open with \\(4\\) tenths and only \\(0.39\\) opens with \\(3\\) tenths, so \\(0.39\\) is the smallest, no matter how its other digits look. For the four tied at \\(4\\) tenths, give them all the same number of places with trailing zeros, which never changes a value, turning them into \\(0.4000, 0.4010, 0.4009, 0.4100\\). Now they compare like the whole numbers \\(4000, 4010, 4009, 4100\\), giving \\(0.4 < 0.4009 < 0.401 < 0.41\\). The full order from smallest to largest is \\(0.39, 0.4, 0.4009, 0.401, 0.41\\). Here \\(0.4009\\) has the most digits and looks longest, yet it is not the biggest, because those extra digits sit out in the thousandths and ten-thousandths where they are worth almost nothing. The split sitting exactly in the middle, third of the five, is \\(\\boxed{0.4009}\\)."
+    "sol": "Only \\(0.39\\) opens with \\(3\\) tenths, so it is the smallest. Pad the other four to \\(0.4000, 0.4010, 0.4009, 0.4100\\) and compare them like the whole numbers \\(4000, 4010, 4009, 4100\\). The full order is \\(0.39, 0.4, 0.4009, 0.401, 0.41\\), so third is \\(\\boxed{0.4009}\\). It shows the most digits yet is not the biggest, because those extra digits sit in the thousandths and ten-thousandths where they are worth almost nothing."
    },
    {
     "t": "imp",
-    "x": "<b>Comparing decimals.</b> Line up the decimal points and read place by place from the left, biggest place first. The first place where the digits disagree settles everything, because nothing further right is large enough to overturn it. The number of digits a decimal shows is just how finely it was measured, not how big it is, so a short $0.9$ towers over a long $0.0999$. Length is detail. Size is decided on the left."
+    "x": "<b>Comparing decimals.</b> Line up the decimal points and read place by place from the left, biggest place first. The first place where the digits disagree settles everything, because nothing further right is large enough to overturn it. The number of digits a decimal shows is how finely it was measured, not how big it is, so a short $0.9$ is larger than a long $0.0999$."
    },
    {
     "t": "prob",
@@ -245,7 +245,7 @@
      "370.00",
      "three hundred seventy"
     ],
-    "sol": "Multiplying by \\(100\\) means multiplying by two factors of ten, so every digit shifts two places toward higher value. Track the digits directly. The \\(3\\) starts in the ones place. One factor of ten lifts it to the tens, a second lifts it to the hundreds, so the \\(3\\) is now worth \\(300\\). The \\(7\\) starts in the tenths place. One factor of ten lifts it to the ones, a second lifts it to the tens, so the \\(7\\) is now worth \\(70\\). Add the new place values together and you get \\(300 + 70 = 370\\). You can also watch the point instead of the digits. Since the digits all slide left, the point appears to slide right, and two factors of ten mean two places. So \\(3.7\\) becomes \\(37\\) after one place and \\(370\\) after the second place. Both ways of looking at it agree, which gives \\(3.7 \\times 100 = 370\\). \\(\\boxed{370}\\)"
+    "sol": "Multiplying by \\(100\\) shifts every digit two places toward higher value. The \\(3\\) goes from ones to hundreds, worth \\(300\\), and the \\(7\\) goes from tenths to tens, worth \\(70\\). Together that is \\(300+70=\\boxed{370}\\). Watching the point instead of the digits gives the same thing, two places right, \\(3.7\\) to \\(37\\) to \\(370\\)."
    },
    {
     "t": "prob",
@@ -264,7 +264,7 @@
      "ten times",
      "x10"
     ],
-    "sol": "Track a single digit and use place value. In the correct price \\(4.50\\), the \\(4\\) sits in the ones place, so it is worth \\(4\\). In the printed price \\(45.0\\), that same \\(4\\) has slid into the tens place, so it is now worth \\(40\\). It went from \\(4\\) to \\(40\\), which is ten times as large. The \\(5\\) tells the same story. In \\(4.50\\) the \\(5\\) is in the tenths place, worth \\(0.5\\), and in \\(45.0\\) the \\(5\\) is in the ones place, worth \\(5\\), again ten times bigger. Every digit shifted one place to the left, and a shift one place left multiplies a digit's value by \\(10\\). When every digit grows by the same factor, the whole number grows by that factor too. That is exactly what moving the decimal point one place to the right does, it multiplies by \\(10\\). You can confirm it directly, since \\(4.50 \\times 10 = 45.0\\). So the printed price is \\(\\boxed{10}\\) times larger than the correct price."
+    "sol": "In \\(4.50\\) the \\(4\\) is in the ones place, worth \\(4\\). In \\(45.0\\) that same \\(4\\) is in the tens place, worth \\(40\\). Every digit moved one place left, so every digit is worth ten times as much and so is the whole price, making the printed tag \\(\\boxed{10}\\) times larger. Moving the point one place right always multiplies by \\(10\\), and \\(4.50 \\times 10 = 45.0\\) confirms it."
    },
    {
     "t": "imp",
@@ -283,7 +283,7 @@
      "0.2049",
      ".2049"
     ],
-    "sol": "Give every split the same number of decimal places, since a trailing zero never changes a value. The longest has four places, so write each with four, turning \\(0.205\\) into \\(0.2050\\), \\(0.21\\) into \\(0.2100\\), \\(0.2\\) into \\(0.2000\\), while \\(0.2049\\) stays. Compare place by place from the left. All four share \\(2\\) in the tenths place, a tie. In the hundredths three have \\(0\\) and \\(0.2100\\) has \\(1\\), so \\(0.2100\\) is largest and goes last. The remaining three still tie at \\(0\\) hundredths, so look at the thousandths, where \\(0.2000\\) has \\(0\\), \\(0.2049\\) has \\(4\\), and \\(0.2050\\) has \\(5\\). That orders them \\(0.2000, 0.2049, 0.2050\\). The full order from smallest to largest is \\(0.2, 0.2049, 0.205, 0.21\\), so the fastest is \\(0.2\\) and the second fastest is \\(\\boxed{0.2049}\\)."
+    "sol": "Pad every split to four places, \\(0.2000, 0.2049, 0.2050, 0.2100\\), and read left to right. All four tie at \\(2\\) tenths. In the hundredths only \\(0.2100\\) has a \\(1\\), so it is the largest. The other three split at the thousandths, where the digits are \\(0\\), \\(4\\), \\(5\\). The order is \\(0.2, 0.2049, 0.205, 0.21\\), so the second smallest is \\(\\boxed{0.2049}\\)."
    },
    {
     "x": "In \\(4.36\\), swap the tenths and hundredths digits. What new decimal do you get?",
@@ -296,7 +296,7 @@
      "4.63",
      "4.630"
     ],
-    "sol": "Break \\(4.36\\) into its places to see what is moving. The \\(4\\) is the whole-number part, the \\(3\\) is in the tenths place worth \\(\\tfrac{3}{10}\\), and the \\(6\\) is in the hundredths place worth \\(\\tfrac{6}{100}\\). The swap only touches those last two digits, so the \\(4\\) stays put. After the trade the \\(6\\) sits in tenths and the \\(3\\) sits in hundredths, which gives \\(\\tfrac{6}{10}+\\tfrac{3}{100}\\). Reading that off in order behind the decimal point, the tenths digit is \\(6\\) and the hundredths digit is \\(3\\), so the new decimal is \\(\\boxed{4.63}\\)."
+    "sol": "The swap touches only the two digits after the point. The \\(6\\) moves into tenths and the \\(3\\) moves into hundredths, while the \\(4\\) stays where it is, giving \\(\\boxed{4.63}\\). Swapping changes the number because the tenths place is worth ten times the hundredths place."
    },
    {
     "x": "Write \\(0.013\\) as a single fraction \\(a/b\\) with a power-of-ten denominator.",
@@ -309,7 +309,7 @@
      "Read the places after the decimal point from left to right. The 1 is in the hundredths place and the 3 is in the thousandths place, so the last digit lands in the thousandths.",
      "Whatever place the last digit sits in becomes the denominator. The last digit is in the thousandths, so the bottom is \\(1{,}000\\). Now just put the digits after the point on top."
     ],
-    "sol": "Start by reading the digits after the decimal point. In \\(0.013\\) the first slot after the point is tenths, the next is hundredths, and the third is thousandths. The digits there are \\(0\\), \\(1\\), \\(3\\), and the last digit \\(3\\) lands in the <b>thousandths</b> place.\n\nThat last place tells you the denominator. Since the smallest piece here is a thousandth, every chunk is counted in thousandths, so the bottom of the fraction is \\(1{,}000\\). The top is just the number formed by the digits sitting after the point, which is \\(13\\). A leading zero in front of \\(13\\) does not change its value, so we write \\(13\\) on top, not \\(013\\).\n\nPutting it together gives \\(0.013 = \\frac{13}{1{,}000}\\). You can sanity check by dividing, since \\(13 \\div 1{,}000 = 0.013\\), right back to where we began. The fraction \\(\\frac{13}{1{,}000}\\) is already in lowest terms because \\(13\\) is prime and does not divide \\(1{,}000\\), so this is the cleanest single fraction with a power-of-ten denominator.\n\n\\(\\boxed{13/1000}\\)"
+    "sol": "The last digit \\(3\\) sits in the thousandths place, so the denominator is \\(1{,}000\\), and the digits after the point read as \\(13\\) on top. That gives \\(\\boxed{13/1000}\\). The leading zero adds nothing to the numerator, but it does push the \\(3\\) out to thousandths, which is what sets the denominator."
    },
    {
     "x": "Write \\(\\frac{7}{100}\\) as a decimal.",
@@ -325,7 +325,7 @@
      "The denominator is \\(100\\), so the value lands in the hundredths place. How many decimal places does hundredths need?",
      "Hundredths is the second spot after the point. You have only \\(7\\), a single digit, so you need a \\(0\\) in the tenths spot to push the \\(7\\) out to hundredths."
     ],
-    "sol": "The denominator \\(100\\) is \\(10^{2}\\), so this fraction is measured in hundredths. The hundredths place is the second digit after the decimal point. You want to place the \\(7\\) there. Counting from the point, the first spot is tenths and the second spot is hundredths. Since there are no tenths, put a \\(0\\) in the tenths place to hold it open, then write the \\(7\\) in the hundredths place. That gives \\(0.07\\). You can check it by reading the decimal back. The \\(7\\) sits two places to the right of the point, which is hundredths, so \\(0.07\\) means \\(\\frac{7}{100}\\), exactly what you started with. The final answer is \\(\\boxed{0.07}\\)."
+    "sol": "A denominator of \\(100=10^{2}\\) means hundredths, the second place after the point. Put the \\(7\\) there and a \\(0\\) in the tenths place to hold it open, giving \\(\\boxed{0.07}\\). Drop that inner zero and you get \\(0.7\\), which is ten times too big."
    },
    {
     "x": "A cartridge holds \\(100\\) drops, each weighing \\(0.306\\) grams. What is the total weight in grams? Compute \\(0.306 \\times 100\\).",
@@ -341,7 +341,7 @@
      "Multiplying by \\(100\\) means multiplying by \\(10\\) twice, so every digit shifts two columns toward the higher place values. The hundredths digit lands in the units column.",
      "Think of \\(0.306\\) as \\(0\\) units, \\(3\\) tenths, \\(0\\) hundredths, \\(6\\) thousandths. Push each digit left two places. The \\(3\\) tenths becomes \\(3\\) tens, the \\(6\\) thousandths becomes \\(6\\) tenths."
     ],
-    "sol": "Multiplying by \\(100\\) is the same as multiplying by \\(10\\) and then by \\(10\\) again. Each time you multiply by \\(10\\), every digit moves one column to the left, toward the larger place values. So multiplying by \\(100\\) slides every digit two columns to the left. Start with the digits of \\(0.306\\). The \\(3\\) is in the tenths place, and the \\(6\\) is in the thousandths place. Slide the \\(3\\) two places left and it travels from tenths to units to tens, so it becomes \\(3\\) tens, worth \\(30\\). Slide the \\(6\\) two places left and it travels from thousandths to hundredths to tenths, so it becomes \\(6\\) tenths, worth \\(0.6\\). Adding those gives \\(30 + 0.6\\). The total weight is \\(\\boxed{30.6}\\) grams."
+    "sol": "Multiplying by \\(100\\) slides every digit two columns left. The \\(3\\) runs from tenths to ones to tens, worth \\(30\\), and the \\(6\\) runs from thousandths to hundredths to tenths, worth \\(0.6\\). Adding gives \\(\\boxed{30.6}\\) grams. Each factor of ten is one slide, so \\(100\\) is two."
    },
    {
     "x": "A weather station records \\(8.2\\) mm of rain, then converts to meters by dividing by \\(1{,}000\\). What is the rainfall in meters?",
@@ -357,7 +357,7 @@
      "Dividing by \\(1{,}000\\) is dividing by \\(10\\) three times, and each division by \\(10\\) shifts the digits one place toward the smaller columns. So the digits move three places total.",
      "Start from \\(8.2\\) and walk the digits right three places. \\(8\\) moves from the ones place down past tenths and hundredths, landing in the thousandths place. Write zeros in the empty columns you pass through."
     ],
-    "sol": "Dividing by \\(1{,}000\\) means dividing by \\(10\\) three times, since \\(1{,}000 = 10^{3}\\). Each division by \\(10\\) makes a number ten times smaller, which slides every digit one column toward the smaller place values. Three divisions slide every digit three places. Track the \\(8\\), which starts in the ones place of \\(8.2\\). One place right puts it in tenths, two places puts it in hundredths, three places puts it in thousandths. The \\(2\\), which began in tenths, lands in ten-thousandths. Now fill the empty columns between the decimal point and the \\(8\\) with zeros so the digits sit where they belong. That gives a \\(0\\) in tenths, a \\(0\\) in hundredths, then \\(8\\) in thousandths and \\(2\\) in ten-thousandths. Reading it off, the result is \\(0.0082\\). You can sanity check the size, since \\(8.2\\) shrank by a factor of a thousand, the answer should be far below \\(1\\), and \\(0.0082\\) is indeed tiny. So \\(8.2 \\div 1{,}000 = \\boxed{0.0082}\\)."
+    "sol": "Dividing by \\(1{,}000 = 10^{3}\\) slides every digit three columns right. The \\(8\\) runs from ones down to thousandths and the \\(2\\) lands in ten-thousandths, with zeros filling the empty tenths and hundredths. So \\(8.2 \\div 1{,}000 = \\boxed{0.0082}\\). Shrinking by a factor of a thousand should land far below \\(1\\), and it does."
    },
    {
     "x": "A point on the number line is at \\(14.7\\). What is the smaller of the two whole numbers it sits between?",
@@ -370,7 +370,7 @@
      "The whole-number part of \\(14.7\\) tells you the last whole number you passed before the decimal part started.",
      "Strip away the \\(.7\\) and look only at the digits to the left of the decimal point. That whole number is the one the beetle just passed, and the next whole number is one larger."
     ],
-    "sol": "A number like \\(14.7\\) means \\(14\\) whole units plus \\(7\\) tenths more. Since \\(7\\) tenths is more than nothing but less than a full unit, the point lands past \\(14\\) but before it reaches \\(15\\). So the two consecutive whole numbers hugging \\(14.7\\) are \\(14\\) and \\(15\\). The beetle has already passed \\(14\\) and has not yet reached \\(15\\), which makes \\(14\\) the smaller one. A quick way to see this is to read the part to the left of the decimal point, since that is exactly the largest whole number the value has fully reached. The smaller whole number is \\(\\boxed{14}\\)."
+    "sol": "\\(14.7\\) is \\(14\\) whole units plus \\(7\\) tenths, so it sits past \\(14\\) but short of \\(15\\). The smaller of the two is \\(\\boxed{14}\\). The digits left of the point always name the largest whole number the value has fully reached."
    },
    {
     "x": "The value \\(0.73\\) falls between two neighboring tenths. Which of those two tenths is the larger one?",
@@ -387,7 +387,7 @@
      "8/10",
      "4/5"
     ],
-    "sol": "Read \\(0.73\\) one place at a time. The first digit after the point is the tenths digit, here a \\(7\\), so the value is at least \\(7\\) tenths, meaning \\(0.73 \\ge 0.7\\). The next digit, \\(3\\) hundredths, is more than nothing, so we have crept past \\(0.7\\). How far before the next tenth? The next tenth up is \\(8\\) tenths, \\(0.80\\), which is \\(80\\) hundredths. Since \\(0.73\\) is \\(73\\) hundredths and \\(70 \\le 73 < 80\\), the mark stays inside the gap and never reaches \\(0.8\\). So \\(0.73\\) falls between \\(0.7\\) and \\(0.8\\), and the larger of those two tenths is \\(\\boxed{0.8}\\)."
+    "sol": "The tenths digit of \\(0.73\\) is \\(7\\), and the \\(3\\) hundredths carries it just past \\(0.7\\). It is \\(73\\) hundredths, still short of the \\(80\\) hundredths that make \\(0.8\\), so it lies between \\(0.7\\) and \\(0.8\\) and the larger tenth is \\(\\boxed{0.8}\\)."
    },
    {
     "x": "Which number is larger, \\(0.6\\) or \\(0.5999\\)?",
@@ -405,7 +405,7 @@
      "More digits does not mean more value. Line the numbers up by place value and compare them one column at a time, starting from the tenths.",
      "Give them a common number of decimal places by padding the short one with zeros. Write \\(0.6\\) as \\(0.6000\\) and put it right above \\(0.5999\\)."
     ],
-    "sol": "The trap is thinking the number with more digits wins. Digits after the decimal point get smaller and smaller, so a pile of extra digits can add up to almost nothing. The honest way to compare is to make both numbers have the same number of decimal places, then read left to right. Pad the short one with zeros so it has four places, \\(0.6 = 0.6000\\). Now stack them. The tenths place is \\(6\\) for \\(0.6000\\) and \\(5\\) for \\(0.5999\\). Since \\(6 > 5\\), the first number is already larger and nothing in the later columns can change that. You can see it as fractions too. \\(0.6000 = \\tfrac{6000}{10000}\\) and \\(0.5999 = \\tfrac{5999}{10000}\\), and \\(6000 > 5999\\). The longer decimal falls just one ten-thousandth short of \\(0.6\\). So the larger number is \\(\\boxed{0.6}\\)."
+    "sol": "Pad the short one to \\(0.6000\\) and compare with \\(0.5999\\) from the left. The tenths place has a \\(6\\) against a \\(5\\), so \\(\\boxed{0.6}\\) is larger. More digits does not mean more value. As fractions, \\(\\frac{6000}{10000}\\) beats \\(\\frac{5999}{10000}\\) by a single ten-thousandth."
    },
    {
     "x": "Which number is larger, \\(0.07\\) or \\(0.7\\)?",
@@ -422,7 +422,7 @@
      "Name the place each 7 sits in. In \\(0.7\\) the 7 is in the tenths place, so it means \\(\\frac{7}{10}\\). In \\(0.07\\) the inner zero pushes the 7 into the hundredths place, so it means \\(\\frac{7}{100}\\).",
      "Give both fractions the same denominator. \\(\\frac{7}{10}=\\frac{70}{100}\\), and now compare \\(\\frac{70}{100}\\) with \\(\\frac{7}{100}\\). Which numerator is bigger?"
     ],
-    "sol": "The trick here is the zero hiding right after the decimal point. A 7 is worth different amounts depending on which place it lands in. In \\(0.7\\) the 7 sits in the tenths place, so the number means \\(\\frac{7}{10}\\). In \\(0.07\\) that inner zero takes up the tenths place and shoves the 7 over into the hundredths place, so the number means \\(\\frac{7}{100}\\). To compare them fairly, rewrite both over the same denominator. Since \\(\\frac{7}{10}=\\frac{7\\times 10}{10\\times 10}=\\frac{70}{100}\\), we are really comparing \\(\\frac{70}{100}\\) against \\(\\frac{7}{100}\\). Same denominator, so just look at the tops. \\(70\\) is much larger than \\(7\\), which means \\(0.7\\) is ten times as big as \\(0.07\\). The larger number is \\(\\boxed{0.7}\\)."
+    "sol": "In \\(0.7\\) the \\(7\\) is in the tenths place, worth \\(\\frac{7}{10}\\). In \\(0.07\\) the zero takes the tenths place and pushes the \\(7\\) out to hundredths, worth \\(\\frac{7}{100}\\). Since \\(\\frac{7}{10}=\\frac{70}{100}\\), the larger number is \\(\\boxed{0.7}\\), ten times as big. An inner zero moves a digit, so it changes the value."
    },
    {
     "x": "Four forms: \\(0.6\\), \\(0.60\\), \\(0.600\\), and \\(0.06\\). How many of these name the exact same amount as \\(0.6\\)?",
@@ -435,7 +435,7 @@
      "A zero on the far right of a decimal does not move any other digit, so it does not change the value. Which of the four forms only add zeros to the right of the \\(6\\)?",
      "In \\(0.06\\) the zero sits between the point and the \\(6\\), so the \\(6\\) lands in the hundredths place instead of the tenths place. Compare each form to \\(0.6\\) and count the matches."
     ],
-    "sol": "Start with \\(0.6\\). The \\(6\\) sits in the tenths place, so the value is \\(\\frac{6}{10}\\). Now check each form against that. In \\(0.60\\) the extra zero sits in the hundredths place, which is empty, so this is \\(\\frac{60}{100} = \\frac{6}{10}\\), the same amount. In \\(0.600\\) two empty zeros trail the \\(6\\), giving \\(\\frac{600}{1000} = \\frac{6}{10}\\), still the same. Both of these only stacked zeros to the right of the \\(6\\), and a trailing zero never moves another digit, so the value holds. The form \\(0.06\\) is different. Here a zero sits in the tenths place and the \\(6\\) gets pushed to the hundredths place, so its value is \\(\\frac{6}{100}\\), which is ten times smaller than \\(\\frac{6}{10}\\). So three of the four forms, namely \\(0.6\\), \\(0.60\\), and \\(0.600\\), name the same amount, while \\(0.06\\) does not. \\(\\boxed{3}\\)"
+    "sol": "\\(0.6\\) is \\(\\frac{6}{10}\\). Then \\(0.60=\\frac{60}{100}=\\frac{6}{10}\\) and \\(0.600=\\frac{600}{1000}=\\frac{6}{10}\\), so counting \\(0.6\\) itself that is \\(\\boxed{3}\\) forms naming the same amount. \\(0.06\\) is the odd one out, since its zero sits before the \\(6\\) and drops it to hundredths, ten times smaller."
    },
    {
     "x": "A receipt should read \\(8.30\\) dollars but printed \\(83.0\\) dollars. How many times larger is the printed amount?",
@@ -452,7 +452,7 @@
      "Line the two amounts up by place value. In \\(8.30\\) the \\(8\\) sits in the ones column, but after the point shifts the same \\(8\\) lands in a higher column. Ask how much each column is worth compared to the one just to its right.",
      "You want the factor that turns 8.30 into 83.0. Try \\(83.0 \\div 8.30\\), or just ask what one rightward shift of the point always does."
     ],
-    "sol": "Moving a decimal point one place to the right is the same as multiplying by \\(10\\). You can see why from place value. In \\(8.30\\) the \\(8\\) sits in the ones column, but in \\(83.0\\) that same \\(8\\) has slid into the tens column, so it now counts for ten times as much, and so does every other digit along with it. To check it directly, divide the printed amount by the correct one. $$\\frac{83.0}{8.30} = \\frac{83.0}{8.3} = 10$$ So the printed amount is \\(\\boxed{10}\\) times larger than it should be."
+    "sol": "In \\(8.30\\) the \\(8\\) sits in the ones column, and in \\(83.0\\) it has slid into the tens column, so it counts for ten times as much and every other digit does too. The printed amount is \\(\\boxed{10}\\) times larger. Checking directly, \\(83.0 \\div 8.3 = 10\\), which is exactly what moving the point one place right does."
    },
    {
     "ans": "100",
@@ -465,7 +465,7 @@
      "The app moved the decimal point the wrong way. Multiplying by 10 should slide the point one place right, but dividing by 10 slid it one place left. So the app's number landed two place-value steps below where it belonged.",
      "Each place-value step is a factor of 10. Going from 0.45 up to 45 is two steps to the right, so you multiply by 10 twice. What is \\(10 \\times 10\\)?"
     ],
-    "sol": "Look at where the decimal point sits in each number. The correct amount is \\(45\\), and the app showed \\(0.45\\). To get from \\(0.45\\) back up to \\(45\\), the decimal point has to slide two places to the right. Each single place to the right means multiplying by \\(10\\), so two places means multiplying by \\(10\\) twice. That is \\(10 \\times 10 = 100\\). You can check it directly with division. \\(\\dfrac{45}{0.45} = \\dfrac{45}{0.45} \\times \\dfrac{100}{100} = \\dfrac{4500}{45} = 100\\). The reason the gap is so large is that the app made two mistakes folded into one. The correct scaling multiplies by \\(10\\), but the app divided by \\(10\\). Undoing a divide-by-ten and then doing the intended multiply-by-ten is a factor of \\(10\\) twice over, which is why the honest answer is \\(100\\) times, not \\(10\\) times. \\(\\boxed{100}\\)"
+    "sol": "Getting from \\(0.45\\) up to \\(45\\) moves the point two places right, and each place is a factor of \\(10\\), so the correct amount is \\(10 \\times 10 = \\boxed{100}\\) times larger. Dividing directly agrees, \\(\\frac{45}{0.45}=\\frac{4500}{45}=100\\). The gap is two steps because the app divided by \\(10\\) where it should have multiplied by \\(10\\)."
    },
    {
     "ans": "0.038",
@@ -483,7 +483,7 @@
      "The first blank right after the point is the tenths place, the next is hundredths, and the last is thousandths. A tile in the tenths place counts for the most, so to stay small you want that place to be tiny.",
      "Put the smallest digit you can in tenths. You cannot leave the value at zero overall, but you can park the 0 in the tenths place, then decide how to order 3 and 8 in the two remaining places to keep the number small."
     ],
-    "sol": "Each blank after the point is worth less than the one before it. The first blank is tenths, the second is hundredths, the third is thousandths. So a digit in the tenths place pulls the value up ten times harder than the same digit in the hundredths place. To make the smallest number, load the lowest digits into the most powerful places. Park the \\(0\\) in the tenths place, since \\(0\\) tenths adds nothing there. That gives \\(0.0\\underline{\\phantom{0}}\\,\\underline{\\phantom{0}}\\), and the value stays well under a tenth. Now the hundredths place is the next strongest, so put the smaller remaining digit, \\(3\\), there, and let \\(8\\) fall into thousandths. Reading it as a sum of place values, \\(0.038 = \\tfrac{0}{10} + \\tfrac{3}{100} + \\tfrac{8}{1000} = \\tfrac{38}{1000}\\), which is greater than zero and smaller than any other arrangement. If you had swapped to put \\(8\\) before \\(3\\) you would get \\(0.083\\), which is larger, and any tile other than \\(0\\) in tenths jumps you to at least \\(0.3\\). So the smallest positive value is \\(\\boxed{0.038}\\)."
+    "sol": "The tenths place counts for the most, so park the \\(0\\) there. Of the two digits left, the smaller one goes in the stronger place, so \\(3\\) in hundredths and \\(8\\) in thousandths, giving \\(\\boxed{0.038}\\). Swapping them gives the bigger \\(0.083\\), and any nonzero tile in tenths jumps you to at least \\(0.3\\)."
    }
   ],
   "next": "5.2"
@@ -493,7 +493,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "Decimal arithmetic is not new arithmetic. Every digit still sits in a place worth ten times the place to its right, and a decimal is just a fraction over a power of ten. The only genuinely new job is bookkeeping, knowing exactly where the point belongs in the answer. We will test that one idea on adding first, then multiplying, then dividing, and see whether it quietly covers all three."
+    "x": "Decimal arithmetic is not new arithmetic. Every digit still sits in a place worth ten times the place to its right, and a decimal is just a fraction over a power of ten. The only genuinely new job is bookkeeping, knowing exactly where the point belongs in the answer. Adding, multiplying, and dividing each handle that job differently, so we will work through all three."
    },
    {
     "t": "prob",
@@ -510,7 +510,7 @@
      "2.15km",
      "2.15 km"
     ],
-    "sol": "Stack the numbers with the decimal points aligned, and pad the top one with a trailing zero so both have a hundredths digit. $$\\begin{array}{r} 1.70 \\\\ +\\,0.45 \\\\ \\hline \\end{array}$$ Now add right to left. Hundredths give \\(0 + 5 = 5\\). Tenths give \\(7 + 4 = 11\\), so write \\(1\\) and carry \\(1\\) into the ones. Ones give \\(1 + 0 + 1 = 2\\). Drop the decimal point straight down between the ones and the tenths. $$\\begin{array}{r} 1.70 \\\\ +\\,0.45 \\\\ \\hline 2.15 \\end{array}$$ The two stretches total \\(\\boxed{2.15}\\) km."
+    "sol": "Stack the numbers with the points aligned and pad \\(1.7\\) to \\(1.70\\) so both show a hundredths digit. $$\\begin{array}{r} 1.70 \\\\ +\\,0.45 \\\\ \\hline 2.15 \\end{array}$$ Adding right to left, hundredths give \\(0 + 5 = 5\\), tenths give \\(7 + 4 = 11\\) so write \\(1\\) and carry \\(1\\), and ones give \\(1 + 0 + 1 = 2\\). The point drops straight down. The runner covers \\(\\boxed{2.15}\\) km."
    },
    {
     "t": "prob",
@@ -527,7 +527,7 @@
      "12.95",
      "$12.95"
     ],
-    "sol": "The mistake is treating the rightmost digits as a column. They are not. A column only holds digits of the <b>same place value</b>, so what must line up is the decimal points, not the edges. Pad \\(12.5\\) to \\(12.50\\) so both numbers show two decimal places, then stack them with the points in one vertical line. $$\\begin{array}{r}12.50\\\\ +\\;0.45\\\\ \\hline 12.95\\end{array}$$ Now add place by place. The hundredths give \\(0 + 5 = 5\\). The tenths give \\(5 + 4 = 9\\). The ones and tens carry straight down as \\(12\\), and the point drops into place beneath the others. The total is \\(12.95\\) dollars, a price that actually makes sense for a sandwich and a cookie. The cashier's near-\\(17\\) answer came from letting the tenths of \\(12.5\\) share a column with the hundredths of \\(0.45\\), adding digits of different sizes as though they matched and inflating a few cents into a few dollars. So the correct total is \\(\\boxed{12.95}\\) dollars."
+    "sol": "Pad \\(12.5\\) to \\(12.50\\) so both numbers show two decimal places, then stack them with the points in one vertical line. $$\\begin{array}{r}12.50\\\\ +\\;0.45\\\\ \\hline 12.95\\end{array}$$ The hundredths give \\(0 + 5 = 5\\), the tenths give \\(5 + 4 = 9\\), and the \\(12\\) comes straight down. The total is \\(\\boxed{12.95}\\) dollars. Line up the right edges instead and the \\(5\\) tenths sits above the \\(5\\) hundredths, adding digits of different sizes and inflating a few cents into a few dollars."
    },
    {
     "t": "prob",
@@ -544,7 +544,7 @@
      "1.5500",
      "01.55"
     ],
-    "sol": "Stack the numbers with their points aligned and pad the top so both show two decimal places. \\(5.2\\) becomes \\(5.20\\), which is the same amount, now matching \\(3.65\\) digit for digit. Work right to left. In the hundredths column \\(0 - 5\\) cannot go, so borrow \\(1\\) tenth, turning the \\(0\\) into \\(10\\) and giving \\(10 - 5 = 5\\). That borrow drops the tenths digit from \\(2\\) to \\(1\\), and \\(1 - 6\\) still cannot go, so borrow \\(1\\) one, making it \\(11 - 6 = 5\\). The borrow drops the ones digit from \\(5\\) to \\(4\\), so the ones column gives \\(4 - 3 = 1\\). Bring the decimal point straight down and read off \\(1.55\\). A quick check seals it, since \\(3.65 + 1.55 = 5.20\\), right back to the full bottle. So \\(\\boxed{1.55}\\) litres were poured out."
+    "sol": "Pad \\(5.2\\) to \\(5.20\\) and stack it over \\(3.65\\) with the points aligned. In the hundredths column, borrow \\(1\\) tenth to get \\(10 - 5 = 5\\). That leaves \\(1\\) in the tenths, so borrow \\(1\\) one to get \\(11 - 6 = 5\\). The ones column is then \\(4 - 3 = 1\\). Bringing the point straight down gives \\(\\boxed{1.55}\\) litres. Checking it, \\(3.65 + 1.55 = 5.20\\), the full bottle again."
    },
    {
     "t": "imp",
@@ -571,7 +571,7 @@
      "0.06",
      ".06"
     ],
-    "sol": "Switch to fractions so nothing can hide. \\(0.3 = \\tfrac{3}{10}\\) and \\(0.2 = \\tfrac{2}{10}\\), and multiplying fractions means multiply across the top and across the bottom. So \\(\\tfrac{3}{10} \\times \\tfrac{2}{10} = \\tfrac{3 \\times 2}{10 \\times 10} = \\tfrac{6}{100}\\). Now read that fraction as a decimal. A denominator of \\(100\\) puts the digits two places past the point, so \\(\\tfrac{6}{100}\\) is not \\(0.6\\), it is \\(0.06\\). The \\(6\\) sits in the hundredths place, and a leading zero holds the empty tenths place so the value is not overstated. The product came out smaller than both \\(0.3\\) and \\(0.2\\), which is exactly what taking a fraction of a fraction does. So \\(0.3 \\times 0.2 = \\boxed{0.06}\\)."
+    "sol": "Write each decimal as a fraction over ten and multiply across, \\(\\tfrac{3}{10} \\times \\tfrac{2}{10} = \\tfrac{3 \\times 2}{10 \\times 10} = \\tfrac{6}{100}\\). A denominator of \\(100\\) puts the digits two places past the point, so the answer is \\(0.06\\) and not \\(0.6\\). So \\(0.3 \\times 0.2 = \\boxed{0.06}\\). Taking a fraction of a fraction always lands below both factors, which is why the product is smaller than \\(0.3\\) and \\(0.2\\)."
    },
    {
     "t": "prob",
@@ -587,7 +587,7 @@
      "0.42",
      ".42"
     ],
-    "sol": "Trade the decimals for their fraction meanings, \\(0.6 = \\tfrac{6}{10}\\) and \\(0.7 = \\tfrac{7}{10}\\). Multiply across the top and across the bottom, \\(\\tfrac{6}{10}\\times\\tfrac{7}{10} = \\tfrac{6\\times 7}{10\\times 10} = \\tfrac{42}{100}\\). That bottom of \\(100\\) is the hundredths place, so \\(\\tfrac{42}{100}\\) reads as forty-two hundredths, which is \\(0.42\\). Notice the shortcut hiding here. You multiplied \\(6\\times 7 = 42\\) as whole numbers, and the two factors had one decimal place each, so the answer carries two decimal places. Count the places, place the point, done. The bed is \\(0.42\\) square metres. \\(\\boxed{0.42}\\)"
+    "sol": "Write the decimals as fractions and multiply across, \\(\\tfrac{6}{10} \\times \\tfrac{7}{10} = \\tfrac{6 \\times 7}{10 \\times 10} = \\tfrac{42}{100}\\). A denominator of \\(100\\) is the hundredths place, so that reads as forty-two hundredths, and the bed is \\(\\boxed{0.42}\\) square metres. There is a shortcut hiding in that. The digits gave \\(6 \\times 7 = 42\\), and each factor had one decimal place, so the product carries two."
    },
    {
     "t": "prob",
@@ -623,11 +623,11 @@
      "0.008",
      ".008"
     ],
-    "sol": "Ignore the decimal points and multiply the digits, \\(4 \\times 2 = 8\\). Next, count how many decimal places the answer must have by adding the places in each factor. \\(0.04\\) has two decimal places and \\(0.2\\) has one, so the product needs \\(2 + 1 = 3\\) places. The single digit \\(8\\) only reaches one place on its own, so you pack two zeros in front to push it out to the third place, the thousandths, giving \\(0.008\\). To check, rewrite the factors as fractions, \\(\\tfrac{4}{100} \\times \\tfrac{2}{10} = \\tfrac{8}{1000}\\), and a denominator of \\(1{,}000\\) is exactly the thousandths place where the zeros parked the \\(8\\). The recipe uses \\(\\boxed{0.008}\\) grams of saffron."
+    "sol": "Ignore the points and multiply the digits, \\(4 \\times 2 = 8\\). Then count places. \\(0.04\\) has two and \\(0.2\\) has one, so the product needs \\(2 + 1 = 3\\). Two zeros push the \\(8\\) out to the thousandths spot, so the recipe uses \\(\\boxed{0.008}\\) grams. The fractions agree, since \\(\\tfrac{4}{100} \\times \\tfrac{2}{10} = \\tfrac{8}{1{,}000}\\) and thousandths is exactly that third place."
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying decimals.</b> Ignore the points and multiply the digits like plain whole numbers, then place the point by counting. Add up how many decimal places the two factors have between them, and the product gets exactly that many. Each factor is a whole number over a power of ten, so the bottoms multiply to $10 \\times 10 = 100$, giving two places. If the whole-number product is too short to reach that far, write zeros in front until the last digit lands where the count demands, the way eight thousandths must be $0.008$ and not $0.8$. So $0.3 \\times 0.2$: the digits give $6$, two places total, so the answer is $0.06$."
+    "x": "<b>Multiplying decimals.</b> Ignore the points and multiply the digits like plain whole numbers, then place the point by counting. Add up how many decimal places the two factors have between them, and the product gets exactly that many. That works because each factor is a whole number over a power of ten, so the denominators multiply and the places add. If the whole-number product is too short to reach that far, write zeros in front until the last digit lands where the count demands, the way eight thousandths must be \\(0.008\\) and not \\(0.8\\). For \\(0.3 \\times 0.2\\), the digits give \\(6\\) and the factors carry two places between them, so the answer is \\(0.06\\)."
    },
    {
     "t": "fig",
@@ -657,11 +657,11 @@
      "9.0",
      "9"
     ],
-    "sol": "Start by writing the division as a fraction, \\(\\tfrac{4.5}{0.5}\\). To make the divisor whole, multiply the top and bottom by \\(10\\), which is the same as multiplying by \\(\\tfrac{10}{10} = 1\\), so the value cannot change. Multiplying by \\(10\\) slides each point one place right, giving \\(\\tfrac{45}{5}\\). Now it is a clean whole-number division, and \\(5 \\times 9 = 45\\), so \\(45 \\div 5 = 9\\). Notice the slide moved both numbers by the same amount, which is exactly why the answer matches the original. A \\(4.5\\) m rope cut into \\(0.5\\) m pieces gives \\(\\boxed{9}\\) pieces."
+    "sol": "Write the division as \\(\\tfrac{4.5}{0.5}\\) and multiply the top and bottom by \\(10\\), which slides each point one place right and gives \\(\\tfrac{45}{5}\\). Since \\(5 \\times 9 = 45\\), the rope makes \\(\\boxed{9}\\) pieces. Multiplying top and bottom by the same number is multiplying by \\(1\\), so the slide cannot change the value."
    },
    {
     "t": "imp",
-    "x": "<b>Dividing by a decimal.</b> Slide both numbers the same number of places to the right, just enough to make the divisor whole, then divide the plain way you already know. Sliding both by the same amount multiplies the top and bottom of the fraction by the same power of ten, so it stays an equivalent fraction and the quotient never changes. Now all three moves rhyme: line up the points to add and subtract, count the places to multiply, slide the point to divide."
+    "x": "<b>Dividing by a decimal.</b> Slide both numbers the same number of places to the right, just enough to make the divisor whole, then divide the plain way you already know. Sliding both by the same amount multiplies the top and bottom of the fraction by the same power of ten, so it stays an equivalent fraction and the quotient never changes. That completes the set. Line up the points to add and subtract, count the places to multiply, slide the point to divide."
    },
    {
     "t": "prob",
@@ -677,7 +677,7 @@
      "1.200",
      "1.2"
     ],
-    "sol": "Start from \\(\\tfrac{1.44}{1.2}\\). The divisor has one decimal place, so multiply the top and the bottom by \\(10\\). The bottom becomes \\(12\\) and the top becomes \\(14.4\\), so the problem is now \\(14.4 \\div 12\\) with the same value as before. Divide a decimal by a whole number by keeping the point in place and carrying it straight up. Twelve fits into \\(14\\) once, leaving \\(2.4\\), and twelve fits into \\(2.4\\) exactly \\(0.2\\) times, so the quotient is \\(1.2\\). You can check it the easy way, since \\(1.2 \\times 1.2 = 1.44\\). So \\(1.44 \\div 1.2 = \\boxed{1.2}\\)."
+    "sol": "Multiply the top and bottom of \\(\\tfrac{1.44}{1.2}\\) by \\(10\\) to clear the divisor, which turns the problem into \\(14.4 \\div 12\\). Twelve fits into \\(14\\) once, leaving \\(2.4\\), and twelve fits into \\(2.4\\) exactly \\(0.2\\) times, so \\(1.44 \\div 1.2 = \\boxed{1.2}\\). Check it by multiplying back, since \\(1.2 \\times 1.2 = 1.44\\)."
    },
    {
     "t": "prob",
@@ -696,7 +696,7 @@
      ".85",
      "0.85 m"
     ],
-    "sol": "Step one, find the wire on hand. Three spools of \\(1.2\\) m each is a whole number times a decimal, so multiply the digits and then place the point. \\(3 \\times 12 = 36\\), and \\(1.2\\) carries one decimal place, so the answer carries one place too. That gives \\(3 \\times 1.2 = 3.6\\) m on hand. Step two, take away what the build uses. Line up the decimal points and pad \\(3.6\\) to \\(3.60\\) so both numbers show hundredths. $$3.60 - 2.75 = 0.85$$ So \\(0.85\\) m of wire is left coiled up. \\(\\boxed{0.85}\\)"
+    "sol": "Three spools of \\(1.2\\) m each is \\(3 \\times 1.2\\). The digits give \\(3 \\times 12 = 36\\), and \\(1.2\\) carries one decimal place, so there is \\(3.6\\) m on hand. Pad that to \\(3.60\\), line up the points, and subtract what the build uses. $$3.60 - 2.75 = 0.85$$ That leaves \\(\\boxed{0.85}\\) m of wire."
    }
   ],
   "review": [
@@ -714,7 +714,7 @@
      "Stack the numbers so the decimal points sit directly above each other. Both already show one decimal place, so no padding is needed here.",
      "Add the tenths first, \\(3 + 6 = 9\\) tenths, then add the ones, \\(4 + 5 = 9\\). Keep the decimal point in the same column."
     ],
-    "sol": "Line up the decimal points so each place value sits in its own column. Both numbers already show one decimal place, so nothing needs padding. Add the tenths, \\(3 + 6 = 9\\) tenths. Add the ones, \\(4 + 5 = 9\\). Bring the decimal point straight down into the answer. That gives \\(4.3 + 5.6 = 9.9\\). The total length of healthy reef is \\(\\boxed{9.9}\\) meters."
+    "sol": "Both numbers already show one decimal place, so stack them with the points aligned and add. The tenths give \\(3 + 6 = 9\\) and the ones give \\(4 + 5 = 9\\), with the point dropping straight down. The two stretches total \\(\\boxed{9.9}\\) meters."
    },
    {
     "x": "A stack holds \\(7.2\\) liters. You pour out \\(3.85\\) liters. Pad \\(7.2\\) to \\(7.20\\) and subtract. How many liters remain?",
@@ -728,7 +728,7 @@
      "Rewrite \\(7.2\\) as \\(7.20\\) so it has the same two decimal places as \\(3.85\\), then stack them with the points lined up.",
      "Start from the rightmost column. Since \\(0\\) is smaller than \\(5\\), borrow from the tenths place before subtracting."
     ],
-    "sol": "Pad the top number so both have two decimal places, giving \\(7.20 - 3.85\\). Line up the decimal points and subtract column by column from the right. In the hundredths place \\(0\\) is less than \\(5\\), so borrow from the tenths, making it \\(10 - 5 = 5\\). The tenths place is now \\(1\\), and \\(1\\) is less than \\(8\\), so borrow from the ones, making it \\(11 - 8 = 3\\). The ones place is now \\(6\\), and \\(6 - 3 = 3\\). Bring the decimal point straight down to get \\(3.35\\). So the stack has \\(\\boxed{3.35}\\) liters left."
+    "sol": "Pad \\(7.2\\) to \\(7.20\\) so both numbers show hundredths, then line up the points and subtract from the right. The hundredths borrow to give \\(10 - 5 = 5\\). The tenths are now \\(1\\), so borrow again for \\(11 - 8 = 3\\). The ones give \\(6 - 3 = 3\\). Bringing the point down leaves \\(\\boxed{3.35}\\) liters."
    },
    {
     "x": "A drone starts with \\(6\\) units of battery and the trip uses \\(2.35\\) units. Write \\(6\\) as \\(6.00\\) and subtract. How many units remain?",
@@ -742,7 +742,7 @@
      "Rewrite \\(6\\) as \\(6.00\\) so it has a tenths and a hundredths digit, then line the decimal points up with \\(2.35\\) underneath.",
      "Subtract right to left, borrowing across the zeros. The hundredths borrow to give \\(10 - 5 = 5\\), the tenths borrow to give \\(9 - 3 = 6\\), and the ones give \\(5 - 2 = 3\\)."
     ],
-    "sol": "The only trick is giving the whole number a decimal part to subtract from. Write \\(6\\) as \\(6.00\\), the same value with two decimal places, and stack it over \\(2.35\\) with the points aligned. $$\\begin{array}{r} 6.00 \\\\ -\\,2.35 \\\\ \\hline \\end{array}$$ Work right to left. The hundredths column needs \\(0 - 5\\), so borrow to get \\(10 - 5 = 5\\). The tenths column is now \\(9 - 3 = 6\\) after the borrow cascades, and the ones column is \\(5 - 2 = 3\\). Bring the point straight down. $$\\begin{array}{r} 6.00 \\\\ -\\,2.35 \\\\ \\hline 3.65 \\end{array}$$ A quick check, \\(2.35 + 3.65 = 6.00\\), back to a full battery. So \\(\\boxed{3.65}\\) units of charge are left."
+    "sol": "Write \\(6\\) as \\(6.00\\), the same value with two decimal places, and stack it over \\(2.35\\) with the points aligned. $$\\begin{array}{r} 6.00 \\\\ -\\,2.35 \\\\ \\hline 3.65 \\end{array}$$ The hundredths borrow to give \\(10 - 5 = 5\\), the tenths become \\(9 - 3 = 6\\) as the borrow cascades, and the ones give \\(5 - 2 = 3\\). So \\(\\boxed{3.65}\\) units of charge are left. Checking it, \\(2.35 + 3.65 = 6.00\\), a full battery again."
    },
    {
     "x": "A square sticker measures \\(0.8\\) cm by \\(0.4\\) cm. Multiply the digits, count two total decimal places, and place the point. What is the area?",
@@ -757,7 +757,7 @@
      "Drop the points for a moment and multiply \\(8 \\times 4\\). That product is the string of digits your answer will use.",
      "Count the decimal places in the two factors. \\(0.8\\) has one and \\(0.4\\) has one, so the answer needs two places. Place the point so \\(32\\) becomes a number with two digits after it."
     ],
-    "sol": "First ignore the decimal points and multiply the digits like whole numbers, so \\(8 \\times 4 = 32\\). Now count how many decimal places the factors had together. The number \\(0.8\\) has one place and \\(0.4\\) has one place, which makes two places in all. Give the product two decimal places by writing \\(32\\) as \\(0.32\\). So \\(0.8 \\times 0.4 = \\boxed{0.32}\\)."
+    "sol": "Ignore the decimal points and multiply the digits like whole numbers, \\(8 \\times 4 = 32\\). Then count the decimal places in the factors, one in \\(0.8\\) and one in \\(0.4\\), which makes two in all. Giving \\(32\\) two decimal places turns it into \\(\\boxed{0.32}\\)."
    },
    {
     "x": "Fog covers \\(0.6\\) of a window. By noon it blocks only \\(0.5\\) of that area. What fraction of the whole window is still fogged? Give your answer as a decimal.",
@@ -773,7 +773,7 @@
      "Taking half of the fogged region means multiplying its size by \\(0.5\\). So you want \\(0.5 \\times 0.6\\).",
      "Multiply as if they were whole numbers, \\(5 \\times 6 = 30\\), then place the decimal point so the result has as many decimal places as the two factors combined."
     ],
-    "sol": "The fog used to cover \\(0.6\\) of the window. Now it blocks half of that, so multiply. \\(0.5 \\times 0.6\\). First multiply the digits, \\(5 \\times 6 = 30\\). Each factor has one decimal place, so the product needs two decimal places, giving \\(0.30\\). Notice it landed below both \\(0.5\\) and \\(0.6\\), since taking a part of a part shrinks the amount. \\(\\boxed{0.30}\\)"
+    "sol": "Half of the fogged area means \\(0.5 \\times 0.6\\). The digits give \\(5 \\times 6 = 30\\), and each factor has one decimal place, so the product needs two, giving \\(\\boxed{0.30}\\) of the window. It landed below both \\(0.5\\) and \\(0.6\\), which is what taking a part of a part always does."
    },
    {
     "x": "A vial holds \\(2.5\\) grams of saffron. A recipe uses \\(0.4\\) of the vial. What is \\(2.5 \\times 0.4\\) in grams?",
@@ -788,7 +788,7 @@
      "Drop the points and multiply \\(25 \\times 4 = 100\\). Then count the decimal places, one in \\(2.5\\) and one in \\(0.4\\), so two places in all.",
      "Place the point two spots from the right of \\(100\\) to get \\(1.00\\). Trailing zeros after the point add nothing, so this is a clean whole number."
     ],
-    "sol": "Set the points aside and multiply like whole numbers, \\(25 \\times 4 = 100\\). Now count the decimal places in the factors. There is one in \\(2.5\\) and one in \\(0.4\\), two together, so the product needs two decimal places. Counting two spots from the right of \\(100\\) gives \\(1.00\\). The trailing zeros after the point are just empty padding, so \\(1.00\\) is simply \\(1\\). One point worth keeping. Two numbers that both carry decimals can multiply to a clean whole number, because the decimal places happened to fill in exactly. So \\(2.5 \\times 0.4 = \\boxed{1}\\) gram."
+    "sol": "Set the points aside and multiply like whole numbers, \\(25 \\times 4 = 100\\). There is one decimal place in \\(2.5\\) and one in \\(0.4\\), so the product needs two, and counting two spots from the right of \\(100\\) gives \\(1.00\\). Trailing zeros after the point add nothing, so the recipe uses \\(\\boxed{1}\\) gram. Two numbers that both carry decimals can still multiply to a clean whole number, when the places fill in exactly."
    },
    {
     "x": "A reading is \\(0.03\\) grams. Another mass is \\(0.3\\) of that first amount. What is \\(0.03 \\times 0.3\\)?",
@@ -844,7 +844,7 @@
      "0.98",
      "0.980"
     ],
-    "sol": "Line up the decimal points and pad \\(0.9\\) so it has two places, giving \\(0.90\\). The inner zero in \\(0.08\\) keeps the \\(8\\) sitting in the hundredths place, so nothing drifts.<br>Add column by column. Hundredths: \\(8 + 0 = 8\\). Tenths: \\(0 + 9 = 9\\). The decimal point stays put.<br>$$0.08 + 0.90 = 0.98$$ So the total length is \\(\\boxed{0.98}\\) of a millimeter."
+    "sol": "Pad \\(0.9\\) to \\(0.90\\) and line up the points. The hundredths give \\(8 + 0 = 8\\) and the tenths give \\(0 + 9 = 9\\). $$0.08 + 0.90 = 0.98$$ The total is \\(\\boxed{0.98}\\) mm. The inner zero in \\(0.08\\) is doing real work, since it holds the \\(8\\) in the hundredths place instead of letting it drift up to the tenths."
    },
    {
     "x": "A kit needs half of a \\(1.4\\) m wire length. Multiply \\(1.4 \\times 0.5\\). Count decimal places and place the point. What is the result?",
@@ -860,7 +860,7 @@
      "0.7",
      ".7"
     ],
-    "sol": "Ignore the points for a moment and multiply the digits. \\(14 \\times 5 = 70\\). Now count the decimal places in the factors. There is one place in \\(1.4\\) and one place in \\(0.5\\), which is two places in total. Place the point so the answer has two decimal places, giving \\(0.70\\). That matches the idea of taking half of \\(1.4\\), which is \\(0.7\\). \\(1.4 \\times 0.5 = \\boxed{0.70}\\)"
+    "sol": "Ignore the points and multiply the digits, \\(14 \\times 5 = 70\\). There is one decimal place in \\(1.4\\) and one in \\(0.5\\), so the answer needs two, giving \\(1.4 \\times 0.5 = \\boxed{0.70}\\) m. That matches taking half of \\(1.4\\)."
    },
    {
     "x": "You buy \\(4\\) jars of jam at \\(0.85\\) dollars each and pay with a \\(5\\) dollar bill. Find the total cost, then subtract from \\(5\\). How much change do you get?",
@@ -905,7 +905,7 @@
      "7 / 10",
      "seven tenths"
     ],
-    "sol": "Read the decimal out loud the way you would say it, and the fraction is right there. You would say \"seven tenths,\" and \"tenths\" is already the denominator while \"seven\" is already the numerator. The reason is in the place value. The point splits whole units from pieces of a unit, and each step to the right cuts the piece into ten times as many parts. The first slot past the point holds tenths, so a digit sitting there counts how many tenths you have. In \\(0.7\\) that digit is \\(7\\), which means you have \\(7\\) copies of one tenth. That is exactly $$0.7 = \\frac{7}{10}.$$ Notice there was no division and no whole part to carry along, since the sign showed less than one kilometer. The single filled place named the denominator, \\(10\\), and the digit after the point became the numerator, \\(7\\). So the lookout is \\(\\boxed{7/10}\\) of a kilometer ahead."
+    "sol": "The \\(7\\) sits in the tenths place, so \\(0.7\\) is seven tenths, which is \\(\\boxed{7/10}\\).\nEvery terminating decimal works this way. The last filled place names the denominator, and the digits after the point read straight across as the numerator."
    },
    {
     "t": "prob",
@@ -923,7 +923,7 @@
      "nine twentieths",
      "9/20"
     ],
-    "sol": "Two digits live past the decimal point, so the last place is hundredths and the denominator is \\(100\\). Reading the digits as a whole number puts \\(45\\) on top, giving the honest first version \\(\\frac{45}{100}\\). It is true, just loose.\n\\nTo tighten it, find what \\(45\\) and \\(100\\) have in common. Break each one into its prime pieces. \\(45 = 3 \\times 3 \\times 5\\) and \\(100 = 2 \\times 2 \\times 5 \\times 5\\). Lining those up, the only piece showing in both lists is a single \\(5\\), so the greatest common divisor is \\(\\gcd(45,100) = 5\\). That \\(5\\) is the biggest cut you can make in one step.\n\\nDivide top and bottom by it together. $$\\frac{45}{100} = \\frac{45 \\div 5}{100 \\div 5} = \\frac{9}{20}$$ Now check that nothing is left to remove. The top is \\(9 = 3 \\times 3\\) and the bottom is \\(20 = 2 \\times 2 \\times 5\\). They share no prime, so the fraction is pulled all the way tight. If you want proof it is still the same length of ribbon, notice \\(\\frac{9}{20} = \\frac{45}{100} = 0.45\\), right back where you started.\n\n\\(\\boxed{9/20}\\)"
+    "sol": "Two digits past the point means hundredths, so \\(0.45 = \\frac{45}{100}\\). Since \\(45 = 3 \\times 3 \\times 5\\) and \\(100 = 2 \\times 2 \\times 5 \\times 5\\), the only shared prime is a single \\(5\\), so \\(\\gcd(45,100) = 5\\). $$\\frac{45}{100} = \\frac{45 \\div 5}{100 \\div 5} = \\frac{9}{20}$$ \\(\\boxed{9/20}\\)\nThe top \\(9 = 3 \\times 3\\) and the bottom \\(20 = 2 \\times 2 \\times 5\\) share no prime, which is how you know it is all the way reduced."
    },
    {
     "t": "prob",
@@ -940,7 +940,7 @@
      "5 over 2",
      "five over two"
     ],
-    "sol": "The cleanest route is to read every figure in \\(2.5\\) at once and forget that one of them lives in front of the point. The digits are \\(25\\), and exactly one digit sits to the right of the decimal point, so the denominator is \\(10^1 = 10\\). That gives \\(2.5 = \\tfrac{25}{10}\\). The whole part out front did not change the rule, the count of digits past the point is still what sets the power of ten underneath. If you prefer the other reading, two and five tenths is \\(2 + \\tfrac{5}{10} = \\tfrac{20}{10} + \\tfrac{5}{10} = \\tfrac{25}{10}\\), the same fraction. Now simplify. The greatest common factor of \\(25\\) and \\(10\\) is \\(5\\), so \\(\\tfrac{25}{10} = \\tfrac{25 \\div 5}{10 \\div 5} = \\tfrac{5}{2}\\). Since \\(5\\) is larger than \\(2\\), this is already an improper fraction, exactly what was asked for. A quick sanity check, \\(5 \\div 2 = 2.5\\), back to where we started. $$2.5 = \\frac{25}{10} = \\boxed{5/2}$$"
+    "sol": "Read all the digits as one number, \\(25\\). One digit sits past the point, so the denominator is \\(10^1 = 10\\), giving \\(2.5 = \\tfrac{25}{10}\\). Both share a factor of \\(5\\), so $$\\frac{25}{10} = \\frac{25 \\div 5}{10 \\div 5} = \\frac{5}{2}.$$ Since \\(5 > 2\\) this is already improper, which is what was asked. \\(\\boxed{5/2}\\)\nThe whole part out front changes nothing. Only the count of digits after the point sets the power of ten underneath."
    },
    {
     "t": "prob",
@@ -960,7 +960,7 @@
      "−43/25",
      "-43/25"
     ],
-    "sol": "Handle the sign and the size separately. The negative sign is not a number to be simplified, it is just a label saying which direction the temperature moved, so park it and convert the size \\(1.72\\) by itself.\n\\nThe digit \\(2\\) is the last digit and it lives in the hundredths place, so \\(1.72\\) is one hundred seventy-two hundredths. As a fraction that is \\(\\tfrac{172}{100}\\).\n\\nNow reduce. The greatest common divisor of \\(172\\) and \\(100\\) is \\(4\\), so divide top and bottom by \\(4\\): $$\\frac{172}{100}=\\frac{172\\div 4}{100\\div 4}=\\frac{43}{25}.$$ Check that this is fully reduced. The numerator \\(43\\) is prime, and \\(25=5\\cdot 5\\) shares no factor with it, so \\(\\tfrac{43}{25}\\) cannot shrink any further.\n\\nFinally, put the sign back exactly where it was. The size came out to \\(\\tfrac{43}{25}\\), and the temperature dropped, so the answer is negative. \\(\\boxed{-43/25}\\)"
+    "sol": "Convert the size first. The last digit of \\(1.72\\) is in the hundredths place, so \\(1.72 = \\tfrac{172}{100}\\). Since \\(\\gcd(172,100) = 4\\), $$\\frac{172}{100}=\\frac{172\\div 4}{100\\div 4}=\\frac{43}{25}.$$ Put the minus sign back and you have \\(\\boxed{-43/25}\\).\nIt is fully reduced because \\(43\\) is prime. The sign takes no part in the reducing, so set it aside and reattach it at the end."
    },
    {
     "t": "imp",
@@ -986,7 +986,7 @@
      ".47",
      ".470"
     ],
-    "sol": "Remember from earlier that \\(\\frac{47}{100}\\) just means \\(47\\) copies of one hundredth, and one hundredth is exactly what the second place after the decimal point measures. So the whole job is to write \\(47\\) hundredths in place-value form.\nThe numerator \\(47\\) has two digits, and the denominator \\(100\\) carries two zeros. That match is the whole idea. The two zeros tell you to reserve two slots to the right of the decimal point, the tenths and the hundredths, and the numerator fills them right to left. The \\(7\\) drops into the hundredths place and the \\(4\\) sits to its left in the tenths place.\nNothing is left over for the ones place, since \\(47\\) is less than \\(100\\), so the number is smaller than one whole. We park a \\(0\\) in the ones place as a guard, just so the decimal point is not floating alone at the front. That gives \\(0.47\\).\nThis is exactly the chart you built before, read backward. Going from a decimal to a fraction, you saw \\(0.47\\) and named it \\(\\frac{47}{100}\\). Going from a fraction to a decimal, you see \\(\\frac{47}{100}\\) and name it \\(0.47\\). Same chart, opposite direction. $$\\frac{47}{100} = \\boxed{0.47}$$"
+    "sol": "A denominator of \\(100\\) means hundredths, so the numerator fills two places to the right of the point. The \\(7\\) drops into the hundredths place and the \\(4\\) sits in the tenths place. Since \\(47 < 100\\) there is no whole part, so a \\(0\\) holds the ones place. That gives \\(\\frac{47}{100} = \\boxed{0.47}\\).\nThis is the same place-value reading you used going the other way, just run backward. Two zeros in the denominator, two places after the point."
    },
    {
     "t": "prob",
@@ -1005,7 +1005,7 @@
      "0.60",
      ".6"
     ],
-    "sol": "The whole game is getting a power of ten under the fraction so the decimal can be read directly. Right now the denominator is \\(5\\), and \\(5\\) is one short multiplication away from \\(10\\), since \\(5 \\times 2 = 10\\). So multiply the bottom by \\(2\\). The catch is that touching only the bottom would change the value, so multiply the top by \\(2\\) as well. Doing the same thing top and bottom is just multiplying by \\(\\tfrac{2}{2}\\), and \\(\\tfrac{2}{2} = 1\\), so the value is untouched. This is the equivalent-fraction move from Chapter 4. $$\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$$ Now the denominator is a power of ten. Six tenths is exactly what the first place after the decimal point holds, so you read it straight off as \\(0.6\\). The gear turned through \\(0.6\\) of a revolution. \\(\\boxed{0.6}\\)"
+    "sol": "Since \\(5 \\times 2 = 10\\), multiply top and bottom by \\(2\\). $$\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$$ Six tenths is exactly what the first place after the point holds, so the answer is \\(\\boxed{0.6}\\).\nMultiplying top and bottom by the same number is multiplying by \\(\\tfrac{2}{2} = 1\\), so the value never moves. Only the name changes."
    },
    {
     "t": "fig",
@@ -1028,7 +1028,7 @@
      ".55",
      "11/20"
     ],
-    "sol": "The goal is to give the denominator a value of \\(10\\), \\(100\\), \\(1{,}000\\), or some other power of ten, because those are exactly the denominators that read off cleanly as decimals. Twenty is not one of them, so the question becomes which power of ten it divides into evenly. It will not fit into \\(10\\), since \\(10\\) is smaller than \\(20\\). The next one up is \\(100\\), and \\(100 \\div 20 = 5\\) with nothing left over. That is how we knew to reach for \\(5\\). The bottom has to grow from \\(20\\) to \\(100\\), and \\(5\\) is the number that carries it there. Whatever we do to the bottom we must also do to the top, so multiply both by \\(5\\). $$\\frac{11}{20} = \\frac{11 \\times 5}{20 \\times 5} = \\frac{55}{100}$$ Now the denominator is \\(100\\), so the fraction is \\(55\\) hundredths, which is \\(0.55\\). A quick check makes sure that fits. We know \\(\\tfrac{10}{20} = \\tfrac{1}{2} = 0.5\\), and \\(\\tfrac{11}{20}\\) is one twentieth more than that, so a value just past \\(0.5\\) is exactly what we should land on. A little over half the scoop is raisins. \\(\\boxed{0.55}\\)"
+    "sol": "\\(20\\) is bigger than \\(10\\), so aim for \\(100\\). Since \\(100 \\div 20 = 5\\) with nothing left over, multiply top and bottom by \\(5\\). $$\\frac{11}{20} = \\frac{11 \\times 5}{20 \\times 5} = \\frac{55}{100}$$ That is \\(55\\) hundredths, or \\(\\boxed{0.55}\\).\nIt should land just past \\(0.5\\), since \\(\\tfrac{10}{20} = 0.5\\) and you have one twentieth more than that."
    },
    {
     "t": "prob",
@@ -1048,7 +1048,7 @@
      "0.8750",
      ".8750"
     ],
-    "sol": "The way to turn a fraction into a decimal is to get a power of ten on the bottom, because \\(\\tfrac{875}{1000}\\) is just another way of writing \\(0.875\\). So the whole job is reshaping the denominator into a power of ten without changing the value of the fraction. First break the bottom into primes. Here \\(8 = 2\\times 2\\times 2 = 2^3\\), which is three 2s and zero 5s. Now recall how powers of ten are built. Since \\(10 = 2\\times 5\\), every power of ten needs its 2s and 5s in equal counts. For example \\(1{,}000 = 10^3 = 2^3\\times 5^3\\), three of each. Compare that to what you have. Your denominator already supplies all three 2s, so it is short exactly three 5s, and \\(5^3 = 125\\). Supply the missing 5s by multiplying top and bottom by \\(125\\), which is the same as multiplying by \\(1\\), so the value does not change. $$\\frac{7}{8} = \\frac{7\\times 125}{8\\times 125} = \\frac{875}{1000}.$$ A denominator of \\(1{,}000\\) means three decimal places, so \\(\\tfrac{875}{1000}\\) reads as \\(0.875\\). The big idea is that you only ever have to top up whichever prime the bottom is short of. An all-2s denominator like \\(8\\) cleanly becomes a decimal precisely because you can fill in the matching 5s. \\(\\boxed{0.875}\\)"
+    "sol": "\\(8 = 2^3\\), so the bottom carries three \\(2\\)s and no \\(5\\)s. A power of ten pairs its \\(2\\)s and \\(5\\)s evenly, and \\(1{,}000 = 2^3 \\times 5^3\\), so the denominator is short exactly three \\(5\\)s. Multiply top and bottom by \\(5^3 = 125\\). $$\\frac{7}{8} = \\frac{7\\times 125}{8\\times 125} = \\frac{875}{1000}$$ A denominator of \\(1{,}000\\) means three decimal places, so \\(\\boxed{0.875}\\).\nYou only ever have to top up whichever of \\(2\\) or \\(5\\) the denominator is missing."
    },
    {
     "t": "imp",
@@ -1069,7 +1069,7 @@
      "12",
      "twelve"
     ],
-    "sol": "Factor every denominator into primes and the answer is nearly there. \\(16 = 2^4\\), so it is pure 2s. \\(40 = 2^3 \\times 5\\), made of 2s and a 5. \\(25 = 5^2\\), pure 5s. And \\(12 = 2^2 \\times 3\\), which carries a 3. The question is whether each denominator can be scaled up to a power of ten, because a power of ten in the denominator is exactly what a terminating decimal looks like. Since \\(10^n = 2^n \\times 5^n\\), a power of ten is built from 2s and 5s and nothing else. For \\(\\dfrac{7}{16}\\), multiply top and bottom by \\(5^4\\) to fill in the missing 5s and you reach \\(10^4\\), so it terminates. For \\(\\dfrac{9}{40}\\), one extra factor of \\(5^2\\) balances the 2s and 5s into \\(1{,}000\\). For \\(\\dfrac{3}{25}\\), multiply by \\(2^2\\) and you land on \\(100\\). But \\(\\dfrac{5}{12}\\) is stuck. Its denominator holds a 3, and no matter how many 2s or 5s you multiply on, that 3 never disappears, so the denominator can never become a power of ten. The fraction that cannot terminate is \\(\\dfrac{5}{12}\\), and its denominator is \\(\\boxed{12}\\)."
+    "sol": "Factor the denominators. \\(16 = 2^4\\), \\(40 = 2^3 \\times 5\\), \\(25 = 5^2\\), and \\(12 = 2^2 \\times 3\\). A power of ten is \\(2^n \\times 5^n\\), so the first three can be scaled up to one, but the \\(3\\) inside \\(12\\) cannot. So \\(\\dfrac{5}{12}\\) is the fraction that never terminates, and its denominator is \\(\\boxed{12}\\).\nMultiplying by more \\(2\\)s and \\(5\\)s only adds factors. It can never remove a \\(3\\) that is already sitting on the bottom."
    },
    {
     "t": "imp",
@@ -1099,7 +1099,7 @@
      "46.0",
      "46"
     ],
-    "sol": "Asking how many eighths are in a number is just rewriting it as a fraction whose bottom is \\(8\\) and then reading off the top. So the whole job is to write \\(5.75\\) as a fraction over \\(8\\). Start by writing the decimal as a fraction. The \\(75\\) sits in the hundredths place, so \\(5.75 = \\frac{575}{100}\\). That fraction is bulky, so reduce it. Both \\(575\\) and \\(100\\) share a factor of \\(25\\), and \\(575 \\div 25 = 23\\) while \\(100 \\div 25 = 4\\), which gives \\(\\frac{23}{4}\\). Now rename \\(\\frac{23}{4}\\) so its bottom is \\(8\\). Since \\(4 \\times 2 = 8\\), multiply the top and bottom by the same \\(2\\), $$\\frac{23}{4} = \\frac{23 \\times 2}{4 \\times 2} = \\frac{46}{8}.$$ The bottom is now \\(8\\), so each piece is one eighth, and the top simply counts how many of them there are. The marks really do land exactly, with \\(46\\) of them filling the board with nothing left over. There are \\(\\boxed{46}\\) eighths in \\(5.75\\)."
+    "sol": "The \\(75\\) sits in the hundredths place, so \\(5.75 = \\frac{575}{100}\\). Both share a factor of \\(25\\), and that reduces to \\(\\frac{23}{4}\\). Since \\(4 \\times 2 = 8\\), multiply top and bottom by \\(2\\). $$\\frac{23}{4} = \\frac{23 \\times 2}{4 \\times 2} = \\frac{46}{8}$$ There are \\(\\boxed{46}\\) eighths in \\(5.75\\).\nAsking how many of a unit fit inside a number is just renaming the number with that unit on the bottom and reading the top."
    },
    {
     "t": "imp",
@@ -1123,7 +1123,7 @@
      ".4",
      "0.40"
     ],
-    "sol": "Take the round trip one step at a time. <b>Step 1, decimal to fraction.</b> The number \\(2.5\\) has one digit after the point, so it is twenty five tenths, \\(2.5 = \\frac{25}{10}\\). Both \\(25\\) and \\(10\\) share a factor of \\(5\\), so divide them out to get the lowest terms version, \\(\\frac{25}{10} = \\frac{5}{2}\\). <b>Step 2, flip for the reciprocal.</b> Taking a reciprocal just swaps the top and bottom of a fraction, exactly like Chapter 4. So the reciprocal of \\(\\frac{5}{2}\\) is \\(\\frac{2}{5}\\). Notice how much friendlier this flip is on the fraction than it would be on the messy decimal. <b>Step 3, fraction to decimal.</b> Turn \\(\\frac{2}{5}\\) into tenths by multiplying the top and bottom by \\(2\\), which gives \\(\\frac{2}{5} = \\frac{4}{10}\\), and four tenths written as a decimal is \\(0.4\\). Look back at the round trip. You started with a decimal, switched to a fraction so the flip was clean, then switched back to a decimal, a full round trip through both names. As a quick check, \\(2.5 \\times 0.4 = 1\\), which is exactly what a number and its reciprocal must multiply to. \\(\\boxed{0.4}\\)"
+    "sol": "\\(2.5 = \\frac{25}{10}\\), which reduces to \\(\\frac{5}{2}\\). Flipping gives the reciprocal \\(\\frac{2}{5}\\). Multiply top and bottom by \\(2\\) to reach tenths, \\(\\frac{2}{5} = \\frac{4}{10}\\), and four tenths is \\(\\boxed{0.4}\\).\nFlipping is easy on a fraction and awkward on a decimal, so switch names first. Check it with \\(2.5 \\times 0.4 = 1\\)."
    },
    {
     "t": "prob",
@@ -1140,7 +1140,7 @@
      "21",
      "21.0"
     ],
-    "sol": "Start with what the screen actually says. A reading of \\(0.84\\) means eighty-four hundredths, so \\(0.84 = \\tfrac{84}{100}\\). That is not the original division yet, because \\(84\\) and \\(100\\) still share a factor. Their \\(\\gcd\\) is \\(4\\), so divide top and bottom by \\(4\\): $$\\frac{84}{100} = \\frac{84 \\div 4}{100 \\div 4} = \\frac{21}{25}.$$ Now \\(21\\) and \\(25\\) have nothing left in common, so \\(\\tfrac{21}{25}\\) is in lowest terms. The student said their numbers were already in simplest shape before dividing, so the divisor they typed had to reduce to this \\(25\\). The options would be \\(25\\) itself, or a multiple like \\(50\\) or \\(75\\). But the clue pins the divisor under \\(30\\), and the only one of those below \\(30\\) is \\(25\\). That nails the divisor to \\(25\\) and the dividend on top to \\(21\\). One last check explains why the screen could show a clean ending decimal at all. The lowest-terms denominator is \\(25 = 5 \\times 5\\), built from nothing but \\(5\\)s, so the decimal terminates instead of running forever. Everything lines up. The number that was sitting on top is \\(\\boxed{21}\\)."
+    "sol": "\\(0.84\\) means eighty-four hundredths, so \\(0.84 = \\tfrac{84}{100}\\). Their \\(\\gcd\\) is \\(4\\), so $$\\frac{84}{100} = \\frac{84 \\div 4}{100 \\div 4} = \\frac{21}{25}.$$ The division was already in simplest form, so the divisor had to be \\(25\\), \\(50\\), \\(75\\), and so on. Only \\(25\\) is under \\(30\\), which puts \\(\\boxed{21}\\) on top.\nThe screen could show a clean ending decimal because \\(25 = 5 \\times 5\\) is built from nothing but \\(5\\)s."
    }
   ],
   "review": [
@@ -1157,7 +1157,7 @@
      "The decimal \\(0.3\\) ends in the tenths place. Whatever place the last digit lives in tells you the denominator, so the bottom of your fraction is \\(10\\).",
      "Put the digit you read, which is \\(3\\), over that denominator of \\(10\\). Then check whether \\(3\\) and \\(10\\) share any common factor."
     ],
-    "sol": "Read the decimal by its last place. The \\(3\\) sits one spot to the right of the point, which is the tenths place, so \\(0.3\\) means three tenths. Writing that over a power of ten gives \\(0.3 = \\frac{3}{10}\\). Now ask whether it can be reduced. The only factors of \\(3\\) are \\(1\\) and \\(3\\), and \\(10 = 2 \\times 5\\) shares neither, so \\(\\gcd(3,10) = 1\\) and the fraction is already in lowest terms. The answer is \\(\\boxed{3/10}\\)."
+    "sol": "The \\(3\\) sits one spot right of the point, in the tenths place, so \\(0.3 = \\frac{3}{10}\\), which is \\(\\boxed{3/10}\\).\nIt is already in lowest terms, since \\(3\\) is prime and \\(10 = 2 \\times 5\\) shares nothing with it."
    },
    {
     "x": "A bottle is labeled \\(0.6\\) full. Write \\(0.6\\) as a fraction in simplest form.",
@@ -1171,7 +1171,7 @@
      "The 6 in \\(0.6\\) sits in the tenths place, so read the decimal out loud as a number of tenths.",
      "Once you have \\(\\tfrac{6}{10}\\), look for a number that divides both 6 and 10, then divide top and bottom by it."
     ],
-    "sol": "Start by reading the decimal place by place. The single digit after the point is in the tenths place, so \\(0.6\\) means six tenths, which is \\(\\frac{6}{10}\\). That is already a fraction, but the machine wants simplest form, so check whether the top and bottom share a factor. Both 6 and 10 are even, and in fact \\(\\gcd(6,10)=2\\). Divide top and bottom by 2: $$\\frac{6}{10}=\\frac{6\\div 2}{10\\div 2}=\\frac{3}{5}.$$ Now 3 and 5 share no common factor larger than 1, so this is as simple as it gets. The bottle is \\(\\boxed{3/5}\\) full."
+    "sol": "The \\(6\\) is in the tenths place, so \\(0.6\\) means six tenths, \\(\\frac{6}{10}\\). Both are even and \\(\\gcd(6,10) = 2\\), so $$\\frac{6}{10}=\\frac{6\\div 2}{10\\div 2}=\\frac{3}{5}.$$ The bottle is \\(\\boxed{3/5}\\) full.\nSimplest form is the point where the top and bottom share no factor bigger than \\(1\\), and \\(3\\) and \\(5\\) do not."
    },
    {
     "x": "\\(0.85\\) of students voted to keep the lunch menu. Write \\(0.85\\) as a fraction in lowest terms.",
@@ -1186,7 +1186,7 @@
      "The digits 85 sit in the hundredths place, so \\(0.85\\) means 85 out of 100. Start by writing \\(\\frac{85}{100}\\).",
      "Now reduce. Find the greatest common divisor of 85 and 100. Both end in 0 or 5, so they share a factor of 5. Divide top and bottom by it."
     ],
-    "sol": "The last digit of \\(0.85\\) lands in the hundredths place, so the decimal reads as 85 hundredths. That gives the starting fraction \\(\\frac{85}{100}\\).\n\nNext, simplify. Look for the largest number that divides both 85 and 100. Since \\(85 = 5 \\times 17\\) and \\(100 = 5 \\times 20\\), the greatest common divisor is \\(5\\). Divide the top and bottom by \\(5\\):\n\n$$\\frac{85}{100} = \\frac{85 \\div 5}{100 \\div 5} = \\frac{17}{20}.$$\n\nNow 17 is prime and does not divide 20, so the fraction cannot shrink any further. The poll result in simplest form is \\(\\boxed{17/20}\\)."
+    "sol": "Two digits past the point means hundredths, so \\(0.85 = \\frac{85}{100}\\). Since \\(85 = 5 \\times 17\\) and \\(100 = 5 \\times 20\\), the greatest common divisor is \\(5\\). $$\\frac{85}{100} = \\frac{85 \\div 5}{100 \\div 5} = \\frac{17}{20}$$ The poll result is \\(\\boxed{17/20}\\).\n\\(17\\) is prime and does not divide \\(20\\), so nothing more comes out."
    },
    {
     "x": "A drill bit is stamped \\(0.375\\) of an inch. Start from \\(\\tfrac{375}{1{,}000}\\) and reduce. Write \\(0.375\\) in simplest form as a fraction.",
@@ -1200,7 +1200,7 @@
      "3/8",
      "three-eighths"
     ],
-    "sol": "The last digit of \\(0.375\\) sits in the thousandths place, so the place value tells you the denominator. That gives \\(0.375 = \\tfrac{375}{1{,}000}\\). Now reduce. The greatest common divisor of \\(375\\) and \\(1{,}000\\) is \\(125\\), since \\(375 = 125 \\times 3\\) and \\(1{,}000 = 125 \\times 8\\). Dividing both parts by \\(125\\) gives \\(\\tfrac{375 \\div 125}{1{,}000 \\div 125} = \\tfrac{3}{8}\\). A quick check confirms it, \\(3 \\div 8 = 0.375\\), right back where you started. So the drawer gets labeled \\(\\boxed{3/8}\\)."
+    "sol": "The last digit lands in the thousandths place, so \\(0.375 = \\tfrac{375}{1{,}000}\\). Since \\(375 = 125 \\times 3\\) and \\(1{,}000 = 125 \\times 8\\), the gcd is \\(125\\), and dividing both by it gives \\(\\boxed{3/8}\\).\nCheck it by going back the other way, \\(3 \\div 8 = 0.375\\)."
    },
    {
     "x": "Convert \\(-2.6\\) to a single improper fraction in simplest form, keeping the sign. Write your answer as one fraction.",
@@ -1218,7 +1218,7 @@
      "Set the sign aside for a moment and just convert the size, \\(2.6\\). The \\(6\\) sits in the tenths place, so \\(2.6\\) means \\(2\\) wholes and \\(6\\) tenths.",
      "Turn \\(2.6\\) into a single fraction by writing it over its place value, \\(\\frac{26}{10}\\), then reduce. After you simplify, write the minus sign back in front."
     ],
-    "sol": "The minus sign just rides along, so first handle the size \\(2.6\\) and reattach the sign at the end. The last digit of \\(2.6\\) is in the tenths place, which tells you the denominator is \\(10\\). That gives \\(2.6 = \\frac{26}{10}\\). Now simplify. Both \\(26\\) and \\(10\\) share a factor of \\(2\\), since \\(\\gcd(26,10)=2\\), so \\(\\frac{26}{10} = \\frac{26 \\div 2}{10 \\div 2} = \\frac{13}{5}\\). That fraction is already improper and in lowest terms, because \\(13\\) is prime and does not divide \\(5\\). Finally, bring the negative sign back to the front. The elevation change as a single improper fraction is \\(\\boxed{-13/5}\\). A quick sanity check, \\(\\frac{13}{5} = 2.6\\), and the sign matches the original reading."
+    "sol": "Convert the size first. The \\(6\\) is in the tenths place, so \\(2.6 = \\frac{26}{10}\\). Since \\(\\gcd(26,10) = 2\\), that reduces to \\(\\frac{26 \\div 2}{10 \\div 2} = \\frac{13}{5}\\). Put the sign back for \\(\\boxed{-13/5}\\).\nIt is improper and in lowest terms already, since \\(13\\) is prime and bigger than \\(5\\)."
    },
    {
     "x": "A rain gauge reads \\(\\tfrac{73}{100}\\) of a liter. The denominator is already a power of ten. Write \\(\\tfrac{73}{100}\\) as a decimal.",
@@ -1232,7 +1232,7 @@
      "A denominator of \\(100\\) means hundredths, so the numerator fills the first two spots after the decimal point.",
      "Place \\(73\\) in the tenths and hundredths positions. There are no whole liters yet, so a \\(0\\) sits in front of the point."
     ],
-    "sol": "When the denominator is a power of ten, you do not have to divide at all. You just read the numerator into the right decimal places. The denominator here is \\(100\\), which counts hundredths, so the value goes out to the second place after the point. Drop the \\(73\\) into the tenths and hundredths spots, and put a \\(0\\) in front since there are no whole liters. That gives \\(\\tfrac{73}{100} = 0.73\\). You can sanity check it the other way too, since \\(0.73\\) read aloud is \"seventy-three hundredths\", which is exactly \\(\\tfrac{73}{100}\\). So the rain gauge holds \\(\\boxed{0.73}\\) of a liter."
+    "sol": "A denominator of \\(100\\) counts hundredths, so the numerator fills the first two places after the point. Drop \\(73\\) into the tenths and hundredths spots with a \\(0\\) in front, and the gauge reads \\(\\boxed{0.73}\\) of a liter.\nWhen the denominator is already a power of ten there is nothing to divide. You just read the numerator into its places."
    },
    {
     "x": "A crew has paved \\(\\tfrac{4}{5}\\) of a trail. Double the numerator and denominator to reach a denominator of \\(10\\). Write \\(\\tfrac{4}{5}\\) as a decimal.",
@@ -1250,7 +1250,7 @@
      "You want a denominator of 10 because tenths turn straight into a one-digit decimal. What do you multiply 5 by to get 10?",
      "Multiply the top and the bottom by the same number, 2, so the value does not change. That gives you eight tenths, and eight tenths written as a decimal is 0.something."
     ],
-    "sol": "The fastest route to a decimal here is to land on a denominator of \\(10\\), because a number of tenths is exactly what the first decimal place records. Since \\(5 \\times 2 = 10\\), multiply the top and bottom by the same \\(2\\) so the fraction keeps its value. \\(\\frac{4}{5} = \\frac{4 \\times 2}{5 \\times 2} = \\frac{8}{10}\\). Now \\(\\frac{8}{10}\\) means eight tenths, and eight tenths sits in the first place after the decimal point, so it is \\(0.8\\). You can sanity check it the other way too, since \\(0.8 = \\frac{8}{10} = \\frac{4}{5}\\). The conversion terminates after a single digit, which makes sense because the denominator \\(5\\) divides evenly into a power of ten. \\(\\boxed{0.8}\\)"
+    "sol": "Since \\(5 \\times 2 = 10\\), multiply top and bottom by the same \\(2\\), so \\(\\frac{4}{5} = \\frac{8}{10}\\). Eight tenths sits in the first place after the point, giving \\(\\boxed{0.8}\\).\nThe decimal stops after a single digit because \\(5\\) divides evenly into \\(10\\)."
    },
    {
     "x": "A jar is \\(\\tfrac{13}{20}\\) full. Multiply top and bottom by \\(5\\) to get a denominator of \\(100\\), then read the decimal. Write \\(\\tfrac{13}{20}\\) as a decimal.",
@@ -1265,7 +1265,7 @@
      "A decimal is just a fraction whose denominator is a power of ten. Can you turn the 20 on the bottom into 100 without changing the value of the fraction?",
      "Multiply the top and the bottom by the same number, 5. That keeps the fraction equal but renames it with a denominator of 100, which reads straight off as hundredths."
     ],
-    "sol": "Decimals are just fractions whose denominators are powers of ten, so the move is to rename \\(\\tfrac{13}{20}\\) with a denominator that is a power of ten. Since \\(20 \\times 5 = 100\\), multiply the top and bottom by the same \\(5\\) so the value stays the same. $$\\frac{13}{20} = \\frac{13 \\times 5}{20 \\times 5} = \\frac{65}{100}$$ A fraction over \\(100\\) is read as hundredths, and \\(\\tfrac{65}{100}\\) is sixty-five hundredths, which is written \\(0.65\\). You can sanity check it the long-division way too, since \\(13 \\div 20 = 0.65\\), a terminating decimal because \\(20 = 2^2 \\times 5\\) has only \\(2\\)s and \\(5\\)s in its factorization. The jar is \\(\\boxed{0.65}\\) full."
+    "sol": "Since \\(20 \\times 5 = 100\\), multiply top and bottom by \\(5\\). $$\\frac{13}{20} = \\frac{13 \\times 5}{20 \\times 5} = \\frac{65}{100}$$ Sixty-five hundredths is \\(0.65\\), so the jar is \\(\\boxed{0.65}\\) full.\nIt terminates because \\(20 = 2^2 \\times 5\\) carries only \\(2\\)s and \\(5\\)s."
    },
    {
     "x": "A gauge block is \\(\\tfrac{5}{8}\\) inch thick. Since \\(8=2^3\\), supply \\(5^3=125\\) to reach \\(1{,}000\\). Write \\(\\tfrac{5}{8}\\) as a decimal.",
@@ -1280,7 +1280,7 @@
      "A power of ten is a product of \\(2\\)s and \\(5\\)s in equal numbers. The bottom \\(8\\) is \\(2^3\\), three \\(2\\)s and zero \\(5\\)s. To reach \\(10^3 = 2^3 \\times 5^3\\) you only need to bring in three \\(5\\)s.",
      "Three \\(5\\)s multiplied together is \\(5^3 = 125\\). Multiply the top and the bottom of \\(\\tfrac{5}{8}\\) by that same \\(125\\) so the value does not change, then read the new fraction as thousandths."
     ],
-    "sol": "With the scaling method, ask what the denominator is missing. Here \\(8 = 2^3\\), so it carries three \\(2\\)s and no \\(5\\)s. A power of ten always pairs its \\(2\\)s and \\(5\\)s evenly, and the smallest one that uses three \\(2\\)s is \\(10^3 = 2^3 \\times 5^3 = 1{,}000\\). So the only thing standing between \\(8\\) and \\(1{,}000\\) is three \\(5\\)s, and \\(5^3 = 125\\).\n\nMultiply the top and bottom by that same \\(125\\) so the fraction keeps its value.\n$$\\frac{5}{8} = \\frac{5 \\times 125}{8 \\times 125} = \\frac{625}{1{,}000}.$$\n\nSix hundred twenty-five thousandths slides straight onto the readout as \\(0.625\\). You can sanity check it the long way too. Start from \\(\\tfrac{4}{8} = 0.5\\) and add one more eighth, \\(\\tfrac{1}{8} = 0.125\\), and \\(0.5 + 0.125 = 0.625\\), the same answer.\n\n\\(\\boxed{0.625}\\)"
+    "sol": "\\(8 = 2^3\\), so the bottom holds three \\(2\\)s and no \\(5\\)s. The smallest power of ten using three \\(2\\)s is \\(10^3 = 2^3 \\times 5^3 = 1{,}000\\), so supply \\(5^3 = 125\\). $$\\frac{5}{8} = \\frac{5 \\times 125}{8 \\times 125} = \\frac{625}{1{,}000}$$ Six hundred twenty-five thousandths is \\(\\boxed{0.625}\\).\nCheck it another way. \\(\\tfrac{4}{8} = 0.5\\), and one more eighth is \\(0.125\\), so \\(0.5 + 0.125 = 0.625\\)."
    },
    {
     "x": "Three fractions in lowest terms: \\(\\dfrac{7}{8}\\), \\(\\dfrac{4}{15}\\), \\(\\dfrac{9}{40}\\). Factor each denominator. Which one has a prime other than \\(2\\) or \\(5\\)? Give that denominator.",
@@ -1294,7 +1294,7 @@
      "Break each denominator into its prime factors. \\(8 = 2^3\\) and \\(40 = 2^3 \\times 5\\). What does \\(15\\) factor into?",
      "A fraction in lowest terms terminates only when its denominator uses nothing but \\(2\\)s and \\(5\\)s. Which denominator has a different prime?"
     ],
-    "sol": "Factor each denominator and check whether it is built only from \\(2\\)s and \\(5\\)s. For \\(\\dfrac{7}{8}\\), the denominator is \\(8 = 2^3\\), all \\(2\\)s, so it terminates. In fact \\(\\dfrac{7}{8} = 0.875\\). For \\(\\dfrac{9}{40}\\), the denominator is \\(40 = 2^3 \\times 5\\), only \\(2\\)s and a \\(5\\), so it terminates too, giving \\(\\dfrac{9}{40} = 0.225\\). For \\(\\dfrac{4}{15}\\), the denominator is \\(15 = 3 \\times 5\\). That hidden \\(3\\) is not a \\(2\\) or a \\(5\\), and since the fraction is already in lowest terms nothing can cancel it away. The \\(3\\) blocks the decimal from ever stopping, so \\(\\dfrac{4}{15}\\) is the one that runs forever. Its denominator is \\(\\boxed{15}\\)."
+    "sol": "Factor each denominator. \\(8 = 2^3\\) and \\(40 = 2^3 \\times 5\\) use only \\(2\\)s and \\(5\\)s, so both terminate. But \\(15 = 3 \\times 5\\) carries a \\(3\\), and the fraction is already in lowest terms, so nothing cancels it. The answer is \\(\\boxed{15}\\).\nA power of ten is \\(2^n \\times 5^n\\), so a denominator holding any other prime can never be scaled into one."
    },
    {
     "x": "The full-power brightness factor is \\(1.25\\). The low-power factor is its reciprocal. Convert \\(1.25\\) to a fraction, flip it, then write the reciprocal as a decimal.",
@@ -1310,7 +1310,7 @@
      "First turn \\(1.25\\) into a fraction. The digits after the point sit in the hundredths place, so \\(1.25\\) is \\(\\frac{125}{100}\\). Reduce that before you flip it.",
      "Once you have the fraction in lowest terms, flip the top and bottom to get the reciprocal. Then look for a way to rewrite the bottom as a power of ten so the decimal falls out cleanly."
     ],
-    "sol": "Start by writing \\(1.25\\) as a fraction. The last digit lands in the hundredths place, so \\(1.25 = \\frac{125}{100}\\). Both numbers share a factor of \\(25\\), and \\(\\frac{125}{100} = \\frac{5}{4}\\) in lowest terms. The reciprocal just swaps top and bottom, so the reciprocal of \\(\\frac{5}{4}\\) is \\(\\frac{4}{5}\\). To read \\(\\frac{4}{5}\\) as a decimal, rescale the bottom to a power of ten. Multiply top and bottom by \\(2\\) to get \\(\\frac{4 \\times 2}{5 \\times 2} = \\frac{8}{10}\\), and \\(\\frac{8}{10} = 0.8\\). A quick check, \\(1.25 \\times 0.8 = 1\\), which is exactly what a reciprocal pair should do. \\(\\boxed{0.8}\\)"
+    "sol": "The last digit of \\(1.25\\) is in the hundredths place, so \\(1.25 = \\frac{125}{100}\\), which reduces to \\(\\frac{5}{4}\\). Flipping gives \\(\\frac{4}{5}\\), and multiplying top and bottom by \\(2\\) gives \\(\\frac{8}{10}\\). The low-power factor is \\(\\boxed{0.8}\\).\nCheck it with \\(1.25 \\times 0.8 = 1\\), which is what a reciprocal pair has to do."
    },
    {
     "x": "A glaze recipe is \\(\\tfrac{17}{50}\\) cobalt. Since \\(50 \\times 2 = 100\\), multiply top and bottom by \\(2\\). Write \\(\\tfrac{17}{50}\\) as a decimal.",
@@ -1324,7 +1324,7 @@
      "The denominator is \\(50\\). What single number do you multiply \\(50\\) by to land on a power of ten like \\(100\\)?",
      "Multiply top and bottom by \\(2\\), giving \\(\\tfrac{17}{50} = \\tfrac{34}{100}\\). A denominator of \\(100\\) means two decimal places."
     ],
-    "sol": "The denominator \\(50\\) factors as \\(2 \\times 5^2\\), only \\(2\\)s and \\(5\\)s, so a clean decimal is waiting. To reach a power of ten, climb from \\(50\\) to \\(100\\) by multiplying by \\(2\\). Multiply the top by the same \\(2\\) so the value does not change, $$\\frac{17}{50} = \\frac{17 \\times 2}{50 \\times 2} = \\frac{34}{100}.$$ A denominator of \\(100\\) means hundredths, so the digits \\(34\\) sit two places past the point. The glaze is \\(\\boxed{0.34}\\) cobalt."
+    "sol": "Since \\(50 \\times 2 = 100\\), multiply top and bottom by \\(2\\). $$\\frac{17}{50} = \\frac{17 \\times 2}{50 \\times 2} = \\frac{34}{100}$$ A denominator of \\(100\\) means two decimal places, so the glaze is \\(\\boxed{0.34}\\) cobalt.\n\\(50 = 2 \\times 5^2\\) holds only \\(2\\)s and \\(5\\)s, so a clean decimal was guaranteed."
    },
    {
     "x": "A shelf is \\(3.25\\) feet. Convert to a fraction, reduce to \\(\\tfrac{13}{4}\\), then rename with denominator \\(8\\). How many eighths of a foot are in \\(3.25\\)?",
@@ -1340,7 +1340,7 @@
      "Start by writing \\(3.25\\) as a fraction over a power of ten, then reduce it. Two decimal places means the denominator is \\(100\\), so begin with \\(\\frac{325}{100}\\).",
      "Once \\(3.25 = \\frac{13}{4}\\), ask what you multiply \\(4\\) by to get \\(8\\). Whatever you do to the bottom, do to the top, and the number on top is your count of eighths."
     ],
-    "sol": "The shelf length is \\(3.25\\) feet, and we want to know how many eighths of a foot that is. The idea is that one number has two forms, a decimal form and a fraction form, and switching to the fraction makes the counting easy.\n\nFirst write the decimal as a fraction. Two digits sit after the decimal point, so the natural denominator is \\(100\\):\n$$3.25 = \\frac{325}{100}.$$\n\nNow reduce it. Both \\(325\\) and \\(100\\) share a factor of \\(25\\), so divide top and bottom by \\(25\\):\n$$\\frac{325}{100} = \\frac{325 \\div 25}{100 \\div 25} = \\frac{13}{4}.$$\n\nSo \\(3.25\\) is really \\(\\tfrac{13}{4}\\) in its simplest form. We want this same amount written over a denominator of \\(8\\). Since \\(4 \\times 2 = 8\\), multiply the top and bottom by \\(2\\):\n$$\\frac{13}{4} = \\frac{13 \\times 2}{4 \\times 2} = \\frac{26}{8}.$$\n\nRenaming a fraction this way does not change its value, it only changes the size of the pieces we count with. The shelf is \\(\\tfrac{26}{8}\\) feet long, which means it holds \\(26\\) eighths of a foot. A quick check confirms it, \\(26 \\div 8 = 3.25\\), right back where we started.\n\nSo there are \\(\\boxed{26}\\) eighths in \\(3.25\\)."
+    "sol": "Two digits sit after the point, so \\(3.25 = \\frac{325}{100}\\). Both share a factor of \\(25\\), which reduces it to \\(\\frac{13}{4}\\). Since \\(4 \\times 2 = 8\\), multiply top and bottom by \\(2\\). $$\\frac{13}{4} = \\frac{13 \\times 2}{4 \\times 2} = \\frac{26}{8}$$ So the shelf holds \\(\\boxed{26}\\) eighths of a foot.\nRenaming does not change the length, only the size of the piece you count with. Check it with \\(26 \\div 8 = 3.25\\)."
    },
    {
     "x": "A calculator shows exactly \\(0.65\\). The divisor was less than \\(25\\) and the fraction was in lowest terms. Reduce \\(\\tfrac{65}{100}\\) to find the divisor. What whole number was divided?",
@@ -1354,7 +1354,7 @@
      "Turn the screen reading into a fraction. The decimal \\(0.65\\) means \\(65\\) hundredths, so start from \\(\\tfrac{65}{100}\\) and simplify it as far as it will go.",
      "Once the fraction is in lowest terms, its bottom number is the divisor and its top number is the dividend. Check that the divisor really is under \\(25\\), then read off the dividend."
     ],
-    "sol": "The screen shows a terminating decimal, so it must come from a clean fraction. Read \\(0.65\\) as sixty-five hundredths, which gives \\(\\frac{65}{100}\\). Now simplify. Both \\(65\\) and \\(100\\) share a factor of \\(5\\), since \\(65 = 5 \\times 13\\) and \\(100 = 5 \\times 20\\). Dividing top and bottom by \\(5\\) leaves \\(\\frac{13}{20}\\). The numbers \\(13\\) and \\(20\\) have no common factor bigger than \\(1\\), so this fraction is in lowest terms, which matches Maya's second clue. The bottom number of a fraction is what you divide by, and \\(20\\) is indeed smaller than \\(25\\), so the first clue checks out too. The top number is what gets divided, so the dividend is \\(\\boxed{13}\\)."
+    "sol": "\\(0.65\\) means sixty-five hundredths, so start from \\(\\frac{65}{100}\\). Since \\(65 = 5 \\times 13\\) and \\(100 = 5 \\times 20\\), that reduces to \\(\\frac{13}{20}\\). The divisor is the bottom number, and \\(20\\) is indeed under \\(25\\), so the number divided was \\(\\boxed{13}\\).\n\\(13\\) and \\(20\\) share no factor bigger than \\(1\\), which confirms the lowest-terms clue."
    }
   ],
   "next": "5.4"
@@ -1364,7 +1364,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "A step counter reads \\(4{,}732\\). You round to \\(4{,}700\\). Somewhere between \\(4{,}700\\) and \\(4{,}800\\) is a halfway mark. Whichever side you land on determines the rounded answer. What exactly does your brain check in that instant?"
+    "x": "A step counter reads \\(4{,}732\\), and you round it to \\(4{,}700\\). The halfway mark between \\(4{,}700\\) and \\(4{,}800\\) is \\(4{,}750\\), and \\(4{,}732\\) falls below it, so the lower neighbor wins. That single comparison is all rounding ever is. This lesson turns it into a one-digit check and then handles ties, carries, and negative values."
    },
    {
     "t": "prob",
@@ -1380,7 +1380,7 @@
      "4700.0",
      "4,700"
     ],
-    "sol": "The two multiples of one hundred hugging \\(4{,}732\\) are \\(4{,}700\\) below and \\(4{,}800\\) above. The midpoint between them is \\(4{,}750\\), the halfway mark of that stretch. Now compare. Since \\(4{,}732\\) is less than \\(4{,}750\\), it sits on the left half of the stretch, nearer to \\(4{,}700\\). You can check the nearness directly. The gap down to \\(4{,}700\\) is \\(4{,}732 - 4{,}700 = 32\\), while the gap up to \\(4{,}800\\) is \\(4{,}800 - 4{,}732 = 68\\). A jump of \\(32\\) is much shorter than a jump of \\(68\\), so \\(4{,}700\\) wins. If the step count had landed exactly on \\(4{,}750\\), the tie would go to the larger neighbor \\(4{,}800\\), but here there is no tie. The nearest hundred is \\(\\boxed{4700}\\)."
+    "sol": "\\(4{,}732\\) sits between \\(4{,}700\\) and \\(4{,}800\\), and the midpoint is \\(4{,}750\\). Since \\(4{,}732\\) is below that, it leans toward the lower neighbor. The gap down is \\(32\\) and the gap up is \\(68\\), so the nearest hundred is \\(\\boxed{4700}\\). Only a value at or above \\(4{,}750\\) would tick up to \\(4{,}800\\)."
    },
    {
     "t": "prob",
@@ -1396,7 +1396,7 @@
      "68000.0",
      "68000"
     ],
-    "sol": "First find the place you are aiming for. The nearest thousand lives in the thousands digit, which is the \\(8\\) in \\(68{,}431\\). So the answer will be either \\(68{,}000\\) or the next thousand up, \\(69{,}000\\). The whole job is deciding which one is closer. The deciding digit is always the one immediately to the right of the place you are rounding to. Here that is the hundreds digit. Reading \\(68{,}431\\) from the left, the hundreds digit is \\(4\\). Now the only question that matters, is \\(4\\) in the \"5 or more\" group or the \"4 or less\" group? It is \\(4\\), so the thousands place stays put and does not climb to \\(9\\). Now the last step. Every digit to the right of the thousands place gets swept down to zero, all at once, no matter what they were. The \\(4\\), the \\(3\\), and the \\(1\\) all become \\(0\\), giving \\(68{,}000\\). A quick sanity check confirms it. The two candidates are \\(68{,}000\\) and \\(69{,}000\\), and the halfway mark between them is \\(68{,}500\\). Our count \\(68{,}431\\) sits below \\(68{,}500\\), so it really is nearer to \\(68{,}000\\). $$68{,}431 \\approx \\boxed{68{,}000}$$"
+    "sol": "The thousands digit is the \\(8\\), so the answer is either \\(68{,}000\\) or \\(69{,}000\\). The deciding digit is the one just to its right, the hundreds digit \\(4\\). Since \\(4\\) is under \\(5\\), the thousands digit stays put and everything after it drops to zero. $$68{,}431 \\approx \\boxed{68{,}000}$$ The midpoint check agrees, since \\(68{,}431\\) is below \\(68{,}500\\)."
    },
    {
     "t": "prob",
@@ -1412,7 +1412,7 @@
      "3000.0",
      "3000"
     ],
-    "sol": "Mark the two hundreds on either side of \\(2{,}950\\). The one just below is \\(2{,}900\\) and the one just above is \\(3{,}000\\). The midpoint sits halfway between them at \\(2{,}950\\), which is exactly the number we have. Since we are right on the tie, the larger-value rule sends us to the upper neighbor, \\(3{,}000\\). Now look at the carry. Rounding up usually means nudging the hundreds digit one step higher, but here that digit is already a 9 and there is no single digit above 9. So the 9 hundreds plus one more hundred makes ten hundreds, which is a whole new thousand. The 2 in the thousands place ticks up to a 3 and the hundreds settle back to 0. That is why \\(2{,}950\\) does not become \\(2{,}1000\\), it becomes \\(3{,}000\\). So \\(2{,}950\\) rounded to the nearest hundred is \\(\\boxed{3000}\\)."
+    "sol": "The hundreds on either side of \\(2{,}950\\) are \\(2{,}900\\) and \\(3{,}000\\), and the midpoint is \\(2{,}950\\) itself. A tie rounds to the larger value, so we go up to \\(\\boxed{3000}\\). The hundreds digit is a \\(9\\), so it cannot climb. It rolls to \\(0\\) and carries \\(1\\) into the thousands, turning the \\(2\\) into a \\(3\\)."
    },
    {
     "t": "fig",
@@ -1432,7 +1432,7 @@
      "7.8",
      "7.80"
     ],
-    "sol": "Rounding to the nearest tenth means choosing whichever multiple of one tenth is closest to \\(7.83\\). The two candidates are the tenths just below and just above, namely \\(7.8\\) and \\(7.9\\), and the fence between them sits exactly halfway, at \\(7.85\\). So the whole decision comes down to one question. Is \\(7.83\\) below the fence or above it? The hundredths digit answers that for us, because it measures how far past \\(7.8\\) we have traveled. Here that digit is \\(3\\), so we are at \\(7.8\\) plus three hundredths, which is short of the five hundredths needed to reach \\(7.85\\). That puts \\(7.83\\) on the lower side of the midpoint, closer to \\(7.8\\) than to \\(7.9\\). We keep the tenths digit exactly as it is and drop everything after it. The half-way rule never even comes up, since \\(3\\) is not \\(5\\). \\(\\boxed{7.8}\\)"
+    "sol": "The tenths on either side of \\(7.83\\) are \\(7.8\\) and \\(7.9\\), and the midpoint is \\(7.85\\). The hundredths digit is \\(3\\), so the reading sits below the midpoint and stays with the lower neighbor. Keep the tenths digit and drop the rest, giving \\(\\boxed{7.8}\\)."
    },
    {
     "t": "prob",
@@ -1447,7 +1447,7 @@
      "3.620",
      "3.62"
     ],
-    "sol": "Rounding to the nearest hundredth means choosing between the two-place values closest to the reading. Those neighbors are \\(3.61\\) and \\(3.62\\), and the fence post halfway between them is \\(3.615\\). The whole decision comes down to which side of that fence the reading lands on. The fast way to see it is to look at the next digit after the hundredths place, the thousandths digit. In \\(3.617\\) that digit is \\(7\\). A thousandths digit of \\(5\\) or more means the reading is at or above the midpoint, so we move up to the larger neighbor. You can feel it in the distances too. From \\(3.617\\) down to \\(3.61\\) is \\(0.007\\), but up to \\(3.62\\) is only \\(0.003\\), so \\(3.62\\) is genuinely closer. Both ways agree. The harbor chart records the height as \\(\\boxed{3.62}\\) meters."
+    "sol": "The hundredths on either side of \\(3.617\\) are \\(3.61\\) and \\(3.62\\), and the midpoint is \\(3.615\\). The thousandths digit is \\(7\\), which is \\(5\\) or more, so round up. The harbor chart records \\(\\boxed{3.62}\\). The distances agree, since \\(3.617\\) is \\(0.007\\) above \\(3.61\\) but only \\(0.003\\) below \\(3.62\\)."
    },
    {
     "t": "prob",
@@ -1466,7 +1466,7 @@
      "2.0",
      "2.00 g"
     ],
-    "sol": "Start by naming the place we want and the digit that decides it. Rounding to the nearest hundredth means we keep two places after the decimal point, the \\(1.99\\) part of \\(1.995\\). The digit just past that, the thousandths digit, is the one that tells us whether to round up or stay put. In \\(1.99\\underline{5}\\) that deciding digit is \\(5\\). A \\(5\\) sitting there with nothing but the end behind it is an exact halfway point, and our rule says a tie rounds to the larger value, so we round the hundredths place up. Now the careful part. Rounding up usually just adds \\(1\\) to the hundredths digit, but that digit is already \\(9\\). You cannot write a \\(10\\) in a single slot, so the \\(9\\) becomes \\(0\\) and passes a carry of \\(1\\) to the left, into the tenths place. The tenths digit is also a \\(9\\), so the same thing happens again. It becomes \\(0\\) and hands a carry into the ones place, which lifts the \\(1\\) up to a \\(2\\). Lining up the carry from right to left, \\(1.99\\) climbs to \\(2.00\\). The notebook still records two decimal places, so we keep both zeros and write \\(2.00\\) rather than just \\(2\\). Notice what the carry did. It turned a number that started with a \\(1\\) into one that starts with a \\(2\\), so the answer gained a whole place as the carry rolled left through the nines. $$1.995 \\approx \\boxed{2.00}$$"
+    "sol": "Keeping two decimal places makes the thousandths digit the decider, and here it is \\(5\\) with nothing behind it, an exact tie. So the hundredths place rounds up. That digit is a \\(9\\), so it becomes \\(0\\) and carries \\(1\\) into the tenths, which is also \\(9\\), so that becomes \\(0\\) and carries into the ones, lifting the \\(1\\) to a \\(2\\). $$1.995 \\approx \\boxed{2.00}$$ Keep both zeros, since the notebook still records two decimal places."
    },
    {
     "t": "fig",
@@ -1493,7 +1493,7 @@
      "-80",
      "-80.0"
     ],
-    "sol": "Start by naming the two multiples of ten that hug \\(-83\\). To its left sits \\(-90\\), and to its right sits \\(-80\\). Rounding to the nearest ten just asks which of these two the number is closer to. Now measure each gap. From \\(-83\\) over to \\(-90\\) is a jump of \\(7\\), since \\(-83-(-90)=7\\). From \\(-83\\) over to \\(-80\\) is a jump of only \\(3\\), since \\(-80-(-83)=3\\). The trip to the right is much shorter, so \\(-83\\) is nearer to \\(-80\\). This is the same midpoint reasoning you use with positive numbers. The halfway point here is \\(-85\\), and \\(-83\\) sits to the right of that midpoint, on the side closer to \\(-80\\). Notice that \\(-80\\) is the larger of the two values, because it lies further right on the number line, and we landed there simply by being closer, not by any special rule. So the technician records \\(\\boxed{-80}\\) degrees."
+    "sol": "The multiples of ten around \\(-83\\) are \\(-90\\) and \\(-80\\). The gap down to \\(-90\\) is \\(7\\), and the gap up to \\(-80\\) is only \\(3\\), so the technician records \\(\\boxed{-80}\\) degrees. Negatives use the same midpoint test as positives. The midpoint here is \\(-85\\), and \\(-83\\) sits to the right of it."
    },
    {
     "t": "prob",
@@ -1510,11 +1510,11 @@
      "−2.30",
      "-2.30"
     ],
-    "sol": "Start by finding the two tenths that \\(-2.35\\) sits between. Going down to the next tenth gives \\(-2.4\\), and going up to the next tenth gives \\(-2.3\\). On the number line \\(-2.4\\) is on the left and \\(-2.3\\) is on the right, since numbers grow as you move right. Now check the distances. From \\(-2.35\\) to \\(-2.4\\) is \\(0.05\\), and from \\(-2.35\\) to \\(-2.3\\) is also \\(0.05\\). The gaps match, so \\(-2.35\\) is the exact midpoint, a true tie. A tie cannot be settled by closeness, so we use the rule, round to the larger value. Now the careful part. With negatives, \"larger\" still means farther to the right on the number line, and the value farther right is \\(-2.3\\). It can feel backwards because \\(2.3\\) looks smaller than \\(2.4\\), but once you attach the minus signs, \\(-2.3\\) is the bigger number. So we round up toward zero, not away from it. The rounded reading is \\(\\boxed{-2.3}\\)."
+    "sol": "The tenths around \\(-2.35\\) are \\(-2.4\\) and \\(-2.3\\), and \\(-2.35\\) is \\(0.05\\) from each, so it is an exact tie. A tie rounds to the larger value, and the larger of two negatives is the one farther right. The display shows \\(\\boxed{-2.3}\\). It feels backwards because \\(2.3\\) is less than \\(2.4\\), but with the minus signs attached, \\(-2.3\\) is the bigger number."
    },
    {
     "t": "imp",
-    "x": "<b>Rounding negatives.</b> A negative number is not a special case with its own rulebook. It rounds to the nearer multiple exactly like a positive one, and the only thing to watch is what <b>larger</b> means down here. Larger always means farther to the right on the number line, so between two negatives the larger one is the one closer to zero. When a negative value lands exactly on a midpoint, the same round-to-the-larger tie rule sends you toward zero, which is why $-2.35$ rounds to $-2.3$ and not $-2.4$. Same midpoint, same tie rule, just keep your left and right straight."
+    "x": "<b>Rounding negatives.</b> A negative number is not a special case with its own rulebook. It rounds to the nearer multiple exactly like a positive one, and the only thing to watch is what <b>larger</b> means for negatives. Larger always means farther to the right on the number line, so between two negatives the larger one is the one closer to zero. When a negative value lands exactly on a midpoint, the same round-to-the-larger tie rule sends you toward zero, which is why $-2.35$ rounds to $-2.3$ and not $-2.4$."
    },
    {
     "t": "prob",
@@ -1530,7 +1530,7 @@
      "1,100",
      "1100"
     ],
-    "sol": "Round each crate to the nearest hundred first. For \\(487\\), the part after the hundreds is \\(87\\), which is past \\(50\\), so it rounds up to \\(500\\). For \\(213\\), the leftover is \\(13\\), which is below \\(50\\), so it stays at \\(200\\). For \\(356\\), the leftover is \\(56\\), which is past \\(50\\), so it rounds up to \\(400\\). Now the sum is easy because every number ends in two zeros. Add the hundreds, \\(5 + 2 + 4 = 11\\), so the total is \\(1100\\). That is \\(500 + 200 + 400 = 1100\\). Notice how much friendlier these numbers are than the originals. The exact total happens to be \\(1056\\), so the estimate of \\(1100\\) is close enough to tell you instantly whether you are nudging the van's limit, and you never had to line up a single column. \\(\\boxed{1100}\\)"
+    "sol": "For \\(487\\), the leftover past the hundred is \\(87\\), above \\(50\\), so it rounds up to \\(500\\). For \\(213\\) the leftover is \\(13\\), so it stays at \\(200\\). For \\(356\\) the leftover is \\(56\\), so it rounds up to \\(400\\). Adding gives \\(500 + 200 + 400 = \\boxed{1100}\\). The exact total is \\(1{,}056\\), so the estimate tells you instantly whether the van is near its limit."
    },
    {
     "t": "prob",
@@ -1548,7 +1548,7 @@
      "180",
      "180.00"
     ],
-    "sol": "Estimating works by swapping the messy parts for the nearest easy numbers, multiplying those, and trusting the result to land in the right neighborhood. Start with the count of students. Rounding \\(29\\) to the nearest ten means asking whether it is closer to \\(20\\) or to \\(30\\). It sits one step below \\(30\\) and nine steps above \\(20\\), so it rounds up to \\(30\\). Next round the price. Rounding \\(6.10\\) to the nearest whole dollar means asking whether it is closer to \\(6\\) or to \\(7\\). The ten cents barely lifts it off \\(6\\), nowhere near the halfway mark of \\(6.50\\), so it rounds down to \\(6\\). Now multiply the friendly parts, \\(30 \\times 6 = 180\\). That is your ballpark. Now the payoff. The printed total claims \\(1{,}769\\), but your honest estimate is only \\(180\\), and \\(1{,}769\\) is about ten times bigger. A gap that size is the unmistakable signature of a whole-digit slip, almost certainly a decimal point that drifted one spot to the right. (The exact total is actually \\(29 \\times 6.10 = 176.90\\), comfortably close to your \\(180\\), which confirms the printed figure is the wrong one.) The number you would compare against \\(1{,}769\\) is \\(\\boxed{180}\\)."
+    "sol": "\\(29\\) rounds to \\(30\\) at the nearest ten, and \\(6.10\\) rounds to \\(6\\) at the nearest dollar, since \\(10\\) cents is nowhere near the \\(6.50\\) midpoint. Multiplying the friendly numbers gives \\(30 \\times 6 = \\boxed{180}\\). The printed \\(1{,}769\\) is about ten times that, the signature of a decimal point that slipped one spot. The exact total is \\(176.90\\)."
    },
    {
     "t": "imp",
@@ -1571,7 +1571,7 @@
      "4.34",
      "4.340"
     ],
-    "sol": "A reported \\(4.3\\) is shorthand for an interval. Every true reading that rounds to \\(4.3\\) at the tenths place lives between the midpoint below it and the midpoint above it, and those midpoints are \\(4.25\\) and \\(4.35\\). The lower end \\(4.25\\) is exactly halfway between \\(4.2\\) and \\(4.3\\), so by the larger-value rule it rounds up into \\(4.3\\) and is included. The upper end \\(4.35\\) is exactly halfway between \\(4.3\\) and \\(4.4\\), so by that same rule it jumps up to \\(4.4\\) and is shut out. So the readings that report as \\(4.3\\) are exactly those with \\(4.25 \\le \\text{value} < 4.35\\). We want the largest one that has only two decimal places. The top of the interval, \\(4.35\\), is not allowed because it rounds to \\(4.4\\). Step down one hundredth to \\(4.34\\). Its hundredths digit is \\(4\\), which is below \\(5\\), so it rounds down to \\(4.3\\). It works, and nothing between \\(4.34\\) and \\(4.35\\) has just two decimal places, so this is the ceiling. The largest two-decimal reading that still reports as \\(4.3\\) is \\(\\boxed{4.34}\\)."
+    "sol": "A reported \\(4.3\\) covers everything from \\(4.25\\) up to just under \\(4.35\\), because \\(4.35\\) is a tie that rounds up to \\(4.4\\) instead. The largest two-decimal value in that stretch is \\(\\boxed{4.34}\\), whose hundredths digit \\(4\\) sends it down to \\(4.3\\). The band is half-open, so the lower end is included and the upper end is not."
    },
    {
     "t": "fig",
@@ -1599,7 +1599,7 @@
      "$6.80",
      "6.800"
     ],
-    "sol": "The plan is to read each clue as a range and then hunt for the single point that lives in all of them. Start with clue one. Rounding to the nearest whole dollar gives \\(7\\), and with the half-way-up rule the prices that round to \\(7\\) are \\(6.5\\) up to just under \\(7.5\\). So far the price is somewhere in \\(6.5 \\le p < 7.5\\). Now clue two. Rounding to the nearest tenth gives \\(6.8\\), so the prices that round to \\(6.8\\) are \\(6.75\\) up to just under \\(6.85\\), that is \\(6.75 \\le p < 6.85\\). Notice this second range sits entirely inside the first one, so the two clues together pin the price to \\(6.75 \\le p < 6.85\\). Now bring in clue three. The price is written to the cent, and its hundredths digit is \\(0\\). The prices to the cent inside the band \\(6.75\\) up to just under \\(6.85\\) are \\(6.75, 6.76, 6.77, \\dots, 6.84\\). The only one of those whose last digit is \\(0\\) is \\(6.80\\). Quick double check. Rounded to the nearest whole dollar \\(6.80\\) gives \\(7\\), since \\(6.80\\) is past the \\(6.5\\) tipping point. Rounded to the nearest tenth it gives \\(6.8\\), since the next digit is \\(0\\) and we keep the tenth. And its hundredths digit is indeed \\(0\\). All three clues hold, and no other price to the cent does the same. The price per scoop is \\(\\boxed{6.80}\\) dollars."
+    "sol": "Rounding to \\(7\\) at the nearest dollar means \\(6.5 \\le p < 7.5\\). Rounding to \\(6.8\\) at the nearest tenth means \\(6.75 \\le p < 6.85\\), which sits entirely inside the first range. The prices to the cent in that band run \\(6.75\\) through \\(6.84\\), and the only one with a hundredths digit of \\(0\\) is \\(\\boxed{6.80}\\). Turning each rounding clue into a range and overlapping them is the standard way to pin a value down."
    }
   ],
   "review": [
@@ -1615,7 +1615,7 @@
      "Find the two multiples of one hundred that hug \\(7{,}284\\). One is below it and one is above it. What are they?",
      "The midpoint sits halfway between those two multiples. Compare \\(7{,}284\\) to that midpoint. Is the count below the line or above it?"
     ],
-    "sol": "Start by trapping \\(7{,}284\\) between the nearest multiples of one hundred. Counting up in hundreds, the multiple just below is \\(7{,}200\\) and the one just above is \\(7{,}300\\). So the true count lives somewhere on the stretch between them. The midpoint of that stretch is the average of the two endpoints, which is \\(\\frac{7{,}200 + 7{,}300}{2} = 7{,}250\\). That midpoint is the fence. A count below \\(7{,}250\\) falls back to \\(7{,}200\\), and a count at or above \\(7{,}250\\) climbs to \\(7{,}300\\) (half-way rounds to the larger value). Now place the fans. Since \\(7{,}284\\) is greater than \\(7{,}250\\), the count sits on the upper side of the fence, so it rounds up. The press box reports \\(\\boxed{7300}\\) fans."
+    "sol": "The hundreds around \\(7{,}284\\) are \\(7{,}200\\) and \\(7{,}300\\), and the midpoint is \\(7{,}250\\). Since \\(7{,}284\\) is above the midpoint, it climbs, and the press box reports \\(\\boxed{7300}\\) fans."
    },
    {
     "x": "A fundraiser total of \\(3{,}500\\) dollars is to be printed rounded to the nearest thousand. \\(3{,}500\\) is the exact midpoint. Using the half-way-up rule, what goes on the banner?",
@@ -1629,7 +1629,7 @@
      "4,000",
      "4000.0"
     ],
-    "sol": "To round \\(3{,}500\\) to the nearest thousand, first find the two thousands it lives between. Those are \\(3{,}000\\) below and \\(4{,}000\\) above. Now measure the distance to each one. From \\(3{,}500\\) down to \\(3{,}000\\) is \\(500\\), and from \\(3{,}500\\) up to \\(4{,}000\\) is also \\(500\\). The gaps are equal, so \\(3{,}500\\) is not closer to either thousand. It sits at the exact midpoint. Because the distances tie, the usual \"closer one wins\" idea cannot decide for us. That is exactly when our convention steps in. For a halfway value, we round to the larger thousand, which is \\(4{,}000\\). So the banner should read \\(\\boxed{4000}\\)."
+    "sol": "\\(3{,}500\\) is \\(500\\) from \\(3{,}000\\) and \\(500\\) from \\(4{,}000\\), so neither thousand is closer. That is an exact tie, and our rule sends a tie to the larger value, so the banner reads \\(\\boxed{4000}\\)."
    },
    {
     "x": "A scale reads \\(6.47\\) kg. A recipe records to the nearest tenth. Round \\(6.47\\) to the nearest tenth.",
@@ -1642,7 +1642,7 @@
      "6.5",
      "6.50"
     ],
-    "sol": "You want the value to the nearest tenth, so picture \\(6.47\\) sitting between the two nearest tenths, \\(6.4\\) and \\(6.5\\). The deciding digit is the one just past the tenths place, the hundredths digit, which is \\(7\\). The halfway mark between \\(6.4\\) and \\(6.5\\) is \\(6.45\\), and \\(6.47\\) is past it, so it sits closer to \\(6.5\\). By the rule that a deciding digit of \\(5\\) or more sends the tenths digit up, the \\(4\\) becomes a \\(5\\). So \\(6.47\\) rounds to \\(\\boxed{6.5}\\)."
+    "sol": "The tenths around \\(6.47\\) are \\(6.4\\) and \\(6.5\\), and the midpoint is \\(6.45\\). The hundredths digit is \\(7\\), which is \\(5\\) or more, so the tenths digit goes up by one and \\(6.47\\) rounds to \\(\\boxed{6.5}\\)."
    },
    {
     "x": "A lap is timed at \\(0.382\\) seconds. The results sheet keeps two decimal places. Round \\(0.382\\) to the nearest hundredth.",
@@ -1657,7 +1657,7 @@
      "Rounding to the nearest hundredth means keeping two decimal places, so look at the next digit to the right, the thousandths digit.",
      "The thousandths digit in \\(0.382\\) is \\(2\\). Since \\(2\\) is less than \\(5\\), the hundredths digit stays the same and you drop everything after it."
     ],
-    "sol": "Keeping two decimal places means the hundredths place is the last one we get to write, so the deciding digit is the next one to the right. In \\(0.382\\) the hundredths digit is \\(8\\) and the thousandths digit is \\(2\\). Picture \\(0.382\\) sitting on a number line between the two hundredth marks \\(0.38\\) and \\(0.39\\). The exact halfway point is \\(0.385\\), and \\(0.382\\) sits below that, much closer to \\(0.38\\). You can also count the gaps. The distance down to \\(0.38\\) is only \\(0.002\\), while the distance up to \\(0.39\\) is \\(0.008\\). Since the thousandths digit \\(2\\) is less than \\(5\\), we leave the hundredths digit alone and cut off the rest. The lap time recorded on the sheet is \\(\\boxed{0.38}\\) seconds."
+    "sol": "The hundredths around \\(0.382\\) are \\(0.38\\) and \\(0.39\\), and the midpoint is \\(0.385\\). The thousandths digit is \\(2\\), below \\(5\\), so the hundredths digit stays and everything after it is dropped, giving \\(\\boxed{0.38}\\). The gaps confirm it, \\(0.002\\) down versus \\(0.008\\) up."
    },
    {
     "x": "A bus ride takes exactly \\(9.5\\) minutes. The schedule lists whole minutes only. \\(9.5\\) is exactly halfway between \\(9\\) and \\(10\\). What whole number does the schedule show?",
@@ -1670,7 +1670,7 @@
      "10",
      "10.0"
     ],
-    "sol": "The value \\(9.5\\) falls between the whole numbers \\(9\\) and \\(10\\). Check the distance to each. From \\(9\\) it is \\(9.5 - 9 = 0.5\\), and from \\(10\\) it is \\(10 - 9.5 = 0.5\\). The distances are equal, so this is a true tie, sitting exactly on the midpoint. When a number lands precisely half-way, our convention is to round to the larger value. The larger of \\(9\\) and \\(10\\) is \\(10\\), so the schedule lists this trip as \\(\\boxed{10}\\) minutes."
+    "sol": "\\(9.5\\) is \\(0.5\\) from \\(9\\) and \\(0.5\\) from \\(10\\), so it is an exact tie. A tie rounds to the larger value, so the schedule lists the trip as \\(\\boxed{10}\\) minutes."
    },
    {
     "x": "A fitness band reads \\(0.65\\) battery and rounds to one decimal place. \\(0.65\\) is exactly halfway between \\(0.6\\) and \\(0.7\\). What does the band display?",
@@ -1684,7 +1684,7 @@
      "The two tenths on either side of \\(0.65\\) are \\(0.6\\) and \\(0.7\\). Which one is \\(0.65\\) closer to?",
      "It is not closer to either one, it sits exactly in the middle. The halfway rule says to round to the larger value."
     ],
-    "sol": "Rounding to the nearest tenth means choosing between the two tenths that surround the number. Here those are \\(0.6\\) and \\(0.7\\). The distance from \\(0.65\\) down to \\(0.6\\) is \\(0.05\\), and the distance from \\(0.65\\) up to \\(0.7\\) is also \\(0.05\\). So \\(0.65\\) is a perfect tie, sitting exactly halfway between them. When a value lands right on the midpoint, our rule is to round to the larger value, which means we go up to \\(0.7\\). The fitness band shows \\(\\boxed{0.7}\\)."
+    "sol": "\\(0.65\\) is \\(0.05\\) from \\(0.6\\) and \\(0.05\\) from \\(0.7\\), so it is a perfect tie. A tie rounds to the larger value, so the fitness band shows \\(\\boxed{0.7}\\)."
    },
    {
     "x": "A caliper reads \\(0.396\\) cm and the spec sheet keeps two decimal places. The thousandths digit \\(6\\) rounds the hundredths \\(9\\) up, triggering a carry. Round \\(0.396\\) to the nearest hundredth.",
@@ -1702,7 +1702,7 @@
      "0.40 cm",
      ".40"
     ],
-    "sol": "Find the hundredths place first. In \\(0.396\\) the digits after the point are \\(3\\) tenths, \\(9\\) hundredths, and \\(6\\) thousandths, so the hundredths place holds the \\(9\\). To round it, peek at the digit directly to its right, the thousandths digit, which is \\(6\\). Since \\(6\\) is at least \\(5\\), the hundredths place rounds up. Now the carry. Rounding the \\(9\\) up does not make a single digit \\(10\\). Instead the \\(9\\) turns into \\(0\\) and carries a \\(1\\) into the tenths place, so the \\(3\\) tenths becomes \\(4\\) tenths. The thousandths digit is dropped. That gives \\(0.40\\). We keep the trailing zero so the answer still shows the hundredths place the spec sheet asked for. \\(\\boxed{0.40}\\)"
+    "sol": "The hundredths digit of \\(0.396\\) is the \\(9\\), and the thousandths digit \\(6\\) is at least \\(5\\), so that \\(9\\) rounds up. A \\(9\\) cannot become a single-digit \\(10\\), so it turns into \\(0\\) and carries \\(1\\) into the tenths, taking \\(3\\) to \\(4\\). That gives \\(\\boxed{0.40}\\). Keep the trailing zero so the answer still shows the hundredths place the spec sheet asked for."
    },
    {
     "x": "A fuel gauge reads \\(8.97\\) liters and the trip computer shows one decimal place. The tenths digit is \\(9\\), so rounding it up triggers a carry into the ones. Round \\(8.97\\) to the nearest tenth.",
@@ -1718,7 +1718,7 @@
      "9.0 liters",
      "9 liters"
     ],
-    "sol": "Rounding to the nearest tenth means the tenths place is the last digit we keep, so the hundredths digit is the one that makes the decision. In \\(8.97\\) the hundredths digit is \\(7\\). Since \\(7 \\ge 5\\), we round the tenths place up. The tenths digit here is already \\(9\\), and bumping it up gives \\(10\\) tenths, which is the same as one whole. So the \\(9\\) in the tenths place rolls over to \\(0\\) and carries a \\(1\\) into the ones place. The \\(8\\) ones become \\(9\\) ones. Writing the result with one decimal place to match the nearest tenth, we get \\(9.0\\). A quick gut check helps too. \\(8.97\\) sits much closer to \\(9.0\\) than to \\(8.9\\), so rounding up is exactly what we expect. \\(\\boxed{9.0}\\)"
+    "sol": "The hundredths digit of \\(8.97\\) is \\(7\\), which is at least \\(5\\), so the tenths place rounds up. The tenths digit is already \\(9\\), so it rolls over to \\(0\\) and carries \\(1\\) into the ones, taking the \\(8\\) to \\(9\\). The trip computer shows \\(\\boxed{9.0}\\). Write the trailing zero to show the value was rounded to the nearest tenth."
    },
    {
     "x": "A wind-chill of \\(-46\\) degrees is reported to the nearest ten. The two neighboring tens are \\(-50\\) and \\(-40\\), with midpoint \\(-45\\). Which side is \\(-46\\) on? Round \\(-46\\) to the nearest ten.",
@@ -1732,7 +1732,7 @@
      "Place \\(-46\\) between its neighbors \\(-50\\) and \\(-40\\). The halfway mark is \\(-45\\). Is \\(-46\\) on the side closer to \\(-50\\) or closer to \\(-40\\)?",
      "Count the gaps. From \\(-46\\) to \\(-50\\) is \\(4\\) steps, and from \\(-46\\) to \\(-40\\) is \\(6\\) steps. Pick the multiple of ten with the smaller gap."
     ],
-    "sol": "Start by pinning \\(-46\\) between the two multiples of ten on either side of it. Those are \\(-50\\) and \\(-40\\), and the midpoint between them is \\(-45\\). Now measure how far \\(-46\\) is from each neighbor. The distance to \\(-50\\) is \\(\\left|-46-(-50)\\right| = 4\\), and the distance to \\(-40\\) is \\(\\left|-46-(-40)\\right| = 6\\). Since \\(4\\) is smaller than \\(6\\), the value \\(-46\\) is nearer to \\(-50\\). Another way to see it is that \\(-46\\) sits to the left of the halfway mark \\(-45\\), and everything left of the midpoint rounds toward the more leftward multiple. The halfway rule that sends a tie to the larger value never comes into play here, because \\(-46\\) is not a tie. So \\(-46\\) rounded to the nearest ten is \\(\\boxed{-50}\\)."
+    "sol": "The multiples of ten around \\(-46\\) are \\(-50\\) and \\(-40\\). The gap to \\(-50\\) is \\(4\\) and the gap to \\(-40\\) is \\(6\\), so \\(-46\\) rounds to \\(\\boxed{-50}\\). The midpoint is \\(-45\\), and \\(-46\\) sits to the left of it, so there is no tie to break."
    },
    {
     "x": "An elevation app shows \\(-3.5\\) m. The value is exactly halfway between \\(-4\\) and \\(-3\\). The larger of those two is closer to zero. Round \\(-3.5\\) to the nearest whole number.",
@@ -1746,7 +1746,7 @@
      "-3.0",
      "−3"
     ],
-    "sol": "The whole meters on either side of \\(-3.5\\) are \\(-4\\) and \\(-3\\). Since \\(-3.5\\) sits exactly half-way between them, the usual \"closer one wins\" test gives no winner, so the half-way rule decides. Our convention is to round a half-way value to the <b>larger</b> of the two choices. With negatives it helps to picture the number line. Moving right means getting larger, and \\(-3\\) sits to the right of \\(-4\\), closer to zero, so \\(-3\\) is the larger value. That makes the rounded elevation \\(\\boxed{-3}\\) meters."
+    "sol": "\\(-3.5\\) is exactly halfway between \\(-4\\) and \\(-3\\), so closeness cannot decide and the half-way rule takes over. Larger means farther right on the number line, and \\(-3\\) is right of \\(-4\\), so the elevation rounds to \\(\\boxed{-3}\\) meters. Between two negatives, the larger one is always the one closer to zero."
    },
    {
     "x": "A freezer probe reads \\(-1.25\\) degrees. The app rounds to the nearest tenth. \\(-1.25\\) is an exact tie between \\(-1.3\\) and \\(-1.2\\). Round to the larger value. What does the app display?",
@@ -1761,7 +1761,7 @@
      "The tenths place is the first digit after the decimal point. The two nearest tenths around \\(-1.25\\) are \\(-1.3\\) and \\(-1.2\\). Which one is more positive, meaning farther to the right on the number line?",
      "The reading is an exact tie, equally far from both choices. The rule here says a tie rounds to the larger value, and on a number line \\(-1.2\\) sits to the right of \\(-1.3\\), so \\(-1.2\\) is the larger one."
     ],
-    "sol": "Rounding to the nearest tenth means choosing between the two tenths on either side of \\(-1.25\\). Those are \\(-1.3\\) and \\(-1.2\\). Check the distance to each. From \\(-1.25\\) to \\(-1.3\\) is \\(0.05\\), and from \\(-1.25\\) to \\(-1.2\\) is also \\(0.05\\). The reading is the same distance from both, so it is an exact tie. The tie-breaking rule sends a halfway value to the larger, more positive number. On the number line \\(-1.2\\) lies to the right of \\(-1.3\\), which makes \\(-1.2\\) the larger of the two. So the app shows \\(\\boxed{-1.2}\\)."
+    "sol": "\\(-1.25\\) is \\(0.05\\) from \\(-1.3\\) and \\(0.05\\) from \\(-1.2\\), so it is an exact tie. A tie goes to the larger value, and \\(-1.2\\) lies to the right of \\(-1.3\\) on the number line, so the app displays \\(\\boxed{-1.2}\\)."
    },
    {
     "x": "A concert order lists \\(41\\) tickets at \\(19.80\\) dollars each, printing a total of \\(81.18\\) dollars. Round each to the nearest friendly value and multiply. What is your quick estimate?",
@@ -1778,7 +1778,7 @@
      "Handle each part on its own. For 41, look at the ones digit to decide which ten it sits closest to. For \\(19.80\\), the cents tell you whether it stays at 19 dollars or climbs to the next whole dollar.",
      "The ones digit of 41 is 1, so 41 rounds down to 40. The cents in \\(19.80\\) are 80, which is past the halfway mark of 50, so \\(19.80\\) rounds up to 20. Now multiply \\(40 \\times 20\\)."
     ],
-    "sol": "Estimation works by trading the messy numbers for friendly ones, then multiplying. Take the parts separately. The number 41 has a ones digit of 1. Since 1 is below 5, the value leans toward the smaller ten, so \\(41\\) rounds to \\(40\\). The price \\(19.80\\) sits between \\(19\\) and \\(20\\) whole dollars. The cents are \\(80\\), which is more than the halfway point of \\(50\\), so the price leans toward the larger whole dollar and \\(19.80\\) rounds to \\(20\\). Now multiply the two rounded parts. \\(40 \\times 20 = 800\\). So the ballpark total is about \\(800\\) dollars. That number towers over the printed \\(81.18\\) dollars, which tells you the receipt is almost certainly wrong, probably missing a digit. The estimate is \\(\\boxed{800}\\)."
+    "sol": "\\(41\\) has a ones digit of \\(1\\), so it rounds down to \\(40\\). \\(19.80\\) has \\(80\\) cents, past the \\(50\\) mark, so it rounds up to \\(20\\) dollars. Multiplying gives \\(40 \\times 20 = \\boxed{800}\\). The printed \\(81.18\\) is nowhere near that ballpark, so the receipt is almost certainly missing a digit."
    },
    {
     "x": "Three boxes weigh \\(596\\), \\(207\\), and \\(398\\) grams. Round each to the nearest hundred, then add. What is the estimated total?",
@@ -1807,7 +1807,7 @@
      "5.25",
      "5.250"
     ],
-    "sol": "The display rounds the stored value to the nearest tenth and shows \\(5.3\\). For a value to round to \\(5.3\\) rather than to the neighbor below, \\(5.2\\), it has to be at least as large as the point exactly halfway between them. That halfway point is \\(\\frac{5.2 + 5.3}{2} = 5.25\\). By the rule that an exact halfway value rounds up to the larger tenth, \\(5.25\\) itself rounds to \\(5.3\\). Going one hundredth lower, \\(5.24\\) is closer to \\(5.2\\), so it would round down and the display would read \\(5.2\\) instead. That makes \\(5.25\\) the smallest two-decimal stored value the gauge could hold while still showing \\(5.3\\). The smallest qualifying value is \\(\\boxed{5.25}\\)."
+    "sol": "The tenths around the stored reading are \\(5.2\\) and \\(5.3\\), and the midpoint is \\(5.25\\). By the half-way rule that midpoint rounds up to \\(5.3\\), while \\(5.24\\) would drop to \\(5.2\\). The smallest qualifying value is \\(\\boxed{5.25}\\)."
    }
   ],
   "next": "5.5"
@@ -1817,7 +1817,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "\\(\\tfrac{1}{3}\\) can never settle into a stopping decimal because \\(3\\) is neither \\(2\\) nor \\(5\\). So what do its digits do? Are they random, or stuck in a loop? The answer is in the remainders of long division."
+    "x": "\\(\\tfrac{1}{3}\\) can never stop, because \\(3\\) is neither \\(2\\) nor \\(5\\). Its digits run forever, but they are not random. They fall into a loop, and the remainders in long division are what force that loop."
    },
    {
     "t": "prob",
@@ -1834,7 +1834,7 @@
      "1.0",
      "one"
     ],
-    "sol": "Watch the remainder, not the digit, and the pattern becomes clear. We are computing \\(1 \\div 3\\). Since \\(3\\) does not divide \\(1\\), we place the decimal point and bring down a zero, which makes the running number \\(10\\). The largest multiple of \\(3\\) that fits in \\(10\\) is \\(9\\), so the quotient digit is \\(3\\) and the remainder is \\(10 - 9 = 1\\). Now bring down the next zero. The remainder \\(1\\) becomes \\(10\\) once more, the digit is \\(3\\) again, and \\(10 - 9 = 1\\) again. Now the key observation. The new remainder, \\(1\\), is exactly the number we started this whole process with. So step three must be an identical copy of step two, step four a copy of step three, and so on with no end. The remainder is locked at \\(1\\), which locks the quotient digit at \\(3\\), forever. That is precisely why \\(\\tfrac{1}{3} = 0.\\overline{3}\\), the bar marking the \\(3\\) that repeats forever. The single number that returns at the end of every step is \\(\\boxed{1}\\)."
+    "sol": "Bring down a zero and divide. \\(10 \\div 3\\) gives digit \\(3\\) with \\(10 - 9 = 1\\) left over. Bring down another zero and \\(10 \\div 3\\) gives \\(3\\) again with \\(1\\) left over. The remainder at the end of every step is \\(\\boxed{1}\\). Since that leftover is the number we started with, the step copies itself forever, which is why \\(\\tfrac{1}{3} = 0.\\overline{3}\\)."
    },
    {
     "t": "prob",
@@ -1850,7 +1850,7 @@
      "6.0",
      "six"
     ],
-    "sol": "Each step of long division produces a remainder, and that remainder is what decides the next digit. So if a remainder ever repeats, the step after it must produce the same digit and the same next remainder as before, and the pattern is locked into a loop from that point on. The length of the repeating block is just how many steps happen between a remainder and its first return. Track the remainders for \\(\\tfrac{1}{7}\\). Start with \\(1\\). Bring down a zero to get \\(10\\), and \\(10 \\div 7\\) gives digit \\(1\\) with remainder \\(3\\). Then \\(30 \\div 7\\) gives \\(4\\) remainder \\(2\\). Then \\(20 \\div 7\\) gives \\(2\\) remainder \\(6\\). Then \\(60 \\div 7\\) gives \\(8\\) remainder \\(4\\). Then \\(40 \\div 7\\) gives \\(5\\) remainder \\(5\\). Then \\(50 \\div 7\\) gives \\(7\\) remainder \\(1\\). The remainder \\(1\\) is back, the one we started with, so the loop closes here. The remainders we passed through were \\(1, 3, 2, 6, 4, 5\\), which is <b>six</b> of them, and the digits they produced were \\(1, 4, 2, 8, 5, 7\\). That gives \\(\\tfrac{1}{7} = 0.\\overline{142857}\\), a block of six digits. Notice the block could not have been longer than six, since only the six remainders \\(1\\) through \\(6\\) are available before a \\(0\\) would end it, and here all six get used. The repeating block has \\(\\boxed{6}\\) digits."
+    "sol": "Follow the remainders. \\(10 \\div 7\\) gives \\(1\\) remainder \\(3\\), then \\(30 \\div 7\\) gives \\(4\\) remainder \\(2\\), then \\(20 \\div 7\\) gives \\(2\\) remainder \\(6\\), then \\(60 \\div 7\\) gives \\(8\\) remainder \\(4\\), then \\(40 \\div 7\\) gives \\(5\\) remainder \\(5\\), then \\(50 \\div 7\\) gives \\(7\\) remainder \\(1\\). The starting remainder is back after six steps, so the block is \\(\\boxed{6}\\) digits long, namely \\(142857\\). A block can never run longer than the count of available nonzero remainders, and here all six of \\(1\\) through \\(6\\) get used."
    },
    {
     "t": "fig",
@@ -1875,7 +1875,7 @@
      "1.0",
      "one"
     ],
-    "sol": "Long division tells the whole story through its remainders. Dividing \\(1\\) by \\(6\\), bring down a zero to get \\(10\\). Then \\(10\\div 6 = 1\\) remainder \\(4\\), so the first digit after the point is \\(1\\). Bring down another zero to get \\(40\\). Then \\(40\\div 6 = 6\\) remainder \\(4\\). The remainder is \\(4\\) again, the same one we already saw, so the process is now stuck in a loop and the digit \\(6\\) repeats endlessly. The decimal is $$\\tfrac{1}{6} = 0.1\\overline{6} = 0.16666\\ldots$$ The bar sits over the \\(6\\) only, because the loop does not begin until after that first digit. Why one settling digit and not zero? Look at the denominator. \\(6 = 2\\times 3\\). From 5.3, factors of \\(2\\) and \\(5\\) are the part that can terminate, and they are what create non-repeating head digits. The single factor of \\(2\\) here produces exactly one such digit, the \\(1\\), and the factor of \\(3\\) produces the endless \\(6\\). One \\(2\\) buys one settling digit. So the digits not under the bar number exactly one. $$\\boxed{1}$$"
+    "sol": "Divide \\(1\\) by \\(6\\). \\(10 \\div 6 = 1\\) remainder \\(4\\), so the first digit is \\(1\\). Then \\(40 \\div 6 = 6\\) remainder \\(4\\), the same remainder, so the \\(6\\) repeats from there. That gives \\(\\tfrac{1}{6} = 0.1\\overline{6}\\), and only \\(\\boxed{1}\\) digit sits outside the bar. The head comes from the \\(2\\) in \\(6 = 2 \\times 3\\). One factor of \\(2\\) buys one settling digit, and the \\(3\\) makes the loop."
    },
    {
     "t": "prob",
@@ -1891,7 +1891,7 @@
      "2.0",
      "two"
     ],
-    "sol": "The period is the length of the repeating block, so the real task is to find that block and then count its digits. The cleanest way is to track remainders during long division, because the moment a remainder repeats, the digits must repeat too. Start with \\(1 \\div 11\\). Since \\(1\\) is smaller than \\(11\\), we write \\(0.\\) and carry a remainder of \\(1\\). Bring down a zero to make \\(10\\). Now \\(10 \\div 11 = 0\\) with remainder \\(10\\), so the first digit after the point is \\(0\\). Bring down another zero to make \\(100\\). Now \\(100 \\div 11 = 9\\) with remainder \\(1\\), so the next digit is \\(9\\). That remainder \\(1\\) is exactly the remainder we began with, so the process repeats forever from here. The digits it keeps spitting out are \\(0, 9, 0, 9, \\dots\\), which gives $$\\frac{1}{11} = 0.\\overline{09}.$$ The bar covers \\(09\\), and that leading zero is essential. Writing \\(0.\\overline{9}\\) would mean \\(0.999\\dots\\), a completely different number. So the repeating block is \\(09\\), and counting its digits gives \\(0\\) and \\(9\\), which is \\(\\boxed{2}\\) digits. The period of \\(\\tfrac{1}{11}\\) is \\(\\boxed{2}\\)."
+    "sol": "\\(10 \\div 11 = 0\\) remainder \\(10\\), so the first digit after the point is \\(0\\). Then \\(100 \\div 11 = 9\\) remainder \\(1\\), which is the remainder we began with, so the digits cycle as \\(0, 9, 0, 9, \\ldots\\) and \\(\\tfrac{1}{11} = 0.\\overline{09}\\). The block \\(09\\) has \\(\\boxed{2}\\) digits. Keep that leading zero, since \\(0.\\overline{9}\\) is a completely different number."
    },
    {
     "t": "prob",
@@ -1907,7 +1907,7 @@
      "3.0",
      "three"
     ],
-    "sol": "Long division is really a hunt for a repeated remainder, so let us track the remainders carefully. Dividing \\(1\\) by \\(12\\), the first step gives \\(10 \\div 12 = 0\\) remainder \\(10\\), digit \\(0\\). The second step gives \\(100 \\div 12 = 8\\) remainder \\(4\\), digit \\(8\\). The third step gives \\(40 \\div 12 = 3\\) remainder \\(4\\). That remainder \\(4\\) is the same one we just had, so the division has entered a cycle. From here on we will always be computing \\(40 \\div 12\\) again, writing another \\(3\\), and handing back remainder \\(4\\). The \\(3\\) loops, while the \\(0\\) and the \\(8\\) at the front each appeared only once and stay put. So \\(\\tfrac{1}{12} = 0.08\\overline{3}\\), where the bar sits over the lone digit \\(3\\). The head \\(08\\) is two digits long, and that is no accident. Since \\(12 = 2^2 \\times 3\\), the two factors of \\(2\\) force exactly two non-repeating digits at the start, and the leftover factor \\(3\\) is what generates the looping tail. The block under the bar is a single digit. \\(\\boxed{3}\\)"
+    "sol": "Divide \\(1\\) by \\(12\\). \\(10 \\div 12 = 0\\) remainder \\(10\\), then \\(100 \\div 12 = 8\\) remainder \\(4\\), then \\(40 \\div 12 = 3\\) remainder \\(4\\). Remainder \\(4\\) has come back, so that step repeats forever and \\(\\tfrac{1}{12} = 0.08\\overline{3}\\). The block under the bar is \\(\\boxed{3}\\). The head \\(08\\) is two digits because \\(12 = 2^2 \\times 3\\) carries two factors of \\(2\\), and the \\(3\\) is what loops."
    },
    {
     "t": "prob",
@@ -1923,7 +1923,7 @@
      "15.0",
      "fifteen"
     ],
-    "sol": "The whole question lives in the prime factorizations, so factor all four denominators and never touch long division. \\(16 = 2^4\\), made of nothing but \\(2\\)s. \\(20 = 2^2 \\times 5\\), only \\(2\\)s and a \\(5\\). \\(25 = 5^2\\), only \\(5\\)s. \\(15 = 3 \\times 5\\), and there it is, a \\(3\\) among the friendly primes. The rule from 5.3, sharpened by this lesson, says a lowest-terms fraction terminates exactly when its denominator is built solely from \\(2\\)s and \\(5\\)s. Those are the only primes that divide a power of \\(10\\), so a denominator of that shape can always be scaled up into a clean power of ten, which is what a terminating decimal really is. A \\(3\\) can never be turned into a \\(10\\) by piling on more \\(2\\)s and \\(5\\)s, so it has no way to clear out. In the long division for \\(\\tfrac{1}{15}\\) the remainders cycle instead of reaching \\(0\\), and you get \\(\\tfrac{1}{15} = 0.0\\overline{6}\\), where the \\(6\\) loops without end. Meanwhile the other three stop cold, \\(\\tfrac{1}{16} = 0.0625\\), \\(\\tfrac{1}{20} = 0.05\\), and \\(\\tfrac{1}{25} = 0.04\\). One stray prime was the entire story. The repeating fraction is \\(\\tfrac{1}{15}\\), so the denominator you want is \\(\\boxed{15}\\)."
+    "sol": "Factor the four denominators. \\(16 = 2^4\\), \\(20 = 2^2 \\times 5\\), \\(25 = 5^2\\), and \\(15 = 3 \\times 5\\). The first three are built only from \\(2\\)s and \\(5\\)s, so they terminate at \\(0.0625\\), \\(0.05\\), and \\(0.04\\). Only \\(15\\) carries a \\(3\\), and \\(\\tfrac{1}{15} = 0.0\\overline{6}\\), so the denominator is \\(\\boxed{15}\\). Only \\(2\\) and \\(5\\) divide a power of ten, so any other prime can never be scaled away and the remainders cycle instead of reaching \\(0\\)."
    },
    {
     "t": "fig",
@@ -1932,11 +1932,11 @@
    },
    {
     "t": "imp",
-    "x": "<b>Read the decimal from the denominator.</b> Factor the denominator of a fraction in lowest terms and you can predict its decimal before dividing. The $2$s and $5$s are the <b>stopping primes</b>, and whichever of those two counts is larger sets the length of a short non-repeating head. Every <b>other prime</b> is a looping prime that builds the repeating tail. So only $2$s and $5$s gives a clean stop, none of them repeats from the first digit, and a mix gives a head then a loop."
+    "x": "<b>Read the decimal from the denominator.</b> Factor the denominator of a fraction in lowest terms and you can predict its decimal before dividing. The $2$s and $5$s are the <b>stopping primes</b>, and whichever of those two counts is larger sets the length of a short non-repeating head. Every <b>other prime</b> is a looping prime that builds the repeating tail. So a denominator of only $2$s and $5$s gives a clean stop, a denominator with no $2$s or $5$s repeats from the very first digit, and a mix gives a short head and then a loop."
    },
    {
     "t": "p",
-    "x": "Every fraction produces an endless repeating decimal, but the reverse trip is also possible. The shift-and-subtract trick lines up two copies of the same tail so they cancel, collapsing an infinite decimal into a finite fraction."
+    "x": "So far we have gone from a fraction to its repeating decimal. The trip back works too. Multiply by a power of ten to make a second copy of the same endless tail, subtract so the two tails cancel, and the infinite decimal collapses into an ordinary fraction."
    },
    {
     "t": "prob",
@@ -1954,7 +1954,7 @@
      "seven ninths",
      "seven/nine"
     ],
-    "sol": "Start by naming the number. Let \\(x = 0.\\overline{7}\\), so \\(x = 0.7777\\ldots\\) with the \\(7\\) repeating forever. The reason you cannot just read off a fraction is that the tail never ends, so the idea is to manufacture a second copy of that same tail and line it up.\n\nMultiply both sides by \\(10\\). One factor of \\(10\\) shifts the decimal point exactly one place, which is just enough to move past the first \\(7\\) and expose an identical tail underneath. $$10x = 7.7777\\ldots$$ Now write the two facts together and subtract the bottom from the top. $$\\begin{array}{r} 10x = 7.7777\\ldots \\\\ -\\;\\;\\;x = 0.7777\\ldots \\\\ \\hline 9x = 7.0000\\ldots \\end{array}$$ Watch what happened on the right. Past the decimal point, \\(10x\\) had \\(7777\\ldots\\) and \\(x\\) had \\(7777\\ldots\\), the same endless string, so digit by digit they cancel to nothing. The infinite part vanishes, and all that survives is \\(7 - 0 = 7\\). On the left, \\(10x - x = 9x\\). So the endless decimal has collapsed into the clean statement \\(9x = 7\\).\n\nSolve it. Divide both sides by \\(9\\) to get \\(x = \\tfrac{7}{9}\\). Since \\(7\\) is prime and does not divide \\(9\\), the fraction is already in lowest terms. And it makes sense. Every infinitely repeating decimal you will ever meet is really a fraction, and the shift-and-subtract move is what recovers it. $$\\boxed{7/9}$$"
+    "sol": "Let \\(x = 0.7777\\ldots\\), so \\(10x = 7.7777\\ldots\\). Past the decimal point both numbers carry the identical endless string of \\(7\\)s, so subtracting wipes it out. $$10x - x = 7.7777\\ldots - 0.7777\\ldots$$ $$9x = 7$$ Divide by \\(9\\) to get \\(x = \\tfrac{7}{9}\\), and \\(7\\) is prime so nothing reduces. $$\\boxed{7/9}$$ Multiplying by \\(10\\) shifts past exactly one block, which is what lines the two tails up."
    },
    {
     "t": "fig",
@@ -1979,7 +1979,7 @@
      "four over thirty-three",
      "four thirty-thirds"
     ],
-    "sol": "Start by naming the number. Let \\(x = 0.\\overline{12} = 0.121212\\ldots\\)\n\nThe block has two digits, so shift the decimal point two places by multiplying by \\(100\\). $$100x = 12.121212\\ldots$$ Now line the two equations up and subtract, so the matching infinite tails cancel. $$\\begin{array}{r} 100x = 12.121212\\ldots \\\\ -\\ \\ \\ x = \\ 0.121212\\ldots \\\\ \\hline 99x = 12 \\ \\ \\ \\ \\ \\ \\ \\ \\ \\end{array}$$ Everything after the decimal point is gone, which is the whole point of shifting by the full length of the block. Solve for \\(x\\). $$x = \\frac{12}{99}$$ This is the block over two nines, exactly the pattern. But \\(\\tfrac{12}{99}\\) is not in lowest terms yet. Both numbers are divisible by \\(3\\), since \\(1+2 = 3\\) and \\(9+9 = 18\\) are each multiples of \\(3\\). $$\\frac{12}{99} = \\frac{12 \\div 3}{99 \\div 3} = \\frac{4}{33}$$ Now \\(4 = 2 \\times 2\\) and \\(33 = 3 \\times 11\\) share no common factor, so this is fully reduced. As a sanity check, dividing \\(4\\) by \\(33\\) gives \\(0.121212\\ldots\\), right back where we started.\n\n\\(0.\\overline{12} = \\boxed{4/33}\\)"
+    "sol": "Let \\(x = 0.121212\\ldots\\). The block is two digits, so multiply by \\(100\\). $$100x = 12.121212\\ldots$$ The tails match, so subtracting leaves \\(99x = 12\\) and \\(x = \\tfrac{12}{99}\\). Both parts are divisible by \\(3\\). $$\\frac{12}{99} = \\frac{4}{33}$$ Since \\(4 = 2 \\times 2\\) and \\(33 = 3 \\times 11\\), this is fully reduced, so \\(0.\\overline{12} = \\boxed{4/33}\\). The block-over-nines shortcut hands you a correct fraction but rarely a reduced one, so always check."
    },
    {
     "t": "prob",
@@ -1999,7 +1999,7 @@
      "x = 1",
      "x=1"
     ],
-    "sol": "Set \\(x = 0.\\overline{9}\\), so \\(x = 0.9999\\dots\\) with the nines never stopping. Multiply by 10, which slides the decimal point one place to the right. $$10x = 9.\\overline{9} = 9.9999\\dots$$ Now the key observation. Both \\(10x\\) and \\(x\\) end in the same endless string of nines after the decimal point, \\(.9999\\dots\\). They are not nearly the same, they are exactly the same tail. So when you subtract, that whole infinite tail cancels cleanly. $$10x - x = 9.9999\\dots - 0.9999\\dots = 9$$ On the left, \\(10x - x = 9x\\), which gives $$9x = 9.$$ Divide both sides by 9. $$x = \\frac{9}{9} = 1.$$ Look back at what just happened. Every step was ordinary algebra, the same algebra that sent \\(0.\\overline{7}\\) to \\(\\tfrac{7}{9}\\). Nowhere did you round, drop a piece, or settle for \"close enough\". The answer is not a number creeping up toward 1 and not a sliver below it. It is 1, on the nose. So \\(0.\\overline{9}\\) and 1 are simply two different names for the same number, and that is a fitting place to close the chapter. $$\\boxed{1}$$"
+    "sol": "Let \\(x = 0.9999\\ldots\\), so \\(10x = 9.9999\\ldots\\). After the decimal point both numbers carry the same endless string of nines, so subtracting cancels it. $$10x - x = 9.9999\\ldots - 0.9999\\ldots$$ $$9x = 9$$ Divide by \\(9\\) and \\(x = \\boxed{1}\\). Nothing was rounded or dropped anywhere in that work, so \\(0.\\overline{9}\\) is not creeping up toward \\(1\\). It is another name for \\(1\\)."
    },
    {
     "t": "prob",
@@ -2016,7 +2016,7 @@
      "five twelfths",
      "five-twelfths"
     ],
-    "sol": "Let \\(x = 0.41\\overline{6} = 0.41666\\ldots\\). The trouble is the \\(41\\) up front. It does not repeat, so if we shift to line up tails carelessly we will trap that head inside the subtraction. The fix is to shift past it first, then shift one more block.\n\nMultiply by \\(100\\) to slide the point right up to the edge of the loop. $$100x = 41.\\overline{6} = 41.666\\ldots$$ Now everything to the left of the point is settled, and the leftover tail is exactly \\(0.666\\ldots\\).\n\nMultiply the original by \\(1{,}000\\), which is one extra block further. $$1{,}000x = 416.\\overline{6} = 416.666\\ldots$$ This tail is also exactly \\(0.666\\ldots\\), the same as before, because the \\(6\\) loop never changes no matter how far you walk into it.\n\nThe two numbers share an identical \\(.666\\ldots\\) tail, so subtracting cancels it cleanly. $$1{,}000x - 100x = 416.666\\ldots - 41.666\\ldots$$ $$900x = 375$$\n\nSolve for \\(x\\) and reduce. Both \\(375\\) and \\(900\\) share a factor of \\(75\\), since \\(375 = 75 \\cdot 5\\) and \\(900 = 75 \\cdot 12\\). $$x = \\frac{375}{900} = \\frac{5}{12}$$\n\nA quick sanity check, \\(5 \\div 12 = 0.41666\\ldots\\), which is \\(0.41\\overline{6}\\) exactly. The head shifted out and the tails cancelled. \\(\\boxed{5/12}\\)"
+    "sol": "Let \\(x = 0.41666\\ldots\\). Shift past the head with \\(100x = 41.666\\ldots\\), then one block further with \\(1{,}000x = 416.666\\ldots\\). Both end in the same \\(.666\\ldots\\) tail, so subtracting cancels it. $$1{,}000x - 100x = 416.666\\ldots - 41.666\\ldots$$ $$900x = 375$$ Then \\(x = \\tfrac{375}{900}\\), and both share a factor of \\(75\\), since \\(375 = 75 \\cdot 5\\) and \\(900 = 75 \\cdot 12\\). $$x = \\boxed{5/12}$$ When there is a non-repeating head you need two shifts, one landing just before the loop and one a full block later."
    },
    {
     "t": "imp",
@@ -2040,11 +2040,11 @@
      "4.0",
      "four"
     ],
-    "sol": "The decimal is \\(\\tfrac{1}{7} = 0.\\overline{142857}\\), so the same block of six digits, \\(142857\\), repeats forever. Label the spots inside one block by position. The \\(1\\)st digit is \\(1\\), the \\(2\\)nd is \\(4\\), the \\(3\\)rd is \\(2\\), the \\(4\\)th is \\(8\\), the \\(5\\)th is \\(5\\), and the \\(6\\)th is \\(7\\). After that the block starts over, so position \\(7\\) is \\(1\\) again, position \\(8\\) is \\(4\\), and the cycle keeps turning. The key move is that every group of \\(6\\) positions returns you to the same place in the block. So to find position \\(50\\), see how many full groups of \\(6\\) fit and what is left over. $$50 = 6 \\times 8 + 2$$ Eight complete blocks carry you up through position \\(48\\), which is the end of the eighth block, a \\(7\\). Then you take \\(2\\) more steps into a fresh block. Step one lands on \\(1\\) (position \\(49\\)) and step two lands on \\(4\\) (position \\(50\\)). The remainder \\(2\\) points straight at the \\(2\\)nd digit of \\(142857\\), and that digit is \\(4\\). No fifty rounds of division needed, just one little division to find your place in the loop. \\(\\boxed{4}\\)"
+    "sol": "The block \\(142857\\) is six digits long, so divide. \\(50 = 6 \\times 8 + 2\\), which puts position \\(50\\) two digits into a fresh block. The second digit of \\(142857\\) is \\(\\boxed{4}\\). Only the remainder picks the digit. The quotient \\(8\\) just counts how many full blocks you skipped past."
    },
    {
     "t": "imp",
-    "x": "<b>Finding a far digit.</b> Once you know the repeating block and its length, the decimal is settled forever, so any digit is just a question of where its position lands in one trip around the block. Divide the position by the period and read the remainder: remainder $1$ is the first digit of the block, remainder $2$ the second, and remainder $0$ means you stopped on the last digit. No long division is needed beyond finding the period."
+    "x": "<b>Finding a far digit.</b> Once you know the repeating block and its length, every digit is already determined, so finding the digit in some far position is just a matter of where that position lands inside the block. Divide the position by the period and read the remainder. Remainder $1$ means the first digit of the block, remainder $2$ the second, and remainder $0$ means you stopped on the last digit. No long division is needed beyond finding the period."
    },
    {
     "t": "prob",
@@ -2063,7 +2063,7 @@
      "five over eleven",
      "five-elevenths"
     ],
-    "sol": "Start by converting each runner with the block-over-nines move you discovered earlier in the chapter. A repeating two-digit block always sits over \\(99\\), so $$0.\\overline{72} = \\frac{72}{99}, \\qquad 0.\\overline{27} = \\frac{27}{99}.$$ Both fractions already share the denominator \\(99\\), so there is no common-denominator work to do. You just subtract the numerators and keep the \\(99\\) underneath. $$\\frac{72}{99} - \\frac{27}{99} = \\frac{72 - 27}{99} = \\frac{45}{99}.$$ Now reduce all the way down using the greatest-common-factor habit from Chapter 4. Both \\(45\\) and \\(99\\) are divisible by \\(9\\), since \\(45 = 9 \\times 5\\) and \\(99 = 9 \\times 11\\). Dividing top and bottom by \\(9\\) gives $$\\frac{45}{99} = \\frac{45 \\div 9}{99 \\div 9} = \\frac{5}{11}.$$ Since \\(5\\) is prime and does not divide \\(11\\), this is fully reduced. As a quick sanity check, \\(\\frac{5}{11}\\) is itself the repeating decimal \\(0.\\overline{45}\\), and indeed \\(0.727272\\dots\\) minus \\(0.272727\\dots\\) leaves \\(0.454545\\dots\\) at every place. The first runner beats the second by \\(\\boxed{5/11}\\)."
+    "sol": "A two-digit block sits over \\(99\\), so \\(0.\\overline{72} = \\tfrac{72}{99}\\) and \\(0.\\overline{27} = \\tfrac{27}{99}\\). The denominators already match, so subtract the numerators. $$\\frac{72}{99} - \\frac{27}{99} = \\frac{45}{99}$$ Both \\(45\\) and \\(99\\) are divisible by \\(9\\), which gives \\(\\tfrac{5}{11}\\), and \\(5\\) shares no factor with \\(11\\). $$\\boxed{5/11}$$ Checking, \\(\\tfrac{5}{11} = 0.\\overline{45}\\), and \\(0.7272\\ldots\\) minus \\(0.2727\\ldots\\) does leave \\(0.4545\\ldots\\)."
    }
   ],
   "review": [
@@ -2079,7 +2079,7 @@
      "6.0",
      "six"
     ],
-    "sol": "Long division is really a remainder machine, and the moment a remainder shows up twice, you know the digits will loop. Start with \\(2 \\div 3\\). Since \\(3\\) is bigger than \\(2\\), the whole-number part is \\(0\\), and we carry a remainder of \\(2\\) past the decimal point. Now we divide \\(20\\) by \\(3\\). Because \\(3 \\times 6 = 18\\), the digit is \\(6\\) and the leftover is \\(20 - 18 = 2\\). That leftover of \\(2\\) is exactly the remainder we began with, so the next step is identical, and so is the one after that. The machine is stuck in a loop, printing a \\(6\\) on every turn. This gives the endless decimal $$2 \\div 3 = 0.6666\\ldots = 0.\\overline{6}.$$ The bar sits over the block that repeats, and here that block is a single digit. So the digit that goes on forever is \\(\\boxed{6}\\)."
+    "sol": "Since \\(3\\) is bigger than \\(2\\), the whole-number part is \\(0\\) and the remainder is \\(2\\). Then \\(20 \\div 3 = 6\\) with remainder \\(20 - 18 = 2\\), the remainder we started with, so every step after that prints another \\(6\\). That makes \\(2 \\div 3 = 0.\\overline{6}\\), so the repeating digit is \\(\\boxed{6}\\). A returning remainder is exactly what locks a decimal into a loop."
    },
    {
     "x": "Long-divide \\(1 \\div 9\\). The remainder returns immediately, giving \\(\\tfrac{1}{9} = 0.\\overline{1}\\). How many digits are in the repeating block? Give the period.",
@@ -2093,7 +2093,7 @@
      "The repeating block is whatever sits under the bar. Write out \\(\\tfrac{1}{9}\\) as a decimal and look at what is covered.",
      "In \\(0.\\overline{1}\\) the bar sits over a single digit, the 1. Count how many digits are inside that block."
     ],
-    "sol": "Do the long division and watch the remainder. Since \\(9\\) does not go into \\(1\\), place a decimal point and bring down a zero to make \\(10\\). Now \\(9\\) goes into \\(10\\) one time, since \\(9 \\times 1 = 9\\), and the remainder is \\(10 - 9 = 1\\). That remainder of \\(1\\) is exactly the number we started with, so the next step repeats the same digit, and so does the step after that, with no end. Every step writes a single \\(1\\). So the decimal is $$\\frac{1}{9} = 0.1111\\ldots = 0.\\overline{1}.$$ The bar covers just one digit, the lone \\(1\\). A repeating block that is a single digit has a period of one, and \\(\\tfrac{1}{9}\\) is the simplest pure repeater there is. The number of digits in the repeating block is \\(\\boxed{1}\\)."
+    "sol": "Bring down a zero to get \\(10\\). Then \\(10 \\div 9 = 1\\) with remainder \\(1\\), the number we started with, so every step writes another \\(1\\) and \\(\\tfrac{1}{9} = 0.\\overline{1}\\). The bar covers a single digit, so the period is \\(\\boxed{1}\\)."
    },
    {
     "x": "Long-divide \\(1 \\div 11\\). The remainder returns after two digits, giving \\(\\tfrac{1}{11} = 0.\\overline{09}\\). Write the repeating block as a digit string, including the leading zero.",
@@ -2108,7 +2108,7 @@
      "The block is the run of digits that repeats forever. You found two digits before the remainder returned to its starting value of \\(1\\), so the block is two digits long.",
      "The first repeating digit came from \\(11\\) going into \\(10\\) zero times, and the second came from \\(11\\) going into \\(100\\) nine times. Keep that leading zero, the block is not just \\(9\\)."
     ],
-    "sol": "Long division is really a remainder chase, and the moment a remainder repeats, the whole pattern repeats with it. Start the division \\(1\\div 11\\). The first remainder is \\(1\\). Attach a zero to get \\(10\\), and ask how many times \\(11\\) fits into \\(10\\). It fits \\(0\\) times, so the first decimal digit is \\(0\\) and the remainder stays \\(10\\). Attach another zero to get \\(100\\). Now \\(11\\) fits \\(9\\) times since \\(9\\times 11=99\\), so the second decimal digit is \\(9\\) and the new remainder is \\(100-99=1\\). That remainder of \\(1\\) is exactly the one we started with, so from here the digits \\(0\\) then \\(9\\) will cycle forever. That gives \\(\\frac{1}{11}=0.0909\\ldots=0.\\overline{09}\\). The repeating block is both digits together, and the leading zero is part of the block, not decoration. So the two-digit repeating block, written as a digit string, is \\(\\boxed{09}\\)."
+    "sol": "Start with remainder \\(1\\). Attach a zero to get \\(10\\), and \\(11\\) fits into \\(10\\) zero times, so the first digit is \\(0\\) and the remainder is \\(10\\). Attach another zero to get \\(100\\), and \\(11\\) fits \\(9\\) times since \\(9 \\times 11 = 99\\), leaving remainder \\(1\\) again. The digits cycle as \\(0, 9, 0, 9, \\ldots\\), so the block is \\(\\boxed{09}\\). The leading zero is part of the block, not decoration."
    },
    {
     "x": "\\(5 \\div 6 = 0.8\\overline{3}\\). The digit \\(8\\) settles before the loop. How many digits come before the repeating block begins?",
@@ -2122,7 +2122,7 @@
      "Write the decimal out and mark the bar. In \\(0.8\\overline{3}\\), the bar covers only the \\(3\\). Everything to the left of where the bar starts is the non-repeating head.",
      "Look at the digits after the point one at a time. The \\(8\\) comes first and never repeats, then the \\(3\\) repeats forever. Count only the digits that live outside the bar."
     ],
-    "sol": "Long division shows the whole story. Bring down to get \\(50 \\div 6\\), which is \\(8\\) with a remainder of \\(2\\). That \\(8\\) is the first decimal digit. Now carry the remainder \\(2\\) forward, so \\(20 \\div 6\\) is \\(3\\) with a remainder of \\(2\\) again. Since the remainder is back to \\(2\\), the same step repeats, so the digit \\(3\\) loops forever.\n\nThat gives \\(\\frac{5}{6} = 0.8333\\ldots = 0.8\\overline{3}\\). The bar sits over the \\(3\\) because the \\(3\\) is the part that repeats. The \\(8\\) appears once and is never under the bar, so it is the non-repeating head. Counting the digits outside the bar, there is exactly one, the \\(8\\). \n\nA decimal like this is called eventually repeating. It settles into its loop after a short run-up rather than right away, and here that run-up is a single digit. \\(\\boxed{1}\\)"
+    "sol": "\\(50 \\div 6 = 8\\) with remainder \\(2\\), so the first decimal digit is \\(8\\). Then \\(20 \\div 6 = 3\\) with remainder \\(2\\) again, so the \\(3\\) loops from there and \\(\\tfrac{5}{6} = 0.8\\overline{3}\\). Exactly \\(\\boxed{1}\\) digit sits outside the bar. A decimal like this is called eventually repeating, since it settles into its loop after a short run-up instead of right away."
    },
    {
     "x": "Long-divide \\(7 \\div 30\\) to find \\(\\tfrac{7}{30} = 0.2\\overline{3}\\). The \\(2\\) settles first. What single digit is the repeating block?",
@@ -2136,7 +2136,7 @@
      "Carry out the long division of \\(7 \\div 30\\). Watch the remainders. Once a remainder shows up a second time, the digits from that point on will repeat forever.",
      "The first digit \\(2\\) settles and is gone for good. After that one digit keeps coming back. That recurring digit is the whole repeating block."
     ],
-    "sol": "Do the long division of \\(7 \\div 30\\) and keep an eye on the remainders.\n\nFirst, \\(70 \\div 30 = 2\\) with remainder \\(10\\), so the first decimal digit is \\(2\\). This is the digit that <b>settles</b>, thanks to the factors of \\(2\\) and \\(5\\) in \\(30\\).\n\nNext, bring down a zero to get \\(100\\). Now \\(100 \\div 30 = 3\\) with remainder \\(10\\). The digit is \\(3\\), and the remainder is \\(10\\) again, the same remainder we just had.\n\nOnce a remainder repeats, the process is locked into a cycle. Every step from here produces another \\(3\\) with remainder \\(10\\), over and over. So \\(\\tfrac{7}{30} = 0.2333\\ldots = 0.2\\overline{3}\\).\n\nThe \\(2\\) is the settling digit and the part under the bar is the repeating block. That block is a single digit, so the repeating block is \\(\\boxed{3}\\)."
+    "sol": "\\(70 \\div 30 = 2\\) with remainder \\(10\\), so the first decimal digit is \\(2\\). Then \\(100 \\div 30 = 3\\) with remainder \\(10\\), the same remainder, so every later step writes another \\(3\\). That gives \\(\\tfrac{7}{30} = 0.2\\overline{3}\\), so the repeating block is \\(\\boxed{3}\\). The \\(2\\) and the \\(5\\) in \\(30\\) produce the one settling digit, and the \\(3\\) produces the loop."
    },
    {
     "x": "Let \\(x = 0.\\overline{5}\\). Multiply by \\(10\\): \\(10x = 5.\\overline{5}\\). Subtract: \\(9x = 5\\). Write \\(0.\\overline{5}\\) as a fraction in lowest terms.",
@@ -2150,7 +2150,7 @@
      "five ninths",
      "five-ninths"
     ],
-    "sol": "Start by naming the mystery number. Let \\(x = 0.\\overline{5} = 0.5555\\ldots\\). The whole point is that this tail runs on forever with the same digit, and that is exactly what we will use against it. Multiply both sides by \\(10\\) so every digit shifts one place to the left, which gives \\(10x = 5.5555\\ldots\\). Now line the two equations up. $$10x = 5.5555\\ldots$$ $$x = 0.5555\\ldots$$ Both numbers end in the identical endless string of fives, so when we subtract the bottom from the top those tails cancel perfectly and nothing is left dangling. On the left \\(10x - x = 9x\\), and on the right \\(5.5555\\ldots - 0.5555\\ldots = 5\\). That leaves the clean little equation \\(9x = 5\\). Divide both sides by \\(9\\) to free \\(x\\), so \\(x = \\tfrac{5}{9}\\). Finally check that the fraction is already in lowest terms. The factors of \\(5\\) are just \\(1\\) and \\(5\\), and \\(9 = 3 \\times 3\\) shares none of them, so nothing reduces. The endless decimal you started with was this exact fraction the whole time, \\(\\boxed{5/9}\\)."
+    "sol": "Let \\(x = 0.5555\\ldots\\), so \\(10x = 5.5555\\ldots\\). Both numbers end in the identical endless string of fives, so subtracting cancels the tails and leaves \\(9x = 5\\). Divide by \\(9\\) to get \\(x = \\tfrac{5}{9}\\), and since \\(9 = 3 \\times 3\\) shares nothing with \\(5\\), it is already in lowest terms. \\(\\boxed{5/9}\\)"
    },
    {
     "x": "Using the block-over-nines shortcut, \\(0.\\overline{2}\\) has a one-digit block, so it equals \\(\\tfrac{2}{9}\\). Write \\(0.\\overline{2}\\) as a fraction in lowest terms.",
@@ -2166,7 +2166,7 @@
      "two over nine",
      "two-ninths"
     ],
-    "sol": "The repeating block is \\(2\\), and it is a single digit, so it goes over one nine. That gives \\(0.\\overline{2} = \\tfrac{2}{9}\\). The last step is to reduce. The factors of \\(2\\) are \\(1\\) and \\(2\\), and the factors of \\(9\\) are \\(1\\), \\(3\\), and \\(9\\). The only number they share is \\(1\\), so the fraction is already as small as it gets. To see why the shortcut is honest, let \\(x = 0.\\overline{2}\\). Then \\(10x = 2.\\overline{2}\\), and subtracting gives \\(10x - x = 2.\\overline{2} - 0.\\overline{2}\\), so \\(9x = 2\\) and \\(x = \\tfrac{2}{9}\\). The nine in the denominator is exactly the \\(10 - 1\\) behind the shortcut. \\(\\boxed{2/9}\\)"
+    "sol": "The block is one digit, so it goes over a single nine, and \\(0.\\overline{2} = \\tfrac{2}{9}\\). The factors of \\(2\\) are \\(1\\) and \\(2\\), the factors of \\(9\\) are \\(1\\), \\(3\\), and \\(9\\), so they share only \\(1\\) and the fraction cannot shrink. \\(\\boxed{2/9}\\) That nine is really \\(10 - 1\\). Setting \\(x = 0.\\overline{2}\\) and subtracting gives \\(10x - x = 9x = 2\\)."
    },
    {
     "x": "The decimal \\(0.\\overline{81}\\) equals \\(\\tfrac{81}{99}\\). Reduce \\(\\tfrac{81}{99}\\) to lowest terms. What fraction do you get?",
@@ -2182,7 +2182,7 @@
      "A repeating block of length two always sits over \\(99\\), which is why \\(0.\\overline{81}=\\dfrac{81}{99}\\). Now ask what number divides into both \\(81\\) and \\(99\\).",
      "Both \\(81\\) and \\(99\\) are multiples of \\(9\\). Divide the top and the bottom by \\(9\\) and see what is left."
     ],
-    "sol": "Start by reading the bar. The notation \\(0.\\overline{81}\\) is short for \\(0.818181\\ldots\\), with the two-digit block <b>81</b> repeating forever. A repeating block of length two always sits over \\(99\\), so the fraction you begin with is $$0.\\overline{81}=\\frac{81}{99}.$$ This value is right, but \\(\\dfrac{81}{99}\\) is not in lowest terms yet, because the top and the bottom share a common factor. The greatest common factor of \\(81\\) and \\(99\\) is \\(9\\), since \\(81=9\\times 9\\) and \\(99=9\\times 11\\). Dividing both parts by \\(9\\) gives $$\\frac{81}{99}=\\frac{81\\div 9}{99\\div 9}=\\frac{9}{11}.$$ You can check the result by turning it back into a decimal. Long division of \\(9\\div 11\\) gives \\(0.818181\\ldots\\), the same repeating \\(81\\), so the conversion is sound. And \\(9\\) and \\(11\\) share no common factor other than \\(1\\), so this is as far as it reduces. The decimal that looked endless was just a neat fraction, \\(\\boxed{9/11}\\)."
+    "sol": "A two-digit block sits over \\(99\\), so \\(0.\\overline{81} = \\tfrac{81}{99}\\). The greatest common factor of \\(81\\) and \\(99\\) is \\(9\\), since \\(81 = 9 \\times 9\\) and \\(99 = 9 \\times 11\\). Dividing top and bottom by \\(9\\) gives \\(\\boxed{9/11}\\). Checking, \\(9 \\div 11 = 0.818181\\ldots\\). The block-over-nines shortcut gives a correct value but rarely a reduced one."
    },
    {
     "x": "Write \\(0.0\\overline{45}\\) as a fraction in lowest terms. Use \\(1{,}000x\\) and \\(10x\\) to cancel the repeating tails, giving \\(990x = 45\\), then reduce.",
@@ -2199,7 +2199,7 @@
      "The repeating block starts at the second decimal place, not the first. Use the multiplier that jumps past everything once, \\(1{,}000x\\), and the one that jumps past just the leading zero, \\(10x\\), so their tails match.",
      "After \\(1{,}000x = 45.4545\\ldots\\) and \\(10x = 0.4545\\ldots\\), subtract to get \\(990x = 45\\), so \\(x = \\tfrac{45}{990}\\). Now find the greatest common factor of \\(45\\) and \\(990\\) and divide it out."
     ],
-    "sol": "Call the number \\(x = 0.0\\overline{45} = 0.0454545\\ldots\\). The trouble is that single leading zero, since it appears once and never repeats, so a plain \\(100x\\) trick will not line the tails up. The fix is to shift twice. Slide the decimal three places to land just before a fresh \\(45\\), giving \\(1{,}000x = 45.454545\\ldots\\). Slide it one place to clear only the head zero, giving \\(10x = 0.454545\\ldots\\). Both now have the identical repeating tail \\(.454545\\ldots\\). Subtract the smaller from the larger and the tails vanish. $$1{,}000x - 10x = 45.4545\\ldots - 0.4545\\ldots = 45$$ The left side is \\(990x\\), so \\(990x = 45\\) and \\(x = \\tfrac{45}{990}\\). Reduce by the greatest common factor. Both share \\(45\\), since \\(45 = 45 \\cdot 1\\) and \\(990 = 45 \\cdot 22\\), giving \\(\\tfrac{45}{990} = \\tfrac{1}{22}\\). A quick check confirms it, since long division of \\(1 \\div 22\\) gives \\(0.0454545\\ldots\\), the zero once and then \\(45\\) on a loop. So \\(0.0\\overline{45} = \\boxed{1/22}\\)."
+    "sol": "Let \\(x = 0.0454545\\ldots\\). Shift three places to land just before a fresh block, \\(1{,}000x = 45.4545\\ldots\\), and one place to clear the head zero, \\(10x = 0.4545\\ldots\\). Both end in the same \\(.4545\\ldots\\) tail, so subtracting gives \\(990x = 45\\) and \\(x = \\tfrac{45}{990}\\). Both share \\(45\\), since \\(990 = 45 \\cdot 22\\), so \\(x = \\boxed{1/22}\\). The leading zero appears once and never repeats, which is why a single shift will not line the tails up."
    },
    {
     "x": "Let \\(x = 0.\\overline{9}\\). Multiply by \\(10\\): \\(10x = 9.\\overline{9}\\). Subtract and solve. What single whole number does \\(0.\\overline{9}\\) equal?",
@@ -2213,7 +2213,7 @@
      "You already have \\(9x = 9\\). Divide both sides by \\(9\\) to get \\(x\\) all by itself.",
      "Both the starting decimal and the answer are the same number \\(x\\), so whatever \\(x\\) turns out to be is exactly what \\(0.\\overline{9}\\) is. It is a single whole number, not a fraction."
     ],
-    "sol": "Start by naming the mystery value. Let \\(x = 0.\\overline{9}\\). The bar means the nines repeat forever with no end. Multiplying by \\(10\\) slides every digit one spot to the left, so $$10x = 9.\\overline{9}.$$ Now the subtraction. Line the two equations up and take the difference. $$10x - x = 9.\\overline{9} - 0.\\overline{9}$$ On the right, the part after the decimal point is an identical endless string of nines in both numbers, so it cancels completely and only the \\(9\\) in front survives. On the left, \\(10x - x = 9x\\). That leaves $$9x = 9.$$ Divide both sides by \\(9\\) to get \\(x = 1\\). Since \\(x\\) was \\(0.\\overline{9}\\) the whole time, this says \\(0.\\overline{9}\\) and \\(1\\) are not close, they are the exact same number written two different ways. A quick second check agrees. From the work in this chapter, \\(0.\\overline{1} = \\tfrac{1}{9}\\), so nine of those repeating tenths give \\(9 \\cdot \\tfrac{1}{9} = \\tfrac{9}{9} = 1\\), and \\(9 \\cdot 0.\\overline{1} = 0.\\overline{9}\\). Both roads land in the same place. \\(\\boxed{1}\\)"
+    "sol": "Let \\(x = 0.\\overline{9}\\), so \\(10x = 9.\\overline{9}\\). After the decimal point both carry the identical endless string of nines, so subtracting cancels it and leaves \\(9x = 9\\). Divide by \\(9\\) and \\(x = \\boxed{1}\\). A second check agrees. \\(0.\\overline{1} = \\tfrac{1}{9}\\), and nine copies give \\(\\tfrac{9}{9} = 1\\) while \\(9 \\cdot 0.\\overline{1} = 0.\\overline{9}\\)."
    },
    {
     "x": "\\(\\tfrac{1}{13} = 0.\\overline{076923}\\), a block of \\(6\\) digits. Divide \\(100 \\div 6\\) to place the position within the block. What is the 100th digit after the decimal point?",
@@ -2227,7 +2227,7 @@
      "The digits repeat in groups of six, \\(076923\\). After every full group of six digits you are back at the start, so positions \\(6\\), \\(12\\), \\(18\\), and so on all hold the last digit of the block. Ask where position \\(100\\) sits relative to a fresh group.",
      "Divide \\(100\\) by \\(6\\). You get \\(16\\) whole groups with a remainder of \\(4\\), since \\(16 \\times 6 = 96\\) and \\(100 - 96 = 4\\). So the 100th digit is the 4th digit of the block \\(076923\\)."
     ],
-    "sol": "Start with what the decimal actually is. Doing the long division, \\(\\tfrac{1}{13} = 0.\\overline{076923}\\), a pure repeater whose block \\(076923\\) has length \\(6\\). So the stream of digits after the decimal point is \\(076923\\,076923\\,076923\\dots\\), the same six digits over and over with nothing else mixed in. Because the pattern restarts every \\(6\\) digits, the position of a digit only matters up to multiples of \\(6\\). Position \\(6\\) ends the first block, position \\(12\\) ends the second, and in general every position that is a multiple of \\(6\\) holds the last digit of the block. To place position \\(100\\), divide by the block length. \\(100 = 6 \\times 16 + 4\\), because \\(6 \\times 16 = 96\\) and \\(100 - 96 = 4\\). That means after \\(96\\) digits we have just finished \\(16\\) complete blocks and landed exactly on a block boundary, and then we count \\(4\\) more digits into a fresh copy of \\(076923\\). Reading that block, the 1st digit is \\(0\\), the 2nd is \\(7\\), the 3rd is \\(6\\), and the 4th is \\(9\\). So the digit sitting in the 100th place is \\(\\boxed{9}\\). The remainder is what matters. The quotient \\(16\\) just counts how many full blocks went by and never affects which digit you land on, while the remainder \\(4\\) points straight at the 4th slot of the block. A nice way to feel sure is to notice that position \\(96\\) is a multiple of \\(6\\), so it holds the \\(6\\)th digit \\(3\\), and then positions \\(97, 98, 99, 100\\) read off \\(0, 7, 6, 9\\), landing on \\(9\\) again.",
+    "sol": "The block \\(076923\\) is six digits long, so divide. \\(100 = 6 \\times 16 + 4\\), since \\(6 \\times 16 = 96\\), which puts position \\(100\\) four digits into a fresh block. Reading \\(076923\\), the 4th digit is \\(\\boxed{9}\\). The quotient \\(16\\) only counts the full blocks that went by. The remainder is what picks the digit.",
     "label": "r11"
    },
    {
@@ -2242,7 +2242,7 @@
      "The digits repeat with a block of length \\(2\\). The odd positions \\(1, 3, 5, \\ldots\\) all hold one digit, and the even positions \\(2, 4, 6, \\ldots\\) all hold the other. Which kind of position is \\(99\\)?",
      "Divide \\(99\\) by the block length \\(2\\). The remainder tells you how far into the block you land. A remainder of \\(1\\) points at the first digit of \\(12\\)."
     ],
-    "sol": "The decimal \\(\\frac{4}{33} = 0.\\overline{12}\\) repeats in a block of length \\(2\\), so every digit is determined by its position within that block. To locate position \\(99\\), divide by the block length. We get \\(99 = 2 \\times 49 + 1\\), so after \\(49\\) complete blocks of \\(12\\) there is a remainder of \\(1\\). A remainder of \\(1\\) means we land on the <b>first</b> digit of the block \\(12\\), which is \\(1\\). You can sanity check this with the odd-even pattern. Odd positions \\(1, 3, 5, \\ldots\\) always hold the \\(1\\), and even positions hold the \\(2\\). Since \\(99\\) is odd, the digit is the \\(1\\). $$\\frac{4}{33} = 0.\\underbrace{12}_{1}\\underbrace{12}_{2}\\ldots, \\qquad 99 \\div 2 = 49 \\text{ r } 1$$ So the 99th digit is \\(\\boxed{1}\\)."
+    "sol": "The block \\(12\\) is two digits long, so divide. \\(99 = 2 \\times 49 + 1\\), so position \\(99\\) lands on the first digit of the block, which is \\(\\boxed{1}\\). With a block of length \\(2\\), odd positions all hold the \\(1\\) and even positions all hold the \\(2\\), and \\(99\\) is odd."
    },
    {
     "x": "Factor each denominator: \\(8=2^3\\), \\(40=2^3\\times5\\), \\(50=2\\times5^2\\), \\(24=2^3\\times3\\). Which denominator contains a prime other than \\(2\\) or \\(5\\), forcing its decimal to repeat?",
@@ -2256,7 +2256,7 @@
      "A fraction terminates only if, in lowest terms, its denominator is made of 2s and 5s and nothing else. Three of these pass. Look for the one factorization that has a different prime.",
      "Scan the four factorizations for a prime that is not 2 and not 5. Only \\(24 = 2^3 \\times 3\\) carries a 3, so that 3 is what forces the repeat."
     ],
-    "sol": "The termination test says a fraction in lowest terms gives a terminating decimal exactly when its denominator, once fully factored, contains only the primes 2 and 5. Any other prime down there means the decimal repeats forever. So I do not need to divide at all. I just read the prime factorizations. \\(8 = 2^3\\), all 2s, so \\(\\tfrac{1}{8}\\) terminates. \\(40 = 2^3 \\times 5\\), only 2s and 5s, so \\(\\tfrac{1}{40}\\) terminates. \\(50 = 2 \\times 5^2\\), again only 2s and 5s, so \\(\\tfrac{1}{50}\\) terminates. That leaves \\(24 = 2^3 \\times 3\\). The 3 is a prime that is neither 2 nor 5, and it cannot cancel because the fraction is already in lowest terms. That single 3 is what keeps the decimal going. If you want proof, the long division of \\(\\tfrac{1}{24}\\) settles into \\(0.041\\overline{6} = 0.041666\\ldots\\), a decimal that truly never ends. The denominator that repeats is \\(\\boxed{24}\\)."
+    "sol": "Read the factorizations. \\(8 = 2^3\\), \\(40 = 2^3 \\times 5\\), and \\(50 = 2 \\times 5^2\\) use only \\(2\\)s and \\(5\\)s, so all three terminate. \\(24 = 2^3 \\times 3\\) carries a \\(3\\), which is neither \\(2\\) nor \\(5\\), so the repeating denominator is \\(\\boxed{24}\\). Its decimal is \\(\\tfrac{1}{24} = 0.041\\overline{6}\\), and that stray \\(3\\) is the reason it never ends."
    },
    {
     "x": "Find \\(0.\\overline{81} - 0.\\overline{36}\\) as a single fraction in lowest terms. Both two-digit repeaters sit over \\(99\\). Subtract the numerators and reduce.",
@@ -2272,7 +2272,7 @@
      "A two-digit repeating block sits over two nines. So \\(0.\\overline{81}=\\tfrac{81}{99}\\) and \\(0.\\overline{36}=\\tfrac{36}{99}\\). Now you have two fractions that share the same bottom.",
      "When the denominators already match, you only subtract the tops. Work out \\(81-36\\), keep \\(99\\) underneath, then look for a common factor to reduce the result."
     ],
-    "sol": "Every repeating block of two digits turns into that block over two nines, so \\(0.\\overline{81}=\\dfrac{81}{99}\\) and \\(0.\\overline{36}=\\dfrac{36}{99}\\). They were built on the same denominator, so subtracting is just subtracting the numerators. $$\\frac{81}{99}-\\frac{36}{99}=\\frac{81-36}{99}=\\frac{45}{99}$$ Now reduce. Both \\(45\\) and \\(99\\) share the factor \\(9\\), since \\(45=9\\times 5\\) and \\(99=9\\times 11\\). Dividing top and bottom by \\(9\\) gives \\(\\dfrac{45}{99}=\\dfrac{5}{11}\\). You can sanity check it by dividing \\(5\\) by \\(11\\), which loops as \\(0.454545\\dots=0.\\overline{45}\\), exactly the gap between the two decimals you started with. \\(\\boxed{5/11}\\)"
+    "sol": "A two-digit block sits over \\(99\\), so \\(0.\\overline{81} = \\tfrac{81}{99}\\) and \\(0.\\overline{36} = \\tfrac{36}{99}\\). The denominators match, so subtract the numerators. $$\\frac{81}{99} - \\frac{36}{99} = \\frac{45}{99}$$ Both \\(45\\) and \\(99\\) are divisible by \\(9\\), since \\(45 = 9 \\times 5\\) and \\(99 = 9 \\times 11\\), so the answer is \\(\\boxed{5/11}\\). Checking, \\(5 \\div 11 = 0.\\overline{45}\\), exactly the gap between the two decimals."
    }
   ],
   "next": "6.1"

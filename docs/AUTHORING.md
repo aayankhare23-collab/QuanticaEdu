@@ -53,9 +53,19 @@ Rules that the grader and renderer depend on:
   to hyphen, then compares to `ans` and each `accept` entry. `accept` must contain `ans`
   plus every reasonable typed variant (word forms like `four`, exact terminating decimal for
   a fraction, etc). Never ask for a list, a sentence, or "explain"; funnel to one value.
-- **Solutions end ON the boxed answer.** `sol` reasons in 1-3 sentences and closes with
-  `\(\boxed{...}\)` (the box must sit inside `\( \)` or `$$ $$`). Wrong-path commentary goes
-  *before* the box, not after.
+- **Solutions are answer-first, in two parts** (changed 2026-07-26, replaces the old
+  "end on the box / name the trap first" rule):
+  1. **The solve.** Do the problem directly and plainly, and close this part on
+     `\(\boxed{...}\)` (the box must sit inside `\( \)` or `$$ $$`). No theory build-up, no
+     naming the trap, no "Notice that" / "Let us begin". Just do it.
+  2. **The why, optional and short.** One or two sentences *after* the box giving the insight,
+     the general rule, or the common mistake. ~180 chars, hard cap ~320. Omit it entirely when
+     the problem is trivial.
+
+  The trap now lives in part 2, after the reader already has the answer. Length targets for the
+  whole `sol`: easy ~120-320 chars, moderate ~250-450, genuinely hard multi-step ~350-600.
+  Anything over 600 needs a real reason. (Rationale: solutions had drifted to theory-first walls
+  of text, up to 2288 chars for an 85-char question, which buried the answer and bored the reader.)
 - **Math** in `\( \)` inline or `$$ $$` display, **single backslashes** (`\frac`, `\sqrt`).
   Bold via `<b>...</b>`. No markdown.
 - **xp** is 5 (easy) to 8 (hard) on try-it and review-in-flow problems; review items omit it.
@@ -73,6 +83,13 @@ bar is `lessons/prealgebra/chapter-2.json` (2.1, 2.2). Hard rules:
   metaphor survives only if it teaches (a fraction bar acting like parentheses is fine).
   Commit `edca493` is the worked before/after of this fix.
 - **No narrative filler** ("Imagine you...", "Last lesson we...").
+- **Say the plain thing, never tease it.** No vague or riddling sentences that only make sense
+  once the reader already knows the answer. Real offenders swept out on 2026-07-26: "The new
+  work is finding the two places the laws stop" (name them), "Two things never move." (say
+  what), "Four counts, one question." (cryptic slogan), "Nothing is being asked yet." (filler).
+  If a sentence would confuse someone who has not yet learned the idea, rewrite or cut it.
+  Conversational and warm is right; hinting and withholding is not. Analogies are welcome when
+  they teach, but state the point outright alongside them.
 - **Lengths** (chars in `x`): `p` 200-350, `imp` 350-600, `fact` ~200, `prob` 120-250 (up to
   ~450 if the ask needs pinning down). The enemy when trimming is filler, not substance.
   (Memory: `verbosity-targets`.)

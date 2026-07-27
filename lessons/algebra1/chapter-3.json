@@ -5,7 +5,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "1.5 built the exponent laws out of counting, and every one of those counts still works when the base is a letter. A letter stands for a number you have not named yet, so \\(k^5\\) is five factors of \\(k\\) and nothing in the argument changes. The new work is finding the two places the laws stop."
+    "x": "1.5 built the exponent laws out of counting, and every one of those counts still works when the base is a letter. A letter stands for a number you have not named yet, so \\(k^5\\) is five factors of \\(k\\) and nothing in the argument changes. What is new is knowing when the laws do not apply, and there are two cases, powers with different bases and terms joined by a plus sign instead of multiplied."
    },
    {
     "t": "prob",
@@ -20,11 +20,11 @@
      "Write out the factors of \\(m\\) in each piece, then count the whole row.",
      "A letter with no exponent written is one factor."
     ],
-    "sol": "The bare \\(m\\) looks like it carries nothing, and skipping it gives 7. It is one factor, since \\(m=m^1\\) from 1.5, so the row is 3 factors then 1 then 4, and joining rows adds the counts to give \\(\\boxed{8}\\)."
+    "sol": "A letter with no exponent written is one factor, since \\(m=m^1\\), so the row is 3 factors then 1 then 4. Joining rows adds the counts, giving \\(\\boxed{8}\\). Skipping the bare \\(m\\) is the easy miss and gives 7."
    },
    {
     "t": "imp",
-    "x": "<b>The product rule.</b> The product rule from 1.5 carries over untouched, \\(x^m\\cdot x^n=x^{m+n}\\), because the count never asked what the base was. Two wrong turns to name. \\(a^3\\cdot a^4\\) is \\(a^7\\) and not \\(a^{12}\\), because exponents count factors and joining rows adds counts instead of multiplying them. And it is not \\(2a^7\\), because nothing was added, the row just got longer."
+    "x": "<b>The product rule.</b> The product rule from 1.5 carries over untouched, \\(x^m\\cdot x^n=x^{m+n}\\), because the count never asked what the base was. Two wrong turns are worth naming. \\(a^3\\cdot a^4\\) is \\(a^7\\) and not \\(a^{12}\\), because exponents count factors and joining rows adds counts instead of multiplying them. And it is not \\(2a^7\\), because nothing was added, the row just got longer."
    },
    {
     "t": "prob",
@@ -40,7 +40,7 @@
      "\\(n^2\\) and \\(n^5\\) are separate terms, so work out each one and then add.",
      "For comparison, \\(n^7\\) at \\(n=2\\) is 128."
     ],
-    "sol": "Adding the exponents looks like the product rule, but the product rule applies to a product and this is a sum. At \\(n=2\\) the claim predicts \\(n^7=128\\), while the actual value is \\(4+32\\). One mismatch is enough to kill the claim, and the value you enter is \\(\\boxed{36}\\)."
+    "sol": "At \\(n=2\\), \\(n^2=4\\) and \\(n^5=32\\), so \\(n^2+n^5=4+32=\\boxed{36}\\). The claim predicts \\(n^7=128\\), and one mismatch kills it. The product rule applies to a product, and this is a sum."
    },
    {
     "t": "imp",
@@ -59,7 +59,7 @@
      "Gather the numbers together and the \\(c\\) factors together, the 1.3 way.",
      "The 4 and the 7 are factors. The 5 and the 3 are counts."
     ],
-    "sol": "Treating both halves alike gives \\(28c^{15}\\) or \\(11c^8\\), and each one applies the wrong operation to half the term. Coefficients are factors so they multiply, exponents are counts so they add, giving \\(\\boxed{28c^8}\\)."
+    "sol": "Coefficients are factors, so they multiply, \\(4\\cdot 7=28\\). Exponents are counts, so they add, \\(5+3=8\\). The term is \\(\\boxed{28c^8}\\). Treating both halves alike gives \\(28c^{15}\\) or \\(11c^8\\), each applying the wrong operation to half the term."
    },
    {
     "t": "imp",
@@ -77,7 +77,7 @@
     "hints": [
      "Four factors cancel four factors. How many of the eleven are left?"
     ],
-    "sol": "The slip here is reporting the count that got cancelled and answering 4. The four factors on the bottom cancel four of the eleven factors on top, so the number of factors left over is \\(11-4=\\boxed{7}\\)."
+    "sol": "The four factors on the bottom cancel four of the eleven on top, so \\(11-4=\\boxed{7}\\) factors survive. The 4 is the count that got cancelled, not the count left over."
    },
    {
     "t": "prob",
@@ -92,7 +92,7 @@
      "Split it into a number part and a \\(k\\) part.",
      "The coefficients divide. Only the exponents subtract."
     ],
-    "sol": "The trap is subtracting the coefficients to get 48. Subtraction belongs to the exponents, not to the numbers out front. The coefficients divide, \\(54\\div 6=9\\), and the exponents subtract, \\(10-3=7\\), so the term is \\(9k^{7}\\) and the coefficient is \\(\\boxed{9}\\)."
+    "sol": "The coefficients divide, \\(54\\div 6=9\\), and the exponents subtract, \\(10-3=7\\), so the term is \\(9k^{7}\\) and the coefficient is \\(\\boxed{9}\\). Subtraction belongs to the exponents. Subtracting the numbers out front would give 48."
    },
    {
     "t": "imp",
@@ -111,7 +111,7 @@
     "hints": [
      "Each copy of \\(r^4\\) contributes four factors of \\(r\\)."
     ],
-    "sol": "Adding the exponents gives 10, which is the product rule used where it does not apply. The 6 counts copies of a four-factor block rather than extra factors, so the total is \\(4\\cdot 6=\\boxed{24}\\)."
+    "sol": "Each of the six copies of \\(r^4\\) brings four factors of \\(r\\), so the total is \\(4\\cdot 6=\\boxed{24}\\). The 6 counts copies of a four-factor block, not extra factors, so adding to get 10 uses the product rule where it does not apply."
    },
    {
     "t": "imp",
@@ -135,7 +135,7 @@
      "One expression sets two rows side by side. The other makes four copies of one row.",
      "\\(5+4\\) and \\(5\\cdot 4\\) are not the same number."
     ],
-    "sol": "Reading the two as the same thing gives a difference of 0, which is exactly the confusion. Side by side gives \\(q^9\\), four copies gives \\(q^{20}\\), and \\(20-9=\\boxed{11}\\)."
+    "sol": "Side by side adds the counts, so \\(q^5\\cdot q^4=q^9\\). Four copies multiply them, so \\((q^5)^4=q^{20}\\). The difference is \\(20-9=\\boxed{11}\\). Reading the two as the same thing gives 0, which is exactly the confusion."
    },
    {
     "t": "prob",
@@ -150,7 +150,7 @@
     "hints": [
      "Write the three copies out. What sits inside each one?"
     ],
-    "sol": "The common miss is leaving the coefficient alone and writing \\(3b^{21}\\). Three copies of \\(3b^7\\) hold three 3s and twenty-one \\(b\\)s, so the term is \\(27b^{21}\\) and the coefficient is \\(\\boxed{27}\\)."
+    "sol": "Three copies of \\(3b^7\\) hold three 3s and twenty-one \\(b\\)s, so the term is \\(27b^{21}\\) and the coefficient is \\(\\boxed{27}\\). The outer exponent reaches the coefficient too, so \\(3b^{21}\\) keeps only one of those three 3s."
    },
    {
     "t": "imp",
@@ -169,7 +169,7 @@
     "hints": [
      "Four copies of \\(u^3w^8\\) reorder into all the \\(u\\) factors and then all the \\(w\\) factors."
     ],
-    "sol": "Applying the outer 4 to the first base only leaves \\(w^8\\) untouched, and that is the usual slip. Every copy contains eight \\(w\\) factors, so four copies give \\(u^{12}w^{32}\\) and the exponent on \\(w\\) is \\(\\boxed{32}\\)."
+    "sol": "Every copy of \\(u^3w^8\\) contains eight \\(w\\) factors, so four copies give \\(u^{12}w^{32}\\) and the exponent on \\(w\\) is \\(\\boxed{32}\\). The outer 4 reaches both bases. Applying it to the first one only leaves \\(w^8\\) untouched."
    },
    {
     "t": "imp",
@@ -188,7 +188,7 @@
      "The cube reaches the 2 as well as the \\(y^4\\).",
      "Once the parentheses are gone it is one product of two monomials."
     ],
-    "sol": "Skipping the \\(2^3\\) gives \\(2y^{12}\\cdot 5y^2=10y^{14}\\), which is the whole trap. The cube makes three copies of \\(2y^4\\), so the parentheses clear to \\(8y^{12}\\), and then \\(8\\cdot 5=40\\) with \\(12+2=14\\), giving \\(\\boxed{40y^{14}}\\)."
+    "sol": "The cube makes three copies of \\(2y^4\\), so the parentheses clear to \\(8y^{12}\\). Then \\(8\\cdot 5=40\\) and \\(12+2=14\\), giving \\(\\boxed{40y^{14}}\\). Skipping the \\(2^3\\) gives \\(10y^{14}\\), which is the whole trap."
    },
    {
     "t": "prob",
@@ -202,7 +202,7 @@
      "Clear the parentheses first, then build one term on top before you divide.",
      "Check what the outside exponent does to the 5, not just to \\(f^4\\)."
     ],
-    "sol": "The trap is treating the outside exponent as if it only reaches \\(f^4\\). It reaches the 5 as well, so \\((5f^4)^2=25f^8\\), not \\(5f^8\\). The top becomes \\(25f^8\\cdot f^3=25f^{11}\\), and dividing by \\(5f^6\\) gives \\(5f^5\\). At \\(f=2\\) that is \\(5\\cdot 32=\\boxed{160}\\)."
+    "sol": "\\((5f^4)^2=25f^8\\), so the top is \\(25f^8\\cdot f^3=25f^{11}\\). Dividing by \\(5f^6\\) gives \\(5f^5\\), and at \\(f=2\\) that is \\(5\\cdot 32=\\boxed{160}\\). The outside exponent reaches the 5 as well as the \\(f^4\\), so \\(5f^8\\) is not enough."
    },
    {
     "t": "fact",
@@ -210,7 +210,7 @@
    },
    {
     "t": "p",
-    "x": "Every exponent in this lesson was a positive whole number, held there on purpose by keeping the larger exponent on top of every quotient. 3.2 removes that guardrail. Once the bottom is allowed to win, \\(x^0\\) and \\(x^{-3}\\) have to mean something, and the meaning comes from refusing to let these laws break."
+    "x": "Every exponent in this lesson was a positive whole number, and we kept it that way by putting the larger exponent on top of every quotient. 3.2 drops that rule. Once the bottom exponent is allowed to be the larger one, \\(x^0\\) and \\(x^{-3}\\) need a meaning, and the meaning is whatever keeps these laws working."
    }
   ],
   "review": [
@@ -224,7 +224,7 @@
     "hints": [
      "Set the two rows of \\(g\\) factors side by side and count the whole row."
     ],
-    "sol": "Multiplying the exponents gives \\(g^{56}\\), which counts copies that are not there. Joining two rows adds the counts, \\(7+8=\\boxed{15}\\)."
+    "sol": "Joining two rows of \\(g\\) factors adds the counts, \\(7+8=\\boxed{15}\\). Multiplying the exponents would give \\(g^{56}\\), which counts copies that are not there."
    },
    {
     "x": "A student claims \\(d^2+d^4=d^6\\). Test it the 1.4 way. Evaluate \\(d^2+d^4\\) at \\(d=3\\) and enter the value.",
@@ -236,7 +236,7 @@
     "hints": [
      "Work out each term on its own, then add."
     ],
-    "sol": "A plus sign joins terms rather than rows of factors, so nothing combines. At \\(d=3\\) the claim says \\(3^6=729\\) while \\(9+81\\) says \\(\\boxed{90}\\)."
+    "sol": "At \\(d=3\\), \\(d^2=9\\) and \\(d^4=81\\), so the value is \\(9+81=\\boxed{90}\\). The claim predicts \\(3^6=729\\), so it fails. A plus sign joins terms, not rows of factors."
    },
    {
     "x": "A student claims \\(a^4b^2=(ab)^6\\). Test the claim by evaluating \\(a^4b^2\\) at \\(a=2\\) and \\(b=3\\), and enter the value.",
@@ -247,7 +247,7 @@
     "hints": [
      "Work out \\(a^4\\) and \\(b^2\\) on their own, then multiply."
     ],
-    "sol": "The product rule adds exponents only when the powers share a base, and \\(a\\) and \\(b\\) are different bases, so \\(a^4b^2\\) does not collapse into \\((ab)^6\\). The claim would give \\((ab)^6=6^6=46656\\), but evaluating the real expression gives \\(2^4\\cdot 3^2=16\\cdot 9=\\boxed{144}\\)."
+    "sol": "At \\(a=2\\) and \\(b=3\\), \\(a^4b^2=16\\cdot 9=\\boxed{144}\\). The claim would give \\(6^6=46656\\), so it fails. Adding exponents needs a shared base, and \\(a\\) and \\(b\\) are different bases."
    },
    {
     "x": "Multiply \\((7h^2)(2h^6)\\) into a single term and enter its coefficient.",
@@ -259,7 +259,7 @@
     "hints": [
      "The coefficient comes from the numbers only."
     ],
-    "sol": "The exponents have nothing to do with the coefficient. Multiplying \\(7\\cdot 2\\) gives the term \\(14h^8\\), so the coefficient is \\(\\boxed{14}\\)."
+    "sol": "\\(7\\cdot 2=14\\), so the term is \\(14h^8\\) and the coefficient is \\(\\boxed{14}\\). The exponents have nothing to do with the coefficient."
    },
    {
     "x": "Multiply \\((8p^3)(3p^4)\\) into a single term. Enter the result, typed like \\(5y^2\\).",
@@ -271,7 +271,7 @@
     "hints": [
      "Numbers with numbers, \\(p\\) factors with \\(p\\) factors."
     ],
-    "sol": "The tempting slip is adding the coefficients to get \\(11p^7\\). Coefficients are factors so they multiply, \\(8\\cdot 3=24\\), while the exponents add, \\(3+4=7\\), giving \\(\\boxed{24p^7}\\)."
+    "sol": "Coefficients multiply, \\(8\\cdot 3=24\\), while exponents add, \\(3+4=7\\), giving \\(\\boxed{24p^7}\\). Adding the coefficients to get \\(11p^7\\) is the tempting slip, but they are factors, not terms."
    },
    {
     "x": "Simplify \\(\\frac{v^{16}}{v^{6}}\\) to a single power \\(v^k\\) and enter \\(k\\).",
@@ -283,7 +283,7 @@
     "hints": [
      "Each factor on the bottom cancels one on top."
     ],
-    "sol": "The trap is answering 6, the number of factors that cancel. That count is not the exponent left behind. Six factors on the bottom cancel six of the sixteen on top, so the number of factors of \\(v\\) still standing is \\(16-6=\\boxed{10}\\)."
+    "sol": "Six factors on the bottom cancel six of the sixteen on top, so \\(16-6=\\boxed{10}\\) factors of \\(v\\) are still standing. Answering 6 reports the count that cancels, not the exponent left behind."
    },
    {
     "x": "Simplify \\(\\frac{48t^{9}}{6t^{4}}\\) to a single term. Enter it, typed like \\(3y^2\\).",
@@ -295,7 +295,7 @@
     "hints": [
      "Handle the numbers and the \\(t\\) factors separately."
     ],
-    "sol": "Subtracting only the exponents and carrying the 48 along gives \\(48t^5\\), which leaves the number part untouched. The coefficients divide, \\(48\\div 6=8\\), and the counts subtract, \\(9-4=5\\), giving \\(\\boxed{8t^5}\\)."
+    "sol": "The coefficients divide, \\(48\\div 6=8\\), and the counts subtract, \\(9-4=5\\), giving \\(\\boxed{8t^5}\\). Carrying the 48 along and only subtracting the exponents leaves the number part untouched."
    },
    {
     "x": "\\((s^6)^7\\) is seven copies of \\(s^6\\) multiplied together. Write it as \\(s^k\\) and enter \\(k\\).",
@@ -308,7 +308,7 @@
     "hints": [
      "Each copy contributes six factors of \\(s\\)."
     ],
-    "sol": "Adding the exponents gives 13, but that is the product rule, and this is a power raised to a power. Each of the seven copies contributes six factors of \\(s\\), so the number of factors in the row is \\(6\\cdot 7=\\boxed{42}\\)."
+    "sol": "Each of the seven copies contributes six factors of \\(s\\), so the row holds \\(6\\cdot 7=\\boxed{42}\\) factors. Adding the exponents gives 13, but that is the product rule, and this is a power raised to a power."
    },
    {
     "x": "Expand \\((5n^3)^3\\) into a single term and enter its coefficient.",
@@ -319,7 +319,7 @@
     "hints": [
      "The outer exponent reaches the 5 too."
     ],
-    "sol": "The trap is leaving the 5 alone and writing \\(5n^9\\). The outer exponent applies to every factor inside the parentheses, so \\((5n^3)^3=5^3\\cdot n^{3\\cdot 3}=125n^9\\), which makes the coefficient \\(\\boxed{125}\\)."
+    "sol": "The outer exponent applies to every factor inside the parentheses, so \\((5n^3)^3=5^3\\cdot n^{3\\cdot 3}=125n^9\\) and the coefficient is \\(\\boxed{125}\\). Leaving the 5 alone gives \\(5n^9\\) and drops two of the three 5s."
    },
    {
     "x": "Simplify each of \\((c^3)^8\\) and \\(c^3\\cdot c^8\\) to a single power of \\(c\\). Enter the exponent of the first minus the exponent of the second.",
@@ -331,7 +331,7 @@
     "hints": [
      "One of these stacks seven copies of \\(c^5\\). The other lines up five \\(c\\)'s and then seven more."
     ],
-    "sol": "Reading both the same way gives 0, and that is the trap. Stacking eight copies of \\(c^3\\) multiplies the counts, so \\((c^3)^8=c^{24}\\), while setting two rows side by side adds them, so \\(c^3\\cdot c^8=c^{11}\\). The difference is \\(24-11=\\boxed{13}\\)."
+    "sol": "Stacking eight copies of \\(c^3\\) multiplies the counts, so \\((c^3)^8=c^{24}\\). Setting two rows side by side adds them, so \\(c^3\\cdot c^8=c^{11}\\). The difference is \\(24-11=\\boxed{13}\\). Reading both the same way gives 0."
    },
    {
     "x": "Expand \\((j^5z^3)^3\\) and enter the exponent on \\(z\\).",
@@ -344,7 +344,7 @@
      "Each base carries its own exponent through the expansion.",
      "Write the three copies side by side and count only the \\(z\\) factors."
     ],
-    "sol": "The 3 outside reaches both letters, not just the first one. Each of the three copies carries three \\(z\\) factors, so the result is \\(j^{15}z^{9}\\) and the exponent on \\(z\\) is \\(\\boxed{9}\\)."
+    "sol": "Each of the three copies carries three \\(z\\) factors, so the result is \\(j^{15}z^{9}\\) and the exponent on \\(z\\) is \\(\\boxed{9}\\). The 3 outside reaches both letters, not just the first one."
    },
    {
     "x": "Simplify \\(\\frac{(2m^5)^4}{8m^{11}}\\) to a single term. Enter it, typed like \\(7v^3\\).",
@@ -357,7 +357,7 @@
      "Clear the parentheses first, coefficient included, then cancel.",
      "Once the top is a single term, the numbers divide and the counts subtract."
     ],
-    "sol": "Forgetting \\(2^4\\) leaves \\(2m^{20}\\) on top and wrecks the coefficient. The parentheses clear to \\(16m^{20}\\), then \\(16\\div 8=2\\) and \\(20-11=9\\), giving \\(\\boxed{2m^9}\\)."
+    "sol": "The parentheses clear to \\(16m^{20}\\), then \\(16\\div 8=2\\) and \\(20-11=9\\), giving \\(\\boxed{2m^9}\\). Forgetting \\(2^4\\) leaves \\(2m^{20}\\) on top and wrecks the coefficient."
    }
   ]
  }
