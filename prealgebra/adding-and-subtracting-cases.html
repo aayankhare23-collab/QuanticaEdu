@@ -80,7 +80,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
   <path d="M 60 56 C 60 46, 70 46, 80 46 L 340 46 C 350 46, 360 46, 360 56" fill="none" stroke="#7a4f00" stroke-width="1.6"/>
   <path d="M 210 46 C 210 40, 210 40, 210 34" fill="none" stroke="#7a4f00" stroke-width="1.6"/>
   <text x="210" y="28" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#7a4f00">dots = 6</text>
-  <line x1="60" y1="100" x2="360" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.4"/>
+  <line fill="none" x1="60" y1="100" x2="360" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.4"/>
   <circle cx="60" cy="100" r="9" fill="#E7B44B" stroke="#7a4f00" stroke-width="1.6"/>
   <circle cx="120" cy="100" r="9" fill="#E7B44B" stroke="#7a4f00" stroke-width="1.6"/>
   <circle cx="180" cy="100" r="9" fill="#E7B44B" stroke="#7a4f00" stroke-width="1.6"/>
@@ -108,21 +108,21 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">How many whole numbers are strictly between \(1\) and \(50\), not including \(1\) or \(50\)?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>The word between leaves out both ends, so \(1\) and \(50\) are off the table. What is the smallest number you are actually allowed to pick, and what is the largest?</li><li>Once you drop the ends, you are picking from \(2\) up to \(49\). Now you just need to count that run of whole numbers, both ends included.</li><li>Counting from \(2\) to \(49\) including both is \(49 - 2 + 1\). Remember the plus one, so you do not come up short by one.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>Between leaves out both ends, so the choices run from \(2\) to \(49\). That is \(49 - 2 + 1 = \boxed{48}\) whole numbers. The plus one puts back the starting number, which the subtraction skips.</div></details></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>Fencepost rule.</b> The count of whole numbers from $a$ to $b$, both ends included, is $b-a+1$. The subtraction $b-a$ counts the <em>gaps</em> between the numbers, like a fence with a post every foot. A 10-foot fence has 10 gaps but 11 posts, since both ends get one. Subtraction finds the gaps, and the $+1$ catches that last post. When a count looks tricky, write out a tiny version by hand and trust the pattern it shows.</div></aside>
 <figure class="fig"><svg viewBox="0 0 440 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A horizontal number line with ticks only at the multiples of 4 from 8 to 28. The six ticks are labeled 8, 12, 16, 20, 24, and 28. Each of the five gaps between neighboring ticks is labeled step 4. A gold brace arches over the whole stretch from the first tick at 8 to the last tick at 28 and is labeled the span 28 minus 8 equals 20. Below the line a calculation reads 20 divided by 4 equals 5 gaps, then plus 1 gives 6 terms, with the final 6 highlighted in gold. The picture shows that counting evenly spaced numbers means measuring the span, dividing by the step to count the gaps, then adding one for the extra fencepost.">
-  <text x="220" y="18" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#2E7D4F">COUNT THE GAPS, THEN ADD ONE</text>
+  <text x="220" y="18" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="600" fill="#2E7D4F">Count the gaps, then add one</text>
 
   <path d="M 40 60 Q 40 46 54 46 L 213 46 Q 220 46 220 38 Q 220 46 227 46 L 386 46 Q 400 46 400 60" fill="none" stroke="#E7B44B" stroke-width="1.6"/>
   <text x="220" y="34" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#7a4f00">span 28 &#8722; 8 = 20</text>
 
-  <line x1="20" y1="92" x2="420" y2="92" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="20" y1="92" x2="420" y2="92" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
   <polygon points="420,92 412,88 412,96" fill="rgba(22,75,53,.14)"/>
   <polygon points="20,92 28,88 28,96" fill="rgba(22,75,53,.14)"/>
 
-  <line x1="40" y1="84" x2="40" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
-  <line x1="112" y1="84" x2="112" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
-  <line x1="184" y1="84" x2="184" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
-  <line x1="256" y1="84" x2="256" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
-  <line x1="328" y1="84" x2="328" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
-  <line x1="400" y1="84" x2="400" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="40" y1="84" x2="40" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="112" y1="84" x2="112" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="184" y1="84" x2="184" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="256" y1="84" x2="256" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="328" y1="84" x2="328" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
+  <line fill="none" x1="400" y1="84" x2="400" y2="100" stroke="rgba(22,75,53,.14)" stroke-width="1.6"/>
 
   <circle cx="40" cy="92" r="4" fill="#E7B44B" stroke="#7a4f00" stroke-width="1.2"/>
   <circle cx="112" cy="92" r="4" fill="#E7B44B" stroke="#7a4f00" stroke-width="1.2"/>
@@ -144,7 +144,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
   <text x="292" y="142" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9.5" fill="#445C48">step 4</text>
   <text x="364" y="142" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9.5" fill="#445C48">step 4</text>
 
-  <line x1="40" y1="158" x2="400" y2="158" stroke="rgba(22,75,53,.14)" stroke-width="1" stroke-dasharray="3 4"/>
+  <line fill="none" x1="40" y1="158" x2="400" y2="158" stroke="rgba(22,75,53,.14)" stroke-width="1" stroke-dasharray="3 4"/>
 
   <text x="220" y="186" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13.5" fill="#445C48">20 &#247; 4 = 5 gaps</text>
   <text x="220" y="212" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13.5" fill="#445C48">5 + 1 gives <tspan font-size="15" font-weight="700" fill="#7a4f00">6 terms</tspan></text>
@@ -154,7 +154,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">On Maple Street the even-numbered houses \(24, 26, \ldots, 150\) sit on the sunny side. How many houses are on the sunny side?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>The sunny-side houses are evenly spaced, going up by \(2\) each time. Spot the first one and the last one inside the range.</li><li>The first even house is \(24\) and the last is \(150\). Both ends count, so this is the fencepost idea again.</li><li>Count the gaps with \((\text{last} - \text{first})\div\text{step}\), then add \(1\) for the house you started on.</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>The sunny-side houses are \(24, 26, 28, \dots, 150\), stepping by \(2\). The span is \(150 - 24 = 126\), so there are \(126 \div 2 = 63\) gaps and \(63 + 1 = \boxed{64}\) houses. After \(63\) jumps of \(2\) you land on house \(150\), and you still have to count house \(24\) where you started.</div></details></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>Evenly spaced count.</b> For multiples or any evenly spaced run, the count is $\frac{\text{last}-\text{first}}{\text{step}}+1$, the fencepost idea with wider gaps. The span from the first term in range to the last, divided by the step, gives the number of gaps, then add $1$ for the term you started on. One warning. The width of a range does not decide the count. The windows $10$ to $20$ and $11$ to $21$ are equally wide, yet the first holds three multiples of $5$ and the second only two. So always pin down the <em>real</em> first and last multiple inside your range before you count.</div></aside>
 <figure class="fig"><svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A line of ten simple stick figures. The fourth figure from the front is shaded gold. A bracket above the line spans the first four figures and is labelled four from the front. A bracket below the line spans the last seven figures, from the shaded figure to the back, and is labelled seven from the back. An arrow marks the shaded figure as counted in both brackets. The arithmetic four plus seven minus one equals ten shows that the shared child is removed once, so the line holds ten children.">
-  <text x="220" y="20" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="#2E7D4F">ONE CHILD GETS COUNTED TWICE</text>
+  <text x="220" y="20" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#2E7D4F">One child gets counted twice</text>
   <text x="114" y="44" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="11.5" font-weight="700" fill="#7a4f00">4th from front, so 4</text>
   <path d="M42 58 L42 50 L186 50 L186 58" fill="none" stroke="#7a4f00" stroke-width="1.6"/>
   <circle cx="56" cy="78" r="7" fill="none" stroke="#445C48" stroke-width="1.6"/><path d="M56 85 L56 108 M56 92 L48 100 M56 92 L64 100 M56 108 L49 122 M56 108 L63 122" fill="none" stroke="#445C48" stroke-width="1.6" stroke-linecap="round"/>
@@ -194,7 +194,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 <div class="prob"><span class="tag">Problem</span><div class="prob-q">At a 50-person reunion, \(32\) drink coffee, \(19\) drink tea, and \(8\) drink both. How many drink neither?</div><details class="sol"><summary>Show a hint</summary><ul class="hintlist"><li>Start by counting how many people drink coffee or tea. You cannot just add \(32\) and \(19\), because the \(8\) who drink both would be counted once in each group.</li><li>Add the two groups and then take away the overlap once, so the coffee-or-tea count is \(32 + 19 - 8\). That removes the double counting.</li><li>Once you know how many drink at least one of the two, the neither group is just the whole reunion minus that count. Subtract from \(50\).</li></ul></details><details class="sol"><summary>Show the full solution</summary><div>The coffee-or-tea count is \(32 + 19 - 8 = 43\), subtracting the \(8\) who landed in both groups. Everyone else drinks neither, so that is \(50 - 43 = \boxed{7}\) people. Adding \(32 + 19\) alone gives \(51\), more than the whole reunion, which is a signal that the overlap got counted twice.</div></details></div>
 <aside class="key"><span class="tag">Key idea</span><div><b>Inclusion-exclusion.</b> The number in $A$ or $B$ is $|A|+|B|-|A\cap B|$. Adding the two groups counts anyone in both twice, once in each total, so subtract the overlap once. The number in <em>neither</em> is then just the grand total minus that. When items are sorted two ways at once, arrange the four groups in a $2\times2$ table. Each row adds across to a side total and each column adds down to a bottom total, and both must agree with the grand total in the corner. So a missing cell is never a guess. Subtract the known cells from the row or column total they share and it appears.</div></aside>
 <figure class="fig"><svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two by two table of fifty-five cats sorted by kitten or adult across the top and short hair or long hair down the side. The filled cells show twelve short haired kittens, twenty short haired adults, and sixteen long haired adults. The long haired kitten cell is left blank and marked with a gold question mark. A total row below shows nineteen kittens in all and fifty-five cats in all. An arrow leads from the blank cell to the working nineteen minus twelve equals seven, the missing long haired kitten count.">
-  <text x="220" y="22" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#2E7D4F">SUBTRACTION FILLS THE BLANK CELL</text>
+  <text x="220" y="22" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="600" fill="#2E7D4F">Subtraction fills the blank cell</text>
   <text x="180" y="58" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#445C48">Kitten</text>
   <text x="270" y="58" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#445C48">Adult</text>
   <text x="360" y="58" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#2E7D4F">Total</text>
@@ -209,7 +209,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
   <text x="270" y="104" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700" fill="#1B2E1F">20</text>
   <text x="180" y="157" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="#7a4f00">?</text>
   <text x="270" y="157" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="700" fill="#1B2E1F">16</text>
-  <line x1="120" y1="184" x2="390" y2="184" stroke="rgba(22,75,53,.14)" stroke-width="1"/>
+  <line fill="none" x1="120" y1="184" x2="390" y2="184" stroke="rgba(22,75,53,.14)" stroke-width="1"/>
   <text x="180" y="200" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2E7D4F">19</text>
   <text x="360" y="200" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2E7D4F">55</text>
   <text x="360" y="216" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="10" fill="#2E7D4F">cats in all</text>
