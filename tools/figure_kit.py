@@ -10,7 +10,7 @@ Design language (from the reference):
 """
 BLUE   = dict(ink='#1d4ed8', mid='#2f6fe0', soft='#dbe8fd', line='#bfd6fb', badge='#2563eb')
 GREEN  = dict(ink='#15803d', mid='#16a34a', soft='#dcfce7', line='#bbf7d0', badge='#16a34a')
-GOLD   = dict(soft='#fde68a', line='#f0c14b', ink='#8a5a08')
+GOLD   = dict(soft='#fde68a', line='#f0c14b', ink='#8a5a08', mid='#d9a521', badge='#d9a521')
 GREY   = dict(soft='#eef1f6', line='#dbe1ea', ink='#64748b')
 PAPER  = '#ffffff'
 CARDBG = '#fbfcfe'
