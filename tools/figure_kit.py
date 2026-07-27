@@ -90,16 +90,21 @@ def sparkle(cx, cy, r, colour, op=0.9):
             f'C{cx-k} {cy+k} {cx-k} {cy+k} {cx-r} {cy} '
             f'C{cx-k} {cy-k} {cx-k} {cy-k} {cx} {cy-r} Z" fill="{colour}" opacity="{op}"/>')
 
-def result(x, y, w, h, pal, base, exp, fs=32):
-    """White card, coloured border, base^exp, two sparkles."""
+def result(x, y, w, h, pal, base, exp=None, fs=32):
+    """White card, coloured border, two sparkles. exp=None renders plain text."""
     cx, cy = x + w / 2, y + h / 2
+    if exp is None:
+        body = (f'<text x="{cx}" y="{cy + fs * 0.34}" text-anchor="middle" font-size="{fs}" '
+                f'font-weight="700" fill="{pal["ink"]}">{base}</text>')
+    else:
+        body = (f'<text x="{cx}" y="{cy + fs * 0.34}" text-anchor="middle" font-size="{fs}" '
+                f'font-weight="700" fill="{pal["ink"]}">{base}'
+                f'<tspan font-size="{int(fs * 0.62)}" dy="-{int(fs * 0.42)}">{exp}</tspan></text>')
     return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="18" fill="{PAPER}" '
             f'stroke="{pal["mid"]}" stroke-width="2" filter="url(#qcard)"/>'
             + sparkle(x + 22, y + 21, 7.5, pal['mid'])
             + sparkle(x + w - 20, y + h - 19, 6, pal['mid'], 0.75)
-            + f'<text x="{cx}" y="{cy + fs * 0.34}" text-anchor="middle" font-size="{fs}" '
-              f'font-weight="700" fill="{pal["ink"]}">{base}'
-              f'<tspan font-size="{int(fs * 0.62)}" dy="-{int(fs * 0.42)}">{exp}</tspan></text>')
+            + body)
 
 def dot(cx, cy, colour, r=4.5):
     return f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{colour}"/>'
@@ -112,3 +117,67 @@ def pw(x, y, base, exp, colour, fs=26, anchor='middle'):
     """base^exp as text."""
     return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{fs}" font-weight="700" '
             f'fill="{colour}">{base}<tspan font-size="{int(fs*0.62)}" dy="-{int(fs*0.40)}">{exp}</tspan></text>')
+
+
+# ── extra components for the Algebra I set ──────────────────────────────────
+GREYPAL = dict(ink='#94a3b8', mid='#aab4c2', soft='#eef1f6', line='#dbe1ea', badge='#94a3b8')
+
+def card(x, y, w, h, txt, pal, fs=27, sub=None):
+    """White card holding an expression."""
+    cx, cy = x + w / 2, y + h / 2
+    t = (f'<text x="{cx}" y="{cy + fs*0.34}" text-anchor="middle" font-size="{fs}" '
+         f'font-weight="700" fill="{pal["ink"]}">{txt}</text>')
+    if sub:
+        t = (f'<text x="{cx}" y="{cy + fs*0.10}" text-anchor="middle" font-size="{fs}" '
+             f'font-weight="700" fill="{pal["ink"]}">{txt}</text>'
+             f'<text x="{cx}" y="{cy + fs*0.10 + 22}" text-anchor="middle" font-size="14" '
+             f'font-weight="600" fill="{pal["mid"]}">{sub}</text>')
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="17" fill="{PAPER}" '
+            f'stroke="{pal["mid"]}" stroke-width="2" filter="url(#qcard)"/>' + t)
+
+def arrowl(x1, x2, y, colour, w=3):
+    """Arrow pointing left, from x2 back to x1."""
+    return (f'<path d="M{x2} {y} H{x1+9}" fill="none" stroke="{colour}" stroke-width="{w}" stroke-linecap="round"/>'
+            f'<path d="M{x1+13} {y-7} L{x1} {y} L{x1+13} {y+7}" fill="none" stroke="{colour}" '
+            f'stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"/>')
+
+def strike(x1, y1, x2, y2, colour, w=3):
+    return (f'<path d="M{x1} {y1} L{x2} {y2}" fill="none" stroke="{colour}" '
+            f'stroke-width="{w}" stroke-linecap="round"/>')
+
+def pill(x, y, w, h, pal, r=None):
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{r or h/2}" '
+            f'fill="{pal["soft"]}" stroke="{pal["line"]}" stroke-width="1.5"/>')
+
+def tag(x, y, txt, pal, fs=13):
+    """Small outlined tag, sentence case (never all caps)."""
+    w = max(52, 10 + len(txt) * fs * 0.58)
+    return (f'<rect x="{x}" y="{y}" width="{w:.0f}" height="26" rx="9" fill="{PAPER}" '
+            f'stroke="{pal["mid"]}" stroke-width="1.6"/>'
+            f'<text x="{x + w/2:.0f}" y="{y+18}" text-anchor="middle" font-size="{fs}" '
+            f'font-weight="700" fill="{pal["ink"]}">{txt}</text>')
+
+def caption(x, y, txt, colour, fs=17, anchor='start'):
+    return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{fs}" '
+            f'font-weight="600" fill="{colour}">{txt}</text>')
+
+def numline(x, y, w, ticks, colour, marks=()):
+    """Horizontal axis with ticks; marks = [(fraction 0..1, label, dotcolour)]."""
+    o = [f'<path d="M{x} {y} H{x+w}" fill="none" stroke="{colour}" stroke-width="2.5" stroke-linecap="round"/>']
+    for i in range(ticks + 1):
+        tx = x + w * i / ticks
+        o.append(f'<path d="M{tx:.1f} {y-7} V{y+7}" fill="none" stroke="{colour}" stroke-width="2" stroke-linecap="round"/>')
+    for frac, lab, dc in marks:
+        tx = x + w * frac
+        o.append(f'<circle cx="{tx:.1f}" cy="{y}" r="9" fill="{dc}"/>')
+        o.append(f'<text x="{tx:.1f}" y="{y-20}" text-anchor="middle" font-size="18" '
+                 f'font-weight="700" fill="{dc}">{lab}</text>')
+    return ''.join(o)
+
+def frac(cx, cy, num, den, colour, fs=25, half=52):
+    """Stacked fraction centred on (cx, cy)."""
+    return (f'<text x="{cx}" y="{cy-11}" text-anchor="middle" font-size="{fs}" font-weight="700" '
+            f'fill="{colour}">{num}</text>'
+            f'<path d="M{cx-half} {cy} H{cx+half}" fill="none" stroke="{colour}" stroke-width="2.4" stroke-linecap="round"/>'
+            f'<text x="{cx}" y="{cy+fs+4}" text-anchor="middle" font-size="{fs}" font-weight="700" '
+            f'fill="{colour}">{den}</text>')
