@@ -131,7 +131,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .pill{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px;border:1.5px solid var(--ink);text-decoration:none;white-space:nowrap;transition:transform .15s}
 .pill:hover{transform:translateY(-2px)}.pill.solid{background:var(--lime);border-color:var(--lime)}
 .crumbs{font-size:13px;color:var(--gray);padding:8px 0 0}.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}
-.head{padding:22px 0 8px}.head .ey{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:12px}
+.head{padding:22px 0 8px}.head .ey{font-size:14px;font-weight:600;color:var(--gray);margin-bottom:12px}
 .head h1{font-size:clamp(30px,5.5vw,52px);letter-spacing:-.035em}
 .startbar{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 8px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 .content{padding:12px 0 8px;font-size:17px}
@@ -139,7 +139,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .content b{font-weight:700}
 .key{background:linear-gradient(180deg,rgba(199,240,154,.5),rgba(199,240,154,.22));border:1px solid rgba(10,10,10,.14);border-radius:16px;padding:20px 22px;margin:24px 0}
 .fact{background:rgba(95,160,107,.22);border-left:3px solid var(--slate);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0}
-.tag{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+.tag{display:block;font-size:14px;font-weight:700;color:var(--slate);margin-bottom:8px}
 .prob{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0;background:rgba(255,255,255,.35)}
 .prob-q{font-size:16px}
 .sol{margin-top:12px}.sol summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);user-select:none}
@@ -152,7 +152,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.0
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
 .pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 10px}
 .pager a{border:1px solid var(--line);border-radius:16px;padding:16px 20px;text-decoration:none;background:rgba(255,255,255,.35)}
-.pager a:hover{border-color:var(--ink)}.pager .dir{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:.1em}
+.pager a:hover{border-color:var(--ink)}.pager .dir{font-size:13px;color:var(--gray)}
 .pager a.next{text-align:right}.pager .t{font-weight:600;margin-top:4px}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--ink);padding:30px 0;margin-top:30px;font-size:14px}
 .foot a{text-decoration:none;margin-left:16px}
@@ -180,7 +180,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0;font-weight:700;letter-sp
 .pill:hover{transform:translateY(-2px)}
 .pill.solid{background:var(--lime);border-color:var(--lime)}
 .hero{padding:clamp(30px,6vw,72px) 0 clamp(24px,4vw,48px)}
-.kick{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin:0 0 16px}
+.kick{font-size:14px;font-weight:600;color:var(--gray);margin:0 0 16px}
 .hero h1{font-size:clamp(48px,9vw,110px);letter-spacing:-.04em}
 .hero .lead{font-size:clamp(17px,1.6vw,21px);max-width:60ch;margin:24px 0 0;color:var(--ink)}
 .hero .lead .dim{color:var(--gray)}
@@ -194,7 +194,7 @@ section{padding:clamp(40px,7vw,90px) 0}
 .chs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
 .ch{border:1px solid var(--line);border-radius:20px;padding:24px 26px;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.15))}
 .ch header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.ch .chn{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.ch .chn{font-size:13px;font-weight:600;color:var(--gray)}
 .ch h3{font-size:22px;letter-spacing:-.02em;flex:1 1 auto}
 .ch .chc{font-size:13px;color:var(--gray)}
 .ch ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -203,7 +203,7 @@ section{padding:clamp(40px,7vw,90px) 0}
 .ch li a:hover{border-color:var(--ink)}
 .ch .lk{display:inline-block;min-width:34px;color:var(--gray);font-variant-numeric:tabular-nums}
 .ch li.soon{color:var(--gray)}
-.ch li.soon em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;margin-left:4px;border-radius:999px;background:var(--line);color:var(--ink);vertical-align:1px}
+.ch li.soon em{font-style:normal;font-size:12px;font-weight:600;padding:1px 8px;margin-left:4px;border-radius:999px;background:var(--line);color:var(--ink);vertical-align:1px}
 .how{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
 .how .step .n{font-size:40px;font-weight:700;letter-spacing:-.03em}
 .how .step h3{font-size:20px;margin:8px 0 6px}
@@ -300,7 +300,6 @@ def gen_hub():
 </header>
 <main>
 <section class="wrap hero">
-  <p class="kick">Quantica · Course</p>
   <h1><span class="mark">{H.escape(CTITLE)}</span></h1>
   <p class="lead">Learn {H.escape(CTITLE)} by <em>solving</em>, not memorizing. <span class="dim">{H.escape(META["lead"])}</span></p>
   <div class="cta">
