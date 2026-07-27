@@ -37,6 +37,9 @@ def badge(cx, cy, glyph, pal, r=23):
     if glyph == '+':
         g = (f'<path d="M{cx-9} {cy} H{cx+9} M{cx} {cy-9} V{cy+9}" fill="none" stroke="#fff" '
              f'stroke-width="4.2" stroke-linecap="round"/>')
+    elif glyph == '-':
+        g = (f'<path d="M{cx-9} {cy} H{cx+9}" fill="none" stroke="#fff" '
+             f'stroke-width="4.2" stroke-linecap="round"/>')
     elif glyph == 'x':
         d = 6.6
         g = (f'<path d="M{cx-d} {cy-d} L{cx+d} {cy+d} M{cx+d} {cy-d} L{cx-d} {cy+d}" fill="none" stroke="#fff" '
@@ -161,7 +164,7 @@ def caption(x, y, txt, colour, fs=17, anchor='start'):
     return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{fs}" '
             f'font-weight="600" fill="{colour}">{txt}</text>')
 
-def numline(x, y, w, ticks, colour, marks=()):
+def numline(x, y, w, ticks, colour, marks=(), below=False):
     """Horizontal axis with ticks; marks = [(fraction 0..1, label, dotcolour)]."""
     o = [f'<path d="M{x} {y} H{x+w}" fill="none" stroke="{colour}" stroke-width="2.5" stroke-linecap="round"/>']
     for i in range(ticks + 1):
@@ -170,7 +173,8 @@ def numline(x, y, w, ticks, colour, marks=()):
     for frac, lab, dc in marks:
         tx = x + w * frac
         o.append(f'<circle cx="{tx:.1f}" cy="{y}" r="9" fill="{dc}"/>')
-        o.append(f'<text x="{tx:.1f}" y="{y-20}" text-anchor="middle" font-size="18" '
+        ly = y + 34 if below else y - 20
+        o.append(f'<text x="{tx:.1f}" y="{ly}" text-anchor="middle" font-size="18" '
                  f'font-weight="700" fill="{dc}">{lab}</text>')
     return ''.join(o)
 
@@ -181,3 +185,38 @@ def frac(cx, cy, num, den, colour, fs=25, half=52):
             f'<path d="M{cx-half} {cy} H{cx+half}" fill="none" stroke="{colour}" stroke-width="2.4" stroke-linecap="round"/>'
             f'<text x="{cx}" y="{cy+fs+4}" text-anchor="middle" font-size="{fs}" font-weight="700" '
             f'fill="{colour}">{den}</text>')
+
+
+def arc(x1, x2, y, colour, label='', up=True, lift=54, fs=15):
+    """Curved arrow from x1 to x2, bowing above (up) or below the baseline."""
+    mid = (x1 + x2) / 2
+    cy = y - lift if up else y + lift
+    d = f'M{x1} {y} Q{mid} {cy} {x2} {y}'
+    # arrowhead at the x2 end, pointing along the tangent
+    sgn = 1 if x2 > x1 else -1
+    ay = y - 11 if up else y + 11
+    head = (f'<path d="M{x2 - sgn*13} {ay} L{x2} {y} L{x2 - sgn*13} {y + (11 if up else -11)}" '
+            f'fill="none" stroke="{colour}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
+    lab = (f'<text x="{mid}" y="{cy - 8 if up else cy + 20}" text-anchor="middle" font-size="{fs}" '
+           f'font-weight="700" fill="{colour}">{label}</text>') if label else ''
+    return (f'<path d="{d}" fill="none" stroke="{colour}" stroke-width="2.6" stroke-linecap="round"/>'
+            + head + lab)
+
+def cells(x, y, w, h, n, pal, label=None, fs=15):
+    """A bar split into n equal cells."""
+    o = [f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="10" fill="{pal["soft"]}" '
+         f'stroke="{pal["line"]}" stroke-width="1.8"/>']
+    for i in range(1, n):
+        cx = x + w * i / n
+        o.append(f'<path d="M{cx:.1f} {y} V{y+h}" fill="none" stroke="{pal["line"]}" stroke-width="1.5"/>')
+    if label:
+        o.append(f'<text x="{x + w/2}" y="{y - 10}" text-anchor="middle" font-size="{fs}" '
+                 f'font-weight="700" fill="{pal["ink"]}">{label}</text>')
+    return ''.join(o)
+
+def eqrow(x, y, left, right, pal, fs=21, w=300):
+    """One row of an equation ladder: left = right."""
+    return (f'<text x="{x}" y="{y}" font-size="{fs}" font-weight="700" fill="{pal["ink"]}">{left}</text>'
+            f'<text x="{x+w*0.62:.0f}" y="{y}" font-size="{fs}" font-weight="700" fill="{pal["mid"]}">=</text>'
+            f'<text x="{x+w:.0f}" y="{y}" text-anchor="end" font-size="{fs}" font-weight="700" '
+            f'fill="{pal["ink"]}">{right}</text>')
