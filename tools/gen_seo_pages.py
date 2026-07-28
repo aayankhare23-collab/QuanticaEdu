@@ -344,6 +344,120 @@ def gen_hub():
 </body></html>'''
     open(f"{ROOT}/{COURSE}.html","w",encoding="utf-8").write(page)
 
+# Search-facing titles. The lesson name is what a textbook chapter is called; these are
+# what a person actually types into Google. Each one still contains the topic term, so the
+# page targets both.
+SEO_TITLE = {
+ "prealgebra": {
+  "1.1":"Why Arithmetic Comes Before Algebra",
+  "1.2":"How to Add and Subtract Negative Numbers",
+  "1.3":"Why a Negative Times a Negative Is Positive",
+  "1.4":"Arithmetic Practice Problems with Full Solutions",
+  "1.5":"Division Rules and Why You Cannot Divide by Zero",
+  "1.6":"The Rules of Arithmetic, Summarized",
+  "2.1":"Squares and Cubes, and What They Really Mean",
+  "2.2":"The Laws of Exponents and How to Use Them",
+  "2.3":"Why Any Number to the Zero Power Equals 1",
+  "2.4":"What a Negative Exponent Actually Means",
+  "2.5":"How to Raise a Power to Another Power",
+  "2.6":"Exponent Rules, Summarized",
+  "3.1":"Factors and Multiples, and How They Differ",
+  "3.2":"Divisibility Rules for 2, 3, 4, 5, 6, 9 and 10",
+  "3.3":"How to Find the Prime Factorization of a Number",
+  "3.5":"How to Find the GCD and LCM of Two Numbers",
+  "3.6":"How to Count the Factors of a Number",
+  "3.7":"Factors, Primes, GCD and LCM, Summarized",
+  "4.1":"What a Fraction Actually Means",
+  "4.2":"How to Find Equivalent Fractions",
+  "4.3":"How to Multiply and Divide Fractions",
+  "4.4":"How to Find a Common Denominator and Simplify",
+  "4.6":"How to Add and Subtract Fractions",
+  "4.7":"Mixed Numbers and Improper Fractions",
+  "4.8":"How to Tell Which Fraction Is Bigger",
+  "5.1":"Place Value and How Decimals Work",
+  "5.2":"How to Add, Subtract, Multiply and Divide Decimals",
+  "5.3":"How to Convert Between Fractions and Decimals",
+  "5.4":"How to Round Numbers and Estimate Answers",
+  "5.5":"How to Turn a Repeating Decimal into a Fraction",
+  "6.1":"How to Write an Algebraic Expression",
+  "6.2":"How to Solve a Linear Equation, Step by Step",
+  "6.3":"How to Solve Equations with Variables on Both Sides",
+  "6.4":"How to Turn a Word Problem into an Equation",
+  "6.5":"How to Solve Inequalities and When to Flip the Sign",
+  "7.1":"What a Ratio Is and How to Use One",
+  "7.2":"How to Work with Ratios of Three or More Parts",
+  "7.3":"How to Find a Unit Rate",
+  "7.4":"How to Set Up and Solve a Proportion",
+  "7.5":"How to Convert Units Using Ratios",
+  "8.1":"What a Square Root Is",
+  "8.2":"How to Estimate a Square Root Without a Calculator",
+  "8.3":"How to Simplify a Square Root",
+  "8.4":"How to Add, Multiply and Divide Square Roots",
+  "9.1":"How to Convert a Percent to a Fraction",
+  "9.2":"How to Find a Percent of a Number",
+  "9.3":"How to Calculate Percent Increase and Decrease",
+  "9.4":"How to Solve Percent Word Problems",
+  "10.1":"How to Count by Adding and Subtracting Cases",
+  "10.2":"The Multiplication Principle of Counting",
+  "10.3":"How to Solve Counting Problems with Casework",
+  "10.4":"How to Count Pairs and Handshakes",
+  "10.5":"How to Find the Probability of an Event",
+  "10.6":"How to Find the Mean, Median and Mode",
+  "10.7":"How to Read Tables and Graphs",
+  "10.8":"How Statistics Can Mislead You",
+  "11.1":"How to Measure and Name Angles",
+  "11.2":"Angles Made by Parallel Lines and a Transversal",
+  "11.3":"How to Find the Sum of Angles in a Polygon",
+  "11.4":"How to Work with Segment Lengths",
+  "11.5":"How to Find the Perimeter of a Shape",
+  "11.6":"How to Find the Area of Any Common Shape",
+  "11.7":"How to Find the Area and Circumference of a Circle",
+  "11.8":"How to Use the Pythagorean Theorem",
+  "11.9":"30-60-90 and 45-45-90 Triangle Rules",
+  "11.10":"The Types of Quadrilaterals and How They Relate",
+  "12.1":"How to Solve Math Problems by Finding a Pattern",
+  "12.2":"How to Solve Problems with an Organized List",
+  "12.3":"How to Solve Math Problems by Drawing a Picture",
+  "12.4":"How to Solve Math Problems by Working Backwards",
+ },
+ "algebra1": {
+  "1.1":"Integers, Rationals and Real Numbers Explained",
+  "1.2":"Order of Operations, PEMDAS Done Properly",
+  "1.3":"When You Can Reorder Terms and When You Cannot",
+  "1.4":"What an Algebraic Expression Is",
+  "1.5":"Exponent Rules in Algebra",
+  "1.6":"How to Evaluate an Algebraic Expression",
+  "2.1":"How to Use the Distributive Property",
+  "2.2":"How to Evaluate Expressions Quickly",
+  "2.3":"How to Factor Out a Common Factor",
+  "2.4":"How to Combine Like Terms",
+  "2.5":"How to Simplify Fractions with Variables",
+  "2.6":"How to Simplify Expressions with Many Variables",
+  "3.1":"The Laws of Exponents with Variables",
+ },
+}
+
+SEOQ = SEO_TITLE.get(COURSE, {})
+
+def clean_desc(raw, seo_title):
+    """A meta description Google can print. Whole sentences only, and never any math,
+    because stripped LaTeX leaves debris like "marks 3 4 of the way out"."""
+    x = re.sub(r'<svg.*?</svg>', '', raw or '', flags=re.S)
+    x = H.unescape(re.sub(r'<[^>]+>', ' ', x))
+    x = re.sub(r'\s+', ' ', x).strip()
+    out = ''
+    for sent in re.findall(r'[^.!?]+[.!?]', x):
+        sent = sent.strip()
+        # skip math, and skip fragments left behind when a sentence split inside a number
+        if re.search(r'[\\$]', sent) or len(sent.split()) < 4 or not sent[:1].isupper():
+            continue
+        if len(out) + len(sent) + 1 > 155:
+            break
+        out = (out + ' ' + sent).strip()
+    if len(out) < 60:
+        out = f"{seo_title}. Worked examples with hints and full solutions, free on Quantica."
+    return out
+
 # ---- lesson pages ----
 os.makedirs(ROOT+"/"+COURSE, exist_ok=True)
 sitemap_urls=[f"{BASE}/{COURSE}"]
@@ -351,8 +465,8 @@ for idx,k in enumerate(ORDER):
     L=DATA[k]; title=L['title']; slug=SLUG[k]; chn,cht=CHOF[k]
     url=f"{BASE}/{COURSE}/{slug}"
     sitemap_urls.append(url)
-    desc=strip_text((L.get('blocks') or [{}])[0].get('x',''))[:155] or f"{title}, a {CTITLE} lesson from Quantica."
-    desc=f"{title}: {desc}"[:158]
+    seo_title=SEOQ.get(k) or title
+    desc=clean_desc((L.get('blocks') or [{}])[0].get('x',''), seo_title)
     prev_k=ORDER[idx-1] if idx>0 else None
     next_k=ORDER[idx+1] if idx<len(ORDER)-1 else None
     def pager_link(kk,dir_,cls):
@@ -371,11 +485,11 @@ for idx,k in enumerate(ORDER):
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 {GA}
-<title>{H.escape(title)}, {H.escape(CTITLE)} | Quantica</title>
+<title>{H.escape(seo_title)} | Quantica</title>
 <meta name="description" content="{H.escape(desc)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Quantica">
-<meta property="og:title" content="{H.escape(title)}, {H.escape(CTITLE)}">
+<meta property="og:title" content="{H.escape(seo_title)}">
 <meta property="og:description" content="{H.escape(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{OGIMG}">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
