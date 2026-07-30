@@ -4,7 +4,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "A <b>factor</b> of a number is a side of a rectangle with that area, every row the same length, nothing left over. Factors travel in pairs, since each side has a matching partner on the opposite edge whose product is the original number."
+    "x": "A <b>factor</b> of a number is a whole number that divides it with nothing left over. Picture it as a side of a rectangle with that area. Each factor has a partner, the matching side, and the two multiply to the original number."
    },
    {
     "t": "prob",
@@ -70,7 +70,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Factor and multiple are one relationship, read from two ends.</b> A whole number $f$ is a <b>factor</b> (or <b>divisor</b>) of $n$ when $n = f \\times k$ for some whole number $k$, equivalently when $n \\div f$ leaves no remainder, equivalently when $n$ objects fill a rectangle with $f$ along one side. Turn the same arrow around and $n$ is a <b>multiple</b> of $f$, sitting $k$ whole steps of size $f$ out from $0$. So $f$ is a factor of $n$ exactly when $n$ is a multiple of $f$, and any statement about one is already a statement about the other. Factors also travel in pairs, since each side $f$ is matched by its partner $n \\div f$, and the two multiply to $n$."
+    "x": "<b>Factor and multiple describe the same relationship.</b> A whole number $f$ is a <b>factor</b> (or <b>divisor</b>) of $n$ when $n = f \\times k$ for some whole number $k$. Equivalently, $n \\div f$ leaves no remainder. As a picture, $n$ objects fill a rectangle with $f$ along one side. Stated the other way, $n$ is a <b>multiple</b> of $f$, which is $k$ whole steps of size $f$ from $0$. So $f$ is a factor of $n$ exactly when $n$ is a multiple of $f$. Factors come in pairs, since $f$ is matched by $n \\div f$, and the two multiply to $n$."
    },
    {
     "t": "prob",
@@ -94,7 +94,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>An odd factor count is the fingerprint of a perfect square.</b> Almost every factor pairs with a different partner, so factors come two at a time and the count is even. The one way to break that is for a factor to pair with itself, $f \\times f = n$, which happens exactly when $n$ is a perfect square. That lone self-paired factor is counted once, tipping the total to odd. So a whole number has an odd number of factors precisely when it is a perfect square, and the unpaired factor is the side of that square."
+    "x": "<b>A whole number has an odd number of factors exactly when it is a perfect square.</b> Almost every factor pairs with a different partner, so factors come two at a time and the count is even. The one way to break that is for a factor to pair with itself, $f \\times f = n$, which happens exactly when $n$ is a perfect square. That self-paired factor is counted once, so the total is odd. The unpaired factor is the side of the square."
    },
    {
     "t": "prob",
@@ -125,7 +125,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Factors are finite, multiples run forever.</b> Every factor of $n$ is at least $1$ and at most $n$, since its partner side is never smaller than $1$, so the factor list closes. But from any multiple you can always step once more and reach a fresh one, so multiples never run out. Three smaller facts come with this. $1$ is a factor of every $n$, every $n$ is both a factor and a multiple of itself, and $0$ is a multiple of every $n$. To count the multiples of $n$ from $1$ up to a value $V$, see how many whole $n$-steps fit, that is $V \\div n$ with the remainder dropped. So count up to the top of a range and subtract the multiples below the bottom, watching whether each endpoint is itself a multiple."
+    "x": "<b>Factors are finite, multiples are not.</b> Every factor of $n$ is at least $1$ and at most $n$, since its partner side is never smaller than $1$. Only finitely many numbers fit in that range. But from any multiple you can step once more to a new one, so multiples never run out. Three smaller facts hold. $1$ is a factor of every $n$, every $n$ is both a factor and a multiple of itself, and $0$ is a multiple of every $n$. To count the multiples of $n$ from $1$ up to a value $V$, count how many whole $n$-steps fit. That count is $V \\div n$ with the remainder dropped. Within a range, count up to the top and subtract the multiples below the bottom. Check whether each endpoint is itself a multiple."
    },
    {
     "t": "p",
@@ -178,11 +178,11 @@
    },
    {
     "t": "p",
-    "x": "The number \\(12\\) is built from \\(3\\) and \\(4\\), since \\(12 = 4 \\times 3\\). So is every multiple of \\(12\\) also a multiple of \\(3\\), and of \\(4\\)? And does it work the other way, is every multiple of \\(3\\) a multiple of \\(12\\)?"
+    "x": "The number \\(12\\) is built from \\(3\\) and \\(4\\), since \\(12 = 4 \\times 3\\). So is every multiple of \\(12\\) also a multiple of \\(3\\), and of \\(4\\)? And does it work the other way? Is every multiple of \\(3\\) a multiple of \\(12\\)?"
    },
    {
     "t": "imp",
-    "x": "<b>Multiples stay multiples, two ways.</b> First, <b>closure</b>. Add or subtract two multiples of $n$ and you land on a multiple of $n$ again, since the shared $n$ factors out, $na \\pm nb = n(a \\pm b)$. The sharper half follows. A multiple of $n$ plus a non-multiple can never be a multiple, or else subtracting would force the stray number to be a multiple too. Second, <b>chaining</b>. If $a$ is a factor of $b$, then every multiple of $b$ is automatically a multiple of $a$, since the multiple carries $b$ inside it, and $b$ carries $a$. A multiple of $12$ is therefore a multiple of $1, 2, 3, 4, 6$ as well. The chain runs only downward toward smaller factors, never up, which is why a multiple of $3$ need not be a multiple of $12$."
+    "x": "<b>Two rules for when a number is a multiple.</b> The first is <b>closure</b>. Add or subtract two multiples of $n$ and the result is a multiple of $n$ again, since the shared $n$ factors out, $na \\pm nb = n(a \\pm b)$. A multiple of $n$ plus a non-multiple is never a multiple, since subtracting the multiple back off would make the other number a multiple too. The second is <b>chaining</b>. If $a$ is a factor of $b$, then every multiple of $b$ is also a multiple of $a$, since that multiple has $b$ as a factor and $b$ has $a$ as a factor. A multiple of $12$ is therefore a multiple of $1, 2, 3, 4, 6$ as well. Chaining works only toward smaller factors, so a multiple of $3$ need not be a multiple of $12$."
    },
    {
     "t": "prob",
@@ -592,7 +592,7 @@
    },
    {
     "t": "imp",
-    "x": "Cut a number at the right spot and one chunk becomes a clean multiple of the divisor, so closure drops it and only a short tail decides. Split off the units digit, $N=10k+u$. Since $10$ carries a $2$ and a $5$, the whole $10k$ is a multiple of $2$, $5$, and $10$, so the verdict rides on $u$ alone. Divisible by $10$ when $u=0$, by $5$ when $u=0$ or $5$, by $2$ when $u$ is even. The same trick climbs a ladder, because each power of two divides the matching power of ten: $2\\mid 10$, $4\\mid 100$, $8\\mid 1000$. So read the last $1$ digit for $2$, the last $2$ digits for $4$ (since $100=4\\times 25$), and the last $3$ digits for $8$ (since $1000=8\\times 125$)."
+    "x": "A number can be split so that one piece is a multiple of the divisor. Closure makes that piece irrelevant, so only the other piece matters. Split off the units digit, $N=10k+u$. Both $2$ and $5$ are factors of $10$, so $10k$ is a multiple of $2$, $5$, and $10$, and only $u$ matters. It is divisible by $10$ when $u=0$, by $5$ when $u=0$ or $5$, and by $2$ when $u$ is even. The same split works higher up, since each power of two divides the matching power of ten, $2\\mid 10$, $4\\mid 100$, $8\\mid 1000$. So read the last $1$ digit for $2$, the last $2$ digits for $4$ (since $100=4\\times 25$), and the last $3$ digits for $8$ (since $1000=8\\times 125$)."
    },
    {
     "t": "p",
@@ -667,7 +667,7 @@
    },
    {
     "t": "imp",
-    "x": "When no power of ten is a clean multiple of the divisor, read the small remainder each place leaves. Every power of ten is one more than a multiple of $9$ ($10=9+1$, $100=99+1$), so closure sweeps the nines away and a number shares its remainder with its <b>digit sum</b>. So it is divisible by $9$ when the digit sum is, and by $3$ as well, since $3$ divides every nine. Summing the digits over and over shrinks any number to a single <b>digital root</b>, its remainder mod $9$ (or $9$ itself when the number is a multiple of $9$). For $11$ the powers of ten land just under then over a multiple ($10=11-1$, $100=99+1$), so the remainders flip $-1,+1,-1,\\ldots$ and the deciding total is the <b>alternating</b> digit sum, signs starting plus at the units."
+    "x": "When no power of ten is a multiple of the divisor, use the remainder each power of ten leaves. Every power of ten is one more than a multiple of $9$ ($10=9+1$, $100=99+1$), so by closure a number leaves the same remainder as its <b>digit sum</b>. So it is divisible by $9$ when the digit sum is, and by $3$ as well, since $3$ divides every nine. Summing the digits over and over reduces any number to a single <b>digital root</b>, its remainder mod $9$ (or $9$ itself when the number is a multiple of $9$). For $11$, each power of ten is one less or one more than a multiple ($10=11-1$, $100=99+1$), so the remainders alternate $-1,+1,-1,\\ldots$ and the test uses the <b>alternating</b> digit sum, with signs starting plus at the units."
    },
    {
     "t": "fact",
@@ -744,7 +744,7 @@
    },
    {
     "t": "imp",
-    "x": "To test a composite divisor, split it into two <b>coprime</b> factors (sharing no common factor), test each, and it passes the whole exactly when it passes both. So $6=2\\times 3$, $12=3\\times 4$, $15=3\\times 5$, $20=4\\times 5$ all work. The split must be coprime, since $12=2\\times 6$ fails, both pieces demand a $2$, which might be the same $2$ counted twice, while $12=2^2\\times 3$ needs two of them. That is why $18$ passes the tests for $2$ and $6$ yet is not a multiple of $12$."
+    "x": "Two numbers are <b>coprime</b> when they share no common factor. To test a composite divisor, split it into two coprime factors and test each. A number is divisible by the whole exactly when it passes both. So $6=2\\times 3$, $12=3\\times 4$, $15=3\\times 5$, $20=4\\times 5$ work. The split $12=2\\times 6$ is not coprime and fails. Each piece needs a $2$, and one $2$ can serve both, but $12=2^2\\times 3$ needs two. $18$ passes the tests for $2$ and $6$ but is not a multiple of $12$."
    },
    {
     "t": "p",
@@ -785,11 +785,11 @@
    },
    {
     "t": "imp",
-    "x": "The same place-value cuts that judge a number can fill in a missing digit. For $9$, only the digit sum matters, so choose the hidden digit that lands the sum on a multiple of $9$, and usually one value works (both $0$ and $9$ if the rest already sum to a multiple of $9$). For $4$, only the last two digits matter, a separate window blind to the rest. When two rules must hold at once, each window rules out choices, and the hidden digit is pinned where the survivors overlap."
+    "x": "The same place-value rules that test a number can also fill in a missing digit. For $9$, only the digit sum matters, so pick the hidden digit that brings the sum to a multiple of $9$. Usually one value works, though both $0$ and $9$ work when the rest already sum to a multiple of $9$. For $4$, only the last two digits matter, so the rest is irrelevant. When two rules must hold at once, each one rules out some digits, and the answer is the digit left that satisfies both."
    },
    {
     "t": "p",
-    "x": "Every test worked the same way. Cut where one chunk becomes a multiple of the divisor, let closure drop that chunk, and read the small tail left behind. The cut lands in a different place for each divisor, and these tests will do real work in the prime factoring ahead."
+    "x": "Every test worked the same way. Cut where one chunk becomes a multiple of the divisor, use closure to drop that chunk, and check the small piece left over. The cut lands in a different place for each divisor. The next section uses these tests to find prime factors."
    }
   ],
   "review": [
@@ -1032,7 +1032,7 @@
    },
    {
     "t": "imp",
-    "x": "A number is prime when its only factors are 1 and itself, so it can be drawn only as a single thin strip. It is composite when it has more factors, so it can always be fattened into a wider rectangle. The number 1 is neither, since its one factor is 1. And 2 is the only even prime, because every larger even number already carries 2 as an extra factor and so must be composite."
+    "x": "A number is prime when its only factors are 1 and itself, so it can be drawn only as a single thin strip. It is composite when it has more factors, so it can also be drawn as a wider rectangle. The number 1 is neither, since its one factor is 1. The number 2 is the only even prime, since every larger even number has 2 as a factor and so is composite."
    },
    {
     "t": "prob",
@@ -1084,11 +1084,11 @@
    },
    {
     "t": "imp",
-    "x": "Every composite number hides a prime factor no larger than its square root, because in any factor pair $N = a \\times b$ the smaller partner sits at or below $\\sqrt{N}$. $$\\text{If } N \\text{ is composite, its smallest prime factor} \\le \\sqrt{N}.$$ So to test whether $n$ is prime, divide by the primes $2, 3, 5, 7, 11, \\ldots$ in order and stop the moment one climbs past $\\sqrt{n}$. If none divided $n$, it is prime. You only ever try primes, since any composite trial divisor is built from smaller primes you already checked, and the 3.2 shortcuts clear 2, 3, and 5 at a glance."
+    "x": "Every composite number has a prime factor no larger than its square root. In any factor pair $N = a \\times b$, the smaller factor is at or below $\\sqrt{N}$. $$\\text{If } N \\text{ is composite, its smallest prime factor} \\le \\sqrt{N}.$$ So to test whether $n$ is prime, divide by the primes $2, 3, 5, 7, 11, \\ldots$ in order and stop once a prime is larger than $\\sqrt{n}$. If none of them divided $n$, the number is prime. You only need to try primes, since any composite trial divisor is built from smaller primes you already checked. The tests in 3.2 handle 2, 3, and 5."
    },
    {
     "t": "p",
-    "x": "Split a composite into two smaller factors, split each composite piece again, and stop when every piece is prime. The branching picture, a <b>factor tree</b>, leaves primes at the bottom. Do two different trees always give the same primes?"
+    "x": "Split a composite into two smaller factors, split each composite piece again, and stop when every piece is prime. That branching picture is called a <b>factor tree</b>. It ends in primes. Do two different trees always give the same primes?"
    },
    {
     "t": "prob",
@@ -1123,7 +1123,7 @@
    },
    {
     "t": "imp",
-    "x": "Every whole number above 1 can be written as a product of primes in exactly one way, apart from the order. That product is its unique <b>prime factorization</b>, a fingerprint, with repeated primes packed into exponents, so $90 = 2 \\times 3^2 \\times 5$. The fingerprint comes out the same no matter which factor tree you start from, because always pulling out the smallest prime forces every step. This is the Fundamental Theorem of Arithmetic, and it makes primes the true building blocks of every whole number."
+    "x": "Every whole number above 1 can be written as a product of primes in exactly one way, apart from the order. That product is its <b>prime factorization</b>, and repeated primes are collected into exponents, so $90 = 2 \\times 3^2 \\times 5$. Because it is unique, it identifies the number. You get the same factorization from any factor tree, since pulling out the smallest prime first forces every step. This result is the Fundamental Theorem of Arithmetic."
    },
    {
     "t": "fig",
@@ -1164,7 +1164,7 @@
    },
    {
     "t": "imp",
-    "x": "Read the prime fingerprint and look only at the exponents. It is a perfect square exactly when every exponent is even, since the square root halves each one, and a perfect cube exactly when every exponent is a multiple of 3, since the cube root takes a third of each. Both are one idea. A number is a perfect $k$-th power exactly when every exponent is divisible by $k$. To reach the nearest square or cube, top up each short exponent with the missing copies of that prime."
+    "x": "Read the prime factorization and look only at the exponents. The number is a perfect square exactly when every exponent is even, since a square root halves each one. It is a perfect cube exactly when every exponent is a multiple of 3, since a cube root takes a third of each. A number is a perfect $k$-th power exactly when every exponent is divisible by $k$. To reach the nearest square or cube, add the missing copies of each prime whose exponent is short."
    },
    {
     "t": "prob",
@@ -1447,7 +1447,7 @@
    },
    {
     "t": "imp",
-    "x": "The <b>greatest common divisor</b> gcd(a,b), also called the greatest common factor, is the largest number that divides both a and b with nothing left over. Every pair has 1 on both divisor lists, so a common divisor always exists, and since a number never has a divisor larger than itself, there is always a single greatest one. Lay two fingerprints side by side and the <b>gcd takes each shared prime to the lower of its two powers</b>, because a common divisor can only use primes both numbers carry, and only as many copies as the stingier number has. A prime in just one fingerprint contributes nothing. When two numbers share no prime at all, their only common divisor is 1 and we call them <b>coprime</b>."
+    "x": "The <b>greatest common divisor</b> gcd(a,b), also called the greatest common factor, is the largest number that divides both a and b with nothing left over. Every pair has 1 as a common divisor, and no number has a divisor larger than itself, so a single greatest one always exists. Compare the two prime factorizations. The <b>gcd uses each shared prime raised to the lower of its two powers</b>, because a common divisor can only use primes that both numbers have, and only as many copies of each as both numbers have. A prime that appears in only one factorization is left out. When two numbers share no prime at all, their only common divisor is 1, and we call them <b>coprime</b>."
    },
    {
     "t": "prob",
@@ -1521,7 +1521,7 @@
    },
    {
     "t": "imp",
-    "x": "The <b>least common multiple</b> lcm(a,b) is the smallest positive number that both a and b divide evenly, the smallest number that is a multiple of each. Two events repeating every a and every b steps line up exactly at the common multiples of a and b, and the first alignment is their lcm. There is no greatest common multiple, since multiples run on forever, so the least one is the only interesting extreme. Lay two fingerprints side by side and the <b>lcm takes every prime to the higher of its two powers</b>, because a common multiple must contain enough of every prime demanded by either number. Every prime in either fingerprint appears, and a prime in neither contributes nothing."
+    "x": "The <b>least common multiple</b> lcm(a,b) is the smallest positive number that both a and b divide evenly. Two events that repeat every a steps and every b steps happen together at the common multiples of a and b, and the first of those is their lcm. There is no greatest common multiple, since every pair has infinitely many common multiples. Compare the two prime factorizations. The <b>lcm takes every prime to the higher of its two powers</b>, because a common multiple must contain every prime either number has, in at least the amount that number uses. Every prime from either factorization appears, and no others do."
    },
    {
     "t": "fig",
@@ -1545,7 +1545,7 @@
    },
    {
     "t": "imp",
-    "x": "For any two whole numbers, gcd(a,b) × lcm(a,b) = a × b. For each prime the gcd took the lower power and the lcm took the higher power, so between them they use exactly the two powers the original numbers had, and multiplying across all primes rebuilds the pair. The most useful rearrangement is lcm(a,b) = (a × b)/(gcd(a,b)), and because of it, knowing any three of the four numbers hands you the fourth."
+    "x": "For any two whole numbers, gcd(a,b) × lcm(a,b) = a × b. For each prime the gcd took the lower power and the lcm took the higher power, so between them they use exactly the two powers the original numbers had, and multiplying across all primes gives back a × b. Rearranged, lcm(a,b) = (a × b)/(gcd(a,b)), so knowing any three of the four numbers gives the fourth."
    },
    {
     "t": "prob",
@@ -1565,7 +1565,7 @@
    },
    {
     "t": "imp",
-    "x": "When a number leaves the <b>same remainder r</b> under several divisors, subtract r and what is left divides all of them evenly, so it is a common multiple and the smallest such number is lcm+r. When each <b>remainder is one less than its divisor</b>, the number sits one short of dividing cleanly, so it is one below a common multiple and the smallest is lcm-1. Either way the puzzle folds back to the multiples of a single lcm."
+    "x": "When a number leaves the <b>same remainder r</b> under several divisors, subtract r and what is left divides all of them evenly, so it is a common multiple and the smallest such number is lcm+r. When each <b>remainder is one less than its divisor</b>, the number is one short of dividing cleanly, so it is one below a common multiple and the smallest is lcm-1. In both cases the answer comes from the multiples of a single lcm."
    },
    {
     "t": "prob",
@@ -1797,7 +1797,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Add-one-and-multiply rule.</b> If $n = p^a \\times q^b \\times \\cdots$, the number of positive divisors is $(a+1)(b+1)\\cdots$. Every divisor is built by choosing how many copies of each prime to take, from $0$ up to that prime power, so a prime with exponent $a$ offers $a+1$ choices. The choices are independent, so they multiply, and that single product counts every divisor at once."
+    "x": "<b>Add-one-and-multiply rule.</b> If $n = p^a \\times q^b \\times \\cdots$, the number of positive divisors is $(a+1)(b+1)\\cdots$. Every divisor is built by choosing how many copies of each prime to take, from $0$ up to that prime's exponent, so a prime with exponent $a$ has $a+1$ choices. The choices are independent, so the counts multiply."
    },
    {
     "t": "fig",
@@ -1851,7 +1851,7 @@
    },
    {
     "t": "imp",
-    "x": "A number has an <b>odd number of divisors exactly when it is a perfect square</b>. From 3.1, only a perfect square has a factor that pairs with itself, leaving one unpaired. From the counting rule, the product $(a+1)(b+1)\\cdots$ is odd only when every exponent is even, which is the fingerprint of a perfect square. The pairing argument and the counting rule land in the same place."
+    "x": "A number has an <b>odd number of divisors exactly when it is a perfect square</b>. From 3.1, only a perfect square has a factor that pairs with itself, leaving one unpaired. From the counting rule, the product $(a+1)(b+1)\\cdots$ is odd only when every exponent is even, which happens exactly for perfect squares. The pairing argument and the counting rule give the same answer."
    },
    {
     "t": "prob",
@@ -2018,11 +2018,11 @@
    },
    {
     "t": "imp",
-    "x": "<b>Factors and multiples are one relationship read from two ends.</b> A factor of \\(n\\) is a side of a rectangle of area \\(n\\), so factors arrive in pairs that multiply to \\(n\\), \\(d\\) with its partner \\(n \\div d\\). Turn the arrow around and the small number is a factor while the large one is a multiple. From this came several facts. A number has finitely many factors but infinitely many multiples, \\(1\\) divides everything, every number is both a factor and a multiple of itself, and \\(0\\) is a multiple of every number. And a number has an odd factor count exactly when it is a perfect square, the lone case where a factor pairs with itself."
+    "x": "<b>Factors and multiples are the same relationship stated two ways.</b> A factor of \\(n\\) is a side of a rectangle of area \\(n\\), so factors come in pairs that multiply to \\(n\\), \\(d\\) with its partner \\(n \\div d\\). Read it the other way and the small number is a factor while the large one is a multiple. Several facts follow. A number has finitely many factors but infinitely many multiples, \\(1\\) divides everything, every number is both a factor and a multiple of itself, and \\(0\\) is a multiple of every number. A number has an odd factor count exactly when it is a perfect square, the one case where a factor pairs with itself."
    },
    {
     "t": "imp",
-    "x": "<b>Closure and chaining.</b> Add or subtract two multiples of \\(n\\) and you land on a multiple of \\(n\\) again, since the shared \\(n\\) factors out, so a stray non-multiple can never be added onto a multiple to reach one. That is <b>closure</b>. And if \\(a\\) is a factor of \\(b\\), then every multiple of \\(b\\) is automatically a multiple of \\(a\\), since the multiple carries \\(b\\) inside it and \\(b\\) carries \\(a\\). That is <b>chaining</b>, and it runs only downward toward the smaller factors. These two ideas powered every divisibility test that followed."
+    "x": "<b>Closure and chaining.</b> Add or subtract two multiples of \\(n\\) and the result is a multiple of \\(n\\) again, since the shared \\(n\\) factors out, so adding a non-multiple to a multiple never gives a multiple. That is <b>closure</b>. If \\(a\\) is a factor of \\(b\\), then every multiple of \\(b\\) is also a multiple of \\(a\\), since that multiple has \\(b\\) as a factor and \\(b\\) has \\(a\\) as a factor. That is <b>chaining</b>, and it works only toward the smaller factor. Every divisibility test in this chapter uses these two ideas."
    },
    {
     "t": "p",
@@ -2030,39 +2030,39 @@
    },
    {
     "t": "imp",
-    "x": "<b>Divisibility tests all spring from place value.</b> Cut a number where one chunk becomes a multiple of the divisor, let closure throw that chunk away, and judge the small piece left behind. The last digit settles \\(2\\), \\(5\\), \\(10\\), since every higher place is a multiple of ten. The last two digits settle \\(4\\) and the last three settle \\(8\\), since \\(100 = 4 \\times 25\\) and \\(1000 = 8 \\times 125\\). The digit sum settles \\(9\\) and \\(3\\), since every power of ten is one above a run of nines. The alternating digit sum settles \\(11\\), since the powers of ten bounce just below then above its multiples. Run any test backward and the same cut recovers a hidden digit."
+    "x": "<b>Divisibility tests come from place value.</b> Split a number so that one part is a multiple of the divisor, drop that part by closure, and test the small part left behind. The last digit determines \\(2\\), \\(5\\), \\(10\\), since every higher place is a multiple of ten. The last two digits determine \\(4\\) and the last three determine \\(8\\), since \\(100 = 4 \\times 25\\) and \\(1000 = 8 \\times 125\\). The digit sum determines \\(9\\) and \\(3\\), since every power of ten is one above a run of nines. The alternating digit sum determines \\(11\\), since each power of ten is one below or one above a multiple of 11. Run any test backward and the same split recovers a missing digit."
    },
    {
     "t": "imp",
-    "x": "<b>Combine tests only along coprime factors.</b> Split a composite divisor into coprime parts and test each. A split like \\(12 = 2 \\times 6\\) fails because 2 and 6 share a factor, so passing both tests would count that shared factor twice while 12 demands it twice."
+    "x": "<b>Combine tests only along coprime factors.</b> Split a composite divisor into coprime parts and test each. A split like \\(12 = 2 \\times 6\\) fails because 2 and 6 share the factor 2, so passing both tests guarantees only one factor of 2, not the two that 12 needs."
    },
    {
     "t": "p",
-    "x": "Testing for small factors led naturally to the smallest building blocks of all, the numbers that have no factors to find."
+    "x": "Testing for small factors leads to the numbers that have no smaller factors at all, the primes."
    },
    {
     "t": "imp",
-    "x": "<b>Primes are the atoms.</b> A prime has exactly two divisors, a composite has more, 1 is neither, and 2 is the only even prime. To test primality, divide by primes up to \\(\\sqrt{n}\\) and stop, any factor above \\(\\sqrt{n}\\) has a smaller partner already checked."
+    "x": "<b>A prime has exactly two divisors.</b> A composite has more, 1 is neither, and 2 is the only even prime. To test primality, divide by the primes up to \\(\\sqrt{n}\\) and stop there. Any factor above \\(\\sqrt{n}\\) has a smaller partner you already checked."
    },
    {
     "t": "imp",
-    "x": "<b>Every number has one unique prime fingerprint</b> (Fundamental Theorem of Arithmetic). Written with exponents like \\(360 = 2^3 \\times 3^2 \\times 5\\), it reveals: perfect square ↔ all exponents even, perfect cube ↔ all multiples of 3, trailing zeros = count of 2-and-5 pairs. Primes never run out."
+    "x": "<b>Every number has exactly one prime factorization</b> (Fundamental Theorem of Arithmetic). Written with exponents like \\(360 = 2^3 \\times 3^2 \\times 5\\), it gives perfect square ↔ all exponents even, perfect cube ↔ all multiples of 3, trailing zeros = count of 2-and-5 pairs. Primes never run out."
    },
    {
     "t": "p",
-    "x": "Once a single number could be broken into its atoms, two numbers could be compared atom by atom, which opened the last ideas of the chapter."
+    "x": "Once one number is broken into primes, two numbers can be compared prime by prime."
    },
    {
     "t": "imp",
-    "x": "<b>GCD and LCM are two readings of two fingerprints.</b> GCD takes each shared prime to its lower power. LCM takes every prime to its higher power. They satisfy \\(\\gcd\\times\\operatorname{lcm}=a\\times b\\). Numbers sharing no prime are coprime, and common multiples of a pair are multiples of their lcm."
+    "x": "<b>Read the GCD and LCM off the two factorizations.</b> GCD takes each shared prime to its lower power. LCM takes every prime to its higher power. They satisfy \\(\\gcd\\times\\operatorname{lcm}=a\\times b\\). Numbers sharing no prime are coprime, and common multiples of a pair are multiples of their lcm."
    },
    {
     "t": "imp",
-    "x": "<b>The fingerprint counts divisors too.</b> For \\(n = p^a q^b \\cdots\\), the divisor count is \\((a+1)(b+1)\\cdots\\). It depends on exponent shape, not size, so a smaller number can out-divide a larger one. The count is odd exactly for perfect squares."
+    "x": "<b>The factorization gives the divisor count.</b> For \\(n = p^a q^b \\cdots\\), it is \\((a+1)(b+1)\\cdots\\). Only exponents matter, not size, so a smaller number can have more divisors than a larger one. The count is odd exactly for perfect squares."
    },
    {
     "t": "p",
-    "x": "The prime fingerprint settled divisibility, perfect powers, GCD, LCM, and divisor counts throughout the chapter. Chapter 4 turns to fractions, and these tools come straight along: GCD reduces fractions, LCM gives common denominators."
+    "x": "Prime factorization settled divisibility, perfect powers, GCD, LCM, and divisor counts in this chapter. Chapter 4 turns to fractions, where GCD reduces a fraction and LCM gives a common denominator."
    }
   ],
   "next": "4.1"

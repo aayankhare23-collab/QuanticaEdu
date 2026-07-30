@@ -4,7 +4,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "Counting is the backbone of combinatorics. The hard part is rarely the arithmetic. It is deciding what to count and making sure nothing gets left out or counted twice. This lesson covers the two places that goes wrong, off-by-one errors at the ends of a list and double counting when two groups overlap."
+    "x": "Combinatorics is counting, and the hard part is rarely the arithmetic. It is deciding what to count and making sure nothing gets left out or counted twice. This lesson covers the two places that go wrong, off-by-one errors at the ends of a list and double counting when two groups overlap."
    },
    {
     "t": "fig",
@@ -62,7 +62,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Fencepost rule.</b> The count of whole numbers from $a$ to $b$, both ends included, is $b-a+1$. The subtraction $b-a$ counts the <em>gaps</em> between the numbers, like a fence with a post every foot. A 10-foot fence has 10 gaps but 11 posts, since both ends get one. Subtraction finds the gaps, and the $+1$ catches that last post. When a count looks tricky, write out a tiny version by hand and trust the pattern it shows."
+    "x": "<b>Fencepost rule.</b> The count of whole numbers from $a$ to $b$, both ends included, is $b-a+1$. The subtraction $b-a$ counts the <em>gaps</em> between the numbers, not the numbers themselves, and the $+1$ adds back the end you started on. Think of a fence with a post every foot. A 10-foot fence has 10 gaps but 11 posts, since both ends get one."
    },
    {
     "t": "fig",
@@ -119,7 +119,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Evenly spaced count.</b> For multiples or any evenly spaced run, the count is $\\frac{\\text{last}-\\text{first}}{\\text{step}}+1$, the fencepost idea with wider gaps. The span from the first term in range to the last, divided by the step, gives the number of gaps, then add $1$ for the term you started on. One warning. The width of a range does not decide the count. The windows $10$ to $20$ and $11$ to $21$ are equally wide, yet the first holds three multiples of $5$ and the second only two. So always pin down the <em>real</em> first and last multiple inside your range before you count."
+    "x": "<b>Evenly spaced count.</b> For multiples or any evenly spaced run, the count is $\\frac{\\text{last}-\\text{first}}{\\text{step}}+1$, the fencepost idea with wider gaps. Dividing the distance from the first term in range to the last by the step gives the number of gaps, then add $1$ for the term you started on. Be careful. The width of a range does not decide the count. The ranges $10$ to $20$ and $11$ to $21$ are equally wide, yet the first contains three multiples of $5$ and the second only two. So find the <em>actual</em> first and last multiple inside your range before you count."
    },
    {
     "t": "fig",
@@ -144,7 +144,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Line counting.</b> If you are the $f$th from the front and the $b$th from the back, the line holds $f+b-1$ people. Adding $f$ and $b$ counts you once from each side, twice in all, so subtract $1$ to undo the double count. The same fix works any time two counts share something. The shared part lands in both totals, so take it off once. Being 6th from the front and 4th from the back means $6+4-1=9$ people, not $10$."
+    "x": "<b>Line counting.</b> If you are the $f$th from the front and the $b$th from the back, the line has $f+b-1$ people. Adding $f$ and $b$ counts you once from each side, twice in all, so subtract $1$ to undo the double count. The same correction applies when two counts include the same item. It is in both totals, so subtract it once. Being 6th from the front and 4th from the back means $6+4-1=9$ people, not $10$."
    },
    {
     "t": "fig",
@@ -201,7 +201,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Inclusion-exclusion.</b> The number in $A$ or $B$ is $|A|+|B|-|A\\cap B|$. Adding the two groups counts anyone in both twice, once in each total, so subtract the overlap once. The number in <em>neither</em> is then just the grand total minus that. When items are sorted two ways at once, arrange the four groups in a $2\\times2$ table. Each row adds across to a side total and each column adds down to a bottom total, and both must agree with the grand total in the corner. So a missing cell is never a guess. Subtract the known cells from the row or column total they share and it appears."
+    "x": "<b>Inclusion-exclusion.</b> The number in $A$ or $B$ is $|A|+|B|-|A\\cap B|$. Adding the two groups counts anyone in both twice, once in each total, so subtract the overlap once. The number in <em>neither</em> group is the grand total minus that count. When items are sorted two ways at once, arrange the four groups in a $2\\times2$ table. Each row adds across to a side total and each column adds down to a bottom total. Both must agree with the grand total in the corner, so any missing cell can be found by subtracting the known cells from the row or column total they share."
    },
    {
     "t": "fig",
@@ -513,7 +513,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The Multiplication Principle.</b> When a task is built from independent stages, the total number of ways is the <b>product</b> of the per-stage counts. So $a$ ways for the first stage and $b$ ways for the second give $a \\times b$ in all. Every problem in this lesson runs on the same <b>slot-and-box</b> habit. Draw one box for each stage, write inside it how many options that stage has, and multiply straight across. Each choice you make still leaves a full set of choices at the next stage, so the counts multiply rather than add, and the row of boxes can be as long as the problem needs."
+    "x": "<b>The Multiplication Principle.</b> When a task is built from independent stages, the total number of ways is the <b>product</b> of the per-stage counts. So $a$ ways for the first stage and $b$ ways for the second give $a \\times b$ in all. Every problem in this lesson uses the same <b>slot-and-box</b> method. Draw one box for each stage, write inside it how many options that stage has, and multiply straight across. Each choice still leaves a full set of choices at the next stage, so the counts multiply rather than add."
    },
    {
     "t": "fig",
@@ -554,7 +554,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Repeats or no repeats.</b> When repeats are <b>allowed</b>, using an option in one box does not use it up, so every box stays full at $k$ options and $n$ boxes give $k^n$. When repeats are <b>not allowed</b>, each pick gets used up, so the counts step down $k, k-1, k-2, \\ldots$, one fewer each time. Arranging all $n$ different things in a row runs that stepping all the way down to $1$, giving $n \\times (n-1) \\times \\cdots \\times 1 = n!$, called $n$ <b>factorial</b>."
+    "x": "<b>Repeats or no repeats.</b> When repeats are <b>allowed</b>, using an option in one box does not remove it from the rest, so every box has $k$ options and $n$ boxes give $k^n$. When repeats are <b>not allowed</b>, each option used is unavailable later, so the counts drop by one at each box, $k, k-1, k-2, \\ldots$. Arranging all $n$ different things in a row continues down to $1$, giving $n \\times (n-1) \\times \\cdots \\times 1 = n!$, called $n$ <b>factorial</b>."
    },
    {
     "t": "fig",
@@ -579,7 +579,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Partial arrangement.</b> To fill $r$ slots from $n$ items in order with no repeats, take exactly $r$ descending factors and then stop. Write $n \\times (n-1) \\times (n-2) \\times \\cdots$ for $r$ factors. Each new box drops the count by one, because one more item is already placed and cannot be reused. Do not run all the way down to $1$, and do not use the full $n!$. Fill $r$ boxes, take $r$ factors, stop."
+    "x": "<b>Partial arrangement.</b> To fill $r$ slots from $n$ items in order with no repeats, take exactly $r$ descending factors. Write $n \\times (n-1) \\times (n-2) \\times \\cdots$ for $r$ factors, then stop. Each new box drops the count by one, since one more item is already placed and cannot be reused. A full arrangement would run down to $1$ and give $n!$, so check that you have $r$ factors for $r$ slots."
    },
    {
     "t": "prob",
@@ -647,7 +647,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Restrictions, two roads.</b> When a count comes with a rule, two roads reach the same answer. <b>Road one</b>, fill the forced box first. Pin down the spot with the rule on it, like a leading digit with only $9$ choices instead of $10$, then multiply the freedom left in the other boxes. <b>Road two</b>, count every outcome as if there were no rule, then <b>subtract the bad ones</b>, the total-minus-bad move from 10.1. Pick whichever road is cleaner, and trust that both land on the same number."
+    "x": "<b>Restrictions, two methods.</b> When a count comes with a rule, two methods give the same answer. <b>First method</b>, fill the restricted box first. Count the choices there, like a leading digit with only $9$ choices instead of $10$, then multiply by the choices left in the other boxes. <b>Second method</b>, count every outcome as if there were no rule, then <b>subtract the ones that break the rule</b>, the total minus bad count from 10.1. Use whichever method is shorter."
    },
    {
     "t": "fact",
@@ -948,7 +948,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Casework.</b> When one clean multiply will not work because the choices change partway through, split what you are counting into a few cases, count each case on its own, then ADD the case counts. Inside a single case nothing has changed, so you multiply straight across just like in 10.2, and across the cases you add the way you did in 10.1. Two rules keep this honest. The cases must never overlap, or something is counted twice, and together they must cover everything, or something slips through. No overlap, no gaps."
+    "x": "<b>Casework.</b> When a single multiplication will not work because the choices change partway through, split what you are counting into a few cases, count each case separately, then add the case counts. Inside one case the choices are fixed, so you multiply straight across as in 10.2. Across the cases you add, as in 10.1. Two conditions must hold. The cases must not overlap, or something is counted twice. Together they must cover every outcome, or something is left out."
    },
    {
     "t": "fig",
@@ -1026,7 +1026,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Choose the smart split.</b> Nobody hands you the cases, you pick what to split on, and a good pick gives you the fewest, cleanest cases. Split on the most constrained part of the problem, like the biggest coin you can spend or the digit a rule pins down. If your first choice changes how many ways the rest can go, split on that first choice. Then stay organized. Lay the cases out in a tidy table or list and add straight down the column, so no case is skipped and none is counted twice."
+    "x": "<b>Choosing what to split on.</b> You pick the cases yourself, and a good choice gives the fewest and cleanest cases. Split on the most constrained part of the problem, like the largest coin you can spend or a digit that a rule fixes. If one choice changes how many ways the rest can go, split on that choice first. Then lay the cases out in a table or list and add straight down the column, so no case is skipped and none is counted twice."
    },
    {
     "t": "fig",
@@ -1099,7 +1099,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Complement split.</b> Sometimes the two cleanest cases are simply <em>has</em> the property and <em>does not</em>, and one side is far easier to count. Count the easy side, then subtract it from the total to get the side you actually wanted. That subtraction is the same total-minus-the-rest move from 10.1, and it is especially handy for <em>at least one</em> questions."
+    "x": "<b>Counting by complement.</b> Sometimes the two cases are the outcomes that <em>have</em> the property and the outcomes that <em>do not</em>. The second group is the complement of the first. When the complement is easier to count, count it and subtract from the total. That is the same total minus the rest move from 10.1, and it handles <em>at least one</em> questions."
    },
    {
     "t": "prob",
@@ -1123,7 +1123,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Casework habit.</b> When one clean multiply will not do, pick a smart thing to split on, going after the most cramped part of the problem. Make sure your cases never overlap and together cover everything, so nothing is counted twice and nothing slips through. Then count each case on its own, multiplying inside a case the way you did in 10.2, and add the case counts at the end the way you did in 10.1. In 10.4 Counting Pairs we count how many ways to choose a pair or group when order does not matter, so picking Sam then Maya is the same choice as Maya then Sam."
+    "x": "<b>How to do casework.</b> When a single multiplication will not count everything, choose what to split on, usually the most restricted part of the problem. Your cases must not overlap and must cover every possibility, so nothing is counted twice and nothing is missed. Count each case on its own, multiplying inside a case as in 10.2, then add the case counts as in 10.1. In 10.4 Counting Pairs we count how many ways to choose a pair or group when order does not matter, so picking Sam then Maya is the same choice as Maya then Sam."
    }
   ],
   "review": [
@@ -1404,7 +1404,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Count ordered, then halve.</b> The number of unordered pairs from $n$ things is $\\frac{n(n-1)}{2}$. Count the ordered way first, from the Multiplication Principle, with $n$ choices for the first pick, then $n-1$ left for the second, giving $n(n-1)$. But every pair got counted twice, once as A then B and once as B then A, the same handshake both times, so divide by $2$. A handshake, a round-robin match, a team of two, a double scoop. Each is just a pair pulled from one group of $n$."
+    "x": "<b>Count ordered, then halve.</b> The number of unordered pairs from $n$ things is $\\frac{n(n-1)}{2}$. Count the ordered pairs first, using the Multiplication Principle. There are $n$ choices for the first pick and $n-1$ left for the second, giving $n(n-1)$. Every pair is counted twice there, once as A then B and once as B then A, so divide by $2$. A handshake, a round-robin match, a team of two, and a double scoop are all pairs chosen from one group of $n$."
    },
    {
     "t": "prob",
@@ -1450,7 +1450,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>One group or two, and what is not allowed.</b> When both picks come from the <b>same</b> group, every pair is counted twice, so divide by $2$ to get $\\frac{n(n-1)}{2}$. When you pick one from each of <b>two</b> groups you can tell apart, the picks can never swap, so nothing doubles, and you just multiply the sizes. And when some pairs are off limits, either count all pairs and subtract the forbidden ones, or split the pairs into kinds, count each kind on its own, and add."
+    "x": "<b>One group or two, and what is not allowed.</b> When both picks come from the <b>same</b> group, every pair is counted twice, so divide by $2$ to get $\\frac{n(n-1)}{2}$. When you pick one from each of <b>two</b> groups you can tell apart, the two picks cannot be swapped, so no pair is counted twice, and you multiply the sizes. When some pairs are not allowed, either count all pairs and subtract the forbidden ones, or split the pairs into types, count each type, and add."
    },
    {
     "t": "prob",
@@ -1491,7 +1491,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Diagonals of a polygon.</b> A polygon with $n$ corners has $\\frac{n(n-1)}{2} - n$ diagonals. Every line joining two corners is either a side or a diagonal, never both. There are $\\frac{n(n-1)}{2}$ pairs of corners in all, and exactly $n$ of them are sides, one per edge, so the rest are diagonals. Count every pair the easy way and subtract the few you do not want."
+    "x": "<b>Diagonals of a polygon.</b> A polygon with $n$ corners has $\\frac{n(n-1)}{2} - n$ diagonals. Every line joining two corners is either a side or a diagonal, never both. There are $\\frac{n(n-1)}{2}$ pairs of corners in all, and exactly $n$ of those pairs are sides, one per edge, so the rest are diagonals."
    },
    {
     "t": "prob",
@@ -1531,7 +1531,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Repeats, and the triangular staircase.</b> When every pair does the same thing $k$ times, count the pairs first with $\\frac{n(n-1)}{2}$, then multiply by $k$. And counting pairs is also the sum $1 + 2 + \\cdots + (n-1)$. Bring people in one at a time and the second makes $1$ new pair, the third makes $2$, and so on. So $\\frac{n(n-1)}{2}$ and $1 + 2 + \\cdots + (n-1)$ are the same number written two ways, and you can add that sum quickly by pairing the ends the way Gauss did."
+    "x": "<b>Repeats, and triangular numbers.</b> When every pair does the same thing $k$ times, count the pairs with $\\frac{n(n-1)}{2}$, then multiply by $k$. The pair count also equals the sum $1 + 2 + \\cdots + (n-1)$, a triangular number. Add the people one at a time. The second makes $1$ new pair, the third makes $2$, and so on. So $\\frac{n(n-1)}{2}$ and $1 + 2 + \\cdots + (n-1)$ are the same number written two ways, and you can add that sum quickly by pairing the ends."
    },
    {
     "t": "prob",
@@ -1881,7 +1881,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Count the equal layer.</b> Favorable over total only tells the truth when the outcomes you count are all equally likely, so before counting anything, ask what the truly equal outcomes are. On a die with colored sides the equal outcomes are the $6$ sides, not the colors, since the colors may be split unevenly. So count the sides. If $2$ of the $6$ sides are red, the chance of red is $\\frac{2}{6}$. Whenever something feels uneven, dig down to the layer where every outcome really has the same chance, and count there."
+    "x": "<b>Count the equally likely outcomes.</b> Favorable over total is correct only when the outcomes you count are all equally likely, so before counting, ask which outcomes are equal. On a die with colored sides the equal outcomes are the $6$ sides, not the colors, since the colors may be split unevenly. So count the sides. If $2$ of the $6$ sides are red, the chance of red is $\\frac{2}{6}$."
    },
    {
     "t": "fig",
@@ -1942,7 +1942,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Stages multiply.</b> When an experiment happens in stages, the total number of equally likely outcomes multiplies rather than adds, which is just the Multiplication Principle from 10.2. Two dice are not $12$ outcomes but $6 \\times 6 = 36$, one for every cell of a grid. Four coins are $2^4 = 16$. And when picks are made in sequence without resetting, like drawing cards off the top, the pool shrinks each stage ($52$, then $51$), so walk the stages in order and multiply their chances."
+    "x": "<b>Counts multiply across stages.</b> When an experiment happens in stages, the number of equally likely outcomes multiplies rather than adds, which is the Multiplication Principle from 10.2. Two dice are not $12$ outcomes but $6 \\times 6 = 36$, one for every cell of a grid. Four coins are $2^4 = 16$. When picks are made in sequence without resetting, like drawing cards off the top, the pool shrinks each stage ($52$, then $51$), so take the stages in order and multiply their chances."
    },
    {
     "t": "prob",
@@ -1961,7 +1961,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Complement rule.</b> Sometimes the favorable cases are a tangled mess but the one opposite case is quick to count. When that happens, find the chance of the thing you do not want and subtract it from $1$. $$P(\\text{not }A) = 1 - P(A).$$ This is the clean way to handle any at-least-one question, since instead of chasing every winning case you find the single way it all fails and take it away from the whole."
+    "x": "<b>Complement rule.</b> Sometimes the favorable cases are hard to count but the opposite case, called the <b>complement</b>, is quick. When that happens, find the chance of the thing you do not want and subtract it from $1$. $$P(\\text{not }A) = 1 - P(A).$$ This is how to handle any at-least-one question."
    },
    {
     "t": "fig",
@@ -2204,7 +2204,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "Probability gave one number for how likely something is. A whole list of numbers deserves the same treatment, one number that stands in for the crowd. There are three natural ways to name the center of a data set, and each answers a slightly different question. The mean shares everything out fairly, the median finds the value sitting in the middle, and the mode picks the one that shows up most."
+    "x": "Probability gave one number for how likely something is. A list of numbers can be summarized the same way, with one number that stands for the whole list. There are three ways to name the center of a data set, and each answers a different question. The mean is the average, the median is the middle value, and the mode is the value that appears most often."
    },
    {
     "t": "prob",
@@ -2270,7 +2270,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The mean.</b> The mean, or average, is the fair share, the total of the values divided by how many there are, $$\\text{mean}=\\frac{\\text{sum of the values}}{\\text{how many values}}.$$ Pool everything together and split it evenly, and the mean is what each value gets. It need not equal any actual value. The formula also runs backwards, $\\text{sum}=\\text{mean}\\times\\text{count}$, so the mean and the count together recover a missing value. And to merge two groups you cannot average the two averages unless the groups are the same size. Rebuild each total, add them, and divide by everybody counted, so the bigger group pulls the combined mean toward its own average."
+    "x": "<b>The mean.</b> The mean, or average, is the total of the values divided by how many values there are. $$\\text{mean}=\\frac{\\text{sum of the values}}{\\text{how many values}}.$$ It is the amount each value would have if the total were shared out evenly, and it need not equal any actual value. The formula also works in reverse, $\\text{sum}=\\text{mean}\\times\\text{count}$, so the mean and the count together recover a missing value. To merge two groups, you cannot average the two averages unless the groups are the same size. Rebuild each total, add them, and divide by the total count. The combined mean is closer to the average of the bigger group."
    },
    {
     "t": "prob",
@@ -2309,7 +2309,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The median.</b> The median is the middle value once the list is written in order, so sort the numbers first, always. With an odd count one value sits dead center, and that lone value is the median. With an even count two values share the middle, and the median is their mean, $$\\text{median}=\\frac{\\text{lower middle}+\\text{upper middle}}{2}.$$ Like the mean, the median need not be one of the numbers in the list."
+    "x": "<b>The median.</b> The median is the middle value once the list is written in order, so sort the numbers first, always. With an odd count one value is in the middle, and that value is the median. With an even count two values are in the middle, and the median is their mean, $$\\text{median}=\\frac{\\text{lower middle}+\\text{upper middle}}{2}.$$ Like the mean, the median need not be one of the numbers in the list."
    },
    {
     "t": "prob",
@@ -2346,7 +2346,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The mode.</b> The mode is the value that appears most often. The mean depends on the size of the values and the median on their position, but the mode only cares how often each value shows up. That makes it the right summary for choices and categories, like the shoe size a store should stock or the most common survey answer. A list where every value is different has no mode, and a list where two values tie for most frequent has two modes."
+    "x": "<b>The mode.</b> The mode is the value that appears most often. The mean depends on the size of the values and the median on their position. The mode depends only on how often each value shows up. It is the right summary for choices and categories, like the shoe size a store should stock or the most common survey answer. A list where every value is different has no mode, and a list where two values tie for most frequent has two modes."
    },
    {
     "t": "fig",
@@ -2399,7 +2399,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Which summary, and why.</b> The mean uses every value, so a single outlier drags it toward itself, while the median depends only on position and barely moves, which is why the median is the more honest typical for lopsided data like incomes or prices. The mean is the balance point of the data. The gaps above it and the gaps below it always cancel to zero, so adding a value equal to the mean changes nothing. When the values are evenly spaced, the list is symmetric, the mean equals the median, and both equal the average of the ends, $$\\text{mean}=\\frac{\\text{first}+\\text{last}}{2}.$$ Pick the summary that answers your question, and when the mean and median disagree by a lot, that gap is a sign the data is skewed."
+    "x": "<b>Which summary to use.</b> The mean uses every value, so a single outlier shifts it away from the other values. The median depends only on position and barely moves, which makes it the fairer typical value for lopsided data like incomes or prices. The mean is also the balance point of the data. The gaps above it and the gaps below it cancel to zero, so adding a value equal to the mean changes nothing. When the values are evenly spaced, the mean equals the median, and both equal the average of the ends. $$\\text{mean}=\\frac{\\text{first}+\\text{last}}{2}.$$ When the mean and median disagree by a lot, the data is skewed."
    },
    {
     "t": "fact",
@@ -2644,7 +2644,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Tables and bar graphs.</b> A table sorts data into rows and columns, so every value has exactly one cell. Run a finger across a row and down a column to the cell where they meet, and read a total straight off a Total row or column. A bar graph turns amounts into heights, so a taller bar means more and you can compare categories at a glance. To pull an exact value, read the top of a bar across to the axis. The tallest bar is the largest amount, the gap between two bars is a difference, and all the bars added together give a total."
+    "x": "<b>Tables and bar graphs.</b> A table sorts data into rows and columns, so every value has exactly one cell. Run a finger across a row and down a column to the cell where they meet, and read a total straight off a Total row or column. A bar graph shows each amount as a bar height, so a taller bar means a larger amount. To read an exact value, follow the top of a bar across to the axis. The tallest bar is the largest amount, the gap between two bars is a difference, and all the bars added together give a total."
    },
    {
     "t": "prob",
@@ -2676,7 +2676,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Line graphs.</b> A line graph is built for change over time. Its steepness is the rate, so a steep climb is fast growth and a flat stretch is no change at all. That means the biggest jump is in the steepest segment, not at the highest point. When two lines are drawn together, the place where they cross is the moment the two quantities are equal, and the vertical gap between them is how far apart they are."
+    "x": "<b>Line graphs.</b> A line graph plots values against time and connects them in order. Its steepness is the rate, so a steep section is fast growth and a flat section is no change. The largest change is in the steepest segment, not at the highest point. When two lines are drawn together, they cross where the two quantities are equal, and the vertical gap between them is how far apart they are."
    },
    {
     "t": "prob",
@@ -2768,7 +2768,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Stem-and-leaf plots and histograms.</b> Both show how often values occur while keeping the data in view. A stem-and-leaf plot splits each number into a <i>stem</i> (the leading digits) and a <i>leaf</i> (the last digit), so $47$ is stem $4$, leaf $7$. A longer row of leaves means more values there, and since the leaves are written in order you read the median by counting inward to the middle and the mode by spotting the leaf that repeats most. A histogram is a bar graph of frequency, so its bars touch. The tallest bar is the mode, the bar heights added give the total count, and the mean weights each value by its frequency, $\\text{mean}=\\frac{\\text{sum of (value}\\times\\text{frequency)}}{\\text{total count}}$."
+    "x": "<b>Stem-and-leaf plots and histograms.</b> Both show how often values occur while keeping the data in view. A stem-and-leaf plot splits each number into a <i>stem</i> (the leading digits) and a <i>leaf</i> (the last digit), so $47$ is stem $4$, leaf $7$. A longer row of leaves means more values there. The leaves are written in order, so you read the median by counting inward to the middle and the mode by finding the leaf that repeats most. A histogram is a bar graph of frequency, so its bars touch. The tallest bar is the mode, the bar heights added give the total count, and the mean weights each value by its frequency, $\\text{mean}=\\frac{\\text{sum of (value}\\times\\text{frequency)}}{\\text{total count}}$."
    },
    {
     "t": "prob",
@@ -2806,7 +2806,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Match the display to the question.</b> Every display is a tool built for one kind of question, and the whole skill is choosing the one that makes your question easy to answer. Reach for a <b>table</b> for an exact value or a total, a <b>bar graph</b> to compare amounts across categories, a <b>line graph</b> to track change over time or find where two lines cross, a <b>pie chart</b> for shares of a whole (the slices add to $100\\%$), a <b>stem-and-leaf plot</b> to keep every value while still seeing the shape (median and mode by reading), and a <b>histogram</b> to see how often values occur (the tallest bar is the mode, and you weight by frequency for the mean). Decide what the question is really asking, pick the display that answers it cleanly, then read it carefully."
+    "x": "<b>Match the display to the question.</b> Each display is built for one kind of question. Use a <b>table</b> for an exact value or a total. Use a <b>bar graph</b> to compare amounts across categories. Use a <b>line graph</b> to track change over time or to find where two lines cross. Use a <b>pie chart</b> for shares of a whole, since the slices add to $100\\%$. Use a <b>stem-and-leaf plot</b> to keep every value while still seeing the shape. Use a <b>histogram</b> to see how often values occur."
    }
   ],
   "review": [
@@ -2984,7 +2984,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The center hides the spread.</b> Two lists can share the exact same mean and still look nothing alike, one bunched tightly and one spread far apart. The quiz scores $79, 80, 81$ and the scores $30, 80, 130$ both average to $80$, yet the first group barely moved off center while the second swung from near zero to well past a hundred. The mean marks a center. It says nothing about how far the values scatter around it. To measure that scatter, use the <b>range</b>, the highest value minus the lowest. Spread, how consistent or how varied the data is, is a separate fact the average leaves out."
+    "x": "<b>The mean does not show the spread.</b> Two lists can share the exact same mean and still look nothing alike, one bunched tightly and one spread far apart. The quiz scores $79, 80, 81$ and the scores $30, 80, 130$ both average to $80$, yet the first three are close together and the last three are far apart. The mean marks a center. It says nothing about how far the values scatter around it. That scatter is called the <b>spread</b>, and the simplest way to measure it is the <b>range</b>, the highest value minus the lowest."
    },
    {
     "t": "prob",
@@ -3049,7 +3049,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Outliers wreck the mean, not the median.</b> The mean adds up every value, so one number far from the rest, an <b>outlier</b>, drags the whole average toward itself, while the median depends only on which value lands in the middle and barely moves. Take the ages $10, 11, 12, 13, 45$. The median is $12$, a fair picture of the group, but the mean is $\\frac{91}{5}=18.2$, older than every child in the room. So set the two numbers side by side. When the mean sits well above the median, a few large values are stretching a long tail to the right. When it sits below, a few small values pull a tail to the left. When the two are close, the data is roughly balanced. The gap between mean and median is a quick detector for skew and hidden outliers, and when they disagree, the median usually tells the fairer story."
+    "x": "<b>An outlier moves the mean, not the median.</b> A value far from the rest is called an <b>outlier</b>. The mean adds up every value, so an outlier shifts the whole average toward it. The median depends only on which value lands in the middle, so it barely moves. Take the ages $10, 11, 12, 13, 45$. The median is $12$, a fair summary of the group, but the mean is $\\frac{91}{5}=18.2$, older than every child in the list. So compare the two numbers. When the mean is well above the median, a few large values make a long tail to the right. When it is below, a few small values make a tail to the left. When the two are close, the data is roughly balanced. When they disagree by a lot, the median is usually the fairer summary."
    },
    {
     "t": "prob",
@@ -3081,7 +3081,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>You cannot average averages.</b> To combine two group means into one, you must know how big each group is. If a class of $30$ averages $70$ and a class of $10$ averages $90$, it is tempting to say $\\frac{70+90}{2}=80$, but that is wrong, because it treats the classes as the same size. Instead, weight each mean by how many values it stands for. $$\\frac{30\\times 70 + 10\\times 90}{30+10}=\\frac{3000}{40}=75.$$ The true average is $75$, closer to $70$ because the bigger group pulls harder. Averaging the averages is only correct in the special case where the groups are equally sized. Whenever they differ, the combined mean drifts toward the larger group, and you must weight by size to find it."
+    "x": "<b>You cannot average averages.</b> To combine two group means, you must know how big each group is. If a class of $30$ averages $70$ and a class of $10$ averages $90$, you might say $\\frac{70+90}{2}=80$, but that is wrong, since it treats the classes as the same size. Instead, weight each mean by how many values it stands for. $$\\frac{30\\times 70 + 10\\times 90}{30+10}=\\frac{3000}{40}=75.$$ The true average is $75$, closer to $70$ because the larger class has three times as many values. Averaging averages is only correct when the groups are the same size."
    },
    {
     "t": "prob",
@@ -3164,7 +3164,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Every summary hides something, so always ask what.</b> A single statistic squeezes a whole list into one number, and that squeeze runs one way. You cannot rebuild the data from it, since countless different lists share the same summary. The mean is easily swayed by one outlier and blind to how spread out the data is. The median pins down the middle and says nothing about the extremes and the total, so a median height of $76$ inches fits a tallest player of exactly $76$ or of $90$. The mode can sit on a clump of values that are not typical at all. So keep one habit. Set the mean beside the median to sense skew, look at how far the values scatter, ask which summary the question actually needs, and treat a bare <b>average</b> as a warning sign whenever nobody says which one it means. One number cannot carry the whole story."
+    "x": "<b>What each summary leaves out.</b> A single statistic reduces a whole list to one number, and you cannot rebuild the list from it, since countless different lists share the same summary. The mean is shifted by one outlier and says nothing about spread. The median gives the middle value and says nothing about the extremes or the total, so a median height of $76$ inches fits a tallest player of exactly $76$ or of $90$. The mode can be the most frequent value without being typical. So set the mean beside the median to check for skew, look at how far the values scatter, and ask which summary the question needs. When someone reports a bare <b>average</b>, ask which one they mean."
    }
   ],
   "review": [

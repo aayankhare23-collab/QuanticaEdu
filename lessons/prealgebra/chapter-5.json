@@ -91,7 +91,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Decimal place value.</b> A decimal is ordinary place value carried past the ones. Each place is one tenth of the place to its left, so stepping right walks down the negative powers of ten, tenths $10^{-1}=\\tfrac{1}{10}$, hundredths $10^{-2}=\\tfrac{1}{100}$, thousandths $10^{-3}=\\tfrac{1}{1000}$. The point does not interrupt that pattern, it only marks where the ones place ends. A decimal and a power-of-ten fraction are the same number written two ways, so you convert by <b>reading</b>, never dividing. The last filled place names the bottom (one place $10$, two places $100$, three places $1000$) and the digits after the point, read as one whole number, are the top. So $0.27=\\tfrac{27}{100}$ and $0.009=\\tfrac{9}{1000}$."
+    "x": "<b>Decimal place value.</b> A decimal continues place value past the ones place. Each place is one tenth of the place to its left, so each step right is the next negative power of ten, tenths $10^{-1}=\\tfrac{1}{10}$, hundredths $10^{-2}=\\tfrac{1}{100}$, thousandths $10^{-3}=\\tfrac{1}{1000}$. The decimal point does not break that pattern. It only marks where the ones place ends. A decimal and a power-of-ten fraction are the same number written two ways, so you convert by <b>reading</b>, never dividing. The last filled place gives the denominator (one place $10$, two places $100$, three places $1000$). The digits after the point, read as one number, give the numerator. So $0.27=\\tfrac{27}{100}$ and $0.009=\\tfrac{9}{1000}$."
    },
    {
     "t": "prob",
@@ -143,7 +143,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Trailing versus inner zeros.</b> Where a zero sits after the point decides what it does. Tacked on at the end it is empty padding, filling a place with nothing, so $0.5=0.50=0.500$ and you may add or drop trailing zeros freely to line decimals up. But a zero between the point and a real digit takes a place that digit would have used, pushing everything after it one column further from the point and making it ten times smaller, so $0.5$ and $0.05$ are nowhere near equal."
+    "x": "<b>Trailing versus inner zeros.</b> Where a zero sits after the point changes what it does. A zero at the end fills a place with nothing, so $0.5=0.50=0.500$ and you may add or drop trailing zeros freely to line decimals up. A zero between the point and a nonzero digit takes the place that digit would have used. That moves the digit one column further from the point and makes it ten times smaller, so $0.5$ and $0.05$ are not equal."
    },
    {
     "t": "p",
@@ -227,7 +227,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Comparing decimals.</b> Line up the decimal points and read place by place from the left, biggest place first. The first place where the digits disagree settles everything, because nothing further right is large enough to overturn it. The number of digits a decimal shows is how finely it was measured, not how big it is, so a short $0.9$ is larger than a long $0.0999$."
+    "x": "<b>Comparing decimals.</b> Line up the decimal points and read place by place from the left, biggest place first. The first place where the digits differ fixes the order, because nothing further right is large enough to change it. The number of digits a decimal shows is how finely it was measured, not how big it is, so $0.9$ is larger than $0.0999$ despite fewer digits."
    },
    {
     "t": "prob",
@@ -268,7 +268,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Shifting by powers of ten.</b> Every place is worth ten times the one on its right, so making a number ten times bigger promotes each digit one column left, and ten times smaller demotes each digit one column right. Multiplying by $10^k$ slides every digit $k$ places left and dividing slides it $k$ places right, one slide per factor of ten. People say the point moves, but really the digits move while the point stays fixed on the page. Fill any vacated place with $0$ so each digit lands in its correct column."
+    "x": "<b>Shifting by powers of ten.</b> Every place is worth ten times the one on its right. So making a number ten times bigger moves each digit one column left, and making it ten times smaller moves each digit one column right. Multiplying by $10^k$ moves every digit $k$ places left, and dividing moves them $k$ places right, one column per factor of ten. People say the point moves, but the point stays where it is and the digits move. Fill any empty place with $0$ so each digit lands in its correct column."
    }
   ],
   "review": [
@@ -548,7 +548,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Adding and subtracting decimals.</b> Line up the decimal points so tenths sit over tenths and hundredths over hundredths, since the point marks where the ones place stops. Pad a shorter number with trailing zeros, which is fair because a zero on the end changes nothing. Then add or subtract column by column just as you always have, and the point of the answer drops straight down under the points above. Line up the right edges instead and you stack tenths on hundredths, which is nonsense."
+    "x": "<b>Adding and subtracting decimals.</b> Line up the decimal points so tenths sit over tenths and hundredths over hundredths, since the point marks where the ones place stops. Pad a shorter number with trailing zeros, which is allowed because a zero on the end changes nothing. Then add or subtract column by column as usual, and the point of the answer goes straight down under the points above. Line up the right edges instead and you stack tenths on hundredths, which gives the wrong answer."
    },
    {
     "t": "fig",
@@ -627,7 +627,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying decimals.</b> Ignore the points and multiply the digits like plain whole numbers, then place the point by counting. Add up how many decimal places the two factors have between them, and the product gets exactly that many. That works because each factor is a whole number over a power of ten, so the denominators multiply and the places add. If the whole-number product is too short to reach that far, write zeros in front until the last digit lands where the count demands, the way eight thousandths must be \\(0.008\\) and not \\(0.8\\). For \\(0.3 \\times 0.2\\), the digits give \\(6\\) and the factors carry two places between them, so the answer is \\(0.06\\)."
+    "x": "<b>Multiplying decimals.</b> Ignore the points and multiply the digits like plain whole numbers, then place the point by counting. Add up how many decimal places the two factors have between them, and the product has exactly that many. That works because each factor is a whole number over a power of ten, so the denominators multiply and the places add. If the whole-number product is too short to reach that far, write zeros in front until the last digit sits in the right place, the way eight thousandths must be \\(0.008\\) and not \\(0.8\\). For \\(0.3 \\times 0.2\\), the digits give \\(6\\) and the factors have two decimal places between them, so the answer is \\(0.06\\)."
    },
    {
     "t": "fig",
@@ -636,7 +636,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Multiplying by a number below one shrinks the result.</b> You are taking only a part of what you started with, so $0.3 \\times 0.2$ has to land below both $0.3$ and $0.2$, and it does, at $0.06$. The length of a decimal fools the eye. $0.06$ is longer to read than $0.6$ yet ten times smaller, because size is set by the leftmost place, not by how many digits trail behind."
+    "x": "<b>Multiplying by a number less than one gives a smaller result.</b> You are taking only part of what you started with, so $0.3 \\times 0.2$ is less than both $0.3$ and $0.2$, and equals $0.06$. Do not judge size by length. $0.06$ has more digits than $0.6$ yet is ten times smaller, because size is set by the leftmost place, not by the digit count."
    },
    {
     "t": "fact",
@@ -661,7 +661,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Dividing by a decimal.</b> Slide both numbers the same number of places to the right, just enough to make the divisor whole, then divide the plain way you already know. Sliding both by the same amount multiplies the top and bottom of the fraction by the same power of ten, so it stays an equivalent fraction and the quotient never changes. That completes the set. Line up the points to add and subtract, count the places to multiply, slide the point to divide."
+    "x": "<b>Dividing by a decimal.</b> Move the decimal point in both numbers the same number of places to the right, just enough to make the divisor a whole number, then divide as usual. Moving both points multiplies the numerator and denominator by the same power of ten, so the fraction stays equivalent and the quotient does not change. To add and subtract, line up the points. To multiply, count the places. To divide, move the point."
    },
    {
     "t": "prob",
@@ -964,7 +964,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Decimal to fraction.</b> A terminating decimal is already a fraction, so you never have to divide to build one. The place of the last digit gives you the denominator, tenths give $10$, hundredths $100$, thousandths $1000$, and every digit after the point, read straight across as one number, becomes the numerator. That sets the fraction down, then tidy it the Chapter 4 way, dividing top and bottom by their gcd. So $0.7$ is already $\\tfrac{7}{10}$, while $0.45=\\tfrac{45}{100}=\\tfrac{9}{20}$."
+    "x": "<b>Decimal to fraction.</b> A terminating decimal is already a fraction, so you never have to divide to build one. The place of the last digit gives the denominator (tenths $10$, hundredths $100$, thousandths $1000$). The digits after the point, read straight across as one number, give the numerator. Then reduce the fraction the Chapter 4 way, dividing numerator and denominator by their gcd. So $0.7$ is already $\\tfrac{7}{10}$, while $0.45=\\tfrac{45}{100}=\\tfrac{9}{20}$."
    },
    {
     "t": "fig",
@@ -1052,7 +1052,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Fraction to decimal by scaling.</b> Scale the fraction up until the bottom is a power of ten, then read the numerator into its matching places, like $\\tfrac{3}{4}=\\tfrac{75}{100}=0.75$. A power of ten is $2^n\\times5^n$, a stack of $2$s matched one for one with the same many $5$s, so scaling only supplies the missing factors. $8=2^3$ needs three $5$s, while $40$ already has one $5$ and needs two more. The multiplier you reach for is exactly whatever $2$s and $5$s finish the matched set. A denominator carrying any other prime, like $3$ or $7$, can never be completed."
+    "x": "<b>Fraction to decimal by scaling.</b> Scale the fraction up until the bottom is a power of ten, then read the numerator into its matching places, like $\\tfrac{3}{4}=\\tfrac{75}{100}=0.75$. A power of ten is $2^n\\times5^n$, so it has equal counts of $2$s and $5$s, and scaling supplies the factors that are missing. $8=2^3$ needs three $5$s, while $40$ already has one $5$ and needs two more. The multiplier is whatever $2$s and $5$s make the two counts equal. A denominator with any other prime factor, like $3$ or $7$, cannot be scaled to a power of ten."
    },
    {
     "t": "prob",
@@ -1073,7 +1073,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The termination test.</b> Put the fraction in lowest terms and factor the denominator. If the only primes there are $2$s and $5$s, you can feed it the missing $2$s or $5$s to grow it into a power of ten, so its decimal stops. But the moment any other prime shows up, a $3$, a $7$, an $11$, no power of ten will ever fit and the decimal runs forever. The reason is one idea seen three ways. A fraction and its decimal are the same number, and the decimal of $\\tfrac{a}{b}$ is just $a\\div b$, so <b>scales to a power of ten</b>, <b>bottom is only $2$s and $5$s</b>, and <b>the division ends</b> all describe the same situation. <b>$2$ and $5$ are the only primes that give a clean decimal name.</b>"
+    "x": "<b>The termination test.</b> Put the fraction in lowest terms and factor the denominator. If the only primes there are $2$s and $5$s, you can multiply by the missing $2$s or $5$s to reach a power of ten, so the decimal terminates. If the denominator has any other prime, a $3$, a $7$, an $11$, no power of ten is a multiple of it, so the decimal repeats forever. This is one idea seen three ways. A fraction and its decimal are the same number, and the decimal of $\\tfrac{a}{b}$ is $a\\div b$, so <b>scales to a power of ten</b>, <b>bottom is only $2$s and $5$s</b>, and <b>the division ends</b> all say the same thing. <b>$2$ and $5$ are the only primes that give a terminating decimal.</b>"
    },
    {
     "t": "fig",
@@ -1103,7 +1103,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Counting units by renaming.</b> When a question asks how many of some unit fit inside a number, how many eighths, how many fifths, it is really asking you to rewrite that number as a fraction whose bottom is that unit, and then the numerator on top is the count. To find eighths, steer the bottom to $8$. To find fifths, steer it to $5$. So knowing both names of a number is not only for converting back and forth, it is a way to count and compare, since you pick the name with the bottom you want and read the answer straight off the top."
+    "x": "<b>Counting units by renaming.</b> When a question asks how many eighths or how many fifths fit inside a number, it is asking you to rewrite that number as a fraction whose denominator is that unit. The numerator is then the count. To count eighths, rewrite the number with denominator $8$. To count fifths, use denominator $5$. The same move lets you compare two numbers, since once they share a denominator you compare only the numerators."
    },
    {
     "t": "prob",
@@ -1364,7 +1364,7 @@
   "blocks": [
    {
     "t": "p",
-    "x": "A step counter reads \\(4{,}732\\), and you round it to \\(4{,}700\\). The halfway mark between \\(4{,}700\\) and \\(4{,}800\\) is \\(4{,}750\\), and \\(4{,}732\\) falls below it, so the lower neighbor wins. That single comparison is all rounding ever is. This lesson turns it into a one-digit check and then handles ties, carries, and negative values."
+    "x": "A step counter reads \\(4{,}732\\), and you round it to \\(4{,}700\\). The halfway mark between \\(4{,}700\\) and \\(4{,}800\\) is \\(4{,}750\\), and \\(4{,}732\\) falls below it, so you round down. That single comparison is all rounding is. This lesson turns it into a one-digit check and then handles ties, carries, and negative values."
    },
    {
     "t": "prob",
@@ -1475,7 +1475,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>The rounding rule.</b> To round to a place, look at the single digit just after it, the deciding digit. If it is $5$ or more the place ticks up. If $4$ or less it stays. Either way, every digit after the rounding place drops to zero. You never have to measure the gap to the midpoint, because that one digit already tells you which half you are in. When the deciding digit is exactly $5$ with nothing but zeros behind it, the value sits dead on the midpoint, a tie, and this course sends every tie to the larger value. One wrinkle. If the place you are bumping is a $9$, it cannot climb, so it rolls over to $0$ and carries $1$ into the next place left, exactly like carrying in addition, and if that carry runs off the front the number gains a whole digit, the way $9.96$ rounds to $10.0$."
+    "x": "<b>The rounding rule.</b> To round to a place, look at the digit just after it, called the deciding digit. If it is $5$ or more, the rounding place goes up by one. If it is $4$ or less, that place stays the same. Either way, every digit after the rounding place becomes zero. You never have to measure the distance to the midpoint, because that one digit tells you which half you are in. If the deciding digit is $5$ and only zeros follow it, the number sits on the midpoint. That is a tie, and this course rounds every tie to the larger value. There is one special case. If the rounding place holds a $9$, going up makes it $0$ and carries $1$ into the place on its left, as in addition. If that carry passes the leading digit, the number gains a digit, which is how $9.96$ rounds to $10.0$."
    },
    {
     "t": "prob",
@@ -1514,7 +1514,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding negatives.</b> A negative number is not a special case with its own rulebook. It rounds to the nearer multiple exactly like a positive one, and the only thing to watch is what <b>larger</b> means for negatives. Larger always means farther to the right on the number line, so between two negatives the larger one is the one closer to zero. When a negative value lands exactly on a midpoint, the same round-to-the-larger tie rule sends you toward zero, which is why $-2.35$ rounds to $-2.3$ and not $-2.4$."
+    "x": "<b>Rounding negatives.</b> A negative number rounds to the nearer multiple exactly like a positive one. The only thing to watch is what <b>larger</b> means for negatives. Larger means farther to the right on the number line, so between two negatives the larger one is the one closer to zero. When a negative value lands exactly on a midpoint, the round-to-the-larger tie rule rounds toward zero, which is why $-2.35$ rounds to $-2.3$ and not $-2.4$."
    },
    {
     "t": "prob",
@@ -1552,7 +1552,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Estimation as an error-check.</b> Round each piece to a friendly value before you combine them, and you get a quick ballpark close enough to catch a real mistake. Because it is only a ballpark, write it with $\\approx$, like $29 \\times 6.10 \\approx 180$, never an equals sign. The payoff is speed with a safety net. When a printed total like $1{,}769$ lands ten times away from your estimate of about $180$, you know something is wrong before doing any careful work. Rounding trades a little accuracy for a lot of speed, which is exactly what makes it good for checking answers and for mental math."
+    "x": "<b>Estimation as an error check.</b> To estimate, round each number to an easy value and then combine the rounded values. The result is not exact, so write it with $\\approx$, like $29 \\times 6.10 \\approx 180$, never with an equals sign. An estimate is close enough to catch a large error. When a printed total like $1{,}769$ is ten times your estimate of about $180$, you know something is wrong before doing any careful work."
    },
    {
     "t": "fact",
@@ -1580,7 +1580,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Rounding is one-way.</b> The moment you round, you trade one exact number for a tidier one and the original is gone for good. A rounded $4.3$ no longer stands for a single value. It stands for a whole stretch, everything from the lower midpoint $4.25$ up to just under the upper midpoint $4.35$, since every original in that band rounds back to $4.3$. That is why rounding is a one-way street. Many different originals funnel down to the same rounded value, so you can never run it backward. The most you can ever say in reverse is name the two boundaries the original had to live between."
+    "x": "<b>Rounding is one-way.</b> Rounding replaces an exact number with a nearby easier one, and the exact number cannot be recovered afterward. A rounded $4.3$ does not stand for a single value. It stands for an interval, from the lower midpoint $4.25$ up to just under the upper midpoint $4.35$, because every number in that interval rounds to $4.3$. Many different numbers round to the same value, so all you can recover are the two boundaries the original lies between."
    },
    {
     "t": "prob",
@@ -1859,7 +1859,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Why decimals repeat.</b> Long division prints each digit from a remainder, and it stops only when a remainder finally lands on $0$. But every remainder is smaller than the divisor $b$, so at most $b-1$ nonzero values can ever appear. If $0$ never shows up, some remainder must eventually return, and the instant it does, every later step copies an earlier one and the digits lock into a repeating block. That is why $\\tfrac{1}{3}=0.\\overline{3}$ and $\\tfrac{1}{7}=0.\\overline{142857}$, with the leftovers trapped in a loop. A fraction is always terminating or repeating, never random."
+    "x": "<b>Why decimals repeat.</b> Long division produces each digit from a remainder, and it ends only when a remainder is $0$. Every remainder is smaller than the divisor $b$, so there are at most $b-1$ possible nonzero remainders. If no remainder is ever $0$, some remainder has to repeat, and from that step on every step repeats an earlier one, so the digits repeat in a block of fixed length. That is why $\\tfrac{1}{3}=0.\\overline{3}$ and $\\tfrac{1}{7}=0.\\overline{142857}$. The decimal of a fraction always either terminates or repeats."
    },
    {
     "t": "prob",
@@ -1932,7 +1932,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Read the decimal from the denominator.</b> Factor the denominator of a fraction in lowest terms and you can predict its decimal before dividing. The $2$s and $5$s are the <b>stopping primes</b>, and whichever of those two counts is larger sets the length of a short non-repeating head. Every <b>other prime</b> is a looping prime that builds the repeating tail. So a denominator of only $2$s and $5$s gives a clean stop, a denominator with no $2$s or $5$s repeats from the very first digit, and a mix gives a short head and then a loop."
+    "x": "<b>Predicting the decimal from the denominator.</b> Factor the denominator of a fraction in lowest terms and you can predict its decimal without dividing. Call $2$ and $5$ the <b>stopping primes</b> and every other prime a <b>looping prime</b>. A denominator built only from $2$s and $5$s gives a terminating decimal. With no $2$s or $5$s, the decimal repeats from the first digit. With both kinds of prime, the decimal has a non-repeating part whose length is the larger stopping-prime count, then a part that repeats forever."
    },
    {
     "t": "p",
@@ -2020,7 +2020,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Turn a repeater back into a fraction.</b> Shift by exactly one block length and subtract, so the endless tails line up and cancel, leaving a plain equation. A pure repeater becomes its block over a string of $9$s, one $9$ per digit: $0.\\overline{7}=\\tfrac{7}{9}$, $0.\\overline{12}=\\tfrac{12}{99}$, $0.\\overline{481}=\\tfrac{481}{999}$, then reduce. The same move settles a famous case. $0.\\overline{9}=\\tfrac{9}{9}=1$ exactly, not creeping toward $1$ but already there, since an endless decimal is one fixed number."
+    "x": "<b>Repeating decimals as fractions.</b> Multiply the decimal by the power of ten that shifts it one block, then subtract the original. The repeating parts cancel and leave a plain equation. A decimal repeating from the first digit equals its block over a string of $9$s, one $9$ per digit. $0.\\overline{7}=\\tfrac{7}{9}$, $0.\\overline{12}=\\tfrac{12}{99}$, $0.\\overline{481}=\\tfrac{481}{999}$, then reduce. It also gives $0.\\overline{9}=\\tfrac{9}{9}=1$, exactly $1$, since an infinite decimal is one fixed number."
    },
    {
     "t": "fact",
@@ -2044,7 +2044,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Finding a far digit.</b> Once you know the repeating block and its length, every digit is already determined, so finding the digit in some far position is just a matter of where that position lands inside the block. Divide the position by the period and read the remainder. Remainder $1$ means the first digit of the block, remainder $2$ the second, and remainder $0$ means you stopped on the last digit. No long division is needed beyond finding the period."
+    "x": "<b>Finding a far digit.</b> The length of the repeating block is called the period. Once you know the block and its period, every digit is determined. A far-off digit depends only on where its position falls inside the block. Divide the position by the period and read the remainder. Remainder $1$ means the first digit of the block, remainder $2$ the second, and remainder $0$ means the last digit. No long division is needed past finding the period."
    },
    {
     "t": "prob",
