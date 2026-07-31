@@ -729,6 +729,33 @@
   .ws-drawerbtn,.ws-tabs{display:none}
   .ws-scrim{display:none;position:fixed;inset:60px 0 0;background:rgba(18,38,86,.18);z-index:49}
   .ws-scrim.on{display:block}
+
+  /* --- phones: a panel is a sheet, not a column ---------------------------------
+     The desktop layout pushes .ws-center aside by the panel width (280px). On a
+     390px screen that left the lesson a ~110px column, one word per line, and with
+     two panels open the margins exceeded the viewport entirely. On a phone the
+     panel should cover the lesson instead: full-height sheet, scrim catches the
+     next tap, lesson keeps its full width underneath. The scrim markup and its
+     close handler already existed but nothing ever showed it. */
+  @media(max-width:700px){
+    .workspace{--tut-w:min(92vw,420px);--nb-w:min(92vw,420px)}
+    .workspace.tut-open .ws-center,
+    .workspace.nb-open .ws-center,
+    .workspace.notes-open .ws-center,
+    .workspace.nb-open.notes-open:not(.tut-open) .ws-center{margin-left:0;margin-right:0}
+    .ws-scrim{inset:var(--cbh) 0 0}
+    .workspace.tut-open .ws-scrim,
+    .workspace.nb-open .ws-scrim,
+    .workspace.notes-open .ws-scrim{display:block}
+    /* the desktop three-way split assumes width that does not exist here, so every
+       panel stays a single full-height sheet however many happen to be open */
+    .workspace.tut-open.nb-open.notes-open .ws-notebook,
+    .workspace.tut-open.nb-open.notes-open .ws-notes{top:var(--cbh);bottom:0;height:auto;border-radius:0}
+    .workspace.nb-open.notes-open:not(.tut-open) .ws-notes{left:auto;right:0;
+      border-left:1px solid var(--glass-line);border-right:none}
+    /* the head stops stacking into a cramped column, there is room again */
+    .workspace.tut-open.nb-open .ws-head{flex-direction:row;align-items:center}
+  }
   @media(prefers-reduced-motion:reduce){
     .ws-page.ws-anim,.nb-idea.nb-arrive{animation:none}
     .ws-next.ready,.ws-fab-chat.fab-glow,.ws-fab-ideas.shooting,.ws-fab-ideas.shoot-back{animation:none}
