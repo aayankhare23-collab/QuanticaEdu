@@ -47,6 +47,11 @@ early access.
 4. `git commit` → `git push origin main` → `firebase deploy --only hosting`.
 5. `curl` the live `data/lessons.js` or page to confirm it shipped.
 
+**Tutor naming:** the tutor is **Milo**, in every course and on every surface. Earlier
+per-course names (Sprout for Prealgebra, Cove for Algebra I) were retired on 2026-07-30.
+CSS identifiers and theme variables still carry the old words; those are internal and
+drive the per-course palette, so leave them alone. Only user-facing strings say Milo.
+
 **Voice (chat and content):** No em-dashes. Almost no colons in prose. Plain, natural,
 AoPS-direct writing, never a poetic/abstract register. Full detail in `docs/AUTHORING.md`
 and memory `no-em-dashes`.

@@ -355,7 +355,7 @@
 <!-- Sign-in gate: the home needs an account, so cover it until auth resolves (fail-open after 7s so a Firebase hiccup can't lock you out). -->
 <div id="bootGate" style="position:fixed;inset:0;z-index:9998;background:#FCFEFB;display:grid;place-items:center;font-family:system-ui,sans-serif">
   <div style="text-align:center">
-    <img src="/paths/assets/spot/spot-hero.png" alt="Sprout" style="height:74px;width:auto;display:block;margin:0 auto">
+    <img src="/paths/assets/spot/spot-hero.png" alt="Milo" style="height:74px;width:auto;display:block;margin:0 auto">
     <div style="margin-top:14px;font-size:14px;color:#52685A">Loading your course&hellip;</div>
   </div>
 </div>
@@ -363,7 +363,7 @@
 
 <div class="topbar">
   <a class="brand" href="/paths/home.html">
-    <img id="brandMark" src="/paths/assets/spot/spot-hero.png" alt="Sprout">
+    <img id="brandMark" src="/paths/assets/spot/spot-hero.png" alt="Milo">
     Quantica
   </a>
   <div class="coursesel" id="coursesel">
@@ -422,7 +422,7 @@
   try{ localStorage.setItem('quantica.course',COURSE); }catch(e){}
   document.documentElement.setAttribute('data-course',COURSE);
   var IS_ALG=(COURSE==='algebra1');
-  var GUIDE=IS_ALG?'Cove':'Sprout';
+  var GUIDE='Milo';
   var MASCOT=IS_ALG?'assets/cove/cove-hero.png':'assets/spot/spot-hero.png';
   var COURSE_NAME=IS_ALG?'Algebra I':'Prealgebra';
   var STREAK_ICO=IS_ALG?'🌊':'🌱';
@@ -508,7 +508,7 @@
     var CATALOGS={
       prealgebra:{ shop:'🪴 Greenhouse', sub:'Spend Seeds you earn from problems to grow your trail. Keep learning to unlock more.',
         items:[
-          {id:'sprout',e:'🌱',n:'Sprout',c:3,lock:0},{id:'fern',e:'🌿',n:'Fern',c:4,lock:0},
+          {id:'sprout',e:'🌱',n:'Milo',c:3,lock:0},{id:'fern',e:'🌿',n:'Fern',c:4,lock:0},
           {id:'clover',e:'🍀',n:'Clover',c:4,lock:0},{id:'rock',e:'🪨',n:'Mossy rock',c:5,lock:0},
           {id:'daisy',e:'🌼',n:'Daisy',c:5,lock:1},{id:'tulip',e:'🌷',n:'Tulip',c:6,lock:1},
           {id:'toad',e:'🍄',n:'Toadstool',c:6,lock:2},{id:'blossom',e:'🌸',n:'Blossom',c:7,lock:2},
