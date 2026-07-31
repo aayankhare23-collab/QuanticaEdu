@@ -13,21 +13,21 @@ BASE="https://quanticaedu.com"
 # Per-course display metadata. New courses: add an entry (falls back to a generic default).
 COURSE_META={
  "prealgebra":{"title":"Prealgebra","level":"Middle school / Prealgebra","og":"og-prealgebra.png",
-   "lead":"Work real problems with instant feedback and Sprout, a tutor that helps you find the answer yourself.",
+   "lead":"Work real problems with instant feedback and Milo, a tutor that helps you find the answer yourself.",
    "blurb":("Learn prealgebra online by solving real problems, not memorizing. Quantica's Prealgebra "
      "course covers 12 chapters and 70 lessons, from arithmetic, exponents, and fractions to ratios, "
-     "percents, and geometry, with instant feedback and Sprout, a tutor that helps you find the answer "
+     "percents, and geometry, with instant feedback and Milo, a tutor that helps you find the answer "
      "yourself. Free to start."),
    "note":"", "workload":"P12W", "cross":("algebra1","Algebra I"),
    "faq":[("Is the Prealgebra course free?","Yes, you can start the full Prealgebra course for free, no card required."),
-          ("Do I need any prior math knowledge?","No. Prealgebra starts from the rules of arithmetic and builds up, and Sprout is there whenever a problem stops you."),
+          ("Do I need any prior math knowledge?","No. Prealgebra starts from the rules of arithmetic and builds up, and Milo is there whenever a problem stops you."),
           ("How is Quantica different from other prealgebra courses?","You learn by solving real problems with instant feedback and layered hints, so the ideas emerge from your own work instead of being memorized."),
           ("How long is the Prealgebra course?","It has 12 chapters and 70 lessons. You move at your own pace, in any order.")]},
  "algebra1":{"title":"Algebra I","level":"High school / Algebra I","og":"og-default.png",
-   "lead":"Work real problems with instant feedback and Sprout, a tutor that helps you find the answer yourself.",
+   "lead":"Work real problems with instant feedback and Milo, a tutor that helps you find the answer yourself.",
    "blurb":("Learn Algebra I online by solving real problems, not memorizing. Quantica's Algebra I course "
      "spans 15 chapters and 79 lessons, from expressions and linear equations to quadratics, functions, "
-     "and logarithms, with instant feedback and Sprout, a tutor that helps you find the answer yourself. "
+     "and logarithms, with instant feedback and Milo, a tutor that helps you find the answer yourself. "
      "Free to start, in early access."),
    "note":"Chapter 1 is live now, with new lessons arriving regularly while Algebra I is in early access.",
    "workload":"P15W", "cross":("prealgebra","Prealgebra"),
@@ -37,8 +37,8 @@ COURSE_META={
           ("How is Quantica's Algebra I different?","You learn by solving real problems with instant feedback and layered hints, so each idea emerges from your own work instead of being memorized.")]},
 }
 META=COURSE_META.get(COURSE,{"title":COURSE.replace('-',' ').title(),"level":COURSE,"og":"og-default.png",
-   "lead":"Work real problems with instant feedback and Sprout, a tutor that helps you find the answer yourself.",
-   "blurb":f"Learn {COURSE} online by solving, with Sprout. Free to start.","note":"","workload":"P12W","cross":None,"faq":[]})
+   "lead":"Work real problems with instant feedback and Milo, a tutor that helps you find the answer yourself.",
+   "blurb":f"Learn {COURSE} online by solving, with Milo. Free to start.","note":"","workload":"P12W","cross":None,"faq":[]})
 CTITLE=META["title"]; OGIMG=META["og"]; LEVEL=META["level"]
 
 GA='''<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){try{var h=location.hostname;if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com')return;if(location.search.indexOf('imfounder=1')>-1&&!localStorage.getItem('qa_internal')){localStorage.setItem('qa_internal','1');alert('Got it. Analytics is now off on this device.');}if(localStorage.getItem('qa_internal')==='1')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});}catch(e){}})();</script>'''
@@ -114,7 +114,7 @@ def gate_html(k):
     # Not a content wall (the full lesson is above). A conversion CTA into the interactive app.
     return ('<aside class="gate"><div class="gate-in">'+MILO_BIG+
             '<h2>Learn it by <span class="mark">doing it</span></h2>'
-            '<p>Reading is a start. In the course you solve each problem yourself, with instant feedback, layered hints, and Sprout right beside you when you get stuck. Free to start.</p>'
+            '<p>Reading is a start. In the course you solve each problem yourself, with instant feedback, layered hints, and Milo right beside you when you get stuck. Free to start.</p>'
             f'<a class="pill solid big" href="/landing.html?course={COURSE}&amp;lesson={k}">Open this lesson in the course &rarr;</a></div></aside>')
 
 CSS='''
@@ -222,7 +222,7 @@ details p{color:var(--gray);margin:14px 0 0}
 .foot a{text-decoration:none;margin-left:18px}
 @media(max-width:760px){.chs,.how{grid-template-columns:1fr}}
 '''
-MILO='<img src="/paths/assets/spot/spot-happy.png" class="milo" alt="Sprout">'
+MILO='<img src="/paths/assets/spot/spot-happy.png" class="milo" alt="Milo">'
 MILO_BIG=MILO.replace('class="milo"','class="milo-big"')
 KATEX='''<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
@@ -282,7 +282,7 @@ def gen_hub():
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{H.escape(CTITLE)} Course | Quantica">
-<meta name="twitter:description" content="{nchap} chapters, {nlesson} lessons. Learn by solving, with Sprout. Free to start.">
+<meta name="twitter:description" content="{nchap} chapters, {nlesson} lessons. Learn by solving, with Milo. Free to start.">
 <meta name="twitter:image" content="{BASE}/{OGIMG}">
 <link rel="icon" href="/favicon.svg">
 <script type="application/ld+json">{json.dumps(ld_course)}</script>
@@ -324,7 +324,7 @@ def gen_hub():
   <h2 class="sec-h">How it <span class="mark">works</span></h2>
   <div class="how">
     <div class="step"><div class="n">01</div><h3>Solve, don't memorize</h3><p>Each lesson is a real problem. The idea emerges as you work toward it.</p></div>
-    <div class="step"><div class="n">02</div><h3>Guided, never spoiled</h3><p>Layered hints and Sprout nudge you toward the answer without handing it over.</p></div>
+    <div class="step"><div class="n">02</div><h3>Guided, never spoiled</h3><p>Layered hints and Milo nudge you toward the answer without handing it over.</p></div>
     <div class="step"><div class="n">03</div><h3>It sticks</h3><p>Because you discovered it yourself, the next hard problem feels winnable.</p></div>
   </div>
 </section>

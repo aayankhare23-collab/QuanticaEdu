@@ -676,7 +676,7 @@
   .ws-fab-group{position:fixed;top:108px;left:15px;z-index:60}
   .workspace.tut-open .ws-fab-chat{display:none}
   .workspace.nb-open .ws-fab-ideas{display:none!important}
-  /* notebook + key ideas both open (no tutor): move the Sprout/Cove chat button to the bottom-left of the question area, beside the notebook */
+  /* notebook + key ideas both open (no tutor): move the Milo/Milo chat button to the bottom-left of the question area, beside the notebook */
   .workspace.nb-open.notes-open:not(.tut-open) .ws-fab-group{top:auto;bottom:20px;left:calc(var(--nb-w) + 20px)}
   /* concept-only lessons with no Key Ideas: hide that fab and slot the Notebook where it would sit; notebook opens right, chat stays left (shared layouts never apply) */
   .workspace.no-keys .ws-fab-ideas{display:none!important}
@@ -1125,7 +1125,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 /* primary CTA becomes lime with dark text (was orange gradient + white text) */
 .btn-primary{color:#0a0a0a !important;text-shadow:none;border-color:rgba(10,10,10,.12) !important;box-shadow:0 12px 26px -12px rgba(120,190,60,.55) !important}
 .btn-primary:hover{box-shadow:0 16px 32px -12px rgba(120,190,60,.7) !important}
-/* dark Sprout tutor panel — match the landing's dark Sprout chat */
+/* dark Milo tutor panel — match the landing's dark Milo chat */
 .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#16273f 0%,#0c1626 60%,#080f19 100%) !important;border-color:rgba(190,255,139,.22) !important;color:#dbe6f5}
 .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#17293f,#0f2136) !important;border-bottom:1px solid rgba(255,255,255,.08) !important}
 .ws-tutor .ws-tuthead .nm{color:#f4f8ff}
@@ -1376,14 +1376,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 /* hero Pythagorean proof (large & prominent) */
 .wmb-hero-proof{width:100%;max-width:510px;margin:0 auto}
 .wmb-hero-proof svg{width:100%;height:auto;display:block}
-/* Meet Sprout chat showcase row */
+/* Meet Milo chat showcase row */
 .wmb-milo-row{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(30px,5vw,72px);align-items:center}
 .wmb-milo-chat{display:flex;justify-content:center}
 .wmb-milo-copy .wmb-kicker{margin-bottom:14px}
 .wmb-milo-copy .wmb-h2{margin:0;max-width:16ch}
 .wmb-milo-copy p{margin-top:22px;font-size:var(--wmb-lead)}
 
-/* ---- Sprout dark chat (Sprout in action) — large & prominent hero element ---- */
+/* ---- Milo dark chat (Milo in action) — large & prominent hero element ---- */
 .wmb .milo-card{width:100%;max-width:564px}
 .wmb .milo-win{width:100%;box-sizing:border-box;background:radial-gradient(120% 130% at 50% 0%,#16273f 0%,#0c1626 60%,#080f19 100%);border:1px solid rgba(190,255,139,.26);border-radius:30px;box-shadow:0 56px 120px -44px rgba(10,10,10,.62),0 0 0 1px rgba(255,255,255,.03),0 0 90px -26px rgba(190,255,139,.45);overflow:hidden}
 .wmb .milo-win .top{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(120deg,#17293f,#0f2136)}
@@ -1425,7 +1425,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 .wmb-strip-item .wmb-kicker{margin-bottom:10px}
 .wmb-strip-item h3{font-size:var(--wmb-h3)}
 .wmb-strip-item p{margin-top:8px}
-/* ---- Meet Sprout bold intro ---- */
+/* ---- Meet Milo bold intro ---- */
 .mi-sec{position:relative;text-align:center;padding-block:clamp(44px,7vw,110px) clamp(20px,3vw,40px)}
 .mi-beam{position:absolute;left:50%;top:clamp(64px,8vw,130px);bottom:0;transform:translateX(-50%);width:min(150px,32vw);background:linear-gradient(180deg,rgba(190,255,139,.42),rgba(190,255,139,0) 85%);border-radius:999px;filter:blur(10px);pointer-events:none}
 .mi-face{position:relative;width:clamp(116px,16vw,176px);margin:0 auto;animation:miBob 4.5s ease-in-out infinite}
@@ -5539,7 +5539,7 @@ async function sendTutorMsg() {
   }
   html{background:#F1F8E8}
   ::selection{background:rgba(67,176,99,.26)}
-  /* ===== Cove theme (Algebra I) — same layout & components, ocean palette. Correct stays
+  /* ===== Milo theme (Algebra I) — same layout & components, ocean palette. Correct stays
      green, challenge stays gold, wrong stays red (semantic colors are theme-independent). ===== */
   :root[data-course="algebra1"]{
     --paper:#EFF7FE; --forest:#1C5486; --moss:#2E7CC0; --grass:#4D9EDD;
@@ -5604,10 +5604,10 @@ async function sendTutorMsg() {
   .ws-tutor .tut-compose{background:rgba(255,255,255,.4) !important;border-top:1px solid rgba(67,176,99,.16) !important}
   .ws-tutor .tut-input{background:#ffffff !important;color:#1d3c2a !important;border-color:rgba(67,176,99,.30) !important}
   .ws-tutor .tut-input::placeholder{color:#83a08f !important}
-  /* Sprout send button + user bubble: medium green with the same friendly feel as Cove's blue (was neon lime) */
+  /* Milo send button + user bubble: medium green with the same friendly feel as Milo's blue (was neon lime) */
   .ws-tutor .tut-bub.me,.ws-tutor .tut-bub.usr,.ws-tutor .tut-bub.user,.ws-tutor .tut-bub.you{background:#52bf7d !important;color:#06331c !important}
   .ws-tutor .snd{background:#52bf7d !important;color:#06331c !important}
-  /* Cove (Algebra I) = light blue */
+  /* Milo (Algebra I) = light blue */
   [data-course="algebra1"] .ws-tutor{background:radial-gradient(120% 130% at 50% 0%,#eff7fe 0%,#e3f0fb 60%,#dbe9fa 100%) !important;border-color:rgba(77,158,221,.34) !important;color:#123049 !important}
   [data-course="algebra1"] .ws-tutor .ws-tuthead{background:linear-gradient(120deg,#e3f0fb,#d6e9f8) !important}
   [data-course="algebra1"] .ws-tutor .ws-tuthead .nm{color:#123049 !important}
@@ -5620,7 +5620,7 @@ async function sendTutorMsg() {
   [data-course="algebra1"] .ws-tutor .tut-input::placeholder{color:#7c9bb5 !important}
   [data-course="algebra1"] .ws-tutor .tut-bub.me,[data-course="algebra1"] .ws-tutor .tut-bub.usr,[data-course="algebra1"] .ws-tutor .tut-bub.user,[data-course="algebra1"] .ws-tutor .tut-bub.you{background:#5aaee8 !important;color:#06243a !important}
   [data-course="algebra1"] .ws-tutor .snd{background:#5aaee8 !important;color:#06243a !important}
-  /* Sprout chat launcher — the full character standing in the corner (like the landing hero),
+  /* Milo chat launcher — the full character standing in the corner (like the landing hero),
      NOT a cropped circle: transparent, no chrome, soft drop-shadow so it reads as a mascot. */
   .ws-fab-chat{width:64px !important;height:76px !important;background:none !important;border:none !important;
     border-radius:0 !important;padding:0 !important;overflow:visible !important;box-shadow:none !important;
@@ -5667,7 +5667,7 @@ async function sendTutorMsg() {
   .calm-on .hud-pill.bump{animation:none !important}
   .calm-on .ws-fab-chat.fab-glow{animation:none !important}
 
-  /* ===== POLISH PASS — match the home's Sprout/Cove component kit (layout unchanged) ===== */
+  /* ===== POLISH PASS — match the home's Milo/Milo component kit (layout unchanged) ===== */
   /* primary buttons -> the home's chunky 3D-press button (solid theme fill + bottom edge) */
   .btn-primary{background:var(--btn) !important;border:none !important;border-radius:13px !important;box-shadow:0 4px 0 var(--btn-edge),0 13px 24px -13px rgba(18,36,28,.4) !important}
   .btn-primary:hover{filter:brightness(1.05)}
