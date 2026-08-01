@@ -3367,7 +3367,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
      "twenty"
     ],
     "hints": [
-     "Multiply the 6 by the number in front of \\(m\\) inside."
+     "Multiply the 4 by the number in front of \\(m\\) inside."
     ],
     "sol": "<p>Distributing, \\(4(5m+3)=20m+12\\), so the coefficient of \\(m\\) is \\(\\boxed{20}\\).</p>"
    },
@@ -3660,6 +3660,321 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   ]
  }
 };
+  Object.assign(PSETS_ALG1, {
+ "3": {
+  "practice": [
+   {
+    "x": "Write \\(u^{5}\\cdot u^{9}\\) as a single power \\(u^{k}\\). Enter \\(k\\).",
+    "ans": "14",
+    "accept": [
+     "14",
+     "fourteen"
+    ],
+    "hints": [
+     "Multiplying powers of the same base joins two rows of factors into one, so the exponents add."
+    ],
+    "sol": "<p>Same base multiplied, so the exponents add, \\(5+9=\\boxed{14}\\). Multiplying them instead would count copies that are not there.</p>"
+   },
+   {
+    "x": "For nonzero \\(v\\), evaluate \\(6v^{0}+15\\).",
+    "ans": "21",
+    "accept": [
+     "21",
+     "twenty-one",
+     "twenty one"
+    ],
+    "hints": [
+     "\\(v^{0}\\) is \\(1\\) for any nonzero \\(v\\), and the \\(6\\) multiplies that \\(1\\)."
+    ],
+    "sol": "<p>Since \\(v\\neq 0\\), \\(v^{0}=1\\), so \\(6v^{0}+15=6+15=\\boxed{21}\\). The zero power erases the \\(v\\), not the \\(6\\) in front of it.</p>"
+   },
+   {
+    "x": "Multiply \\((13d^{11})(7d^{3})\\) into a single term. Enter the result, typed like \\(4y^{3}\\).",
+    "ans": "91d^14",
+    "accept": [
+     "91d^14",
+     "91d^{14}"
+    ],
+    "hints": [
+     "The coefficients are factors, so they multiply. The exponents are counts, so they add."
+    ],
+    "sol": "<p>Coefficients multiply, \\(13\\cdot 7=91\\), and exponents add, \\(11+3=14\\), giving \\(\\boxed{91d^{14}}\\). Treating both parts the same way is the standard slip, but factors and counts follow different rules.</p>"
+   },
+   {
+    "x": "Evaluate \\(289^{1/2}\\).",
+    "ans": "17",
+    "accept": [
+     "17",
+     "seventeen"
+    ],
+    "hints": [
+     "The \\(\\frac{1}{2}\\) is an exponent, not a factor. You want the nonnegative number whose square is \\(289\\)."
+    ],
+    "sol": "<p>\\(17^{2}=289\\), so \\(289^{1/2}=\\boxed{17}\\). Halving \\(289\\) reads the exponent as a factor, and \\(-17\\) fails the nonnegative convention even though its square checks out.</p>"
+   },
+   {
+    "x": "Rewrite \\(4f^{-7}\\) with no negative exponent. Type it like \\(2/y^{3}\\).",
+    "ans": "4/f^7",
+    "accept": [
+     "4/f^7",
+     "4/f^{7}",
+     "4/(f^7)",
+     "4/(f^{7})"
+    ],
+    "hints": [
+     "The exponent is written on \\(f\\) alone, so only the power of \\(f\\) crosses the fraction bar."
+    ],
+    "sol": "<p>Only \\(f^{-7}\\) carries the negative exponent, so it becomes \\(\\frac{1}{f^{7}}\\) while the \\(4\\) stays on top, giving \\(\\boxed{\\frac{4}{f^{7}}}\\). Writing \\(\\frac{1}{4f^{7}}\\) drags the coefficient under an exponent that was never on it.</p>"
+   },
+   {
+    "x": "Simplify \\(\\sqrt{200}\\) to \\(a\\sqrt{b}\\) with \\(b\\) as small as possible. Enter \\(a\\).",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "Find the largest perfect square that divides \\(200\\), then split it off with the product rule."
+    ],
+    "sol": "<p>\\(200=100\\cdot 2\\), so \\(\\sqrt{200}=\\sqrt{100}\\,\\sqrt{2}=10\\sqrt{2}\\) and \\(a=\\boxed{10}\\). The leftover \\(2\\) has no repeated prime factor, so nothing more can come out.</p>"
+   },
+   {
+    "x": "Simplify \\((3p^{4})^{2}\\cdot 2p^{2}\\) to a single term. Enter the result, typed like \\(5y^{6}\\).",
+    "ans": "18p^10",
+    "accept": [
+     "18p^10",
+     "18p^{10}"
+    ],
+    "hints": [
+     "Clear the parentheses first, and the square reaches the \\(3\\) as well as the \\(p^{4}\\)."
+    ],
+    "sol": "<p>The square makes two copies of \\(3p^{4}\\), so \\((3p^{4})^{2}=9p^{8}\\). Then \\(9\\cdot 2=18\\) and \\(8+2=10\\), giving \\(\\boxed{18p^{10}}\\). Leaving the \\(3\\) unsquared gives \\(6p^{10}\\), which keeps only one of the two \\(3\\)s.</p>"
+   },
+   {
+    "x": "Simplify \\(\\frac{10m^{3}}{25m^{8}}\\) for nonzero \\(m\\), leaving no negative exponent. Enter the result, typed like \\(3/(7y^{4})\\), with the whole denominator inside the parentheses.",
+    "ans": "2/(5m^5)",
+    "accept": [
+     "2/(5m^5)",
+     "2/(5m^{5})",
+     "(2)/(5m^5)",
+     "(2)/(5m^{5})",
+     "2/(5*m^5)",
+     "2/(5*m^{5})"
+    ],
+    "hints": [
+     "The numbers reduce like any fraction. Only the exponents subtract."
+    ],
+    "sol": "<p>The coefficients reduce, \\(\\frac{10}{25}=\\frac{2}{5}\\), and the three factors of \\(m\\) on top cancel into the eight below, leaving \\(m^{5}\\) downstairs. The result is \\(\\boxed{\\frac{2}{5m^{5}}}\\). Subtracting the exponents to \\(-5\\) and then flipping the sign across the bar lands in the same place.</p>"
+   },
+   {
+    "x": "Evaluate \\(1728^{2/3}\\).",
+    "ans": "144",
+    "accept": [
+     "144"
+    ],
+    "hints": [
+     "\\(1728\\) is a perfect cube. Find its cube root first, then square."
+    ],
+    "sol": "<p>\\(12^{3}=1728\\), so \\(1728^{1/3}=12\\), and squaring gives \\(12^{2}=\\boxed{144}\\). Squaring first would mean taking the cube root of \\(2985984\\), the same answer through much bigger numbers.</p>"
+   },
+   {
+    "x": "Simplify each radical in \\(\\sqrt{12}+\\sqrt{75}\\), then combine. Enter the <b>coefficient of \\(\\sqrt{3}\\)</b> in the result.",
+    "ans": "7",
+    "accept": [
+     "7",
+     "seven"
+    ],
+    "hints": [
+     "Both radicands hide a perfect-square factor, and both simplify to a multiple of the same radical."
+    ],
+    "sol": "<p>\\(\\sqrt{12}=2\\sqrt{3}\\) and \\(\\sqrt{75}=5\\sqrt{3}\\), so the sum is \\(2\\sqrt{3}+5\\sqrt{3}=7\\sqrt{3}\\) and the coefficient is \\(\\boxed{7}\\). The two only combine because simplifying shows they are like, both multiples of \\(\\sqrt{3}\\).</p>"
+   },
+   {
+    "x": "Rationalize \\(\\frac{6}{\\sqrt{22}}\\). Write the result as \\(\\frac{a\\sqrt{b}}{c}\\) with \\(b\\) squarefree, the fraction in lowest terms, and \\(c\\) positive. Enter \\(a+b+c\\).",
+    "ans": "36",
+    "accept": [
+     "36",
+     "thirty-six",
+     "thirty six"
+    ],
+    "hints": [
+     "Multiply by \\(\\frac{\\sqrt{22}}{\\sqrt{22}}\\). The coefficient reduces against the new denominator, the radicand does not."
+    ],
+    "sol": "<p>Multiplying by \\(\\frac{\\sqrt{22}}{\\sqrt{22}}\\) gives \\(\\frac{6\\sqrt{22}}{22}\\), and \\(\\frac{6}{22}\\) reduces to \\(\\frac{3}{11}\\), so the standard form is \\(\\frac{3\\sqrt{22}}{11}\\) and \\(a+b+c=3+22+11=\\boxed{36}\\). The \\(22\\) under the radical takes no part in the reduction.</p>"
+   },
+   {
+    "x": "Write \\(\\sqrt{\\dfrac{3}{8}}\\) as \\(\\frac{a\\sqrt{b}}{c}\\) with \\(b\\) squarefree, the fraction in lowest terms, and \\(c\\) positive. Here \\(a\\) may be \\(1\\). Enter \\(a+b+c\\).",
+    "ans": "11",
+    "accept": [
+     "11",
+     "eleven"
+    ],
+    "hints": [
+     "Split the radical over top and bottom, simplify \\(\\sqrt{8}\\), then rationalize what is left."
+    ],
+    "sol": "<p>Splitting gives \\(\\frac{\\sqrt{3}}{\\sqrt{8}}=\\frac{\\sqrt{3}}{2\\sqrt{2}}\\), and multiplying by \\(\\frac{\\sqrt{2}}{\\sqrt{2}}\\) gives \\(\\frac{\\sqrt{6}}{4}\\). So \\(a=1\\), \\(b=6\\), \\(c=4\\) and \\(a+b+c=\\boxed{11}\\). The \\(6\\) stays inside because \\(2\\cdot 3\\) has no repeated prime.</p>"
+   }
+  ],
+  "challenge": [
+   {
+    "x": "Simplify \\(\\frac{(4m^{3})^{2}\\cdot 6m^{5}}{8m^{9}}\\) to a single term. Enter it, typed like \\(5y^2\\).",
+    "ans": "12m^2",
+    "accept": [
+     "12m^2",
+     "12m^{2}"
+    ],
+    "hints": [
+     "Clear the parentheses first. The square reaches the 4 as well as the \\(m^{3}\\).",
+     "Build one term on top before dividing. Coefficients divide, exponents subtract."
+    ],
+    "sol": "<p>\\((4m^{3})^{2}=16m^{6}\\), so the top is \\(16m^{6}\\cdot 6m^{5}=96m^{11}\\). Dividing, \\(96\\div 8=12\\) and \\(11-9=2\\), giving \\(\\boxed{12m^{2}}\\). Three laws fire in a row, power of a product, then the product rule, then the quotient rule.</p>"
+   },
+   {
+    "x": "Evaluate \\(4^{-2}+4^{0}+8^{-1}\\). Enter the value as a fraction in lowest terms.",
+    "ans": "19/16",
+    "accept": [
+     "19/16",
+     "1.1875"
+    ],
+    "hints": [
+     "Work out each of the three powers on its own before adding anything.",
+     "The three values are \\(\\frac{1}{16}\\), \\(1\\), and \\(\\frac{1}{8}\\). Sixteenths work as the common denominator."
+    ],
+    "sol": "<p>\\(4^{-2}=\\frac{1}{16}\\), \\(4^{0}=1\\), and \\(8^{-1}=\\frac{1}{8}\\). Over sixteenths, \\(\\frac{1}{16}+\\frac{16}{16}+\\frac{2}{16}=\\boxed{\\frac{19}{16}}\\). A negative exponent means reciprocal, never a negative value, so nothing here is \\(-8\\) or \\(-16\\).</p>"
+   },
+   {
+    "x": "Simplify \\(\\left(\\frac{u^{-3}}{u^{4}}\\right)^{-2}\\) for nonzero \\(u\\), leaving no negative exponent. Enter the result, typed like \\(y^5\\).",
+    "ans": "u^14",
+    "accept": [
+     "u^14",
+     "u^{14}"
+    ],
+    "hints": [
+     "Collapse the inside to a single power of \\(u\\) first.",
+     "The inside is \\(u^{-7}\\). The outer \\(-2\\) multiplies that count."
+    ],
+    "sol": "<p>Inside, the quotient rule gives \\(u^{-3-4}=u^{-7}\\). Raising to the \\(-2\\) multiplies the counts, and \\((-7)(-2)=14\\), so the result is \\(\\boxed{u^{14}}\\). The running exponent stays negative until the last step, where the two negatives, \\(-7\\) and \\(-2\\), multiply to give a positive power.</p>"
+   },
+   {
+    "x": "Evaluate \\(\\left(\\frac{2401}{1296}\\right)^{-3/4}\\). Enter the value as a fraction in lowest terms.",
+    "ans": "216/343",
+    "accept": [
+     "216/343"
+    ],
+    "hints": [
+     "The minus sign flips the fraction over. Handle it first, then the \\(\\frac{3}{4}\\).",
+     "Both numbers are fourth powers. \\(2401=7^{4}\\) and \\(1296=6^{4}\\)."
+    ],
+    "sol": "<p>The negative exponent flips the fraction, leaving \\(\\left(\\frac{1296}{2401}\\right)^{3/4}\\). Since \\(1296=6^{4}\\) and \\(2401=7^{4}\\), the fourth root is \\(\\frac{6}{7}\\), and cubing gives \\(\\boxed{\\frac{216}{343}}\\). Root first keeps the numbers small, and the top and bottom each keep their own exponent the whole way.</p>"
+   },
+   {
+    "x": "Simplify \\(\\sqrt{725}-\\sqrt{116}+\\sqrt{261}\\) to a single term \\(a\\sqrt{b}\\) with \\(b\\) squarefree. Enter the product \\(a\\cdot b\\), a times b, as a single number.",
+    "ans": "174",
+    "accept": [
+     "174"
+    ],
+    "hints": [
+     "The three radicands look unrelated, but each one is a perfect square times the same prime.",
+     "\\(725=25\\cdot 29\\), \\(116=4\\cdot 29\\), and \\(261=9\\cdot 29\\)."
+    ],
+    "sol": "<p>Each radicand hides a factor of 29. \\(\\sqrt{725}=5\\sqrt{29}\\), \\(\\sqrt{116}=2\\sqrt{29}\\), and \\(\\sqrt{261}=3\\sqrt{29}\\), so the sum is \\((5-2+3)\\sqrt{29}=6\\sqrt{29}\\) and \\(a\\cdot b=6\\cdot 29=\\boxed{174}\\). Nothing combines until every term is simplified, and then all three turn out to be like radicals.</p>"
+   },
+   {
+    "x": "Rationalize \\(\\frac{30}{\\sqrt[3]{25}}\\) and reduce fully. The result has the form \\(a\\sqrt[3]{b}\\) with \\(b\\) as small as possible. Enter \\(a+b\\), a plus b, as a single number.",
+    "ans": "11",
+    "accept": [
+     "11",
+     "eleven"
+    ],
+    "hints": [
+     "\\(25\\) is already \\(5^{2}\\), so the cube on the bottom needs just one more factor of 5.",
+     "Multiply by \\(\\frac{\\sqrt[3]{5}}{\\sqrt[3]{5}}\\) and the bottom becomes \\(\\sqrt[3]{125}=5\\)."
+    ],
+    "sol": "<p>Since \\(25=5^{2}\\), one more factor of 5 completes the cube. Multiplying by \\(\\frac{\\sqrt[3]{5}}{\\sqrt[3]{5}}\\) gives \\(\\frac{30\\sqrt[3]{5}}{\\sqrt[3]{125}}=\\frac{30\\sqrt[3]{5}}{5}=6\\sqrt[3]{5}\\), so \\(a+b=6+5=\\boxed{11}\\). Multiplying by \\(\\frac{\\sqrt[3]{625}}{\\sqrt[3]{625}}\\) also clears the bottom, since \\(25\\cdot 625=25^{3}\\), but it leaves \\(\\sqrt[3]{625}\\) on top to simplify, so supply only what the cube is missing.</p>"
+   },
+   {
+    "x": "Find the exponent \\(k\\) with \\(125^{k}=\\frac{1}{625}\\). Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "-4/3",
+    "accept": [
+     "-4/3",
+     "−4/3"
+    ],
+    "hints": [
+     "Both sides are powers of 5. Write each one that way before touching \\(k\\).",
+     "\\(125=5^{3}\\) and \\(\\frac{1}{625}=5^{-4}\\), so \\(3k\\) must equal \\(-4\\)."
+    ],
+    "sol": "<p>\\(125=5^{3}\\) and \\(625=5^{4}\\), so the equation reads \\(5^{3k}=5^{-4}\\). Matching exponents gives \\(3k=-4\\), so \\(k=\\boxed{-\\frac{4}{3}}\\). The negative exponent on the right is 3.2 at work, since \\(\\frac{1}{625}\\) is \\(625^{-1}\\), and once both sides share the base 5 the exponents have to agree.</p>"
+   },
+   {
+    "x": "Evaluate \\(\\sqrt{164}\\cdot 41^{3/2}\\) exactly. The result is a whole number. Enter it.",
+    "ans": "3362",
+    "accept": [
+     "3362"
+    ],
+    "hints": [
+     "Simplify \\(\\sqrt{164}\\) first, the 3.4 way.",
+     "\\(41^{3/2}\\) is \\(41\\sqrt{41}\\), so like radicals meet."
+    ],
+    "sol": "<p>\\(164=4\\cdot 41\\), so \\(\\sqrt{164}=2\\sqrt{41}\\). And \\(41^{3/2}=41^{1}\\cdot 41^{1/2}=41\\sqrt{41}\\). The product is \\(2\\sqrt{41}\\cdot 41\\sqrt{41}=2\\cdot 41\\cdot 41=\\boxed{3362}\\). The radicals vanish because \\(\\sqrt{41}\\cdot\\sqrt{41}=41\\), which is the product rule for radicals run in reverse.</p>"
+   },
+   {
+    "x": "Write \\(\\frac{45}{\\sqrt{40}}+\\sqrt{90}\\) as a single fraction \\(\\frac{a\\sqrt{b}}{c}\\) with \\(b\\) squarefree, the fraction in lowest terms, and \\(c\\) positive. Enter \\(a+b+c\\), a plus b plus c, as a single number.",
+    "ans": "35",
+    "accept": [
+     "35"
+    ],
+    "hints": [
+     "Simplify \\(\\sqrt{40}\\) before rationalizing. Both terms turn out to involve \\(\\sqrt{10}\\).",
+     "The first term becomes \\(\\frac{9\\sqrt{10}}{4}\\). Put \\(\\sqrt{90}\\) over 4 as well."
+    ],
+    "sol": "<p>\\(\\sqrt{40}=2\\sqrt{10}\\), so \\(\\frac{45}{\\sqrt{40}}=\\frac{45}{2\\sqrt{10}}=\\frac{45\\sqrt{10}}{20}=\\frac{9\\sqrt{10}}{4}\\). Also \\(\\sqrt{90}=3\\sqrt{10}=\\frac{12\\sqrt{10}}{4}\\). Adding like radicals over the common denominator gives \\(\\frac{21\\sqrt{10}}{4}\\), so \\(a+b+c=21+10+4=\\boxed{35}\\). Simplifying first is what reveals that both terms carry the same \\(\\sqrt{10}\\).</p>"
+   },
+   {
+    "x": "For positive \\(x\\), simplify \\(\\left(\\frac{x^{9}\\,(x^{-2})^{5}}{x^{-4}}\\right)^{3/2}\\) to a single power \\(x^{k}\\). Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "9/2",
+    "accept": [
+     "9/2",
+     "4.5"
+    ],
+    "hints": [
+     "Collapse everything inside the parentheses to one power of \\(x\\) before the \\(\\frac{3}{2}\\) touches anything.",
+     "The inside comes to \\(x^{3}\\). Power of a power multiplies exponents, whole or not."
+    ],
+    "sol": "<p>\\((x^{-2})^{5}=x^{-10}\\), so the top is \\(x^{9}\\cdot x^{-10}=x^{-1}\\). Dividing by \\(x^{-4}\\) subtracts a negative, \\(-1-(-4)=3\\), leaving \\(x^{3}\\). Then power of a power gives \\(x^{3\\cdot\\frac{3}{2}}=x^{9/2}\\), so \\(k=\\boxed{\\frac{9}{2}}\\). Four laws run in sequence, and the fractional exponent at the end obeys the same multiplication rule the whole numbers did.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Find the exponent \\(k\\) with \\(\\left(\\frac{1}{9}\\right)^{k}=27\\sqrt{3}\\). Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "-7/4",
+    "accept": [
+     "-7/4",
+     "−7/4",
+     "-1.75",
+     "−1.75"
+    ],
+    "hints": [
+     "Every piece is a power of 3. Start with \\(\\frac{1}{9}=3^{-2}\\), and write \\(\\sqrt{3}\\) as \\(3^{1/2}\\).",
+     "The right side is \\(3^{3}\\cdot 3^{1/2}=3^{7/2}\\), so \\(-2k\\) must equal \\(\\frac{7}{2}\\)."
+    ],
+    "sol": "<p>\\(\\frac{1}{9}=3^{-2}\\), so the left side is \\(3^{-2k}\\). On the right, \\(27=3^{3}\\) and \\(\\sqrt{3}=3^{1/2}\\), so \\(27\\sqrt{3}=3^{3+\\frac{1}{2}}=3^{7/2}\\). Matching exponents gives \\(-2k=\\frac{7}{2}\\), so \\(k=\\boxed{-\\frac{7}{4}}\\). Reading \\(\\sqrt{3}\\) as a half power is what lets the right side collapse to a single power of 3, and only then can the exponents be compared.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Write \\(\\frac{34}{\\sqrt{24}}+\\sqrt{486}-\\frac{42}{\\sqrt{294}}\\) as a single fraction \\(\\frac{a\\sqrt{b}}{c}\\) with \\(b\\) squarefree, the fraction in lowest terms, and \\(c\\) positive. Enter \\(a+b+c\\), a plus b plus c, as a single number.",
+    "ans": "77",
+    "accept": [
+     "77"
+    ],
+    "hints": [
+     "Simplify all three radicals first. Each of \\(24\\), \\(486\\), and \\(294\\) is a perfect square times 6.",
+     "The three terms come to \\(\\frac{17\\sqrt{6}}{6}\\), \\(9\\sqrt{6}\\), and \\(\\sqrt{6}\\). Line them up over 6."
+    ],
+    "sol": "<p>\\(\\sqrt{24}=2\\sqrt{6}\\), so the first term is \\(\\frac{34}{2\\sqrt{6}}=\\frac{17}{\\sqrt{6}}=\\frac{17\\sqrt{6}}{6}\\). Next, \\(486=81\\cdot 6\\), so \\(\\sqrt{486}=9\\sqrt{6}=\\frac{54\\sqrt{6}}{6}\\). Last, \\(294=49\\cdot 6\\), so \\(\\sqrt{294}=7\\sqrt{6}\\) and \\(\\frac{42}{7\\sqrt{6}}=\\frac{6}{\\sqrt{6}}=\\sqrt{6}=\\frac{6\\sqrt{6}}{6}\\). The sum is \\(\\frac{(17+54-6)\\sqrt{6}}{6}=\\frac{65\\sqrt{6}}{6}\\), so \\(a+b+c=65+6+6=\\boxed{77}\\). All three terms hide the same \\(\\sqrt{6}\\), and nothing combines until each one is simplified and rationalized.</p>",
+    "legendary": true
+   }
+  ]
+ }
+});
 
   /* ===== Multi-course registry. TOC / LESSONS / PSETS stay the app-wide globals the
      whole engine reads; setCourse() repoints them at one course's data and re-renders.
