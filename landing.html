@@ -442,7 +442,7 @@
   .impbox .itext{font-size:15px;color:var(--navy);font-weight:500;line-height:1.6}
   .impbox .itext b{color:var(--blue)}
   .lessonfig{margin:6px 0 20px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px 12px}
-  .lessonfig svg{width:100%;height:auto;display:block}
+  .lessonfig>svg{width:100%;height:auto;display:block}
   /* safety net: every lesson/figure SVG label renders in the house font, whatever the markup says */
   .modal svg text{font-family:'Space Grotesk',system-ui,sans-serif}
   .lessonfig figcaption{margin-top:8px;font-size:13px;color:var(--mute);text-align:center;line-height:1.55}
@@ -597,6 +597,9 @@
   .ws-page.page-text-only{justify-content:center;align-items:center;padding:0}
   .ws-page.page-text-only .page-lead{margin:0 auto;width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 38px;box-shadow:0 14px 40px -18px rgba(18,42,86,.30)}
   .ws-page.page-text-only .page-lead svg{max-width:100%;height:auto}
+  /* KaTeX draws radical bars etc. as tiny SVGs sized by height:inherit from a measured
+     parent span; the responsive figure rules above must never catch them. */
+  #wsWorkspace .katex svg,.modal .katex svg,.lessonfig .katex svg{height:inherit;max-width:none}
   .ws-page.page-text-only .page-lead p{font-size:21px;font-weight:600;color:var(--navy);line-height:1.78;text-align:center;letter-spacing:.005em;margin:0 auto 18px;max-width:560px}
   .ws-page.page-text-only .page-lead p:last-child{margin-bottom:0}
   .ws-page.page-text-only h4.sub{text-align:center;color:var(--mid)}
