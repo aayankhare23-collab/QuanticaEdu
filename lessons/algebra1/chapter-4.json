@@ -1,0 +1,460 @@
+{
+ "4.1": {
+  "title": "What an Equation Says",
+  "next": "4.2",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "An equation joins two expressions with an equals sign and claims they have the same value. That makes it a different kind of object from everything in chapters 1 through 3. An expression has a value. An equation makes a statement, and a statement can be true or false. Start by judging a few."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Each equation below makes a claim. $$7+8=15 \\qquad 3\\cdot 6=21 \\qquad 40-13=27 \\qquad \\frac{72}{8}=8$$ Check each one by computing its left side. Enter how many of the four claims are true.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Work out each left side and compare it to the number on the right. The claim is true only when they match exactly.",
+     "\\(3\\cdot 6\\) is \\(18\\), not \\(21\\), so that claim is false. Settle the other three the same way."
+    ],
+    "sol": "\\(7+8=15\\) and \\(40-13=27\\) are true, while \\(3\\cdot 6\\) is \\(18\\), not \\(21\\), and \\(72\\div 8\\) is \\(9\\), not \\(8\\). So \\(\\boxed{2}\\) of the four claims are true. Writing an equation down does not make it true. The symbols make the claim, and arithmetic settles it."
+   },
+   {
+    "t": "imp",
+    "x": "<b>An equation is a claim.</b> An equation is a statement that two expressions have the same value. An expression has a value, but an equation is true or false. \\(7+8=15\\) is true and \\(3\\cdot 6=21\\) is false, and both are equations. The equals sign is not an instruction to compute, and it does not mean the answer comes next. The expression before the sign is the equation's left side, the one after it is its right side, and the claim is that the two sides have the same value, which also means they can trade places. \\(15=7+8\\) makes exactly the claim that \\(7+8=15\\) makes."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "To compute \\(7\\times 8+6\\), a student writes \\(7\\times 8=56+6=62\\). The final number is right, but the first equals sign makes a false claim. It says \\(7\\times 8\\) equals \\(56+6\\). Enter the difference between those two values.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Read the chain literally. Everything left of the first equals sign is one side of its claim, and everything between the two equals signs is the other.",
+     "The false claim is \\(7\\times 8=56+6\\), so compare \\(56\\) with \\(62\\)."
+    ],
+    "sol": "The first equals sign claims \\(7\\times 8=56+6\\), which says \\(56=62\\). The difference is \\(62-56=\\boxed{6}\\). Every equals sign in a line makes its own claim, so a running chain of them asserts things you never meant. Write the steps on separate lines instead."
+   },
+   {
+    "t": "p",
+    "x": "Every claim so far could be settled outright because both sides were numbers. Put a variable in and that changes. \\(n+3=10\\) is true if \\(n\\) is \\(7\\) and false if \\(n\\) is anything else, so the equation is not simply true or false. Its truth depends on the value of the variable."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Consider the equation \\(5n+8=43\\). Substitute \\(n=5\\), \\(n=6\\), and \\(n=7\\) in turn, evaluating the left side each time. One of the three values makes the claim true. Enter it.",
+    "ans": "7",
+    "accept": [
+     "7",
+     "seven",
+     "n=7"
+    ],
+    "hints": [
+     "Replace \\(n\\) with each value and work out \\(5n+8\\). You want the value that makes the left side come out to \\(43\\).",
+     "At \\(n=5\\) the left side is \\(33\\), and each step of \\(1\\) in \\(n\\) adds \\(5\\) more."
+    ],
+    "sol": "At \\(n=5\\) the left side is \\(33\\), at \\(n=6\\) it is \\(38\\), and at \\(n=7\\) it is \\(5\\cdot 7+8=43\\), which matches the right side. The claim is true at \\(n=\\boxed{7}\\) and false at the other two."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Solutions.</b> A value of the variable that makes an equation true is called a solution of the equation. Substituting a solution turns the two sides into the same number. An equation with a variable is not true or false on its own. It becomes one or the other each time the variable is given a value, so the equation acts as a test that every number either passes or fails. To solve an equation means to find all of its solutions, not just one."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A student claims \\(y=6\\) is a solution of \\(4y-7=2y+5\\). Check the claim by substituting \\(6\\) for \\(y\\) on each side and evaluating the two sides separately. Both come out to the same number. Enter it.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "seventeen"
+    ],
+    "hints": [
+     "Treat the two sides as two separate expressions and evaluate each at \\(y=6\\), the way 1.6 evaluated expressions.",
+     "The left side is \\(4\\cdot 6-7\\). Compute it, then compute \\(2\\cdot 6+5\\) and compare."
+    ],
+    "sol": "The left side is \\(4\\cdot 6-7=17\\) and the right side is \\(2\\cdot 6+5=17\\). Both sides equal \\(\\boxed{17}\\), so the claim is true at \\(y=6\\) and \\(6\\) is a solution. A check evaluates each side on its own and only compares the results at the end."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The same student claims \\(w=3\\) is a solution of \\(4w+3=2w+19\\). Substitute \\(w=3\\) and evaluate both sides. They do not match. Enter how much larger the right side is than the left.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "Evaluate \\(4w+3\\) and \\(2w+19\\) separately at \\(w=3\\), then subtract the smaller result from the larger.",
+     "The left side comes out to \\(15\\). Now evaluate the right side and take the difference."
+    ],
+    "sol": "At \\(w=3\\) the left side is \\(4\\cdot 3+3=15\\) and the right side is \\(2\\cdot 3+19=25\\), so the right side is larger by \\(25-15=\\boxed{10}\\). The mismatch means \\(w=3\\) is not a solution, and one failed check settles that completely. The equation does have a solution, since checking \\(w=8\\) gives \\(35\\) on both sides."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Checking a value.</b> To test whether a value is a solution, substitute it for the variable everywhere it appears, evaluate each side as its own expression, and compare the two results. Equal results mean the value is a solution, unequal results mean it is not, and there is no third outcome. Keep the substitution rules from 1.6, parentheses around negative values especially. A check is complete proof for the one value tested, but it says nothing about any other value, so a check can confirm a solution without telling you whether more exist."
+   },
+   {
+    "t": "fig",
+    "cap": "Substituting a value settles the claim for that value. \\(x=2\\) makes the left side \\(8\\) and \\(x=6\\) makes it \\(20\\), so the claim is false at both. \\(x=4\\) makes both sides \\(14\\), so \\(4\\) is a solution. On the number line, every tested value is either a solution or not, and solving means finding every value where the claim is true.",
+    "x": "<svg viewBox=\"0 0 580 380\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top, the equation 3x plus 2 equals 14 and three candidate values. Substituting x equals 2 makes the left side 8 and x equals 6 makes it 20, both shown grey with not-equal marks and the word false. Substituting x equals 4 makes it 14, shown gold with the word true. Below, a number line from 0 to 8 with grey dots at 2 and 6 and a gold dot at 4 labeled solution.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"e41tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"290\" y=\"42\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#1d4ed8\">3x + 2 = 14</text><rect x=\"82\" y=\"64\" width=\"76\" height=\"27\" rx=\"13.5\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"120\" y=\"82\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">x = 2</text><path d=\"M120 97 V116\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><text x=\"120\" y=\"132\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#7c8aa0\">3(2) + 2</text><rect x=\"92\" y=\"142\" width=\"56\" height=\"56\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"120\" y=\"179\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#aab4c2\">8</text><text x=\"120\" y=\"220\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#aab4c2\">&#8800; 14</text><text x=\"120\" y=\"241\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#aab4c2\">false</text><rect x=\"252\" y=\"64\" width=\"76\" height=\"27\" rx=\"13.5\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"290\" y=\"82\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">x = 4</text><path d=\"M290 97 V116\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><text x=\"290\" y=\"132\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#8a5a08\">3(4) + 2</text><rect x=\"260\" y=\"140\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#e41tile)\"/><text x=\"290\" y=\"179\" text-anchor=\"middle\" font-size=\"27\" font-weight=\"700\" fill=\"#8a5a08\">14</text><text x=\"290\" y=\"220\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">= 14</text><text x=\"290\" y=\"241\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#8a5a08\">true</text><rect x=\"422\" y=\"64\" width=\"76\" height=\"27\" rx=\"13.5\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"460\" y=\"82\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">x = 6</text><path d=\"M460 97 V116\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><text x=\"460\" y=\"132\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#7c8aa0\">3(6) + 2</text><rect x=\"432\" y=\"142\" width=\"56\" height=\"56\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"460\" y=\"179\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#aab4c2\">20</text><text x=\"460\" y=\"220\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#aab4c2\">&#8800; 14</text><text x=\"460\" y=\"241\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#aab4c2\">false</text><path d=\"M46 262 H534\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"290\" y=\"300\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#8a5a08\">solution</text><path d=\"M290 306 V318\" fill=\"none\" stroke=\"#e0a52a\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><path d=\"M70 330 H510\" fill=\"none\" stroke=\"#9aa6b6\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M70 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M125 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M180 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M235 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M290 322 V338\" stroke=\"#e0a52a\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M345 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M400 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M455 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><path d=\"M510 324 V336\" stroke=\"#9aa6b6\" stroke-width=\"1.5\"/><circle cx=\"180\" cy=\"330\" r=\"6\" fill=\"#dbe1ea\" stroke=\"#aab4c2\" stroke-width=\"1.5\"/><circle cx=\"400\" cy=\"330\" r=\"6\" fill=\"#dbe1ea\" stroke=\"#aab4c2\" stroke-width=\"1.5\"/><circle cx=\"290\" cy=\"330\" r=\"7.5\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><text x=\"70\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">0</text><text x=\"125\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">1</text><text x=\"180\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">2</text><text x=\"235\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">3</text><text x=\"290\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">4</text><text x=\"345\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">5</text><text x=\"400\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">6</text><text x=\"455\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">7</text><text x=\"510\" y=\"358\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"500\" fill=\"#475569\">8</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "One of \\(x=-2\\) and \\(x=-5\\) is a solution of \\(x^{2}-3x=10\\). Check each candidate, keeping every substitution inside parentheses. Enter the one that works.",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "x=-2",
+     "negative 2",
+     "minus 2"
+    ],
+    "hints": [
+     "Evaluate \\(x^{2}-3x\\) at each candidate. Written out with parentheses, the first check is \\((-2)^{2}-3(-2)\\).",
+     "Watch the second term. Subtracting \\(3\\) times a negative number adds a positive amount."
+    ],
+    "sol": "At \\(x=-2\\) the left side is \\((-2)^{2}-3(-2)=4+6=10\\), which matches. At \\(x=-5\\) it is \\((-5)^{2}-3(-5)=25+15=40\\), which does not. The solution is \\(x=\\boxed{-2}\\). It is not the only one. \\(x=5\\) gives \\(25-15=10\\) as well, so this equation has two solutions, and a check can confirm one without ruling out others."
+   },
+   {
+    "t": "p",
+    "x": "So far the equations tested have had one solution, or two. Those are not the only possibilities. An equation can also have no solutions at all, or be true for every value of its variable. The next two problems build one of each kind, and both kinds keep showing up for the rest of the course."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Try to find a solution of \\(m+10=m+2\\). Substitute a few values of \\(m\\) and evaluate both sides. Whatever you pick, the left side exceeds the right side by the same fixed amount. Enter that amount.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Try \\(m=1\\), then \\(m=5\\). Compare the two sides each time and watch the gap between them.",
+     "At \\(m=1\\) the sides are \\(11\\) and \\(3\\). The gap cannot depend on \\(m\\), since both sides grow by the same amount when \\(m\\) does."
+    ],
+    "sol": "Both sides contain the same \\(m\\), so the comparison is really between the \\(10\\) and the \\(2\\) added to it. The left side is always larger by \\(10-2=\\boxed{8}\\). No value of \\(m\\) can close that gap, so the equation has no solutions. That is a legitimate outcome, since the equation makes a claim and the claim happens to be false for every value."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Now try \\(3(t+4)=3t+12\\). Test all four values \\(t=-6\\), \\(t=0\\), \\(t=2\\), and \\(t=9\\). Enter how many of the four make the equation true.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Evaluate the two sides separately at each value, parentheses around \\(-6\\) included.",
+     "At \\(t=0\\) both sides are \\(12\\) and at \\(t=2\\) both are \\(18\\). Keep going, and think about what 2.1 says about these two sides."
+    ],
+    "sol": "All four values work. At \\(t=-6, 0, 2, 9\\) both sides come out to \\(-6, 12, 18, 39\\), so the count is \\(\\boxed{4}\\). No luck is involved. By the distributive property from 2.1, \\(3(t+4)\\) and \\(3t+12\\) are the same expression in two forms, so the equation is true for every value of \\(t\\), not just these four."
+   },
+   {
+    "t": "imp",
+    "x": "<b>How many solutions.</b> An equation can have one solution, several, none, or all of them. \\(5n+8=43\\) is true only at \\(n=7\\). \\(x^{2}-3x=10\\) is true at \\(-2\\) and at \\(5\\). \\(m+10=m+2\\) is true nowhere, and \\(3(t+4)=3t+12\\) is true for every value of \\(t\\). An equation of that last kind is called an identity, and every rewrite in chapters 1 through 3 produced one, two forms of the same expression joined by an equals sign. Solving an equation means finding every solution, so a complete answer can be one number, a list, no solutions at all, or every number."
+   },
+   {
+    "t": "p",
+    "x": "Testing values proved everything so far, and testing values has a limit. A check can confirm a solution you already suspect, but it cannot by itself find one, and it cannot promise that none were missed. The last three problems push guessing as far as it goes and show where it stops working."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The equation \\(9x+7=52\\) is true for exactly one value of \\(x\\). You do not need to find that value yet. Read the structure of the left side and decide what the term \\(9x\\) must equal for the equation to hold. Enter that number.",
+    "ans": "45",
+    "accept": [
+     "45",
+     "forty-five",
+     "fortyfive",
+     "9x=45"
+    ],
+    "hints": [
+     "The left side is a sum of two parts, \\(9x\\) and \\(7\\), and together they must reach \\(52\\).",
+     "Whatever the \\(7\\) does not cover, the \\(9x\\) part must make up. How far is \\(7\\) from \\(52\\)?"
+    ],
+    "sol": "The left side adds \\(7\\) to the term \\(9x\\), and the total has to be \\(52\\). The part the \\(7\\) does not cover is \\(52-7\\), so \\(9x=\\boxed{45}\\). Whichever number \\(x\\) is, nine copies of it must total \\(45\\). Lesson 4.2 turns this kind of reading into a method that finds \\(x\\) every time."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Whole-number guesses fail on \\(6x+5=8\\). \\(x=0\\) leaves the left side at \\(5\\) and \\(x=1\\) pushes it to \\(11\\), so any solution sits between them. Of the candidates \\(\\frac{1}{3}\\), \\(\\frac{1}{2}\\), and \\(\\frac{3}{2}\\), enter the one that is a solution.",
+    "ans": "1/2",
+    "accept": [
+     "1/2",
+     "0.5",
+     ".5"
+    ],
+    "hints": [
+     "Substitute each candidate into the left side and see which one makes it \\(8\\).",
+     "At \\(x=\\frac{1}{2}\\) the first term is \\(6\\cdot\\frac{1}{2}=3\\)."
+    ],
+    "sol": "Checking \\(x=\\frac{1}{2}\\) gives \\(6\\cdot\\frac{1}{2}+5=3+5=8\\), a true claim, so the solution is \\(\\boxed{\\frac{1}{2}}\\). The other candidates fail, since \\(x=\\frac{1}{3}\\) makes the left side \\(7\\) and \\(x=\\frac{3}{2}\\) makes it \\(14\\). Solutions are not required to be whole numbers, so guessing whole numbers cannot be the whole story."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "One more, with the variable on both sides. Exactly one of \\(a=7\\), \\(a=11\\), and \\(a=15\\) is a solution of \\(2a+11=3a\\). Check each candidate on both sides and enter the one that works.",
+    "ans": "11",
+    "accept": [
+     "11",
+     "eleven",
+     "a=11"
+    ],
+    "hints": [
+     "Substitute each candidate into both sides separately, the way every check in this lesson has run.",
+     "At \\(a=7\\) the sides are \\(25\\) and \\(21\\). Keep going up the list."
+    ],
+    "sol": "At \\(a=7\\) the sides are \\(25\\) and \\(21\\), no match. At \\(a=11\\) both sides equal \\(33\\), a match. At \\(a=15\\) they are \\(41\\) and \\(45\\), no match. The solution is \\(a=\\boxed{11}\\). Equations with the variable on both sides check exactly like any other, and 4.3 studies them directly."
+   },
+   {
+    "t": "fact",
+    "x": "The equals sign is younger than the claim it makes. Robert Recorde introduced it in 1557 in The Whetstone of Witte, choosing a pair of parallel lines bicause noe 2 thynges can be moare equalle."
+   },
+   {
+    "t": "p",
+    "x": "An equation claims its two sides have the same value, a solution is a value of the variable that makes the claim true, and substitution can check any candidate. What checking cannot do is produce the solutions in the first place. 4.2 builds the tool for that, moves that trade an equation for a simpler one with exactly the same solutions."
+   }
+  ],
+  "review": [
+   {
+    "x": "For the equation \\(5x-6=37\\), evaluate the left side at \\(x=7\\).",
+    "ans": "29",
+    "accept": [
+     "29",
+     "twenty-nine",
+     "twentynine"
+    ],
+    "hints": [
+     "The left side is the expression \\(7x-4\\). Evaluating it never touches the right side.",
+     "Substitute \\(x=7\\) and compute \\(5\\cdot 7-6\\)."
+    ],
+    "sol": "Substituting gives \\(5\\cdot 7-6=35-6=\\boxed{29}\\). The right side says \\(37\\), so the two sides disagree at \\(x=7\\) and the claim is false there."
+   },
+   {
+    "x": "One of the values \\(2\\), \\(5\\), \\(9\\) is a solution of \\(x+8=13\\). Enter it.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five",
+     "x=5"
+    ],
+    "hints": [
+     "A solution makes the two sides name the same number. Each candidate gets its own check.",
+     "Add \\(8\\) to each value in the list and see which sum lands on \\(13\\)."
+    ],
+    "sol": "Checking \\(x=5\\) gives \\(5+8=13\\), a true claim, so the solution is \\(\\boxed{5}\\). The other candidates give \\(10\\) and \\(17\\), and both of those claims are false."
+   },
+   {
+    "x": "Enter the solution of \\(x-9=14\\).",
+    "ans": "23",
+    "accept": [
+     "23",
+     "x=23"
+    ],
+    "hints": [
+     "The equation says that taking \\(9\\) away from some number leaves \\(14\\).",
+     "So the number is \\(9\\) more than \\(14\\). Find it, then substitute it back in to check."
+    ],
+    "sol": "The equation says \\(x\\) is \\(9\\) more than \\(14\\), so \\(x=\\boxed{23}\\). Substituting back gives \\(23-9=14\\), which is true, so \\(23\\) really is the solution."
+   },
+   {
+    "x": "Enter the solution of \\(6x=54\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine",
+     "x=9"
+    ],
+    "hints": [
+     "The claim is that \\(6\\) copies of one number total \\(54\\).",
+     "Run up the multiples of \\(6\\) until one of them hits \\(54\\)."
+    ],
+    "sol": "Six copies of \\(9\\) total \\(54\\), and substituting confirms \\(6\\cdot 9=54\\), so \\(x=\\boxed{9}\\)."
+   },
+   {
+    "x": "For \\(8x+7=31\\), evaluate left side minus right side at \\(x=3\\).",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero"
+    ],
+    "hints": [
+     "Left minus right comes out \\(0\\) exactly when the two sides name the same number.",
+     "At \\(x=3\\) the left side is \\(8\\cdot 3+7\\). Subtract \\(31\\) from that."
+    ],
+    "sol": "At \\(x=3\\) the left side is \\(8\\cdot 3+7=31\\), and \\(31-31=\\boxed{0}\\). A difference of \\(0\\) means the sides agree, so \\(3\\) is a solution of the equation."
+   },
+   {
+    "x": "For \\(2x+9=25\\), evaluate left side minus right side at \\(x=7\\).",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2"
+    ],
+    "hints": [
+     "The sign of the difference matters. Left minus right can come out negative.",
+     "At \\(x=7\\) the left side is \\(2\\cdot 7+9\\). Subtract \\(25\\) from it."
+    ],
+    "sol": "At \\(x=7\\) the left side is \\(2\\cdot 7+9=23\\), and \\(23-25=\\boxed{-2}\\). The difference is not \\(0\\), so \\(7\\) is not a solution, the left side lands \\(2\\) short of the right."
+   },
+   {
+    "x": "How many of the values \\(1\\), \\(2\\), \\(3\\), \\(4\\) are solutions of \\(5x-3=12\\)?",
+    "ans": "1",
+    "accept": [
+     "1",
+     "one"
+    ],
+    "hints": [
+     "Each value gets its own check. Substitute it into the left side and compare with \\(12\\).",
+     "Start at \\(x=1\\), where the left side is \\(5\\cdot 1-3=2\\). Keep going up the list."
+    ],
+    "sol": "The left side comes out \\(2\\), \\(7\\), \\(12\\), \\(17\\) at \\(x=1,2,3,4\\), and only \\(x=3\\) matches the right side, so \\(\\boxed{1}\\) of the values is a solution."
+   },
+   {
+    "x": "Exactly one of \\(1\\), \\(2\\), \\(3\\) is a solution of \\(7x+6=27\\). Enter it.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three",
+     "x=3"
+    ],
+    "hints": [
+     "Checking a candidate means substituting it into the left side and comparing with \\(19\\).",
+     "Try \\(x=1\\) first. It gives \\(7\\cdot 1+6=13\\), too small, so move up."
+    ],
+    "sol": "Checking \\(x=3\\) gives \\(7\\cdot 3+6=27\\), a match, so the solution is \\(\\boxed{3}\\). The candidates \\(1\\) and \\(2\\) give \\(13\\) and \\(20\\), both short of the right side."
+   },
+   {
+    "x": "Enter the solution of \\(x+9=5\\).",
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4",
+     "x=-4",
+     "x=−4"
+    ],
+    "hints": [
+     "The claim says \\(9\\) more than some number is \\(5\\). That number cannot be positive.",
+     "Start at \\(5\\) and count \\(9\\) steps down the number line, then check the value you land on."
+    ],
+    "sol": "The check \\(-4+9=5\\) comes out true, so \\(x=\\boxed{-4}\\). Nothing in the definition of a solution requires it to be positive, a solution is any value that makes the claim true."
+   },
+   {
+    "x": "For \\(10x+1=16\\), evaluate the left side at \\(x=\\frac{3}{2}\\).",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "A fraction substitutes exactly the way a whole number does.",
+     "Compute \\(10\\cdot\\frac{3}{2}\\) first. The product is a whole number."
+    ],
+    "sol": "Substituting gives \\(10\\cdot\\frac{3}{2}+1=15+1=\\boxed{16}\\). That matches the right side, so \\(\\frac{3}{2}\\) is a solution. Solutions are not required to be whole numbers."
+   },
+   {
+    "x": "Enter the solution of \\(4x=10\\) as a fraction in lowest terms.",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5",
+     "x=5/2",
+     "x=2.5"
+    ],
+    "hints": [
+     "The claim is that four copies of one number total \\(10\\). No whole number does it, but a fraction can.",
+     "Check a candidate the usual way. Four copies of \\(\\frac{1}{2}\\) total \\(2\\), so scale your guess up from there."
+    ],
+    "sol": "Four copies of \\(\\frac{5}{2}\\) total \\(\\frac{20}{2}=10\\), so the check passes and \\(x=\\boxed{\\frac{5}{2}}\\). No whole number works here, but the equation still has exactly one solution."
+   },
+   {
+    "x": "How many of the values \\(-4\\), \\(0\\), \\(3\\), \\(10\\) are solutions of \\(6(x+7)=6x+42\\)?",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Before grinding through four checks, compare the two sides as expressions, the chapter 2 way.",
+     "Distribute the left side and see what \\(6(x+7)\\) expands to."
+    ],
+    "sol": "Every check passes. At \\(x=-4\\) both sides are \\(18\\), at \\(0\\) both are \\(42\\), at \\(3\\) both are \\(60\\), and at \\(10\\) both are \\(102\\), so the count is \\(\\boxed{4}\\). Distributing explains it, \\(6(x+7)\\) expands to \\(6x+42\\), so the two sides are equivalent expressions and the claim is true for every value of \\(x\\)."
+   },
+   {
+    "x": "How many of the values \\(-3\\), \\(0\\), \\(8\\) are solutions of \\(x=x+7\\)?",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "none"
+    ],
+    "hints": [
+     "Read the claim in words. It says a number equals \\(7\\) more than itself.",
+     "Check \\(x=-3\\). The left side is \\(-3\\) and the right side is \\(4\\). Try the others the same way."
+    ],
+    "sol": "The checks give \\(-3\\) against \\(4\\), then \\(0\\) against \\(7\\), then \\(8\\) against \\(15\\), all false, so the count is \\(\\boxed{0}\\). The right side is always \\(7\\) more than the left, so no number anywhere makes this claim true. An equation can have no solutions at all."
+   },
+   {
+    "x": "How many of the values \\(0\\), \\(1\\), \\(2\\) are solutions of \\(7(x+2)=7x+2\\)?",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "none"
+    ],
+    "hints": [
+     "This looks like the distributive identity, but compare the right side with the actual expansion.",
+     "\\(7(x+2)\\) expands to \\(7x+14\\). Now run the three checks."
+    ],
+    "sol": "The checks give \\(14\\) against \\(2\\), then \\(21\\) against \\(9\\), then \\(28\\) against \\(16\\), all false, so the count is \\(\\boxed{0}\\). Distributing shows why, the left side is \\(7x+14\\), always \\(12\\) more than \\(7x+2\\), so no value of \\(x\\) closes the gap."
+   },
+   {
+    "x": "How many of the values \\(-6\\), \\(-1\\), \\(6\\) are solutions of \\(x\\cdot x=36\\)?",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Check all three, including any candidate that looks unlikely at first glance.",
+     "Start with \\(x=-6\\). A negative times a negative is positive."
+    ],
+    "sol": "Both \\(x=-6\\) and \\(x=6\\) work, since \\((-6)(-6)=36\\) and \\(6\\cdot 6=36\\), while \\(x=-1\\) gives \\(1\\), so \\(\\boxed{2}\\) of the values are solutions. An equation can have more than one solution, and solving means finding every one of them."
+   },
+   {
+    "x": "For \\(5x-4=3x+1\\), evaluate left side minus right side at \\(x=4\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "A variable on both sides changes nothing about checking. Evaluate each side on its own, then subtract.",
+     "At \\(x=4\\) the left side is \\(5\\cdot 4-4\\) and the right side is \\(3\\cdot 4+1\\)."
+    ],
+    "sol": "At \\(x=4\\) the left side is \\(5\\cdot 4-4=16\\) and the right side is \\(3\\cdot 4+1=13\\), so left minus right is \\(16-13=\\boxed{3}\\). The difference is not \\(0\\), so \\(4\\) is not a solution of the equation."
+   },
+   {
+    "x": "For one particular number \\(k\\), every one of the values \\(2\\), \\(5\\), \\(8\\), \\(11\\), \\(14\\) is a solution of \\(5(x+6)=5x+k\\). Enter that \\(k\\).",
+    "ans": "30",
+    "accept": [
+     "30",
+     "thirty",
+     "k=30"
+    ],
+    "hints": [
+     "Five values working at once is the identity pattern. The two sides must be equivalent expressions.",
+     "Substitute \\(x=2\\) into both sides. Only \\(k\\) is unknown in the claim that results."
+    ],
+    "sol": "At \\(x=2\\) the left side is \\(5\\cdot 8=40\\) and the right side is \\(10+k\\), and the claim is true only when \\(10+k=40\\), so \\(k=\\boxed{30}\\). With \\(k=30\\) the right side is exactly what \\(5(x+6)\\) distributes to, so the sides are equivalent expressions and every number on the list, along with every other number, is a solution."
+   }
+  ]
+ }
+}
