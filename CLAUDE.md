@@ -11,6 +11,8 @@ early access.
 - **`docs/AUTHORING.md`** before writing any lesson content. It is the core, most-repeated
   work and the easiest to get wrong.
 - **`docs/figure-design-system.md`** before making any figure.
+- **`docs/HANDOFF.md`** for where the work currently stands and the traps a fresh session
+  would otherwise rediscover. Written 2026-07-31.
 - **Memory** at `~/.claude/projects/-Users-aayankhare-Claude-Projects-QuanticaEdu/memory/`
   (`MEMORY.md` is the index). These capture hard-won, non-obvious rules and user preferences.
   Start with `no-em-dashes`, `verbosity-targets`, `lesson-authoring-pipeline`,
@@ -67,6 +69,8 @@ exceptions.
 - **Add a course** → `lessons/<slug>/toc.json` + `chapter-*.json`, add the slug to `COURSES`
   in `tools/build_lessons.py`, and register it in `COURSE_REG` in `landing.html`. The engine
   is course-agnostic; a course with live lessons auto-unlocks its in-app tab.
+- **Make a short video** → `tools/shorts/README.md`. Python renders 1080x1920 frames,
+  ffmpeg encodes, ElevenLabs narrates. Write the words first and move the pictures to fit.
 - **Regenerate SEO pages** → `python3 tools/gen_seo_pages.py <course>`.
 - **Preview** → `mcp preview_start` with `.claude/launch.json` (static server on :8743), then
   open `/landing.html?course=<c>&lesson=<k>`. Note the plain static server does not apply the
