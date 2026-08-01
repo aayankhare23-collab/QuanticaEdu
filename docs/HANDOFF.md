@@ -1,4 +1,4 @@
-# Handoff, end of 2026-07-31
+# Handoff, updated 2026-08-01 (build-out session in progress)
 
 Read `CLAUDE.md` first for orientation and the golden rules, then `docs/AUTHORING.md` before
 writing any lesson. This file covers what a fresh session would otherwise have to rediscover:
@@ -9,10 +9,19 @@ where the work stands, and the traps that cost real time last session.
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | 14 / 81, 15 chapters in the TOC | chapter 2 only | ch1 and ch2 done, ch3 is 2/5 |
+| Algebra I | 16 / 81, 15 chapters in the TOC | chapter 2 only | ch1-ch2 done, ch3 is 4/5 |
 
-**Next lesson to write is Algebra I 3.3, Fractional Exponents.** Then 3.4 Radicals and
-Simplification, then 3.5 Rationalizing Denominators, then the chapter 3 problem sets.
+**3.3 and 3.4 shipped 2026-08-01** (commits 12cb802, 139a4dc), each fully machine-verified
+and preview-tested. **Next is 3.5 Rationalizing Denominators** (no conjugates, chapter 10
+owns those; single-term denominators plus one cube-root stretch), then the chapter 3
+Practice/Challenge sets, then chapter 4 onward.
+
+Two app fixes shipped alongside: the stale `TOC_ALG1` chapters 1-2 in landing.html
+(missing 1.6/2.6, six wrong titles, wrong progress denominator), and a CSS bug where the
+responsive figure rules collapsed KaTeX's radical-bar SVGs to ~0.1px inside figure
+captions (affected 14 captions in both courses, prealgebra ch 8 included). Preview gotcha:
+`showLesson('<key>')` opens a specific lesson; `openLesson()` takes no argument (see the
+corrected `preview-lesson-verification` memory).
 
 Chapters 4 to 15 of Algebra I have no lessons and correctly render as "coming soon", greyed and
 unclickable, on both the dashboard and the contents page. Problem-set links for chapters without
