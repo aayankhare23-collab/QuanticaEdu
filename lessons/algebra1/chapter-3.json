@@ -753,5 +753,448 @@
     "sol": "The coefficients divide, \\(30\\div 5=6\\), and the exponents subtract, \\(-2-(-9)=7\\), so the term is \\(6t^{7}\\). At \\(t=2\\) that is \\(6\\cdot 2^{7}=6\\cdot 128=\\boxed{768}\\). Dropping the second minus gives \\(-2-9=-11\\) and the term \\(6t^{-11}\\), which at \\(t=2\\) is \\(\\frac{3}{1024}\\)."
    }
   ]
+ },
+ "3.3": {
+  "title": "Fractional Exponents",
+  "next": "3.4",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Nothing in the 3.1 laws ever asked an exponent to be a whole number, so \\(x^{1/2}\\) is legal to write, and so far it means nothing. The plan is the one that gave \\(x^{0}\\) and \\(x^{-3}\\) their meanings in 3.2. Refuse to guess, run the laws on the new symbol, and keep whichever value they force."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Whatever \\(21^{1/2}\\) turns out to mean, power of a power from 3.1 still applies to it. Apply that law to \\(\\left(21^{1/2}\\right)^{2}\\) and enter the value.",
+    "ans": "21",
+    "accept": [
+     "21",
+     "twenty-one",
+     "twenty one"
+    ],
+    "hints": [
+     "You do not need to know what \\(21^{1/2}\\) is. Power of a power multiplies the exponents.",
+     "\\(\\frac{1}{2}\\cdot 2=1\\), and a first power is just the base."
+    ],
+    "sol": "Power of a power multiplies the exponents, so $$\\left(21^{1/2}\\right)^{2}=21^{\\frac{1}{2}\\cdot 2}=21^{1}=\\boxed{21}.$$ Whatever number \\(21^{1/2}\\) is, its square has to be \\(21\\), and \\(21\\) is not even a perfect square. The law never needed to know the value."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Here is a second route, independent of the first. The product rule from 3.1 adds exponents, so \\(169^{1/2}\\cdot 169^{1/2}=169^{\\frac{1}{2}+\\frac{1}{2}}=169^{1}\\). So \\(169^{1/2}\\) times itself is \\(169\\). Enter the value of \\(169^{1/2}\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen"
+    ],
+    "hints": [
+     "The exponents add to \\(1\\), so the product is \\(169\\) itself. You are looking for a number that multiplies by itself to make \\(169\\).",
+     "Its square ends in \\(9\\), so the number has to end in \\(3\\) or \\(7\\)."
+    ],
+    "sol": "The exponents add to \\(1\\), so \\(169^{1/2}\\cdot 169^{1/2}=169\\), and \\(13\\cdot 13=169\\), so $$169^{1/2}=\\boxed{13}.$$ A different exponent law from the last problem gives the same conclusion. \\(169^{1/2}\\) has to be a number whose square is \\(169\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The half power.</b> Two different laws just made the same demand, \\(\\left(x^{1/2}\\right)^{2}=x\\), so \\(x^{1/2}\\) has to be a number whose square is \\(x\\). The meaning is forced, not chosen, which is exactly how \\(x^{0}\\) and \\(x^{-n}\\) got theirs in 3.2. Watch the rote mistake. The \\(\\frac{1}{2}\\) is an exponent, not a factor, so \\(100^{1/2}\\) is \\(10\\), the number that squares to \\(100\\), and not \\(50\\). One piece of business is left open. When \\(x\\) is positive, two different numbers have their square equal to \\(x\\), and a symbol that fits two numbers is not finished being defined."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The unfinished business first. Two different numbers have a square equal to \\(121\\). Enter the negative one of the two.",
+    "ans": "-11",
+    "accept": [
+     "-11",
+     "negative 11",
+     "minus 11",
+     "−11"
+    ],
+    "hints": [
+     "Find a number whose square is \\(121\\) first. There is an obvious positive one.",
+     "\\(11^{2}=121\\), and one other number's square is also \\(121\\). Squaring wipes out a minus sign."
+    ],
+    "sol": "\\((-11)^{2}=(-11)(-11)=121\\), so the negative candidate is \\(\\boxed{-11}\\). Both \\(11\\) and \\(-11\\) square to \\(121\\), and the next block settles which of the two the symbol \\(121^{1/2}\\) names."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The nonnegative choice.</b> Both \\(11\\) and \\(-11\\) square to \\(121\\), and a symbol has to name exactly one number, so a choice is needed. The convention takes the nonnegative one. \\(121^{1/2}=11\\), never \\(-11\\), even though \\((-11)^{2}=121\\) checks out perfectly. The reason is practical. A symbol that named two numbers at once would break arithmetic, because an expression like \\(121^{1/2}+1\\) would be \\(12\\) and \\(-10\\) at the same time. The negative number is still available. When you want it, you write the minus sign where it can be seen, as \\(-\\left(121^{1/2}\\right)\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The last two blocks each ruled out a tempting wrong answer, and this problem offers both of them. Enter the value of \\(400^{1/2}\\).",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "Not half of \\(400\\). The exponent asks what number squares to \\(400\\).",
+     "Two numbers square to \\(400\\). By convention \\(400^{1/2}\\) means the nonnegative one."
+    ],
+    "sol": "\\(20^{2}=400\\), so \\(400^{1/2}=\\boxed{20}\\). The answer \\(200\\) treats the exponent as a factor, and \\(-20\\) also squares to \\(400\\), but by convention \\(400^{1/2}\\) means the nonnegative choice."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Nothing in the two routes needed the \\(2\\). Run the product rule with three copies, \\(216^{1/3}\\cdot 216^{1/3}\\cdot 216^{1/3}=216^{1}\\), so \\(216^{1/3}\\) is the number whose cube is \\(216\\). Enter it.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "The three exponents add to \\(1\\), so this is three equal factors multiplying to \\(216\\).",
+     "Try small whole numbers. \\(5^{3}=125\\) is too small."
+    ],
+    "sol": "\\(6^{3}=6\\cdot 6\\cdot 6=216\\), so \\(216^{1/3}=\\boxed{6}\\). This time only one number works. \\((-6)^{3}=-216\\), not \\(216\\), so there was no tie between candidates to break."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The \\(1/n\\) power.</b> Either route, run with \\(n\\) copies, forces \\(\\left(x^{1/n}\\right)^{n}=x\\), so \\(x^{1/n}\\) is the number whose \\(n\\)th power is \\(x\\). In words it is called the \\(n\\)th root of \\(x\\), and when \\(n\\) is even the symbol takes the nonnegative candidate. The tie-break is only needed for even \\(n\\). An even power wipes out the sign of its base, so two numbers land on the same value. An odd power keeps the sign, so exactly one number lands there and there is nothing to choose. \\(10000^{1/4}=10\\) because \\(10^{4}=10000\\), and not \\(-10\\), because fourth powers are even."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The base is negative in both of \\((-343)^{1/3}\\) and \\((-343)^{1/2}\\), and exactly one of the two names a real number. Enter the value of the one that does.",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "negative 7",
+     "minus 7",
+     "−7"
+    ],
+    "hints": [
+     "Ask what sign an even power of a real number can have, and what sign an odd power can have.",
+     "No real number squares to a negative. Cubes are different, so look for a number whose cube is \\(-343\\)."
+    ],
+    "sol": "\\((-7)^{3}=(-7)(-7)(-7)=-343\\), so \\((-343)^{1/3}=\\boxed{-7}\\). No real number squares to \\(-343\\), since squares are never negative, so \\((-343)^{1/2}\\) has no value. An odd root of a negative is negative, not missing."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Odd and even roots of negatives.</b> An even root needs a nonnegative base. No real number raised to an even power is negative, since the even power wipes out the sign, so \\((-343)^{1/2}\\) has no value at all, the same status \\(0^{0}\\) had in 3.2. An odd root takes any base. An odd count of negative factors leaves a negative product, so a negative number has exactly one odd root, and that root is negative. That is the whole rule. Check whether \\(n\\) is odd or even, and for even \\(n\\) check the sign of the base before you write anything."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Power of a power reads \\(64^{2/3}\\) two ways, since \\(\\frac{1}{3}\\cdot 2\\) and \\(2\\cdot\\frac{1}{3}\\) are the same exponent. So \\(64^{2/3}\\) is both \\(\\left(64^{1/3}\\right)^{2}\\) and \\(\\left(64^{2}\\right)^{1/3}\\). Work out both. They agree, and that value is the answer.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "One reading takes the cube root first and then squares. The other squares first and then takes the cube root.",
+     "The root-first route is \\(4^{2}\\). The power-first route has to walk through \\(64^{2}=4096\\)."
+    ],
+    "sol": "Root first, \\(64^{1/3}=4\\) and \\(4^{2}=16\\). Power first, \\(64^{2}=4096\\), and \\(16^{3}=4096\\), so \\(4096^{1/3}=16\\) as well. Both readings give $$64^{2/3}=\\boxed{16}.$$ One order stays small the whole way. The other detours through \\(4096\\) for the identical answer."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The \\(m/n\\) power.</b> $$x^{m/n}=\\left(x^{1/n}\\right)^{m}=\\left(x^{m}\\right)^{1/n}$$ Both readings are forced by power of a power, since \\(\\frac{1}{n}\\cdot m=m\\cdot\\frac{1}{n}\\), and both land in the same place. A fractional exponent is a root and a power, taken in either order. The working advice is to take the root first. The root shrinks the base, so every number you touch stays small, while the power-first order sends huge numbers through the middle of the work and then roots them back down to the same answer."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 560 312\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two routes from 25 to the power 3/2 to the same result card. The upper route applies power 1/2 first, reaching a small gold tile 5, then power 3, landing on 125. The lower route applies power 3 first, passing through an oversized grey tile crammed with 15625, then power 1/2, landing on the same 125.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"f33soft\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter><filter id=\"f33tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"158\" y=\"30\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">Root first</text><text x=\"146\" y=\"287\" font-size=\"13\" font-weight=\"700\" fill=\"#aab4c2\">Power first</text><rect x=\"16\" y=\"128\" width=\"112\" height=\"56\" rx=\"14\" fill=\"#dbe8fd\" stroke=\"#bfd6fb\" stroke-width=\"1.5\" filter=\"url(#f33tile)\"/><text x=\"72\" y=\"163\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#1d4ed8\">25<tspan font-size=\"14\" dy=\"-9\">3/2</tspan></text><path d=\"M130 138 C 162 122, 156 64, 196 64 L 258 64\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M256 57 L264 64 L256 71\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"158\" y=\"51\" width=\"96\" height=\"26\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"206\" y=\"69\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">power 1/2</text><rect x=\"272\" y=\"36\" width=\"56\" height=\"56\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#f33tile)\"/><text x=\"300\" y=\"74\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"#8a5a08\">5</text><path d=\"M332 64 L392 64 C 438 64, 428 140, 448 140\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M446 133 L454 140 L446 147\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"346\" y=\"51\" width=\"72\" height=\"26\" rx=\"13\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"382\" y=\"69\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">power 3</text><path d=\"M130 174 C 162 190, 156 250, 196 250 L 220 250\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M218 243 L226 250 L218 257\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"146\" y=\"237\" width=\"68\" height=\"26\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"180\" y=\"255\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#aab4c2\">power 3</text><rect x=\"236\" y=\"212\" width=\"136\" height=\"76\" rx=\"16\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"304\" y=\"262\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#aab4c2\">15625</text><path d=\"M372 250 L398 250 C 440 250, 430 172, 448 172\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M446 165 L454 172 L446 179\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"380\" y=\"237\" width=\"92\" height=\"26\" rx=\"13\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"426\" y=\"255\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#aab4c2\">power 1/2</text><rect x=\"460\" y=\"122\" width=\"84\" height=\"68\" rx=\"18\" fill=\"#ffffff\" stroke=\"#dbe6fa\" stroke-width=\"1.5\" filter=\"url(#f33soft)\"/><text x=\"502\" y=\"166\" text-anchor=\"middle\" font-size=\"27\" font-weight=\"700\" fill=\"#2257c5\">125</text><path d=\"M462 108 v10 M457 113 h10\" fill=\"none\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M542 198 v10 M537 203 h10\" fill=\"none\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>",
+    "cap": "Both orders are forced equal by power of a power, since \\(\\frac{1}{2}\\cdot 3=3\\cdot\\frac{1}{2}\\), and both land on \\(125\\). The root-first path never touches a number bigger than \\(125\\), and that is the whole case for taking the root first."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Evaluate \\(256^{3/8}\\). The eighth root is invisible until you write the base as a power of something small. Enter the value.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Try writing \\(256\\) as a power of a small number first.",
+     "\\(256=2^{8}\\), and then power of a power collapses the whole thing."
+    ],
+    "sol": "\\(256=2^{8}\\), so $$256^{3/8}=\\left(2^{8}\\right)^{3/8}=2^{8\\cdot\\frac{3}{8}}=2^{3}=\\boxed{8}.$$ Rewriting the base turned an invisible eighth root into one line of arithmetic."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A letter base changes none of this. For positive \\(w\\), the product \\(w^{5/6}\\cdot w^{13/6}\\) collapses to a single power \\(w^{k}\\). Enter \\(k\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "The product rule from 3.1 still adds the exponents, fractions included.",
+     "\\(\\frac{5}{6}+\\frac{13}{6}\\) has a whole-number value."
+    ],
+    "sol": "The product rule adds the exponents. $$\\frac{5}{6}+\\frac{13}{6}=\\frac{18}{6}=3,$$ so \\(w^{5/6}\\cdot w^{13/6}=w^{3}\\) and \\(k=\\boxed{3}\\). Multiplying the exponents instead applies power of a power where the product rule belongs."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Negative fractional exponents.</b> $$x^{-m/n}=\\frac{1}{x^{m/n}}$$ Nothing new is happening. The minus sign is 3.2's reciprocal move, the fraction is a root and a power, and the two stack without interfering. A negative fractional exponent asks for three moves, a reciprocal, a root and a power, legal in any order. Take the root early to keep the numbers small. The sign lesson from 3.2 also still holds. When the base is positive the value is positive, since it is \\(1\\) divided by a positive amount. The minus sign moves the power under the bar, it never makes the value negative."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "All three moves in one problem, the reciprocal, the root and the power. Evaluate \\(196^{-3/2}\\). Enter the value as a fraction in lowest terms.",
+    "ans": "1/2744",
+    "accept": [
+     "1/2744"
+    ],
+    "hints": [
+     "Handle the minus the 3.2 way first. It puts \\(196^{3/2}\\) under a \\(1\\).",
+     "\\(196^{1/2}=14\\), and then the \\(3\\) cubes it."
+    ],
+    "sol": "The minus is a reciprocal, so \\(196^{-3/2}=\\frac{1}{196^{3/2}}\\). Root first, \\(196^{1/2}=14\\), then \\(14^{3}=2744\\), so $$196^{-3/2}=\\boxed{\\frac{1}{2744}}.$$ Reading the minus as a sign on the value gives \\(-2744\\), wrong in both size and meaning."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Evaluate \\(\\left(\\frac{32}{243}\\right)^{2/5}\\). A power of a fraction raises the top and the bottom separately, the way each base kept its own exponent in 3.1. Enter the value as a fraction in lowest terms.",
+    "ans": "4/9",
+    "accept": [
+     "4/9"
+    ],
+    "hints": [
+     "Take the fifth root of the top and of the bottom first.",
+     "\\(2^{5}=32\\) and \\(3^{5}=243\\), and then each root gets squared."
+    ],
+    "sol": "\\(32^{1/5}=2\\) since \\(2^{5}=32\\), and \\(243^{1/5}=3\\) since \\(3^{5}=243\\). Squaring each root gives $$\\left(\\frac{32}{243}\\right)^{2/5}=\\frac{2^{2}}{3^{2}}=\\boxed{\\frac{4}{9}}.$$ Root first kept every number in the work a single digit."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "One equation to close. Find the exponent \\(k\\) with \\(81^{k}=729\\). Write both sides as powers of \\(3\\) first. Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "3/2",
+    "accept": [
+     "3/2",
+     "1.5"
+    ],
+    "hints": [
+     "\\(81\\) and \\(729\\) are both powers of \\(3\\).",
+     "\\(81^{k}=\\left(3^{4}\\right)^{k}=3^{4k}\\), and the right side is \\(3^{6}\\)."
+    ],
+    "sol": "\\(81=3^{4}\\) and \\(729=3^{6}\\), so the equation is \\(3^{4k}=3^{6}\\), which forces \\(4k=6\\) and $$k=\\boxed{\\frac{3}{2}}.$$ Check it root first, \\(81^{3/2}=\\left(81^{1/2}\\right)^{3}=9^{3}=729\\). The lesson ends where it began, on an equation only a fractional exponent can answer."
+   },
+   {
+    "t": "fact",
+    "x": "Fractional powers are older than the notation. Around 1360 Nicole Oresme worked out rules for half powers and other fractional powers in his Algorismus proportionum, three centuries before superscript exponents settled into print."
+   },
+   {
+    "t": "p",
+    "x": "Every root in this lesson was written as an exponent, and every answer came out an integer or a fraction, because every base was a perfect power. Roots come up often enough to have earned a symbol of their own. 3.4 introduces it, along with the question this lesson dodged, what happens when the base is not a perfect power."
+   }
+  ],
+  "review": [
+   {
+    "x": "You do not need to know what \\(23^{1/2}\\) is to answer this. Enter the value of \\((23^{1/2})^{2}\\).",
+    "ans": "23",
+    "accept": [
+     "23"
+    ],
+    "hints": [
+     "No evaluation of \\(23^{1/2}\\) is needed. A law from 3.1 handles the whole expression at once.",
+     "Power of a power multiplies the exponents, and \\(\\frac{1}{2}\\cdot 2=1\\)."
+    ],
+    "sol": "Power of a power multiplies the exponents, so \\((23^{1/2})^{2}=23^{(1/2)\\cdot 2}=23^{1}=\\boxed{23}\\). The square of \\(23^{1/2}\\) is \\(23\\) by definition, and the law delivers that without ever asking what \\(23^{1/2}\\) equals."
+   },
+   {
+    "x": "Evaluate \\(484^{1/2}\\).",
+    "ans": "22",
+    "accept": [
+     "22"
+    ],
+    "hints": [
+     "The exponent \\(\\frac{1}{2}\\) asks for the number whose square is \\(484\\).",
+     "It is a little over \\(20\\), and its square has to end in \\(4\\)."
+    ],
+    "sol": "\\(22^{2}=484\\), so \\(484^{1/2}=\\boxed{22}\\). The exponent asks for the nonnegative number whose square is \\(484\\), and \\(22\\) is the one that checks."
+   },
+   {
+    "x": "A student reads the \\(\\frac{1}{2}\\) in \\(324^{1/2}\\) as a factor and answers \\(162\\). Enter the actual value.",
+    "ans": "18",
+    "accept": [
+     "18"
+    ],
+    "hints": [
+     "The \\(\\frac{1}{2}\\) is an exponent, not a factor. Halving the base is a different operation entirely.",
+     "Find the number whose square is \\(324\\)."
+    ],
+    "sol": "\\(18^{2}=324\\), so \\(324^{1/2}=\\boxed{18}\\). Multiplying by \\(\\frac{1}{2}\\) gives \\(162\\), but the exponent asks what squares to \\(324\\), and \\(162^{2}\\) is nowhere near it."
+   },
+   {
+    "x": "A student answers \\(-31\\) for \\(961^{1/2}\\) and runs the check \\((-31)^{2}=961\\), which comes out right. The answer is still wrong. Enter the value of \\(961^{1/2}\\).",
+    "ans": "31",
+    "accept": [
+     "31"
+    ],
+    "hints": [
+     "The squaring really does check out. What rules \\(-31\\) out is not arithmetic but the convention on which candidate the symbol names.",
+     "The symbol always names the nonnegative candidate."
+    ],
+    "sol": "\\(31^{2}=961\\), so \\(961^{1/2}=\\boxed{31}\\). Both \\(31\\) and \\(-31\\) square to \\(961\\), and the symbol names the nonnegative one by convention, so no amount of checking by squaring can rescue \\(-31\\). That candidate is written \\(-(961^{1/2})\\)."
+   },
+   {
+    "x": "Evaluate \\(6859^{1/3}\\).",
+    "ans": "19",
+    "accept": [
+     "19"
+    ],
+    "hints": [
+     "You want the number whose cube is \\(6859\\). Since \\(10^{3}=1000\\) and \\(20^{3}=8000\\), it is somewhere in the teens.",
+     "The cube ends in \\(9\\), and only one digit has a cube ending in \\(9\\)."
+    ],
+    "sol": "\\(19^{3}=6859\\), so \\(6859^{1/3}=\\boxed{19}\\). The bounds \\(10^{3}=1000\\) and \\(20^{3}=8000\\) trap the root in the teens, and only a units digit of \\(9\\) cubes to something ending in \\(9\\), so \\(19\\) was the only candidate worth testing."
+   },
+   {
+    "x": "Evaluate \\((-4913)^{1/3}\\).",
+    "ans": "-17",
+    "accept": [
+     "-17",
+     "−17"
+    ],
+    "hints": [
+     "An odd root of a negative number exists. Look for a negative number whose cube is \\(-4913\\).",
+     "Find the positive number whose cube is \\(4913\\) first, then attach the sign. \\(17^{3}\\) is worth checking."
+    ],
+    "sol": "\\(17^{3}=4913\\), so \\((-17)^{3}=-4913\\) and \\((-4913)^{1/3}=\\boxed{-17}\\). Three negative factors leave a negative product, so an odd root of a negative number is negative, not missing."
+   },
+   {
+    "x": "Of \\((-361)^{1/2}\\), \\((-3375)^{1/3}\\), \\((-49)^{1/4}\\), and \\((-1)^{1/5}\\), how many name a real number? Enter the count.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "You never need the values. Only the parity of each root matters when the base is negative.",
+     "Even roots need a nonnegative base. Odd roots take any base at all."
+    ],
+    "sol": "The even roots fail, since no real number raised to the power \\(2\\) or \\(4\\) is negative. The odd roots are real, \\((-3375)^{1/3}=-15\\) and \\((-1)^{1/5}=-1\\). That makes \\(\\boxed{2}\\) real values. Parity settles all four before any arithmetic starts."
+   },
+   {
+    "x": "For positive \\(z\\), \\(z^{3/4}\\cdot z^{13/4}=z^{k}\\). Enter \\(k\\).",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "The product rule from 3.1 adds the exponents, and fractions change nothing about that.",
+     "Add \\(\\frac{3}{4}+\\frac{13}{4}\\). The denominators already match."
+    ],
+    "sol": "The product rule adds the exponents, \\(\\frac{3}{4}+\\frac{13}{4}=\\frac{16}{4}=\\boxed{4}\\). Multiplying them instead is power of a power's move, and that law belongs to a different expression."
+   },
+   {
+    "x": "For positive \\(c\\), \\((c^{5/12})^{18}=c^{k}\\). Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "15/2",
+    "accept": [
+     "15/2",
+     "7.5"
+    ],
+    "hints": [
+     "Power of a power multiplies the exponents, fractions included.",
+     "Compute \\(\\frac{5}{12}\\cdot 18\\), then reduce the result."
+    ],
+    "sol": "Power of a power multiplies the exponents, \\(\\frac{5}{12}\\cdot 18=\\frac{90}{12}=\\boxed{\\frac{15}{2}}\\). Nothing requires the exponent to come out whole, so \\(\\frac{15}{2}\\) is the finished answer."
+   },
+   {
+    "x": "For positive \\(v\\), \\(\\frac{v^{2/5}}{v^{22/5}}=v^{k}\\). Enter \\(k\\).",
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4"
+    ],
+    "hints": [
+     "The quotient rule subtracts the exponents, top minus bottom, in that order.",
+     "\\(\\frac{2}{5}-\\frac{22}{5}\\) comes out negative, and negative exponents are 3.2's territory."
+    ],
+    "sol": "The quotient rule subtracts, \\(\\frac{2}{5}-\\frac{22}{5}=-\\frac{20}{5}=\\boxed{-4}\\). Subtracting in the wrong order gives \\(4\\), off by exactly a sign, which is why the rule fixes the order as top minus bottom."
+   },
+   {
+    "x": "Evaluate \\(900^{3/2}\\). Take the root first to keep the numbers small.",
+    "ans": "27000",
+    "accept": [
+     "27000"
+    ],
+    "hints": [
+     "Read \\(\\frac{3}{2}\\) as the half power first, then the cube. Both orders agree, one keeps the numbers small.",
+     "\\(900^{1/2}=30\\). Now cube it."
+    ],
+    "sol": "\\(900^{1/2}=30\\) and \\(30^{3}=27000\\), so \\(900^{3/2}=\\boxed{27000}\\). Power first lands in the same place, but it runs \\(900^{3}\\), a nine digit number, through the arithmetic on the way."
+   },
+   {
+    "x": "Evaluate \\(\\left(\\frac{576}{841}\\right)^{1/2}\\). Enter a fraction in lowest terms.",
+    "ans": "24/29",
+    "accept": [
+     "24/29"
+    ],
+    "hints": [
+     "Power of a quotient from 3.1 sends the exponent to the top and the bottom separately.",
+     "\\(24^{2}=576\\) and \\(29^{2}=841\\)."
+    ],
+    "sol": "The exponent applies to top and bottom separately, \\(576^{1/2}=24\\) and \\(841^{1/2}=29\\), so the value is \\(\\boxed{\\frac{24}{29}}\\). It is already in lowest terms, since \\(29\\) is prime and does not divide \\(24\\)."
+   },
+   {
+    "x": "Enter \\(676^{-1/2}\\) as a fraction in lowest terms.",
+    "ans": "1/26",
+    "accept": [
+     "1/26"
+    ],
+    "hints": [
+     "Handle the minus the 3.2 way first. It puts the matching positive power under a \\(1\\).",
+     "Then \\(676^{1/2}\\) asks what squares to \\(676\\), and \\(26^{2}\\) is worth checking."
+    ],
+    "sol": "The minus flips first, \\(676^{-1/2}=\\frac{1}{676^{1/2}}\\), and \\(26^{2}=676\\), so the value is \\(\\boxed{\\frac{1}{26}}\\). The minus makes a reciprocal, not a negative value, so the answer is a small positive fraction, never \\(-26\\)."
+   },
+   {
+    "x": "Evaluate \\(1024^{7/10}\\).",
+    "ans": "128",
+    "accept": [
+     "128"
+    ],
+    "hints": [
+     "The tenth root is invisible until you write the base as a power of something small.",
+     "\\(1024=2^{10}\\), then power of a power collapses the exponents."
+    ],
+    "sol": "\\(1024=2^{10}\\), so \\(1024^{7/10}=(2^{10})^{7/10}=2^{7}=\\boxed{128}\\). Rewriting the base does all the work. The tenth root of \\(1024\\) was never something to hunt for directly."
+   },
+   {
+    "x": "Enter \\(6561^{-3/8}\\) as a fraction in lowest terms.",
+    "ans": "1/27",
+    "accept": [
+     "1/27"
+    ],
+    "hints": [
+     "Three moves stack here, reciprocal, root, power. The order that keeps numbers small takes the root early.",
+     "\\(6561=3^{8}\\), so the eighth root is \\(3\\)."
+    ],
+    "sol": "\\(6561=3^{8}\\), so \\(6561^{3/8}=(3^{8})^{3/8}=3^{3}=27\\), and the minus flips that to \\(\\boxed{\\frac{1}{27}}\\). The minus is 3.2's reciprocal move, the fraction is this lesson's root and power, and they stack without interfering."
+   },
+   {
+    "x": "Exactly one of \\(-(784^{1/2})\\) and \\((-784)^{1/2}\\) names a real number. Enter its value.",
+    "ans": "-28",
+    "accept": [
+     "-28",
+     "−28"
+    ],
+    "hints": [
+     "Where the minus sits decides everything. One expression negates a root, the other asks for a root of a negative.",
+     "\\(-(784^{1/2})\\) is minus a positive number. \\((-784)^{1/2}\\) would need a real number whose square is negative."
+    ],
+    "sol": "\\(28^{2}=784\\), so \\(784^{1/2}=28\\) and \\(-(784^{1/2})=\\boxed{-28}\\). The other expression puts the minus inside the base, and no real number squares to \\(-784\\), so \\((-784)^{1/2}\\) has no value at all. The parentheses decide which computation you are being asked to run."
+   },
+   {
+    "x": "Find the exponent \\(k\\) with \\(100^{k}=100000\\). Write both sides as powers of \\(10\\) first. Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5"
+    ],
+    "hints": [
+     "\\(100\\) and \\(100000\\) are both powers of \\(10\\). Rewrite each side, then power of a power turns the left side into a single power of \\(10\\).",
+     "The equation becomes \\(10^{2k}=10^{5}\\), so the exponents must match."
+    ],
+    "sol": "\\(100=10^{2}\\) and \\(100000=10^{5}\\), so the equation reads \\((10^{2})^{k}=10^{5}\\), which is \\(10^{2k}=10^{5}\\). Matching exponents forces \\(2k=5\\), so \\(k=\\boxed{\\frac{5}{2}}\\). Check it root first, \\(100^{5/2}=(100^{1/2})^{5}=10^{5}=100000\\). No whole number works here, which is exactly the kind of equation fractional exponents exist to answer."
+   }
+  ]
  }
 }
