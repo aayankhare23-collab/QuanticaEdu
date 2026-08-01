@@ -360,5 +360,398 @@
     "sol": "The parentheses clear to \\(16m^{20}\\), then \\(16\\div 8=2\\) and \\(20-11=9\\), giving \\(\\boxed{2m^9}\\). Forgetting \\(2^4\\) leaves \\(2m^{20}\\) on top and wrecks the coefficient."
    }
   ]
+ },
+ "3.2": {
+  "title": "Zero and Negative Exponents",
+  "next": "3.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "3.1 kept the larger exponent on top of every quotient, and that restriction is now gone. Once the bottom exponent can be the larger one, the quotient rule's subtraction runs past zero, so \\(x^{0}\\) and \\(x^{-3}\\) have to mean something. There is a second change. The base is a letter now, and a letter can be zero without looking like it."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A column lists powers of \\(d\\) for some nonzero \\(d\\), and each entry is the one above it divided by \\(d\\). Reading down, the entries are \\(d\\cdot d\\cdot d\\), then \\(d\\cdot d\\), then \\(d\\). Take one more step down, which lands on \\(d^{0}\\). Enter its value.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "one"
+    ],
+    "hints": [
+     "Each step down divides by \\(d\\), and the last step is no different from the ones above it.",
+     "The entry above the one you want is \\(d\\) itself, so the step is \\(d\\div d\\)."
+    ],
+    "sol": "Every step down the column divides by \\(d\\), including the last one. The entry above \\(d^{0}\\) is \\(d\\), so $$d^{0}=d\\div d=\\boxed{1}.$$ The base cancels itself. Nothing about the step changed just because the exponent reached zero."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "A table lists the value of \\(t^{0}\\) for \\(t=13\\), \\(t=-9\\), \\(t=0\\) and \\(t=50\\). Check each value of \\(t\\) against the zero exponent rule before you count. For how many of the four is \\(t^{0}\\) equal to \\(1\\)?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "The zero power needs a base that is not zero. Check each value of \\(t\\) against that.",
+     "A negative base is still a nonzero base, so \\((-9)^{0}=1\\). Now test \\(t=0\\) against the condition."
+    ],
+    "sol": "\\(13^{0}\\), \\((-9)^{0}\\) and \\(50^{0}\\) are all \\(1\\), and \\(0^{0}\\) has no value, so \\(\\boxed{3}\\) of the four are equal to \\(1\\). The rule \\(a^{0}=1\\) needs a nonzero base, and a negative base still counts as nonzero. Zero is left out because \\(t^{0}\\) comes from \\(\\frac{t^{n}}{t^{n}}\\), which divides by zero when \\(t=0\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The zero power.</b> For any nonzero \\(x\\), $$x^{0}=1.$$ Read a column of powers downward. Each step drops the exponent by one and divides the value by \\(x\\), so the step from \\(x^{1}\\) to \\(x^{0}\\) divides \\(x\\) by itself, and \\(1\\) is the only place it can land. The nonzero condition is real work now. A numeral is visibly zero or visibly not, and you settle it by looking. A letter settles nothing until it gets a value, and if that value is \\(0\\) the step becomes \\(0\\div 0\\), which is not a number. So \\(x^{0}=1\\) for every \\(x\\) except \\(0\\), and \\(0^{0}\\) has no value at all."
+   },
+   {
+    "t": "p",
+    "x": "The column is one route to \\(x^{0}\\), and the quotient rule is the other. It reaches further than the column does, because subtracting exponents does not stop at zero. The next two problems run one fraction through both readings and then make the readings agree."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Simplify \\(\\frac{h^{2}}{h^{8}}\\) for nonzero \\(h\\) by writing out the factors and cancelling. Nothing here needs the quotient rule. Enter what survives, typed like \\(1/y^5\\).",
+    "ans": "1/h^6",
+    "accept": [
+     "1/h^6",
+     "1/h^{6}",
+     "1/(h^6)",
+     "1/(h^{6})"
+    ],
+    "hints": [
+     "Two factors on top, eight on the bottom. Pair them off.",
+     "Each factor on top cancels one on the bottom. Count how many factors are left underneath."
+    ],
+    "sol": "The two factors of \\(h\\) on top cancel two of the eight underneath, which leaves \\(8-2=6\\) factors on the bottom and nothing but \\(1\\) on top. $$\\frac{h^{2}}{h^{8}}=\\boxed{\\frac{1}{h^{6}}}$$"
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Now read the same fraction \\(\\frac{h^{2}}{h^{8}}\\) through the quotient rule from 3.1, which subtracts the exponents. Nothing in that rule ever said the top exponent had to be the larger one. Enter the exponent it puts on \\(h\\).",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "h^-6",
+     "h^{-6}",
+     "negative 6",
+     "minus 6"
+    ],
+    "hints": [
+     "The rule is \\(\\frac{x^{m}}{x^{n}}=x^{m-n}\\). Put \\(2\\) and \\(8\\) in and do the subtraction.",
+     "Subtract in the order the rule gives, so it is \\(2-8\\) and not \\(8-2\\). A negative result is fine as an exponent."
+    ],
+    "sol": "The quotient rule subtracts the exponents whether or not the top one is larger. $$\\frac{h^{2}}{h^{8}}=h^{2-8}=h^{-6}$$ so the exponent is \\(\\boxed{-6}\\). The last problem read the same fraction as \\(\\frac{1}{h^{6}}\\), and one fraction has one value, so \\(h^{-6}\\) and \\(\\frac{1}{h^{6}}\\) are the same thing."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Negative exponents.</b> For any nonzero \\(x\\), $$x^{-n}=\\frac{1}{x^{n}}.$$ This is forced, not chosen. Cancelling \\(\\frac{h^{2}}{h^{8}}\\) by hand leaves \\(\\frac{1}{h^{6}}\\), the quotient rule reads the same fraction as \\(h^{-6}\\), and one fraction has one value, so the two forms are the same number. A negative exponent is a reciprocal, not a negative number. \\(x^{-4}\\) is positive whenever \\(x\\) is, because it is \\(1\\) divided by a positive amount. What the minus sign does is put the factor under the bar."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 588\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top a ladder of six rows on the base x, from x cubed down to x to the negative two, each row a tile on the left and the same value written out on the right, with a rail of five identical divide-by-x pills stepping from each row to the next. The x to the zero and x to the negative one rows are gold, the rest blue. Below, a fraction bar with a gold chip reading x to the negative n above it and a blue chip reading x to the n below it, and two curved arrows sweeping each into the other position, badged minus n and plus n.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"e32tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><path d=\"M76 70 V342\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M68 110 L76 118 L84 110\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M68 166 L76 174 L84 166\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M68 222 L76 230 L84 222\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M68 278 L76 286 L84 278\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M68 334 L76 342 L84 334\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"50\" y=\"86\" width=\"52\" height=\"24\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"76\" y=\"103\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">÷ x</text><rect x=\"50\" y=\"142\" width=\"52\" height=\"24\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"76\" y=\"159\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">÷ x</text><rect x=\"50\" y=\"198\" width=\"52\" height=\"24\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"76\" y=\"215\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">÷ x</text><rect x=\"50\" y=\"254\" width=\"52\" height=\"24\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"76\" y=\"271\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">÷ x</text><rect x=\"50\" y=\"310\" width=\"52\" height=\"24\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"76\" y=\"327\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">÷ x</text><rect x=\"148\" y=\"50\" width=\"126\" height=\"40\" rx=\"13\" fill=\"#dbe8fd\" stroke=\"#bfd6fb\" stroke-width=\"1.5\" filter=\"url(#e32tile)\"/><text x=\"211\" y=\"78\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#1d4ed8\">x<tspan font-size=\"15\" dy=\"-9\">3</tspan></text><text x=\"336\" y=\"77\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><text x=\"452\" y=\"77\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#2257c5\">x · x · x</text><rect x=\"148\" y=\"106\" width=\"126\" height=\"40\" rx=\"13\" fill=\"#dbe8fd\" stroke=\"#bfd6fb\" stroke-width=\"1.5\" filter=\"url(#e32tile)\"/><text x=\"211\" y=\"134\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#1d4ed8\">x<tspan font-size=\"15\" dy=\"-9\">2</tspan></text><text x=\"336\" y=\"133\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><text x=\"452\" y=\"133\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#2257c5\">x · x</text><rect x=\"148\" y=\"162\" width=\"126\" height=\"40\" rx=\"13\" fill=\"#dbe8fd\" stroke=\"#bfd6fb\" stroke-width=\"1.5\" filter=\"url(#e32tile)\"/><text x=\"211\" y=\"190\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#1d4ed8\">x<tspan font-size=\"15\" dy=\"-9\">1</tspan></text><text x=\"336\" y=\"189\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><text x=\"452\" y=\"189\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#2257c5\">x</text><rect x=\"148\" y=\"218\" width=\"126\" height=\"40\" rx=\"13\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#e32tile)\"/><text x=\"211\" y=\"246\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">x<tspan font-size=\"15\" dy=\"-9\">0</tspan></text><text x=\"336\" y=\"245\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><text x=\"452\" y=\"245\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#8a5a08\">1</text><rect x=\"148\" y=\"274\" width=\"126\" height=\"40\" rx=\"13\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#e32tile)\"/><text x=\"211\" y=\"302\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#8a5a08\">x<tspan font-size=\"15\" dy=\"-9\">−1</tspan></text><text x=\"336\" y=\"301\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><text x=\"452\" y=\"287\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#8a5a08\">1</text><path d=\"M434 295 H470\" fill=\"none\" stroke=\"#8a5a08\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"452\" y=\"316\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"148\" y=\"330\" width=\"126\" height=\"40\" rx=\"13\" fill=\"#dbe8fd\" stroke=\"#bfd6fb\" stroke-width=\"1.5\" filter=\"url(#e32tile)\"/><text x=\"211\" y=\"358\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"700\" fill=\"#1d4ed8\">x<tspan font-size=\"15\" dy=\"-9\">−2</tspan></text><text x=\"336\" y=\"357\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#7c8aa0\">=</text><text x=\"452\" y=\"343\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#2257c5\">1</text><path d=\"M420 351 H484\" fill=\"none\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"452\" y=\"372\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#2257c5\">x · x</text><path d=\"M46 396 H534\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><rect x=\"228\" y=\"444\" width=\"124\" height=\"42\" rx=\"13\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#e32tile)\"/><text x=\"290\" y=\"474\" text-anchor=\"middle\" font-size=\"25\" font-weight=\"700\" fill=\"#8a5a08\">x<tspan font-size=\"16\" dy=\"-10\">−n</tspan></text><path d=\"M214 501 H366\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"228\" y=\"516\" width=\"124\" height=\"42\" rx=\"13\" fill=\"#dbe8fd\" stroke=\"#bfd6fb\" stroke-width=\"1.5\" filter=\"url(#e32tile)\"/><text x=\"290\" y=\"546\" text-anchor=\"middle\" font-size=\"25\" font-weight=\"700\" fill=\"#1d4ed8\">x<tspan font-size=\"16\" dy=\"-10\">n</tspan></text><path d=\"M290 486 V516\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"2\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><path d=\"M360 454 C 430 452, 430 550, 368 548\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M380 541 L368 548 L380 555\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M220 548 C 150 550, 150 452, 212 454\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M200 447 L212 454 L200 461\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"389\" y=\"489\" width=\"48\" height=\"24\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"413\" y=\"506\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#2f6fe0\">+n</text><rect x=\"142\" y=\"489\" width=\"48\" height=\"24\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"166\" y=\"506\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">−n</text></svg>",
+    "cap": "Each step down the rail divides by \\(x\\), and nothing about the step changes when the exponent passes zero. One step below \\(x^{1}\\) divides \\(x\\) by itself and lands on \\(1\\). The next divides \\(1\\) by \\(x\\), and the factor lands under the bar. The lower band reads that same move as a rewrite, one factor crossing the bar with the sign of its exponent flipped."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Rewrite \\(v^{-4}\\) with a positive exponent, then evaluate it at \\(v=3\\). Enter the value as a fraction in lowest terms.",
+    "ans": "1/81",
+    "accept": [
+     "1/81"
+    ],
+    "hints": [
+     "A negative exponent puts the matching positive power under a \\(1\\).",
+     "So this is \\(\\frac{1}{v^{4}}\\). Now put \\(3\\) in for \\(v\\)."
+    ],
+    "sol": "A negative exponent is a reciprocal, so \\(v^{-4}=\\frac{1}{v^{4}}\\). At \\(v=3\\) that is $$\\frac{1}{3^{4}}=\\boxed{\\frac{1}{81}}.$$ A negative exponent puts the power under the bar and never turns the value negative, so \\(-81\\) and \\(-\\frac{1}{81}\\) are both wrong turns."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Simplify \\(\\frac{1}{g^{-7}}\\) for nonzero \\(g\\), leaving no fraction bar and no negative exponent. Enter the result, typed like \\(y^5\\).",
+    "ans": "g^7",
+    "accept": [
+     "g^7",
+     "g^{7}"
+    ],
+    "hints": [
+     "Rewrite the bottom first. What does \\(g^{-7}\\) equal with a positive exponent?",
+     "The bottom becomes \\(\\frac{1}{g^{7}}\\), and dividing by a fraction multiplies by its reciprocal."
+    ],
+    "sol": "The bottom is \\(g^{-7}=\\frac{1}{g^{7}}\\), so the whole thing is \\(1\\) divided by \\(\\frac{1}{g^{7}}\\), and dividing by a fraction multiplies by its reciprocal. $$\\frac{1}{g^{-7}}=\\boxed{g^{7}}$$ A factor with a negative exponent on the bottom moves up top and its exponent turns positive. The move runs both ways."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Simplified means positive exponents.</b> A finished answer carries no negative exponent, and getting there is one move run in whichever direction you need. $$x^{-n}=\\frac{1}{x^{n}} \\qquad \\frac{1}{x^{-n}}=x^{n}$$ A factor crosses the fraction bar and the sign of its exponent flips. The value does not change, only the way it is written, so you are free to do it at any point in a problem. Watch the word factor. Only the piece the exponent is written on crosses. Everything multiplied alongside it stays exactly where it is."
+   },
+   {
+    "t": "p",
+    "x": "A monomial has a number out front and powers of letters after it, and an exponent written on one of those letters has nothing to do with the number. This is where the most common wrong answer of the chapter lives. The next two problems are built to make the difference impossible to argue with."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "A student writes \\(5c^{-1}=\\frac{1}{5c}\\). Test the claim the way 1.4 did, by picking a number. Take \\(c=2\\) and work out what \\(5c^{-1}\\) is really worth there. Enter that value as a fraction in lowest terms or an exact decimal.",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5"
+    ],
+    "hints": [
+     "The \\(-1\\) is written on \\(c\\). Ask what it is attached to before you move anything.",
+     "\\(5c^{-1}\\) means \\(5\\cdot c^{-1}\\), so the \\(5\\) is a separate factor sitting out front. Only \\(c^{-1}\\) becomes a reciprocal."
+    ],
+    "sol": "The exponent is written on \\(c\\) alone, so \\(5c^{-1}=5\\cdot\\frac{1}{c}=\\frac{5}{c}\\), and at \\(c=2\\) that is $$\\boxed{\\frac{5}{2}}.$$ The student's version gives \\(\\frac{1}{5\\cdot 2}=\\frac{1}{10}\\), which is \\(25\\) times too small. The \\(5\\) never moves, because no exponent was ever written on it."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "One pair of parentheses is the only difference between \\(7q^{-2}\\) and \\((7q)^{-2}\\), and they are not the same expression. Rewrite \\((7q)^{-2}\\) with no negative exponent. Enter the result, typed like \\(1/(3y^4)\\).",
+    "ans": "1/(49q^2)",
+    "accept": [
+     "1/(49q^2)",
+     "1/(49q^{2})",
+     "1/49q^2",
+     "1/49q^{2}"
+    ],
+    "hints": [
+     "In \\(7q^{-2}\\) the exponent is written on \\(q\\). In \\((7q)^{-2}\\) the parentheses put the whole product \\(7q\\) under it.",
+     "So the second one is \\(\\frac{1}{(7q)^{2}}\\), and squaring a product squares both factors, the way 3.1's power of a product did."
+    ],
+    "sol": "The exponent applies to the whole product \\(7q\\), so $$(7q)^{-2}=\\frac{1}{(7q)^{2}}=\\boxed{\\frac{1}{49q^{2}}}.$$ Without the parentheses, \\(7q^{-2}=\\frac{7}{q^{2}}\\), which keeps the \\(7\\) upstairs. At \\(q=2\\), \\((7q)^{-2}\\) is \\(\\frac{1}{196}\\) while \\(7q^{-2}\\) is \\(\\frac{7}{4}\\), a factor of \\(343\\) apart."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A negative exponent moves only its own factor.</b> $$kx^{-n}=\\frac{k}{x^{n}} \\qquad (kx)^{-n}=\\frac{1}{k^{n}x^{n}}$$ In \\(kx^{-n}\\) the exponent is written on \\(x\\), so only \\(x^{-n}\\) becomes a reciprocal and the coefficient stays on top. That makes \\(2x^{-1}=\\frac{2}{x}\\), not \\(\\frac{1}{2x}\\). Those two differ by a factor of \\(4\\), which makes the error obvious the moment you put a number in. The parentheses in \\((kx)^{-n}\\) hand the whole product to the exponent, so the coefficient goes down and gets raised as well. No parentheses, no exponent on the coefficient, no movement."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Simplify \\((4z^{-3})^{-2}\\) so that no exponent is negative. The outer \\(-2\\) reaches the \\(4\\) as well as the \\(z^{-3}\\), the way 3.1's power of a product did. Enter the result, typed like \\(y^5/9\\).",
+    "ans": "z^6/16",
+    "accept": [
+     "z^6/16",
+     "z^{6}/16",
+     "(z^6)/16",
+     "z^6/(16)"
+    ],
+    "hints": [
+     "Handle the two factors inside separately. What is \\(4^{-2}\\), and what is \\((z^{-3})^{-2}\\)?",
+     "Power of a power multiplies the exponents, and \\((-3)\\times(-2)\\) is positive."
+    ],
+    "sol": "The outer exponent applies to every factor inside the parentheses, so take the \\(4\\) and the \\(z^{-3}\\) one at a time. Power of a power multiplies exponents and \\((-3)(-2)=6\\), so \\((z^{-3})^{-2}=z^{6}\\), while the coefficient gives \\(4^{-2}=\\frac{1}{16}\\). $$(4z^{-3})^{-2}=\\boxed{\\frac{z^{6}}{16}}$$ Leaving the \\(4\\) alone gives \\(4z^{6}\\), and flipping the wrong way gives \\(\\frac{16}{z^{6}}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A negative power of a whole monomial.</b> $$(kx^{m})^{-n}=\\frac{1}{k^{n}x^{mn}}$$ Nothing new is happening here. Power of a product from 3.1 sends the outer exponent to every factor inside, giving \\(k^{-n}x^{-mn}\\), and then each factor with a negative exponent crosses the bar. Power of a power multiplies exponents, so a negative inner exponent times a negative outer one comes out positive, which is why \\((4z^{-3})^{-2}\\) puts \\(z^{6}\\) on top. The one thing that goes wrong is forgetting the coefficient is inside the parentheses too."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Simplify \\(\\frac{12r^{3}}{18r^{10}}\\) completely, with no negative exponent left. The coefficients and the powers of \\(r\\) do not get the same treatment. Enter the result, typed like \\(3/(4y^2)\\), with the whole denominator inside the parentheses.",
+    "ans": "2/(3r^7)",
+    "accept": [
+     "2/(3r^7)",
+     "2/(3r^{7})",
+     "(2)/(3r^7)",
+     "(2)/(3r^{7})",
+     "2/(3*r^7)",
+     "2/(3*r^{7})"
+    ],
+    "hints": [
+     "Split it into a number part and an \\(r\\) part. The numbers reduce, the exponents subtract.",
+     "The exponents give \\(3-10\\), which is negative. A factor with a negative exponent moves to the denominator, and its exponent turns positive there."
+    ],
+    "sol": "The coefficients reduce, \\(\\frac{12}{18}=\\frac{2}{3}\\), and the exponents subtract, \\(3-10=-7\\), so partway you have \\(\\frac{2}{3}r^{-7}\\). $$\\frac{2}{3}r^{-7}=\\frac{2}{3}\\cdot\\frac{1}{r^{7}}=\\boxed{\\frac{2}{3r^{7}}}$$ Only the factor with the negative exponent moves to the denominator. The \\(\\frac{2}{3}\\) has no negative exponent, so it stays where it is."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Simplify \\(\\frac{20a^{4}b^{6}}{45a^{9}b^{6}}\\) for nonzero \\(a\\) and \\(b\\), leaving no negative exponent. One of the two letters disappears entirely, and the fact that it is nonzero is what lets that happen. Enter the result, typed like \\(5/(7y^3)\\).",
+    "ans": "4/(9a^5)",
+    "accept": [
+     "4/(9a^5)",
+     "4/(9a^{5})",
+     "(4)/(9a^5)",
+     "(4)/(9a^{5})",
+     "4/(9*a^5)",
+     "4/(9*a^{5})"
+    ],
+    "hints": [
+     "Three separate jobs. Reduce the numbers, subtract the \\(a\\) exponents, subtract the \\(b\\) exponents.",
+     "The \\(b\\) exponents subtract to \\(0\\), and \\(b^{0}=1\\) because \\(b\\) is not zero. A factor of \\(1\\) can be dropped."
+    ],
+    "sol": "Reduce the coefficients, \\(\\frac{20}{45}=\\frac{4}{9}\\). Subtract on \\(a\\), \\(4-9=-5\\). Subtract on \\(b\\), \\(6-6=0\\), and \\(b^{0}=1\\) since \\(b\\) is nonzero, so the \\(b\\) factors cancel and leave nothing behind. $$\\frac{4}{9}a^{-5}=\\boxed{\\frac{4}{9a^{5}}}$$ Only \\(a^{-5}\\) moves to the denominator, since the \\(4\\) carries no exponent. Subtracting the other way gives \\(a^{5}\\) on top, which is the common miss."
+   },
+   {
+    "t": "fact",
+    "x": "The old word for exponent was index. John Wallis argued in 1656 that the index table ought to keep running below zero, and he wrote \\(x^{-1}\\) for the reciprocal so one rule could cover the whole table. Newton took the notation up and it stuck."
+   },
+   {
+    "t": "p",
+    "x": "Every exponent in this lesson was a whole number, positive, zero or negative, and the laws from 3.1 handled all of them without a single new rule. Nothing in those laws says an exponent has to be a whole number. 3.3 asks what \\(x^{1/2}\\) could mean, and the answer comes from the same place these did, whichever value keeps the laws working."
+   }
+  ],
+  "review": [
+   {
+    "x": "For nonzero \\(k\\), evaluate \\(8k^{0}+(8k)^{0}\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "The exponent in \\(8k^{0}\\) is written on \\(k\\) alone. In \\((8k)^{0}\\) the parentheses put the whole product under it."
+    ],
+    "sol": "The first term is \\(8k^{0}=8\\cdot 1=8\\) and the second is \\((8k)^{0}=1\\), so the sum is \\(8+1=\\boxed{9}\\). Reading the first term as \\((8k)^{0}\\) instead gives \\(1+1=2\\), the common slip. There the exponent reaches only \\(k\\), so the \\(8\\) stays as a factor."
+   },
+   {
+    "x": "\\(u^{0}=1\\) holds for every value of \\(u\\) but one. Enter the value it fails for.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "u=0"
+    ],
+    "hints": [
+     "The step that builds \\(u^{0}\\) divides \\(u\\) by \\(u\\). Which value makes that step impossible?"
+    ],
+    "sol": "\\(u^{0}=1\\) fails at \\(u=\\boxed{0}\\). Going from \\(u^{1}\\) down to \\(u^{0}\\) divides \\(u\\) by itself, and at \\(u=0\\) that is \\(0\\div 0\\), which is undefined. Every other base works, negative ones included."
+   },
+   {
+    "x": "Rewrite \\(j^{-9}\\) with a positive exponent. Type it like \\(1/y^4\\).",
+    "ans": "1/j^9",
+    "accept": [
+     "1/j^9",
+     "1/j^{9}",
+     "1/(j^9)",
+     "1/(j^{9})"
+    ],
+    "hints": [
+     "A negative exponent puts the matching positive power under a \\(1\\)."
+    ],
+    "sol": "A negative exponent means one over the matching positive power, so \\(j^{-9}=\\boxed{\\dfrac{1}{j^{9}}}\\). The minus sign moves the power to the bottom of a fraction. It does not make the value negative."
+   },
+   {
+    "x": "Evaluate \\(w^{-3}\\) at \\(w=2\\). Enter it as a fraction in lowest terms.",
+    "ans": "1/8",
+    "accept": [
+     "1/8",
+     "0.125",
+     ".125"
+    ],
+    "hints": [
+     "Rewrite it as \\(\\frac{1}{w^{3}}\\) first, then substitute."
+    ],
+    "sol": "Rewriting gives \\(w^{-3}=\\frac{1}{w^{3}}\\), and at \\(w=2\\) that is \\(\\frac{1}{2^{3}}=\\boxed{\\frac{1}{8}}\\). Treating the minus as a sign on the value gives \\(-8\\), which is wrong in both size and sign."
+   },
+   {
+    "x": "Rewrite \\(\\frac{6}{f^{-2}}\\) with no negative exponent. Type it like \\(3y^4\\).",
+    "ans": "6f^2",
+    "accept": [
+     "6f^2",
+     "6f^{2}"
+    ],
+    "hints": [
+     "A factor with a negative exponent on the bottom moves up top and its exponent turns positive."
+    ],
+    "sol": "The \\(f^{-2}\\) crosses the bar and the sign of its exponent flips, so \\(\\frac{6}{f^{-2}}=\\boxed{6f^{2}}\\). The \\(6\\) has no exponent written on it, so it does not move."
+   },
+   {
+    "x": "Simplify \\(\\frac{s^{5}}{s^{13}}\\) with no negative exponent left. Type it like \\(1/y^4\\).",
+    "ans": "1/s^8",
+    "accept": [
+     "1/s^8",
+     "1/s^{8}",
+     "1/(s^8)",
+     "1/(s^{8})"
+    ],
+    "hints": [
+     "Dividing powers of the same base subtracts the exponents. When that subtraction lands on a negative number, the power belongs on the other side of the fraction bar."
+    ],
+    "sol": "Dividing powers of the same base subtracts the exponents, and \\(5-13=-8\\), so the quotient is \\(s^{-8}=\\boxed{\\frac{1}{s^{8}}}\\). Cancelling gives the same result, since five of the thirteen factors in the denominator pair off with the five on top and eight stay below the bar."
+   },
+   {
+    "x": "Rewrite \\(10p^{-3}\\) with no negative exponent. Type it like \\(2/y^5\\).",
+    "ans": "10/p^3",
+    "accept": [
+     "10/p^3",
+     "10/p^{3}",
+     "10/(p^3)",
+     "10/(p^{3})"
+    ],
+    "hints": [
+     "The \\(-3\\) is written on \\(p\\). Ask what it is attached to before you move anything."
+    ],
+    "sol": "The exponent sits on \\(p\\) alone, so only \\(p^{-3}\\) becomes a reciprocal and \\(10p^{-3}=\\boxed{\\frac{10}{p^{3}}}\\). Dragging the \\(10\\) down as well gives \\(\\frac{1}{10p^{3}}\\), which is 100 times too small."
+   },
+   {
+    "x": "Evaluate \\(15e^{-2}\\) at \\(e=3\\). Enter it as a fraction in lowest terms.",
+    "ans": "5/3",
+    "accept": [
+     "5/3"
+    ],
+    "hints": [
+     "This is \\(\\frac{15}{e^{2}}\\) and not \\(\\frac{1}{15e^{2}}\\). Only \\(e^{-2}\\) moves."
+    ],
+    "sol": "The exponent is written on \\(e\\) alone, so \\(15e^{-2}=\\frac{15}{e^{2}}\\), and at \\(e=3\\) that is \\(\\frac{15}{9}=\\boxed{\\frac{5}{3}}\\). Moving the \\(15\\) down too gives \\(\\frac{1}{135}\\), which is 225 times smaller."
+   },
+   {
+    "x": "Rewrite \\((3b)^{-3}\\) with no negative exponent. Simplify the number too. Type it like \\(1/(2y^4)\\).",
+    "ans": "1/(27b^3)",
+    "accept": [
+     "1/(27b^3)",
+     "1/(27b^{3})",
+     "1/(27*b^3)",
+     "1/(27*b^{3})"
+    ],
+    "hints": [
+     "The exponent applies to the whole product \\(3b\\), so the \\(3\\) and the \\(b\\) both get raised to it."
+    ],
+    "sol": "\\((3b)^{-3}=\\frac{1}{(3b)^{3}}=\\boxed{\\frac{1}{27b^{3}}}\\). Because of the parentheses the exponent applies to both factors, so the \\(3\\) gets cubed along with the \\(b\\). Without them \\(3b^{-3}\\) means \\(\\frac{3}{b^{3}}\\) and the \\(3\\) stays on top."
+   },
+   {
+    "x": "Simplify \\((5c^{-2})^{-2}\\) with no negative exponent left. Type it like \\(y^3/8\\).",
+    "ans": "c^4/25",
+    "accept": [
+     "c^4/25",
+     "c^{4}/25",
+     "(c^4)/25",
+     "(c^{4})/25"
+    ],
+    "hints": [
+     "The outer exponent reaches the \\(5\\) as well as the \\(c^{-2}\\), and \\((-2)\\times(-2)\\) is positive."
+    ],
+    "sol": "Take the two factors inside separately. The coefficient gives \\(5^{-2}=\\frac{1}{25}\\), and power of a power multiplies exponents so \\((c^{-2})^{-2}=c^{4}\\), leaving \\(\\boxed{\\frac{c^{4}}{25}}\\). Leaving the \\(5\\) untouched gives \\(5c^{4}\\), which is 125 times too big."
+   },
+   {
+    "x": "Simplify \\((3h^{-6})(8h^{2})\\) with no negative exponent left. Type it like \\(5/y^3\\).",
+    "ans": "24/h^4",
+    "accept": [
+     "24/h^4",
+     "24/h^{4}",
+     "24/(h^4)",
+     "24/(h^{4})"
+    ],
+    "hints": [
+     "Coefficients multiply and exponents add, exactly as in 3.1. The signs on the exponents change nothing about that.",
+     "You land on \\(24h^{-4}\\). Only \\(h^{-4}\\) crosses the bar to finish."
+    ],
+    "sol": "Coefficients multiply, \\(3\\cdot 8=24\\), and exponents add, \\(-6+2=-4\\), so the product is \\(24h^{-4}=\\boxed{\\frac{24}{h^{4}}}\\). Only the factor carrying the exponent crosses the bar, so the \\(24\\) stays on top."
+   },
+   {
+    "x": "Simplify \\(\\frac{30t^{-2}}{5t^{-9}}\\) to a single term, then evaluate it at \\(t=2\\). Enter the value.",
+    "ans": "768",
+    "accept": [
+     "768"
+    ],
+    "hints": [
+     "Divide the coefficients and subtract the exponents. Subtracting a negative adds.",
+     "The exponent is \\(-2-(-9)=7\\), so the term is \\(6t^{7}\\). Now substitute."
+    ],
+    "sol": "The coefficients divide, \\(30\\div 5=6\\), and the exponents subtract, \\(-2-(-9)=7\\), so the term is \\(6t^{7}\\). At \\(t=2\\) that is \\(6\\cdot 2^{7}=6\\cdot 128=\\boxed{768}\\). Dropping the second minus gives \\(-2-9=-11\\) and the term \\(6t^{-11}\\), which at \\(t=2\\) is \\(\\frac{3}{1024}\\)."
+   }
+  ]
  }
 }
