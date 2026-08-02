@@ -456,5 +456,486 @@
     "sol": "At \\(x=2\\) the left side is \\(5\\cdot 8=40\\) and the right side is \\(10+k\\), and the claim is true only when \\(10+k=40\\), so \\(k=\\boxed{30}\\). With \\(k=30\\) the right side is exactly what \\(5(x+6)\\) distributes to, so the sides are equivalent expressions and every number on the list, along with every other number, is a solution."
    }
   ]
+ },
+ "4.2": {
+  "title": "Solving Linear Equations",
+  "next": "4.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 4.1 a check settled any candidate. Substitute, evaluate both sides, compare. What it never did was produce a candidate. This lesson builds the producer, a way to trade an equation for a simpler equation with exactly the same solutions, and the first trade is one you can already make."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The equation \\(w+24=63\\) is true at exactly one value of \\(w\\), and at that value its two sides are the same number. Take \\(24\\) away from that number on each side. On the left this leaves \\(w\\) alone. Enter the number the right side becomes.",
+    "ans": "39",
+    "accept": [
+     "39",
+     "w=39",
+     "thirty-nine",
+     "thirtynine"
+    ],
+    "hints": [
+     "At the solution both sides are one number. Taking the same amount from each copy of that number leaves equal amounts.",
+     "Subtracting \\(24\\) from the left side leaves \\(w\\) alone. Do the identical subtraction to the \\(63\\)."
+    ],
+    "sol": "\\(63-24=39\\), so the right side becomes \\(\\boxed{39}\\). The new equation reads \\(w=39\\), and the check \\(39+24=63\\) confirms it. That one subtraction solved the equation."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Do the same thing to both sides.</b> If an equation is true at some value, its two sides are the same number there, and adding or subtracting the same amount on both sides keeps them the same number. So the move never destroys a solution. It also reverses, since subtracting what was added restores the original equation, so the argument runs backward too and no new solutions appear. The two equations are true at exactly the same values. Equations related this way are called equivalent, and every legal solving move produces an equivalent equation."
+   },
+   {
+    "t": "fig",
+    "cap": "Lifting the \\(31\\) off each pan leaves the beam level, so whatever value of \\(x\\) balances the first scale balances the second. Putting the \\(31\\) back rebuilds the first scale, so the two equations are true at exactly the same value.",
+    "x": "<svg viewBox=\"0 0 580 366\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two balance scales. The first is level, a gold tile labeled x with a struck-out grey weight of 31 on the left pan, and struck-out 31 and blue 47 weights on the right pan, labeled take 31 off each pan. After the removal the second scale is still level, x alone against 47. Below a hairline, the equations x plus 31 equals 78 and x equals 47 are joined by a two-headed arrow labeled subtract 31 in one direction and add 31 back in the other.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"b42tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><path d=\"M70 110 V175 M230 110 V175\" fill=\"none\" stroke=\"#7c8aa0\" stroke-width=\"2\"/><path d=\"M70 110 H230\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M150 110 V205\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"122\" y=\"205\" width=\"56\" height=\"9\" rx=\"4.5\" fill=\"#475569\"/><rect x=\"28\" y=\"175\" width=\"84\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"188\" y=\"175\" width=\"84\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"31\" y=\"139\" width=\"36\" height=\"36\" rx=\"9\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#b42tile)\"/><text x=\"49\" y=\"164\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"73\" y=\"139\" width=\"36\" height=\"36\" rx=\"9\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"91\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#aab4c2\">31</text><path d=\"M78 170 L104 144\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"191\" y=\"139\" width=\"36\" height=\"36\" rx=\"9\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"209\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#aab4c2\">31</text><path d=\"M196 170 L222 144\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"233\" y=\"139\" width=\"36\" height=\"36\" rx=\"9\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.5\"/><text x=\"251\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#2257c5\">47</text><text x=\"150\" y=\"238\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"600\" fill=\"#7c8aa0\">take 31 off each pan</text><path d=\"M281 157 H297\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M291 151 L298 157 L291 163\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M350 110 V175 M510 110 V175\" fill=\"none\" stroke=\"#7c8aa0\" stroke-width=\"2\"/><path d=\"M350 110 H510\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M430 110 V205\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"402\" y=\"205\" width=\"56\" height=\"9\" rx=\"4.5\" fill=\"#475569\"/><rect x=\"308\" y=\"175\" width=\"84\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"468\" y=\"175\" width=\"84\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"332\" y=\"139\" width=\"36\" height=\"36\" rx=\"9\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#b42tile)\"/><text x=\"350\" y=\"164\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"492\" y=\"139\" width=\"36\" height=\"36\" rx=\"9\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.5\"/><text x=\"510\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#2257c5\">47</text><text x=\"430\" y=\"238\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"600\" fill=\"#7c8aa0\">still level</text><path d=\"M40 266 H540\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"140\" y=\"331\" text-anchor=\"middle\" font-size=\"21\" font-weight=\"700\" fill=\"#2257c5\">x + 31 = 78</text><text x=\"442\" y=\"331\" text-anchor=\"middle\" font-size=\"21\" font-weight=\"700\" fill=\"#2257c5\">x = 47</text><path d=\"M232 324 H352\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M241 317 L232 324 L241 331\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M343 317 L352 324 L343 331\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"292\" y=\"305\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"#2f6fe0\">subtract 31</text><text x=\"292\" y=\"350\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"#2f6fe0\">add 31 back</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Solve \\(t-38=26\\). One balance move does it, adding \\(38\\) to both sides removes the subtraction and leaves \\(t\\) alone. Check your value in the original equation, the 4.1 way, before entering it.",
+    "ans": "64",
+    "accept": [
+     "64",
+     "t=64"
+    ],
+    "hints": [
+     "Undo the subtraction with the opposite move, made on both sides.",
+     "Adding \\(38\\) to both sides leaves \\(t\\) alone. The right side becomes \\(26+38\\)."
+    ],
+    "sol": "Add \\(38\\) to both sides, \\(t=26+38=\\boxed{64}\\). Check, \\(64-38=26\\). The check costs seconds and catches every slip."
+   },
+   {
+    "t": "p",
+    "x": "The same argument covers scaling. At a solution both sides are one number, tripling that number on each side keeps the sides equal, and dividing by \\(3\\) undoes it. It looks like any multiplier works. One of them does not, and the next problem finds it."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "The equation \\(6d=84\\) is true only at \\(d=14\\). Multiply both sides by \\(0\\) and every term collapses, leaving \\(0=0\\). Test the values \\(-3\\), \\(0\\), \\(8\\), \\(14\\), and \\(20\\) in the new equation. Enter how many of them are solutions of the new equation but not of the original.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "The new equation never mentions \\(d\\), so ask which values could possibly fail it.",
+     "All five values satisfy \\(0=0\\), and the original is satisfied only at \\(14\\). Count the values that pass one equation but not the other."
+    ],
+    "sol": "Every value makes \\(0=0\\) true, and only \\(14\\) satisfies \\(6d=84\\), so \\(\\boxed{4}\\) of the five are new. Multiplying by zero manufactured solutions, and nothing undoes it, since dividing by zero is not a move."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Multiply or divide both sides by any nonzero number.</b> At a solution the sides are one number, scaling both copies by \\(c\\) keeps them equal, and dividing by \\(c\\) reverses the move, so the solution set survives in both directions. Both directions is the point, and zero fails it. Multiplying by zero turns any equation into \\(0=0\\), true for every value, and there is no dividing by zero to get back. A legal move must be reversible."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve \\(12m=132\\). The left side is twelve copies of \\(m\\), so divide both sides by \\(12\\). Check the value before entering it.",
+    "ans": "11",
+    "accept": [
+     "11",
+     "m=11",
+     "eleven"
+    ],
+    "hints": [
+     "Division is the reverse of the multiplication that built the left side.",
+     "Dividing both sides by \\(12\\) leaves \\(m\\) alone against \\(132\\) divided by \\(12\\)."
+    ],
+    "sol": "Divide both sides by \\(12\\), \\(m=\\frac{132}{12}=\\boxed{11}\\). Check, \\(12\\cdot 11=132\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve \\(\\frac{n}{15}=8\\) by multiplying both sides by \\(15\\). Check the value in the original equation before entering it.",
+    "ans": "120",
+    "accept": [
+     "120",
+     "n=120"
+    ],
+    "hints": [
+     "The left side divided \\(n\\) by \\(15\\), so undo it with the opposite scaling move.",
+     "Multiplying both sides by \\(15\\) leaves \\(n\\) alone. The right side becomes \\(8\\) times \\(15\\)."
+    ],
+    "sol": "Multiply both sides by \\(15\\), \\(n=8\\cdot 15=\\boxed{120}\\). Check, \\(\\frac{120}{15}=8\\)."
+   },
+   {
+    "t": "p",
+    "x": "In 4.1 you read \\(9x+7=52\\) with no method at all. The term \\(9x\\) had to be \\(45\\), and dividing by \\(9\\) finishes it, \\(x=5\\). That reading was really two balance moves, subtract \\(7\\) from both sides, then divide both sides by \\(9\\). The left side was built by multiplying and then adding, so it unwinds in the opposite order."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve \\(3a+29=98\\). Subtract first to expose the term \\(3a\\), then divide. Check your value in the original equation before entering it.",
+    "ans": "23",
+    "accept": [
+     "23",
+     "a=23"
+    ],
+    "hints": [
+     "The \\(29\\) sits outside the product \\(3a\\), so it is the last thing that happened and the first thing to undo.",
+     "Subtracting \\(29\\) from both sides gives \\(3a=69\\)."
+    ],
+    "sol": "Subtract \\(29\\) from both sides, \\(3a=69\\), then divide by \\(3\\), \\(a=\\boxed{23}\\). Check, \\(3\\cdot 23+29=98\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Undo the last operation first.</b> In \\(3a+29=98\\) the left side multiplied \\(a\\) by \\(3\\) and then added \\(29\\), so the \\(29\\) sits outside the product. Subtracting it exposes \\(3a\\), and dividing exposes \\(a\\). Dividing by \\(3\\) first is legal too, it just drags fractions in, \\(a+\\frac{29}{3}=\\frac{98}{3}\\). Unwinding from the outside in, last operation undone first, keeps the numbers whole as long as possible."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(10y+74=82\\). The moves are the same as before, and the answer is not a whole number. Enter it as a fraction in lowest terms.",
+    "ans": "4/5",
+    "accept": [
+     "4/5",
+     "0.8",
+     ".8",
+     "y=4/5",
+     "y=0.8"
+    ],
+    "hints": [
+     "Nothing about the moves needs the answer to be whole. Unwind as usual.",
+     "Subtracting \\(74\\) gives \\(10y=8\\). Divide and reduce."
+    ],
+    "sol": "Subtract \\(74\\), \\(10y=8\\), divide by \\(10\\), \\(y=\\frac{8}{10}=\\boxed{\\frac{4}{5}}\\). Check, \\(10\\cdot\\frac{4}{5}+74=8+74=82\\). Fractional solutions are normal outcomes, not signs of a mistake."
+   },
+   {
+    "t": "p",
+    "x": "Sometimes a side needs cleanup before any unwinding. When the variable side is a pile of like terms, combine them the 2.4 way first. After that the equation is two-step and the moves are the ones you already have."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(16q+27-8q+13=100\\). Combine like terms on the left before making any balance move. Enter the solution as a fraction in lowest terms.",
+    "ans": "15/2",
+    "accept": [
+     "15/2",
+     "7.5",
+     "q=15/2",
+     "q=7.5"
+    ],
+    "hints": [
+     "The left side is not two-step yet. Collect the \\(q\\) terms and the constants first.",
+     "\\(16q-8q=8q\\) and \\(27+13=40\\), so the equation is \\(8q+40=100\\)."
+    ],
+    "sol": "Combining gives \\(8q+40=100\\), so \\(8q=60\\) and \\(q=\\frac{60}{8}=\\boxed{\\frac{15}{2}}\\). Check, \\(8\\cdot\\frac{15}{2}+40=60+40=100\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(\\frac{3}{4}c=51\\). One move does it, multiply both sides by the reciprocal \\(\\frac{4}{3}\\), the 2.5 skill. Enter the solution.",
+    "ans": "68",
+    "accept": [
+     "68",
+     "c=68"
+    ],
+    "hints": [
+     "A fractional coefficient clears in one move, scaling by the number that multiplies with it to \\(1\\).",
+     "\\(c=51\\cdot\\frac{4}{3}\\). Divide \\(51\\) by \\(3\\) before multiplying."
+    ],
+    "sol": "Multiply both sides by \\(\\frac{4}{3}\\), \\(c=51\\cdot\\frac{4}{3}=\\boxed{68}\\). Check, \\(\\frac{3}{4}\\cdot 68=51\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(28-x=93\\). Subtracting \\(28\\) from both sides leaves \\(-x=65\\), a statement about the opposite of \\(x\\). One more move finishes it. Enter the solution.",
+    "ans": "-65",
+    "accept": [
+     "-65",
+     "−65",
+     "x=-65",
+     "x=−65"
+    ],
+    "hints": [
+     "\\(-x\\) means \\((-1)x\\), and \\(-1\\) is a nonzero number like any other.",
+     "Divide both sides of \\(-x=65\\) by \\(-1\\), or read it directly, the opposite of \\(x\\) is \\(65\\)."
+    ],
+    "sol": "Subtract \\(28\\), \\(-x=65\\), then multiply both sides by \\(-1\\), \\(x=\\boxed{-65}\\). Check, \\(28-(-65)=28+65=93\\). If the opposite of \\(x\\) is \\(65\\), then \\(x\\) is \\(-65\\), the moves and the reading agree."
+   },
+   {
+    "t": "fact",
+    "x": "Around 820, al-Khwarizmi of Baghdad wrote a book on solving equations whose title word al-jabr, restoring, meant carrying a subtracted quantity to the other side. Latin translations kept the word, and it became algebra."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A student solves \\(5x+30=80\\) by erasing the \\(30\\) from the left side only, getting \\(5x=80\\) and then \\(x=16\\). Check that candidate the 4.1 way. Evaluate the left side at \\(x=16\\) and enter how much it overshoots the right side.",
+    "ans": "30",
+    "accept": [
+     "30",
+     "thirty"
+    ],
+    "hints": [
+     "A check needs no opinion about the moves. Substitute the candidate and evaluate the original left side.",
+     "At \\(x=16\\) the left side is \\(5(16)+30\\). Compare that with \\(80\\)."
+    ],
+    "sol": "The left side at \\(16\\) is \\(5\\cdot 16+30=110\\), and \\(110-80=\\boxed{30}\\), exactly the \\(30\\) that left one side but not the other. Legal moves hit both sides. Subtracting \\(30\\) from both gives \\(5x=50\\), so \\(x=10\\), and \\(5\\cdot 10+30=80\\) checks."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Solve \\(\\frac{3}{5}h+46=22\\). Undo the addition first, then multiply by the reciprocal. The solution is negative, and the check still takes ten seconds. Enter the solution.",
+    "ans": "-40",
+    "accept": [
+     "-40",
+     "−40",
+     "h=-40",
+     "h=−40"
+    ],
+    "hints": [
+     "Last operation first. The \\(46\\) was added after the coefficient did its work.",
+     "Subtracting \\(46\\) gives \\(\\frac{3}{5}h=-24\\). Multiply by \\(\\frac{5}{3}\\)."
+    ],
+    "sol": "Subtract \\(46\\), \\(\\frac{3}{5}h=-24\\), multiply by \\(\\frac{5}{3}\\), \\(h=-24\\cdot\\frac{5}{3}=\\boxed{-40}\\). Check, \\(\\frac{3}{5}(-40)+46=-24+46=22\\)."
+   },
+   {
+    "t": "p",
+    "x": "Every equation in this lesson kept its variable on one side, and four reversible moves handled all of them. 4.3 starts where that stops, equations with the variable on both sides, and the balance principle carries over unchanged."
+   }
+  ],
+  "review": [
+   {
+    "x": "Enter the solution of \\(x+34=59\\).",
+    "ans": "25",
+    "accept": [
+     "25",
+     "x=25"
+    ],
+    "hints": [
+     "One balance move strips the left side down to \\(x\\) alone. Pick the move that undoes the addition.",
+     "Subtract \\(34\\) from both sides. The right side becomes \\(59-34\\)."
+    ],
+    "sol": "Subtract \\(34\\) from both sides, \\(x=59-34=\\boxed{25}\\). Check, \\(25+34=59\\), so the value passes the 4.1 test."
+   },
+   {
+    "x": "Enter the solution of \\(y-27=44\\).",
+    "ans": "71",
+    "accept": [
+     "71",
+     "y=71"
+    ],
+    "hints": [
+     "Undo the subtraction with the opposite move, made on both sides.",
+     "Add \\(27\\) to both sides, then check the value in the original equation."
+    ],
+    "sol": "Add \\(27\\) to both sides, \\(y=44+27=\\boxed{71}\\). Check, \\(71-27=44\\)."
+   },
+   {
+    "x": "Enter the solution of \\(7k=119\\).",
+    "ans": "17",
+    "accept": [
+     "17",
+     "k=17"
+    ],
+    "hints": [
+     "The left side is seven copies of \\(k\\), built by multiplication, so the reverse move is division.",
+     "Divide both sides by \\(7\\). The right side becomes \\(119\\div 7\\)."
+    ],
+    "sol": "Divide both sides by \\(7\\), \\(k=\\frac{119}{7}=\\boxed{17}\\). Check, \\(7\\cdot 17=119\\)."
+   },
+   {
+    "x": "Enter the solution of \\(\\frac{t}{9}=12\\).",
+    "ans": "108",
+    "accept": [
+     "108",
+     "t=108"
+    ],
+    "hints": [
+     "The left side divided \\(t\\) by \\(9\\), so undo it with the opposite scaling move.",
+     "Multiply both sides by \\(9\\). The right side becomes \\(12\\cdot 9\\)."
+    ],
+    "sol": "Multiply both sides by \\(9\\), \\(t=12\\cdot 9=\\boxed{108}\\). Check, \\(\\frac{108}{9}=12\\)."
+   },
+   {
+    "x": "Enter the solution of \\(w+53=35\\).",
+    "ans": "-18",
+    "accept": [
+     "-18",
+     "−18",
+     "w=-18",
+     "w=−18"
+    ],
+    "hints": [
+     "Same move as always, subtracting the added number from both sides. Nothing requires the answer to be positive.",
+     "Subtract \\(53\\) from both sides. \\(35-53\\) is negative."
+    ],
+    "sol": "Subtract \\(53\\) from both sides, \\(w=35-53=\\boxed{-18}\\). Check, \\(-18+53=35\\). Subtracting from both sides works the same even when the result is negative."
+   },
+   {
+    "x": "Enter the solution of \\(2k+41=79\\).",
+    "ans": "19",
+    "accept": [
+     "19",
+     "k=19"
+    ],
+    "hints": [
+     "Two operations built the left side. Undo the last one first.",
+     "Subtract \\(41\\) from both sides to get \\(2k=38\\), then divide."
+    ],
+    "sol": "Subtract \\(41\\), \\(2k=38\\), then divide by \\(2\\), \\(k=\\boxed{19}\\). Check, \\(2\\cdot 19+41=38+41=79\\)."
+   },
+   {
+    "x": "Enter the solution of \\(6p+61=13\\).",
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "−8",
+     "p=-8",
+     "p=−8"
+    ],
+    "hints": [
+     "Unwind as usual, last operation first, and let the numbers go negative.",
+     "Subtracting \\(61\\) from both sides gives \\(6p=-48\\)."
+    ],
+    "sol": "Subtract \\(61\\), \\(6p=13-61=-48\\), then divide by \\(6\\), \\(p=\\boxed{-8}\\). Check, \\(6(-8)+61=-48+61=13\\)."
+   },
+   {
+    "x": "Enter the solution of \\(\\frac{k}{12}+5=8\\).",
+    "ans": "36",
+    "accept": [
+     "36",
+     "k=36"
+    ],
+    "hints": [
+     "The last thing done to \\(k\\) was adding \\(5\\), so that is the first thing to undo.",
+     "Subtract \\(5\\) to get \\(\\frac{k}{12}=3\\), then multiply both sides by \\(12\\)."
+    ],
+    "sol": "Subtract \\(5\\), \\(\\frac{k}{12}=3\\), then multiply both sides by \\(12\\), \\(k=\\boxed{36}\\). Check, \\(\\frac{36}{12}+5=3+5=8\\)."
+   },
+   {
+    "x": "Combine like terms first, then solve \\(13w+12-8w+73=175\\). Enter the solution.",
+    "ans": "18",
+    "accept": [
+     "18",
+     "w=18"
+    ],
+    "hints": [
+     "The left side is not two-step yet. Collect the \\(w\\) terms and the constants, the 2.4 move.",
+     "\\(13w-8w=5w\\) and \\(12+73=85\\), so the equation is \\(5w+85=175\\)."
+    ],
+    "sol": "Combining gives \\(5w+85=175\\), so \\(5w=90\\) and \\(w=\\boxed{18}\\). Check, \\(13\\cdot 18+12-8\\cdot 18+73=234+12-144+73=175\\). Combining is not a balance move at all, it rewrites one side into an equal expression, so nothing on the other side changes."
+   },
+   {
+    "x": "Solve \\(2(u+67)=232\\), distributing once the 2.1 way or dividing both sides by \\(2\\) first. Enter the solution.",
+    "ans": "49",
+    "accept": [
+     "49",
+     "u=49"
+    ],
+    "hints": [
+     "Both routes are legal. Pick the one that keeps the numbers cleaner.",
+     "Dividing both sides by \\(2\\) gives \\(u+67=116\\)."
+    ],
+    "sol": "Divide both sides by \\(2\\), \\(u+67=116\\), then subtract \\(67\\), \\(u=\\boxed{49}\\). Check, \\(2(49+67)=2\\cdot 116=232\\). Distributing first gives \\(2u+134=232\\) and lands on the same value."
+   },
+   {
+    "x": "Enter the solution of \\(\\frac{2}{3}g=58\\).",
+    "ans": "87",
+    "accept": [
+     "87",
+     "g=87"
+    ],
+    "hints": [
+     "One move clears a fractional coefficient, scaling both sides by its reciprocal.",
+     "Multiply both sides by \\(\\frac{3}{2}\\). Halve \\(58\\) before tripling."
+    ],
+    "sol": "Multiply both sides by \\(\\frac{3}{2}\\), \\(g=58\\cdot\\frac{3}{2}=29\\cdot 3=\\boxed{87}\\). Check, \\(\\frac{2}{3}\\cdot 87=58\\)."
+   },
+   {
+    "x": "Enter the solution of \\(-12u=72\\).",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "u=-6",
+     "u=−6"
+    ],
+    "hints": [
+     "\\(-12\\) is a nonzero number like any other, so dividing both sides by it is a legal move.",
+     "Divide both sides by \\(-12\\), sign first, then digits."
+    ],
+    "sol": "Divide both sides by \\(-12\\), \\(u=\\frac{72}{-12}=\\boxed{-6}\\). Check, \\(-12\\cdot(-6)=72\\). A positive product from a negative coefficient forces a negative solution."
+   },
+   {
+    "x": "Enter the solution of \\(66-x=145\\).",
+    "ans": "-79",
+    "accept": [
+     "-79",
+     "−79",
+     "x=-79",
+     "x=−79"
+    ],
+    "hints": [
+     "Get \\(-x\\) alone first. The result is a statement about the opposite of \\(x\\).",
+     "Subtract \\(66\\) to get \\(-x=79\\), then multiply both sides by \\(-1\\)."
+    ],
+    "sol": "Subtract \\(66\\), \\(-x=79\\), then multiply both sides by \\(-1\\), \\(x=\\boxed{-79}\\). Check, \\(66-(-79)=66+79=145\\)."
+   },
+   {
+    "x": "Solve \\(8n+77=86\\). Enter the solution as a fraction in lowest terms.",
+    "ans": "9/8",
+    "accept": [
+     "9/8",
+     "1.125",
+     "n=9/8",
+     "n=1.125"
+    ],
+    "hints": [
+     "Unwind as usual, last operation first. Nothing requires the answer to be whole.",
+     "Subtracting \\(77\\) from both sides gives \\(8n=9\\)."
+    ],
+    "sol": "Subtract \\(77\\), \\(8n=9\\), then divide by \\(8\\), \\(n=\\boxed{\\frac{9}{8}}\\). Check, \\(8\\cdot\\frac{9}{8}+77=9+77=86\\). A fractional answer is a normal outcome, not a sign of a slip."
+   },
+   {
+    "x": "To solve \\(3x-21=99\\), a student divides the \\(3x\\) and the \\(99\\) by \\(3\\) but leaves the \\(-21\\) alone, writing \\(x-21=33\\), so \\(x=54\\). Check that candidate the 4.1 way. Evaluate the left side of the original equation at \\(x=54\\) and enter how much it exceeds the right side.",
+    "ans": "42",
+    "accept": [
+     "42",
+     "forty-two",
+     "fortytwo"
+    ],
+    "hints": [
+     "A check needs no opinion about the student's moves. Substitute the candidate and evaluate the original left side.",
+     "At \\(x=54\\) the left side is \\(3(54)-21\\). Compare that with \\(99\\)."
+    ],
+    "sol": "The left side at \\(54\\) is \\(3\\cdot 54-21=162-21=141\\), and \\(141-99=\\boxed{42}\\). Dividing both sides means every term, \\(x-7=33\\), or add \\(21\\) first to get \\(3x=120\\). Either way \\(x=40\\), and \\(3\\cdot 40-21=99\\) checks."
+   },
+   {
+    "x": "Combine like terms first, then solve \\(3m+32-4m+57=96\\). Enter the solution.",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "m=-7",
+     "m=−7"
+    ],
+    "hints": [
+     "Combine before any balance move, and this time the variable terms come out negative.",
+     "\\(3m-4m=-m\\) and \\(32+57=89\\), so the equation is \\(-m+89=96\\)."
+    ],
+    "sol": "Combining gives \\(-m+89=96\\), so \\(-m=7\\) and \\(m=\\boxed{-7}\\). Check, \\(3(-7)+32-4(-7)+57=-21+32+28+57=96\\). A net coefficient of \\(-1\\) reads as the opposite of \\(m\\), so \\(m\\) is the opposite of \\(7\\)."
+   },
+   {
+    "x": "Solve \\(\\frac{8}{3}n=-14\\). Enter the solution as a fraction in lowest terms.",
+    "ans": "-21/4",
+    "accept": [
+     "-21/4",
+     "−21/4",
+     "-5.25",
+     "−5.25",
+     "n=-21/4",
+     "n=−21/4",
+     "n=-5.25",
+     "n=−5.25"
+    ],
+    "hints": [
+     "Multiply both sides by the reciprocal of \\(\\frac{8}{3}\\).",
+     "\\(n=-14\\cdot\\frac{3}{8}\\). Reduce before multiplying, since \\(14\\) and \\(8\\) share a factor."
+    ],
+    "sol": "Multiply both sides by \\(\\frac{3}{8}\\), \\(n=-14\\cdot\\frac{3}{8}=-\\frac{42}{8}=\\boxed{-\\frac{21}{4}}\\). Check, \\(\\frac{8}{3}\\cdot\\left(-\\frac{21}{4}\\right)=-\\frac{168}{12}=-14\\). Multiplying by the positive number \\(\\frac{3}{8}\\) does not change the sign, so the solution stays negative."
+   }
+  ]
  }
 }
