@@ -232,7 +232,7 @@
      "twentynine"
     ],
     "hints": [
-     "The left side is the expression \\(7x-4\\). Evaluating it never touches the right side.",
+     "The left side is the expression \\(5x-6\\). Evaluating it never touches the right side.",
      "Substitute \\(x=7\\) and compute \\(5\\cdot 7-6\\)."
     ],
     "sol": "Substituting gives \\(5\\cdot 7-6=35-6=\\boxed{29}\\). The right side says \\(37\\), so the two sides disagree at \\(x=7\\) and the claim is false there."
@@ -326,7 +326,7 @@
      "x=3"
     ],
     "hints": [
-     "Checking a candidate means substituting it into the left side and comparing with \\(19\\).",
+     "Checking a candidate means substituting it into the left side and comparing with \\(27\\).",
      "Try \\(x=1\\) first. It gives \\(7\\cdot 1+6=13\\), too small, so move up."
     ],
     "sol": "Checking \\(x=3\\) gives \\(7\\cdot 3+6=27\\), a match, so the solution is \\(\\boxed{3}\\). The candidates \\(1\\) and \\(2\\) give \\(13\\) and \\(20\\), both short of the right side."
@@ -935,6 +935,493 @@
      "\\(n=-14\\cdot\\frac{3}{8}\\). Reduce before multiplying, since \\(14\\) and \\(8\\) share a factor."
     ],
     "sol": "Multiply both sides by \\(\\frac{3}{8}\\), \\(n=-14\\cdot\\frac{3}{8}=-\\frac{42}{8}=\\boxed{-\\frac{21}{4}}\\). Check, \\(\\frac{8}{3}\\cdot\\left(-\\frac{21}{4}\\right)=-\\frac{168}{12}=-14\\). Multiplying by the positive number \\(\\frac{3}{8}\\) does not change the sign, so the solution stays negative."
+   }
+  ]
+ },
+ "4.3": {
+  "title": "Variables on Both Sides",
+  "next": "4.4",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "In 4.1 a check proved that \\(y=6\\) solves \\(4y-7=2y+5\\). The check never produced the \\(6\\), though, and 4.2's moves only reached equations with the variable on one side. One observation closes the gap. Once the variable has a value, a term like \\(2y\\) is a number, and 4.2 already lets you subtract any number from both sides."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The equation \\(8k=5k+21\\) has its variable on both sides, which 4.2 never faced. At the solution, though, \\(5k\\) is a number like any other. Subtract \\(5k\\) from both sides, finish with 4.2's moves, and check in the original. Enter the solution.",
+    "ans": "7",
+    "accept": [
+     "7",
+     "k=7",
+     "seven"
+    ],
+    "hints": [
+     "The balance move from 4.2 subtracts equal amounts from both sides, and the amount subtracted is allowed to contain the variable.",
+     "Subtracting \\(5k\\) from both sides leaves \\(3k=21\\)."
+    ],
+    "sol": "Subtract \\(5k\\) from both sides, \\(3k=21\\), then divide by \\(3\\), \\(k=\\boxed{7}\\). Check, \\(8\\cdot 7=56\\) and \\(5\\cdot 7+21=56\\). Subtracting \\(5k\\) is a valid balance move because at the solution \\(5k\\) stands for a single number."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Collect the variable terms.</b> At a solution, a variable term such as \\(5k\\) is a number, so subtracting it from both sides is 4.2's balance move, and adding it back reverses the move, so the two equations are equivalent. The consequence is that one subtraction turns any equation with the variable on both sides into an equation with the variable on one side, and 4.2's moves finish those. Collecting the variable terms onto one side is the one new skill of this lesson."
+   },
+   {
+    "t": "fig",
+    "cap": "Two \\(x\\) tiles come off each pan together, the same balance move as lifting off a number weight, and the beam stays level. What survives is 4.2's picture, the variable on one side only. Putting the \\(2x\\) back rebuilds the first scale, so \\(5x+40=2x+58\\) and \\(3x+40=58\\) are true at exactly the same value.",
+    "x": "<svg viewBox=\"0 0 580 362\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two balance scales. The first is level, with five x tiles and a blue 40 weight on the left pan against two x tiles and a blue 58 weight on the right pan. Two x tiles are struck out grey on each pan, labeled take 2x off each pan. The second scale shows the survivors, three x tiles and the 40 against the 58, still level. Below a hairline, the equations 5x plus 40 equals 2x plus 58 and 3x plus 40 equals 58 are joined by a two-headed arrow labeled take 2x off each pan one way and put 2x back the other.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"c43tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><path d=\"M85 88 V174 M215 88 V174\" fill=\"none\" stroke=\"#7c8aa0\" stroke-width=\"2\"/><path d=\"M85 88 H215\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M150 88 V200\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"122\" y=\"200\" width=\"56\" height=\"9\" rx=\"4.5\" fill=\"#475569\"/><rect x=\"30\" y=\"174\" width=\"110\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"160\" y=\"174\" width=\"110\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"36\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#c43tile)\"/><text x=\"51\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"70\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#c43tile)\"/><text x=\"85\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"104\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#c43tile)\"/><text x=\"119\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"36\" y=\"110\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"51\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#aab4c2\">x</text><path d=\"M40 136 L62 114\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"70\" y=\"110\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"85\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#aab4c2\">x</text><path d=\"M74 136 L96 114\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"104\" y=\"110\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.5\"/><text x=\"119\" y=\"130\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"#2257c5\">40</text><rect x=\"166\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"181\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#aab4c2\">x</text><path d=\"M170 168 L192 146\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"200\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"215\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#aab4c2\">x</text><path d=\"M204 168 L226 146\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><rect x=\"234\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.5\"/><text x=\"249\" y=\"162\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"#2257c5\">58</text><text x=\"150\" y=\"234\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"600\" fill=\"#7c8aa0\">take 2x off each pan</text><path d=\"M283 145 H299\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M293 139 L300 145 L293 151\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M360 88 V174 M520 88 V174\" fill=\"none\" stroke=\"#7c8aa0\" stroke-width=\"2\"/><path d=\"M360 88 H520\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><path d=\"M440 88 V200\" fill=\"none\" stroke=\"#475569\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"412\" y=\"200\" width=\"56\" height=\"9\" rx=\"4.5\" fill=\"#475569\"/><rect x=\"318\" y=\"174\" width=\"84\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"478\" y=\"174\" width=\"84\" height=\"7\" rx=\"3.5\" fill=\"#475569\"/><rect x=\"328\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#c43tile)\"/><text x=\"343\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"362\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#c43tile)\"/><text x=\"377\" y=\"163\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"328\" y=\"110\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#c43tile)\"/><text x=\"343\" y=\"131\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#8a5a08\">x</text><rect x=\"362\" y=\"110\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.5\"/><text x=\"377\" y=\"130\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"#2257c5\">40</text><rect x=\"505\" y=\"142\" width=\"30\" height=\"30\" rx=\"8\" fill=\"#cfe0fa\" stroke=\"#9fb4d6\" stroke-width=\"1.5\"/><text x=\"520\" y=\"162\" text-anchor=\"middle\" font-size=\"13.5\" font-weight=\"700\" fill=\"#2257c5\">58</text><text x=\"440\" y=\"234\" text-anchor=\"middle\" font-size=\"12.5\" font-weight=\"600\" fill=\"#7c8aa0\">still level</text><path d=\"M40 260 H540\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"136\" y=\"328\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">5x + 40 = 2x + 58</text><text x=\"464\" y=\"328\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">3x + 40 = 58</text><path d=\"M248 321 H380\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M257 314 L248 321 L257 328\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M371 314 L380 321 L371 328\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"314\" y=\"302\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"#2f6fe0\">take 2x off each pan</text><text x=\"314\" y=\"347\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"#2f6fe0\">put 2x back</text></svg>"
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "Solve \\(9m+16=4m+61\\). Collect the variable terms with one subtraction, then unwind the 4.2 way. Check in the original before entering the solution.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "m=9",
+     "nine"
+    ],
+    "hints": [
+     "Which single subtraction leaves the variable on only one side of the equation?",
+     "Subtracting \\(4m\\) from both sides gives \\(5m+16=61\\)."
+    ],
+    "sol": "Subtract \\(4m\\), \\(5m+16=61\\), subtract \\(16\\), \\(5m=45\\), divide by \\(5\\), \\(m=\\boxed{9}\\). Check, \\(9\\cdot 9+16=97\\) and \\(4\\cdot 9+61=97\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve \\(2y+59=7y+19\\) twice. First subtract \\(2y\\) from both sides and finish. Then start over and subtract \\(7y\\) instead, letting the coefficient go negative along the way. Enter the value both routes give.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "y=8",
+     "eight"
+    ],
+    "hints": [
+     "Both routes are legal. One subtracts \\(2y\\) from both sides, the other subtracts \\(7y\\).",
+     "Route one gives \\(59=5y+19\\). Route two gives \\(-5y+59=19\\)."
+    ],
+    "sol": "Route one, subtract \\(2y\\), \\(59=5y+19\\), so \\(5y=40\\) and \\(y=8\\). Route two, subtract \\(7y\\), \\(-5y+59=19\\), so \\(-5y=-40\\) and \\(y=8\\) again. Either way \\(y=\\boxed{8}\\), and both sides check to \\(75\\). Subtracting the smaller variable term keeps the coefficient positive, which is the friendlier road."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Subtract the smaller variable term.</b> Both routes are legal balance moves and land on the same solution, so pick the arithmetic you prefer. Removing the smaller variable term keeps the surviving coefficient positive, so no dividing by negatives later. Sometimes the variable then collects on the right side, which is fine, since 4.1 says the sides of an equation can trade places. And a subtracted variable term, like the \\(4x\\) in \\(9-4x\\), is removed by adding it to both sides, the same principle run in reverse."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve \\(4a+57=12a+9\\). The smaller variable term is on the left this time, so subtracting it collects the variable on the right. Enter the solution.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "a=6",
+     "six"
+    ],
+    "hints": [
+     "Subtracting the smaller variable term keeps the remaining coefficient positive.",
+     "Subtracting \\(4a\\) from both sides gives \\(57=8a+9\\)."
+    ],
+    "sol": "Subtract \\(4a\\), \\(57=8a+9\\), subtract \\(9\\), \\(8a=48\\), so \\(a=\\boxed{6}\\). Check, \\(4\\cdot 6+57=81\\) and \\(12\\cdot 6+9=81\\). A variable on the right is no problem, you can swap the two sides of an equation whenever you like."
+   },
+   {
+    "t": "p",
+    "x": "Some equations need cleanup before anything crosses the equals sign. If a side is a pile of like terms, combine them the 2.4 way, and if parentheses are in the way, distribute once the 2.1 way. Simplifying a side rewrites it as an equal expression, so nothing on the other side changes. Collect once the sides are clean."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve \\(9g+8-2g+7=3g+35\\). Combine like terms on the left the 2.4 way before collecting anything across the equals sign. Enter the solution.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "g=5",
+     "five"
+    ],
+    "hints": [
+     "Clean each side first. Balance moves come after the sides are simplified.",
+     "The left side combines to \\(7g+15\\)."
+    ],
+    "sol": "The left side combines to \\(7g+15\\), so \\(7g+15=3g+35\\). Subtract \\(3g\\), \\(4g+15=35\\), so \\(4g=20\\) and \\(g=\\boxed{5}\\). Check, \\(45+8-10+7=50\\) and \\(3\\cdot 5+35=50\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(7(w-2)=4w+22\\). Distribute once the 2.1 way, then collect the variable terms. Enter the solution. Check in the original before entering it.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "w=12",
+     "twelve"
+    ],
+    "hints": [
+     "Parentheses come off before any term moves across the equals sign.",
+     "Distributing gives \\(7w-14=4w+22\\)."
+    ],
+    "sol": "Distribute, \\(7w-14=4w+22\\). Subtract \\(4w\\), \\(3w-14=22\\), add \\(14\\), \\(3w=36\\), so \\(w=\\boxed{12}\\). Check, \\(7(12-2)=70\\) and \\(4\\cdot 12+22=70\\)."
+   },
+   {
+    "t": "p",
+    "x": "Negative and fraction solutions were normal outcomes in 4.2, and they stay normal here. Collecting the variable terms changes where the variable sits, not what kind of number the answer is allowed to be, so run the same moves and let the value be whatever it is."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(5-6x=4x+25\\). The variable term on the left is subtracted, so adding \\(6x\\) to both sides removes it. Enter the solution.",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "x=-2",
+     "x=−2"
+    ],
+    "hints": [
+     "A subtracted term is removed by adding it to both sides, the same balance principle.",
+     "Adding \\(6x\\) to both sides gives \\(5=10x+25\\)."
+    ],
+    "sol": "Add \\(6x\\) to both sides, \\(5=10x+25\\), subtract \\(25\\), \\(10x=-20\\), so \\(x=\\boxed{-2}\\). Check, \\(5-6(-2)=17\\) and \\(4(-2)+25=17\\). Negative solutions are ordinary outcomes here, exactly as in 4.2."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(5x+2=2x+4\\). Nothing about collecting requires a whole-number answer. Enter the solution as a fraction in lowest terms.",
+    "ans": "2/3",
+    "accept": [
+     "2/3",
+     "x=2/3"
+    ],
+    "hints": [
+     "Collect first, then divide at the end, and keep the result exact.",
+     "Subtracting \\(2x\\) and then \\(2\\) leaves \\(3x=2\\)."
+    ],
+    "sol": "Subtract \\(2x\\), \\(3x+2=4\\), then subtract \\(2\\), \\(3x=2\\), and divide by \\(3\\), \\(x=\\boxed{\\frac{2}{3}}\\). Check, both sides come out \\(\\frac{16}{3}\\). A fractional solution is a normal outcome, and exact fractions keep the check honest."
+   },
+   {
+    "t": "imp",
+    "x": "<b>When the variable disappears.</b> Collecting can cancel every variable term, and the number statement left behind settles everything. A false statement such as \\(4=9\\) means no solutions, the claim fails at every value. A true statement means every value is a solution and the equation is an identity, because by 2.1 the two sides were the same expression all along. Watch for the lookalike. If a variable term survives, as in \\(3x=0\\), nothing special happened, and the equation has the one ordinary solution \\(x=0\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve \\(5(4x+3)=20x+8\\). Distribute, then try to collect. The variable cancels entirely and a number statement is left behind. Decide whether that statement is true, then enter how many solutions the equation has.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "none"
+    ],
+    "hints": [
+     "When every variable term cancels, the leftover statement answers the question by itself.",
+     "Distributing gives \\(20x+15=20x+8\\)."
+    ],
+    "sol": "Distribute, \\(20x+15=20x+8\\). Subtracting \\(20x\\) from both sides leaves \\(15=8\\), which is false, so the equation has \\(\\boxed{0}\\) solutions. The left side is always \\(7\\) more than the right, and no value of \\(x\\) closes that gap."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Solve \\(13x+18-6x=7x+18\\). Combine the left side, then try to collect. The variable cancels and a true statement remains. Enter how many of the values \\(-7\\), \\(0\\), \\(5\\), \\(15\\) are solutions.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four",
+     "all",
+     "all4",
+     "allfour",
+     "allofthem"
+    ],
+    "hints": [
+     "A true leftover statement means the two sides were the same expression all along.",
+     "The left side combines to \\(7x+18\\), identical to the right side."
+    ],
+    "sol": "The left side combines to \\(7x+18\\), so the equation reads \\(7x+18=7x+18\\), true at every value, and all \\(\\boxed{4}\\) of the listed values are solutions. An equation whose two sides are equivalent expressions, like this one, is called an identity, and every value of \\(x\\) satisfies it."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Solve \\(11x-4=6x-4\\). It looks like the last two problems and is neither one. Collect the variable terms, finish the 4.2 way, and check your value in the original before entering the solution.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "x=0",
+     "zero"
+    ],
+    "hints": [
+     "Did the variable actually cancel, or did a variable term survive the collecting?",
+     "Subtracting \\(6x\\) from both sides gives \\(5x-4=-4\\), so \\(5x=0\\)."
+    ],
+    "sol": "Subtract \\(6x\\), \\(5x-4=-4\\), add \\(4\\), \\(5x=0\\), so \\(x=\\boxed{0}\\). Check, \\(11\\cdot 0-4=-4\\) and \\(6\\cdot 0-4=-4\\). Having the solution \\(0\\) is not the same as having \\(0\\) solutions, one value works and that value happens to be zero."
+   },
+   {
+    "t": "fact",
+    "x": "Al-jabr was only half the title. Al-Khwarizmi's book taught hisab al-jabr wa'l-muqabala, calculation by restoring and balancing, and the balancing, al-muqabala, is this lesson's move, removing equal amounts from the two sides of an equation."
+   },
+   {
+    "t": "p",
+    "x": "A check belongs to the original equation. Substituting a candidate into one of your own later lines only tests the work that came after that line, and a line with a mistake in it will confirm an answer carrying the same mistake. The original equation is the claim you set out to solve, so the original is where a check means something."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "A student solves \\(7x+44=3x+8\\), subtracting \\(3x\\) and then \\(44\\), but writes \\(4x=36\\) instead of \\(4x=-36\\) and gets \\(x=9\\). Checking against the line \\(4x=36\\) passes. Run the check where it counts. Substitute \\(x=9\\) into both sides of the original equation and enter how much larger the left side is than the right.",
+    "ans": "72",
+    "accept": [
+     "72",
+     "seventy-two",
+     "seventytwo"
+    ],
+    "hints": [
+     "A check against a derived line only confirms that line, not the original equation.",
+     "At \\(x=9\\) the left side is \\(63+44\\)."
+    ],
+    "sol": "At \\(x=9\\) the left side is \\(7\\cdot 9+44=107\\) and the right side is \\(3\\cdot 9+8=35\\), so the left side is larger by \\(107-35=\\boxed{72}\\). The correct line is \\(4x=-36\\), so \\(x=-9\\), and both sides of the original then equal \\(-19\\). A check against \\(4x=36\\) tested the wrong claim."
+   },
+   {
+    "t": "p",
+    "x": "One subtraction turns a both-sides equation into a one-side equation, and a variable that cancels is an answer rather than a failure, either no solutions or all of them. 4.4 takes on equations that hide this shape behind fractions and heavier parentheses, and 4.5 puts equations to work on word problems."
+   }
+  ],
+  "review": [
+   {
+    "x": "Enter the solution of \\(6x+7=4x+15\\).",
+    "ans": "4",
+    "accept": [
+     "4",
+     "x=4"
+    ],
+    "hints": [
+     "One subtraction removes the variable term from the right side, and then this is a 4.2 equation.",
+     "Subtracting \\(4x\\) gives \\(2x+7=15\\)."
+    ],
+    "sol": "Subtract \\(4x\\), \\(2x+7=15\\), then subtract \\(7\\), \\(2x=8\\), so \\(x=\\boxed{4}\\). Check, both sides equal \\(31\\)."
+   },
+   {
+    "x": "Enter the solution of \\(10x+26=3x+89\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "x=9"
+    ],
+    "hints": [
+     "One subtraction collects the variable terms on the left, then 4.2's moves finish.",
+     "Subtracting \\(3x\\) gives \\(7x+26=89\\)."
+    ],
+    "sol": "Subtract \\(3x\\), \\(7x+26=89\\), then subtract \\(26\\), \\(7x=63\\), so \\(x=\\boxed{9}\\). Check, both sides equal \\(116\\)."
+   },
+   {
+    "x": "Enter the solution of \\(4x+54=9x+4\\). The variable collects on the right, which is fine.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "x=10"
+    ],
+    "hints": [
+     "Subtracting the smaller variable term keeps the surviving coefficient positive.",
+     "Subtracting \\(4x\\) gives \\(54=5x+4\\)."
+    ],
+    "sol": "Subtract \\(4x\\) from both sides, \\(54=5x+4\\), so \\(5x=50\\) and \\(x=\\boxed{10}\\). Check, \\(4(10)+54=94\\) and \\(9(10)+4=94\\). An equation reads the same in either direction, so a variable on the right needs no extra step."
+   },
+   {
+    "x": "Enter the solution of \\(6x+27=15x\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "x=3"
+    ],
+    "hints": [
+     "One side is nothing but a variable term. Subtract the smaller variable term and the equation is one division from done.",
+     "Subtracting \\(6x\\) gives \\(27=9x\\)."
+    ],
+    "sol": "Subtract \\(6x\\) from both sides, \\(27=9x\\), so \\(x=\\boxed{3}\\). Check, \\(6(3)+27=45\\) and \\(15(3)=45\\)."
+   },
+   {
+    "x": "Enter the solution of \\(5x=3x+34\\).",
+    "ans": "17",
+    "accept": [
+     "17",
+     "x=17"
+    ],
+    "hints": [
+     "Collect both variable terms on the left, the side where the variable already stands alone.",
+     "Subtracting \\(3x\\) gives \\(2x=34\\)."
+    ],
+    "sol": "Subtract \\(3x\\) from both sides, \\(2x=34\\), so \\(x=\\boxed{17}\\). Check, \\(5(17)=85\\) and \\(3(17)+34=85\\)."
+   },
+   {
+    "x": "Enter the solution of \\(7x+41=2x+6\\).",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "x=-7",
+     "x=−7"
+    ],
+    "hints": [
+     "Collect the variable terms first. A negative solution is an ordinary outcome, not a sign that a move went wrong.",
+     "Subtracting \\(2x\\) gives \\(5x+41=6\\)."
+    ],
+    "sol": "Subtract \\(2x\\) from both sides, \\(5x+41=6\\), then \\(5x=-35\\) and \\(x=\\boxed{-7}\\). Check, \\(7(-7)+41=-8\\) and \\(2(-7)+6=-8\\)."
+   },
+   {
+    "x": "Combine like terms on the left first, then solve \\(8x-1+2x=7x+38\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "x=13",
+     "thirteen"
+    ],
+    "hints": [
+     "Clean up each side before anything moves across the equals sign.",
+     "Combining gives \\(10x-1=7x+38\\), and subtracting \\(7x\\) leaves \\(3x-1=38\\)."
+    ],
+    "sol": "Combine first, \\(10x-1=7x+38\\). Subtract \\(7x\\), \\(3x-1=38\\), add \\(1\\), \\(3x=39\\), so \\(x=\\boxed{13}\\). Check, both sides equal \\(129\\)."
+   },
+   {
+    "x": "Distribute first, then solve \\(4(2x-5)=6x+2\\).",
+    "ans": "11",
+    "accept": [
+     "11",
+     "x=11"
+    ],
+    "hints": [
+     "Parentheses come off before any collecting.",
+     "Distributing gives \\(8x-20=6x+2\\)."
+    ],
+    "sol": "Distribute, \\(8x-20=6x+2\\). Subtract \\(6x\\), \\(2x-20=2\\), then \\(2x=22\\) and \\(x=\\boxed{11}\\). Check, \\(4(2\\cdot 11-5)=4\\cdot 17=68\\) and \\(6(11)+2=68\\)."
+   },
+   {
+    "x": "Solve \\(6x+3=2x+17\\). Enter the solution as a fraction in lowest terms.",
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "3.5",
+     "x=7/2",
+     "x=3.5"
+    ],
+    "hints": [
+     "Collect, then divide, and keep the result exact rather than rounding.",
+     "Subtracting \\(2x\\) and then \\(3\\) gives \\(4x=14\\)."
+    ],
+    "sol": "Subtract \\(2x\\), \\(4x+3=17\\), then \\(4x=14\\) and \\(x=\\frac{14}{4}=\\boxed{\\frac{7}{2}}\\). Check, \\(6\\cdot\\frac{7}{2}+3=24\\) and \\(2\\cdot\\frac{7}{2}+17=24\\)."
+   },
+   {
+    "x": "Enter the solution of \\(48-3x=4x+6\\). Adding \\(3x\\) to both sides is the collect move.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "x=6"
+    ],
+    "hints": [
+     "A subtracted variable term is removed by adding it to both sides, the same balance principle.",
+     "Adding \\(3x\\) gives \\(48=7x+6\\)."
+    ],
+    "sol": "Add \\(3x\\) to both sides, \\(48=7x+6\\), then \\(7x=42\\) and \\(x=\\boxed{6}\\). Check, \\(48-3(6)=30\\) and \\(4(6)+6=30\\)."
+   },
+   {
+    "x": "How many solutions does \\(6x+37=6x+50\\) have? Enter the count.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "none"
+    ],
+    "hints": [
+     "When every variable term cancels, the leftover number statement answers the question.",
+     "Subtracting \\(6x\\) from both sides leaves \\(37=50\\)."
+    ],
+    "sol": "Subtracting \\(6x\\) from both sides leaves \\(37=50\\), which is false, so the equation has \\(\\boxed{0}\\) solutions. Whatever \\(x\\) is, the two sides differ by \\(13\\), so no value can ever make them equal."
+   },
+   {
+    "x": "How many of the values \\(-8\\), \\(-1\\), \\(0\\), \\(6\\), \\(20\\) are solutions of \\(7(2x+8)=9x+5x+56\\)?",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five",
+     "all",
+     "all5",
+     "allfive",
+     "allofthem"
+    ],
+    "hints": [
+     "Simplify both sides before testing anything. The count may not require any substitution at all.",
+     "Distributing gives \\(14x+56\\) on the left, and \\(9x+5x+56\\) combines to the same expression."
+    ],
+    "sol": "Distributing gives \\(14x+56\\) on the left, and the right combines to \\(14x+56\\) as well, so the equation is an identity and every value works. All \\(\\boxed{5}\\) listed values are solutions. By 2.1 the two sides are equivalent expressions, so no substitution was ever needed."
+   },
+   {
+    "x": "Solve \\(7x+5=3x+5\\). Enter the solution.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "x=0",
+     "zero"
+    ],
+    "hints": [
+     "Check whether the \\(x\\) terms cancel completely when you collect them, or whether an \\(x\\) term remains.",
+     "Subtracting \\(3x\\) gives \\(4x+5=5\\), so \\(4x=0\\)."
+    ],
+    "sol": "Subtract \\(3x\\), \\(4x+5=5\\), then subtract \\(5\\), \\(4x=0\\), so \\(x=\\boxed{0}\\). Check, both sides equal \\(5\\). Zero is a legitimate solution, an equation whose sides agree only at \\(0\\) is nothing like an identity."
+   },
+   {
+    "x": "Solve \\(5x+1=9x+6\\). Enter the solution as a fraction in lowest terms.",
+    "ans": "-5/4",
+    "accept": [
+     "-5/4",
+     "−5/4",
+     "-1.25",
+     "−1.25",
+     "x=-5/4",
+     "x=−5/4",
+     "x=-1.25",
+     "x=−1.25"
+    ],
+    "hints": [
+     "Subtract the smaller variable term, even though that collects the variable on the right.",
+     "Subtracting \\(5x\\) gives \\(1=4x+6\\)."
+    ],
+    "sol": "Subtract \\(5x\\), \\(1=4x+6\\), then \\(4x=-5\\) and \\(x=\\boxed{-\\frac{5}{4}}\\). Check, \\(5\\left(-\\frac{5}{4}\\right)+1=-\\frac{21}{4}\\) and \\(9\\left(-\\frac{5}{4}\\right)+6=-\\frac{21}{4}\\). A negative solution changes nothing about the steps, collect the variable terms on one side and divide as usual."
+   },
+   {
+    "x": "A student solves \\(9x-7=2x+42\\) and gets \\(x=3\\). Substitute \\(x=3\\) into both sides of the original and enter how much larger the right side is than the left.",
+    "ans": "28",
+    "accept": [
+     "28",
+     "twenty-eight",
+     "twentyeight"
+    ],
+    "hints": [
+     "Do not redo the student's algebra. Substitute \\(x=3\\) into both sides of the original equation and evaluate each side separately.",
+     "At \\(x=3\\) the left side is \\(27-7\\) and the right side is \\(6+42\\)."
+    ],
+    "sol": "At \\(x=3\\) the left side is \\(9(3)-7=20\\) and the right side is \\(2(3)+42=48\\), so the right side is larger by \\(48-20=\\boxed{28}\\). The correct run is \\(7x=49\\), so \\(x=7\\), where both sides equal \\(56\\)."
+   },
+   {
+    "x": "Solve \\(2(6x+7)=5(2x+9)\\), one distribute on each side. Enter the solution as a fraction in lowest terms.",
+    "ans": "31/2",
+    "accept": [
+     "31/2",
+     "15.5",
+     "x=31/2",
+     "x=15.5"
+    ],
+    "hints": [
+     "Both sides need their distribute before any term can move across.",
+     "Distributing gives \\(12x+14=10x+45\\)."
+    ],
+    "sol": "Distribute on both sides, \\(12x+14=10x+45\\). Subtract \\(10x\\), \\(2x+14=45\\), then \\(2x=31\\) and \\(x=\\boxed{\\frac{31}{2}}\\). Check, \\(2\\left(6\\cdot\\frac{31}{2}+7\\right)=2(100)=200\\) and \\(5\\left(2\\cdot\\frac{31}{2}+9\\right)=5(40)=200\\)."
+   },
+   {
+    "x": "Simplify both sides first, then solve \\(9-2x+8=4x-1+2x\\). Enter the solution as a fraction in lowest terms.",
+    "ans": "9/4",
+    "accept": [
+     "9/4",
+     "2.25",
+     "x=9/4",
+     "x=2.25"
+    ],
+    "hints": [
+     "Combine like terms on each side separately before anything crosses the equals sign.",
+     "The left combines to \\(17-2x\\) and the right to \\(6x-1\\)."
+    ],
+    "sol": "The left combines to \\(17-2x\\) and the right to \\(6x-1\\). Add \\(2x\\) to both sides, \\(17=8x-1\\), then \\(8x=18\\) and \\(x=\\frac{18}{8}=\\boxed{\\frac{9}{4}}\\). Check, \\(9-2\\cdot\\frac{9}{4}+8=\\frac{25}{2}\\) and \\(4\\cdot\\frac{9}{4}-1+2\\cdot\\frac{9}{4}=\\frac{25}{2}\\)."
    }
   ]
  }
