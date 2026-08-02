@@ -3976,6 +3976,319 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
  }
 });
   Object.assign(PSETS_ALG1, {
+ "1": {
+  "practice": [
+   {
+    "x": "Here are five numbers. $$\\frac{40}{4},\\qquad \\frac{45}{8},\\qquad 6.0,\\qquad \\frac{-33}{11},\\qquad 2.75$$ How many of them are integers?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "Find the value of each number first. How it is written does not decide what it is."
+    ],
+    "sol": "<p>Evaluate each one. \\(\\frac{40}{4}=10\\) and \\(\\frac{-33}{11}=-3\\) are integers, and \\(6.0\\) is just \\(6\\). But \\(\\frac{45}{8}=5.625\\) is not an integer, and neither is \\(2.75\\). That makes \\(\\boxed{3}\\) integers. Reduce every number to its value before classifying it.</p>"
+   },
+   {
+    "x": "Evaluate \\(94-9\\cdot 2^3\\).",
+    "ans": "22",
+    "accept": [
+     "22",
+     "twenty-two",
+     "twenty two"
+    ],
+    "hints": [
+     "The exponent finishes before the multiplication, and the multiplication finishes before the subtraction."
+    ],
+    "sol": "<p>The exponent goes first, \\(2^3=8\\). Then the multiplication, \\(9\\cdot 8=72\\). Last the subtraction, \\(94-72=\\boxed{22}\\).</p>"
+   },
+   {
+    "x": "In the expression \\(23-15n\\), what is the coefficient of \\(n\\)?",
+    "ans": "-15",
+    "accept": [
+     "-15",
+     "−15",
+     "negative fifteen"
+    ],
+    "hints": [
+     "The coefficient carries the sign written in front of its term."
+    ],
+    "sol": "<p>The terms are \\(23\\) and \\(-15n\\), so the coefficient of \\(n\\) is \\(\\boxed{-15}\\). The minus sign belongs to the term, so it rides along with the coefficient.</p>"
+   },
+   {
+    "x": "Find \\(26+51+44+39\\) in your head by rearranging the four numbers into friendly pairs.",
+    "ans": "160",
+    "accept": [
+     "160"
+    ],
+    "hints": [
+     "Look for two pairs whose ones digits add to 10."
+    ],
+    "sol": "<p>Addition lets you reorder freely, so pair \\(26+44=70\\) and \\(51+39=90\\). Then \\(70+90=\\boxed{160}\\).</p>"
+   },
+   {
+    "x": "The decimal \\(0.35\\) stops, so it is a ratio of integers. Written as a fraction in lowest terms, what is its denominator?",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "Start from \\(\\frac{35}{100}\\), then divide out the common factor."
+    ],
+    "sol": "<p>Two decimal places means \\(0.35=\\frac{35}{100}\\). Dividing top and bottom by \\(5\\) gives \\(\\frac{7}{20}\\), so the denominator is \\(\\boxed{20}\\). Since \\(7\\) and \\(20\\) share no factor, the fraction is fully reduced.</p>"
+   },
+   {
+    "x": "A plumber charges \\(\\$40\\) for the visit plus \\(\\$30\\) for each hour of work, so a job lasting \\(h\\) hours costs \\(40+30h\\) dollars. What does a \\(3\\)-hour job cost, in dollars?",
+    "ans": "130",
+    "accept": [
+     "130",
+     "$130"
+    ],
+    "hints": [
+     "Substitute \\(h=3\\), and do the multiplication before the addition."
+    ],
+    "sol": "<p>At \\(h=3\\) the expression reads \\(40+30\\cdot 3=40+90=\\boxed{130}\\). The multiplication finishes first, which matches the story, three hours at \\(\\$30\\) each on top of the flat \\(\\$40\\).</p>"
+   },
+   {
+    "x": "Both factors of \\(25\\cdot 125\\) are powers of \\(5\\), so the whole product is one too. Write it as \\(5^x\\) and enter \\(x\\).",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "Count the factors of \\(5\\) in each piece, then count them all together."
+    ],
+    "sol": "<p>Here \\(25=5^2\\) and \\(125=5^3\\), so the product carries \\(2+3=5\\) factors of \\(5\\), and \\(25\\cdot 125=5^5\\). So \\(x=\\boxed{5}\\).</p>"
+   },
+   {
+    "x": "A classmate evaluates \\(83-37-28\\) by grouping the last two numbers, computing \\(37-28=9\\) first, and reporting \\(83-9=74\\). Subtraction does not allow that. Worked correctly, left to right, what is the value?",
+    "ans": "18",
+    "accept": [
+     "18",
+     "eighteen"
+    ],
+    "hints": [
+     "Do \\(83-37\\) first, then subtract the \\(28\\) from the result."
+    ],
+    "sol": "<p>Left to right, \\(83-37=46\\), then \\(46-28=\\boxed{18}\\). Subtraction is not associative, so grouping the last two numbers first changes the value.</p>"
+   },
+   {
+    "x": "Nothing in $$\\dfrac{85-13}{3^3-19}$$ is written with parentheses, but the fraction bar does its own grouping. Evaluate the expression.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "Finish the whole top and the whole bottom separately, then divide."
+    ],
+    "sol": "<p>The top is \\(85-13=72\\). The bottom is \\(3^3-19=27-19=8\\). Dividing, \\(72\\div 8=\\boxed{9}\\). The bar acts as parentheses around each level, so nothing crosses it until both are done.</p>"
+   },
+   {
+    "x": "Evaluate \\(7^{-5}\\cdot 7^{7}\\). The straight route computes two unpleasant numbers, but the product rule shrinks the whole thing to one small power.",
+    "ans": "49",
+    "accept": [
+     "49",
+     "forty-nine",
+     "forty nine"
+    ],
+    "hints": [
+     "The product rule still holds when an exponent is negative, so add the exponents."
+    ],
+    "sol": "<p>Adding the exponents gives \\(7^{-5}\\cdot 7^{7}=7^{-5+7}=7^2=\\boxed{49}\\). Multiplying the two powers separately would work too, but the rule collapses the problem before any big arithmetic starts.</p>"
+   },
+   {
+    "x": "Evaluate \\(8w^2\\) when \\(w=-3\\).",
+    "ans": "72",
+    "accept": [
+     "72",
+     "seventy-two",
+     "seventy two"
+    ],
+    "hints": [
+     "The exponent applies only to \\(w\\), and the square of a negative is positive."
+    ],
+    "sol": "<p>Substituting, \\(8(-3)^2=8\\cdot 9=\\boxed{72}\\). The exponent belongs to \\(w\\) alone, so the \\(8\\) waits, and \\((-3)^2\\) is positive \\(9\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{t^2-2t}{t+4}\\) when \\(t=-6\\). Write every substituted value inside its own parentheses, and keep the top and the bottom separate until the final division.",
+    "ans": "-24",
+    "accept": [
+     "-24",
+     "−24",
+     "negative twenty-four",
+     "negative twenty four"
+    ],
+    "hints": [
+     "On top, \\(-2t\\) becomes \\(-2(-6)\\), which is positive."
+    ],
+    "sol": "<p>The top is \\((-6)^2-2(-6)=36+12=48\\). The bottom is \\(-6+4=-2\\). Dividing, \\(48\\div(-2)=\\boxed{-24}\\). Both sign traps sit on top, the square of \\(-6\\) is positive and so is \\(-2\\) times \\(-6\\).</p>"
+   }
+  ],
+  "challenge": [
+   {
+    "x": "Compute \\(214-57+86-143+250\\) without a calculator. The five numbers look random, but they were chosen so the right regrouping collapses the whole sum.",
+    "ans": "350",
+    "accept": [
+     "350"
+    ],
+    "hints": [
+     "Rewrite each subtraction as adding a negative. Then the whole thing is one long sum, and you can reorder it freely as long as each minus sign travels with its number.",
+     "Two of the numbers pair to \\(300\\), and the two negatives pair to \\(-200\\)."
+    ],
+    "sol": "<p>Rewrite as \\(214+(-57)+86+(-143)+250\\), one long sum. Pair \\(214+86=300\\) and \\((-57)+(-143)=-200\\), so the total is \\(300-200+250=\\boxed{350}\\). Once every subtraction is adding a negative, the commutative property lets the pieces move, each minus riding along with its number.</p>"
+   },
+   {
+    "x": "Evaluate \\(67\\cdot 41\\cdot\\left(3^5-243\\right)\\cdot 77\\).",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero"
+    ],
+    "hints": [
+     "Reordering and regrouping a product is free, so read every factor before you multiply anything.",
+     "Evaluate \\(3^5\\) and compare it with \\(243\\)."
+    ],
+    "sol": "<p>The third factor is \\(3^5-243=243-243=0\\), and a product with a factor of \\(0\\) is \\(0\\), so the answer is \\(\\boxed{0}\\) with no multiplying at all. Scanning all the factors first costs nothing, and here it saves the entire computation.</p>"
+   },
+   {
+    "x": "How many of these five numbers are rational? $$\\sqrt{4^3},\\qquad \\sqrt{95},\\qquad 2^{-5},\\qquad 0.\\overline{74},\\qquad \\pi-\\pi$$",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Evaluate each number before you classify it. Several are not what they look like.",
+     "A radical sign does not make a number irrational, and a famous irrational minus itself is not irrational either."
+    ],
+    "sol": "<p>\\(\\sqrt{4^3}=\\sqrt{64}=8\\), an integer. \\(2^{-5}=\\frac{1}{32}\\), a ratio of integers. \\(0.\\overline{74}\\) repeats, so it equals \\(\\frac{74}{99}\\). And \\(\\pi-\\pi=0\\), an integer, however irrational \\(\\pi\\) is on its own. Only \\(\\sqrt{95}\\) is irrational, since \\(95\\) is not a perfect square, so \\(\\boxed{4}\\) of the five are rational. A number's family comes from its value, not from how it happens to be written.</p>"
+   },
+   {
+    "x": "How many terms does the expression $$3ab-c+\\dfrac{a+b}{2}+5-ac$$ have? Count carefully, since one of the pieces is bigger than it looks.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "Cut only at the \\(+\\) and \\(-\\) signs that sit between pieces. The fraction bar groups its whole top, so the plus inside it cannot cut anything.",
+     "\\(\\dfrac{a+b}{2}\\) is a single term, the same way \\((a+b)\\div 2\\) would be."
+    ],
+    "sol": "<p>Cutting at the signs between pieces gives \\(3ab\\), \\(-c\\), \\(\\dfrac{a+b}{2}\\), \\(5\\), and \\(-ac\\), which is \\(\\boxed{5}\\) terms. The plus inside the fraction cuts nothing, because the bar wraps its whole top in the invisible parentheses from 1.2, making it one piece.</p>"
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{31^{-3}\\cdot 31^{7}}{31^{2}}\\). Brute force is off the table, since \\(31^7\\) runs past ten billion, so let the exponent rules do the work.",
+    "ans": "961",
+    "accept": [
+     "961"
+    ],
+    "hints": [
+     "Add the exponents on top first. The product rule holds even when one exponent is negative.",
+     "Then subtract the bottom exponent, and only evaluate the small power that remains."
+    ],
+    "sol": "<p>On top, \\(-3+7=4\\), so the numerator is \\(31^4\\). The quotient rule then gives \\(31^{4-2}=31^2=\\boxed{961}\\). Counting exponents is the whole game here, since the giant powers never need to exist.</p>"
+   },
+   {
+    "x": "Evaluate \\(m^2-8m-m^3\\) at \\(m=-5\\). Every term asks its own sign question, so settle each one before adding.",
+    "ans": "190",
+    "accept": [
+     "190"
+    ],
+    "hints": [
+     "Substitute \\(-5\\) inside parentheses at all three appearances before computing anything.",
+     "\\(-m^3\\) means the opposite of \\(m^3\\), and \\((-5)^3\\) is already negative."
+    ],
+    "sol": "<p>Substituting gives \\((-5)^2-8(-5)-(-5)^3=25+40-(-125)=25+40+125=\\boxed{190}\\). All three terms land positive, because the even power erases one sign, the \\(-8\\) meets a negative, and the opposite of the negative cube flips the third.</p>"
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{-8^2+115}{113-16\\cdot 7}\\). One grouping bar and one tight exponent, and each is a chance to go wrong.",
+    "ans": "51",
+    "accept": [
+     "51"
+    ],
+    "hints": [
+     "The exponent binds only to the \\(8\\), so \\(-8^2\\) means \\(-(8^2)\\).",
+     "The fraction bar groups the whole top and the whole bottom. Finish \\(113-16\\cdot 7\\) before dividing."
+    ],
+    "sol": "<p>On top, the exponent binds only to the \\(8\\), so \\(-8^2+115=-64+115=51\\). On the bottom, \\(113-16\\cdot 7=113-112=1\\). Dividing gives \\(51\\div 1=\\boxed{51}\\). Reading \\(-8^2\\) as \\((-8)^2\\) instead sends the top to \\(179\\), a miss of \\(128\\) from one dropped rule.</p>"
+   },
+   {
+    "x": "Insert one pair of parentheses into \\(76-66\\div 2\\cdot 3\\) to make the value as large as possible. Enter that largest value.",
+    "ans": "129",
+    "accept": [
+     "129"
+    ],
+    "hints": [
+     "The pair can wrap any consecutive stretch of the expression. List every placement and evaluate each one.",
+     "The winner feeds the \\(\\cdot\\, 3\\) the largest number it can reach."
+    ],
+    "sol": "<p>Try every placement. Wrapping \\(2\\cdot 3\\) gives \\(76-66\\div 6=65\\). Wrapping \\(76-66\\) gives \\(10\\div 2\\cdot 3=15\\). Wrapping \\(76-66\\div 2\\) gives \\(43\\cdot 3=\\boxed{129}\\), the largest. The winning pair hands the biggest possible number to the multiplication, while the plain expression is only \\(76-99=-23\\).</p>"
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{2c^2-c}{c-6}\\) at \\(c=-2\\). Enter the value as a fraction in lowest terms.",
+    "ans": "-5/4",
+    "accept": [
+     "-5/4",
+     "−5/4",
+     "-1.25",
+     "−1.25"
+    ],
+    "hints": [
+     "Substitute \\(-2\\) in parentheses at both appearances. The square makes \\(2c^2\\) positive, and subtracting \\(c\\) means subtracting a negative.",
+     "Finish the whole top and the whole bottom separately, then divide and reduce."
+    ],
+    "sol": "<p>The top is \\(2(-2)^2-(-2)=8+2=10\\), and the bottom is \\(-2-6=-8\\). So the value is \\(\\frac{10}{-8}=\\boxed{-\\frac{5}{4}}\\). The two sign moves that matter are the square making \\(2c^2\\) positive and the subtraction of \\(-2\\) turning into an addition.</p>"
+   },
+   {
+    "x": "The expression $$\\dfrac{\\left(3^4\\cdot 3^{7}\\right)^{3}}{9^{15}}$$ hides numbers in the quadrillions, yet it collapses to a small integer. Find it without multiplying out a single power.",
+    "ans": "27",
+    "accept": [
+     "27",
+     "twenty-seven",
+     "twenty seven"
+    ],
+    "hints": [
+     "Count factors of \\(3\\) instead of multiplying, with the product rule inside the parentheses and the power of a power outside.",
+     "Write \\(9^{15}\\) as a power of \\(3\\) so the quotient rule can cancel."
+    ],
+    "sol": "<p>Inside the parentheses the exponents add, \\(3^4\\cdot 3^7=3^{11}\\). Raising to the third power multiplies the count, giving \\(3^{33}\\). Below, \\(9^{15}=\\left(3^2\\right)^{15}=3^{30}\\). The quotient rule leaves \\(3^{33-30}=3^3=\\boxed{27}\\). Every step is a factor count, and the huge powers never get multiplied out.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Evaluate \\(\\dfrac{-x^2+x(7-x)}{x+5}\\) at \\(x=-6\\). Four appearances of \\(x\\), a tight exponent, and a divisor worth a close look.",
+    "ans": "114",
+    "accept": [
+     "114"
+    ],
+    "hints": [
+     "Substitute \\(-6\\) in parentheses at every appearance. \\(-x^2\\) squares first and negates after, and \\(7-(-6)\\) is not \\(7-6\\).",
+     "Work the whole top and the whole bottom before dividing, and expect the bottom to be a small negative number."
+    ],
+    "sol": "<p>The top is \\(-(-6)^2+(-6)\\big(7-(-6)\\big)=-36+(-6)(13)=-36-78=-114\\). The bottom is \\(-6+5=-1\\). Dividing, \\(-114\\div(-1)=\\boxed{114}\\). Both classic misreads, squaring \\(-6\\) into \\(+36\\) or collapsing \\(7-(-6)\\) to \\(1\\), send the top to \\(-42\\) and the answer to \\(42\\), so one dropped sign costs \\(72\\) here.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Each power in $$\\dfrac{2^{2026}-2^{2024}}{2^{2024}}$$ is more than \\(600\\) digits long, yet the whole expression equals a single small integer. Find it.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "A fraction whose top is a difference splits into two fractions over the same bottom, a prealgebra move.",
+     "Use the quotient rule on each piece. \\(\\dfrac{2^{2024}}{2^{2024}}\\) is a number you know."
+    ],
+    "sol": "<p>Split the fraction over its common bottom, \\(\\dfrac{2^{2026}}{2^{2024}}-\\dfrac{2^{2024}}{2^{2024}}\\). The quotient rule turns the first piece into \\(2^2=4\\), and the second is \\(1\\), so the value is \\(4-1=\\boxed{3}\\). Subtracting exponents only ever counts the surviving factors, so the six-hundred-digit powers never need to be written down.</p>",
+    "legendary": true
+   }
+  ]
+ }
+});
+  Object.assign(PSETS_ALG1, {
  "4": {
   "practice": [
    {
