@@ -1722,7 +1722,7 @@
    },
    {
     "t": "imp",
-    "x": "<b>Name the repeated piece, then convert back.</b> A system built from \\(\\frac{1}{x}\\) and \\(\\frac{1}{y}\\) is linear in those two pieces and not in \\(x\\) and \\(y\\), so setting \\(u=\\frac{1}{x}\\) and \\(v=\\frac{1}{y}\\) makes it an ordinary system for 5.2 or 5.3. Solving gives \\(u\\) and \\(v\\), and converting back takes one reciprocal each, \\(x=\\frac{1}{u}\\) and \\(y=\\frac{1}{v}\\). Stopping at \\(u\\) reports a different quantity, since \\(u=5\\) means \\(x=\\frac{1}{5}\\)."
+    "x": "<b>Name the repeated piece, then convert back.</b> When both equations are linear in the same two pieces, giving those pieces names makes an ordinary system for 5.2 or 5.3. Here the pieces are \\(\\frac{1}{x}\\) and \\(\\frac{1}{y}\\), and elsewhere they are \\(\\sqrt{x}\\) and \\(\\sqrt{y}\\), or \\(x^2\\) and \\(y^2\\). Converting back undoes the naming, so \\(u=\\frac{1}{x}\\) gives \\(x=\\frac{1}{u}\\), and stopping at \\(u\\) reports a different quantity, since \\(u=5\\) means \\(x=\\frac{1}{5}\\). A letter in a denominator cannot be \\(0\\), so the conversion back always works."
    },
    {
     "t": "prob",
@@ -1991,6 +1991,34 @@
      "Multiplying by \\(6\\) and by \\(100\\) gives \\(3x+5y=138\\) and \\(15x-20y=150\\), and dividing that second one by \\(5\\) gives \\(3x-4y=30\\). Both have \\(3x\\)."
     ],
     "sol": "Multiplying the first equation by \\(6\\) gives \\(3(x+y)+2y=138\\), so \\(3x+5y=138\\). Multiplying the second by \\(100\\) gives \\(15x-20y=150\\), and dividing by \\(5\\) gives \\(3x-4y=30\\). Subtracting leaves \\(9y=108\\), so \\(y=12\\), and \\(3x=138-60=78\\), so \\(x=26\\) and \\(xy=\\boxed{312}\\). Check, \\(\\frac{38}{2}+4=23\\) and \\(3.9-2.4=1.5\\). Clearing fractions and clearing decimals are the same move, one multiplier taken from the denominators and one from a power of ten."
+   },
+   {
+    "x": "Nonnegative numbers \\(a\\) and \\(b\\) satisfy \\(\\sqrt{a}+3\\sqrt{b}=41\\) and \\(\\sqrt{a}-\\sqrt{b}=13\\). Neither equation is linear in \\(a\\) and \\(b\\), but both are linear in \\(\\sqrt{a}\\) and \\(\\sqrt{b}\\). Name those two pieces, solve, convert back, and enter \\(a\\).",
+    "ans": "400",
+    "accept": [
+     "400",
+     "a=400"
+    ],
+    "hints": [
+     "Set \\(u=\\sqrt{a}\\) and \\(v=\\sqrt{b}\\). The system becomes \\(u+3v=41\\) and \\(u-v=13\\), which 5.3 handles.",
+     "Subtracting the second equation from the first gives \\(4v=28\\). Once \\(u\\) is known, \\(a=u^2\\), not \\(u\\)."
+    ],
+    "sol": "With \\(u=\\sqrt{a}\\) and \\(v=\\sqrt{b}\\) the system is \\(u+3v=41\\) and \\(u-v=13\\). Subtracting gives \\(4v=28\\), so \\(v=7\\) and \\(u=20\\). Then \\(a=u^2=\\boxed{400}\\). Squaring is what converts back, so \\(b=49\\), and the check gives \\(20+21=41\\) and \\(20-7=13\\). Entering \\(20\\) reports \\(\\sqrt{a}\\) rather than \\(a\\)."
+   },
+   {
+    "x": "Positive numbers \\(m\\) and \\(n\\) satisfy \\(m^2+n^2=289\\) and \\(m^2-n^2=161\\). The system is linear in \\(m^2\\) and \\(n^2\\), so name those two pieces. Enter \\(m+n\\).",
+    "ans": "23",
+    "accept": [
+     "23",
+     "m+n=23",
+     "twenty-three",
+     "twentythree"
+    ],
+    "hints": [
+     "Set \\(u=m^2\\) and \\(v=n^2\\). The system reads \\(u+v=289\\) and \\(u-v=161\\), a sum-and-difference pair.",
+     "Adding gives \\(2u=450\\). Converting back takes a square root of each, and the ask is \\(m+n\\), not \\(u+v\\)."
+    ],
+    "sol": "With \\(u=m^2\\) and \\(v=n^2\\) the system is \\(u+v=289\\) and \\(u-v=161\\). Adding gives \\(2u=450\\), so \\(u=225\\) and \\(v=64\\). Both numbers are positive, so \\(m=15\\) and \\(n=8\\), and \\(m+n=\\boxed{23}\\). The naming is what makes the system linear, since \\(m^2\\) and \\(n^2\\) appear only as whole pieces."
    }
   ]
  }
