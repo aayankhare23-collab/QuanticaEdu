@@ -30,7 +30,10 @@ How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established
 ```
 
 ## Components
-- **Section label:** `font-size 12.5 font-weight 700 letter-spacing 1.4` uppercase, fill `#2f6fe0`.
+- **Band label:** one lowercase word (`before`, `after`), `font-size 13 font-weight 700`, no
+  letter-spacing, fill `#2f6fe0`. **Never all-caps and never letter-spaced.** Small all-caps
+  eyebrow/kicker/band labels are banned product-wide (memory `no-allcaps-label-boxes`); this line
+  used to prescribe them, which contradicted the ban. Algebra I 5.3 and 5.4 are the reference.
 - **Cancelled tile:** 56×56 rx13, fill `#eef1f6` stroke `#dbe1ea`, digit 26px 700 `#aab4c2`, plus a
   diagonal strike line `#aab4c2` width 2.5 round-cap.
 - **Highlight (gold) tile:** 60×60 rx14, fill `#fcd76a` stroke `#e0a52a` w2, `filter=tilesh`, digit 30px 700 `#8a5a08`.

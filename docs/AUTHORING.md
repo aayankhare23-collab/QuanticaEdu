@@ -49,8 +49,10 @@ course-agnostic (keys prefixed by course slug), so a new course needs no per-cou
 Rules that the grader and renderer depend on:
 
 - **Answers are a single typed value.** An integer, a lowest-terms fraction `a/b`, or a
-  single word. The grader lowercases and strips spaces and commas, normalizes unicode minus
-  to hyphen, then compares to `ans` and each `accept` entry. `accept` must contain `ans`
+  single word. The grader (`normAns` in `landing.html`) trims, lowercases, strips spaces and
+  commas, and drops a leading `+`. It does **not** touch the unicode minus `−`, so a negative
+  answer needs both `-6` and `−6` in `accept`. It then compares to `ans` and each
+  `accept` entry. `accept` must contain `ans`
   plus every reasonable typed variant (word forms like `four`, exact terminating decimal for
   a fraction, etc). Never ask for a list, a sentence, or "explain"; funnel to one value.
 - **Solutions are answer-first, in two parts** (changed 2026-07-26, replaces the old
