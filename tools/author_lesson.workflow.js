@@ -49,6 +49,12 @@ QUANTICA HOUSE STYLE (follow exactly):
   readers as characters, no personified conventions ("the agreement"), no cute renamings
   ("the chant" for PEMDAS), no dramatized verbs ("grabs", "seals"). Say the plain thing.
   A metaphor survives only if it teaches. (See memory: no-em-dashes.)
+- EQUATIONS AND NUMBERS DO NOT ACT. Never write that a system "hands over" a coefficient,
+  an equation "arrives" or "insists", a letter "qualifies", fractions "ride through" lines,
+  or a method is a "recipe". State the fact directly: the system has a letter with
+  coefficient 1, the isolation starts with a division, fractions appear in later steps.
+  If a sentence gives a verb to an equation, letter, or number, rewrite it. Clarity first,
+  conversation second.
 - Math in \\( ... \\) inline, $$ ... $$ display. SINGLE backslashes. Bold with <b>...</b>.
 - Lengths (chars in x): p 200-350; imp 350-600 (bold rule name + statement + the WHY);
   fact ~200; prob 120-250, up to ~450 if the ask needs pinning down.
