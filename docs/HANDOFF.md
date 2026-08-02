@@ -9,12 +9,16 @@ where the work stands, and the traps that cost real time last session.
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | 16 / 81, 15 chapters in the TOC | chapter 2 only | ch1-ch2 done, ch3 is 4/5 |
+| Algebra I | 20 / 81, 15 chapters in the TOC | chapters 2 and 3 | ch1-ch3 done, ch4 is 3/5 |
 
-**3.3 and 3.4 shipped 2026-08-01** (commits 12cb802, 139a4dc), each fully machine-verified
-and preview-tested. **Next is 3.5 Rationalizing Denominators** (no conjugates, chapter 10
-owns those; single-term denominators plus one cube-root stretch), then the chapter 3
-Practice/Challenge sets, then chapter 4 onward.
+**Shipped 2026-08-01:** 3.3, 3.4, 3.5 (chapter 3 complete), the chapter 3 Practice and
+Challenge sets (12+12, 3 legendary, in PSETS_ALG1), then 4.1, 4.2, 4.3. Every lesson went
+through the full workflow pipeline with all answers machine-verified in exact arithmetic
+and preview-tested to 0 katex-error. **Next is 4.4 Equations in Disguise**, then 4.5 Word
+Problems, then the chapter 4 sets. Chapter 1's Practice/Challenge sets are still missing
+(queued task). The session-limit trap: verify/audit agents can die mid-workflow on the
+5-hour usage window; when they do, run the checks inline (the audits catch real issues,
+including two spoiler-grade number collisions per lesson on average).
 
 Two app fixes shipped alongside: the stale `TOC_ALG1` chapters 1-2 in landing.html
 (missing 1.6/2.6, six wrong titles, wrong progress denominator), and a CSS bug where the
