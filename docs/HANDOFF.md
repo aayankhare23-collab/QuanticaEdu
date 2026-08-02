@@ -9,14 +9,14 @@ where the work stands, and the traps that cost real time last session.
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | 20 / 81, 15 chapters in the TOC | chapters 2 and 3 | ch1-ch3 done, ch4 is 3/5 |
+| Algebra I | 22 / 81, 15 chapters in the TOC | chapters 1-4, all | ch1-ch4 done |
 
 **Shipped 2026-08-01:** 3.3, 3.4, 3.5 (chapter 3 complete), the chapter 3 Practice and
 Challenge sets (12+12, 3 legendary, in PSETS_ALG1), then 4.1, 4.2, 4.3. Every lesson went
 through the full workflow pipeline with all answers machine-verified in exact arithmetic
-and preview-tested to 0 katex-error. **Next is 4.4 Equations in Disguise**, then 4.5 Word
-Problems, then the chapter 4 sets. Chapter 1's Practice/Challenge sets are still missing
-(queued task). The session-limit trap: verify/audit agents can die mid-workflow on the
+and preview-tested to 0 katex-error. Chapters 3 and 4 shipped complete with their
+Practice/Challenge sets, and the previously missing chapter 1 sets are in too, so every
+live chapter has 12+12 with 3 legendary. **Next is 5.1 Two Variables, Two Equations.** The session-limit trap: verify/audit agents can die mid-workflow on the
 5-hour usage window; when they do, run the checks inline (the audits catch real issues,
 including two spoiler-grade number collisions per lesson on average).
 
@@ -27,7 +27,7 @@ captions (affected 14 captions in both courses, prealgebra ch 8 included). Previ
 `showLesson('<key>')` opens a specific lesson; `openLesson()` takes no argument (see the
 corrected `preview-lesson-verification` memory).
 
-Chapters 4 to 15 of Algebra I have no lessons and correctly render as "coming soon", greyed and
+Chapters 5 to 15 of Algebra I have no lessons and correctly render as "coming soon", greyed and
 unclickable, on both the dashboard and the contents page. Problem-set links for chapters without
 sets do the same. Nothing to fix there.
 
@@ -111,7 +111,6 @@ requested on 2026-07-31.
 ## Open items
 
 - 114 prealgebra figures still use the old visual standard. The user said leave it.
-- Algebra I chapter 1 and 3 have no problem sets. Only chapter 2 does.
 - The Algebra I mascot image is still the blue character while Prealgebra's is green, even
   though both say Milo. Raised with the user, not yet decided.
 - From a 20-item audit list the user supplied, **4 items were factually wrong** about the code
