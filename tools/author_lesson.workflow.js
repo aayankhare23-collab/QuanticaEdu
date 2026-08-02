@@ -42,9 +42,15 @@ const SPEC = `
 
 const STYLE = `
 QUANTICA HOUSE STYLE (follow exactly):
+- QUALITY BAR: read lessons/prealgebra/chapter-1.json, all six lessons, for problem
+  quality and pedagogy. Problems teach rather than test, each placed so working it makes
+  the next idea obvious, and the idea arrives AFTER the problems that earned it. Rules get
+  derived twice by independent routes, never asserted. Do NOT copy chapter 1's mechanics,
+  which predate the conventions below (it has 1-hint and 0-hint problems, xp to 18, and
+  single-$ math). Take its problem design; take the mechanics from these rules.
 - Voice: problem-first, plainspoken, warm but tight, exactly like AoPS. Read
-  lessons/prealgebra/chapter-2.json (2.1, 2.2) for the voice+length bar, and the
-  already-authored lessons in this course for continuity.
+  lessons/prealgebra/chapter-2.json (2.1, 2.2) for the prose length and register bar, and
+  the already-authored lessons in this course for continuity.
 - NO em-dashes. Almost NO colons in prose. NO poetic/abstract register: no strings or
   readers as characters, no personified conventions ("the agreement"), no cute renamings
   ("the chant" for PEMDAS), no dramatized verbs ("grabs", "seals"). Say the plain thing.

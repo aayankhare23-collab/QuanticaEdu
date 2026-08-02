@@ -101,12 +101,19 @@ The pipeline is documented in `docs/AUTHORING.md` and it works. Summary:
 
 ### The quality bar
 
-`lessons/prealgebra/chapter-2.json` 2.3 and 2.4 are the reference. Their shape is prose, two
-problems, then the key idea those problems earned, repeated. They derive rather than assert:
-2.3 walks a descending ladder to reach `a⁰ = 1` and then re-derives it from the quotient rule,
-two independent routes to one fact. Every problem carries exactly 2 hints.
+**`lessons/prealgebra/chapter-1.json` is the gold standard for problem quality and
+pedagogy** (Aayan, restated 2026-08-02). Read all six of its lessons. Problems teach rather
+than test, each placed so working it makes the next idea obvious, with the idea arriving
+after the problems that earned it. Rules get derived twice by independent routes rather than
+asserted. Every problem has 2 problem-specific hints, and every answer is a single typed
+value. Full statement of the four properties, and of what NOT to copy from chapter 1, is in
+`docs/AUTHORING.md` under "The quality bar".
 
-Algebra I uses xp 5 to 8. Prealgebra drifted up to 14. Follow the course, not the reference.
+The shape that works, seen clearly in prealgebra 2.3 and 2.4: prose, two problems, then the
+key idea those problems earned, repeated.
+
+Algebra I uses xp 5 to 8. Prealgebra drifted up to 18 in chapter 1. Follow the course, not
+the reference.
 
 ## What shipped on 2026-07-31
 

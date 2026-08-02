@@ -70,10 +70,37 @@ Rules that the grader and renderer depend on:
   Bold via `<b>...</b>`. No markdown.
 - **xp** is 5 (easy) to 8 (hard) on try-it and review-in-flow problems; review items omit it.
 
+## The quality bar
+
+**`lessons/prealgebra/chapter-1.json` is the gold standard for problem quality and
+pedagogy.** Read all six of its lessons before authoring. Four things make it the bar, and
+they are what to copy:
+
+1. **Problems teach, they do not test.** Each one is placed so that working it makes the next
+   key idea obvious. The idea comes *after* the problems that earned it, never before.
+2. **Derive, do not assert.** Where a rule could look arbitrary, reach it twice by
+   independent routes. Prealgebra 2.3 walks a descending ladder to `a⁰ = 1` and then
+   re-derives the same fact from the quotient rule.
+3. **Exactly 2 hints per problem, specific to that problem, never generic nudges.** The first
+   reframes, the second gets concrete.
+4. **Answers are a single typed value.** An integer, a lowest-terms fraction, or one word.
+   Never a list, a sentence, or "explain". If a question wants reasoning, funnel it to one
+   value that only the right reasoning produces.
+
+**What NOT to copy from chapter 1.** It was written before several conventions landed, and
+the conventions win. Measured on 2026-08-02: of its 83 problems only 15 carry 2 hints, 38
+carry 1 and 26 carry none; its xp runs to 18; it uses 616 single-`$` math delimiters and the
+legacy `f`, `sub` and `goals` block types. New lessons use exactly 2 hints everywhere, xp 5
+to 8 in Algebra I, `\( \)` or `$$` delimiters, and the block schema above. Take the problem
+design from chapter 1 and the mechanics from this document.
+
+For **prose length and register** specifically, the reference is
+`lessons/prealgebra/chapter-2.json` (2.1, 2.2), which is tighter than chapter 1 and matches
+the post-sweep house voice. See memory `verbosity-targets`.
+
 ## The voice (this is the part people get wrong)
 
-Problem-first, plainspoken, warm but tight. AoPS-direct and conversational. The reference
-bar is `lessons/prealgebra/chapter-2.json` (2.1, 2.2). Hard rules:
+Problem-first, plainspoken, warm but tight. AoPS-direct and conversational. Hard rules:
 
 - **No em-dashes. Almost no colons in prose.** (Memory: `no-em-dashes`.)
 - **No poetic/abstract register.** No strings or readers as characters ("two honest
