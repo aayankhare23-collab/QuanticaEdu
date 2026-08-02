@@ -76,16 +76,17 @@ exceptions.
   open `/landing.html?course=<c>&lesson=<k>`. Note the plain static server does not apply the
   Firebase `/` rewrite, so use `/landing.html` explicitly.
 
-## Current status (2026-07-08)
+## Current status (2026-08-02)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: Chapter 1 complete and live with its Practice + Challenge sets (`PSETS_ALG1`
-  in `landing.html`). Chapter 2 underway: 2.1 through 2.4 live
-  (Distributive Property, Evaluating in Practice, Factoring Out a Common Factor, Adding and
-  Subtracting Expressions); chapter 2 is six lessons. 81-lesson syllabus in
-  `docs/algebra1-syllabus.md`; next up is 2.5 "Fractions with Variables", then 2.6 and the
-  chapter Practice/Challenge sets. Both courses have SEO
-  hub + lesson pages via `tools/gen_seo_pages.py` (sitemap/homepage links updated manually).
+- **Algebra I**: 25 of 81 lessons live. Chapters 1 to 4 are complete, each with its Practice
+  and Challenge sets in `PSETS_ALG1`. Chapter 5 is 3 of 6 (5.1 Two Variables Two Equations,
+  5.2 Substitution, 5.3 Elimination). **Next lesson is 5.4 Systems in Disguise**, then 5.5,
+  5.6, then the chapter 5 sets. Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
+  live per-lesson state and the pipeline traps are in `docs/HANDOFF.md`, which is the file to
+  read before writing anything. Both courses have SEO hub + lesson pages via
+  `tools/gen_seo_pages.py` (sitemap/homepage links updated manually), and those have NOT been
+  regenerated for Algebra I chapters 3 to 5 yet.
   Homepage pricing note previews $14.99/month (marketing copy only, site still free).
 - Live analytics is GA4 (`G-98WQ2BFR6N`), gated to real visitors only (loads on
   quanticaedu.com/www hostnames; `/?imfounder=1` sets a device opt-out). Funnel events:
