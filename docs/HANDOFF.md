@@ -1,4 +1,4 @@
-# Handoff, updated 2026-08-01 (build-out session in progress)
+# Handoff, updated 2026-08-02
 
 Read `CLAUDE.md` first for orientation and the golden rules, then `docs/AUTHORING.md` before
 writing any lesson. This file covers what a fresh session would otherwise have to rediscover:
@@ -9,27 +9,67 @@ where the work stands, and the traps that cost real time last session.
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | 22 / 81, 15 chapters in the TOC | chapters 1-4, all | ch1-ch4 done |
+| Algebra I | 25 / 81, 15 chapters in the TOC | chapters 1-4, all | ch1-ch4 done, ch5 is 3/6 |
 
-**Shipped 2026-08-01:** 3.3, 3.4, 3.5 (chapter 3 complete), the chapter 3 Practice and
-Challenge sets (12+12, 3 legendary, in PSETS_ALG1), then 4.1, 4.2, 4.3. Every lesson went
-through the full workflow pipeline with all answers machine-verified in exact arithmetic
-and preview-tested to 0 katex-error. Chapters 3 and 4 shipped complete with their
-Practice/Challenge sets, and the previously missing chapter 1 sets are in too, so every
-live chapter has 12+12 with 3 legendary. **Next is 5.1 Two Variables, Two Equations.** The session-limit trap: verify/audit agents can die mid-workflow on the
-5-hour usage window; when they do, run the checks inline (the audits catch real issues,
-including two spoiler-grade number collisions per lesson on average).
+**Next lesson to write is 5.4, Systems in Disguise.** Then 5.5 Word Problems with Systems,
+5.6 Three or More Variables, then the chapter 5 Practice/Challenge sets, then chapter 6.
 
-Two app fixes shipped alongside: the stale `TOC_ALG1` chapters 1-2 in landing.html
-(missing 1.6/2.6, six wrong titles, wrong progress denominator), and a CSS bug where the
-responsive figure rules collapsed KaTeX's radical-bar SVGs to ~0.1px inside figure
-captions (affected 14 captions in both courses, prealgebra ch 8 included). Preview gotcha:
-`showLesson('<key>')` opens a specific lesson; `openLesson()` takes no argument (see the
-corrected `preview-lesson-verification` memory).
+**Shipped across 2026-08-01 and 08-02:** 3.3, 3.4, 3.5 (chapter 3 complete), 4.1 through 4.5
+(chapter 4 complete), 5.1, 5.2, 5.3, plus Practice/Challenge sets for chapters 1, 3, and 4
+(12+12 with 3 legendary each), so every live chapter now has sets. Every lesson went through
+the full workflow pipeline with all answers machine-verified in exact arithmetic and
+preview-tested to 0 katex-error.
 
-Chapters 5 to 15 of Algebra I have no lessons and correctly render as "coming soon", greyed and
+Four app/content bugs found and fixed along the way, all live:
+- Stale `TOC_ALG1` chapters 1-2 in landing.html (missing 1.6 and 2.6, six wrong titles, so
+  the app showed 79 lessons instead of 81 and mislabeled half of chapters 1-2).
+- A CSS bug where the responsive figure rules (`.lessonfig svg`, `.page-lead svg`) caught
+  KaTeX's glyph SVGs and forced `height:auto`, collapsing radical bars to ~0.1px inside
+  figure captions. Affected 14 captions across both courses, all of prealgebra ch 8
+  included. Fix was scoping the figure rule to the direct child plus a `height:inherit`
+  override for `.katex svg`; note the override needs higher specificity than
+  `.ws-page.page-text-only .page-lead svg` or it silently loses.
+- Two lost backslashes on `\neq` in shipped 5.2 solutions, rendering as a stray italic "e".
+- Two stale hints in 4.1's review referencing numbers from an earlier draft.
+
+Chapters 6 to 15 of Algebra I have no lessons and correctly render as "coming soon", greyed and
 unclickable, on both the dashboard and the contents page. Problem-set links for chapters without
 sets do the same. Nothing to fix there.
+
+## What this session learned about running the pipeline
+
+- **Generate each lesson's workflow script from the previous one.** Copy the last lesson's
+  script, swap `KEY / TITLE / NEXT` and the whole SPEC block, and adjust the two scope
+  sentences in the verify and audit prompts. Writing a script from scratch each time
+  re-introduces drift. `tools/author_lesson.workflow.js` is the canonical template and now
+  carries the hardened voice rules.
+- **A SPEC is worth the effort.** The lessons that needed the fewest post-audit fixes were
+  the ones whose SPEC named the scope boundary explicitly (what the NEXT lesson owns), the
+  exact handoff sentence from the previous lesson's closer, and which historical facts were
+  already spent. List the reserved facts; the agents will otherwise reuse al-Khwarizmi.
+- **Workflows die on the 5-hour usage window and on transient API errors.** They resume
+  cleanly: `Workflow({scriptPath, resumeFromRunId})` replays every completed agent from
+  cache and only re-runs what failed. Three lessons this session were finished that way.
+  Do not restart from scratch.
+- **The audit is not a formality.** It caught, per lesson, between one and five real issues,
+  including a figure that spoiled a later problem's numbers, a figure whose two cancelled
+  tiles both read `9y` when the whole teaching point was that they are opposite, a problem
+  that taught 4.3's method inside 4.1, and a lesson-wide solution-value collision cluster.
+  Apply the findings by hand and re-verify anything you renumber.
+- **Number freshness is the most common real finding.** When an audit demands a renumber,
+  build the banned set mechanically (every number >= 2 in the neighbouring chapters' problem
+  statements and answers, plus the kept problems of the lesson in hand), then search for
+  replacement systems whose salient values all miss it. Everything below about 44 is usually
+  already spent by chapter 5, so expect landing values in the 40s and up.
+- **Voice, the standing correction (2026-08-02).** The user rejected a closer that read
+  "Every system in this lesson handed over a coefficient ... no letter qualifies, so ...
+  fractions ride through every line that follows." Equations, letters, and numbers do not
+  act. Say what is: the system has a letter with coefficient 1, or it does not; the
+  isolation starts with a division; fractions appear in later steps. "Clarity first, then
+  conversation second." The rule is in the workflow template and in the
+  `plain-not-overwrought` memory with his exact rewrite. Sweep the assembled lesson yourself
+  before shipping, since the per-problem verifiers catch most of these but not the ones in
+  `p` and `imp` blocks.
 
 ## Writing a lesson
 
@@ -44,7 +84,7 @@ The pipeline is documented in `docs/AUTHORING.md` and it works. Summary:
 6. Preview-test, expect 0 `.katex-error`.
 7. Commit, push, `firebase deploy --only hosting`.
 
-### Traps hit while writing 3.2
+### Traps hit while writing 3.2 (still true)
 
 - **The audit agent can die on an API error.** It did. Run its checks by hand if so, because it
   catches real things: 3.2's figure shipped with two all-caps band labels (`THE LADDER`,
