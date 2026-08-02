@@ -477,5 +477,504 @@
     "sol": "The first equation checks, \\(16+(-9)=7\\). Substituting the pair into the second, \\(k=2(16)+5(-9)=32-45=\\boxed{-13}\\). Keep the parentheses, \\(5(-9)\\) is \\(-45\\), and the term joins the sum with its sign."
    }
   ]
+ },
+ "5.2": {
+  "title": "Substitution",
+  "next": "5.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Two numbers satisfy \\(y=3x+26\\) and \\(x+y=2\\). Run 5.1's search on the second equation, \\((0,2)\\), \\((1,1)\\), \\((2,0)\\), and every candidate fails the first. The pair hides among negatives, where listing never ends. The first equation is not one more claim to test. It says what \\(y\\) is. At the solution, \\(y\\) and \\(3x+26\\) are the same number."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The first equation says \\(y\\) equals \\(3x+26\\), so write \\(3x+26\\) in \\(y\\)'s place in \\(x+y=2\\). One equation in one variable remains. Solve it and enter \\(x\\).",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "x=-6",
+     "x=−6",
+     "negative 6",
+     "minus 6"
+    ],
+    "hints": [
+     "The swap leaves an equation with only \\(x\\) in it, exactly the kind chapter 4 solves.",
+     "After the substitution the claim reads \\(x+(3x+26)=2\\). Collect the left side to \\(4x+26=2\\)."
+    ],
+    "sol": "\\(x+(3x+26)=2\\) collects to \\(4x+26=2\\), so \\(4x=-24\\) and \\(x=\\boxed{-6}\\). The first equation names \\(y\\), so its expression can stand wherever \\(y\\) stands."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The partner is still missing. Substitute \\(x=-6\\) into \\(y=3x+26\\), the equation already solved for \\(y\\), and enter \\(y\\). Check the pair in both original equations first.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight",
+     "y=8"
+    ],
+    "hints": [
+     "The solved-form equation computes \\(y\\) from any \\(x\\), including this one.",
+     "Substituting gives \\(y=3(-6)+26\\). Keep the parentheses around the negative value."
+    ],
+    "sol": "\\(y=3(-6)+26=-18+26=\\boxed{8}\\). Check \\((-6,8)\\) in both originals, \\(8=3(-6)+26\\) and \\(-6+8=2\\), so the pair passes the full 5.1 test."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Substitution.</b> When one equation gives a variable as an expression, replace that variable in the other equation with the expression. One variable remains, chapter 4 solves it, and back-substituting into the solved-form equation finds the partner. The swap is legal because at the solution pair the variable and its expression are the same number, the evaluating idea from 2.2, so the rewritten equation makes exactly the claim the old one made, equivalent in 4.2's sense."
+   },
+   {
+    "t": "prob",
+    "xp": 5,
+    "x": "The system \\(x=3y+22\\) and \\(x+2y=112\\) leads with \\(x\\) this time. Replace \\(x\\) in the second equation with \\(3y+22\\), solve for \\(y\\), back-substitute, and enter \\(x\\).",
+    "ans": "76",
+    "accept": [
+     "76",
+     "x=76",
+     "seventy-six",
+     "seventysix"
+    ],
+    "hints": [
+     "Either letter can be the pre-solved one. The recipe does not change, replace the letter that equals an expression.",
+     "\\((3y+22)+2y=112\\) collects to \\(5y+22=112\\)."
+    ],
+    "sol": "\\((3y+22)+2y=112\\) gives \\(5y+22=112\\), so \\(5y=90\\), \\(y=18\\), and \\(x=3(18)+22=\\boxed{76}\\). The ask is \\(x\\), so the back-substitution is not optional."
+   },
+   {
+    "t": "p",
+    "x": "So far the replaced letter stood alone. In \\(4x+3y=47\\) the \\(y\\) is tripled, and \\(3y\\) means three copies of all of \\(y\\), so whatever stands in for \\(y\\) must arrive as one unit. With \\(y=2x+7\\), the incoming expression takes the seat as a block, not a piece at a time."
+   },
+   {
+    "t": "fig",
+    "cap": "The equation \\(y=2x+7\\) puts the expression \\(2x+7\\) on a tile, and lifting \\(y\\) out of \\(4x+3y=47\\) leaves a slot after the \\(3\\). The tile lands as one unit, so parentheses close around it, \\(4x+3(2x+7)=47\\). Substituting a piece, or dropping the parentheses, writes a different equation.",
+    "x": "<svg viewBox=\"0 0 580 330\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. On top, the equation y equals 2x plus 7 with the expression 2x plus 7 on a gold tile, and the equation 4x plus 3y equals 47 written with a dashed empty slot after the 3 where y sat, a dotted arrow carrying the tile toward the slot. Below, the tile seated in the slot with parentheses hugging it, reading 4x plus 3 open parenthesis 2x plus 7 close parenthesis equals 47.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"s52tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"46\" y=\"32\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">before</text><text x=\"140\" y=\"88\" text-anchor=\"end\" font-size=\"22\" font-weight=\"700\" fill=\"#1d4ed8\">y =</text><rect x=\"154\" y=\"58\" width=\"104\" height=\"44\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#s52tile)\"/><text x=\"206\" y=\"86\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#8a5a08\">2x + 7</text><path d=\"M206 108 C206 128 342 104 342 122\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><path d=\"M336 119 L342 126 L348 119\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"280\" y=\"160\" text-anchor=\"end\" font-size=\"22\" font-weight=\"700\" fill=\"#1d4ed8\">4x + 3</text><rect x=\"290\" y=\"130\" width=\"104\" height=\"44\" rx=\"12\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"1.8\" stroke-dasharray=\"5 5\"/><text x=\"404\" y=\"160\" font-size=\"22\" font-weight=\"700\" fill=\"#1d4ed8\">= 47</text><path d=\"M46 196 H534\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"46\" y=\"228\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">after</text><text x=\"230\" y=\"292\" text-anchor=\"end\" font-size=\"22\" font-weight=\"700\" fill=\"#1d4ed8\">4x + 3</text><text x=\"242\" y=\"294\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#2f6fe0\">(</text><rect x=\"250\" y=\"262\" width=\"104\" height=\"44\" rx=\"12\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#s52tile)\"/><text x=\"302\" y=\"290\" text-anchor=\"middle\" font-size=\"19\" font-weight=\"700\" fill=\"#8a5a08\">2x + 7</text><text x=\"362\" y=\"294\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#2f6fe0\">)</text><text x=\"376\" y=\"292\" font-size=\"22\" font-weight=\"700\" fill=\"#1d4ed8\">= 47</text></svg>"
+   },
+   {
+    "t": "imp",
+    "x": "<b>Substitute in parentheses.</b> Replacing the \\(y\\) of \\(3y\\) with \\(2x+7\\) must produce \\(3(2x+7)\\), which distributes by 2.1 to \\(6x+21\\). Written bare, \\(4x+3\\cdot 2x+7\\) adds \\(7\\) where the faithful line adds \\(21\\), so every line after it is about a different equation, and the pair it lands on fails the original check. A coefficient slot means parentheses, no exceptions."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Solve the system \\(y=3x-16\\) and \\(5x+2y=78\\). The \\(2y\\) doubles the whole expression, so substitute in parentheses, distribute, and enter \\(x+y\\).",
+    "ans": "24",
+    "accept": [
+     "24",
+     "x+y=24",
+     "twenty-four",
+     "twentyfour"
+    ],
+    "hints": [
+     "Substitute the whole expression \\(3x-16\\) for \\(y\\) in the second equation, with parentheses around all of it.",
+     "\\(5x+2(3x-16)=78\\) distributes to \\(11x-32=78\\)."
+    ],
+    "sol": "\\(5x+2(3x-16)=78\\) gives \\(11x-32=78\\), so \\(11x=110\\) and \\(x=10\\), then \\(y=3(10)-16=14\\) and \\(x+y=\\boxed{24}\\)."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "A student substitutes \\(y=2x-3\\) into \\(x+4y=51\\) and writes \\(x+4\\cdot 2x-3=51\\), no parentheses. That line gives \\(x=6\\), then \\(y=9\\), and the check fails, since \\(6+4(9)=42\\), not \\(51\\). Redo the substitution with the parentheses it needed and enter the correct \\(x\\).",
+    "ans": "7",
+    "accept": [
+     "7",
+     "seven",
+     "x=7"
+    ],
+    "hints": [
+     "In \\(4y\\), the \\(4\\) must multiply everything \\(y\\) is, not just the first piece.",
+     "The faithful line is \\(x+4(2x-3)=51\\). Distribute, then collect."
+    ],
+    "sol": "\\(x+4(2x-3)=51\\) gives \\(9x-12=51\\), so \\(9x=63\\) and \\(x=\\boxed{7}\\), with \\(y=2(7)-3=11\\) and \\(7+44=51\\). The bare line subtracted \\(3\\) where the equation subtracts \\(12\\)."
+   },
+   {
+    "t": "p",
+    "x": "Nobody pre-solves equations for you outside a lesson. When neither equation arrives in solved form, pick a letter, solve for it with 4.3's moves, then substitute exactly as before. One isolate is the whole cost, and the rest of the run does not change."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Neither equation of \\(3x+y=32\\) and \\(7x+2y=75\\) is solved for a letter, but the first is one 4.3 move away. Solve it for \\(y\\), substitute into the second, and enter \\(y\\). Check the pair in both originals.",
+    "ans": "-1",
+    "accept": [
+     "-1",
+     "−1",
+     "y=-1",
+     "y=−1",
+     "negative 1",
+     "minus 1"
+    ],
+    "hints": [
+     "Subtracting \\(3x\\) from both sides pre-solves the first equation for \\(y\\).",
+     "Substitute \\(y=32-3x\\) into the second equation to get \\(7x+2(32-3x)=75\\)."
+    ],
+    "sol": "\\(y=32-3x\\), so \\(7x+2(32-3x)=75\\) collects to \\(x+64=75\\) and \\(x=11\\), then \\(y=32-33=\\boxed{-1}\\). Check, \\(33+(-1)=32\\) and \\(77-2=75\\), both originals pass."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Choose the coefficient-1 letter.</b> A letter with coefficient \\(1\\) or \\(-1\\) isolates without dividing, so no fractions ride through the rest of the work. Any choice is legal, and every choice lands on the same solution pair. The heuristic buys nothing but cleaner arithmetic, and cleaner arithmetic is fewer chances to slip, so scan both equations for a coefficient of \\(1\\) or \\(-1\\) before isolating anything."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "In \\(3x-y=20\\) and \\(5x+2y=4\\) the \\(y\\) has coefficient \\(-1\\). Solving the first for \\(y\\) still takes one move, \\(y=3x-20\\). Substitute into the second equation and enter \\(y\\).",
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "−8",
+     "y=-8",
+     "y=−8",
+     "negative 8",
+     "minus 8"
+    ],
+    "hints": [
+     "Coefficient \\(-1\\) is as cheap as coefficient \\(1\\). No dividing happens on the way to solved form.",
+     "\\(5x+2(3x-20)=4\\) collects to \\(11x-40=4\\)."
+    ],
+    "sol": "\\(5x+2(3x-20)=4\\) gives \\(11x-40=4\\), so \\(11x=44\\), \\(x=4\\), and \\(y=3(4)-20=\\boxed{-8}\\). Nothing stops a solution pair from being negative."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "One letter in \\(4x+y=198\\) and \\(2x+3y=204\\) isolates without fractions. Find it, isolate it, substitute, solve the system, and enter the product \\(xy\\).",
+    "ans": "1638",
+    "accept": [
+     "1638",
+     "xy=1638"
+    ],
+    "hints": [
+     "Only \\(y\\) in the first equation has coefficient \\(1\\), so isolating it costs one 4.3 move and no fractions.",
+     "Substituting \\(y=198-4x\\) into the second equation gives \\(2x+3(198-4x)=204\\)."
+    ],
+    "sol": "Isolate \\(y=198-4x\\), then \\(2x+3(198-4x)=204\\) gives \\(2x+594-12x=204\\), so \\(-10x=-390\\) and \\(x=39\\), then \\(y=198-156=42\\). The product is \\(39\\cdot 42=\\boxed{1638}\\). Check, \\(2(39)+3(42)=78+126=204\\)."
+   },
+   {
+    "t": "fact",
+    "x": "Babylonian clay tablets from around 1800 BCE pose problems giving the sum and the difference of two unknown quantities, then solve them by fixed recipe, half the sum shifted either way by half the difference, in words with no symbols at all."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Solve the system \\(y=2x+4\\) and \\(6x+2y=33\\). Nothing requires the pair to be whole. Check the pair in both equations, then enter \\(x\\) as a fraction in lowest terms.",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5",
+     "x=5/2",
+     "x=2.5"
+    ],
+    "hints": [
+     "The run is the usual one. Only the ending is not a whole number.",
+     "\\(6x+2(2x+4)=33\\) collects to \\(10x+8=33\\)."
+    ],
+    "sol": "\\(6x+2(2x+4)=33\\) gives \\(10x+8=33\\), so \\(10x=25\\) and \\(x=\\frac{25}{10}=\\boxed{\\frac{5}{2}}\\), with \\(y=2\\cdot\\frac{5}{2}+4=9\\). Check, \\(9=5+4\\) and \\(15+18=33\\), both originals pass."
+   },
+   {
+    "t": "p",
+    "x": "Sometimes the substitution erases the letter entirely. Every \\(x\\)-term cancels, and a statement with no variable in it is left behind, true or false on its own. 4.3 met this inside one equation. Here the leftover statement is a verdict about the whole system, and the next two problems read one of each kind."
+   },
+   {
+    "t": "prob",
+    "xp": 7,
+    "x": "Substitute \\(y=4x+5\\) into \\(8x-2y=6\\) and simplify. Every \\(x\\)-term cancels and a number statement is left. Decide what it means and enter the number of solutions of the system.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "none"
+    ],
+    "hints": [
+     "4.3 met a vanishing variable inside one equation. The number statement left behind is the verdict.",
+     "\\(8x-2(4x+5)\\) simplifies to \\(-10\\), and the equation claims that equals \\(6\\)."
+    ],
+    "sol": "\\(8x-2(4x+5)=8x-8x-10=-10\\), so the substituted equation reads \\(-10=6\\), false at every \\(x\\), and the system has \\(\\boxed{0}\\) solutions. No pair can make both claims true at once."
+   },
+   {
+    "t": "imp",
+    "x": "<b>When the letter disappears.</b> A false statement means the two claims conflict at every pair, so the system has no solution. That is 5.1's \\(m+n=67\\) and \\(m+n=73\\) situation, reached by algebra instead of by staring. A true statement means the second equation repeats the first, so every pair solving one solves both, and the solutions are infinitely many. Substitution is not failing in either case. It is reporting the count."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Substituting \\(y=2x+6\\) into \\(4x-2y=-12\\) leaves \\(-12=-12\\), true for every \\(x\\). Infinitely many pairs solve the system, but not every pair does. Of \\((2,10)\\), \\((6,18)\\), \\((10,26)\\), \\((8,20)\\), enter how many solve the system.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "Every pair solving the first equation solves both. Pairs off it solve neither.",
+     "Test each pair in \\(y=2x+6\\), first value in for \\(x\\), second in for \\(y\\)."
+    ],
+    "sol": "\\(10=4+6\\), \\(18=12+6\\), and \\(26=20+6\\) pass, but \\(2(8)+6=22 e 20\\), so \\(\\boxed{3}\\) of the four solve the system. Infinitely many means every pair satisfying the equation, and only those."
+   },
+   {
+    "t": "prob",
+    "xp": 8,
+    "x": "Two numbers satisfy \\(x-2y=45\\) and \\(2x+3y=398\\). Isolate the coefficient-1 letter, substitute, solve the system, check the pair in both equations, and enter the product \\(xy\\).",
+    "ans": "5852",
+    "accept": [
+     "5852",
+     "xy=5852"
+    ],
+    "hints": [
+     "Only \\(x\\) carries coefficient \\(1\\). One 4.3 move gives \\(x=2y+45\\).",
+     "Substituting gives \\(2(2y+45)+3y=398\\), which collects to \\(7y+90=398\\)."
+    ],
+    "sol": "Isolate \\(x=2y+45\\), then \\(2(2y+45)+3y=398\\) gives \\(7y+90=398\\), so \\(7y=308\\) and \\(y=44\\), then \\(x=2(44)+45=133\\). Check, \\(133-88=45\\) and \\(266+132=398\\). The product is \\(133\\cdot 44=\\boxed{5852}\\)."
+   },
+   {
+    "t": "p",
+    "x": "Every system in this lesson handed over a coefficient of \\(1\\) or \\(-1\\), or arrived already solved for a letter. In \\(9x+7y=76\\) and \\(5x+8y=72\\) no letter qualifies, so every isolation divides first and fractions ride through every line that follows. Lesson 5.3 builds elimination, a second method made for exactly that case."
+   }
+  ],
+  "review": [
+   {
+    "x": "The numbers \\(x\\) and \\(y\\) satisfy \\(y=x+25\\) and \\(x+y=71\\). Substitute the expression for \\(y\\) into the second equation, solve, and enter \\(x\\).",
+    "ans": "23",
+    "accept": [
+     "23",
+     "x=23",
+     "twenty-three",
+     "twentythree"
+    ],
+    "hints": [
+     "The first equation already gives \\(y\\) as an expression, so the second equation can be rewritten with only \\(x\\) in it.",
+     "After substituting, the equation reads \\(x+(x+25)=71\\), so \\(2x+25=71\\)."
+    ],
+    "sol": "Substituting gives \\(x+(x+25)=71\\), so \\(2x+25=71\\), \\(2x=46\\), and \\(x=\\boxed{23}\\). Then \\(y=48\\), and \\(23+48=71\\) checks."
+   },
+   {
+    "x": "The system \\(y=2x\\) and \\(3x+y=40\\). The expression for \\(y\\) has no constant term, and the steps are exactly the same. Substitute, solve, back-substitute, and enter \\(y\\).",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen",
+     "y=16"
+    ],
+    "hints": [
+     "Write \\(2x\\) in \\(y\\)'s place in the second equation.",
+     "That gives \\(3x+2x=40\\). Solve for \\(x\\), then compute \\(y\\)."
+    ],
+    "sol": "Substituting gives \\(3x+2x=40\\), so \\(5x=40\\) and \\(x=8\\). Back-substituting, \\(y=2(8)=\\boxed{16}\\). The pair checks in the second equation, since \\(24+16=40\\)."
+   },
+   {
+    "x": "The system \\(x=y+10\\) and \\(x+4y=30\\) leads with \\(x\\). Replace the \\(x\\) of the second equation with \\(y+10\\), solve for \\(y\\), back-substitute, and enter \\(x\\).",
+    "ans": "14",
+    "accept": [
+     "14",
+     "fourteen",
+     "x=14"
+    ],
+    "hints": [
+     "Either letter can be the pre-solved one, and the recipe does not change.",
+     "Substituting gives \\((y+10)+4y=30\\)."
+    ],
+    "sol": "\\((y+10)+4y=30\\) collects to \\(5y+10=30\\), so \\(5y=20\\) and \\(y=4\\). Then \\(x=4+10=\\boxed{14}\\). Check, \\(14+4(4)=30\\)."
+   },
+   {
+    "x": "Solve the system \\(y=2x+34\\) and \\(2x+y=150\\). Substitute, solve for \\(x\\), then finish with a back-substitution and enter \\(y\\).",
+    "ans": "92",
+    "accept": [
+     "92",
+     "y=92",
+     "ninety-two",
+     "ninetytwo"
+    ],
+    "hints": [
+     "Substituting turns the second equation into one with only \\(x\\), which 4.2 solves.",
+     "After substituting, \\(2x+(2x+34)=150\\), so \\(4x+34=150\\)."
+    ],
+    "sol": "\\(2x+(2x+34)=150\\) gives \\(4x=116\\), so \\(x=29\\), and \\(y=2(29)+34=\\boxed{92}\\). Check, \\(58+92=150\\)."
+   },
+   {
+    "x": "In \\(y=x-5\\) and \\(3x+2y=50\\), the \\(y\\) slot carries a coefficient, so the substitution needs parentheses. Substitute, distribute, solve the system, and enter \\(x+y\\).",
+    "ans": "19",
+    "accept": [
+     "19",
+     "x+y=19",
+     "nineteen"
+    ],
+    "hints": [
+     "The \\(2\\) in \\(2y\\) multiplies the whole expression that replaces \\(y\\), not just its first term.",
+     "After substituting, the equation reads \\(3x+2(x-5)=50\\)."
+    ],
+    "sol": "\\(3x+2(x-5)=50\\) distributes to \\(3x+2x-10=50\\), so \\(5x=60\\) and \\(x=12\\). Then \\(y=12-5=7\\) and \\(x+y=\\boxed{19}\\). Check, \\(3(12)+2(7)=36+14=50\\). Dropping the parentheses would give \\(3x+2x-5=50\\), which subtracts \\(5\\) where the equation subtracts \\(10\\)."
+   },
+   {
+    "x": "Solve the system \\(y=2x+1\\) and \\(5x+3y=80\\). The \\(3y\\) takes the whole expression as one unit. Substitute with parentheses, distribute, and enter \\(y\\).",
+    "ans": "15",
+    "accept": [
+     "15",
+     "fifteen",
+     "y=15"
+    ],
+    "hints": [
+     "Replacing the \\(y\\) of \\(3y\\) must produce \\(3(2x+1)\\).",
+     "Distributing gives \\(5x+6x+3=80\\)."
+    ],
+    "sol": "\\(5x+3(2x+1)=80\\) distributes to \\(5x+6x+3=80\\), so \\(11x=77\\) and \\(x=7\\). Then \\(y=2(7)+1=\\boxed{15}\\), and \\(35+45=80\\) checks."
+   },
+   {
+    "x": "Substituting \\(y=3x-7\\) into \\(2x+5y=61\\), a student writes \\(2x+5\\cdot 3x-7\\), no parentheses. At every value of \\(x\\), the student's expression exceeds the faithful \\(2x+5(3x-7)\\) by the same fixed amount. Enter that amount.",
+    "ans": "28",
+    "accept": [
+     "28",
+     "twenty-eight",
+     "twentyeight"
+    ],
+    "hints": [
+     "Both expressions carry the same \\(x\\)-terms, so compare what each one subtracts.",
+     "The faithful line subtracts \\(35\\). The bare line subtracts \\(7\\)."
+    ],
+    "sol": "The faithful expression is \\(2x+15x-35=17x-35\\) and the bare one is \\(2x+15x-7=17x-7\\), a gap of \\(35-7=\\boxed{28}\\) at every \\(x\\). The missing parentheses shrink the subtraction from \\(35\\) to \\(7\\)."
+   },
+   {
+    "x": "Neither equation of \\(4x+y=231\\) and \\(2x+3y=233\\) is pre-solved. Isolate the coefficient-1 letter with one 4.3 move, substitute into the other equation, and enter \\(x\\).",
+    "ans": "46",
+    "accept": [
+     "46",
+     "x=46",
+     "forty-six",
+     "fortysix"
+    ],
+    "hints": [
+     "Only the \\(y\\) of the first equation has coefficient \\(1\\), so isolate it there.",
+     "Substituting \\(y=231-4x\\) gives \\(2x+3(231-4x)=233\\)."
+    ],
+    "sol": "Isolate \\(y=231-4x\\), then \\(2x+3(231-4x)=233\\) gives \\(2x+693-12x=233\\), so \\(-10x=-460\\) and \\(x=\\boxed{46}\\). Then \\(y=231-184=47\\), and \\(92+141=233\\) checks."
+   },
+   {
+    "x": "For \\(x+5y=14\\) and \\(3x+4y=64\\), the letter that isolates cleanly is \\(x\\). Isolate it, substitute into the second equation, solve, and enter \\(y\\).",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "y=-2",
+     "y=−2",
+     "negative 2",
+     "minus 2"
+    ],
+    "hints": [
+     "\\(x\\) has coefficient \\(1\\) in the first equation, so it isolates without dividing.",
+     "\\(x=14-5y\\), so \\(3(14-5y)+4y=64\\)."
+    ],
+    "sol": "\\(x=14-5y\\), so \\(3(14-5y)+4y=64\\) gives \\(42-15y+4y=64\\), then \\(42-11y=64\\), \\(-11y=22\\), and \\(y=\\boxed{-2}\\), with \\(x=14+10=24\\). Check, \\(24-10=14\\) and \\(72-8=64\\)."
+   },
+   {
+    "x": "Solve \\(x=2y+3\\) and \\(3x+2y=11\\). The system leads with \\(x\\), and the answer is not a whole number. Enter \\(y\\) as a fraction in lowest terms.",
+    "ans": "1/4",
+    "accept": [
+     "1/4",
+     "0.25",
+     ".25",
+     "y=1/4",
+     "y=0.25",
+     "y=.25"
+    ],
+    "hints": [
+     "Substitute the \\(x\\)-expression into the second equation, parentheses included.",
+     "\\(3(2y+3)+2y=11\\) distributes to \\(6y+9+2y=11\\)."
+    ],
+    "sol": "\\(3(2y+3)+2y=11\\) gives \\(6y+9+2y=11\\), so \\(8y=2\\) and \\(y=\\frac{2}{8}=\\boxed{\\frac{1}{4}}\\), with \\(x=2\\cdot\\frac{1}{4}+3=\\frac{7}{2}\\). Check, \\(3\\cdot\\frac{7}{2}+\\frac{1}{2}=11\\)."
+   },
+   {
+    "x": "In \\(4x+y=248\\) and \\(2x+3y=254\\), one letter isolates without fractions and one does not. Pick well, solve the system, and enter the product \\(xy\\).",
+    "ans": "2548",
+    "accept": [
+     "2548",
+     "xy=2548"
+    ],
+    "hints": [
+     "Isolating \\(x\\) from either equation brings in fractions. Isolating the first equation's \\(y\\) does not.",
+     "Substituting \\(y=248-4x\\) gives \\(2x+3(248-4x)=254\\)."
+    ],
+    "sol": "Isolate \\(y=248-4x\\), then \\(2x+3(248-4x)=254\\) gives \\(2x+744-12x=254\\), so \\(-10x=-490\\) and \\(x=49\\), then \\(y=248-196=52\\). The product is \\(49\\cdot 52=\\boxed{2548}\\). Check, \\(98+156=254\\)."
+   },
+   {
+    "x": "Substitute \\(y=5x-3\\) into \\(10x-2y=12\\) and simplify. The letter vanishes, and the left side sits the same fixed amount below \\(12\\) at every \\(x\\). Enter that amount.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Replace \\(y\\) with \\(5x-3\\) in the second equation, then collect the \\(x\\) terms before deciding anything.",
+     "\\(10x-2(5x-3)\\) simplifies to a constant. Compare it with \\(12\\)."
+    ],
+    "sol": "\\(10x-2(5x-3)=10x-10x+6=6\\), so the substituted equation reads \\(6=12\\), and the left side sits \\(12-6=\\boxed{6}\\) below the right side at every \\(x\\). The statement is false everywhere, so the system has no solution."
+   },
+   {
+    "x": "Substituting \\(y=4x+1\\) into \\(12x-3y=-3\\) leaves \\(-3=-3\\), a true statement. Every pair solving the first equation solves the system. Of the pairs \\((3,13)\\), \\((0,1)\\), \\((2,8)\\), \\((5,20)\\), enter how many solve it.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Infinitely many solutions does not mean every pair. Only pairs satisfying the first equation count.",
+     "Test each pair in \\(y=4x+1\\)."
+    ],
+    "sol": "Testing each pair in \\(y=4x+1\\), \\(13=12+1\\) and \\(1=0+1\\) pass, while \\(4(2)+1=9 e 8\\) and \\(4(5)+1=21 e 20\\) fail. So \\(\\boxed{2}\\) of the four solve the system."
+   },
+   {
+    "x": "For \\(x-2y=1\\) and \\(6x+5y=74\\), isolate \\(x\\), substitute into the second equation, solve the system, and enter \\(x+y\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "x+y=13",
+     "thirteen"
+    ],
+    "hints": [
+     "The subtracted \\(2y\\) moves to the other side in one addition.",
+     "\\(x=2y+1\\), so \\(6(2y+1)+5y=74\\)."
+    ],
+    "sol": "\\(x=2y+1\\), so \\(6(2y+1)+5y=74\\) gives \\(12y+6+5y=74\\), then \\(17y=68\\) and \\(y=4\\), with \\(x=2(4)+1=9\\). So \\(x+y=\\boxed{13}\\). Check, \\(9-8=1\\) and \\(54+20=74\\)."
+   },
+   {
+    "x": "One number is 5 less than double another, and the two add to 43. In symbols, \\(y=2x-5\\) and \\(x+y=43\\). Solve the system and enter the larger number.",
+    "ans": "27",
+    "accept": [
+     "27",
+     "twenty-seven",
+     "twentyseven",
+     "y=27"
+    ],
+    "hints": [
+     "The first equation is already solved for \\(y\\), so substitute \\(2x-5\\) for \\(y\\) in the second equation.",
+     "\\(x+(2x-5)=43\\) collects to \\(3x-5=43\\)."
+    ],
+    "sol": "\\(x+(2x-5)=43\\) gives \\(3x-5=43\\), so \\(3x=48\\) and \\(x=16\\), then \\(y=2(16)-5=27\\). The larger number is \\(\\boxed{27}\\). The problem asks for the larger of the two numbers, not for \\(x\\), so find both values before answering."
+   },
+   {
+    "x": "For \\(6x+y=37\\) and \\(4x+3y=90\\), isolate the coefficient-1 letter, substitute, and enter \\(x\\) as a fraction in lowest terms.",
+    "ans": "3/2",
+    "accept": [
+     "3/2",
+     "1.5",
+     "x=3/2",
+     "x=1.5"
+    ],
+    "hints": [
+     "\\(y\\) isolates without dividing, and the fraction only shows up at the very end.",
+     "\\(y=37-6x\\), so \\(4x+3(37-6x)=90\\)."
+    ],
+    "sol": "\\(y=37-6x\\), so \\(4x+3(37-6x)=90\\) gives \\(4x+111-18x=90\\), then \\(111-14x=90\\), \\(14x=21\\), and \\(x=\\frac{21}{14}=\\boxed{\\frac{3}{2}}\\), with \\(y=37-9=28\\). The clean isolate keeps fractions out of the middle of the work, not out of the answer."
+   },
+   {
+    "x": "In \\(3x-y=106\\) and \\(2x+2y=220\\), the \\(y\\) has coefficient \\(-1\\), and 4.3's moves still isolate it, \\(y=3x-106\\). Substitute, solve the system, and enter the product \\(xy\\).",
+    "ans": "3024",
+    "accept": [
+     "3024",
+     "xy=3024"
+    ],
+    "hints": [
+     "A coefficient of \\(-1\\) still isolates in one move, and the expression that results is \\(3x-106\\).",
+     "Substituting gives \\(2x+2(3x-106)=220\\), which collects to \\(8x-212=220\\)."
+    ],
+    "sol": "Substitute \\(y=3x-106\\), so \\(2x+2(3x-106)=220\\) gives \\(8x-212=220\\), then \\(8x=432\\) and \\(x=54\\), with \\(y=3(54)-106=56\\). The product is \\(54\\cdot 56=\\boxed{3024}\\). Check, \\(108+112=220\\)."
+   }
+  ]
  }
 }
