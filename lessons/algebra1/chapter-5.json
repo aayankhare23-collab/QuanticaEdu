@@ -2603,5 +2603,538 @@
     "sol": "With \\(L\\) lawn seats and \\(P\\) pavilion seats, \\(P=L-11\\) and \\(18L+32P=1898\\), so \\(18L+32(L-11)=1898\\), giving \\(50L=2250\\) and \\(L=45\\), with \\(P=34\\). Pavilion money is \\(32(34)=1088\\) and lawn money is \\(18(45)=810\\), so the difference is \\(\\boxed{278}\\) dollars. Neither 45 nor 34 is the answer, since each count still has to be multiplied by its own price before the subtraction."
    }
   ]
+ },
+ "5.6": {
+  "title": "Three or More Variables",
+  "next": "6.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Some stories name three quantities and state three facts, so the system has three letters and three equations. No new method is needed for that. One substitution, or one elimination, takes the count from three letters down to two, and 5.2 and 5.3 already solve what is left. The next two problems run that once, on one system."
+   },
+   {
+    "t": "prob",
+    "x": "The system \\(x=4z+7\\), \\(2x+3y+5z=255\\), and \\(3x+y-2z=175\\) has three letters, and the first equation is already solved for \\(x\\). Write \\(4z+7\\) in place of \\(x\\) in <b>both</b> of the other two, which leaves two equations in \\(y\\) and \\(z\\) alone. Solve that pair and enter \\(z\\).",
+    "xp": 5,
+    "ans": "13",
+    "accept": [
+     "13",
+     "z=13",
+     "thirteen"
+    ],
+    "hints": [
+     "One equation is already solved for a letter, so \\(4z+7\\) can stand wherever \\(x\\) stands. Do the replacement in the second equation and in the third, not in just one of them.",
+     "After the replacement the second equation collects to \\(3y+13z=241\\) and the third to \\(y+10z=154\\). In \\(y+10z=154\\), \\(y\\) has coefficient \\(1\\)."
+    ],
+    "sol": "Substituting \\(x=4z+7\\) gives \\(2(4z+7)+3y+5z=255\\), which collects to \\(3y+13z=241\\), and \\(3(4z+7)+y-2z=175\\), which collects to \\(y+10z=154\\). From \\(y+10z=154\\), \\(y=154-10z\\), so \\(3(154-10z)+13z=241\\), then \\(462-17z=241\\) and \\(17z=221\\), so \\(z=\\boxed{13}\\). Both replacements are needed, since doing only one leaves an equation that still carries \\(x\\) rather than a pair in \\(y\\) and \\(z\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Same system as the last problem, and \\(z=13\\) is now known. Find \\(y\\) and \\(x\\), then check the triple in all three original equations and enter \\(x+y\\).",
+    "xp": 5,
+    "ans": "83",
+    "accept": [
+     "83",
+     "x+y=83",
+     "eighty-three",
+     "eightythree"
+    ],
+    "hints": [
+     "One of the two reduced equations is \\(y+10z=154\\), and with \\(z\\) known only \\(y\\) is left in it.",
+     "Neither reduced equation has an \\(x\\) in it, so \\(x\\) comes only from \\(x=4z+7\\), the equation that was already solved for it."
+    ],
+    "sol": "\\(y+10(13)=154\\) gives \\(y=24\\), and \\(x=4(13)+7=59\\), so \\(x+y=\\boxed{83}\\). The triple \\((59,24,13)\\) passes all three originals, \\(59=4(13)+7\\), \\(118+72+65=255\\), and \\(177+24-26=175\\). Two back-substitutions are needed, one for the second letter of the reduced pair and one for the letter that was replaced."
+   },
+   {
+    "t": "imp",
+    "x": "<b>One substitution, one fewer letter.</b> Solve one equation for one letter and write that expression in place of the letter in <b>both</b> of the other two equations. That removes the letter from both at once, and what is left is two equations in two letters, which 5.2 and 5.3 solve. Substituting into only one of them leaves two equations still carrying three letters, and two facts cannot pin three quantities. Back-substitution then runs twice, once into the reduced pair for its second letter and once into the equation that was solved, since that letter never appeared in the reduced pair."
+   },
+   {
+    "t": "prob",
+    "x": "In $$3x+4y+2z=150$$ $$5x+2y-2z=108$$ $$4x+3y+6z=231$$ no letter has coefficient \\(1\\) anywhere, so isolating one starts with a division. The \\(z\\)-terms are the cheap ones to match. Eliminate \\(z\\), once from the first and second equations and once from the first and third. Solve the two-letter system that comes out and enter \\(x\\).",
+    "xp": 6,
+    "ans": "24",
+    "accept": [
+     "24",
+     "x=24",
+     "twenty-four",
+     "twentyfour"
+    ],
+    "hints": [
+     "The \\(z\\)-terms are \\(+2z\\), \\(-2z\\) and \\(+6z\\). The first two are opposite already, and tripling the first equation matches the \\(6z\\) in the third.",
+     "Adding the first two equations leaves \\(8x+6y=258\\), and three times the first minus the third leaves \\(5x+9y=219\\). Every term of \\(8x+6y=258\\) divides by \\(2\\)."
+    ],
+    "sol": "Adding the first two equations clears \\(z\\) and gives \\(8x+6y=258\\), or \\(4x+3y=129\\). Three times the first equation minus the third gives \\(5x+9y=219\\). Tripling \\(4x+3y=129\\) gives \\(12x+9y=387\\), and subtracting leaves \\(7x=168\\), so \\(x=\\boxed{24}\\). Then \\(3y=129-96=33\\) gives \\(y=11\\), and \\(2z=150-72-44=34\\) gives \\(z=17\\). Check in the third equation, \\(96+33+102=231\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Here is a system in three letters. $$5x+2y+3z=161$$ $$4x-2y+5z=55$$ $$3x+4y-2z=138$$ Clear \\(y\\) from two different pairs of equations, solve the two-letter system that is left, and enter \\(y\\).",
+    "xp": 6,
+    "ans": "27",
+    "accept": [
+     "27",
+     "y=27",
+     "twenty-seven",
+     "twentyseven"
+    ],
+    "hints": [
+     "The \\(y\\)-terms are \\(+2y\\), \\(-2y\\) and \\(+4y\\). The first two are opposite already, and doubling the second equation makes \\(-4y\\), the opposite of the third's \\(+4y\\).",
+     "With those pairings the reduced pair is \\(9x+8z=216\\) and \\(11x+8z=248\\), both carrying \\(8z\\), so subtracting leaves \\(x\\) alone. The ask is \\(y\\), which appears in neither."
+    ],
+    "sol": "Adding the first two equations gives \\(9x+8z=216\\). Adding twice the second equation to the third gives \\(11x+8z=248\\). Subtracting leaves \\(2x=32\\), so \\(x=16\\), then \\(8z=216-144=72\\) and \\(z=9\\). Back in the first equation, \\(2y=161-80-27=54\\), so \\(y=\\boxed{27}\\). Check, \\(4(16)-2(27)+5(9)=55\\) and \\(3(16)+4(27)-2(9)=138\\). The letter cleared first is not in the reduced pair, so an original equation is the only place left to find its value."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Clear one letter from two different pairs.</b> Pick one letter, eliminate it from one pair of the three equations and then from a different pair, and what is left is two equations in the other two letters. Combining the same pair a second way only rescales the equation already found, so the second line is a copy of the first and two letters are left with one fact between them. Which letter to clear is 5.3's cheapness question, asked across three coefficients instead of two. Check the finished triple in all three original equations, since a triple built from two of them need not fit the third."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 336\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. In the top band, three equations in x, y and z are stacked so their terms line up in columns, and the z column is greyed out and struck through as the column being cleared. Two blue brackets on the right mark the rows to combine, the first spanning rows one and two and the second spanning rows two and three, each with an arrow pointing down. Below a hairline, a white card holds the two equations in x and y alone that result.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"e56soft\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.16\"/></filter></defs><text x=\"44\" y=\"30\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">three equations</text><text x=\"255\" y=\"42\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" fill=\"#7c8aa0\">cleared</text><rect x=\"44\" y=\"52\" width=\"64\" height=\"40\" rx=\"12\" fill=\"#cfe0fa\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"76\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">ax</text><text x=\"120\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">+</text><rect x=\"132\" y=\"52\" width=\"64\" height=\"40\" rx=\"12\" fill=\"#cfe0fa\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"164\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">by</text><text x=\"208\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">+</text><rect x=\"220\" y=\"52\" width=\"70\" height=\"40\" rx=\"12\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"255\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#aab4c2\">cz</text><path d=\"M228 84 L282 60\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"310\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">=</text><text x=\"338\" y=\"79\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">p</text><rect x=\"44\" y=\"98\" width=\"64\" height=\"40\" rx=\"12\" fill=\"#cfe0fa\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"76\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">dx</text><text x=\"120\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">+</text><rect x=\"132\" y=\"98\" width=\"64\" height=\"40\" rx=\"12\" fill=\"#cfe0fa\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"164\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">ey</text><text x=\"208\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">+</text><rect x=\"220\" y=\"98\" width=\"70\" height=\"40\" rx=\"12\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"255\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#aab4c2\">fz</text><path d=\"M228 130 L282 106\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"310\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">=</text><text x=\"338\" y=\"125\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">q</text><rect x=\"44\" y=\"144\" width=\"64\" height=\"40\" rx=\"12\" fill=\"#cfe0fa\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"76\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">gx</text><text x=\"120\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">+</text><rect x=\"132\" y=\"144\" width=\"64\" height=\"40\" rx=\"12\" fill=\"#cfe0fa\" stroke=\"#2f6fe0\" stroke-width=\"2\"/><text x=\"164\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">hy</text><text x=\"208\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">+</text><rect x=\"220\" y=\"144\" width=\"70\" height=\"40\" rx=\"12\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\"/><text x=\"255\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#aab4c2\">kz</text><path d=\"M228 176 L282 152\" fill=\"none\" stroke=\"#aab4c2\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"310\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">=</text><text x=\"338\" y=\"171\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#475569\">r</text><path d=\"M364 72 H372 V118 H364\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M372 95 H380\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"384\" y=\"99\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2f6fe0\">first pair</text><path d=\"M422 118 H430 V164 H422\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M430 141 H438\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"442\" y=\"145\" font-size=\"12.5\" font-weight=\"700\" fill=\"#2f6fe0\">second pair</text><path d=\"M372 128 V193\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M366 187 L372 194 L378 187\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M430 174 V193\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M424 187 L430 194 L436 187\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M44 204 H536\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"44\" y=\"230\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">two equations</text><rect x=\"170\" y=\"240\" width=\"240\" height=\"68\" rx=\"18\" fill=\"#ffffff\" stroke=\"#dbe6fa\" filter=\"url(#e56soft)\"/><path d=\"M162 227 V239 M156 233 H168\" fill=\"none\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M418 295 V307 M412 301 H424\" fill=\"none\" stroke=\"#9fc0f5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"290\" y=\"266\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">mx + ny = s</text><text x=\"290\" y=\"293\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#2257c5\">ux + vy = t</text></svg>",
+    "cap": "The same letter is cleared from two different pairs of rows, the first with the second and then the second with the third. What is left is two equations in \\(x\\) and \\(y\\), which 5.2 and 5.3 finish. Running the same step once more on those two leaves one equation in one letter."
+   },
+   {
+    "t": "prob",
+    "x": "In $$4x+3y+5z=273$$ $$7x+6y+8z=471$$ $$5x+9y-6z=77$$ one letter is cheaper to eliminate than the other two. Clear that letter from two different pairs of these equations, solve the two-letter system that is left, and enter \\(z\\).",
+    "xp": 7,
+    "ans": "31",
+    "accept": [
+     "31",
+     "z=31",
+     "thirty-one",
+     "thirtyone"
+    ],
+    "hints": [
+     "5.3 clears the letter whose coefficients meet at the smaller multiple. The two \\(y\\)-pairs used here meet at \\(6\\) and \\(9\\), while the cheapest \\(x\\)-pair meets at \\(20\\) and the cheapest \\(z\\)-pair at \\(24\\).",
+     "Doubling the first equation makes its \\(y\\) term \\(6y\\), matching the second, and subtracting leaves \\(x+2z=75\\). Tripling the first makes that term \\(9y\\), matching the third, which gives a second equation in \\(x\\) and \\(z\\)."
+    ],
+    "sol": "Doubling the first equation and subtracting the second gives \\(x+2z=75\\). Tripling the first and subtracting the third gives \\(7x+21z=742\\), which divides by \\(7\\) to \\(x+3z=106\\). Subtracting those two leaves \\(z=\\boxed{31}\\). Back-substituting gives \\(x=13\\) and \\(y=22\\), and \\((13,22,31)\\) checks in all three originals. Clearing \\(x\\) instead would take \\(28x\\) in one pair and \\(20x\\) in the other, with right sides up to \\(1911\\) instead of \\(819\\)."
+   },
+   {
+    "t": "p",
+    "x": "A question does not have to ask for a letter. It can ask for \\(x+y+z\\), or for the cost of one of each item. At a solution all three equations are true, so adding them adds equal numbers to equal numbers, and the result is one more true statement about that triple. Sometimes its left side is exactly the quantity the question named."
+   },
+   {
+    "t": "prob",
+    "x": "These three equations hold at once for the same \\(x\\), \\(y\\), and \\(z\\). $$5x+2y+7z=238$$ $$4x+6y+3z=264$$ $$3x+4y+2z=182$$ Add all three, left side to left side and right side to right side, then enter \\(x+y+z\\) without solving for the letters one at a time.",
+    "xp": 6,
+    "ans": "57",
+    "accept": [
+     "57",
+     "x+y+z=57",
+     "fifty-seven",
+     "fiftyseven"
+    ],
+    "hints": [
+     "Look at the three coefficients in each letter's column. The \\(x\\)-column, the \\(y\\)-column, and the \\(z\\)-column all come to the same number here.",
+     "Adding the three equations gives \\(12x+12y+12z=684\\), and each term there is a multiple of \\(12\\)."
+    ],
+    "sol": "Adding the three left sides gives \\(12x+12y+12z\\), and adding the three right sides gives \\(684\\), so \\(12(x+y+z)=684\\) and \\(x+y+z=\\boxed{57}\\). The triple is \\((18,25,14)\\), but reaching it takes two rounds of elimination and two back-substitutions, while one addition and one division give the sum."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Build the quantity that was asked for.</b> Any sum, difference or multiple of the three equations is true at the solution, which is 5.3's rule with a third equation added. When the question asks for a combination, look for a combination of the three that produces it before solving anything. Adding all three works whenever each letter's coefficients add to the same number, since the sum is then that number times \\(x+y+z\\), and dividing by it gives the answer. Solving in full is never wrong, only longer, and the separate letters can be fractions even when the combination is a whole number."
+   },
+   {
+    "t": "prob",
+    "x": "$$7x+3y+5z=207$$ $$4x+8y+2z=196$$ $$5x+5y+z=145$$ The ask is \\(x+y+z\\) and not any one letter. No letter in this system has a whole-number value, so a full solve ends in fractions for all three. Find a combination of the three equations whose left side is a multiple of \\(x+y+z\\), then enter \\(x+y+z\\).",
+    "xp": 8,
+    "ans": "43",
+    "accept": [
+     "43",
+     "x+y+z=43",
+     "forty-three",
+     "fortythree"
+    ],
+    "hints": [
+     "Add the columns of all three equations first. They come to \\(16\\), \\(16\\) and \\(8\\), so a plain sum is not a multiple of \\(x+y+z\\). A minus sign on one of the three is the next thing to try.",
+     "The first plus the second minus the third leaves \\(6\\) in every column."
+    ],
+    "sol": "Adding the first two equations and subtracting the third gives \\((7+4-5)x+(3+8-5)y+(5+2-1)z=207+196-145\\), which is \\(6x+6y+6z=258\\), so \\(x+y+z=\\boxed{43}\\). The triple itself is \\(\\left(\\frac{43}{4},\\frac{59}{4},\\frac{35}{2}\\right)\\), so a full solve ends in quarters for all three letters, while the combination takes one line."
+   },
+   {
+    "t": "fact",
+    "x": "In 1801 the new asteroid Ceres was lost in the sun's glare. Carl Friedrich Gauss, then 24, turned six weeks of sightings into equations, solved them, and said where to look. Telescopes found it that December."
+   },
+   {
+    "t": "p",
+    "x": "This is 5.5's routine with the count raised again. Name all three quantities with units, write one equation for each stated fact, solve, then read the problem's last sentence again to see which quantity it asked for. A triangle's three angles are one such story, since the angle sum is a stated fact like any other."
+   },
+   {
+    "t": "prob",
+    "x": "A framing shop charges one fixed price to cut a mat, one to fit glass, and one to assemble a frame. One job of 3 mats cut, 2 sheets of glass fitted and 1 frame assembled came to 129 dollars. A second job of 2 mats, 4 glass sheets and 3 frames came to 237 dollars. A third of 5 mats, 1 glass sheet and 2 frames came to 166 dollars. Enter the price of fitting one sheet of glass, in dollars.",
+    "xp": 6,
+    "ans": "26",
+    "accept": [
+     "26",
+     "$26",
+     "26.00",
+     "$26.00",
+     "26 dollars",
+     "g=26",
+     "twenty-six",
+     "twentysix"
+    ],
+    "hints": [
+     "Three prices are unknown, so name all three with units and write one equation per job.",
+     "With \\(m\\), \\(g\\) and \\(f\\) the three prices in dollars, \\(3m+2g+f=129\\), \\(2m+4g+3f=237\\) and \\(5m+g+2f=166\\). The \\(f\\)-column is \\(1\\), \\(3\\), \\(2\\), so scaling the first job and subtracting clears \\(f\\) against either of the other two."
+    ],
+    "sol": "With \\(m\\), \\(g\\) and \\(f\\) the three prices in dollars, \\(3m+2g+f=129\\), \\(2m+4g+3f=237\\) and \\(5m+g+2f=166\\). Three times the first minus the second gives \\(7m+2g=150\\), and twice the first minus the third gives \\(m+3g=92\\). Then \\(m=92-3g\\), so \\(7(92-3g)+2g=150\\), giving \\(644-19g=150\\) and \\(g=\\boxed{26}\\). Then \\(m=14\\) and \\(f=35\\), and the second job checks, \\(28+104+105=237\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A tea seller charges one fixed price per tin of green tea, one per tin of black tea and one per tin of herbal tea. One order of 4 green, 1 black and 3 herbal tins cost 59 dollars. A second order of 3 green, 5 black and 2 herbal cost 89 dollars. A third order of 2 green, 3 black and 4 herbal cost 77 dollars. Enter the combined cost of one tin of each, in dollars.",
+    "xp": 7,
+    "ans": "25",
+    "accept": [
+     "25",
+     "$25",
+     "25.0",
+     "25.00",
+     "$25.00",
+     "25 dollars",
+     "twenty-five",
+     "twentyfive"
+    ],
+    "hints": [
+     "Name the three tin prices with units and write one equation per order. The ask is the three prices added together, not any one of them, so look for a combination of the three equations that lands on that sum.",
+     "Add the three green coefficients, then the three black coefficients, then the three herbal coefficients. Each of those totals is \\(9\\), so adding the three equations gives nine of every price at once."
+    ],
+    "sol": "With \\(g\\), \\(b\\) and \\(h\\) the green, black and herbal tin prices in dollars, \\(4g+b+3h=59\\), \\(3g+5b+2h=89\\) and \\(2g+3b+4h=77\\). The three green coefficients add to \\(9\\), and so do the black and the herbal, so adding the three equations gives \\(9g+9b+9h=225\\) and \\(g+b+h=\\boxed{25}\\). Solving the whole system gives \\(6\\), \\(11\\) and \\(8\\) dollars, which is more work than this ask needs."
+   },
+   {
+    "t": "p",
+    "x": "\\(4x+9=25\\) is true for one value of \\(x\\) and false for every other. \\(2(x+3)=2x+6\\) is true for every value. The second is a stronger claim, and with unknown constants in it the claim is about them, not about \\(x\\). A claim that holds at every \\(x\\) holds at whichever values are easiest to substitute, and each gives an equation in the constants."
+   },
+   {
+    "t": "prob",
+    "x": "\\(a(x+6)+b(x-4)=17x+22\\) is true for every value of \\(x\\). Substitute \\(x=0\\), then substitute \\(x=1\\). Each substitution gives one equation in \\(a\\) and \\(b\\). Solve that system and enter \\(a\\).",
+    "xp": 6,
+    "ans": "9",
+    "accept": [
+     "9",
+     "a=9",
+     "nine"
+    ],
+    "hints": [
+     "The statement holds at every \\(x\\), so it holds at \\(x=0\\) and at \\(x=1\\), and each of those is an ordinary equation in \\(a\\) and \\(b\\).",
+     "At \\(x=0\\) the statement reads \\(6a-4b=22\\). At \\(x=1\\) it reads \\(7a-3b=39\\). That pair is 5.3's territory, and the \\(b\\)-coefficients \\(-4\\) and \\(-3\\) both divide \\(-12\\)."
+    ],
+    "sol": "At \\(x=0\\), \\(6a-4b=22\\). At \\(x=1\\), \\(7a-3b=39\\). Tripling the first and quadrupling the second gives \\(18a-12b=66\\) and \\(28a-12b=156\\), and subtracting leaves \\(10a=90\\), so \\(a=\\boxed{9}\\). Then \\(b=8\\), and a check at \\(x=2\\) gives, \\(9(8)+8(-2)=56\\) and \\(17(2)+22=56\\). The same \\(a\\) and \\(b\\) come out whatever two values of \\(x\\) are used, and substituting \\(x=4\\) or \\(x=-6\\) makes one term zero, which pins one letter in a single line."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Matching coefficients.</b> If \\(Ax+B=Cx+D\\) is true for every value of \\(x\\), then \\(A=C\\) and \\(B=D\\). Subtracting \\(Cx+D\\) from both sides gives \\((A-C)x=D-B\\). With \\(A-C\\) not zero, that is a one-letter equation of the kind chapter 4 solves, so it is true at exactly one value of \\(x\\) and false at every other, which is not what was assumed. So \\(A-C=0\\), and then \\(D-B=0\\) as well. Matching the \\(x\\) column and then the constants gives the same system that substituting two values of \\(x\\) gives, with none of the arithmetic."
+   },
+   {
+    "t": "prob",
+    "x": "\\(a(x+2y+1)+b(3x-y+2)+c(x+y+4)=106x+19y+113\\) is true for every value of \\(x\\) and every value of \\(y\\). Collect the left side, match the \\(x\\) column, the \\(y\\) column and the constants, then solve the three equations in \\(a\\), \\(b\\) and \\(c\\). Enter \\(a\\).",
+    "xp": 8,
+    "ans": "17",
+    "accept": [
+     "17",
+     "a=17",
+     "seventeen"
+    ],
+    "hints": [
+     "Collect the whole left side into an \\(x\\)-part, a \\(y\\)-part and a constant part before comparing anything. The \\(x\\)-part is \\((a+3b+c)x\\).",
+     "The three matches are \\(a+3b+c=106\\), \\(2a-b+c=19\\) and \\(a+2b+4c=113\\). The first two carry the same \\(c\\)-coefficient, so subtracting one from the other clears \\(c\\) with no scaling."
+    ],
+    "sol": "Collecting gives \\((a+3b+c)x+(2a-b+c)y+(a+2b+4c)\\), so \\(a+3b+c=106\\), \\(2a-b+c=19\\) and \\(a+2b+4c=113\\). Subtracting the second from the first clears \\(c\\) and gives \\(-a+4b=87\\). Subtracting the third from four times the first also clears \\(c\\) and gives \\(3a+10b=311\\). From \\(a=4b-87\\), \\(12b-261+10b=311\\), so \\(22b=572\\) and \\(b=26\\), which gives \\(a=\\boxed{17}\\). Then \\(c=11\\). A statement true for every \\(x\\) and every \\(y\\) gives one match per column, three in all, which is exactly the number of equations needed to find \\(a\\), \\(b\\) and \\(c\\)."
+   },
+   {
+    "t": "p",
+    "x": "5.1's three counts carry over. Three equations in three letters usually pin one triple, and it fails in the two ways 5.3 named. Combining them down to a false statement like \\(0=7\\) means no triple fits all three. Reaching \\(0=0\\) means one of the three follows from the other two, leaving two facts for three letters and infinitely many triples."
+   },
+   {
+    "t": "prob",
+    "x": "For exactly one value of \\(k\\), the system \\(4x+3y+2z=158\\), \\(5x-y+6z=143\\), \\(9x+2y+8z=k\\) has infinitely many solutions, and for every other value it has none. Enter that \\(k\\).",
+    "xp": 8,
+    "ans": "301",
+    "accept": [
+     "301",
+     "k=301",
+     "three hundred one",
+     "three hundred and one"
+    ],
+    "hints": [
+     "Compare the third equation's left side with the sum of the first two left sides, column by column.",
+     "The first two left sides add to exactly the third left side, so for any triple satisfying the first two equations the value of \\(9x+2y+8z\\) is already known. Match \\(k\\) to it."
+    ],
+    "sol": "Adding the first two equations gives \\(9x+2y+8z=301\\), which is the third equation exactly when \\(k=\\boxed{301}\\). At that \\(k\\) only two of the three equations are independent, and two equations in three letters have infinitely many solutions. At any other \\(k\\), subtracting the first two equations from the third leaves \\(0=k-301\\), which is false, so no triple works."
+   },
+   {
+    "t": "imp",
+    "x": "<b>What carried over.</b> No method here is new. Substitution and elimination each remove one letter, so a system in three letters becomes one in two, and chapter 4 solves the one-letter equation at the end. Back-substitution then recovers the letters in reverse order, one step per letter removed. The three counts from 5.1 and the two leftover statements mean what they did with two letters. With four letters and four facts, one more round of the same step is all that changes. What is new is the check, since a triple has to satisfy all three original equations and not only the two it came from."
+   },
+   {
+    "t": "p",
+    "x": "That closes chapter 5. A system is a set of facts about the same letters, and every method in the chapter removed letters one at a time until a single value was left, whatever the count started at. Chapter 6, Ratios, Percents and Proportion, opens with 6.1 Ratios, Simple and Subtle."
+   }
+  ],
+  "review": [
+   {
+    "x": "In \\(5x+2y+3z=281\\), two of the three letters are already known, \\(x=23\\) and \\(y=41\\). Enter \\(z\\).",
+    "ans": "28",
+    "accept": [
+     "28",
+     "z=28",
+     "twenty-eight",
+     "twentyeight"
+    ],
+    "hints": [
+     "With numbers in place of \\(x\\) and \\(y\\), one letter is left and the equation is an ordinary one-letter equation.",
+     "Substituting the two known values gives \\(115+82+3z=281\\)."
+    ],
+    "sol": "Substituting gives \\(115+82+3z=281\\), so \\(3z=281-197=84\\) and \\(z=\\boxed{28}\\). Check, \\(115+82+84=281\\)."
+   },
+   {
+    "x": "Of \\(y=2z+5\\), \\(3x+y+4z=149\\) and \\(x+2y+3z=128\\), the first is already solved for \\(y\\). Substitute that expression into the other two, solve the pair in \\(x\\) and \\(z\\) that is left, and enter \\(x\\).",
+    "ans": "20",
+    "accept": [
+     "20",
+     "x=20",
+     "twenty"
+    ],
+    "hints": [
+     "After the replacement each of the other two equations has only \\(x\\) and \\(z\\) in it. Collect the \\(z\\) terms, and move the constant that came in with the substitution, \\(5\\) in one and \\(10\\) in the other, to the right side.",
+     "The second equation becomes \\(3x+6z=144\\), or \\(x+2z=48\\). Collect the third one the same way."
+    ],
+    "sol": "Substituting gives \\(3x+(2z+5)+4z=149\\), which collects to \\(3x+6z=144\\), or \\(x+2z=48\\), and \\(x+2(2z+5)+3z=128\\), which collects to \\(x+7z=118\\). Subtracting leaves \\(5z=70\\), so \\(z=14\\) and \\(x=48-2(14)=\\boxed{20}\\). Then \\(y=2(14)+5=33\\). Check, \\(3(20)+33+4(14)=149\\) and \\(20+2(33)+3(14)=128\\)."
+   },
+   {
+    "x": "A student reports \\((x,y,z)=(15,9,22)\\) as the solution of \\(2x+3y+z=79\\), \\(4x+y+2z=113\\) and \\(3x+5y+4z=188\\). Enter how many of the three equations the triple satisfies.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two",
+     "2 equations"
+    ],
+    "hints": [
+     "Test the triple in each equation on its own, working out the left side and comparing it with the right side.",
+     "Each check is one substitution, so the first equation asks whether \\(2(15)+3(9)+22\\) equals \\(79\\). Run the same check on the other two and count only the equations where both sides come out equal."
+    ],
+    "sol": "The triple gives \\(30+27+22=79\\), then \\(60+9+44=113\\), then \\(45+45+88=178\\), which misses \\(188\\), so the triple satisfies \\(\\boxed{2}\\) of the three. The true solution is \\((13,9,26)\\). A triple built from two of the equations satisfies those two automatically, so it is whichever equation was left out that does the checking."
+   },
+   {
+    "x": "Clear \\(z\\) from two different pairs of \\(2x+3y+3z=180\\), \\(4x+2y-3z=26\\) and \\(5x-3y+3z=147\\), solve the two-letter system that comes out, and enter \\(y\\).",
+    "ans": "16",
+    "accept": [
+     "16",
+     "y=16",
+     "sixteen"
+    ],
+    "hints": [
+     "The \\(z\\)-terms are \\(+3z\\), \\(-3z\\) and \\(+3z\\), so adding the second equation to either of the others clears \\(z\\) with no scaling at all.",
+     "The two pairs give \\(6x+5y=206\\) and \\(9x-y=173\\). In the second of those, \\(y\\) has coefficient \\(-1\\)."
+    ],
+    "sol": "Adding the first two equations gives \\(6x+5y=206\\), and adding the second to the third gives \\(9x-y=173\\). From \\(y=9x-173\\), \\(6x+5(9x-173)=206\\), so \\(51x=1071\\) and \\(x=21\\), then \\(y=189-173=\\boxed{16}\\), and \\(3z=180-42-48=90\\) gives \\(z=30\\). Check in the third equation, \\(105-48+90=147\\)."
+   },
+   {
+    "x": "In \\(6x+5y+7z=312\\), \\(6x+8y+4z=348\\) and \\(6x+4y+9z=315\\), one letter has the same coefficient in all three equations. Clear that letter from two different pairs, then enter the value of that same letter.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "x=12",
+     "twelve"
+    ],
+    "hints": [
+     "Subtracting one equation from another leaves an equation in \\(y\\) and \\(z\\) alone. Two different pairs give two such equations, and that is an ordinary system in two letters.",
+     "The second equation minus the first gives \\(3y-3z=36\\), and the first minus the third gives \\(y-2z=-3\\). Solve those two for \\(y\\) and \\(z\\), then substitute both into an original equation."
+    ],
+    "sol": "Subtracting the first equation from the second gives \\(3y-3z=36\\), so \\(y-z=12\\), and subtracting the third from the first gives \\(y-2z=-3\\). Subtracting those two leaves \\(z=15\\), then \\(y=27\\), and \\(6x=312-135-105=72\\), so \\(x=\\boxed{12}\\). Check in the second equation, \\(72+216+60=348\\). The reduced pair has no \\(x\\) in it, so \\(x\\) is found last, by substituting \\(y\\) and \\(z\\) into an original equation."
+   },
+   {
+    "x": "In \\(5x+2y+z=151\\), \\(2x+5y+z=172\\) and \\(x+y+6z=109\\), enter \\(x+y+z\\).",
+    "ans": "54",
+    "accept": [
+     "54",
+     "x+y+z=54",
+     "fifty-four",
+     "fiftyfour"
+    ],
+    "hints": [
+     "Add the three coefficients in each column before eliminating anything, and compare the three totals.",
+     "Every column totals \\(8\\), so adding the three equations gives \\(8x+8y+8z\\) on the left."
+    ],
+    "sol": "Adding the three equations gives \\(8x+8y+8z=432\\), so \\(x+y+z=\\boxed{54}\\). The triple is \\((18,25,11)\\), which the question never needed. Adding works here because each letter's three coefficients total the same number."
+   },
+   {
+    "x": "One triple \\((x,y,z)\\) satisfies all three of \\(8x+5y+6z=387\\), \\(8x+2y+3z=234\\) and \\(5x+7y-4z=207\\). Enter \\(y+z\\) for that triple.",
+    "ans": "51",
+    "accept": [
+     "51",
+     "y+z=51",
+     "fifty-one",
+     "fiftyone"
+    ],
+    "hints": [
+     "The ask is a combination rather than a single letter, so compare the three equations term by term before solving for anything. The \\(x\\) term is the same in the first two.",
+     "Subtracting the second equation from the first clears \\(x\\) and leaves \\(3y+3z=153\\). The third equation is not needed."
+    ],
+    "sol": "Subtracting the second equation from the first gives \\(3y+3z=153\\), and dividing by 3 gives \\(y+z=\\boxed{51}\\). The full triple is \\((14,31,20)\\), but one subtraction is enough for \\(y+z\\), with no use for the third equation."
+   },
+   {
+    "x": "The three angles of a triangle add to 180 degrees. The second angle is 21 degrees more than the first, and the first two together are 30 degrees more than the third. Enter the largest of the three angles, in degrees.",
+    "ans": "75",
+    "accept": [
+     "75",
+     "c=75",
+     "75 degrees",
+     "75 deg",
+     "75°",
+     "seventy-five",
+     "seventyfive"
+    ],
+    "hints": [
+     "Name all three angles in degrees. The angle sum is one fact and each comparison is another, so there are three facts and three letters.",
+     "With \\(a\\), \\(b\\) and \\(c\\) in degrees, \\(a+b+c=180\\), \\(b=a+21\\) and \\(a+b=c+30\\). Putting the third into the first gives \\(c\\) on its own."
+    ],
+    "sol": "With \\(a\\), \\(b\\) and \\(c\\) the three angles in degrees, \\(a+b+c=180\\), \\(b=a+21\\) and \\(a+b=c+30\\). Substituting the third into the first gives \\((c+30)+c=180\\), so \\(c=75\\) and \\(a+b=105\\). With \\(b=a+21\\), \\(2a+21=105\\) gives \\(a=42\\) and \\(b=63\\), so the largest angle is \\(\\boxed{75}\\) degrees. Check, \\(42+63+75=180\\). The ask is the largest angle, not the letter solved for first."
+   },
+   {
+    "x": "A depot stacks three sizes of box, each size the same mass. One pallet of 2 small, 3 medium and 1 large box weighs 74 kg. A second of 1 small, 2 medium and 3 large weighs 94 kg. A third of 4 small, 1 medium and 2 large weighs 103 kg. Enter the mass of one large box, in kilograms.",
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0",
+     "21 kg",
+     "21 kilograms",
+     "21 kilogrammes",
+     "l=21",
+     "twenty-one",
+     "twentyone"
+    ],
+    "hints": [
+     "Name the three box masses in kilograms and write one equation per pallet.",
+     "With \\(s\\), \\(m\\) and \\(l\\) in kilograms, \\(2s+3m+l=74\\), \\(s+2m+3l=94\\) and \\(4s+m+2l=103\\). The small-box column \\(2\\), \\(1\\), \\(4\\) is the cheapest to clear."
+    ],
+    "sol": "With \\(s\\), \\(m\\) and \\(l\\) the three masses in kilograms, \\(2s+3m+l=74\\), \\(s+2m+3l=94\\) and \\(4s+m+2l=103\\). Twice the second minus the first gives \\(m+5l=114\\), and four times the second minus the third gives \\(7m+10l=273\\). Then \\(m=114-5l\\), so \\(798-35l+10l=273\\), giving \\(25l=525\\) and \\(l=\\boxed{21}\\). Then \\(m=9\\) and \\(s=13\\), and the third pallet checks, \\(52+9+42=103\\)."
+   },
+   {
+    "x": "Constants \\(a\\) and \\(b\\) make \\(a(x-5)+b(x+3)=24x-8\\) true for every value of \\(x\\). Enter \\(b\\).",
+    "ans": "14",
+    "accept": [
+     "14",
+     "b=14",
+     "fourteen"
+    ],
+    "hints": [
+     "A statement that holds at every \\(x\\) holds at whatever value of \\(x\\) is easiest to substitute, so pick one that makes a whole term vanish.",
+     "At \\(x=5\\) the \\(a\\)-term is zero and the statement reads \\(8b=112\\)."
+    ],
+    "sol": "At \\(x=5\\) the \\(a\\)-term is zero, so \\(8b=24(5)-8=112\\) and \\(b=\\boxed{14}\\). At \\(x=-3\\) the \\(b\\)-term is zero and \\(-8a=-80\\) gives \\(a=10\\). Matching coefficients instead gives \\(a+b=24\\) and \\(-5a+3b=-8\\), which the same pair satisfies."
+   },
+   {
+    "x": "Constants \\(a\\) and \\(b\\) make \\((3a+b)x+(a-2b)=63x+7\\) true for every value of \\(x\\), not for one value only. Enter \\(a\\).",
+    "ans": "19",
+    "accept": [
+     "19",
+     "a=19",
+     "nineteen"
+    ],
+    "hints": [
+     "Both sides are already collected into an \\(x\\)-part and a constant part. For the two sides to agree at every \\(x\\), the \\(x\\)-parts have to be equal and the constant parts have to be equal.",
+     "The two matches are \\(3a+b=63\\) and \\(a-2b=7\\)."
+    ],
+    "sol": "Matching the \\(x\\)-parts and the constants gives \\(3a+b=63\\) and \\(a-2b=7\\). Doubling the first gives \\(6a+2b=126\\), and adding \\(a-2b=7\\) leaves \\(7a=133\\), so \\(a=\\boxed{19}\\), with \\(b=6\\). Check, \\(3(19)+6=63\\) and \\(19-2(6)=7\\)."
+   },
+   {
+    "x": "The system \\(3x+4y-2z=91\\), \\(5x-y+3z=62\\) and \\(8x+3y+z=160\\) has three equations in three letters, which is usually enough to pin down one triple. Enter the number of solutions this system has.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "none",
+     "no solution",
+     "no solutions",
+     "0 solutions"
+    ],
+    "hints": [
+     "Add the first two equations term by term and set the result next to the third equation.",
+     "Adding the first two equations gives \\(8x+3y+z=153\\), and the third equation has that same left side with \\(160\\) on the right."
+    ],
+    "sol": "Adding the first two equations gives \\(8x+3y+z=153\\), the same left side as the third but with \\(153\\) on the right in place of \\(160\\). Subtracting leaves \\(0=7\\), false at every triple, so the count is \\(\\boxed{0}\\). The first two equations on their own have plenty of solutions, so a triple has to pass all three before it counts."
+   },
+   {
+    "x": "The system \\(x+y+z=96\\), \\(2x-y+3z=217\\), \\(4x+y+5z=409\\) has a third equation that follows from the first two, so there are infinitely many solutions. Exactly one of them has \\(y=0\\). Enter \\(x\\) for that one.",
+    "ans": "71",
+    "accept": [
+     "71",
+     "x=71",
+     "seventy-one",
+     "seventyone"
+    ],
+    "hints": [
+     "Infinitely many solutions means a whole family of triples works, not that every triple works. All three equations still hold for each member of the family, and \\(y=0\\) picks exactly one member out.",
+     "With \\(y=0\\) the first two equations read \\(x+z=96\\) and \\(2x+3z=217\\)."
+    ],
+    "sol": "With \\(y=0\\), the first two equations read \\(x+z=96\\) and \\(2x+3z=217\\). Substituting \\(x=96-z\\) gives \\(192+z=217\\), so \\(z=25\\) and \\(x=\\boxed{71}\\). Check all three, \\(71+0+25=96\\), then \\(142-0+75=217\\), then \\(284+0+125=409\\). Twice the first equation plus the second gives the third, which is why the system leaves one letter free."
+   },
+   {
+    "x": "Only two facts are known about three letters, \\(5x+2y+3z=214\\) and \\(x+4y+3z=152\\), so no one letter has a single value here. Enter \\(x+y+z\\).",
+    "ans": "61",
+    "accept": [
+     "61",
+     "x+y+z=61",
+     "sixty-one",
+     "sixtyone"
+    ],
+    "hints": [
+     "The two facts leave a whole family of solutions, so none of \\(x\\), \\(y\\) and \\(z\\) has one value across them. A combination of the three letters can still have one.",
+     "Adding the two equations leaves \\(6\\) in every column."
+    ],
+    "sol": "Adding the two equations gives \\(6x+6y+6z=366\\), so \\(x+y+z=\\boxed{61}\\). No single letter is available here, since \\(x\\), \\(y\\) and \\(z\\) each take infinitely many values across the solutions, while their sum takes only this one."
+   },
+   {
+    "x": "Solve \\(2(x+y)-z=49\\), \\(3x-(y-2z)=86\\) and \\(x+4(y+z)=179\\). Clear one letter to leave two equations in the other two, finish from there, and enter \\(z\\).",
+    "ans": "23",
+    "accept": [
+     "23",
+     "z=23",
+     "twenty-three",
+     "twentythree"
+    ],
+    "hints": [
+     "No coefficient is readable until each equation is in \\(ax+by+cz=d\\) form, which is 5.4's move run on three equations instead of two. Watch the sign on the bracket in the second one.",
+     "Cleaned, the system is \\(2x+2y-z=49\\), \\(3x-y+2z=86\\) and \\(x+4y+4z=179\\). Since \\(y\\) has coefficient \\(-1\\) in the second equation, twice that equation plus the first and four times it plus the third both clear \\(y\\) with no fractions."
+    ],
+    "sol": "Cleaning gives \\(2x+2y-z=49\\), \\(3x-y+2z=86\\) and \\(x+4y+4z=179\\). Twice the second plus the first gives \\(8x+3z=221\\), and four times the second plus the third gives \\(13x+12z=523\\). Multiplying \\(8x+3z=221\\) by \\(4\\) gives \\(32x+12z=884\\), and subtracting \\(13x+12z=523\\) leaves \\(19x=361\\), so \\(x=19\\). Then \\(3z=221-152=69\\) gives \\(z=\\boxed{23}\\), with \\(y=17\\). Check the second original, \\(57-(17-46)=57+29=86\\). The minus in front of the bracket reaches both terms inside."
+   },
+   {
+    "x": "A supplier charges fixed unit prices for valves, gaskets and couplings. One shipment of 6 valves, 2 gaskets and 3 couplings cost 111 dollars. A second shipment of 2 valves, 7 gaskets and 4 couplings cost 158 dollars. A third shipment of 3 valves, 4 gaskets and 2 couplings cost 99 dollars. Enter the cost of one valve, one gasket and one coupling together, in dollars.",
+    "ans": "34",
+    "accept": [
+     "34",
+     "$34",
+     "34.0",
+     "34.00",
+     "$34.00",
+     "34 dollars",
+     "v+g+c=34",
+     "thirty-four",
+     "thirtyfour"
+    ],
+    "hints": [
+     "With \\(v\\), \\(g\\) and \\(c\\) the three unit prices in dollars, the ask is \\(v+g+c\\), so look for a combination of the three shipments whose three columns all match before solving for any one price. Adding all three gives \\(11v+13g+9c\\), and those coefficients are not equal.",
+     "The first shipment plus the second minus the third leaves \\(5\\) in every column."
+    ],
+    "sol": "With \\(v\\), \\(g\\) and \\(c\\) the three unit prices in dollars, \\(6v+2g+3c=111\\), \\(2v+7g+4c=158\\) and \\(3v+4g+2c=99\\). The first plus the second minus the third gives \\(5v+5g+5c=111+158-99=170\\), so \\(v+g+c=\\boxed{34}\\). The separate prices are \\(7\\), \\(12\\) and \\(15\\), and solving for all three takes two eliminations and two back-substitutions while the combination takes one line."
+   },
+   {
+    "x": "Solve the four-letter system \\(4w+x+y+z=132\\), \\(w+4x+y+z=168\\), \\(w+x+4y+z=114\\) and \\(w+x+y+4z=153\\). Enter \\(x\\), not the whole solution.",
+    "ans": "29",
+    "accept": [
+     "29",
+     "x=29",
+     "twenty-nine",
+     "twentynine"
+    ],
+    "hints": [
+     "Clearing one letter at a time works here, but with four equations that is three full rounds of elimination. Try adding all four equations together first.",
+     "Adding all four gives \\(7w+7x+7y+7z=567\\), so \\(w+x+y+z=81\\). The second equation is \\(3x\\) plus that same total."
+    ],
+    "sol": "Adding all four equations gives \\(7(w+x+y+z)=567\\), so \\(w+x+y+z=81\\). The second equation is \\(3x+(w+x+y+z)=168\\), so \\(3x=87\\) and \\(x=\\boxed{29}\\). The full solution is \\((17,29,11,24)\\). Clearing one letter at a time reaches the same answer in three rounds of elimination, while the total gets there in two lines."
+   }
+  ]
  }
 }
