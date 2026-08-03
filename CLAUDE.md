@@ -79,10 +79,10 @@ exceptions.
 ## Current status (2026-08-02)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: 25 of 81 lessons live. Chapters 1 to 4 are complete, each with its Practice
-  and Challenge sets in `PSETS_ALG1`. Chapter 5 is 3 of 6 (5.1 Two Variables Two Equations,
-  5.2 Substitution, 5.3 Elimination). **Next lesson is 5.4 Systems in Disguise**, then 5.5,
-  5.6, then the chapter 5 sets. Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
+- **Algebra I**: 27 of 81 lessons live. Chapters 1 to 4 are complete, each with its Practice
+  and Challenge sets in `PSETS_ALG1`. Chapter 5 is 5 of 6 (5.1 Two Variables Two Equations,
+  5.2 Substitution, 5.3 Elimination, 5.4 Systems in Disguise, 5.5 Word Problems with Systems).
+  **Next lesson is 5.6 Three or More Variables**, then the chapter 5 sets. Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
   live per-lesson state and the pipeline traps are in `docs/HANDOFF.md`, which is the file to
   read before writing anything. Both courses have SEO hub + lesson pages via
   `tools/gen_seo_pages.py` (sitemap/homepage links updated manually), and those have NOT been

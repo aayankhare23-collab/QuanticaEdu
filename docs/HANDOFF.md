@@ -1,24 +1,65 @@
-# Handoff, updated 2026-08-02
+# Handoff, updated 2026-08-02 (second session that day)
 
 Read `CLAUDE.md` first for orientation and the golden rules, then `docs/AUTHORING.md` before
 writing any lesson. This file covers what a fresh session would otherwise have to rediscover:
-where the work stands, and the traps that cost real time last session.
+where the work stands, and the traps that cost real time.
 
 ## Where the courses stand
 
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | 25 / 81, 15 chapters in the TOC | chapters 1-4, all | ch1-ch4 done, ch5 is 3/6 |
+| Algebra I | 27 / 81, 15 chapters in the TOC | chapters 1-4, all | ch1-ch4 done, ch5 is 5/6 |
 
-**Next lesson to write is 5.4, Systems in Disguise.** Then 5.5 Word Problems with Systems,
-5.6 Three or More Variables, then the chapter 5 Practice/Challenge sets, then chapter 6.
+**Next lesson to write is 5.6, Three or More Variables.** Then the chapter 5
+Practice/Challenge sets, then chapter 6 and onward through chapter 15.
+
+## The reference textbook (added 2026-08-02)
+
+The user supplied the AoPS *Introduction to Algebra* PDF (Rusczyk, 2nd ed.) on the Desktop.
+`pdftotext` and `pdftoppm` are NOT installed, so the Read tool's PDF mode fails; use `pypdf`
+(`PdfReader(path).pages[i].extract_text()`). It is a **coverage and difficulty checklist only**,
+per `docs/AUTHORING.md` and the syllabus. Never reproduce, adapt or mirror its examples,
+numbers, structure or sequence. Details and the first pass's findings are in memory
+`aops-reference-pdf`. It earned its keep immediately: it showed that 5.4 covered only one of the
+three "name the repeated piece" instances, which was fixed and shipped the same day.
+
+## THE PIPELINE CHANGED, read this before running it
+
+`tools/author_lesson.workflow.js` was rewritten on 2026-08-02 and the old monolithic shape is
+gone. **One agent cannot emit a whole lesson.** A 25-block lesson containing a 4KB inline SVG,
+or a whole 17-item review set, produces a response large enough that the connection closes
+mid-response. This killed three runs in a row and retrying does not help. The template now runs
+many small author agents, each writing a few **pre-labelled slots**, and the script assembles the
+block order deterministically from an `OUTLINE` constant. Authoring a new lesson is now a
+`SPEC` + `OUTLINE` swap and nothing else.
+
+Two more things the new template bakes in:
+- **Mandate the block outline in the SPEC.** Writing the slot list before the blueprint runs is
+  what makes the chunked assembly safe; the designers then design against the real slots.
+- **The verifiers rewrite blocks.** `fixedCount` ran 27 of 29 on 5.4 and 28 of 29 on 5.5, so the
+  blueprint's numbers are NOT what ships. Always re-solve every answer from the FINAL text.
 
 **Shipped across 2026-08-01 and 08-02:** 3.3, 3.4, 3.5 (chapter 3 complete), 4.1 through 4.5
-(chapter 4 complete), 5.1, 5.2, 5.3, plus Practice/Challenge sets for chapters 1, 3, and 4
+(chapter 4 complete), 5.1 through 5.5, plus Practice/Challenge sets for chapters 1, 3, and 4
 (12+12 with 3 legendary each), so every live chapter now has sets. Every lesson went through
 the full workflow pipeline with all answers machine-verified in exact arithmetic and
 preview-tested to 0 katex-error.
+
+**What the audit caught on 5.4 and 5.5, as a sample of why it is not a formality.** An
+authoring note ("Note to author: keep only the first two hints") that had leaked into a shipped
+hint and would have rendered to students verbatim. A diagnosed-error problem that printed both
+correct values in its stem, making the ask a coin flip. A rate problem that was underdetermined
+by its own words. A figure whose two multipliers were not independent, so it contradicted the
+one idea it existed to teach. A figure naming its variables `a` and `b` in a lesson using
+`a, b, c` as the coefficients of `ax+by=c`. Three duplicate answers in one review set. **Verify
+every replacement the audit proposes BEFORE applying it**, then re-solve the whole lesson.
+
+**Two docs were wrong and have been fixed.** `AUTHORING.md` claimed the grader normalizes the
+unicode minus; `normAns` (landing.html) does not touch it, so a negative answer needs both `-6`
+and `−6` in `accept`. `figure-design-system.md` still prescribed uppercase letter-spaced band
+labels, which the product-wide all-caps ban retired; band labels are lowercase, 13px, no
+letter-spacing.
 
 Four app/content bugs found and fixed along the way, all live:
 - Stale `TOC_ALG1` chapters 1-2 in landing.html (missing 1.6 and 2.6, six wrong titles, so
