@@ -1,213 +1,147 @@
-# Handoff, updated 2026-08-02 (second session that day)
+# Handoff, updated 2026-08-03
 
 Read `CLAUDE.md` first for orientation and the golden rules, then `docs/AUTHORING.md` before
-writing any lesson. This file covers what a fresh session would otherwise have to rediscover:
-where the work stands, and the traps that cost real time.
+writing any lesson. This file is what a fresh session would otherwise have to rediscover.
 
 ## Where the courses stand
 
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | 27 / 81, 15 chapters in the TOC | chapters 1-4, all | ch1-ch4 done, ch5 is 5/6 |
+| Algebra I | **34 / 81**, 15 chapters in the TOC | chapters 1-5 | ch1-ch6 lessons all done |
 
-**Next lesson to write is 5.6, Three or More Variables.** Then the chapter 5
-Practice/Challenge sets, then chapter 6 and onward through chapter 15.
+**Next work, in order:**
+1. **Chapter 6 Practice/Challenge sets** (the only chapter with lessons but no sets).
+2. **Chapter 7, Graphing Lines**, 7.1 through 7.6.
+3. Chapters 8 to 15, then the remaining per-chapter sets.
 
-## The reference textbook (added 2026-08-02)
+Chapter 6 shipped this session (6.1 Ratios Simple and Subtle, 6.2 Conversion Factors,
+6.3 Percents, 6.4 Percent Problems, 6.5 Direct and Inverse Proportion, 6.6 Joint Proportion
+and Rates). Chapter 5 and its sets shipped the same session.
 
-The user supplied the AoPS *Introduction to Algebra* PDF (Rusczyk, 2nd ed.) on the Desktop.
-`pdftotext` and `pdftoppm` are NOT installed, so the Read tool's PDF mode fails; use `pypdf`
-(`PdfReader(path).pages[i].extract_text()`). It is a **coverage and difficulty checklist only**,
-per `docs/AUTHORING.md` and the syllabus. Never reproduce, adapt or mirror its examples,
-numbers, structure or sequence. Details and the first pass's findings are in memory
-`aops-reference-pdf`. It earned its keep immediately: it showed that 5.4 covered only one of the
-three "name the repeated piece" instances, which was fixed and shipped the same day.
+## Start here: the tools that do the verifying
 
-## THE PIPELINE CHANGED, read this before running it
+Two deterministic checkers now live in the repo. **Run both on every lesson and every set.**
 
-`tools/author_lesson.workflow.js` was rewritten on 2026-08-02 and the old monolithic shape is
-gone. **One agent cannot emit a whole lesson.** A 25-block lesson containing a 4KB inline SVG,
-or a whole 17-item review set, produces a response large enough that the connection closes
-mid-response. This killed three runs in a row and retrying does not help. The template now runs
-many small author agents, each writing a few **pre-labelled slots**, and the script assembles the
-block order deterministically from an `OUTLINE` constant. Authoring a new lesson is now a
-`SPEC` + `OUTLINE` swap and nothing else.
+```
+python3 tools/check_lesson.py <lesson>.json     # a single lesson object
+python3 tools/check_pset.py <pset>.json         # {"practice":[...], "challenge":[...]}
+```
 
-Two more things the new template bakes in:
-- **Mandate the block outline in the SPEC.** Writing the slot list before the blueprint runs is
-  what makes the chunked assembly safe; the designers then design against the real slots.
-- **The verifiers rewrite blocks.** `fixedCount` ran 27 of 29 on 5.4 and 28 of 29 on 5.5, so the
-  blueprint's numbers are NOT what ships. Always re-solve every answer from the FINAL text.
+They catch what `finalize_lesson.py` does not: boxed-value vs `ans` (proper brace matcher),
+exactly-2-hints, `accept` completeness under the real `normAns` semantics, duplicate answers,
+cross-problem number-set collisions, block-length targets, figure font/weight/all-caps, and
+raw single-`$` math. `check_lesson.py` runs clean on every shipped lesson, so a non-zero result
+is a real finding.
 
-**Shipped across 2026-08-01 and 08-02:** 3.3, 3.4, 3.5 (chapter 3 complete), 4.1 through 4.5
-(chapter 4 complete), 5.1 through 5.5, plus Practice/Challenge sets for chapters 1, 3, and 4
-(12+12 with 3 legendary each), so every live chapter now has sets. Every lesson went through
-the full workflow pipeline with all answers machine-verified in exact arithmetic and
-preview-tested to 0 katex-error.
+**Two false positives were fixed in these checkers and must not be reintroduced:**
+- A doubled backslash inside `\begin{array}` is a LaTeX **row separator**, not an escaping
+  artifact. Collapsing it destroys data tables. The checker now strips array-like environments
+  before scanning.
+- `\text{inverse}` is a legitimate boxed value. The comparator strips `\text{...}` now.
 
-**What the audit caught on 5.4 and 5.5, as a sample of why it is not a formality.** An
-authoring note ("Note to author: keep only the first two hints") that had leaked into a shipped
-hint and would have rendered to students verbatim. A diagnosed-error problem that printed both
-correct values in its stem, making the ask a coin flip. A rate problem that was underdetermined
-by its own words. A figure whose two multipliers were not independent, so it contradicted the
-one idea it existed to teach. A figure naming its variables `a` and `b` in a lesson using
-`a, b, c` as the coefficients of `ax+by=c`. Three duplicate answers in one review set. **Verify
-every replacement the audit proposes BEFORE applying it**, then re-solve the whole lesson.
+## The pipeline
 
-**Two docs were wrong and have been fixed.** `AUTHORING.md` claimed the grader normalizes the
-unicode minus; `normAns` (landing.html) does not touch it, so a negative answer needs both `-6`
-and `−6` in `accept`. `figure-design-system.md` still prescribed uppercase letter-spaced band
-labels, which the product-wide all-caps ban retired; band labels are lowercase, 13px, no
-letter-spacing.
+`tools/author_lesson.workflow.js` is the template. Copy it, fill in the `FILL THIS IN` block
+(`COURSE_TITLE / KEY / TITLE / NEXT / REVIEW_N / OUTLINE / SPEC`), run it via the Workflow tool
+with `scriptPath`. Authoring a lesson is a **SPEC + OUTLINE swap and nothing else**.
 
-Four app/content bugs found and fixed along the way, all live:
-- Stale `TOC_ALG1` chapters 1-2 in landing.html (missing 1.6 and 2.6, six wrong titles, so
-  the app showed 79 lessons instead of 81 and mislabeled half of chapters 1-2).
-- A CSS bug where the responsive figure rules (`.lessonfig svg`, `.page-lead svg`) caught
-  KaTeX's glyph SVGs and forced `height:auto`, collapsing radical bars to ~0.1px inside
-  figure captions. Affected 14 captions across both courses, all of prealgebra ch 8
-  included. Fix was scoping the figure rule to the direct child plus a `height:inherit`
-  override for `.katex svg`; note the override needs higher specificity than
-  `.ws-page.page-text-only .page-lead svg` or it silently loses.
-- Two lost backslashes on `\neq` in shipped 5.2 solutions, rendering as a stray italic "e".
-- Two stale hints in 4.1's review referencing numbers from an earlier draft.
+Worked SPECs are kept in `tools/lesson-specs/` (6.6, 7.1, 7.2). Copy the closest one and edit.
+The assembled script is `head + STYLE + tail`, where STYLE and tail come from the template.
 
-Chapters 6 to 15 of Algebra I have no lessons and correctly render as "coming soon", greyed and
-unclickable, on both the dashboard and the contents page. Problem-set links for chapters without
-sets do the same. Nothing to fix there.
+**Why it is chunked.** One agent cannot emit a whole lesson. A 25-block lesson with a 4KB
+inline SVG, or a 17-item review set, is a large enough response that the connection closes
+mid-response. This killed three runs before the fix. The author phase now runs many small
+agents against **pre-labelled slot ids**, assembled deterministically from `OUTLINE`.
 
-## What this session learned about running the pipeline
+### The ship sequence, every time
 
-- **Generate each lesson's workflow script from the previous one.** Copy the last lesson's
-  script, swap `KEY / TITLE / NEXT` and the whole SPEC block, and adjust the two scope
-  sentences in the verify and audit prompts. Writing a script from scratch each time
-  re-introduces drift. `tools/author_lesson.workflow.js` is the canonical template and now
-  carries the hardened voice rules.
-- **A SPEC is worth the effort.** The lessons that needed the fewest post-audit fixes were
-  the ones whose SPEC named the scope boundary explicitly (what the NEXT lesson owns), the
-  exact handoff sentence from the previous lesson's closer, and which historical facts were
-  already spent. List the reserved facts; the agents will otherwise reuse al-Khwarizmi.
-- **Workflows die on the 5-hour usage window and on transient API errors.** They resume
-  cleanly: `Workflow({scriptPath, resumeFromRunId})` replays every completed agent from
-  cache and only re-runs what failed. Three lessons this session were finished that way.
-  Do not restart from scratch.
-- **The audit is not a formality.** It caught, per lesson, between one and five real issues,
-  including a figure that spoiled a later problem's numbers, a figure whose two cancelled
-  tiles both read `9y` when the whole teaching point was that they are opposite, a problem
-  that taught 4.3's method inside 4.1, and a lesson-wide solution-value collision cluster.
-  Apply the findings by hand and re-verify anything you renumber.
-- **Number freshness is the most common real finding.** When an audit demands a renumber,
-  build the banned set mechanically (every number >= 2 in the neighbouring chapters' problem
-  statements and answers, plus the kept problems of the lesson in hand), then search for
-  replacement systems whose salient values all miss it. Everything below about 44 is usually
-  already spent by chapter 5, so expect landing values in the 40s and up.
-- **Voice, the standing correction (2026-08-02).** The user rejected a closer that read
-  "Every system in this lesson handed over a coefficient ... no letter qualifies, so ...
-  fractions ride through every line that follows." Equations, letters, and numbers do not
-  act. Say what is: the system has a letter with coefficient 1, or it does not; the
-  isolation starts with a division; fractions appear in later steps. "Clarity first, then
-  conversation second." The rule is in the workflow template and in the
-  `plain-not-overwrought` memory with his exact rewrite. Sweep the assembled lesson yourself
-  before shipping, since the per-problem verifiers catch most of these but not the ones in
-  `p` and `imp` blocks.
+1. Run the workflow. Extract `lesson`, `audit`, `pyChecks` from the task output file.
+2. Collapse escaping artifacts and dedupe `accept` lists.
+3. `python3 tools/check_lesson.py` until 0 issues.
+4. **Re-solve every answer yourself from the FINAL text.** Non-negotiable.
+5. Triage the audit. **Verify every proposed replacement before applying it.**
+6. Re-run steps 3 and 4 after patching.
+7. `tools/finalize_lesson.py ... --write`, then `tools/build_lessons.py`.
+8. Preview: 0 `.katex-error` on every page **and** on the review set rendered separately.
+9. Probe grading with a real trap value, not just the correct one.
+10. Commit, push, `firebase deploy --only hosting`, curl the live file.
 
-## Writing a lesson
+## Traps that cost real time
 
-The pipeline is documented in `docs/AUTHORING.md` and it works. Summary:
+- **The verify phase rewrites 20 to 28 of 29 items per lesson.** The blueprint's numbers are
+  NOT what ships. Re-solve from the final text or you will ship the wrong answer.
+- **The verify phase can introduce a duplicate answer.** On 6.6 it moved an answer onto another
+  item's after my distinctness check had already passed on the earlier draft. The audit caught
+  it. This is the concrete reason the audit gate stays even though the math is verified by hand.
+- **Do not run four workflows at once.** Four concurrent runs exhausted the session usage limit
+  and killed every verify and audit agent in all four. Three is sustainable. If a run dies this
+  way, `Workflow({scriptPath, resumeFromRunId})` replays cached agents free and re-runs only the
+  failures; that recovered all four.
+- **Openers quote the previous lesson's closer.** When authoring lessons in parallel that is
+  impossible, so check the chain by hand at ship time and fix the opener or the closer. Three of
+  four chained cleanly on chapter 6; one posed a question the next lesson never answered.
+- **Escape SPECs properly.** Use a raw string or the workflow tool refuses the script.
+- **Never leave thinking-out-loud in a SPEC.** It goes straight to the authoring agents.
 
-1. Copy `tools/author_lesson.workflow.js`, fill in `COURSE_TITLE / KEY / TITLE / NEXT / SPEC`,
-   run it through the Workflow tool with `scriptPath`.
-2. Apply the audit findings by hand.
-3. Machine-verify **every** answer. Non-negotiable.
-4. `python3 tools/finalize_lesson.py <temp>.json --course <c> --chapter <n> --key <k> --title "<t>" --next <k2> --write`
-5. `python3 tools/build_lessons.py`
-6. Preview-test, expect 0 `.katex-error`.
-7. Commit, push, `firebase deploy --only hosting`.
+## What the audits keep catching, so look for these yourself
 
-### Traps hit while writing 3.2 (still true)
+Ranked by how often they were real:
 
-- **The audit agent can die on an API error.** It did. Run its checks by hand if so, because it
-  catches real things: 3.2's figure shipped with two all-caps band labels (`THE LADDER`,
-  `BAR CROSSING`), which are a standing ban. The rest of the corpus has zero of those.
-- **Escape your SPEC properly.** `\frac` and `\neq` written inside a non-raw Python string became
-  a form feed and a newline, and the Workflow tool refused the script for containing control
-  characters. Use a raw string.
-- **`pyChecks` only covers numeric answers.** 3.2 had 10 numeric and 6 symbolic; the symbolic
-  ones had to be re-derived in sympy separately. Do both.
-- **Verify with a proper brace matcher.** A regex for `\boxed{...}` fails on nested braces like
-  `\boxed{\frac{1}{h^{6}}}` and will report false mismatches.
-- **Read the whole question before concluding something is missing.** A "missing" format hint was
-  already there; appending a second one broke the problem until it was reverted.
+1. **Scope leaks into the next lesson.** 6.1's closer handed over 6.2's central rule; 6.3's
+   transition pre-empted its own key idea before the problems that earned it.
+2. **A teaching block printing a nearby problem's numbers**, or a problem printing the value it
+   asks for. 6.4's hardest problem described pure pigment as "100 percent pigment" when the
+   answer was 100 litres.
+3. **Assertions where the spec requires a derivation.** 6.4 expanded a product of two binomials,
+   which chapter 9 owns and no reader has met.
+4. **Statements that are simply false.** 6.3's key idea said a decimal repeats "when the
+   denominator has a prime factor other than 2 or 5", which needs "in lowest terms" (3/6 = 0.5).
+   6.5's closer said every problem came down to one constant when its own trap problem needs two.
+5. **Story and template collisions** with the previous lesson or within the set.
+6. **Verbs of agency on mathematical objects.** Standing rule, see `plain-not-overwrought`.
 
-### The quality bar
+## Coverage against the reference text
 
-**`lessons/prealgebra/chapter-1.json` is the gold standard for problem quality and
-pedagogy** (Aayan, restated 2026-08-02). Read all six of its lessons. Problems teach rather
-than test, each placed so working it makes the next idea obvious, with the idea arriving
-after the problems that earned it. Rules get derived twice by independent routes rather than
-asserted. Every problem has 2 problem-specific hints, and every answer is a single typed
-value. Full statement of the four properties, and of what NOT to copy from chapter 1, is in
-`docs/AUTHORING.md` under "The quality bar".
+The user supplied the AoPS *Introduction to Algebra* PDF (Desktop). It is a **coverage and
+difficulty checklist only**, never a source to copy. `pdftotext` is not installed; use `pypdf`.
+Details in memory `aops-reference-pdf`.
 
-The shape that works, seen clearly in prealgebra 2.3 and 2.4: prose, two problems, then the
-key idea those problems earned, repeated.
+**`docs/reference-coverage-map.md` maps the reference's sections onto our chapters 6, 7 and 8.**
+It is already written for chapter 7 and chapter 8, so those SPECs are fill-ins, not research.
 
-Algebra I uses xp 5 to 8. Prealgebra drifted up to 18 in chapter 1. Follow the course, not
-the reference.
+One promise to keep: **5.1 explicitly tells the reader "Chapter 7 will draw what that looks
+like"** about a system's three solution counts. Reference 8.6 is where that picture lives, so
+**7.6 must deliver it**. Noted in the coverage map.
 
-## What shipped on 2026-07-31
+## In flight when this session ended
 
-- **Tutor is Milo everywhere.** Three names were live at once (Sprout 40 uses, Cove 8, Milo 10),
-  and Sprout/Cove were a deliberate per-course split. All user-facing strings now say Milo,
-  including the 85 generated SEO pages, which the first pass missed because `gen_seo_pages.py`
-  had the old name hardcoded. **CSS identifiers and theme variables still say sprout/cove on
-  purpose** — they drive the per-course palette. Do not rename them.
-- **Mobile side panels fixed.** Opening Milo on a phone was squeezing the lesson into a ~95px
-  column, one word per line. Below 700px the panels are now sheets that overlay instead of
-  displacing, with the scrim wired up. The scrim markup and its close handler already existed
-  and had never been switched on.
-- **A real 404 page.** There was none.
-- **"Spaced review" removed from the pricing card.** It was advertised and does not exist, and
-  cannot from the current data, since completion is stored as a bare boolean with no timestamp.
-- **SEO.** All 83 lesson pages retitled to target search queries rather than chapter names
-  ("How to Add and Subtract Fractions" not "Adding and Subtracting Fractions"). URLs unchanged
-  on purpose. 94 sitemap URLs all carry real `lastmod` from git history.
-- **Prose sweep.** 536 rewrites across all 523 prose blocks in both courses, to the
-  define-don't-metaphor standard. See the memory of the same name.
-- **Two blog posts**, divide by zero and negative times negative. Five posts total.
-- **Ten shorts** built from scratch. See `tools/shorts/README.md`.
+Three workflows were running and will not survive the session. Just relaunch them:
+- chapter 6 Practice/Challenge sets (`tools/lesson-specs/pset6.workflow.js.bak`, ready to run)
+- 7.1 The Cartesian Plane (`tools/lesson-specs/author_7_1.head.js`)
+- 7.2 Graphing Linear Equations (`tools/lesson-specs/author_7_2.head.js`)
 
-## The SEO situation, which is the important one
+7.1's SPEC **bans Descartes** even though it is the Cartesian-plane lesson; he is already spent
+in Algebra I 1.5 for exponent notation. It uses Fermat instead. Keep the banned-names list
+growing in each SPEC.
 
-Search Console on 2026-07-31 showed **74 pages "Discovered, currently not indexed" and zero
-"Crawled, currently not indexed."**
+## Docs corrected this session
 
-That distinction is the whole story. Google has not judged the content and found it wanting; it
-has never fetched it. This is crawl budget, which tracks domain authority, which tracks inbound
-links, of which there are almost none.
+- `AUTHORING.md` claimed the grader normalizes the unicode minus. `normAns` does not touch it,
+  so a negative answer needs both `-6` and `−6` in `accept`.
+- `figure-design-system.md` prescribed uppercase letter-spaced band labels, which the
+  product-wide all-caps ban retired. Band labels are lowercase, 13px, no letter-spacing.
 
-So: **more pages will not help. Links will.** Blog posts are worth writing because they get
-shared and linked; more lesson pages are not, until the existing 83 get crawled.
+## Still open
 
-Also note the dashboard runs about **8 days behind**, so anything read there describes a site
-that no longer exists. Do not react to it same-week.
-
-Manual indexing requests are the only lever that forces a crawl, roughly 10 per day. Eleven were
-requested on 2026-07-31.
-
-## Open items
-
-- 114 prealgebra figures still use the old visual standard. The user said leave it.
-- The Algebra I mascot image is still the blue character while Prealgebra's is green, even
-  though both say Milo. Raised with the user, not yet decided.
-- From a 20-item audit list the user supplied, **4 items were factually wrong** about the code
-  (#6 pricing, #8 two UI systems, #9 reset confirm, #20 error analysis) and 8 more were partly
-  wrong. Do not work that list without re-verifying each claim first.
+- 114 prealgebra figures use the old visual standard. The user said leave it.
+- SEO pages have not been regenerated for Algebra I chapters 3 onward
+  (`python3 tools/gen_seo_pages.py algebra1`), and sitemap/homepage links are manual.
+- The Algebra I mascot is still the blue character while Prealgebra's is green.
 - Prealgebra chapter 3 uses xp up to 12 against a documented 5 to 8. Flagged, not fixed.
 
 ## Standing rules worth repeating
 
-No em-dashes, almost no colons in prose. No all-caps eyebrow or band labels anywhere, including
-inside SVG figures. Never touch `functions/.env`. Deploy hosting only. Every math answer is
-machine-verified before it is committed.
+No em-dashes, almost no colons in prose. No all-caps labels anywhere, including inside SVG
+figures. Equations, letters, numbers and quantities do not act. Never touch `functions/.env`.
+Deploy hosting only. Every math answer is machine-verified before it is committed.

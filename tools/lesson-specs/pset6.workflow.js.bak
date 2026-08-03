@@ -1,0 +1,387 @@
+export const meta = {
+  name: 'author-pset-alg1-ch6',
+  description: 'Author the Algebra I chapter 6 Practice and Challenge problem sets',
+  phases: [
+    { title: 'Blueprint', detail: '3 designs, 1 judge merge' },
+    { title: 'Author', detail: '24 items in slot chunks' },
+    { title: 'Verify', detail: 'adversarial per-item verification' },
+    { title: 'Audit', detail: 'practice audit + challenge audit' },
+  ],
+}
+
+const CHAPTER = '6'
+const CHAPTER_TITLE = 'Ratios, Percents, and Proportion'
+const USED = `6.1P: A bindery finishes 552 booklets, stapled to sewn in the ratio \\(7:5\\). Doubling both parts of \\(7:5\\) gives \\(14:10\\), which totals \\(24\\), and tripli -> ans 322
+6.1P: A stadium has 493 seats, covered seats to open seats in the ratio \\(9:8\\). Write the two counts as \\(9k\\) and \\(8k\\) for a single number \\(k\\), form o -> ans 261
+6.1P: A workshop owns 378 hand tools, all of them hammers or chisels, with hammers to chisels in the ratio \\(5:9\\). A student computes \\(\\frac{5}{9}\\) of \\( -> ans 135
+6.1P: A nursery grows 984 saplings, oak, maple and pine, in the ratio \\(6:7:11\\). Write the three counts as \\(6k\\), \\(7k\\) and \\(11k\\), and enter the number -> ans 451
+6.1P: The crates and pallets in a depot are in the ratio \\(12:7\\), and the depot has 224 pallets. Let \\(c\\) be the number of crates, so that statement is th -> ans 384
+6.1P: The ratio of \\(5(x-4)+3x\\) to \\(2(x+21)\\) is \\(3:1\\). Collect like terms on each side first, then cross-multiply and enter the value of \\(x\\). -> ans 73
+6.1P: A club's juniors and seniors are in the ratio \\(11:8\\). Then 42 juniors join, no one leaves, and the ratio of juniors to seniors is now \\(3:2\\). Enter -> ans 462
+6.1P: In a stockroom, the ratio of blue crates to green crates is \\(15:8\\), and the ratio of green crates to red crates is \\(8:11\\). There are \\(165\\) blue  -> ans 121
+6.1P: For three quantities \\(x\\), \\(y\\), and \\(z\\), \\(x:y=16:9\\) and \\(y:z=6:13\\). Enter \\(\\frac{z}{x}\\) as a fraction in lowest terms. -> ans 39/32
+6.1P: A caterer orders bread rolls and pastries, rolls to pastries in the ratio \\(11:6\\). Rolls cost 2 dollars each, pastries cost 5 dollars each, and the o -> ans 54
+6.1P: A library shelves fiction and nonfiction in the ratio \\(11:7\\). Then 45 books move from fiction to nonfiction, nothing is added or discarded, and the  -> ans 693
+6.1P: A festival sells full-price, student, and child tickets. Of the tickets sold, full-price to student is \\(7:4\\), and student to child is \\(6:11\\). The  -> ans 180
+6.1R: A crate holds 340 tiles, each one either plain or patterned. The ratio of plain tiles to patterned tiles is \\(9:11\\). Enter the number of plain tiles. -> ans 153
+6.1R: A crate holds pears and quinces and nothing else, in the ratio \\(6:11\\). Enter the fraction of the fruit that is quinces, in lowest terms. -> ans 11/17
+6.1R: In a choir, the ratio of altos to sopranos is \\(8:13\\), and there are 296 altos. Enter the number of sopranos. -> ans 481
+6.1R: A jar holds only amber, jade and onyx marbles, in the ratio \\(9:16:5\\). Enter the fraction of the marbles in the jar that are jade, in lowest terms. -> ans 8/15
+6.1R: A silo holds 494 sacks of wheat, rye and oats in the ratio \\(5:9:12\\). Enter the number of sacks of oats. -> ans 228
+6.1R: A workshop stocks screws, bolts and rivets in the ratio \\(11:6:4\\), and there are 156 bolts. Enter the total number of screws, bolts and rivets. -> ans 546
+6.1R: The equation \\(\\frac{x}{84}=\\frac{17}{12}\\) holds. Cross-multiply and enter \\(x\\). -> ans 119
+6.1R: Cross-multiply \\(\\frac{7x-12}{2x+50}=\\frac{5}{3}\\), collect the \\(x\\)-terms on one side and the numbers on the other, and enter \\(x\\). -> ans 26
+6.1R: Two accounts hold money in the ratio \\(17:8\\), and the first holds 288 dollars more than the second. Enter the balance of the smaller account, in doll -> ans 256
+6.1R: A stall sells notebooks and folders in the ratio \\(9:7\\). Notebooks cost 6 dollars each, folders cost 11 dollars each, and the stall takes 1572 dollar -> ans 84
+6.1R: Two positive whole numbers are in the ratio \\(13:6\\), and both are less than \\(200\\). Enter how many such pairs there are. -> ans 15
+6.1R: In a model kit, pegs and struts come in the ratio \\(10:3\\), and struts and panels come in the ratio \\(3:4\\). A batch of these parts has \\(76\\) panels. -> ans 190
+6.1R: A field holds 682 plants, all of them corn, beans or squash. Corn to beans is \\(6:5\\) and beans to squash is \\(10:9\\). Enter the number of squash plan -> ans 198
+6.1R: A survey counts \\(m\\) walkers, \\(n\\) cyclists and \\(p\\) drivers, with \\(m\\) to \\(n\\) as \\(5:12\\) and \\(n\\) to \\(p\\) as \\(8:9\\). Scale so the two numbe -> ans 27/10
+6.1R: A pantry stocks honey jars and jam jars in the ratio \\(10:7\\). After 48 more honey jars arrive and no new jam jars, the ratio of honey to jam is \\(8:5 -> ans 280
+6.1R: A vault holds silver and copper coins, and the ratio of silver to copper is \\(9:4\\). The owner removes 32 silver coins and puts in 32 copper coins, af -> ans 162
+6.1R: At a gallery, the ratio of prints to paintings is \\(16:7\\). Then 26 prints are sold and 13 paintings are added, and the ratio of prints to paintings i -> ans 240
+6.1R: A cabinet holds oak, ash and birch dowels and nothing else, with oak to ash \\(9:5\\) and ash to birch \\(15:8\\). After 105 more birch dowels arrive, the -> ans 750
+6.2P: A fuel tank holds 46 gallons, and \\(1\\text{ gal}=4\\text{ qt}\\). Multiply \\(46\\text{ gal}\\) by \\(\\frac{4\\text{ qt}}{1\\text{ gal}}\\), writing the unit i -> ans 184
+6.2P: A second tank on the same lot holds 268 quarts. The same fact \\(1\\text{ gal}=4\\text{ qt}\\) also gives the factor \\(\\frac{1\\text{ gal}}{4\\text{ qt}}\\), -> ans 67
+6.2P: A pallet of bolts weighs 592 ounces, and \\(1\\text{ lb}=16\\text{ oz}\\). The two factors available are \\(\\frac{16\\text{ oz}}{1\\text{ lb}}\\) and \\(\\frac{ -> ans 37
+6.2P: A recording runs 1020 seconds, and \\(1\\text{ min}=60\\text{ s}\\). A student multiplies \\(1020\\text{ s}\\) by \\(\\frac{60\\text{ s}}{1\\text{ min}}\\) and re -> ans 17
+6.2P: A gym orders 8 coils of climbing rope, with \\(1\\text{ coil}=30\\text{ m}\\) and \\(1\\text{ m}=100\\text{ cm}\\). Neither fact is a direct coil-to-centimete -> ans 24000
+6.2P: A recipe is written in cups and the jug in the kitchen is marked in milliliters. Use \\(1\\text{ cup}=16\\text{ tablespoons}\\), \\(1\\text{ tablespoon}=3\\t -> ans 1440
+6.2P: A conveyor belt runs at 48 meters per minute. Use \\(1\\text{ m}=100\\text{ cm}\\) and \\(1\\text{ min}=60\\text{ s}\\). Both units change, so two factors are -> ans 80
+6.2P: A runner's watch reports a pace of 3 minutes 45 seconds per kilometer, which is \\(\\frac{225\\text{ s}}{1\\text{ km}}\\). Use \\(1\\text{ h}=3600\\text{ s}\\) -> ans 16
+6.2P: A patio covers 34 square yards, and \\(1\\text{ yd}=3\\text{ ft}\\). One square yard is \\(1\\text{ yd}\\times 1\\text{ yd}\\), so convert each of the two leng -> ans 306
+6.2P: A shipping crate has a volume of 5 cubic feet, and \\(1\\text{ ft}=12\\text{ in}\\). Enter the crate's volume in cubic inches. -> ans 8640
+6.2P: A field technician is paid 35 dollars per hour and works 6 hours per shift. Each of those statements gives a conversion factor, one between hours and  -> ans 1680
+6.2P: A trading post prices goods in four measures, with \\(1\\text{ varn}=7\\text{ sedge}\\), \\(1\\text{ sedge}=3\\text{ pell}\\) and \\(5\\text{ pell}=2\\text{ quil -> ans 126
+6.2R: A sack of rice has a mass of 9000 grams, and \\(1\\text{ kg}=1000\\text{ g}\\). Enter the mass in kilograms. -> ans 9
+6.2R: A spool carries 4500 centimeters of thread, and \\(1\\text{ m}=100\\text{ cm}\\). Enter the length of the thread in meters. -> ans 45
+6.2R: A bench is 156 inches long, and \\(1\\text{ ft}=12\\text{ in}\\). Multiplying by \\(\\frac{12\\text{ in}}{1\\text{ ft}}\\) gives \\(1872\\), a number far larger  -> ans 13
+6.2R: A bakery counts its rolls in dozens and has 51 dozen, with \\(1\\text{ dozen}=12\\text{ rolls}\\). Multiply by a conversion factor that cancels dozen, and -> ans 612
+6.2R: A stationery order is 12 boxes, where \\(1\\text{ box}=20\\text{ packs}\\) and \\(1\\text{ pack}=50\\text{ envelopes}\\). Enter the number of envelopes in the -> ans 12000
+6.2R: A warehouse holds 8400 bottles, packed at \\(1\\text{ case}=12\\text{ bottles}\\) and \\(1\\text{ pallet}=25\\text{ cases}\\). Enter the number of full pallet -> ans 28
+6.2R: A delivery is 9 crates, with \\(1\\text{ crate}=6\\text{ trays}\\), \\(1\\text{ tray}=8\\text{ punnets}\\) and \\(1\\text{ punnet}=15\\text{ berries}\\). Enter th -> ans 6480
+6.2R: A tap fills a tank at 12 liters per minute, and \\(1\\text{ h}=60\\text{ min}\\). Enter the fill rate in liters per hour. -> ans 720
+6.2R: A snail moves 3 centimeters per second. Use \\(1\\text{ m}=100\\text{ cm}\\) and \\(1\\text{ h}=3600\\text{ s}\\). Enter the speed in meters per hour. -> ans 108
+6.2R: A conveyor carries 900 kilograms per hour. Use \\(1\\text{ kg}=1000\\text{ g}\\) and \\(1\\text{ h}=60\\text{ min}\\). Enter the rate in grams per minute. -> ans 15000
+6.2R: A courtyard covers 7 square meters, and \\(1\\text{ m}=100\\text{ cm}\\). Enter the area in square centimeters. -> ans 70000
+6.2R: A poster covers 4320 square inches. Use \\(1\\text{ ft}=12\\text{ in}\\). Enter the area in square feet. -> ans 30
+6.2R: A planter holds 2 cubic yards of soil, and \\(1\\text{ yd}=3\\text{ ft}\\). Enter the volume of that soil in cubic feet. -> ans 54
+6.2R: Paint costs 38 dollars per can, and one can covers 25 square meters of wall. A job needs 300 square meters of wall painted. Enter the cost of the pain -> ans 456
+6.2R: A carpenter is paid 26 dollars per hour and works 4 hours per session, and has earned 1560 dollars from those sessions alone. Enter the number of sess -> ans 15
+6.2R: Each team at a school has 6 students, each bus carries 4 teams, and the school fills 9 buses for a meet. Enter the number of students the school sends -> ans 216
+6.2R: On a game map, \\(1\\text{ span}=9\\text{ notches}\\), \\(4\\text{ notches}=3\\text{ pips}\\) and \\(1\\text{ pip}=20\\text{ steps}\\). A road is 8 spans long. En -> ans 1080
+6.3P: A quality check clears \\(64\\%\\) of a shipment. Percent means per hundred, so \\(64\\%\\) is the ratio \\(\\frac{64}{100}\\). Reduce it to lowest terms and e -> ans 16/25
+6.3P: A sensor logs \\(\\frac{7}{20}\\) of its readings as out of range. A percent is a ratio whose second part is \\(100\\), so rewrite \\(\\frac{7}{20}\\) with \\( -> ans 35
+6.3P: A label states that a bottle of saline is \\(6.5\\%\\) salt by mass, so the ratio of salt to total mass is \\(\\frac{6.5}{100}\\). Lowest terms means the to -> ans 13/200
+6.3P: A machinist finds that \\(\\frac{5}{6}\\) of a batch passes inspection. That fraction is already in lowest terms and no whole number times \\(6\\) gives \\( -> ans 250/3
+6.3P: A vineyard has 875 vines and \\(24\\%\\) of them are a new cultivar. Here \\(p=24\\) and \\(b=875\\), and the amount \\(a\\) is missing. Substitute into \\(a=\\f -> ans 210
+6.3P: A hall has 650 seats and 273 of them are booked. This time \\(a=273\\) and \\(b=650\\) are known and \\(p\\) is missing. Solve \\(a=\\frac{p}{100}b\\) for \\(p\\ -> ans 42
+6.3P: At a theatre, 350 seats are sold, and that is \\(28\\%\\) of the seats in the house. A student computes \\(28\\%\\) of \\(350\\) and reports a house of \\(98\\) -> ans 1250
+6.3P: An inspector passes \\(62\\%\\) of a shipment and sets the other 209 items aside. The 209 is not the \\(62\\%\\) part, so work out what percent of the shipm -> ans 550
+6.3P: A cannery runs two filling lines. The morning line fills 720 tins and \\(45\\%\\) of them hold soup. The afternoon line fills 450 tins and \\(16\\%\\) of th -> ans 396
+6.3P: A car park holds only vans and cars, 96 vans and 384 cars. Enter the percent of all the vehicles in the car park that are vans, just the number. -> ans 20
+6.3P: Depot A holds 2380 tonnes of grain, which is \\(175\\%\\) of what Depot B holds. Here \\(\\frac{175}{100}\\) is greater than \\(1\\). Enter the number of tonn -> ans 1360
+6.3P: A quarry's tailings are \\(0.15\\%\\) recoverable metal by mass, and that metal weighs 42 tonnes. Of those same tailings, 5040 tonnes have already been s -> ans 18
+6.3R: Write \\(85\\%\\) as a fraction in lowest terms. -> ans 17/20
+6.3R: Write \\(9\\%\\) as a decimal. -> ans 0.09
+6.3R: A pressure gauge reads \\(0.58\\) of full scale. Enter that reading as a percent, just the number. -> ans 58
+6.3R: A crate is \\(\\frac{13}{25}\\) full. Rewrite that ratio with \\(100\\) below the bar and enter the percent, just the number. -> ans 52
+6.3R: A battery loses \\(2.4\\%\\) of its charge overnight. Write \\(2.4\\%\\) as a decimal. -> ans 0.024
+6.3R: A service fee is \\(7.5\\%\\) of an order. Write \\(7.5\\%\\) as a fraction in lowest terms, in the form \\(a/b\\). -> ans 3/40
+6.3R: A kiln fires \\(\\frac{4}{9}\\) of a load at a time. Since \\(9\\) does not divide \\(100\\), that share is not a whole number of percent. Enter it as an exa -> ans 400/9
+6.3R: A depot stores 840 tyres and \\(65\\%\\) of them are winter tyres. Enter the number of winter tyres. -> ans 546
+6.3R: A tank holds 1600 litres of brine, and \\(3.5\\%\\) of it is salt. Enter the number of litres of salt. -> ans 56
+6.3R: A polling office mails out 700 survey forms, and 189 of them come back. Enter what percent of the forms came back, just the number. -> ans 27
+6.3R: A shelf holds 640 books, 80 of them reference books. Enter what percent of the books on the shelf are reference books, just the number. -> ans 12.5
+6.3R: A deposit of 144 dollars is \\(32\\%\\) of a fee. Enter the fee in dollars. -> ans 450
+6.3R: A club has 78 members who have paid their dues, and that is \\(26\\%\\) of the membership. Multiplying \\(78\\) by \\(26\\%\\) gives \\(20.28\\), fewer people t -> ans 300
+6.3R: Depot X ships 250 crates and \\(24\\%\\) of them are fragile. Depot Y ships 380 crates and \\(15\\%\\) of them are fragile. Enter the number of fragile crat -> ans 117
+6.3R: A tank has a capacity of 3060 litres, which is \\(120\\%\\) of a second tank's capacity. Enter the capacity of the second tank in litres. -> ans 2550
+6.3R: In a batch of 45000 screws, \\(0.24\\%\\) are out of tolerance. Enter the number of screws out of tolerance. -> ans 108
+6.3R: In a depot, \\(15\\%\\) of the vehicles are vans and the rest are trucks, and there are 630 more trucks than vans. Enter the number of vehicles in the de -> ans 900
+6.4P: A quarry shipped 3400 tonnes of gravel in June, and July's shipment was 15 percent higher. Work it in two steps. Find 15 percent of 3400 first, then a -> ans 3910
+6.4P: A second pit shipped 2600 tonnes in June, and its shipments rose 15 percent in July. July's shipment is \\(2600+\\frac{15}{100}(2600)\\), and 2600 is a f -> ans 2990
+6.4P: A pressroom used 5400 litres of ink last quarter and cut its use by 28 percent this quarter. Use one multiplication to find this quarter's ink use, an -> ans 3888
+6.4P: A regional grid operator reports that this winter's peak demand was exactly 0.925 times last winter's peak. Enter the percent by which peak demand fel -> ans 7.5
+6.4P: A workshop counted 6400 orders in June. The count rose 25 percent in July, then fell 25 percent in August, with the August fall taken off the July cou -> ans 6000
+6.4P: A library's holdings grew 30 percent in one decade and 40 percent in the next, each rise measured against the holdings at the start of that decade. A  -> ans 1.82
+6.4P: A season pass costs 336 dollars after a 12 percent rise. A student takes 12 percent off 336 and reports 295.68 dollars as the old price. Check that ag -> ans 300
+6.4P: A factory's output fell 20 percent in the spring and then rose 5 percent in the summer, with each change measured against the output just before that  -> ans 10000
+6.4P: A workshop finished 450 units in March and 720 units in April. Find the percent increase from March to April, then find the percent decrease from Apri -> ans 22.5
+6.4P: A bakery cuts the price of a loaf by 10 percent and finds it then sells 30 percent more loaves. Revenue is price times number sold. No price and no nu -> ans 17
+6.4P: A bottler mixes 45 litres of a syrup that is 60 percent sugar with 75 litres of a syrup that is 20 percent sugar. Averaging the two percents gives 40, -> ans 35
+6.4P: A vat holds 280 litres of glaze that is 5 percent pigment by volume. Pure pigment is stirred in until the glaze is 30 percent pigment. One student pou -> ans 100
+6.4R: A walking trail is 1800 meters long and is lengthened by 10 percent. Enter the new length in meters. -> ans 1980
+6.4R: A farm harvested 5600 kilograms of barley last year, and this year's harvest fell 25 percent. Enter this year's harvest in kilograms. -> ans 4200
+6.4R: A distributor multiplies every wholesale price by 1.06 to get the retail price. Enter the percent by which the retail price is above the wholesale pri -> ans 6
+6.4R: A sale takes \\(18\\%\\) off every price. Enter the single number that each original price is multiplied by to get the sale price. -> ans 0.82
+6.4R: A club grew from 250 members to 315 members. Enter the percent increase, a number only. -> ans 26
+6.4R: A commute that took 105 minutes now takes 84 minutes. Enter the percent decrease, a number only. -> ans 20
+6.4R: After an 8 percent rise, the rent on an apartment is 1350 dollars a month. Enter the monthly rent in dollars before the rise. -> ans 1250
+6.4R: A bus fare is cut by 35 percent, and the new fare is 26 dollars. Enter the fare in dollars before the cut. -> ans 40
+6.4R: An amount \\(x\\) rises by 50 percent. The new amount then falls by 30 percent of itself. The ending amount equals \\(mx\\) for a single number \\(m\\). Ent -> ans 1.05
+6.4R: A crowd of 5200 grows 45 percent by noon and then shrinks 40 percent by evening. Enter the evening crowd size. -> ans 4524
+6.4R: A stock of parts falls 10 percent one month and 10 percent again the next. Enter the overall percent change, a number only, with a minus sign if it is -> ans -19
+6.4R: Store B sells a tool for 20 percent less than store A charges for the same tool. Enter the percent by which store A's price is above store B's price,  -> ans 25
+6.4R: An amount is raised by 150 percent. Enter the percent of the new amount that must then be taken off to return to the original amount, a number only. -> ans 60
+6.4R: In a survey, 60 percent of the people asked own a bicycle, and 45 percent of those bicycle owners also own a helmet. The number of people asked is not -> ans 27
+6.4R: A blender combines 24 liters of a mix that is 70 percent apple juice with 56 liters of a mix that is 30 percent apple juice. Enter the percent apple j -> ans 42
+6.4R: A tank contains 150 liters of a solution that is 12 percent acid by volume. Pure acid is added until the solution is 20 percent acid. Enter the number -> ans 15
+6.4R: A machine's price rose 20 percent in the spring and fell 15 percent in the autumn, and it now costs 2040 dollars. Enter its price in dollars before th -> ans 2000
+6.5P: A press stamps tags out of sheets of metal, and every sheet gives the same number of tags. A run of 12 sheets gives 84 tags. A later run uses 36 sheet -> ans 252
+6.5P: The same press, the same sheets, so 12 sheets still give 84 tags. A new run uses 55 sheets, and 55 is not a whole number of twelves. Work out how many -> ans 385
+6.5P: The mass of a steel sheet is directly proportional to its area. A sheet of area 18 square meters has mass 234 kilograms. Enter the mass in kilograms o -> ans 403
+6.5P: Dyeing fabric uses an amount of dye directly proportional to the mass of the fabric. Dyeing 14 kilograms of fabric uses 6 grams of dye. Enter the numb -> ans 15
+6.5P: All the chairs in a hall are set out in rows, with the same number of chairs in every row, and every arrangement uses all of the chairs. One arrangeme -> ans 28
+6.5P: On a level balance beam, the mass hung on one side times its distance from the pivot is the same number for every load that balances the beam. A 27 ki -> ans 36
+6.5P: A table lists three pairs from one relationship. $$\\begin{array}{c|ccc} x & 8 & 12 & 20 \\\\ \\hline y & 45 & 30 & 18 \\end{array}$$ Decide whether \\(y\\)  -> ans 9
+6.5P: A taxi company charges the same way for every trip. A 5 kilometre trip costs 17 dollars and a 12 kilometre trip costs 31 dollars. Test whether the far -> ans 47
+6.5P: The area of a badge is directly proportional to the square of its height. A badge 6 centimeters tall has area 27 square centimeters. A second badge of -> ans 147
+6.5P: A meter reads the light falling on a screen, and the reading is inversely proportional to the square of the screen's distance from the lamp. At a dist -> ans 16
+6.5P: A rectangle is reshaped with its area kept the same, so its length and its width are inversely proportional. The length is changed to \\(\\frac{5}{8}\\)  -> ans 8/5
+6.5P: Storage bins in one product line all have the same shape. For that shape the outside surface area is directly proportional to the square of the height -> ans 1120
+6.5R: The cost of nylon rope is directly proportional to its length. A 7 meter piece costs 42 dollars. Enter the cost of a 35 meter piece of the same rope,  -> ans 210
+6.5R: \\(y\\) is directly proportional to \\(x\\), and \\(y=51\\) when \\(x=17\\). Enter the value of \\(y\\) when \\(x=23\\). -> ans 69
+6.5R: \\(x\\) and \\(y\\) are inversely proportional, and \\(y=24\\) when \\(x=11\\). Enter the value of \\(y\\) when \\(x=33\\). -> ans 8
+6.5R: A fixed volume of soup is ladled out equally into bowls, with none left over. Enter the word direct or the word inverse for the relationship between t -> ans inverse
+6.5R: \\(y\\) is directly proportional to \\(x\\), and \\(y=21\\) when \\(x=6\\). Enter the constant of proportionality \\(k\\) as a fraction in lowest terms. -> ans 7/2
+6.5R: The mass of a bar of alloy is directly proportional to its length. A bar 26 centimeters long has mass 65 grams. Enter the length in centimeters of a b -> ans 40
+6.5R: \\(y\\) is inversely proportional to \\(x\\), and \\(y=14\\) when \\(x=6\\). Enter the value of \\(x\\) when \\(y=4\\). -> ans 21
+6.5R: A fixed load of gravel fills 24 barrows when each barrow carries 35 kilograms. Enter the number of kilograms in each barrow when the same load is spre -> ans 20
+6.5R: A table lists three pairs from one relationship. $$\\begin{array}{c|ccc} x & 3 & 7 & 12 \\\\ \\hline y & 12 & 28 & 48 \\end{array}$$ Decide whether \\(y\\) i -> ans 80
+6.5R: A fixed number of tiles is laid in rows of equal length, so the number of rows and the number of tiles in each row are inversely proportional. The num -> ans 1/3
+6.5R: \\(y\\) is directly proportional to \\(x^2\\), and \\(y=48\\) when \\(x=4\\). Enter the value of \\(y\\) when \\(x=9\\). -> ans 243
+6.5R: \\(y\\) is inversely proportional to \\(x^2\\), and \\(y=50\\) when \\(x=3\\). Enter the value of \\(y\\) when \\(x=5\\). -> ans 18
+6.5R: A courier charges a fixed handling amount plus a further amount for each kilogram. A 4 kilogram parcel costs 29 dollars and a 9 kilogram parcel costs  -> ans 84
+6.5R: For solid cubes cut from one material, the mass is directly proportional to the cube of the edge length. Such a cube with edge length 2 centimetres ha -> ans 875
+6.5R: The reading on a light meter is inversely proportional to the square of the distance from the meter to the lamp. The meter is moved so that this dista -> ans 25/4
+6.5R: Among statues of one shape, mass is directly proportional to the cube of the height. One such statue is 40 centimeters tall and has mass 33 kilograms. -> ans 120
+6.5R: A table lists three pairs from one relationship. $$\\begin{array}{c|ccc} x & 2 & 3 & 6 \\\\ \\hline y & 675 & 300 & 75 \\end{array}$$ Neither \\(\\frac{y}{x} -> ans 108
+6.6P: A print shop runs 6 presses for 4 hours and finishes 720 posters, every press printing at the same steady rate. The same 6 presses are then run for 7  -> ans 1260
+6.6P: That same shop runs every press at the same steady rate, and 6 presses finish 720 posters in 4 hours. Enter how many posters 15 presses finish in 6 ho -> ans 2700
+6.6P: A camp's food store lasts a number of days proportional to the mass of food and inversely proportional to the number of campers. 240 kg feeds 15 campe -> ans 36
+6.6P: A solar array's daily output \\(w\\), in kilowatt-hours, is proportional to the number of panels \\(p\\) and to the hours of sun \\(h\\), so \\(w=kph\\). An a -> ans 210
+6.6P: A tram holds a steady 45 kilometers per hour for 40 minutes, then a steady 66 kilometers per hour for 30 minutes. Use \\(1\\text{ h}=60\\text{ min}\\). En -> ans 63
+6.6P: A delivery route is 288 km long. A truck covers the first 120 km at a steady 40 kilometers per hour, then covers the rest at one steady speed, and the -> ans 56
+6.6P: A tiler lays a floor in 20 hours of steady work, laying the same amount in every hour. Enter the fraction of the floor laid in the first 9 hours, in l -> ans 9/20
+6.6P: One crew repaves a road in 10 hours and a second crew repaves the same road in 15 hours, each at its own steady pace. Both crews work on the road at t -> ans 6
+6.6P: Two ferries leave opposite ends of a 174 km channel at the same moment and travel toward each other, one at 24 kilometers per hour and the other at 34 -> ans 102
+6.6P: A barge passes a lock at a steady 8 kilometers per hour. Three hours later a patrol boat leaves that lock along the same route in the same direction a -> ans 40
+6.6P: The number of bricks a crew lays is proportional to the number of masons and to the number of days worked. Eight masons lay 2016 bricks in 6 days. A c -> ans 18
+6.6P: A workshop's looms are identical and each one weaves at the same steady rate. Six of them weaving for 5 hours produce 210 meters of cloth. Four of the -> ans 9
+6.6R: The mass of a metal plate is proportional to its length and to its width. A plate 4 cm long and 9 cm wide has a mass of 54 grams. Enter the mass, in g -> ans 84
+6.6R: \\(W\\) is jointly proportional to \\(u\\) and \\(v\\), so \\(W=kuv\\) for one constant \\(k\\). When \\(u=6\\) and \\(v=4\\), \\(W=264\\). Enter the value of \\(k\\). -> ans 11
+6.6R: A worker's pay is proportional to the number of shifts worked and to the hours in each shift. Four shifts of 6 hours pay 528 dollars in total. Enter t -> ans 990
+6.6R: \\(P\\) is jointly proportional to \\(q\\) and \\(r\\), and \\(P=189\\) when \\(q=3\\) and \\(r=9\\). Enter \\(P\\) when \\(q=5\\) and \\(r=4\\). -> ans 140
+6.6R: \\(y\\) is directly proportional to \\(m\\) and inversely proportional to \\(n\\). When \\(m=8\\) and \\(n=6\\), \\(y=24\\). Enter \\(y\\) when \\(m=15\\) and \\(n=10\\ -> ans 27
+6.6R: The number of days a water store lasts is proportional to the volume stored and inversely proportional to the number of households drawing on it. 900  -> ans 12
+6.6R: A tram covers 78 km in 65 minutes at a steady speed. Enter how many kilometers it covers in 100 minutes at that same speed. -> ans 120
+6.6R: A survey drone covers 189 km in 3 hours 30 minutes at a steady speed. Use \\(1\\text{ h}=60\\text{ min}\\). Enter the drone's speed in kilometers per hour -> ans 54
+6.6R: A painter finishes a mural in 15 hours, covering the same amount of wall in every hour. Enter the fraction of the mural that is finished once 6 hours  -> ans 2/5
+6.6R: One conveyor loads a barge in 14 hours and a second conveyor loads the same barge in 35 hours, each at its own steady rate. Both run at once on one ba -> ans 10
+6.6R: Pumps A and B running together drain a tank in 12 hours, and pump A alone drains the tank in 20 hours. Enter how many hours pump B alone takes to drai -> ans 30
+6.6R: Two drones 245 km apart set off at the same moment and fly toward each other along the same line, one at 42 kilometers per hour and the other at 28 ki -> ans 147
+6.6R: A hiker leaves a trailhead at a steady 7 kilometers per hour. Four hours later a cyclist leaves the same trailhead on the same path at a steady 21 kil -> ans 42
+6.6R: Sprinkler C waters a field in 10 hours and sprinkler D waters the same field in 40 hours, each at its own steady rate. Both run together for 4 hours,  -> ans 20
+6.6R: A packing plant running 8 machines for 5 hours a day takes 12 days to finish an order, every machine working at the same steady rate. The next order i -> ans 8
+6.6R: A data hall's running cost is proportional to the number of racks and to the hours online, and inversely proportional to its efficiency rating. 20 rac -> ans 1050
+6.6R: Two cyclists ride toward each other along a 190 km road. The first sets out from one end at a steady 15 kilometers per hour. Two hours later the secon -> ans 90`
+const SPEC = `
+WHAT THIS IS. The per-chapter Practice and Challenge problem sets for Quantica Algebra I
+chapter 6, "Ratios, Percents, and Proportion". These live in landing.html's PSETS_ALG1 object,
+NOT in the lesson files. They are the chapter's capstone, worked after all six lessons.
+
+EXACT SHAPE REQUIRED: 12 practice items and 12 challenge items.
+- Practice items carry EXACTLY 1 hint each. Challenge items carry EXACTLY 2 hints each.
+- The LAST 3 challenge items, and only those, carry "legendary": true.
+- Every "sol" is wrapped in <p>...</p> and closes part 1 on \\(\\boxed{...}\\).
+
+WHAT THE SIX LESSONS TAUGHT, which the sets must span:
+- 6.1 Ratios, Simple and Subtle. The common multiplier, so a:b means ak and bk; part-to-part
+  against part-to-whole; three-part ratios; a ratio statement cross-multiplies to bx=ay; ratios
+  that change when an amount moves; chaining x:y with y:z by matching the shared term; a ratio
+  pins proportion but never a count.
+- 6.2 Conversion Factors. A conversion factor is a fraction worth 1; units cancel like common
+  factors; chains of factors; converting a rate where both units change; squared and cubed units
+  needing the factor twice or three times; factors built from a price or a rate of pay.
+- 6.3 Percents. p% is the ratio p/100; converting among percent, fraction and decimal; the one
+  equation a=(p/100)b with any of the three unknown; finding the whole is a division; the base is
+  whatever follows "of"; percents above 100 and below 1.
+- 6.4 Percent Problems. The multiplier 1+k/100 for a rise and 1-k/100 for a fall; successive
+  changes MULTIPLY and do not add; working backwards is a division by the multiplier; percent
+  change is measured against the original; mixture by amount of substance.
+- 6.5 Direct and Inverse Proportion. Directly proportional means y/x is constant, inversely
+  proportional means xy is constant; telling them apart; proportional to a power; scaling by a
+  factor without ever finding k; relationships proportional to neither.
+- 6.6 Joint Proportion and Rates. x=kyz and the mixed form x=kyz/w; grouping the varying
+  quantities on one side; d=rt; work rate as the fraction of a job done per hour; closing rate as
+  a sum when two approach and a difference when one chases.
+
+COVERAGE RULE. Across the 24 items every one of those six lessons must be represented, and the
+practice set alone must touch all six. The challenge set goes harder: a ratio that changes twice,
+a chain of conversion factors through squared units, successive percent changes run backwards, a
+relationship proportional to one quantity and inversely to the square of another, a work-rate
+problem with three workers or a partial-shift, and a two-object motion problem where the head
+start is stated in time.
+
+FRESHNESS, THE HARD RULE. Below is a catalogue of ALL 175 problems already used in chapter 6's
+six lessons. No item may reuse any of those systems, stories, or full number sets. Invent
+everything fresh. Every answer in the 24 items must be distinct from every other.
+
+CATALOGUE OF PROBLEMS ALREADY USED (do not reuse any of these):
+${USED}
+`
+const STYLE_PS = `
+QUANTICA HOUSE STYLE (follow exactly):
+- Voice: problem-first, plainspoken, warm but tight, exactly like AoPS. NO em-dashes. Almost NO
+  colons in prose. NO poetic/abstract register, no cute renamings, no dramatized verbs.
+- EQUATIONS, LETTERS, NUMBERS AND QUANTITIES DO NOT ACT. Never write that a system "hands over" a
+  coefficient, a letter "qualifies", or fractions "ride through" lines. State the fact directly.
+- Math in \\( ... \\) inline, $$ ... $$ display. SINGLE backslashes. Bold with <b>...</b>.
+- A LITERAL DOLLAR SIGN inside math must be written \\$ so KaTeX does not treat it as a
+  delimiter. Prefer writing "dollars" as a word and avoiding the symbol entirely.
+- Statement length 120-450 chars. Solutions: easy ~120-320, moderate ~250-450, hard ~350-600.
+
+ITEM SCHEMA:
+  { "id", "x", "ans", "accept": [...], "hints": [...], "sol", "legendary"? }
+- id is the slot id you were handed, copied VERBATIM.
+- Answers are a SINGLE typed value. The grader normAns trims, lowercases, strips spaces and
+  commas, and drops a leading plus. It does NOT convert the unicode minus, so a negative answer
+  needs BOTH the ASCII and the unicode spelling in accept. accept must contain ans plus every
+  reasonable typed variant (word form, exact terminating decimal for a fraction, unit spellings).
+- Practice items: EXACTLY 1 hint. Challenge items: EXACTLY 2 hints. Never a note to yourself.
+- sol is wrapped in <p>...</p>, is answer-first, and part 1 closes ON \\(\\boxed{...}\\) with
+  nothing trailing after the box in that sentence. An optional second sentence follows the box.
+- The last three challenge items (CH10, CH11, CH12) carry "legendary": true. No others do.
+`
+
+phase('Blueprint')
+const LENSES = [
+  'COVERAGE designer. Priority: that all six lessons of the chapter are represented across the 24 items, and that the practice set ramps gently from testing a pair to a three-letter system.',
+  'DIFFICULTY designer. Priority: the challenge set, and especially the three legendary items, which must be genuinely hard and reward insight rather than grinding. Each should have a short clever route and a long dull one.',
+  'FRESHNESS designer. Priority: that nothing collides with the 176 problems already used in the chapter. Propose distinct systems, distinct stories and distinct answers, and say for each item what makes it different from the catalogue.',
+]
+const designs = await parallel(LENSES.map((lens, i) => () =>
+  agent(`You are designing (NOT writing) the Quantica Algebra I chapter ${CHAPTER} problem sets, "${CHAPTER_TITLE}". ${lens}\n${STYLE_PS}\nSPEC:${SPEC}\nReturn a compact design listing all 24 slots, PR1 to PR12 then CH1 to CH12, each with the exact statement, the exact ask, the exact single-value answer, and which lesson it exercises.`,
+    { label: `design:${['coverage', 'difficulty', 'freshness'][i]}`, phase: 'Blueprint' })))
+
+const blueprint = await agent(
+  `You are the judge for the Quantica Algebra I chapter ${CHAPTER} problem sets. Merge the three designs into ONE final blueprint covering slots PR1 to PR12 and CH1 to CH12. COMPUTE every answer yourself, digit by digit, stating the full solve, and check each back into the original statement. Every answer distinct from every other; nothing reused from the catalogue; all six lessons represented. CH10, CH11 and CH12 are the legendary three. Return structured plain text keyed by slot id.\n${STYLE_PS}\nSPEC:${SPEC}\n\nA:\n${designs[0]}\n\nB:\n${designs[1]}\n\nC:\n${designs[2]}`,
+  { label: 'judge:merge', phase: 'Blueprint' })
+
+phase('Author')
+async function tryAgent(prompt, opts, tries = 3) {
+  for (let i = 0; i < tries; i++) {
+    const r = await agent(prompt, i === 0 ? opts : { ...opts, label: `${opts.label}:r${i}` })
+    if (r) return r
+    log(`${opts.label} returned null, retry ${i + 1}/${tries - 1}`)
+  }
+  return null
+}
+const ITEM_SCHEMA = { type: 'object', properties: { items: { type: 'array', items: { type: 'object', properties: {
+  id: { type: 'string' }, x: { type: 'string' }, ans: { type: 'string' },
+  accept: { type: 'array', items: { type: 'string' } }, hints: { type: 'array', items: { type: 'string' } },
+  sol: { type: 'string' }, legendary: { type: 'boolean' },
+}, required: ['id', 'x', 'ans', 'accept', 'hints', 'sol'] } } }, required: ['items'] }
+
+const COMMON = `${STYLE_PS}\nSPEC:${SPEC}\nFINAL BLUEPRINT (authoritative; do NOT change any number, any answer or any statement):\n${blueprint}\n
+OUTPUT RULE: return ONLY the slots you were asked for, each carrying its "id" copied VERBATIM.`
+
+const PR = ['PR1','PR2','PR3','PR4','PR5','PR6','PR7','PR8','PR9','PR10','PR11','PR12']
+const CH = ['CH1','CH2','CH3','CH4','CH5','CH6','CH7','CH8','CH9','CH10','CH11','CH12']
+const chunk = (a, n) => a.reduce((o, v, i) => (i % n ? o[o.length - 1].push(v) : o.push([v]), o), [])
+const jobs = []
+for (const ids of chunk(PR, 4)) {
+  jobs.push(() => tryAgent(`Write PRACTICE slots ${ids.join(', ')} exactly as the blueprint specifies. EXACTLY 1 hint each, no legendary flag, sol wrapped in <p>...</p> and answer-first. Do not change any number or answer.\n${COMMON}`,
+    { label: `author:${ids[0]}-${ids[ids.length-1]}`, phase: 'Author', schema: ITEM_SCHEMA }))
+}
+for (const ids of chunk(CH, 4)) {
+  const leg = ids.some(i => ['CH10','CH11','CH12'].includes(i))
+  jobs.push(() => tryAgent(`Write CHALLENGE slots ${ids.join(', ')} exactly as the blueprint specifies. EXACTLY 2 hints each, sol wrapped in <p>...</p> and answer-first. ${leg ? 'Set "legendary": true on CH10, CH11 and CH12 only.' : 'Do NOT set legendary on any of these.'} Do not change any number or answer.\n${COMMON}`,
+    { label: `author:${ids[0]}-${ids[ids.length-1]}`, phase: 'Author', schema: ITEM_SCHEMA }))
+}
+const parts = await parallel(jobs)
+const bag = {}
+for (const p of parts) if (p && p.items) for (const it of p.items) bag[String(it.id).trim().toUpperCase()] = it
+const missing = []
+function pick(ids, nh, legendarySet) {
+  const out = []
+  for (const id of ids) {
+    const it = bag[id]
+    if (!it) { missing.push(id); continue }
+    const o = { x: it.x, ans: it.ans, accept: it.accept, hints: it.hints, sol: it.sol }
+    if (legendarySet && legendarySet.includes(id)) o.legendary = true
+    out.push(o)
+  }
+  return out
+}
+const practice = pick(PR, 1, null)
+const challenge = pick(CH, 2, ['CH10','CH11','CH12'])
+if (missing.length) log(`MISSING SLOTS: ${missing.join(', ')}`)
+log(`assembled practice ${practice.length}, challenge ${challenge.length}, legendary ${challenge.filter(c=>c.legendary).length}`)
+if (practice.length < 10 || challenge.length < 10) return { error: 'author incomplete', missing, practice, challenge }
+
+phase('Verify')
+const VERDICT = { type: 'object', properties: {
+  pass: { type: 'boolean' }, issues: { type: 'array', items: { type: 'string' } },
+  corrected: { type: 'string' }, pyexpr: { type: 'string' },
+}, required: ['pass','issues','corrected','pyexpr'] }
+const targets = [...practice.map((b,i)=>({kind:'practice',idx:i,b})), ...challenge.map((b,i)=>({kind:'challenge',idx:i,b}))]
+const verdicts = await parallel(targets.map(t => () =>
+  tryAgent(`Adversarially verify this single Quantica Algebra I chapter 5 problem-set item. BREAK it before passing.
+1. SOLVE IT YOURSELF from scratch. Then read the question again to see WHICH value it asks for. Does it match ans exactly?
+2. AMBIGUITY. Could a careful reader read the statement a different way? Is every unit stated? Is the ask unmistakable?
+3. Grader normAns trims, lowercases, strips spaces and commas, drops a leading plus, and does NOT convert the unicode minus. Is ans in accept? Any accept entry that falsely accepts a wrong response? Any obvious correct form missing?
+4. HINT COUNT: a practice item has EXACTLY 1 hint, a challenge item EXACTLY 2. No note-to-self text.
+5. sol wrapped in <p>...</p>, answer-first, part 1 closing ON \\(\\boxed{...}\\).
+6. KaTeX valid and balanced, SINGLE backslashes, no raw unescaped dollar sign inside math, no em-dashes, colon-free prose, no verb of agency on a mathematical object.
+7. In pyexpr give one Python expression computing the answer mechanically. "" only if not a number.
+If anything fails: pass=false, list issues, return the full corrected item JSON in "corrected".
+ITEM (${t.kind} ${t.idx}):\n${JSON.stringify(t.b, null, 1)}`,
+    { label: `verify:${t.kind}${t.idx}`, phase: 'Verify', schema: VERDICT })))
+let fixedCount = 0
+const pyChecks = []
+verdicts.forEach((v,k)=>{
+  if (!v) return
+  const t = targets[k]
+  if (!v.pass && v.corrected) {
+    try {
+      const nb = JSON.parse(v.corrected)
+      if (nb && nb.x && nb.ans) {
+        delete nb.id
+        if (t.kind==='practice') practice[t.idx]=nb; else { if (t.idx>=9) nb.legendary=true; challenge[t.idx]=nb }
+        fixedCount++
+      }
+    } catch(e) { log(`verify:${t.kind}${t.idx} correction unparseable`) }
+  }
+  const fb = t.kind==='practice'?practice[t.idx]:challenge[t.idx]
+  if (v.pyexpr) pyChecks.push({ where:`${t.kind}[${t.idx}]`, pyexpr:v.pyexpr, ans:fb.ans })
+})
+log(`verification done, ${fixedCount} corrected, ${pyChecks.length} python checks`)
+
+phase('Audit')
+const AUDIT = { type: 'object', properties: {
+  findings: { type: 'array', items: { type: 'object', properties: {
+    severity: { type: 'string', enum: ['major','minor'] }, where: { type: 'string' }, issue: { type: 'string' }, fix: { type: 'string' },
+  }, required: ['severity','where','issue','fix'] } }, verdict: { type: 'string' },
+}, required: ['findings','verdict'] }
+const AP = `Audit of the Quantica Algebra I chapter 5 problem sets, the last gate before ship. Check:
+1. COVERAGE. Which of the six lessons does each item exercise? Report any lesson not represented.
+2. FRESHNESS against the catalogue in the spec. Flag any reused system, story or full number set.
+3. DISTINCTNESS. Flag any two items in the 24 sharing an answer or a full number set.
+4. HINT COUNTS: practice exactly 1, challenge exactly 2. LEGENDARY: exactly the last three challenge items.
+5. AMBIGUITY, and any item underdetermined by its own words.
+6. RE-SOLVE EVERY ITEM and confirm the value asked for is the value in ans.
+7. STYLE: no em-dash, colon-free prose, no verb of agency, single backslashes, no raw dollar sign inside math, sol wrapped in <p> and answer-first with part 1 closing ON the box.
+8. DIFFICULTY ORDER: practice ramps gently, challenge is genuinely harder, and the three legendary items are the hardest in the chapter.
+For any fix that changes numbers, state the full re-solve so it can be checked before it is applied.
+SPEC:${SPEC}\n`
+const [aP, aC] = await parallel([
+  () => tryAgent(`${AP}\nAudit the PRACTICE set (12 items).\n${JSON.stringify(practice,null,1)}`, { label:'audit:practice', phase:'Audit', schema:AUDIT }),
+  () => tryAgent(`${AP}\nAudit the CHALLENGE set (12 items). The practice set follows for collision checking only.\n${JSON.stringify(challenge,null,1)}\n\nPRACTICE FOR COLLISION CHECKING ONLY:\n${JSON.stringify(practice.map(p=>({x:p.x,ans:p.ans})),null,1)}`, { label:'audit:challenge', phase:'Audit', schema:AUDIT }),
+])
+const audit = {
+  findings: [...((aP&&aP.findings)||[]).map(f=>({...f, where:`PRACTICE ${f.where}`})), ...((aC&&aC.findings)||[]).map(f=>({...f, where:`CHALLENGE ${f.where}`}))],
+  verdict: `practice: ${(aP&&aP.verdict)||'MISSING'} || challenge: ${(aC&&aC.verdict)||'MISSING'}`,
+}
+return { practice, challenge, audit, fixedCount, pyChecks, missing }

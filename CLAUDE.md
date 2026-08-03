@@ -64,8 +64,13 @@ exceptions.
 
 ## Common tasks
 
-- **Author a lesson** → `docs/AUTHORING.md`. Uses the Workflow template
-  `tools/author_lesson.workflow.js`, then `tools/finalize_lesson.py`, then build + deploy.
+- **Author a lesson** → `docs/AUTHORING.md` and `docs/HANDOFF.md`. Copy the Workflow template
+  `tools/author_lesson.workflow.js` (a SPEC + OUTLINE swap; worked examples in
+  `tools/lesson-specs/`), then verify with `tools/check_lesson.py`, then
+  `tools/finalize_lesson.py`, then build + deploy.
+- **Verify content** → `tools/check_lesson.py` for a lesson, `tools/check_pset.py` for a problem
+  set. Both must report 0 issues before a build. They catch what `finalize_lesson.py` does not.
+- **Coverage vs the reference text** → `docs/reference-coverage-map.md` (chapters 6, 7, 8 mapped).
 - **Add a course** → `lessons/<slug>/toc.json` + `chapter-*.json`, add the slug to `COURSES`
   in `tools/build_lessons.py`, and register it in `COURSE_REG` in `landing.html`. The engine
   is course-agnostic; a course with live lessons auto-unlocks its in-app tab.
@@ -79,10 +84,9 @@ exceptions.
 ## Current status (2026-08-02)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: 27 of 81 lessons live. Chapters 1 to 4 are complete, each with its Practice
-  and Challenge sets in `PSETS_ALG1`. Chapter 5 is 5 of 6 (5.1 Two Variables Two Equations,
-  5.2 Substitution, 5.3 Elimination, 5.4 Systems in Disguise, 5.5 Word Problems with Systems).
-  **Next lesson is 5.6 Three or More Variables**, then the chapter 5 sets. Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
+- **Algebra I**: 34 of 81 lessons live. **Chapters 1 to 6 are complete.** Practice and Challenge
+  sets exist for chapters 1 to 5 in `PSETS_ALG1`. **Next work is the chapter 6 sets, then
+  chapter 7 (Graphing Lines), then chapters 8 to 15.** Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
   live per-lesson state and the pipeline traps are in `docs/HANDOFF.md`, which is the file to
   read before writing anything. Both courses have SEO hub + lesson pages via
   `tools/gen_seo_pages.py` (sitemap/homepage links updated manually), and those have NOT been
