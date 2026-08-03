@@ -2300,5 +2300,1174 @@
     "sol": "Let \\(p\\) be the price before the rise. The two changes collapse to one multiplier, \\(1.2(0.85)=1.02\\), so \\(1.02p=2040\\) and \\(p=\\frac{2040}{1.02}=\\boxed{2000}\\). Check forward, \\(2000(1.2)=2400\\) and \\(2400(0.85)=2040\\). A 20 percent rise and a 15 percent fall leave the price 2 percent up, not 5 percent up."
    }
   ]
+ },
+ "6.5": {
+  "title": "Direct and Inverse Proportion",
+  "next": "6.6",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "A ratio compares two amounts at one moment. This lesson is about two amounts that both change, and about the combination of them that stays fixed while they do. Sometimes that combination is the quotient of the two amounts, the same number at every moment. Sometimes it is the product. The first two problems have a fixed quotient."
+   },
+   {
+    "t": "prob",
+    "x": "A press stamps tags out of sheets of metal, and every sheet gives the same number of tags. A run of 12 sheets gives 84 tags. A later run uses 36 sheets. Enter the number of tags the later run gives.",
+    "xp": 5,
+    "ans": "252",
+    "accept": [
+     "252",
+     "252.0",
+     "252 tags",
+     "two hundred fifty-two",
+     "twohundredfiftytwo",
+     "two hundred and fifty-two",
+     "twohundredandfiftytwo"
+    ],
+    "hints": [
+     "Every sheet gives the same number of tags, so the two runs differ only in how many sheets went through. Compare 36 sheets with 12 sheets.",
+     "\\(36\\div 12=3\\), so the later run is three copies of the first run."
+    ],
+    "sol": "The later run uses \\(36\\div 12=3\\) times as many sheets, and every sheet gives the same number of tags, so the tag count is \\(3(84)=\\boxed{252}\\). How many tags one sheet gives was never needed, only the fact that it does not change."
+   },
+   {
+    "t": "prob",
+    "x": "The same press, the same sheets, so 12 sheets still give 84 tags. A new run uses 55 sheets, and 55 is not a whole number of twelves. Work out how many tags one sheet gives first, then enter the number of tags the 55-sheet run gives.",
+    "xp": 5,
+    "ans": "385",
+    "accept": [
+     "385",
+     "385.0",
+     "385 tags",
+     "three hundred eighty-five",
+     "threehundredeightyfive",
+     "three hundred and eighty-five",
+     "threehundredandeightyfive"
+    ],
+    "hints": [
+     "The 12-sheet run gives 84 tags and every sheet gives the same number, so one sheet's share is a division.",
+     "\\(84\\div 12=7\\) tags per sheet, and the run has 55 sheets."
+    ],
+    "sol": "One sheet gives \\(84\\div 12=7\\) tags, so 55 sheets give \\(7\\times 55=\\boxed{385}\\). Working out the per-sheet count first handles any run, while multiplying the 12-sheet run by a whole-number factor only works when the new sheet count is a multiple of 12."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Direct proportion.</b> Two amounts \\(x\\) and \\(y\\) are <b>directly proportional</b> when \\(\\frac{y}{x}\\) is the same number at every matching pair. That number is \\(k\\), the <b>constant of proportionality</b>. Multiplying \\(\\frac{y}{x}=k\\) by \\(x\\) gives \\(y=kx\\), and dividing \\(y=kx\\) by \\(x\\) gives \\(\\frac{y}{x}=k\\) back, so the two forms say the same thing. One division at a known pair gives \\(k\\), and the \\(y\\) at any other \\(x\\) is then \\(kx\\). For the press, \\(k=7\\) tags per sheet."
+   },
+   {
+    "t": "prob",
+    "x": "The mass of a steel sheet is directly proportional to its area. A sheet of area 18 square meters has mass 234 kilograms. Enter the mass in kilograms of a sheet of area 31 square meters.",
+    "xp": 5,
+    "ans": "403",
+    "accept": [
+     "403",
+     "403.0",
+     "403 kg",
+     "403 kilograms",
+     "403 kilogrammes",
+     "four hundred three",
+     "four hundred and three"
+    ],
+    "hints": [
+     "Here \\(k\\) is the mass of one square meter of the steel. The 18 square meter sheet is enough to find it.",
+     "\\(234\\div 18=13\\), so every square meter has mass 13 kilograms."
+    ],
+    "sol": "\\(k=234\\div 18=13\\) kilograms per square meter, so the larger sheet has mass \\(13(31)=\\boxed{403}\\). Going from 18 straight to 31 without \\(k\\) means multiplying 234 by \\(\\frac{31}{18}\\), which is not a whole number, so finding \\(k\\) first keeps every step in whole numbers."
+   },
+   {
+    "t": "prob",
+    "x": "Dyeing fabric uses an amount of dye directly proportional to the mass of the fabric. Dyeing 14 kilograms of fabric uses 6 grams of dye. Enter the number of grams of dye needed for 35 kilograms of the same fabric.",
+    "xp": 6,
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "15 g",
+     "15 grams",
+     "fifteen",
+     "fifteen grams"
+    ],
+    "hints": [
+     "\\(k\\) is the dye used per kilogram of fabric, and it is not a whole number here.",
+     "\\(\\frac{6}{14}=\\frac{3}{7}\\) grams per kilogram, and 35 is a multiple of 7."
+    ],
+    "sol": "\\(k=\\frac{6}{14}=\\frac{3}{7}\\) grams of dye per kilogram of fabric, so 35 kilograms need \\(\\frac{3}{7}(35)=\\boxed{15}\\). A constant of proportionality is a rate, and there is no reason a rate should come out whole. Scaling gives the same value, since \\(35\\div 14=\\frac{5}{2}\\) and \\(\\frac{5}{2}(6)=15\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Two routes through a direct proportion.</b> One route is to compute \\(k=\\frac{y}{x}\\) at the known pair and then multiply the new \\(x\\) by \\(k\\). The other is to multiply the known \\(y\\) by \\(m\\), where \\(m\\) is the new \\(x\\) divided by the known \\(x\\). Both give the same value, since \\(y=kx\\) with \\(x\\) replaced by \\(mx\\) is \\(k(mx)=m(kx)\\), which is \\(m\\) times the old \\(y\\). Scaling is shorter when one \\(x\\) divides the other evenly. Finding \\(k\\) works whatever the two values are, and the extra division is worth it when several questions about the same relationship follow."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 364\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands of paired bars. In the top band, labelled direct, the blue bar doubles from a to two a to four a and the gold bar doubles with it from b to two b to four b, beside a card reading b over a equals k. In the bottom band, labelled inverse, the blue bar doubles the same way while the gold bar halves from c to c over two to c over four, beside a card reading a times c equals k.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"f65soft\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0\" dy=\"6\" stdDeviation=\"7\" flood-color=\"#1f3a66\" flood-opacity=\"0.14\"/></filter></defs><rect x=\"112\" y=\"12\" width=\"16\" height=\"12\" rx=\"6\" fill=\"#3b82f6\"/><text x=\"136\" y=\"23\" font-size=\"12\" font-weight=\"700\" fill=\"#475569\">first amount</text><rect x=\"250\" y=\"12\" width=\"16\" height=\"12\" rx=\"6\" fill=\"#fcd76a\"/><text x=\"274\" y=\"23\" font-size=\"12\" font-weight=\"700\" fill=\"#475569\">second amount</text><text x=\"28\" y=\"117\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">direct</text><rect x=\"112\" y=\"48\" width=\"60\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1.5\"/><text x=\"181\" y=\"60\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">a</text><rect x=\"112\" y=\"68\" width=\"45\" height=\"14\" rx=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"166\" y=\"80\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">b</text><rect x=\"112\" y=\"96\" width=\"120\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1.5\"/><text x=\"241\" y=\"108\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">2a</text><rect x=\"112\" y=\"116\" width=\"90\" height=\"14\" rx=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"211\" y=\"128\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">2b</text><rect x=\"112\" y=\"144\" width=\"240\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1.5\"/><text x=\"361\" y=\"156\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">4a</text><rect x=\"112\" y=\"164\" width=\"180\" height=\"14\" rx=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"301\" y=\"176\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">4b</text><rect x=\"396\" y=\"94\" width=\"160\" height=\"62\" rx=\"18\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\" filter=\"url(#f65soft)\"/><text x=\"452\" y=\"118\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#2257c5\">b</text><path d=\"M436 126 H468\" stroke=\"#2257c5\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"452\" y=\"148\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#2257c5\">a</text><text x=\"500\" y=\"134\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#2257c5\">= k</text><path d=\"M28 196 H552\" stroke=\"#e4e9f1\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"28\" y=\"289\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">inverse</text><rect x=\"112\" y=\"220\" width=\"60\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1.5\"/><text x=\"181\" y=\"232\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">a</text><rect x=\"112\" y=\"240\" width=\"160\" height=\"14\" rx=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"281\" y=\"252\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">c</text><rect x=\"112\" y=\"268\" width=\"120\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1.5\"/><text x=\"241\" y=\"280\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">2a</text><rect x=\"112\" y=\"288\" width=\"80\" height=\"14\" rx=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"201\" y=\"300\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">c/2</text><rect x=\"112\" y=\"316\" width=\"240\" height=\"14\" rx=\"7\" fill=\"#3b82f6\" stroke=\"#2257c5\" stroke-width=\"1.5\"/><text x=\"361\" y=\"328\" font-size=\"14\" font-weight=\"700\" fill=\"#2257c5\">4a</text><rect x=\"112\" y=\"336\" width=\"40\" height=\"14\" rx=\"7\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"161\" y=\"348\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">c/4</text><rect x=\"396\" y=\"266\" width=\"160\" height=\"62\" rx=\"18\" fill=\"#eef1f6\" stroke=\"#dbe1ea\" stroke-width=\"1.5\" filter=\"url(#f65soft)\"/><text x=\"476\" y=\"304\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"700\" fill=\"#2257c5\">a &#215; c = k</text></svg>",
+    "cap": "Blue is the first amount and gold is the second. In the top band the first amount doubles and the second doubles with it, so the quotient of the gold length by the blue length is the same in all three rows. In the bottom band the first amount doubles and the second is halved, so it is the product of the two lengths that is the same in all three rows."
+   },
+   {
+    "t": "p",
+    "x": "A fixed quotient is one way for two amounts to vary together. A fixed product is the other. Cut a strip into equal pieces and the number of pieces times the length of one piece is the length of the whole strip every time, so more pieces means shorter pieces. Two amounts whose product is the same at every pair are inversely proportional."
+   },
+   {
+    "t": "prob",
+    "x": "All the chairs in a hall are set out in rows, with the same number of chairs in every row, and every arrangement uses all of the chairs. One arrangement is 18 rows of 42 chairs. Another arrangement has 27 rows. Enter the number of chairs in each row of the 27-row arrangement.",
+    "xp": 5,
+    "ans": "28",
+    "accept": [
+     "28",
+     "28.0",
+     "28 chairs",
+     "twenty-eight",
+     "twentyeight"
+    ],
+    "hints": [
+     "Both arrangements use the same chairs, so the number of rows times the number of chairs in each row comes out the same both times.",
+     "27 rows is \\(\\frac{3}{2}\\) times 18 rows, so each row of the 27-row arrangement holds \\(\\frac{2}{3}\\) as many chairs."
+    ],
+    "sol": "From 18 rows to 27 rows the row count is multiplied by \\(\\frac{27}{18}=\\frac{3}{2}\\), so the number in each row is divided by that same factor, giving \\(42\\div\\frac{3}{2}=\\boxed{28}\\). The product of the two counts is fixed at \\(18(42)=756\\), which is what inverse proportion means here, and \\(756\\div 27=28\\) confirms it."
+   },
+   {
+    "t": "prob",
+    "x": "On a level balance beam, the mass hung on one side times its distance from the pivot is the same number for every load that balances the beam. A 27 kilogram mass balances it at 16 centimeters from the pivot. Enter the distance in centimeters at which a 12 kilogram mass balances the same beam.",
+    "xp": 6,
+    "ans": "36",
+    "accept": [
+     "36",
+     "36 cm",
+     "36 centimeters",
+     "36 centimetres",
+     "thirty-six",
+     "thirtysix"
+    ],
+    "hints": [
+     "The fixed number here is a mass times its distance from the pivot, and the 27 kilogram load gives it.",
+     "\\(27(16)=432\\), so mass times distance is 432 for any load that balances."
+    ],
+    "sol": "\\(k=27(16)=432\\), so the 12 kilogram mass balances at \\(432\\div 12=\\boxed{36}\\). The lighter mass sits further from the pivot because the product has to stay 432. Scaling agrees, since the mass is multiplied by \\(\\frac{12}{27}=\\frac{4}{9}\\) and \\(16\\div\\frac{4}{9}=36\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Inverse proportion.</b> Two amounts \\(x\\) and \\(y\\) are <b>inversely proportional</b> when the product \\(xy\\) is the same number at every matching pair. That number is again \\(k\\), so \\(xy=k\\), and dividing by \\(x\\) gives \\(y=\\frac{k}{x}\\). One multiplication at a known pair gives \\(k\\). Multiplying \\(x\\) by \\(m\\) divides \\(y\\) by \\(m\\), since \\(\\frac{k}{mx}=\\frac{1}{m}\\cdot\\frac{k}{x}\\), so a larger \\(x\\) always goes with a smaller \\(y\\) while the product stays \\(k\\)."
+   },
+   {
+    "t": "p",
+    "x": "A description or a table of pairs does not say which relationship holds, so test it. Divide \\(y\\) by \\(x\\) at each pair and see whether one number comes out every time. Multiply \\(x\\) by \\(y\\) at each pair and do the same. At most one of the two tests passes, and for some amounts that vary together neither one does."
+   },
+   {
+    "t": "prob",
+    "x": "A table lists three pairs from one relationship. $$\\begin{array}{c|ccc} x & 8 & 12 & 20 \\\\ \\hline y & 45 & 30 & 18 \\end{array}$$ Decide whether \\(y\\) is directly proportional to \\(x\\) or inversely proportional to \\(x\\), then enter the value of \\(y\\) when \\(x=40\\).",
+    "xp": 6,
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine",
+     "y=9"
+    ],
+    "hints": [
+     "Run both tests on the first two pairs. Only one of \\(\\frac{y}{x}\\) and \\(xy\\) repeats.",
+     "\\(8(45)=360\\) and \\(12(30)=360\\), so check the third pair against 360 as well."
+    ],
+    "sol": "The quotients \\(\\frac{45}{8}\\), \\(\\frac{30}{12}\\) and \\(\\frac{18}{20}\\) are three different numbers, while \\(8(45)\\), \\(12(30)\\) and \\(20(18)\\) are all 360, so \\(xy=360\\) and \\(y=360\\div 40=\\boxed{9}\\). One pair can never settle which relationship holds, since a single pair has both a quotient and a product. Two pairs are the least that can rule one out."
+   },
+   {
+    "t": "fact",
+    "x": "In 1662 Robert Boyle poured mercury into a J-shaped tube, squeezing air trapped in the short closed arm. The readings gave his law that a fixed amount of gas at fixed temperature has volume inversely proportional to its pressure."
+   },
+   {
+    "t": "prob",
+    "x": "A taxi company charges the same way for every trip. A 5 kilometre trip costs 17 dollars and a 12 kilometre trip costs 31 dollars. Test whether the fare is directly proportional to the distance, or inversely proportional, before assuming either. Enter the cost in dollars of a 20 kilometre trip.",
+    "xp": 7,
+    "ans": "47",
+    "accept": [
+     "47",
+     "$47",
+     "47.0",
+     "47.00",
+     "$47.00",
+     "47 dollars",
+     "forty-seven",
+     "fortyseven"
+    ],
+    "hints": [
+     "Test the two given trips. \\(\\frac{17}{5}\\) and \\(\\frac{31}{12}\\) are different, and \\(17(5)\\) and \\(31(12)\\) are different, so neither the quotient nor the product is fixed.",
+     "The extra 7 kilometres between the two trips cost \\(31-17=14\\) dollars, and the pickup charge is the same on both trips."
+    ],
+    "sol": "The extra 7 kilometres cost \\(31-17=14\\) dollars, so each kilometre costs \\(14\\div 7=2\\) dollars, the pickup charge is \\(17-5(2)=7\\) dollars, and 20 kilometres costs \\(20(2)+7=\\boxed{47}\\). Neither \\(\\frac{y}{x}\\) nor \\(xy\\) is fixed here, since \\(\\frac{17}{5}\\) and \\(\\frac{31}{12}\\) differ and so do \\(17(5)\\) and \\(31(12)\\), so the fare is proportional to neither. Assuming direct proportion and multiplying the 5 kilometre fare by 4 gives 68, which charges the 7 dollar pickup four times over instead of once."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The doubling test.</b> Double \\(x\\) and compare the new \\(y\\) with the old one. Under \\(y=kx\\) the new value is \\(k(2x)=2kx\\), which is twice the old \\(y\\). Under \\(y=\\frac{k}{x}\\) it is \\(\\frac{k}{2x}\\), which is half the old \\(y\\). If neither happens, the two amounts are proportional in neither sense, however closely they are related. The taxi fare is that case. At double the distance a fare of \\(2x+7\\) dollars for \\(x\\) kilometres is \\(4x+7\\), while twice the fare would be \\(4x+14\\)."
+   },
+   {
+    "t": "p",
+    "x": "The comparison can be with a power of \\(x\\). Saying \\(y\\) is directly proportional to \\(x^2\\) means \\(\\frac{y}{x^2}\\) is the same number at every pair, so \\(y=kx^2\\). Saying \\(y\\) is inversely proportional to \\(x^2\\) means \\(yx^2\\) is the same number at every pair, so \\(y=\\frac{k}{x^2}\\). One known pair still gives \\(k\\)."
+   },
+   {
+    "t": "prob",
+    "x": "The area of a badge is directly proportional to the square of its height. A badge 6 centimeters tall has area 27 square centimeters. A second badge of the same shape is 14 centimeters tall. Enter its area in square centimeters.",
+    "xp": 6,
+    "ans": "147",
+    "accept": [
+     "147",
+     "147.0",
+     "147 cm^2",
+     "147 cm2",
+     "147 sq cm",
+     "147 square centimeters",
+     "147 square centimetres",
+     "one hundred forty-seven",
+     "onehundredfortyseven",
+     "one hundred and forty-seven",
+     "onehundredandfortyseven"
+    ],
+    "hints": [
+     "The constant here is the area divided by the square of the height, not the area divided by the height, so divide \\(27\\) by \\(6^2\\) rather than by \\(6\\).",
+     "\\(\\frac{27}{36}=\\frac{3}{4}\\), and \\(14^2=196\\)."
+    ],
+    "sol": "The constant is \\(k=\\frac{27}{6^2}=\\frac{27}{36}=\\frac{3}{4}\\), so the taller badge has area \\(\\frac{3}{4}(14^2)=\\frac{3}{4}(196)=\\boxed{147}\\). Dividing \\(27\\) by \\(6\\) instead gives \\(4.5\\) and then \\(63\\), which would be the answer if the area were proportional to the height rather than to its square."
+   },
+   {
+    "t": "prob",
+    "x": "A meter reads the light falling on a screen, and the reading is inversely proportional to the square of the screen's distance from the lamp. At a distance of 3 metres the meter reads 400 units. Enter the reading at a distance of 15 metres.",
+    "xp": 6,
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "16 units",
+     "sixteen",
+     "sixteen units"
+    ],
+    "hints": [
+     "Inversely proportional to the square of the distance means the reading times the square of the distance is the same number at every distance, not the reading times the distance.",
+     "The distance is multiplied by \\(15\\div 3=5\\), so the square of the distance is multiplied by \\(25\\)."
+    ],
+    "sol": "The distance is multiplied by \\(15\\div 3=5\\), so the reading is divided by \\(5^2=25\\), giving \\(400\\div 25=\\boxed{16}\\). Finding \\(k=400(3^2)=3600\\) and computing \\(\\frac{3600}{15^2}\\) gives 16 as well, with larger numbers. Dividing by 5 rather than 25 gives 80, which is what scaling by the distance instead of by its square produces."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Proportional to a power.</b> \\(y\\) is directly proportional to \\(x^n\\) when \\(\\frac{y}{x^n}\\) is the same number at every pair, so \\(y=kx^n\\), and inversely proportional to \\(x^n\\) when \\(yx^n\\) is the same number at every pair, so \\(y=\\frac{k}{x^n}\\). Multiplying \\(x\\) by \\(m\\) multiplies \\(x^n\\) by \\(m^n\\), so \\(y\\) is multiplied by \\(m^n\\) in the direct case and divided by it in the inverse one. Tripling a length multiplies an area by \\(9\\) and a volume by \\(27\\). Read backwards, the factor on \\(y\\) is \\(m^n\\), so \\(m\\) is its square root when \\(n=2\\) and its cube root when \\(n=3\\)."
+   },
+   {
+    "t": "p",
+    "x": "When only a factor is wanted, \\(k\\) never has to be found. Under direct proportion, multiplying \\(x\\) by a number multiplies \\(y\\) by that same number. Under inverse proportion it divides \\(y\\) by that number. With a power of \\(x\\), the factor is raised to that power before it is used. The last two problems are much shorter this way."
+   },
+   {
+    "t": "prob",
+    "x": "A rectangle is reshaped with its area kept the same, so its length and its width are inversely proportional. The length is changed to \\(\\frac{5}{8}\\) of what it was. Enter the number the width is multiplied by, as a fraction in lowest terms.",
+    "xp": 6,
+    "ans": "8/5",
+    "accept": [
+     "8/5",
+     "1.6"
+    ],
+    "hints": [
+     "No length, width or area is given, so the constant \\(k\\) cannot be found. Work from the fact that the product of length and width is the same before and after.",
+     "Let the old length and width be \\(L\\) and \\(W\\), and let the width be multiplied by \\(c\\). The old area is \\(LW\\) and the new area is \\(\\frac{5}{8}L \\cdot cW\\), and those two are equal."
+    ],
+    "sol": "The product of length and width is the same before and after, so if the length is multiplied by \\(\\frac{5}{8}\\), the width must be divided by \\(\\frac{5}{8}\\), and dividing by \\(\\frac{5}{8}\\) is the same as multiplying by \\(\\boxed{\\frac{8}{5}}\\). No length, width or area was given, so \\(k\\) is unknown here, and the factor was found without it."
+   },
+   {
+    "t": "prob",
+    "x": "Storage bins in one product line all have the same shape. For that shape the outside surface area is directly proportional to the square of the height, and the volume is directly proportional to the cube of the height. A bin 10 centimetres tall has surface area 280 square centimetres and volume 300 cubic centimetres. A larger bin of the same shape has volume 2400 cubic centimetres. Enter its surface area in square centimetres.",
+    "xp": 8,
+    "ans": "1120",
+    "accept": [
+     "1120",
+     "1120.0",
+     "1120 cm^2",
+     "1120 cm2",
+     "1120 sq cm",
+     "1120 square cm",
+     "1120 square centimetres",
+     "1120 square centimeters",
+     "one thousand one hundred twenty",
+     "one thousand one hundred and twenty"
+    ],
+    "hints": [
+     "The height of the larger bin is not given, so work in factors instead. Both volumes are known, so start by dividing one by the other.",
+     "The volume is multiplied by \\(2400\\div 300=8\\), and the volume is proportional to the cube of the height."
+    ],
+    "sol": "The volume is multiplied by \\(2400\\div 300=8\\), and volume is proportional to the cube of the height, so the height is multiplied by 2 because \\(2^3=8\\). Surface area is proportional to the square of the height, so it is multiplied by \\(2^2=4\\), giving \\(280(4)=\\boxed{1120}\\). Multiplying 280 by 8 instead gives 2240, but 8 is the volume factor and a surface area is two lengths multiplied together, so the height factor of 2 belongs in the product twice and not three times. A 6 by 5 by 10 box has volume 300 and surface area 280, and doubling every edge gives 2400 and 1120."
+   },
+   {
+    "t": "p",
+    "x": "Most of these problems came down to one fixed number, found from one pair and then used on another, or skipped when only a factor was wanted. The taxi fare needed two, which put it outside both kinds of proportion. Lesson 6.6, Joint Proportion and Rates, has one amount varying with two others at once, so the statement is \\(x=kyz\\)."
+   }
+  ],
+  "review": [
+   {
+    "x": "The cost of nylon rope is directly proportional to its length. A 7 meter piece costs 42 dollars. Enter the cost of a 35 meter piece of the same rope, in dollars.",
+    "ans": "210",
+    "accept": [
+     "210",
+     "210.00",
+     "$210",
+     "$210.00",
+     "210 dollars",
+     "two hundred ten",
+     "two hundred and ten"
+    ],
+    "hints": [
+     "Direct proportion means the cost is \\(k\\) times the length, where \\(k\\) is the cost of one meter. Use the 7 meter price to find \\(k\\).",
+     "One meter costs \\(42\\div 7=6\\) dollars, so multiply that by 35."
+    ],
+    "sol": "\\(k=42\\div 7=6\\) dollars per meter, so 35 meters cost \\(6(35)=\\boxed{210}\\). As a check, 35 meters is five 7 meter pieces, and \\(5(42)=210\\)."
+   },
+   {
+    "x": "\\(y\\) is directly proportional to \\(x\\), and \\(y=51\\) when \\(x=17\\). Enter the value of \\(y\\) when \\(x=23\\).",
+    "ans": "69",
+    "accept": [
+     "69",
+     "69.0",
+     "y=69",
+     "sixty-nine",
+     "sixtynine"
+    ],
+    "hints": [
+     "Directly proportional means \\(\\frac{y}{x}\\) is the same at both pairs.",
+     "\\(51\\div 17=3\\), so \\(y=3x\\)."
+    ],
+    "sol": "\\(k=\\frac{51}{17}=3\\), so \\(y=3x\\) and \\(y=3(23)=\\boxed{69}\\). Since 23 is not a multiple of 17, there is no whole-number scaling between the two pairs, and \\(y=3x\\) is true at every \\(x\\), including this one."
+   },
+   {
+    "x": "\\(x\\) and \\(y\\) are inversely proportional, and \\(y=24\\) when \\(x=11\\). Enter the value of \\(y\\) when \\(x=33\\).",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "y=8",
+     "eight"
+    ],
+    "hints": [
+     "Inversely proportional means the product \\(xy\\) is the same for both pairs.",
+     "\\(24(11)=264\\), and 33 is three elevens."
+    ],
+    "sol": "\\(k=24(11)=264\\), so \\(y=264\\div 33=\\boxed{8}\\). Tripling \\(x\\) from 11 to 33 makes \\(y\\) a third of what it was, so \\(24\\div 3=8\\) gives the same answer without finding \\(k\\)."
+   },
+   {
+    "x": "A fixed volume of soup is ladled out equally into bowls, with none left over. Enter the word direct or the word inverse for the relationship between the number of bowls and the amount of soup in each bowl.",
+    "ans": "inverse",
+    "accept": [
+     "inverse",
+     "inversely",
+     "inverse proportion",
+     "inversely proportional",
+     "inverse variation",
+     "varies inversely",
+     "inversely related"
+    ],
+    "hints": [
+     "Let one quantity be the number of bowls and the other be the amount of soup in each bowl, then write the fixed total volume in terms of both.",
+     "Solve that equation for the amount in each bowl, then check whether the result is a constant times the number of bowls or a constant divided by it."
+    ],
+    "sol": "The number of bowls times the amount in each bowl equals the fixed total, so the amount in each bowl is the total divided by the number of bowls, which makes the relationship \\(\\boxed{\\text{inverse}}\\). Doubling the number of bowls halves the amount in each, while in a direct proportion doubling one would double the other."
+   },
+   {
+    "x": "\\(y\\) is directly proportional to \\(x\\), and \\(y=21\\) when \\(x=6\\). Enter the constant of proportionality \\(k\\) as a fraction in lowest terms.",
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "3.5",
+     "k=7/2",
+     "k=3.5"
+    ],
+    "hints": [
+     "Direct proportion means \\(y=kx\\), so put the pair \\(y=21\\), \\(x=6\\) into that equation and solve for \\(k\\).",
+     "Solving gives \\(k=\\frac{21}{6}\\), which is not the final form. Look for a factor that divides both \\(21\\) and \\(6\\)."
+    ],
+    "sol": "\\(k=\\frac{21}{6}=\\boxed{\\frac{7}{2}}\\). A constant of proportionality is a rate, so a fraction is a perfectly ordinary value for it."
+   },
+   {
+    "x": "The mass of a bar of alloy is directly proportional to its length. A bar 26 centimeters long has mass 65 grams. Enter the length in centimeters of a bar of the same alloy with mass 100 grams.",
+    "ans": "40",
+    "accept": [
+     "40",
+     "40 cm",
+     "40 centimeters",
+     "40 centimetres",
+     "forty"
+    ],
+    "hints": [
+     "Direct proportion means grams divided by centimeters is the same number for every bar of this alloy. Get that number from the 26 centimeter bar.",
+     "\\(\\frac{65}{26}=\\frac{5}{2}\\), so every centimeter of bar has mass \\(\\frac{5}{2}\\) grams. Divide the \\(100\\) grams by that rate."
+    ],
+    "sol": "The constant of proportionality is \\(\\frac{65}{26}=\\frac{5}{2}\\) grams per centimeter, so the length is \\(100\\div\\frac{5}{2}=\\boxed{40}\\). Scaling works too, since the mass is multiplied by \\(\\frac{100}{65}=\\frac{20}{13}\\) and \\(26\\cdot\\frac{20}{13}=40\\)."
+   },
+   {
+    "x": "\\(y\\) is inversely proportional to \\(x\\), and \\(y=14\\) when \\(x=6\\). Enter the value of \\(x\\) when \\(y=4\\).",
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0",
+     "x=21",
+     "twenty-one",
+     "twentyone"
+    ],
+    "hints": [
+     "Inverse proportion means the product \\(xy\\) stays the same for every pair, so the product from the first pair is also the product for the second.",
+     "The first pair gives \\(14(6)=84\\), so the second pair has to satisfy \\(4x=84\\)."
+    ],
+    "sol": "\\(xy=14(6)=84\\) for every pair, so \\(4x=84\\) and \\(x=\\boxed{21}\\). Dividing \\(y\\) by \\(\\frac{7}{2}\\) to get from \\(14\\) to \\(4\\) multiplies \\(x\\) by \\(\\frac{7}{2}\\), and \\(6\\cdot\\frac{7}{2}=21\\) as well."
+   },
+   {
+    "x": "A fixed load of gravel fills 24 barrows when each barrow carries 35 kilograms. Enter the number of kilograms in each barrow when the same load is spread evenly over 42 barrows.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "20 kg",
+     "20 kilograms",
+     "twenty"
+    ],
+    "hints": [
+     "The load does not change, so barrows times kilograms per barrow is the same number both times.",
+     "The whole load is \\(24(35)=840\\) kilograms, and those 840 kilograms have to cover 42 barrows."
+    ],
+    "sol": "The whole load is \\(24(35)=840\\) kilograms, and spread over 42 barrows that gives \\(840\\div 42=\\boxed{20}\\). Check, \\(42(20)=840\\) kilograms, the same load. Barrow count times kilograms per barrow stays fixed, which is what inverse proportion means."
+   },
+   {
+    "x": "A table lists three pairs from one relationship. $$\\begin{array}{c|ccc} x & 3 & 7 & 12 \\\\ \\hline y & 12 & 28 & 48 \\end{array}$$ Decide whether \\(y\\) is directly proportional to \\(x\\) or inversely proportional to \\(x\\), then enter the value of \\(y\\) when \\(x=20\\).",
+    "ans": "80",
+    "accept": [
+     "80",
+     "y=80",
+     "eighty"
+    ],
+    "hints": [
+     "Test \\(\\frac{y}{x}\\) at all three pairs, then test \\(xy\\).",
+     "\\(\\frac{12}{3}\\), \\(\\frac{28}{7}\\) and \\(\\frac{48}{12}\\) are all the same number."
+    ],
+    "sol": "All three quotients equal 4 while the products 36, 196 and 576 differ, so \\(y=4x\\) and \\(y=4(20)=\\boxed{80}\\). Checking only one pair proves nothing, since a single pair has both a quotient and a product."
+   },
+   {
+    "x": "A fixed number of tiles is laid in rows of equal length, so the number of rows and the number of tiles in each row are inversely proportional. The number of rows is tripled. Enter the number that the tile count in each row is multiplied by, as a fraction in lowest terms.",
+    "ans": "1/3",
+    "accept": [
+     "1/3",
+     "one third",
+     "one-third"
+    ],
+    "hints": [
+     "The tile total is never given, so the constant cannot be pinned down. It is not needed, because rows times tiles per row equals that same total before and after.",
+     "Call the original counts \\(r\\) rows and \\(t\\) tiles per row. The new arrangement has \\(3r\\) rows and \\(n\\) tiles per row, with \\(3r\\cdot n=rt\\)."
+    ],
+    "sol": "Writing the new counts as \\(3r\\) rows and \\(n\\) tiles per row, \\(3r\\cdot n=rt\\) gives \\(n=\\frac{t}{3}\\), so the tile count in each row is multiplied by \\(\\boxed{\\frac{1}{3}}\\). The factors \\(3\\) and \\(\\frac{1}{3}\\) multiply to \\(1\\), which is what keeps the total the same."
+   },
+   {
+    "x": "\\(y\\) is directly proportional to \\(x^2\\), and \\(y=48\\) when \\(x=4\\). Enter the value of \\(y\\) when \\(x=9\\).",
+    "ans": "243",
+    "accept": [
+     "243",
+     "243.0",
+     "y=243",
+     "two hundred forty-three",
+     "twohundredfortythree",
+     "two hundred and forty-three",
+     "twohundredandfortythree"
+    ],
+    "hints": [
+     "The constant is \\(\\frac{y}{x^2}\\), so divide 48 by \\(4^2\\) rather than by \\(4\\).",
+     "\\(\\frac{48}{16}=3\\), and \\(9^2=81\\)."
+    ],
+    "sol": "\\(k=\\frac{48}{4^2}=3\\), so \\(y=3(9^2)=\\boxed{243}\\). Using \\(k=\\frac{48}{4}=12\\) instead gives \\(12(9)=108\\), which is the answer only if \\(y\\) is proportional to \\(x\\) rather than to \\(x^2\\)."
+   },
+   {
+    "x": "\\(y\\) is inversely proportional to \\(x^2\\), and \\(y=50\\) when \\(x=3\\). Enter the value of \\(y\\) when \\(x=5\\).",
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0",
+     "y=18",
+     "eighteen"
+    ],
+    "hints": [
+     "Inversely proportional to the square means \\(yx^2\\) is the same number for every pair.",
+     "\\(50(3^2)=450\\), and \\(5^2=25\\)."
+    ],
+    "sol": "The constant \\(yx^2\\) equals \\(50(3^2)=450\\), so \\(y=\\frac{450}{25}=\\boxed{18}\\). Ignoring the square and using \\(yx=150\\) gives \\(30\\) instead."
+   },
+   {
+    "x": "A courier charges a fixed handling amount plus a further amount for each kilogram. A 4 kilogram parcel costs 29 dollars and a 9 kilogram parcel costs 54 dollars. Enter the cost in dollars of a 15 kilogram parcel.",
+    "ans": "84",
+    "accept": [
+     "84",
+     "$84",
+     "84.0",
+     "84.00",
+     "$84.00",
+     "84 dollars",
+     "eighty-four",
+     "eightyfour"
+    ],
+    "hints": [
+     "Test both proportions. \\(\\frac{29}{4}\\) and \\(\\frac{54}{9}\\) are different, and \\(29(4)\\) and \\(54(9)\\) are different, so the cost is neither directly nor inversely proportional to the weight.",
+     "The two parcels differ by 5 kilograms and by \\(54-29=25\\) dollars, and that difference comes only from the per kilogram amount, since the handling amount is the same on both."
+    ],
+    "sol": "The extra 5 kilograms cost \\(54-29=25\\) dollars, so each kilogram costs 5 dollars, the handling amount is \\(29-4(5)=9\\) dollars, and a 15 kilogram parcel costs \\(15(5)+9=\\boxed{84}\\). Scaling 29 by \\(\\frac{15}{4}\\) gives 108.75, too high because the 9 dollar handling amount is then counted 3.75 times instead of once."
+   },
+   {
+    "x": "For solid cubes cut from one material, the mass is directly proportional to the cube of the edge length. Such a cube with edge length 2 centimetres has mass 56 grams. Enter the mass in grams of a cube of the same material with edge length 5 centimetres.",
+    "ans": "875",
+    "accept": [
+     "875",
+     "875.0",
+     "875 g",
+     "875 grams",
+     "eight hundred seventy-five",
+     "eighthundredseventyfive",
+     "eight hundred and seventy-five",
+     "eighthundredandseventyfive"
+    ],
+    "hints": [
+     "The constant is the mass divided by the cube of the edge length, so divide \\(56\\) by \\(2^3\\).",
+     "\\(\\frac{56}{8}=7\\), so the mass in grams is \\(7\\) times the cube of the edge length in centimetres."
+    ],
+    "sol": "\\(k=\\frac{56}{2^3}=7\\) grams per cubic centimetre, so the cube with edge length 5 centimetres has mass \\(7(125)=\\boxed{875}\\). Scaling the edge by \\(\\frac{5}{2}\\) scales the mass by \\(\\left(\\frac{5}{2}\\right)^3=\\frac{125}{8}\\), and \\(56\\cdot\\frac{125}{8}=875\\) as well."
+   },
+   {
+    "x": "The reading on a light meter is inversely proportional to the square of the distance from the meter to the lamp. The meter is moved so that this distance becomes \\(\\frac{2}{5}\\) of what it was. Enter the number the reading is multiplied by, as a fraction in lowest terms.",
+    "ans": "25/4",
+    "accept": [
+     "25/4",
+     "6.25"
+    ],
+    "hints": [
+     "No distance and no reading are given, so the constant \\(k\\) cannot be found. Work from the fact that the reading times the square of the distance stays the same.",
+     "Call the old distance \\(d\\), so the old reading is \\(\\frac{k}{d^2}\\) and the new reading is \\(\\frac{k}{\\left(\\frac{2}{5}d\\right)^2}\\). Simplify the new denominator first."
+    ],
+    "sol": "The denominator \\(d^2\\) is multiplied by \\(\\left(\\frac{2}{5}\\right)^2=\\frac{4}{25}\\), so the reading is divided by \\(\\frac{4}{25}\\), the same as multiplying by \\(\\boxed{\\frac{25}{4}}\\). Leaving out the square gives \\(\\frac{5}{2}\\), the common wrong answer."
+   },
+   {
+    "x": "Among statues of one shape, mass is directly proportional to the cube of the height. One such statue is 40 centimeters tall and has mass 33 kilograms. A second statue of that shape has mass 891 kilograms. Enter the height of the second statue in centimeters.",
+    "ans": "120",
+    "accept": [
+     "120",
+     "120 cm",
+     "120 centimeters",
+     "120 centimetres",
+     "one hundred twenty",
+     "one hundred and twenty"
+    ],
+    "hints": [
+     "The two statues have the same shape, so if the height is multiplied by some number, the mass is multiplied by the cube of that number. Find what the mass is multiplied by first.",
+     "\\(891\\div 33=27\\), so the height is multiplied by the number whose cube is 27."
+    ],
+    "sol": "The mass is multiplied by \\(891\\div 33=27\\), and mass is proportional to the cube of the height, so the height is multiplied by the number whose cube is 27, namely 3, giving \\(40(3)=\\boxed{120}\\). The check is that \\(120^3=1728000\\) is 27 times \\(40^3=64000\\). The common slip is \\(40(27)=1080\\), but 27 is the factor for the mass and 3 is the factor for the height."
+   },
+   {
+    "x": "A table lists three pairs from one relationship. $$\\begin{array}{c|ccc} x & 2 & 3 & 6 \\\\ \\hline y & 675 & 300 & 75 \\end{array}$$ Neither \\(\\frac{y}{x}\\) nor \\(xy\\) is the same at every pair, but \\(y\\) is inversely proportional to a power of \\(x\\). Enter the value of \\(y\\) when \\(x=5\\).",
+    "ans": "108",
+    "accept": [
+     "108",
+     "108.0",
+     "y=108",
+     "one hundred eight",
+     "one hundred and eight"
+    ],
+    "hints": [
+     "The two usual tests both fail, so try the same idea one power up and compute \\(yx^2\\) at each pair.",
+     "\\(675(2^2)=2700\\), so check 300 and 75 against 2700 as well."
+    ],
+    "sol": "The products \\(yx^2\\) are \\(675(4)\\), \\(300(9)\\) and \\(75(36)\\), all 2700, so \\(yx^2=2700\\) and \\(y=\\frac{2700}{25}=\\boxed{108}\\). Doubling \\(x\\) from 3 to 6 leaves \\(y\\) at a quarter of its value rather than a half, which is what makes the power 2 and not 1."
+   }
+  ]
+ },
+ "6.6": {
+  "title": "Joint Proportion and Rates",
+  "next": "7.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "A quantity can depend on several others at the same time. The number of posters a print shop finishes depends on how many presses are running and on how long they run, and changing either one changes the count. The first two problems change the hours alone, then the presses and the hours together."
+   },
+   {
+    "t": "prob",
+    "x": "A print shop runs 6 presses for 4 hours and finishes 720 posters, every press printing at the same steady rate. The same 6 presses are then run for 7 hours. Enter how many posters they finish during those 7 hours.",
+    "xp": 5,
+    "ans": "1260",
+    "accept": [
+     "1260",
+     "1260.0",
+     "1260 posters",
+     "one thousand two hundred sixty",
+     "one thousand two hundred and sixty"
+    ],
+    "hints": [
+     "Only the hours changed, since the press count stays at 6. That makes the poster count directly proportional to the hours, the direct proportion from 6.5.",
+     "The hours go from 4 to 7, so they are multiplied by \\(\\frac{7}{4}\\), and the poster count is multiplied by that same factor."
+    ],
+    "sol": "Multiplying the hours by \\(\\frac{7}{4}\\) multiplies the posters by \\(\\frac{7}{4}\\), so the shop finishes \\(720\\times\\frac{7}{4}=\\boxed{1260}\\). Checking another way, the 6 presses together finish \\(720\\div 4=180\\) posters an hour, and \\(180\\times 7=1260\\)."
+   },
+   {
+    "t": "prob",
+    "x": "That same shop runs every press at the same steady rate, and 6 presses finish 720 posters in 4 hours. Enter how many posters 15 presses finish in 6 hours.",
+    "xp": 6,
+    "ans": "2700",
+    "accept": [
+     "2700",
+     "2700.0",
+     "2700 posters",
+     "two thousand seven hundred"
+    ],
+    "hints": [
+     "Change one quantity at a time. Take the presses from 6 to 15 with the hours held at 4, then take the hours from 4 to 6.",
+     "The two scale factors are \\(\\frac{15}{6}\\) and \\(\\frac{6}{4}\\). Multiply \\(720\\) by the first, then multiply that result by the second."
+    ],
+    "sol": "Multiplying \\(720\\) by \\(\\frac{15}{6}\\) for the presses gives \\(1800\\), and multiplying \\(1800\\) by \\(\\frac{6}{4}\\) for the hours gives \\(\\boxed{2700}\\). The hour factor multiplies the \\(1800\\) and not the original \\(720\\), so the two factors multiply rather than add. Applying each one to \\(720\\) on its own and adding gives \\(1800+1080=2880\\), which is wrong."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Joint proportion.</b> \\(x\\) is jointly proportional to \\(y\\) and \\(z\\) when it is directly proportional to \\(y\\) with \\(z\\) held fixed, and directly proportional to \\(z\\) with \\(y\\) held fixed. Holding \\(z\\) fixed gives \\(x=cy\\), and holding \\(y\\) fixed makes that \\(c\\) a fixed multiple of \\(z\\), so \\(x=kyz\\) for one constant \\(k\\). Changing both multiplies \\(x\\) by the product of the two factors. When \\(x\\) is also inversely proportional to a fourth quantity \\(w\\), hold \\(y\\) and \\(z\\) fixed and 6.5 gives \\(xw\\) constant, so \\(w\\) joins below the bar and the statement is \\(x=\\frac{kyz}{w}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A camp's food store lasts a number of days proportional to the mass of food and inversely proportional to the number of campers. 240 kg feeds 15 campers for 32 days. Enter how many days 360 kg of food feeds 20 campers.",
+    "xp": 6,
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0",
+     "36 days",
+     "36 day",
+     "thirty-six",
+     "thirtysix"
+    ],
+    "hints": [
+     "More food makes the store last longer and more campers make it run out sooner, so one change raises the number of days and the other lowers it.",
+     "The mass is multiplied by \\(\\frac{360}{240}\\) and the number of campers by \\(\\frac{20}{15}\\), so the 32 days are multiplied by the first of those and divided by the second."
+    ],
+    "sol": "Here \\(d=\\frac{km}{n}\\), so the first case has \\(k=\\frac{32\\times 15}{240}=2\\) and then \\(d=\\frac{2\\times 360}{20}=\\boxed{36}\\). Scaling gives the same number, since with \\(\\frac{3}{2}\\) times as much food and \\(\\frac{4}{3}\\) times as many campers the count is \\(32\\times\\frac{3}{2}\\times\\frac{3}{4}=36\\) days."
+   },
+   {
+    "t": "prob",
+    "x": "A solar array's daily output \\(w\\), in kilowatt-hours, is proportional to the number of panels \\(p\\) and to the hours of sun \\(h\\), so \\(w=kph\\). An array of 12 panels produces 90 kilowatt-hours in 5 hours of sun. Find \\(k\\) first, then enter the output of 20 panels in 7 hours of sun, in kilowatt-hours.",
+    "xp": 6,
+    "ans": "210",
+    "accept": [
+     "210",
+     "210.0",
+     "210 kwh",
+     "210 kw-h",
+     "210 kilowatt hours",
+     "210 kilowatt-hours",
+     "210 kilowatt hour",
+     "two hundred ten",
+     "two hundred and ten"
+    ],
+    "hints": [
+     "One complete set of values is \\(p=12\\), \\(h=5\\) and \\(w=90\\), and putting all three into \\(w=kph\\) leaves \\(k\\) as the only unknown.",
+     "With \\(k\\) known, put \\(p=20\\) and \\(h=7\\) into the same equation and multiply."
+    ],
+    "sol": "From \\(90=k\\times 12\\times 5\\) the constant is \\(k=\\frac{3}{2}\\), so the output of 20 panels in 7 hours is \\(\\frac{3}{2}\\times 20\\times 7=\\boxed{210}\\). Skipping \\(k\\) works too, since scaling by \\(\\frac{20}{12}\\) for panels and \\(\\frac{7}{5}\\) for hours gives \\(90\\times\\frac{20}{12}\\times\\frac{7}{5}=210\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Group the varying quantities on one side.</b> Dividing \\(x=kyz\\) by \\(yz\\) leaves \\(\\frac{x}{yz}=k\\), and dividing \\(x=\\frac{kyz}{w}\\) by \\(yz\\) and multiplying by \\(w\\) leaves \\(\\frac{xw}{yz}=k\\). Nothing on the right side changes, so the combination on the left has the same value at every set of values. For two sets, \\(\\frac{x_1}{y_1z_1}=\\frac{x_2}{y_2z_2}\\), and a question about the second set is answered without ever computing \\(k\\). Every quantity \\(x\\) is proportional to is written below the bar in that combination, and every quantity it is inversely proportional to above it."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. In the top band the fraction x over y z equals a gold tile holding k. In the bottom band the fraction x prime over y prime z prime equals an identical gold tile holding k, and a dotted bracket joins the two tiles.\" font-family=\"Space Grotesk, sans-serif\"><defs><filter id=\"f66tile\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\"><feDropShadow dx=\"0\" dy=\"3\" stdDeviation=\"3.5\" flood-color=\"#5a708f\" flood-opacity=\"0.22\"/></filter></defs><text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">one set</text><text x=\"250\" y=\"82\" text-anchor=\"middle\" font-size=\"27\" font-weight=\"700\" fill=\"#2257c5\">x</text><path d=\"M200 94 H300\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"250\" y=\"128\" text-anchor=\"middle\" font-size=\"27\" font-weight=\"700\" fill=\"#475569\">y z</text><text x=\"336\" y=\"104\" font-size=\"25\" font-weight=\"700\" fill=\"#2f6fe0\">=</text><rect x=\"374\" y=\"64\" width=\"58\" height=\"58\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#f66tile)\"/><text x=\"403\" y=\"104\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#8a5a08\">k</text><path d=\"M28 158 H552\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"28\" y=\"186\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">another set</text><text x=\"250\" y=\"234\" text-anchor=\"middle\" font-size=\"27\" font-weight=\"700\" fill=\"#2257c5\">x&#8242;</text><path d=\"M200 246 H300\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><text x=\"250\" y=\"280\" text-anchor=\"middle\" font-size=\"27\" font-weight=\"700\" fill=\"#475569\">y&#8242; z&#8242;</text><text x=\"336\" y=\"256\" font-size=\"25\" font-weight=\"700\" fill=\"#2f6fe0\">=</text><rect x=\"374\" y=\"216\" width=\"58\" height=\"58\" rx=\"14\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\" filter=\"url(#f66tile)\"/><text x=\"403\" y=\"256\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#8a5a08\">k</text><path d=\"M442 93 H492 V245 H442\" fill=\"none\" stroke=\"#9fb4d6\" stroke-width=\"1.6\" stroke-dasharray=\"2 4\" stroke-linecap=\"round\"/><text x=\"502\" y=\"175\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">same</text></svg>",
+    "cap": "Dividing \\(x=kyz\\) by \\(yz\\) leaves \\(\\frac{x}{yz}=k\\), with every varying quantity on one side and the constant alone on the other. The letters take different values in the second set and the combination lands on the same \\(k\\), so the two fractions equal each other and \\(k\\) never has to be computed."
+   },
+   {
+    "t": "p",
+    "x": "A speed is a distance per unit of time, so a distance is a rate multiplied by a time. That is \\(d=rt\\), used directly in Prealgebra 7.3. At one steady speed the distance is proportional to the time, and over one fixed stretch of time it is proportional to the speed. The next two problems each leave one of the three quantities unknown."
+   },
+   {
+    "t": "prob",
+    "x": "A tram holds a steady 45 kilometers per hour for 40 minutes, then a steady 66 kilometers per hour for 30 minutes. Use \\(1\\text{ h}=60\\text{ min}\\). Enter the total distance covered, in kilometers.",
+    "xp": 6,
+    "ans": "63",
+    "accept": [
+     "63",
+     "63 km",
+     "63 kilometers",
+     "63 kilometres",
+     "63 kilometer",
+     "63 kilometre",
+     "sixty-three",
+     "sixtythree"
+    ],
+    "hints": [
+     "Each stretch has its own rate and its own time, so \\(d=rt\\) applies to each one separately and the two distances add.",
+     "The rates are per hour, so the times have to be in hours. 40 minutes is \\(\\frac{2}{3}\\) of an hour and 30 minutes is \\(\\frac{1}{2}\\)."
+    ],
+    "sol": "The first stretch covers \\(45\\times\\frac{2}{3}=30\\) km and the second covers \\(66\\times\\frac{1}{2}=33\\) km, so the total in kilometers is \\(\\boxed{63}\\). Leaving the times in minutes gives \\(45\\times 40\\), which is a distance in kilometer-minutes per hour and not in kilometers."
+   },
+   {
+    "t": "prob",
+    "x": "A delivery route is 288 km long. A truck covers the first 120 km at a steady 40 kilometers per hour, then covers the rest at one steady speed, and the whole route takes 6 hours. Enter the truck's speed on the second part, in kilometers per hour.",
+    "xp": 7,
+    "ans": "56",
+    "accept": [
+     "56",
+     "56 km/h",
+     "56 km/hr",
+     "56 km/hour",
+     "56 kmh",
+     "56 kph",
+     "56 km per hour",
+     "56 kilometers per hour",
+     "56 kilometres per hour",
+     "fifty-six",
+     "fiftysix"
+    ],
+    "hints": [
+     "The first part has both a distance and a rate, so its time is fixed before anything about the second part is known.",
+     "The first part takes 3 hours, which leaves 3 of the 6 hours for the remaining 168 km."
+    ],
+    "sol": "The first part takes \\(\\frac{120}{40}=3\\) hours, leaving \\(288-120=168\\) km for the remaining \\(6-3=3\\) hours, so the second speed in kilometers per hour is \\(\\boxed{56}\\). Dividing the whole route by the whole time gives \\(\\frac{288}{6}=48\\), which is the trip's overall speed and not either part's."
+   },
+   {
+    "t": "imp",
+    "x": "<b>\\(d=rt\\) is a joint relationship.</b> Distance is proportional to the rate and to the time at once, and the constant is \\(1\\) when the units agree, so \\(d=rt\\) is \\(x=kyz\\) with \\(k=1\\). Grouping the varying quantities leaves \\(\\frac{d}{rt}=1\\), and rearranging that same relationship gives \\(r=\\frac{d}{t}\\) and \\(t=\\frac{d}{r}\\). All three are one relationship written three ways, so knowing any two of the three quantities is enough to find the third."
+   },
+   {
+    "t": "p",
+    "x": "Count a whole job as \\(1\\). Someone working at a steady pace who finishes in \\(n\\) hours does the same amount in each of those hours, and \\(n\\) of those equal amounts make the whole job, so the work done in one hour is \\(\\frac{1}{n}\\) of it. That fraction per hour is a rate, and work done is the rate times the time, the same shape as \\(d=rt\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A tiler lays a floor in 20 hours of steady work, laying the same amount in every hour. Enter the fraction of the floor laid in the first 9 hours, in lowest terms.",
+    "xp": 5,
+    "ans": "9/20",
+    "accept": [
+     "9/20",
+     "0.45",
+     ".45",
+     "0.450",
+     "nine twentieths",
+     "nine-twentieths"
+    ],
+    "hints": [
+     "Call the whole floor \\(1\\), so the work done in all 20 hours totals \\(1\\).",
+     "A steady pace means equal work in equal hours, so the tiler lays \\(\\frac{1}{20}\\) of the floor in one hour."
+    ],
+    "sol": "In one hour the tiler lays \\(\\frac{1}{20}\\) of the floor, so nine hours of work amount to \\(9\\times\\frac{1}{20}=\\boxed{\\frac{9}{20}}\\). The per-hour fraction is the rate, and rate times time is the amount of the job done, the same shape as \\(d=rt\\) with the job standing in for the distance."
+   },
+   {
+    "t": "fact",
+    "x": "Kepler published his third law in 1619. The square of a planet's orbital period is proportional to the cube of its mean distance from the sun, and one constant fit every planet known at the time."
+   },
+   {
+    "t": "prob",
+    "x": "One crew repaves a road in 10 hours and a second crew repaves the same road in 15 hours, each at its own steady pace. Both crews work on the road at the same time. Enter how many hours the two crews working together take to repave the road.",
+    "xp": 7,
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "6 h",
+     "6 hr",
+     "6 hrs",
+     "6 hours",
+     "6 hour",
+     "six"
+    ],
+    "hints": [
+     "In one hour the first crew repaves \\(\\frac{1}{10}\\) of the road and the second repaves \\(\\frac{1}{15}\\), and both amounts are done during that same hour.",
+     "Add those two fractions over a common denominator to get the part of the road done in one hour, then the number of hours for one whole road is the reciprocal of that part."
+    ],
+    "sol": "In one hour the crews repave \\(\\frac{1}{10}+\\frac{1}{15}=\\frac{1}{6}\\) of the road, so the number of hours for one whole road is \\(\\boxed{6}\\). Adding the times gives 25 and averaging them gives 12.5, and both are longer than one crew takes alone, which cannot happen when a second crew helps."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Rates add, times do not.</b> A worker who finishes a job alone in \\(a\\) hours does \\(\\frac{1}{a}\\) of it in an hour, and one who finishes in \\(b\\) hours does \\(\\frac{1}{b}\\). Both amounts are done during the same hour, so together they do \\(\\frac{1}{a}+\\frac{1}{b}=\\frac{a+b}{ab}\\) per hour, and the whole job takes the reciprocal of that, \\(\\frac{ab}{a+b}\\) hours. That is smaller than both \\(a\\) and \\(b\\), which is the check to run, since adding the two times or averaging them gives a time longer than the faster worker takes alone."
+   },
+   {
+    "t": "p",
+    "x": "When two objects move along the same line at the same time, the quantity to work with is how much the distance between them changes in one hour, not either speed on its own. That change is built from both speeds, and the way to build it depends on whether the two move toward each other or one follows the other."
+   },
+   {
+    "t": "prob",
+    "x": "Two ferries leave opposite ends of a 174 km channel at the same moment and travel toward each other, one at 24 kilometers per hour and the other at 34 kilometers per hour. Enter how many kilometers the faster ferry has covered when they meet.",
+    "xp": 7,
+    "ans": "102",
+    "accept": [
+     "102",
+     "102.0",
+     "102 km",
+     "102 kilometers",
+     "102 kilometres",
+     "one hundred two",
+     "one hundred and two"
+    ],
+    "hints": [
+     "What settles the meeting time is how fast the distance between the two ferries shrinks, not either speed on its own. In one hour the first covers 24 km of the channel and the second covers 34 km of it.",
+     "The 174 km gap therefore shrinks by 58 km each hour. Dividing gives the hours until they meet, and \\(d=rt\\) on the faster ferry alone finishes it."
+    ],
+    "sol": "The gap shrinks by \\(24+34=58\\) km each hour, so the ferries meet after \\(\\frac{174}{58}=3\\) hours and the faster one has covered \\(34\\times 3=\\boxed{102}\\). The slower ferry covers \\(24\\times 3=72\\) km, and \\(102+72=174\\) accounts for the whole channel."
+   },
+   {
+    "t": "prob",
+    "x": "A barge passes a lock at a steady 8 kilometers per hour. Three hours later a patrol boat leaves that lock along the same route in the same direction at a steady 20 kilometers per hour. Enter how far from the lock, in kilometers, the patrol boat catches the barge.",
+    "xp": 7,
+    "ans": "40",
+    "accept": [
+     "40",
+     "40.0",
+     "40 km",
+     "40 kilometers",
+     "40 kilometres",
+     "forty"
+    ],
+    "hints": [
+     "The patrol boat starts at the lock and the barge does not. Work out how far along the route the barge already is at the moment the patrol boat leaves.",
+     "Each hour the patrol boat covers 20 km and the barge covers 8 km, so after each hour the 24 km head start is 12 km smaller."
+    ],
+    "sol": "The barge is \\(8\\times 3=24\\) km ahead when the patrol boat starts and the gap is \\(20-8=12\\) km smaller after each hour, so the catch takes \\(\\frac{24}{12}=2\\) hours and the distance from the lock in kilometers is \\(20\\times 2=\\boxed{40}\\). The barge has then been moving 5 hours, and \\(8\\times 5=40\\) agrees."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Closing rate.</b> Two objects moving toward each other each remove their own distance from the gap during the same hour, so the gap shrinks at \\(r_1+r_2\\) per hour. When one follows the other, both move the same way, so in one hour the one behind gains \\(r_1\\) while the one in front moves \\(r_2\\) further away, and the gap shrinks by only the difference \\(r_1-r_2\\). The catch happens only when \\(r_1\\) is the larger. Either way the gap closes at a steady rate, so \\(d=rt\\) applies to the gap itself with the closing rate as \\(r\\). A head start stated in time is turned into a head start in distance the same way."
+   },
+   {
+    "t": "p",
+    "x": "Every relationship in this chapter was one combination staying fixed while its parts changed. 6.1 fixed \\(\\frac{a}{b}\\), 6.2 multiplied by a fraction worth \\(1\\), 6.3 and 6.4 fixed the second part of a comparison at 100, and 6.5 fixed \\(\\frac{y}{x}\\) or \\(xy\\). The combination fixed here is longer, and the last two problems use it."
+   },
+   {
+    "t": "prob",
+    "x": "The number of bricks a crew lays is proportional to the number of masons and to the number of days worked. Eight masons lay 2016 bricks in 6 days. A contractor needs 3780 bricks laid in 5 days. Enter how many masons that takes.",
+    "xp": 7,
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0",
+     "18 masons",
+     "18 mason",
+     "eighteen"
+    ],
+    "hints": [
+     "Write \\(b\\) for bricks, \\(m\\) for masons and \\(d\\) for days. Joint proportion means \\(\\frac{b}{md}\\) has the same value for both jobs, and here the unknown is in the denominator.",
+     "Eight masons working 6 days is 48 mason-days for 2016 bricks. Find the bricks one mason lays in one day, then ask how many masons put 3780 bricks into 5 days."
+    ],
+    "sol": "With \\(b\\) bricks, \\(m\\) masons and \\(d\\) days, joint proportion gives \\(\\frac{b}{md}=k\\), and from the first job \\(k=\\frac{2016}{8\\times 6}=42\\) bricks per mason per day. Then \\(3780=42\\times m\\times 5\\), so the number of masons is \\(\\boxed{18}\\). Scaling works without \\(k\\) too. The bricks are multiplied by \\(\\frac{15}{8}\\) and the days by \\(\\frac{5}{6}\\), so the masons are multiplied by \\(\\frac{15}{8}\\div\\frac{5}{6}=\\frac{9}{4}\\), and \\(8\\times\\frac{9}{4}=18\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A workshop's looms are identical and each one weaves at the same steady rate. Six of them weaving for 5 hours produce 210 meters of cloth. Four of them are set to produce 252 meters of the same cloth. Enter the number of hours that takes.",
+    "xp": 8,
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "9 hours",
+     "9 hour",
+     "9 hrs",
+     "9 h",
+     "nine",
+     "nine hours"
+    ],
+    "hints": [
+     "How much cloth comes off depends on both how many looms run and how long they run, so work out first how many meters one loom weaves in one hour.",
+     "Six looms for 5 hours is 30 loom-hours of weaving in all, so \\(210\\div 30\\) gives the meters per loom-hour. Four looms running together weave four times that much each hour."
+    ],
+    "sol": "Six looms for 5 hours is 30 loom-hours, and \\(210\\div 30=7\\) meters per loom-hour. Four looms weave \\(4\\times 7=28\\) meters each hour, so the number of hours is \\(252\\div 28=\\boxed{9}\\). The cloth produced is jointly proportional to the number of looms and to the number of hours, so the single rate of 7 meters per loom-hour accounts for both changes at once."
+   },
+   {
+    "t": "p",
+    "x": "Every relationship in this lesson had one constant and several quantities that change, and the work was always to gather the changing ones on one side of the bar and read the constant off the other. Distance, work rate and closing rate all have that shape. That closes chapter 6. Chapter 7, Graphing Lines, opens with 7.1, The Cartesian Plane."
+   }
+  ],
+  "review": [
+   {
+    "x": "The mass of a metal plate is proportional to its length and to its width. A plate 4 cm long and 9 cm wide has a mass of 54 grams. Enter the mass, in grams, of a plate 4 cm long and 14 cm wide.",
+    "ans": "84",
+    "accept": [
+     "84",
+     "84.0",
+     "84 g",
+     "84 grams",
+     "84 gram",
+     "eighty-four",
+     "eightyfour"
+    ],
+    "hints": [
+     "The length is 4 cm for both plates, so only the width changed and the mass is directly proportional to it.",
+     "The width was multiplied by \\(\\frac{14}{9}\\), and the mass is multiplied by the same factor."
+    ],
+    "sol": "Only the width changed, by a factor of \\(\\frac{14}{9}\\), so the mass in grams is \\(54\\times\\frac{14}{9}=\\boxed{84}\\). Nine divides 54 exactly six times, so the product reduces to \\(6\\times 14\\)."
+   },
+   {
+    "x": "\\(W\\) is jointly proportional to \\(u\\) and \\(v\\), so \\(W=kuv\\) for one constant \\(k\\). When \\(u=6\\) and \\(v=4\\), \\(W=264\\). Enter the value of \\(k\\).",
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "k=11",
+     "eleven"
+    ],
+    "hints": [
+     "One complete set of values leaves \\(k\\) as the only unknown in \\(W=kuv\\).",
+     "Substituting the three known values gives \\(264=k\\times 6\\times 4\\)."
+    ],
+    "sol": "Substituting gives \\(264=24k\\), so \\(k=\\frac{264}{24}=\\boxed{11}\\). Checking it back, \\(11\\times 6\\times 4=264\\)."
+   },
+   {
+    "x": "A worker's pay is proportional to the number of shifts worked and to the hours in each shift. Four shifts of 6 hours pay 528 dollars in total. Enter the pay in dollars for 5 shifts of 9 hours.",
+    "ans": "990",
+    "accept": [
+     "990",
+     "$990",
+     "990.00",
+     "$990.00",
+     "990.0",
+     "990 dollars",
+     "nine hundred ninety",
+     "nine hundred and ninety"
+    ],
+    "hints": [
+     "Four shifts of 6 hours is 24 hours of work, and the pay is proportional to that product.",
+     "One hour pays \\(\\frac{528}{24}\\) dollars, and 5 shifts of 9 hours is 45 hours."
+    ],
+    "sol": "The constant is \\(\\frac{528}{4\\times 6}=22\\) dollars per hour, so the pay for 5 shifts of 9 hours is \\(22\\times 5\\times 9=\\boxed{990}\\). Since \\(5\\) shifts is \\(\\frac{5}{4}\\) of \\(4\\) and \\(9\\) hours is \\(\\frac{9}{6}\\) of \\(6\\), the pay is also \\(528\\times\\frac{5}{4}\\times\\frac{9}{6}\\), which is \\(990\\) again."
+   },
+   {
+    "x": "\\(P\\) is jointly proportional to \\(q\\) and \\(r\\), and \\(P=189\\) when \\(q=3\\) and \\(r=9\\). Enter \\(P\\) when \\(q=5\\) and \\(r=4\\).",
+    "ans": "140",
+    "accept": [
+     "140",
+     "140.0",
+     "one hundred forty",
+     "one hundred and forty"
+    ],
+    "hints": [
+     "Write \\(P=kqr\\) and use the complete set of values to find \\(k\\) first.",
+     "From \\(189=k\\times 3\\times 9\\) the constant is \\(k=7\\)."
+    ],
+    "sol": "The constant is \\(k=\\frac{189}{27}=7\\), so \\(P=7\\times 5\\times 4=\\boxed{140}\\). Scaling agrees, since \\(189\\times\\frac{5}{3}\\times\\frac{4}{9}=140\\)."
+   },
+   {
+    "x": "\\(y\\) is directly proportional to \\(m\\) and inversely proportional to \\(n\\). When \\(m=8\\) and \\(n=6\\), \\(y=24\\). Enter \\(y\\) when \\(m=15\\) and \\(n=10\\).",
+    "ans": "27",
+    "accept": [
+     "27",
+     "27.0",
+     "y=27",
+     "twenty-seven",
+     "twentyseven"
+    ],
+    "hints": [
+     "The relationship is \\(y=\\frac{km}{n}\\), with \\(n\\) below the bar because \\(y\\) is inversely proportional to it.",
+     "Grouping gives \\(\\frac{yn}{m}=k\\), and the first set of values makes that \\(\\frac{24\\times 6}{8}\\)."
+    ],
+    "sol": "Grouping gives \\(\\frac{yn}{m}=k=\\frac{24\\times 6}{8}=18\\), so \\(y=\\frac{18\\times 15}{10}=\\boxed{27}\\). Scaling agrees, since \\(24\\times\\frac{15}{8}\\times\\frac{3}{5}=27\\)."
+   },
+   {
+    "x": "The number of days a water store lasts is proportional to the volume stored and inversely proportional to the number of households drawing on it. 900 liters lasts 12 households 15 days. Enter the number of days 1200 liters lasts 20 households.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "12 days",
+     "12 day",
+     "twelve",
+     "twelve days"
+    ],
+    "hints": [
+     "More volume means more days and more households means fewer days, so the volume belongs above the bar and the households below it.",
+     "Write \\(d=\\frac{kV}{H}\\), find \\(k\\) from 900 liters, 12 households, and 15 days, then substitute \\(V=1200\\) and \\(H=20\\)."
+    ],
+    "sol": "Substituting the first store's numbers into \\(d=\\frac{kV}{H}\\) gives \\(k=\\frac{15\\times 12}{900}=\\frac{1}{5}\\), and then \\(d=\\frac{1}{5}\\cdot\\frac{1200}{20}=\\boxed{12}\\). The households grew by the larger factor, \\(\\frac{5}{3}\\) against \\(\\frac{4}{3}\\) for the volume, so the number of days is below 15."
+   },
+   {
+    "x": "A tram covers 78 km in 65 minutes at a steady speed. Enter how many kilometers it covers in 100 minutes at that same speed.",
+    "ans": "120",
+    "accept": [
+     "120",
+     "120 km",
+     "120 kilometers",
+     "120 kilometres",
+     "one hundred twenty",
+     "one hundred and twenty"
+    ],
+    "hints": [
+     "The speed is the same over both stretches, so the distance is directly proportional to the time, and the minutes need not be turned into hours.",
+     "The tram covers \\(\\frac{78}{65}\\) km each minute, and 100 minutes is \\(\\frac{100}{65}\\) times as long as 65 minutes."
+    ],
+    "sol": "The tram covers \\(\\frac{78}{65}=1.2\\) km each minute, so in 100 minutes it covers \\(1.2\\times 100=\\boxed{120}\\). Scaling the distance by the same factor as the time lands on the same number, since \\(78\\times\\frac{100}{65}=120\\)."
+   },
+   {
+    "x": "A survey drone covers 189 km in 3 hours 30 minutes at a steady speed. Use \\(1\\text{ h}=60\\text{ min}\\). Enter the drone's speed in kilometers per hour.",
+    "ans": "54",
+    "accept": [
+     "54",
+     "54.0",
+     "54 km/h",
+     "54 km/hr",
+     "54 kmh",
+     "54 kph",
+     "54 km per hour",
+     "54 kilometers per hour",
+     "54 kilometres per hour",
+     "fifty-four",
+     "fiftyfour"
+    ],
+    "hints": [
+     "Rearranging \\(d=rt\\) gives \\(r=\\frac{d}{t}\\), and the speed is asked for in kilometers per hour.",
+     "3 hours 30 minutes is \\(\\frac{7}{2}\\) hours."
+    ],
+    "sol": "The time is \\(\\frac{7}{2}\\) hours, so the speed in kilometers per hour is \\(189\\div\\frac{7}{2}=189\\times\\frac{2}{7}=\\boxed{54}\\)."
+   },
+   {
+    "x": "A painter finishes a mural in 15 hours, covering the same amount of wall in every hour. Enter the fraction of the mural that is finished once 6 hours of work are done, in lowest terms.",
+    "ans": "2/5",
+    "accept": [
+     "2/5",
+     "0.4",
+     ".4"
+    ],
+    "hints": [
+     "Every hour covers the same share of the mural, and there are 15 equal hours in the whole job.",
+     "Six of those fifteen equal shares are done, so the fraction finished is \\(\\frac{6}{15}\\), which reduces."
+    ],
+    "sol": "One hour covers \\(\\frac{1}{15}\\) of the mural, so six hours cover \\(\\frac{6}{15}\\), which reduces to \\(\\boxed{\\frac{2}{5}}\\). Working at a steady rate makes the fraction finished the same as the fraction of the time spent."
+   },
+   {
+    "x": "One conveyor loads a barge in 14 hours and a second conveyor loads the same barge in 35 hours, each at its own steady rate. Both run at once on one barge. Enter how many hours they take to load it.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "10 h",
+     "10 hrs",
+     "10 hours",
+     "10 hour",
+     "ten"
+    ],
+    "hints": [
+     "Add what the two conveyors load in one hour, not the times they take.",
+     "In one hour they load \\(\\frac{1}{14}+\\frac{1}{35}\\) of the barge, and \\(70\\) is a common denominator."
+    ],
+    "sol": "In one hour the conveyors load \\(\\frac{1}{14}+\\frac{1}{35}=\\frac{5}{70}+\\frac{2}{70}=\\frac{7}{70}=\\frac{1}{10}\\) of the barge, so the number of hours is \\(\\boxed{10}\\). Loading one tenth of the barge each hour means the whole barge takes ten hours, while adding the two times would give 49 hours, longer than either conveyor needs on its own."
+   },
+   {
+    "x": "Pumps A and B running together drain a tank in 12 hours, and pump A alone drains the tank in 20 hours. Enter how many hours pump B alone takes to drain the tank.",
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0",
+     "30 h",
+     "30 hr",
+     "30 hrs",
+     "30 hour",
+     "30 hours",
+     "thirty"
+    ],
+    "hints": [
+     "The two per-hour amounts add to the pair's per-hour amount, so one of them is found by subtracting.",
+     "Pump B drains \\(\\frac{1}{12}-\\frac{1}{20}\\) of the tank per hour."
+    ],
+    "sol": "Pump B drains \\(\\frac{1}{12}-\\frac{1}{20}=\\frac{5}{60}-\\frac{3}{60}=\\frac{2}{60}=\\frac{1}{30}\\) of the tank per hour, so the number of hours is \\(\\boxed{30}\\). Checking, \\(\\frac{1}{20}+\\frac{1}{30}=\\frac{1}{12}\\)."
+   },
+   {
+    "x": "Two drones 245 km apart set off at the same moment and fly toward each other along the same line, one at 42 kilometers per hour and the other at 28 kilometers per hour. Enter how many kilometers the faster drone has flown when they meet.",
+    "ans": "147",
+    "accept": [
+     "147",
+     "147.0",
+     "147 km",
+     "147 kilometers",
+     "147 kilometres",
+     "one hundred forty-seven",
+     "one hundred and forty-seven",
+     "one hundred fortyseven",
+     "one hundred and fortyseven"
+    ],
+    "hints": [
+     "Both drones take distance out of the same gap during the same hour, so the gap closes at the sum of the two speeds.",
+     "The gap closes at 70 kilometers per hour, which gives the time until they meet, and the question asks for one drone's distance."
+    ],
+    "sol": "The gap closes at \\(42+28=70\\) km each hour, so they meet after \\(\\frac{245}{70}=\\frac{7}{2}\\) hours and the faster drone has flown \\(42\\times\\frac{7}{2}=\\boxed{147}\\). The slower drone flies \\(28\\times\\frac{7}{2}=98\\) km, and \\(147+98=245\\) accounts for the whole gap."
+   },
+   {
+    "x": "A hiker leaves a trailhead at a steady 7 kilometers per hour. Four hours later a cyclist leaves the same trailhead on the same path at a steady 21 kilometers per hour. Enter how far from the trailhead, in kilometers, the cyclist draws level with the hiker.",
+    "ans": "42",
+    "accept": [
+     "42",
+     "42 km",
+     "42 kilometers",
+     "42 kilometres",
+     "forty-two",
+     "fortytwo"
+    ],
+    "hints": [
+     "Work out how far ahead the hiker already is at the moment the cyclist sets out.",
+     "Each hour the cyclist covers 21 km and the hiker covers 7 km of the same path, so 14 km of the lead is removed per hour."
+    ],
+    "sol": "The hiker is \\(7\\times 4=28\\) km ahead when the cyclist starts, and the lead shrinks by \\(21-7=14\\) km each hour, so the catch takes 2 hours and the distance from the trailhead in kilometers is \\(21\\times 2=\\boxed{42}\\). The hiker has walked 6 hours by then, and \\(7\\times 6=42\\) agrees."
+   },
+   {
+    "x": "Sprinkler C waters a field in 10 hours and sprinkler D waters the same field in 40 hours, each at its own steady rate. Both run together for 4 hours, then sprinkler C is switched off and sprinkler D finishes alone. Enter how many further hours sprinkler D needs.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0",
+     "20 hours",
+     "20 hour",
+     "20 h",
+     "twenty"
+    ],
+    "hints": [
+     "Sprinkler C waters \\(\\frac{1}{10}\\) of the field an hour and sprinkler D waters \\(\\frac{1}{40}\\), so together they water \\(\\frac{1}{10}+\\frac{1}{40}\\) of it an hour.",
+     "The four hours together finish half the field, so sprinkler D is left with the other half at \\(\\frac{1}{40}\\) of the field an hour."
+    ],
+    "sol": "Together they water \\(\\frac{1}{10}+\\frac{1}{40}=\\frac{5}{40}=\\frac{1}{8}\\) of the field an hour, so four hours finish \\(\\frac{4}{8}=\\frac{1}{2}\\) of it. Sprinkler D covers the remaining half at \\(\\frac{1}{40}\\) an hour, needing \\(\\frac{1/2}{1/40}=\\boxed{20}\\) further hours. Adding the two solo times, or averaging them, answers a different question."
+   },
+   {
+    "x": "A packing plant running 8 machines for 5 hours a day takes 12 days to finish an order, every machine working at the same steady rate. The next order is twice as large and must be finished in 10 days using 12 machines. Enter how many hours a day those machines must run.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "8 h",
+     "8 hr",
+     "8 hrs",
+     "8 hours",
+     "8 hour",
+     "8 hours a day",
+     "eight",
+     "eight hours"
+    ],
+    "hints": [
+     "The work done is proportional to the machines, to the hours a day and to the days, so count the first order in machine-hours.",
+     "The first order is \\(8\\times 5\\times 12=480\\) machine-hours, so the second order is 960 of them."
+    ],
+    "sol": "The first order is \\(8\\times 5\\times 12=480\\) machine-hours, so the second is \\(960\\), and \\(960\\div(12\\times 10)=\\boxed{8}\\). Forgetting to double the order gives \\(480\\div 120=4\\) instead."
+   },
+   {
+    "x": "A data hall's running cost is proportional to the number of racks and to the hours online, and inversely proportional to its efficiency rating. 20 racks online 6 hours at rating 4 cost 900 dollars. Enter the cost in dollars of 28 racks online 10 hours at rating 8.",
+    "ans": "1050",
+    "accept": [
+     "1050",
+     "$1050",
+     "1050.0",
+     "1050.00",
+     "$1050.00",
+     "1050 dollars",
+     "one thousand fifty",
+     "one thousand and fifty"
+    ],
+    "hints": [
+     "Group the varying quantities so the cost and the rating sit above the bar and the racks and the hours sit below it, and that whole combination stays constant.",
+     "The combination is \\(\\frac{Ce}{rh}\\), and the first set of values makes it \\(\\frac{900\\times 4}{20\\times 6}\\)."
+    ],
+    "sol": "Grouping gives \\(\\frac{Ce}{rh}=k\\), and the first set fixes \\(k=\\frac{900\\times 4}{120}=30\\). Then \\(C=\\frac{30\\times 28\\times 10}{8}=\\boxed{1050}\\)."
+   },
+   {
+    "x": "Two cyclists ride toward each other along a 190 km road. The first sets out from one end at a steady 15 kilometers per hour. Two hours later the second sets out from the far end at a steady 25 kilometers per hour. Enter how far from the first cyclist's start, in kilometers, the two meet.",
+    "ans": "90",
+    "accept": [
+     "90",
+     "90 km",
+     "90 kilometers",
+     "90 kilometres",
+     "ninety"
+    ],
+    "hints": [
+     "The gap is no longer 190 km by the time the second cyclist sets out, since the first has already been riding.",
+     "After the head start the gap is 160 km and it shrinks by 40 kilometers every hour, so work out the meeting time first, then measure the first cyclist's whole ride, head start included."
+    ],
+    "sol": "The first cyclist covers \\(15\\times 2=30\\) km before the second starts, leaving a 160 km gap, and the two then close on each other at \\(15+25=40\\) km per hour, so they meet 4 hours after the second sets out. The first has ridden 6 hours by then, so the distance in kilometers is \\(15\\times 6=\\boxed{90}\\). The second rides \\(25\\times 4=100\\) km, and \\(90+100=190\\)."
+   }
+  ]
  }
 }
