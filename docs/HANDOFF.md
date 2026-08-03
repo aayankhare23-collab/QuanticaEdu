@@ -76,10 +76,20 @@ agents against **pre-labelled slot ids**, assembled deterministically from `OUTL
 - **The verify phase can introduce a duplicate answer.** On 6.6 it moved an answer onto another
   item's after my distinctness check had already passed on the earlier draft. The audit caught
   it. This is the concrete reason the audit gate stays even though the math is verified by hand.
-- **Do not run four workflows at once.** Four concurrent runs exhausted the session usage limit
-  and killed every verify and audit agent in all four. Three is sustainable. If a run dies this
-  way, `Workflow({scriptPath, resumeFromRunId})` replays cached agents free and re-runs only the
-  failures; that recovered all four.
+- **Concurrency is bounded by the session's REMAINING budget, not by a fixed number.** The old
+  rule here said four at once exhausts the session usage limit and three is sustainable. Three is
+  only sustainable *from a fresh budget*. On 2026-08-03 three concurrent runs died at the author
+  stage anyway, because the session had already spent budget on three earlier runs that were
+  launched and then killed. Killed runs still bill for everything their agents did. One lesson
+  costs roughly **600k to 800k subagent tokens**, so budget by that, not by a run count. After a
+  limit reset, resume **one at a time** until you know how much is left.
+- **A dead run is cheap to recover.** `Workflow({scriptPath, resumeFromRunId})` replays every
+  completed agent from cache for free and re-runs only the failures. The blueprint phase is the
+  expensive thinking and it survives, so a run that died in the author stage resumes for a
+  fraction of its first cost. This has now recovered seven runs across two sessions.
+- **Partial output is still worth harvesting.** The 7.3 run died with 12 of 17 review items
+  authored. Those are cached, so they replay identically on resume, which means they can be
+  hand-verified while the resume is still running instead of after it.
 - **Openers quote the previous lesson's closer.** When authoring lessons in parallel that is
   impossible, so check the chain by hand at ship time and fix the opener or the closer. Three of
   four chained cleanly on chapter 6; one posed a question the next lesson never answered.
