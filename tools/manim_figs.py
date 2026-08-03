@@ -76,6 +76,10 @@ class Fig:
         self.aria = aria
         self.mobjects: list[VMobject] = []
         self.labels: list[dict] = []
+        self.anim: list | None = None
+        self.anim_dur = 6.0
+        self.anim_hold = 0.0
+        self.uid = f'q{abs(hash((width, frame_width, aria))) % 100000:05d}'
 
     # ---- scene coords -> svg pixel coords -------------------------------
     def px(self, point):
@@ -100,8 +104,37 @@ class Fig:
                                 baseline=baseline, italic=italic))
         return self
 
+    def mklabel(self, *a, **k):
+        """A label dict for a frame, rather than for the static layer."""
+        before = len(self.labels)
+        self.label(*a, **k)
+        return self.labels.pop(before)
+
+    def frames(self, builder, n=30, dur=6.0, hold=0.0):
+        """Animate. `builder(t)` returns the mobjects for t in [0, 1].
+
+        Manim does the interpolation, which is what it is for. The frames are
+        emitted as one self-contained animated SVG rather than a video: each
+        frame is a `<g>` and a CSS keyframe shows exactly one at a time. That
+        keeps an animated figure a drop-in for a static one, with no binary
+        asset, no `<video>` tag, and no change to the fig block schema. It also
+        means the SEO pages animate for free, since they embed the same markup.
+
+        `builder(t)` returns either a list of mobjects, or a
+        `(mobjects, labels)` pair when text has to travel with the geometry.
+        Build those labels with `mklabel`, which takes the same arguments as
+        `label` but returns the dict instead of pinning it to the static layer.
+
+        `hold` adds a pause on the last frame, as a fraction of the cycle.
+        """
+        raw = [builder(i / max(1, n - 1)) for i in range(n)]
+        self.anim = [r if isinstance(r, tuple) else (r, []) for r in raw]
+        self.anim_dur = dur
+        self.anim_hold = hold
+        return self
+
     # ---- render ---------------------------------------------------------
-    def _geometry_svg(self):
+    def _geometry_svg(self, mobjects=None):
         buf = io.BytesIO()
         surface = cairo.SVGSurface(buf, self.w, self.h)
         surface.set_document_unit(cairo.SVGUnit.PX)
@@ -112,7 +145,7 @@ class Fig:
                      frame_width=self.fw, frame_height=self.fh)
         cam.get_cairo_context = lambda pixel_array: ctx
         cam.set_cairo_context_color = _no_swap_color.__get__(cam, Camera)
-        cam.capture_mobjects(self.mobjects)
+        cam.capture_mobjects(self.mobjects if mobjects is None else mobjects)
         surface.finish()
         s = buf.getvalue().decode("utf-8")
         # keep only the drawing, drop cairo's xml prolog and root <svg>
@@ -123,22 +156,51 @@ class Fig:
         inner = re.sub(r"<g [^>]*>|</g>", "", inner)
         return inner.strip()
 
+    def _anim_css(self, n):
+        """One frame visible per slot. Negative delays stagger them in order."""
+        u, k = self.uid, f'{self.uid}k'
+        slot = 100.0 / n
+        on = slot * (1 - self.anim_hold) if self.anim_hold else slot
+        css = [f'@keyframes {k}{{0%{{opacity:1}}{on:.4f}%{{opacity:1}}'
+               f'{on + 0.0001:.4f}%{{opacity:0}}100%{{opacity:0}}}}',
+               f'.{u}{{opacity:0;animation:{k} {self.anim_dur}s linear infinite}}']
+        # A negative delay of -D starts the frame D seconds in, so frame i lands in
+        # slot i only with -(n-i)/n of the cycle. Using -i/n runs the whole thing
+        # backwards, which is silent and wrong rather than broken.
+        for i in range(n):
+            css.append(f'.{u}-{i}{{animation-delay:'
+                       f'{-(n - i) * self.anim_dur / n:.4f}s}}')
+        # a still figure for anyone who has asked the OS to stop motion
+        css.append(f'@media(prefers-reduced-motion:reduce){{'
+                   f'.{u}{{animation:none;opacity:0}}.{u}-{n - 1}{{opacity:1}}}}')
+        return '<style>' + ''.join(css) + '</style>'
+
     def svg(self):
         parts = [
             f'<svg viewBox="0 0 {self.w} {self.h}" xmlns="http://www.w3.org/2000/svg"'
             f' role="img" aria-label="{self.aria}"'
             f' font-family="Space Grotesk, sans-serif">',
-            self._geometry_svg(),
         ]
+        if self.anim:
+            parts.append(self._anim_css(len(self.anim)))
+        parts.append(self._geometry_svg())
+        if self.anim:
+            for i, (mobs, labs) in enumerate(self.anim):
+                parts.append(f'<g class="{self.uid} {self.uid}-{i}">'
+                             + self._geometry_svg(mobs)
+                             + ''.join(self._text(L) for L in labs) + '</g>')
         for L in self.labels:
-            style = f' font-style="italic"' if L["italic"] else ""
-            parts.append(
+            parts.append(self._text(L))
+        parts.append("</svg>")
+        return "".join(parts)
+
+    def _text(self, L):
+        style = ' font-style="italic"' if L["italic"] else ""
+        return (
                 f'<text x="{L["x"]:.1f}" y="{L["y"]:.1f}" font-size="{L["size"]}"'
                 f' font-weight="{L["weight"]}" fill="{L["color"]}"'
                 f' text-anchor="{L["anchor"]}"'
                 f' dominant-baseline="{L["baseline"]}"{style}>{L["text"]}</text>')
-        parts.append("</svg>")
-        return "".join(parts)
 
     def write(self, path):
         with open(path, "w", encoding="utf-8") as f:

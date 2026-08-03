@@ -11,8 +11,28 @@ pychecks.json is the `pyChecks` array the workflow returns, entries shaped
 {where, pyexpr, ans}. `where` is "block[i]" or "review[i]"; the answer is re-read
 from the LESSON file at that index, never trusted from the pyChecks entry.
 """
-import json, re, sys
+import itertools, json, math, re, sys
 from fractions import Fraction
+
+
+def _import(name, *a, **k):
+    """The generated exprs reach for math via __import__. Nothing else is reachable."""
+    if name in ('math', 'fractions', 'itertools'):
+        return {'math': math, 'fractions': sys.modules['fractions'],
+                'itertools': itertools}[name]
+    raise ImportError(f'{name} is not available to a pyexpr')
+
+
+# The eval namespace. Wide enough for the expressions the verifiers actually write
+# (isqrt, next(...), comprehensions), narrow enough that nothing touches the disk.
+SAFE = {
+    'Fraction': Fraction, 'math': math, 'itertools': itertools, '__import__': _import,
+    'abs': abs, 'all': all, 'any': any, 'bool': bool, 'dict': dict, 'divmod': divmod,
+    'enumerate': enumerate, 'filter': filter, 'float': float, 'int': int, 'iter': iter,
+    'len': len, 'list': list, 'map': map, 'max': max, 'min': min, 'next': next,
+    'pow': pow, 'range': range, 'reversed': reversed, 'round': round, 'set': set,
+    'sorted': sorted, 'str': str, 'sum': sum, 'tuple': tuple, 'zip': zip,
+}
 
 
 def norm(a):
@@ -45,10 +65,7 @@ def main(lesson_path, checks_path):
         if not expr:
             print(f"  -- {c['where']} no pyexpr (non-numeric), re-solve by hand"); skip += 1; continue
         try:
-            val = eval(expr, {'__builtins__': {}}, {  # noqa: S307 - our own generated exprs
-                'Fraction': Fraction, 'abs': abs, 'min': min, 'max': max, 'sum': sum,
-                'round': round, 'int': int, 'len': len, 'range': range, 'sorted': sorted,
-                'pow': pow, 'all': all, 'any': any, 'set': set, 'list': list})
+            val = eval(expr, {'__builtins__': SAFE}, dict(SAFE))  # noqa: S307 - our own exprs
         except Exception as e:
             print(f"  !! {c['where']} pyexpr failed: {e}  [{expr[:70]}]"); fail += 1; continue
         want = as_frac(item['ans'])
