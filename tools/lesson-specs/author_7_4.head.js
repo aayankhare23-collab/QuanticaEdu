@@ -47,7 +47,7 @@ TOPIC CHECKLIST (cover ALL):
  5. Reading a value off the line once you have it. Given two data points, find the equation, then
     predict \\(y\\) at a third \\(x\\) or find the \\(x\\) that gives a stated \\(y\\).
  6. THE VERTICAL CASE. Two points with the same \\(x\\)-coordinate have no slope, so point-slope
-    does not apply, and the line is \\(x=c\\). Test it directly, because students try to force the
+    does not apply, and the line is \\(x=k\\). Test it directly, because students try to force the
     formula. Include a problem whose answer is that constant.
  7. A LINEAR RELATIONSHIP IN CONTEXT. Two readings of a quantity that changes at a constant rate
     determine the whole relationship, including its value at a moment not measured.
@@ -86,7 +86,7 @@ MANDATED BLOCK OUTLINE, exactly 25 blocks in exactly this order:
   17 [imp4] imp both points give the same line, and why
   18 [p_special] p when the two points share an x-coordinate
   19 [P9] prob the vertical case      20 [P10] prob a constant making a point lie on a line
-  21 [imp5] imp two points with the same x give \\(x=c\\), which has no slope
+  21 [imp5] imp two points with the same x give \\(x=k\\), which has no slope
   22 [p_close] p putting it together
   23 [P11] prob a linear relationship from two readings, in context
   24 [P12] prob the hardest closer

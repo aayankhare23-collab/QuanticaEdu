@@ -28,9 +28,11 @@ CONTEXT AND CONTINUITY. Third lesson of chapter 7, Graphing Lines.
 - 7.1 established the plane, ordered pairs, the four quadrants, distance between two points and
   the midpoint. 7.2 established that the graph of an equation is the set of points satisfying it,
   that the graph of \\(ax+by=c\\) is a straight line so two points fix it, the two intercepts, and
-  horizontal and vertical lines. 7.2 closes by handing off to this lesson, which is where the
-  measure of steepness finally gets a name. The opener picks that up in one or two plain
-  sentences. Do NOT write "Last lesson we" or "Imagine".
+  horizontal and vertical lines. 7.2's closing sentences are exactly: "Every graph in this lesson
+  came from the same two steps, find two solution points and draw the line through them. Those
+  steps settle where the line is and say nothing about how steep it is. Lesson 7.3, Slope,
+  attaches a number to the steepness, computed from any two points of the line." Open from that in
+  one or two plain sentences. Do NOT write "Last lesson we" or "Imagine".
 - Chapter 6 taught direct proportion, constant rates and \\(d=rt\\). Slope is the same constant
   ratio idea read off a graph, and saying so once is worth it. Do NOT re-derive proportion.
 - This lesson INTRODUCES the letter \\(m\\) for slope. 7.2 was forbidden from using it.

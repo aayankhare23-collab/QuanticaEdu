@@ -36,6 +36,11 @@ CONTEXT AND CONTINUITY. This OPENS chapter 7, Graphing Lines, of Algebra I.
   not be re-derived.
 - 5.1 promised that a system's solution counts would get a picture in chapter 7. That promise is
   kept in 7.6, NOT here. Do not preview it.
+- 7.2 IS ALREADY WRITTEN and its opening sentence is exactly: "7.1 gave every ordered pair a place
+  on the plane. From 5.1, an equation in two variables has one solution pair for every value of
+  \(x\) chosen, so its solutions can never be listed in full." The [closer] must hand off so that
+  sentence follows naturally, naming 7.2 Graphing Linear Equations and leaving the reader with the
+  plane established and every pair placed on it. Do NOT teach anything about graphs of equations.
 
 TOPIC CHECKLIST (cover ALL):
  1. An ordered pair names a point. Two number lines at right angles, the horizontal one the
