@@ -114,7 +114,35 @@ It is already written for chapter 7 and chapter 8, so those SPECs are fill-ins, 
 
 One promise to keep: **5.1 explicitly tells the reader "Chapter 7 will draw what that looks
 like"** about a system's three solution counts. Reference 8.6 is where that picture lives, so
-**7.6 must deliver it**. Noted in the coverage map.
+**7.6 must deliver it**. Noted in the coverage map. **That picture is already drawn** and waiting
+at `tools/lesson-figs/fig_7_6.svg`, see the next section.
+
+## Graphs are drawn with manim now
+
+Any figure on a set of axes is rendered with manim rather than hand-written as SVG. The kit is
+`tools/manim_figs.py`, the full spec is in `docs/figure-design-system.md`, and manim installs
+clean into `.venv-manim/` (gitignored) on Python 3.14 with no LaTeX needed.
+
+**Chapter 7's six figures are already built and rendered** in `tools/lesson-figs/`. Apply one with
+
+```
+.venv-manim/bin/python tools/lesson-figs/fig_7_3.py
+python3 tools/lesson-figs/apply_fig.py 7.3 --course algebra1 --write
+```
+
+then `build_lessons.py`. Eyeball every figure at
+`/tools/lesson-figs/_preview.html?f=fig_7_3` before shipping it; the checker cannot see a label
+sitting on an axis. `fig_7_2` is a spare, since 7.2 shipped a hand-authored figure that also shows
+the substitution check.
+
+Two traps if you ever rebuild this: manim reverses RGB for its ARGB32 image surface and that swap
+must be undone for an SVG surface, and manim's own `Text` bakes glyphs to paths in whatever font
+the machine has, so labels are emitted as live `<text>` in Space Grotesk instead.
+
+**SPECs for 7.3, 7.4, 7.5 and 7.6 are written** and ready to run in `tools/lesson-specs/`
+(`author_7_N.head.js`, assembled as head + STYLE + tail from `tools/author_lesson.workflow.js`).
+Their banned-names chains are already threaded, Monge then Lambert then Halley then Euclid's fifth
+postulate.
 
 ## In flight when this session ended
 
