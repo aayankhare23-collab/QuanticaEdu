@@ -4634,6 +4634,365 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
  }
 });
 
+  Object.assign(PSETS_ALG1, {
+ "5": {
+  "practice": [
+   {
+    "x": "Three pairs are proposed for the system \\(4x+3y=97\\) and \\(x-y=5\\), each written with \\(x\\) first and \\(y\\) second. $$(19,7)\\qquad(16,11)\\qquad(22,17)$$ Exactly one of the three solves the system. The other two each clear one equation and miss the other. Enter \\(x\\) for the pair that satisfies both.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen",
+     "x=16"
+    ],
+    "hints": [
+     "A pair solves the system only when it satisfies both equations, so test each pair in both."
+    ],
+    "sol": "<p>The pair \\((16,11)\\) passes both equations, since \\(4(16)+3(11)=97\\) and \\(16-11=5\\), so \\(x=\\boxed{16}\\). The other two each pass one equation and fail the other, since \\(19-7=12\\) for \\((19,7)\\) and \\(4(22)+3(17)=139\\) for \\((22,17)\\). Satisfying one equation is not enough.</p>"
+   },
+   {
+    "x": "The pair \\((6,-5)\\) satisfies \\(3x+4y=-2\\). For exactly one value of \\(k\\) the pair also satisfies \\(kx-2y=28\\), so \\((6,-5)\\) is the solution of the system. Substitute \\(x=6\\) and \\(y=-5\\) into the second equation and enter \\(k\\).",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three",
+     "k=3"
+    ],
+    "hints": [
+     "Substituting gives \\(k(6)-2(-5)=28\\). Watch the sign, \\(-2(-5)=+10\\)."
+    ],
+    "sol": "<p>Substituting gives \\(k(6)-2(-5)=28\\), so \\(6k+10=28\\), then \\(6k=18\\) and \\(k=\\boxed{3}\\). The term \\(-2y\\) at \\(y=-5\\) is \\(+10\\), not \\(-10\\), and reading it the other way leaves \\(6k=38\\) and a wrong \\(k\\).</p>"
+   },
+   {
+    "x": "The first equation of \\(y=4x+25\\) and \\(3x+2y=6\\) is already solved for \\(y\\), so write \\(4x+25\\) in the \\(y\\) slot of the second equation. That slot carries a coefficient, so substitute in parentheses. Solve the system and enter \\(x\\).",
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4",
+     "x=-4",
+     "x=−4",
+     "negative4",
+     "negativefour"
+    ],
+    "hints": [
+     "Write \\(3x+2(4x+25)=6\\), distribute the \\(2\\) across both terms, then collect."
+    ],
+    "sol": "<p>Substituting gives \\(3x+2(4x+25)=6\\), so \\(3x+8x+50=6\\), then \\(11x=-44\\) and \\(x=\\boxed{-4}\\). Back-substituting, \\(y=4(-4)+25=9\\), and \\(3(-4)+2(9)=6\\) checks.</p>"
+   },
+   {
+    "x": "In the system \\(x+7y=96\\) and \\(5x+4y=139\\), one letter isolates with no fractions anywhere. Isolate it, substitute into the other equation, solve the system, check the pair in both equations, and enter the product \\(xy\\).",
+    "ans": "209",
+    "accept": [
+     "209",
+     "xy=209"
+    ],
+    "hints": [
+     "The \\(x\\) in the first equation has coefficient \\(1\\), so isolating it gives \\(x=96-7y\\). Substitute that into \\(5x+4y=139\\)."
+    ],
+    "sol": "<p>From the first equation \\(x=96-7y\\). Substituting, \\(5(96-7y)+4y=139\\), so \\(480-31y=139\\), then \\(-31y=-341\\) and \\(y=11\\). Then \\(x=96-77=19\\), so \\(xy=19\\cdot 11=\\boxed{209}\\). Check, \\(19+7(11)=96\\) and \\(5(19)+4(11)=139\\).</p>"
+   },
+   {
+    "x": "Both equations of \\(4x+5y=93\\) and \\(6x-5y=-23\\) carry a \\(5y\\) term, one positive and one negative. Add them column by column, solve what is left, then go back for the ask, which is \\(y\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "thirteen",
+     "y=13"
+    ],
+    "hints": [
+     "Adding gives \\(10x=70\\), so find \\(x\\) first, then put it back into either original equation."
+    ],
+    "sol": "<p>Adding the two equations gives \\(10x=70\\), so \\(x=7\\). Putting that into the first, \\(28+5y=93\\), so \\(5y=65\\) and \\(y=\\boxed{13}\\). The second equation checks, \\(6(7)-5(13)=42-65=-23\\).</p>"
+   },
+   {
+    "x": "Neither \\(x\\)-coefficient in the system \\(6x+5y=76\\) and \\(8x+9y=106\\) divides the other, so eliminating \\(x\\) takes a scaling of both equations to \\(24x\\). Eliminating \\(y\\) would take a scaling to \\(45y\\). Use the cheaper elimination and enter the value of \\(x\\).",
+    "ans": "11",
+    "accept": [
+     "11",
+     "eleven",
+     "x=11"
+    ],
+    "hints": [
+     "Multiply the first equation by \\(4\\) and the second by \\(3\\), both sides each time, then subtract."
+    ],
+    "sol": "<p>Scaling gives \\(24x+20y=304\\) and \\(24x+27y=318\\). Subtracting the first from the second leaves \\(7y=14\\), so \\(y=2\\), and then \\(6x+10=76\\), so \\(6x=66\\) and \\(x=\\boxed{11}\\). Check, \\(8(11)+9(2)=106\\). Eliminating \\(y\\) instead would have taken a scaling to \\(45y\\), bigger numbers for the same answer.</p>"
+   },
+   {
+    "x": "Neither \\(3(2x+y)-4y=50\\) nor \\(8x+3y=3x+9y+21\\) reads \\(ax+by=c\\) yet, one because of parentheses and the other because letter terms sit on both sides. Clean both, solve the system, and enter \\(x\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine",
+     "x=9"
+    ],
+    "hints": [
+     "Distribute in the first equation and collect the \\(y\\)-terms, then move every letter term of the second equation to the left."
+    ],
+    "sol": "<p>The first equation becomes \\(6x+3y-4y=50\\), so \\(6x-y=50\\). The second becomes \\(5x-6y=21\\). Multiplying the cleaned first by \\(6\\) gives \\(36x-6y=300\\), and subtracting leaves \\(31x=279\\), so \\(x=\\boxed{9}\\). Then \\(y=4\\), and both originals check.</p>"
+   },
+   {
+    "x": "Solve \\(\\frac{x}{5}+\\frac{y}{4}=12\\) and \\(\\frac{x}{2}-\\frac{y}{3}=7\\). Each equation has its own denominators, so clear them one equation at a time. Enter \\(y\\).",
+    "ans": "24",
+    "accept": [
+     "24",
+     "y=24",
+     "twenty-four",
+     "twentyfour"
+    ],
+    "hints": [
+     "Multiply the first equation by \\(20\\) and the second by \\(6\\), every term on both sides."
+    ],
+    "sol": "<p>Clearing with \\(20\\) and \\(6\\) gives \\(4x+5y=240\\) and \\(3x-2y=42\\). Multiply the first of those by \\(3\\) and the second by \\(4\\) to match the \\(x\\) terms, \\(12x+15y=720\\) and \\(12x-8y=168\\), and subtracting leaves \\(23y=552\\), so \\(y=\\boxed{24}\\). Then \\(4x=240-5\\cdot 24=120\\) and \\(x=30\\). Check, \\(\\frac{30}{5}+\\frac{24}{4}=12\\) and \\(\\frac{30}{2}-\\frac{24}{3}=7\\).</p>"
+   },
+   {
+    "x": "A climbing gym charges one fixed price for a day pass and one fixed price for a gear rental. An order of 5 day passes and 2 gear rentals costs 96 dollars, and an order of 3 day passes and 4 gear rentals costs 108 dollars. Enter the price of one gear rental, in dollars.",
+    "ans": "18",
+    "accept": [
+     "18",
+     "eighteen",
+     "18 dollars",
+     "$18",
+     "18.00",
+     "$18.00",
+     "g=18"
+    ],
+    "hints": [
+     "Let \\(d\\) be the day pass price and \\(g\\) the gear rental price, in dollars, then write one equation per order."
+    ],
+    "sol": "<p>With \\(d\\) the day pass price and \\(g\\) the gear rental price, \\(5d+2g=96\\) and \\(3d+4g=108\\). Doubling the first gives \\(10d+4g=192\\), and subtracting the second leaves \\(7d=84\\), so \\(d=12\\) and \\(2g=96-60=36\\), which makes the rental \\(\\boxed{18}\\) dollars. Check, \\(3(12)+4(18)=108\\).</p>"
+   },
+   {
+    "x": "A two-digit number is 3 more than four times the sum of its digits, and its units digit is 4 more than its tens digit. Call the tens digit \\(t\\) and the units digit \\(u\\), so the number is \\(10t+u\\). Turn both facts into equations and enter the number.",
+    "ans": "59",
+    "accept": [
+     "59",
+     "fiftynine",
+     "fifty-nine"
+    ],
+    "hints": [
+     "The sum of the digits is \\(t+u\\), so four times the sum is \\(4(t+u)\\). Each of the two facts becomes one equation, and the number itself is \\(10t+u\\)."
+    ],
+    "sol": "<p>The two facts are \\(10t+u=4(t+u)+3\\) and \\(u=t+4\\). Substituting the second into the first, \\(11t+4=8t+19\\), so \\(3t=15\\) and \\(t=5\\), then \\(u=9\\) and the number is \\(\\boxed{59}\\). Check, the digits add to \\(14\\) and \\(4(14)+3=59\\).</p>"
+   },
+   {
+    "x": "The same \\(x\\), \\(y\\) and \\(z\\) satisfy all three equations below. $$3x+2y+z=64$$ $$x+3y+2z=71$$ $$2x+y+3z=69$$ Enter \\(x+y+z\\) without finding the three values separately.",
+    "ans": "34",
+    "accept": [
+     "34",
+     "x+y+z=34",
+     "thirtyfour",
+     "thirty-four"
+    ],
+    "hints": [
+     "Each letter's three coefficients are \\(1\\), \\(2\\) and \\(3\\) in some order, so add all three equations, left side to left side and right side to right side."
+    ],
+    "sol": "<p>Adding all three, the total coefficient of each letter is \\(1+2+3=6\\) and the right side is \\(64+71+69=204\\), so \\(6x+6y+6z=204\\) and \\(x+y+z=\\boxed{34}\\). The triple is \\((9,12,13)\\), and all three equations are true for it.</p>"
+   },
+   {
+    "x": "The same triple \\((x,y,z)\\) satisfies all three equations. $$2x+y+3z=86$$ $$x+4y+2z=110$$ $$3x+2y+z=85$$ Clear \\(y\\) from two different pairs of these equations, solve the two-letter system that comes out, then go back for \\(y\\) and enter it.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "y=17",
+     "seventeen"
+    ],
+    "hints": [
+     "Four times the first equation minus the second clears \\(y\\), and so does twice the first minus the third. The pair that comes out holds only \\(x\\) and \\(z\\), so \\(y\\) comes from an original equation at the end."
+    ],
+    "sol": "<p>Four times the first equation minus the second gives \\(7x+10z=234\\), and twice the first minus the third gives \\(x+5z=87\\). Substituting \\(x=87-5z\\) leaves \\(609-25z=234\\), so \\(z=15\\) and \\(x=12\\). The first equation then reads \\(24+y+45=86\\), so \\(y=\\boxed{17}\\). Neither reduced equation has a \\(y\\) in it, so the final value comes from an original equation, and \\((12,17,15)\\) passes the other two, \\(12+68+30=110\\) and \\(36+34+15=85\\).</p>"
+   }
+  ],
+  "challenge": [
+   {
+    "x": "Solve \\(8x+3y=29\\) and \\(12x-7y=-14\\). Neither pair of coefficients divides the other way, so price both eliminations before starting. Enter \\(x\\) as a fraction in lowest terms.",
+    "ans": "7/4",
+    "accept": [
+     "7/4",
+     "1.75",
+     "x=7/4",
+     "x=1.75"
+    ],
+    "hints": [
+     "The \\(x\\)-coefficients meet at \\(24\\) and the \\(y\\)-coefficients meet at \\(21\\), so clearing \\(y\\) is the cheaper route and it is also the letter the ask wants gone.",
+     "Multiply the first equation by \\(7\\) and the second by \\(3\\). The \\(y\\)-terms become \\(+21y\\) and \\(-21y\\), which are opposites, so add rather than subtract."
+    ],
+    "sol": "<p>Seven times the first equation is \\(56x+21y=203\\) and three times the second is \\(36x-21y=-42\\). Adding them leaves \\(92x=161\\), so \\(x=\\frac{161}{92}=\\boxed{\\frac{7}{4}}\\). Then \\(y=5\\), and \\(8\\cdot\\frac{7}{4}+15=29\\) checks. Clearing \\(x\\) instead means scaling to \\(24x\\) and still leaves the fraction at the end.</p>"
+   },
+   {
+    "x": "A rectangular tabletop takes 306 cm of edging all the way around. Bracing runs along both long edges and once across the middle parallel to the short edges, 240 cm of bracing in all. Enter the area of the tabletop, in square cm.",
+    "ans": "5742",
+    "accept": [
+     "5742",
+     "5742squarecm",
+     "5742sqcm",
+     "5742cm^2",
+     "5742cm2",
+     "5742squarecentimeters"
+    ],
+    "hints": [
+     "With \\(L\\) the long side and \\(W\\) the short side, the edging gives \\(2L+2W=306\\).",
+     "The bracing across the middle is parallel to the short edges, so its length is \\(W\\), and the bracing gives \\(2L+W=240\\)."
+    ],
+    "sol": "<p>Let \\(L\\) and \\(W\\) be the long and short sides in cm. The edging gives \\(2L+2W=306\\), so \\(L+W=153\\), and the bracing gives \\(2L+W=240\\). Subtracting \\(L+W=153\\) from \\(2L+W=240\\) leaves \\(L=87\\), so \\(W=153-87=66\\) and the area is \\(87\\cdot 66=\\boxed{5742}\\) square cm. Check, \\(2(87)+2(66)=306\\) and \\(2(87)+66=240\\). Halving the edging equation first is what matches the two \\(W\\) coefficients, so a single subtraction clears the short side.</p>"
+   },
+   {
+    "x": "Solve \\(7x+11y=177\\) and \\(11x+7y=165\\). The same two coefficients appear in both equations with the roles of \\(x\\) and \\(y\\) swapped. Use that symmetry instead of a full elimination setup. Enter the product \\(xy\\).",
+    "ans": "88",
+    "accept": [
+     "88",
+     "xy=88",
+     "eightyeight",
+     "eighty-eight"
+    ],
+    "hints": [
+     "Add the two equations, then subtract one from the other. Each result is a multiple of \\(x+y\\) or of \\(x-y\\).",
+     "The two results are \\(x+y=19\\) and \\(x-y=-3\\). Adding them gives \\(2x=16\\). Put that \\(x\\) back into \\(x+y=19\\) for \\(y\\)."
+    ],
+    "sol": "<p>Adding the two equations gives \\(18x+18y=342\\), so \\(x+y=19\\). Subtracting the first from the second gives \\(4x-4y=-12\\), so \\(x-y=-3\\). Adding those two gives \\(2x=16\\), so \\(x=8\\), \\(y=11\\), and \\(xy=\\boxed{88}\\). Check, \\(7(8)+11(11)=177\\) and \\(11(8)+7(11)=165\\).</p>"
+   },
+   {
+    "x": "Parentheses and letters on both sides hide the first equation of \\(4(x-3y)+5y=x+5\\) and \\(0.6x+0.35y=8\\), and decimals hide the second. Clean both, then eliminate. Enter the product \\(xy\\).",
+    "ans": "44",
+    "accept": [
+     "44",
+     "fortyfour",
+     "forty-four",
+     "xy=44"
+    ],
+    "hints": [
+     "Distribute in the first equation and move the \\(x\\) across. Multiply the second equation by \\(100\\), then divide every term of the result by \\(5\\).",
+     "The cleaned equations are \\(3x-7y=5\\) and \\(12x+7y=160\\), and the \\(y\\)-terms are already opposites."
+    ],
+    "sol": "<p>The first equation becomes \\(4x-12y+5y=x+5\\), so \\(3x-7y=5\\). Multiplying the second by \\(100\\) gives \\(60x+35y=800\\), and dividing by \\(5\\) gives \\(12x+7y=160\\). Adding removes \\(y\\), so \\(15x=165\\) and \\(x=11\\), then \\(7y=28\\) and \\(y=4\\), which makes \\(xy=\\boxed{44}\\). Check \\((11,4)\\), both sides of the first original come out \\(16\\), and \\(0.6(11)+0.35(4)=8\\). The multiplier for each equation comes from that equation alone, and the extra division by \\(5\\) is what makes the \\(y\\)-terms opposites.</p>"
+   },
+   {
+    "x": "A freight train leaves a depot at a steady speed. Two hours later an express leaves the same depot along the same track at its own steady speed, and it catches the freight 5 hours after the express starts. The express runs 18 km per hour faster than the freight. Enter how far from the depot, in kilometers, the express catches it.",
+    "ans": "315",
+    "accept": [
+     "315",
+     "315km",
+     "315kilometers",
+     "315kilometres"
+    ],
+    "hints": [
+     "At the catch both trains are the same distance from the depot, but the freight has been going 2 hours longer.",
+     "With \\(f\\) and \\(e\\) in km per hour, the two facts are \\(7f=5e\\) and \\(e=f+18\\)."
+    ],
+    "sol": "<p>Let \\(f\\) and \\(e\\) be the speeds in km per hour. At the catch the freight has run \\(7\\) hours and the express \\(5\\), and both are the same distance out, so \\(7f=5e\\), while the speed fact gives \\(e=f+18\\). Substituting, \\(7f=5f+90\\), so \\(f=45\\) and \\(e=63\\), and the distance is \\(5(63)=\\boxed{315}\\) kilometers. The freight checks too, \\(7(45)=315\\).</p>"
+   },
+   {
+    "x": "Constants \\(a\\) and \\(b\\) make \\(a(2x+5)+b(3x-7)=3x+80\\) hold at every value of \\(x\\) rather than at one value only. Match the \\(x\\)-terms, match the constants, solve the system that comes out, and enter the product \\(ab\\).",
+    "ans": "-45",
+    "accept": [
+     "-45",
+     "−45",
+     "ab=-45",
+     "ab=−45",
+     "negative 45",
+     "negative forty-five",
+     "negative fortyfive"
+    ],
+    "hints": [
+     "Expand the left side and collect it as \\((2a+3b)x+(5a-7b)\\).",
+     "Matching the two columns gives \\(2a+3b=3\\) and \\(5a-7b=80\\)."
+    ],
+    "sol": "<p>Expanding, the left side is \\((2a+3b)x+(5a-7b)\\), so \\(2a+3b=3\\) and \\(5a-7b=80\\). Scaling each equation to \\(10a\\) gives \\(10a+15b=15\\) and \\(10a-14b=160\\), and subtracting leaves \\(29b=-145\\), so \\(b=-5\\). Then \\(2a-15=3\\) gives \\(a=9\\), and \\(ab=\\boxed{-45}\\). Check, \\(9(2x+5)-5(3x-7)=18x+45-15x+35=3x+80\\).</p>"
+   },
+   {
+    "x": "For every value of \\(k\\) except one, the system \\(4x-10y=27\\) and \\(6x+ky=35\\) has exactly one solution. At that one exception the system has no solution at all. Enter that value of \\(k\\).",
+    "ans": "-15",
+    "accept": [
+     "-15",
+     "−15",
+     "k=-15",
+     "k=−15"
+    ],
+    "hints": [
+     "Both \\(4\\) and \\(6\\) divide \\(12\\), so scale each equation until its \\(x\\)-term is \\(12x\\), then compare the two \\(y\\)-terms.",
+     "Tripling the first gives \\(12x-30y=81\\) and doubling the second gives \\(12x+2ky=70\\). With the two \\(y\\)-terms equal, the two equations differ only in their constants."
+    ],
+    "sol": "<p>Tripling the first equation gives \\(12x-30y=81\\), and doubling the second gives \\(12x+2ky=70\\). The two \\(y\\)-terms match only when \\(2k=-30\\), so \\(k=\\boxed{-15}\\). At that value the two equations read \\(12x-30y=81\\) and \\(12x-30y=70\\), so no pair satisfies both and the system has no solution. For every other \\(k\\) the system has exactly one solution.</p>"
+   },
+   {
+    "x": "For every number \\(t\\), let \\(x=3t+11\\) and \\(y=5t-4\\). Whatever \\(t\\) is, the pair \\((x,y)\\) satisfies one equation \\(5x+by=c\\) with constants \\(b\\) and \\(c\\). Work out \\(b\\) first, then enter \\(c\\).",
+    "ans": "67",
+    "accept": [
+     "67",
+     "c=67",
+     "sixtyseven",
+     "sixty-seven"
+    ],
+    "hints": [
+     "Write \\(5x\\) and \\(by\\) in terms of \\(t\\). The sum is the same for every \\(t\\) only when the two \\(t\\)-terms add to \\(0\\).",
+     "The \\(t\\)-terms are \\(15t\\) and \\(5bt\\), so \\(b=-3\\). Then \\(c\\) is the constant part of \\(5x-3y\\)."
+    ],
+    "sol": "<p>\\(5x=15t+55\\) and \\(by=5bt-4b\\), so the \\(t\\)-terms add to \\((15+5b)t\\), which is \\(0\\) for every \\(t\\) only when \\(b=-3\\). Then \\(5x-3y=(15t+55)-(15t-12)=67\\), so \\(c=\\boxed{67}\\). A check at \\(t=0\\) gives \\((x,y)=(11,-4)\\) and \\(5(11)-3(-4)=67\\), and at \\(t=1\\) it gives \\((14,1)\\) and \\(70-3=67\\).</p>"
+   },
+   {
+    "x": "$$7x+3y+2z=89$$ $$2x+10y+12z=142$$ These two equations are all that is known about \\(x\\), \\(y\\) and \\(z\\), and two facts cannot pin down three letters. Even so, \\(x+y+z\\) is the same number at every solution. Enter \\(x+y+z\\).",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty",
+     "x+y+z=20"
+    ],
+    "hints": [
+     "Adding the two equations as they stand gives columns \\(9\\), \\(13\\) and \\(14\\), which are not equal. Scale the first equation before adding, and pick the multiplier that evens the three columns out.",
+     "Multiplying the first equation by \\(k\\) makes the columns \\(7k+2\\), \\(3k+10\\) and \\(2k+12\\). All three come to \\(16\\) at \\(k=2\\)."
+    ],
+    "sol": "<p>Doubling the first equation gives \\(14x+6y+4z=178\\). Adding the second equation to that, the columns come to \\(14+2\\), \\(6+10\\) and \\(4+12\\), all \\(16\\), so \\(16x+16y+16z=320\\) and \\(x+y+z=\\boxed{20}\\).  Scaling the first equation by \\(k\\) gives columns \\(7k+2\\), \\(3k+10\\) and \\(2k+12\\), and those agree only at \\(k=2\\).</p>"
+   },
+   {
+    "x": "A conveyor moves crates in fixed batch sizes, one size per line. Two batches from line A, three from line B and one from line C move 29 tonnes. One batch from line A, two from line B and four from line C move 32 tonnes. Enter how many tonnes five batches from A, eight from B and six from C move.",
+    "ans": "90",
+    "accept": [
+     "90",
+     "ninety",
+     "90 tonnes",
+     "90 tons"
+    ],
+    "hints": [
+     "Name the three batch masses in tonnes and write one equation per run. Two facts cannot pin three letters, so the ask has to come from a combination rather than from the three masses.",
+     "Compare the target \\(5a+8b+6c\\) with the two left sides. Twice the first run plus the second run lands on it exactly."
+    ],
+    "sol": "<p>With \\(a\\), \\(b\\) and \\(c\\) the three batch masses in tonnes, \\(2a+3b+c=29\\) and \\(a+2b+4c=32\\). Twice the first plus the second gives \\((4a+6b+2c)+(a+2b+4c)=5a+8b+6c\\), and the right sides give \\(2(29)+32=\\boxed{90}\\) tonnes. The three masses are never pinned down separately, and they do not need to be.</p>",
+    "legendary": true
+   },
+   {
+    "x": "These four equations hold at once for the same four numbers. $$2w+x+y=38 \\qquad 2x+y+z=46$$ $$2y+z+w=33 \\qquad 2z+w+x=47$$ Each letter carries a coefficient of \\(2\\) in one equation, \\(1\\) in two others, and is missing from the fourth. Enter \\(z\\).",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve",
+     "z=12"
+    ],
+    "hints": [
+     "Every column of the four equations totals \\(4\\), so adding all four gives four times the sum \\(w+x+y+z\\). That total alone does not finish the problem.",
+     "Call the total \\(S\\). Subtracting \\(S\\) from each equation leaves \\(w-z\\), \\(x-w\\), \\(y-x\\) and \\(z-y\\), a chain of differences that walks every letter back to \\(z\\)."
+    ],
+    "sol": "<p>Every column totals \\(4\\), so adding all four equations gives \\(4S=164\\) where \\(S=w+x+y+z\\), and \\(S=41\\). Subtracting \\(S\\) from each equation in turn gives \\(w-z=-3\\), \\(x-w=5\\), \\(y-x=-8\\) and \\(z-y=6\\). Writing each letter in terms of \\(z\\) gives \\(w=z-3\\), \\(x=z+2\\) and \\(y=z-6\\), so \\(S=4z-7=41\\) and \\(z=\\boxed{12}\\). Then \\(w=9\\), \\(x=14\\), \\(y=6\\), and all four equations check.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Numbers \\(x\\) and \\(y\\) satisfy $$\\frac{20}{x+y}+\\frac{12}{x-y}=3$$ $$\\frac{40}{x+y}+\\frac{30}{x-y}=7$$ Neither equation reads \\(ax+by=c\\), but naming the two repeated pieces leaves a system that does. Enter the product \\(xy\\).",
+    "ans": "91",
+    "accept": [
+     "91",
+     "ninetyone",
+     "ninety-one",
+     "xy=91"
+    ],
+    "hints": [
+     "Every term is a multiple of \\(\\frac{1}{x+y}\\) or \\(\\frac{1}{x-y}\\), so give those two pieces their own letters and rewrite both equations.",
+     "With \\(u=\\frac{1}{x+y}\\) and \\(v=\\frac{1}{x-y}\\) the system reads \\(20u+12v=3\\) and \\(40u+30v=7\\). Solve for \\(u\\) and \\(v\\), then use \\(x+y=\\frac{1}{u}\\) and \\(x-y=\\frac{1}{v}\\)."
+    ],
+    "sol": "<p>With \\(u=\\frac{1}{x+y}\\) and \\(v=\\frac{1}{x-y}\\) the system reads \\(20u+12v=3\\) and \\(40u+30v=7\\). Doubling the first gives \\(40u+24v=6\\), and subtracting that from the second leaves \\(6v=1\\), so \\(v=\\frac{1}{6}\\). Then \\(12v=2\\), so the first equation becomes \\(20u=1\\) and \\(u=\\frac{1}{20}\\). Converting back, \\(x+y=20\\) and \\(x-y=6\\), so \\(x=13\\), \\(y=7\\) and \\(xy=\\boxed{91}\\). Check, \\(\\frac{20}{20}+\\frac{12}{6}=3\\) and \\(\\frac{40}{20}+\\frac{30}{6}=7\\).</p>",
+    "legendary": true
+   }
+  ]
+ }
+});
+
   /* ===== Multi-course registry. TOC / LESSONS / PSETS stay the app-wide globals the
      whole engine reads; setCourse() repoints them at one course's data and re-renders.
      The Rewards engine is already course-agnostic (keys prefixed with COURSE.slug). ===== */
