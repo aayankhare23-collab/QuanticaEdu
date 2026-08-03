@@ -147,7 +147,9 @@ def main(path):
     # figure vs problem number collision
     figs = [(f'blocks[{i}]', b) for i, b in enumerate(L['blocks']) if b.get('t') == 'fig']
     for fw, fb in figs:
-        fnums = set(int(m) for m in re.findall(r'>\s*([+\u2212-]?\d+)', fb.get('x', '')) if abs(int(m)) >= 2)
+        # a label may carry a real minus sign U+2212, which int() cannot parse
+        raw = (m.replace('\u2212', '-') for m in re.findall(r'>\s*([+\u2212-]?\d+)', fb.get('x', '')))
+        fnums = set(int(m) for m in raw if abs(int(m)) >= 2)
         for where, p in items:
             pn = set(int(m) for m in re.findall(r'\d+', p.get('x', '')) if int(m) >= 2)
             common = fnums & pn

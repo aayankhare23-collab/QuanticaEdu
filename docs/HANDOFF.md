@@ -8,14 +8,14 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **34 / 81**, 15 chapters in the TOC | chapters 1-5 | ch1-ch6 lessons all done |
+| Algebra I | **34 / 81**, 15 chapters in the TOC | **chapters 1-6** | ch1-ch6 fully done |
 
 **Next work, in order:**
-1. **Chapter 6 Practice/Challenge sets** (the only chapter with lessons but no sets).
-2. **Chapter 7, Graphing Lines**, 7.1 through 7.6.
-3. Chapters 8 to 15, then the remaining per-chapter sets.
+1. **Chapter 7, Graphing Lines**, 7.1 through 7.6. SPECs for 7.1 and 7.2 are ready in
+   `tools/lesson-specs/`.
+2. Chapters 8 to 15, then the per-chapter sets for 7 onward.
 
-Chapter 6 shipped this session (6.1 Ratios Simple and Subtle, 6.2 Conversion Factors,
+Chapter 6 and its problem sets shipped this session (6.1 Ratios Simple and Subtle, 6.2 Conversion Factors,
 6.3 Percents, 6.4 Percent Problems, 6.5 Direct and Inverse Proportion, 6.6 Joint Proportion
 and Rates). Chapter 5 and its sets shipped the same session.
 
@@ -116,8 +116,7 @@ like"** about a system's three solution counts. Reference 8.6 is where that pict
 
 ## In flight when this session ended
 
-Three workflows were running and will not survive the session. Just relaunch them:
-- chapter 6 Practice/Challenge sets (`tools/lesson-specs/pset6.workflow.js.bak`, ready to run)
+Two workflows were running and will not survive the session. Just relaunch them:
 - 7.1 The Cartesian Plane (`tools/lesson-specs/author_7_1.head.js`)
 - 7.2 Graphing Linear Equations (`tools/lesson-specs/author_7_2.head.js`)
 
