@@ -1,0 +1,557 @@
+{
+ "7.2": {
+  "title": "Graphing Linear Equations",
+  "next": "7.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "7.1 gave every ordered pair a place on the plane. From 5.1, an equation in two variables has one solution pair for every value of \\(x\\) chosen, so its solutions can never be listed in full. Every one of those pairs is a point. Marking all of them at once replaces the endless list with one picture."
+   },
+   {
+    "t": "prob",
+    "x": "The graph of \\(3x+4y=29\\) is the set of points whose coordinates make that equation true. One of \\((7,2)\\) and \\((9,1)\\) is on the graph and the other is not. Substitute both, and enter the value the left side takes at the point that is <b>not</b> on the graph.",
+    "xp": 5,
+    "ans": "31",
+    "accept": [
+     "31",
+     "31.0",
+     "thirty-one",
+     "thirtyone"
+    ],
+    "hints": [
+     "Substituting a point puts its first coordinate in for \\(x\\) and its second for \\(y\\), then evaluates \\(3x+4y\\). Do that for both points and compare each result with \\(29\\).",
+     "Start with \\((7,2)\\). If \\(3(7)+4(2)\\) comes out to \\(29\\), that point is on the graph, and the value you want is whatever \\(3x+4y\\) gives at \\((9,1)\\)."
+    ],
+    "sol": "Substituting \\((9,1)\\) into the left side gives \\(3(9)+4(1)=27+4=\\boxed{31}\\). The other point does satisfy the equation, since \\(3(7)+4(2)=21+8=29\\), so \\((7,2)\\) is on the graph and \\((9,1)\\), where the left side comes out to \\(31\\) instead of \\(29\\), is not."
+   },
+   {
+    "t": "prob",
+    "x": "The notation \\((x,8)\\) means a point whose second coordinate is \\(8\\) and whose first coordinate is not yet known. That point is on the graph of \\(5x-3y=11\\). Enter its \\(x\\)-coordinate.",
+    "xp": 5,
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "x=7",
+     "seven"
+    ],
+    "hints": [
+     "The number given is the second coordinate, so it is the value of \\(y\\). Substitute it and the equation has only \\(x\\) left in it.",
+     "The equation becomes \\(5x-24=11\\)."
+    ],
+    "sol": "Substituting \\(y=8\\) gives \\(5x-3(8)=11\\), which is \\(5x-24=11\\). Then \\(5x=35\\) and \\(x=\\boxed{7}\\). A point is on the graph exactly when its coordinates satisfy the equation, so the known coordinate goes in for its own letter and the missing one is left to solve for."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The graph of an equation is the set of its solution points.</b> Every solution pair \\((x,y)\\) is one point, and the <b>graph</b> of the equation is the collection of exactly those points and no others. A point is on the graph when substituting its two coordinates makes the equation true, and off the graph otherwise, which is 5.1's check with the pair read as a point. The test is arithmetic and not appearance. A point with fractional coordinates is on the graph whenever its substitution is true, and a point drawn close by is off the graph whenever its substitution is false."
+   },
+   {
+    "t": "prob",
+    "x": "Build a table for \\(3x+2y=30\\) at \\(x=0,\\ 2,\\ 4,\\ 6,\\ 8\\), solving for \\(y\\) in each row. The five pairs all lie on one straight line, and exactly one of them has its two coordinates equal. Enter the value those two coordinates share.",
+    "xp": 6,
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Each row takes one value of \\(x\\) and solves \\(3x+2y=30\\) for \\(y\\), so the row for \\(x=2\\) reads \\(6+2y=30\\).",
+     "A row with equal coordinates has \\(y\\) equal to its own \\(x\\), so replacing \\(y\\) with \\(x\\) in \\(3x+2y=30\\) turns it into an equation in \\(x\\) alone."
+    ],
+    "sol": "The rows give \\((0,15)\\), \\((2,12)\\), \\((4,9)\\), \\((6,6)\\) and \\((8,3)\\), and the pair with equal coordinates is \\((6,6)\\), so the shared value is \\(\\boxed{6}\\). All five pairs satisfy the equation, so all five are points of the same line, and any two of them are enough to draw it."
+   },
+   {
+    "t": "prob",
+    "x": "Exactly one of these four points is not on the graph of \\(4x-3y=18\\). $$\\left(\\tfrac{3}{4},-5\\right)\\qquad(3,-2)\\qquad(9,7)\\qquad(12,10)$$ Enter the \\(x\\)-coordinate of the point that is not.",
+    "xp": 6,
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "x=9",
+     "nine"
+    ],
+    "hints": [
+     "Test all four the same way, including the one with a fractional coordinate. A fraction is a perfectly good coordinate, and all that matters is whether \\(4x-3y\\) comes out to \\(18\\).",
+     "Watch the signs. At \\(\\left(\\tfrac34,-5\\right)\\) the term \\(-3y\\) becomes \\(+15\\), and at \\((3,-2)\\) it becomes \\(+6\\)."
+    ],
+    "sol": "The four left sides are \\(3+15=18\\), \\(12+6=18\\), \\(36-21=15\\) and \\(48-30=18\\). Only \\((9,7)\\) gives something other than \\(18\\), and its \\(x\\)-coordinate is \\(\\boxed{9}\\). Whether a point is on the graph depends only on what the substitution gives, not on how tidy the coordinates look, so here the fractional point is on the line and a whole-number point is not."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The graph of \\(ax+by=c\\) is a straight line.</b> Whenever \\(a\\) and \\(b\\) are not both zero, the points that satisfy \\(ax+by=c\\) all lie in one straight line, and every point of that line satisfies the equation. An equation of this form is a <b>linear equation</b> in two variables, named for that line. Through two distinct points there is exactly one straight line, so two solution pairs are enough to draw the whole graph, however many solutions the equation has in total."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 360\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. In the top band, a pair of coordinate axes with the origin marked O and sparse ticks, and one straight line crossing them. Three points of the line are marked as gold dots and labelled minus 2 comma 6, then 2 comma 4, then 6 comma 2, and a pill at the upper right reads x plus 2y equals 10. Below a hairline, the same three points are checked one to a row, minus 2 plus 2 times 6 equals 10, then 2 plus 2 times 4 equals 10, then 6 plus 2 times 2 equals 10.\" font-family=\"Space Grotesk, sans-serif\"><text x=\"46\" y=\"32\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">the graph</text><rect x=\"406\" y=\"26\" width=\"138\" height=\"38\" rx=\"12\" fill=\"#eaf1ff\" stroke=\"#cdddf7\" stroke-width=\"1.5\"/><text x=\"475\" y=\"51\" text-anchor=\"middle\" font-size=\"17\" font-weight=\"700\" fill=\"#2257c5\">x + 2y = 10</text><path d=\"M52 230 H422\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M414 223.5 L422 230 L414 236.5\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M170 250 V22\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\"/><path d=\"M163.5 30 L170 22 L176.5 30\" fill=\"none\" stroke=\"#475569\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M118 225 V235 M222 225 V235 M326 225 V235 M165 178 H175 M165 74 H175\" fill=\"none\" stroke=\"#7c8aa0\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"118\" y=\"249\" text-anchor=\"middle\" font-size=\"12\" fill=\"#7c8aa0\">&#8722;2</text><text x=\"222\" y=\"249\" text-anchor=\"middle\" font-size=\"12\" fill=\"#7c8aa0\">2</text><text x=\"326\" y=\"249\" text-anchor=\"middle\" font-size=\"12\" fill=\"#7c8aa0\">6</text><text x=\"158\" y=\"182\" text-anchor=\"end\" font-size=\"12\" fill=\"#7c8aa0\">2</text><text x=\"158\" y=\"78\" text-anchor=\"end\" font-size=\"12\" fill=\"#7c8aa0\">6</text><circle cx=\"170\" cy=\"230\" r=\"3\" fill=\"#475569\"/><text x=\"161\" y=\"249\" text-anchor=\"end\" font-size=\"12\" fill=\"#7c8aa0\">O</text><path d=\"M66 48 L404 217\" fill=\"none\" stroke=\"#2f6fe0\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><circle cx=\"118\" cy=\"74\" r=\"6\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><circle cx=\"222\" cy=\"126\" r=\"6\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><circle cx=\"326\" cy=\"178\" r=\"6\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"2\"/><text x=\"104\" y=\"100\" text-anchor=\"end\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">(&#8722;2, 6)</text><text x=\"236\" y=\"113\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">(2, 4)</text><text x=\"340\" y=\"165\" font-size=\"14\" font-weight=\"700\" fill=\"#8a5a08\">(6, 2)</text><path d=\"M46 264 H534\" fill=\"none\" stroke=\"#e4e9f1\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><text x=\"46\" y=\"288\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\">the check</text><circle cx=\"62\" cy=\"300\" r=\"4\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"80\" y=\"305\" font-size=\"15\" font-weight=\"700\" fill=\"#475569\">&#8722;2 + 2(6)<tspan x=\"160\" fill=\"#2257c5\">= 10</tspan></text><circle cx=\"62\" cy=\"321\" r=\"4\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"80\" y=\"326\" font-size=\"15\" font-weight=\"700\" fill=\"#475569\">2 + 2(4)<tspan x=\"160\" fill=\"#2257c5\">= 10</tspan></text><circle cx=\"62\" cy=\"342\" r=\"4\" fill=\"#fcd76a\" stroke=\"#e0a52a\" stroke-width=\"1.5\"/><text x=\"80\" y=\"347\" font-size=\"15\" font-weight=\"700\" fill=\"#475569\">6 + 2(2)<tspan x=\"160\" fill=\"#2257c5\">= 10</tspan></text></svg>",
+    "cap": "Each marked point satisfies \\(x+2y=10\\), and the substitution under it is the whole test. The graph is every point that passes, and those points fall in one straight line that continues past the three marked here."
+   },
+   {
+    "t": "p",
+    "x": "Two points are enough to draw the line, so a third pair is spare, and a spare point is a check. Any two points lie in a straight line, even two computed wrongly, so an arithmetic slip is invisible with only two points. Three points in one line is a condition that can fail, so a third point off the line is proof that one of the three is wrong."
+   },
+   {
+    "t": "prob",
+    "x": "The point \\((4,2)\\) is on the graph of \\(7x-ky=6\\), where \\(k\\) is a constant. Only one value of \\(k\\) makes that true. Enter \\(k\\).",
+    "xp": 6,
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven",
+     "k=11"
+    ],
+    "hints": [
+     "Testing a point is the same substitution whether the unknown is a coordinate or a coefficient. Putting both coordinates in leaves an equation whose only unknown is \\(k\\).",
+     "With \\(x=4\\) and \\(y=2\\) the equation reads \\(28-2k=6\\). Note the minus sign in front of the \\(k\\) term."
+    ],
+    "sol": "Substituting gives \\(7(4)-k(2)=6\\), so \\(28-2k=6\\), then \\(2k=22\\) and \\(k=\\boxed{11}\\). Check, \\(7(4)-11(2)=28-22=6\\). The usual slip is reading \\(-k(2)\\) as \\(+2k\\), which gives \\(28+2k=6\\) and \\(k=-11\\)."
+   },
+   {
+    "t": "prob",
+    "x": "A student computes three pairs for \\(2x+5y=34\\) and gets \\((2,6)\\), \\((7,4)\\) and \\((12,3)\\). Plotted, the three points do not fall in a straight line, so one pair is wrong. Keep the \\(x\\)-value of the pair that fails, and enter the \\(y\\)-value that belongs with it.",
+    "xp": 7,
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two",
+     "y=2"
+    ],
+    "hints": [
+     "Two of the three pairs satisfy the equation and one does not, so run the test on all three before deciding which one to fix.",
+     "The three left sides come out \\(34\\), \\(34\\) and \\(39\\). Take the \\(x\\)-value of the pair that misses and solve \\(2x+5y=34\\) for \\(y\\) again."
+    ],
+    "sol": "The three left sides are \\(4+30=34\\), \\(14+20=34\\) and \\(24+15=39\\), so \\((12,3)\\) is the wrong pair. At \\(x=12\\), \\(5y=34-24=10\\) and \\(y=\\boxed{2}\\). The corrected point sits one unit below the plotted one, which is why the three looked nearly straight rather than obviously wrong. A third point is worth computing for exactly that reason."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Plot from a table, then check with a third point.</b> Choose a value of \\(x\\), substitute it into the equation, and solve for \\(y\\). Each row of the table is one solution pair and so one point, and two rows are enough to draw the line. The point from a third row is on that same line when all three pairs are right and off it when one of them is wrong, so a third row is worth computing before the line is drawn rather than after. Choosing values of \\(x\\) for which \\(y\\) is a whole number keeps every point easy to plot."
+   },
+   {
+    "t": "p",
+    "x": "Any value of \\(x\\) is allowed in the table, and two choices take less work than the rest. Where a graph crosses an axis, one coordinate is already known, so only the other is left to compute. The next two problems find those crossings, and a later pair shows that a graph need not cross both axes at all."
+   },
+   {
+    "t": "prob",
+    "x": "The graph of \\(3x+8y=24\\) is a straight line, and it meets the \\(x\\)-axis at exactly one point. Enter the \\(x\\)-coordinate of that point.",
+    "xp": 6,
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight",
+     "x=8"
+    ],
+    "hints": [
+     "Every point of the \\(x\\)-axis has \\(y=0\\), which 7.1 established. That is the value to substitute here.",
+     "With \\(y=0\\) the term \\(8y\\) is \\(0\\), so the equation becomes \\(3x=24\\)."
+    ],
+    "sol": "A point of the \\(x\\)-axis has \\(y=0\\), so \\(3x+8(0)=24\\), which is \\(3x=24\\), and \\(x=\\boxed{8}\\). Setting \\(x=0\\) instead gives \\(8y=24\\) and \\(y=3\\), the crossing on the \\(y\\)-axis rather than the \\(x\\)-axis."
+   },
+   {
+    "t": "fact",
+    "x": "William Playfair published the first line graphs of economic data in 1786, in his Commercial and Political Atlas. He put time along the bottom and money up the side, so a trend could be seen rather than read from a table."
+   },
+   {
+    "t": "prob",
+    "x": "The graph of \\(3x-4y=48\\) is a straight line that crosses the \\(y\\)-axis once. Enter the \\(y\\)-coordinate of the crossing point.",
+    "xp": 6,
+    "ans": "-12",
+    "accept": [
+     "-12",
+     "−12",
+     "-12.0",
+     "−12.0",
+     "negative twelve",
+     "minus twelve",
+     "negative 12",
+     "minus 12",
+     "y=-12",
+     "y=−12"
+    ],
+    "hints": [
+     "Every point on the \\(y\\)-axis has \\(x=0\\), so substitute that value and solve for \\(y\\).",
+     "The equation becomes \\(-4y=48\\), and the coefficient of \\(y\\) is negative, so divide both sides by \\(-4\\) and keep the sign."
+    ],
+    "sol": "A point on the \\(y\\)-axis has \\(x=0\\), so \\(3(0)-4y=48\\), which is \\(-4y=48\\), and \\(y=\\boxed{-12}\\). Dropping the minus gives \\(12\\) and puts the crossing above the origin instead of below it, and setting \\(y=0\\) by mistake gives \\(16\\), which is the \\(x\\)-axis crossing."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The intercepts.</b> The <b>\\(x\\)-intercept</b> is where a graph meets the \\(x\\)-axis, and every point of that axis has \\(y=0\\), so substituting \\(y=0\\) gives it. The <b>\\(y\\)-intercept</b> is where the graph meets the \\(y\\)-axis, and every point there has \\(x=0\\), so substituting \\(x=0\\) gives it. The row \\((0,15)\\) in the table for \\(3x+2y=30\\) has \\(x=0\\), so it was that graph's \\(y\\)-intercept all along. Each substitution leaves a one-letter equation, so the intercepts are the two cheapest points to plot. The variable set to zero is never the one the intercept is named after."
+   },
+   {
+    "t": "p",
+    "x": "Every equation so far has had both letters in it. In \\(ax+by=c\\) only one of \\(a\\) and \\(b\\) has to be nonzero, so the other may be zero. With \\(a=0\\) what remains is \\(by=c\\), and dividing by \\(b\\) leaves \\(y=k\\). With \\(b=0\\) what remains is \\(x=k\\). Each still has a graph, and the next two problems settle which points are on it."
+   },
+   {
+    "t": "prob",
+    "x": "In the coordinate plane, the graph of \\(2y+9=-5\\) is made of exactly the points \\((x,y)\\) that satisfy it. One of those points has first coordinate \\(40\\). Enter that point's second coordinate.",
+    "xp": 5,
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "y=-7",
+     "y=−7",
+     "negative 7",
+     "minus 7",
+     "negative seven",
+     "minus seven",
+     "-7.0",
+     "−7.0"
+    ],
+    "hints": [
+     "The equation contains no \\(x\\), so the first coordinate can be anything at all. The only condition is on the second coordinate.",
+     "Solve \\(2y+9=-5\\) for \\(y\\) the same way you would solve any one-variable equation. The \\(40\\) is not needed for that work."
+    ],
+    "sol": "From \\(2y+9=-5\\), \\(2y=-14\\) and \\(y=\\boxed{-7}\\). Because the equation contains no \\(x\\), every point on this graph has second coordinate \\(-7\\), whatever the first coordinate is. That is why the \\(40\\) is not needed."
+   },
+   {
+    "t": "prob",
+    "x": "The graph of \\(3x=-18\\) is a straight line. Enter the number of points that line has in common with the \\(y\\)-axis.",
+    "xp": 6,
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero",
+     "none"
+    ],
+    "hints": [
+     "Solve for \\(x\\) first, then describe the graph. No \\(y\\) appears, so every point of the graph shares one \\(x\\)-coordinate.",
+     "From 7.1, a point is on the \\(y\\)-axis exactly when its \\(x\\)-coordinate is \\(0\\). Compare that with the \\(x\\)-coordinate every point of this graph has."
+    ],
+    "sol": "Solving gives \\(x=-6\\), so every point of the graph has first coordinate \\(-6\\). A point of the \\(y\\)-axis has first coordinate \\(0\\), and \\(-6 eq 0\\), so the number of shared points is \\(\\boxed{0}\\). Reading \\(x=-6\\) as a horizontal line gives the answer \\(1\\) instead, since a horizontal line does meet the \\(y\\)-axis once."
+   },
+   {
+    "t": "imp",
+    "x": "<b>\\(y=k\\) is a horizontal line and \\(x=k\\) is a vertical line.</b> A point satisfies \\(y=k\\) exactly when its second coordinate is \\(k\\), with no condition on its first, so the graph is every point at height \\(k\\), which is a horizontal line. A point satisfies \\(x=k\\) exactly when its first coordinate is \\(k\\), with none on its second, so the graph is the vertical line through \\((k,0)\\). The letter in the equation is the fixed coordinate, not the direction of the line. So \\(x=k\\) has no \\(y\\)-intercept unless \\(k=0\\), since every point of the \\(y\\)-axis has first coordinate \\(0\\)."
+   },
+   {
+    "t": "p",
+    "x": "The last two problems use every piece at once. An equation is not always written in the form \\(ax+by=c\\), and terms in the same letter may appear on both sides, so collecting them onto one side comes first. A coefficient can also be unknown, and then one stated fact about the graph is enough to determine it."
+   },
+   {
+    "t": "prob",
+    "x": "The graph of \\(9y-4x=30+5y\\) is a straight line. Enter the \\(x\\)-coordinate of the point where it meets the \\(x\\)-axis.",
+    "xp": 7,
+    "ans": "-15/2",
+    "accept": [
+     "-15/2",
+     "−15/2",
+     "-7.5",
+     "−7.5",
+     "-7.50",
+     "−7.50",
+     "x=-15/2",
+     "x=−15/2",
+     "x=-7.5",
+     "x=−7.5"
+    ],
+    "hints": [
+     "The \\(y\\) terms sit on both sides. Collect them on one side first, and the equation takes the form \\(ax+by=c\\).",
+     "Collecting gives \\(4y-4x=30\\). Every point of the \\(x\\)-axis has \\(y=0\\), so put that value in and solve for \\(x\\)."
+    ],
+    "sol": "Subtracting \\(5y\\) from both sides gives \\(4y-4x=30\\). A point of the \\(x\\)-axis has \\(y=0\\), so \\(-4x=30\\) and \\(x=\\boxed{-\\frac{15}{2}}\\). Setting \\(x=0\\) instead gives \\(4y=30\\) and \\(y=\\frac{15}{2}\\), which is where the line meets the \\(y\\)-axis, not the \\(x\\)-axis."
+   },
+   {
+    "t": "prob",
+    "x": "The graph of \\(6x+by=21\\) has no point in common with the \\(y\\)-axis, where \\(b\\) is a constant. Enter the \\(x\\)-coordinate of the point on that graph whose \\(y\\)-coordinate is \\(-11\\).",
+    "xp": 8,
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "3.5",
+     "3.50",
+     "21/6",
+     "x=7/2",
+     "x=3.5"
+    ],
+    "hints": [
+     "Substituting \\(y=-11\\) straight away leaves two unknowns, so use the stated fact first. A point sits on the \\(y\\)-axis exactly when its \\(x\\)-coordinate is \\(0\\), so put \\(x=0\\) into the equation.",
+     "If \\(b eq0\\), then \\(x=0\\) gives \\(by=21\\) and a point on the \\(y\\)-axis exists. The graph has no such point, so only one value of \\(b\\) is possible, and the equation is left with no \\(y\\) term."
+    ],
+    "sol": "If \\(b eq 0\\), setting \\(x=0\\) gives \\(by=21\\) and a point on the \\(y\\)-axis. The graph has no such point, so \\(b=0\\) and the equation is \\(6x=21\\). Every point of that graph has \\(x=\\frac{21}{6}\\), so the one with \\(y=-11\\) has \\(x=\\boxed{\\frac{7}{2}}\\). The form \\(ax+by=c\\) allows \\(b=0\\) as long as \\(a\\) is not zero too, and here \\(a=6\\). With \\(b=0\\) the equation contains no \\(y\\), so the \\(-11\\) is not needed."
+   },
+   {
+    "t": "p",
+    "x": "Every graph in this lesson came from the same two steps, find two solution points and draw the line through them. Those steps settle where the line is and say nothing about how steep it is. Lesson 7.3, Slope, attaches a number to the steepness, computed from any two points of the line."
+   }
+  ],
+  "review": [
+   {
+    "x": "Substitute the point \\((6,3)\\) into the left side of \\(2x+3y=19\\), and enter the resulting value of \\(2x+3y\\).",
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0",
+     "twenty-one",
+     "twentyone"
+    ],
+    "hints": [
+     "In \\((6,3)\\) the first coordinate is the \\(x\\)-value and the second is the \\(y\\)-value, so substitute \\(6\\) for \\(x\\) and \\(3\\) for \\(y\\) in \\(2x+3y\\).",
+     "Work out \\(2\\times 6\\) and \\(3\\times 3\\) as separate terms before adding them. The total need not be \\(19\\), since only points on the graph make the left side equal \\(19\\)."
+    ],
+    "sol": "Substituting gives \\(2(6)+3(3)=12+9=\\boxed{21}\\). The left side comes out \\(21\\) while the right side is \\(19\\), so \\((6,3)\\) does not satisfy the equation and does not lie on the graph."
+   },
+   {
+    "x": "The point \\((4,y)\\) is on the graph of \\(x+y=17\\). Enter \\(y\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen",
+     "y=13"
+    ],
+    "hints": [
+     "The \\(4\\) is the first coordinate, so it is the value of \\(x\\), and the second coordinate is what remains to be found.",
+     "The equation becomes \\(4+y=17\\)."
+    ],
+    "sol": "The point has \\(x=4\\), so \\(4+y=17\\) and \\(y=\\boxed{13}\\). A point is on the graph exactly when its two coordinates make the equation true, so putting in the coordinate that is given leaves one equation in one unknown."
+   },
+   {
+    "x": "The point \\((x,3)\\) is on the graph of \\(5x-2y=64\\). Enter the value of \\(x\\).",
+    "ans": "14",
+    "accept": [
+     "14",
+     "x=14",
+     "14.0",
+     "fourteen"
+    ],
+    "hints": [
+     "The \\(3\\) is the second coordinate, so it goes in for \\(y\\), not for \\(x\\).",
+     "With \\(y=3\\) the equation reads \\(5x-6=64\\)."
+    ],
+    "sol": "The point has \\(y=3\\), so \\(5x-2(3)=64\\), which is \\(5x-6=64\\). Then \\(5x=70\\) and \\(x=\\boxed{14}\\). Check, \\(5(14)-2(3)=70-6=64\\). Putting the \\(3\\) in for \\(x\\) instead gives \\(15-2y=64\\), a different point on the same line."
+   },
+   {
+    "x": "The graph of \\(9x+2y=-8\\) contains a point whose \\(x\\)-coordinate is \\(-2\\). Enter that point's \\(y\\)-coordinate.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five",
+     "y=5"
+    ],
+    "hints": [
+     "A point lies on the graph exactly when its coordinates make the equation true, so \\((-2,y)\\) has to satisfy \\(9x+2y=-8\\).",
+     "Substituting gives \\(9(-2)=-18\\), not \\(18\\), so the equation to solve is \\(-18+2y=-8\\)."
+    ],
+    "sol": "Substituting \\(x=-2\\) gives \\(9(-2)+2y=-8\\), so \\(-18+2y=-8\\), then \\(2y=10\\) and \\(y=\\boxed{5}\\). Dropping the negative gives \\(18+2y=-8\\) and \\(y=-13\\), the common wrong answer."
+   },
+   {
+    "x": "Three of \\((5,13)\\), \\((8,7)\\), \\((10,4)\\), \\((1,21)\\) are on the graph of \\(2x+y=23\\) and one is not. Enter the \\(x\\)-coordinate of the one that is not.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten",
+     "x=10"
+    ],
+    "hints": [
+     "Evaluate \\(2x+y\\) at each of the four and compare each result with \\(23\\).",
+     "Three of the four give \\(23\\) and one gives \\(24\\)."
+    ],
+    "sol": "Substituting gives \\(10+13=23\\), \\(16+7=23\\), \\(20+4=24\\) and \\(2+21=23\\). The third value is not \\(23\\), so the point off the graph is \\((10,4)\\) and the answer is \\(\\boxed{10}\\). A point is on the graph exactly when its coordinates satisfy the equation, so one failed check is enough to rule a point out."
+   },
+   {
+    "x": "Enter the \\(x\\)-coordinate of the point where the graph of \\(5x+2y=60\\) meets the \\(x\\)-axis.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "x=12",
+     "twelve"
+    ],
+    "hints": [
+     "Every point on the \\(x\\)-axis has \\(y=0\\), so that is the value to substitute.",
+     "Watch which zero goes in. Substituting \\(x=0\\) instead leads to the point where the graph meets the \\(y\\)-axis, which is not what is asked."
+    ],
+    "sol": "Every point on the \\(x\\)-axis has \\(y=0\\), so \\(5x+2(0)=60\\), which is \\(5x=60\\), and \\(x=\\boxed{12}\\). Reversing the substitution and setting \\(x=0\\) gives \\(2y=60\\) and \\(y=30\\), which is the \\(y\\)-coordinate of the point where the graph meets the \\(y\\)-axis."
+   },
+   {
+    "x": "Enter the \\(y\\)-coordinate of the point where the graph of \\(7x-3y=42\\) meets the \\(y\\)-axis.",
+    "ans": "-14",
+    "accept": [
+     "-14",
+     "−14",
+     "-14.0",
+     "−14.0",
+     "y=-14",
+     "y=−14",
+     "negative 14",
+     "minus 14",
+     "negative fourteen",
+     "minus fourteen"
+    ],
+    "hints": [
+     "Every point on the \\(y\\)-axis has first coordinate \\(0\\), so that is the value to substitute into \\(7x-3y=42\\).",
+     "Substituting leaves \\(-3y=42\\), where the coefficient of \\(y\\) is negative. Dividing a positive number by a negative one gives a negative result, so a positive answer here means a sign was dropped."
+    ],
+    "sol": "Every point on the \\(y\\)-axis has \\(x=0\\), so \\(7(0)-3y=42\\), which is \\(-3y=42\\), and \\(y=\\boxed{-14}\\). Setting \\(y=0\\) instead gives \\(7x=42\\) and the number \\(6\\), which is where the graph meets the \\(x\\)-axis, not the \\(y\\)-axis."
+   },
+   {
+    "x": "A point on the graph of \\(5y+31=6\\) has first coordinate \\(-90\\). Enter its second coordinate.",
+    "ans": "-5",
+    "accept": [
+     "-5",
+     "−5",
+     "-5.0",
+     "−5.0",
+     "negative five",
+     "minus five",
+     "y=-5",
+     "y=−5",
+     "negative 5",
+     "minus 5"
+    ],
+    "hints": [
+     "The equation contains no \\(x\\), so whether a point satisfies it depends only on the second coordinate.",
+     "Subtract \\(31\\) from both sides, then divide by \\(5\\)."
+    ],
+    "sol": "From \\(5y+31=6\\), \\(5y=-25\\) and \\(y=\\boxed{-5}\\). The equation contains no \\(x\\), so every point of this graph has second coordinate \\(-5\\) whatever its first coordinate is, which makes the \\(-90\\) irrelevant."
+   },
+   {
+    "x": "In the coordinate plane, the graph of \\(4x+29=5\\) contains a point whose second coordinate is \\(41\\). Enter that point's first coordinate.",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "-6.0",
+     "−6.0",
+     "negative 6",
+     "minus 6",
+     "negative six",
+     "minus six",
+     "x=-6",
+     "x=−6"
+    ],
+    "hints": [
+     "The equation has no \\(y\\) in it, so every point of the graph has the same first coordinate.",
+     "Solve \\(4x+29=5\\) by itself, since \\(41\\) is not part of that equation."
+    ],
+    "sol": "From \\(4x+29=5\\), subtracting \\(29\\) gives \\(4x=-24\\), so \\(x=\\boxed{-6}\\). The equation has no \\(y\\) in it, so every point of the graph has first coordinate \\(-6\\) whatever its second coordinate is, and the graph is the vertical line \\(x=-6\\). The \\(41\\) is not needed."
+   },
+   {
+    "x": "The point \\((2,5)\\) is on the graph of \\(kx-4y=10\\), where \\(k\\) is a constant. Enter \\(k\\).",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "k=15",
+     "fifteen"
+    ],
+    "hints": [
+     "A point is on the graph when substituting its coordinates makes the equation true, and here that substitution leaves \\(k\\) as the only unknown.",
+     "Putting in \\(x=2\\) and \\(y=5\\), the equation reads \\(2k-20=10\\)."
+    ],
+    "sol": "Substituting gives \\(k(2)-4(5)=10\\), so \\(2k-20=10\\), then \\(2k=30\\) and \\(k=\\boxed{15}\\). Checking it back, \\(15(2)-4(5)=30-20=10\\), so \\((2,5)\\) does satisfy the equation with that value of \\(k\\)."
+   },
+   {
+    "x": "Enter the \\(y\\)-coordinate, exactly, of the point where the graph of \\(8x+5y=18\\) meets the \\(y\\)-axis.",
+    "ans": "18/5",
+    "accept": [
+     "18/5",
+     "3.6",
+     "3.60",
+     "y=18/5",
+     "y=3.6"
+    ],
+    "hints": [
+     "Every point of the \\(y\\)-axis has \\(x=0\\), so substitute that into \\(8x+5y=18\\) and solve for what is left.",
+     "The equation becomes \\(5y=18\\), and \\(18\\) is not a multiple of \\(5\\), so the answer is a fraction."
+    ],
+    "sol": "A point of the \\(y\\)-axis has \\(x=0\\), so \\(8(0)+5y=18\\), which is \\(5y=18\\), and \\(y=\\boxed{\\frac{18}{5}}\\). The crossing point is not required to have a whole-number coordinate, so keep the fraction in lowest terms rather than rounding it."
+   },
+   {
+    "x": "The graph of \\(9x=20-2y\\) crosses the \\(x\\)-axis at exactly one point. Enter the \\(x\\)-coordinate of that point as an exact fraction.",
+    "ans": "20/9",
+    "accept": [
+     "20/9",
+     "x=20/9"
+    ],
+    "hints": [
+     "Every point on the \\(x\\)-axis has \\(y=0\\), so put \\(0\\) in for \\(y\\) and see what the equation then says about \\(x\\).",
+     "There is no need to rearrange the equation first. With \\(y=0\\) the right side is \\(20-2(0)\\), and a single division then isolates \\(x\\)."
+    ],
+    "sol": "Every point on the \\(x\\)-axis has \\(y=0\\), so the equation becomes \\(9x=20-2(0)=20\\), and dividing by \\(9\\) gives \\(x=\\boxed{\\frac{20}{9}}\\). Since \\(20\\) is not a multiple of \\(9\\), the exact coordinate is that fraction, and a rounded decimal does not satisfy the equation."
+   },
+   {
+    "x": "A student lists \\((5,9)\\), \\((10,6)\\) and \\((15,4)\\) as points on the graph of \\(3x+5y=60\\). Plotted, the three do not fall in a straight line, so one pair is wrong. Keeping that pair's \\(x\\)-value, enter the correct \\(y\\)-value.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "y=3",
+     "three"
+    ],
+    "hints": [
+     "A pair is on the graph exactly when substituting its two coordinates makes \\(3x+5y=60\\) true. Run that test on all three before deciding which one to fix.",
+     "The three left sides come out \\(60\\), \\(60\\) and \\(65\\). Take the \\(x\\)-value of the pair that does not give \\(60\\) and solve \\(3x+5y=60\\) for \\(y\\) again."
+    ],
+    "sol": "The three left sides are \\(15+45=60\\), \\(30+30=60\\) and \\(45+20=65\\), so \\((15,4)\\) is the wrong pair. At \\(x=15\\), \\(5y=60-45=15\\) and \\(y=\\boxed{3}\\). Two points always fall in one straight line, wrong ones included, so a bad pair only shows up once a third point is plotted."
+   },
+   {
+    "x": "Enter the number of distinct points where the graph of \\(4x-7y=0\\) meets an axis.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "A point on the \\(x\\)-axis has \\(y=0\\), and a point on the \\(y\\)-axis has \\(x=0\\). Do the two substitutions separately and write down the coordinates each one gives.",
+     "Setting \\(y=0\\) leaves \\(4x=0\\), and setting \\(x=0\\) leaves \\(-7y=0\\). Solve both, write out both points in full, then compare them before you count."
+    ],
+    "sol": "Both crossings are the same point, the origin, so the answer is \\(\\boxed{1}\\). Setting \\(y=0\\) gives \\(4x=0\\) and so \\(x=0\\), and setting \\(x=0\\) gives \\(-7y=0\\) and so \\(y=0\\), which makes both crossings \\((0,0)\\). Counting one crossing per axis gives \\(2\\) and counts the origin twice."
+   },
+   {
+    "x": "Enter the \\(x\\)-coordinate of the point where the graph of \\(3(x-y)=x+38\\) meets the \\(x\\)-axis.",
+    "ans": "19",
+    "accept": [
+     "19",
+     "19.0",
+     "x=19",
+     "nineteen"
+    ],
+    "hints": [
+     "A point on the \\(x\\)-axis has \\(y=0\\), and that substitution can be made before anything is expanded.",
+     "With \\(y=0\\) the equation reads \\(3x=x+38\\), and the \\(x\\) terms sit on both sides."
+    ],
+    "sol": "A point on the \\(x\\)-axis has \\(y=0\\), so \\(3(x-0)=x+38\\), which is \\(3x=x+38\\). Subtracting \\(x\\) from both sides gives \\(2x=38\\), so \\(x=\\boxed{19}\\). Setting \\(x=0\\) instead finds where the graph meets the \\(y\\)-axis, a different point. Check, \\(3(19-0)=57\\) and \\(19+38=57\\)."
+   },
+   {
+    "x": "The graph of \\(px+8y=20\\) has no point in common with the \\(x\\)-axis, where \\(p\\) is a constant. Enter the \\(y\\)-coordinate of the point on that graph whose \\(x\\)-coordinate is \\(-25\\).",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5",
+     "2.50",
+     "y=5/2",
+     "y=2.5"
+    ],
+    "hints": [
+     "Substituting \\(x=-25\\) first leaves two unknowns, so use the stated fact instead. A point on the \\(x\\)-axis is a point with \\(y=0\\), so set \\(y=0\\) in \\(px+8y=20\\) and see what is left.",
+     "With \\(y=0\\) the equation reads \\(px=20\\). If \\(p\\) is not zero, that equation has the solution \\(x=\\frac{20}{p}\\), which would put a point of the graph on the \\(x\\)-axis. Only one value of \\(p\\) is left, so put it back into the original equation."
+    ],
+    "sol": "A point on the \\(x\\)-axis has \\(y=0\\), and the equation then reads \\(px=20\\). If \\(p eq 0\\) this gives the point \\(\\left(\\frac{20}{p},0\\right)\\) on the \\(x\\)-axis, so \\(p=0\\) and the equation is \\(8y=20\\). Every point of the graph has \\(y=\\frac{20}{8}\\), so the point with \\(x=-25\\) has \\(y=\\boxed{\\frac{5}{2}}\\). With \\(p=0\\) the graph is the horizontal line \\(y=\\frac{5}{2}\\), so the \\(x\\)-coordinate does not matter here."
+   },
+   {
+    "x": "The graph of \\(8y-15x=120\\) meets the \\(x\\)-axis at \\(A\\) and the \\(y\\)-axis at \\(B\\). Enter the distance between \\(A\\) and \\(B\\).",
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0",
+     "seventeen"
+    ],
+    "hints": [
+     "Find both crossings first, one substitution each, and write each one as a point before doing any distance work.",
+     "The two points are \\((-8,0)\\) and \\((0,15)\\). Use the distance formula from 7.1, \\(\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\\)."
+    ],
+    "sol": "Setting \\(y=0\\) gives \\(-15x=120\\), so \\(x=-8\\) and \\(A=(-8,0)\\). Setting \\(x=0\\) gives \\(8y=120\\), so \\(y=15\\) and \\(B=(0,15)\\). Then the distance is \\(\\sqrt{(-8-0)^2+(0-15)^2}=\\sqrt{64+225}=\\sqrt{289}=\\boxed{17}\\). Each crossing sits on an axis, so the horizontal gap is \\(8\\) and the vertical gap is \\(15\\), and \\(8^2+15^2=17^2\\) is why the distance comes out whole."
+   }
+  ]
+ }
+}

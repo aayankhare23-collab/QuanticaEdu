@@ -8,12 +8,14 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **34 / 81**, 15 chapters in the TOC | **chapters 1-6** | ch1-ch6 fully done |
+| Algebra I | **35 / 81**, 15 chapters in the TOC | **chapters 1-6** | ch1-ch6 fully done, plus 7.2 |
 
 **Next work, in order:**
-1. **Chapter 7, Graphing Lines**, 7.1 through 7.6. SPECs for 7.1 and 7.2 are ready in
-   `tools/lesson-specs/`.
-2. Chapters 8 to 15, then the per-chapter sets for 7 onward.
+1. **7.1 The Cartesian Plane, first.** 7.2 shipped ahead of it, so chapter 7 currently has a
+   one-lesson gap: 7.1 shows greyed while 7.2 is live, and 6.6's "next: 7.1" falls back to
+   "Finish lesson". Shipping 7.1 closes both. Its SPEC is ready at
+   `tools/lesson-specs/author_7_1.head.js`.
+2. Then 7.3 through 7.6, then chapters 8 to 15, then the per-chapter sets for 7 onward.
 
 Chapter 6 and its problem sets shipped this session (6.1 Ratios Simple and Subtle, 6.2 Conversion Factors,
 6.3 Percents, 6.4 Percent Problems, 6.5 Direct and Inverse Proportion, 6.6 Joint Proportion
@@ -116,9 +118,10 @@ like"** about a system's three solution counts. Reference 8.6 is where that pict
 
 ## In flight when this session ended
 
-Two workflows were running and will not survive the session. Just relaunch them:
+One workflow was running and will not survive the session. Relaunch it:
 - 7.1 The Cartesian Plane (`tools/lesson-specs/author_7_1.head.js`)
-- 7.2 Graphing Linear Equations (`tools/lesson-specs/author_7_2.head.js`)
+
+7.2 finished and shipped, which is why chapter 7 has a gap until 7.1 lands.
 
 7.1's SPEC **bans Descartes** even though it is the Cartesian-plane lesson; he is already spent
 in Algebra I 1.5 for exponent notation. It uses Fermat instead. Keep the banned-names list

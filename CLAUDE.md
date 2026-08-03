@@ -84,8 +84,9 @@ exceptions.
 ## Current status (2026-08-02)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: 34 of 81 lessons live. **Chapters 1 to 6 are complete, lessons and problem
-  sets both.** **Next work is chapter 7 (Graphing Lines), then chapters 8 to 15.** Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
+- **Algebra I**: 35 of 81 lessons live. **Chapters 1 to 6 are complete, lessons and problem
+  sets both**, plus 7.2. **Next work is 7.1 (which 7.2 shipped ahead of, leaving a one-lesson
+  gap), then 7.3 to 7.6, then chapters 8 to 15.** Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
   live per-lesson state and the pipeline traps are in `docs/HANDOFF.md`, which is the file to
   read before writing anything. Both courses have SEO hub + lesson pages via
   `tools/gen_seo_pages.py` (sitemap/homepage links updated manually), and those have NOT been
