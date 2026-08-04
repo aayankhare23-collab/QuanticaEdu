@@ -11,15 +11,22 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | Algebra I | **38 / 81**, 15 chapters in the TOC | chapters 1-6 | ch7 at 4/6, 7.5 and 7.6 in flight |
 
 **Next work, in order:**
-1. **7.1 The Cartesian Plane, first.** 7.2 shipped ahead of it, so chapter 7 currently has a
-   one-lesson gap: 7.1 shows greyed while 7.2 is live, and 6.6's "next: 7.1" falls back to
-   "Finish lesson". Shipping 7.1 closes both. Its SPEC is ready at
-   `tools/lesson-specs/author_7_1.head.js`.
-2. Then 7.3 through 7.6, then chapters 8 to 15, then the per-chapter sets for 7 onward.
+1. **Finish 7.5 and 7.6.** Both were authored on 2026-08-03; check `/workflows`, or relaunch
+   with `Workflow({scriptPath, resumeFromRunId})`, which replays completed agents free.
+2. **Chapter 7 Practice/Challenge sets.** Generate the workflow with
+   `python3 tools/make_pset_workflow.py 7 --course algebra1 --title "Graphing Lines"
+   --covers <file> -o /tmp/pset7.workflow.js`, which inlines the freshness catalogue of
+   every problem the chapter's lessons already spent. Then wire the result into
+   `PSETS_ALG1` in landing.html.
+3. **Chapter 8, Inequalities.** All five SPECs are written and parsing in
+   `tools/lesson-specs/author_8_*.head.js`. Assemble as head + STYLE + tail and run.
+4. **Chapter 9, Quadratics I, Factoring.** Mapped against the reference in
+   `docs/reference-coverage-map.md`; the SPECs still need writing.
+5. Chapters 10 to 15, then the remaining per-chapter sets.
 
-Chapter 6 and its problem sets shipped this session (6.1 Ratios Simple and Subtle, 6.2 Conversion Factors,
-6.3 Percents, 6.4 Percent Problems, 6.5 Direct and Inverse Proportion, 6.6 Joint Proportion
-and Rates). Chapter 5 and its sets shipped the same session.
+Chapters 5 and 6 and their problem sets shipped earlier. Chapter 7 opened with 7.2, then
+7.1, 7.3 and 7.4 followed, so 7.1's closer had to be written to set up 7.2's already-shipped
+opening sentence rather than the other way round.
 
 ## Start here: the tools that do the verifying
 
