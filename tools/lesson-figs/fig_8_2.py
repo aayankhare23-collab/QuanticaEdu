@@ -19,7 +19,7 @@ from manim import *
 from manim_figs import (Fig, BLUE, BLUE_DEEP, GOLD_MID, GOLD_DEEP, SLATE,
                         HAIRLINE, INK)
 
-W, H = 580, 248
+W, H = 580, 214
 PPU = 50.0
 FW, FH = W / PPU, H / PPU
 
@@ -97,7 +97,7 @@ f.draw([brace(XA, XB, 152, 168, GOLD_DEEP)],
        labels=[f.mklabel(sp((XA + XB) / 2, 188), "a &lt; b", size=14, weight=700,
                          color=GOLD_DEEP)], label_at=T3)
 
-f.label(sp(26, 220), "neither outer comparison was made directly", size=13,
-        weight=700, color=BLUE_DEEP, anchor="start")
+# The point belongs in cap, not in the SVG. Golden rule 1 of the design system is
+# that a figure carries short labels only, never a sentence.
 
 print(f.write(str(pathlib.Path(__file__).parent / "fig_8_2.svg")))
