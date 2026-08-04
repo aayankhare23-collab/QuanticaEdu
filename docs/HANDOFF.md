@@ -51,14 +51,31 @@ python3 tools/check_pset.py <pset>.json         # {"practice":[...], "challenge"
 They catch what `finalize_lesson.py` does not: boxed-value vs `ans` (proper brace matcher),
 exactly-2-hints, `accept` completeness under the real `normAns` semantics, duplicate answers,
 cross-problem number-set collisions, block-length targets, figure font/weight/all-caps, and
-raw single-`$` math. `check_lesson.py` runs clean on every shipped lesson, so a non-zero result
-is a real finding.
+raw single-`$` math.
+
+**`check_lesson.py` runs clean on every lesson authored under the CURRENT pipeline**, which is
+Algebra I chapter 4 onward. It does NOT run clean corpus-wide: 85 of the 111 shipped lessons
+report issues, all of them legacy content that predates the conventions (1 hint or none instead
+of 2, xp to 18, single-`$` delimiters, the old block types). `docs/AUTHORING.md` documents that
+for chapter 1 explicitly. So a non-zero result on a NEW lesson is a real finding; a non-zero
+result on prealgebra or Algebra I chapters 1 to 3 is expected and is not a regression. Confirm
+by diffing against the previous checker before believing you broke something.
 
 **Two false positives were fixed in these checkers and must not be reintroduced:**
 - A doubled backslash inside `\begin{array}` is a LaTeX **row separator**, not an escaping
   artifact. Collapsing it destroys data tables. The checker now strips array-like environments
   before scanning.
-- `\text{inverse}` is a legitimate boxed value. The comparator strips `\text{...}` now.
+- `\text{inverse}` is a legitimate boxed value. The comparator strips `\text{...}` now. The
+  same fix had to be ported to `check_pset.py` separately on 2026-08-03; it had the identical
+  blind spot and flagged every word-answer set item.
+
+**A check added 2026-08-03, and the bug that earned it.** A raw `<` followed by a letter INSIDE
+math is eaten by the HTML parser as a tag before KaTeX ever sees it, so the text silently
+vanishes. It raises **no** `.katex-error`, which means a preview page-sweep cannot catch it. It
+surfaced in 8.1, the first lesson where `<` sits between two letters (`\(61<b<62\)` became a
+`<b>` tag and ate the rest of the sentence). Write `\lt` and `\gt` inside math. The whole
+corpus was scanned and 8.1 was the only lesson affected, but every chapter 8 lesson is full of
+inequalities, so the gate matters now.
 
 ## The pipeline
 

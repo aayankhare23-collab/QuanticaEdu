@@ -123,6 +123,14 @@ def main(path):
                 stripped = re.sub(r'\\begin\{(array|aligned|matrix|[bpv]matrix|cases)\}.*?\\end\{\1\}', '', s, flags=re.S)
                 if '\\\\' in stripped:
                     bad.append((where, f'{f}: doubled backslash'))
+                # A raw '<' followed by a letter INSIDE math is eaten by the HTML parser
+                # as a tag before KaTeX sees it, and the text silently vanishes. It raises
+                # NO .katex-error, so a preview sweep will not catch it. Use \lt and \gt.
+                for m in re.finditer(r'\\\((.*?)\\\)|\$\$(.*?)\$\$', s, flags=re.S):
+                    inner = m.group(1) or m.group(2) or ''
+                    if re.search(r'<[A-Za-z]', inner):
+                        bad.append((where, f'{f}: raw "<" before a letter inside math '
+                                           f'(HTML eats it as a tag; use \\lt)'))
 
     # non-prob blocks
     for i, b in enumerate(L['blocks']):
