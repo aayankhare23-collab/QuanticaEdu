@@ -58,3 +58,27 @@ NOTE for 7.6: reference 8.6 is where "three possibilities for the number of solu
 system" is given its geometric reading. Quantica 5.1/5.2/5.3 already taught those counts
 algebraically and 5.1 explicitly says "Chapter 7 will draw what that looks like", so 7.6 must
 deliver on that promise.
+
+# Chapter 9 coverage map (reference ch10 -> Quantica ch9). Coverage checklist ONLY.
+9.1 Multiplying Binomials       <- ref 10.1  each term of the first times each term of the
+                                   second; the square of a sum and of a difference; a
+                                   product is zero exactly when a factor is zero, which is
+                                   what turns a factored quadratic into two linear equations.
+9.2 Factoring x^2 + bx + c      <- ref 10.2  find r and s with r+s=b and rs=c; sign reasoning
+                                   from the signs of b and c; the difference of two squares;
+                                   pulling out a common factor FIRST.
+9.3 Factoring ax^2 + bx + c     <- ref 10.3  only binomials whose linear terms multiply to
+                                   ax^2 need trying; parity and magnitude of b narrow the
+                                   search; common factors first; when it does not factor
+                                   over the integers.
+9.4 Sums and Products of Roots  <- ref 10.4  for x^2+bx+c the roots sum to -b and multiply
+                                   to c; building a quadratic from its roots; answering a
+                                   question about the roots WITHOUT finding them.
+9.5 Quadratics in Disguise      <- ref 10.5  an equation that is quadratic in some repeated
+                                   piece; naming that piece and substituting; treating a
+                                   multi-variable equation as a quadratic in one letter.
+
+NOTE for 9.1: chapter 2 owns the distributive property and chapter 3 owns exponents, so
+neither is re-derived. The new content is the two-binomial product and the zero product
+property, and 6.4's audit already caught an earlier lesson expanding a product of two
+binomials before this chapter earned it, so that boundary is real.
