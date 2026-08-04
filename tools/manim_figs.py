@@ -30,7 +30,18 @@ import numpy as np
 from manim import VMobject
 from manim.camera.camera import Camera
 
-# The house palette, from docs/figure-design-system.md.
+# The house palette, from docs/figure-design-system.md. These are the course app's
+# :root tokens, which is the surface a lesson figure actually renders on (a white
+# .lessonfig card inside the app). The lime/slate WEMBI set belongs to the marketing
+# region and the ads, per the note in ~/manim-projects/milo_manim/quantica.py.
+#
+# The STRUCTURE, though, is taken from that brand kit: two surfaces and one rule.
+# Slate is the ordinary surface, gold is the surface that matters, and a near-black
+# editorial rule separates them. Fills are flat at full opacity and carry an ink
+# stroke, rather than the thin unfilled outlines the earlier figures used.
+INK = "#0e1726"          # near-black. All rules, and type that has to carry.
+SURFACE = "#eef4fb"      # the ordinary surface
+SURFACE_EDGE = "#cddff2"
 BLUE = "#2f6fe0"
 BLUE_DEEP = "#2257c5"
 BLUE_LIGHT = "#3b82f6"
@@ -103,6 +114,29 @@ class Fig:
                                 weight=weight, color=color, anchor=anchor,
                                 baseline=baseline, italic=italic))
         return self
+
+    def rule(self, y_px, x0_px=42, x1_px=None, width=2.6):
+        """The near-black editorial rule that separates the two bands."""
+        from manim import Line
+        x1 = self.w - x0_px if x1_px is None else x1_px
+        self.add(Line(self.sp(x0_px, y_px), self.sp(x1, y_px),
+                      color=INK, stroke_width=width))
+        return self
+
+    def pill(self, cx_px, cy_px, w_px, h_px, fill=SURFACE, stroke=INK, width=2.6, r=16):
+        """A flat filled pill with an ink stroke. The brand kit's core shape."""
+        from manim import RoundedRectangle
+        ppu = self.w / self.fw
+        self.add(RoundedRectangle(corner_radius=r / ppu, width=w_px / ppu,
+                                  height=h_px / ppu, fill_color=fill, fill_opacity=1,
+                                  stroke_color=stroke, stroke_width=width)
+                 .move_to(self.sp(cx_px, cy_px)))
+        return self
+
+    def sp(self, x_px, y_px):
+        """Pixel position on the canvas -> scene coordinates."""
+        return np.array([(x_px - self.w / 2) / (self.w / self.fw),
+                         (self.h / 2 - y_px) / (self.w / self.fw), 0.0])
 
     def mklabel(self, *a, **k):
         """A label dict for a frame, rather than for the static layer."""

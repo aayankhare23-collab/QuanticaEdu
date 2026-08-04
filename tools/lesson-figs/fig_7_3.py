@@ -4,7 +4,7 @@ than drawn twice."""
 import math, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from manim import *
-from manim_figs import Fig, BLUE, GOLD_MID, GOLD_DEEP, SLATE, HAIRLINE, GREY_LINE, WHITE
+from manim_figs import Fig, BLUE, GOLD_MID, GOLD_DEEP, SLATE, HAIRLINE, GREY_LINE, WHITE, INK
 
 M, B = 0.5, 1.0            # the drawn line, y = x/2 + 1; appears in no problem
 FW, FH = 14.0, 8.0
@@ -19,14 +19,14 @@ f = Fig(width=580, frame_width=FW, frame_height=FH, aria=(
 plane = NumberPlane(
     x_range=[-7, 7, 1], y_range=[-3, 5, 1], x_length=11.2, y_length=6.4,
     background_line_style={"stroke_color": HAIRLINE, "stroke_width": 2, "stroke_opacity": 1},
-    axis_config={"stroke_color": SLATE, "stroke_width": 3.2, "include_tip": True,
-                 "tip_width": 0.19, "tip_height": 0.23})
+    axis_config={"stroke_color": INK, "stroke_width": 4.4, "include_tip": True,
+                 "tip_width": 0.22, "tip_height": 0.26})
 f.add(plane)
 f.add(Line(plane.c2p(-6.7, M * -6.7 + B), plane.c2p(6.7, M * 6.7 + B),
-           color=BLUE, stroke_width=5))
+           color=BLUE, stroke_width=6))
 
-f.label(plane.c2p(7, 0), "x", size=15, weight=700, color=SLATE, italic=True, dx=6, dy=15)
-f.label(plane.c2p(0, 5), "y", size=15, weight=700, color=SLATE, italic=True, dx=-14, dy=-3)
+f.label(plane.c2p(7, 0), "x", size=16, weight=700, color=INK, italic=True, dx=6, dy=15)
+f.label(plane.c2p(0, 5), "y", size=16, weight=700, color=INK, italic=True, dx=-14, dy=-3)
 
 
 def triangle(t):
@@ -37,11 +37,11 @@ def triangle(t):
     y1, y2 = M * x1 + B, M * x2 + B
     corner = plane.c2p(x2, y1)
     mobs = [
-        Line(plane.c2p(x1, y1), corner, color=GOLD_MID, stroke_width=4),
-        Line(corner, plane.c2p(x2, y2), color=GOLD_MID, stroke_width=4),
+        Line(plane.c2p(x1, y1), corner, color=GOLD_MID, stroke_width=4.6),
+        Line(corner, plane.c2p(x2, y2), color=GOLD_MID, stroke_width=4.6),
         Line(plane.c2p(x1, y1), plane.c2p(x2, y2), color=GOLD_DEEP, stroke_width=2.2),
-        Dot(plane.c2p(x1, y1), radius=0.085, color=BLUE, stroke_width=0),
-        Dot(plane.c2p(x2, y2), radius=0.085, color=BLUE, stroke_width=0),
+        Dot(plane.c2p(x1, y1), radius=0.095, color=INK, stroke_width=0),
+        Dot(plane.c2p(x2, y2), radius=0.095, color=INK, stroke_width=0),
     ]
     labs = [
         f.mklabel(plane.c2p((x1 + x2) / 2, y1), "run", size=12, weight=700,
