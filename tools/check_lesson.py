@@ -73,6 +73,30 @@ def numbers_in(s):
     return tuple(sorted(Counter(int(m) for m in re.findall(r'\d+', s) if int(m) >= 2).items()))
 
 
+# Bare tokens that are what is left of a \n-macro after a newline replace ate the
+# backslash. finalize_lesson.py did exactly that to \neq and \ne.
+DEAD_MACRO = re.compile(r'(?<![\\A-Za-z])(neq|eq|ne|nmid|abla)(?=[\s)])')
+
+
+def math_hazards(where, field, s):
+    """Two failures that render as silent damage rather than as a KaTeX error."""
+    out = []
+    if not s:
+        return out
+    for m in re.finditer(r'\\\((.*?)\\\)|\$\$(.*?)\$\$', s, flags=re.S):
+        inner = m.group(1) or m.group(2) or ''
+        # A raw '<' before a letter is eaten by the HTML parser as a tag before KaTeX
+        # sees it, and the text vanishes with NO .katex-error. Use \lt and \gt.
+        if re.search(r'<[A-Za-z]', inner):
+            out.append((where, f'{field}: raw "<" before a letter inside math '
+                               f'(HTML eats it as a tag; use \\lt)'))
+        d = DEAD_MACRO.search(inner)
+        if d:
+            out.append((where, f'{field}: bare "{d.group(1)}" inside math, which is what a '
+                               f'\\n-macro looks like after a newline replace ate the backslash'))
+    return out
+
+
 def main(path):
     L = json.load(open(path, encoding='utf-8'))
     items = [(f'blocks[{i}]', b) for i, b in enumerate(L['blocks']) if b.get('t') == 'prob']
@@ -126,11 +150,18 @@ def main(path):
                 # A raw '<' followed by a letter INSIDE math is eaten by the HTML parser
                 # as a tag before KaTeX sees it, and the text silently vanishes. It raises
                 # NO .katex-error, so a preview sweep will not catch it. Use \lt and \gt.
-                for m in re.finditer(r'\\\((.*?)\\\)|\$\$(.*?)\$\$', s, flags=re.S):
-                    inner = m.group(1) or m.group(2) or ''
-                    if re.search(r'<[A-Za-z]', inner):
-                        bad.append((where, f'{f}: raw "<" before a letter inside math '
-                                           f'(HTML eats it as a tag; use \\lt)'))
+                bad += math_hazards(where, f, s)
+
+    # Prose blocks were never scanned for escaping artifacts, which is exactly how a
+    # destroyed \neq survived in an imp block through every gate and shipped.
+    for i, b in enumerate(L['blocks']):
+        if b.get('t') == 'prob':
+            continue
+        for f in ('x', 'cap'):
+            if isinstance(b.get(f), str) and b.get('t') != 'fig':
+                bad += math_hazards(f'blocks[{i}]', f, b[f])
+            elif f == 'cap' and isinstance(b.get(f), str):
+                bad += math_hazards(f'blocks[{i}]', f, b[f])
 
     # non-prob blocks
     for i, b in enumerate(L['blocks']):

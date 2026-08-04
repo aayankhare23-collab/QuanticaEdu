@@ -31,11 +31,23 @@ REGISTER_WORDS = ['honest reader', 'one string', 'the agreement', 'speaks first'
                   'seals', 'balloon', 'crowning', 'wears', 'costume', 'in disguise']
 
 
+# The \n... macros that legitimately appear in KaTeX content. Anything else after a
+# literal backslash-n is treated as a transport artifact and collapsed to a space.
+N_MACROS = ['eq', 'e', 'u', 'abla', 'ot', 'i', 'mid', 'parallel', 'subseteq',
+            'supseteq', 'leq', 'geq', 'less', 'gtr', 'egthinspace', 'olimits']
+
+
 def fix_str(s):
     # collapse doubled backslashes that precede KaTeX tokens (a JSON-transport artifact)
     while any('\\\\' + t in s for t in KATEX_TOKENS):
         s = s.replace('\\\\', '\\')
-    s = s.replace('\\n', ' ').replace('\n', ' ')
+    # A literal backslash-n from agent transport becomes a space, but NOT when it opens a
+    # LaTeX macro. Replacing it unconditionally destroyed \neq into " eq" and \ne into
+    # " e", silently, in every lesson this ran on: it corrupted 7.2, and then 7.5, 7.6 and
+    # 8.1 after 7.2's symptom was patched without anyone fixing the cause here.
+    # Deciding by "followed by a letter" is not enough either, since a real separator can
+    # precede a word. Keep the \n only when what follows spells a macro we actually use.
+    s = re.sub(r'\\n(?!(?:' + '|'.join(N_MACROS) + r')\b)', ' ', s).replace('\n', ' ')
     return re.sub(r'  +', ' ', s).strip()
 
 
