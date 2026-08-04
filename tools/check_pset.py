@@ -40,6 +40,9 @@ def boxed_values(sol):
 def latex_to_value(t):
     t = t.strip()
     t = re.sub(r'\\[tdc]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}', r'\1/\2', t)
+    # A word answer is boxed as \text{parallel}. check_lesson.py already strips this;
+    # without the same rule here every word-answer item reads as \textparallel != parallel.
+    t = re.sub(r'\\(?:text|mathrm|mbox)\s*\{([^{}]*)\}', r'\1', t)
     for junk in ('\\!', '\\,', '\\ ', '\\left', '\\right', '\\$', '{', '}'):
         t = t.replace(junk, '')
     return re.sub(r'\s+', '', t.replace('\u2212', '-'))
