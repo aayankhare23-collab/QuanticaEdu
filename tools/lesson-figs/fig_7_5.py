@@ -45,36 +45,27 @@ f.label(plane.c2p(8, 0), "x", size=16, weight=700, color=INK, italic=True, dx=7,
 f.label(plane.c2p(0, 5), "y", size=16, weight=700, color=INK, italic=True, dx=-14, dy=-4)
 
 
-def reveal(t):
-    """First the x-intercept with y set to 0, then the y-intercept with x set to 0."""
-    mobs, labs = [], []
-    ease = lambda u: u * u * (3 - 2 * u)
-    if t < 0.46:
-        u = ease(min(1.0, t / 0.40))
-        mobs.append(DashedLine(plane.c2p(0, 0), plane.c2p(XI * u, 0),
-                               color=GOLD_MID, stroke_width=4, dash_length=0.12))
-        if u > 0.97:
-            mobs += [Dot(plane.c2p(XI, 0), radius=0.135, color=INK, stroke_width=0),
-                     Dot(plane.c2p(XI, 0), radius=0.105, color=GOLD_MID, stroke_width=0)]
-            labs.append(f.mklabel(plane.c2p(XI, 0), "y = 0 here", size=12, weight=700,
-                                  color=GOLD_DEEP, dy=26))
-    else:
-        u = ease(min(1.0, (t - 0.46) / 0.40))
-        mobs += [Dot(plane.c2p(XI, 0), radius=0.135, color=INK, stroke_width=0),
-                 Dot(plane.c2p(XI, 0), radius=0.105, color=GOLD_MID, stroke_width=0)]
-        labs.append(f.mklabel(plane.c2p(XI, 0), "y = 0 here", size=12, weight=700,
-                              color=GOLD_DEEP, dy=26))
-        mobs.append(DashedLine(plane.c2p(0, 0), plane.c2p(0, YI * u),
-                               color=GOLD_MID, stroke_width=4, dash_length=0.12))
-        if u > 0.97:
-            mobs += [Dot(plane.c2p(0, YI), radius=0.135, color=INK, stroke_width=0),
-                     Dot(plane.c2p(0, YI), radius=0.105, color=GOLD_MID, stroke_width=0)]
-            labs.append(f.mklabel(plane.c2p(0, YI), "x = 0 here", size=12, weight=700,
-                                  color=GOLD_DEEP, anchor="start", dx=14))
-    return mobs, labs
+# Each guide draws along its axis, then its dot and label arrive. Two draw() calls in
+# sequence, interpolated by the browser, rather than a 30-frame flipbook.
+DUR = 7.0
+G1, G2 = 0.40, 0.40
 
+f.draw([DashedLine(plane.c2p(0, 0), plane.c2p(XI, 0), color=GOLD_MID,
+                   stroke_width=4.4, dash_length=0.12)],
+       dur=DUR, span=G1,
+       labels=[f.mklabel(plane.c2p(XI, 0), "y = 0 here", size=12, weight=700,
+                         color=GOLD_DEEP, dy=26)], label_at=G1)
+f.draw([DashedLine(plane.c2p(0, 0), plane.c2p(0, YI), color=GOLD_MID,
+                   stroke_width=4.4, dash_length=0.12)],
+       dur=DUR, begin=G1 * DUR, span=G2,
+       labels=[f.mklabel(plane.c2p(0, YI), "x = 0 here", size=12, weight=700,
+                         color=GOLD_DEEP, anchor="start", dx=14)], label_at=G2)
 
-f.frames(reveal, n=30, dur=7.0)
+# the two intercept dots, each appearing as its guide lands
+for pt, at in (((XI, 0), G1), ((0, YI), G1 + G2)):
+    f.draw([Dot(plane.c2p(*pt), radius=0.135, color=INK, stroke_width=0),
+            Dot(plane.c2p(*pt), radius=0.105, color=GOLD_MID, stroke_width=0)],
+           dur=DUR, begin=at * DUR, span=0.04)
 
 f.rule(374)
 f.label(sp(42, 392), "two ways to write the same line", size=13, weight=700, color=INK, anchor="start")
