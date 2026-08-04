@@ -17,7 +17,9 @@ rules, common tasks, current status). Then:
 
 - `landing.html` — the entire front end (marketing region + course app SPA), single file, no
   build step.
-- `data/lessons.js` — generated lesson content (`window.__COURSEDATA`). Do not hand-edit.
+- `data/lessons-<course>.js` — generated lesson content (`window.__COURSEDATA`), one chunk
+  per course, and what the app loads. `data/lessons.js` is the combined bundle, generated for
+  the SEO page builder only. Do not hand-edit either.
 - `lessons/<course>/` — source of truth: `chapter-N.json` + `toc.json`.
 - `tools/` — `build_lessons.py`, `finalize_lesson.py`, `gen_seo_pages.py`, the
   `author_lesson.workflow.js` template, and `archive/` (historical one-shot builders).

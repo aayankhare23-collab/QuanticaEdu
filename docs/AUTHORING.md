@@ -24,10 +24,12 @@ lessons/<course>/toc.json             the chapter/lesson index for that course
 }
 ```
 
-`data/lessons.js` is **generated** from all the chapter files by `tools/build_lessons.py`.
-It is `window.__COURSEDATA = { "prealgebra": {...}, "algebra1": {...} };` plus a
-`window.__CHDATA` alias for back-compat. **Never hand-edit `data/lessons.js`.** Edit the
-chapter JSON and rebuild. (Memory: `lesson-data-lives-inline`.)
+Lesson data is **generated** from the chapter files by `tools/build_lessons.py`. It writes
+one chunk per course, `data/lessons-<course>.js`, each assigning into
+`window.__COURSEDATA = { "prealgebra": {...}, "algebra1": {...} }`, plus a `window.__CHDATA`
+alias for back-compat. The app loads the chunks; the combined `data/lessons.js` is still
+written but only `tools/gen_seo_pages.py` reads it. **Never hand-edit any generated file.**
+Edit the chapter JSON and rebuild. (Memory: `lesson-data-lives-inline`.)
 
 The app (`landing.html`) reads `__COURSEDATA`. `window.setCourse(slug)` repoints the app's
 TOC/LESSONS/PSETS globals at one course. The whole rewards/workspace engine is
@@ -167,7 +169,8 @@ Every lesson so far was built with a 4-phase multi-agent Workflow. The reusable 
    workspace page; expect **0 `.katex-error`**. Confirm the figure renders on exactly one
    page in Space Grotesk, and that grading accepts the answer and rejects a trap value.
 6. **Ship.** `git commit`, `git push origin main`, `firebase deploy --only hosting`. Then
-   curl the live `data/lessons.js` to confirm the lesson is present.
+   curl the live `data/lessons-<course>.js` for the course you touched to confirm the lesson
+   is present. That is the file the app loads; the combined `data/lessons.js` is not.
 
 A lesson going live automatically flips its course's in-app tab from "soon" to active and
 updates progress counts; no extra wiring.
