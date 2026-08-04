@@ -33,7 +33,12 @@ early access.
 - **`functions/`** is the Firebase Cloud Functions backend (Stripe checkout, Firestore sync).
 - Milo runs on a Cloudflare Worker (`TUTOR_WORKER` in `landing.html`); its source is not in
   this repo.
-- Hosting is Firebase (`firebase.json`, `cleanUrls`, `/` rewrites to `/landing.html`).
+- Hosting is Firebase (`firebase.json`, `cleanUrls`). **`/` rewrites to
+  `/paths/landing.html`, a separate 55KB marketing page, NOT to the app.** The app is
+  served at **`https://quanticaedu.com/landing`**, and `cleanUrls` 301s `/landing.html`
+  to `/landing`. So verify a shipped app change with `curl -sL https://quanticaedu.com/landing`;
+  curling `/` returns the marketing page and makes a good deploy look like a failed one.
+  Lesson content is separate and lives at `/data/lessons.js`, which curls directly.
 
 ## Golden rules
 

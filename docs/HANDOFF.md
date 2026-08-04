@@ -88,7 +88,10 @@ agents against **pre-labelled slot ids**, assembled deterministically from `OUTL
 7. `tools/finalize_lesson.py ... --write`, then `tools/build_lessons.py`.
 8. Preview: 0 `.katex-error` on every page **and** on the review set rendered separately.
 9. Probe grading with a real trap value, not just the correct one.
-10. Commit, push, `firebase deploy --only hosting`, curl the live file.
+10. Commit, push, `firebase deploy --only hosting`, curl the live file. For LESSON content
+    that is `https://quanticaedu.com/data/lessons.js`. For an APP change (PSETS live in
+    landing.html) it is `curl -sL https://quanticaedu.com/landing`, NOT `/`, which serves a
+    separate marketing page and will make a good deploy look like a failed one.
 
 ## Traps that cost real time
 
