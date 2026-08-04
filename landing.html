@@ -1952,8 +1952,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   }
   // Fire once the page is fully loaded (deep-nav depends on the rendered TOC); the .wmb hero is
   // already hidden via CSS from first paint, so nothing of the old site shows during the wait.
-  if(document.readyState==='complete') launch();
-  else window.addEventListener('load',launch);
+  if(document.readyState==='complete'||document.readyState==='interactive') launch();
+  else { document.addEventListener('DOMContentLoaded',launch); window.addEventListener('load',launch); }
 })();
 </script>
 
@@ -2501,7 +2501,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 </script>
 
 
-<script src="data/lessons.js"></script>
+<!-- Lesson data, split per course so a first load parses only the course being opened.
+     The default course stays synchronous because the app consumes __CHDATA and calls
+     renderDashboard() at parse time. Every other course is deferred, which still runs
+     before DOMContentLoaded, so setCourse() never sees missing data. The combined
+     data/lessons.js is still generated for tools/gen_seo_pages.py, just not loaded here. -->
+<script src="data/lessons-prealgebra.js"></script>
+<script defer src="data/lessons-algebra1.js"></script>
 <script>
   // --- Course tables of contents (one array per course; setCourse points the app at one) ---
   var TOC=[
@@ -5750,9 +5756,20 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     prealgebra:{slug:'prealgebra', title:'Prealgebra', toc:TOC, lessons:LESSONS, psets:PSETS,
       intro:'Twelve chapters carry you from the rules of arithmetic all the way to real problem-solving. Tap any lesson to read it, or open a chapter\'s <b>Practice</b> or <b>Challenge</b> set to try problems yourself.'},
     algebra1:{slug:'algebra1', title:'Algebra I', toc:TOC_ALG1,
-      lessons:(window.__COURSEDATA&&window.__COURSEDATA.algebra1)||{}, psets:PSETS_ALG1,
+      // A getter, not a captured reference. The algebra1 chunk is deferred, so at the time this
+      // object literal is evaluated __COURSEDATA.algebra1 does not exist yet, and a plain
+      // `||{}` would freeze an empty table into the registry forever. Reading it lazily means
+      // whoever asks first is correct, with no dependence on listener or timer ordering.
+      get lessons(){ return (window.__COURSEDATA&&window.__COURSEDATA.algebra1)||{}; }, psets:PSETS_ALG1,
       intro:'Fifteen chapters run from the language of algebra through quadratics, functions, and logarithms. The first lessons are being written right now, so this page is a preview of the road ahead.'}
   };
+  // The tabs count lessons to decide "live" vs "soon", so a render that happened before the
+  // deferred chunk executed would show Algebra I as "soon". Re-render once it has landed.
+  (function(){
+    function adopt(){ try{ if(window.renderCourseTabs) renderCourseTabs(); }catch(e){} }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',adopt);
+    else adopt();
+  })();
   var CURRENT_COURSE='prealgebra';
   window.setCourse=function(slug,opts){
     var c=COURSE_REG[slug]; if(!c) return false;
@@ -7389,11 +7406,20 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(typeof renderDashboard==='function'){ renderDashboard(); renderToc(); }
   }
   if(typeof renderDashHero==='function') renderDashHero();
-  // Restore the course the user was last in (after hydration, so progress re-keys correctly)
-  try{
-    var bootCourse=localStorage.getItem('quantica.course');
-    if(bootCourse && bootCourse!==COURSE.slug && window.setCourse) setCourse(bootCourse);
-  }catch(e){}
+  // Restore the course the user was last in (after hydration, so progress re-keys correctly).
+  // This waits for DOMContentLoaded because setCourse snapshots the course's lesson table into
+  // LESSONS, and any course whose data chunk is deferred has not executed yet at parse time.
+  // Restoring early would snapshot an empty table and leave a returning student staring at a
+  // course with no lessons in it. Deferred chunks always finish before DOMContentLoaded, and
+  // the app shell is not revealed until launch() runs after that, so nothing flashes.
+  function restoreBootCourse(){
+    try{
+      var bootCourse=localStorage.getItem('quantica.course');
+      if(bootCourse && bootCourse!==COURSE.slug && window.setCourse) setCourse(bootCourse);
+    }catch(e){}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',restoreBootCourse);
+  else restoreBootCourse();
 })();
 
 </script>

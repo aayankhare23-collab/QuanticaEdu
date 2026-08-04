@@ -55,12 +55,41 @@ def main():
     os.makedirs(os.path.dirname(DATA), exist_ok=True)
     open(DATA, 'w', encoding='utf-8').write(out)
 
+    # Per-course chunks, so a visitor downloads and PARSES only the course they opened.
+    # The combined bundle above stays for tools/gen_seo_pages.py, which reads it, but the
+    # app loads these instead: the default course synchronously and the rest deferred.
+    # 3.82 MB parsed on every first load was the single biggest cost before the split.
+    for i, course in enumerate(COURSES):
+        lines = [json.dumps(k) + ':' + json.dumps(v, ensure_ascii=False, separators=(',', ':'))
+                 for k, v in courses[course].items()]
+        body = '{\n' + ',\n'.join(lines) + '\n}'
+        chunk = ('window.__COURSEDATA=window.__COURSEDATA||{};\n'
+                 'window.__COURSEDATA[' + json.dumps(course) + ']=' + body + ';\n')
+        if i == 0:
+            chunk += 'window.__CHDATA=window.__COURSEDATA[' + json.dumps(course) + '];\n'
+        if '</script' in chunk.lower():
+            sys.exit('lesson content contains </script>; refusing to embed')
+        cp = os.path.join(ROOT, 'data', 'lessons-' + course + '.js')
+        open(cp, 'w', encoding='utf-8').write(chunk)
+
     # verify round-trip: re-parse and compare semantically
     raw = open(DATA, encoding='utf-8').read()
     got = json.loads(raw[len(PREFIX):raw.index(';\nwindow.__CHDATA')])
     assert got == courses, 'round-trip mismatch'
+    # each chunk must round-trip too, or the app ships a course it cannot parse
+    for course in COURSES:
+        cp = os.path.join(ROOT, 'data', 'lessons-' + course + '.js')
+        raw = open(cp, encoding='utf-8').read()
+        head = 'window.__COURSEDATA[' + json.dumps(course) + ']='
+        i = raw.index(head) + len(head)
+        j = raw.index(';\n', i)
+        assert json.loads(raw[i:j]) == courses[course], f'{course} chunk round-trip mismatch'
+
     counts = ', '.join(f"{c}: {len(courses[c])}" for c in COURSES)
+    sizes = ', '.join(f"{c} {os.path.getsize(os.path.join(ROOT,'data','lessons-'+c+'.js'))//1024}KB"
+                      for c in COURSES)
     print(f'built lessons into data/lessons.js ({counts}; {len(out)} bytes)')
+    print(f'  per-course chunks: {sizes}')
 
 if __name__ == '__main__':
     main()
