@@ -2999,5 +2999,601 @@
     "sol": "The slope is \\(\\frac{-6-3}{4-(-8)}=\\frac{-9}{12}=-\\frac{3}{4}\\), so from \\((4,-6)\\), \\(y+6=-\\frac{3}{4}(x-4)\\), and multiplying by \\(4\\) gives \\(4y+24=-3x+12\\), so \\(3x+4y=\\boxed{-12}\\). Moving the \\(x\\) term the other way instead gives \\(-3x-4y=12\\), where \\(A\\) is negative, so \\(12\\) is the wrong value to report."
    }
   ]
+ },
+ "7.6": {
+  "title": "Parallel, Perpendicular, Comparing Lines",
+  "next": "8.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Slope-intercept form and standard form each describe a single line. With two lines on one plane there are three further questions, whether they ever meet, whether they stay the same distance apart, and whether they cross at a right angle. All three are settled by comparing the two slopes, and the first one starts here."
+   },
+   {
+    "t": "prob",
+    "x": "The lines \\(y=4x-1\\) and \\(y=4x+7\\) are two different lines. A point lying on both has a single \\(y\\)-coordinate, so its \\(x\\) satisfies \\(4x-1=4x+7\\). Enter how many points lie on both lines.",
+    "xp": 5,
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero",
+     "none",
+     "no points",
+     "0 points",
+     "zero points"
+    ],
+    "hints": [
+     "Both lines have slope \\(4\\), so both sides of \\(4x-1=4x+7\\) contain the same \\(4x\\) term. Subtract \\(4x\\) from both sides and look at what remains.",
+     "The subtraction leaves \\(-1=7\\), an equation containing no \\(x\\). Decide whether that statement is true or false, then count the shared points that follow."
+    ],
+    "sol": "Subtracting \\(4x\\) from both sides of \\(4x-1=4x+7\\) leaves \\(-1=7\\), false for every \\(x\\), so no point lies on both lines and the count is \\(\\boxed{0}\\). The two slopes are equal, which is why the subtraction removes every \\(x\\) term and leaves only the constants."
+   },
+   {
+    "t": "prob",
+    "x": "The lines \\(y=3x-5\\) and \\(y=-2x+15\\) have different slopes. At a point on both, the two right sides are equal, so \\(3x-5=-2x+15\\). Enter the \\(y\\)-coordinate of the point that lies on both lines.",
+    "xp": 6,
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven",
+     "y=7"
+    ],
+    "hints": [
+     "Solve \\(3x-5=-2x+15\\) for \\(x\\) first. The question asks for a \\(y\\)-coordinate, so that value of \\(x\\) is not the answer.",
+     "Adding \\(2x\\) to both sides gives \\(5x-5=15\\). Once \\(x\\) is known, put it into either equation to get \\(y\\), and both equations should give the same \\(y\\)."
+    ],
+    "sol": "Adding \\(2x\\) to both sides of \\(3x-5=-2x+15\\) gives \\(5x-5=15\\), so \\(5x=20\\) and \\(x=4\\). Then \\(y=3(4)-5=\\boxed{7}\\). Putting \\(x=4\\) into the other equation gives \\(-2(4)+15=7\\), the same \\(y\\). The slopes differ, so the \\(x\\) terms do not cancel and one value of \\(x\\) is left, with one \\(y\\) to match."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Two lines with the same slope are parallel or are the same line.</b> A point lying on both \\(y=mx+b_1\\) and \\(y=mx+b_2\\) satisfies \\(mx+b_1=mx+b_2\\), and subtracting \\(mx\\) from both sides leaves \\(b_1=b_2\\), a statement with no \\(x\\) in it. When \\(b_1 eq b_2\\) it is false whatever \\(x\\) is, so no point lies on both lines, and two distinct lines with no shared point are <b>parallel</b>. When \\(b_1=b_2\\) the two equations are the same equation, every point of one line is a point of the other, and there is one line rather than two."
+   },
+   {
+    "t": "prob",
+    "x": "Solving \\(5x-2y=8\\) for \\(y\\) gives \\(y=\\frac{5}{2}x-4\\), so those two equations describe one line and every point of that line satisfies both. Of the five points \\((0,-4)\\), \\((2,1)\\), \\((4,6)\\), \\((6,11)\\) and \\((-2,-8)\\), enter how many satisfy both equations.",
+    "xp": 6,
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four"
+    ],
+    "hints": [
+     "The two equations describe one line, so each listed point satisfies both of them or neither of them. That is one test per point, not two.",
+     "Put a point's \\(x\\) into \\(y=\\frac{5}{2}x-4\\) and compare the result with that point's own \\(y\\). The point counts only when the two agree."
+    ],
+    "sol": "The points \\((0,-4)\\), \\((2,1)\\), \\((4,6)\\) and \\((6,11)\\) all satisfy \\(y=\\frac{5}{2}x-4\\), while \\(\\frac{5}{2}(-2)-4=-9\\), not \\(-8\\), so the count is \\(\\boxed{4}\\). One line written twice has infinitely many points on it, and a listed point still has to be one of them."
+   },
+   {
+    "t": "prob",
+    "x": "The line \\(9x+ky=40\\) is parallel to the line \\(y=\\frac{3}{4}x-2\\). From 7.5 the first line has slope \\(-\\frac{9}{k}\\). Enter \\(k\\).",
+    "xp": 6,
+    "ans": "-12",
+    "accept": [
+     "-12",
+     "−12",
+     "-12.0",
+     "−12.0",
+     "k=-12",
+     "k=−12",
+     "negative 12",
+     "minus 12",
+     "negative twelve",
+     "minus twelve"
+    ],
+    "hints": [
+     "Parallel lines have equal slopes, so set the slope of \\(9x+ky=40\\) equal to the slope of the other line and solve for \\(k\\).",
+     "The equation to solve is \\(-\\frac{9}{k}=\\frac{3}{4}\\). Cross-multiply, keeping the minus sign attached to the \\(9\\), then divide both sides by \\(3\\)."
+    ],
+    "sol": "Parallel lines have equal slopes, so \\(-\\frac{9}{k}=\\frac{3}{4}\\), which gives \\(3k=-36\\) and \\(k=\\boxed{-12}\\). Then \\(9x-12y=40\\) reads \\(y=\\frac{3}{4}x-\\frac{10}{3}\\), a different \\(y\\)-intercept from \\(-2\\), so the two lines are parallel rather than one line."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Two lines with different slopes cross exactly once.</b> A point lying on both \\(y=m_1x+b_1\\) and \\(y=m_2x+b_2\\) satisfies \\(m_1x+b_1=m_2x+b_2\\), and collecting the \\(x\\) terms on one side gives \\((m_1-m_2)x=b_2-b_1\\). Since \\(m_1 eq m_2\\) the coefficient of \\(x\\) is not zero, and by chapter 4 an equation of that shape has exactly one solution, \\(x=\\frac{b_2-b_1}{m_1-m_2}\\). There is one \\(y\\) at that \\(x\\), so the two lines share exactly one point however close their slopes are."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 366\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two bands. In the top band, three small panels of axes sit side by side. In the first, two lines of different slopes cross at a single marked point, labelled one solution. In the second, two lines of equal slope run parallel and never meet, labelled no solution. In the third, a dashed line lies directly over a thicker line so the two read as one line, labelled infinitely many. Below a hairline, a row of sampled points sits under each panel, gold where a point lies on both lines and grey where it does not. One point is gold under the first panel, none under the second, and every point is gold under the third.\" font-family=\"Space Grotesk, sans-serif\"><path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#475569\" d=\"M -6.045 1.75 C -4.951 1.75 -3.856 1.75 -2.761 1.75 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#475569\" d=\"M 176 106 C 173.508 104.754 171.012 103.508 168.52 102.262 C 168.52 104.754 168.52 107.246 168.52 109.738 C 171.012 108.492 173.508 107.246 176 106 Z M 176 106 \"/> <path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#475569\" d=\"M -4.318 0.023 C -4.318 1.118 -4.318 2.212 -4.318 3.307 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#475569\" d=\"M 100 30 C 98.754 32.492 97.508 34.988 96.262 37.48 C 98.754 37.48 101.246 37.48 103.738 37.48 C 102.492 34.988 101.246 32.492 100 30 Z M 100 30 \"/> <path fill=\"none\" stroke-width=\"0.07\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#2f6fe0\" d=\"M -5.078 0.265 C -4.418 1.255 -3.758 2.245 -3.098 3.235 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.07\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M -5.206 3.235 C -4.415 2.682 -3.624 2.128 -2.833 1.574 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#ffffff\" d=\"M 133.555 84.926 C 133.555 82.441 132.566 80.059 130.809 78.301 C 129.051 76.543 126.668 75.555 124.184 75.555 C 121.695 75.555 119.312 76.543 117.555 78.301 C 115.797 80.059 114.809 82.441 114.809 84.926 C 114.809 87.414 115.797 89.797 117.555 91.555 C 119.312 93.312 121.695 94.301 124.184 94.301 C 126.668 94.301 129.051 93.312 130.809 91.555 C 132.566 89.797 133.555 87.414 133.555 84.926 Z M 133.555 84.926 \"/> <path fill-rule=\"nonzero\" fill=\"#fcd76a\" stroke-width=\"0.06\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M -3.619 2.229 C -3.619 2.269 -3.634 2.307 -3.663 2.335 C -3.691 2.363 -3.729 2.379 -3.769 2.379 C -3.808 2.379 -3.847 2.363 -3.875 2.335 C -3.903 2.307 -3.919 2.269 -3.919 2.229 C -3.919 2.189 -3.903 2.151 -3.875 2.123 C -3.847 2.095 -3.808 2.079 -3.769 2.079 C -3.729 2.079 -3.691 2.095 -3.663 2.123 C -3.634 2.151 -3.619 2.189 -3.619 2.229 Z M -3.619 2.229 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#475569\" d=\"M -1.727 1.75 C -0.632 1.75 0.462 1.75 1.557 1.75 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#475569\" d=\"M 366 106 C 363.508 104.754 361.012 103.508 358.52 102.262 C 358.52 104.754 358.52 107.246 358.52 109.738 C 361.012 108.492 363.508 107.246 366 106 Z M 366 106 \"/> <path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#475569\" d=\"M 0 0.023 C 0 1.118 0 2.212 0 3.307 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#475569\" d=\"M 290 30 C 288.754 32.492 287.508 34.988 286.262 37.48 C 288.754 37.48 291.246 37.48 293.738 37.48 C 292.492 34.988 291.246 32.492 290 30 Z M 290 30 \"/> <path fill=\"none\" stroke-width=\"0.07\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#2f6fe0\" d=\"M -1.485 1.19 C -0.728 1.872 0.029 2.554 0.787 3.235 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.07\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M -0.787 0.265 C -0.029 0.946 0.728 1.628 1.485 2.31 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#475569\" d=\"M 2.591 1.75 C 3.686 1.75 4.781 1.75 5.875 1.75 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#475569\" d=\"M 556 106 C 553.508 104.754 551.012 103.508 548.52 102.262 C 548.52 104.754 548.52 107.246 548.52 109.738 C 551.012 108.492 553.508 107.246 556 106 Z M 556 106 \"/> <path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#475569\" d=\"M 4.318 0.023 C 4.318 1.118 4.318 2.212 4.318 3.307 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#475569\" d=\"M 480 30 C 478.754 32.492 477.508 34.988 476.262 37.48 C 478.754 37.48 481.246 37.48 483.738 37.48 C 482.492 34.988 481.246 32.492 480 30 Z M 480 30 \"/> <path fill=\"none\" stroke-width=\"0.1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#2f6fe0\" d=\"M 2.833 0.695 C 3.823 1.536 4.813 2.378 5.804 3.22 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 2.833 0.695 C 2.871 0.727 2.909 0.759 2.947 0.792 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 3.071 0.897 C 3.109 0.929 3.147 0.962 3.185 0.994 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 3.309 1.099 C 3.347 1.132 3.385 1.164 3.423 1.196 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 3.547 1.302 C 3.585 1.334 3.623 1.366 3.661 1.399 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 3.785 1.504 C 3.823 1.536 3.861 1.569 3.899 1.601 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 4.023 1.706 C 4.061 1.739 4.099 1.771 4.137 1.804 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 4.261 1.909 C 4.299 1.941 4.337 1.973 4.375 2.006 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 4.499 2.111 C 4.537 2.143 4.575 2.176 4.613 2.208 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 4.737 2.313 C 4.775 2.346 4.813 2.378 4.851 2.411 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 4.975 2.516 C 5.013 2.548 5.051 2.581 5.089 2.613 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 5.213 2.718 C 5.251 2.75 5.289 2.783 5.328 2.815 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 5.451 2.92 C 5.489 2.953 5.528 2.985 5.566 3.018 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.046\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 5.689 3.123 C 5.727 3.155 5.766 3.188 5.804 3.22 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0e1726\" d=\"M -6 -1.523 C -2 -1.523 2 -1.523 6 -1.523 \" transform=\"matrix(44, 0, 0, -44, 290, 183)\"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.4\" d=\"M 37 330 C 37 328.676 36.473 327.402 35.535 326.465 C 34.598 325.527 33.324 325 32 325 C 30.676 325 29.402 325.527 28.465 326.465 C 27.527 327.402 27 328.676 27 330 C 27 331.324 27.527 332.598 28.465 333.535 C 29.402 334.473 30.676 335 32 335 C 33.324 335 34.598 334.473 35.535 333.535 C 36.473 332.598 37 331.324 37 330 Z M 37 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.72\" d=\"M 54 330 C 54 328.676 53.473 327.402 52.535 326.465 C 51.598 325.527 50.324 325 49 325 C 47.676 325 46.402 325.527 45.465 326.465 C 44.527 327.402 44 328.676 44 330 C 44 331.324 44.527 332.598 45.465 333.535 C 46.402 334.473 47.676 335 49 335 C 50.324 335 51.598 334.473 52.535 333.535 C 53.473 332.598 54 331.324 54 330 Z M 54 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 71 330 C 71 328.676 70.473 327.402 69.535 326.465 C 68.598 325.527 67.324 325 66 325 C 64.676 325 63.402 325.527 62.465 326.465 C 61.527 327.402 61 328.676 61 330 C 61 331.324 61.527 332.598 62.465 333.535 C 63.402 334.473 64.676 335 66 335 C 67.324 335 68.598 334.473 69.535 333.535 C 70.473 332.598 71 331.324 71 330 Z M 71 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 88 330 C 88 328.676 87.473 327.402 86.535 326.465 C 85.598 325.527 84.324 325 83 325 C 81.676 325 80.402 325.527 79.465 326.465 C 78.527 327.402 78 328.676 78 330 C 78 331.324 78.527 332.598 79.465 333.535 C 80.402 334.473 81.676 335 83 335 C 84.324 335 85.598 334.473 86.535 333.535 C 87.473 332.598 88 331.324 88 330 Z M 88 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" d=\"M 105 330 C 105 328.676 104.473 327.402 103.535 326.465 C 102.598 325.527 101.324 325 100 325 C 98.676 325 97.402 325.527 96.465 326.465 C 95.527 327.402 95 328.676 95 330 C 95 331.324 95.527 332.598 96.465 333.535 C 97.402 334.473 98.676 335 100 335 C 101.324 335 102.598 334.473 103.535 333.535 C 104.473 332.598 105 331.324 105 330 Z M 105 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 122 330 C 122 328.676 121.473 327.402 120.535 326.465 C 119.598 325.527 118.324 325 117 325 C 115.676 325 114.402 325.527 113.465 326.465 C 112.527 327.402 112 328.676 112 330 C 112 331.324 112.527 332.598 113.465 333.535 C 114.402 334.473 115.676 335 117 335 C 118.324 335 119.598 334.473 120.535 333.535 C 121.473 332.598 122 331.324 122 330 Z M 122 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 139 330 C 139 328.676 138.473 327.402 137.535 326.465 C 136.598 325.527 135.324 325 134 325 C 132.676 325 131.402 325.527 130.465 326.465 C 129.527 327.402 129 328.676 129 330 C 129 331.324 129.527 332.598 130.465 333.535 C 131.402 334.473 132.676 335 134 335 C 135.324 335 136.598 334.473 137.535 333.535 C 138.473 332.598 139 331.324 139 330 Z M 139 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.72\" d=\"M 156 330 C 156 328.676 155.473 327.402 154.535 326.465 C 153.598 325.527 152.324 325 151 325 C 149.676 325 148.402 325.527 147.465 326.465 C 146.527 327.402 146 328.676 146 330 C 146 331.324 146.527 332.598 147.465 333.535 C 148.402 334.473 149.676 335 151 335 C 152.324 335 153.598 334.473 154.535 333.535 C 155.473 332.598 156 331.324 156 330 Z M 156 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.4\" d=\"M 173 330 C 173 328.676 172.473 327.402 171.535 326.465 C 170.598 325.527 169.324 325 168 325 C 166.676 325 165.402 325.527 164.465 326.465 C 163.527 327.402 163 328.676 163 330 C 163 331.324 163.527 332.598 164.465 333.535 C 165.402 334.473 166.676 335 168 335 C 169.324 335 170.598 334.473 171.535 333.535 C 172.473 332.598 173 331.324 173 330 Z M 173 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.4\" d=\"M 227 330 C 227 328.676 226.473 327.402 225.535 326.465 C 224.598 325.527 223.324 325 222 325 C 220.676 325 219.402 325.527 218.465 326.465 C 217.527 327.402 217 328.676 217 330 C 217 331.324 217.527 332.598 218.465 333.535 C 219.402 334.473 220.676 335 222 335 C 223.324 335 224.598 334.473 225.535 333.535 C 226.473 332.598 227 331.324 227 330 Z M 227 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.72\" d=\"M 244 330 C 244 328.676 243.473 327.402 242.535 326.465 C 241.598 325.527 240.324 325 239 325 C 237.676 325 236.402 325.527 235.465 326.465 C 234.527 327.402 234 328.676 234 330 C 234 331.324 234.527 332.598 235.465 333.535 C 236.402 334.473 237.676 335 239 335 C 240.324 335 241.598 334.473 242.535 333.535 C 243.473 332.598 244 331.324 244 330 Z M 244 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 261 330 C 261 328.676 260.473 327.402 259.535 326.465 C 258.598 325.527 257.324 325 256 325 C 254.676 325 253.402 325.527 252.465 326.465 C 251.527 327.402 251 328.676 251 330 C 251 331.324 251.527 332.598 252.465 333.535 C 253.402 334.473 254.676 335 256 335 C 257.324 335 258.598 334.473 259.535 333.535 C 260.473 332.598 261 331.324 261 330 Z M 261 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 278 330 C 278 328.676 277.473 327.402 276.535 326.465 C 275.598 325.527 274.324 325 273 325 C 271.676 325 270.402 325.527 269.465 326.465 C 268.527 327.402 268 328.676 268 330 C 268 331.324 268.527 332.598 269.465 333.535 C 270.402 334.473 271.676 335 273 335 C 274.324 335 275.598 334.473 276.535 333.535 C 277.473 332.598 278 331.324 278 330 Z M 278 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 295 330 C 295 328.676 294.473 327.402 293.535 326.465 C 292.598 325.527 291.324 325 290 325 C 288.676 325 287.402 325.527 286.465 326.465 C 285.527 327.402 285 328.676 285 330 C 285 331.324 285.527 332.598 286.465 333.535 C 287.402 334.473 288.676 335 290 335 C 291.324 335 292.598 334.473 293.535 333.535 C 294.473 332.598 295 331.324 295 330 Z M 295 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 312 330 C 312 328.676 311.473 327.402 310.535 326.465 C 309.598 325.527 308.324 325 307 325 C 305.676 325 304.402 325.527 303.465 326.465 C 302.527 327.402 302 328.676 302 330 C 302 331.324 302.527 332.598 303.465 333.535 C 304.402 334.473 305.676 335 307 335 C 308.324 335 309.598 334.473 310.535 333.535 C 311.473 332.598 312 331.324 312 330 Z M 312 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" d=\"M 329 330 C 329 328.676 328.473 327.402 327.535 326.465 C 326.598 325.527 325.324 325 324 325 C 322.676 325 321.402 325.527 320.465 326.465 C 319.527 327.402 319 328.676 319 330 C 319 331.324 319.527 332.598 320.465 333.535 C 321.402 334.473 322.676 335 324 335 C 325.324 335 326.598 334.473 327.535 333.535 C 328.473 332.598 329 331.324 329 330 Z M 329 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.72\" d=\"M 346 330 C 346 328.676 345.473 327.402 344.535 326.465 C 343.598 325.527 342.324 325 341 325 C 339.676 325 338.402 325.527 337.465 326.465 C 336.527 327.402 336 328.676 336 330 C 336 331.324 336.527 332.598 337.465 333.535 C 338.402 334.473 339.676 335 341 335 C 342.324 335 343.598 334.473 344.535 333.535 C 345.473 332.598 346 331.324 346 330 Z M 346 330 \"/> <path fill-rule=\"nonzero\" fill=\"#dbe1ea\" fill-opacity=\"0.4\" d=\"M 363 330 C 363 328.676 362.473 327.402 361.535 326.465 C 360.598 325.527 359.324 325 358 325 C 356.676 325 355.402 325.527 354.465 326.465 C 353.527 327.402 353 328.676 353 330 C 353 331.324 353.527 332.598 354.465 333.535 C 355.402 334.473 356.676 335 358 335 C 359.324 335 360.598 334.473 361.535 333.535 C 362.473 332.598 363 331.324 363 330 Z M 363 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" fill-opacity=\"0.4\" d=\"M 417 330 C 417 328.676 416.473 327.402 415.535 326.465 C 414.598 325.527 413.324 325 412 325 C 410.676 325 409.402 325.527 408.465 326.465 C 407.527 327.402 407 328.676 407 330 C 407 331.324 407.527 332.598 408.465 333.535 C 409.402 334.473 410.676 335 412 335 C 413.324 335 414.598 334.473 415.535 333.535 C 416.473 332.598 417 331.324 417 330 Z M 417 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" fill-opacity=\"0.72\" d=\"M 434 330 C 434 328.676 433.473 327.402 432.535 326.465 C 431.598 325.527 430.324 325 429 325 C 427.676 325 426.402 325.527 425.465 326.465 C 424.527 327.402 424 328.676 424 330 C 424 331.324 424.527 332.598 425.465 333.535 C 426.402 334.473 427.676 335 429 335 C 430.324 335 431.598 334.473 432.535 333.535 C 433.473 332.598 434 331.324 434 330 Z M 434 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" d=\"M 451 330 C 451 328.676 450.473 327.402 449.535 326.465 C 448.598 325.527 447.324 325 446 325 C 444.676 325 443.402 325.527 442.465 326.465 C 441.527 327.402 441 328.676 441 330 C 441 331.324 441.527 332.598 442.465 333.535 C 443.402 334.473 444.676 335 446 335 C 447.324 335 448.598 334.473 449.535 333.535 C 450.473 332.598 451 331.324 451 330 Z M 451 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" d=\"M 468 330 C 468 328.676 467.473 327.402 466.535 326.465 C 465.598 325.527 464.324 325 463 325 C 461.676 325 460.402 325.527 459.465 326.465 C 458.527 327.402 458 328.676 458 330 C 458 331.324 458.527 332.598 459.465 333.535 C 460.402 334.473 461.676 335 463 335 C 464.324 335 465.598 334.473 466.535 333.535 C 467.473 332.598 468 331.324 468 330 Z M 468 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" d=\"M 485 330 C 485 328.676 484.473 327.402 483.535 326.465 C 482.598 325.527 481.324 325 480 325 C 478.676 325 477.402 325.527 476.465 326.465 C 475.527 327.402 475 328.676 475 330 C 475 331.324 475.527 332.598 476.465 333.535 C 477.402 334.473 478.676 335 480 335 C 481.324 335 482.598 334.473 483.535 333.535 C 484.473 332.598 485 331.324 485 330 Z M 485 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" d=\"M 502 330 C 502 328.676 501.473 327.402 500.535 326.465 C 499.598 325.527 498.324 325 497 325 C 495.676 325 494.402 325.527 493.465 326.465 C 492.527 327.402 492 328.676 492 330 C 492 331.324 492.527 332.598 493.465 333.535 C 494.402 334.473 495.676 335 497 335 C 498.324 335 499.598 334.473 500.535 333.535 C 501.473 332.598 502 331.324 502 330 Z M 502 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" d=\"M 519 330 C 519 328.676 518.473 327.402 517.535 326.465 C 516.598 325.527 515.324 325 514 325 C 512.676 325 511.402 325.527 510.465 326.465 C 509.527 327.402 509 328.676 509 330 C 509 331.324 509.527 332.598 510.465 333.535 C 511.402 334.473 512.676 335 514 335 C 515.324 335 516.598 334.473 517.535 333.535 C 518.473 332.598 519 331.324 519 330 Z M 519 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" fill-opacity=\"0.72\" d=\"M 536 330 C 536 328.676 535.473 327.402 534.535 326.465 C 533.598 325.527 532.324 325 531 325 C 529.676 325 528.402 325.527 527.465 326.465 C 526.527 327.402 526 328.676 526 330 C 526 331.324 526.527 332.598 527.465 333.535 C 528.402 334.473 529.676 335 531 335 C 532.324 335 533.598 334.473 534.535 333.535 C 535.473 332.598 536 331.324 536 330 Z M 536 330 \"/> <path fill-rule=\"nonzero\" fill=\"#e0a52a\" fill-opacity=\"0.4\" d=\"M 553 330 C 553 328.676 552.473 327.402 551.535 326.465 C 550.598 325.527 549.324 325 548 325 C 546.676 325 545.402 325.527 544.465 326.465 C 543.527 327.402 543 328.676 543 330 C 543 331.324 543.527 332.598 544.465 333.535 C 545.402 334.473 546.676 335 548 335 C 549.324 335 550.598 334.473 551.535 333.535 C 552.473 332.598 553 331.324 553 330 Z M 553 330 \"/><text x=\"26.0\" y=\"22.0\" font-size=\"13\" font-weight=\"700\" fill=\"#0e1726\" text-anchor=\"start\" dominant-baseline=\"middle\">the three ways two lines can sit</text><text x=\"100.0\" y=\"212.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0e1726\" text-anchor=\"middle\" dominant-baseline=\"middle\">one solution</text><text x=\"290.0\" y=\"212.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0e1726\" text-anchor=\"middle\" dominant-baseline=\"middle\">no solution</text><text x=\"480.0\" y=\"212.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0e1726\" text-anchor=\"middle\" dominant-baseline=\"middle\">infinitely many</text><text x=\"26.0\" y=\"284.0\" font-size=\"13\" font-weight=\"700\" fill=\"#0e1726\" text-anchor=\"start\" dominant-baseline=\"middle\">points on both lines</text></svg>",
+    "cap": "Three pairs of lines, and the only three ways a pair can sit. Different slopes give one shared point, equal slopes with different \\(y\\)-intercepts give none, and one line drawn twice shares every point. The row beneath each panel samples points along the plane and marks in gold the ones lying on both lines, which is the solution count made literal."
+   },
+   {
+    "t": "p",
+    "x": "Chapter 5 counted the solutions of a system of two linear equations and found three answers, exactly one, none at all, and infinitely many. A solution is a pair \\((x,y)\\) that satisfies both equations, and such a pair is a point lying on both lines. The three panels above are those three counts drawn."
+   },
+   {
+    "t": "prob",
+    "x": "In the system \\(10x+4y=26\\) and \\(15x+7y=39\\), the \\(x\\)-coefficient and the constant of the second equation are both \\(\\frac{3}{2}\\) times those of the first. Enter the number of solutions the system has.",
+    "xp": 6,
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one",
+     "exactly one",
+     "exactly 1",
+     "1 solution",
+     "one solution"
+    ],
+    "hints": [
+     "The \\(x\\)-coefficients and the constants being in proportion is not enough on its own. Compare the two slopes instead, using \\(-\\frac{A}{B}\\) on each equation.",
+     "The slopes are \\(-\\frac{10}{4}\\) and \\(-\\frac{15}{7}\\). Reduce both and compare them, rather than judging by how alike the two equations look."
+    ],
+    "sol": "The slopes are \\(-\\frac{10}{4}=-\\frac{5}{2}\\) and \\(-\\frac{15}{7}\\), which differ, so the lines cross once and the number of solutions is \\(\\boxed{1}\\). The \\(\\frac{3}{2}\\) scaling of the \\(x\\)-coefficients and the constants means nothing by itself, since the \\(y\\)-coefficients are in the ratio \\(\\frac{7}{4}\\), and all three ratios must match for the two equations to be the same line."
+   },
+   {
+    "t": "prob",
+    "x": "The system \\(kx+8y=5\\) and \\(10x+4y=7\\) has no solution for exactly one value of \\(k\\). Deciding it needs the slopes of both lines, which 7.5 reads off standard form. Enter \\(k\\).",
+    "xp": 7,
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0",
+     "twenty",
+     "k=20"
+    ],
+    "hints": [
+     "No solution means the two lines are parallel, so their slopes are equal and their \\(y\\)-intercepts are not.",
+     "Set \\(-\\frac{k}{8}\\) equal to the slope of \\(10x+4y=7\\), then solve for \\(k\\)."
+    ],
+    "sol": "No solution means the lines are parallel, so the slopes match. The slope of \\(10x+4y=7\\) is \\(-\\frac{10}{4}=-\\frac{5}{2}\\), so \\(-\\frac{k}{8}=-\\frac{5}{2}\\) and \\(k=\\boxed{20}\\). Doubling \\(10x+4y=7\\) gives \\(20x+8y=14\\), and the first equation has \\(5\\) on the right, so the lines are parallel rather than the same line."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Each of chapter 5's three counts is one of the three pictures.</b> Two lines with different slopes share one point, and that is a system with exactly one solution. Two lines with the same slope and different \\(y\\)-intercepts share no point, the case 5.3 reached as the false statement \\(0=9\\). Two equations with the same slope and the same \\(y\\)-intercept describe one line drawn twice, which is 5.3's \\(0=0\\), where every pair solving one equation solves the other. A count of solutions is a count of shared points."
+   },
+   {
+    "t": "p",
+    "x": "Two lines that cross form four angles, and when all four are right angles the two lines are <b>perpendicular</b>. A quarter turn about the crossing point sends each line onto the other, so it sends a slope triangle under one line to a slope triangle under the other. That is enough to get the second slope from the first."
+   },
+   {
+    "t": "prob",
+    "x": "A segment from the origin to \\((5,2)\\) has run \\(5\\) and rise \\(2\\), so it lies along a line of slope \\(\\frac{2}{5}\\). A quarter turn counterclockwise about the origin leaves the origin in place and sends \\((5,2)\\) to \\((-2,5)\\), so the turned segment runs from the origin to \\((-2,5)\\) along a line perpendicular to the first. Enter the slope of the turned line, as a fraction in lowest terms.",
+    "xp": 6,
+    "ans": "-5/2",
+    "accept": [
+     "-5/2",
+     "−5/2",
+     "5/-2",
+     "5/−2",
+     "-2.5",
+     "−2.5",
+     "-2.50",
+     "−2.50",
+     "m=-5/2",
+     "m=−5/2",
+     "m=-2.5",
+     "m=−2.5",
+     "negative 5/2",
+     "minus 5/2"
+    ],
+    "hints": [
+     "Slope is rise over run, and here both are measured from the origin out to the far end of the turned segment. Going out to that end means going left first, so one of the two is negative.",
+     "Divide the rise by the run and reduce, keeping the minus sign in front of the fraction. As a check, that slope times \\(\\frac{2}{5}\\) has to come out to \\(-1\\)."
+    ],
+    "sol": "The run is \\(-2\\) and the rise is \\(5\\), so the slope is \\(\\frac{5}{-2}=\\boxed{-\\frac{5}{2}}\\). That is \\(\\frac{2}{5}\\) flipped over with its sign changed, and the product \\(\\frac{2}{5}\\cdot\\left(-\\frac{5}{2}\\right)\\) is \\(-1\\), as it must be for perpendicular lines."
+   },
+   {
+    "t": "fact",
+    "x": "Euclid's fifth postulate is the assumption that through a point off a given line exactly one parallel can be drawn. Two thousand years of attempts to prove it from the other four ended in the 1820s, when Lobachevsky and Bolyai built geometries without it."
+   },
+   {
+    "t": "prob",
+    "x": "In the previous problem the perpendicular slope came out as the first slope flipped over with its sign changed. The lines \\(5x+6y=13\\) and \\(6x+cy=5\\) are perpendicular. Enter \\(c\\).",
+    "xp": 7,
+    "ans": "-5",
+    "accept": [
+     "-5",
+     "−5",
+     "-5.0",
+     "−5.0",
+     "c=-5",
+     "c=−5",
+     "negative 5",
+     "minus 5",
+     "negative five",
+     "minus five"
+    ],
+    "hints": [
+     "Read the slope of \\(5x+6y=13\\) off standard form, then flip it over and change its sign.",
+     "The perpendicular slope is \\(\\frac{6}{5}\\), and the second line has slope \\(-\\frac{6}{c}\\)."
+    ],
+    "sol": "The line \\(5x+6y=13\\) has slope \\(-\\frac{5}{6}\\), so a line perpendicular to it has slope \\(\\frac{6}{5}\\). The second line has slope \\(-\\frac{6}{c}\\), and \\(-\\frac{6}{c}=\\frac{6}{5}\\) gives \\(6c=-30\\), so \\(c=\\boxed{-5}\\). Flipping without changing the sign would give \\(c=5\\), which makes the two lines parallel instead."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The slopes of two perpendicular lines multiply to \\(-1\\).</b> Take a line of slope \\(m=\\frac{b}{a}\\) and draw a slope triangle under it with run \\(a\\) and rise \\(b\\). A quarter turn counterclockwise sends a run of \\(a\\) and a rise of \\(b\\) to a run of \\(-b\\) and a rise of \\(a\\), and the turned triangle lies under a line perpendicular to the first, so that line has slope \\(\\frac{a}{-b}=-\\frac{a}{b}\\). Their product is \\(\\frac{b}{a}\\cdot\\left(-\\frac{a}{b}\\right)=-1\\). One slope is therefore \\(-\\frac{1}{m}\\) when the other is \\(m\\), the reciprocal with its sign changed."
+   },
+   {
+    "t": "p",
+    "x": "Deciding how two lines sit takes two comparisons and no graph. Compute the slope of each line, whatever form it is written in. Equal slopes means parallel or the same line, and comparing \\(y\\)-intercepts settles which. Different slopes means one crossing point, a right angle exactly when the two slopes multiply to \\(-1\\)."
+   },
+   {
+    "t": "prob",
+    "x": "One line is \\(6x+15y=20\\) and the other is \\(y-4=\\frac{5}{2}(x+3)\\). Enter one word, parallel, perpendicular, same or neither, for the relationship between the two lines.",
+    "xp": 6,
+    "ans": "perpendicular",
+    "accept": [
+     "perpendicular",
+     "perp",
+     "perpendicular lines",
+     "they are perpendicular",
+     "the lines are perpendicular",
+     "theyre perpendicular",
+     "they're perpendicular",
+     "perpendicular."
+    ],
+    "hints": [
+     "Comparing two lines means comparing their slopes. One equation is in standard form and the other is in point-slope form, and neither has to be solved for \\(y\\) first.",
+     "The slopes are \\(-\\frac{6}{15}\\) and \\(\\frac{5}{2}\\). Put the first in lowest terms, then multiply the two."
+    ],
+    "sol": "The line \\(6x+15y=20\\) has slope \\(-\\frac{6}{15}=-\\frac{2}{5}\\), and \\(y-4=\\frac{5}{2}(x+3)\\) has slope \\(\\frac{5}{2}\\). The slopes differ and their product is \\(-1\\), so the lines are \\(\\boxed{\\text{perpendicular}}\\). Reduce before comparing, since \\(-\\frac{6}{15}\\) and \\(-\\frac{2}{5}\\) are the same number but only the second one reads as the negative reciprocal of \\(\\frac{5}{2}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Four pairs of lines are listed. Pair 1 is \\(y=3x-2\\) and \\(y=-\\frac{1}{3}x+5\\). Pair 2 is \\(y=7\\) and \\(x=-4\\). Pair 3 is \\(y=\\frac{4}{9}x\\) and \\(y=\\frac{9}{4}x-1\\). Pair 4 is \\(y=-5x+2\\) and \\(y=-\\frac{1}{5}x\\). Enter how many of the four pairs are perpendicular.",
+    "xp": 7,
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "Three of the pairs can be settled by multiplying the two slopes. In the one that is left a line has no slope, so there is no product to take, and that pair has to be decided from the two lines themselves.",
+     "From 7.2 the graph of \\(y=7\\) is a horizontal line and the graph of \\(x=-4\\) is a vertical one. Picture those two and read the angle where they cross."
+    ],
+    "sol": "Pair 1 gives \\(3\\cdot\\left(-\\frac{1}{3}\\right)=-1\\), and pair 2 is a horizontal line crossing a vertical one, so both of those are perpendicular. Pair 3 gives \\(\\frac{4}{9}\\cdot\\frac{9}{4}=1\\) and pair 4 gives \\(-5\\cdot\\left(-\\frac{1}{5}\\right)=1\\), so the count is \\(\\boxed{2}\\). The product test needs two slopes, and pair 2 supplies only one."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A horizontal line and a vertical line are perpendicular, and the test \\(m_1m_2=-1\\) does not apply to that pair.</b> A vertical line has no slope, so there is no second number to multiply, and the test is available only when both lines have a slope. Same and parallel can be settled without slopes at all. Multiplying \\(A_1x+B_1y=C_1\\) through by a constant scales \\(A\\), \\(B\\) and \\(C\\) together, so \\(\\frac{A_2}{A_1}=\\frac{B_2}{B_1}=\\frac{C_2}{C_1}\\) means one line written twice, while matching ratios in \\(A\\) and \\(B\\) but not in \\(C\\) means parallel."
+   },
+   {
+    "t": "p",
+    "x": "Chapter 7 began with one point on the plane and ends with two lines compared. Pinning down a single line takes a point and a slope. Comparing two lines takes their slopes, plus the \\(y\\)-intercepts when those slopes are equal. The last two problems run that both ways, choosing a constant to force a relationship and then finding a crossing point."
+   },
+   {
+    "t": "prob",
+    "x": "The line \\(kx+6y=11\\) is parallel to \\(y=\\frac{2}{3}x+5\\) for one value of \\(k\\), and perpendicular to it for a different value. Enter the value of \\(k\\) that makes the two lines perpendicular.",
+    "xp": 7,
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine",
+     "k=9"
+    ],
+    "hints": [
+     "The slope of \\(kx+6y=11\\) is \\(-\\frac{k}{6}\\), and the other line has slope \\(\\frac{2}{3}\\). Perpendicular is the case where the two slopes multiply to \\(-1\\).",
+     "The first line needs slope \\(-\\frac{3}{2}\\), so solve \\(-\\frac{k}{6}=-\\frac{3}{2}\\). The parallel value of \\(k\\) is a different number and is not what is asked for."
+    ],
+    "sol": "The line \\(kx+6y=11\\) has slope \\(-\\frac{k}{6}\\), and perpendicular to a slope of \\(\\frac{2}{3}\\) means a slope of \\(-\\frac{3}{2}\\). Then \\(-\\frac{k}{6}=-\\frac{3}{2}\\) gives \\(2k=18\\), so \\(k=\\boxed{9}\\). Parallel would need \\(-\\frac{k}{6}=\\frac{2}{3}\\) instead, giving \\(k=-4\\), so the two values have opposite signs."
+   },
+   {
+    "t": "prob",
+    "x": "Line \\(g\\) passes through \\((6,1)\\) and is perpendicular to \\(4x+3y=18\\). Line \\(h\\) passes through \\((-2,5)\\) and is parallel to \\(4x+3y=18\\). Enter the \\(x\\)-coordinate of the point where \\(g\\) and \\(h\\) cross, as a fraction in lowest terms.",
+    "xp": 8,
+    "ans": "14/5",
+    "accept": [
+     "14/5",
+     "2.8",
+     "2.80",
+     "x=14/5",
+     "x=2.8"
+    ],
+    "hints": [
+     "Get the slope of \\(4x+3y=18\\) first. Line \\(h\\) has that same slope and line \\(g\\) has its negative reciprocal, and each line also comes with a point of its own.",
+     "The two equations are \\(y=1+\\frac{3}{4}(x-6)\\) and \\(y=5-\\frac{4}{3}(x+2)\\). Setting them equal and multiplying through by \\(12\\) clears both fractions at once."
+    ],
+    "sol": "The line \\(4x+3y=18\\) has slope \\(-\\frac{4}{3}\\), so \\(g\\) has slope \\(\\frac{3}{4}\\) and \\(h\\) has slope \\(-\\frac{4}{3}\\). Setting \\(1+\\frac{3}{4}(x-6)=5-\\frac{4}{3}(x+2)\\) and multiplying by \\(12\\) gives \\(9x-42=28-16x\\), so \\(25x=70\\) and \\(x=\\boxed{\\frac{14}{5}}\\). Both lines give \\(y=-\\frac{7}{5}\\) there. Since \\(g\\) is perpendicular to \\(4x+3y=18\\) and \\(h\\) is parallel to it, \\(g\\) and \\(h\\) are themselves perpendicular."
+   },
+   {
+    "t": "p",
+    "x": "Every equation in this chapter has been a statement that two quantities are equal, and the graph of each one has been a line. Chapter 8 replaces that equal sign with \\(<\\) or \\(>\\). Lesson 8.1, The Basics of Inequality, starts with what those signs mean and what chapter 4's moves do to them."
+   }
+  ],
+  "review": [
+   {
+    "x": "Enter the slope of a line parallel to \\(y=-7x+4\\).",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "-7.0",
+     "−7.0",
+     "m=-7",
+     "m=−7",
+     "negative 7",
+     "minus 7",
+     "negative seven",
+     "minus seven"
+    ],
+    "hints": [
+     "Parallel lines have equal slopes, so the answer is the slope of the given line.",
+     "The equation is already \\(y=mx+b\\), so \\(m\\) is the coefficient of \\(x\\), sign included."
+    ],
+    "sol": "Parallel lines have equal slopes, and \\(y=-7x+4\\) has slope \\(\\boxed{-7}\\). The \\(4\\) is the \\(y\\)-intercept, not the slope, and two distinct parallel lines differ only in that constant."
+   },
+   {
+    "x": "A line is perpendicular to the line \\(y=\\frac{1}{3}x-8\\). Enter the slope of the perpendicular line.",
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "−3",
+     "-3.0",
+     "−3.0",
+     "m=-3",
+     "m=−3",
+     "m=-3.0",
+     "m=−3.0",
+     "negative 3",
+     "minus 3",
+     "negative three",
+     "minus three"
+    ],
+    "hints": [
+     "Matched against \\(y=mx+b\\), the slope of the given line is the number multiplying \\(x\\). The \\(-8\\) is not needed here.",
+     "Two perpendicular slopes have a product of \\(-1\\), so ask what number times \\(\\frac{1}{3}\\) gives \\(-1\\)."
+    ],
+    "sol": "The given line has slope \\(\\frac{1}{3}\\), and perpendicular slopes multiply to \\(-1\\), so the other slope is \\(-1\\div\\frac{1}{3}=\\boxed{-3}\\). Flipping \\(\\frac{1}{3}\\) without changing the sign gives \\(3\\), and \\(\\frac{1}{3}\\cdot 3=1\\), not \\(-1\\)."
+   },
+   {
+    "x": "The lines \\(y=5x-2\\) and \\(y=5x+11\\) are parallel, perpendicular, the same line, or none of those. Enter one word, parallel, perpendicular, same or neither.",
+    "ans": "parallel",
+    "accept": [
+     "parallel",
+     "parallel lines",
+     "the lines are parallel",
+     "they are parallel",
+     "they're parallel",
+     "parallel."
+    ],
+    "hints": [
+     "Both equations are in slope-intercept form, so read the slope off each one and compare the two.",
+     "Both slopes are \\(5\\). Equal slopes leave two of the four cases in play, so compare the \\(y\\)-intercepts \\(-2\\) and \\(11\\) to pick between them."
+    ],
+    "sol": "Both lines have slope \\(5\\), and the \\(y\\)-intercepts \\(-2\\) and \\(11\\) are different, so the lines never meet and they are \\(\\boxed{\\text{parallel}}\\). If the \\(y\\)-intercepts were equal as well, the two equations would be the same line."
+   },
+   {
+    "x": "Enter one word, parallel, perpendicular, same or neither, for the lines \\(y=\\frac{3}{5}x-2\\) and \\(3x-5y=10\\).",
+    "ans": "same",
+    "accept": [
+     "same",
+     "same line",
+     "same lines",
+     "the same",
+     "the same line",
+     "identical",
+     "identical lines",
+     "coincident",
+     "they are the same"
+    ],
+    "hints": [
+     "The two forms differ, so solve \\(3x-5y=10\\) for \\(y\\) before comparing anything.",
+     "That gives \\(y=\\frac{3}{5}x-2\\). Compare the slope and the \\(y\\)-intercept against the other equation."
+    ],
+    "sol": "Solving \\(3x-5y=10\\) for \\(y\\) gives \\(-5y=-3x+10\\), then \\(y=\\frac{3}{5}x-2\\), which matches the other equation term for term, so the answer is \\(\\boxed{\\text{same}}\\). Same slope and same \\(y\\)-intercept means one line, since every point on one is on the other."
+   },
+   {
+    "x": "Are the lines \\(y=2x+6\\) and \\(y=-2x+6\\) parallel, perpendicular, the same line, or none of those? Enter one word, parallel, perpendicular, same or neither.",
+    "ans": "neither",
+    "accept": [
+     "neither",
+     "neither.",
+     "niether",
+     "none",
+     "none of those",
+     "none of these"
+    ],
+    "hints": [
+     "Read the slope of each line straight off \\(y=mx+b\\) and compare the two. Equal slopes would mean the lines are parallel or the same line.",
+     "Lines meeting at a right angle have slopes whose product is \\(-1\\), so multiply the two slopes and compare that product with \\(-1\\)."
+    ],
+    "sol": "The slopes are \\(2\\) and \\(-2\\). Since they are not equal, the lines are not parallel and not the same line, and \\(2\\cdot(-2)=-4\\) rather than \\(-1\\), so they are not perpendicular and the answer is \\(\\boxed{\\text{neither}}\\). Opposite signs alone do not make a right angle. Only a product of exactly \\(-1\\) does."
+   },
+   {
+    "x": "A line is perpendicular to \\(2x+7y=15\\). Enter the slope of the perpendicular line, as a fraction in lowest terms.",
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "3.5",
+     "3.50",
+     "m=7/2",
+     "m=3.5"
+    ],
+    "hints": [
+     "From 7.5 the slope of \\(Ax+By=C\\) is \\(-\\frac{A}{B}\\), so get that number first.",
+     "The slope of \\(2x+7y=15\\) is \\(-\\frac{2}{7}\\). Flip it over and change its sign."
+    ],
+    "sol": "The line \\(2x+7y=15\\) has slope \\(-\\frac{2}{7}\\), so the perpendicular line has slope \\(\\boxed{\\frac{7}{2}}\\). The product of the two slopes is \\(-\\frac{2}{7}\\cdot\\frac{7}{2}=-1\\), which is the test for perpendicular lines."
+   },
+   {
+    "x": "The lines \\(y=4x-9\\) and \\(y=x+30\\) cross at one point. Enter the \\(x\\)-coordinate of that point, not the point itself.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen",
+     "x=13"
+    ],
+    "hints": [
+     "At the crossing point the two lines share the same \\(y\\)-value, so \\(4x-9\\) and \\(x+30\\) are equal there.",
+     "Subtracting \\(x\\) from both sides of \\(4x-9=x+30\\) leaves \\(3x-9=30\\)."
+    ],
+    "sol": "Setting \\(4x-9=x+30\\) gives \\(3x=39\\), so \\(x=\\boxed{13}\\). Substituting back gives \\(4(13)-9=43\\) and \\(13+30=43\\), so the crossing point is \\((13,43)\\), and answering \\(43\\) reports the \\(y\\)-coordinate instead of the \\(x\\)-coordinate."
+   },
+   {
+    "x": "The line \\(y=kx+2\\) is parallel to \\(3x-4y=8\\). Enter \\(k\\) as a fraction in lowest terms.",
+    "ans": "3/4",
+    "accept": [
+     "3/4",
+     "0.75",
+     ".75",
+     "0.750",
+     "k=3/4",
+     "k=0.75"
+    ],
+    "hints": [
+     "Parallel means equal slopes, and \\(k\\) is the slope of the line \\(y=kx+2\\).",
+     "Solve \\(3x-4y=8\\) for \\(y\\) by dividing both sides by \\(-4\\), and keep track of what dividing by a negative does to each sign."
+    ],
+    "sol": "Solving \\(3x-4y=8\\) for \\(y\\) gives \\(y=\\frac{3}{4}x-2\\), and parallel lines have equal slopes, so \\(k=\\boxed{\\frac{3}{4}}\\). Dividing \\(-3x\\) by \\(-4\\) makes the sign positive, so reporting \\(-\\frac{3}{4}\\) is the common slip."
+   },
+   {
+    "x": "Consider the two equations \\(3x-y=6\\) and \\(y=3x-6\\). Of the six points \\((0,-6)\\), \\((4,6)\\), \\((-1,-9)\\), \\((2,1)\\), \\((5,10)\\) and \\((-3,-14)\\), enter how many satisfy both equations.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Solve \\(x-2y=8\\) for \\(y\\) and compare what you get with the second equation.",
+     "The two equations describe the same line, so a point that satisfies one satisfies the other, and testing each point in \\(y=\\frac{1}{2}x-4\\) is enough."
+    ],
+    "sol": "Rearranging \\(3x-y=6\\) gives \\(y=3x-6\\), the second equation exactly, so the two describe one line and a point satisfies both or neither. Testing each, \\((0,-6)\\), \\((4,6)\\) and \\((-1,-9)\\) fit while the other three do not, so the count is \\(\\boxed{3}\\). One line written twice still only contains the points that satisfy it."
+   },
+   {
+    "x": "The line \\(cx+10y=7\\) is perpendicular to \\(y=\\frac{5}{4}x-1\\). Enter \\(c\\).",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight",
+     "c=8"
+    ],
+    "hints": [
+     "The slope of \\(cx+10y=7\\) is \\(-\\frac{c}{10}\\). Decide what that slope has to be first.",
+     "A line perpendicular to a line of slope \\(\\frac{5}{4}\\) has slope \\(-\\frac{4}{5}\\), so solve \\(-\\frac{c}{10}=-\\frac{4}{5}\\)."
+    ],
+    "sol": "A line perpendicular to a line of slope \\(\\frac{5}{4}\\) has slope \\(-\\frac{4}{5}\\), and \\(cx+10y=7\\) has slope \\(-\\frac{c}{10}\\), so multiplying \\(-\\frac{c}{10}=-\\frac{4}{5}\\) by \\(-10\\) gives \\(c=\\boxed{8}\\). Checking, \\(8x+10y=7\\) gives \\(y=-\\frac{4}{5}x+\\frac{7}{10}\\), and \\(\\frac{5}{4}\\cdot\\left(-\\frac{4}{5}\\right)=-1\\)."
+   },
+   {
+    "x": "The vertical line \\(x=-4\\) and the horizontal line \\(y=9\\) cross at a right angle, even though the product of their slopes cannot be formed, since a vertical line has no slope. A third line is perpendicular to \\(y=9\\). Enter the slope of that third line, or the word undefined if it has none.",
+    "ans": "undefined",
+    "accept": [
+     "undefined",
+     "undef",
+     "not defined",
+     "none",
+     "no slope",
+     "does not exist",
+     "doesn't exist",
+     "doesnt exist",
+     "dne",
+     "undefined slope"
+    ],
+    "hints": [
+     "A line perpendicular to a horizontal line runs straight up and down.",
+     "Every point of that third line has the same \\(x\\)-coordinate, so the change in \\(x\\) between any two of its points is \\(0\\)."
+    ],
+    "sol": "A line perpendicular to a horizontal line is vertical, and any two points of a vertical line have the same \\(x\\)-coordinate, so the change in \\(x\\) is \\(0\\) and the slope is \\(\\boxed{\\text{undefined}}\\). This is the pair the product rule cannot reach, since one of the two slopes does not exist to be multiplied."
+   },
+   {
+    "x": "For exactly one value of \\(p\\) the system \\(5x-2y=9\\) and \\(15x+py=4\\) has no solution. Enter \\(p\\).",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "-6.0",
+     "−6.0",
+     "p=-6",
+     "p=−6",
+     "negative 6",
+     "minus 6",
+     "negative six",
+     "minus six"
+    ],
+    "hints": [
+     "No solution means the lines never meet, so equal slopes and different \\(y\\)-intercepts.",
+     "The first slope is \\(\\frac{5}{2}\\) and the second is \\(-\\frac{15}{p}\\). Solve \\(-\\frac{15}{p}=\\frac{5}{2}\\)."
+    ],
+    "sol": "No solution means parallel, so \\(-\\frac{15}{p}=\\frac{5}{2}\\), giving \\(5p=-30\\) and \\(p=\\boxed{-6}\\). Dividing \\(15x-6y=4\\) by \\(3\\) gives \\(5x-2y=\\frac{4}{3}\\), which differs from \\(9\\), so the lines are parallel and not the same."
+   },
+   {
+    "x": "Line \\(w\\) is parallel to \\(7x+4y=9\\) and passes through \\((-4,5)\\). Enter the \\(y\\)-coordinate of the point where \\(w\\) crosses the \\(y\\)-axis.",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "-2.0",
+     "−2.0",
+     "y=-2",
+     "y=−2",
+     "negative 2",
+     "minus 2",
+     "negative two",
+     "minus two"
+    ],
+    "hints": [
+     "Parallel lines have equal slopes, so \\(w\\) has the slope of \\(7x+4y=9\\), which is \\(-\\frac{7}{4}\\).",
+     "The \\(y\\)-axis is \\(x=0\\), so from \\((-4,5)\\) the run is \\(4\\) and the rise is \\(-\\frac{7}{4}\\cdot 4\\)."
+    ],
+    "sol": "Line \\(w\\) has slope \\(-\\frac{7}{4}\\), so going from \\((-4,5)\\) right by \\(4\\) to \\(x=0\\) drops \\(y\\) by \\(7\\), leaving \\(\\boxed{-2}\\)."
+   },
+   {
+    "x": "Line \\(n\\) is perpendicular to \\(y=\\frac{5}{3}x+1\\) and passes through \\((10,4)\\). Enter the \\(y\\)-coordinate of the point where \\(n\\) crosses the \\(y\\)-axis.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten",
+     "y=10",
+     "b=10"
+    ],
+    "hints": [
+     "The given line has slope \\(\\frac{5}{3}\\), and the slopes of two perpendicular lines multiply to \\(-1\\).",
+     "Write \\(n\\) as \\(y=-\\frac{3}{5}x+b\\), then put in \\(x=10\\) and \\(y=4\\) to find \\(b\\), which is the value of \\(y\\) at \\(x=0\\)."
+    ],
+    "sol": "Line \\(n\\) has slope \\(-\\frac{3}{5}\\), so \\(y=-\\frac{3}{5}x+b\\), and putting in \\(x=10\\) and \\(y=4\\) gives \\(4=-6+b\\), which makes the \\(y\\)-intercept \\(\\boxed{10}\\). Using \\(\\frac{5}{3}\\) instead of \\(-\\frac{3}{5}\\) is the common slip, and the check is that perpendicular slopes multiply to \\(-1\\)."
+   },
+   {
+    "x": "Line \\(a\\) is perpendicular to the line \\(3x+12y=20\\) and passes through \\((4,7)\\). Enter the \\(y\\)-coordinate of the point on line \\(a\\) whose \\(x\\)-coordinate is \\(12\\).",
+    "ans": "39",
+    "accept": [
+     "39",
+     "39.0",
+     "thirty-nine",
+     "thirtynine",
+     "y=39"
+    ],
+    "hints": [
+     "Put \\(3x+12y=20\\) into the form \\(y=mx+b\\) first. The slope of line \\(a\\) comes from the slope you read there.",
+     "The given line has slope \\(-\\frac{1}{4}\\), and perpendicular slopes multiply to \\(-1\\), so line \\(a\\) has slope \\(4\\). From \\((4,7)\\) the run out to \\(x=12\\) is \\(8\\)."
+    ],
+    "sol": "Solving \\(3x+12y=20\\) for \\(y\\) gives slope \\(-\\frac{1}{4}\\), so line \\(a\\) has slope \\(4\\), since \\(-\\frac{1}{4}\\cdot 4=-1\\). From \\((4,7)\\) a run of \\(8\\) gives \\(y=7+4(8)=\\boxed{39}\\)."
+   },
+   {
+    "x": "For exactly one value of \\(t\\) the system \\(10x-15y=t\\) and \\(4x-6y=14\\) has infinitely many solutions. Enter \\(t\\).",
+    "ans": "35",
+    "accept": [
+     "35",
+     "35.0",
+     "thirty-five",
+     "thirtyfive",
+     "t=35"
+    ],
+    "hints": [
+     "Infinitely many solutions means one equation is a multiple of the other, all three coefficients included.",
+     "Multiplying \\(4x-6y=14\\) by \\(\\frac{5}{2}\\) puts \\(10x-15y\\) on the left."
+    ],
+    "sol": "Multiplying \\(4x-6y=14\\) by \\(\\frac{5}{2}\\) gives \\(10x-15y=35\\), so \\(t=\\boxed{35}\\). Infinitely many solutions means both equations describe the same line, which needs all three numbers proportional and not just the \\(x\\) and \\(y\\) coefficients. With any other \\(t\\) the two lines have the same slope but different \\(y\\)-intercepts, so they are parallel and there is no solution."
+   },
+   {
+    "x": "For each of \\(k=-8\\), \\(k=-2\\), \\(k=0\\), \\(k=3\\), \\(k=8\\) and \\(k=12\\), the equations \\(kx+6y=21\\) and \\(4x-3y=9\\) form a system. Enter how many of those six systems have exactly one solution.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five"
+    ],
+    "hints": [
+     "Two lines cross at exactly one point when their slopes differ, so put both equations in the form \\(y=mx+b\\) and write each slope, one of them in terms of \\(k\\).",
+     "Set the two slopes equal and solve that equation for \\(k\\). Then check the six listed values, and for any value where the slopes match, compare the two equations there to see whether the lines are parallel or identical."
+    ],
+    "sol": "Only the \\(k=-8\\) system does not have exactly one solution, so the count is \\(\\boxed{5}\\). In slope-intercept form the slopes are \\(-\\frac{k}{6}\\) and \\(\\frac{4}{3}\\), equal only when \\(k=-8\\), and different slopes mean exactly one crossing point. Scaling \\(4x-3y=9\\) by \\(-2\\) gives \\(-8x+6y=-18\\), and \\(-18 eq 21\\), so at \\(k=-8\\) the two lines are parallel and that system has no solution."
+   }
+  ]
  }
 }
