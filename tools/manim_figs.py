@@ -90,6 +90,8 @@ class Fig:
         self.anim: list | None = None
         self.anim_dur = 6.0
         self.anim_hold = 0.0
+        self.motions: list[dict] = []
+        self.draws: list[dict] = []
         self.uid = f'q{abs(hash((width, frame_width, aria))) % 100000:05d}'
 
     # ---- scene coords -> svg pixel coords -------------------------------
@@ -143,6 +145,59 @@ class Fig:
         before = len(self.labels)
         self.label(*a, **k)
         return self.labels.pop(before)
+
+    def draw(self, mobjects, dur=6.0, begin=0.0, span=1.0, labels=None, label_at=None):
+        """Draw a stroke on progressively, the way a hand would.
+
+        A growing line is not a similarity transform, so `motion` cannot carry it.
+        `pathLength="1"` normalises every path to unit length, so one dash pattern
+        and one offset animation reveal it regardless of its real length. Smooth at
+        the browser's refresh rate, and it costs about a hundred bytes.
+
+        `span` is the fraction of the cycle spent drawing; the rest holds it drawn.
+        """
+        self.draws.append(dict(mobjects=mobjects, dur=dur, begin=begin, span=span,
+                               labels=labels or [], label_at=label_at))
+        return self
+
+    def motion(self, mobjects, keys, dur=6.0, labels=None, label_keys=None,
+               spline=True, begin=0.0, about=None):
+        """Smooth motion. Manim fixes the geometry AND the keyframes; SVG tweens.
+
+        A flipbook of manim frames tops out around 12 fps before the file gets
+        heavy (measured: ~2.4KB per frame, so 30 fps for 7s would be half a
+        megabyte for ONE figure). That reads as a slideshow, not as animation.
+
+        So for motion that is a similarity transform, which is most of it, the
+        geometry is emitted ONCE and carried by an SVG `<animateTransform>` whose
+        `values` are the positions manim computed. The browser then interpolates
+        at its own refresh rate, so it is genuinely smooth at any duration and
+        costs a few hundred bytes instead of hundreds of kilobytes.
+
+        `keys` is a list of (dx, dy, scale) in SCENE units, one per keyframe.
+        `calcMode="spline"` with an ease-in-out control gives 3b1b-style motion
+        rather than the constant-velocity look of a linear tween.
+        """
+        # SVG scale() is about the origin, so scaling has to happen in a frame whose
+        # origin sits at `about`. The content is counter-translated by -about, and the
+        # animated translate carries it back, which makes the scale local.
+        ppu_x, ppu_y = self.w / self.fw, self.h / self.fh
+        ax, ay = self.px(about) if about is not None else (0.0, 0.0)
+        tr = ";".join(f"{ax + dx * ppu_x:.2f},{ay - dy * ppu_y:.2f}" for dx, dy, _ in keys)
+        sc = ";".join(f"{s:.4f}" for _, _, s in keys)
+        n = len(keys)
+        kt = ";".join(f"{i / (n - 1):.4f}" for i in range(n))
+        splines = " ".join(["0.42 0 0.58 1"] * (n - 1)) if spline else None
+        # Labels ride the travel but NOT the scale. Text inside a scaled group grows
+        # with it, which doubled the type on the way across before this was split out.
+        ltr = None
+        if label_keys:
+            ltr = ";".join(f"{dx * ppu_x:.2f},{-dy * ppu_y:.2f}" for dx, dy in label_keys)
+        self.motions.append(dict(mobjects=mobjects, labels=labels or [], tr=tr, sc=sc,
+                                 ltr=ltr, kt=kt, splines=splines, dur=dur, begin=begin,
+                                 ax=ax, ay=ay,
+                                 uniform=all(abs(s - keys[0][2]) < 1e-9 for _, _, s in keys)))
+        return self
 
     def frames(self, builder, n=30, dur=6.0, hold=0.0):
         """Animate. `builder(t)` returns the mobjects for t in [0, 1].
@@ -218,6 +273,45 @@ class Fig:
         if self.anim:
             parts.append(self._anim_css(len(self.anim)))
         parts.append(self._geometry_svg())
+        for d in self.draws:
+            inner = self._geometry_svg(d['mobjects'])
+            # normalise every stroke to unit length so one offset animation fits all
+            inner = re.sub(r'<path ', '<path pathLength="1" stroke-dasharray="1" ', inner)
+            keep = max(0.0, 1.0 - d['span'])
+            anim = (f'<animate attributeName="stroke-dashoffset" values="1;0;0"'
+                    f' keyTimes="0;{d["span"]:.4f};1" dur="{d["dur"]}s"'
+                    f' begin="{d["begin"]}s" repeatCount="indefinite"'
+                    f' calcMode="spline" keySplines="0.42 0 0.58 1;0 0 1 1"/>')
+            parts.append(f'<g stroke-dashoffset="1">{anim}{inner}</g>')
+            for L in d['labels']:
+                at = d['label_at'] if d['label_at'] is not None else d['span']
+                parts.append(f'<g opacity="0"><animate attributeName="opacity"'
+                             f' values="0;0;1;1" keyTimes="0;{at:.4f};{min(1.0, at + 0.06):.4f};1"'
+                             f' dur="{d["dur"]}s" begin="{d["begin"]}s"'
+                             f' repeatCount="indefinite"/>{self._text(L)}</g>')
+        for m in self.motions:
+            inner = self._geometry_svg(m['mobjects'])
+            a = (f'<animateTransform attributeName="transform" type="translate"'
+                 f' values="{m["tr"]}" keyTimes="{m["kt"]}" dur="{m["dur"]}s"'
+                 f' begin="{m["begin"]}s" repeatCount="indefinite"'
+                 + (f' calcMode="spline" keySplines="{m["splines"]}"' if m['splines'] else '')
+                 + ' additive="sum"/>')
+            if not m['uniform']:
+                a += (f'<animateTransform attributeName="transform" type="scale"'
+                      f' values="{m["sc"]}" keyTimes="{m["kt"]}" dur="{m["dur"]}s"'
+                      f' begin="{m["begin"]}s" repeatCount="indefinite"'
+                      + (f' calcMode="spline" keySplines="{m["splines"]}"' if m['splines'] else '')
+                      + ' additive="sum"/>')
+            parts.append(f'<g>{a}<g transform="translate({-m["ax"]:.2f},{-m["ay"]:.2f})">'
+                         f'{inner}</g></g>')
+            if m['labels']:
+                lt = m['ltr'] or m['tr']
+                la = (f'<animateTransform attributeName="transform" type="translate"'
+                      f' values="{lt}" keyTimes="{m["kt"]}" dur="{m["dur"]}s"'
+                      f' begin="{m["begin"]}s" repeatCount="indefinite"'
+                      + (f' calcMode="spline" keySplines="{m["splines"]}"' if m['splines'] else '')
+                      + '/>')
+                parts.append(f'<g>{la}{"".join(self._text(L) for L in m["labels"])}</g>')
         if self.anim:
             for i, (mobs, labs) in enumerate(self.anim):
                 parts.append(f'<g class="{self.uid} {self.uid}-{i}">'

@@ -56,37 +56,39 @@ o, p = plane.c2p(0, 0), plane.c2p(*PT)
 f.add(Dot(o, radius=0.085, color=INK, stroke_width=0))
 
 
-def walk(t):
-    """The pair (3, 2) IS this walk: 3 along the x-axis, then 2 up. Animating it
-    says what the notation means better than a finished dot with two guides."""
-    ease = lambda u: u * u * (3 - 2 * u)              # smoothstep, no jerky start
-    mobs, labs = [], []
-    if t < 0.42:                                       # along the x-axis
-        x = PT[0] * ease(t / 0.42)
-        y = 0.0
-        mobs.append(Line(o, plane.c2p(x, 0), color=GOLD_MID, stroke_width=6))
-        if x > 0.35:
-            labs.append(f.mklabel(plane.c2p(x / 2, 0), "along", size=12, weight=700,
-                                  color=GOLD_DEEP, dy=32))
-    else:                                              # then up
-        u = min(1.0, (t - 0.42) / 0.42)
-        x, y = PT[0], PT[1] * ease(u)
-        mobs.append(Line(o, plane.c2p(PT[0], 0), color=GOLD_MID, stroke_width=6))
-        mobs.append(Line(plane.c2p(PT[0], 0), plane.c2p(x, y), color=GOLD_MID, stroke_width=6))
-        labs.append(f.mklabel(plane.c2p(PT[0] / 2, 0), "along", size=12, weight=700,
-                              color=GOLD_DEEP, dy=32))
-        if y > 0.3:
-            labs.append(f.mklabel(plane.c2p(PT[0], y / 2), "up", size=12, weight=700,
-                                  color=GOLD_DEEP, anchor="start", dx=9))
-    mobs += [Dot(plane.c2p(x, y), radius=0.135, color=INK, stroke_width=0),
-             Dot(plane.c2p(x, y), radius=0.105, color=GOLD_MID, stroke_width=0)]
-    if t > 0.86:                                       # arrived, so name it
-        labs.append(f.mklabel(p, "(3, 2)", size=15, weight=700, color=GOLD_DEEP,
-                              anchor="start", dx=13, dy=-8))
-    return mobs, labs
+# The pair (3, 2) IS this walk: 3 along the x-axis, then 2 up. The two legs draw on
+# in sequence and the dot glides, all interpolated by the browser, so the motion is
+# smooth rather than the ~4 fps a flipbook of manim frames would give at this size.
+DUR = 7.0
+LEG1, LEG2 = 0.40, 0.40                       # fractions of the cycle per leg
 
+f.draw([Line(o, plane.c2p(PT[0], 0), color=GOLD_MID, stroke_width=6)],
+       dur=DUR, span=LEG1,
+       labels=[f.mklabel(plane.c2p(PT[0] / 2, 0), "along", size=12, weight=700,
+                         color=GOLD_DEEP, dy=32)], label_at=LEG1 * 0.55)
+f.draw([Line(plane.c2p(PT[0], 0), p, color=GOLD_MID, stroke_width=6)],
+       dur=DUR, begin=LEG1 * DUR, span=LEG2,
+       labels=[f.mklabel(plane.c2p(PT[0], PT[1] / 2), "up", size=12, weight=700,
+                         color=GOLD_DEEP, anchor="start", dx=9)], label_at=LEG2 * 0.55)
 
-f.frames(walk, n=32, dur=7.0, hold=0.0)
+# the travelling dot, along the same two legs
+DOT_KEYS = []
+for i in range(17):
+    t = i / 16
+    if t <= LEG1:
+        DOT_KEYS.append((PT[0] * (t / LEG1), 0.0, 1.0))
+    elif t <= LEG1 + LEG2:
+        DOT_KEYS.append((PT[0], PT[1] * ((t - LEG1) / LEG2), 1.0))
+    else:
+        DOT_KEYS.append((PT[0], PT[1], 1.0))
+f.motion([Dot(o, radius=0.135, color=INK, stroke_width=0),
+          Dot(o, radius=0.105, color=GOLD_MID, stroke_width=0)],
+         DOT_KEYS, dur=DUR, about=o)
+
+# the pair is named only once the walk arrives
+f.draw([], dur=DUR, span=1.0,
+       labels=[f.mklabel(p, "(3, 2)", size=15, weight=700, color=GOLD_DEEP,
+                         anchor="start", dx=13, dy=-8)], label_at=LEG1 + LEG2)
 
 f.label(sp(42, 24), "the plane", size=13, weight=700, color=INK, anchor="start")
 

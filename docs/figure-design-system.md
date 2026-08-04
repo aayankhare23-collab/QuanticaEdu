@@ -96,6 +96,43 @@ more numbers at or above 12 that a problem in the same lesson also prints (which
 it). **A figure must still be eyeballed in the preview.** Blind generation is unreliable and the
 checker cannot see a label sitting on top of an axis.
 
+### Animation
+
+Figures animate. Three primitives, all of which keep manim as the thing that decides
+the geometry and every keyframe:
+
+- **`Fig.motion(mobjects, keys, about=...)`** for anything that is a similarity
+  transform (travel, growth, rotation). The geometry is emitted ONCE and carried by
+  an SVG `<animateTransform>` whose `values` are the positions manim computed. The
+  browser interpolates between them at its own refresh rate.
+- **`Fig.draw(mobjects, span=...)`** for a stroke that appears progressively. Uses
+  `pathLength="1"` so one dash pattern and one `stroke-dashoffset` animation reveal
+  any path regardless of its real length.
+- **`Fig.frames(builder, n=...)`** is the fallback flipbook, one manim-rendered frame
+  per `<g>` with a CSS keyframe showing one at a time. Use it only when the motion is
+  NOT a similarity transform and cannot be drawn on.
+
+**Why the flipbook is the fallback and not the default.** Measured on 7.3: about
+2.4KB per frame, so 34 frames is 84KB at ~4.5 fps and 30 fps for 7 seconds would be
+half a megabyte for one figure. That reads as a slideshow. The same animation via
+`motion` is **10KB and smooth at the browser's refresh rate**, an eight-fold size cut
+and a large quality gain at once.
+
+Three traps, all of which shipped silently before being caught:
+
+- A negative `animation-delay` of `-i/n` runs a flipbook BACKWARDS. Frame `i` only
+  lands in slot `i` at `-(n-i)/n`.
+- SVG `scale()` is about the origin, so a growing object flies off unless the content
+  is counter-translated and the scale happens in a frame centred on its anchor. That
+  is what `about=` does.
+- **Text inside a scaled group scales with it.** On 7.3 the leg labels went from 17px
+  to 37px on the way across. Labels ride their own translate-only track via
+  `label_keys`.
+
+The preview tab does not paint continuously, so an animation's clock reads 0 and
+looks frozen. Drive it by hand to check: `svg.setCurrentTime(4.0)` for SMIL, or
+`document.getAnimations().forEach(a => {a.pause(); a.currentTime = 4000})` for CSS.
+
 Chapter 7's six figures are built and rendered in `tools/lesson-figs/` (`fig_7_1` the plane and
 its quadrants, `fig_7_2` a line as the points satisfying its equation, `fig_7_3` two slope
 triangles on one line, `fig_7_4` one point plus one slope pinning a line, `fig_7_5` the two
