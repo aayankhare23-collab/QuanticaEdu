@@ -67,7 +67,7 @@ f.draw([Line(o, plane.c2p(PT[0], 0), color=GOLD_MID, stroke_width=6)],
        labels=[f.mklabel(plane.c2p(PT[0] / 2, 0), "along", size=12, weight=700,
                          color=GOLD_DEEP, dy=32)], label_at=LEG1 * 0.55)
 f.draw([Line(plane.c2p(PT[0], 0), p, color=GOLD_MID, stroke_width=6)],
-       dur=DUR, begin=LEG1 * DUR, span=LEG2,
+       dur=DUR, begin=LEG1, span=LEG2,
        labels=[f.mklabel(plane.c2p(PT[0], PT[1] / 2), "up", size=12, weight=700,
                          color=GOLD_DEEP, anchor="start", dx=9)], label_at=LEG2 * 0.55)
 

@@ -57,7 +57,7 @@ f.draw([DashedLine(plane.c2p(0, 0), plane.c2p(XI, 0), color=GOLD_MID,
                          color=GOLD_DEEP, dy=26)], label_at=G1)
 f.draw([DashedLine(plane.c2p(0, 0), plane.c2p(0, YI), color=GOLD_MID,
                    stroke_width=4.4, dash_length=0.12)],
-       dur=DUR, begin=G1 * DUR, span=G2,
+       dur=DUR, begin=G1, span=G2,
        labels=[f.mklabel(plane.c2p(0, YI), "x = 0 here", size=12, weight=700,
                          color=GOLD_DEEP, anchor="start", dx=14)], label_at=G2)
 
@@ -65,7 +65,7 @@ f.draw([DashedLine(plane.c2p(0, 0), plane.c2p(0, YI), color=GOLD_MID,
 for pt, at in (((XI, 0), G1), ((0, YI), G1 + G2)):
     f.draw([Dot(plane.c2p(*pt), radius=0.135, color=INK, stroke_width=0),
             Dot(plane.c2p(*pt), radius=0.105, color=GOLD_MID, stroke_width=0)],
-           dur=DUR, begin=at * DUR, span=0.04)
+           dur=DUR, begin=at, span=0.04)
 
 f.rule(374)
 f.label(sp(42, 392), "two ways to write the same line", size=13, weight=700, color=INK, anchor="start")

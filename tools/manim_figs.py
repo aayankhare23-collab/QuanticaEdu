@@ -154,7 +154,11 @@ class Fig:
         and one offset animation reveal it regardless of its real length. Smooth at
         the browser's refresh rate, and it costs about a hundred bytes.
 
-        `span` is the fraction of the cycle spent drawing; the rest holds it drawn.
+        `begin` and `span` are FRACTIONS OF THE CYCLE, not seconds, and the delay is
+        baked into keyTimes rather than into SMIL's `begin`. Using `begin` puts each
+        stage on its own clock: with dur=8s and begin=4.96s an element repeats on
+        4.96, 12.96, 20.96 while its neighbours repeat on 0, 8, 16, so a multi-stage
+        figure drifts out of phase after the first pass. One clock for everything.
         """
         self.draws.append(dict(mobjects=mobjects, dur=dur, begin=begin, span=span,
                                labels=labels or [], label_at=label_at))
@@ -277,17 +281,22 @@ class Fig:
             inner = self._geometry_svg(d['mobjects'])
             # normalise every stroke to unit length so one offset animation fits all
             inner = re.sub(r'<path ', '<path pathLength="1" stroke-dasharray="1" ', inner)
-            keep = max(0.0, 1.0 - d['span'])
-            anim = (f'<animate attributeName="stroke-dashoffset" values="1;0;0"'
-                    f' keyTimes="0;{d["span"]:.4f};1" dur="{d["dur"]}s"'
-                    f' begin="{d["begin"]}s" repeatCount="indefinite"'
-                    f' calcMode="spline" keySplines="0.42 0 0.58 1;0 0 1 1"/>')
+            b = min(0.999, max(0.0, d['begin']))
+            e = min(1.0, b + d['span'])
+            kt = f'0;{b:.4f};{e:.4f};1' if b > 0 else f'0;{e:.4f};1'
+            vals = '1;1;0;0' if b > 0 else '1;0;0'
+            spl = ('0 0 1 1;0.42 0 0.58 1;0 0 1 1' if b > 0
+                   else '0.42 0 0.58 1;0 0 1 1')
+            anim = (f'<animate attributeName="stroke-dashoffset" values="{vals}"'
+                    f' keyTimes="{kt}" dur="{d["dur"]}s" begin="0s"'
+                    f' repeatCount="indefinite" calcMode="spline" keySplines="{spl}"/>')
             parts.append(f'<g stroke-dashoffset="1">{anim}{inner}</g>')
             for L in d['labels']:
-                at = d['label_at'] if d['label_at'] is not None else d['span']
+                at = b + (d['label_at'] if d['label_at'] is not None else d['span'])
+                at = min(0.97, at)
                 parts.append(f'<g opacity="0"><animate attributeName="opacity"'
-                             f' values="0;0;1;1" keyTimes="0;{at:.4f};{min(1.0, at + 0.06):.4f};1"'
-                             f' dur="{d["dur"]}s" begin="{d["begin"]}s"'
+                             f' values="0;0;1;1" keyTimes="0;{at:.4f};{at + 0.02:.4f};1"'
+                             f' dur="{d["dur"]}s" begin="0s"'
                              f' repeatCount="indefinite"/>{self._text(L)}</g>')
         for m in self.motions:
             inner = self._geometry_svg(m['mobjects'])
