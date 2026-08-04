@@ -115,7 +115,7 @@ def gate_html(k):
     return ('<aside class="gate"><div class="gate-in">'+MILO_BIG+
             '<h2>Learn it by <span class="mark">doing it</span></h2>'
             '<p>Reading is a start. In the course you solve each problem yourself, with instant feedback, layered hints, and Milo right beside you when you get stuck. Free to start.</p>'
-            f'<a class="pill solid big" href="/landing.html?course={COURSE}&amp;lesson={k}">Open this lesson in the course &rarr;</a></div></aside>')
+            f'<a class="pill solid big" href="/landing?course={COURSE}&amp;lesson={k}">Open this lesson in the course &rarr;</a></div></aside>')
 
 CSS='''
 :root{--bg:#F4F9EC;--ink:#1B2E1F;--lime:#C7F09A;--slate:#5FA06B;--gray:#556A58;--line:rgba(22,75,53,.14)}
@@ -251,7 +251,7 @@ def gen_hub():
     crosshtml=''
     if META.get("cross"):
         cs,ct=META["cross"]; crosshtml=f'<a class="pill" href="/{cs}">{H.escape(ct)}</a>'
-    SF=f"/landing.html?course={COURSE}&amp;start=1"  # valid-HTML start-free deep link
+    SF=f"/landing?course={COURSE}&amp;start=1"  # valid-HTML start-free deep link
     # structured data
     ld_course={"@context":"https://schema.org","@type":"Course","name":CTITLE,"description":META["blurb"],
       "url":hub_url,"courseCode":COURSE,"educationalLevel":LEVEL,"inLanguage":"en",
@@ -293,9 +293,9 @@ def gen_hub():
 <style>{HUB_CSS}</style></head>
 <body>
 <header class="wrap nav">
-  <a class="brand" href="/paths/landing.html">{MILO}Quantica</a>
+  <a class="brand" href="/">{MILO}Quantica</a>
   {crosshtml}
-  <a class="pill" href="/paths/landing.html">Home</a>
+  <a class="pill" href="/">Home</a>
   <a class="pill solid" href="{SF}">Start free</a>
 </header>
 <main>
@@ -338,8 +338,8 @@ def gen_hub():
 </section>
 </main>
 <footer class="wrap foot">
-  <a class="brand" href="/paths/landing.html">{MILO}Quantica</a>
-  <div><a href="/paths/landing.html">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  <a class="brand" href="/">{MILO}Quantica</a>
+  <div><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
 </footer>
 </body></html>'''
     open(f"{ROOT}/{COURSE}.html","w",encoding="utf-8").write(page)
@@ -546,18 +546,18 @@ for idx,k in enumerate(ORDER):
 {KATEX}
 <style>{CSS}</style></head>
 <body>
-<header class="wrap nav"><a class="brand" href="/paths/landing.html">{MILO}Quantica</a><a class="pill" href="/{COURSE}">{H.escape(CTITLE)}</a><a class="pill solid" href="/landing.html?course={COURSE}&amp;lesson={k}">Open in the course</a></header>
+<header class="wrap nav"><a class="brand" href="/">{MILO}Quantica</a><a class="pill" href="/{COURSE}">{H.escape(CTITLE)}</a><a class="pill solid" href="/landing?course={COURSE}&amp;lesson={k}">Open in the course</a></header>
 <div class="wrap">
-  <nav class="crumbs"><a href="/paths/landing.html">Home</a> › <a href="/{COURSE}">{H.escape(CTITLE)}</a> › Chapter {chn}: {H.escape(cht)}</nav>
+  <nav class="crumbs"><a href="/">Home</a> › <a href="/{COURSE}">{H.escape(CTITLE)}</a> › Chapter {chn}: {H.escape(cht)}</nav>
   <div class="head"><p class="ey">{H.escape(CTITLE)} · Lesson {k}</p><h1>{H.escape(title)}</h1></div>
-  <div class="startbar"><a class="pill solid" href="/landing.html?course={COURSE}&amp;lesson={k}">Solve this lesson, free &rarr;</a><a class="pill" href="/{COURSE}">All lessons</a></div>
+  <div class="startbar"><a class="pill solid" href="/landing?course={COURSE}&amp;lesson={k}">Solve this lesson, free &rarr;</a><a class="pill" href="/{COURSE}">All lessons</a></div>
   <article class="content">
   {body}
   {gate_html(k)}
   </article>
   <nav class="pager">{pager_link(prev_k,"← Previous","prev")}{pager_link(next_k,"Next →","next")}</nav>
 </div>
-<footer class="wrap foot"><a class="brand" href="/paths/landing.html">{MILO}Quantica</a><div><a href="/{COURSE}">{H.escape(CTITLE)}</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></footer>
+<footer class="wrap foot"><a class="brand" href="/">{MILO}Quantica</a><div><a href="/{COURSE}">{H.escape(CTITLE)}</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></footer>
 </body></html>'''
     open(f"{ROOT}/{COURSE}/{slug}.html","w",encoding="utf-8").write(page)
 
