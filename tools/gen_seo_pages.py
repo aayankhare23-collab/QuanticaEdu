@@ -347,6 +347,46 @@ def gen_hub():
 # Search-facing titles. The lesson name is what a textbook chapter is called; these are
 # what a person actually types into Google. Each one still contains the topic term, so the
 # page targets both.
+# Hand-written meta descriptions. The auto-extracted fallback below describes the
+# LESSON; these describe what a searcher gets, which is what earns the click.
+# Add an entry whenever Search Console shows impressions with a poor click rate.
+# Keep to about 150 characters, lead with the answer, then the thing the snippet
+# cannot give them. Never promise something the page does not actually cover.
+SEO_DESC = {
+ "prealgebra": {
+  # 146 impressions, 0 clicks. The old text was the lesson's opening sentence,
+  # "Powers grow as the exponent climbs", which answers nothing and used half the
+  # available length. Queries were "0 to the power of 0" and "any number to the
+  # zero power", and the page does cover both, including why 0^0 is left undefined.
+  "2.3":"Any nonzero number to the zero power is 1. See the two short reasons why, "
+        "what makes 0 to the zero power the exception, and practice with full solutions.",
+  # The key-idea fallback opened these on a sub-rule or ran too short, so they are
+  # written by hand. Each leads with the answer and names the common mistake, which
+  # is what the searcher is usually checking.
+  "2.2":"Multiply powers with the same base and you add the exponents. All the exponent "
+        "laws in one place, with the traps that break them and worked practice.",
+  "2.5":"Raising a power to a power multiplies the exponents. The same rule extended to "
+        "products and fractions, with the mistakes it is easy to make and full solutions.",
+  "4.6":"Add fractions by giving them a common denominator first, never by adding the "
+        "denominators. The three steps, why they work, and practice with full solutions.",
+  "5.5":"Turn any repeating decimal into a fraction by shifting it and subtracting. Why "
+        "decimals repeat at all, how to predict it from the denominator, and practice.",
+  "12.4":"Undo a chain of operations in reverse order, and invert each step as you go. "
+         "Worked examples of the two rules that make working backwards reliable.",
+  "2.1":"A square is a number times itself and a cube is a number times itself twice. "
+        "What the names mean, how the picture explains the shortcuts, and practice.",
+ },
+ "algebra1": {
+  # the key-idea fallback ran short on these three
+  "5.3":"Add or subtract two equations to make a variable disappear, then solve what is "
+        "left. When to scale first, and worked practice with full solutions.",
+  "7.6":"Two lines with the same slope are parallel or identical, and slopes multiplying "
+        "to -1 mean perpendicular. The three ways a pair of lines can sit, drawn.",
+  "8.1":"Every inequality rule follows from one idea, that a is greater than b means "
+        "a minus b is positive. Including the one rule that reverses the sign.",
+ },
+}
+
 SEO_TITLE = {
  "prealgebra": {
   "1.1":"Why Arithmetic Comes Before Algebra",
@@ -438,8 +478,9 @@ SEO_TITLE = {
 }
 
 SEOQ = SEO_TITLE.get(COURSE, {})
+SEOD = SEO_DESC.get(COURSE, {})
 
-def clean_desc(raw, seo_title):
+def clean_desc(raw, seo_title, fallback_raw=''):
     """A meta description Google can print. Whole sentences only, and never any math,
     because stripped LaTeX leaves debris like "marks 3 4 of the way out"."""
     x = re.sub(r'<svg.*?</svg>', '', raw or '', flags=re.S)
@@ -454,6 +495,8 @@ def clean_desc(raw, seo_title):
         if len(out) + len(sent) + 1 > 155:
             break
         out = (out + ' ' + sent).strip()
+    if len(out) < 60 and fallback_raw:
+        return clean_desc(fallback_raw, seo_title)
     if len(out) < 60:
         out = f"{seo_title}. Worked examples with hints and full solutions, free on Quantica."
     return out
@@ -466,7 +509,8 @@ for idx,k in enumerate(ORDER):
     url=f"{BASE}/{COURSE}/{slug}"
     sitemap_urls.append(url)
     seo_title=SEOQ.get(k) or title
-    desc=clean_desc((L.get('blocks') or [{}])[0].get('x',''), seo_title)
+    imp=next((b.get('x','') for b in (L.get('blocks') or []) if b.get('t')=='imp'), '')
+    desc=SEOD.get(k) or clean_desc(imp, seo_title, (L.get('blocks') or [{}])[0].get('x',''))
     prev_k=ORDER[idx-1] if idx>0 else None
     next_k=ORDER[idx+1] if idx<len(ORDER)-1 else None
     def pager_link(kk,dir_,cls):
