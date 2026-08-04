@@ -8,7 +8,7 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **35 / 81**, 15 chapters in the TOC | **chapters 1-6** | ch1-ch6 fully done, plus 7.2 |
+| Algebra I | **38 / 81**, 15 chapters in the TOC | chapters 1-6 | ch7 at 4/6, 7.5 and 7.6 in flight |
 
 **Next work, in order:**
 1. **7.1 The Cartesian Plane, first.** 7.2 shipped ahead of it, so chapter 7 currently has a
@@ -23,7 +23,21 @@ and Rates). Chapter 5 and its sets shipped the same session.
 
 ## Start here: the tools that do the verifying
 
-Two deterministic checkers now live in the repo. **Run both on every lesson and every set.**
+Four now, not two. **Run them on every lesson and every set.**
+
+```
+python3 tools/land_lesson.py <result>.json --key 7.3   # all gates at once on a workflow result
+python3 tools/verify_answers.py <lesson>.json <pychecks>.json
+```
+
+`land_lesson.py` splits a workflow's return value into lesson / audit / pychecks, runs
+both checkers, and prints the audit grouped by severity. `verify_answers.py` evaluates
+each pyexpr with exact `Fraction` arithmetic against the `ans` re-read from the LESSON
+file, never the one carried beside the pyexpr, and reports non-numeric items as needing
+a hand re-solve rather than passing them silently.
+
+**Neither replaces re-solving every answer yourself from the final text.** The pyexprs
+come from the same agents that wrote the items, so they are not independent.
 
 ```
 python3 tools/check_lesson.py <lesson>.json     # a single lesson object
