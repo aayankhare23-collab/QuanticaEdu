@@ -8,21 +8,18 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **38 / 81**, 15 chapters in the TOC | chapters 1-6 | ch7 at 4/6, 7.5 and 7.6 in flight |
+| Algebra I | **40 / 81**, 15 chapters in the TOC | **chapters 1-7** | ch1-ch7 fully done, 8.1 in flight |
 
 **Next work, in order:**
-1. **Finish 7.5 and 7.6.** Both were authored on 2026-08-03; check `/workflows`, or relaunch
-   with `Workflow({scriptPath, resumeFromRunId})`, which replays completed agents free.
-2. **Chapter 7 Practice/Challenge sets.** Generate the workflow with
-   `python3 tools/make_pset_workflow.py 7 --course algebra1 --title "Graphing Lines"
-   --covers <file> -o /tmp/pset7.workflow.js`, which inlines the freshness catalogue of
-   every problem the chapter's lessons already spent. Then wire the result into
-   `PSETS_ALG1` in landing.html.
-3. **Chapter 8, Inequalities.** All five SPECs are written and parsing in
-   `tools/lesson-specs/author_8_*.head.js`. Assemble as head + STYLE + tail and run.
-4. **Chapter 9, Quadratics I, Factoring.** Mapped against the reference in
-   `docs/reference-coverage-map.md`; the SPECs still need writing.
-5. Chapters 10 to 15, then the remaining per-chapter sets.
+1. **Chapter 8, Inequalities.** 8.1 was in flight when this was written. All five SPECs are
+   written and parsing in `tools/lesson-specs/author_8_*.head.js`; assemble as
+   head + STYLE + tail from `tools/author_lesson.workflow.js` and run.
+2. **Chapter 8 Practice/Challenge sets**, via `tools/make_pset_workflow.py 8 --course
+   algebra1 --title "Inequalities" --covers <file>`, which inlines the freshness catalogue
+   of every problem the chapter's lessons spent. Then wire into `PSETS_ALG1`.
+3. **Chapter 9, Quadratics I, Factoring.** Mapped against the reference in
+   `docs/reference-coverage-map.md`, so its SPECs are a fill-in rather than research.
+4. Chapters 10 to 15, each followed by its sets.
 
 Chapters 5 and 6 and their problem sets shipped earlier. Chapter 7 opened with 7.2, then
 7.1, 7.3 and 7.4 followed, so 7.1's closer had to be written to set up 7.2's already-shipped
