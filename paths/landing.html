@@ -5,6 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Understand math, don't memorize it | Quantica</title>
 <meta name="description" content="Quantica teaches you to break a hard problem into pieces you already understand. It's the reasoning top students rely on, minus the intimidation that makes most people quit.">
+<link rel="canonical" href="https://quanticaedu.com/">
+
+<!-- Share cards. This is the page people actually share, the bare domain, and it was the ONLY
+     page on the site without them, so every Reddit, Discord and iMessage link to quanticaedu.com
+     rendered as a grey URL with no title, image or description while every deeper page unfurled
+     properly. Reddit is currently the only channel sending real traffic, so this was suppressing
+     click-through exactly where it costs most. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantica">
+<meta property="og:url" content="https://quanticaedu.com/">
+<meta property="og:title" content="Understand math, don't memorize it">
+<meta property="og:description" content="Learn by solving real problems with a tutor on call for every one of them. Prealgebra to calculus, free while in early access.">
+<meta property="og:image" content="https://quanticaedu.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quantica, understand math, don't memorize it">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Understand math, don't memorize it">
+<meta name="twitter:description" content="Learn by solving real problems with a tutor on call for every one of them. Prealgebra to calculus, free while in early access.">
+<meta name="twitter:image" content="https://quanticaedu.com/og-default.png">
+
+<!-- GA4, identical kids-safe config to the app: only runs on the real domain, and /?imfounder=1
+     sets a per-device opt-out. This page carried NO analytics of any kind, which made it the one
+     untracked page of the 116 in the sitemap, and it is the one every visitor lands on first.
+     Every funnel number to date therefore began at the app, counting nobody who bounced here. -->
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.track=function(n,p){ try{ gtag('event',n,p||{}); }catch(e){} };
+  (function(){try{var h=location.hostname;if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com')return;if(location.search.indexOf('imfounder=1')>-1&&!localStorage.getItem('qa_internal')){localStorage.setItem('qa_internal','1');alert('Got it. Analytics is now off on this device.');}if(localStorage.getItem('qa_internal')==='1')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});}catch(e){}})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -708,6 +740,44 @@
     } else { __chatVisible=true; __chatStarted=true; run(); }
     document.addEventListener('visibilitychange',function(){ if(!document.hidden && __chatVisible && __chatPending){ __chatPending=false; run(); } });
   }
+})();
+</script>
+
+<!-- The homepage-to-app click is the single most important transition on the site and it was
+     invisible: this page had no analytics, so the funnel effectively started at the app and
+     counted nobody who arrived here and left. Beacon transport because the click navigates
+     away immediately and a normal hit would be cancelled in flight. cta_position says WHICH
+     of the five "Start free" buttons is doing the work, so the page can be cut down to it. -->
+<script>
+(function(){
+  try{
+    var ctas=[].slice.call(document.querySelectorAll('a[href^="/landing"]'));
+    ctas.forEach(function(a,i){
+      a.addEventListener('click',function(){
+        try{
+          var href=a.getAttribute('href')||'';
+          track('cta_click',{
+            cta_label:(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40),
+            cta_position:i+1,
+            cta_target:href.indexOf('signin')>-1?'signin':'start',
+            transport_type:'beacon'
+          });
+        }catch(e){}
+      });
+    });
+    // How far down the page people actually get, so the section that loses them is identifiable.
+    var marks=[25,50,75,100], hit={};
+    window.addEventListener('scroll',function(){
+      try{
+        var d=document.documentElement, h=d.scrollHeight-d.clientHeight;
+        if(h<=0) return;
+        var pct=Math.round((d.scrollTop||document.body.scrollTop)/h*100);
+        marks.forEach(function(m){
+          if(pct>=m && !hit[m]){ hit[m]=1; track('scroll_depth',{percent:m,transport_type:'beacon'}); }
+        });
+      }catch(e){}
+    },{passive:true});
+  }catch(e){}
 })();
 </script>
 </body>
