@@ -121,9 +121,13 @@ agents against **pre-labelled slot ids**, assembled deterministically from `OUTL
   rule here said four at once exhausts the session usage limit and three is sustainable. Three is
   only sustainable *from a fresh budget*. On 2026-08-03 three concurrent runs died at the author
   stage anyway, because the session had already spent budget on three earlier runs that were
-  launched and then killed. Killed runs still bill for everything their agents did. One lesson
-  costs roughly **600k to 800k subagent tokens**, so budget by that, not by a run count. After a
-  limit reset, resume **one at a time** until you know how much is left.
+  launched and then killed. Killed runs still bill for everything their agents did. After a limit
+  reset, resume **one at a time** until you know how much is left.
+  **Measured cost, 2026-08-04.** 8.3 ran alone and clean, 43 agents, 0 errors, and billed
+  **2.9M subagent tokens** over ~64 minutes. The old figure here said 600k to 800k, which is
+  roughly 4x optimistic and is what made "three at once" look affordable. Budget ~3M per lesson.
+  Two concurrent runs is already ~6M, so treat three as a decision that needs a fresh budget and
+  a reason, not a default.
 - **A dead run is cheap to recover.** `Workflow({scriptPath, resumeFromRunId})` replays every
   completed agent from cache for free and re-runs only the failures. The blueprint phase is the
   expensive thinking and it survives, so a run that died in the author stage resumes for a

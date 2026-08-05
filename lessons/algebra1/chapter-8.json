@@ -1097,5 +1097,575 @@
     "sol": "Both have numerator \\(1\\), so the smaller denominator gives the bigger fraction. Power of a power rewrites \\(2^{45}=(2^{5})^{9}=32^{9}\\) and \\(5^{18}=(5^{2})^{9}=25^{9}\\), so \\(5^{18}\\lt 2^{45}\\) and the bigger fraction is \\(\\boxed{B}\\). A common exponent works whenever the two exponents share a factor, since it leaves only the bases to compare."
    }
   ]
+ },
+ "8.3": {
+  "title": "Solving Linear Inequalities",
+  "next": "8.4",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "An inequality with a letter in it is true at some values of that letter and false at others. Solving it means finding every value that makes it true. The moves are the ones chapter 4 used to solve equations, run under 8.1's rules, and one of those rules is the reason an inequality is not just an equation with a different symbol."
+   },
+   {
+    "t": "prob",
+    "x": "Every solution of \\(y-23\\ge 46\\) sits at or above a single number, and that number is itself a solution. Enter that number.",
+    "xp": 5,
+    "ans": "69",
+    "accept": [
+     "69",
+     "69.0",
+     "sixty-nine",
+     "sixty nine",
+     "y=69",
+     "y>=69",
+     "y≥69"
+    ],
+    "hints": [
+     "The boundary is the \\(y\\) that makes \\(y-23\\) exactly \\(46\\), and it counts as a solution because \\(\\ge\\) is true when the two sides are equal.",
+     "Undo the subtraction. Adding \\(23\\) to both sides is one of 8.1's moves that leaves the direction alone, so it clears the \\(-23\\) off the left."
+    ],
+    "sol": "Adding \\(23\\) to both sides gives \\(y\\ge \\boxed{69}\\). Adding the same amount to both sides leaves the direction alone. At \\(y=69\\) the left side is exactly \\(46\\), which counts, and at \\(y=68\\) it is \\(45\\), which does not."
+   },
+   {
+    "t": "prob",
+    "x": "The solutions of \\(6w+19\\lt 91\\) are exactly the numbers less than one cutoff value, and the cutoff itself is not a solution. Enter the cutoff value.",
+    "xp": 5,
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve",
+     "w=12"
+    ],
+    "hints": [
+     "Two moves, in the same order chapter 4 used on equations. Clear the \\(19\\) first, then the coefficient \\(6\\).",
+     "Subtracting \\(19\\) from both sides leaves \\(6w\\lt 72\\). Six is positive, so the direction of the inequality stays the same when you divide both sides by it."
+    ],
+    "sol": "Subtract \\(19\\) from both sides for \\(6w\\lt 72\\), then divide by the positive \\(6\\) for \\(w\\lt \\boxed{12}\\). At \\(w=12\\) the left side is exactly \\(91\\), and \\(91\\lt 91\\) is false, so \\(12\\) is the cutoff and not a solution."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Solving an inequality means describing every value that makes it true.</b> The equation \\(6w+19=91\\) holds at \\(w=12\\) and at no other value, so the whole answer is one number. The inequality \\(6w+19\\lt 91\\) holds at \\(11\\), at \\(0\\), at \\(-800\\), and at every number below \\(12\\), so the solutions cannot be listed. The answer is a description instead, the single simple inequality \\(w\\lt 12\\), which is a boundary and a direction and nothing else. Producing that form is the goal of every problem here, the way \\(w=12\\) was the goal in chapter 4."
+   },
+   {
+    "t": "prob",
+    "x": "Enter the largest integer \\(t\\) that satisfies \\(4t-9\\lt 50\\).",
+    "xp": 6,
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0",
+     "fourteen",
+     "t=14"
+    ],
+    "hints": [
+     "Describe all the solutions first, then pick the largest integer inside that description.",
+     "Adding \\(9\\) gives \\(4t\\lt 59\\), and dividing by \\(4\\) leaves a boundary that is not a whole number. Test the whole number just below it."
+    ],
+    "sol": "Add \\(9\\) to both sides for \\(4t\\lt 59\\), then divide by the positive \\(4\\) for \\(t\\lt \\frac{59}{4}\\). Since \\(\\frac{59}{4}=14.75\\), the largest integer allowed is \\(\\boxed{14}\\). Checking, \\(4(14)-9=47\\) is below \\(50\\) while \\(4(15)-9=51\\) is not. The boundary is not a whole number, so no integer sits exactly on it and \\(\\le\\) in place of \\(\\lt\\) would give the same answer."
+   },
+   {
+    "t": "prob",
+    "x": "A student solves \\(11-4x\\le 49\\). After subtracting \\(11\\) from both sides, the student divides by \\(-4\\) and leaves the symbol pointing the same way, which makes the resulting statement about \\(x\\) wrong. Enter the largest integer that fits the student's wrong statement.",
+    "xp": 7,
+    "ans": "-10",
+    "accept": [
+     "-10",
+     "−10",
+     "-10.0",
+     "−10.0",
+     "x=-10",
+     "x=−10",
+     "negative 10",
+     "minus 10",
+     "negative ten",
+     "minus ten"
+    ],
+    "hints": [
+     "Follow the student's work rather than your own. Subtracting \\(11\\) gives \\(-4x\\le 38\\), and the student then divides by \\(-4\\) while keeping \\(\\le\\).",
+     "The student's statement is \\(x\\le -\\frac{19}{2}\\), and \\(-\\frac{19}{2}=-9.5\\). No integer equals \\(-9.5\\), so take the largest integer below it, and on the negative side larger means closer to zero."
+    ],
+    "sol": "Subtracting \\(11\\) gives \\(-4x\\le 38\\), and dividing by \\(-4\\) without reversing gives \\(x\\le -\\frac{19}{2}\\), so the student's largest integer is \\(\\boxed{-10}\\). Dividing by a negative reverses the symbol, so the true statement is \\(x\\ge -\\frac{19}{2}\\) and the smallest integer that works is \\(-9\\). Testing \\(x=-10\\) in the original gives \\(11+40=51\\), above \\(49\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Isolate the variable exactly as in chapter 4.</b> Undo the last operation first, clearing the constant by adding or subtracting and then clearing the coefficient by dividing, which is 4.2's order. Adding or subtracting the same amount on both sides never changes the direction, and neither does multiplying or dividing by a positive number. <b>Multiplying or dividing both sides by a negative number reverses the direction</b>, which is 8.1's rule and the only difference from solving an equation. Dividing \\(-4x\\le 38\\) by \\(-4\\) gives \\(x\\ge -\\frac{19}{2}\\), not \\(x\\le -\\frac{19}{2}\\)."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Two solution ladders side by side, separated by a vertical hairline. Both start from a x plus b compared with c, and both subtract b in the middle step, which leaves the direction alone. The left ladder is headed divide by a and its last step divides by a positive number, so the greater-than symbol is unchanged. The right ladder is headed divide by minus a and its last step divides by a negative number, so the symbol reverses to less-than and is highlighted in gold. The two ladders differ only in the sign of the divisor and in that final symbol.\" font-family=\"Space Grotesk, sans-serif\"><path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e4e9f1\" d=\"M 0 2.4 C 0 0.813359 0 -0.773359 0 -2.36 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill=\"none\" stroke-width=\"0.018\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#aab4c2\" d=\"M -2.16 -1.54 C -1.786641 -1.54 -1.413359 -1.54 -1.04 -1.54 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill=\"none\" stroke-width=\"0.018\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#aab4c2\" d=\"M 3.36 -1.54 C 3.733359 -1.54 4.106641 -1.54 4.48 -1.54 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill-rule=\"nonzero\" fill=\"#fcd76a\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#e0a52a\" d=\"M 3.28 -1.42 C 3.28 -1.298516 3.181484 -1.2 3.06 -1.2 C 2.913359 -1.2 2.766641 -1.2 2.62 -1.2 C 2.498516 -1.2 2.4 -1.298516 2.4 -1.42 C 2.4 -1.486641 2.4 -1.553359 2.4 -1.62 C 2.4 -1.741484 2.498516 -1.84 2.62 -1.84 C 2.766641 -1.84 2.913359 -1.84 3.06 -1.84 C 3.181484 -1.84 3.28 -1.741484 3.28 -1.62 C 3.28 -1.553359 3.28 -1.486641 3.28 -1.42 Z M 3.28 -1.42 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.1000;0.4400;1\" dur=\"5.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#2f6fe0\" d=\"M -4.68 0.8 C -4.68 0.106641 -4.68 -0.586641 -4.68 -1.28 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/></g><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.4000;0.7400;1\" dur=\"5.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#f0b429\" d=\"M 0.84 0.8 C 0.84 0.106641 0.84 -0.586641 0.84 -1.28 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/></g><text x=\"152.0\" y=\"44.0\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\" text-anchor=\"middle\" dominant-baseline=\"middle\">divide by a</text><text x=\"428.0\" y=\"44.0\" font-size=\"13\" font-weight=\"700\" fill=\"#2f6fe0\" text-anchor=\"middle\" dominant-baseline=\"middle\">divide by −a</text><text x=\"139.0\" y=\"96.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"end\" dominant-baseline=\"middle\">ax + b</text><text x=\"156.0\" y=\"96.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"middle\" dominant-baseline=\"middle\">&gt;</text><text x=\"173.0\" y=\"96.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"start\" dominant-baseline=\"middle\">c</text><text x=\"415.0\" y=\"96.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"end\" dominant-baseline=\"middle\">−ax + b</text><text x=\"432.0\" y=\"96.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"middle\" dominant-baseline=\"middle\">&gt;</text><text x=\"449.0\" y=\"96.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"start\" dominant-baseline=\"middle\">c</text><text x=\"139.0\" y=\"152.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"end\" dominant-baseline=\"middle\">ax</text><text x=\"156.0\" y=\"152.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"middle\" dominant-baseline=\"middle\">&gt;</text><text x=\"173.0\" y=\"152.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"start\" dominant-baseline=\"middle\">c − b</text><text x=\"415.0\" y=\"152.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"end\" dominant-baseline=\"middle\">−ax</text><text x=\"432.0\" y=\"152.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"middle\" dominant-baseline=\"middle\">&gt;</text><text x=\"449.0\" y=\"152.0\" font-size=\"19\" font-weight=\"400\" fill=\"#475569\" text-anchor=\"start\" dominant-baseline=\"middle\">c − b</text><text x=\"126.0\" y=\"226.0\" font-size=\"19\" font-weight=\"400\" fill=\"#2257c5\" text-anchor=\"end\" dominant-baseline=\"middle\">x</text><text x=\"210.0\" y=\"213.0\" font-size=\"16\" font-weight=\"400\" fill=\"#2257c5\" text-anchor=\"middle\" dominant-baseline=\"middle\">c − b</text><text x=\"210.0\" y=\"246.0\" font-size=\"16\" font-weight=\"400\" fill=\"#2257c5\" text-anchor=\"middle\" dominant-baseline=\"middle\">a</text><text x=\"402.0\" y=\"226.0\" font-size=\"19\" font-weight=\"400\" fill=\"#2257c5\" text-anchor=\"end\" dominant-baseline=\"middle\">x</text><text x=\"486.0\" y=\"213.0\" font-size=\"16\" font-weight=\"400\" fill=\"#2257c5\" text-anchor=\"middle\" dominant-baseline=\"middle\">c − b</text><text x=\"486.0\" y=\"246.0\" font-size=\"16\" font-weight=\"400\" fill=\"#2257c5\" text-anchor=\"middle\" dominant-baseline=\"middle\">−a</text><text x=\"156.0\" y=\"226.0\" font-size=\"19\" font-weight=\"700\" fill=\"#2257c5\" text-anchor=\"middle\" dominant-baseline=\"middle\">&gt;</text><text x=\"432.0\" y=\"226.0\" font-size=\"19\" font-weight=\"700\" fill=\"#8a5a08\" text-anchor=\"middle\" dominant-baseline=\"middle\">&lt;</text></svg>",
+    "cap": "Here \\(a\\) is a positive number, so \\(-a\\) is negative. The two ladders show the same two steps. Subtracting \\(b\\) leaves the direction alone in each. The last step is where the direction can change, and it changes only when the divisor is negative. Dividing by \\(a\\) keeps \\(\\gt\\), and dividing by \\(-a\\) reverses it to \\(\\lt\\)."
+   },
+   {
+    "t": "p",
+    "x": "A negative coefficient is not forced on you. When the variable is on both sides, a variable term can be removed from either side, and one of those two removals leaves a positive coefficient behind. Removing a variable term is a subtraction, so it never reverses the direction. That choice comes up in each of the next two problems."
+   },
+   {
+    "t": "prob",
+    "x": "Enter the smallest integer \\(k\\) that satisfies \\(9k-14\\gt 5k+26\\).",
+    "xp": 6,
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven",
+     "k=11"
+    ],
+    "hints": [
+     "Once \\(k\\) has a value, \\(5k\\) is a number, so subtracting \\(5k\\) from both sides is 4.3's move and the direction holds.",
+     "That leaves \\(4k-14\\gt 26\\). Add \\(14\\), divide by \\(4\\), then take the smallest integer strictly above the boundary."
+    ],
+    "sol": "Subtract \\(5k\\) from both sides for \\(4k-14\\gt 26\\), add \\(14\\) for \\(4k\\gt 40\\), then divide by \\(4\\) for \\(k\\gt 10\\), so the smallest integer is \\(\\boxed{11}\\). At \\(k=10\\) both sides equal \\(76\\), and \\(\\gt\\) does not allow equality."
+   },
+   {
+    "t": "prob",
+    "x": "In \\(3m+47\\le 8m+12\\) the variable terms can be gathered on either side. Use the choice that leaves a positive coefficient, so no reversal is needed. Enter the smallest value \\(m\\) can take.",
+    "xp": 6,
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven",
+     "m=7"
+    ],
+    "hints": [
+     "Subtracting \\(3m\\) from both sides puts the variable on the right with a positive coefficient. Subtracting \\(8m\\) instead leaves \\(-5m\\) on the left, so a division by a negative comes later.",
+     "Take the first route. Subtracting \\(3m\\) and then \\(12\\) from both sides gives \\(35\\le 5m\\)."
+    ],
+    "sol": "Subtract \\(3m\\) from both sides for \\(47\\le 5m+12\\), subtract \\(12\\) for \\(35\\le 5m\\), and divide by the positive \\(5\\) for \\(7\\le m\\), so the smallest value is \\(\\boxed{7}\\). Gathering on the left instead gives \\(-5m\\le -35\\), and dividing by \\(-5\\) reverses the symbol to \\(m\\ge 7\\). Both routes describe the same solutions, but the second has one more step where the direction can be lost."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Gather the variable terms onto one side, and choose that side.</b> Once the letter has a value, a term such as \\(5m\\) is a number, so subtracting it from both sides is 4.3's move and the direction holds. Both choices are legal and both give the same description. <b>Subtract the smaller variable term.</b> In \\(3m+47\\le 8m+12\\) that means subtracting \\(3m\\), which leaves \\(5m\\) on the right and a final division by \\(5\\). Subtracting \\(8m\\) instead leaves \\(-5m\\) on the left and a final division by \\(-5\\), which is one more place to lose the direction."
+   },
+   {
+    "t": "p",
+    "x": "Isolating comes last. Distribute to clear parentheses the 2.1 way, and combine like terms on each side the 2.4 way. Neither move changes the other side, so no question of direction comes up while a side is being cleaned. Clean both sides first, then gather the variable terms and isolate."
+   },
+   {
+    "t": "prob",
+    "x": "Enter the largest integer \\(x\\) that satisfies \\(7(2x-5)-3x\\lt 4(x+8)+6\\).",
+    "xp": 7,
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten",
+     "x=10"
+    ],
+    "hints": [
+     "Simplify each side before gathering anything. Distribute both products, then combine like terms on each side separately.",
+     "The two sides become \\(11x-35\\) and \\(4x+38\\). Subtract \\(4x\\) rather than \\(11x\\), since taking away the smaller coefficient leaves a positive coefficient on \\(x\\)."
+    ],
+    "sol": "Distributing and combining gives \\(11x-35\\lt 4x+38\\). Subtracting \\(4x\\) gives \\(7x-35\\lt 38\\), adding \\(35\\) gives \\(7x\\lt 73\\), and dividing by \\(7\\) gives \\(x\\lt \\frac{73}{7}\\). Since \\(\\frac{73}{7}\\) sits between \\(10\\) and \\(11\\), the largest integer is \\(\\boxed{10}\\). Distributing multiplies both terms inside the parentheses by \\(7\\), so \\(7(2x-5)\\) is \\(14x-35\\) and not \\(14x-5\\)."
+   },
+   {
+    "t": "fact",
+    "x": "Joseph Fourier published a method in 1826 for taking a whole system of linear inequalities and removing one unknown at a time from it, the same elimination idea 5.3 used on systems of equations."
+   },
+   {
+    "t": "prob",
+    "x": "The inequality \\(\\frac{3x}{4}-\\frac{x}{6}\\ge 21\\) is true for every \\(x\\) from one value upward, and that value itself makes it true. Clear the fractions first, then enter that value.",
+    "xp": 7,
+    "ans": "36",
+    "accept": [
+     "36",
+     "36.0",
+     "thirty-six",
+     "thirty six",
+     "x=36",
+     "x>=36",
+     "x≥36"
+    ],
+    "hints": [
+     "The two denominators are \\(4\\) and \\(6\\). Multiplying both sides by a number that both of them divide leaves no fraction anywhere.",
+     "Multiplying by \\(12\\) gives \\(9x-2x\\ge 252\\), and \\(12\\) is positive, so the direction is unchanged."
+    ],
+    "sol": "Multiply both sides by \\(12\\), a positive number, so the direction is unchanged, giving \\(9x-2x\\ge 252\\), then \\(7x\\ge 252\\) and \\(x\\ge \\boxed{36}\\). Checking the endpoint, \\(\\frac{3(36)}{4}-\\frac{36}{6}=27-6=21\\), and \\(21\\ge 21\\) is true, so \\(36\\) itself is a solution."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Simplify each side before gathering anything.</b> Distributing and combining like terms rewrite one side as an equal expression, so the other side and the direction are unchanged. <b>Clear fractions by multiplying both sides by a positive common denominator.</b> A common denominator is positive by choice, so that step never reverses the direction. Multiplying \\(\\frac{3x}{4}-\\frac{x}{6}\\ge 21\\) by \\(12\\) gives \\(9x-2x\\ge 252\\), with \\(\\ge\\) pointing the same way. Multiplying by a negative number instead would clear the fractions and reverse every symbol, so there is no reason to do it."
+   },
+   {
+    "t": "p",
+    "x": "Gathering the variable terms can remove every one of them, since the two sides can have the same variable part. What is left is a comparison between two numbers with no letter in it. A comparison like that reads the same at every value, true as it stands or false as it stands, so the original holds everywhere or nowhere."
+   },
+   {
+    "t": "prob",
+    "x": "The statement \\(-13\\le 4x+7\\lt 39\\) is a chain, and it says both \\(-13\\le 4x+7\\) and \\(4x+7\\lt 39\\) at once. Solve it by doing the same thing to all three parts at each step. Enter the smallest value of \\(x\\) that makes the whole chain true.",
+    "xp": 6,
+    "ans": "-5",
+    "accept": [
+     "-5",
+     "−5",
+     "-5.0",
+     "−5.0",
+     "x=-5",
+     "x=−5",
+     "negative 5",
+     "minus 5",
+     "negative five",
+     "minus five"
+    ],
+    "hints": [
+     "The middle part is \\(4x+7\\), so the first move is subtracting \\(7\\), and that subtraction has to be done to \\(-13\\) and to \\(39\\) as well.",
+     "Subtracting \\(7\\) from all three parts gives \\(-20\\le 4x\\lt 32\\). Dividing all three by \\(4\\) is dividing by a positive number, so both directions hold."
+    ],
+    "sol": "Subtract \\(7\\) from all three parts for \\(-20\\le 4x\\lt 32\\), then divide all three by the positive \\(4\\) for \\(-5\\le x\\lt 8\\), so the smallest value is \\(\\boxed{-5}\\). Checking, \\(4(-5)+7=-13\\), and \\(-13\\le -13\\lt 39\\) is true. Any \\(x\\) below \\(-5\\) makes \\(4x+7\\) less than \\(-13\\), so the left comparison fails."
+   },
+   {
+    "t": "prob",
+    "x": "Enter how many of the values \\(x=-31\\), \\(x=-\\frac{5}{6}\\), \\(x=0\\), \\(x=4.5\\), \\(x=57\\) and \\(x=210\\) satisfy \\(5(x+9)-2x\\gt 3x+38\\).",
+    "xp": 6,
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six",
+     "all",
+     "all six",
+     "all 6",
+     "all six values",
+     "all 6 values",
+     "all of them",
+     "6 values",
+     "six values"
+    ],
+    "hints": [
+     "Testing each value one at a time is the long route. Simplify the left side and gather the variable terms first, then see what is left.",
+     "The left side collects to \\(3x+45\\), so both sides carry \\(3x\\). Subtracting \\(3x\\) removes the letter entirely."
+    ],
+    "sol": "Distributing gives \\(5x+45-2x=3x+45\\) on the left, so the inequality is \\(3x+45\\gt 3x+38\\). Subtracting \\(3x\\) from both sides leaves \\(45\\gt 38\\), which is true and contains no \\(x\\), so every real number is a solution and the count is \\(\\boxed{6}\\). A true numerical statement at the end means the inequality holds everywhere, whatever the listed values happened to be."
+   },
+   {
+    "t": "imp",
+    "x": "<b>When every variable term cancels, the numerical statement left behind is the whole answer.</b> If it is true, such as \\(45\\gt 38\\), the original holds at every real number and every value is a solution. If it is false, such as \\(-6\\gt 9\\), the original holds nowhere and there are no solutions. These are 4.3's two endings for equations, the identity and the no-solutions case, reached the same way and read the same way. Watch for the lookalike. If a variable term remains, nothing special has happened and the inequality is an ordinary one."
+   },
+   {
+    "t": "p",
+    "x": "Check a finished description with two substitutions. Put the boundary value into the original and see whether it holds, which settles whether the boundary itself counts. Then test one value from the described side. A missed reversal shows up on that second test, since with the direction backwards every value in the description fails the original."
+   },
+   {
+    "t": "prob",
+    "x": "Enter how many integers \\(x\\) with \\(-15\\le x\\le 15\\) satisfy \\(9-2x\\gt 3x-31\\). The inequality on its own has infinitely many integer solutions, so only the ones inside the stated range are counted.",
+    "xp": 7,
+    "ans": "23",
+    "accept": [
+     "23",
+     "23.0",
+     "twenty-three",
+     "twenty three",
+     "23 integers",
+     "twenty-three integers",
+     "twenty three integers"
+    ],
+    "hints": [
+     "Both sides have an \\(x\\) term, so gather them on one side before anything else. Collect them where the coefficient comes out positive and no step will divide by a negative.",
+     "Adding \\(2x\\) and then \\(31\\) to both sides gives \\(40\\gt 5x\\). That sets only the top of the allowed range, since the bottom is the stated \\(-15\\). The symbol is strict, so check whether the cutoff value itself counts."
+    ],
+    "sol": "Adding \\(2x\\) and \\(31\\) to both sides gives \\(40\\gt 5x\\), so \\(x\\lt 8\\). Inside \\(-15\\le x\\le 15\\) the allowed integers run from \\(-15\\) to \\(7\\), and \\(7-(-15)+1=\\boxed{23}\\). Checking, \\(x=7\\) gives \\(-5\\gt -10\\), true, and \\(x=8\\) gives \\(-7\\gt -7\\), false. Adding \\(2x\\) rather than subtracting \\(3x\\) keeps the coefficient positive and removes the reversal step."
+   },
+   {
+    "t": "prob",
+    "x": "Enter how many integers \\(x\\) satisfy \\(-7\\lt \\frac{13-3x}{2}\\le 5\\). Both ends of the solved form are integers, so test each one in the original inequality before counting.",
+    "xp": 8,
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight",
+     "8 integers",
+     "eight integers"
+    ],
+    "hints": [
+     "Clear the fraction first by multiplying all three parts by \\(2\\). That multiplier is positive, so neither direction reverses.",
+     "Subtracting \\(13\\) from all three parts leaves \\(-27\\lt -3x\\le -3\\). Dividing all three by \\(-3\\) reverses both directions, so the \\(\\le\\) end becomes the lower end."
+    ],
+    "sol": "Multiplying all three parts by \\(2\\) gives \\(-14\\lt 13-3x\\le 10\\), subtracting \\(13\\) gives \\(-27\\lt -3x\\le -3\\), and dividing all three by \\(-3\\) reverses both directions to \\(9\\gt x\\ge 1\\), which reads \\(1\\le x\\lt 9\\). The integers are \\(1\\) through \\(8\\), so the count is \\(\\boxed{8}\\). Test both ends in the original. At \\(x=1\\) the middle part is \\(5\\), and \\(5\\le 5\\) is true, so \\(1\\) is in. At \\(x=9\\) the middle part is \\(-7\\), and \\(-7\\lt -7\\) is false, so \\(9\\) is out."
+   },
+   {
+    "t": "p",
+    "x": "Every answer here was described in words and symbols, a boundary together with the direction that goes with it. Lesson 8.4, Graphing Inequalities, is where those descriptions are drawn instead. On a number line the boundary is one marked point and the solutions are everything on one side of it, and with two letters the picture is a region of the plane."
+   }
+  ],
+  "review": [
+   {
+    "x": "A number \\(x\\) satisfies \\(x+38\\le 55\\). Enter the largest value \\(x\\) can be.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0",
+     "seventeen",
+     "x=17"
+    ],
+    "hints": [
+     "Subtracting \\(38\\) from both sides leaves the direction alone.",
+     "\\(\\le\\) means less than or equal to, so the boundary value itself satisfies the inequality."
+    ],
+    "sol": "Subtracting \\(38\\) from both sides leaves the direction unchanged, giving \\(x\\le \\boxed{17}\\). Since \\(\\le\\) means less than or equal to, \\(x=17\\) is allowed, and checking, \\(17+38=55\\)."
+   },
+   {
+    "x": "Enter the smallest integer \\(p\\) that satisfies \\(\\frac{p}{5}+7\\gt 16\\).",
+    "ans": "46",
+    "accept": [
+     "46",
+     "46.0",
+     "forty-six",
+     "forty six",
+     "p=46"
+    ],
+    "hints": [
+     "Subtract \\(7\\) from both sides first. Subtracting the same amount from both sides leaves the direction unchanged.",
+     "That leaves \\(\\frac{p}{5}\\gt 9\\). Multiply both sides by the positive \\(5\\), then check whether the boundary value itself satisfies the strict inequality."
+    ],
+    "sol": "Subtracting \\(7\\) gives \\(\\frac{p}{5}\\gt 9\\), and multiplying both sides by the positive \\(5\\) gives \\(p\\gt 45\\), so the smallest integer is \\(\\boxed{46}\\). At \\(p=45\\) the left side equals \\(16\\) exactly, which is not greater than \\(16\\)."
+   },
+   {
+    "x": "Enter the smallest integer \\(x\\) that satisfies \\(-3x\\lt 24\\).",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "-7.0",
+     "−7.0",
+     "x=-7",
+     "x=−7",
+     "negative 7",
+     "minus 7",
+     "negative seven",
+     "minus seven"
+    ],
+    "hints": [
+     "The coefficient is negative, so the last step is a division by a negative number.",
+     "Dividing by \\(-3\\) reverses the symbol to \\(x\\gt -8\\), and \\(-8\\) itself is excluded."
+    ],
+    "sol": "Dividing both sides by \\(-3\\) reverses the direction to \\(x\\gt -8\\), so the smallest integer is \\(\\boxed{-7}\\). Checking, \\(-3(-7)=21\\lt 24\\) while \\(-3(-8)=24\\) is not below \\(24\\)."
+   },
+   {
+    "x": "Solve \\(5k-24\\ge 71\\). The solutions are exactly the values of \\(k\\) at or above a single number, and that number is itself a solution. Enter that number.",
+    "ans": "19",
+    "accept": [
+     "19",
+     "19.0",
+     "nineteen",
+     "k=19"
+    ],
+    "hints": [
+     "Add \\(24\\) to both sides, then divide both sides by \\(5\\). Both moves leave the direction alone, since \\(5\\) is positive.",
+     "The first move gives \\(5k\\ge 95\\). Since the sign is \\(\\ge\\) and not \\(\\gt\\), the boundary value is itself a solution."
+    ],
+    "sol": "Adding \\(24\\) to both sides gives \\(5k\\ge 95\\), and dividing both sides by \\(5\\) leaves the direction alone, so \\(k\\ge \\boxed{19}\\). At \\(k=19\\) the left side is exactly \\(71\\), and \\(\\ge\\) includes that boundary."
+   },
+   {
+    "x": "Enter the largest integer \\(y\\) that satisfies \\(8y+11\\lt 122\\).",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen",
+     "y=13"
+    ],
+    "hints": [
+     "Solve for \\(y\\) first, then take the largest integer that still fits below the bound you get.",
+     "Subtracting \\(11\\) gives \\(8y\\lt 111\\), and \\(\\frac{111}{8}\\) is not a whole number."
+    ],
+    "sol": "Subtracting \\(11\\) gives \\(8y\\lt 111\\), and dividing by \\(8\\) gives \\(y\\lt \\frac{111}{8}=13.875\\), so the largest integer is \\(\\boxed{13}\\). Checking, \\(8(13)+11=115\\lt 122\\) while \\(8(14)+11=123\\) is not below \\(122\\)."
+   },
+   {
+    "x": "A number \\(x\\) satisfies \\(20-4x\\ge 52\\). Enter the largest value \\(x\\) can be.",
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "−8",
+     "-8.0",
+     "−8.0",
+     "x=-8",
+     "x=−8",
+     "negative 8",
+     "minus 8",
+     "negative eight",
+     "minus eight"
+    ],
+    "hints": [
+     "Subtract \\(20\\) from both sides first, and leave the negative coefficient for the last step.",
+     "That gives \\(-4x\\ge 32\\). Dividing both sides by \\(-4\\) reverses the direction, and the boundary value itself still counts, since the comparison is \\(\\ge\\)."
+    ],
+    "sol": "Subtracting \\(20\\) gives \\(-4x\\ge 32\\), and dividing by \\(-4\\) reverses the direction to \\(x\\le \\boxed{-8}\\). At \\(x=-8\\) the left side is \\(20-4(-8)=52\\), which is allowed since the comparison is \\(\\ge\\), while \\(x=-7\\) gives \\(48\\). Skipping the reversal would give \\(x\\ge -8\\), which is false at \\(x=0\\), where the left side is \\(20\\)."
+   },
+   {
+    "x": "Enter the smallest integer \\(v\\) that satisfies \\(12v-5\\gt 5v+100\\).",
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen",
+     "v=16"
+    ],
+    "hints": [
+     "Subtract \\(5v\\) from both sides, which leaves the variable on the left with a positive coefficient.",
+     "That gives \\(7v-5\\gt 100\\), so \\(7v\\gt 105\\)."
+    ],
+    "sol": "Subtracting \\(5v\\) gives \\(7v-5\\gt 100\\), adding \\(5\\) gives \\(7v\\gt 105\\), and dividing by \\(7\\) gives \\(v\\gt 15\\), so the smallest integer is \\(\\boxed{16}\\). At \\(v=15\\) both sides equal \\(175\\), and the bound is strict, so \\(15\\) is ruled out."
+   },
+   {
+    "x": "Enter how many integers \\(n\\) with \\(-10\\le n\\le 30\\) satisfy \\(4n-9\\lt 3n+13\\).",
+    "ans": "32",
+    "accept": [
+     "32",
+     "32.0",
+     "thirty-two",
+     "thirty two"
+    ],
+    "hints": [
+     "Solve first, then count. Subtracting \\(3n\\) leaves a coefficient of \\(1\\).",
+     "The condition is \\(n\\lt 22\\), so the allowed integers stop at \\(21\\) and start at the lower end of the stated range."
+    ],
+    "sol": "Subtracting \\(3n\\) gives \\(n-9\\lt 13\\), so \\(n\\lt 22\\). Inside \\(-10\\le n\\le 30\\) the integers allowed run from \\(-10\\) to \\(21\\), and \\(21-(-10)+1=\\boxed{32}\\). Subtracting the two endpoints without adding \\(1\\) gives \\(31\\) and misses one of the two ends."
+   },
+   {
+    "x": "Enter the largest value of \\(x\\) that satisfies \\(6x+5\\le 4x+12\\), as a fraction in lowest terms.",
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "x=7/2"
+    ],
+    "hints": [
+     "Subtract \\(4x\\) from both sides rather than \\(6x\\), since taking away the smaller variable term keeps the coefficient of \\(x\\) positive.",
+     "That gives \\(2x+5\\le 12\\), so \\(2x\\le 7\\). The boundary is not a whole number."
+    ],
+    "sol": "Subtracting \\(4x\\) gives \\(2x+5\\le 12\\), subtracting \\(5\\) gives \\(2x\\le 7\\), and dividing by the positive number \\(2\\) keeps the direction, giving \\(x\\le \\boxed{\\frac{7}{2}}\\). Both sides equal \\(26\\) at \\(x=\\frac{7}{2}\\), and since the comparison is \\(\\le \\) rather than \\(\\lt \\), that boundary value is itself a solution."
+   },
+   {
+    "x": "The inequality \\(3(2x+7)-5x\\ge 2(x-4)+9\\) holds for every \\(x\\) at or below one value, and that value satisfies it too. Enter that value.",
+    "ans": "20",
+    "accept": [
+     "20",
+     "20.0",
+     "twenty",
+     "x=20"
+    ],
+    "hints": [
+     "Distribute on both sides and combine like terms before moving any term across the inequality sign.",
+     "The two sides simplify to \\(x+21\\) and \\(2x+1\\). Subtract \\(x\\) from both sides to clear the smaller variable term, and note that subtracting the same amount from both sides never changes the direction."
+    ],
+    "sol": "Distributing and combining gives \\(x+21\\ge 2x+1\\). Subtracting \\(x\\) from both sides gives \\(21\\ge x+1\\), and subtracting \\(1\\) gives \\(20\\ge x\\), so \\(x\\le \\boxed{20}\\). At \\(x=20\\) both sides equal \\(41\\), and a \\(\\ge\\) statement is true when the two sides are equal, so \\(20\\) itself is a solution."
+   },
+   {
+    "x": "Solve \\(\\frac{x}{3}+\\frac{x}{4}\\gt 14\\). Enter the largest number that is not a solution.",
+    "ans": "24",
+    "accept": [
+     "24",
+     "24.0",
+     "twenty-four",
+     "twenty four",
+     "x=24"
+    ],
+    "hints": [
+     "Multiply both sides by \\(12\\), which clears both denominators and is a positive multiplier.",
+     "That gives \\(4x+3x\\gt 168\\), so \\(7x\\gt 168\\)."
+    ],
+    "sol": "Multiplying both sides by the positive number \\(12\\) keeps the direction, giving \\(4x+3x\\gt 168\\), so \\(7x\\gt 168\\) and \\(x\\gt \\boxed{24}\\). Every number above \\(24\\) is a solution and \\(24\\) is not, since at \\(x=24\\) the left side is \\(8+6=14\\), which is not greater than \\(14\\)."
+   },
+   {
+    "x": "Enter the smallest integer \\(x\\) that satisfies \\(-11\\lt 5x+4\\le 34\\).",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "-2.0",
+     "−2.0",
+     "x=-2",
+     "x=−2",
+     "negative 2",
+     "minus 2",
+     "negative two",
+     "minus two"
+    ],
+    "hints": [
+     "This is two conditions at once, \\(-11\\lt 5x+4\\) and \\(5x+4\\le 34\\), and only the left one limits how small \\(x\\) can be. Take the \\(+4\\) off all three parts in one step.",
+     "Subtracting \\(4\\) from all three gives \\(-15\\lt 5x\\le 30\\). The left end is strict, so the boundary there is excluded."
+    ],
+    "sol": "Subtracting \\(4\\) from all three parts gives \\(-15\\lt 5x\\le 30\\), and dividing all three by the positive \\(5\\) gives \\(-3\\lt x\\le 6\\), so the smallest integer is \\(\\boxed{-2}\\). The left end is strict, so \\(-3\\) is excluded even though \\(5(-3)+4=-11\\) sits right at it."
+   },
+   {
+    "x": "Enter the largest integer \\(x\\) that satisfies \\(1\\le 8-3x\\lt 20\\).",
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two",
+     "x=2"
+    ],
+    "hints": [
+     "Subtract \\(8\\) from all three parts, then handle the negative coefficient.",
+     "That gives \\(-7\\le -3x\\lt 12\\). Dividing all three parts by \\(-3\\) reverses both symbols."
+    ],
+    "sol": "Subtracting \\(8\\) from all three parts gives \\(-7\\le -3x\\lt 12\\), and dividing all three by \\(-3\\) reverses both symbols to \\(\\frac{7}{3}\\ge x\\gt -4\\), which reads \\(-4\\lt x\\le \\frac{7}{3}\\). The largest integer is \\(\\boxed{2}\\). Checking, \\(8-3(2)=2\\) satisfies the chain while \\(8-3(3)=-1\\) falls below \\(1\\)."
+   },
+   {
+    "x": "Test the five values \\(x=-30\\), \\(x=-\\frac{1}{2}\\), \\(x=6.5\\), \\(x=41\\) and \\(x=88\\) in \\(7(x-2)-3x\\ge 4x+5\\). Enter how many of them satisfy the inequality.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero",
+     "none",
+     "none of them",
+     "no values"
+    ],
+    "hints": [
+     "Simplify the left side and gather the variable terms before testing anything.",
+     "The left side collects to \\(4x-14\\), so both sides carry \\(4x\\). Subtracting \\(4x\\) from both sides removes the letter."
+    ],
+    "sol": "Distributing gives \\(7x-14-3x=4x-14\\), so the inequality reads \\(4x-14\\ge 4x+5\\). Subtracting \\(4x\\) from both sides leaves \\(-14\\ge 5\\), which is false, so no value of \\(x\\) works and the count is \\(\\boxed{0}\\). Once the variable cancels and a false number statement is left, the inequality has no solutions no matter which values are tested."
+   },
+   {
+    "x": "A student solves \\(3(8-2x)\\gt x-41\\). After distributing and gathering the variable terms on the left, the student divides by the negative coefficient and keeps the symbol pointing the same way. Enter the largest integer that actually satisfies the original inequality.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine",
+     "x=9"
+    ],
+    "hints": [
+     "Distributing on the left gives \\(24-6x\\). Put \\(x=10\\) into both sides of the original and compare the two results.",
+     "Subtracting \\(x\\) and then \\(24\\) from both sides gives \\(-7x\\gt -65\\), and dividing by \\(-7\\) reverses the direction, so the solutions sit below the boundary rather than above it."
+    ],
+    "sol": "Distributing gives \\(24-6x\\gt x-41\\), subtracting \\(x\\) and \\(24\\) from both sides gives \\(-7x\\gt -65\\), and dividing by \\(-7\\) reverses the direction to \\(x\\lt \\frac{65}{7}\\), so the largest integer is \\(\\boxed{9}\\). Checking, \\(x=9\\) gives \\(-30\\gt -32\\) while \\(x=10\\) gives \\(-36\\gt -31\\), which is false. Without the reversal the description comes out as \\(x\\gt \\frac{65}{7}\\), the same boundary pointing the wrong way."
+   },
+   {
+    "x": "Enter the largest integer \\(x\\) that satisfies \\(\\frac{2x-1}{3}-\\frac{x+2}{5}\\lt \\frac{x}{15}+1\\).",
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four",
+     "x=4"
+    ],
+    "hints": [
+     "Multiply every term by \\(15\\), which clears all three denominators at once and is a positive multiplier.",
+     "That gives \\(5(2x-1)-3(x+2)\\lt x+15\\). The \\(-3\\) multiplies the \\(+2\\) as well."
+    ],
+    "sol": "Multiplying by the positive \\(15\\) gives \\(5(2x-1)-3(x+2)\\lt x+15\\), which is \\(7x-11\\lt x+15\\). Subtracting \\(x\\) and adding \\(11\\) gives \\(6x\\lt 26\\), so \\(x\\lt \\frac{13}{3}\\) and the largest integer is \\(\\boxed{4}\\). Distributing \\(-3\\) over \\(x+2\\) gives \\(-3x-6\\). Writing \\(+6\\) there instead changes the boundary and the answer with it."
+   },
+   {
+    "x": "Enter how many integers \\(x\\) satisfy \\(-6\\le \\frac{5-2x}{4}\\lt 3\\).",
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0",
+     "eighteen",
+     "18 integers",
+     "eighteen integers"
+    ],
+    "hints": [
+     "Multiply all three parts by \\(4\\) first. That multiplier is positive, so both directions stay as they are.",
+     "That gives \\(-24\\le 5-2x\\lt 12\\), and subtracting \\(5\\) gives \\(-29\\le -2x\\lt 7\\). Dividing all three parts by \\(-2\\) reverses both directions."
+    ],
+    "sol": "Multiplying all three parts by \\(4\\) gives \\(-24\\le 5-2x\\lt 12\\), subtracting \\(5\\) gives \\(-29\\le -2x\\lt 7\\), and dividing all three parts by \\(-2\\) reverses both directions to \\(\\frac{29}{2}\\ge x\\gt -\\frac{7}{2}\\), which reads \\(-\\frac{7}{2}\\lt x\\le \\frac{29}{2}\\). The integers run from \\(-3\\) to \\(14\\), so the count is \\(14-(-3)+1=\\boxed{18}\\). Both boundaries are fractions here, so no integer sits exactly on either end."
+   }
+  ]
  }
 }

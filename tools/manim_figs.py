@@ -72,6 +72,18 @@ def _no_swap_color(self, ctx, rgbas, vmobject):
     return self
 
 
+def _esc(t):
+    """Escape label text for SVG.
+
+    A label reading "<" was previously written straight into the markup, producing
+    <text ...><</text>. The parser reads that "<" as the start of a tag and the glyph
+    silently disappears, with no error anywhere. An inequalities chapter labels "<"
+    constantly, so this is not a corner case. Ampersand goes first or it would
+    double-escape the entities the other two produce.
+    """
+    return str(t).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
 def _pct_to_hex(m):
     vals = [float(v.strip().rstrip("%")) for v in m.group(1).split(",")]
     return "#" + "".join(f"{round(v * 255 / 100):02x}" for v in vals)
@@ -337,7 +349,7 @@ class Fig:
                 f'<text x="{L["x"]:.1f}" y="{L["y"]:.1f}" font-size="{L["size"]}"'
                 f' font-weight="{L["weight"]}" fill="{L["color"]}"'
                 f' text-anchor="{L["anchor"]}"'
-                f' dominant-baseline="{L["baseline"]}"{style}>{L["text"]}</text>')
+                f' dominant-baseline="{L["baseline"]}"{style}>{_esc(L["text"])}</text>')
 
     def write(self, path):
         with open(path, "w", encoding="utf-8") as f:
