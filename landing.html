@@ -5821,6 +5821,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var back=document.getElementById('mback');
     if(back) back.style.display=(name==='dashView')?'none':'inline-flex';
     var cs=document.getElementById('courseScroll'); if(cs){ if(name!=='lessonView'){ cs.classList.remove('ws-mode'); if(window.WS) WS.active=false; } cs.scrollTop=0; }
+    // Leaving the workspace for any other view is an in-app exit. Guarded on window.LP
+    // because showView is defined earlier in the file than LP is.
+    if(name!=='lessonView' && window.LP){ try{ LP.exit('nav'); }catch(e){} }
   }
   function showDashboard(){
     if(window.navGuard && !navGuard(1,{v:'dash'})) return;
@@ -5895,7 +5898,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     return !!completed[liveOrder[i-1]];
   }
   function completedCount(){ var n=0; liveOrder.forEach(function(k){ if(completed[k]) n++; }); return n; }
-  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.track) track('lesson_complete',{lesson:key,course:CURRENT_COURSE}); if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
+  function markDone(key){ if(LESSONS[key] && !completed[key]){ completed[key]=true; if(window.Rewards) Rewards.onLessonComplete(key); if(window.track) track('lesson_complete',{lesson:key,course:CURRENT_COURSE}); try{ LP.complete(); }catch(e){} if(window.__signinPrompt) window.__signinPrompt.afterLesson(); } }
   function completeAndGo(key,next){
     try { markDone(key); } catch(e){ console.error('markDone error:',e); }
     setTimeout(function(){
@@ -6049,6 +6052,72 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     clearTimeout(window.__sproutReactT);
     window.__sproutReactT=setTimeout(function(){ img.src=guideImg('hero'); fab.classList.remove('react-correct','react-wrong'); },1900);
   };
+  /* --- Lesson drop-off instrumentation ------------------------------------------------
+     The funnel showed roughly twice as many lesson_start as lesson_complete with no way to
+     tell WHERE a student stopped, and "quit on page 2" and "quit on page 18" call for
+     opposite fixes. These events turn that into a page number.
+
+     lesson_progress fires once per FURTHEST page reached, not once per showPage, so paging
+     back and forth does not inflate the count and the event total per visit is bounded by
+     the lesson length. lesson_exit fires exactly once per visit, and only when the student
+     leaves without finishing, so its page parameter is the drop-off point directly.
+
+     Page totals are read live rather than cached because scaffolding inserts pages and the
+     adaptive path truncates them, so a total captured at open time goes stale mid-lesson.
+     Everything is wrapped at the call sites; instrumentation must never break a lesson. */
+  var LP=(function(){
+    var cur=null;
+    function total(){ try{ return (WS.pages||[]).length; }catch(e){ return 0; } }
+    function kindOf(i){
+      try{ var p=WS.pages[i]; return p&&p.prob?'prob':(p&&p.keyIdea?'key_idea':'read'); }
+      catch(e){ return 'read'; }
+    }
+    function pctOf(i,n){ return n>1?Math.round(i/(n-1)*100):100; }
+    function send(name,extra){
+      if(!cur||!window.track) return;
+      var p={lesson:cur.key,course:cur.course,pages_total:total()};
+      for(var k in extra){ if(Object.prototype.hasOwnProperty.call(extra,k)) p[k]=extra[k]; }
+      try{ track(name,p); }catch(e){}
+    }
+    return {
+      start:function(key,L){
+        this.exit('nav');                       // jumping straight to another lesson still records the first
+        // Only real lessons. Generated practice sets and problem sets have no lesson key to
+        // report against, and counting them would pollute the completion rate.
+        if(!key||(L&&(L._practice||L._pset))){ cur=null; return; }
+        cur={key:key,course:(window.CURRENT_COURSE||''),furthest:-1,
+             t0:Date.now(),done:false,exited:false};
+      },
+      page:function(i){
+        if(!cur||i<=cur.furthest) return;
+        cur.furthest=i;
+        send('lesson_progress',{page:i+1,pct:pctOf(i,total()),page_kind:kindOf(i)});
+      },
+      attempt:function(ok,n){
+        if(!cur) return;
+        send('problem_attempt',{page:cur.furthest+1,result:ok?'correct':'wrong',attempt:n||1});
+      },
+      hint:function(n){ if(cur) send('hint_open',{page:cur.furthest+1,hint:n||1}); },
+      complete:function(){ if(cur) cur.done=true; },
+      exit:function(why){
+        if(!cur||cur.done||cur.exited||cur.furthest<0) return;
+        cur.exited=true;
+        send('lesson_exit',{page:cur.furthest+1,pct:pctOf(cur.furthest,total()),
+                            page_kind:kindOf(cur.furthest),
+                            secs:Math.round((Date.now()-cur.t0)/1000),
+                            reason:why||'nav',transport_type:'beacon'});
+      }
+    };
+  })();
+  window.LP=LP;
+  // A closed tab or a backgrounded phone is the most common exit and fires no in-app event,
+  // so catch it here. beacon transport is what lets the hit survive the page going away.
+  try{
+    document.addEventListener('visibilitychange',function(){
+      if(document.visibilityState==='hidden'){ try{ LP.exit('hidden'); }catch(e){} }
+    });
+  }catch(e){}
+
   function checkAns(k){
     var rec=PROBREG[k]; if(!rec||!rec.accept) return;
     if(rec.solved) return;   // already correct -> don't re-fire confetti/sound/rewards on repeat or double clicks
@@ -6064,6 +6133,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var _cfc=document.getElementById('wsFabChat'); if(_cfc) _cfc.classList.remove('help-glow');
       if(window.Sfx) Sfx.correct();
       rec.solved=true; if(window.Rewards) Rewards._onSolved(rec);
+      try{ LP.attempt(true,(rec.attempts||0)+1); }catch(e){}
       // struggled first, then got it: have Sprout debrief before they can move on
       if(rec.attempts>0 && !rec._askedAboutFix && window.addTutorBotMsg){
         rec._askedAboutFix=true; rec.needChat=true;
@@ -6079,6 +6149,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var _cfw=document.getElementById('wsFabChat'); if(_cfw && !(window.WS&&document.getElementById('wsWorkspace')&&document.getElementById('wsWorkspace').classList.contains('tut-open'))){ _cfw.classList.remove('help-glow'); void _cfw.offsetWidth; _cfw.classList.add('help-glow'); }
       if(window.Sfx) Sfx.wrong();
       rec.attempts=(rec.attempts||0)+1; (rec.wrongVals=rec.wrongVals||[]).push((inp.value||'').trim()); if(rec.wrongVals.length>12) rec.wrongVals.shift(); if(window.Rewards) Rewards._onWrong(rec);
+      try{ LP.attempt(false,rec.attempts); }catch(e){}
       // stuck twice on the same problem → slip in an easier same-topic warm-up (difficulty setting untouched)
       if(rec.graded && !rec._scaffolded && window.__tryScaffold && window.__tryScaffold(k,rec.attempts)) rec._scaffolded=true;
     }
@@ -6090,6 +6161,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(rec.hi>=rec.hints.length) return;
     var d=document.createElement('div'); d.className='hintline'; d.innerHTML='💡 '+rec.hints[rec.hi]; box.appendChild(d); typeset(d); rec.hi++;
     rec.hintsUsed=(rec.hintsUsed||0)+1; if(window.Rewards) Rewards._onHint(rec);
+    try{ LP.hint(rec.hi); }catch(e){}
     if(rec.hi>=rec.hints.length){ btn.textContent='No more hints'; btn.disabled=true; }
     else { btn.textContent='Show next hint ('+rec.hi+'/'+rec.hints.length+')'; }
   }
@@ -6234,6 +6306,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     window.__curLesson = (L && L._practice) ? L._practiceKey : ((key==='__welcome' || (L && (L._pset || /checkpoint|summary/i.test(L.title||'')))) ? null : key);  // practice records against its topic; other non-teaching pages don't record
     var bp=buildPages(window.adaptBlocks?window.adaptBlocks(key,L.blocks):L.blocks);
     WS.active=true; WS.key=key; WS.L=L; WS.meta=meta; WS.page=0; WS.pages=bp.pages; WS.keys=bp.keys; WS._advancing=false; WS._scaffTopics={};
+    try{ LP.start(key,L); }catch(e){}   // after WS.pages is set, so page totals are readable
     var ctx='L:'+key, isCp=/checkpoint/i.test(L.title||'');
     var eyebrow=(L&&L._eyebrow)?L._eyebrow:('Lesson '+key);
     var hasKeys=bp.pages.some(function(p){return !!p.keyIdea;});
@@ -6306,6 +6379,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   };
   WS.showPage=function(i){
     if(i<0)i=0; if(i>WS.pages.length-1)i=WS.pages.length-1; WS.page=i;
+    try{ LP.page(i); }catch(e){}
     var _cfn=document.getElementById('wsFabChat'); if(_cfn) _cfn.classList.remove('help-glow');  // clear any stale wrong-answer glow when moving between pages
     var body=document.getElementById('wsCenterBody'); if(!body) return;
     WS._ensurePage(i);                       // build this page on demand if it isn't built yet
