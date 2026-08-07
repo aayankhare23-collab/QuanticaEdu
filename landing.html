@@ -15,6 +15,32 @@
   window.track=function(n,p){ try{ gtag('event',n,p||{}); }catch(e){} };
   (function(){try{var h=location.hostname;if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com')return;if(location.search.indexOf('imfounder=1')>-1&&!localStorage.getItem('qa_internal')){localStorage.setItem('qa_internal','1');alert('Got it. Analytics is now off on this device.');}if(localStorage.getItem('qa_internal')==='1')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});}catch(e){}})();
 </script>
+<!-- Meta pixel. Inert until META_PIXEL_ID is filled in, so this ships safely unconfigured.
+     Gated exactly like GA4: real domain only, and the /?imfounder=1 device opt-out applies,
+     so local work and founder browsing never enter ad data or train the optimiser.
+
+     Two settings are deliberate, not boilerplate. autoConfig is turned OFF, which stops Meta's
+     automatic collection from harvesting button text and form field contents; on a site where
+     students type into answer boxes and an email field exists, the default would send Meta far
+     more than intended. dataProcessingOptions LDU enables Limited Data Use. Both are set before
+     init, which is the only point they take effect. No PII is ever passed to fbq. -->
+<script>
+  window.META_PIXEL_ID='';   // <-- paste the ID from Meta Events Manager, digits only
+  window.fbTrack=function(n,p){ try{ if(window.fbq) fbq('track',n,p||{}); }catch(e){} };
+  (function(){try{
+    var id=window.META_PIXEL_ID; if(!id) return;
+    var h=location.hostname; if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com') return;
+    if(localStorage.getItem('qa_internal')==='1') return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('dataProcessingOptions',['LDU'],0,0);
+    fbq('set','autoConfig',false,id);
+    fbq('init',id);
+    fbq('track','PageView');
+  }catch(e){}})();
+</script>
 <title>Quantica | Master Mathematics by Doing Mathematics</title>
 <link rel="icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2370,6 +2396,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   };
   window.startCheckout=function(){
     if(!auth.currentUser){ showAuthModal('in'); return; }
+    if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',value:14.99});
     var fns=firebase.functions();
     fns.httpsCallable('createCheckoutSession')().then(function(result){
       window.location.href=result.data.url;
@@ -2382,6 +2409,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   (function(){
     var p=new URLSearchParams(window.location.search);
     if(p.get('payment')==='success'){
+      // The only event Meta can optimise revenue against. Fires once, on the Stripe redirect back.
+      if(window.fbTrack) fbTrack('Purchase',{currency:'USD',value:14.99});
       var t=document.createElement('div');
       t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:12px 22px;border-radius:10px;font-weight:600;z-index:9999;font-size:14px';
       t.textContent='Payment successful — welcome to Quantica Pro!';
@@ -2481,6 +2510,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // auth account actually being minutes old, not just the doc being missing
         var isNewAcct = user.metadata && user.metadata.creationTime && (Date.now()-new Date(user.metadata.creationTime).getTime() < 5*60*1000);
         if(isNewAcct && window.track) track('sign_up',{method:prov||'password'});
+        // Meta's signup conversion. No email or name is passed, only the method.
+        if(isNewAcct && window.fbTrack) fbTrack('CompleteRegistration',{method:prov||'password'});
       }
     }).catch(function(e){ console.warn('Cloud load failed',e); });
     // Load adaptive state
@@ -6747,6 +6778,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(window.navGuard && !window._navApply && window._navLevel<2){ history.pushState({v:'toc',ch:chNum},'',location.pathname+location.search); window._navLevel=2; }
     if(window.navGuard && !navGuard(3,{v:'lesson',key:key,title:title,chTitle:chTitle,chNum:chNum})) return;
     if(window.track) track('lesson_start',{lesson:key,course:CURRENT_COURSE});
+    // Real engagement, and the highest-volume meaningful conversion. At your traffic this is
+    // the event Meta can realistically optimise on; Purchase will be far too sparse to leave
+    // the learning phase, which needs roughly 50 conversions a week.
+    if(window.fbTrack) fbTrack('ViewContent',{content_type:'lesson',content_ids:[key],course:CURRENT_COURSE});
     showView('lessonView');
     currentLessonKey=key; window.__curLesson=key; currentLessonMeta={title:title,chTitle:chTitle,chNum:chNum};
     if(window.Rewards) Rewards.setLastLesson(key);
