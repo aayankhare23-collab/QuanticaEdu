@@ -164,7 +164,9 @@
   .brand{display:flex;align-items:center;gap:.55em;font-family:var(--ff-display);font-weight:700;font-size:1.42rem;letter-spacing:-.03em}
   .brand .mark-img{width:32px;height:32px;flex:0 0 auto;object-fit:contain}
   .nav-links{display:flex;align-items:center;gap:2rem}
-  .nav-links a.link{font-size:.98rem;color:var(--gray);font-weight:500}
+  /* AoPS-style primary nav: uppercase, letter-spaced, sitting as section headers rather
+     than as sentence-case links. Reads as a real publication masthead. */
+  .nav-links a.link{font-size:.83rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.055em}
   .nav-links a.link:hover{color:var(--forest)}
   .nav-cta{display:flex;align-items:center;gap:1.1rem}
   .nav-cta .signin{font-size:.98rem;font-weight:500;color:var(--gray)}
@@ -326,7 +328,7 @@
 .wmb .milo-win .who{line-height:1.2}
 .wmb .milo-win .nm{font-weight:700;font-size:16px;color:#16281B;font-family:var(--ff-display)}
 .wmb .milo-win .st{font-size:12px;color:#178A3E;display:flex;align-items:center;gap:6px;margin-top:2px}
-.wmb .milo-win .st::before{content:"";width:7px;height:7px;border-radius:999px;background:#22C55E;box-shadow:0 0 0 0 rgba(123,214,63,.5);animation:milo-pulse 2s infinite}
+
 @keyframes milo-pulse{0%{box-shadow:0 0 0 0 rgba(123,214,63,.5)}70%{box-shadow:0 0 0 8px rgba(123,214,63,0)}100%{box-shadow:0 0 0 0 rgba(123,214,63,0)}}
 .wmb .milo-win .body{position:relative;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;height:452px;box-sizing:border-box;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 38px,#000 100%)}
 .wmb .milo-win .mb{max-width:86%;flex:0 0 auto;padding:12px 16px;border-radius:18px;font-size:15.5px;line-height:1.5;opacity:0;transform:translateY(18px) scale(.75);transition:opacity .32s ease,transform .55s cubic-bezier(.34,1.56,.64,1)}
@@ -359,6 +361,7 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" aria-label="Quantica home">
+      <img class="mark-img" src="/favicon.svg" alt="" width="32" height="32" aria-hidden="true">
       Quantica
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -616,8 +619,8 @@
   <div class="wrap">
     <h2 style="max-width:16ch">From prealgebra to <span class="mark">calculus</span>. The complete, rigorous mathematics education.</h2>
     <div class="path-pills">
-      <a class="p-pill p-pill--on" href="/prealgebra"><span class="p-dot"></span>Prealgebra</a>
-      <a class="p-pill p-pill--on" href="/algebra1"><span class="p-dot"></span>Algebra I</a>
+      <a class="p-pill p-pill--on" href="/prealgebra">Prealgebra</a>
+      <a class="p-pill p-pill--on" href="/algebra1">Algebra I</a>
       <span class="p-pill p-pill--soon">Geometry <em>Soon</em></span>
       <span class="p-pill p-pill--soon">Number Theory <em>Soon</em></span>
       <span class="p-pill p-pill--soon">Counting <em>Soon</em></span>
