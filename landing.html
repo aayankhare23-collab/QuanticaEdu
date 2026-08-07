@@ -6091,18 +6091,18 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       page:function(i){
         if(!cur||i<=cur.furthest) return;
         cur.furthest=i;
-        send('lesson_progress',{lesson_page:i+1,pct:pctOf(i,total()),lesson_page_type:kindOf(i)});
+        send('lesson_progress',{lesson_page:String(i+1),pct:pctOf(i,total()),lesson_page_type:kindOf(i)});
       },
       attempt:function(ok,n){
         if(!cur) return;
-        send('problem_attempt',{lesson_page:cur.furthest+1,result:ok?'correct':'wrong',attempt:n||1});
+        send('problem_attempt',{lesson_page:String(cur.furthest+1),result:ok?'correct':'wrong',attempt:n||1});
       },
-      hint:function(n){ if(cur) send('hint_open',{lesson_page:cur.furthest+1,hint:n||1}); },
+      hint:function(n){ if(cur) send('hint_open',{lesson_page:String(cur.furthest+1),hint:n||1}); },
       complete:function(){ if(cur) cur.done=true; },
       exit:function(why){
         if(!cur||cur.done||cur.exited||cur.furthest<0) return;
         cur.exited=true;
-        send('lesson_exit',{lesson_page:cur.furthest+1,pct:pctOf(cur.furthest,total()),
+        send('lesson_exit',{lesson_page:String(cur.furthest+1),pct:pctOf(cur.furthest,total()),
                             lesson_page_type:kindOf(cur.furthest),
                             secs:Math.round((Date.now()-cur.t0)/1000),
                             exit_reason:why||'nav',transport_type:'beacon'});

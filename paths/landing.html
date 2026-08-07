@@ -792,7 +792,7 @@
           var href=a.getAttribute('href')||'';
           track('cta_click',{
             cta_label:(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40),
-            cta_position:i+1,
+            cta_position:String(i+1),
             cta_target:href.indexOf('signin')>-1?'signin':'start',
             transport_type:'beacon'
           });
