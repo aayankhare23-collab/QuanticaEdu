@@ -347,6 +347,7 @@
   @keyframes fade{from{opacity:0}to{opacity:1}}
   .coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
   .cb-left{display:flex;align-items:center;gap:14px}
+  a.cb-logo{color:inherit;text-decoration:none;cursor:pointer}
   .cb-logo{display:flex;align-items:center;gap:9px;font-family:'Chillax';font-weight:700;font-size:18px;color:var(--navy)}
   .cb-course{display:inline-flex;align-items:center;gap:9px;font-family:'Switzer';font-weight:500;font-size:13.5px;color:var(--mute);margin-left:9px;letter-spacing:.01em;white-space:nowrap}
   .cb-course:not(:empty)::before{content:"";width:3.5px;height:3.5px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
@@ -2163,7 +2164,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     <header class="coursebar">
       <div class="cb-left">
         <button class="cb-back" id="mback" onclick="location.assign('/paths/home.html')" aria-label="Back to course home">←<span> Home</span></button>
-        <span class="cb-logo"><svg class="cb-spr" viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>Quantica<span class="cb-course" id="cbCourse"></span></span>
+        <a class="cb-logo" href="/" aria-label="Quantica home"><svg class="cb-spr" viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="9" fill="#14532D"/><path d="M16 22c-3-3-4-8-1-12 4 2 6 7 4 12z" fill="#22C55E"/><path d="M16 22c0-4 2-7 6-8-1 5-3 8-6 8z" fill="#C7F09A"/></svg>Quantica<span class="cb-course" id="cbCourse"></span></a>
       </div>
       <div class="cb-rightgrp"><button class="cb-diff" id="cbDiff" onclick="window.DiffPanel&&DiffPanel.open()" aria-label="Adjust difficulty" title="Adjust difficulty"><span aria-hidden="true">⚙</span> Difficulty</button>
       <div class="hud" id="hud" role="button" tabindex="0" aria-label="View your rewards and progress" onclick="window.Rewards&&Rewards.openPanel()" onkeydown="if((event.key==='Enter'||event.key===' ')&&window.Rewards){event.preventDefault();Rewards.openPanel();}"></div></div>
