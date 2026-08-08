@@ -153,7 +153,7 @@ def main():
                text-transform:uppercase;letter-spacing:.055em}}
   .nav-links a:hover,.nav-links a.on{{color:var(--forest)}}
   .btn{{display:inline-flex;align-items:center;font-weight:700;font-size:.95rem;
-       padding:.75em 1.5em;border-radius:999px;border:1.5px solid transparent;white-space:nowrap}}
+       padding:.75em 1.5em;border-radius:0;border:1.5px solid transparent;white-space:nowrap}}
   .btn-primary{{background:var(--lime);color:var(--ink)}}
   .btn-primary:hover{{background:var(--lime-deep)}}
 
@@ -167,14 +167,14 @@ def main():
   .chead h2{{font-size:2.1rem;font-weight:700}}
   .cblurb{{color:var(--gray);font-weight:300;margin:8px 0 0;max-width:52ch}}
   .cmeta{{display:flex;flex-direction:column;align-items:flex-end;gap:9px}}
-  .badge{{font-size:.78rem;font-weight:700;border-radius:999px;padding:5px 12px;
+  .badge{{font-size:.78rem;font-weight:700;border-radius:0;padding:5px 12px;
          text-transform:uppercase;letter-spacing:.05em}}
   .badge.done{{background:var(--tint);color:var(--forest);border:1px solid #cfe8bf}}
   .badge.wip{{background:#FFF6E0;color:#8a5a08;border:1px solid #f1dfae}}
   .cstat{{font-size:.86rem;color:var(--gray)}}
 
   .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}}
-  .ch{{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px 16px}}
+  .ch{{background:var(--card);border:1px solid var(--line);border-radius:0;padding:20px 22px 16px}}
   .ch.none{{background:#fbfdfa;border-style:dashed}}
   .ch header{{margin-bottom:12px}}
   .chn{{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--forest)}}
