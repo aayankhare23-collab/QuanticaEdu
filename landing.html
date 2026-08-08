@@ -1979,6 +1979,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         else if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
         if(prm && window.Practice){ setTimeout(function(){ Practice.open(prm[1]); }, 120); }
         if(/[?&]signin=1/.test(s) && window.showAuthModal){ setTimeout(function(){ window.showAuthModal('in'); }, 150); }   // from the home account menu's "Sign in"
+        // ?upgrade=1 comes from the marketing page's Subscribe button. startCheckout itself
+        // shows the auth modal when nobody is signed in, so this is safe either way, and it
+        // is what fires the Meta InitiateCheckout event.
+        if(/[?&]upgrade=1/.test(s) && window.startCheckout){ setTimeout(function(){ window.startCheckout(); }, 250); }
       }catch(e){}
     },30);
   }

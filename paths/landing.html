@@ -272,7 +272,13 @@
   .path-links a{font-size:1.02rem;font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:1px;display:inline-block;width:fit-content}
 
   /* pricing card (carried over from the original design, recolored) */
-  .price-card{border:1.5px solid var(--forest);border-radius:var(--radius);padding:clamp(24px,3vw,36px);position:relative;background:var(--card);max-width:440px}
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:900px;align-items:start}
+  .price-per{font-family:var(--ff-body);font-size:1rem;font-weight:500;color:var(--gray);letter-spacing:0}
+  .price-card.price-card--pro{border-width:2px;box-shadow:0 30px 60px -44px rgba(20,40,25,.45)}
+  .price-tag.price-tag--pro{background:var(--forest);color:#fff}
+  .btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:rgba(20,40,25,.05)}
+  .price-card{border:1.5px solid var(--forest);border-radius:var(--radius);padding:clamp(24px,3vw,36px);position:relative;background:var(--card)}
   .price-tag{position:absolute;top:-13px;left:24px;background:var(--lime);color:var(--ink);font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:999px}
   .price-name{font-weight:600;font-size:1rem;color:var(--gray)}
   .price-amt{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.5rem);font-weight:700;letter-spacing:-.03em;line-height:1;margin:12px 0 4px;color:var(--ink)}
@@ -637,17 +643,32 @@
 <section id="pricing">
   <div class="wrap">
     <h2 style="margin-bottom:clamp(28px,3.5vw,44px)">Start <span class="mark">free</span>. Keep going for $14.99.</h2>
-    <div class="price-card">
-      <div class="price-tag">Free to start</div>
-      <div class="price-name">Chapter 1, free</div>
-      <div class="price-amt">$0</div>
-      <ul>
-        <li>Chapter 1 of every course, free</li>
-        <li>Milo, your tutor, on every problem</li>
-        <li>Mastery map, practice &amp; challenge sets</li>
-        <li>No card required</li>
-      </ul>
-      <a class="btn btn-primary" style="width:100%;justify-content:center" href="/landing?start=1">Start free &rarr;</a>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-tag">Free to start</div>
+        <div class="price-name">Chapter 1, free</div>
+        <div class="price-amt">$0</div>
+        <ul>
+          <li>Chapter 1 of every course</li>
+          <li>Milo, your tutor, on every problem</li>
+          <li>Practice &amp; challenge sets</li>
+          <li>No card required</li>
+        </ul>
+        <a class="btn btn-ghost" style="width:100%;justify-content:center" href="/landing?start=1">Start free &rarr;</a>
+      </div>
+      <div class="price-card price-card--pro">
+        <div class="price-tag price-tag--pro">Everything</div>
+        <div class="price-name">Quantica, monthly</div>
+        <div class="price-amt">$14.99<span class="price-per">/month</span></div>
+        <ul>
+          <li>Every chapter of every course</li>
+          <li>Milo, your tutor, on every problem</li>
+          <li>Practice &amp; challenge sets</li>
+          <li>New lessons as they are written</li>
+          <li>Cancel any time</li>
+        </ul>
+        <a class="btn btn-primary" style="width:100%;justify-content:center" href="/landing?upgrade=1">Subscribe &rarr;</a>
+      </div>
     </div>
     <p class="price-note">Chapter 1 of every course is free, no card required. Everything after that is $14.99 a month, still less than a single tutoring session.</p>
   </div>
