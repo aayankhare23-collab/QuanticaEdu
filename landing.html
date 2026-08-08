@@ -2440,10 +2440,33 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 
   // ── Paywall / subscription ────────────────────────────────────────────────
   window._access = null;
+
+  // Grandfathering. The pricing FAQ promises that anyone who signed up while Quantica was
+  // free keeps their access, so this is a commitment, not a nicety.
+  //
+  // Derived from the Firebase account's creation time rather than a migrated flag, which
+  // means no backfill to run and nothing for the Stripe webhook to overwrite. The webhook
+  // owns state/subscription and rewrites type on every subscription event; a legacy marker
+  // stored there would be wiped the first time one of these users subscribed and cancelled.
+  // A creation date cannot be clobbered and is identical on every device.
+  //
+  // Set this to the moment the paywall actually goes live. Accounts created before it are
+  // legacy; accounts created after it are not.
+  window.LEGACY_CUTOFF = Date.parse('2026-08-06T00:00:00Z');
+  window.isLegacyUser = function(user){
+    try{
+      var t = user && user.metadata && user.metadata.creationTime;
+      return !!t && Date.parse(t) < window.LEGACY_CUTOFF;
+    }catch(e){ return false; }
+  };
   window.isAccessGranted = function isAccessGranted(chNum){
     return true;   // ── PAYWALL DISABLED: every chapter is free for everyone ──
-    // To re-enable the paywall, remove the line above and restore this gating:
-    // if(chNum===1) return true;
+    // To re-enable the paywall, delete the line above. The gating below is live-ready and
+    // already handles grandfathered accounts; set LEGACY_CUTOFF to the switch-on moment first.
+    // if(chNum===1) return true;                                  // chapter 1 is always free
+    // if(!window._access) return false;
+    // if(window._access.type==='legacy') return true;             // signed up before the paywall
+    // if(window._access.type==='paid') return true;
     // if(!window._access) return false;
     // if(window._access.type==='paid') return true;
     // if(window._access.type==='trial'){
@@ -2638,6 +2661,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     // Load subscription
     db.collection('users').doc(user.uid).collection('state').doc('subscription').get().then(function(doc){
       window._access = doc.exists ? doc.data() : {type:'none'};
+      // A paying subscriber stays 'paid'. Everyone else who predates the paywall is 'legacy'.
+      // Nothing is written back, so this cannot be lost and needs no migration.
+      if(window._access.type!=='paid' && window.isLegacyUser(user)){
+        window._access = {type:'legacy', since:(user.metadata&&user.metadata.creationTime)||null};
+      }
       renderDashboard(); renderToc(); updateAuthUI(user); updateStartCTAs();
       // Someone who clicked Subscribe while logged out was sent to the sign-in modal, and
       // startCheckout stashed which plan they picked. Resume it now rather than dropping
