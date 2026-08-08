@@ -1973,7 +1973,16 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // ?lesson= without ?course= is a legacy prealgebra link; don't let a stored course hijack it
         var slug=cm?cm[1]:((m||pm)?'prealgebra':null);
         if(slug && typeof window.setCourse==='function') window.setCourse(slug,{silent:true});
-        window.openLesson();                                   // always show the app shell (dashboard)
+        // ?upgrade= is a pass-through to Stripe, not a visit to the app. Rendering the
+        // dashboard first made the course flash up and then vanish as checkout took over.
+        // Skip the app entirely and show a redirect screen instead.
+        var um0=s.match(/[?&]upgrade=(yearly|monthly|1)/);
+        if(um0){
+          window.__pendingPlan = (um0[1]==='yearly') ? 'yearly' : 'monthly';
+          if(window.showCheckoutRedirect) showCheckoutRedirect();
+        } else {
+          window.openLesson();                                 // always show the app shell (dashboard)
+        }
         // deep-nav (gotoLesson/openPSet) needs the app fully rendered, so run it after openLesson
         if(pm && typeof window.openPSet==='function'){ window.openPSet(parseInt(pm[1],10), pt?pt[1]:'practice'); }
         else if(m && typeof window.gotoLesson==='function'){ window.gotoLesson(m[1]); }
@@ -1982,8 +1991,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // ?upgrade=1 comes from the marketing page's Subscribe button. startCheckout itself
         // shows the auth modal when nobody is signed in, so this is safe either way, and it
         // is what fires the Meta InitiateCheckout event.
-        var um=s.match(/[?&]upgrade=(yearly|monthly|1)/);
-        if(um && window.startCheckout){ setTimeout(function(){ window.startCheckout(um[1]==='yearly'?'yearly':'monthly'); }, 250); }
+        // NOTE: checkout is NOT kicked off on a timer any more. 250ms was a guess at how
+        // long Firebase takes to restore a session, and when it lost, an already signed-in
+        // user was asked to sign in again. onAuthStateChanged below drives it instead.
       }catch(e){}
     },30);
   }
@@ -2405,9 +2415,36 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       a.textContent = paid ? 'Start Prealgebra now →' : (a.getAttribute('data-free-label')||a.textContent);
     });
   };
+  // Shown instead of the app when the URL is a pass-through to Stripe, so the visitor sees
+  // one calm screen rather than the dashboard appearing and being replaced.
+  window.showCheckoutRedirect=function(){
+    try{
+      var el=document.createElement('div');
+      el.id='ckRedirect';
+      el.style.cssText='position:fixed;inset:0;z-index:99999;background:#FCFEFB;display:flex;'+
+        'flex-direction:column;align-items:center;justify-content:center;gap:14px;'+
+        "font-family:'Switzer',system-ui,sans-serif;color:#16281B;text-align:center;padding:24px";
+      el.innerHTML='<img src="/favicon.svg" alt="" width="52" height="52" style="border-radius:14px">'+
+        '<div style="font-family:\'Chillax\',system-ui,sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-.02em">Taking you to checkout</div>'+
+        '<div style="font-size:.95rem;color:#5c5c58">One moment while we open a secure Stripe page.</div>';
+      document.body.appendChild(el);
+      // If auth never resolves and checkout never starts, do not leave a dead screen up.
+      clearTimeout(window.__ckRedirectT);
+      window.__ckRedirectT=setTimeout(function(){
+        if(document.getElementById('ckRedirect')){
+          hideCheckoutRedirect();
+          if(window.openLesson) try{ openLesson(); }catch(e){}
+        }
+      }, 8000);
+    }catch(e){}
+  };
+  window.hideCheckoutRedirect=function(){
+    try{ var el=document.getElementById('ckRedirect'); if(el) el.remove(); }catch(e){}
+  };
+
   window.startCheckout=function(plan){
     plan = (plan==='yearly') ? 'yearly' : 'monthly';
-    if(!auth.currentUser){ window.__pendingPlan=plan; showAuthModal('in'); return; }
+    if(!auth.currentUser){ window.__pendingPlan=plan; if(window.hideCheckoutRedirect) hideCheckoutRedirect(); showAuthModal('in'); return; }
     if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',
       value: plan==='yearly' ? 99.99 : 14.99, content_name: plan});
     var fns=firebase.functions();
@@ -2415,6 +2452,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       window.location.href=result.data.url;
     }).catch(function(err){
       console.error('Checkout error:',err);
+      if(window.hideCheckoutRedirect) hideCheckoutRedirect();   // never strand them on the redirect screen
+      if(window.openLesson) try{ openLesson(); }catch(e){}      // put them somewhere real
       alert('Something went wrong starting checkout. Please try again.');
     });
   };
@@ -2487,6 +2526,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       // after-first-lesson prompt (__signinPrompt, fired from markDone) invites them to save;
       // declining keeps them going as a guest. Drop the boot screen and render the app.
       window._access={type:'none'}; window.__notSignedIn=true; updateStartCTAs();
+      // Arrived from a Subscribe button but not signed in. Auth has now definitively
+      // resolved, so this is the right moment to ask, and the plan is kept for after.
+      if(window.__pendingPlan){
+        if(window.hideCheckoutRedirect) hideCheckoutRedirect();   // unconditional: never strand them
+        if(window.showAuthModal) showAuthModal('in');
+        else if(window.openLesson) try{ openLesson(); }catch(e){}
+      }
       var _showGuest=function(){
         if(typeof renderDashboard==='function') renderDashboard();
         if(typeof renderToc==='function') renderToc();
