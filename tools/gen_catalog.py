@@ -204,7 +204,7 @@ def main():
   <section class="hero">
     <h1>Course catalog</h1>
     <p>All courses at Quantica are listed below, along with their contents and lessons.
-       Currently {tot_live} lessons are written and open now!</p>
+       {tot_live} lessons are written and open now!</p>
   </section>
   {"".join(sections)}
 </main>
