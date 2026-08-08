@@ -2452,31 +2452,38 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   //
   // Set this to the moment the paywall actually goes live. Accounts created before it are
   // legacy; accounts created after it are not.
-  window.LEGACY_CUTOFF = Date.parse('2026-08-06T00:00:00Z');
+  // ONE switch. Set this to the moment charging should begin.
+  //   before it  -> everything is free, exactly as today
+  //   from it    -> the gate applies, and any account created BEFORE it keeps full access
+  // Both behaviours read the same constant on purpose. A separate legacy cutoff could drift
+  // from the switch-on date, and every account in the gap would be charged despite the
+  // pricing FAQ promising they keep their access. One number cannot disagree with itself.
+  window.PAYWALL_LIVE_AT = Date.parse('2099-01-01T00:00:00Z');   // far future = paywall off
+  window.paywallOn = function(){
+    try{ return Date.now() >= window.PAYWALL_LIVE_AT; }catch(e){ return false; }
+  };
   window.isLegacyUser = function(user){
     try{
       var t = user && user.metadata && user.metadata.creationTime;
-      return !!t && Date.parse(t) < window.LEGACY_CUTOFF;
+      return !!t && Date.parse(t) < window.PAYWALL_LIVE_AT;
     }catch(e){ return false; }
   };
   window.isAccessGranted = function isAccessGranted(chNum){
-    return true;   // ── PAYWALL DISABLED: every chapter is free for everyone ──
-    // To re-enable the paywall, delete the line above. The gating below is live-ready and
-    // already handles grandfathered accounts; set LEGACY_CUTOFF to the switch-on moment first.
-    // if(chNum===1) return true;                                  // chapter 1 is always free
-    // if(!window._access) return false;
-    // if(window._access.type==='legacy') return true;             // signed up before the paywall
-    // if(window._access.type==='paid') return true;
-    // if(!window._access) return false;
-    // if(window._access.type==='paid') return true;
-    // if(window._access.type==='trial'){
-    //   var exp=window._access.expiresAt;
-    //   if(!exp) return true;
-    //   var expDate=exp.toDate ? exp.toDate() : new Date(exp.seconds*1000);
-    //   return expDate > new Date();
-    // }
-    // return false;
+    if(!window.paywallOn()) return true;              // not charging yet: everything is open
+    if(chNum===1) return true;                        // chapter 1 of every course stays free
+    var a = window._access;
+    if(!a) return false;
+    if(a.type==='legacy') return true;                // signed up before the paywall went live
+    if(a.type==='paid') return true;
+    if(a.type==='trial'){
+      var exp=a.expiresAt;
+      if(!exp) return true;
+      var expDate=exp.toDate ? exp.toDate() : new Date(exp.seconds*1000);
+      return expDate > new Date();
+    }
+    return false;
   }
+
   // Paid users have already unlocked everything, so the landing CTAs shouldn't pitch the free unit.
   window.updateStartCTAs=function(){
     var paid=isAccessGranted(2);
