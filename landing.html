@@ -2551,11 +2551,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       window.__authResolved=true;
       if(window.__pendingPlan){
         if(window.hideCheckoutRedirect) hideCheckoutRedirect();   // unconditional: never strand them
-        // The auth modal reads #tabIn / #tabUp, which openLesson() builds. Skipping
-        // openLesson() for the upgrade path meant showAuthModal threw on a null element and
-        // left the visitor on the boot screen. Build the shell first, then ask to sign in.
-        if(window.openLesson) try{ openLesson(); }catch(e){}
-        if(window.showAuthModal) try{ showAuthModal('in'); }catch(e){ console.warn('auth modal failed',e); }
+        // #tabIn and #authOv are static markup near the END of the document (~line 8360),
+        // while this callback is registered around line 2540. Firebase resolves auth while
+        // the browser is still parsing, so on a fast auth this runs before that markup
+        // exists and showAuthModal throws on a null element, leaving a blank screen.
+        // Wait for the document before touching anything that far down.
+        (function(go){
+          if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',go,{once:true});
+          else go();
+        })(function(){
+          if(window.openLesson) try{ openLesson(); }catch(e){}
+          if(window.showAuthModal) try{ showAuthModal('in'); }
+          catch(e){ console.warn('auth modal failed',e); }
+        });
       }
       var _showGuest=function(){
         if(typeof renderDashboard==='function') renderDashboard();
