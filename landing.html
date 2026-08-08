@@ -8761,6 +8761,11 @@ async function sendTutorMsg() {
     },
     open:function(force){
       if(!force && this.seen()) return false;
+      // Someone who clicked Subscribe is on their way to Stripe. Interrupting that with a
+      // course tutorial buries the thing they actually came to do, and checkout navigates
+      // away moments later anyway, so the tutorial would be torn off mid-question. It is
+      // not marked seen, so it still runs on their next visit.
+      if(!force && (window.__pendingPlan || window.__checkoutStarted)) return false;
       A={}; i=0;
       var o=document.getElementById('obOv'); if(!o) return false;
       o.classList.add('on'); render();
@@ -8772,6 +8777,7 @@ async function sendTutorMsg() {
   // Fire on first entry into the app, once the shell is up and no other overlay owns the screen.
   function maybeOpen(){
     if(Onboard.seen()) return;
+    if(window.__pendingPlan || window.__checkoutStarted) return;    // heading to checkout
     if(document.getElementById('bootGate')) return;                 // still booting
     var au=document.getElementById('authOv');
     if(au && getComputedStyle(au).display!=='none') return;          // sign-in is showing
