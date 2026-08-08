@@ -47,6 +47,10 @@ def course_section(slug, title, blurb):
 
     cards = []
     for ch in toc:
+        # Only WRITTEN lessons are listed. An unwritten lesson used to render as a greyed
+        # "soon" row, and 38 of those across the page made a real course read like a
+        # roadmap. The chapter title still appears so the shape of the course is visible;
+        # what is hidden is the lesson-by-lesson evidence of what is missing.
         items = []
         for l in ch["lessons"]:
             k, t = l["k"], H.escape(l["t"])
@@ -56,26 +60,33 @@ def course_section(slug, title, blurb):
             elif k in live:
                 # written but no SEO page yet; still show it as available, just unlinked
                 items.append(f'<li><span class="k">{k}</span><span class="t">{t}</span></li>')
-            else:
-                items.append(f'<li class="soon"><span class="k">{k}</span>'
-                             f'<span class="t">{t}</span><em>soon</em></li>')
         ch_live = sum(1 for l in ch["lessons"] if l["k"] in live)
-        state = "done" if ch_live == len(ch["lessons"]) else ("part" if ch_live else "none")
+        n_ch_lessons = len(ch["lessons"])
+        state = "done" if ch_live == n_ch_lessons else ("part" if ch_live else "none")
+        if ch_live == 0:
+            count = "In writing"
+            body = ""
+        elif ch_live == n_ch_lessons:
+            count = f"{ch_live} lesson" + ("s" if ch_live != 1 else "")
+            body = f'<ol>{"".join(items)}</ol>'
+        else:
+            count = f"{ch_live} of {n_ch_lessons} lessons ready"
+            body = f'<ol>{"".join(items)}</ol>'
         cards.append(
             f'<article class="ch {state}">'
             f'<header><span class="chn">Chapter {ch["n"]}</span>'
             f'<h3>{H.escape(ch["t"])}</h3>'
-            f'<span class="chc">{ch_live} of {len(ch["lessons"])} lessons</span></header>'
-            f'<ol>{"".join(items)}</ol></article>')
+            f'<span class="chc">{count}</span></header>'
+            f'{body}</article>')
 
     badge = ('<span class="badge done">Complete</span>' if complete
-             else f'<span class="badge wip">{n_live} of {n_all} written</span>')
+             else '<span class="badge wip">In progress</span>')
     return (f'<section class="course" id="{slug}">'
             f'<div class="chead"><div>'
             f'<h2>{H.escape(title)}</h2>'
             f'<p class="cblurb">{H.escape(blurb)}</p></div>'
             f'<div class="cmeta">{badge}'
-            f'<span class="cstat">{n_ch} chapters &middot; {n_all} lessons</span>'
+            f'<span class="cstat">{n_live} lessons ready</span>'
             f'<a class="btn btn-primary" href="/landing?course={slug}&amp;start=1">Start {H.escape(title)}</a>'
             f'</div></div>'
             f'<div class="grid">{"".join(cards)}</div></section>'), n_live, n_all
@@ -114,7 +125,7 @@ def main():
 <script type="application/ld+json">{ld}</script>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f%5B%5D=chillax@400,500,600,700&f%5B%5D=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f%5B%5D=chillax@300,400,500,600,700&display=swap" rel="stylesheet">
 <script>
   window.dataLayer=window.dataLayer||[];
   function gtag(){{dataLayer.push(arguments);}}
@@ -126,7 +137,7 @@ def main():
         --lime:#D6F5A3;--lime-deep:#8FCB4A;--forest:#2E7D32;--tint:#F1FAE4;--max:1180px}}
   *{{box-sizing:border-box}}
   body{{margin:0;background:var(--paper);color:var(--ink);
-       font-family:'Switzer',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}}
+       font-family:'Chillax',system-ui,sans-serif;font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased}}
   a{{color:inherit;text-decoration:none}}
   h1,h2,h3{{font-family:'Chillax',system-ui,sans-serif;letter-spacing:-.03em;line-height:1.02;margin:0}}
   .wrap{{max-width:var(--max);margin:0 auto;padding:0 24px}}
@@ -148,13 +159,13 @@ def main():
 
   .hero{{padding:64px 0 30px}}
   .hero h1{{font-size:clamp(2.5rem,6vw,4rem);font-weight:700}}
-  .hero p{{font-size:1.15rem;color:var(--gray);max-width:56ch;margin:16px 0 0}}
+  .hero p{{font-size:1.15rem;font-weight:300;color:var(--gray);max-width:56ch;margin:16px 0 0}}
 
   .course{{padding:38px 0 10px;border-top:1px solid var(--line);margin-top:34px}}
   .chead{{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start;
          justify-content:space-between;margin-bottom:26px}}
   .chead h2{{font-size:2.1rem;font-weight:700}}
-  .cblurb{{color:var(--gray);margin:8px 0 0;max-width:52ch}}
+  .cblurb{{color:var(--gray);font-weight:300;margin:8px 0 0;max-width:52ch}}
   .cmeta{{display:flex;flex-direction:column;align-items:flex-end;gap:9px}}
   .badge{{font-size:.78rem;font-weight:700;border-radius:999px;padding:5px 12px;
          text-transform:uppercase;letter-spacing:.05em}}
