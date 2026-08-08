@@ -309,7 +309,7 @@ def gen_hub():
   <div class="stats">
     <div class="stat"><b>{nchap}</b><span>chapters</span></div>
     <div class="stat"><b>{nlesson}</b><span>lessons</span></div>
-    <div class="stat"><b>$0</b><span>to start</span></div>
+    <div class="stat"><b>Ch 1</b><span>free to start</span></div>
   </div>
 </section>
 <section class="wrap" id="curriculum">
