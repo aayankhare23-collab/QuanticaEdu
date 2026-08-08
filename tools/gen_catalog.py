@@ -149,8 +149,7 @@ def main():
          font-weight:700;font-size:1.42rem;letter-spacing:-.03em}}
   .brand img{{width:32px;height:32px}}
   .nav-links{{display:flex;align-items:center;gap:2rem}}
-  .nav-links a{{font-size:.83rem;color:var(--gray);font-weight:600;
-               text-transform:uppercase;letter-spacing:.055em}}
+  .nav-links a{{font-size:.95rem;color:var(--gray);font-weight:500;letter-spacing:0}}
   .nav-links a:hover,.nav-links a.on{{color:var(--forest)}}
   .btn{{display:inline-flex;align-items:center;font-weight:700;font-size:.95rem;
        padding:.75em 1.5em;border-radius:0;border:1.5px solid transparent;white-space:nowrap}}
