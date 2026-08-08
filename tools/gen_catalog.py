@@ -203,9 +203,8 @@ def main():
 <main class="wrap">
   <section class="hero">
     <h1>Course catalog</h1>
-    <p>Every chapter and every lesson, in the order they are meant to be learned.
-       {tot_live} lessons are written and open now. Each one is a sequence of problems you
-       solve yourself, with Milo on hand for any of them.</p>
+    <p>All courses at Quantica are listed below, along with their contents and lessons.
+       Currently {tot_live} lessons are written and open now!</p>
   </section>
   {"".join(sections)}
 </main>
