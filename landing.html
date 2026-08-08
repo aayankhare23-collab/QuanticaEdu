@@ -2402,7 +2402,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   };
   window.startCheckout=function(){
     if(!auth.currentUser){ showAuthModal('in'); return; }
-    if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',value:14.99});
+    if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',value:9.99});
     var fns=firebase.functions();
     fns.httpsCallable('createCheckoutSession')().then(function(result){
       window.location.href=result.data.url;
@@ -2416,7 +2416,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var p=new URLSearchParams(window.location.search);
     if(p.get('payment')==='success'){
       // The only event Meta can optimise revenue against. Fires once, on the Stripe redirect back.
-      if(window.fbTrack) fbTrack('Purchase',{currency:'USD',value:14.99});
+      if(window.fbTrack) fbTrack('Purchase',{currency:'USD',value:9.99});
       var t=document.createElement('div');
       t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:12px 22px;border-radius:10px;font-weight:600;z-index:9999;font-size:14px';
       t.textContent='Payment successful — welcome to Quantica Pro!';
