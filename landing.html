@@ -1982,7 +1982,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // ?upgrade=1 comes from the marketing page's Subscribe button. startCheckout itself
         // shows the auth modal when nobody is signed in, so this is safe either way, and it
         // is what fires the Meta InitiateCheckout event.
-        if(/[?&]upgrade=1/.test(s) && window.startCheckout){ setTimeout(function(){ window.startCheckout(); }, 250); }
+        var um=s.match(/[?&]upgrade=(yearly|monthly|1)/);
+        if(um && window.startCheckout){ setTimeout(function(){ window.startCheckout(um[1]==='yearly'?'yearly':'monthly'); }, 250); }
       }catch(e){}
     },30);
   }
@@ -2404,11 +2405,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       a.textContent = paid ? 'Start Prealgebra now →' : (a.getAttribute('data-free-label')||a.textContent);
     });
   };
-  window.startCheckout=function(){
-    if(!auth.currentUser){ showAuthModal('in'); return; }
-    if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',value:14.99});
+  window.startCheckout=function(plan){
+    plan = (plan==='yearly') ? 'yearly' : 'monthly';
+    if(!auth.currentUser){ window.__pendingPlan=plan; showAuthModal('in'); return; }
+    if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',
+      value: plan==='yearly' ? 99.99 : 14.99, content_name: plan});
     var fns=firebase.functions();
-    fns.httpsCallable('createCheckoutSession')().then(function(result){
+    fns.httpsCallable('createCheckoutSession')({plan:plan}).then(function(result){
       window.location.href=result.data.url;
     }).catch(function(err){
       console.error('Checkout error:',err);
@@ -2532,6 +2535,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     db.collection('users').doc(user.uid).collection('state').doc('subscription').get().then(function(doc){
       window._access = doc.exists ? doc.data() : {type:'none'};
       renderDashboard(); renderToc(); updateAuthUI(user); updateStartCTAs();
+      // Someone who clicked Subscribe while logged out was sent to the sign-in modal, and
+      // startCheckout stashed which plan they picked. Resume it now rather than dropping
+      // them on the dashboard with their choice forgotten. Cleared first so it fires once.
+      if(window.__pendingPlan && window._access.type!=='paid'){
+        var pp=window.__pendingPlan; window.__pendingPlan=null;
+        setTimeout(function(){ try{ startCheckout(pp); }catch(e){} }, 400);
+      } else { window.__pendingPlan=null; }
     }).catch(function(e){
       console.warn('Subscription load failed',e);
       window._access = {type:'none'};

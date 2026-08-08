@@ -7,7 +7,18 @@ const db = admin.firestore();
 
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
-const PRICE_ID = process.env.STRIPE_PRICE_ID;
+const PRICE_ID = process.env.STRIPE_PRICE_ID;              // monthly
+const PRICE_ID_YEARLY = process.env.STRIPE_PRICE_ID_YEARLY; // yearly, optional
+
+// Map a plan name from the client to a Stripe price. Never trust a price id sent by the
+// browser; the client picks a PLAN and the server decides what that costs.
+function priceFor(plan) {
+  if (plan === "yearly") {
+    if (!PRICE_ID_YEARLY) throw new HttpsError("failed-precondition", "Yearly plan is not configured.");
+    return PRICE_ID_YEARLY;
+  }
+  return PRICE_ID;
+}
 const APP_URL = process.env.APP_URL;
 
 // Called by the frontend to create a Stripe Checkout session
@@ -27,13 +38,15 @@ exports.createCheckoutSession = onCall(async (request) => {
     await db.collection("users").doc(uid).set({ stripeCustomerId: customerId }, { merge: true });
   }
 
+  const plan = (request.data && request.data.plan) === "yearly" ? "yearly" : "monthly";
+
   const session = await stripeClient.checkout.sessions.create({
     customer: customerId,
     mode: "subscription",
-    line_items: [{ price: PRICE_ID, quantity: 1 }],
+    line_items: [{ price: priceFor(plan), quantity: 1 }],
     success_url: `${APP_URL}?payment=success`,
     cancel_url: `${APP_URL}?payment=cancelled`,
-    subscription_data: { metadata: { uid } },
+    subscription_data: { metadata: { uid, plan } },
   });
 
   return { url: session.url };
