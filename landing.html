@@ -345,7 +345,18 @@
   .overlay.open{display:block}
   .modal{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--soft);animation:fade .22s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  .coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .sitebar{flex:none;height:38px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;background:#FCFEFB;border-bottom:1px solid #e3ece1;font-family:'Switzer',system-ui,sans-serif}
+.sb-brand{display:flex;align-items:center;gap:.45em;font-family:'Chillax',system-ui,sans-serif;
+  font-weight:700;font-size:1rem;letter-spacing:-.02em;color:#16281B;text-decoration:none}
+.sb-brand img{border-radius:6px}
+.sb-links{display:flex;align-items:center;gap:1.5rem}
+.sb-links a{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.055em;
+  color:#5c5c58;text-decoration:none}
+.sb-links a:hover{color:#2E7D32}
+.modal:has(.ws-mode) .sitebar{display:none}   /* focus mode: one problem, nothing else */
+@media(max-width:560px){.sitebar{padding:0 12px}.sb-links{gap:1rem}.sb-links a{font-size:.66rem}}
+.coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
   .cb-left{display:flex;align-items:center;gap:14px}
   a.cb-logo{color:inherit;text-decoration:none;cursor:pointer}
   .cb-logo{display:flex;align-items:center;gap:9px;font-family:'Chillax';font-weight:700;font-size:18px;color:var(--navy)}
@@ -2161,6 +2172,20 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 <!-- LESSON MODAL: the course app (all courses share it; setCourse repoints the data) -->
 <div class="overlay" id="lessonOverlay">
   <div class="modal" role="dialog" aria-modal="true" aria-label="Quantica course">
+    <!-- Site chrome. / and /landing were effectively two different websites with different
+         headers and no shared navigation, so entering the app felt like leaving the site.
+         This carries the marketing masthead through. It hides inside a lesson workspace,
+         where vertical space matters and the student should be looking at one problem. -->
+    <nav class="sitebar" id="siteBar" aria-label="Quantica site">
+      <a class="sb-brand" href="/" aria-label="Quantica home">
+        <img src="/favicon.svg" alt="" width="22" height="22"><span>Quantica</span>
+      </a>
+      <div class="sb-links">
+        <a href="/courses">Courses</a>
+        <a href="/blog">Blog</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+    </nav>
     <header class="coursebar">
       <div class="cb-left">
         <button class="cb-back" id="mback" onclick="location.assign('/paths/home.html')" aria-label="Back to course home">←<span> Home</span></button>
