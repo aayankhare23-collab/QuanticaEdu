@@ -20,7 +20,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://quanticaedu.com"
 COURSES = [
     ("prealgebra", "Prealgebra",
-     "Arithmetic, exponents, fractions, ratios and geometry. The whole foundation, taught by solving."),
+     "Arithmetic, exponents, fractions, ratios and geometry."),
     ("algebra1", "Algebra I",
      "Expressions through quadratics, functions and logarithms. Fifteen chapters, written in order."),
 ]
