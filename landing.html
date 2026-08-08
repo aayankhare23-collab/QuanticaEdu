@@ -1957,6 +1957,26 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
    Runs on DOMContentLoaded (the app boot IIFE has already run synchronously by then) with a
    load-event fallback; guarded so it applies exactly once. */
 (function(){
+  // Read the upgrade intent immediately, not inside launch(). launch() waits for
+  // DOMContentLoaded and then polls, while Firebase can resolve auth well before that.
+  // When auth won, onAuthStateChanged saw no pending plan, cleared it, and rendered the
+  // dashboard, and the plan set moments later was never consumed. Setting it here, at parse
+  // time, means it always exists before any auth callback can look for it.
+  (function(){ try{
+    var u=location.search.match(/[?&]upgrade=(yearly|monthly|1)/);
+    if(u) window.__pendingPlan = (u[1]==='yearly') ? 'yearly' : 'monthly';
+  }catch(e){} })();
+
+  // Either side may become ready first, so both call this and whoever is last wins.
+  window.__maybeResumeCheckout=function(){
+    if(!window.__pendingPlan || !window.__authResolved || window.__checkoutStarted) return;
+    if(window._access && window._access.type==='paid'){ window.__pendingPlan=null; return; }
+    if(typeof window.startCheckout!=='function') return;
+    window.__checkoutStarted=true;
+    var pp=window.__pendingPlan; window.__pendingPlan=null;
+    try{ startCheckout(pp); }catch(e){}
+  };
+
   var launched=false;
   function launch(){
     if(launched) return; launched=true;
@@ -1978,8 +1998,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // Skip the app entirely and show a redirect screen instead.
         var um0=s.match(/[?&]upgrade=(yearly|monthly|1)/);
         if(um0){
-          window.__pendingPlan = (um0[1]==='yearly') ? 'yearly' : 'monthly';
           if(window.showCheckoutRedirect) showCheckoutRedirect();
+          if(window.__maybeResumeCheckout) __maybeResumeCheckout();   // auth may already be in
         } else {
           window.openLesson();                                 // always show the app shell (dashboard)
         }
@@ -2528,6 +2548,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       window._access={type:'none'}; window.__notSignedIn=true; updateStartCTAs();
       // Arrived from a Subscribe button but not signed in. Auth has now definitively
       // resolved, so this is the right moment to ask, and the plan is kept for after.
+      window.__authResolved=true;
       if(window.__pendingPlan){
         if(window.hideCheckoutRedirect) hideCheckoutRedirect();   // unconditional: never strand them
         if(window.showAuthModal) showAuthModal('in');
@@ -2584,10 +2605,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       // Someone who clicked Subscribe while logged out was sent to the sign-in modal, and
       // startCheckout stashed which plan they picked. Resume it now rather than dropping
       // them on the dashboard with their choice forgotten. Cleared first so it fires once.
-      if(window.__pendingPlan && window._access.type!=='paid'){
-        var pp=window.__pendingPlan; window.__pendingPlan=null;
-        setTimeout(function(){ try{ startCheckout(pp); }catch(e){} }, 400);
-      } else { window.__pendingPlan=null; }
+      window.__authResolved=true;
+      if(window.__maybeResumeCheckout) __maybeResumeCheckout();
     }).catch(function(e){
       console.warn('Subscription load failed',e);
       window._access = {type:'none'};
