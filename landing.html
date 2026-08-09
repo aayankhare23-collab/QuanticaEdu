@@ -354,6 +354,8 @@
 .sb-links a{font-size:.84rem;font-weight:500;letter-spacing:0;
   color:#5c5c58;text-decoration:none}
 .sb-links a:hover{color:#2E7D32}
+.sb-acct{font-size:.8rem;font-weight:600;color:#16281B;background:#F1FAE4;
+  border:1px solid #cfe8bf;padding:3px 10px;white-space:nowrap}
 .modal:has(.ws-mode) .sitebar{display:none}   /* focus mode: one problem, nothing else */
 @media(max-width:560px){.sitebar{padding:0 12px}.sb-links{gap:1rem}.sb-links a{font-size:.66rem}}
 .coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
@@ -2184,6 +2186,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         <a href="/courses">Courses</a>
         <a href="/blog">Blog</a>
         <a href="/#pricing">Pricing</a>
+        <span class="sb-acct" id="sbAcct" hidden></span>
       </div>
     </nav>
     <header class="coursebar">
@@ -2549,6 +2552,16 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 
   // ── Header auth UI ────────────────────────────────────────────────────────
   function updateAuthUI(user){
+    // the site bar's account chip, which is the only place signed-in state is visible
+    // in the app now that #navSignin lives in the hidden legacy region
+    try{
+      var _a=document.getElementById('sbAcct');
+      if(_a){
+        if(user){ _a.textContent=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
+                  _a.hidden=false; }
+        else { _a.hidden=true; }
+      }
+    }catch(e){}
     // marketing-nav sign-in pill (present on the landing; swaps to the account when signed in)
     var sp=document.getElementById('navSignin');
     if(sp){
@@ -2600,6 +2613,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       // (localStorage) and syncs to the cloud if they create an account later. The
       // after-first-lesson prompt (__signinPrompt, fired from markDone) invites them to save;
       // declining keeps them going as a guest. Drop the boot screen and render the app.
+      try{ localStorage.removeItem('quantica.user'); }catch(e){}
       window._access={type:'none'}; window.__notSignedIn=true; updateStartCTAs();
       // Arrived from a Subscribe button but not signed in. Auth has now definitively
       // resolved, so this is the right moment to ask, and the plan is kept for after.
@@ -2666,6 +2680,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     }).catch(function(e){ console.warn('Adapt load failed',e); });
     // Load subscription
     db.collection('users').doc(user.uid).collection('state').doc('subscription').get().then(function(doc){
+      try{
+        var _fn=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
+        localStorage.setItem('quantica.user', _fn);
+      }catch(e){}
       window._access = doc.exists ? doc.data() : {type:'none'};
       // A paying subscriber stays 'paid'. Everyone else who predates the paywall is 'legacy'.
       // Nothing is written back, so this cannot be lost and needs no migration.

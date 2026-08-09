@@ -173,6 +173,7 @@
   .nav-cta{display:flex;align-items:center;gap:1.1rem}
   .nav-cta .signin{font-size:.98rem;font-weight:500;color:var(--gray)}
   .nav-cta .signin:hover{color:var(--forest)}
+  .nav-cta .signin.is-in{color:var(--ink);font-weight:600;background:var(--tint);border:1px solid #cfe8bf;padding:5px 11px}
   .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
   .menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:0}
   .mobile-menu{display:none;flex-direction:column;gap:.2rem;padding:12px var(--gutter) 22px;border-bottom:1px solid var(--line);background:var(--paper)}
@@ -380,7 +381,7 @@
       <a class="link" href="/blog">Blog</a>
     </nav>
     <div class="nav-cta">
-      <a class="signin" href="/landing?signin=1">Sign in</a>
+      <a class="signin" id="navAcct" href="/landing?signin=1">Sign in</a>
       <a class="btn btn-primary" href="/landing?start=1">Start free</a>
       <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn"><span></span><span></span><span></span></button>
     </div>
@@ -745,6 +746,22 @@
         });
       }catch(e){}
     },{passive:true});
+  }catch(e){}
+})();
+</script>
+<script>
+/* Signed-in state on a page with no Firebase.
+   Loading the auth SDK here would cost ~100KB and a flash of the wrong state on every
+   marketing visit, to render one word. Instead the app writes the first name to
+   localStorage on sign-in and clears it on sign-out, and this reads that.
+   It is a HINT, not authority: it can go stale if the session is ended elsewhere. That is
+   acceptable because the link goes to the app either way, and the app checks properly.
+   Only a first name is stored, never the email. */
+(function(){
+  try{
+    var n=localStorage.getItem('quantica.user');
+    var a=document.getElementById('navAcct');
+    if(n&&a){ a.textContent=n; a.setAttribute('href','/landing?start=1'); a.classList.add('is-in'); }
   }catch(e){}
 })();
 </script>
