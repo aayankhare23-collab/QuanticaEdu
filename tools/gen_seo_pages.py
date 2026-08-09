@@ -17,21 +17,21 @@ COURSE_META={
    "blurb":("Learn prealgebra online by solving real problems, not memorizing. Quantica's Prealgebra "
      "course covers 12 chapters and 70 lessons, from arithmetic, exponents, and fractions to ratios, "
      "percents, and geometry, with instant feedback and Milo, a tutor that helps you find the answer "
-     "yourself. Free to start."),
+     "yourself. Chapter 1 is free."),
    "note":"", "workload":"P12W", "cross":("algebra1","Algebra I"),
-   "faq":[("Is the Prealgebra course free?","Yes, you can start the full Prealgebra course for free, no card required."),
+   "faq":[("Is the Prealgebra course free?","Chapter 1 of every course is free and no card is required to begin. Everything after that is $14.99 a month."),
           ("Do I need any prior math knowledge?","No. Prealgebra starts from the rules of arithmetic and builds up, and Milo is there whenever a problem stops you."),
           ("How is Quantica different from other prealgebra courses?","You learn by solving real problems with instant feedback and layered hints, so the ideas emerge from your own work instead of being memorized."),
           ("How long is the Prealgebra course?","It has 12 chapters and 70 lessons. You move at your own pace, in any order.")]},
  "algebra1":{"title":"Algebra I","level":"High school / Algebra I","og":"og-default.png",
    "lead":"Work real problems with instant feedback and Milo, a tutor that helps you find the answer yourself.",
    "blurb":("Learn Algebra I online by solving real problems, not memorizing. Quantica's Algebra I course "
-     "spans 15 chapters and 79 lessons, from expressions and linear equations to quadratics, functions, "
+     "spans 15 chapters, from expressions and linear equations to quadratics, functions, "
      "and logarithms, with instant feedback and Milo, a tutor that helps you find the answer yourself. "
-     "Free to start, in early access."),
-   "note":"Chapter 1 is live now, with new lessons arriving regularly while Algebra I is in early access.",
+     "Chapter 1 is free."),
+   "note":"New lessons arrive regularly while Algebra I is in early access.",
    "workload":"P15W", "cross":("prealgebra","Prealgebra"),
-   "faq":[("Is the Algebra I course free?","Yes, you can start Algebra I for free while it is in early access, no card required."),
+   "faq":[("Is the Algebra I course free?","Chapter 1 of every course is free and no card is required to begin. Everything after that is $14.99 a month."),
           ("What does Quantica's Algebra I cover?","Expressions, linear equations, exponents and radicals, systems, graphing, inequalities, quadratics, functions, polynomials, exponentials, and logarithms, 15 chapters in all."),
           ("Do I need to finish Prealgebra first?","No, but the two fit together. If arithmetic and fractions feel shaky, Prealgebra builds the ground Algebra I stands on."),
           ("How is Quantica's Algebra I different?","You learn by solving real problems with instant feedback and layered hints, so each idea emerges from your own work instead of being memorized.")]},
@@ -112,9 +112,14 @@ def render_full(L):
 
 def gate_html(k):
     # Not a content wall (the full lesson is above). A conversion CTA into the interactive app.
+    # Chapter-aware like the startbar button: only chapter 1 is genuinely free, so every other
+    # lesson page dropped the "Free to start" claim rather than contradict the checkout.
+    free = str(k).split('.')[0] == '1'
+    tail = ' Free to start.' if free else ''
     return ('<aside class="gate"><div class="gate-in">'+MILO_BIG+
             '<h2>Learn it by <span class="mark">doing it</span></h2>'
-            '<p>Reading is a start. In the course you solve each problem yourself, with instant feedback, layered hints, and Milo right beside you when you get stuck. Free to start.</p>'
+            '<p>Reading is a start. In the course you solve each problem yourself, with instant '
+            f'feedback, layered hints, and Milo right beside you when you get stuck.{tail}</p>'
             f'<a class="pill solid big" href="/landing?course={COURSE}&amp;lesson={k}">Open this lesson in the course &rarr;</a></div></aside>')
 
 CSS='''
@@ -258,7 +263,11 @@ def gen_hub():
       "teaches":[c["t"] for c in toc],
       "provider":{"@type":"Organization","name":"Quantica","url":BASE+"/"},
       "hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":META["workload"]},
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD","category":"Free trial"},
+      # Chapter 1 of every course is free and needs no card; everything past it is the paid
+      # plan. Advertising price 0 for the whole course is what Google lifts into rich results,
+      # so it has to match what the checkout actually charges.
+      "offers":[{"@type":"Offer","price":"0","priceCurrency":"USD","name":"Chapter 1, free","category":"Free"},
+                {"@type":"Offer","price":"14.99","priceCurrency":"USD","name":"Quantica Pro, monthly"}],
       "hasPart":[{"@type":"Syllabus","name":f'Chapter {c["n"]}: {c["t"]}',
                   "description":", ".join(l["t"] for l in c["lessons"])} for c in toc]}
     ld_crumb={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -498,7 +507,7 @@ def clean_desc(raw, seo_title, fallback_raw=''):
     if len(out) < 60 and fallback_raw:
         return clean_desc(fallback_raw, seo_title)
     if len(out) < 60:
-        out = f"{seo_title}. Worked examples with hints and full solutions, free on Quantica."
+        out = f"{seo_title}. Worked examples with hints and full solutions on Quantica."
     return out
 
 # ---- lesson pages ----
@@ -550,7 +559,7 @@ for idx,k in enumerate(ORDER):
 <div class="wrap">
   <nav class="crumbs"><a href="/">Home</a> › <a href="/{COURSE}">{H.escape(CTITLE)}</a> › Chapter {chn}: {H.escape(cht)}</nav>
   <div class="head"><p class="ey">{H.escape(CTITLE)} · Lesson {k}</p><h1>{H.escape(title)}</h1></div>
-  <div class="startbar"><a class="pill solid" href="/landing?course={COURSE}&amp;lesson={k}">Solve this lesson, free &rarr;</a><a class="pill" href="/{COURSE}">All lessons</a></div>
+  <div class="startbar"><a class="pill solid" href="/landing?course={COURSE}&amp;lesson={k}">{"Solve this lesson, free &rarr;" if chn==1 else "Solve this lesson &rarr;"}</a><a class="pill" href="/{COURSE}">All lessons</a></div>
   <article class="content">
   {body}
   {gate_html(k)}
