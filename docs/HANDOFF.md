@@ -201,12 +201,12 @@ postulate.
 
 ## In flight when this session ended
 
-One workflow was running and will not survive the session. Relaunch it:
-- 7.1 The Cartesian Plane (`tools/lesson-specs/author_7_1.head.js`)
+**Resolved, 2026-08-09.** 7.1 landed and chapter 7 is complete, 7.1 through 7.6, so the gap
+this section described is closed. Chapter 8 is at 8.1 to 8.3 with SPECs written for 8.4 and
+8.5. Verified against `lessons/algebra1/chapter-*.json`, 43 of 81 lessons written. The note
+below is kept only for the naming convention it records.
 
-7.2 finished and shipped, which is why chapter 7 has a gap until 7.1 lands.
-
-7.1's SPEC **bans Descartes** even though it is the Cartesian-plane lesson; he is already spent
+7.1's SPEC **banned Descartes** even though it is the Cartesian-plane lesson; he is already spent
 in Algebra I 1.5 for exponent notation. It uses Fermat instead. Keep the banned-names list
 growing in each SPEC.
 

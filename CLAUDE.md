@@ -98,12 +98,14 @@ exceptions.
   open `/landing.html?course=<c>&lesson=<k>`. Note the plain static server does not apply the
   Firebase `/` rewrite, so use `/landing.html` explicitly.
 
-## Current status (2026-08-02)
+## Current status (2026-08-09)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: 35 of 81 lessons live. **Chapters 1 to 6 are complete, lessons and problem
-  sets both**, plus 7.2. **Next work is 7.1 (which 7.2 shipped ahead of, leaving a one-lesson
-  gap), then 7.3 to 7.6, then chapters 8 to 15.** Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
+- **Algebra I**: 43 of 81 lessons live. **Chapters 1 to 7 are complete, lessons and problem
+  sets both**, plus lessons 8.1 to 8.3 (chapter 8 has no problem sets yet). **Next work is 8.4
+  and 8.5, whose SPECs are already written, then chapters 9 to 15.** Counts verified against
+  `lessons/algebra1/chapter-*.json` on 2026-08-09, not copied forward; the 7.1 gap this file
+  used to warn about is closed. Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
   live per-lesson state and the pipeline traps are in `docs/HANDOFF.md`, which is the file to
   read before writing anything. Both courses have SEO hub + lesson pages via
   `tools/gen_seo_pages.py` (sitemap/homepage links updated manually), and those have NOT been

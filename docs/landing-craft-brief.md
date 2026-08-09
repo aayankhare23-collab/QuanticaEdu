@@ -27,7 +27,9 @@ landing page, and add distinctive brand decisions.
 ## Two things that need a founder decision first
 
 **"Soon" labels are load-bearing right now.** Measured in production 2026-08-05:
-38 soon lessons on /courses, 6 "coming soon" in the app TOC, 2 "soon" course tabs. The
+38 soon lessons on /courses, 6 "coming soon" in the app TOC, 2 "soon" course tabs. (Both app
+figures were wrong. Re-measured in a browser on 2026-08-09 it was 38 lesson rows, 16 problem-set
+rows and 7 chapters in the app, and 0 course tabs. All resolved in `363cc1d`.) The
 /courses page shipped earlier the same day deliberately shows the full 81-lesson Algebra I
 syllabus with 38 marked unwritten, on the reasoning that an honest roadmap builds trust.
 Workstream 4 says the opposite. Both are defensible and they cannot both be done:
