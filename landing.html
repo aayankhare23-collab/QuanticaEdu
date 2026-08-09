@@ -2680,7 +2680,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       if(window.__maybeResumeCheckout) __maybeResumeCheckout();
     }).catch(function(e){
       console.warn('Subscription load failed',e);
-      window._access = {type:'none'};
+      // A failed read must NOT cost someone their grandfathered access. The success path
+      // applies the legacy check and this path did not, so any legacy user whose Firestore
+      // read failed, offline, rules, a transient error, was silently demoted to 'none' and
+      // locked out of everything past chapter 1.
+      window._access = window.isLegacyUser(user) ? {type:'legacy'} : {type:'none'};
       renderDashboard(); renderToc(); updateStartCTAs();
     });
   });
