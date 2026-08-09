@@ -403,6 +403,8 @@
   .toc .grp{margin-bottom:16px}
   .toc .ch{font-family:'Chillax';font-weight:700;font-size:16px;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:7px}
   .toc .ch .cnum{color:var(--sky);margin-right:7px}
+  .toc .ch .chnote{font-family:'Switzer',system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--mute);margin-left:10px;letter-spacing:.02em}
+  .toc .grp.bare .ch{border-bottom:0;padding-bottom:0;margin-bottom:0}
   .toc .sec{display:block;font-size:13.5px;color:var(--mid);padding:3px 0 3px 16px;text-decoration:none;border:none;background:none;font-family:'Switzer';text-align:left;width:100%}
   .toc a.sec{cursor:pointer}
   .toc a.sec:hover{color:var(--blue);text-decoration:underline}
@@ -842,9 +844,9 @@
   .toc .sec.locked .lk{font-size:11px;font-weight:600;color:var(--mute)}
   .toc .sec.soon{color:var(--mute);opacity:.38;cursor:default;pointer-events:none;user-select:none;filter:blur(.35px)}
   .toc .sec.soon .cs-tag{font-size:12px;font-weight:700;margin-left:6px;opacity:.85}
-  .dchip.soon{cursor:default;pointer-events:none;position:relative;overflow:hidden}
-  .dchip.soon .ttl,.dchip.soon .sub,.dchip.soon .stat,.dchip.soon .mini{opacity:.3;filter:blur(.5px)}
-  .dchip.soon::after{content:'Coming Soon';position:absolute;inset:0;background:rgba(240,244,250,.68);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:grid;place-items:center;border-radius:0;font-size:13px;font-weight:700;color:var(--slate)}
+  .dchip.soon{cursor:default;pointer-events:none}
+  .dchip.soon .stat{opacity:.5}
+  .dchip.soon .ttl{color:var(--slate);font-weight:500}
   .dchip.paywall{cursor:pointer;position:relative;overflow:hidden}
   .dchip.paywall .ttl,.dchip.paywall .sub,.dchip.paywall .stat,.dchip.paywall .mini{opacity:.25;filter:blur(.6px)}
   .dchip.paywall::after{content:'🔒 Unlock Pro →';position:absolute;inset:0;background:rgba(240,244,250,.72);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:grid;place-items:center;border-radius:0;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--ink)}
@@ -2219,7 +2221,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       <div class="dash-progress">
         <span style="white-space:nowrap;font-weight:600;color:var(--navy)">Course progress</span>
         <span class="bar"><span class="fill" id="progFill" style="width:0%"></span></span>
-        <span style="white-space:nowrap" id="progText">0 of 0 lessons complete</span>
+        <span style="white-space:nowrap" id="progText"></span>
       </div>
       <button class="lockbtn" id="lockBtn" onclick="toggleLock()">🔓 Free roam is ON: open any lesson in any order</button>
       <div class="dash-grid" id="dashGrid"></div>
@@ -5970,7 +5972,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       // `||{}` would freeze an empty table into the registry forever. Reading it lazily means
       // whoever asks first is correct, with no dependence on listener or timer ordering.
       get lessons(){ return (window.__COURSEDATA&&window.__COURSEDATA.algebra1)||{}; }, psets:PSETS_ALG1,
-      intro:'Fifteen chapters run from the language of algebra through quadratics, functions, and logarithms. The first lessons are being written right now, so this page is a preview of the road ahead.'}
+      intro:'Fifteen chapters run from the language of algebra through quadratics, functions, and logarithms. Tap any lesson to read it, or open a chapter\'s <b>Practice</b> or <b>Challenge</b> set to try problems yourself.'}
   };
   // The tabs count lessons to decide "live" vs "soon", so a render that happened before the
   // deferred chunk executed would show Algebra I as "soon". Re-render once it has landed.
@@ -6143,11 +6145,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var isPaywalled = !isSoon && !isAccessGranted(ch.n);
       var st = isSoon ? 'soon' : (isPaywalled ? 'paywall' : ((live.length && dn===live.length) ? 'done' : (dn>0 ? 'current' : 'open')));
       var pctc = live.length ? Math.round(dn/live.length*100) : 0;
-      var sub = live.length ? (dn+' / '+live.length+' lessons complete') : (ch.s.length+' lessons · coming soon');
+      var sub = live.length ? (dn+' / '+live.length+' lessons complete') : 'In writing';
       var d=document.createElement('div'); d.className='dchip '+st;
       d.innerHTML='<span class="stat">'+CH_ICON[st]+'</span>'+
         '<div><div class="ttl">Chapter '+ch.n+' · '+ch.t+'</div><div class="sub">'+sub+'</div></div>'+
-        '<span class="mini"><i style="width:'+pctc+'%"></i></span>';
+        (isSoon?'':'<span class="mini"><i style="width:'+pctc+'%"></i></span>');
       if(!isSoon && !isPaywalled) d.addEventListener('click',function(){ showToc(ch.n); });
       if(isPaywalled) d.addEventListener('click',startCheckout);
       host.appendChild(d);
@@ -6168,11 +6170,17 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     }
     TOC.forEach(function(ch){
       if(single && ch.n!==only) return;
-      var g=document.createElement('div'); g.className='grp';
-      g.innerHTML='<div class="ch"><span class="cnum">'+ch.n+'</span>'+ch.t+'</div>';
+      // A chapter with nothing written keeps its title, so the shape of the course stays
+      // visible, but says so in one word instead of listing every lesson that is missing.
+      // .bare then closes the card up, since a heading rule with nothing under it reads as
+      // content that failed to load rather than a chapter nobody has written yet.
+      var chLive=0; ch.s.forEach(function(sec){ if(LESSONS[sec[0]]) chLive++; });
+      var g=document.createElement('div'); g.className='grp'+(chLive?'':' bare');
+      g.innerHTML='<div class="ch"><span class="cnum">'+ch.n+'</span>'+ch.t+
+        (chLive?'':'<span class="chnote">In writing</span>')+'</div>';
       ch.s.forEach(function(sec){
         var live=!!LESSONS[sec[0]], done=!!completed[sec[0]], locked=live && !lessonUnlocked(sec[0]);
-        var isSoon=!live;
+        var isSoon=!live; if(isSoon) return;   // an unwritten lesson is not listed at all
         var isPaywalled=!isSoon && !isAccessGranted(ch.n);
         var a=document.createElement((locked||isPaywalled)?'span':'a');
         a.className='sec'+(isSoon?' soon':'')+(isPaywalled?' paywall':'')+(live&&!locked&&!isPaywalled&&!done?' open':'')+(done&&!isPaywalled?' done':'')+(locked?' locked':'');
@@ -6182,15 +6190,16 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         if(isPaywalled) a.addEventListener('click',startCheckout);
         g.appendChild(a);
       });
-      // only offer a set that actually exists. an unwritten set shows as coming soon
-      // rather than opening an empty screen, which is what a chapter with no psets used to do.
+      // only offer a set that actually exists. an unwritten set is not listed at all, so the
+      // contents never point at an empty screen and never name a set nobody has written yet.
       [['practice','Practice Problems'],['challenge','Challenge Problems']].forEach(function(p){
         var type=p[0], name=p[1];
         var has=!!(typeof PSETS!=='undefined' && PSETS[ch.n] && PSETS[ch.n][type] && PSETS[ch.n][type].length);
-        var el=document.createElement(has?'a':'span');
-        el.className='ex'+(has?'':' soon');
-        el.textContent=has ? (name+' →') : (name+' · coming soon');
-        if(has) el.addEventListener('click',function(){ openPSet(ch.n,type); });
+        if(!has) return;
+        var el=document.createElement('a');
+        el.className='ex';
+        el.textContent=name+' →';
+        el.addEventListener('click',function(){ openPSet(ch.n,type); });
         g.appendChild(el);
       });
       host.appendChild(g);
@@ -8749,7 +8758,21 @@ async function sendTutorMsg() {
     prealgebra:{name:'Prealgebra', slug:'prealgebra',
       facts:[['12','chapters'],['70','lessons'],['Complete','and live']]},
     algebra1:{name:'Algebra I', slug:'algebra1',
-      facts:[['15','chapters planned'],['13','lessons live'],['Being written','right now']]}
+      // Counted when the card renders, never at parse time. The algebra1 chunk is deferred, so
+      // a number frozen in here is wrong on first paint and goes stale on every new lesson,
+      // which is how it came to claim 13 when 43 were written.
+      get facts(){
+        var n=0;
+        try{
+          var c=window.COURSE_REG&&window.COURSE_REG.algebra1;
+          if(c) c.toc.forEach(function(ch){ ch.s.forEach(function(s){ if(c.lessons[s[0]]) n++; }); });
+        }catch(e){}
+        // Both of these stay true after the paywall date, unlike a plain "free" claim, which
+        // would quietly become false the moment PAYWALL_LIVE_AT is brought forward.
+        var f=[['Problem-first','every lesson'],['Chapter 1','free to try']];
+        if(n) f.unshift([String(n),'lessons ready']);
+        return f;
+      }}
   };
 
   function steps(){
