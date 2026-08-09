@@ -412,6 +412,7 @@
   .toc .sec.open::after{content:" · read now";font-size:11px;color:var(--accent);font-weight:600}
   .toc .ex{display:block;font-size:13px;font-weight:600;color:#5b6b80;padding:3px 0 3px 16px;cursor:default}
     .ex.soon{color:var(--mute);opacity:.42;cursor:default;pointer-events:none;user-select:none}
+    .ex.pro{color:var(--mute);cursor:pointer}
   .toc a.ex{cursor:pointer}
   .toc a.ex:hover{color:var(--accent);text-decoration:underline}
 
@@ -1986,7 +1987,18 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   // Either side may become ready first, so both call this and whoever is last wins.
   window.__maybeResumeCheckout=function(){
     if(!window.__pendingPlan || !window.__authResolved || window.__checkoutStarted) return;
-    if(window._access && window._access.type==='paid'){ window.__pendingPlan=null; return; }
+    // Access is resolved asynchronously and __authResolved goes true before it lands, so
+    // without this a signed-in user could be sent to Stripe before we know they already own
+    // what they are about to buy. Whoever settles _access calls this again.
+    if(!window._access) return;
+    // Never walk someone to a payment page for access they already have. 'legacy' is not
+    // 'paid', so a grandfathered account arriving on ?upgrade= was being charged for what it
+    // was promised free. While charging is off, checkout still works, which is what makes a
+    // real-card test possible before the switch.
+    var _a=window._access;
+    if(_a.type==='paid' || (window.paywallOn && window.paywallOn() && _a.type==='legacy')){
+      window.__pendingPlan=null; return;
+    }
     if(typeof window.startCheckout!=='function') return;
     window.__checkoutStarted=true;
     var pp=window.__pendingPlan; window.__pendingPlan=null;
@@ -2470,7 +2482,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   window.isLegacyUser = function(user){
     try{
       var t = user && user.metadata && user.metadata.creationTime;
-      return !!t && Date.parse(t) < window.PAYWALL_LIVE_AT;
+      // <= not <. creationTime has second precision, so an account created in the same second
+      // as the switch would otherwise be charged despite the site still promising it free.
+      // The tie belongs to the user.
+      return !!t && Date.parse(t) <= window.PAYWALL_LIVE_AT;
     }catch(e){ return false; }
   };
   window.isAccessGranted = function isAccessGranted(chNum){
@@ -2480,6 +2495,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(!a) return false;
     if(a.type==='legacy') return true;                // signed up before the paywall went live
     if(a.type==='paid') return true;
+    // The subscription read failed or timed out, so entitlement is genuinely unknown. Grant
+    // it. Denying here strips a paying customer of what they bought over a network blip and
+    // invites a chargeback; granting it costs at most some free access to a new account until
+    // the next successful read, and the gate is client-side regardless.
+    if(a.type==='unknown') return true;
     if(a.type==='trial'){
       var exp=a.expiresAt;
       if(!exp) return true;
@@ -2524,6 +2544,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 
   window.startCheckout=function(plan){
     plan = (plan==='yearly') ? 'yearly' : 'monthly';
+    // Never sell the same person a second subscription. Every locked chip, every gated row
+    // and the gate button all land here, and createCheckoutSession will happily open a second
+    // session on the same customer. There is no self-serve billing portal to undo that yet.
+    if(window._access && window._access.type==='paid'){
+      if(window.__payToast) __payToast('You are already subscribed. Everything is unlocked.');
+      return;
+    }
     if(!auth.currentUser){ window.__pendingPlan=plan; if(window.hideCheckoutRedirect) hideCheckoutRedirect(); showAuthModal('in'); return; }
     if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',
       value: plan==='yearly' ? 99.99 : 14.99, content_name: plan});
@@ -2540,14 +2567,42 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   // Show success/cancel toast from Stripe redirect
   (function(){
     var p=new URLSearchParams(window.location.search);
-    if(p.get('payment')==='success'){
-      // The only event Meta can optimise revenue against. Fires once, on the Stripe redirect back.
-      if(window.fbTrack) fbTrack('Purchase',{currency:'USD',value:14.99});
+    // Exposed, because the subscription listener needs it too: when the webhook lands after
+    // the redirect toast has already expired, that is the moment the customer needs telling.
+    var _toast=window.__payToast=function(msg,ms){
       var t=document.createElement('div');
       t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:12px 22px;border-radius:0;font-weight:600;z-index:9999;font-size:14px';
-      t.textContent='Payment successful — welcome to Quantica Pro!';
+      t.textContent=msg;
       document.body.appendChild(t);
-      setTimeout(function(){ t.remove(); },5000);
+      setTimeout(function(){ t.remove(); },ms||5000);
+    };
+    var _pay=p.get('payment');
+    if(_pay==='success' || _pay==='cancelled'){
+      if(_pay==='success'){
+        // The only event Meta can optimise revenue against. Fires once, on the Stripe redirect back.
+        if(window.fbTrack) fbTrack('Purchase',{currency:'USD',value:14.99});
+        // Stripe redirects the moment the card authorises, while the webhook writes
+        // type:'paid' on a separate delivery. Losing that race used to leave a customer
+        // reading this toast on top of a course that was still locked, with nothing that
+        // ever recovered. The subscription doc is now watched with onSnapshot, so the
+        // write unlocks the course when it lands. This only says so honestly meanwhile.
+        window.__justPaid=true;
+        _toast(window._access && window._access.type==='paid'
+          ? 'Payment successful. Welcome to Quantica Pro.'
+          : 'Payment successful. Unlocking your course, this takes a moment.', 8000);
+        // If the confirmation never arrives, say so. Silence here means a customer who has
+        // paid sits in front of an Unlock button, and the worst thing they can do next is
+        // press it again. Nothing else in the app would ever tell them.
+        setTimeout(function(){
+          if(window.__justPaid && !(window._access && window._access.type==='paid')){
+            window.__justPaid=false;
+            _toast('Your payment went through, but we cannot confirm it yet. Please do not pay '+
+                   'again. Email support@quanticaedu.com and we will sort it out.', 20000);
+          }
+        }, 60000);
+      } else {
+        _toast('Checkout cancelled. You have not been charged.');
+      }
       history.replaceState(null,'',window.location.pathname);
     }
   })();
@@ -2645,10 +2700,23 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       return;
     }
     window.__notSignedIn=false;
-    var _bg=document.getElementById('bootGate'); if(_bg) _bg.remove();
     hideAuthModal();
+    // The boot screen holds until access is known, but ONLY while charging is on. With the
+    // switch off isAccessGranted returns true unconditionally, so holding buys nothing and
+    // costs every signed-in user a Firestore round trip of blank screen, or a flat 6 seconds
+    // if Firestore is blocked. It also silently suppresses the onboarding tour, which bails
+    // while #bootGate exists and never retries. When charging IS on, holding is what stops a
+    // grandfathered user seeing a fully locked course for one round trip.
+    if(!(window.paywallOn && window.paywallOn())){
+      var _bg0=document.getElementById('bootGate'); if(_bg0) _bg0.remove();
+    }
     // Signed in via "Start free" / "Sign in" (no specific lesson) -> land on the home roadmap.
-    if(/[?&]signin=1/.test(location.search) && !/[?&](lesson|pset|practice)=/.test(location.search)){ location.assign('/paths/home.html'); return; }
+    // Drop the gate first: this path returns before _settleAccess is ever reached, so nothing
+    // else would, and a Back restore would land on a permanent boot overlay.
+    if(/[?&]signin=1/.test(location.search) && !/[?&](lesson|pset|practice)=/.test(location.search)){
+      var _bg1=document.getElementById('bootGate'); if(_bg1) _bg1.remove();
+      location.assign('/paths/home.html'); return;
+    }
     // Load rewards profile, and create a minimal profile record the first time we see this
     // account in Firestore. The users/{uid} doc is otherwise only written lazily on the first
     // progress sync, so accounts that never make progress never get a row. This backfills them.
@@ -2680,33 +2748,90 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     db.collection('users').doc(user.uid).collection('state').doc('adapt').get().then(function(doc){
       if(doc.exists && window.ADAPT && window.ADAPT._merge) ADAPT._merge(doc.data());
     }).catch(function(e){ console.warn('Adapt load failed',e); });
-    // Load subscription
-    db.collection('users').doc(user.uid).collection('state').doc('subscription').get().then(function(doc){
-      try{
-        var _fn=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
-        localStorage.setItem('quantica.user', _fn);
-      }catch(e){}
-      window._access = doc.exists ? doc.data() : {type:'none'};
-      // A paying subscriber stays 'paid'. Everyone else who predates the paywall is 'legacy'.
-      // Nothing is written back, so this cannot be lost and needs no migration.
-      if(window._access.type!=='paid' && window.isLegacyUser(user)){
-        window._access = {type:'legacy', since:(user.metadata&&user.metadata.creationTime)||null};
-      }
+    // Load subscription, and then keep watching it.
+    //
+    // The watching is the point. Stripe redirects the customer back the instant the card
+    // authorises, while the webhook writes type:'paid' on a separate, concurrent delivery.
+    // A one-shot read that won that race left someone who had just paid looking at a locked
+    // course, with no way out but a reload they had no reason to try. The listener delivers
+    // that write whenever it lands and the course unlocks in place.
+    function _applyAccess(a){
+      window._access = a;
       renderDashboard(); renderToc(); updateAuthUI(user); updateStartCTAs();
+    }
+    // One place decides what a snapshot means, so the read and the listener cannot drift.
+    // A paying subscriber stays 'paid'. Everyone else who predates the paywall is 'legacy'.
+    // Nothing is written back, so this cannot be lost and needs no migration.
+    function _resolveAccess(doc){
+      var a = (doc && doc.exists) ? doc.data() : {type:'none'};
+      if(a.type!=='paid' && window.isLegacyUser(user)){
+        a = {type:'legacy', since:(user.metadata&&user.metadata.creationTime)||null};
+      }
+      return a;
+    }
+    var _accessSettled=false;
+    function _settleAccess(a){
+      if(_accessSettled) return;
+      _accessSettled=true;
+      // finally, not sequential. _accessSettled is already true, so a throw inside any of the
+      // four renders would strand the user behind the gate with the timeout already spent.
+      try{ _applyAccess(a); }
+      finally{ var _bg=document.getElementById('bootGate'); if(_bg) _bg.remove(); }
+      // A deep link parked because access had not resolved yet. Replay it now that it has,
+      // so a paying subscriber who arrived by URL is not left looking at an upsell.
+      if(window.__pendingDeep){ var _d=window.__pendingDeep; window.__pendingDeep=null; try{ _d(); }catch(e){} }
       // Someone who clicked Subscribe while logged out was sent to the sign-in modal, and
       // startCheckout stashed which plan they picked. Resume it now rather than dropping
-      // them on the dashboard with their choice forgotten. Cleared first so it fires once.
+      // them on the dashboard with their choice forgotten.
       window.__authResolved=true;
       if(window.__maybeResumeCheckout) __maybeResumeCheckout();
+    }
+    // A read that HANGS runs neither the success nor the error path, so without this a
+    // grandfathered user would sit behind the boot screen indefinitely on a bad network.
+    // Failing open to the legacy check is the safe direction: it can only grant access to
+    // someone who predates the switch, never take it away.
+    setTimeout(function(){
+      if(!_accessSettled){
+        console.warn('Subscription read timed out; falling back to the legacy check.');
+        _settleAccess(window.isLegacyUser(user) ? {type:'legacy'} : {type:'unknown'});
+      }
+    }, 6000);
+    var _subRef = db.collection('users').doc(user.uid).collection('state').doc('subscription');
+    // A one-shot read runs alongside the listener purely to settle the FIRST paint. It is the
+    // exact call this used to make, so first-paint behaviour is provably unchanged, and it
+    // means no user can end up waiting on the timeout if a listener is slow to deliver a
+    // document that does not exist, which is the common case here. _settleAccess only fires
+    // once, so whichever arrives first wins and the other is a harmless re-render.
+    _subRef.get().then(function(doc){
+      if(!_accessSettled) _settleAccess(_resolveAccess(doc));
     }).catch(function(e){
-      console.warn('Subscription load failed',e);
-      // A failed read must NOT cost someone their grandfathered access. The success path
-      // applies the legacy check and this path did not, so any legacy user whose Firestore
-      // read failed, offline, rules, a transient error, was silently demoted to 'none' and
-      // locked out of everything past chapter 1.
-      window._access = window.isLegacyUser(user) ? {type:'legacy'} : {type:'none'};
-      renderDashboard(); renderToc(); updateStartCTAs();
+      console.warn('Subscription read failed',e);
+      if(!_accessSettled) _settleAccess(window.isLegacyUser(user) ? {type:'legacy'} : {type:'unknown'});
     });
+    _subRef
+      .onSnapshot(function(doc){
+        try{
+          var _fn=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
+          localStorage.setItem('quantica.user', _fn);
+        }catch(e){}
+        var a = _resolveAccess(doc);
+        if(!_accessSettled){ _settleAccess(a); return; }
+        // A later snapshot. Usually the webhook confirming a purchase, so re-render in place
+        // and tell them, because by now the success toast has already been and gone.
+        var was = (window._access||{}).type;
+        _applyAccess(a);
+        if(was!=='paid' && a.type==='paid' && window.__justPaid){
+          window.__justPaid=false;
+          try{ if(window.__payToast) __payToast('Your course is unlocked. Welcome to Quantica Pro.'); }catch(e){}
+        }
+      }, function(e){
+        console.warn('Subscription load failed',e);
+        // A failed read must NOT cost someone their access. This path used to demote every
+        // legacy user whose Firestore read failed, offline, rules, a transient error, to 'none'
+        // and lock them out of everything past chapter 1. 'unknown' grants, so a paying
+        // subscriber is not stripped either.
+        _settleAccess(window.isLegacyUser(user) ? {type:'legacy'} : {type:'unknown'});
+      });
   });
 })();
 </script>
@@ -6123,7 +6248,9 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   function toggleLock(){ lockMode=!lockMode; renderDashboard(); }
 
   // --- course home / mastery map ---
-  var CH_ICON={done:'✓',current:'▶',open:'○',soon:'○'};
+  // 'paywall' is a state renderDashboard can set, so it needs an icon here or CH_ICON[st] is
+  // undefined and every locked chapter prints the literal word 'undefined' in its status circle.
+  var CH_ICON={done:'✓',current:'▶',open:'○',soon:'○',paywall:'🔒'};
   function renderDashboard(){
     if(window.renderCourseTabs) renderCourseTabs();
     var lb=document.getElementById('lockBtn');
@@ -6196,10 +6323,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         var type=p[0], name=p[1];
         var has=!!(typeof PSETS!=='undefined' && PSETS[ch.n] && PSETS[ch.n][type] && PSETS[ch.n][type].length);
         if(!has) return;
+        // A locked chapter's sets are locked too. openPSet enforces this on its own now, but
+        // drawing them as live links under a chapter whose lessons are all marked pro was the
+        // visible half of the same hole.
+        var setLocked = chLive && !isAccessGranted(ch.n);
         var el=document.createElement('a');
-        el.className='ex';
-        el.textContent=name+' →';
-        el.addEventListener('click',function(){ openPSet(ch.n,type); });
+        el.className='ex'+(setLocked?' pro':'');
+        el.textContent=name+(setLocked?' · pro':' →');
+        el.addEventListener('click',function(){ setLocked ? startCheckout() : openPSet(ch.n,type); });
         g.appendChild(el);
       });
       host.appendChild(g);
@@ -6958,9 +7089,61 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   }
   window.renderDashHero=renderDashHero;
 
+  // The gate itself. Until this existed the paywall was decoration: renderDashboard and
+  // renderToc drew padlocks, but showLesson and openPSet were the functions that actually
+  // opened content and neither consulted isAccessGranted, so ?lesson= and ?pset= walked
+  // straight past. paths/home.html builds exactly those URLs for every lesson in the course.
+  //
+  // A search visitor deep-linked into a paid lesson gets this screen rather than a bounce to
+  // the contents, which would read as the site being broken.
+  // _access resolves on a Firestore round trip, and launch()'s deep-nav fires on
+  // DOMContentLoaded, long before it. isAccessGranted returns false while _access is null, so
+  // without this a paid or legacy user arriving by URL, which is how paths/home.html and every
+  // SEO lesson page send them, would be shown a paywall for content they own, with nothing
+  // that reopens the lesson afterwards. Park the request and let _settleAccess replay it.
+  function _pendDeep(fn){
+    if(window.paywallOn && window.paywallOn() && window._access==null){ window.__pendingDeep=fn; return true; }
+    return false;
+  }
+  function showPaywallGate(chNum,chTitle){
+    showView('lessonView');
+    var reg=COURSE_REG[CURRENT_COURSE];
+    document.getElementById('modalEyebrow').textContent=reg.title+' · Chapter '+chNum;
+    document.getElementById('modalTitle').textContent=chTitle||('Chapter '+chNum);
+    // __notSignedIn is undefined until the auth callback runs, which is later than the deep
+    // link that gets us here, and !undefined reads as signed in. That hid the sign-in link
+    // from exactly the existing subscriber on a fresh browser. Ask auth directly instead.
+    var signedIn=!!(window.firebase && firebase.auth && firebase.auth().currentUser);
+    document.getElementById('lessonBody').innerHTML=
+      '<div class="psetdone"><div class="big">🔒</div>'+
+      // No promise here that the code does not keep. isAccessGranted is chapter-scoped and
+      // consults nothing about what has been completed, so "everything you finished stays
+      // yours" would be false for the user with the most work behind them.
+      '<p style="color:var(--slate);font-size:15px">Chapter '+chNum+' is part of Quantica Pro. '+
+        'Chapter 1 of every course is free.</p>'+
+      '<p style="color:var(--mute);font-size:14px">Pro opens every published chapter of every '+
+        'course, Milo on every problem, the practice and challenge sets, and everything added '+
+        'while you are subscribed.</p>'+
+      '<div class="lessonnav" style="justify-content:center">'+
+        '<button class="btn btn-primary" onclick="startCheckout(\'monthly\')">Unlock everything, $14.99/month →</button>'+
+        '<a class="btn btn-ghost" onclick="showToc()">Back to contents</a>'+
+      '</div>'+
+      (signedIn?'':'<p style="color:var(--mute);font-size:13px;margin-top:14px">Already subscribed? '+
+        '<a onclick="showAuthModal(\'in\')" style="color:var(--mid);font-weight:600;cursor:pointer">Sign in</a>.</p>')+
+      '</div>';
+    if(window.track) track('paywall_hit',{chapter:chNum,course:CURRENT_COURSE});
+  }
+  window.showPaywallGate=showPaywallGate;
+
   function showLesson(key,title,chTitle,chNum){
     var L=LESSONS[key];
     if(L && !lessonUnlocked(key)){ showToc(); return; }
+    // Derived, not trusted: gotoLesson and the ?lesson= deep link do not always pass chNum.
+    var _ch = chNum || parseInt(key,10);
+    if(!(_ch>=1) || !isAccessGranted(_ch)){
+      if(_pendDeep(function(){ showLesson(key,title,chTitle,chNum); })) return;
+      showPaywallGate(_ch,chTitle); return;
+    }
     // ensure a chapter-TOC entry sits under this lesson so Back lands on the chapter TOC
     if(window.navGuard && !window._navApply && window._navLevel<2){ history.pushState({v:'toc',ch:chNum},'',location.pathname+location.search); window._navLevel=2; }
     if(window.navGuard && !navGuard(3,{v:'lesson',key:key,title:title,chTitle:chTitle,chNum:chNum})) return;
@@ -7037,6 +7220,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   var psetState={chapter:null,type:null,list:[],i:0,solved:false};
   function openPSet(chNum,type){
     var chInfo=TOC.filter(function(c){ return c.n===chNum; })[0];
+    // Same gate as showLesson. The contents drew a locked chapter's lesson rows as dead
+    // spans while leaving these two set links live underneath, so the problem sets were the
+    // easiest way past the paywall in the whole app.
+    if(!isAccessGranted(chNum)){
+      if(_pendDeep(function(){ openPSet(chNum,type); })) return;
+      showPaywallGate(chNum, chInfo?chInfo.t:''); return;
+    }
     var label=(type==='practice'?'Practice Problems':'Challenge Problems');
     var data=PSETS[chNum]&&PSETS[chNum][type];
     if(!data||!data.length){
@@ -7135,6 +7325,16 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     }catch(e){}
   }
   function openPractice(key){
+    // The third deep link. launch() parses ?practice= alongside ?lesson= and ?pset=, and
+    // paths/home.html builds it for every topic, so leaving it open reopened the whole hole.
+    // It is worse than a bare generated set too: it renders the paid lesson's authored Key
+    // Ideas into the panel and brings Milo with it.
+    var _pch=parseInt(key,10);
+    if(_pch>=1 && !isAccessGranted(_pch)){
+      if(_pendDeep(function(){ openPractice(key); })) return;
+      var _pci=TOC.filter(function(c){ return c.n===_pch; })[0];
+      showPaywallGate(_pch, _pci?_pci.t:''); return;
+    }
     var title=(LESSONS[key]&&LESSONS[key].title)||(window.lessonTitle?window.lessonTitle(key):'')||'';
     var fam=_pfam(title);
     if(!fam){ if(window.gotoLesson) gotoLesson(key); return; }   // no generator for this topic yet -> open the real lesson
