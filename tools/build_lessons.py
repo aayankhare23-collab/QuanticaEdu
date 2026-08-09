@@ -72,6 +72,16 @@ def main():
         cp = os.path.join(ROOT, 'data', 'lessons-' + course + '.js')
         open(cp, 'w', encoding='utf-8').write(chunk)
 
+    # The course home (paths/home.html) fetches a chapter outline at runtime to draw the rail.
+    # lessons/ is source and is deliberately not deployed, so publish each toc into data/,
+    # which is. Serving it from lessons/ is what broke: on 2026-08-04 lessons/** was added to
+    # the firebase.json ignore list on the reasoning that nothing served depended on it, and
+    # the course home fetch had been depending on it since long before that.
+    for course in COURSES:
+        toc = json.load(open(os.path.join(ROOT, 'lessons', course, 'toc.json'), encoding='utf-8'))
+        tp = os.path.join(ROOT, 'data', 'toc-' + course + '.json')
+        open(tp, 'w', encoding='utf-8').write(json.dumps(toc, ensure_ascii=False, separators=(',', ':')))
+
     # verify round-trip: re-parse and compare semantically
     raw = open(DATA, encoding='utf-8').read()
     got = json.loads(raw[len(PREFIX):raw.index(';\nwindow.__CHDATA')])

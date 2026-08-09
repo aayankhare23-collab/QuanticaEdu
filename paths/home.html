@@ -960,8 +960,16 @@
   var _si=document.querySelector('#streakPill span'); if(_si) _si.textContent=STREAK_ICO;
   if(IS_ALG){ var _bm=document.getElementById('brandMark'); if(_bm && _bm.tagName.toLowerCase()==='img') _bm.src='/paths/assets/cove/cove-hero.png'; }   // Algebra home shows Cove, not Sprout
 
-  // load the real course structure, then render
-  fetch('/lessons/'+COURSE+'/toc.json').then(function(r){ return r.json(); }).then(function(toc){
+  // load the real course structure, then render. This reads data/, not lessons/: lessons/ is
+  // authoring source and is not deployed, so fetching it here returned the 404 page and every
+  // visit to the course home died in the catch below.
+  fetch('/data/toc-'+COURSE+'.json').then(function(r){
+    // Check the status before parsing. A missing file returns the 404 HTML page, and calling
+    // r.json() on that throws a SyntaxError that reads like a parse bug rather than a missing
+    // asset, which is how a 404 stayed invisible here for four days.
+    if(!r.ok) throw new Error('toc '+r.status+' for '+COURSE);
+    return r.json();
+  }).then(function(toc){
     state.chapters=toc;
     var prog=loadProgress();
     state.done=prog.done;
@@ -989,7 +997,8 @@
     document.getElementById('footNote').textContent='Quantica course home · '+COURSE_NAME+' · '+toc.length+' chapters, '+_les+' lessons + '+_sets+' practice & challenge sets.';
     renderAll();
   }).catch(function(e){
-    document.getElementById('chapterCard').innerHTML='<div class="csub">Could not load the course outline. Make sure the site is served over http (not opened as a file).</div>';
+    console.error('course home could not load its outline:', e);
+    document.getElementById('chapterCard').innerHTML='<div class="csub">We could not load this course just now. Try reloading the page, or <a href="/landing">open the course app</a> instead.</div>';
   });
 })();
 </script>
