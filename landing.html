@@ -2458,7 +2458,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   // Both behaviours read the same constant on purpose. A separate legacy cutoff could drift
   // from the switch-on date, and every account in the gap would be charged despite the
   // pricing FAQ promising they keep their access. One number cannot disagree with itself.
-  window.PAYWALL_LIVE_AT = Date.parse('2026-08-08T23:54:23Z');   // LIVE. Accounts before this are legacy.
+  window.PAYWALL_LIVE_AT = Date.parse('2099-01-01T00:00:00Z');   // ROLLED BACK: paywall off
   window.paywallOn = function(){
     try{ return Date.now() >= window.PAYWALL_LIVE_AT; }catch(e){ return false; }
   };
