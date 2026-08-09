@@ -11,6 +11,9 @@ early access.
 - **`docs/AUTHORING.md`** before writing any lesson content. It is the core, most-repeated
   work and the easiest to get wrong.
 - **`docs/figure-design-system.md`** before making any figure.
+- **`docs/SESSION-2026-08-09.md`** first if you are picking this up cold. It is the newest
+  handoff, it explains the paywall's exact state and the four checks that gate switching it
+  on, and it corrects several numbers the older docs got wrong.
 - **`docs/HANDOFF.md`** for where the work currently stands and the traps a fresh session
   would otherwise rediscover. Written 2026-07-31.
 - **Memory** at `~/.claude/projects/-Users-aayankhare-Claude-Projects-QuanticaEdu/memory/`
@@ -114,5 +117,10 @@ exceptions.
 - Live analytics is GA4 (`G-98WQ2BFR6N`), gated to real visitors only (loads on
   quanticaedu.com/www hostnames; `/?imfounder=1` sets a device opt-out). Funnel events:
   `course_open`, `lesson_start`, `lesson_complete`, plus `course_switch`, sign-in prompts.
-- Outstanding user-side checks (not code): confirm Google sign-in works on the live authorized
-  domain, Firestore rules deployed, support@/privacy@ mailboxes.
+- **Paywall: code-complete and enforced, switched OFF.** `PAYWALL_LIVE_AT` in landing.html is
+  `2099-01-01`, so everything is free. Switching on is editing that one date, and four checks
+  must come back clean first, all of them outside this repo. They are listed in
+  `docs/SESSION-2026-08-09.md`. Use a future-dated moment, never a backdated one.
+- Outstanding user-side checks (not code): a real-card Stripe purchase, `APP_URL`, the Stripe
+  webhook's event list, Firestore rules deployed, confirm Google sign-in works on the live
+  authorized domain, support@/privacy@ mailboxes.
