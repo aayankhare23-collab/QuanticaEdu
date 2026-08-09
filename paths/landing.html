@@ -182,7 +182,13 @@
   @media(min-width:901px){.mobile-menu{display:none!important}}
 
   .hero{padding-top:clamp(44px,5vw,80px)}
-  .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(40px,5vw,72px);align-items:center}
+  /* start, not center. The headline moved out of this grid, so the left column is now short
+     against a 541px figure and centring floated it 172px down, leaving a gap under the
+     headline wider than the copy itself. */
+  .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(40px,5vw,72px);align-items:start}
+  /* Full size, the same clamp every other h1 on the page uses. It can be this large only
+     because .hero-h1 spans the full wrap rather than the left column: measured, the longest
+     line needs about 960px at 5.6rem, against the 558px a half-width column offers. */
   .hero h1{margin:22px 0 24px}
   .hero .lead{max-width:33ch}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 16px}
@@ -393,13 +399,16 @@
 </header>
 
 <section class="hero">
+  <!-- The headline sits above the grid, not inside the left column. It is 46 characters, and
+       at full size that needs about 960px for its longest line, which no half-width column on
+       a 1280px screen can give it. Full width is what lets it stay as large as it was. -->
+  <div class="wrap"><h1 class="hero-h1">Master mathematics from prealgebra to <span class="mark-block">calculus</span></h1></div>
   <div class="wrap hero-grid">
     <div>
-      <h1>Understand math.<br>Don&rsquo;t <span class="mark-block">memorize</span> it.</h1>
-      <p class="lead">Learn by solving, with Milo. A tutor that helps you find the answer yourself.</p>
+      <p class="lead">Perfect for grades 5 to 12. Master the critical thinking and problem solving to excel in school and beyond.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href="/landing?start=1">Start free</a>
-        <a class="btn btn-ghost btn-lg" href="#tutor">See how it works</a>
+        <a class="btn btn-primary btn-lg" href="/courses">Course catalog</a>
+        <a class="btn btn-ghost btn-lg" href="#pricing">See pricing</a>
       </div>
     </div>
     <div class="hero-proof reveal"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
