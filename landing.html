@@ -2701,6 +2701,12 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     }
     window.__notSignedIn=false;
     hideAuthModal();
+    // Still on their way to Stripe. Put the calm redirect screen back up rather than revealing
+    // the app that openLesson() opened behind the sign-in modal, because checkout does not
+    // resume until the subscription read settles and the wait reads as the app just loading
+    // instead. It carries its own 8s failsafe, so a checkout that never starts still lands
+    // them somewhere real.
+    if(window.__pendingPlan && window.showCheckoutRedirect) showCheckoutRedirect();
     // The boot screen holds until access is known, but ONLY while charging is on. With the
     // switch off isAccessGranted returns true unconditionally, so holding buys nothing and
     // costs every signed-in user a Firestore round trip of blank screen, or a flat 6 seconds
@@ -8783,6 +8789,13 @@ async function sendTutorMsg() {
   var AccountTour={
     start:function(){
       try{ if(localStorage.getItem(KEY)) return; }catch(e){}
+      // Someone who clicked Subscribe is on their way to Stripe. This opens a sample lesson
+      // and pins spotlights over it, which buries the thing they came to do, and checkout
+      // navigates away moments later so the tour is torn off mid-step anyway. The seen flag
+      // is deliberately not set, so it still runs on their next visit. The onboarding
+      // questions already had this guard; both sign-up paths call straight into here and
+      // never got it, which is why creating an account from Subscribe landed on the tutorial.
+      if(window.__pendingPlan || window.__checkoutStarted) return;
       if(active) return;
       // Close any active landing auto-tour so two spotlights never stack.
       try{ if(window.__tourSkip) window.__tourSkip(); }catch(e){}
