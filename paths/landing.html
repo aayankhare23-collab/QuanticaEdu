@@ -15,20 +15,54 @@
      or the two halves of the funnel land in different pixels and neither one sees a conversion. -->
 <script>
   window.META_PIXEL_ID='';   // <-- same ID as landing.html
+  window.CLARITY_ID='';      // <-- from clarity.microsoft.com. Set masking to Strict FIRST.
   window.fbTrack=function(n,p){ try{ if(window.fbq) fbq('track',n,p||{}); }catch(e){} };
   window.fbTrackCustom=function(n,p){ try{ if(window.fbq) fbq('trackCustom',n,p||{}); }catch(e){} };
+
+  // One gate for both advertising tools. privacy.html section 6 promises this exact
+  // behaviour, and an opt-out named on a legal page that does nothing is worse than no
+  // opt-out at all, so this has to stay in step with that copy.
+  window.__qaAdsAllowed=function(){
+    try{
+      var h=location.hostname;
+      if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com') return false;
+      if(localStorage.getItem('qa_internal')==='1') return false;
+      // Global Privacy Control. A recognised opt-out signal under California law, unlike
+      // Do Not Track, which was never given an agreed meaning. Firefox, Brave and
+      // DuckDuckGo send it natively.
+      if(navigator.globalPrivacyControl===true) return false;
+      // Europe and the UK. Both tools need prior consent there under ePrivacy and PECR,
+      // and there is no consent banner on this site, so they simply do not load. Timezone
+      // is a crude proxy for location, but it needs no vendor and no extra request, and it
+      // fails in the safe direction, which is the property that matters here.
+      var tz=''; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){}
+      if(tz.indexOf('Europe/')===0) return false;
+      return true;
+    }catch(e){ return false; }
+  };
+
   (function(){try{
-    var id=window.META_PIXEL_ID; if(!id) return;
-    var h=location.hostname; if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com') return;
-    if(localStorage.getItem('qa_internal')==='1') return;
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('dataProcessingOptions',['LDU'],0,0);
-    fbq('set','autoConfig',false,id);
-    fbq('init',id);
-    fbq('track','PageView');
+    if(!window.__qaAdsAllowed()) return;
+    var id=window.META_PIXEL_ID;
+    if(id){
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('dataProcessingOptions',['LDU'],0,0);
+      fbq('set','autoConfig',false,id);
+      fbq('init',id);
+      fbq('track','PageView');
+    }
+    // Clarity, marketing pages only. It is deliberately absent from landing.html, because
+    // that file holds the course app and privacy.html section 7 states plainly that Clarity
+    // never runs where lessons are worked. Do not copy this half into the app.
+    var cid=window.CLARITY_ID;
+    if(cid){
+      (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',cid);
+    }
   }catch(e){}})();
 </script>
 
@@ -146,6 +180,11 @@
   h2{font-size:clamp(2.1rem,4.6vw,3.6rem);letter-spacing:-.035em}
   h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.2}
   p.lead{font-size:clamp(1.12rem,1.5vw,1.32rem);line-height:1.5;color:var(--gray)}
+  /* The account rule, set smaller and lighter than the sell above it. It has to be on the
+     homepage, because this is the only place that says who holds the account and the grade
+     range directly above it reads younger than 13. Muted rather than cut, so it informs a
+     parent without competing with the line that is doing the selling. */
+  .lead-note{display:block;margin-top:.6em;font-size:.82em;color:var(--gray-soft);line-height:1.45}
   .eyebrow{font-family:var(--ff-mono);font-size:.9rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.6em}
   .eyebrow::before{content:"";width:22px;height:2px;background:var(--grass);border-radius:0}
 
@@ -413,7 +452,7 @@
   <div class="wrap"><h1 class="hero-h1">Master mathematics from prealgebra to <span class="mark-block">calculus</span></h1></div>
   <div class="wrap hero-grid">
     <div>
-      <p class="lead">Perfect for grades 5 to 12. Master the critical thinking and problem solving to excel in school and beyond.</p>
+      <p class="lead">Perfect for grades 5 to 12. Master the critical thinking and problem solving to excel in school and beyond. <span class="lead-note">Accounts are for ages 13 and up, so for a younger learner a parent or guardian signs up and works through it together.</span></p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-lg" data-cta="hero_catalog" href="/courses">Course catalog</a>
         <a class="btn btn-ghost btn-lg" data-cta="hero_pricing" href="#pricing">See pricing</a>
