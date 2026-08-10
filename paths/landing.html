@@ -8,6 +8,13 @@
 <link rel="canonical" href="https://quanticaedu.com/">
 <link rel="icon" href="/favicon.svg">
 
+<!-- Meta domain verification. This file is what "/" serves, via the firebase.json rewrite,
+     and the root URL is the one Meta fetches, so the tag has to live here rather than in
+     landing.html. It must stay in <head>, because Meta stops parsing at </head>. Removing it
+     later silently un-verifies the domain, which quietly degrades iOS attribution rather
+     than failing loudly. -->
+<meta name="facebook-domain-verification" content="6z01kn9364xebpwi1dy8voth2wpe03" />
+
 <!-- Meta pixel. This is the page the ads land on, so it matters most here. Inert until
      META_PIXEL_ID is set, and gated exactly like GA4: real domain only, founder device opt-out
      honoured. autoConfig is off so Meta does not harvest button text and form fields, and
