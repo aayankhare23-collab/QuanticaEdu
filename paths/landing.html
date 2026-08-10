@@ -302,6 +302,9 @@
   .price-card li{font-size:.95rem;display:flex;gap:10px;align-items:flex-start}
   .price-card li::before{content:"";width:16px;height:16px;flex:none;margin-top:3px;border-radius:0;background:var(--grass)}
   .price-note{margin-top:22px;font-size:.88rem;color:var(--gray);max-width:56ch}
+  /* Sits between the pricing heading and the cards, so it governs both paid plans rather than
+     being repeated on each. The heading lost its inline margin-bottom to make room. */
+  .price-lede{margin:14px 0 clamp(28px,3.5vw,44px);font-size:1rem;font-weight:300;color:var(--gray);max-width:52ch}
 
   /* good to know (native details, no JS) */
   .faq{max-width:760px;margin:0 auto}
@@ -521,7 +524,8 @@
 
 <section id="pricing">
   <div class="wrap">
-    <h2 style="margin-bottom:clamp(28px,3.5vw,44px)"><span class="mark">Start free. Keep going for $14.99.</span></h2>
+    <h2><span class="mark">Start free. Keep going for $14.99.</span></h2>
+    <p class="price-lede">Early bird pricing while Quantica is in early access. Subscribe before the price goes up.</p>
     <div class="price-grid">
       <div class="price-card">
         <div class="price-tag">Free to start</div>
@@ -539,6 +543,7 @@
         <div class="price-tag price-tag--pro">Everything</div>
         <div class="price-name">Quantica, monthly</div>
         <div class="price-amt">$14.99<span class="price-per">/month</span></div>
+        <p class="price-save">Early bird price</p>
         <ul>
           <li>Every chapter of every course</li>
           <li>Milo, your tutor, on every problem</li>
