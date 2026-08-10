@@ -2554,6 +2554,12 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(!auth.currentUser){ window.__pendingPlan=plan; if(window.hideCheckoutRedirect) hideCheckoutRedirect(); showAuthModal('in'); return; }
     if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',
       value: plan==='yearly' ? 99.99 : 14.99, content_name: plan});
+    // Remember which plan this is. Stripe sends the customer off-domain and brings them back
+    // to ?payment=success carrying nothing that says what they bought, and success_url is
+    // built in functions/index.js, which this repo never deploys. So the only way the Purchase
+    // event can report the real number is to write it down before leaving. Stripe checkout
+    // sessions live 24 hours, so anything older than that belongs to an abandoned attempt.
+    try{ localStorage.setItem('qa_plan', plan); localStorage.setItem('qa_plan_t', String(Date.now())); }catch(e){}
     var fns=firebase.functions();
     fns.httpsCallable('createCheckoutSession')({plan:plan}).then(function(result){
       window.location.href=result.data.url;
@@ -2579,8 +2585,23 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var _pay=p.get('payment');
     if(_pay==='success' || _pay==='cancelled'){
       if(_pay==='success'){
-        // The only event Meta can optimise revenue against. Fires once, on the Stripe redirect back.
-        if(window.fbTrack) fbTrack('Purchase',{currency:'USD',value:14.99});
+        // The only event Meta can optimise revenue against. Fires once, on the Stripe redirect
+        // back. The value used to be hardcoded 14.99 for every purchase, so a $99.99 yearly
+        // subscription reported 14.99 and yearly ROAS read 6.7 times too low. Optimising on
+        // that number would have meant cutting whichever ad set was actually selling the
+        // better plan. The plan is written down by startCheckout before the redirect.
+        if(window.fbTrack){
+          var _pl=null, _plT=0;
+          try{ _pl=localStorage.getItem('qa_plan'); _plT=parseInt(localStorage.getItem('qa_plan_t')||'0',10); }catch(e){}
+          var _fresh = _plT && (Date.now()-_plT) < 864e5;   // 24h, one Stripe session lifetime
+          // No value beats a wrong value. If the plan cannot be established, Meta still gets
+          // the conversion and simply has no revenue to attribute, which is recoverable.
+          // A confidently wrong 14.99 is not, because nothing downstream flags it.
+          if(_fresh && _pl==='yearly')       fbTrack('Purchase',{currency:'USD',value:99.99,content_name:'yearly'});
+          else if(_fresh && _pl==='monthly') fbTrack('Purchase',{currency:'USD',value:14.99,content_name:'monthly'});
+          else                               fbTrack('Purchase',{currency:'USD',content_name:'unknown'});
+          try{ localStorage.removeItem('qa_plan'); localStorage.removeItem('qa_plan_t'); }catch(e){}
+        }
         // Stripe redirects the moment the card authorises, while the webhook writes
         // type:'paid' on a separate delivery. Losing that race used to leave a customer
         // reading this toast on top of a course that was still locked, with nothing that

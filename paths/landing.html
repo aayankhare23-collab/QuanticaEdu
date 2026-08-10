@@ -389,20 +389,20 @@
       Quantica
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a class="link" href="#tutor">The tutor</a>
-      <a class="link" href="/courses">Courses</a>
-      <a class="link" href="#pricing">Pricing</a>
-      <a class="link" href="/blog">Blog</a>
+      <a class="link" data-cta="nav_tutor" href="#tutor">The tutor</a>
+      <a class="link" data-cta="nav_courses" href="/courses">Courses</a>
+      <a class="link" data-cta="nav_pricing" href="#pricing">Pricing</a>
+      <a class="link" data-cta="nav_blog" href="/blog">Blog</a>
     </nav>
     <div class="nav-cta">
-      <a class="signin" id="navAcct" href="/landing?signin=1">Sign in</a>
-      <a class="btn btn-primary" href="/landing?start=1">Start free</a>
+      <a class="signin" id="navAcct" data-cta="nav_signin" href="/landing?signin=1">Sign in</a>
+      <a class="btn btn-primary" data-cta="nav_start" href="/landing?start=1">Start free</a>
       <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="menuBtn"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#tutor">The tutor</a><a href="/courses">Courses</a><a href="#pricing">Pricing</a><a href="/blog">Blog</a><a href="/landing?signin=1">Sign in</a>
-    <a class="btn btn-primary" href="/landing?start=1">Start free</a>
+    <a data-cta="mob_tutor" href="#tutor">The tutor</a><a data-cta="mob_courses" href="/courses">Courses</a><a data-cta="mob_pricing" href="#pricing">Pricing</a><a data-cta="mob_blog" href="/blog">Blog</a><a data-cta="mob_signin" href="/landing?signin=1">Sign in</a>
+    <a class="btn btn-primary" data-cta="mob_start" href="/landing?start=1">Start free</a>
   </div>
 </header>
 
@@ -415,8 +415,8 @@
     <div>
       <p class="lead">Perfect for grades 5 to 12. Master the critical thinking and problem solving to excel in school and beyond.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href="/courses">Course catalog</a>
-        <a class="btn btn-ghost btn-lg" href="#pricing">See pricing</a>
+        <a class="btn btn-primary btn-lg" data-cta="hero_catalog" href="/courses">Course catalog</a>
+        <a class="btn btn-ghost btn-lg" data-cta="hero_pricing" href="#pricing">See pricing</a>
       </div>
     </div>
     <div class="hero-proof reveal"><svg class="py wp-svg" viewBox="0 0 360 384" xmlns="http://www.w3.org/2000/svg"><style>
@@ -537,7 +537,7 @@
           <li>Practice &amp; challenge sets</li>
           <li>No card required</li>
         </ul>
-        <a class="btn btn-ghost" style="width:100%;justify-content:center" href="/landing?start=1">Start free &rarr;</a>
+        <a class="btn btn-ghost" style="width:100%;justify-content:center" data-cta="price_free" href="/landing?start=1">Start free &rarr;</a>
       </div>
       <div class="price-card price-card--pro">
         <div class="price-tag price-tag--pro">Everything</div>
@@ -551,7 +551,7 @@
           <li>New lessons as they are written</li>
           <li>Cancel any time</li>
         </ul>
-        <a class="btn btn-primary" style="width:100%;justify-content:center" href="/landing?upgrade=monthly">Subscribe &rarr;</a>
+        <a class="btn btn-primary" style="width:100%;justify-content:center" data-cta="price_monthly" href="/landing?upgrade=monthly">Subscribe &rarr;</a>
       </div>
       <div class="price-card price-card--pro">
         <div class="price-tag price-tag--pro">Best value</div>
@@ -565,7 +565,7 @@
           <li>New lessons as they are written</li>
           <li>Cancel any time</li>
         </ul>
-        <a class="btn btn-primary" style="width:100%;justify-content:center" href="/landing?upgrade=yearly">Subscribe &rarr;</a>
+        <a class="btn btn-primary" style="width:100%;justify-content:center" data-cta="price_yearly" href="/landing?upgrade=yearly">Subscribe &rarr;</a>
       </div>
     </div>
     <p class="price-note">Chapter 1 of every course is free, no card required. Everything after that is $14.99 a month, still less than a single tutoring session.</p>
@@ -589,7 +589,7 @@
 <section class="final">
   <div class="wrap">
     <h2><span class="mark">Start <span class="mark-block">solving</span>.</span></h2>
-    <a class="btn btn-primary btn-lg" href="/landing?start=1">Start free &rarr;</a>
+    <a class="btn btn-primary btn-lg" data-cta="final_start" href="/landing?start=1">Start free &rarr;</a>
   </div>
 </section>
 
@@ -695,22 +695,57 @@
 <script>
 (function(){
   try{
-    var ctas=[].slice.call(document.querySelectorAll('a[href^="/landing"]'));
-    ctas.forEach(function(a,i){
+    // Every link on the page, not just the ones pointing at /landing. The old selector was
+    // a[href^="/landing"], which missed both hero buttons, and the hero is the first thing
+    // an ad visitor sees. "Course catalog" goes to /courses and "See pricing" is an anchor,
+    // so neither matched and the two most prominent buttons on the page reported nothing.
+    var ctas=[].slice.call(document.querySelectorAll('a[href]'));
+
+    // What the destination MEANS, read from the href rather than guessed from one substring.
+    // The old test was href.indexOf('signin')>-1?'signin':'start', so /landing?upgrade=monthly
+    // and /landing?upgrade=yearly both reported 'start' and both fired the free-signup event
+    // at Meta. Paid intent and free intent were indistinguishable, which is the wrong thing
+    // to teach an optimiser that is being asked to find subscribers.
+    function destOf(href){
+      if(href.indexOf('/landing')===0){
+        if(href.indexOf('upgrade=yearly')>-1) return 'upgrade_yearly';
+        if(href.indexOf('upgrade=monthly')>-1) return 'upgrade_monthly';
+        if(href.indexOf('signin')>-1) return 'signin';
+        return 'start';
+      }
+      if(href.charAt(0)==='#') return 'anchor';
+      if(href.indexOf('mailto:')===0) return 'email';
+      if(href.charAt(0)==='/') return 'page';
+      return 'external';
+    }
+
+    ctas.forEach(function(a){
       a.addEventListener('click',function(){
         try{
           var href=a.getAttribute('href')||'';
+          var dest=destOf(href);
+          // NEVER a.textContent. Line ~745 below overwrites the nav link's text with
+          // localStorage 'quantica.user', which the app writes as the display name or, with
+          // no display name set, the local-part of the email address. Reading textContent
+          // here put a real person's name or half their email into GA4 as an event
+          // parameter, on a property deliberately configured kids-safe. data-cta is an
+          // explicit, stable name that no user data can ever reach.
           track('cta_click',{
-            cta_label:(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40),
-            cta_position:String(i+1),
-            cta_target:href.indexOf('signin')>-1?'signin':'start',
+            cta:a.getAttribute('data-cta')||href.slice(0,40),
+            cta_dest:dest,
             transport_type:'beacon'
           });
-          // The earliest intent signal an ad campaign can optimise against, and by far the
-          // highest-volume one. A custom event rather than Lead, because clicking "Start free"
-          // is intent, not a lead, and mislabelling it would teach Meta the wrong thing.
-          if(href.indexOf('signin')===-1 && window.fbTrackCustom){
-            fbTrackCustom('StartFreeClick',{cta_position:String(i+1)});
+          // Free-signup intent only. A custom event rather than Lead, because clicking
+          // "Start free" is intent, not a lead, and mislabelling it teaches Meta the wrong
+          // thing. The two Subscribe buttons are deliberately excluded now; they are paid
+          // intent and the app fires InitiateCheckout for them once checkout actually opens.
+          // __qaKnownUser is set further down when localStorage says this browser has already
+          // signed in. That block also rewrites the account link's href to ?start=1, so
+          // without this guard a returning user clicking their own name reads as fresh
+          // signup intent. The listener runs at click time, long after that block, so the
+          // flag is reliably set by the time this is read.
+          if(dest==='start' && !window.__qaKnownUser && window.fbTrackCustom){
+            fbTrackCustom('StartFreeClick',{cta:a.getAttribute('data-cta')||'unnamed'});
           }
         }catch(e){}
       });
@@ -737,12 +772,24 @@
    localStorage on sign-in and clears it on sign-out, and this reads that.
    It is a HINT, not authority: it can go stale if the session is ended elsewhere. That is
    acceptable because the link goes to the app either way, and the app checks properly.
-   Only a first name is stored, never the email. */
+   This value is NOT always a first name. The app writes
+   (user.displayName||user.email).split(/[\s@]/)[0], so an account with no display name
+   stores the local-part of the email address. Treat it as personal data and never let it
+   reach an analytics parameter, which is why the click tracker above reads data-cta and
+   never textContent. */
 (function(){
   try{
     var n=localStorage.getItem('quantica.user');
     var a=document.getElementById('navAcct');
-    if(n&&a){ a.textContent=n; a.setAttribute('href','/landing?start=1'); a.classList.add('is-in'); }
+    if(n&&a){
+      a.textContent=n; a.setAttribute('href','/landing?start=1'); a.classList.add('is-in');
+      // This link is now an account link, not a signup link. Renaming it keeps the GA4 report
+      // honest, and the flag stops the Meta free-signup event firing for somebody who already
+      // has an account. Feeding existing users into a signup-intent audience teaches the
+      // optimiser to go find more people who have already signed up.
+      a.setAttribute('data-cta','nav_account');
+      window.__qaKnownUser=true;
+    }
   }catch(e){}
 })();
 </script>
