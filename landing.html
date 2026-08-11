@@ -115,7 +115,9 @@
   .auth-dropdown a{display:block;padding:9px 13px;border-radius:0;font-size:14px;font-weight:500;color:var(--slate);cursor:pointer;transition:background .12s}
   .auth-dropdown a:hover{background:var(--soft);color:var(--navy)}
   /* AUTH MODAL */
-  .auth-ov{position:fixed;inset:0;background:rgba(15,25,45,.48);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:4000;display:grid;place-items:center;padding:16px}
+  /* Above .ob-ov (4200). At 4000 the onboarding modal could cover the sign-in modal when a
+     Firebase callback opened auth after onboarding was already on screen. */
+  .auth-ov{position:fixed;inset:0;background:rgba(15,25,45,.48);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:4300;display:grid;place-items:center;padding:16px}
   .auth-card{background:#FCFEFB;background-image:linear-gradient(rgba(21,128,61,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(21,128,61,.07) 1px,transparent 1px);background-size:24px 24px;border-radius:0;padding:38px 34px 30px;width:100%;max-width:400px;box-shadow:0 28px 64px -14px rgba(15,25,45,.34);position:relative;animation:authIn .22s ease}
   @keyframes authIn{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
   .auth-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;color:var(--slate);cursor:pointer;line-height:1;padding:4px 6px;border-radius:0}
@@ -1219,8 +1221,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 <!-- Sign-in gate: covers the app until we know who you are, so the course never flashes before auth resolves. -->
 <div id="bootGate" style="position:fixed;inset:0;z-index:9998;background:#FCFEFB;display:grid;place-items:center;font-family:system-ui,sans-serif">
   <div style="text-align:center">
-    <img src="/paths/assets/spot/spot-hero.png" alt="Milo" style="height:74px;width:auto;display:block;margin:0 auto">
-    <div style="margin-top:14px;font-size:14px;color:#52685A">Checking your account&hellip;</div>
+    <!-- spot-happy is 42KB against spot-hero's 201KB, same visual job, on the one frame that is
+         competing with the rest of the app for a phone's bandwidth. -->
+    <img src="/paths/assets/spot/spot-happy.png" alt="Milo" style="height:74px;width:auto;display:block;margin:0 auto">
+    <!-- Was "Checking your account", which is addressed to someone who by definition has no
+         account, one tap after an ad promising "Start free". This wording is true in every auth
+         state, so it needs no branch. -->
+    <div style="margin-top:14px;font-size:14px;color:#52685A">Loading Quantica&hellip;</div>
   </div>
 </div>
 <script>setTimeout(function(){ if(!window.__authResolved){ window.__notSignedIn=true; var b=document.getElementById('bootGate'); if(b) b.remove(); } },7000);</script>
@@ -2045,6 +2052,32 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
           if(window.__maybeResumeCheckout) __maybeResumeCheckout();   // auth may already be in
         } else {
           window.openLesson();                                 // always show the app shell (dashboard)
+          /* THE FLASH FIX. Open the onboarding modal here, synchronously, while #bootGate
+             (z-index 9998) still covers the screen. .ob-ov is 4200, so the modal paints
+             underneath the gate and both are revealed in the same frame.
+
+             What this replaces was two unrelated clocks. openLesson painted the dashboard on
+             a 30ms poll after DOMContentLoaded, while the modal was scheduled on a fixed
+             load+700ms timer, and the gate lifted on an asynchronous Firebase round trip.
+             Both outcomes were bad. If auth won, the bare dashboard sat alone for whatever
+             was left of the 700ms, which on 4G is long enough to start reading, and that is
+             exactly the "Start free just dumps you in prealgebra" impression. If auth lost,
+             maybeOpen hit its bootGate guard, returned, and never re-armed, so slow
+             connections silently got no onboarding at all.
+
+             Deleting the second clock removes the ordering problem rather than tuning it.
+             The gate is NOT dropped early; doing that would show a grandfathered user a
+             locked course once charging is on, which the comment further down already warns
+             about. Gated on getLastLesson() being null because someone with local progress
+             is not a first-run visitor, and on the deep-link params because a visitor who
+             asked for a specific lesson should get it, not a questionnaire. */
+          try{
+            if(window.Onboard && Onboard.flow!=='off'
+               && !/[?&](lesson|pset|practice|signin)=/.test(s)
+               && !(window.Rewards && Rewards.getLastLesson && Rewards.getLastLesson())){
+              Onboard.open({});
+            }
+          }catch(e){}
         }
         // deep-nav (gotoLesson/openPSet) needs the app fully rendered, so run it after openLesson
         if(pm && typeof window.openPSet==='function'){ window.openPSet(parseInt(pm[1],10), pt?pt[1]:'practice'); }
@@ -2239,11 +2272,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       <div class="course-tabs" id="courseTabs" role="tablist" aria-label="Choose a course"></div>
       <div class="dash-hero" id="dashHero">
         <div>
-          <span class="eyebrow">Continue learning</span>
+          <!-- First-visit wording, because this is what paints before renderDashHero runs.
+               Leaving "Continue learning" here showed the same contradiction one frame earlier. -->
+          <span class="eyebrow">Start here</span>
           <h3 id="dashResumeTitle">1.1 · Why Begin with Arithmetic?</h3>
           <p id="dashResumeChapter">Chapter 1: The Rules of Arithmetic</p>
         </div>
-        <button class="btn btn-primary" id="dashResumeBtn" onclick="showLesson('1.1','Why Begin with Arithmetic?','The Rules of Arithmetic',1)">Resume lesson →</button>
+        <button class="btn btn-primary" id="dashResumeBtn" onclick="showLesson('1.1','Why Begin with Arithmetic?','The Rules of Arithmetic',1)">Start lesson 1.1 →</button>
       </div>
       <div class="dash-progress">
         <span style="white-space:nowrap;font-weight:600;color:var(--navy)">Course progress</span>
@@ -6232,6 +6267,12 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var dg=document.querySelector('.dg-overlay.on'); if(dg){ dg.classList.remove('on'); return; }   // let Escape leave the diagnostic quiz
     var auth=document.getElementById('authOv'); if(auth && getComputedStyle(auth).display!=='none'){ if(window.hideAuthModal) hideAuthModal(); return; }
     var ws=document.querySelector('.workspace'); if(ws && ws.classList.contains('tut-open')){ if(window.WS&&WS.togglePanel) WS.togglePanel('tutor'); return; }
+    // The onboarding modal was missing from this list, so Escape on it fell through to
+    // navExit(), which sends the visitor to /paths/home.html, which bounces anyone signed out
+    // back to the marketing page. Pressing Escape on a questionnaire ejected you from the app
+    // in two redirects.
+    var ob=document.getElementById('obOv');
+    if(ob && ob.classList.contains('on')){ if(window.Onboard) Onboard.snoozeClose(); return; }
     navExit();
   });
 
@@ -6248,6 +6289,17 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     history.go(level-window._navLevel); return false;                  // shallower: pop, popstate renders
   };
   window.addEventListener('popstate',function(ev){
+    // Back closes the onboarding modal instead of walking out of the course. This matters more
+    // than Escape, because Meta traffic is overwhelmingly mobile and a back swipe is how people
+    // dismiss anything sitting over content. Without it, closeLesson() ran and the visitor was
+    // ejected to the marketing page in two hops. Costs one extra history entry, and never
+    // strands anyone under a permanent overlay, which is the failure worth avoiding.
+    var _ob=document.getElementById('obOv');
+    if(_ob && _ob.classList.contains('on')){
+      if(window.Onboard) Onboard.snoozeClose();
+      try{ history.pushState({v:'dash',course:CURRENT_COURSE},'',location.pathname+location.search); }catch(e){}
+      return;
+    }
     var s=ev.state||{v:'landing'};
     window._navApply=true;
     try{
@@ -7124,10 +7176,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var L=LESSONS[key]||{};
     var ch=parseInt(key,10);
     var chInfo=TOC.filter(function(c){return c.n===ch;})[0];
-    if(ey) ey.textContent='Continue learning';
+    // "Continue learning" and "Resume lesson" are wrong for someone who has never opened a
+    // lesson, and they sit directly above "0 of N lessons complete", which contradicts them on
+    // the same screen. getLastLesson() being null is the honest test, since key falls back to
+    // liveOrder[0] just above and would otherwise look like real progress.
+    var fresh = !(window.Rewards && Rewards.getLastLesson && Rewards.getLastLesson());
+    if(ey) ey.textContent = fresh ? 'Start here' : 'Continue learning';
     if(t) t.textContent=key+' · '+(L.title||'');
     if(p) p.textContent='Chapter '+ch+(chInfo?': '+chInfo.t:'');
-    if(b){ b.textContent='Resume lesson →'; b.onclick=function(){showLesson(key,L.title||'',chInfo?chInfo.t:'',ch);}; }
+    if(b){ b.textContent=(fresh?'Start lesson '+key+' →':'Resume lesson →'); b.onclick=function(){showLesson(key,L.title||'',chInfo?chInfo.t:'',ch);}; }
   }
   window.renderDashHero=renderDashHero;
 
@@ -8941,12 +8998,18 @@ async function sendTutorMsg() {
 
 <style>
   /* ===== First-run onboarding ===== */
+  /* Scrolls, and starts at the top rather than centring. Centred with no overflow, the primary
+     button sat 83px below the fold at 360x480 and the overlay would not scroll, while openLesson
+     has already set body overflow hidden. Someone who cannot reach the button reaches for Back
+     instead, and most Meta traffic is on a phone. These four properties are copied from
+     .pr-overlay at line 2072, which already solves this correctly one module over. */
   .ob-ov{position:fixed;inset:0;z-index:4200;background:rgba(18,40,28,.55);backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);display:none;place-items:center;padding:20px}
-  .ob-ov.on{display:grid}
+    -webkit-backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;
+    overflow-y:auto;padding:40px 16px}
+  .ob-ov.on{display:flex}
   .ob-card{background:#FCFEFB;background-image:linear-gradient(rgba(21,128,61,.07) 1px,transparent 1px),
     linear-gradient(90deg,rgba(21,128,61,.07) 1px,transparent 1px);background-size:24px 24px;
-    border-radius:0;padding:34px 32px 28px;width:100%;max-width:560px;position:relative;
+    border-radius:0;padding:34px 32px 28px;width:100%;max-width:560px;position:relative;margin:auto;
     box-shadow:0 30px 70px -18px rgba(15,40,25,.42);animation:obIn .24s ease}
   @keyframes obIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
   .ob-top{display:flex;align-items:center;gap:10px;margin-bottom:20px}
@@ -8954,8 +9017,11 @@ async function sendTutorMsg() {
   .ob-dots{display:flex;gap:6px;margin-left:auto;margin-right:14px}
   .ob-dot{width:26px;height:5px;border-radius:0;background:#DCEBD5;transition:background .2s}
   .ob-dot.on{background:#15803D}
+  /* 44x44 minimum. This was 29x25 CSS px sitting right beside the progress dots, which is
+     exactly where a thumb lands, and one accidental tap used to end the flow permanently. */
   .ob-skip{background:none;border:none;font-family:'Switzer';font-size:13.5px;color:#7C907E;
-    cursor:pointer;padding:4px 2px;text-decoration:underline;text-underline-offset:3px}
+    cursor:pointer;padding:10px 12px;min-width:44px;min-height:44px;
+    text-decoration:underline;text-underline-offset:3px}
   .ob-q{font-family:'Chillax',system-ui,sans-serif;font-size:26px;font-weight:600;color:#16281B;
     letter-spacing:-.01em;line-height:1.15;margin:0 0 6px}
   .ob-sub{font-family:'Switzer';font-size:14.5px;color:#52685A;margin:0 0 20px;line-height:1.5}
@@ -8974,6 +9040,9 @@ async function sendTutorMsg() {
   .ob-rec-why{font-family:'Switzer';font-size:14.5px;color:#3a5142;margin:0 0 14px;line-height:1.55}
   .ob-facts{display:flex;gap:18px;flex-wrap:wrap;font-family:'Switzer';font-size:13.5px;color:#52685A}
   .ob-facts b{display:block;font-size:19px;color:#16281B;font-weight:700;font-family:'Chillax',system-ui,sans-serif}
+  /* The unfinished-course caveat on the Algebra I card. Quieter than the facts row, because it
+     is honest rather than promotional, but it has to be readable. */
+  .ob-note{font-family:'Switzer';font-size:13px;color:#7C907E;margin:12px 0 0;line-height:1.5}
   .ob-alt{font-family:'Switzer';font-size:14px;color:#52685A;margin:0 0 18px;line-height:1.5}
   .ob-alt button{background:none;border:none;padding:0;font:inherit;color:#15803D;font-weight:600;
     cursor:pointer;text-decoration:underline;text-underline-offset:3px}
@@ -8984,7 +9053,10 @@ async function sendTutorMsg() {
   @media(max-width:560px){.ob-card{padding:26px 20px 22px}.ob-q{font-size:22px}}
 </style>
 
-<div id="obOv" class="ob-ov" role="dialog" aria-modal="true" aria-label="Getting started">
+<!-- Tapping the backdrop closes and snoozes. There was no handler at all, so tapping outside
+     did nothing, which reads as a frozen page and pushes people toward the back gesture. -->
+<div id="obOv" class="ob-ov" role="dialog" aria-modal="true" aria-label="Getting started"
+     onclick="if(event.target===this) Onboard.snoozeClose()">
   <div class="ob-card">
     <div class="ob-top">
       <img class="ob-sprout" src="/paths/assets/spot/spot-happy.png" alt="Milo">
@@ -8996,17 +9068,39 @@ async function sendTutorMsg() {
 </div>
 
 <script>
-/* First-run onboarding. Asks who is learning, roughly where they are, and why they came,
-   then recommends a course. Answers live in localStorage, ride along to Firestore on sign-up,
-   and fire GA4 events so the funnel finally says WHO is showing up. */
+/* First-run onboarding. Asks who is learning and roughly where they are, then recommends a
+   course and drops them into its first lesson. Answers live in localStorage, ride along to
+   Firestore on sign-up, and fire GA4 events so the funnel finally says WHO is showing up.
+
+   Two questions, not four. "What brings you here?" and "How did you find Quantica?" were cut
+   because neither branched anything anywhere in the product, so they cost a cold visitor two
+   full screens and returned nothing to them. Source is also better answered by the UTM capture
+   and the Meta pixel than by asking, since people remember the last thing they typed rather
+   than the ad they scrolled past. recommend() only ever branched on `level`. */
 (function(){
-  var KEY='quantica.onboarding.v1';
+  // v2 deliberately un-suppresses everyone carrying done=1 from the old skip(), which used to
+  // mean "never again, on every device, forever". That includes the founder's own browser.
+  var KEY='quantica.onboarding.v2';
+  // Kill switch. Set to 'off' to revert the flow with one edit and a hosting deploy. The
+  // paywall has one of these; the thing standing in front of the ad budget should too.
+  var FLOW='v2';
   var A={}, i=0;
 
   var COURSES={
     prealgebra:{name:'Prealgebra', slug:'prealgebra',
-      facts:[['12','chapters'],['70','lessons'],['Complete','and live']]},
+      // Counted, never hardcoded, for the same reason as algebra1 below.
+      get facts(){
+        var n=0;
+        try{
+          var c=window.COURSE_REG&&window.COURSE_REG.prealgebra;
+          if(c) c.toc.forEach(function(ch){ ch.s.forEach(function(s){ if(c.lessons[s[0]]) n++; }); });
+        }catch(e){}
+        return [[String(n||70),'lessons'],['Milo','on every problem'],['Chapter 1','free, always']];
+      }},
     algebra1:{name:'Algebra I', slug:'algebra1',
+      // Chapter 8 is partly written and 9 to 15 do not exist. The visitor most likely to reach
+      // that edge is the one who just said they want harder problems, so say it up front.
+      note:'Chapters 1 to 7 are complete. Chapter 8 is partly written, and 9 to 15 are still coming.',
       // Counted when the card renders, never at parse time. The algebra1 chunk is deferred, so
       // a number frozen in here is wrong on first paint and goes stale on every new lesson,
       // which is how it came to claim 13 when 43 were written.
@@ -9018,34 +9112,35 @@ async function sendTutorMsg() {
         }catch(e){}
         // Both of these stay true after the paywall date, unlike a plain "free" claim, which
         // would quietly become false the moment PAYWALL_LIVE_AT is brought forward.
-        var f=[['Problem-first','every lesson'],['Chapter 1','free to try']];
+        var f=[['Milo','on every problem'],['Chapter 1','free, always']];
         if(n) f.unshift([String(n),'lessons ready']);
         return f;
       }}
   };
 
   function steps(){
-    var forChild = A.who==='parent' || A.who==='teacher';
-    var whose = A.who==='parent' ? 'your child' : (A.who==='teacher' ? 'your students' : 'you');
+    // The heading is now a question about where to START, not where someone IS. That deletes a
+    // real grammar bug as a side effect: the old line built 'Where '+(forChild?'is '+whose:...)
+    // so a teacher read "Where is your students in math right now?". The correct `are` was
+    // computed inside recommend() and never reached this function.
+    var lvlQ = A.who==='parent'  ? 'Where should your child start?'
+             : A.who==='teacher' ? 'Where should your students start?'
+             : 'Where should we start?';
     return [
-      {key:'who', q:'Who is learning?', sub:'So the course speaks to the right person.',
+      {key:'who', q:'Who is learning?', sub:'Two quick questions, then you start solving.',
        opts:[['student','I am a student'],['parent','I am a parent or guardian'],
              ['self','I am learning on my own'],['teacher','I teach']]},
-      {key:'level', q:'Where '+(forChild?'is '+whose:'are you')+' in math right now?',
-       sub:'A rough answer is fine. Nothing here is locked in.',
-       opts:[['pre','Fractions, decimals and percents are still shaky'],
-             ['ready','Comfortable with arithmetic, ready to start algebra'],
-             ['alg','Already doing algebra and want to go deeper'],
-             ['unsure','Not sure, help me pick']]},
-      {key:'goal', q:'What brings '+(forChild?whose:'you')+' here?',
-       opts:[['catchup','Catching up on things that were missed'],
-             ['keepup','Keeping up with class'],
-             ['ahead','Getting ahead'],
-             ['test','Preparing for a test'],
-             ['curious','Just curious about math']]},
-      {key:'source', q:'How did you find Quantica?', sub:'Optional, and genuinely useful to know.',
-       opts:[['search','A search engine'],['social','YouTube, TikTok or Instagram'],
-             ['forum','Reddit or a forum'],['friend','Someone told me'],['other','Somewhere else']]}
+      // Same four stored values, so recommend() needs no edit. The labels move from confessing
+      // a weakness to choosing a starting point. Self-reported competence is exactly the field
+      // embarrassment pollutes, and it is the only answer that routes. The two errors are also
+      // not symmetric: sending a strong student to Prealgebra costs a week of boredom and one
+      // tap, sending a weak student to Algebra I costs the student.
+      {key:'level', q:lvlQ,
+       sub:'A rough answer is fine. You can switch courses any time.',
+       opts:[['pre','Fractions, decimals and percents. Start me there.'],
+             ['ready','Arithmetic is comfortable. Algebra is next.'],
+             ['alg','Already doing algebra. I want harder problems.'],
+             ['unsure','Not sure. Pick for me.']]}
     ];
   }
 
@@ -9053,13 +9148,26 @@ async function sendTutorMsg() {
     var third = A.who==='parent' || A.who==='teacher';
     var they  = A.who==='parent' ? 'your child' : (A.who==='teacher' ? 'your students' : 'you');
     var are   = A.who==='teacher' ? 'are' : 'is';
+    // Says what Algebra I actually expects, because lesson 1.1 block 1 asks how many of
+    // sqrt(81), 35/7, 4.0, -12/4, 0.75 and sqrt(10) are integers, and square roots are
+    // Prealgebra chapter 8. Someone who picks "arithmetic is comfortable" without having done
+    // Prealgebra meets sqrt(10) in the first problem of the course. One sentence lets them
+    // correct course before they commit, which is cheaper than losing them mid-problem.
+    var subj = third ? they+' '+are : 'you are';
+    var PREREQ = ' It assumes '+subj+' comfortable with fractions, negatives and square roots.';
+
     if(A.level==='alg')   return {main:'algebra1', alt:'prealgebra',
       why:(third? they.charAt(0).toUpperCase()+they.slice(1)+' '+are+' past the arithmetic'
                 : 'You are past the arithmetic')+
-          ', so this picks up at the language of algebra and builds toward quadratics and functions.'};
+          ', so this picks up at the language of algebra and builds toward quadratics and functions.'+PREREQ};
     if(A.level==='ready') return {main:'algebra1', alt:'prealgebra',
       why:'Arithmetic is already behind '+(third? they : 'you')+
-          ', so algebra is the right next step. If a topic turns out to be shaky, Prealgebra is there to fall back on.'};
+          ', so algebra is the right next step.'+PREREQ+
+          ' If a topic turns out to be shaky, Prealgebra is one tap away and nothing is lost.'};
+    // 'unsure' gets its own reason. Falling through to the 'pre' copy told someone who said
+    // they did not know that the course "assumes nothing", which does not answer their doubt.
+    if(A.level==='unsure') return {main:'prealgebra', alt:'algebra1',
+      why:'This is the safer place to begin. It starts from the rules of arithmetic and moves quickly through anything '+(third? they+' already '+(A.who==='teacher'?'know':'knows') : 'you already know')+'.'};
     return {main:'prealgebra', alt:'algebra1',
       why:'This starts from the rules of arithmetic and builds up through fractions, percents and geometry, so nothing is assumed.'};
   }
@@ -9082,71 +9190,126 @@ async function sendTutorMsg() {
       }).join('')+'</div>'+
       (i>0?'<div class="ob-back"><button class="ob-skip" onclick="Onboard.back()">Back</button></div>':'');
     [].forEach.call(body.querySelectorAll('.ob-opt'),function(b){
-      b.onclick=function(){ A[s.key]=b.getAttribute('data-v'); i++; render(); };
+      b.onclick=function(){
+        var val=b.getAttribute('data-v');
+        A[s.key]=val;
+        // Written and tracked on the click itself, not at the end. Previously an answer only
+        // reached anyone if the visitor survived every screen plus a render, so someone who
+        // answered "I am a parent" and closed the tab contributed nothing at all. This is what
+        // turns abandonment into per-question drop-off data.
+        saveAnswers();
+        if(window.track) track('onboarding_answer',{q:s.key,v:val,flow:FLOW});
+        i++; render();
+      };
     });
   }
 
   function renderResult(){
     var S=steps(), r=recommend(), c=COURSES[r.main], alt=COURSES[r.alt];
     dots(S.length+1,S.length);
-    save();
+    // No save() here. It used to set done=1 while merely DRAWING this screen, so closing the
+    // tab at the recommendation marked onboarding permanently complete without a single click.
+    saveAnswers();
+    // Nothing left to skip past on this screen, and the control sits where a thumb lands.
+    var sk=document.querySelector('.ob-skip'); if(sk) sk.style.display='none';
     document.getElementById('obBody').innerHTML=
       '<h2 class="ob-q">Start here</h2>'+
       '<p class="ob-sub">Based on what you told us. You can switch courses whenever you like.</p>'+
       '<div class="ob-rec"><p class="ob-rec-name">'+c.name+'</p>'+
         '<p class="ob-rec-why">'+r.why+'</p>'+
         '<div class="ob-facts">'+c.facts.map(function(f){
-          return '<div><b>'+f[0]+'</b>'+f[1]+'</div>'; }).join('')+'</div></div>'+
+          return '<div><b>'+f[0]+'</b>'+f[1]+'</div>'; }).join('')+'</div>'+
+        (c.note?'<p class="ob-note">'+c.note+'</p>':'')+'</div>'+
       '<p class="ob-alt">Would you rather begin with '+alt.name+'? '+
         '<button onclick="Onboard.go(\''+alt.slug+'\')">Start '+alt.name+' instead</button></p>'+
       '<button class="ob-go" onclick="Onboard.go(\''+c.slug+'\')">Start '+c.name+'</button>';
-    if(window.track) track('onboarding_complete',{who:A.who||'',level:A.level||'',goal:A.goal||'',source:A.source||'',recommended:r.main});
+    if(window.track) track('onboarding_complete',{who:A.who||'',level:A.level||'',recommended:r.main,flow:FLOW});
   }
 
-  function save(){
-    A.done=1; A.at=new Date().toISOString().slice(0,10);
+  // Split deliberately. saveAnswers persists what they told us and never implies completion.
+  // markOnboarded is the only thing that sets done, and only go() calls it.
+  function saveAnswers(){
+    A.at=new Date().toISOString().slice(0,10);
     try{ localStorage.setItem(KEY,JSON.stringify(A)); }catch(e){}
     // ride the profile's own cloud sync, so this reaches Firestore whenever the account does
     if(window.Rewards && Rewards.setMeta) try{ Rewards.setMeta('onboarding',A); }catch(e){}
   }
+  function markOnboarded(){ A.done=1; saveAnswers(); }
   function close(){ var o=document.getElementById('obOv'); if(o) o.classList.remove('on'); }
+  // Session-scoped, so Skip means "not now" rather than "never again on this device forever".
+  function snoozed(){ try{ return sessionStorage.getItem(KEY+'.skip')==='1'; }catch(e){ return false; } }
+  function snooze(){ try{ sessionStorage.setItem(KEY+'.skip','1'); }catch(e){} }
 
   window.Onboard={
+    flow:FLOW,
     answers:function(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ return {}; } },
     seen:function(){ return !!this.answers().done; },
     back:function(){ if(i>0){ i--; render(); } },
-    skip:function(){ A.skipped=1; save(); close(); if(window.track) track('onboarding_skip',{step:i}); },
+    // Skip now means "not now", not "never again on every device forever". Nothing is written
+    // to localStorage and done is never set, so it returns on the next visit.
+    skip:function(){ A.skipped=1; saveAnswers(); snooze(); close(); if(window.track) track('onboarding_skip',{step:i,flow:FLOW}); },
+    // Shared by Escape, browser Back and the backdrop. Every one of those used to eject the
+    // visitor from the app entirely rather than close the modal.
+    snoozeClose:function(){ snooze(); close(); if(window.track) track('onboarding_dismiss',{step:i,flow:FLOW}); },
     go:function(slug){
-      save(); close();
-      try{ if(window.setCourse) setCourse(slug); }catch(e){}
-      if(window.track) track('onboarding_start_course',{course:slug});
+      markOnboarded(); close();
+      // silent, because setCourse without it re-renders the dashboard they are about to leave.
+      try{ if(window.setCourse) setCourse(slug,{silent:true}); }catch(e){}
+      if(window.track) track('onboarding_start_course',{course:slug,flow:FLOW});
+      // Land inside the first lesson rather than back on a course index. The whole pitch is
+      // problem-first, so the fastest honest thing to show is a problem.
+      window.__obEntry='onboarding';
+      try{
+        var reg=window.COURSE_REG&&window.COURSE_REG[slug];
+        var first=null;
+        if(reg) reg.toc.some(function(ch){ return ch.s.some(function(s){ if(reg.lessons[s[0]]){ first=s[0]; return true; } }); });
+        if(first && typeof window.gotoLesson==='function') gotoLesson(first);
+      }catch(e){}
+      setTimeout(function(){ window.__obEntry=null; },0);
     },
-    open:function(force){
-      if(!force && this.seen()) return false;
+    open:function(opts){
+      opts=opts||{};
+      var o=document.getElementById('obOv'); if(!o) return false;
+      // FIRST line, because open() resets A and i unconditionally below. A second call from any
+      // source would otherwise wipe a half-answered flow and drop the visitor back on screen 1.
+      if(o.classList.contains('on')) return false;
+      if(!opts.force && this.seen()) return false;
+      if(!opts.force && snoozed()) return false;
       // Someone who clicked Subscribe is on their way to Stripe. Interrupting that with a
       // course tutorial buries the thing they actually came to do, and checkout navigates
       // away moments later anyway, so the tutorial would be torn off mid-question. It is
       // not marked seen, so it still runs on their next visit.
-      if(!force && (window.__pendingPlan || window.__checkoutStarted)) return false;
+      if(!opts.force && (window.__pendingPlan || window.__checkoutStarted)) return false;
       A={}; i=0;
-      var o=document.getElementById('obOv'); if(!o) return false;
+      var sk=document.querySelector('.ob-skip'); if(sk) sk.style.display='';
       o.classList.add('on'); render();
-      if(window.track) track('onboarding_open',{});
+      if(window.track) track('onboarding_open',{flow:FLOW});
       return true;
     }
   };
 
-  // Fire on first entry into the app, once the shell is up and no other overlay owns the screen.
+  // Safety net only. launch() is the primary trigger now, so this covers entries that did not
+  // go through it. It polls for the boot gate rather than bailing on it, because the old
+  // version returned early while #bootGate existed and was never re-armed, which meant anyone
+  // whose auth resolved slowly silently got no onboarding at all.
   function maybeOpen(){
-    if(Onboard.seen()) return;
-    if(window.__pendingPlan || window.__checkoutStarted) return;    // heading to checkout
-    if(document.getElementById('bootGate')) return;                 // still booting
-    var au=document.getElementById('authOv');
-    if(au && getComputedStyle(au).display!=='none') return;          // sign-in is showing
-    Onboard.open();
+    var waited=0;
+    (function poll(){
+      if(Onboard.seen() || snoozed()) return;
+      if(window.__pendingPlan || window.__checkoutStarted) return;   // heading to checkout
+      var au=document.getElementById('authOv');
+      if(au && getComputedStyle(au).display!=='none') return;        // sign-in is showing
+      if(document.getElementById('bootGate')){
+        if((waited+=150) > 8000) return;
+        return void setTimeout(poll,150);
+      }
+      Onboard.open();
+    })();
   }
-  if(document.readyState==='complete') setTimeout(maybeOpen,700);
-  else window.addEventListener('load',function(){ setTimeout(maybeOpen,700); });
+  if(FLOW!=='off'){
+    if(document.readyState==='complete') setTimeout(maybeOpen,3000);
+    else window.addEventListener('load',function(){ setTimeout(maybeOpen,3000); });
+  }
 })();
 </script>
 
