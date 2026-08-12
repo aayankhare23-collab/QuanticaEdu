@@ -41,7 +41,22 @@ META=COURSE_META.get(COURSE,{"title":COURSE.replace('-',' ').title(),"level":COU
    "blurb":f"Learn {COURSE} online by solving, with Milo. Free to start.","note":"","workload":"P12W","cross":None,"faq":[]})
 CTITLE=META["title"]; OGIMG=META["og"]; LEVEL=META["level"]
 
-GA='''<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){try{var h=location.hostname;if(h!=='quanticaedu.com'&&h!=='www.quanticaedu.com')return;if(location.search.indexOf('imfounder=1')>-1&&!localStorage.getItem('qa_internal')){localStorage.setItem('qa_internal','1');alert('Got it. Analytics is now off on this device.');}if(localStorage.getItem('qa_internal')==='1')return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-98WQ2BFR6N';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-98WQ2BFR6N',{allow_google_signals:false,allow_ad_personalization_signals:false});}catch(e){}})();</script>'''
+# Analytics comes from tools/stamp_analytics.py so there is one definition rather than two that
+# drift. This file used to carry its own GA-only snippet, and because it regenerates the two hub
+# pages from a template, every regeneration silently wiped whatever the stamper had put there,
+# including the Meta pixel and Clarity.
+#
+# Scope, which mirrors privacy.html section 7 exactly:
+#   hub pages (prealgebra.html, algebra1.html)  -> marketing: GA4 + pixel + Clarity
+#   the 113 lesson pages                        -> basic:    GA4 only, no pixel, no Clarity
+# The lesson pages are deliberately GA-only. They are the ones an unaccompanied child is most
+# likely to reach from a search, so the advertising and session-recording tools stay off them.
+# Both variants carry first-touch attribution capture, which is local storage rather than a
+# vendor and is what makes organic traffic attributable at all.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from stamp_analytics import block as _analytics_block
+GA      = _analytics_block('marketing', needs_ga=True)   # hub pages
+GA_PAGE = _analytics_block('basic',     needs_ga=True)   # lesson pages
 toc=json.load(open(os.path.join(ROOT,"lessons",COURSE,"toc.json"),encoding="utf-8"))
 s=open(ROOT+"/data/lessons.js",encoding="utf-8").read()
 DATA=json.loads(s[s.index('{'):s.rindex('}')+1])[COURSE]
@@ -537,7 +552,7 @@ for idx,k in enumerate(ORDER):
     page=f'''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-{GA}
+{GA_PAGE}
 <title>{H.escape(seo_title)} | Quantica</title>
 <meta name="description" content="{H.escape(desc)}">
 <link rel="canonical" href="{url}">

@@ -92,9 +92,15 @@
       var href=a.getAttribute('href')||'';
       var dest='page';
       if(href.indexOf('/landing')===0){
+        // A lesson or problem-set deep link is a content click, not free-signup intent. The
+        // hub pages link every lesson as /landing?course=X&lesson=Y, so without this branch
+        // each one would fire StartFreeClick and inflate the exact signal a campaign would
+        // be optimised on.
         dest = href.indexOf('upgrade=yearly')>-1 ? 'upgrade_yearly'
              : href.indexOf('upgrade=monthly')>-1 ? 'upgrade_monthly'
-             : href.indexOf('signin')>-1 ? 'signin' : 'start';
+             : href.indexOf('signin')>-1 ? 'signin'
+             : (href.indexOf('lesson=')>-1||href.indexOf('pset=')>-1||href.indexOf('practice=')>-1) ? 'lesson'
+             : 'start';
       }
       else if(href.charAt(0)==='#') dest='anchor';
       else if(href.indexOf('mailto:')===0) dest='email';

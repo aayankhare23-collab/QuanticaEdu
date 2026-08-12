@@ -38,11 +38,14 @@ PIXEL_ID = "1061468839592852"
 GA_ID = "G-98WQ2BFR6N"
 
 # path -> mode
+#
+# prealgebra.html and algebra1.html are NOT here on purpose. tools/gen_seo_pages.py regenerates
+# those two hub pages from a template, so stamping them worked right up until the next
+# regeneration silently wiped the pixel, Clarity, click tracking and attribution back out. The
+# generator imports block() from this module instead, so there is still exactly one definition.
 TARGETS = {
     "courses.html": "marketing",
     "blog.html": "marketing",
-    "prealgebra.html": "marketing",
-    "algebra1.html": "marketing",
     "blog/how-to-solve-one-step-equations.html": "marketing",
     "blog/watching-your-child-struggle-with-math.html": "marketing",
     "blog/why-cant-you-divide-by-zero.html": "marketing",
@@ -187,9 +190,15 @@ def block(mode, needs_ga):
       var href=a.getAttribute('href')||'';
       var dest='page';
       if(href.indexOf('/landing')===0){{
+        // A lesson or problem-set deep link is a content click, not free-signup intent. The
+        // hub pages link every lesson as /landing?course=X&lesson=Y, so without this branch
+        // each one would fire StartFreeClick and inflate the exact signal a campaign would
+        // be optimised on.
         dest = href.indexOf('upgrade=yearly')>-1 ? 'upgrade_yearly'
              : href.indexOf('upgrade=monthly')>-1 ? 'upgrade_monthly'
-             : href.indexOf('signin')>-1 ? 'signin' : 'start';
+             : href.indexOf('signin')>-1 ? 'signin'
+             : (href.indexOf('lesson=')>-1||href.indexOf('pset=')>-1||href.indexOf('practice=')>-1) ? 'lesson'
+             : 'start';
       }}
       else if(href.charAt(0)==='#') dest='anchor';
       else if(href.indexOf('mailto:')===0) dest='email';
