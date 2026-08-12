@@ -26,6 +26,25 @@
      init, which is the only point they take effect. No PII is ever passed to fbq. -->
 <script>
   window.META_PIXEL_ID='1061468839592852';   // Meta dataset "Quantica Web". Must match paths/landing.html.
+
+  /* First-touch attribution, same snippet as paths/landing.html and the stamped pages. Needed
+     here too because an ad can point straight at /landing, and because a visitor who arrives
+     via / has already had it written by the time they get here. Never forwarded onto links;
+     see the note in paths/landing.html for why appending utm to internal hrefs is wrong. */
+  (function(){ try{
+    var K='quantica.attr.v1';
+    if(localStorage.getItem(K)) return;                       // first touch wins
+    var p=new URLSearchParams(location.search), a={}, any=false;
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'].forEach(function(k){
+      var v=p.get(k); if(v){ a[k]=String(v).slice(0,120); any=true; }
+    });
+    var ref=''; try{ ref=document.referrer?new URL(document.referrer).hostname:''; }catch(e){}
+    if(ref && ref!==location.hostname){ a.referrer=ref; any=true; }
+    if(!any) return;
+    a.landing=location.pathname.slice(0,120);
+    a.at=new Date().toISOString().slice(0,10);
+    localStorage.setItem(K,JSON.stringify(a));
+  }catch(e){} })();
   window.fbTrack=function(n,p){ try{ if(window.fbq) fbq('track',n,p||{}); }catch(e){} };
   // NO Clarity in this file. landing.html is the course app, and privacy.html section 7
   // states that Clarity never runs where lessons are worked. The pixel is here because it
@@ -2816,6 +2835,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // this branch also backfills docs for old accounts, so gate the event on the
         // auth account actually being minutes old, not just the doc being missing
         var isNewAcct = user.metadata && user.metadata.creationTime && (Date.now()-new Date(user.metadata.creationTime).getTime() < 5*60*1000);
+        // Join the first-touch attribution to the account, so "which campaign produced this
+        // subscriber" is answerable months later rather than only inside a GA4 session window.
+        // It rides Rewards' own cloud sync, same as the onboarding answers. fbclid is
+        // deliberately NOT written: it is a Meta advertising identifier, and stored next to an
+        // email address on a named account it becomes personal data under GDPR, and exactly the
+        // persistent-identifier linkage COPPA governs when the account belongs to a family.
+        if(isNewAcct && window.Rewards && Rewards.setMeta){
+          try{
+            var _at=JSON.parse(localStorage.getItem('quantica.attr.v1')||'{}');
+            delete _at.fbclid; delete _at.gclid;
+            if(Object.keys(_at).length) Rewards.setMeta('attr',_at);
+          }catch(e){}
+        }
         if(isNewAcct && window.track) track('sign_up',{method:prov||'password'});
         // Meta's signup conversion. No email or name is passed, only the method.
         if(isNewAcct && window.fbTrack) fbTrack('CompleteRegistration',{method:prov||'password'});

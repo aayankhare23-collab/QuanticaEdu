@@ -29,6 +29,29 @@
 <script>
   window.META_PIXEL_ID='1061468839592852';   // same ID as landing.html, or the funnel splits across two pixels
   window.CLARITY_ID='';      // <-- from clarity.microsoft.com. Set masking to Strict FIRST.
+
+  /* First-touch attribution. This is the page the ads land on, so it is the one that has to
+     capture. Written to localStorage and NEVER forwarded onto the /landing links below.
+     Appending utm parameters to same-origin hrefs looks like the obvious way to carry them
+     across, and it breaks the thing it is meant to measure: GA4 starts a NEW session whenever
+     campaign parameters appear on a navigation, so every internal click would become a fresh
+     campaign-tagged session and per-page conversion rate would stop being countable. It is
+     also unnecessary, because / and /landing are the same origin and share this storage.
+     Kept byte-identical to the copy tools/stamp_analytics.py stamps elsewhere. */
+  (function(){ try{
+    var K='quantica.attr.v1';
+    if(localStorage.getItem(K)) return;                       // first touch wins
+    var p=new URLSearchParams(location.search), a={}, any=false;
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'].forEach(function(k){
+      var v=p.get(k); if(v){ a[k]=String(v).slice(0,120); any=true; }
+    });
+    var ref=''; try{ ref=document.referrer?new URL(document.referrer).hostname:''; }catch(e){}
+    if(ref && ref!==location.hostname){ a.referrer=ref; any=true; }
+    if(!any) return;
+    a.landing=location.pathname.slice(0,120);
+    a.at=new Date().toISOString().slice(0,10);
+    localStorage.setItem(K,JSON.stringify(a));
+  }catch(e){} })();
   window.fbTrack=function(n,p){ try{ if(window.fbq) fbq('track',n,p||{}); }catch(e){} };
   window.fbTrackCustom=function(n,p){ try{ if(window.fbq) fbq('trackCustom',n,p||{}); }catch(e){} };
 

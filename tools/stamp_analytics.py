@@ -140,13 +140,42 @@ def ads_section(mode):
 """
 
 
+ATTR = """
+  /* First-touch attribution, captured on every page because an ad or a search result can land
+     anywhere. Written to localStorage and NEVER forwarded onto internal links. Appending utm
+     parameters to same-origin hrefs is the obvious-looking approach and it is wrong: GA4 starts
+     a NEW session whenever campaign parameters appear on a navigation, so every internal click
+     would become a fresh campaign-tagged session, inflating session counts and making per-page
+     conversion rate uncountable. It is unnecessary too, since / and /landing share an origin and
+     therefore share this storage.
+
+     Only written when there is an actual signal. A direct visit deliberately leaves the key
+     unset so that a later tagged visit still gets recorded, which loses strict first-touch
+     purity and keeps the thing that matters, which is never losing the ad click. */
+  (function(){ try{
+    var K='quantica.attr.v1';
+    if(localStorage.getItem(K)) return;                       // first touch wins
+    var p=new URLSearchParams(location.search), a={}, any=false;
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'].forEach(function(k){
+      var v=p.get(k); if(v){ a[k]=String(v).slice(0,120); any=true; }
+    });
+    var ref=''; try{ ref=document.referrer?new URL(document.referrer).hostname:''; }catch(e){}
+    if(ref && ref!==location.hostname){ a.referrer=ref; any=true; }
+    if(!any) return;
+    a.landing=location.pathname.slice(0,120);
+    a.at=new Date().toISOString().slice(0,10);
+    localStorage.setItem(K,JSON.stringify(a));
+  }catch(e){} })();
+"""
+
+
 def block(mode, needs_ga):
     parts = [START]
     if needs_ga:
         parts.append(ga_snippet())
     parts.append(f"""<script>
   window.track=window.track||function(n,p){{ try{{ gtag('event',n,p||{{}}); }}catch(e){{}} }};
-{ads_section(mode)}
+{ATTR}{ads_section(mode)}
   // Click tracking, delegated from the document so it covers every link including any added
   // later. The label comes from data-cta when present and otherwise from the href. NEVER
   // from textContent, because on the marketing page that text is overwritten with the signed

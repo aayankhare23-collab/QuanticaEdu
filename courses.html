@@ -7,6 +7,32 @@
 <script>
   window.track=window.track||function(n,p){ try{ gtag('event',n,p||{}); }catch(e){} };
 
+  /* First-touch attribution, captured on every page because an ad or a search result can land
+     anywhere. Written to localStorage and NEVER forwarded onto internal links. Appending utm
+     parameters to same-origin hrefs is the obvious-looking approach and it is wrong: GA4 starts
+     a NEW session whenever campaign parameters appear on a navigation, so every internal click
+     would become a fresh campaign-tagged session, inflating session counts and making per-page
+     conversion rate uncountable. It is unnecessary too, since / and /landing share an origin and
+     therefore share this storage.
+
+     Only written when there is an actual signal. A direct visit deliberately leaves the key
+     unset so that a later tagged visit still gets recorded, which loses strict first-touch
+     purity and keeps the thing that matters, which is never losing the ad click. */
+  (function(){ try{
+    var K='quantica.attr.v1';
+    if(localStorage.getItem(K)) return;                       // first touch wins
+    var p=new URLSearchParams(location.search), a={}, any=false;
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'].forEach(function(k){
+      var v=p.get(k); if(v){ a[k]=String(v).slice(0,120); any=true; }
+    });
+    var ref=''; try{ ref=document.referrer?new URL(document.referrer).hostname:''; }catch(e){}
+    if(ref && ref!==location.hostname){ a.referrer=ref; any=true; }
+    if(!any) return;
+    a.landing=location.pathname.slice(0,120);
+    a.at=new Date().toISOString().slice(0,10);
+    localStorage.setItem(K,JSON.stringify(a));
+  }catch(e){} })();
+
   window.META_PIXEL_ID='1061468839592852';
   window.CLARITY_ID='';   // paste from clarity.microsoft.com, AFTER setting masking to Strict
   window.fbTrack=function(n,p){ try{ if(window.fbq) fbq('track',n,p||{}); }catch(e){} };
