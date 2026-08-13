@@ -3,6 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Stripe return catcher. Runs before anything else on the page, deliberately.
+
+     functions/index.js:47 builds success_url as `${APP_URL}?payment=success`. If APP_URL is
+     the bare origin rather than https://quanticaedu.com/landing, Stripe sends the customer to
+     "/", which the firebase.json rewrite serves from THIS file, and this file has no payment
+     handling at all. The result is a customer who has just been charged landing on a sales
+     page, with no confirmation, no Meta Purchase event, and the stored plan left behind in
+     localStorage to mis-price the next purchase.
+
+     APP_URL lives only in functions/.env, which this repo must never read, so its value cannot
+     be verified from here. Rather than assume it is right, forward the whole query string to
+     the app, which does know what to do with it. If APP_URL is already correct this code never
+     runs, so it costs nothing to be safe. No loop is possible: /landing is a different path and
+     it consumes the parameter.
+
+     Placed above the analytics block on purpose, so a redirected visitor does not record a
+     page view on a marketing page they were never meant to see. -->
+<script>
+(function(){ try{
+  if(/[?&]payment=(success|cancelled)/.test(location.search)){
+    location.replace('/landing'+location.search+location.hash);
+  }
+}catch(e){} })();
+</script>
+
 <title>Master mathematics from prealgebra to calculus | Quantica</title>
 <meta name="description" content="Quantica teaches you to break a hard problem into pieces you already understand. It's the reasoning top students rely on, minus the intimidation that makes most people quit.">
 <link rel="canonical" href="https://quanticaedu.com/">
