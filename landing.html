@@ -2807,11 +2807,28 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var _bg0=document.getElementById('bootGate'); if(_bg0) _bg0.remove();
     }
     // Signed in via "Start free" / "Sign in" (no specific lesson) -> land on the home roadmap.
-    // Drop the gate first: this path returns before _settleAccess is ever reached, so nothing
-    // else would, and a Back restore would land on a permanent boot overlay.
-    if(/[?&]signin=1/.test(location.search) && !/[?&](lesson|pset|practice)=/.test(location.search)){
+    // Drop the gate first: this path never reaches _settleAccess, so nothing else would, and a
+    // Back restore would land on a permanent boot overlay.
+    //
+    // The redirect used to happen RIGHT HERE, with a `return`, and that return sat above
+    // everything that matters on a first sign-up. It skipped the users/{uid} profile write, the
+    // first-touch attribution join, track('sign_up') and Meta's CompleteRegistration. Every
+    // "Sign in" link on the site carries ?signin=1, so this was the primary signup path and not
+    // one conversion event ever fired for it. It is also why localStorage 'quantica.user' came
+    // back empty for an account that had plainly just been created.
+    //
+    // Now the redirect waits for the profile work and goes on the way out. The failsafe matters
+    // as much as the fix: Firestore can be slow or blocked outright, and nobody should be
+    // stranded in the app because a write hung.
+    var _goHome = /[?&]signin=1/.test(location.search) && !/[?&](lesson|pset|practice)=/.test(location.search);
+    if(_goHome){
       var _bg1=document.getElementById('bootGate'); if(_bg1) _bg1.remove();
-      location.assign('/paths/home.html'); return;
+      var _homeSent=false;
+      window.__goHomeNow=function(){
+        if(_homeSent) return; _homeSent=true;
+        location.assign('/paths/home.html');
+      };
+      setTimeout(window.__goHomeNow, 5000);
     }
     // Load rewards profile, and create a minimal profile record the first time we see this
     // account in Firestore. The users/{uid} doc is otherwise only written lazily on the first
@@ -2852,7 +2869,11 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // Meta's signup conversion. No email or name is passed, only the method.
         if(isNewAcct && window.fbTrack) fbTrack('CompleteRegistration',{method:prov||'password'});
       }
-    }).catch(function(e){ console.warn('Cloud load failed',e); });
+    }).catch(function(e){ console.warn('Cloud load failed',e); })
+    // Runs whether the read succeeded or failed, so a Firestore error still lands them home.
+    // The short delay lets the conversion beacons leave before the navigation, since a pixel
+    // request started microseconds before location.assign is not reliably flushed.
+    .then(function(){ if(window.__goHomeNow) setTimeout(window.__goHomeNow, 350); });
     // Load adaptive state
     db.collection('users').doc(user.uid).collection('state').doc('adapt').get().then(function(doc){
       if(doc.exists && window.ADAPT && window.ADAPT._merge) ADAPT._merge(doc.data());
