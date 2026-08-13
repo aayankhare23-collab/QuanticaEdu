@@ -230,7 +230,31 @@
   .acct-links{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;font-size:.8rem}
   .acct-links a{color:var(--gray);text-decoration:none}.acct-links a:hover{color:var(--accent)}.acct-links span{color:var(--line)}
   @media(max-width:860px){.sig{display:none}}
-  @media(max-width:520px){.tb-right .sig,.streak{display:none}.topbar{padding:0 14px;gap:12px}}
+  /* The account button used to be off screen on every phone. Measured at 320, 360, 375, 390,
+     414 and 430, the bar demanded a flat 466px and #acctBtn's right edge sat at 466 in all of
+     them. It only appeared at 520 and wider. That button is the only route to Settings, Sign
+     out, Reset progress, Privacy, Terms and Contact, and this page is where sign-in lands and
+     where every lesson exit lands.
+
+     The children all had flex-shrink:1, so this looked like it should already work. They also
+     had the flex default of min-width:auto, which forbids shrinking below intrinsic content
+     width, so nothing could actually give and the bar just overflowed. min-width:0 is what
+     makes the shrink real. */
+  .topbar > *{min-width:0}
+  /* Never shrinks and never gets pushed off. Whatever else has to give, the way out of the
+     page stays reachable. */
+  .tb-right{flex:none}
+  /* Truncates instead of forcing the bar wider. "Prealgebra" becoming "Prealge..." on a narrow
+     phone is a far better outcome than the account button leaving the screen. */
+  .coursesel{min-width:0}
+  .coursesel .cur{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media(max-width:520px){
+    .tb-right .sig,.streak{display:none}
+    .topbar{padding:0 12px;gap:10px}
+    .brand-word{display:none}                    /* keep the mark, drop the wordmark */
+    .hnav{margin-left:0}
+    .hnav-tab{padding:7px 10px}
+  }
 
   /* shell: chapter rail | main | rail */
   .shell{max-width:1180px;margin:0 auto;padding:22px 22px 60px;display:grid;grid-template-columns:60px 1fr 296px;gap:22px;align-items:start}
@@ -490,7 +514,9 @@
 <div class="topbar">
   <a class="brand" href="/">
     <img id="brandMark" src="/paths/assets/spot/spot-hero.png" alt="Milo">
-    Quantica
+    <!-- Wrapped so the wordmark can be dropped on a phone while the mark stays. It was a bare
+         text node, which CSS cannot target, and it costs 81 of the 466px this bar demanded. -->
+    <span class="brand-word">Quantica</span>
   </a>
   <div class="coursesel" id="coursesel">
     <span class="cur" id="courseCur">Prealgebra <svg class="cv" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
