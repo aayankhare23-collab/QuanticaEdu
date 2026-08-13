@@ -25,14 +25,19 @@ COURSE_META={
           ("How long is the Prealgebra course?","It has 12 chapters and 70 lessons. You move at your own pace, in any order.")]},
  "algebra1":{"title":"Algebra I","level":"High school / Algebra I","og":"og-default.png",
    "lead":"Work real problems with instant feedback and Milo, a tutor that helps you find the answer yourself.",
+   # Describes what is written, not what is planned. This used to promise 15 chapters reaching
+   # quadratics, functions and logarithms. Seven of those chapters have no content, so Google
+   # was being told the course teaches material that does not exist, next to a 14.99 offer.
+   # Update this prose when chapters 9 to 15 actually land; the counts elsewhere are computed
+   # and will move on their own.
    "blurb":("Learn Algebra I online by solving real problems, not memorizing. Quantica's Algebra I course "
-     "spans 15 chapters, from expressions and linear equations to quadratics, functions, "
-     "and logarithms, with instant feedback and Milo, a tutor that helps you find the answer yourself. "
-     "Chapter 1 is free."),
+     "covers expressions, linear equations, exponents and radicals, systems, and graphing, "
+     "with instant feedback and Milo, a tutor that helps you find the answer yourself. "
+     "Chapter 1 is free, and more chapters are being written."),
    "note":"New lessons arrive regularly while Algebra I is in early access.",
    "workload":"P15W", "cross":("prealgebra","Prealgebra"),
    "faq":[("Is the Algebra I course free?","Chapter 1 of every course is free and no card is required to begin. Everything after that is $14.99 a month."),
-          ("What does Quantica's Algebra I cover?","Expressions, linear equations, exponents and radicals, systems, graphing, inequalities, quadratics, functions, polynomials, exponentials, and logarithms, 15 chapters in all."),
+          ("What does Quantica's Algebra I cover?","So far: expressions, linear equations, exponents and radicals, systems of equations, and graphing. Algebra I is in early access and later chapters, through quadratics and functions, are still being written."),
           ("Do I need to finish Prealgebra first?","No, but the two fit together. If arithmetic and fractions feel shaky, Prealgebra builds the ground Algebra I stands on."),
           ("How is Quantica's Algebra I different?","You learn by solving real problems with instant feedback and layered hints, so each idea emerges from your own work instead of being memorized.")]},
 }
@@ -67,6 +72,21 @@ for c in toc:
     for l in c['lessons']:
         if l['k'] in DATA:
             ORDER.append(l['k']); CHOF[l['k']]=(c['n'], c['t'])
+
+# The toc is the SYLLABUS and lists every planned lesson. ORDER above already drops the ones
+# with no data, but the hub's stats and its Course JSON-LD were built from the raw toc, so
+# algebra1.html told Google it had 15 chapters and 81 lessons and named quadratics, functions
+# and logarithms in hasPart, next to a 14.99 offer, when seven of those chapters contain no
+# content at all. The on-page grid was honest and greyed 38 lessons, but none of that reaches
+# a search engine, and the 81 sat directly above a grid showing 43.
+# LIVE_TOC is the same structure with unwritten lessons and empty chapters removed, and it is
+# what every outward-facing claim on the hub is now built from.
+LIVE_TOC=[]
+for c in toc:
+    live=[l for l in c['lessons'] if l['k'] in DATA]
+    if live:
+        d=dict(c); d['lessons']=live; LIVE_TOC.append(d)
+PLANNED_CH=len(toc); PLANNED_LES=sum(len(c['lessons']) for c in toc)
 
 def slugify(t):
     t=re.sub(r'&[a-z]+;',' ',t); t=re.sub(r'[^a-zA-Z0-9]+','-',t).strip('-').lower()
@@ -251,7 +271,7 @@ KATEX='''<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaT
 
 def gen_hub():
     hub_url=f"{BASE}/{COURSE}"
-    nchap=len(toc); nlesson=sum(len(c['lessons']) for c in toc)
+    nchap=len(LIVE_TOC); nlesson=len(ORDER)   # written, not planned
     # curriculum grid
     cards=[]
     for c in toc:
@@ -275,7 +295,7 @@ def gen_hub():
     # structured data
     ld_course={"@context":"https://schema.org","@type":"Course","name":CTITLE,"description":META["blurb"],
       "url":hub_url,"courseCode":COURSE,"educationalLevel":LEVEL,"inLanguage":"en",
-      "teaches":[c["t"] for c in toc],
+      "teaches":[c["t"] for c in LIVE_TOC],
       "provider":{"@type":"Organization","name":"Quantica","url":BASE+"/"},
       "hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":META["workload"]},
       # Chapter 1 of every course is free and needs no card; everything past it is the paid
@@ -284,7 +304,7 @@ def gen_hub():
       "offers":[{"@type":"Offer","price":"0","priceCurrency":"USD","name":"Chapter 1, free","category":"Free"},
                 {"@type":"Offer","price":"14.99","priceCurrency":"USD","name":"Quantica Pro, monthly"}],
       "hasPart":[{"@type":"Syllabus","name":f'Chapter {c["n"]}: {c["t"]}',
-                  "description":", ".join(l["t"] for l in c["lessons"])} for c in toc]}
+                  "description":", ".join(l["t"] for l in c["lessons"])} for c in LIVE_TOC]}
     ld_crumb={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"Quantica","item":BASE+"/"},
       {"@type":"ListItem","position":2,"name":CTITLE,"item":hub_url}]}

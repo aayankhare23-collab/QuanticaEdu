@@ -77,10 +77,28 @@ def main():
     # which is. Serving it from lessons/ is what broke: on 2026-08-04 lessons/** was added to
     # the firebase.json ignore list on the reasoning that nothing served depended on it, and
     # the course home fetch had been depending on it since long before that.
+    # Each lesson is stamped live:true only if it actually exists in the built lesson data.
+    # The toc is the SYLLABUS, so it lists everything planned. Copied verbatim, as it was,
+    # nothing downstream could tell a written lesson from an intended one, and every consumer
+    # guessed. paths/home.html drew all 81 Algebra I lessons as clickable nodes when 43 exist,
+    # so a visitor could open chapter 12 and get an empty screen, having already fired GA4
+    # lesson_start and Meta ViewContent on the way in. algebra1.html told Google it teaches
+    # quadratics and logarithms next to a 14.99 offer. One flag, computed from the one source
+    # that actually knows, and both stop guessing.
     for course in COURSES:
         toc = json.load(open(os.path.join(ROOT, 'lessons', course, 'toc.json'), encoding='utf-8'))
+        built = courses[course]
+        n_live = 0
+        for ch in toc:
+            for les in ch.get('lessons', []):
+                les['live'] = les.get('k') in built
+                if les['live']:
+                    n_live += 1
+            ch['live'] = sum(1 for l in ch.get('lessons', []) if l['live'])
         tp = os.path.join(ROOT, 'data', 'toc-' + course + '.json')
         open(tp, 'w', encoding='utf-8').write(json.dumps(toc, ensure_ascii=False, separators=(',', ':')))
+        planned = sum(len(ch.get('lessons', [])) for ch in toc)
+        print(f'  toc-{course}.json: {n_live} live of {planned} planned')
 
     # verify round-trip: re-parse and compare semantically
     raw = open(DATA, encoding='utf-8').read()
