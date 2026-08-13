@@ -2112,11 +2112,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
              is not a first-run visitor, and on the deep-link params because a visitor who
              asked for a specific lesson should get it, not a questionnaire. */
           try{
-            if(window.Onboard && Onboard.flow!=='off'
-               && !/[?&](lesson|pset|practice|signin)=/.test(s)
-               && !(window.Rewards && Rewards.getLastLesson && Rewards.getLastLesson())){
-              Onboard.open({});
-            }
+            // Onboard.shouldAutoOpen() owns this decision now. It used to be spelled out here
+            // and nowhere else, so the maybeOpen safety net further down re-opened the modal in
+            // precisely the cases this branch had refused.
+            if(window.Onboard && Onboard.shouldAutoOpen()) Onboard.open({});
           }catch(e){}
         }
         // deep-nav (gotoLesson/openPSet) needs the app fully rendered, so run it after openLesson
@@ -9223,6 +9222,9 @@ async function sendTutorMsg() {
   // paywall has one of these; the thing standing in front of the ad budget should too.
   var FLOW='v2';
   var A={}, i=0;
+  // Was a lesson already on screen when this opened? Decided once, at open time, because by the
+  // time go() runs the answer could have changed. See go() for why it matters.
+  var openedOverLesson=false;
 
   var COURSES={
     prealgebra:{name:'Prealgebra', slug:'prealgebra',
@@ -9380,6 +9382,30 @@ async function sendTutorMsg() {
 
   window.Onboard={
     flow:FLOW,
+    /* The single decision about whether the questionnaire may open ITSELF. Both triggers call
+       this, which is the point: launch() carried these guards and the maybeOpen safety net
+       carried none, so the net re-opened the modal in exactly the cases launch() had refused.
+       A visitor arriving on ?lesson=11.8 from a search result got a questionnaire over their
+       lesson three seconds in.
+
+       Deliberately not consulted by open({force:true}), which is the "Not sure where to
+       start?" link on the dashboard. Someone who asks for it should always get it. */
+    shouldAutoOpen:function(){
+      try{
+        if(FLOW==='off') return false;
+        if(this.seen() || snoozed()) return false;
+        if(window.__pendingPlan || window.__checkoutStarted) return false;   // heading to checkout
+        // They asked for something specific. Answer the request, do not interview them.
+        if(/[?&](lesson|pset|practice|signin)=/.test(location.search)) return false;
+        // Already reading a lesson, however they got there. Nothing may cover it uninvited.
+        if(window.WS && WS.active) return false;
+        // Has progress, so not a first run.
+        if(window.Rewards && Rewards.getLastLesson && Rewards.getLastLesson()) return false;
+        var au=document.getElementById('authOv');
+        if(au && getComputedStyle(au).display!=='none') return false;        // sign-in is showing
+        return true;
+      }catch(e){ return false; }
+    },
     answers:function(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ return {}; } },
     seen:function(){ return !!this.answers().done; },
     back:function(){ if(i>0){ i--; render(); } },
@@ -9396,13 +9422,21 @@ async function sendTutorMsg() {
       if(window.track) track('onboarding_start_course',{course:slug,flow:FLOW});
       // Land inside the first lesson rather than back on a course index. The whole pitch is
       // problem-first, so the fastest honest thing to show is a problem.
+      //
+      // Unless they were already reading one. If this opened over a lesson, jumping to lesson
+      // 1.1 takes away the thing they came for: a search visitor on 11.8 taps the big green
+      // button and loses their place. In that case switch the course and leave them where they
+      // are. shouldAutoOpen now prevents most of this, but the modal can still be opened by
+      // hand from the dashboard link, and losing someone's lesson is bad enough to guard twice.
       window.__obEntry='onboarding';
-      try{
-        var reg=window.COURSE_REG&&window.COURSE_REG[slug];
-        var first=null;
-        if(reg) reg.toc.some(function(ch){ return ch.s.some(function(s){ if(reg.lessons[s[0]]){ first=s[0]; return true; } }); });
-        if(first && typeof window.gotoLesson==='function') gotoLesson(first);
-      }catch(e){}
+      if(!openedOverLesson){
+        try{
+          var reg=window.COURSE_REG&&window.COURSE_REG[slug];
+          var first=null;
+          if(reg) reg.toc.some(function(ch){ return ch.s.some(function(s){ if(reg.lessons[s[0]]){ first=s[0]; return true; } }); });
+          if(first && typeof window.gotoLesson==='function') gotoLesson(first);
+        }catch(e){}
+      }
       setTimeout(function(){ window.__obEntry=null; },0);
     },
     open:function(opts){
@@ -9419,6 +9453,7 @@ async function sendTutorMsg() {
       // not marked seen, so it still runs on their next visit.
       if(!opts.force && (window.__pendingPlan || window.__checkoutStarted)) return false;
       A={}; i=0;
+      try{ openedOverLesson = !!(window.WS && WS.active); }catch(e){ openedOverLesson=false; }
       var sk=document.querySelector('.ob-skip'); if(sk) sk.style.display='';
       o.classList.add('on'); render();
       if(window.track) track('onboarding_open',{flow:FLOW});
@@ -9433,10 +9468,10 @@ async function sendTutorMsg() {
   function maybeOpen(){
     var waited=0;
     (function poll(){
-      if(Onboard.seen() || snoozed()) return;
-      if(window.__pendingPlan || window.__checkoutStarted) return;   // heading to checkout
-      var au=document.getElementById('authOv');
-      if(au && getComputedStyle(au).display!=='none') return;        // sign-in is showing
+      // Re-checked on every tick, not once at the start. Over eight seconds of polling the
+      // visitor can open a lesson, be shown the sign-in modal, or head to checkout, and the
+      // answer has to reflect the world at the moment the modal would actually appear.
+      if(!Onboard.shouldAutoOpen()) return;
       if(document.getElementById('bootGate')){
         if((waited+=150) > 8000) return;
         return void setTimeout(poll,150);
