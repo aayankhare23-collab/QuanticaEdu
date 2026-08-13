@@ -682,6 +682,16 @@
   /* KaTeX draws radical bars etc. as tiny SVGs sized by height:inherit from a measured
      parent span; the responsive figure rules above must never catch them. */
   #wsWorkspace .katex svg,.modal .katex svg,.lessonfig .katex svg{height:inherit;max-width:none}
+  /* Display math scrolls sideways instead of being clipped. Without this a wide expression is
+     cut off at the edge of its card with no way to reach the rest, and dragging the card
+     sideways takes the answer box and hint button with it. Measured on Algebra I lesson 1.1 at
+     375x812: the first problem's display math is 432px inside a 302px box, so a student asked
+     how many of six numbers are integers can see four and a half of them, and sqrt(10) is
+     entirely off screen. That is the first problem of the course.
+     This is the same rule tools/gen_seo_pages.py:172 has shipped on the 113 static lesson
+     pages all along; the app simply never had it. It covers every display-math block in both
+     courses, not just that one. */
+  .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
   .ws-page.page-text-only .page-lead p{font-size:21px;font-weight:600;color:var(--navy);line-height:1.78;text-align:center;letter-spacing:.005em;margin:0 auto 18px;max-width:560px}
   .ws-page.page-text-only .page-lead p:last-child{margin-bottom:0}
   .ws-page.page-text-only h4.sub{text-align:center;color:var(--mid)}
@@ -765,9 +775,20 @@
   .workspace.nb-open.notes-open:not(.tut-open) .ws-fab-group{top:auto;bottom:20px;left:calc(var(--nb-w) + 20px)}
   /* concept-only lessons with no Key Ideas: hide that fab and slot the Notebook where it would sit; notebook opens right, chat stays left (shared layouts never apply) */
   .workspace.no-keys .ws-fab-ideas{display:none!important}
-  .workspace.no-keys:not(.tut-open) .ws-fab-notes{top:216px}
-  /* only Key Ideas open (its own fab is hidden): shift the Notebook fab up into the Key Ideas slot */
-  .workspace.nb-open:not(.notes-open):not(.tut-open) .ws-fab-notes{top:216px}
+  /* Both of these are scoped to min-width:561px, and that scoping is the whole point.
+     The mobile rule at line 654 puts this button at bottom:190px, but it is written as a
+     single class inside a media query, and these two selectors carry three classes and a
+     :not() while sitting outside any media query. Media queries do not add specificity, so
+     these won at every width and pinned the button to top:216px on phones. On a short phone
+     that lands it directly over the opening sentence of Prealgebra 1.1, with a green circle
+     covering the first capital letter, and 1.1 is the first screen a Meta ad visitor sees.
+     It also mis-placed the button on every lesson with Key Ideas open, and on every problem
+     set. */
+  @media(min-width:561px){
+    .workspace.no-keys:not(.tut-open) .ws-fab-notes{top:216px}
+    /* only Key Ideas open (its own fab is hidden): shift the Notebook fab up into the Key Ideas slot */
+    .workspace.nb-open:not(.notes-open):not(.tut-open) .ws-fab-notes{top:216px}
+  }
   .ws-fab{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-size:19px;box-shadow:0 6px 20px -6px rgba(18,42,86,.32);transition:filter .15s,transform .15s}
   .ws-fab:hover{filter:brightness(1.1);transform:translateY(-2px)}
   .ws-fab:active{transform:scale(.93)}
