@@ -2245,7 +2245,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         fb.className='pr-fb no'; fb.textContent = ST.att[i]>=2 ? ('Not quite. Answer: '+p.a) : 'Not quite — try again.';
       }
     },
-    close:function(){ location.assign('/paths/home.html?course='+courseSlug()); }
+    // Finishing a practice set is not a request to leave the product. For a guest this used to
+    // navigate to a page that bounces them to the marketing site, so the reward for completing
+    // their first set was being ejected. __exitToHome keeps a guest in the app.
+    close:function(){ if(window.__exitToHome) return window.__exitToHome(); location.assign('/paths/home.html?course='+courseSlug()); }
   };
 })();
 </script>
@@ -2426,6 +2429,10 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     // was required to enter at all.)
     var o=document.getElementById('authOv'); if(o) o.style.display='none';
     var e=document.getElementById('authErr'); if(e) e.textContent='';
+    // Drop any parked checkout. Someone who opened sign-in from a Subscribe button and then
+    // closed it has changed their mind, and leaving __pendingPlan set means the next thing to
+    // resolve auth walks them to Stripe without them asking again.
+    window.__pendingPlan=null; window.__checkoutStarted=false;
   };
   window.authTab=function(t){
     document.getElementById('tabIn').classList.toggle('on',t==='in');
@@ -2613,6 +2620,26 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 
   window.startCheckout=function(plan){
     plan = (plan==='yearly') ? 'yearly' : 'monthly';
+    // Do not sell what is currently being given away. PAYWALL_LIVE_AT is in the future, so
+    // isAccessGranted returns true on its first line for everybody, and the FAQ on the page
+    // these buttons live on promises that anyone who joins while Quantica is free keeps free
+    // access. Charging a real card 14.99 a month in that state buys the customer nothing they
+    // did not already have, and there is no self-serve way for them to undo it. A chargeback
+    // is the good outcome there.
+    //
+    // ?paytest=1 is the deliberate escape hatch, because a real-card run against live Stripe
+    // is one of the four checks that gate switching charging on, and it has to stay possible.
+    // It is a URL parameter rather than a device flag so it cannot be left switched on by
+    // accident, and so it survives the founder clearing storage to test something else.
+    var _payTest = /[?&]paytest=1/.test(location.search);
+    if(window.paywallOn && !window.paywallOn() && !_payTest){
+      if(window.__payToast) __payToast('Everything is free while Quantica is in early access. Nothing to pay for yet.');
+      if(window.track) track('checkout_blocked_free',{plan:plan});
+      window.__pendingPlan=null; window.__checkoutStarted=false;
+      if(window.hideCheckoutRedirect) hideCheckoutRedirect();
+      if(window.openLesson) try{ openLesson(); }catch(e){}
+      return;
+    }
     // Never sell the same person a second subscription. Every locked chip, every gated row
     // and the gate button all land here, and createCheckoutSession will happily open a second
     // session on the same customer. There is no self-serve billing portal to undo that yet.
@@ -2620,7 +2647,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       if(window.__payToast) __payToast('You are already subscribed. Everything is unlocked.');
       return;
     }
-    if(!auth.currentUser){ window.__pendingPlan=plan; if(window.hideCheckoutRedirect) hideCheckoutRedirect(); showAuthModal('in'); return; }
+    // Not signed in yet, so park the plan and open sign-in. __checkoutStarted MUST be released
+    // here. __maybeResumeCheckout sets it true immediately before calling this, and its own
+    // first line returns early when it is true, so leaving it set meant the resume after a
+    // successful sign-in never happened. The visible symptom today is an eight second "Taking
+    // you to checkout" screen followed by the dashboard. The day PAYWALL_LIVE_AT moves forward
+    // it becomes total: no visitor who was not already signed in could ever buy.
+    if(!auth.currentUser){
+      window.__pendingPlan=plan;
+      window.__checkoutStarted=false;
+      if(window.hideCheckoutRedirect) hideCheckoutRedirect();
+      showAuthModal('in');
+      return;
+    }
     if(window.fbTrack) fbTrack('InitiateCheckout',{currency:'USD',
       value: plan==='yearly' ? 99.99 : 14.99, content_name: plan});
     // Remember which plan this is. Stripe sends the customer off-domain and brings them back
@@ -6310,8 +6349,33 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   }
   function openLesson(){ showDashboard(); document.getElementById('lessonOverlay').classList.add('open'); document.body.style.overflow='hidden'; if(window.Rewards){ Rewards.applyTheme(); Rewards.touchStreak(); Rewards.renderHUD(); } if(window.track) track('course_open',{course:CURRENT_COURSE}); }
   function _homeUrl(){ var c=(typeof courseSlug==='function'?courseSlug():(typeof CURRENT_COURSE!=='undefined'?CURRENT_COURSE:'prealgebra')); return '/paths/home.html?course='+(c||'prealgebra'); }
-  function closeLesson(){ window.location.assign(_homeUrl()); }  /* leave the course to OUR roadmap home, for THIS course (never default to another) */
-  window.navExit=function(){ window.location.assign(_homeUrl()); };
+
+  /* Leaving a lesson sends you to the roadmap at /paths/home.html, and that page requires an
+     account: its auth callback (paths/home.html:1177) redirects any signed-out visitor to the
+     marketing page. The whole ad funnel is guest-first, so an ad visitor who taps Start free,
+     onboards and works lesson 1.1 has no account, and every exit control then threw them out
+     of the product and onto a sales page. Exit course, Done at the end of a practice set,
+     Escape, and Back all did it. Done is the worst, because finishing a set is not a request
+     to leave.
+
+     A guest goes back to the in-app dashboard instead. That also avoids reloading 750KB to
+     show a page they are about to be bounced off, and it stops the two junk pageviews per exit
+     that were landing in GA4 and Meta for a home.html nobody ever saw. */
+  window.__exitToHome=function(){
+    var signedIn=false;
+    try{ signedIn = !!(window.firebase && firebase.auth && firebase.auth().currentUser); }catch(e){}
+    if(!signedIn){
+      try{
+        if(typeof showDashboard==='function') showDashboard();
+        var ov=document.getElementById('lessonOverlay');
+        if(ov && !ov.classList.contains('open')){ ov.classList.add('open'); document.body.style.overflow='hidden'; }
+        return;
+      }catch(e){}   // if the in-app fallback fails, fall through and navigate rather than trap them
+    }
+    window.location.assign(_homeUrl());
+  };
+  function closeLesson(){ window.__exitToHome(); }  /* leave the course to OUR roadmap home, for THIS course (never default to another) */
+  window.navExit=function(){ window.__exitToHome(); };
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape') return;
     // Escape should close whatever is open, not blow the student out of the whole course.
