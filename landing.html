@@ -391,7 +391,15 @@
   color:#5c5c58;text-decoration:none}
 .sb-links a:hover{color:#2E7D32}
 .sb-acct{font-size:.8rem;font-weight:600;color:#16281B;background:#F1FAE4;
-  border:1px solid #cfe8bf;padding:3px 10px;white-space:nowrap}
+  border:1px solid #cfe8bf;padding:3px 10px;white-space:nowrap;cursor:pointer}
+.sb-acct:hover{border-color:#7CB342}
+/* The guest sign-in, styled like the primary green button so it reads as the way in. Before
+   this, a signed-out guest in the app had no visible sign-in anywhere: the code that drew one
+   targeted #authNav, which is not in the markup, so it silently bailed, and the only other
+   Sign in link lived in the hidden marketing region. */
+.sb-signin{font-size:.8rem;font-weight:700;color:#fff;background:#15803D;border:1px solid #15803D;
+  padding:4px 13px;white-space:nowrap;cursor:pointer;text-decoration:none;border-radius:0}
+.sb-signin:hover{background:#116932}
 .modal:has(.ws-mode) .sitebar{display:none}   /* focus mode: one problem, nothing else */
 @media(max-width:560px){.sitebar{padding:0 12px}.sb-links{gap:1rem}.sb-links a{font-size:.66rem}}
 .coursebar{flex:none;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
@@ -2763,9 +2771,21 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     try{
       var _a=document.getElementById('sbAcct');
       if(_a){
-        if(user){ _a.textContent=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
-                  _a.hidden=false; }
-        else { _a.hidden=true; }
+        if(user){
+          // Signed in: show the name, and make it open the progress panel, which is where
+          // sign out and account details live. It used to be dead text with no click.
+          _a.className='sb-acct';
+          _a.textContent=((user.displayName||user.email||'').split(/[\s@]/)[0])||'Account';
+          _a.onclick=function(){ if(window.Rewards&&Rewards.openPanel) Rewards.openPanel(); };
+          _a.hidden=false;
+        } else {
+          // Signed out: the ONLY visible way into sign-in from inside the app. This slot used
+          // to just hide itself for a guest, which is the whole reason a guest could not sign in.
+          _a.className='sb-signin';
+          _a.textContent='Sign in';
+          _a.onclick=function(){ if(window.showAuthModal) showAuthModal('in'); };
+          _a.hidden=false;
+        }
       }
     }catch(e){}
     // marketing-nav sign-in pill (present on the landing; swaps to the account when signed in)
