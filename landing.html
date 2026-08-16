@@ -2493,7 +2493,18 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       if(isUp && window.AccountTour) setTimeout(function(){ AccountTour.start(); },420);
     }).catch(function(e){
       btn.disabled=false; btn.textContent=isUp?'Create account':'Sign in';
-      var msg={'auth/user-not-found':'No account with that email.','auth/wrong-password':'Incorrect password.','auth/email-already-in-use':'An account with that email already exists.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.'};
+      // Firebase stopped returning user-not-found and wrong-password separately. Both now come
+      // back as invalid-login-credentials (or invalid-credential in newer SDKs), deliberately,
+      // so nobody can probe which emails have accounts. Those codes were missing from this map,
+      // so a wrong password showed the raw SDK sentence, and so did trying to email-sign-in to
+      // an account that was created with Google, which is the case that actually confuses
+      // people. The message has to cover both without pretending to know which it was.
+      var msg={'auth/user-not-found':'No account with that email.','auth/wrong-password':'Incorrect password.',
+        'auth/invalid-login-credentials':'Email or password is incorrect. If you signed up with Google, use Continue with Google instead.',
+        'auth/invalid-credential':'Email or password is incorrect. If you signed up with Google, use Continue with Google instead.',
+        'auth/too-many-requests':'Too many attempts. Wait a minute, or reset your password below.',
+        'auth/network-request-failed':'Could not reach the sign-in service. Check your connection and try again.',
+        'auth/email-already-in-use':'An account with that email already exists.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Please enter a valid email address.'};
       err.textContent=msg[e.code]||e.message;
     });
   };
