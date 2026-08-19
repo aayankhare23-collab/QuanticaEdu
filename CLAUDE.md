@@ -60,7 +60,13 @@ early access.
 **Security (standing, do not violate):**
 - **Never commit, read, or touch `functions/.env`** — it holds the live Stripe secret key.
 - **Deploy hosting only: `firebase deploy --only hosting`.** Never deploy functions.
-- Firestore rules restrict each user to `users/{uid}/**`.
+- Firestore rules (console only, no `firestore.rules` in this repo) restrict each user to
+  their own `users/{uid}` and `users/{uid}/state/*`, EXCEPT `state/subscription`, which is
+  client-read-only. Only the Stripe webhook writes it, through the Admin SDK, which bypasses
+  rules. Locked 2026-08-15 after a probe showed any signed-in user could previously
+  `set({type:'paid'})` on their own subscription doc. If a client feature ever needs a new
+  per-user doc, write it under `state/` with any name except `subscription` and the rules
+  already allow it.
 
 **Build + deploy loop for any content or app change:**
 1. Edit `lessons/<course>/chapter-N.json` (content) or `landing.html` (app).
