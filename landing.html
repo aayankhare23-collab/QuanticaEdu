@@ -2977,7 +2977,16 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     // that write whenever it lands and the course unlocks in place.
     function _applyAccess(a){
       window._access = a;
-      renderDashboard(); renderToc(); updateAuthUI(user); updateStartCTAs();
+      // These live in a later script block and reach here only because that block exposes
+      // them on window. Each call is guarded and fenced separately: this function runs from
+      // the subscription onSnapshot listener, and one renderer throwing used to kill the
+      // listener itself, which is the exact channel that unlocks the course after Stripe.
+      // Setting window._access above is the part that must never be skipped; the renders are
+      // repainting, and a failed repaint must not cost the access state.
+      try{ if(window.renderDashboard) window.renderDashboard(); }catch(e){ console.warn('renderDashboard failed', e); }
+      try{ if(window.renderToc) window.renderToc(); }catch(e){ console.warn('renderToc failed', e); }
+      try{ updateAuthUI(user); }catch(e){ console.warn('updateAuthUI failed', e); }
+      try{ if(window.updateStartCTAs) window.updateStartCTAs(); }catch(e){ console.warn('updateStartCTAs failed', e); }
     }
     // One place decides what a snapshot means, so the read and the listener cannot drift.
     // A paying subscriber stays 'paid'. Everyone else who predates the paywall is 'legacy'.
@@ -6513,6 +6522,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   // 'paywall' is a state renderDashboard can set, so it needs an icon here or CH_ICON[st] is
   // undefined and every locked chapter prints the literal word 'undefined' in its status circle.
   var CH_ICON={done:'✓',current:'▶',open:'○',soon:'○',paywall:'🔒'};
+  // Exposed because the auth block, several <script> tags earlier, re-renders these when the
+  // subscription snapshot changes. They were never globals, so _applyAccess threw
+  // ReferenceError on every signed-in boot, the subscription listener died with it, and the
+  // unlock-in-place after a Stripe payment could never have worked. The guest-path guards in
+  // that block (typeof renderDashboard==='function') were silently false forever for the same
+  // reason. Declarations hoist, so assigning above the definitions is safe.
+  window.renderDashboard=renderDashboard;
+  window.renderToc=renderToc;
   function renderDashboard(){
     if(window.renderCourseTabs) renderCourseTabs();
     var lb=document.getElementById('lockBtn');
