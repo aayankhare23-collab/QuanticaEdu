@@ -129,6 +129,12 @@ exceptions.
   `2099-01-01`, so everything is free. Switching on is editing that one date, and four checks
   must come back clean first, all of them outside this repo. They are listed in
   `docs/SESSION-2026-08-09.md`. Use a future-dated moment, never a backdated one.
-- Outstanding user-side checks (not code): a real-card Stripe purchase, `APP_URL`, the Stripe
-  webhook's event list, Firestore rules deployed, confirm Google sign-in works on the live
-  authorized domain, support@/privacy@ mailboxes.
+- The four paywall checks CLOSED 2026-08-20 with a real-card test: Firestore rules probe-locked,
+  webhook created/updated/deleted all verified (an out-of-order-delivery race was caught live and
+  fixed in functions/index.js with an eventTs transaction guard), APP_URL corrected to
+  https://quanticaedu.com/landing after Stripe returned the test buyer to the web.app domain
+  (both entry pages now carry a canonical-host redirect as backstop). PAYWALL_LIVE_AT can be
+  flipped whenever the founder chooses; use a future-dated moment, never backdated.
+  Still outstanding: Google sign-in tested from inside the Instagram/Facebook in-app browser
+  (founder's phone), and one optional clean run to observe the Meta Purchase event with value
+  14.99 on a completed payment.
