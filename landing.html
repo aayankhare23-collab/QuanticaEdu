@@ -3,6 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Canonical host, before anything else runs. Firebase serves this same deploy at
+     quanticaedu-a077d.web.app and .firebaseapp.com, and a visitor who lands there is in a
+     parallel universe: a different origin, so no Firebase session, someone's stale
+     localStorage, and an analytics gate that correctly refuses to load GA4 or the Meta
+     pixel. This is not hypothetical. APP_URL in functions/.env pointed at the web.app
+     domain, so the first real-card Stripe test returned its buyer signed out, with old XP,
+     and with the Purchase event never firing. The redirect preserves path, query and hash,
+     so a ?payment=success return heals itself onto the real domain, where the session, the
+     stored plan and the pixel all live. -->
+<script>
+(function(){ try{
+  var h=location.hostname;
+  if(h==='quanticaedu-a077d.web.app'||h==='quanticaedu-a077d.firebaseapp.com'){
+    location.replace('https://quanticaedu.com'+location.pathname+location.search+location.hash);
+  }
+}catch(e){} })();
+</script>
 <!-- 10_paths: kill the legacy .wmb marketing hero as early as possible, in <head>, BEFORE its
      HTML (line ~1428) is ever parsed — otherwise the browser paints the old "QuanticaEdu"
      landing while streaming and only hides it 3000 lines later, which flashes on real loads.

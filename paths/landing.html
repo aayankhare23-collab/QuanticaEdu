@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Canonical host, above even the Stripe catcher: a payment return that lands on the
+     default Firebase domain must move to the real one FIRST, because the session, the
+     stored plan and the analytics gate all live on quanticaedu.com. Same block as
+     landing.html; keep the two identical. -->
+<script>
+(function(){ try{
+  var h=location.hostname;
+  if(h==='quanticaedu-a077d.web.app'||h==='quanticaedu-a077d.firebaseapp.com'){
+    location.replace('https://quanticaedu.com'+location.pathname+location.search+location.hash);
+  }
+}catch(e){} })();
+</script>
+
 <!-- Stripe return catcher. Runs before anything else on the page, deliberately.
 
      functions/index.js:47 builds success_url as `${APP_URL}?payment=success`. If APP_URL is
