@@ -76,26 +76,50 @@ exports.stripeWebhook = onRequest(async (req, res) => {
     return customer.metadata && customer.metadata.uid;
   }
 
+  // Stripe does not guarantee delivery order, and this bit us with real money on the first
+  // live-card test (2026-08-20). The subscription.updated event (status active, 5:37:17)
+  // was DELIVERED at 5:37:22 and wrote paid; then the older subscription.created event
+  // (payload snapshot: incomplete, from 5:37:15) arrived after it and overwrote paid back
+  // to inactive. A paying customer, locked, with every delivery showing a green 200.
+  //
+  // The guard orders by event.created, when the event OCCURRED, not when it arrived. A
+  // transaction drops any event strictly older than the one already applied. Equal
+  // timestamps let the later delivery win, which is harmless: same-second events describe
+  // the same state transition.
+  async function writeSubscription(uid, fields) {
+    const ref = db.collection("users").doc(uid).collection("state").doc("subscription");
+    await db.runTransaction(async (t) => {
+      const snap = await t.get(ref);
+      const prev = snap.exists ? snap.data() : null;
+      if (prev && typeof prev.eventTs === "number" && event.created < prev.eventTs) {
+        console.log(`Skipping stale ${event.type} (event ${event.created} < applied ${prev.eventTs})`);
+        return;
+      }
+      t.set(ref, Object.assign({}, fields, {
+        eventTs: event.created,
+        updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      }));
+    });
+  }
+
   if (event.type === "customer.subscription.created" || event.type === "customer.subscription.updated") {
     const uid = await getUid(sub);
     if (!uid) { res.json({ received: true }); return; }
     const isActive = sub.status === "active" || sub.status === "trialing";
-    await db.collection("users").doc(uid).collection("state").doc("subscription").set({
+    await writeSubscription(uid, {
       type: isActive ? "paid" : "inactive",
       status: sub.status,
       stripeSubId: sub.id,
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
   }
 
   if (event.type === "customer.subscription.deleted") {
     const uid = await getUid(sub);
     if (!uid) { res.json({ received: true }); return; }
-    await db.collection("users").doc(uid).collection("state").doc("subscription").set({
+    await writeSubscription(uid, {
       type: "inactive",
       status: "cancelled",
       stripeSubId: sub.id,
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     });
   }
 
