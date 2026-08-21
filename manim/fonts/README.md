@@ -12,6 +12,7 @@ trusting it.
 
 | File | Family | Source |
 |---|---|---|
+| `Chillax-Semibold.otf` | Chillax | Downloaded from Fontshare 2026-08-20. The display and body face of `paths/landing.html`, so the one ads must match. The only weight here on purpose; nothing should request BOLD |
 | `SpaceGrotesk.ttf` | Space Grotesk | Copied from `tools/shorts/fonts/`, the only brand font already on this machine |
 
 ## What to download
@@ -27,9 +28,9 @@ serves desktop files directly.
 
 The filenames matter. `BRAND_FONTS` in `brand.py` looks for those exact names.
 
-Until Chillax is here, scenes fall back to Space Grotesk, which is a real brand face and
-looks fine, just not the display face the landing page uses. `register_fonts()` only raises
-for families listed as required, so the scaffold works before anyone downloads anything.
+Chillax and Space Grotesk are both here now and the Milo scenes require both, so a missing
+file raises at setup. Switzer remains optional; `register_fonts()` only raises for families
+listed as required.
 
 Do not reach sideways into `tools/shorts/fonts/`. That directory is not deployed, the
 relative path is fragile, and the two pipelines should be able to change independently.

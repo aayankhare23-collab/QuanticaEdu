@@ -26,6 +26,23 @@ Formats are `reel` (1080x1920, 9:16), `feed` (1080x1350, 4:5) and `square` (1080
 Finished files land in `manim/out/`. Add `--no-cache` while iterating, because manim reuses
 cached partial movie files and a text change will otherwise render on top of stale geometry.
 
+The three Milo proof videos (`PythagorasWithMilo`, `CircleAreaWithMilo`,
+`PythagoreanProofWithMilo`) pin their own 1080x1920 frame at module import, so they render
+as reels only and `render.py` refuses other formats for them. The narrated ones keep their
+ElevenLabs track through the encode and get an `.srt` sidecar beside the mp4; the silent
+proof gets the stamped silent AAC track Meta wants.
+
+## Voice
+
+Narration is ElevenLabs, and every line of the narrated scenes is already synthesised and
+cached in `voiceovers/` (cache.json plus the mp3s), which is committed because those takes
+are paid-for assets, not render byproducts. A render needs **no API key**: `voice.py`
+defaults to the elevenlabs provider and serves everything from cache. A cache-miss error
+means a narration string drifted from what was recorded; restore the string rather than
+re-recording. Only a genuinely new line needs `ELEVENLABS_API_KEY` exported. Narration
+strings are cache keys, byte for byte, including the `{a}` / `{pi}` / `{r}` pronunciation
+markers explained in `milo_scene.py`.
+
 ## Meta formats
 
 | Name | Pixels | Ratio | Where it runs |
@@ -67,11 +84,20 @@ cannot get it half right.
 | File | What it is |
 |---|---|
 | `brand.py` | Colours copied verbatim from the `:root` of `paths/landing.html`, plus font registration that fails loudly |
-| `mathtype.py` | LaTeX-free equations. `math_run()` for expressions, `fraction()`, `power()` |
+| `mathtype.py` | LaTeX-free equations as a single `Text`. `math_run()` for expressions, `fraction()`, `power()` |
+| `typeset.py` | The Milo scenes' type layer: `AdTheme` (old role names, current palette), per-piece `math_run()`, `caption_block()` with highlighter bands, square `panel()` |
+| `voice.py` | `QuanticaVoice`, cache-first ElevenLabs narration. See Voice above |
+| `milo_scene.py` | `MiloVoiceoverScene`: vertical format, `say()` beats, pronunciation markers |
+| `milo_actor.py` | `MiloActor`: normalised poses, breathing updater, entrances |
+| `assets/` | Milo pose PNGs |
+| `voiceovers/` | The ElevenLabs narration cache, committed on purpose |
 | `scenes/base.py` | `QuanticaScene`. Frame sizing, theme, safe area, captions |
 | `scenes/solve_it.py` | Worked example, solving `2x + 3 = 11` step by step |
+| `scenes/pythagoras.py` | `PythagorasWithMilo`, the narrated `a² + b² = c²` area proof |
+| `scenes/circle_area.py` | `CircleAreaWithMilo`, the narrated `A = πr²` rearrangement proof |
+| `scenes/pythagorean_proof.py` | `PythagoreanProofWithMilo`, the older silent cut of the Pythagorean proof |
 | `render.py` | Render plus the ffmpeg pass that makes the file Meta-safe |
-| `fonts/` | Font files. Only Space Grotesk is here so far |
+| `fonts/` | Font files: Chillax Semibold and Space Grotesk |
 | `out/` | Finished MP4s, gitignored |
 
 ## Deployment
@@ -82,8 +108,9 @@ published to the live CDN for months because of exactly that gap.
 
 ## Prior art
 
-There is a fuller kit off-repo at `~/manim-projects/milo_manim/`, including the Milo mascot,
-an ElevenLabs voiceover helper and several finished scenes. Port from it rather than starting
-blank, but note its palette section is stale. It encodes the retired navy and orange app
-tokens and the `.wmb` set that is now behind `display:none`. The palette in `brand.py` is the
-current one.
+The Milo kit and the three proof videos were ported here from `~/manim-projects/milo_manim/`
+on 2026-08-20, restyled to Chillax and the current palette with the ElevenLabs narration
+preserved through the cache. The old project still exists off-repo but this folder is now
+the place to work; the old one encodes the retired navy and orange app tokens and the
+`.wmb` set that is now behind `display:none`, so nothing should be copied from it without
+rebranding it on the way in.
