@@ -11,9 +11,10 @@ early access.
 - **`docs/AUTHORING.md`** before writing any lesson content. It is the core, most-repeated
   work and the easiest to get wrong.
 - **`docs/figure-design-system.md`** before making any figure.
-- **`docs/SESSION-2026-08-09.md`** first if you are picking this up cold. It is the newest
-  handoff, it explains the paywall's exact state and the four checks that gate switching it
-  on, and it corrects several numbers the older docs got wrong.
+- **`docs/SESSION-2026-08-20.md`** first if you are picking this up cold. It is the newest
+  handoff: the ad campaign one click from live, the paywall checks all closed with a real
+  card, the analytics stack, and the traps. `docs/SESSION-2026-08-09.md` before it explains
+  the paywall design itself.
 - **`docs/HANDOFF.md`** for where the work currently stands and the traps a fresh session
   would otherwise rediscover. Written 2026-07-31.
 - **Memory** at `~/.claude/projects/-Users-aayankhare-Claude-Projects-QuanticaEdu/memory/`
