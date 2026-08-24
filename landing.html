@@ -2897,7 +2897,16 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       return;
     }
     window.__notSignedIn=false;
+    // hideAuthModal drops any parked checkout, which is correct when the visitor closed the
+    // modal themselves and wrong here. This branch is a SUCCESSFUL sign-in, and the plan they
+    // chose before signing in is exactly what the redirect screen six lines down and
+    // __maybeResumeCheckout both read. Nulling it here made every checkout that crosses a
+    // sign-in silently die on the dashboard, which is every new subscriber, since an existing
+    // one is already signed in when they click. Carry the plan across the call rather than
+    // changing hideAuthModal, whose dismissal behaviour is relied on everywhere else.
+    var _keepPlan = window.__pendingPlan;
     hideAuthModal();
+    window.__pendingPlan = _keepPlan;
     // Still on their way to Stripe. Put the calm redirect screen back up rather than revealing
     // the app that openLesson() opened behind the sign-in modal, because checkout does not
     // resume until the subscription read settles and the wait reads as the app just loading
