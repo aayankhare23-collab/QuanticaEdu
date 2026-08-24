@@ -126,16 +126,32 @@ exceptions.
 - Live analytics is GA4 (`G-98WQ2BFR6N`), gated to real visitors only (loads on
   quanticaedu.com/www hostnames; `/?imfounder=1` sets a device opt-out). Funnel events:
   `course_open`, `lesson_start`, `lesson_complete`, plus `course_switch`, sign-in prompts.
-- **Paywall: code-complete and enforced, switched OFF.** `PAYWALL_LIVE_AT` in landing.html is
-  `2099-01-01`, so everything is free. Switching on is editing that one date, and four checks
-  must come back clean first, all of them outside this repo. They are listed in
-  `docs/SESSION-2026-08-09.md`. Use a future-dated moment, never a backdated one.
+- **Paywall: LIVE.** `PAYWALL_LIVE_AT` in landing.html is `2026-08-24T23:59:59-07:00`, set and
+  deployed 2026-08-24. From that moment the gate applies: Chapter 1 of every course stays free
+  for everyone, and everything after it needs a subscription. The same constant is the
+  grandfathering cutoff, so every account created up to it keeps full access permanently and
+  only later signups meet the gate. Never move this date backwards; doing so would charge
+  people the site already promised free access. The branch where `paywallOn()` returns true had
+  never served a real visitor before this date, so treat the first live day as unproven.
 - The four paywall checks CLOSED 2026-08-20 with a real-card test: Firestore rules probe-locked,
   webhook created/updated/deleted all verified (an out-of-order-delivery race was caught live and
   fixed in functions/index.js with an eventTs transaction guard), APP_URL corrected to
   https://quanticaedu.com/landing after Stripe returned the test buyer to the web.app domain
-  (both entry pages now carry a canonical-host redirect as backstop). PAYWALL_LIVE_AT can be
-  flipped whenever the founder chooses; use a future-dated moment, never backdated.
+  (both entry pages now carry a canonical-host redirect as backstop). Those checks were all run
+  with the paywall OFF and `?paytest=1` bypassing the free-mode guard, which is why the live
+  gate itself is still unproven.
   Still outstanding: Google sign-in tested from inside the Instagram/Facebook in-app browser
-  (founder's phone), and one optional clean run to observe the Meta Purchase event with value
-  14.99 on a completed payment.
+  (founder's phone), and one clean run to observe the Meta Purchase event on a completed
+  payment now that a real buyer can reach checkout without `?paytest=1`.
+- **Meta ads: LIVE.** Campaign `signups-cold-2026-08`, ad set `us-parents-v1` (US only, minimum
+  age 25, suggested 25 to 54, $15/day), four ads: `pythagoras-reel-v1`, `circle-area-reel-v1`,
+  `sum-to-100-reel-v1`, `hero-square-poster-v1`. All carry the UTM macro string, the Quantica
+  Page plus quantica.edu_ identity, Sign up CTA, and the same primary text. Meta silently
+  enables Advantage+ creative edits (Add animation, Add music, Video touch-ups) that rewrite
+  the rendered brand frames; they were switched off on every ad and are worth re-checking on
+  any new ad. Judge nothing for two weeks.
+- Funnel coverage, verified 2026-08-24: Ads Manager sees impression, PageView, StartFreeClick,
+  CompleteRegistration, InitiateCheckout and Purchase (with the real 14.99/99.99 plan value).
+  GA4 sees page_view, lesson_start, paywall_hit, sign_up, segmentable by utm_content, but has
+  NO purchase event, so revenue by ad is Meta-only. `lesson_start` is GA4-only, so Meta cannot
+  optimise toward it. Each signup also stores its first-touch UTMs on the user doc in Firestore.
