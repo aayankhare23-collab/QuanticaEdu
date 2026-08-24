@@ -126,8 +126,9 @@ exceptions.
 - Live analytics is GA4 (`G-98WQ2BFR6N`), gated to real visitors only (loads on
   quanticaedu.com/www hostnames; `/?imfounder=1` sets a device opt-out). Funnel events:
   `course_open`, `lesson_start`, `lesson_complete`, plus `course_switch`, sign-in prompts.
-- **Paywall: LIVE.** `PAYWALL_LIVE_AT` in landing.html is `2026-08-24T23:59:59-07:00`, set and
-  deployed 2026-08-24. From that moment the gate applies: Chapter 1 of every course stays free
+- **Paywall: LIVE.** `PAYWALL_LIVE_AT` in landing.html is `2026-08-24T01:12:00-07:00`, set and
+  deployed 2026-08-24 (brought forward from that night to immediate once the ads were running,
+  so ad traffic would not be grandfathered free). From that moment the gate applies: Chapter 1 of every course stays free
   for everyone, and everything after it needs a subscription. The same constant is the
   grandfathering cutoff, so every account created up to it keeps full access permanently and
   only later signups meet the gate. Never move this date backwards; doing so would charge
