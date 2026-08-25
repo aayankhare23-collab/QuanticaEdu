@@ -113,11 +113,14 @@ exceptions.
 ## Current status (2026-08-09)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: 43 of 81 lessons live. **Chapters 1 to 7 are complete, lessons and problem
-  sets both**, plus lessons 8.1 to 8.3 (chapter 8 has no problem sets yet). **Next work is 8.4
-  and 8.5, whose SPECs are already written, then chapters 9 to 15.** Counts verified against
-  `lessons/algebra1/chapter-*.json` on 2026-08-09, not copied forward; the 7.1 gap this file
-  used to warn about is closed. Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
+- **Algebra I**: 45 of 81 lessons live. **Chapters 1 to 7 are complete, lessons and problem
+  sets both, and chapter 8's five lessons are all live** (8.4 and 8.5 shipped 2026-08-25).
+  Chapter 8 still has NO problem sets, which is the next work per `docs/HANDOFF.md`
+  (`tools/make_pset_workflow.py 8 --course algebra1 ...`), then chapters 9 to 15, whose SPECs
+  are not yet written. Counts verified against `lessons/algebra1/chapter-*.json` on 2026-08-25,
+  not copied forward. Figures now follow the CURRENT brand, not the retired blue/gold kit; see
+  the note atop `docs/figure-design-system.md` and memory `figures-follow-current-brand`
+  (`tools/lesson-figs/fig_8_4.py` and `fig_8_5.py` are the references). Full 81-lesson syllabus in `docs/algebra1-syllabus.md`; the
   live per-lesson state and the pipeline traps are in `docs/HANDOFF.md`, which is the file to
   read before writing anything. Both courses have SEO hub + lesson pages via
   `tools/gen_seo_pages.py` (sitemap/homepage links updated manually), and those have NOT been
