@@ -1,7 +1,47 @@
 # Quantica figure design system
 
-How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established when the
-4.4 figures were rebuilt; lesson 4.4 is the reference for all three core templates.
+How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look.
+
+## Read this before the rest of the file (2026-08-25)
+
+**The palette and component sections below are the RETIRED brand.** The site was rebranded and
+this document was not, so following it verbatim produces an off-brand figure. On 2026-08-25 the
+user said: "Educational figures should be clean manim styled figures and/or animations similar to
+on the landing page or in the manim folder. Do NOT use the previous images as references."
+
+That rules out every figure in `tools/lesson-figs/` (chapter 7, and 8.1 to 8.3) and the
+`BLUE`/`GOLD` constants in `tools/manim_figs.py` as visual references. The module is still the
+right tool for geometry and SVG emission. Only its colours and `pill()` are stale.
+
+**What current is.** Three sources, all live:
+
+- **The app**, `landing.html`, themes per course. Its active `:root` remaps every token to greens
+  and `:root[data-course="algebra1"]` remaps to ocean blue: `--ink:#132F49`, `--slate:#42607A`,
+  `--navy:#1C5486`, `--blue:#2E7CC0`, `--sky:#4D9EDD`, `--line:rgba(28,84,134,.15)`, page
+  background `#E7F2FC`. A figure sits on `.lessonfig`, which is now a **glass** card,
+  `rgba(255,255,255,.6)` over a backdrop blur, not the plain white card assumed below.
+- **The marketing hero** in `paths/landing.html` is the visual language to match: near-black
+  outlines (`#0a0a0a`, stroke-width 2 to 2.5), flat unmodulated fills from its accent set
+  (`#7cc7ff` sky, `#beff8b` lime, `#ffc84d` amber, `#c9b8ff` lavender, `#9fe8d8` mint,
+  `#ff7a5c` coral), Space Grotesk 700 labels, CSS animation with a `prefers-reduced-motion`
+  fallback.
+- **`manim/brand.py`** carries the rule the old kit breaks. **Quantica has square corners.**
+  `--radius` and `--radius-lg` are 0 on every surface, so `RoundedRectangle`, `Fig.pill()` and any
+  `rx` above 0 are off brand. Use `Rectangle`.
+
+**The reference figure is now `tools/lesson-figs/fig_8_4.py`**, the first built in this language.
+Preview any figure on the surface it actually ships on with
+`http://localhost:8743/tools/lesson-figs/_preview.html?f=fig_8_4&c=algebra1`, which renders the
+glass card and the course background. Pass `c=prealgebra` for the green theme.
+
+**Animation is optional.** Animate when the motion teaches. 8.4 ships static on purpose, because
+it is a side-by-side comparison and every panel has to be on screen at once; a staggered reveal
+left half the argument blank for part of each loop, and it painted each region before its own
+boundary, which is backwards from how a region is found.
+
+Everything below still holds except the Palette and Components sections: the two-band structure,
+prose in `cap` only, the 560 to 600 viewBox, the 700 weight cap, no all-caps labels, and the whole
+manim section.
 
 ## Golden rules
 1. **The picture does the talking. Prose goes in `cap`, never inside the SVG.** No paragraphs,
@@ -10,14 +50,18 @@ How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established
    separated by a hairline. Generous whitespace. If it feels busy, cut a band.
 3. **Self-contained palette (explicit hex, not CSS vars)** so the pedagogical colors never
    theme-shift. Figures render on a glass-white card, so design on a transparent background.
-4. `viewBox` width **560–600**; height to fit. `font-family="Space Grotesk, sans-serif"` (matches
-   the rest of the course app shell, which is Space Grotesk throughout; Inter is legacy, do not use
-   it in new figures). **Max `font-weight` is 700.** Space Grotesk ships no 800; browsers fake-bold
+4. `viewBox` width **560–600**; height to fit. `font-family="Space Grotesk, sans-serif"`. That is
+   still right, but not for the reason this line used to give. The app shell is no longer Space
+   Grotesk throughout; it is Chillax for display and Switzer for body, with Space Grotesk as the
+   mono face. Figures keep Space Grotesk because it is the technical face AND because
+   `.modal svg text` in landing.html forces the family on every figure label as a presentation
+   attribute cannot outrank a CSS rule. Setting anything else in the SVG is silently overridden.
+   Inter is legacy, never use it. **Max `font-weight` is 700.** Space Grotesk ships no 800; browsers fake-bold
    the 700 face and the smeared result reads as a generic sans (user-flagged). A CSS safety net in
    landing.html (`.modal svg text`) forces the family, but the weight cap is on you. Captions may
    use KaTeX `\(...\)`.
 
-## Palette
+## Palette (RETIRED, kept only to read the existing chapter 7 and 8.1-8.3 figures)
 - Blue primary (labels, arrows, braces): `#2f6fe0`  · deep (result text): `#2257c5` · dot: `#3b82f6` · light fill: `#cfe0fa` / pill `#eaf1ff`
 - Gold (the kept / highlighted thing): tile `#fcd76a` stroke `#e0a52a` text `#8a5a08` · dot/point `#f0b429`
 - Grey (cancelled / inert): fill `#eef1f6` stroke `#dbe1ea` text+strike `#aab4c2`
@@ -29,7 +73,7 @@ How lesson figures (`{t:"fig", x:"<svg>", cap}` blocks) should look. Established
 <filter id="tilesh" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#5a708f" flood-opacity="0.22"/></filter>
 ```
 
-## Components
+## Components (RETIRED shapes: rounded tiles and pills break the square-corner rule)
 - **Band label:** one lowercase word (`before`, `after`), `font-size 13 font-weight 700`, no
   letter-spacing, fill `#2f6fe0`. **Never all-caps and never letter-spaced.** Small all-caps
   eyebrow/kicker/band labels are banned product-wide (memory `no-allcaps-label-boxes`); this line

@@ -1,15 +1,27 @@
 <!doctype html><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Renders a figure on the surface it actually ships on: the .lessonfig glass card
+     inside the course app. Pass ?c=algebra1 (default) or ?c=prealgebra to switch the
+     course palette, since the app themes itself per course and a figure that reads
+     well on one background can disappear on the other. -->
 <style>
-body{font-family:'Space Grotesk',sans-serif;background:#f7f9fc;margin:0;padding:28px;}
-figure{background:#fff;border:1px solid #e4e9f1;border-radius:16px;padding:22px 20px 16px;max-width:640px;margin:0 auto 26px;}
-figure svg{width:100%;height:auto;display:block}
-figcaption{font-size:14px;color:#475569;margin-top:12px;line-height:1.5}
-h2{font-size:15px;color:#94a3b8;font-weight:500;max-width:640px;margin:0 auto 8px}
+  :root{ --page:#E7F2FC; --line:rgba(28,84,134,.15); --mute:#7C93A8; }
+  body.prealgebra{ --page:#F1F8E8; --line:rgba(22,75,53,.14); --mute:#7C907E; }
+  body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--page);margin:0;padding:28px}
+  figure{background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+         border:1px solid var(--line);border-radius:0;box-shadow:0 12px 30px -16px rgba(20,50,25,.34);
+         padding:16px 18px 12px;max-width:640px;margin:0 auto 26px}
+  figure svg{width:100%;height:auto;display:block}
+  /* the app forces the house font on every figure label, so the preview must too */
+  figure svg text{font-family:'Space Grotesk',system-ui,sans-serif}
+  figcaption{font-size:13px;color:var(--mute);margin-top:8px;line-height:1.55;text-align:center}
+  h2{font-size:14px;color:var(--mute);font-weight:500;max-width:640px;margin:0 auto 8px}
 </style>
 <div id="out"></div>
 <script>
-const files=new URLSearchParams(location.search).get('f')?.split(',')||['fig_7_1'];
+const q=new URLSearchParams(location.search);
+document.body.className=q.get('c')||'algebra1';
+const files=q.get('f')?.split(',')||['fig_7_1'];
 (async()=>{for(const n of files){const t=await (await fetch(n+'.svg')).text();
 document.getElementById('out').insertAdjacentHTML('beforeend','<h2>'+n+'</h2><figure>'+t+'</figure>');}})();
 </script>
