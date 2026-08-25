@@ -2252,5 +2252,517 @@
     "sol": "Adding \\(3x-2y=-4\\) and \\(x+2y=16\\) gives \\(4x=12\\), so \\(x=3\\), and \\(3+2y=16\\) gives \\(y=\\boxed{\\frac{13}{2}}\\). Both \\(\\ge\\) and \\(\\le\\) allow equality, so their boundary lines are solid and the corner \\(\\left(3,\\frac{13}{2}\\right)\\) is itself in the region."
    }
   ]
+ },
+ "8.5": {
+  "title": "Optimization",
+  "next": "9.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Lesson 8.4 ended on a promise. The corners of a region are the points to check when one point must be picked as best. This lesson keeps that promise. Optimization asks not which values work but which working value is largest or smallest, and its answer is a single number. One variable comes first."
+   },
+   {
+    "t": "prob",
+    "x": "A number \\(x\\) satisfies \\(6x+11\\le 95\\). Solve for the bound the 8.3 way, then check the bound itself is allowed. Enter the largest value \\(x\\) can take.",
+    "xp": 5,
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0",
+     "fourteen",
+     "x=14"
+    ],
+    "hints": [
+     "Subtract \\(11\\) from both sides, then divide by the positive \\(6\\). That gives a ceiling on \\(x\\), a number \\(x\\) cannot exceed.",
+     "The ceiling is the answer only if \\(x\\) can equal it. Put the ceiling back into \\(6x+11\\le 95\\) and see whether the inequality still holds."
+    ],
+    "sol": "Subtracting \\(11\\) and dividing by \\(6\\) gives \\(x\\le 14\\), and \\(x=14\\) gives \\(6(14)+11=95\\), which is allowed, so the largest value is \\(\\boxed{14}\\). The bound alone was not enough. The check that \\(14\\) is itself allowed is the second half of the answer, and the next problem shows why it can fail."
+   },
+   {
+    "t": "prob",
+    "x": "Two numbers \\(x\\) and \\(y\\) satisfy \\(x+y\\le 24\\) and \\(y\\ge 7\\). It is tempting to say \\(x\\) can reach \\(24\\). Decide whether it actually can, then enter the largest value \\(x\\) can take.",
+    "xp": 6,
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0",
+     "seventeen",
+     "x=17"
+    ],
+    "hints": [
+     "Reaching \\(x=24\\) forces \\(y\\le 0\\). Check whether the constraint on \\(y\\) allows that.",
+     "Rewrite the first constraint as \\(x\\le 24-y\\), then make \\(y\\) as small as the second constraint permits."
+    ],
+    "sol": "Since \\(x\\le 24-y\\) and \\(y\\) is at least \\(7\\), \\(x\\le 17\\), and \\(x=17\\), \\(y=7\\) satisfies both constraints, so the largest value is \\(\\boxed{17}\\). The bound \\(24\\) fails because no allowed pair reaches it. A bound nothing reaches is not a maximum."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A maximum is proved in two parts, a bound and a case that reaches it.</b> A bound like \\(x\\le 24\\) says only that nothing allowed beats \\(24\\). It does not say \\(24\\) is allowed. The last problem's bound failed exactly there. No allowed pair reaches \\(24\\), so the true maximum is \\(17\\), not \\(24\\). A bound together with one allowed value equal to it is the two-part answer, every maximum in this lesson needs both halves, and a minimum needs the mirror image, a floor and a case that reaches the floor."
+   },
+   {
+    "t": "prob",
+    "x": "Markers cost 6 dollars each and Lena has 80 dollars to spend on them and nothing else. Enter the largest number of markers she can buy.",
+    "xp": 6,
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen",
+     "13 markers",
+     "thirteen markers"
+    ],
+    "hints": [
+     "Write the constraint as \\(6n\\le 80\\) and solve for \\(n\\). The bound you get is not a whole number.",
+     "A count of markers must be a whole number. Step down to the nearest whole number and check that its cost fits inside the 80 dollars."
+    ],
+    "sol": "From \\(6n\\le 80\\), \\(n\\le 13\\frac13\\), and since markers come in whole numbers the most is \\(13\\), costing \\(78\\) dollars, so the answer is \\(\\boxed{13}\\). The bound \\(13\\frac13\\) is not a possible count, since counts are whole numbers, and among whole numbers nothing larger than \\(13\\) stays within the \\(80\\) dollars."
+   },
+   {
+    "t": "prob",
+    "x": "A number \\(x\\) satisfies all three of \\(2x\\le 30\\), \\(x+8\\le 20\\) and \\(4x\\le 50\\). Each constraint alone caps \\(x\\). Enter the largest value \\(x\\) can take.",
+    "xp": 6,
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve",
+     "x=12"
+    ],
+    "hints": [
+     "Solve each of the three inequalities separately. You get three different ceilings on the same \\(x\\).",
+     "\\(x\\) has to obey all three at once, so only the lowest of the three ceilings can be reached. Check that value against the other two constraints."
+    ],
+    "sol": "The three constraints cap \\(x\\) at \\(15\\), \\(12\\), and \\(12\\tfrac12\\), and every allowed value must sit under all three, so the largest is the smallest cap, \\(\\boxed{12}\\). The cap \\(12\\tfrac12\\) is close but looser. Only the tightest cap binds, and \\(12\\) passes the other two checks."
+   },
+   {
+    "t": "imp",
+    "x": "<b>When several constraints cap the same quantity, the smallest cap binds.</b> An allowed value satisfies every constraint at once, so it sits at or below each cap, and in particular at or below the smallest. The smallest cap itself satisfies the looser constraints automatically, so it is reached, and it is the maximum. The constraint whose cap is the answer is called binding, the others are called slack, and the reached half still gets checked against every constraint, not just the binding one."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 400\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A first-quadrant coordinate region shaded solid, bounded below and on the left by the axes and above and to the right by three straight edges. Each of its five corners carries a dot. Four dots are plain and the corner highest up and to the right is gold and labelled best here. A ring draws itself around each corner in turn along the boundary, reaching the gold corner last, the way the best value is found by checking every corner and keeping the best.\" font-family=\"Space Grotesk, sans-serif\"><path fill-rule=\"nonzero\" fill=\"#7cc7ff\" d=\"M 96 330 C 207.332031 330 318.667969 330 430 330 C 453.332031 298.667969 476.667969 267.332031 500 236 C 464 189.332031 428 142.667969 392 96 C 293.332031 120 194.667969 144 96 168 C 96 222 96 276 96 330 Z M 96 330 \"/>\n<path fill=\"none\" stroke-width=\"0.044\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.8 -2.6 C 3.266641 -1.973359 3.733359 -1.346641 4.2 -0.72 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill=\"none\" stroke-width=\"0.044\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.2 -0.72 C 3.48 0.213359 2.76 1.146641 2.04 2.08 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill=\"none\" stroke-width=\"0.044\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.04 2.08 C 0.0666406 1.6 -1.906641 1.12 -3.88 0.64 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -4.16 -2.6 C -1.053359 -2.6 2.053359 -2.6 5.16 -2.6 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.88 -2.88 C -3.88 -0.88 -3.88 1.12 -3.88 3.12 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill-rule=\"nonzero\" fill=\"#0a0a0a\" d=\"M 556 330 C 551.566406 331.679688 547.132812 333.359375 542.699219 335.039062 C 542.699219 331.679688 542.699219 328.320312 542.699219 324.960938 C 547.132812 326.640625 551.566406 328.320312 556 330 Z M 556 330 \"/>\n<path fill-rule=\"nonzero\" fill=\"#0a0a0a\" d=\"M 96 36 C 97.679688 40.433594 99.359375 44.867188 101.039062 49.300781 C 97.679688 49.300781 94.320312 49.300781 90.960938 49.300781 C 92.640625 44.867188 94.320312 40.433594 96 36 Z M 96 36 \"/>\n<path fill-rule=\"nonzero\" fill=\"#ffffff\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.72 -2.6 C -3.72 -2.557578 -3.736875 -2.516875 -3.766875 -2.486875 C -3.796875 -2.456875 -3.837578 -2.44 -3.88 -2.44 C -3.922422 -2.44 -3.963125 -2.456875 -3.993125 -2.486875 C -4.023125 -2.516875 -4.04 -2.557578 -4.04 -2.6 C -4.04 -2.642422 -4.023125 -2.683125 -3.993125 -2.713125 C -3.963125 -2.743125 -3.922422 -2.76 -3.88 -2.76 C -3.837578 -2.76 -3.796875 -2.743125 -3.766875 -2.713125 C -3.736875 -2.683125 -3.72 -2.642422 -3.72 -2.6 Z M -3.72 -2.6 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill-rule=\"nonzero\" fill=\"#ffffff\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.96 -2.6 C 2.96 -2.557578 2.943125 -2.516875 2.913125 -2.486875 C 2.883125 -2.456875 2.842422 -2.44 2.8 -2.44 C 2.757578 -2.44 2.716875 -2.456875 2.686875 -2.486875 C 2.656875 -2.516875 2.64 -2.557578 2.64 -2.6 C 2.64 -2.642422 2.656875 -2.683125 2.686875 -2.713125 C 2.716875 -2.743125 2.757578 -2.76 2.8 -2.76 C 2.842422 -2.76 2.883125 -2.743125 2.913125 -2.713125 C 2.943125 -2.683125 2.96 -2.642422 2.96 -2.6 Z M 2.96 -2.6 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill-rule=\"nonzero\" fill=\"#ffffff\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.36 -0.72 C 4.36 -0.677578 4.343125 -0.636875 4.313125 -0.606875 C 4.283125 -0.576875 4.242422 -0.56 4.2 -0.56 C 4.157578 -0.56 4.116875 -0.576875 4.086875 -0.606875 C 4.056875 -0.636875 4.04 -0.677578 4.04 -0.72 C 4.04 -0.762422 4.056875 -0.803125 4.086875 -0.833125 C 4.116875 -0.863125 4.157578 -0.88 4.2 -0.88 C 4.242422 -0.88 4.283125 -0.863125 4.313125 -0.833125 C 4.343125 -0.803125 4.36 -0.762422 4.36 -0.72 Z M 4.36 -0.72 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill-rule=\"nonzero\" fill=\"#ffffff\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.72 0.64 C -3.72 0.682422 -3.736875 0.723125 -3.766875 0.753125 C -3.796875 0.783125 -3.837578 0.8 -3.88 0.8 C -3.922422 0.8 -3.963125 0.783125 -3.993125 0.753125 C -4.023125 0.723125 -4.04 0.682422 -4.04 0.64 C -4.04 0.597578 -4.023125 0.556875 -3.993125 0.526875 C -3.963125 0.496875 -3.922422 0.48 -3.88 0.48 C -3.837578 0.48 -3.796875 0.496875 -3.766875 0.526875 C -3.736875 0.556875 -3.72 0.597578 -3.72 0.64 Z M -3.72 0.64 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/>\n<path fill-rule=\"nonzero\" fill=\"#ffc84d\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.23 2.08 C 2.23 2.130391 2.21 2.17875 2.174375 2.214375 C 2.13875 2.25 2.090391 2.27 2.04 2.27 C 1.989609 2.27 1.94125 2.25 1.905625 2.214375 C 1.87 2.17875 1.85 2.130391 1.85 2.08 C 1.85 2.029609 1.87 1.98125 1.905625 1.945625 C 1.94125 1.91 1.989609 1.89 2.04 1.89 C 2.090391 1.89 2.13875 1.91 2.174375 1.945625 C 2.21 1.98125 2.23 2.029609 2.23 2.08 Z M 2.23 2.08 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.0600;0.1600;1\" dur=\"7.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.032\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#b9cbdc\" d=\"M -3.6 -2.6 C -3.6 -2.525703 -3.629531 -2.454531 -3.682031 -2.402031 C -3.734531 -2.349531 -3.805703 -2.32 -3.88 -2.32 C -3.954297 -2.32 -4.025469 -2.349531 -4.077969 -2.402031 C -4.130469 -2.454531 -4.16 -2.525703 -4.16 -2.6 C -4.16 -2.674297 -4.130469 -2.745469 -4.077969 -2.797969 C -4.025469 -2.850469 -3.954297 -2.88 -3.88 -2.88 C -3.805703 -2.88 -3.734531 -2.850469 -3.682031 -2.797969 C -3.629531 -2.745469 -3.6 -2.674297 -3.6 -2.6 Z M -3.6 -2.6 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/></g><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.1900;0.2900;1\" dur=\"7.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.032\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#b9cbdc\" d=\"M 3.08 -2.6 C 3.08 -2.525703 3.050469 -2.454531 2.997969 -2.402031 C 2.945469 -2.349531 2.874297 -2.32 2.8 -2.32 C 2.725703 -2.32 2.654531 -2.349531 2.602031 -2.402031 C 2.549531 -2.454531 2.52 -2.525703 2.52 -2.6 C 2.52 -2.674297 2.549531 -2.745469 2.602031 -2.797969 C 2.654531 -2.850469 2.725703 -2.88 2.8 -2.88 C 2.874297 -2.88 2.945469 -2.850469 2.997969 -2.797969 C 3.050469 -2.745469 3.08 -2.674297 3.08 -2.6 Z M 3.08 -2.6 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/></g><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.3200;0.4200;1\" dur=\"7.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.032\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#b9cbdc\" d=\"M 4.48 -0.72 C 4.48 -0.645703 4.450469 -0.574531 4.397969 -0.522031 C 4.345469 -0.469531 4.274297 -0.44 4.2 -0.44 C 4.125703 -0.44 4.054531 -0.469531 4.002031 -0.522031 C 3.949531 -0.574531 3.92 -0.645703 3.92 -0.72 C 3.92 -0.794297 3.949531 -0.865469 4.002031 -0.917969 C 4.054531 -0.970469 4.125703 -1 4.2 -1 C 4.274297 -1 4.345469 -0.970469 4.397969 -0.917969 C 4.450469 -0.865469 4.48 -0.794297 4.48 -0.72 Z M 4.48 -0.72 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/></g><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.4500;0.5500;1\" dur=\"7.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.032\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#b9cbdc\" d=\"M -3.6 0.64 C -3.6 0.714297 -3.629531 0.785469 -3.682031 0.837969 C -3.734531 0.890469 -3.805703 0.92 -3.88 0.92 C -3.954297 0.92 -4.025469 0.890469 -4.077969 0.837969 C -4.130469 0.785469 -4.16 0.714297 -4.16 0.64 C -4.16 0.565703 -4.130469 0.494531 -4.077969 0.442031 C -4.025469 0.389531 -3.954297 0.36 -3.88 0.36 C -3.805703 0.36 -3.734531 0.389531 -3.682031 0.442031 C -3.629531 0.494531 -3.6 0.565703 -3.6 0.64 Z M -3.6 0.64 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/></g><g stroke-dashoffset=\"1\"><animate attributeName=\"stroke-dashoffset\" values=\"1;1;0;0\" keyTimes=\"0;0.5800;0.6800;1\" dur=\"7.5s\" begin=\"0s\" repeatCount=\"indefinite\" calcMode=\"spline\" keySplines=\"0 0 1 1;0.42 0 0.58 1;0 0 1 1\"/><path pathLength=\"1\" stroke-dasharray=\"1\" fill=\"none\" stroke-width=\"0.032\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M 2.32 2.08 C 2.32 2.154297 2.290469 2.225469 2.237969 2.277969 C 2.185469 2.330469 2.114297 2.36 2.04 2.36 C 1.965703 2.36 1.894531 2.330469 1.842031 2.277969 C 1.789531 2.225469 1.76 2.154297 1.76 2.08 C 1.76 2.005703 1.789531 1.934531 1.842031 1.882031 C 1.894531 1.829531 1.965703 1.8 2.04 1.8 C 2.114297 1.8 2.185469 1.829531 2.237969 1.882031 C 2.290469 1.934531 2.32 2.005703 2.32 2.08 Z M 2.32 2.08 \" transform=\"matrix(50, 0, 0, -50, 290, 200)\"/></g><text x=\"548.0\" y=\"348.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x</text><text x=\"112.0\" y=\"42.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">y</text><text x=\"406.0\" y=\"76.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"start\" dominant-baseline=\"middle\">best here</text><text x=\"263.0\" y=\"350.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">a</text><text x=\"482.0\" y=\"294.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">b</text><text x=\"466.0\" y=\"166.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">c</text><text x=\"244.0\" y=\"112.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">d</text><text x=\"78.0\" y=\"249.0\" font-size=\"14\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">e</text></svg>",
+    "cap": "A region cut out by five boundary lines, one edge for each of \\(a\\) through \\(e\\), with a dot at every corner. A linear expression changes steadily along any one edge, so no point in the middle of an edge beats both of its ends. Only the corners ever need checking, and on this region the best value sits at the gold corner."
+   },
+   {
+    "t": "p",
+    "x": "With two variables the allowed values are no longer a stretch of the number line but one of 8.4's regions. Its corners sit where boundary lines cross, found by solving the pair as a system, chapter 5's work. A crossing counts as a corner only when it also satisfies every other constraint, since a point outside the region is not a corner of it."
+   },
+   {
+    "t": "prob",
+    "x": "One corner of a region is the point where the boundary lines \\(2x+y=25\\) and \\(x+3y=30\\) cross. Solve the system and enter the \\(x\\)-coordinate of that corner.",
+    "xp": 6,
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine",
+     "x=9"
+    ],
+    "hints": [
+     "A corner is just where two boundary lines meet, the system-solving from chapter 5. Solve the first equation for \\(y\\) to set up a substitution.",
+     "Substituting \\(y=25-2x\\) into \\(x+3y=30\\) leaves one equation in \\(x\\). Solve it, then check the pair in both boundary equations."
+    ],
+    "sol": "Substituting \\(y=25-2x\\) into \\(x+3y=30\\) gives \\(-5x=-45\\), so the corner is \\((9,7)\\) and the \\(x\\)-coordinate is \\(\\boxed{9}\\). Nothing new happened here. Finding a corner is exactly the line-crossing work of chapters 5 and 7."
+   },
+   {
+    "t": "prob",
+    "x": "The points satisfying \\(x\\ge 0\\), \\(y\\ge 0\\), \\(x+y\\le 10\\) and \\(3x+y\\le 18\\) form a region. Enter how many corners this region has.",
+    "xp": 6,
+    "ans": "4",
+    "accept": [
+     "4",
+     "4.0",
+     "four",
+     "4 corners",
+     "four corners"
+    ],
+    "hints": [
+     "Cross the boundary lines in pairs, but keep only the crossings that satisfy every other constraint. Some crossings land outside the region.",
+     "Where \\(x+y=10\\) meets the \\(x\\)-axis, check whether \\(3x+y\\le 18\\) still holds. A sketch the 8.4 way settles the count if it is unclear."
+    ],
+    "sol": "The crossings that satisfy all four constraints are \\((0,0)\\), \\((6,0)\\), \\((4,6)\\) and \\((0,10)\\), so the number of corners is \\(\\boxed{4}\\). The crossings \\((10,0)\\) and \\((0,18)\\) each fail the constraint they do not sit on. A crossing outside the region is not a corner of it."
+   },
+   {
+    "t": "imp",
+    "x": "<b>On a region cut out by linear constraints, a linear expression takes its largest and smallest values at corners.</b> That is the corner fact. Along any one edge the expression changes steadily in one direction, or not at all, so a point in the middle of an edge never beats both of its ends. Walking to the better end, then along the next edge, only ever stops at a corner. So however many points the region contains, and it contains infinitely many, only the corners need checking."
+   },
+   {
+    "t": "p",
+    "x": "The whole method fits in one pass. List the constraints, find every corner by crossing boundary pairs and keeping the crossings that satisfy everything else, evaluate the expression at each corner, and take the best. The winning value occurs at an actual point of the region, so both halves of the two-part answer are settled at once."
+   },
+   {
+    "t": "prob",
+    "x": "A region has corners \\((0,0)\\), \\((8,0)\\), \\((6,4)\\) and \\((0,7)\\). Evaluate \\(3x+2y\\) at all four corners and enter the largest value it takes on the region.",
+    "xp": 7,
+    "ans": "26",
+    "accept": [
+     "26",
+     "26.0",
+     "twenty-six",
+     "twentysix"
+    ],
+    "hints": [
+     "There is one evaluation per corner, four in all. Skipping any of them risks missing the largest value.",
+     "At \\((8,0)\\) the \\(y\\) term is zero. Compare that corner against \\((6,4)\\), where both terms are positive."
+    ],
+    "sol": "The corner values are \\(0\\), \\(24\\), \\(26\\) and \\(14\\), so the largest value of \\(3x+2y\\) on the region is \\(\\boxed{26}\\). At \\((8,0)\\) the value is \\(24\\), two less than at \\((6,4)\\), which is why every corner needs to be checked."
+   },
+   {
+    "t": "fact",
+    "x": "In 1939 George Dantzig arrived late to a statistics class and copied two problems off the board, taking them for homework. He handed in solutions days later. They were not homework, they were open problems nobody had solved."
+   },
+   {
+    "t": "prob",
+    "x": "The constraints \\(x\\ge 2\\), \\(y\\ge 1\\) and \\(x+y\\le 9\\) cut out a triangle. Find its corners and enter the smallest value \\(3x+4y\\) takes on the triangle.",
+    "xp": 7,
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "The three corners come from crossing the boundaries in pairs, and two come cheap since two boundaries are the lines \\(x=2\\) and \\(y=1\\).",
+     "A minimum sits at a corner for the same edge reason a maximum does. Evaluate \\(3x+4y\\) at all three corners and keep the smallest value."
+    ],
+    "sol": "The corners are \\((2,1)\\), \\((8,1)\\) and \\((2,7)\\), where \\(3x+4y\\) equals \\(10\\), \\(28\\) and \\(34\\), so the smallest value is \\(\\boxed{10}\\). Minimizing is the same table as maximizing. Only the end you read it from changes."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The corner method.</b> Cross the boundary lines in pairs, discard any crossing that violates another constraint, evaluate the expression at each surviving corner, and keep the best value. A minimum is the identical work with the smallest entry kept instead of the largest, because the corner fact of the last rule holds at both ends of the list, so one table of corner values answers both questions."
+   },
+   {
+    "t": "p",
+    "x": "A corner can have fractional coordinates, but a count of objects must be whole. The value at such a corner is still a bound. Round the bound down, then find an allowed whole-number point that reaches it. Rounding the corner's coordinates instead can give a point outside the region or miss the best plan, and the next problem sets exactly that trap."
+   },
+   {
+    "t": "prob",
+    "x": "A snack stand makes \\(x\\) fruit cups and \\(y\\) lemonades, whole numbers of each. Supplies allow \\(x+y\\le 8\\) and prep time allows \\(3x+y\\le 15\\). Each fruit cup earns 2 dollars and each lemonade 1 dollar. Enter the largest number of dollars the stand can earn.",
+    "xp": 7,
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven",
+     "11 dollars",
+     "eleven dollars",
+     "$11"
+    ],
+    "hints": [
+     "Find the corners of the region and evaluate the earnings at each one. The best corner has fractional coordinates, so its value is only a bound, not yet the answer.",
+     "Round that bound down to a whole number of dollars, then find whole numbers of cups and lemonades that satisfy both constraints and earn exactly that amount."
+    ],
+    "sol": "The best corner is \\(\\left(\\frac72,\\frac92\\right)\\), where \\(2x+y=11\\frac12\\), so earnings are at most \\(11\\), and \\(x=3\\), \\(y=5\\) satisfies both constraints and earns \\(\\boxed{11}\\). Rounding the corner's coordinates down to \\((3,4)\\) earns only \\(10\\) and misses the best plan. Round the bound down, then look for an allowed point that reaches it."
+   },
+   {
+    "t": "prob",
+    "x": "Mara has 75 dollars to spend on cupcake boxes. Each box costs 8 dollars and holds 12 cupcakes, and her backpack has room for 60 cupcakes. Enter the largest number of boxes she can carry home.",
+    "xp": 7,
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five",
+     "5 boxes",
+     "five boxes"
+    ],
+    "hints": [
+     "Two constraints cap the number of boxes, one from the budget and one from the backpack. Work out both caps before trusting either.",
+     "Money allows \\(9\\) boxes, but \\(9\\) boxes hold \\(108\\) cupcakes. Which cap is actually the smaller one?"
+    ],
+    "sol": "The budget allows \\(9\\) boxes but the backpack caps the count at \\(60\\div 12=5\\), and the smaller cap is the real limit, so the most Mara can carry home is \\(\\boxed{5}\\). Money is the slack constraint here. The limit comes from whichever cap is smaller, not from whichever the problem states first."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A whole-number answer is the corner bound rounded down, then checked.</b> The corner value is a bound, not yet an answer. Round it down, then look for an allowed whole-number point that reaches it, checking every constraint, not only the one the bound came from. A bound with such a point is attainable. If no allowed point reaches the rounded bound, it is not, so step down one and check again. A smallest-count question is the mirror image. Its bound is rounded up, and the check is that one fewer falls short. Skipping that check is the one error this lesson exists to prevent."
+   },
+   {
+    "t": "p",
+    "x": "The chapter comes together here. Each constraint is rearranged under 8.1's rules and solved into a bound the 8.3 way, the region and its corners are drawn the 8.4 way, and the best corner is picked out with this lesson's two-part answer. Two problems remain, and each uses all of it at once."
+   },
+   {
+    "t": "prob",
+    "x": "The constraints \\(x\\ge 0\\), \\(y\\ge 0\\), \\(3x+y\\le 21\\) and \\(x+2y\\le 12\\) cut out a four-cornered region. Find all four corners, evaluate \\(5x+4y\\) at each, and enter the largest value it takes.",
+    "xp": 8,
+    "ans": "42",
+    "accept": [
+     "42",
+     "42.0",
+     "forty-two",
+     "fortytwo"
+    ],
+    "hints": [
+     "Cross the boundary lines in pairs and discard any crossing that violates another constraint. Exactly four corners survive.",
+     "The corners on the axes come quickly. The last corner is where \\(3x+y=21\\) meets \\(x+2y=12\\), a chapter 5 system. Then evaluate \\(5x+4y\\) at all four."
+    ],
+    "sol": "The corners are \\((0,0)\\), \\((7,0)\\), \\((6,3)\\) and \\((0,6)\\), since the crossings \\((12,0)\\) and \\((0,21)\\) each fail the constraint they do not sit on, and \\(5x+4y\\) takes the values \\(0\\), \\(35\\), \\(42\\) and \\(24\\), so the largest value is \\(\\boxed{42}\\). Evaluating at all four corners is the whole check, since the largest value must occur at one of them."
+   },
+   {
+    "t": "prob",
+    "x": "Whole numbers \\(x\\ge 0\\) and \\(y\\ge 0\\) satisfy \\(2x+y\\le 16\\) and \\(x+3y\\le 21\\). Enter the largest value the expression \\(7x+6y\\) can take over all such pairs.",
+    "xp": 8,
+    "ans": "66",
+    "accept": [
+     "66",
+     "66.0",
+     "sixty-six",
+     "sixtysix"
+    ],
+    "hints": [
+     "Run the corner method to get the bound. The best corner is not a whole-number point, so the bound is not attained.",
+     "Fix \\(x\\) at each whole value from \\(0\\) to \\(8\\), take the largest \\(y\\) both constraints allow, and evaluate \\(7x+6y\\). Keep the best of the nine columns."
+    ],
+    "sol": "The best corner is \\(\\left(\\frac{27}{5},\\frac{26}{5}\\right)\\), where \\(7x+6y=69\\), so \\(69\\) is a bound but no whole-number point reaches it, and scanning each column, \\(x\\) from \\(0\\) to \\(8\\) with the largest allowed \\(y\\), finds the best allowed point \\((6,4)\\), where \\(7x+6y=\\boxed{66}\\). The scan misses nothing, since for each \\(x\\) the expression is largest at the biggest allowed \\(y\\), and the best of the nine columns is \\(66\\)."
+   },
+   {
+    "t": "p",
+    "x": "Every boundary in this chapter was a straight line because every expression was linear. Chapter 9 turns to expressions where a letter is multiplied by itself. Lesson 9.1 opens Quadratics I with factoring, writing \\(x^2+7x+12\\) as \\((x+3)(x+4)\\), two linear factors, so the straight-line work just finished stays in use."
+   }
+  ],
+  "review": [
+   {
+    "x": "Of all the numbers satisfying \\(x+6\\le 25\\), enter the largest.",
+    "ans": "19",
+    "accept": [
+     "19",
+     "nineteen"
+    ],
+    "hints": [
+     "Subtract 6 from both sides.",
+     "Check the bound itself satisfies the inequality before answering."
+    ],
+    "sol": "Subtracting 6 gives \\(x\\le 19\\), and \\(19+6=25\\) is allowed, so the largest is \\(\\boxed{19}\\)."
+   },
+   {
+    "x": "A number \\(y\\) satisfies \\(5y+9\\le 109\\). Solve, check the bound is allowed, and enter the largest value of \\(y\\).",
+    "ans": "20",
+    "accept": [
+     "20",
+     "twenty"
+    ],
+    "hints": [
+     "Subtract 9, then divide by 5.",
+     "The bound is the answer only after substituting it back confirms it is allowed."
+    ],
+    "sol": "\\(5y\\le 100\\) gives \\(y\\le 20\\), and \\(y=20\\) gives exactly \\(109\\), so the largest value is \\(\\boxed{20}\\)."
+   },
+   {
+    "x": "Erasers cost 4 dollars each and Ben has 35 dollars. Enter the largest number of erasers he can buy.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight",
+     "8 erasers"
+    ],
+    "hints": [
+     "The bound 35 over 4 is not a whole number.",
+     "Step down to a whole count and check the cost stays inside the budget."
+    ],
+    "sol": "\\(4n\\le 35\\) gives \\(n\\le 8\\frac34\\), and erasers come whole, so Ben buys \\(\\boxed{8}\\). The check matters, \\(8\\) erasers cost \\(32\\) dollars and a ninth would break the budget."
+   },
+   {
+    "x": "Enter the largest value of \\(x\\) that satisfies \\(-2x\\ge 10\\).",
+    "ans": "-5",
+    "accept": [
+     "-5",
+     "−5",
+     "-5.0",
+     "−5.0",
+     "x=-5",
+     "x=−5",
+     "negative 5",
+     "negative five",
+     "minus 5",
+     "minus five"
+    ],
+    "hints": [
+     "Dividing both sides by negative 2 reverses the inequality sign.",
+     "The solutions run downward from some number. The largest solution is that number itself."
+    ],
+    "sol": "Dividing by \\(-2\\) flips the inequality to \\(x\\le -5\\), and \\(x=-5\\) gives exactly \\(10\\), so the largest is \\(\\boxed{-5}\\). The flip is 8.1's rule, and forgetting it points the ray the wrong way."
+   },
+   {
+    "x": "Enter the smallest number satisfying \\(x-7\\ge \\frac{5}{2}\\), as an exact fraction or decimal.",
+    "ans": "19/2",
+    "accept": [
+     "19/2",
+     "9.5"
+    ],
+    "hints": [
+     "Add 7 to both sides, keeping the fraction exact.",
+     "A smallest value is a floor plus a case reaching it, the same two parts as a maximum."
+    ],
+    "sol": "Adding 7 gives \\(x\\ge \\frac{19}{2}\\), and \\(x=\\frac{19}{2}\\) satisfies the original exactly, so the smallest value is \\(\\boxed{\\tfrac{19}{2}}\\)."
+   },
+   {
+    "x": "An integer \\(n\\) satisfies \\(4n\\lt 66\\). Enter the largest possible value of \\(n\\).",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "Divide both sides of \\(4n\\lt 66\\) by 4 to see how large \\(n\\) can be.",
+     "The cutoff is not a whole number, so take the largest integer below it and check it in the original inequality."
+    ],
+    "sol": "\\(4n\\lt 66\\) gives \\(n\\lt 16.5\\), and the largest integer below the cutoff is \\(\\boxed{16}\\). The check \\(4\\cdot 16=64\\lt 66\\) works, and the answer would be the same with \\(\\le\\) since 16.5 is not an integer."
+   },
+   {
+    "x": "Raffle tickets cost 8 dollars each and a class must raise at least 210 dollars. Enter the smallest number of tickets that reaches the goal.",
+    "ans": "27",
+    "accept": [
+     "27",
+     "twenty-seven",
+     "twentyseven",
+     "27 tickets"
+    ],
+    "hints": [
+     "This one asks for a smallest, not a largest, so dividing gives a lower bound and the answer is at or above it.",
+     "The bound is not a whole number. Round up to the next whole ticket, then check that one ticket fewer falls short."
+    ],
+    "sol": "\\(8n\\ge 210\\) gives \\(n\\ge 26\\frac14\\), and tickets come in whole numbers, so the smallest count that reaches the goal is \\(\\boxed{27}\\). The bound is rounded up because it is not whole. Selling 26 raises only 208 dollars and misses the goal."
+   },
+   {
+    "x": "Candles cost 6 dollars each, the budget is 150 dollars, and the gift box holds three rows of seven candles. Enter the largest number of candles that can be bought and boxed.",
+    "ans": "21",
+    "accept": [
+     "21",
+     "twenty-one",
+     "twentyone",
+     "21 candles"
+    ],
+    "hints": [
+     "Two caps apply, one from money and one from the box. Compute both.",
+     "Once you have both caps, the answer is the smaller of the two."
+    ],
+    "sol": "Money allows \\(25\\) candles but the box holds only \\(21\\), and the smallest cap binds, so the answer is \\(\\boxed{21}\\). The reached half still checks out, since \\(21\\) candles cost \\(126\\) dollars, inside the budget."
+   },
+   {
+    "x": "The boundary lines of \\(x+y\\le 11\\) and \\(3x-y\\le 10\\) cross at a corner of the region where both hold. Enter the \\(x\\)-coordinate of that corner, as an exact fraction or decimal.",
+    "ans": "21/4",
+    "accept": [
+     "21/4",
+     "5.25",
+     "5.250",
+     "x=21/4",
+     "x=5.25"
+    ],
+    "hints": [
+     "Add the two boundary equations. The \\(y\\) terms cancel.",
+     "Corners are not always whole-number points. Keep the fraction exact."
+    ],
+    "sol": "Adding the boundary equations gives \\(4x=21\\), so the corner has \\(x=\\boxed{\\tfrac{21}{4}}\\). Substituting back into \\(x+y=11\\) gives \\(y=\\tfrac{23}{4}\\), and a corner with fractional coordinates is nothing unusual."
+   },
+   {
+    "x": "How many corners does the region \\(x\\ge 0\\), \\(y\\ge 0\\), \\(x+y\\le 6\\) have?",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three",
+     "3 corners"
+    ],
+    "hints": [
+     "Three boundary lines, crossed in pairs.",
+     "Every pairwise crossing satisfies the remaining constraint here, so none is discarded."
+    ],
+    "sol": "The three crossings \\((0,0)\\), \\((6,0)\\) and \\((0,6)\\) all lie in the region, so the count of corners is \\(\\boxed{3}\\)."
+   },
+   {
+    "x": "A region has corners \\((0,0)\\), \\((7,0)\\), \\((5,6)\\) and \\((0,9)\\). Enter the largest value of \\(2x+3y\\) on the region.",
+    "ans": "28",
+    "accept": [
+     "28",
+     "twenty-eight",
+     "twentyeight"
+    ],
+    "hints": [
+     "One evaluation per corner, four in all.",
+     "The values at \\((5,6)\\) and \\((0,9)\\) are close, so compute both exactly rather than guessing between them."
+    ],
+    "sol": "The corner values are \\(0\\), \\(14\\), \\(28\\) and \\(27\\), so the largest value is \\(\\boxed{28}\\). The close second is \\((0,9)\\) with \\(27\\), so the corner with the biggest \\(y\\) coordinate is not the best one here."
+   },
+   {
+    "x": "A region has corners \\((3,7)\\), \\((6,4)\\) and \\((9,9)\\). Enter the smallest value of \\(3x+2y\\) on the region.",
+    "ans": "23",
+    "accept": [
+     "23",
+     "twenty-three",
+     "twentythree"
+    ],
+    "hints": [
+     "A minimum sits at a corner for the same reason a maximum does.",
+     "Evaluate \\(3x+2y\\) at all three corners and keep the smallest of the three values."
+    ],
+    "sol": "The corner values are \\(23\\), \\(26\\) and \\(45\\), so the smallest value on the region is \\(\\boxed{23}\\)."
+   },
+   {
+    "x": "A region has corners \\((0,0)\\), \\((8,0)\\), \\((5,7)\\) and \\((0,9)\\). The expression \\(9x+4y\\) is largest at one corner. Enter that corner's \\(y\\)-coordinate.",
+    "ans": "7",
+    "accept": [
+     "7",
+     "seven"
+    ],
+    "hints": [
+     "First find the corner where \\(9x+4y\\) is largest, then enter only that corner's \\(y\\)-coordinate.",
+     "The value at \\((8,0)\\) is \\(72\\). Check whether the value at any other corner is larger before you answer."
+    ],
+    "sol": "The corner values are \\(0\\), \\(72\\), \\(73\\) and \\(36\\), so the largest is \\(73\\), at \\((5,7)\\), and that corner's \\(y\\)-coordinate is \\(\\boxed{7}\\). The question asks for the coordinate itself, not the value \\(73\\)."
+   },
+   {
+    "x": "The points satisfying \\(x\\ge 0\\), \\(y\\ge 0\\), \\(x\\le 5\\), \\(y\\le 5\\), \\(x+y\\ge 2\\) and \\(x+y\\le 8\\) form a region. Enter how many corners it has.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "six",
+     "6 corners"
+    ],
+    "hints": [
+     "Start with the square where \\(x\\) and \\(y\\) each run from \\(0\\) to \\(5\\), then draw the lines \\(x+y=2\\) and \\(x+y=8\\) and keep only the part of the square between them.",
+     "The origin is cut off by \\(x+y\\ge 2\\), so it is not a corner. Trace the boundary in order."
+    ],
+    "sol": "The boundary passes through \\((2,0)\\), \\((5,0)\\), \\((5,3)\\), \\((3,5)\\), \\((0,5)\\) and \\((0,2)\\), so the count of corners is \\(\\boxed{6}\\). Cutting off a corner of the square trades one vertex for two, and that happens at both \\((0,0)\\) and \\((5,5)\\), so the square's four corners become six."
+   },
+   {
+    "x": "Find the corners of the region satisfying \\(x\\ge 0\\), \\(y\\ge 0\\), \\(x+y\\le 10\\) and \\(4x+y\\le 25\\), then enter the largest value \\(3x+4y\\) takes on the region.",
+    "ans": "40",
+    "accept": [
+     "40",
+     "forty"
+    ],
+    "hints": [
+     "One corner of this region has a fractional \\(x\\)-coordinate, which is fine, evaluate there too.",
+     "The crossing of the two slanted boundaries gives \\((5,5)\\), but do not assume the largest value occurs there."
+    ],
+    "sol": "The corners are \\((0,0)\\), \\(\\left(\\frac{25}{4},0\\right)\\), \\((5,5)\\) and \\((0,10)\\), with values \\(0\\), \\(\\frac{75}{4}\\), \\(35\\) and \\(40\\), so the largest is \\(\\boxed{40}\\). The largest value occurs at an axis corner, not at the crossing of the two slanted lines."
+   },
+   {
+    "x": "Find the corners of the region satisfying \\(x\\ge 3\\), \\(y\\ge 2\\) and \\(x+y\\le 12\\), then enter the smallest value of \\(6x+7y\\) on that region.",
+    "ans": "32",
+    "accept": [
+     "32",
+     "thirty-two",
+     "thirtytwo"
+    ],
+    "hints": [
+     "The boundary lines are \\(x=3\\), \\(y=2\\) and \\(x+y=12\\). Each corner of the region is a point where two of these lines intersect, so there are three corners to find.",
+     "Evaluate \\(6x+7y\\) at all three corners. Both coefficients are positive, so smaller \\(x\\) and smaller \\(y\\) both leave the expression smaller."
+    ],
+    "sol": "The corners are \\((3,2)\\), \\((10,2)\\) and \\((3,9)\\), with values \\(32\\), \\(74\\) and \\(81\\), so the smallest value is \\(\\boxed{32}\\)."
+   },
+   {
+    "x": "Whole numbers \\(x\\ge 0\\) and \\(y\\ge 0\\) satisfy \\(3x+2y\\le 19\\) and \\(x+y\\le 7\\). Enter the largest value \\(4x+y\\) can take.",
+    "ans": "24",
+    "accept": [
+     "24",
+     "twenty-four",
+     "twentyfour"
+    ],
+    "hints": [
+     "Rounded down, the corner bound gives \\(25\\), but rounding down is not enough. Test whether any allowed whole-number pair actually gives \\(25\\).",
+     "No allowed pair reaches \\(25\\), so search just below the bound. Favor large \\(x\\), since the coefficient on \\(x\\) is \\(4\\) while the coefficient on \\(y\\) is only \\(1\\)."
+    ],
+    "sol": "The best corner \\(\\left(\\frac{19}{3},0\\right)\\) gives the bound \\(25\\frac13\\), no allowed whole-number pair gives a value of \\(25\\), and at \\((6,0)\\) the value is \\(4\\cdot 6+0=\\boxed{24}\\). This is the step-down case, where the rounded bound of \\(25\\) has no reaching pair and the maximum is the next value an allowed pair reaches."
+   }
+  ]
  }
 }
