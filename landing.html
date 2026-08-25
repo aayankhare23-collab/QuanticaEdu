@@ -6382,6 +6382,306 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
  ]
 }
 });
+  Object.assign(PSETS_ALG1, {
+ "8": {
+  "practice": [
+   {
+    "x": "A grocer receives two crates of peaches. The first crate weighs more than \\(46\\) kilograms and the second weighs more than \\(29\\), and each weight is a whole number of kilograms. Enter the smallest possible total weight of the two crates, in kilograms.",
+    "ans": "77",
+    "accept": [
+     "77"
+    ],
+    "hints": [
+     "A whole number of kilograms greater than \\(46\\) is at least \\(47\\), and one greater than \\(29\\) is at least \\(30\\)."
+    ],
+    "sol": "<p>A whole number of kilograms above \\(46\\) is at least \\(47\\), one above \\(29\\) is at least \\(30\\), and \\(47+30=\\boxed{77}\\). The pair \\(47\\) and \\(30\\) is allowed, and any smaller weight for either crate violates its inequality, so no smaller total is possible.</p>"
+   },
+   {
+    "x": "A number \\(w\\) satisfies \\(w \\gt 4\\), and nothing else is known about it. To bound \\(6-7w\\), multiply the given inequality by \\(-7\\), which reverses the symbol, then add \\(6\\) to both sides. Enter the smallest number that \\(6-7w\\) must stay below.",
+    "ans": "-22",
+    "accept": [
+     "-22",
+     "−22"
+    ],
+    "hints": [
+     "From \\(w \\gt 4\\), multiply by \\(-7\\) to get \\(-7w \\lt -28\\), then add \\(6\\) to both sides."
+    ],
+    "sol": "<p>From \\(w \\gt 4\\), multiplying both sides by \\(-7\\) reverses the symbol to \\(-7w \\lt -28\\), and adding \\(6\\) gives \\(6-7w \\lt \\boxed{-22}\\). No smaller ceiling is right, because for \\(w\\) just above \\(4\\) the value of \\(6-7w\\) is just below \\(-22\\).</p>"
+   },
+   {
+    "x": "Let \\(A=\\frac{14}{45}\\) and \\(B=\\frac{11}{36}\\). Both denominators divide \\(180\\), and over that common denominator the two numerators are just one apart. Enter A or B, whichever is bigger.",
+    "ans": "A",
+    "accept": [
+     "A",
+     "14/45"
+    ],
+    "hints": [
+     "Write both fractions with denominator \\(180\\), using \\(180=45\\cdot 4=36\\cdot 5\\)."
+    ],
+    "sol": "<p>Over the common denominator \\(180\\) the fractions are \\(A=\\frac{56}{180}\\) and \\(B=\\frac{55}{180}\\), and \\(56 \\gt 55\\), so the bigger one is \\(\\boxed{A}\\). With matching denominators the fraction with the larger numerator is larger, and these two are only \\(\\frac{1}{180}\\) apart.</p>"
+   },
+   {
+    "x": "Let \\(A=2^{45}\\) and \\(B=3^{30}\\). Both exponents are multiples of \\(15\\), so each number is a fifteenth power. Write each one as a fifteenth power and enter the base of the larger of the two.",
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "Since \\(45=3\\cdot 15\\) and \\(30=2\\cdot 15\\), the two numbers are \\(A=(2^3)^{15}\\) and \\(B=(3^2)^{15}\\)."
+    ],
+    "sol": "<p>Writing both as fifteenth powers gives \\(A=(2^3)^{15}=8^{15}\\) and \\(B=(3^2)^{15}=9^{15}\\), and \\(9 \\gt 8\\), so the larger number is \\(9^{15}\\) and the base to enter is \\(\\boxed{9}\\). Fifteenth powers of positive bases compare the same way the bases do, so \\(B\\) is the bigger number.</p>"
+   },
+   {
+    "x": "The solutions of \\(100-3x \\lt 7\\) are exactly the numbers greater than one cutoff value, and the cutoff itself is not a solution. The \\(x\\) term carries a negative coefficient, so the symbol reverses at the division step. Enter the cutoff value.",
+    "ans": "31",
+    "accept": [
+     "31"
+    ],
+    "hints": [
+     "Subtract \\(100\\) from both sides first, then divide by \\(-3\\) and reverse the symbol."
+    ],
+    "sol": "<p>Subtracting \\(100\\) gives \\(-3x \\lt -93\\), and dividing by \\(-3\\) reverses the symbol to \\(x \\gt \\boxed{31}\\). At \\(x=31\\) the left side is \\(100-93=7\\), which is not less than \\(7\\), so the cutoff is excluded, matching the strict symbol.</p>"
+   },
+   {
+    "x": "Enter how many integers \\(x\\) satisfy \\(-9 \\le \\frac{2x+5}{3} \\lt 7\\). The chain is two inequalities at once, and multiplying all three parts by \\(3\\) clears the fraction while keeping both in place.",
+    "ans": "24",
+    "accept": [
+     "24"
+    ],
+    "hints": [
+     "After clearing the fraction the chain is \\(-27 \\le 2x+5 \\lt 21\\), and two more moves on all three parts isolate \\(x\\)."
+    ],
+    "sol": "<p>Multiplying all three parts by \\(3\\) gives \\(-27 \\le 2x+5 \\lt 21\\), subtracting \\(5\\) gives \\(-32 \\le 2x \\lt 16\\), dividing by \\(2\\) gives \\(-16 \\le x \\lt 8\\), and the integers from \\(-16\\) through \\(7\\) number \\(7-(-16)+1=\\boxed{24}\\). At \\(x=-16\\) the middle part is \\(-9\\), which satisfies the left inequality, and \\(x=8\\) gives \\(7\\), which fails the strict right side.</p>"
+   },
+   {
+    "x": "A ride service charges a \\(6\\) dollar pickup fee plus \\(2\\) dollars for each kilometer driven. Theo has \\(50\\) dollars set aside for one ride and nothing else to spend it on. Set up an inequality and enter the largest whole number of kilometers he can ride.",
+    "ans": "22",
+    "accept": [
+     "22"
+    ],
+    "hints": [
+     "With \\(k\\) kilometers the cost is \\(6+2k\\) dollars, and the ride is affordable when \\(6+2k \\le 50\\)."
+    ],
+    "sol": "<p>With \\(k\\) kilometers the cost is \\(6+2k\\) dollars, so \\(6+2k \\le 50\\), which gives \\(2k \\le 44\\) and \\(k \\le \\boxed{22}\\). A \\(22\\) kilometer ride costs exactly \\(6+44=50\\) dollars, so the bound is reached, and one more kilometer would cost \\(52\\).</p>"
+   },
+   {
+    "x": "The solutions of \\(11x-9 \\lt 7x+25\\) fill a ray on the number line, running left from a single endpoint drawn as an open circle. Enter the number at that endpoint, as an exact fraction or decimal.",
+    "ans": "17/2",
+    "accept": [
+     "17/2",
+     "8.5",
+     "8.50"
+    ],
+    "hints": [
+     "Gather the \\(x\\) terms on one side, then divide, and remember the endpoint of a strict inequality is not a solution."
+    ],
+    "sol": "<p>Subtracting \\(7x\\) and adding \\(9\\) gives \\(4x \\lt 34\\), so \\(x \\lt \\frac{34}{4}\\), and the ray starts at \\(\\boxed{\\frac{17}{2}}\\). At \\(x=\\frac{17}{2}\\) both sides equal \\(\\frac{169}{2}\\), so the endpoint itself is not a solution, which is why the circle is open.</p>"
+   },
+   {
+    "x": "Enter the largest integer \\(y\\) for which the point \\((7,y)\\) satisfies the inequality \\(3x-2y \\ge 45\\). Substituting the first coordinate leaves an inequality in \\(y\\) alone.",
+    "ans": "-12",
+    "accept": [
+     "-12",
+     "−12"
+    ],
+    "hints": [
+     "Substitute \\(x=7\\) first, so the claim becomes \\(21-2y \\ge 45\\), then solve for \\(y\\), remembering that dividing by a negative number reverses the symbol."
+    ],
+    "sol": "<p>At \\(x=7\\) the inequality reads \\(21-2y \\ge 45\\), so \\(-2y \\ge 24\\), and dividing by \\(-2\\) reverses the symbol to \\(y \\le \\boxed{-12}\\). Checking, \\(y=-12\\) gives \\(21+24=45\\), so the inequality holds, while \\(y=-11\\) gives only \\(43\\).</p>"
+   },
+   {
+    "x": "The points satisfying \\(x \\ge 1\\), \\(y \\ge 1\\) and \\(2x+y \\le 11\\) all at once form a triangular region, edges included. Enter how many points with integer coordinates lie in this region.",
+    "ans": "25",
+    "accept": [
+     "25"
+    ],
+    "hints": [
+     "Count column by column. For each integer \\(x\\) from \\(1\\) to \\(5\\), the integer \\(y\\) runs from \\(1\\) up to \\(11-2x\\)."
+    ],
+    "sol": "<p>For each integer \\(x\\) the allowed integers \\(y\\) run from \\(1\\) to \\(11-2x\\), so the columns \\(x=1\\) through \\(x=5\\) hold \\(9\\), \\(7\\), \\(5\\), \\(3\\) and \\(1\\) points, and \\(9+7+5+3+1=\\boxed{25}\\). At \\(x=6\\) the cap \\(11-12\\) falls below \\(1\\), so no further columns contribute.</p>"
+   },
+   {
+    "x": "A robotics team is washing cars to pay for a \\(400\\) dollar parts kit. Each wash brings in \\(9\\) dollars. Enter the smallest number of washes that covers the kit.",
+    "ans": "45",
+    "accept": [
+     "45"
+    ],
+    "hints": [
+     "The requirement is \\(9w \\ge 400\\), so \\(w \\ge \\frac{400}{9}\\), and \\(\\frac{400}{9}\\) sits between \\(44\\) and \\(45\\)."
+    ],
+    "sol": "<p>The washes must satisfy \\(9w \\ge 400\\), so \\(w \\ge \\frac{400}{9}=44\\frac{4}{9}\\), and the smallest whole number at or above that is \\(\\boxed{45}\\). A check confirms it, since \\(44\\) washes bring in \\(396\\) dollars and fall short, while \\(45\\) bring in \\(405\\).</p>"
+   },
+   {
+    "x": "The constraints \\(x \\ge 0\\), \\(y \\ge 0\\), \\(2x+3y \\le 24\\) and \\(3x+y \\le 15\\) cut out a four-cornered region. Over the whole region a linear expression takes its largest value at a corner. Find all four corners, evaluate \\(6x+5y\\) at each one, and enter the largest value it takes on the region.",
+    "ans": "48",
+    "accept": [
+     "48"
+    ],
+    "hints": [
+     "Three corners sit on the axes, and the fourth is where \\(2x+3y=24\\) crosses \\(3x+y=15\\), a chapter 5 system."
+    ],
+    "sol": "<p>The corners are \\((0,0)\\), \\((5,0)\\), \\((0,8)\\) and the crossing of \\(2x+3y=24\\) with \\(3x+y=15\\), which is \\((3,6)\\), and the values of \\(6x+5y\\) there are \\(0\\), \\(30\\), \\(40\\) and \\(48\\), so the largest value is \\(\\boxed{48}\\). Solving the system, substituting \\(y=15-3x\\) into the first equation gives \\(2x+45-9x=24\\), so \\(x=3\\) and \\(y=6\\).</p>"
+   }
+  ],
+  "challenge": [
+   {
+    "x": "Enter how many integers \\(x\\) satisfy both \\(5x-8 \\gt 2x-35\\) and \\(22-3x \\ge 4\\). Solving one of them requires a reversal of the inequality symbol and solving the other does not, and the integers counted are the ones satisfying both results at once.",
+    "ans": "15",
+    "accept": [
+     "15"
+    ],
+    "hints": [
+     "The first inequality gives \\(3x \\gt -27\\), so \\(x \\gt -9\\), with no reversal.",
+     "The second gives \\(-3x \\ge -18\\), and dividing by \\(-3\\) reverses the symbol to \\(x \\le 6\\), so count the integers with \\(-9 \\lt x \\le 6\\)."
+    ],
+    "sol": "<p>The first inequality gives \\(3x \\gt -27\\), so \\(x \\gt -9\\), the second gives \\(-3x \\ge -18\\), which reverses to \\(x \\le 6\\), and the integers from \\(-8\\) through \\(6\\) number \\(6-(-8)+1=\\boxed{15}\\). At \\(x=-9\\) the first claim reads \\(-53 \\gt -53\\) and fails, while at \\(x=6\\) the second reads \\(4 \\ge 4\\) and holds.</p>"
+   },
+   {
+    "x": "The boundary lines of \\(x+4y \\le 27\\) and \\(3x-4y \\ge -11\\) cross at one corner of the region where both inequalities hold. Set up the boundary equations as a system, solve it, and enter the \\(y\\)-coordinate of that corner as a fraction in lowest terms.",
+    "ans": "23/4",
+    "accept": [
+     "23/4",
+     "5.75"
+    ],
+    "hints": [
+     "The boundary equations are \\(x+4y=27\\) and \\(3x-4y=-11\\), and the \\(4y\\) terms have opposite signs.",
+     "Adding the two equations eliminates \\(y\\) entirely, leaving an equation in \\(x\\) alone."
+    ],
+    "sol": "<p>Adding \\(x+4y=27\\) and \\(3x-4y=-11\\) gives \\(4x=16\\), so \\(x=4\\), substituting back gives \\(4y=23\\), and the corner has \\(y=\\boxed{\\frac{23}{4}}\\). The point \\(\\left(4,\\frac{23}{4}\\right)\\) satisfies both original inequalities with equality, so it lies on both boundaries and in the region.</p>"
+   },
+   {
+    "x": "A math team orders shirts at \\(9\\) dollars each. The budget is \\(170\\) dollars, the printer will make at most \\(26\\) shirts, and only \\(24\\) team members want one. The order must fit under all three caps at once, and the money cap is not a whole number of shirts. Enter the largest number of shirts the team can order.",
+    "ans": "18",
+    "accept": [
+     "18"
+    ],
+    "hints": [
+     "The budget requires \\(9s \\le 170\\), and \\(\\frac{170}{9}\\) is not a whole number, so that bound steps down.",
+     "Compare the stepped-down budget cap with \\(26\\) and \\(24\\), and take the smallest of the three."
+    ],
+    "sol": "<p>The budget requires \\(9s \\le 170\\), so \\(s \\le \\frac{170}{9}=18\\frac{8}{9}\\), which steps down to \\(18\\), and \\(18\\) is below both \\(26\\) and \\(24\\), so the largest order is \\(\\boxed{18}\\). That order costs \\(162\\) dollars, and one more shirt would push the bill to \\(171\\), past the budget.</p>"
+   },
+   {
+    "x": "Let \\(A=\\frac{211}{423}\\) and \\(B=\\frac{218}{435}\\). A common denominator would run to six digits, and neither fraction converts to a short decimal, but a well-chosen third number settles the pair. Enter A or B, whichever is bigger.",
+    "ans": "B",
+    "accept": [
+     "B",
+     "B is bigger",
+     "B is larger",
+     "quantity B",
+     "218/435"
+    ],
+    "hints": [
+     "Compare each fraction with \\(\\frac{1}{2}\\), doubling each numerator against its denominator.",
+     "Since \\(2\\cdot 211=422 \\lt 423\\) and \\(2\\cdot 218=436 \\gt 435\\), the two fractions sit on opposite sides of \\(\\frac{1}{2}\\)."
+    ],
+    "sol": "<p>Doubling numerators, \\(2\\cdot 211=422 \\lt 423\\) puts \\(A\\) below \\(\\frac{1}{2}\\), and \\(2\\cdot 218=436 \\gt 435\\) puts \\(B\\) above \\(\\frac{1}{2}\\), so the bigger one is \\(\\boxed{B}\\). Since \\(A \\lt \\frac{1}{2}\\) and \\(\\frac{1}{2} \\lt B\\), transitivity gives \\(A \\lt B\\).</p>"
+   },
+   {
+    "x": "Enter the largest integer \\(n\\) for which \\(n^{60} \\lt 2^{100}\\). Neither side can be multiplied out, so the comparison has to be settled in a rewritten form that both sides share.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "three"
+    ],
+    "hints": [
+     "Both exponents are multiples of \\(20\\), so each side is a twentieth power, with \\(n^{60}=(n^3)^{20}\\) and \\(2^{100}=(2^5)^{20}\\).",
+     "For positive bases, twentieth powers compare the same way their bases do, so the question becomes \\(n^3 \\lt 32\\)."
+    ],
+    "sol": "<p>Writing both sides as twentieth powers gives the comparison \\((n^3)^{20} \\lt (2^5)^{20}\\), which for positive \\(n\\) holds exactly when \\(n^3 \\lt 32\\), and since \\(3^3=27 \\lt 32\\) while \\(4^3=64 \\gt 32\\), the largest integer is \\(\\boxed{3}\\). A negative \\(n\\) gives \\(n^{60}=|n|^{60}\\), so the same bound \\(|n| \\le 3\\) applies there, and no negative integer does better.</p>"
+   },
+   {
+    "x": "The constraints \\(x \\ge 1\\), \\(y \\ge 2\\) and \\(2x+y \\le 14\\) cut out a triangle. Over the triangle a linear expression takes its smallest value at a corner, just as a largest value shows up at one. Find the three corners, evaluate \\(5x+3y\\) at each one, and enter the smallest value it takes.",
+    "ans": "11",
+    "accept": [
+     "11"
+    ],
+    "hints": [
+     "Two corners come from crossing \\(x=1\\) and \\(y=2\\) with the slanted boundary, and the third is \\((1,2)\\).",
+     "The corners are \\((1,2)\\), \\((6,2)\\) and \\((1,12)\\), so three evaluations settle it."
+    ],
+    "sol": "<p>The corners are \\((1,2)\\), \\((6,2)\\) and \\((1,12)\\), where \\(5x+3y\\) takes the values \\(11\\), \\(36\\) and \\(41\\), so the smallest value on the triangle is \\(\\boxed{11}\\). Checking the corner \\((1,12)\\), the slanted constraint gives \\(2+12=14\\), so all three corners genuinely lie in the region.</p>"
+   },
+   {
+    "x": "Real numbers \\(x\\) and \\(y\\) satisfy \\(x+2y \\lt 41\\) and \\(y \\ge 3\\). No allowed value of \\(x\\) is the largest one, because the first inequality is strict, but there is still a best possible ceiling. Enter the smallest number that \\(x\\) must stay below.",
+    "ans": "35",
+    "accept": [
+     "35"
+    ],
+    "hints": [
+     "From the first inequality \\(x \\lt 41-2y\\), and the right side is largest when \\(y\\) is smallest.",
+     "With \\(y \\ge 3\\) the ceiling \\(41-2y\\) never exceeds \\(35\\), and at \\(y=3\\) there are allowed values of \\(x\\) arbitrarily close to \\(35\\)."
+    ],
+    "sol": "<p>From \\(x \\lt 41-2y\\) and \\(y \\ge 3\\), the right side is at most \\(41-6\\), so every allowed \\(x\\) satisfies \\(x \\lt \\boxed{35}\\). No smaller ceiling works, because at \\(y=3\\) there are allowed values of \\(x\\) arbitrarily close to \\(35\\), and \\(35\\) itself is never reached since the first inequality is strict.</p>"
+   },
+   {
+    "x": "Real numbers \\(a\\) and \\(b\\) satisfy \\(a+b \\gt 0\\) and \\(a-b \\gt 0\\), and nothing else is known about them. Consider the four quantities \\(a\\), \\(b\\), \\(ab\\) and \\((a+b)(a-b)\\). Enter how many of the four must be positive.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Adding the two given inequalities is allowed, since both point the same way, and the result involves \\(a\\) alone.",
+     "For \\(b\\) and \\(ab\\), test a pair like \\(a=5\\), \\(b=-1\\), which satisfies both givens."
+    ],
+    "sol": "<p>Adding the givens gives \\(2a \\gt 0\\), so \\(a\\) must be positive, the quantity \\((a+b)(a-b)\\) is a product of two positive numbers and must be positive, and the pair \\(a=5\\), \\(b=-1\\) satisfies both givens while making \\(b\\) and \\(ab\\) negative, so the count forced positive is \\(\\boxed{2}\\). The two givens say \\(a \\gt -b\\) and \\(a \\gt b\\), so \\(a\\) is larger than both, while \\(b\\) itself is free to be negative.</p>"
+   },
+   {
+    "x": "Whole numbers \\(x \\ge 0\\) and \\(y \\ge 0\\) satisfy \\(2x+y \\le 13\\) and \\(x+y \\le 9\\). The corner method on the full region gives a bound that no whole-number pair reaches, so check integer points near the best corner instead. Enter the largest value \\(7x+2y\\) can take.",
+    "ans": "44",
+    "accept": [
+     "44"
+    ],
+    "hints": [
+     "On the full region the best corner is \\(\\left(\\frac{13}{2},0\\right)\\), where \\(7x+2y\\) reaches \\(\\frac{91}{2}\\), but that point is not a whole-number pair.",
+     "Check the integer points with \\(x=6\\), where \\(2x+y \\le 13\\) still allows \\(y=1\\)."
+    ],
+    "sol": "<p>The pair \\((6,1)\\) satisfies \\(12+1 \\le 13\\) and \\(6+1 \\le 9\\), and it gives \\(42+2=\\boxed{44}\\). Nothing larger is possible, since \\(x=6\\) allows \\(y \\le 1\\) at most, each step down in \\(x\\) lowers \\(7x\\) by \\(7\\) and raises the cap on \\(2y\\) by only \\(4\\), a net drop, and the fractional corner \\(\\left(\\frac{13}{2},0\\right)\\) with value \\(\\frac{91}{2}\\) is out of reach for whole numbers.</p>"
+   },
+   {
+    "x": "Some power of \\(3\\) is larger than \\(4^{12}\\), and once one is, every later one is too. Enter the first exponent \\(n\\) at which \\(3^n \\gt 4^{12}\\). Neither the failure just below nor the success can be settled by multiplying anything out.",
+    "ans": "16",
+    "accept": [
+     "16"
+    ],
+    "hints": [
+     "Note \\(4^{12}=2^{24}\\), and \\(24\\) is a multiple of both \\(3\\) and \\(8\\), which suggests two different common power forms.",
+     "Compare \\(3^{15}=(3^5)^3\\) with \\((2^8)^3\\), and \\(3^{16}=(3^2)^8\\) with \\((2^3)^8\\)."
+    ],
+    "sol": "<p>Since \\(3^{15}=(3^5)^3=243^3\\) and \\(4^{12}=2^{24}=(2^8)^3=256^3\\), the comparison \\(243 \\lt 256\\) gives \\(3^{15} \\lt 4^{12}\\), while \\(3^{16}=(3^2)^8=9^8\\) and \\(2^{24}=(2^3)^8=8^8\\) with \\(9 \\gt 8\\) give \\(3^{16} \\gt 4^{12}\\), so the smallest exponent is \\(\\boxed{16}\\). In each comparison the two sides share the same outer exponent, so whichever side has the bigger base is bigger.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Four friends solved \\(98\\) puzzles in all. Each solved a whole number of puzzles, no two solved the same number, and Maya solved the most. A bound on the total in terms of Maya's count, plus one actual split that reaches it, settles the question. Enter the smallest number of puzzles Maya could have solved.",
+    "ans": "26",
+    "accept": [
+     "26"
+    ],
+    "hints": [
+     "If Maya solved \\(m\\), the other three, all different and all below \\(m\\), solved at most \\(m-1\\), \\(m-2\\) and \\(m-3\\).",
+     "The total then satisfies \\(98 \\le m+(m-1)+(m-2)+(m-3)\\), and the answer also needs an actual set of four counts adding to \\(98\\)."
+    ],
+    "sol": "<p>If Maya solved \\(m\\), the other three distinct counts are at most \\(m-1\\), \\(m-2\\) and \\(m-3\\), so \\(98 \\le 4m-6\\), which gives \\(m \\ge 26\\), and the split \\(26+25+24+23=98\\) shows this happens, so the smallest possible count is \\(\\boxed{26}\\). With \\(m=25\\) the four largest allowed counts add to only \\(25+24+23+22=94\\), which falls short of \\(98\\).</p>",
+    "legendary": true
+   },
+   {
+    "x": "Real numbers \\(x\\) and \\(y\\) satisfy \\(x+2y \\le 14\\) and \\(2x+y \\le 16\\), and nothing requires either one to be positive. The region satisfying both is unbounded, so listing corners is not a proof here. Enter the largest value \\(5x+4y\\) can take.",
+    "ans": "46",
+    "accept": [
+     "46"
+    ],
+    "hints": [
+     "Try adding the first inequality to a positive multiple of the second, aiming for \\(5x+4y\\) on the left.",
+     "The first inequality plus twice the second gives \\(5x+4y \\le 14+32\\), and a bound needs a point that reaches it."
+    ],
+    "sol": "<p>Adding the first inequality to twice the second gives \\((x+2y)+2(2x+y)=5x+4y \\le 14+32\\), and the point \\((6,4)\\) satisfies \\(6+8=14\\) and \\(12+4=16\\) with \\(5\\cdot 6+4\\cdot 4=46\\), so the largest value is \\(\\boxed{46}\\). Multiplying an inequality by a positive number and adding same-direction inequalities are both safe moves, and the bound is the answer only because \\((6,4)\\) reaches it.</p>",
+    "legendary": true
+   }
+  ]
+ }
+});
 
   /* ===== Multi-course registry. TOC / LESSONS / PSETS stay the app-wide globals the
      whole engine reads; setCourse() repoints them at one course's data and re-renders.
