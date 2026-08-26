@@ -1,0 +1,496 @@
+{
+ "9.1": {
+  "title": "Meet the Quadratic",
+  "next": "9.2",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Chapter 8 ended with a promise, that \\(x^2+7x+12\\) equals \\((x+3)(x+4)\\). Multiply to check. \\((x+3)(x+4)=x(x+4)+3(x+4)=x^2+4x+3x+12=x^2+7x+12\\), so the promise holds. An expression \\(ax^2+bx+c\\) with \\(a\\) not zero is a <b>quadratic</b>. This lesson multiplies linear factors into quadratics. Reversing that is the next lesson's job."
+   },
+   {
+    "t": "prob",
+    "x": "Multiply \\((x+5)(x+6)\\) the way the opener multiplied its product, splitting the first factor and distributing each part over the second. Collect like terms and enter the coefficient of \\(x\\).",
+    "xp": 5,
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven"
+    ],
+    "hints": [
+     "Write the product as \\(x(x+6)+5(x+6)\\). That is chapter 2's distributive property with the whole factor \\((x+6)\\) as the multiplier.",
+     "Each part distributes again, four products in all. Two of them contain \\(x\\) to the first power, and those two collect."
+    ],
+    "sol": "\\((x+5)(x+6)=x(x+6)+5(x+6)=x^2+6x+5x+30=x^2+11x+30\\), so the coefficient of \\(x\\) is \\(\\boxed{11}\\). The two cross products \\(6x\\) and \\(5x\\) are like terms, and collecting them is where the middle term of every such product comes from."
+   },
+   {
+    "t": "prob",
+    "x": "Expand \\((x+10)(x-2)\\), keeping the minus sign with the \\(2\\) in both products that use it. Enter the constant term of the result.",
+    "xp": 5,
+    "ans": "-20",
+    "accept": [
+     "-20",
+     "−20",
+     "negative 20"
+    ],
+    "hints": [
+     "Split as \\(x(x-2)+10(x-2)\\) and distribute each part. Two of the four products come out negative.",
+     "The constant term is the product of the two constants, \\(+10\\) and \\(-2\\), sign included."
+    ],
+    "sol": "\\((x+10)(x-2)=x^2-2x+10x-20=x^2+8x-20\\), so the constant term is \\(\\boxed{-20}\\). The only constant is \\(10\\cdot(-2)\\), negative because exactly one of the two constants is negative."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Distribute twice.</b> \\((x+r)(x+s)=x(x+s)+r(x+s)\\), the whole second factor treated as a single multiplier, and then each part is distributed again, \\(x^2+sx+rx+rs\\). Four products in all, every term of the first factor times every term of the second, then like terms are collected. Nothing here is new. Chapter 2's distributive property is used twice, once with \\((x+s)\\) as the multiplier and once inside each part, and the same two steps apply unchanged for any signs and for any coefficients on \\(x\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Expand \\((x-5)(x-8)\\). Both constants are negative this time, so all four sign decisions in the four products matter. Enter the coefficient of \\(x\\).",
+    "xp": 6,
+    "ans": "-13",
+    "accept": [
+     "-13",
+     "−13",
+     "negative 13"
+    ],
+    "hints": [
+     "Split as \\(x(x-8)-5(x-8)\\) and distribute each part, keeping every sign.",
+     "The two cross products are \\(-8x\\) and \\(-5x\\). The last product, \\((-5)(-8)\\), is positive."
+    ],
+    "sol": "\\((x-5)(x-8)=x^2-8x-5x+40=x^2-13x+40\\), so the coefficient of \\(x\\) is \\(\\boxed{-13}\\). Both cross products are negative and add, while the constant \\((-5)(-8)=40\\) comes out positive."
+   },
+   {
+    "t": "prob",
+    "x": "Expand \\((8x-5)(2x+9)\\). The \\(x^2\\) coefficient is now a product of two numbers, and two of the four products contain \\(x\\) to the first power. Enter the coefficient of \\(x\\).",
+    "xp": 7,
+    "ans": "62",
+    "accept": [
+     "62",
+     "62.0",
+     "sixty-two",
+     "sixty two"
+    ],
+    "hints": [
+     "Distribute twice as before, \\(8x(2x+9)-5(2x+9)\\), and write all four products before collecting anything.",
+     "The two \\(x\\) products come from \\(8x\\cdot 9\\) and \\(-5\\cdot 2x\\). Compute both, signs included, then add."
+    ],
+    "sol": "\\((8x-5)(2x+9)=16x^2+72x-10x-45=16x^2+62x-45\\), so the coefficient of \\(x\\) is \\(\\boxed{62}\\). With leading coefficients the middle is no longer a plain sum of the two constants, it is \\(72-10\\), one cross product at a time."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The forward pattern.</b> \\((x+r)(x+s)=x^2+(r+s)x+rs\\). The two cross products are \\(sx\\) and \\(rx\\), like terms, so the middle coefficient is the sum \\(r+s\\) and the constant is the product \\(rs\\). Check the first problem, \\(5+6=11\\) and \\(5\\cdot 6=30\\). The pattern holds for any signs, but only when the \\(x^2\\) coefficient is \\(1\\). With leading coefficients the middle was \\(72x-10x\\), one cross product at a time, not a plain sum. This is a fact about multiplying. Recovering \\(r\\) and \\(s\\) from an expansion is the next lesson's work."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 380\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A rectangle whose top side is split into a longer length a and a shorter length b, and whose left side is split into a taller length c and a shorter length d. The two splits cut the rectangle into four cells, each in its own flat color and labelled with its own product, ac and bc across the top row, ad and bd across the bottom row. The whole rectangle is the sum of the four cells, which is why every term of the first factor multiplies every term of the second.\" font-family=\"Space Grotesk, sans-serif\"><path fill-rule=\"nonzero\" fill=\"#c9b8ff\" d=\"M 150 74 C 224 74 298 74 372 74 C 372 124 372 174 372 224 C 298 224 224 224 150 224 C 150 174 150 124 150 74 Z M 150 74 \"/>\n<path fill-rule=\"nonzero\" fill=\"#ffc84d\" d=\"M 372 74 C 418 74 464 74 510 74 C 510 124 510 174 510 224 C 464 224 418 224 372 224 C 372 174 372 124 372 74 Z M 372 74 \"/>\n<path fill-rule=\"nonzero\" fill=\"#9fe8d8\" d=\"M 150 224 C 224 224 298 224 372 224 C 372 260.667969 372 297.332031 372 334 C 298 334 224 334 150 334 C 150 297.332031 150 260.667969 150 224 Z M 150 224 \"/>\n<path fill-rule=\"nonzero\" fill=\"#7cc7ff\" d=\"M 372 224 C 418 224 464 224 510 224 C 510 260.667969 510 297.332031 510 334 C 464 334 418 334 372 334 C 372 297.332031 372 260.667969 372 224 Z M 372 224 \"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.8 2.32 C -0.4 2.32 2 2.32 4.4 2.32 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.4 2.32 C 4.4 0.586641 4.4 -1.146641 4.4 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.4 -2.88 C 2 -2.88 -0.4 -2.88 -2.8 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.8 -2.88 C -2.8 -1.146641 -2.8 0.586641 -2.8 2.32 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 1.64 2.32 C 1.64 0.586641 1.64 -1.146641 1.64 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.8 -0.68 C -0.4 -0.68 2 -0.68 4.4 -0.68 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.74 2.84 C -1.3 2.84 0.14 2.84 1.58 2.84 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.74 2.94 C -2.74 2.873359 -2.74 2.806641 -2.74 2.74 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 1.58 2.94 C 1.58 2.873359 1.58 2.806641 1.58 2.74 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 1.7 2.84 C 2.58 2.84 3.46 2.84 4.34 2.84 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 1.7 2.94 C 1.7 2.873359 1.7 2.806641 1.7 2.74 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.34 2.94 C 4.34 2.873359 4.34 2.806641 4.34 2.74 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.36 2.26 C -3.36 1.3 -3.36 0.34 -3.36 -0.62 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.46 2.26 C -3.393359 2.26 -3.326641 2.26 -3.26 2.26 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.46 -0.62 C -3.393359 -0.62 -3.326641 -0.62 -3.26 -0.62 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.36 -0.74 C -3.36 -1.433359 -3.36 -2.126641 -3.36 -2.82 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.46 -0.74 C -3.393359 -0.74 -3.326641 -0.74 -3.26 -0.74 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.46 -2.82 C -3.393359 -2.82 -3.326641 -2.82 -3.26 -2.82 \" transform=\"matrix(50, 0, 0, -50, 290, 190)\"/><text x=\"261.0\" y=\"149.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">ac</text><text x=\"441.0\" y=\"149.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">bc</text><text x=\"261.0\" y=\"279.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">ad</text><text x=\"441.0\" y=\"279.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">bd</text><text x=\"261.0\" y=\"32.0\" font-size=\"16\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">a</text><text x=\"441.0\" y=\"32.0\" font-size=\"16\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">b</text><text x=\"105.0\" y=\"149.0\" font-size=\"16\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">c</text><text x=\"105.0\" y=\"279.0\" font-size=\"16\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">d</text></svg>",
+    "cap": "The rectangle's width is \\(a+b\\) and its height is \\(c+d\\), so its area is \\((a+b)(c+d)\\). The four cells have areas \\(ac\\), \\(bc\\), \\(ad\\) and \\(bd\\), and they tile the rectangle exactly, so \\((a+b)(c+d)=ac+ad+bc+bd\\). Every term of one factor multiplies every term of the other, the same four products that appear in the double distribution."
+   },
+   {
+    "t": "p",
+    "x": "A few products come up so often they are worth knowing on sight, a sum squared, a difference squared, and a sum times the matching difference. Squaring means multiplying by itself, so \\((x+k)^2\\) means \\((x+k)(x+k)\\), four products again, and it is not \\(x^2+k^2\\). The next two problems work out two of these, and the third follows the same way."
+   },
+   {
+    "t": "prob",
+    "x": "Write \\((x+8)^2\\) as \\((x+8)(x+8)\\), the square written out as the product it abbreviates, and expand it with the same double distribution as every product so far. Enter the coefficient of \\(x\\).",
+    "xp": 5,
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen"
+    ],
+    "hints": [
+     "Squaring means multiplying by itself, so the same double distribution applies, four products again.",
+     "The cross product is \\(8x\\) both times, and the two copies are like terms."
+    ],
+    "sol": "\\((x+8)^2=(x+8)(x+8)=x^2+8x+8x+64=x^2+16x+64\\), so the coefficient of \\(x\\) is \\(\\boxed{16}\\). The cross product appears twice, which is why the answer is \\(16\\) and not \\(8\\), and why \\((x+8)^2\\) is not \\(x^2+64\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Compute \\(61\\times 59\\) without a calculator by writing it as \\((60+1)(60-1)\\) and expanding all four products. Enter the product.",
+    "xp": 6,
+    "ans": "3599",
+    "accept": [
+     "3599"
+    ],
+    "hints": [
+     "The four products are \\(60\\cdot 60\\), \\(60\\cdot(-1)\\), \\(1\\cdot 60\\), and \\(1\\cdot(-1)\\). Two of them cancel.",
+     "The cross products are \\(-60\\) and \\(+60\\), so they add to zero. You are left with one square minus a much smaller square."
+    ],
+    "sol": "\\(61\\times 59=(60+1)(60-1)=3600-60+60-1=3600-1=\\boxed{3599}\\). The cross products cancel whenever the two factors are the same distance from a round number, one above and one below, which is what makes this a mental calculation."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Three named identities.</b> \\((a+b)^2=a^2+2ab+b^2\\), \\((a-b)^2=a^2-2ab+b^2\\), and \\((a+b)(a-b)=a^2-b^2\\), the difference of squares. Each one is the same double distribution. The difference square is \\((a-b)(a-b)=a^2-ab-ab+b^2\\), the cross product \\(-ab\\) twice, and the sum square is the same with \\(+ab\\), the source of the \\(16\\) in \\((x+8)^2\\). In the conjugate product the cross products are opposite and cancel, which is why \\(61\\times 59\\) reduced to \\(3600-1\\). The middle term of a square is \\(2ab\\), not \\(ab\\), and a middle term is missing only in the conjugate product."
+   },
+   {
+    "t": "p",
+    "x": "An expansion is a claim that the two sides are equal at every value of \\(x\\), so they must agree at any value you try. At \\(x=10\\), \\((x+1)(x+8)\\) is \\(11\\cdot 18=198\\), and \\(x^2+9x+8\\) is \\(100+90+8=198\\). At \\(x=0\\) only the constant term is left, so pick a nonzero value. Agreement at one value is strong evidence. A disagreement proves an error."
+   },
+   {
+    "t": "prob",
+    "x": "A student expands \\((x+6)(x+9)\\) and writes \\(x^2+14x+54\\). Substitute \\(x=10\\) into the product and into the claim to confirm they disagree, then enter the correct coefficient of \\(x\\).",
+    "xp": 7,
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "At \\(x=10\\) the product is \\(16\\cdot 19\\). Evaluate the claim at \\(10\\) as well and compare.",
+     "The constant \\(54\\) is correct, since \\(6\\cdot 9=54\\). Recompute the two cross products, \\(9x\\) and \\(6x\\)."
+    ],
+    "sol": "At \\(x=10\\) the product is \\(16\\cdot 19=304\\) while the claim gives \\(100+140+54=294\\), so the claim is wrong. Expanding correctly, \\((x+6)(x+9)=x^2+9x+6x+54=x^2+15x+54\\), and the coefficient of \\(x\\) is \\(\\boxed{15}\\). The gap between \\(304\\) and \\(294\\) is \\(10\\), exactly one missing \\(x\\) at \\(x=10\\)."
+   },
+   {
+    "t": "fact",
+    "x": "The acronym FOIL, First Outer Inner Last, first appeared in William Betz's 1929 textbook Algebra for Today. The label is centuries younger than the method, and the method needs no acronym, it is the distributive property used twice."
+   },
+   {
+    "t": "prob",
+    "x": "Expand \\((x-10y)(x+8y)\\). The same rule applies, every term of the first factor times every term of the second, with two letters to track. Enter the coefficient of \\(xy\\).",
+    "xp": 6,
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "negative 2"
+    ],
+    "hints": [
+     "Four products again, \\(x\\cdot x\\), \\(x\\cdot 8y\\), \\(-10y\\cdot x\\), and \\(-10y\\cdot 8y\\). Two of them contain both letters.",
+     "Collect \\(8xy\\) and \\(-10xy\\). The \\(y^2\\) product is separate and is not the answer."
+    ],
+    "sol": "\\((x-10y)(x+8y)=x^2+8xy-10xy-80y^2=x^2-2xy-80y^2\\), so the coefficient of \\(xy\\) is \\(\\boxed{-2}\\). The \\(xy\\) coefficient is the collected sum \\(8-10\\), while \\(-80\\) is the \\(y^2\\) coefficient, the product."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The zero product property.</b> If a product of two numbers is zero, then at least one of the numbers is zero. The reason is short. The product of two nonzero numbers is never zero, so if a product is zero there is no other possibility. The consequence is the whole point of factored form. An equation with a product on one side and zero on the other splits into separate linear equations, one for each factor, and solving linear equations is chapter 4's work."
+   },
+   {
+    "t": "p",
+    "x": "The payoff is immediate. In \\((x-6)(x+10)=0\\) a product equals zero, so at least one factor is zero, and each factor gives a chapter 4 equation. \\(x-6=0\\) gives \\(x=6\\), and \\(x+10=0\\) gives \\(x=-10\\), the sign flipped. Of the two, \\(6\\) is the larger, since \\(-10\\) is negative. A factor can also be \\(x\\) itself, and \\(x=0\\) is already solved."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\((x-8)(x+15)=0\\). The left side is zero exactly when one of the factors is zero. Enter the larger of the two solutions.",
+    "xp": 5,
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight",
+     "x=8"
+    ],
+    "hints": [
+     "Set each factor equal to zero and solve the two linear equations separately.",
+     "\\(x+15=0\\) is solved by a negative number. Compare the two solutions on the number line before choosing the larger."
+    ],
+    "sol": "\\(x-8=0\\) gives \\(x=8\\) and \\(x+15=0\\) gives \\(x=-15\\), so the larger solution is \\(\\boxed{8}\\). The factor \\(x+15\\) is zero at \\(-15\\), not \\(15\\), and \\(8\\gt -15\\) even though \\(15\\) is bigger than \\(8\\)."
+   },
+   {
+    "t": "prob",
+    "x": "The left side of \\(x(x-16)=0\\) has \\(x\\) itself as a factor. Count every value of \\(x\\) that makes the left side zero, then enter the number of solutions of the equation.",
+    "xp": 6,
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "The zero product property applies to any two factors. Set each of the two factors equal to zero.",
+     "The equation \\(x=0\\) is already solved, and its solution counts."
+    ],
+    "sol": "The factors are \\(x\\) and \\(x-16\\), so \\(x=0\\) or \\(x=16\\), and the number of solutions is \\(\\boxed{2}\\). Dropping \\(x=0\\) is the common error, but zero is a solution, since substituting it back gives \\(0\\cdot(0-16)=0\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>At most two solutions.</b> Each linear factor is zero at one number, so two factors give at most two solutions, and a repeated factor like \\((x-k)^2=0\\) gives exactly one, since both factors are zero at the same number. The property also has a boundary. \\((x-a)(x-b)=10\\) determines neither factor, because two numbers can multiply to \\(10\\) in endless ways, \\(2\\cdot 5\\), \\(20\\cdot\\tfrac{1}{2}\\), and on forever. Only a zero product forces a factor to be zero, so before any splitting the equation must have zero on one side."
+   },
+   {
+    "t": "p",
+    "x": "Multiplying two binomials is now mechanical, four products and a collection, the same every time. The chapter's prize is the reverse direction, starting from \\(x^2+bx+c\\) and recovering the factors, because the zero product property applies only to factored form. That reversal starts in the next lesson."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\((10x-25)(2x+1)=0\\). Each factor is zero at its own value of \\(x\\), and neither value is an integer this time. Enter the positive solution as a fraction in lowest terms.",
+    "xp": 7,
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5",
+     "x=5/2",
+     "x=2.5"
+    ],
+    "hints": [
+     "Each factor gives one linear equation, \\(10x-25=0\\) and \\(2x+1=0\\). Solve both.",
+     "One solution is negative. The other comes out as a fraction that is not yet in lowest terms, so reduce it before entering."
+    ],
+    "sol": "\\(10x-25=0\\) gives \\(x=\\tfrac{25}{10}=\\tfrac{5}{2}\\), and \\(2x+1=0\\) gives \\(x=-\\tfrac{1}{2}\\), so the positive solution is \\(\\boxed{\\tfrac{5}{2}}\\). Lowest terms means dividing out the common factor of \\(25\\) and \\(10\\), which is \\(5\\)."
+   },
+   {
+    "t": "prob",
+    "x": "There is one value of \\(b\\) for which \\(36x^2+bx+121\\) is exactly the square \\((6x-11)^2\\). Expand the square and compare the two expressions term by term. Enter \\(b\\).",
+    "xp": 8,
+    "ans": "-132",
+    "accept": [
+     "-132",
+     "−132",
+     "b=-132",
+     "b=−132",
+     "negative 132"
+    ],
+    "hints": [
+     "Use the square-of-a-difference identity with \\(6x\\) as the first term and \\(11\\) as the second.",
+     "The middle term of the expansion is \\(-2\\cdot 6x\\cdot 11\\). Match it against \\(bx\\)."
+    ],
+    "sol": "\\((6x-11)^2=36x^2-2\\cdot 6\\cdot 11\\,x+121=36x^2-132x+121\\), so matching middle terms gives \\(b=\\boxed{-132}\\). The standard misses are \\(-66\\), forgetting the \\(2\\) in \\(2ab\\), and \\(+132\\), dropping the sign of the subtraction."
+   },
+   {
+    "t": "p",
+    "x": "Every product \\((x+r)(x+s)\\) expands to \\(x^2+(r+s)x+rs\\), the sum in the middle and the product at the end. Lesson 9.2, Factoring \\(x^2+bx+c\\), starts from the expanded form and recovers \\(r\\) and \\(s\\), a search with exactly two clues, the sum and the product."
+   }
+  ],
+  "review": [
+   {
+    "x": "Expand \\((x+1)(x+9)\\). Enter the coefficient of \\(x\\).",
+    "ans": "10",
+    "accept": [
+     "10",
+     "10.0",
+     "ten"
+    ],
+    "hints": [
+     "Distribute twice, \\(x(x+9)+1(x+9)\\), four products in all.",
+     "The two cross products are \\(9x\\) and \\(1x\\). Collect them."
+    ],
+    "sol": "\\((x+1)(x+9)=x^2+9x+x+9=x^2+10x+9\\), so the coefficient of \\(x\\) is \\(\\boxed{10}\\)."
+   },
+   {
+    "x": "Expand \\((x-1)(x+14)\\). Enter the constant term.",
+    "ans": "-14",
+    "accept": [
+     "-14",
+     "−14",
+     "negative 14"
+    ],
+    "hints": [
+     "Keep the minus sign with the \\(1\\) in both products that use it.",
+     "The constant term is the product of the two constants, \\(-1\\) and \\(+14\\)."
+    ],
+    "sol": "\\((x-1)(x+14)=x^2+14x-x-14=x^2+13x-14\\), so the constant term is \\(\\boxed{-14}\\). The sign comes from \\((-1)\\cdot 14\\), one negative constant."
+   },
+   {
+    "x": "Expand \\((x-2)(x-9)\\). Enter the coefficient of \\(x\\).",
+    "ans": "-11",
+    "accept": [
+     "-11",
+     "−11",
+     "negative 11"
+    ],
+    "hints": [
+     "All four products still appear. Decide the sign of each one before collecting.",
+     "The cross products are \\(-9x\\) and \\(-2x\\), and the constant \\((-2)(-9)\\) is positive."
+    ],
+    "sol": "\\((x-2)(x-9)=x^2-9x-2x+18=x^2-11x+18\\), so the coefficient of \\(x\\) is \\(\\boxed{-11}\\). Two negative constants give a negative middle and a positive constant."
+   },
+   {
+    "x": "Expand \\((2x+1)(5x+8)\\). Enter the coefficient of \\(x\\).",
+    "ans": "21",
+    "accept": [
+     "21",
+     "21.0",
+     "twenty-one",
+     "twenty one"
+    ],
+    "hints": [
+     "Distribute \\(2x\\) over the second factor, then \\(1\\) over the second factor, four products in all.",
+     "The two \\(x\\) products are \\(2x\\cdot 8\\) and \\(1\\cdot 5x\\). Add them."
+    ],
+    "sol": "\\((2x+1)(5x+8)=10x^2+16x+5x+8=10x^2+21x+8\\), so the coefficient of \\(x\\) is \\(\\boxed{21}\\)."
+   },
+   {
+    "x": "Expand \\((x+11)^2\\). Enter the coefficient of \\(x\\).",
+    "ans": "22",
+    "accept": [
+     "22",
+     "22.0",
+     "twenty-two",
+     "twenty two"
+    ],
+    "hints": [
+     "Write it as \\((x+11)(x+11)\\) first. The cross product appears twice.",
+     "The middle term of a squared sum is twice the cross product, here \\(2\\cdot 11\\cdot x\\)."
+    ],
+    "sol": "\\((x+11)^2=x^2+2\\cdot 11x+121=x^2+22x+121\\), so the coefficient of \\(x\\) is \\(\\boxed{22}\\). The middle is \\(2ab\\), not \\(ab\\), because the cross product appears twice."
+   },
+   {
+    "x": "Expand \\((x-10)^2\\). Enter the constant term.",
+    "ans": "100",
+    "accept": [
+     "100",
+     "100.0",
+     "onehundred"
+    ],
+    "hints": [
+     "Use the square-of-a-difference identity with \\(x\\) and \\(10\\), or multiply \\((x-10)(x-10)\\) out.",
+     "The constant term is \\((-10)\\cdot(-10)\\), sign included."
+    ],
+    "sol": "\\((x-10)^2=x^2-20x+100\\), so the constant term is \\(\\boxed{100}\\). The constant of a square is always positive, only the middle term carries the minus."
+   },
+   {
+    "x": "Compute \\(85\\times 75\\) in your head by writing it as \\((80+5)(80-5)\\). Enter the product.",
+    "ans": "6375",
+    "accept": [
+     "6375"
+    ],
+    "hints": [
+     "This is a sum times the matching difference, so the cross products cancel.",
+     "What remains is \\(80^2-5^2\\)."
+    ],
+    "sol": "\\(85\\times 75=(80+5)(80-5)=6400-25=\\boxed{6375}\\). The cross products, \\(+400\\) and \\(-400\\), cancel, so only \\(80^2-5^2\\) is left."
+   },
+   {
+    "x": "Expand \\((x+20)(x-20)\\). Enter the coefficient of \\(x\\).",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero"
+    ],
+    "hints": [
+     "This is a sum times the matching difference. Write all four products before collecting.",
+     "The cross products are \\(-20x\\) and \\(+20x\\)."
+    ],
+    "sol": "\\((x+20)(x-20)=x^2-20x+20x-400=x^2-400\\), so the coefficient of \\(x\\) is \\(\\boxed{0}\\). The expansion has no \\(x\\) term at all, which is the difference of squares pattern."
+   },
+   {
+    "x": "Expand \\((2x-9)(8x-1)\\). Enter the coefficient of \\(x\\).",
+    "ans": "-74",
+    "accept": [
+     "-74",
+     "−74",
+     "negative 74"
+    ],
+    "hints": [
+     "Four products, and every one of them needs a sign decision before you collect.",
+     "The \\(x\\) products are \\(2x\\cdot(-1)\\) and \\((-9)\\cdot 8x\\). Both are negative."
+    ],
+    "sol": "\\((2x-9)(8x-1)=16x^2-2x-72x+9=16x^2-74x+9\\), so the coefficient of \\(x\\) is \\(\\boxed{-74}\\). The constant \\((-9)(-1)=9\\) is positive while both cross products are negative."
+   },
+   {
+    "x": "A student expands \\((x+6)(x+10)\\) and writes \\(x^2+16x+66\\). Substitute \\(x=5\\) into the product and into the claim to see they disagree, then enter the correct constant term.",
+    "ans": "60",
+    "accept": [
+     "60",
+     "60.0",
+     "sixty"
+    ],
+    "hints": [
+     "At \\(x=5\\) the product is \\(11\\cdot 15\\). Evaluate the claim at \\(5\\) too.",
+     "The middle coefficient \\(16\\) checks out, since \\(6+10=16\\). The constant should be the product of \\(6\\) and \\(10\\)."
+    ],
+    "sol": "At \\(x=5\\) the product is \\(11\\cdot 15=165\\) while the claim gives \\(25+80+66=171\\), so the claim is wrong. The constant is \\(6\\cdot 10=60\\), so the correct constant term is \\(\\boxed{60}\\). A check at \\(x=0\\) would have caught this even faster, since substituting \\(x=0\\) leaves only the constant term."
+   },
+   {
+    "x": "Expand \\((x-6y)(x+15y)\\). Enter the coefficient of \\(xy\\).",
+    "ans": "9",
+    "accept": [
+     "9",
+     "9.0",
+     "nine"
+    ],
+    "hints": [
+     "Four products, two of which contain both letters. Collect those two.",
+     "The \\(xy\\) products are \\(15xy\\) and \\(-6xy\\). The \\(y^2\\) product is separate."
+    ],
+    "sol": "\\((x-6y)(x+15y)=x^2+15xy-6xy-90y^2=x^2+9xy-90y^2\\), so the coefficient of \\(xy\\) is \\(\\boxed{9}\\)."
+   },
+   {
+    "x": "Solve \\((x-13)(x+6)=0\\). Enter the larger solution.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen",
+     "x=13"
+    ],
+    "hints": [
+     "A product is zero exactly when a factor is zero. Set each factor to zero.",
+     "Each factor's solution has the opposite sign of the constant inside it."
+    ],
+    "sol": "\\(x-13=0\\) gives \\(x=13\\) and \\(x+6=0\\) gives \\(x=-6\\), so the larger solution is \\(\\boxed{13}\\)."
+   },
+   {
+    "x": "Solve \\((x+16)(x+21)=0\\). Both solutions are negative. Enter the larger one.",
+    "ans": "-16",
+    "accept": [
+     "-16",
+     "−16",
+     "x=-16",
+     "x=−16"
+    ],
+    "hints": [
+     "Set each factor to zero. Both solutions come out negative.",
+     "On the number line, the larger of two negative numbers is the one closer to zero."
+    ],
+    "sol": "The solutions are \\(x=-16\\) and \\(x=-21\\), and \\(-16\\gt -21\\), so the larger solution is \\(\\boxed{-16}\\). Larger means further right on the number line, not bigger digits."
+   },
+   {
+    "x": "Solve \\(x(2x-15)=0\\). Enter the positive solution as a fraction in lowest terms.",
+    "ans": "15/2",
+    "accept": [
+     "15/2",
+     "7.5",
+     "x=15/2",
+     "x=7.5"
+    ],
+    "hints": [
+     "The two factors are \\(x\\) and \\(2x-15\\). Each gives one linear equation.",
+     "One solution is \\(0\\), which is not positive. Solve \\(2x-15=0\\) for the other."
+    ],
+    "sol": "\\(x=0\\) or \\(2x-15=0\\), which gives \\(x=\\tfrac{15}{2}\\), so the positive solution is \\(\\boxed{\\tfrac{15}{2}}\\). Zero is a solution too, just not the positive one."
+   },
+   {
+    "x": "How many solutions does \\((x-17)^2=0\\) have? Enter the count.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "one"
+    ],
+    "hints": [
+     "Write the left side as \\((x-17)(x-17)\\). Both factors are zero at the same number.",
+     "The two factors give the same equation, \\(x-17=0\\)."
+    ],
+    "sol": "Both factors are \\(x-17\\), so the only solution is \\(x=17\\), and the count is \\(\\boxed{1}\\). A repeated factor gives one solution, not two, since both linear equations are the same."
+   },
+   {
+    "x": "To solve \\((x-1)(x+13)=10\\), Mara sets \\(x-1=10\\) and answers \\(x=11\\). Evaluate \\((x-1)(x+13)\\) at \\(x=11\\). Enter the value you get.",
+    "ans": "240",
+    "accept": [
+     "240",
+     "240.0"
+    ],
+    "hints": [
+     "Substitute \\(11\\) into each factor separately, then multiply.",
+     "At \\(x=11\\) the second factor is not \\(1\\), so the product is not \\(10\\)."
+    ],
+    "sol": "At \\(x=11\\) the factors are \\(10\\) and \\(24\\), so \\((x-1)(x+13)=10\\cdot 24=\\boxed{240}\\). Many pairs of numbers multiply to \\(10\\), so \\(x-1=10\\) was only a guess. Splitting an equation factor by factor is valid only when the other side is \\(0\\)."
+   },
+   {
+    "x": "Find the value of \\(b\\) that makes \\(81x^2+bx+25\\) exactly \\((9x-5)^2\\).",
+    "ans": "-90",
+    "accept": [
+     "-90",
+     "−90",
+     "b=-90",
+     "b=−90"
+    ],
+    "hints": [
+     "Expand \\((9x-5)^2\\) with the square-of-a-difference identity, first term \\(9x\\), second term \\(5\\).",
+     "The middle term of the expansion is \\(-2\\cdot 9x\\cdot 5\\). Match it against \\(bx\\)."
+    ],
+    "sol": "\\((9x-5)^2=81x^2-2\\cdot 9\\cdot 5\\,x+25=81x^2-90x+25\\), so \\(b=\\boxed{-90}\\). Forgetting the factor \\(2\\) gives \\(-45\\), and dropping the subtraction's sign gives \\(+90\\), the two standard misses."
+   }
+  ]
+ }
+}
