@@ -25,8 +25,8 @@ const OUTLINE = [
 
 const SPEC = `
 CONTEXT AND CONTINUITY. Fifth and last lesson of chapter 9, Quadratics I, Factoring.
-- 9.4's EXACT shipped closer is: "<<<FILL FROM SHIPPED 9.4 BEFORE RUNNING>>>". The opener keeps
-  that promise immediately. Do NOT write "Last lesson we" or "Imagine".
+- 9.4's EXACT shipped closer is: "Every answer in this lesson's second half came off the coefficients, and four of those quadratics have no root chapter 9 can produce. Lesson 9.5, Factoring in Action, turns these tools on equations not written as \\(ax^2+bx+c=0\\). An equation can be a quadratic in some repeated piece, and naming that piece with one letter makes it one you can solve." The opener keeps that promise immediately,
+  by taking an equation that is NOT written as a quadratic and naming its repeated piece. Do NOT write "Last lesson we" or "Imagine".
 - ESTABLISHED AND USED, NEVER RE-DERIVED: 9.1's double distribution, the forward pattern
   \\((x+r)(x+s)=x^2+(r+s)x+rs\\) and the zero product property, 9.2's search and sign reasoning
   and the difference of two squares, 9.3's leading-coefficient split and the fact that a factor
@@ -42,7 +42,12 @@ CONTEXT AND CONTINUITY. Fifth and last lesson of chapter 9, Quadratics I, Factor
   36x^2+13x-40, 5x^2+31x+44, 11x^2-38x-24, 6x^2+41x+30, 9x^2-31x-70, 4x^2+31x+60, 5x^2+60x+160,
   196x^2-169, 6x^2+5x+4, 6x^2-17x-114, 4x^2+9x-100, 25x^2-90x+81, 9x^2+16x-80, 20x^2+45x-275,
   20x^2-89x+80, 36x^2-60x-119, 20x^2+51x-90, 48x^2+26x-55, plus every monic quadratic from 9.2
-  and <<<APPEND 9.4'S SPENT QUADRATICS BEFORE RUNNING>>>. Invent fresh coefficients everywhere.
+  and every quadratic 9.4 spent, which is
+  x^2-10x+21, x^2-17x+52, x^2+6x-91, x^2+23x+102, 8x^2+18x-5, 6x^2-13x-3, x^2-12x-85,
+  5x^2-16x+3, 7x^2-5x-9, x^2-5x-8, 20x^2+x-12, x^2-2x+5, 4x^2+10x-21, 4x^2-12x-9,
+  x^2-15x+26, x^2-8x-33, x^2+19x+34, 10x^2+11x-6, 8x^2+30x-7, x^2+6x-40, x^2-2x-63,
+  6x^2-19x+14, 5x^2-14x+4, x^2-9x+11, x^2-6x-2, x^2-4x+9, x^2+30x+125, 25x^2-40x+16,
+  x^2-14x+45, 2x^2-5x-6, x^2-7x+3, 2x^2-15x+18 and x^2-24x+128. Invent fresh coefficients everywhere.
 
 TOPIC CHECKLIST (cover ALL):
  1. QUADRATIC IN A REPEATED PIECE. An equation like \\(x^4+bx^2+c=0\\) is a quadratic in

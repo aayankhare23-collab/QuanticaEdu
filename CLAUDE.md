@@ -113,13 +113,12 @@ exceptions.
 ## Current status (2026-08-09)
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
-- **Algebra I**: 49 of 81 lessons live. **Chapters 1 to 8 are complete, lessons and problem
-  sets both.** Chapter 9, Quadratics I Factoring, is at 9.1 to 9.4 (9.4 shipped 2026-08-26);
-  9.5 Factoring in Action remains, then the chapter 9 Practice/Challenge sets via
-  `tools/make_pset_workflow.py 9 --course algebra1 ...`, then chapters 10 to 15. 9.5's SPEC and
-  figure are already written and built (`tools/lesson-specs/author_9_5.head.js`,
-  `tools/lesson-figs/fig_9_5.py`); the SPEC carries two `<<<FILL>>>` placeholders that need
-  9.4's shipped closer and 9.4's spent quadratics before it runs. Counts verified against
+- **Algebra I**: 50 of 81 lessons live. **Chapters 1 to 8 are complete, lessons and problem
+  sets both, and chapter 9's five lessons are all live** (9.4 and 9.5 shipped 2026-08-26).
+  Chapter 9 has NO problem sets yet, which is the next work:
+  `python3 tools/make_pset_workflow.py 9 --course algebra1 --title "Quadratics I, Factoring"
+  --covers tools/lesson-specs/covers9.txt -o <out>`, then wire into `PSETS_ALG1`. After that,
+  chapters 10 to 15, whose SPECs are not yet written. Counts verified against
   `lessons/algebra1/chapter-*.json` on 2026-08-26, not copied forward.
   NOTE: `docs/reference-coverage-map.md` calls 9.5 "Quadratics in Disguise"; `toc.json` and the
   shipped text call it **Factoring in Action**, which wins. The map line is stale.

@@ -8,12 +8,12 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **49 / 81**, 15 chapters in the TOC | **chapters 1-8** | ch1-ch8 fully done; ch9 at 9.1-9.4 |
+| Algebra I | **50 / 81**, 15 chapters in the TOC | **chapters 1-8** | ch1-ch9 lessons done; ch9 has no sets yet |
 
 Updated 2026-08-26. The "Next work" list below is from 2026-08-03 and is spent through
-chapter 8. Current next work is 9.5 Factoring in Action, then the chapter 9 Practice and
-Challenge sets (`tools/make_pset_workflow.py 9 --course algebra1 --title "Quadratics I,
-Factoring" --covers tools/lesson-specs/covers9.txt`), then chapters 10 to 15.
+chapter 9's lessons. Current next work is the chapter 9 Practice and Challenge sets
+(`tools/make_pset_workflow.py 9 --course algebra1 --title "Quadratics I, Factoring"
+--covers tools/lesson-specs/covers9.txt -o <out>`), then chapters 10 to 15.
 
 **Next work, in order:**
 1. **Chapter 8, Inequalities.** 8.1 was in flight when this was written. All five SPECs are

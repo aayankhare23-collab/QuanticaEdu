@@ -1998,5 +1998,545 @@
     "sol": "From the coefficients, \\(r+s=7\\) and \\(rs=3\\), so the new roots add to \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{r+s}{rs}=\\frac{7}{3}\\), and a monic quadratic's coefficient of \\(x\\) is the negative of the sum of its roots, so it is \\(\\boxed{-\\frac{7}{3}}\\). The built quadratic is \\(x^2-\\frac{7}{3}x+\\frac{1}{3}\\)."
    }
   ]
+ },
+ "9.5": {
+  "title": "Factoring in Action",
+  "next": "10.1",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "The equation \\(x^4-20x^2+64=0\\) has degree four, so it is not a quadratic. But \\(x^4=(x^2)^2\\), so the only powers of \\(x\\) in it are \\(x^2\\) and the square of \\(x^2\\). Write \\(u\\) for \\(x^2\\). The equation is then \\(u^2-20u+64=0\\), which 9.2's search factors as \\((u-4)(u-16)=0\\), so \\(x^2=4\\) or \\(x^2=16\\), and \\(x=\\pm 2\\) or \\(x=\\pm 4\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(x^4-34x^2+225=0\\). Write \\(u\\) for \\(x^2\\), factor the quadratic in \\(u\\), then go back to \\(x\\). Enter the largest of the four solutions.",
+    "xp": 5,
+    "ans": "5",
+    "accept": [
+     "5",
+     "5.0",
+     "five",
+     "x=5"
+    ],
+    "hints": [
+     "Since \\(x^4=(x^2)^2\\), writing \\(u\\) for \\(x^2\\) turns the equation into \\(u^2-34u+225=0\\).",
+     "Two numbers with product \\(225\\) and sum \\(-34\\) are \\(-9\\) and \\(-25\\), so \\(x^2=9\\) or \\(x^2=25\\). Each of those has two solutions."
+    ],
+    "sol": "With \\(u=x^2\\) the equation is \\(u^2-34u+225=0\\), and two numbers with product \\(225\\) and sum \\(-34\\) are \\(-9\\) and \\(-25\\), so it factors as \\((u-9)(u-25)=0\\). Then \\(x^2=9\\) gives \\(x=\\pm 3\\) and \\(x^2=25\\) gives \\(x=\\pm 5\\), so the largest of the four is \\(\\boxed{5}\\). The values \\(9\\) and \\(25\\) are values of \\(x^2\\), so neither is a solution of the original equation."
+   },
+   {
+    "t": "prob",
+    "x": "In \\((2x+3)^2-14(2x+3)+40=0\\) the expression \\(2x+3\\) appears squared and again on its own. Write \\(u\\) for \\(2x+3\\), solve for \\(u\\), then solve for \\(x\\). Enter the larger value of \\(x\\) as a fraction in lowest terms.",
+    "xp": 6,
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "3.5",
+     "3.50",
+     "x=7/2",
+     "x=3.5"
+    ],
+    "hints": [
+     "The repeated piece does not have to be a power of \\(x\\). Here it is \\(2x+3\\), so the equation is \\(u^2-14u+40=0\\).",
+     "\\(u^2-14u+40=(u-4)(u-10)\\), so \\(2x+3=4\\) or \\(2x+3=10\\). Subtract \\(3\\), then divide by \\(2\\)."
+    ],
+    "sol": "Writing \\(u\\) for \\(2x+3\\) gives \\(u^2-14u+40=0\\), which factors as \\((u-4)(u-10)=0\\). Then \\(2x+3=4\\) gives \\(x=\\frac{1}{2}\\), and \\(2x+3=10\\) gives \\(x=\\frac{7}{2}\\), so the larger value is \\(\\boxed{\\frac{7}{2}}\\). Both \\(4\\) and \\(10\\) are values of \\(u\\), not of \\(x\\), so neither one is a solution until the substitution is undone."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A quadratic in a repeated piece.</b> An equation is a quadratic in some expression when that expression appears squared, appears once more with only a number multiplying it, and nothing else in the equation contains the variable. Write a single letter for it, say \\(u\\), and what is left is \\(au^2+bu+c=0\\), which 9.2's search and 9.3's split already factor. Nothing else changes. \\(x^4-20x^2+64=0\\) and \\(u^2-20u+64=0\\) are the same string of symbols once \\(x^2\\) is written as \\(u\\), and the same holds for \\((2x+3)^2-14(2x+3)+40=0\\), where the piece is \\(2x+3\\) rather than a power."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\((x-6)^2-2(x-6)-24=0\\) and enter the larger solution. The expression \\(x-6\\) repeats, so give that repeated piece a single letter before you factor.",
+    "xp": 6,
+    "ans": "12",
+    "accept": [
+     "12",
+     "12.0",
+     "twelve"
+    ],
+    "hints": [
+     "Write \\(u=x-6\\). The equation becomes \\(u^2-2u-24=0\\), which needs two numbers with product \\(-24\\) and sum \\(-2\\).",
+     "The factoring gives \\((u-6)(u+4)=0\\), so \\(u=6\\) or \\(u=-4\\). Now recover \\(x\\) from each value of \\(u\\), then take the larger."
+    ],
+    "sol": "With \\(u=x-6\\) the equation is \\(u^2-2u-24=(u-6)(u+4)=0\\), so \\(u=6\\) or \\(u=-4\\). Those are values of \\(x-6\\), so \\(x=12\\) or \\(x=2\\), and the larger is \\(\\boxed{12}\\). Reporting \\(6\\) is the common mistake. It is the larger value of \\(u\\), and \\(u\\) stands for \\(x-6\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(x^4-13x^2-48=0\\) by writing \\(u\\) for \\(x^2\\). How many real solutions does the equation have? Enter a single number.",
+    "xp": 6,
+    "ans": "2",
+    "accept": [
+     "2",
+     "2.0",
+     "two"
+    ],
+    "hints": [
+     "The equation in \\(u\\) is \\(u^2-13u-48=0\\). Solve that first and read off both values of \\(u\\).",
+     "The values are \\(u=16\\) and \\(u=-3\\). Ask which real numbers satisfy \\(x^2=16\\), and which satisfy \\(x^2=-3\\)."
+    ],
+    "sol": "In \\(u\\) the equation is \\(u^2-13u-48=0\\), and two numbers with product \\(-48\\) and sum \\(-13\\) are \\(-16\\) and \\(3\\), so it factors as \\((u-16)(u+3)=0\\). Then \\(x^2=16\\) gives \\(x=4\\) and \\(x=-4\\), while \\(x^2=-3\\) has no real solution, since no real number squares to a negative. The count is \\(\\boxed{2}\\). Two values of \\(u\\) do not automatically mean four values of \\(x\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Undoing the substitution.</b> A value of \\(u\\) is not a solution. Since \\(u\\) stands for a piece built from \\(x\\), setting that piece equal to the value leaves one more equation to solve. When the piece is \\(x^2\\), a positive value of \\(u\\) gives two values of \\(x\\), \\(u=0\\) gives one, and a negative value gives none, so the number of real solutions can be four, three, two, one or none. When the piece is linear, such as \\(x-6\\) or \\(2x+3\\), each value of \\(u\\) gives exactly one \\(x\\). Count the solutions after the undo step, never before it."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"The same equation on two rows, with two filled boxes standing where one repeated piece belongs. The top row reads a, times the first box squared, plus b times the second box, plus c, equals zero, and both boxes hold x squared, so the equation has degree four. The bottom row is identical outside the boxes and both boxes hold the single letter u, so what is left reads a u squared plus b u plus c equals zero.\" font-family=\"Space Grotesk, sans-serif\"><path fill-rule=\"nonzero\" fill=\"#7cc7ff\" stroke-width=\"0.024\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -1.86 1.94 C -2.273359 1.94 -2.686641 1.94 -3.1 1.94 C -3.1 1.633359 -3.1 1.326641 -3.1 1.02 C -2.686641 1.02 -2.273359 1.02 -1.86 1.02 C -1.86 1.326641 -1.86 1.633359 -1.86 1.94 Z M -1.86 1.94 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill-rule=\"nonzero\" fill=\"#7cc7ff\" stroke-width=\"0.024\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 0.98 1.94 C 0.566641 1.94 0.153359 1.94 -0.26 1.94 C -0.26 1.633359 -0.26 1.326641 -0.26 1.02 C 0.153359 1.02 0.566641 1.02 0.98 1.02 C 0.98 1.326641 0.98 1.633359 0.98 1.94 Z M 0.98 1.94 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill-rule=\"nonzero\" fill=\"#7cc7ff\" stroke-width=\"0.024\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -1.86 -1.18 C -2.273359 -1.18 -2.686641 -1.18 -3.1 -1.18 C -3.1 -1.486641 -3.1 -1.793359 -3.1 -2.1 C -2.686641 -2.1 -2.273359 -2.1 -1.86 -2.1 C -1.86 -1.793359 -1.86 -1.486641 -1.86 -1.18 Z M -1.86 -1.18 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill-rule=\"nonzero\" fill=\"#7cc7ff\" stroke-width=\"0.024\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 0.98 -1.18 C 0.566641 -1.18 0.153359 -1.18 -0.26 -1.18 C -0.26 -1.486641 -0.26 -1.793359 -0.26 -2.1 C 0.153359 -2.1 0.566641 -2.1 0.98 -2.1 C 0.98 -1.793359 0.98 -1.486641 0.98 -1.18 Z M 0.98 -1.18 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.48 0.8 C -2.48 0.273359 -2.48 -0.253359 -2.48 -0.78 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill-rule=\"nonzero\" fill=\"#0a0a0a\" d=\"M 166 198 C 163.832031 193.667969 161.667969 189.332031 159.5 185 C 163.832031 185 168.167969 185 172.5 185 C 170.332031 189.332031 168.167969 193.667969 166 198 Z M 166 198 \"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 0.36 0.8 C 0.36 0.273359 0.36 -0.253359 0.36 -0.78 \" transform=\"matrix(50, 0, 0, -50, 290, 150)\"/>\n<path fill-rule=\"nonzero\" fill=\"#0a0a0a\" d=\"M 308 198 C 305.832031 193.667969 303.667969 189.332031 301.5 185 C 305.832031 185 310.167969 185 314.5 185 C 312.332031 189.332031 310.167969 193.667969 308 198 Z M 308 198 \"/><text x=\"120.0\" y=\"76.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">a</text><text x=\"206.0\" y=\"54.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">2</text><text x=\"234.0\" y=\"76.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">+</text><text x=\"262.0\" y=\"76.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">b</text><text x=\"366.0\" y=\"76.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">+</text><text x=\"394.0\" y=\"76.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">c</text><text x=\"428.0\" y=\"76.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">=</text><text x=\"460.0\" y=\"76.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">0</text><text x=\"120.0\" y=\"232.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">a</text><text x=\"206.0\" y=\"210.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">2</text><text x=\"234.0\" y=\"232.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">+</text><text x=\"262.0\" y=\"232.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">b</text><text x=\"366.0\" y=\"232.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">+</text><text x=\"394.0\" y=\"232.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">c</text><text x=\"428.0\" y=\"232.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">=</text><text x=\"460.0\" y=\"232.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">0</text><text x=\"159.0\" y=\"76.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x</text><text x=\"174.0\" y=\"64.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">2</text><text x=\"301.0\" y=\"76.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x</text><text x=\"316.0\" y=\"64.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">2</text><text x=\"166.0\" y=\"232.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">u</text><text x=\"308.0\" y=\"232.0\" font-size=\"26\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">u</text><text x=\"237.0\" y=\"154.0\" font-size=\"17\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">rename</text></svg>",
+    "cap": "The same equation on two rows. The top row has \\(x^2\\) in both boxes, once squared and once multiplied by \\(b\\), so the equation has degree four. The bottom row has a single letter in those same two boxes and nothing outside them changes, so what is left is \\(au^2+bu+c=0\\). The quadratic was there in the top row too. Naming the repeated piece is what makes it visible, and a binomial in the boxes works the same way."
+   },
+   {
+    "t": "p",
+    "x": "The repeated piece is not always obvious. In \\(\\frac{1}{x^2}-\\frac{11}{x}+24=0\\) it is \\(\\frac{1}{x}\\), since \\(\\frac{1}{x^2}=\\left(\\frac{1}{x}\\right)^2\\), and \\(u^2-11u+24=(u-3)(u-8)\\) gives \\(\\frac{1}{x}=3\\) or \\(8\\), so \\(x=\\frac{1}{3}\\) or \\(x=\\frac{1}{8}\\). Multiplying the original by \\(x^2\\) gives \\(24x^2-11x+1=0\\), with the same two roots."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(x+\\frac{56}{x}=18\\). Multiply both sides by \\(x\\), collect everything on one side, and factor. Enter the larger solution.",
+    "xp": 6,
+    "ans": "14",
+    "accept": [
+     "14",
+     "14.0",
+     "fourteen"
+    ],
+    "hints": [
+     "Multiplying by \\(x\\) turns \\(\\frac{56}{x}\\) into \\(56\\) and \\(x\\) into \\(x^2\\), so no fraction is left.",
+     "The cleared equation is \\(x^2-18x+56=0\\). Two numbers with product \\(56\\) and sum \\(-18\\) are \\(-4\\) and \\(-14\\)."
+    ],
+    "sol": "Multiplying by \\(x\\) gives \\(x^2+56=18x\\), so \\(x^2-18x+56=0\\), which factors as \\((x-4)(x-14)=0\\). The solutions are \\(4\\) and \\(14\\), so the larger is \\(\\boxed{14}\\). Both check in the original equation, and \\(x=0\\) is not a candidate, since \\(\\frac{56}{0}\\) is not a number."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(\\frac{4}{x-2}+\\frac{x}{x+2}=\\frac{16}{x^2-4}\\), where \\(x^2-4=(x-2)(x+2)\\). Multiplying through by \\((x-2)(x+2)\\) produces two candidates, and only one of them solves the original equation. Enter that one.",
+    "xp": 7,
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4",
+     "-4.0",
+     "−4.0",
+     "x=-4",
+     "x=−4",
+     "negative 4",
+     "negative four"
+    ],
+    "hints": [
+     "Multiply every term by \\((x-2)(x+2)\\). In the first term the \\(x-2\\) divides out, in the second the \\(x+2\\) does, and on the right both do.",
+     "You get \\(4(x+2)+x(x-2)=16\\), so \\(x^2+2x-8=0\\). Factor it, then put each candidate into \\(\\frac{4}{x-2}\\) before deciding."
+    ],
+    "sol": "Multiplying every term by \\((x-2)(x+2)\\) gives \\(4(x+2)+x(x-2)=16\\), so \\(x^2+2x-8=0\\) and \\((x+4)(x-2)=0\\). The candidates are \\(-4\\) and \\(2\\). At \\(x=2\\) the denominator \\(x-2\\) is zero, so \\(2\\) is not a solution, and the answer is \\(\\boxed{-4}\\). Checking, \\(\\frac{4}{-6}+\\frac{-4}{-2}=\\frac{4}{3}\\), which matches \\(\\frac{16}{12}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Clearing denominators.</b> Multiplying both sides of an equation by an expression that contains \\(x\\) is legal only where that expression is not zero. Away from those values, the cleared equation has exactly the solutions the original has. At those values the original is undefined while the cleared equation can still be true, so a candidate reached by correct algebra can still fail to solve the original. Such a candidate is <b>extraneous</b>. Write down the values that make a denominator zero before clearing, and drop any candidate that matches one."
+   },
+   {
+    "t": "p",
+    "x": "A numerator and a denominator can share a factor. Since \\(x^2+3x-18=(x+6)(x-3)\\), the expression \\(\\frac{x^2+3x-18}{x-3}\\) equals \\(x+6\\) at every value of \\(x\\) except \\(3\\). At \\(x=3\\) the original is \\(\\frac{0}{0}\\) and has no value, while \\(x+6\\) is \\(9\\). Cancelling a factor leaves the excluded value excluded."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(\\frac{x^2-3x-10}{x+2}=-7\\). The numerator factors, and one of its factors is the denominator. How many solutions does the equation have? Enter a single number.",
+    "xp": 7,
+    "ans": "0",
+    "accept": [
+     "0",
+     "0.0",
+     "zero",
+     "none",
+     "no solution",
+     "no solutions"
+    ],
+    "hints": [
+     "\\(x^2-3x-10=(x-5)(x+2)\\), so for every \\(x\\) except \\(-2\\) the left side equals \\(x-5\\).",
+     "That leaves \\(x-5=-7\\), so the only candidate is \\(x=-2\\). Check that value against the original denominator."
+    ],
+    "sol": "Since \\(x^2-3x-10=(x-5)(x+2)\\), the left side equals \\(x-5\\) wherever it is defined, and \\(x-5=-7\\) gives \\(x=-2\\). But \\(x=-2\\) makes the denominator zero, so it is not a solution and the count is \\(\\boxed{0}\\). Multiplying through instead gives \\(x^2-3x-10=-7x-14\\), so \\(x^2+4x+4=0\\) and \\((x+2)(x+2)=0\\), the same excluded candidate again."
+   },
+   {
+    "t": "fact",
+    "x": "Ludovico Ferrari solved the general fourth-degree equation around 1540, while still in his teens. His method introduces one new quantity, and finding that quantity takes only a third-degree equation, which was already solvable."
+   },
+   {
+    "t": "prob",
+    "x": "The numbers \\(a\\) and \\(b\\) satisfy \\(3a^2-11ab+6b^2=0\\), and \\(b\\) is not zero. Read the left side as a quadratic in \\(a\\), with \\(b\\) held as a constant, and factor it. Enter the smaller of the two possible values of \\(\\frac{a}{b}\\) as a fraction in lowest terms.",
+    "xp": 7,
+    "ans": "2/3",
+    "accept": [
+     "2/3",
+     "a/b=2/3"
+    ],
+    "hints": [
+     "As a quadratic in \\(a\\) the three coefficients are \\(3\\), \\(-11b\\) and \\(6b^2\\). Each factor has an \\(a\\) term and a \\(b\\) term.",
+     "Use the middle-term split from 9.3. Multiply \\(3a^2\\) by \\(6b^2\\) to get \\(18a^2b^2\\), break \\(-11ab\\) into two terms with that product, then group in pairs. Set each factor to zero and divide by \\(b\\)."
+    ],
+    "sol": "As a quadratic in \\(a\\), \\(3a^2-11ab+6b^2=(3a-2b)(a-3b)=0\\), so \\(3a=2b\\) or \\(a=3b\\). Dividing by \\(b\\), which is not zero, gives \\(\\frac{a}{b}=\\frac{2}{3}\\) or \\(\\frac{a}{b}=3\\), and the smaller is \\(\\boxed{\\frac{2}{3}}\\). Dividing the original equation by \\(b^2\\) is the second route, since \\(3t^2-11t+6=0\\) with \\(t=\\frac{a}{b}\\) has the same two solutions."
+   },
+   {
+    "t": "imp",
+    "x": "<b>A quadratic in one of several letters.</b> An equation in two letters is a quadratic in \\(a\\) when \\(a\\) appears squared, appears once on its own, and nowhere else. The three coefficients are then built from the other letter. In \\(3a^2-11ab+6b^2=0\\) they are \\(3\\), \\(-11b\\) and \\(6b^2\\), and 9.3's split runs unchanged, with one \\(b\\) in each factor. Setting a factor to zero gives \\(a\\) as a multiple of \\(b\\) rather than as a number, so neither letter has a value of its own here. Each factor gives one of the two possible values of \\(\\frac{a}{b}\\)."
+   },
+   {
+    "t": "p",
+    "x": "Several routes are open now. If the equation is already \\(ax^2+bx+c=0\\), factor it and take a root from each factor. If one piece repeats, name it, solve, then undo the name. If the variable sits under a fraction bar, clear the denominators first. If the question asks only for the sum or the product, read it off the coefficients with 9.4's two facts."
+   },
+   {
+    "t": "prob",
+    "x": "A cyclist covers \\(60\\) kilometres at a steady speed. At \\(5\\) kilometres per hour faster the ride would have taken one hour less, so her speed \\(v\\) satisfies \\(\\frac{60}{v}-\\frac{60}{v+5}=1\\). Find \\(v\\) in kilometres per hour.",
+    "xp": 7,
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "v=15",
+     "15 km/h",
+     "15 km/hr",
+     "15 km/hour",
+     "15 kmh",
+     "15 kph",
+     "15 km per hour",
+     "15 kilometres per hour",
+     "15 kilometers per hour",
+     "fifteen"
+    ],
+    "hints": [
+     "Multiply both sides by \\(v(v+5)\\). On the left the first term becomes \\(60(v+5)\\) and the second becomes \\(60v\\), and the right side becomes \\(v(v+5)\\).",
+     "That gives \\(300=v^2+5v\\), so \\(v^2+5v-300=0\\). Factor it, then ask which of the two candidates can be a speed."
+    ],
+    "sol": "Multiplying by \\(v(v+5)\\) gives \\(60(v+5)-60v=v(v+5)\\), so \\(300=v^2+5v\\) and \\(v^2+5v-300=0\\), which factors as \\((v-15)(v+20)=0\\). The roots are \\(15\\) and \\(-20\\), and a speed cannot be negative, so \\(v=\\boxed{15}\\). The root \\(-20\\) solves the equation exactly, so it is ruled out by what \\(v\\) measures and not by the algebra. Checking, \\(\\frac{60}{15}-\\frac{60}{20}=4-3=1\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Clearing the denominators in \\(\\frac{5}{x}+\\frac{5}{x-4}=3\\) gives \\(3x^2-22x+20=0\\), which has no integer factorization, so no method in this chapter produces either solution. Find the sum of the two solutions of the original equation as a fraction in lowest terms.",
+    "xp": 8,
+    "ans": "22/3",
+    "accept": [
+     "22/3"
+    ],
+    "hints": [
+     "9.4 gives the sum of the roots as \\(-\\frac{b}{a}\\), read straight off the coefficients with no factoring.",
+     "Here \\(a=3\\) and \\(b=-22\\). Before using them, check that neither excluded value, \\(0\\) or \\(4\\), is a root of the cleared quadratic."
+    ],
+    "sol": "For \\(3x^2-22x+20\\) the sum of the roots is \\(-\\frac{b}{a}=-\\frac{-22}{3}=\\boxed{\\frac{22}{3}}\\). Neither excluded value is a root, since \\(3x^2-22x+20\\) equals \\(20\\) at \\(x=0\\) and \\(-20\\) at \\(x=4\\), so both roots of the quadratic solve the original equation. Factoring is not needed here, since the question asks about the two solutions together."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Choosing the tool.</b> In chapter 9, factoring with the zero product property is the only route to the individual solutions, and it needs standard form and an integer factorization. For a question about the two solutions together, 9.4's sum and product come straight from the coefficients, factorable or not. Substitution puts an equation that is a quadratic in some piece into the first case, at the cost of undoing the name afterwards. Clearing denominators does the same for a variable under a fraction bar, at the cost of a check against the excluded values."
+   },
+   {
+    "t": "p",
+    "x": "Substitution helps only when the quadratic it produces factors, and plenty do not. In \\(x^4-7x^2+5=0\\) the substitution gives \\(u^2-7u+5=0\\), and the only integer pairs with product \\(5\\) sum to \\(6\\) or \\(-6\\), never \\(-7\\). Chapter 10 adds factorizations chapter 9 has no name for, and chapter 11 gives a method that solves every quadratic."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\((x^2+2x)^2=2x^2+4x+3\\). The right side contains a copy of the piece that is squared on the left. Enter the smallest real solution.",
+    "xp": 8,
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "−3",
+     "-3.0",
+     "−3.0",
+     "x=-3",
+     "x=−3",
+     "negative 3",
+     "negative three"
+    ],
+    "hints": [
+     "\\(2x^2+4x=2(x^2+2x)\\), so the right side is \\(2(x^2+2x)+3\\).",
+     "With \\(u=x^2+2x\\) the equation is \\(u^2=2u+3\\), so \\(u^2-2u-3=0\\) and \\(u=3\\) or \\(u=-1\\). Each value gives its own quadratic in \\(x\\)."
+    ],
+    "sol": "Since \\(2x^2+4x=2(x^2+2x)\\), the equation is \\(u^2=2u+3\\) with \\(u=x^2+2x\\), so \\(u^2-2u-3=(u-3)(u+1)=0\\) and \\(u=3\\) or \\(u=-1\\). Then \\(x^2+2x-3=0\\) gives \\(x=1\\) and \\(x=-3\\), and \\(x^2+2x+1=0\\) gives \\(x=-1\\), so the smallest is \\(\\boxed{-3}\\). There are three distinct solutions, not four, because the second value of \\(u\\) gives a repeated factor."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(\\left(\\frac{2x}{x-1}\\right)^2-16\\left(\\frac{2x}{x-1}\\right)+28=0\\). One of the two values of the repeated piece produces no value of \\(x\\) at all. Enter the solution as a fraction in lowest terms.",
+    "xp": 8,
+    "ans": "7/6",
+    "accept": [
+     "7/6",
+     "x=7/6"
+    ],
+    "hints": [
+     "Write \\(u\\) for \\(\\frac{2x}{x-1}\\). The equation is \\(u^2-16u+28=0\\).",
+     "\\(u^2-16u+28=(u-2)(u-14)\\). For \\(u=2\\), multiply out \\(2x=2(x-1)\\) and see what is left. Then do \\(u=14\\)."
+    ],
+    "sol": "With \\(u=\\frac{2x}{x-1}\\) the equation is \\(u^2-16u+28=(u-2)(u-14)=0\\), so \\(u=2\\) or \\(u=14\\). For \\(u=2\\), \\(2x=2(x-1)\\) gives \\(0=-2\\), which no \\(x\\) satisfies. For \\(u=14\\), \\(2x=14(x-1)\\) gives \\(12x=14\\), so \\(x=\\boxed{\\frac{7}{6}}\\). Two values of \\(u\\) can still leave one solution, and here that is because \\(\\frac{2x}{x-1}\\) is never equal to \\(2\\)."
+   },
+   {
+    "t": "p",
+    "x": "Every equation in this lesson was a quadratic in something, a renamed piece or \\(x\\) itself once the denominators were cleared, and chapter 9's tools were enough. Chapter 10, Special Factorizations, adds factorizations this chapter has no name for, sums and differences of cubes among them, recognized by shape rather than found by a search."
+   }
+  ],
+  "review": [
+   {
+    "x": "The expression \\(\\frac{x^2+x-56}{x+8}\\) equals \\(x-7\\) at every value of \\(x\\) but one. Enter the value of \\(x\\) where the expression is undefined.",
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "−8",
+     "-8.0",
+     "−8.0",
+     "x=-8",
+     "x=−8",
+     "negative 8",
+     "negative eight"
+    ],
+    "hints": [
+     "The expression is undefined exactly where its denominator is zero.",
+     "\\(x^2+x-56=(x+8)(x-7)\\), and cancelling \\(x+8\\) is legal only when \\(x+8\\) is not zero."
+    ],
+    "sol": "The denominator is zero at \\(x=\\boxed{-8}\\). Since \\(x^2+x-56=(x+8)(x-7)\\), cancelling \\(x+8\\) leaves \\(x-7\\), which is \\(-15\\) there, while the original is \\(\\frac{0}{0}\\) and has no value. Cancelling is legal only where \\(x+8\\) is not zero, so that one value stays excluded."
+   },
+   {
+    "x": "Solve \\(x^4-53x^2+196=0\\) by writing \\(u\\) for \\(x^2\\). Enter the largest value of \\(x\\) that solves it.",
+    "ans": "7",
+    "accept": [
+     "7",
+     "7.0",
+     "seven"
+    ],
+    "hints": [
+     "\\(x^4=(x^2)^2\\), so the equation in \\(u\\) is \\(u^2-53u+196=0\\).",
+     "Two numbers with product \\(196\\) and sum \\(-53\\) are \\(-4\\) and \\(-49\\), so \\(u=4\\) or \\(u=49\\). Each of those still has to be turned back into \\(x\\)."
+    ],
+    "sol": "With \\(u=x^2\\) the equation is \\(u^2-53u+196=0\\), which factors as \\((u-4)(u-49)=0\\), so \\(x^2=4\\) or \\(x^2=49\\) and the largest value of \\(x\\) is \\(\\boxed{7}\\). The four solutions are \\(-7\\), \\(-2\\), \\(2\\) and \\(7\\), so stopping at \\(u=49\\) reports the square of the answer."
+   },
+   {
+    "x": "Solve \\((x+5)^2-5(x+5)+4=0\\), where the repeated piece is \\(x+5\\). Enter the larger value of \\(x\\).",
+    "ans": "-1",
+    "accept": [
+     "-1",
+     "−1",
+     "-1.0",
+     "−1.0",
+     "negative 1",
+     "negative one"
+    ],
+    "hints": [
+     "Write \\(u\\) for \\(x+5\\). The equation is \\(u^2-5u+4=0\\).",
+     "Factor \\(u^2-5u+4\\) with two numbers that multiply to \\(4\\) and add to \\(-5\\), then set each factor to zero. Each \\(u\\) you get still needs \\(5\\) subtracted, since \\(u=x+5\\)."
+    ],
+    "sol": "With \\(u=x+5\\), \\((u-1)(u-4)=0\\) gives \\(u=1\\) or \\(u=4\\), so \\(x=-4\\) or \\(x=-1\\), and the larger is \\(\\boxed{-1}\\). Both values of \\(u\\) are positive while both solutions are negative, which is why the undo step cannot be skipped."
+   },
+   {
+    "x": "Solve \\(x^4-8x^2-9=0\\). Enter the positive solution.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three",
+     "x=3"
+    ],
+    "hints": [
+     "With \\(u=x^2\\) the equation is \\(u^2-8u-9=0\\).",
+     "\\(u^2-8u-9=(u-9)(u+1)\\), so \\(x^2=9\\) or \\(x^2=-1\\). Only one of those two equations has real solutions."
+    ],
+    "sol": "With \\(u=x^2\\) the equation is \\(u^2-8u-9=0\\), which factors as \\((u-9)(u+1)=0\\), so \\(u=9\\) or \\(u=-1\\). No real number squares to \\(-1\\), and \\(x^2=9\\) gives \\(x=\\pm 3\\), so the positive solution is \\(\\boxed{3}\\). The value \\(9\\) is \\(x^2\\) rather than \\(x\\), so it is not itself a solution."
+   },
+   {
+    "x": "Solve \\(\\frac{54}{x}=x+3\\) by multiplying both sides by \\(x\\). Enter the positive solution.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "Multiplying by \\(x\\) gives \\(54=x^2+3x\\), with no fraction left.",
+     "So \\(x^2+3x-54=0\\). Two numbers with product \\(-54\\) and sum \\(3\\) are \\(9\\) and \\(-6\\)."
+    ],
+    "sol": "Multiplying by \\(x\\) gives \\(54=x^2+3x\\), so \\(x^2+3x-54=0\\) and \\((x+9)(x-6)=0\\). The solutions are \\(-9\\) and \\(6\\), so the positive one is \\(\\boxed{6}\\). Neither is \\(0\\), so both are legal values of \\(x\\) in the original equation."
+   },
+   {
+    "x": "Solve \\(\\frac{x^2-12x+27}{x-9}=5\\). The numerator shares a factor with the denominator. Enter the solution.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight",
+     "x=8"
+    ],
+    "hints": [
+     "Factor the numerator first. One of its two factors is the denominator.",
+     "\\(x^2-12x+27=(x-3)(x-9)\\), so away from \\(x=9\\) the left side is \\(x-3\\)."
+    ],
+    "sol": "Since \\(x^2-12x+27=(x-3)(x-9)\\), the left side equals \\(x-3\\) wherever the expression is defined, so \\(x-3=5\\) and \\(x=\\boxed{8}\\). The excluded value is \\(9\\), and \\(8\\) is not it, so this candidate survives."
+   },
+   {
+    "x": "How many different real values of \\(x\\) satisfy \\(x^4+9x^2=0\\)? Enter a single number.",
+    "ans": "1",
+    "accept": [
+     "1",
+     "1.0",
+     "one"
+    ],
+    "hints": [
+     "With \\(u=x^2\\) the equation is \\(u^2+9u=0\\), and the left side has a common factor.",
+     "\\(u(u+9)=0\\), so \\(u=0\\) or \\(u=-9\\). Count the real values of \\(x\\) that come from each one."
+    ],
+    "sol": "With \\(u=x^2\\) the equation is \\(u^2+9u=0\\), so \\(u(u+9)=0\\) and \\(u=0\\) or \\(u=-9\\). Then \\(x^2=0\\) gives only \\(x=0\\), and \\(x^2=-9\\) gives no real \\(x\\), so the count is \\(\\boxed{1}\\). A \\(u\\) of zero is the one case that yields a single \\(x\\), since a positive \\(u\\) yields two and a negative \\(u\\) none."
+   },
+   {
+    "x": "The square of a positive integer plus twice that integer is \\(288\\). Enter the integer.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen",
+     "n=16"
+    ],
+    "hints": [
+     "Call the integer \\(n\\). Twice the integer is \\(2n\\), so the statement says \\(n^2+2n=288\\), and moving the \\(288\\) across gives \\(n^2+2n-288=0\\).",
+     "Look for two numbers with product \\(-288\\) and sum \\(2\\). Run through the factor pairs of \\(288\\) for the pair whose parts differ by \\(2\\), then keep only the positive root."
+    ],
+    "sol": "With \\(n\\) the integer, \\(n^2+2n=288\\), so \\(n^2+2n-288=0\\) and \\((n-16)(n+18)=0\\). The roots are \\(16\\) and \\(-18\\), and the integer has to be positive, so it is \\(\\boxed{16}\\). Checking, \\(256+32=288\\)."
+   },
+   {
+    "x": "Clearing the denominators in \\(\\frac{x}{x+5}+\\frac{2}{x}=3\\) gives \\(2x^2+13x-10=0\\), which has no integer factorization. Neither \\(0\\) nor \\(-5\\) is a root of it. Enter the sum of the two solutions as a fraction in lowest terms.",
+    "ans": "-13/2",
+    "accept": [
+     "-13/2",
+     "−13/2",
+     "-6.5",
+     "−6.5"
+    ],
+    "hints": [
+     "9.4 gives the sum of the roots as \\(-\\frac{b}{a}\\), with no factoring needed.",
+     "Here \\(a=2\\) and \\(b=13\\), and since neither excluded value is a root, both roots are solutions of the original equation."
+    ],
+    "sol": "For \\(2x^2+13x-10\\) the sum of the roots is \\(-\\frac{b}{a}=-\\frac{13}{2}\\), so the sum of the two solutions is \\(\\boxed{-\\frac{13}{2}}\\). The excluded values \\(0\\) and \\(-5\\) are not roots, so nothing is discarded and no factorization is needed."
+   },
+   {
+    "x": "Solve \\((4x+3)^2-7(4x+3)-8=0\\). Enter the larger solution as a fraction in lowest terms.",
+    "ans": "5/4",
+    "accept": [
+     "5/4",
+     "1.25"
+    ],
+    "hints": [
+     "The piece \\(4x+3\\) appears twice. Write \\(u\\) for it, and the equation becomes \\(u^2-7u-8=0\\).",
+     "Factor \\(u^2-7u-8\\) over the integers and set each factor to zero. The two values of \\(u\\) are not the two values of \\(x\\), so put \\(4x+3\\) back in place of \\(u\\) and solve each equation."
+    ],
+    "sol": "With \\(u=4x+3\\) the equation is \\((u-8)(u+1)=0\\), so \\(4x+3=8\\) or \\(4x+3=-1\\), which give \\(x=\\frac{5}{4}\\) and \\(x=-1\\), and the larger is \\(\\boxed{\\frac{5}{4}}\\). Stopping at \\(u=8\\) is the usual slip, since \\(8\\) is a value of the repeated piece and not a value of \\(x\\)."
+   },
+   {
+    "x": "Solve \\(4x^4-17x^2+4=0\\) by writing \\(u\\) for \\(x^2\\). Enter the smallest positive solution as a fraction in lowest terms.",
+    "ans": "1/2",
+    "accept": [
+     "1/2",
+     "0.5",
+     ".5",
+     "x=1/2",
+     "x=0.5"
+    ],
+    "hints": [
+     "Writing \\(u\\) for \\(x^2\\) turns the equation into \\(4u^2-17u+4=0\\). Both constants in its factors are negative, and the odd middle coefficient rules out the split with \\(2u\\) in both factors.",
+     "Solving for \\(u\\) is not the end of the problem. Each value of \\(u\\) is a value of \\(x^2\\), so undo the substitution and then pick out the smallest positive \\(x\\)."
+    ],
+    "sol": "With \\(u=x^2\\), \\(4u^2-17u+4=(4u-1)(u-4)=0\\), so \\(u=\\frac{1}{4}\\) or \\(u=4\\). Undoing the substitution, \\(x^2=\\frac{1}{4}\\) gives \\(x=\\pm\\frac{1}{2}\\) and \\(x^2=4\\) gives \\(x=\\pm 2\\), so the smallest positive solution is \\(\\boxed{\\frac{1}{2}}\\). Each positive \\(u\\) gives two values of \\(x\\), which is why a quadratic in \\(x^2\\) can have four solutions."
+   },
+   {
+    "x": "Solve \\(\\frac{x+5}{x-6}=\\frac{66}{x^2-6x}\\). The denominator on the right factors as \\(x(x-6)\\), and one of the two candidates is extraneous. Enter the single value of \\(x\\) that solves the equation.",
+    "ans": "-11",
+    "accept": [
+     "-11",
+     "−11",
+     "-11.0",
+     "−11.0",
+     "negative 11",
+     "negative eleven",
+     "x=-11",
+     "x=−11"
+    ],
+    "hints": [
+     "Multiply both sides by \\(x(x-6)\\). On the left the \\(x-6\\) cancels and an \\(x\\) is left over.",
+     "That gives \\(x(x+5)=66\\), so \\(x^2+5x-66=0\\). Factor it, then check both candidates against the denominators."
+    ],
+    "sol": "Multiplying by \\(x(x-6)\\) gives \\(x(x+5)=66\\), so \\(x^2+5x-66=0\\) and \\((x+11)(x-6)=0\\). The candidates are \\(-11\\) and \\(6\\), and \\(x=6\\) makes both original denominators zero, so the solution is \\(\\boxed{-11}\\). Checking, \\(\\frac{-6}{-17}=\\frac{6}{17}\\) and \\(\\frac{66}{187}=\\frac{6}{17}\\)."
+   },
+   {
+    "x": "Solve \\(\\frac{6}{x-1}+\\frac{x}{x+1}=\\frac{12}{x^2-1}\\). The denominator on the right factors as \\((x-1)(x+1)\\), and one candidate makes a denominator zero. Enter the solution.",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "-6.0",
+     "−6.0",
+     "x=-6",
+     "x=−6",
+     "negative 6",
+     "negative six"
+    ],
+    "hints": [
+     "Multiply every term by \\((x-1)(x+1)\\), which clears all three denominators at once.",
+     "That gives \\(6(x+1)+x(x-1)=12\\), so \\(x^2+5x-6=0\\). Factor it and check both candidates."
+    ],
+    "sol": "Multiplying by \\((x-1)(x+1)\\) gives \\(6(x+1)+x(x-1)=12\\), so \\(x^2+5x-6=0\\) and \\((x+6)(x-1)=0\\). The candidates are \\(-6\\) and \\(1\\), and \\(x=1\\) makes \\(x-1\\) zero, so the solution is \\(\\boxed{-6}\\)."
+   },
+   {
+    "x": "The numbers \\(a\\) and \\(b\\) satisfy \\(2a^2-9ab+10b^2=0\\), and \\(b\\) is not zero. Enter the larger of the two possible values of \\(\\frac{a}{b}\\) as a fraction in lowest terms.",
+    "ans": "5/2",
+    "accept": [
+     "5/2",
+     "2.5"
+    ],
+    "hints": [
+     "Read the left side as a quadratic in \\(a\\), with coefficients \\(2\\), \\(-9b\\) and \\(10b^2\\).",
+     "Split the middle term. Two numbers with product \\(2\\cdot 10=20\\) and sum \\(-9\\) let you rewrite \\(-9ab\\), then group in pairs. Set each factor to zero and divide by \\(b\\)."
+    ],
+    "sol": "As a quadratic in \\(a\\), \\((2a-5b)(a-2b)=0\\), so \\(2a=5b\\) or \\(a=2b\\). Dividing by \\(b\\) gives \\(\\frac{a}{b}=\\frac{5}{2}\\) or \\(\\frac{a}{b}=2\\), and the larger is \\(\\boxed{\\frac{5}{2}}\\). Both are genuinely possible, since \\((a,b)=(5,2)\\) and \\((a,b)=(2,1)\\) each satisfy the equation."
+   },
+   {
+    "x": "The numbers \\(a\\) and \\(b\\) satisfy \\(4a^2+4ab-3b^2=0\\), and \\(b\\) is not zero. Enter the smaller of the two possible values of \\(\\frac{a}{b}\\) as a fraction in lowest terms.",
+    "ans": "-3/2",
+    "accept": [
+     "-3/2",
+     "−3/2",
+     "-1.5",
+     "−1.5",
+     "negative 3/2",
+     "a/b=-3/2",
+     "a/b=−3/2"
+    ],
+    "hints": [
+     "As a quadratic in \\(a\\), the coefficients are \\(4\\), \\(4b\\) and \\(-3b^2\\). Split the leading \\(4\\) and the constant \\(-3b^2\\) the 9.3 way, with \\(b\\) held as a constant.",
+     "One factor is \\(2a-b\\). Find the other, set each factor to zero, then divide each equation by \\(b\\) so it becomes a statement about \\(\\frac{a}{b}\\)."
+    ],
+    "sol": "As a quadratic in \\(a\\), the left side factors as \\((2a-b)(2a+3b)\\), so \\(2a=b\\) or \\(2a=-3b\\). Dividing each by \\(b\\) gives \\(\\frac{a}{b}=\\frac{1}{2}\\) or \\(\\frac{a}{b}=-\\frac{3}{2}\\), and the smaller of the two is \\(\\boxed{-\\frac{3}{2}}\\). Dividing the original equation by \\(b^2\\) is the same route, since with \\(t=\\frac{a}{b}\\) it reads \\(4t^2+4t-3=0\\)."
+   },
+   {
+    "x": "Solve \\((x^2+8x)^2+6(x^2+8x)-135=0\\). Each value of the repeated piece gives a quadratic that factors over the integers. Enter the sum of all four solutions.",
+    "ans": "-16",
+    "accept": [
+     "-16",
+     "−16",
+     "-16.0",
+     "−16.0",
+     "negative 16",
+     "negative sixteen"
+    ],
+    "hints": [
+     "Write \\(u\\) for \\(x^2+8x\\). The equation is \\(u^2+6u-135=0\\).",
+     "\\(u^2+6u-135=(u-9)(u+15)\\), so \\(x^2+8x=9\\) or \\(x^2+8x=-15\\). Each is a quadratic to solve on its own."
+    ],
+    "sol": "With \\(u=x^2+8x\\), \\((u-9)(u+15)=0\\) gives \\(u=9\\) or \\(u=-15\\). Then \\(x^2+8x-9=0\\) gives \\(x=1\\) and \\(x=-9\\), and \\(x^2+8x+15=0\\) gives \\(x=-3\\) and \\(x=-5\\), so the sum is \\(1-9-3-5=\\boxed{-16}\\). Both quadratics have the form \\(x^2+8x+k\\) and both have real roots, so by 9.4 each pair of roots sums to \\(-8\\) and the total is twice \\(-8\\)."
+   },
+   {
+    "x": "Solve \\(\\left(\\frac{x+1}{x-1}\\right)^2-11\\left(\\frac{x+1}{x-1}\\right)+10=0\\). One value of the repeated piece produces no \\(x\\) at all. Enter the solution as a fraction in lowest terms.",
+    "ans": "11/9",
+    "accept": [
+     "11/9",
+     "x=11/9"
+    ],
+    "hints": [
+     "Write \\(u\\) for \\(\\frac{x+1}{x-1}\\), so the equation is \\(u^2-11u+10=0\\).",
+     "\\(u^2-11u+10=(u-1)(u-10)\\). For \\(u=1\\), \\(x+1=x-1\\) has no solution, so work on \\(x+1=10(x-1)\\)."
+    ],
+    "sol": "With \\(u=\\frac{x+1}{x-1}\\), \\((u-1)(u-10)=0\\) gives \\(u=1\\) or \\(u=10\\). For \\(u=1\\), \\(x+1=x-1\\) reduces to \\(1=-1\\), so no \\(x\\) works. For \\(u=10\\), \\(x+1=10x-10\\) gives \\(9x=11\\), so \\(x=\\boxed{\\frac{11}{9}}\\)."
+   }
+  ]
  }
 }
