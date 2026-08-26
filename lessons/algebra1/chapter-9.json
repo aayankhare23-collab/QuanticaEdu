@@ -492,5 +492,481 @@
     "sol": "\\((9x-5)^2=81x^2-2\\cdot 9\\cdot 5\\,x+25=81x^2-90x+25\\), so \\(b=\\boxed{-90}\\). Forgetting the factor \\(2\\) gives \\(-45\\), and dropping the subtraction's sign gives \\(+90\\), the two standard misses."
    }
   ]
+ },
+ "9.2": {
+  "title": "Factoring x² + bx + c",
+  "next": "9.3",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "Every product \\((x+r)(x+s)\\) expands to \\(x^2+(r+s)x+rs\\), so factoring \\(x^2+bx+c\\) means finding two numbers with sum \\(b\\) and product \\(c\\). Those are the two clues, and the product is the sharper one, since \\(c\\) has only finitely many factor pairs, so the search starts there."
+   },
+   {
+    "t": "prob",
+    "x": "Two numbers have sum \\(15\\) and product \\(56\\). The product is the clue to search on, so list the factor pairs of \\(56\\) and check each pair's sum. Enter the larger of the two numbers.",
+    "xp": 5,
+    "ans": "8",
+    "accept": [
+     "8",
+     "eight"
+    ],
+    "hints": [
+     "Starting from the product gives a shorter search. Only four pairs of whole numbers multiply to \\(56\\), so list those pairs.",
+     "The pairs are \\(1\\cdot 56\\), \\(2\\cdot 28\\), \\(4\\cdot 14\\) and \\(7\\cdot 8\\). Check each sum against \\(15\\)."
+    ],
+    "sol": "The factor pairs of \\(56\\) are \\(1\\cdot 56\\), \\(2\\cdot 28\\), \\(4\\cdot 14\\) and \\(7\\cdot 8\\), with sums \\(57\\), \\(30\\), \\(18\\) and \\(15\\), so the numbers are \\(7\\) and \\(8\\), and the larger is \\(\\boxed{8}\\). Starting from the product kept the search short, since only four pairs needed checking."
+   },
+   {
+    "t": "prob",
+    "x": "Factor \\(x^2+8x+12\\) as \\((x+r)(x+s)\\). Both constants are positive, since the product and the sum are both positive. Enter the larger of the two.",
+    "xp": 5,
+    "ans": "6",
+    "accept": [
+     "6",
+     "six"
+    ],
+    "hints": [
+     "Two numbers with sum \\(8\\) and product \\(12\\). Run the factor pairs of \\(12\\).",
+     "The pairs of \\(12\\) are \\(1\\cdot 12\\), \\(2\\cdot 6\\) and \\(3\\cdot 4\\). One sum is \\(8\\)."
+    ],
+    "sol": "The pairs of \\(12\\) have sums \\(13\\), \\(8\\) and \\(7\\), so the numbers are \\(2\\) and \\(6\\), giving \\(x^2+8x+12=(x+2)(x+6)\\), and the larger constant is \\(\\boxed{6}\\). Expanding back gives \\(x^2+8x+12\\), the check from 9.1."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The search.</b> To factor \\(x^2+bx+c\\), find two numbers \\(r\\) and \\(s\\) with \\(r+s=b\\) and \\(rs=c\\). Then \\(x^2+bx+c=(x+r)(x+s)\\), which is 9.1's forward pattern read right to left. Run the search through the factor pairs of \\(c\\), never through sums. There are endlessly many ways to write \\(b\\) as a sum, but \\(c\\) has only finitely many factor pairs, so listing the pairs of \\(c\\) and checking each pair's sum always finishes."
+   },
+   {
+    "t": "prob",
+    "x": "Factor \\(x^2+3x-28\\). The product of the two constants is \\(-28\\), so they have opposite signs, and since the sum is \\(+3\\), the positive one is larger in size. Search the pairs of \\(28\\) with opposite signs. Enter the negative constant.",
+    "xp": 6,
+    "ans": "-4",
+    "accept": [
+     "-4",
+     "−4",
+     "negative 4"
+    ],
+    "hints": [
+     "You need a factor pair of \\(28\\) whose difference is \\(3\\), with signs chosen so the sum comes out positive.",
+     "The pairs of \\(28\\) are \\(1\\cdot 28\\), \\(2\\cdot 14\\) and \\(4\\cdot 7\\). Which pair has difference \\(3\\)?"
+    ],
+    "sol": "The pair with difference \\(3\\) is \\(4\\) and \\(7\\), and the sum must be \\(+3\\), so the positive number is \\(7\\), giving \\(x^2+3x-28=(x+7)(x-4)\\), and the negative constant is \\(\\boxed{-4}\\). A quick expand gives \\(7x-4x=3x\\) and \\(7\\cdot(-4)=-28\\), matching the middle term and the constant."
+   },
+   {
+    "t": "prob",
+    "x": "Factor \\(x^2-13x+22\\). The product \\(+22\\) is positive, so the two constants share a sign, and since the sum \\(-13\\) is negative, that shared sign is negative. Search the factor pairs of \\(22\\), both taken negative. Enter the smaller of the two constants.",
+    "xp": 6,
+    "ans": "-11",
+    "accept": [
+     "-11",
+     "−11",
+     "negative 11"
+    ],
+    "hints": [
+     "\\(22\\) has only two factor pairs, \\(1\\cdot 22\\) and \\(2\\cdot 11\\), and both numbers are negative here.",
+     "Which pair, made negative, sums to \\(-13\\)? Then take the one farther below zero."
+    ],
+    "sol": "The negative pairs are \\(-1,-22\\) with sum \\(-23\\) and \\(-2,-11\\) with sum \\(-13\\), so \\(x^2-13x+22=(x-2)(x-11)\\), and the smaller constant is \\(\\boxed{-11}\\). Writing \\((x+2)(x+11)\\) is the standard slip, since its expansion has \\(+13x\\), not \\(-13x\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Sign reasoning.</b> Both sign facts follow from the forward pattern. A positive \\(c\\) means \\(r\\) and \\(s\\) share a sign, and the sum of two numbers with the same sign has that sign too, so the shared sign is the sign of \\(b\\). A negative \\(c\\) means \\(r\\) and \\(s\\) have opposite signs, and the sum of two numbers with opposite signs has the sign of the one with the larger absolute value, so that number and \\(b\\) share a sign. Either way the signs are known before any list gets written, and half the candidate pairs never need checking."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 430\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"The area model read inside out. A rectangle is cut into four cells labelled with the parts of an expanded quadratic, x squared in the largest cell, the two cross terms r x and s x beside and below it, and r s in the smallest. The top side carries spans x and r, the left side spans x and s, and two gold brackets pick out the whole side lengths, x plus r along the top and x plus s down the left, the factors that factoring recovers from the inside.\" font-family=\"Space Grotesk, sans-serif\"><path fill-rule=\"nonzero\" fill=\"#c9b8ff\" d=\"M 168 112 C 244 112 320 112 396 112 C 396 171.332031 396 230.667969 396 290 C 320 290 244 290 168 290 C 168 230.667969 168 171.332031 168 112 Z M 168 112 \"/>\n<path fill-rule=\"nonzero\" fill=\"#ffc84d\" d=\"M 396 112 C 436.667969 112 477.332031 112 518 112 C 518 171.332031 518 230.667969 518 290 C 477.332031 290 436.667969 290 396 290 C 396 230.667969 396 171.332031 396 112 Z M 396 112 \"/>\n<path fill-rule=\"nonzero\" fill=\"#9fe8d8\" d=\"M 168 290 C 244 290 320 290 396 290 C 396 314 396 338 396 362 C 320 362 244 362 168 362 C 168 338 168 314 168 290 Z M 168 290 \"/>\n<path fill-rule=\"nonzero\" fill=\"#7cc7ff\" d=\"M 396 290 C 436.667969 290 477.332031 290 518 290 C 518 314 518 338 518 362 C 477.332031 362 436.667969 362 396 362 C 396 338 396 314 396 290 Z M 396 290 \"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.44 2.06 C -0.106641 2.06 2.226641 2.06 4.56 2.06 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.56 2.06 C 4.56 0.393359 4.56 -1.273359 4.56 -2.94 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.56 -2.94 C 2.226641 -2.94 -0.106641 -2.94 -2.44 -2.94 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.04\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.44 -2.94 C -2.44 -1.273359 -2.44 0.393359 -2.44 2.06 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.12 2.06 C 2.12 0.393359 2.12 -1.273359 2.12 -2.94 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.026\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.44 -1.5 C -0.106641 -1.5 2.226641 -1.5 4.56 -1.5 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.38 2.54 C -0.9 2.54 0.58 2.54 2.06 2.54 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.38 2.64 C -2.38 2.573359 -2.38 2.506641 -2.38 2.44 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.06 2.64 C 2.06 2.573359 2.06 2.506641 2.06 2.44 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.18 2.54 C 2.953359 2.54 3.726641 2.54 4.5 2.54 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.18 2.64 C 2.18 2.573359 2.18 2.506641 2.18 2.44 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 4.5 2.64 C 4.5 2.573359 4.5 2.506641 4.5 2.44 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.96 2 C -2.96 0.853359 -2.96 -0.293359 -2.96 -1.44 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.06 2 C -2.993359 2 -2.926641 2 -2.86 2 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.06 -1.44 C -2.993359 -1.44 -2.926641 -1.44 -2.86 -1.44 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -2.96 -1.56 C -2.96 -2 -2.96 -2.44 -2.96 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.06 -1.56 C -2.993359 -1.56 -2.926641 -1.56 -2.86 -1.56 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.02\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.06 -2.88 C -2.993359 -2.88 -2.926641 -2.88 -2.86 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.036\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -2.38 3.38 C -0.0866406 3.38 2.206641 3.38 4.5 3.38 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.036\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -2.38 3.48 C -2.38 3.413359 -2.38 3.346641 -2.38 3.28 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.036\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M 4.5 3.48 C 4.5 3.413359 4.5 3.346641 4.5 3.28 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.036\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -3.88 2 C -3.88 0.373359 -3.88 -1.253359 -3.88 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.036\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -3.98 2 C -3.913359 2 -3.846641 2 -3.78 2 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/>\n<path fill=\"none\" stroke-width=\"0.036\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -3.98 -2.88 C -3.913359 -2.88 -3.846641 -2.88 -3.78 -2.88 \" transform=\"matrix(50, 0, 0, -50, 290, 215)\"/><text x=\"282.0\" y=\"201.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x²</text><text x=\"457.0\" y=\"201.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">rx</text><text x=\"282.0\" y=\"326.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">sx</text><text x=\"457.0\" y=\"326.0\" font-size=\"19\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">rs</text><text x=\"282.0\" y=\"73.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x</text><text x=\"457.0\" y=\"73.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">r</text><text x=\"126.0\" y=\"201.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x</text><text x=\"126.0\" y=\"326.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">s</text><text x=\"343.0\" y=\"31.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x + r</text><text x=\"80.0\" y=\"237.0\" font-size=\"15\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">x + s</text></svg>",
+    "cap": "The rectangle from 9.1, read the other way. Its four cells hold the expansion, \\(x^2\\), \\(rx\\), \\(sx\\) and \\(rs\\), and the gold side lengths \\(x+r\\) and \\(x+s\\) are what factoring recovers. The inside of the rectangle is the expanded form, the sides are the factors, and both clues are visible here, the cross cells add up to \\(bx\\) and the corner cell is \\(c\\)."
+   },
+   {
+    "t": "p",
+    "x": "The expansion \\(x^2+(r+s)x+rs\\) has leading coefficient \\(1\\), so the two clues are only trustworthy on a quadratic whose \\(x^2\\) coefficient is also \\(1\\). Before any search, pull out the greatest common numeric factor and write it in front, where it stays. When there is no constant term, \\(x\\) itself is a common factor."
+   },
+   {
+    "t": "prob",
+    "x": "Every term of \\(4x^2+52x+120\\) is divisible by the same number. Pull out that greatest common numeric factor, leaving a quadratic whose \\(x^2\\) coefficient is \\(1\\), then finish the factoring. Enter the numeric factor you pulled out.",
+    "xp": 5,
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Find the largest number that divides \\(4\\), \\(52\\) and \\(120\\) evenly.",
+     "After it comes out, the search runs on \\(x^2+13x+30\\)."
+    ],
+    "sol": "The greatest common factor of \\(4\\), \\(52\\) and \\(120\\) is \\(\\boxed{4}\\). It comes out first, leaving \\(x^2+13x+30\\), which factors as \\((x+3)(x+10)\\), so the full form is \\(4(x+3)(x+10)\\), with the \\(4\\) kept in front."
+   },
+   {
+    "t": "prob",
+    "x": "\\(x^2-14x\\) has no constant term, so both terms share the factor \\(x\\) itself. Factor the expression as \\(x\\) times a linear factor. Enter the constant inside the linear factor.",
+    "xp": 5,
+    "ans": "-14",
+    "accept": [
+     "-14",
+     "−14",
+     "negative 14"
+    ],
+    "hints": [
+     "Write each term with an \\(x\\) pulled out, \\(x\\cdot x\\) and \\(x\\cdot(-14)\\).",
+     "The factorization is \\(x(x+s)\\) for one value of \\(s\\), and expanding it must give back \\(-14x\\)."
+    ],
+    "sol": "\\(x^2-14x=x(x-14)\\), so the constant inside the linear factor is \\(\\boxed{-14}\\). Expanding back gives \\(x\\cdot x-14\\cdot x\\), the original expression."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Common factor first, every time.</b> A quadratic whose \\(x^2\\) coefficient is \\(1\\) is called monic, and the two clues are the coefficients of a monic quadratic only. With a leading coefficient still in place, the constant term is no longer plainly \\(rs\\), so the clues cannot be trusted until the common numeric factor comes out. A missing constant term means every term shares an \\(x\\), which comes out the same way and is zero at \\(x=0\\), a root worth keeping once the lesson turns to equations. Skipping this first step is the most common practical error in factoring."
+   },
+   {
+    "t": "p",
+    "x": "When \\(b=0\\) the sum clue is \\(r+s=0\\), so \\(s=-r\\) and the product is \\(-r^2\\). That is why \\(x^2-49\\) factors as \\((x+7)(x-7)\\), the conjugate identity from 9.1 run backwards, with the cross terms cancelling. The marks to recognize are a missing middle term and a negative perfect square constant."
+   },
+   {
+    "t": "prob",
+    "xp": 6,
+    "x": "Compute \\(53^2-47^2\\) without working out either square. The difference of squares pattern applies to plain numbers too, and it turns the subtraction into one easy multiplication. Enter the value.",
+    "ans": "600",
+    "accept": [
+     "600",
+     "six hundred"
+    ],
+    "hints": [
+     "The conjugate identity from 9.1, \\(a^2-b^2=(a+b)(a-b)\\), applies with \\(a=53\\) and \\(b=47\\).",
+     "\\((53-47)(53+47)=6\\cdot 100\\)."
+    ],
+    "sol": "\\(53^2-47^2=(53-47)(53+47)=6\\cdot 100=\\boxed{600}\\). Running the identity in reverse replaced two squarings and a subtraction with one easy product, and the direct arithmetic agrees, \\(2809-2209=600\\)."
+   },
+   {
+    "t": "fact",
+    "x": "In 1977 Ron Rivest, Adi Shamir and Leonard Adleman built RSA encryption on a lopsided fact. Multiplying two enormous numbers is quick, but no fast method is known for recovering the factors from the product. Much of internet security rests on that gap."
+   },
+   {
+    "t": "prob",
+    "x": "The quadratic \\(x^2+18x+81\\) is the search's \\(r=s\\) case, since \\(81=9^2\\) and \\(18\\) is twice \\(9\\), so it factors as \\((x+9)^2\\). Now change the constant to \\(82\\). Run the full search for \\(x^2+18x+82\\) and answer yes or no. Does it factor with integer constants?",
+    "xp": 7,
+    "ans": "no",
+    "accept": [
+     "no"
+    ],
+    "hints": [
+     "Both numbers would have to be positive, since the sum and the product are both positive. List every factor pair of \\(82\\).",
+     "\\(82=1\\cdot 82=2\\cdot 41\\), and those are all the pairs. Check both sums against \\(18\\)."
+    ],
+    "sol": "The pairs of \\(82\\) are \\(1\\cdot 82\\) and \\(2\\cdot 41\\), with sums \\(83\\) and \\(43\\), and negative pairs have negative sums, so the search comes up empty and the answer is \\(\\boxed{\\text{no}}\\). An empty search is a proof, since the pairs are all there is to check."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Two shortcuts and one honest limit.</b> A missing middle term with a negative square constant means a difference of squares, \\(x^2-k^2=(x+k)(x-k)\\). A constant that is a perfect square, with \\(b\\) twice its root, means a perfect square trinomial, the \\(r=s\\) case of the search, \\(x^2+2kx+k^2=(x+k)^2\\). And because \\(c\\) has finitely many factor pairs, an empty search is a proof, not a failure. When every pair is checked and none has sum \\(b\\), no integer factorization exists. Quadratics like that are handled in chapter 11."
+   },
+   {
+    "t": "p",
+    "x": "Once the left side of \\(x^2+bx+c=0\\) is factored, it is a product equal to zero, and by the zero product property from 9.1 at least one of the factors is zero. Each factor set to zero is a linear equation. The property applies to a product equal to zero and nothing else, so put zero on one side before splitting anything."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(x^2-4x-45=0\\). Factor the left side, then the zero product property splits the equation into two linear ones. Enter the positive root.",
+    "xp": 6,
+    "ans": "9",
+    "accept": [
+     "9",
+     "nine"
+    ],
+    "hints": [
+     "Two numbers with product \\(-45\\) and sum \\(-4\\). The signs differ, and the negative one is larger in size.",
+     "The pair is \\(-9\\) and \\(5\\), so the factors are \\(x-9\\) and \\(x+5\\)."
+    ],
+    "sol": "\\(x^2-4x-45=(x-9)(x+5)\\), so \\(x=9\\) or \\(x=-5\\), and the positive root is \\(\\boxed{9}\\). Checking, \\(81-36-45=0\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Solve \\(x(x+5)=24\\). The left side is already factored, but the right side is not zero, so neither factor is forced to equal anything. Expand, move every term to one side, and factor again before splitting. Enter the positive root.",
+    "xp": 7,
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three",
+     "x=3"
+    ],
+    "hints": [
+     "The zero product property only works on a product equal to zero. Expand and subtract \\(24\\) first.",
+     "\\(x^2+5x-24=0\\) needs two numbers with sum \\(5\\) and product \\(-24\\)."
+    ],
+    "sol": "Expanding gives \\(x^2+5x-24=0\\), which factors as \\((x+8)(x-3)\\), so \\(x=-8\\) or \\(x=3\\), and the positive root is \\(\\boxed{3}\\). The check runs against the original equation, \\(3\\cdot 8=24\\). Splitting \\(x(x+5)=24\\) into \\(x=24\\) or \\(x+5=24\\) is exactly the trap 9.1 named."
+   },
+   {
+    "t": "imp",
+    "x": "<b>The full pipeline.</b> Rearrange until one side is zero. Pull out the common numeric factor, and \\(x\\) itself if there is no constant term. Run the search on the monic quadratic that remains, signs settled first. Split with the zero product property. Then check one root in the original equation, the habit from 9.1. Substituting \\(x=3\\) into \\(x(x+5)=24\\) gives \\(3\\cdot 8=24\\), the original statement back again, so the pair was right."
+   },
+   {
+    "t": "p",
+    "x": "You can now factor any quadratic that turns into \\(x^2+bx+c\\) once a numeric factor comes out, whenever an integer pair exists, and solve the equations built from those factorizations. Two things are still out of reach, a leading coefficient that does not divide out, and a quadratic whose search comes up empty."
+   },
+   {
+    "t": "prob",
+    "x": "A poster is \\(6\\) inches taller than it is wide, and its area is \\(187\\) square inches. Writing \\(w\\) for the width gives \\(w(w+6)=187\\). Rearrange, factor and split. Both roots solve the equation, but only one can be a width. Enter the width in inches.",
+    "xp": 7,
+    "ans": "11",
+    "accept": [
+     "11",
+     "11 inches",
+     "11in",
+     "eleven"
+    ],
+    "hints": [
+     "Expand and move \\(187\\) over, then search for two numbers with sum \\(6\\) and product \\(-187\\).",
+     "\\(187=11\\cdot 17\\), and \\(17-11=6\\)."
+    ],
+    "sol": "\\(w^2+6w-187=0\\) factors as \\((w+17)(w-11)\\), so \\(w=-17\\) or \\(w=11\\), and a width is a positive length, so the width in inches is \\(\\boxed{11}\\). The check is the original statement, \\(11\\cdot 17=187\\), an \\(11\\) by \\(17\\) inch poster."
+   },
+   {
+    "t": "prob",
+    "x": "Factor \\(3x^2-45x+150\\) completely. The common numeric factor comes out first. The quadratic left behind has a positive constant and a negative middle term, so both constants in its factored form are negative. Enter the smaller of the two.",
+    "xp": 8,
+    "ans": "-10",
+    "accept": [
+     "-10",
+     "−10",
+     "negative 10"
+    ],
+    "hints": [
+     "Divide \\(3\\) out of every term, then search \\(x^2-15x+50\\) among negative pairs only.",
+     "Which factor pair of \\(50\\), both taken negative, sums to \\(-15\\)?"
+    ],
+    "sol": "Pulling out \\(3\\) leaves \\(x^2-15x+50\\), and the negative pair with sum \\(-15\\) and product \\(50\\) is \\(-5\\) and \\(-10\\), so \\(3x^2-45x+150=3(x-5)(x-10)\\), and the smaller constant is \\(\\boxed{-10}\\). Dropping the \\(3\\) when writing the complete factorization is the standard slip, it stays in front."
+   },
+   {
+    "t": "p",
+    "x": "Every quadratic here began monic or became monic after a numeric factor came out. When the leading coefficient stays, as in \\(2x^2+7x+3\\), the sum and product clues are no longer enough on their own. Lesson 9.3, Factoring \\(ax^2+bx+c\\), extends the search to that case."
+   }
+  ],
+  "review": [
+   {
+    "x": "Two numbers have sum \\(16\\) and product \\(39\\). Enter the larger one.",
+    "ans": "13",
+    "accept": [
+     "13",
+     "13.0",
+     "thirteen"
+    ],
+    "hints": [
+     "Search the factor pairs of \\(39\\). There are only two.",
+     "\\(39=1\\cdot 39=3\\cdot 13\\). Check both sums."
+    ],
+    "sol": "The factor pairs of \\(39\\) have sums \\(40\\) and \\(16\\), so the numbers are \\(3\\) and \\(13\\), and the larger is \\(\\boxed{13}\\)."
+   },
+   {
+    "x": "Factor \\(x^2+10x+16\\). Enter the smaller of the two constants in the factored form.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two"
+    ],
+    "hints": [
+     "Sum \\(10\\), product \\(16\\), both constants positive.",
+     "The pairs of \\(16\\) are \\(1\\cdot 16\\), \\(2\\cdot 8\\) and \\(4\\cdot 4\\)."
+    ],
+    "sol": "The pair with sum \\(10\\) is \\(2\\) and \\(8\\), so \\(x^2+10x+16=(x+2)(x+8)\\), and the smaller constant is \\(\\boxed{2}\\)."
+   },
+   {
+    "x": "Factor \\(x^2+15x+36\\). Enter the larger of the two constants in the factored form.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve"
+    ],
+    "hints": [
+     "Sum \\(15\\), product \\(36\\), both positive.",
+     "Run \\(1\\cdot 36\\), \\(2\\cdot 18\\), \\(3\\cdot 12\\), \\(4\\cdot 9\\), \\(6\\cdot 6\\) and check the sums."
+    ],
+    "sol": "The pair with sum \\(15\\) is \\(3\\) and \\(12\\), so \\(x^2+15x+36=(x+3)(x+12)\\), and the larger constant is \\(\\boxed{12}\\)."
+   },
+   {
+    "x": "Factor \\(x^2+2x-48\\). The two constants in the factors differ in sign. Enter the negative one.",
+    "ans": "-6",
+    "accept": [
+     "-6",
+     "−6",
+     "negative 6"
+    ],
+    "hints": [
+     "Since the product is \\(-48\\), the signs are opposite, and since the sum is \\(+2\\), the positive number is larger in size.",
+     "You need a factor pair of \\(48\\) with difference \\(2\\)."
+    ],
+    "sol": "The pair of \\(48\\) with difference \\(2\\) is \\(6\\) and \\(8\\), with the \\(8\\) positive, so \\(x^2+2x-48=(x+8)(x-6)\\), and the negative constant is \\(\\boxed{-6}\\)."
+   },
+   {
+    "x": "Factor \\(x^2-12x+35\\). Both constants are negative. Enter the smaller of the two.",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "negative 7"
+    ],
+    "hints": [
+     "Positive product, negative sum, so search the pairs of \\(35\\) both taken negative.",
+     "\\(35=1\\cdot 35=5\\cdot 7\\). Which negative pair sums to \\(-12\\)?"
+    ],
+    "sol": "The negative pair with sum \\(-12\\) is \\(-5\\) and \\(-7\\), so \\(x^2-12x+35=(x-5)(x-7)\\), and the smaller constant is \\(\\boxed{-7}\\)."
+   },
+   {
+    "x": "Factor \\(7x^2+42x+35\\) completely, pulling out the greatest common numeric factor first. Enter the larger of the two constants in the factored form.",
+    "ans": "5",
+    "accept": [
+     "5",
+     "five"
+    ],
+    "hints": [
+     "Find the largest number dividing \\(7\\), \\(42\\) and \\(35\\) evenly, and take it out before any search.",
+     "After it comes out, the search runs on \\(x^2+6x+5\\), sum \\(6\\) and product \\(5\\)."
+    ],
+    "sol": "The common factor is \\(7\\), and pulling it out leaves \\(x^2+6x+5=(x+1)(x+5)\\), so \\(7x^2+42x+35=7(x+1)(x+5)\\) and the larger constant is \\(\\boxed{5}\\). Without the pull the search on \\(7x^2\\) never even starts, since the pattern needs a plain \\(x^2\\)."
+   },
+   {
+    "x": "Factor \\(x^2-22x\\) as \\(x\\) times a linear factor. Enter the constant inside the linear factor.",
+    "ans": "-22",
+    "accept": [
+     "-22",
+     "−22",
+     "negative 22"
+    ],
+    "hints": [
+     "There is no constant term, so \\(x\\) itself is the common factor.",
+     "The form is \\(x(x+s)\\), and expanding must give \\(-22x\\) back."
+    ],
+    "sol": "\\(x^2-22x=x(x-22)\\), so the constant inside the linear factor is \\(\\boxed{-22}\\)."
+   },
+   {
+    "x": "\\(x^2-225\\) fits the form \\(x^2+bx+c\\) with \\(b=0\\) and \\(c=-225\\). Factor it as \\((x+k)(x-k)\\) and enter the positive integer \\(k\\).",
+    "ans": "15",
+    "accept": [
+     "15",
+     "fifteen"
+    ],
+    "hints": [
+     "You need two numbers whose product is \\(-225\\) and whose sum is \\(0\\).",
+     "A pair with sum \\(0\\) is a number and its opposite, so each one squares to \\(225\\)."
+    ],
+    "sol": "The pair must multiply to \\(-225\\) and add to \\(0\\), so it is \\(15\\) and \\(-15\\), giving \\(x^2-225=(x+15)(x-15)\\) and \\(k=\\boxed{15}\\)."
+   },
+   {
+    "x": "Compute \\(29^2-21^2\\) in your head, as a difference times a sum. Enter the value.",
+    "ans": "400",
+    "accept": [
+     "400"
+    ],
+    "hints": [
+     "\\(a^2-b^2=(a-b)(a+b)\\), with \\(a=29\\) and \\(b=21\\).",
+     "\\(29-21=8\\) and \\(29+21=50\\)."
+    ],
+    "sol": "\\(29^2-21^2=(29-21)(29+21)=8\\cdot 50=\\boxed{400}\\). The sum does not have to be a power of ten for the shortcut to be quick."
+   },
+   {
+    "x": "\\(x^2-32x+256\\) is a perfect square trinomial, \\((x+r)^2\\) for one value of \\(r\\). Enter \\(r\\), sign included.",
+    "ans": "-16",
+    "accept": [
+     "-16",
+     "−16",
+     "negative 16"
+    ],
+    "hints": [
+     "The constant is a perfect square and the middle coefficient is twice its root, up to sign.",
+     "\\(256=16^2\\) and the middle term is negative."
+    ],
+    "sol": "\\(256=16^2\\) and \\(-32\\) is twice \\(-16\\), so \\(x^2-32x+256=(x-16)^2\\) and \\(r=\\boxed{-16}\\). This is the search's \\(r=s\\) case, the pair \\(-16\\) and \\(-16\\)."
+   },
+   {
+    "x": "Does \\(x^2-7x-44\\) factor with integer constants? Run the factor pairs of \\(44\\) with opposite signs and answer yes or no.",
+    "ans": "yes",
+    "accept": [
+     "yes"
+    ],
+    "hints": [
+     "Negative product means opposite signs, and a sum of \\(-7\\) means the negative number is larger in size.",
+     "The pairs of \\(44\\) are \\(1\\cdot 44\\), \\(2\\cdot 22\\) and \\(4\\cdot 11\\). Check the differences against \\(7\\)."
+    ],
+    "sol": "The pair with difference \\(7\\) is \\(4\\) and \\(11\\), with the \\(11\\) negative, so \\(x^2-7x-44=(x-11)(x+4)\\), and the answer is \\(\\boxed{\\text{yes}}\\)."
+   },
+   {
+    "x": "Solve \\(x^2-3x-70=0\\). Enter the larger root.",
+    "ans": "10",
+    "accept": [
+     "10",
+     "ten"
+    ],
+    "hints": [
+     "Two numbers with product \\(-70\\) and sum \\(-3\\), so opposite signs with the negative one larger in size.",
+     "The pair is \\(-10\\) and \\(7\\)."
+    ],
+    "sol": "\\(x^2-3x-70=(x-10)(x+7)\\), so \\(x=10\\) or \\(x=-7\\), and the larger root is \\(\\boxed{10}\\). Checking, \\(100-30-70=0\\)."
+   },
+   {
+    "x": "Solve \\(x^2=8x+65\\). Move every term to one side before factoring. Enter the negative root.",
+    "ans": "-5",
+    "accept": [
+     "-5",
+     "−5",
+     "negative 5"
+    ],
+    "hints": [
+     "The zero product property needs zero on one side, so rearrange to \\(x^2-8x-65=0\\) first.",
+     "Two numbers with sum \\(-8\\) and product \\(-65\\)."
+    ],
+    "sol": "Rearranging gives \\(x^2-8x-65=0\\), which factors as \\((x-13)(x+5)=0\\), so \\(x=13\\) or \\(x=-5\\), and the negative root is \\(\\boxed{-5}\\). Checking in the original, \\(25=-40+65\\)."
+   },
+   {
+    "x": "Solve \\(x^2=19x\\). Do not divide both sides by \\(x\\), since a root is lost that way. Enter the smaller root.",
+    "ans": "0",
+    "accept": [
+     "0",
+     "zero",
+     "x=0"
+    ],
+    "hints": [
+     "Move everything to one side, then \\(x\\) itself is the common factor.",
+     "\\(x(x-19)=0\\) splits into two equations, one for each factor."
+    ],
+    "sol": "\\(x^2-19x=0\\) factors as \\(x(x-19)=0\\), so \\(x=0\\) or \\(x=19\\), and the smaller root is \\(\\boxed{0}\\). Dividing by \\(x\\) at the start loses exactly this root."
+   },
+   {
+    "x": "Solve \\(3x^2+27x+42=0\\). Pull out the common factor first. Both roots are negative. Enter the larger one.",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "negative 2"
+    ],
+    "hints": [
+     "Dividing out \\(3\\) leaves \\(x^2+9x+14=0\\).",
+     "The pair for sum \\(9\\) and product \\(14\\) is \\(2\\) and \\(7\\), and the larger of two negatives is the one closer to zero."
+    ],
+    "sol": "Dividing out \\(3\\) gives \\(x^2+9x+14=(x+2)(x+7)=0\\), so \\(x=-2\\) or \\(x=-7\\), and the larger root is \\(\\boxed{-2}\\). On the number line \\(-2\\) is to the right of \\(-7\\)."
+   },
+   {
+    "x": "Two pages of a book have consecutive page numbers that multiply to \\(306\\). Consecutive numbers give \\(n(n+1)=306\\). Solve it, reject the root that cannot be a page number, and enter the smaller page number.",
+    "ans": "17",
+    "accept": [
+     "17",
+     "seventeen"
+    ],
+    "hints": [
+     "Expand to \\(n^2+n-306=0\\) and search for two numbers with sum \\(1\\) and product \\(-306\\).",
+     "The quadratic has one positive root and one negative root, and only the positive one can be a page number."
+    ],
+    "sol": "\\(n^2+n-306=0\\) factors as \\((n+18)(n-17)\\), so \\(n=17\\) or \\(n=-18\\), and a page number is positive, so the pages are \\(17\\) and \\(18\\) and the smaller is \\(\\boxed{17}\\). The check is the original statement, \\(17\\cdot 18=306\\)."
+   },
+   {
+    "x": "Solve \\(2x^2-338=0\\). The common factor comes out first, and what remains is a difference of squares. Enter the negative root.",
+    "ans": "-13",
+    "accept": [
+     "-13",
+     "−13",
+     "negative 13"
+    ],
+    "hints": [
+     "Dividing out \\(2\\) leaves \\(x^2-169=0\\), a missing middle term with a negative square constant.",
+     "\\(169=13^2\\), so factor with the conjugate pair."
+    ],
+    "sol": "Dividing out \\(2\\) gives \\(x^2-169=(x+13)(x-13)=0\\), so \\(x=13\\) or \\(x=-13\\), and the negative root is \\(\\boxed{-13}\\). Checking, \\(2\\cdot 169-338=0\\)."
+   }
+  ]
  }
 }
