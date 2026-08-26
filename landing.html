@@ -6683,6 +6683,337 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
  }
 });
 
+  Object.assign(PSETS_ALG1, {
+ "9": {
+  "practice": [
+   {
+    "x": "Expand \\((5x+3)(2x-7)\\) by multiplying every term of the first factor by every term of the second. Two of the four products carry \\(x\\) to the first power, and those two have opposite signs. Enter the coefficient of \\(x\\) in the expanded form.",
+    "ans": "-29",
+    "accept": [
+     "-29",
+     "−29",
+     "negative29",
+     "negativetwentynine"
+    ],
+    "hints": [
+     "Of the four products, only \\(5x\\cdot(-7)\\) and \\(3\\cdot 2x\\) give \\(x\\) to the first power. Add those two and read the coefficient off the sum."
+    ],
+    "sol": "<p>The four products are \\(5x\\cdot 2x=10x^2\\), \\(5x\\cdot(-7)=-35x\\), \\(3\\cdot 2x=6x\\) and \\(3\\cdot(-7)=-21\\). The two middle products combine to \\(-35x+6x=-29x\\), so the expansion is \\(10x^2-29x-21\\) and the coefficient of \\(x\\) is \\(\\boxed{-29}\\). Checking at \\(x=1\\), the product is \\(8\\cdot(-5)=-40\\) and the expansion gives \\(10-29-21=-40\\).</p>"
+   },
+   {
+    "x": "Expand \\((4x+9y)(4x-9y)\\), whose two factors hold the same terms and differ only in the sign between them. A second letter changes nothing about the rule, every term of the first factor times every term of the second. Enter the coefficient of \\(y^2\\), including its sign.",
+    "ans": "-81",
+    "accept": [
+     "-81",
+     "−81"
+    ],
+    "hints": [
+     "The two middle products are \\(4x\\cdot(-9y)=-36xy\\) and \\(9y\\cdot 4x=36xy\\), which add to zero, so the expansion keeps only the first and the last of the four products."
+    ],
+    "sol": "<p>The four products are \\(4x\\cdot 4x=16x^2\\), \\(4x\\cdot(-9y)=-36xy\\), \\(9y\\cdot 4x=36xy\\) and \\(9y\\cdot(-9y)=-81y^2\\). The two middle products add to zero, so the expansion is \\(16x^2-81y^2\\) and the coefficient of \\(y^2\\) is \\(\\boxed{-81}\\). This is the difference of squares \\((a+b)(a-b)=a^2-b^2\\) with \\(a=4x\\) and \\(b=9y\\).</p>"
+   },
+   {
+    "x": "Solve \\((9x+2)(x-6)=0\\). A product is zero exactly when one of its factors is zero, so each factor here is zero at its own value of \\(x\\). One of the two solutions is negative. Enter that negative solution as a fraction in lowest terms.",
+    "ans": "-2/9",
+    "accept": [
+     "-2/9",
+     "−2/9",
+     "x=-2/9"
+    ],
+    "hints": [
+     "Set each factor equal to zero separately. The negative solution comes from \\(9x+2=0\\)."
+    ],
+    "sol": "<p>Set each factor to zero on its own. From \\(x-6=0\\) comes \\(x=6\\), and from \\(9x+2=0\\) comes \\(9x=-2\\), so the negative solution is \\(x=\\boxed{-\\frac{2}{9}}\\). Checking, \\(9\\left(-\\frac{2}{9}\\right)+2=-2+2=0\\), so the first factor is zero there and the whole product is zero.</p>"
+   },
+   {
+    "x": "Factor \\(x^2-19x+84\\) as \\((x+r)(x+s)\\) with integers \\(r\\) and \\(s\\). The constant is positive, so \\(r\\) and \\(s\\) share a sign, and the middle coefficient is negative, so that shared sign is negative. Enter the smaller of \\(r\\) and \\(s\\).",
+    "ans": "-12",
+    "accept": [
+     "-12",
+     "−12"
+    ],
+    "hints": [
+     "Both constants are negative, so dropping the signs the two numbers multiply to \\(84\\) and add to \\(19\\). Check the pairs \\(1\\cdot 84\\), \\(2\\cdot 42\\), \\(3\\cdot 28\\), \\(4\\cdot 21\\), \\(6\\cdot 14\\) and \\(7\\cdot 12\\)."
+    ],
+    "sol": "<p>The numbers \\(-7\\) and \\(-12\\) multiply to \\(84\\) and add to \\(-19\\), so \\(x^2-19x+84=(x-7)(x-12)\\) and the smaller of \\(r\\) and \\(s\\) is \\(\\boxed{-12}\\). Of the factor pairs of \\(84\\), only \\(7\\) and \\(12\\) add to \\(19\\), and both are negative because the middle coefficient is negative.</p>"
+   },
+   {
+    "x": "A photo measures \\(12\\) cm by \\(8\\) cm. A border of width \\(w\\) is added on all four sides, and the framed rectangle has area \\(192\\) square cm, so \\((12+2w)(8+2w)=192\\). Expand, move everything to one side, and pull out the common factor before you factor. Enter \\(w\\) in cm.",
+    "ans": "2",
+    "accept": [
+     "2",
+     "two",
+     "2cm",
+     "2centimeters",
+     "2centimetres",
+     "w=2"
+    ],
+    "hints": [
+     "Expanding \\((12+2w)(8+2w)\\) and subtracting \\(192\\) gives \\(4w^2+40w-96=0\\), and every term there carries a factor of \\(4\\)."
+    ],
+    "sol": "<p>Expanding gives \\((12+2w)(8+2w)=96+24w+16w+4w^2=4w^2+40w+96\\), so \\(4w^2+40w+96=192\\) and \\(4w^2+40w-96=0\\). Pulling out the common factor gives \\(4(w^2+10w-24)=0\\), so \\(w^2+10w-24=0\\), which factors as \\((w+12)(w-2)=0\\), and a width cannot be \\(-12\\), so \\(w=\\boxed{2}\\). Checking, a \\(2\\) cm border makes the framed rectangle \\(16\\) by \\(12\\), and \\(16\\cdot 12=192\\).</p>"
+   },
+   {
+    "x": "Solve \\(7x^2+31x-20=0\\). The leading coefficient is prime, so the two binomials can only begin with \\(7x\\) and \\(x\\), and since the constant \\(-20\\) is negative, the two numbers multiplying to it differ in sign. Enter the positive root as a fraction in lowest terms.",
+    "ans": "4/7",
+    "accept": [
+     "4/7",
+     "x=4/7"
+    ],
+    "hints": [
+     "Write the factorization as \\((7x+q)(x+s)\\), so \\(qs=-20\\) and \\(7s+q=31\\), and test the sign-opposite pairs for \\(-20\\) until both hold."
+    ],
+    "sol": "<p>The shape is \\((7x+q)(x+s)\\) with \\(qs=-20\\) and \\(7s+q=31\\). Taking \\(s=5\\) and \\(q=-4\\) gives \\(35-4=31\\), so \\(7x^2+31x-20=(7x-4)(x+5)\\). Setting \\(7x-4=0\\) gives \\(x=\\boxed{\\frac{4}{7}}\\). The other root is \\(-5\\), and checking the positive one, \\(7\\cdot\\frac{16}{49}+31\\cdot\\frac{4}{7}-20=\\frac{16}{7}+\\frac{124}{7}-\\frac{140}{7}=0\\).</p>"
+   },
+   {
+    "x": "Factor \\(15x^2-22x+8\\) into two binomials with integer coefficients, then read the roots off the factors. The \\(x^2\\) term splits as \\(15x\\) and \\(x\\) or as \\(5x\\) and \\(3x\\), and inside the binomials both constant terms are negative. Enter the larger root as a fraction in lowest terms.",
+    "ans": "4/5",
+    "accept": [
+     "4/5",
+     "x=4/5"
+    ],
+    "hints": [
+     "Try the split \\(5x\\) and \\(3x\\) first. The two constant terms are negative and multiply to \\(8\\), so the candidates are \\(-1\\) with \\(-8\\) and \\(-2\\) with \\(-4\\), in either order."
+    ],
+    "sol": "<p>Take the split \\(5x\\) and \\(3x\\), with two negative constant terms multiplying to \\(8\\). The pair \\(-4\\) and \\(-2\\) works, since \\((5x-4)(3x-2)=15x^2-10x-12x+8=15x^2-22x+8\\). Setting each factor equal to zero gives \\(x=\\frac{4}{5}\\) and \\(x=\\frac{2}{3}\\), so the larger root is \\(\\boxed{\\frac{4}{5}}\\). Checking, \\(15\\cdot\\frac{16}{25}-22\\cdot\\frac{4}{5}+8=\\frac{48}{5}-\\frac{88}{5}+\\frac{40}{5}=0\\).</p>"
+   },
+   {
+    "x": "Find the sum of the two roots of \\(4x^2+22x-9=0\\). This quadratic has no factorization over the integers, so the two roots are not available separately. Enter the sum as a fraction in lowest terms.",
+    "ans": "-11/2",
+    "accept": [
+     "-11/2",
+     "−11/2"
+    ],
+    "hints": [
+     "For \\(ax^2+bx+c=0\\) the sum of the two roots is \\(-\\frac{b}{a}\\). Here \\(a=4\\) and \\(b=22\\)."
+    ],
+    "sol": "<p>Here \\(a=4\\) and \\(b=22\\), so the sum of the two roots is \\(-\\frac{b}{a}=-\\frac{22}{4}=\\boxed{-\\frac{11}{2}}\\). Writing the quadratic as \\(4(x-r)(x-s)=4x^2-4(r+s)x+4rs\\) and matching the \\(x\\) term gives \\(-4(r+s)=22\\), so the sum follows from the coefficients alone and neither root is needed.</p>"
+   },
+   {
+    "x": "The quadratic \\(3x^2-25x+8\\) has \\(8\\) as one of its two roots. Read the sum of the roots off the coefficients, remembering that the sum is \\(-\\frac{b}{a}\\) once the leading coefficient is above \\(1\\), then subtract to reach the second root. Enter it as a fraction in lowest terms.",
+    "ans": "1/3",
+    "accept": [
+     "1/3",
+     "x=1/3"
+    ],
+    "hints": [
+     "The two roots add to \\(-\\frac{-25}{3}=\\frac{25}{3}\\), and one of them is \\(8\\), so the other is what is left after subtracting."
+    ],
+    "sol": "<p>For \\(3x^2-25x+8\\) the two roots add to \\(-\\frac{b}{a}=\\frac{25}{3}\\). One root is \\(8=\\frac{24}{3}\\), so the other is \\(\\frac{25}{3}-\\frac{24}{3}=\\boxed{\\frac{1}{3}}\\). The product checks it, since \\(\\frac{c}{a}=\\frac{8}{3}\\) and \\(8\\cdot\\frac{1}{3}=\\frac{8}{3}\\).</p>"
+   },
+   {
+    "x": "Solve \\((3x-1)^2+4(3x-1)-21=0\\). The expression \\(3x-1\\) appears squared and again on its own, so write \\(u\\) for it and factor the quadratic in \\(u\\). A value of \\(u\\) is not a value of \\(x\\), so undo the substitution. Enter the smaller solution.",
+    "ans": "-2",
+    "accept": [
+     "-2",
+     "−2",
+     "x=-2",
+     "x=−2"
+    ],
+    "hints": [
+     "Write \\(u=3x-1\\). The quadratic \\(u^2+4u-21\\) factors, and each value of \\(u\\) gives one value of \\(x\\) through \\(3x-1=u\\)."
+    ],
+    "sol": "<p>Write \\(u=3x-1\\). Then \\(u^2+4u-21=0\\) factors as \\((u+7)(u-3)=0\\), so \\(u=-7\\) or \\(u=3\\). Undoing the substitution, \\(3x-1=-7\\) gives \\(x=-2\\) and \\(3x-1=3\\) gives \\(x=\\frac{4}{3}\\), so the smaller solution is \\(\\boxed{-2}\\). Checking, \\(3(-2)-1=-7\\) and \\((-7)^2+4(-7)-21=49-28-21=0\\).</p>"
+   },
+   {
+    "x": "Solve \\(\\frac{8}{x-3}+\\frac{x}{x+3}=\\frac{48}{x^2-9}\\), where \\(x^2-9=(x-3)(x+3)\\). Multiply every term by \\((x-3)(x+3)\\), collect everything on one side, and factor. One of the two candidates makes a denominator zero, so it is not a solution. Enter the one that is.",
+    "ans": "-8",
+    "accept": [
+     "-8",
+     "−8",
+     "x=-8",
+     "x=−8"
+    ],
+    "hints": [
+     "Multiplying through gives \\(8(x+3)+x(x-3)=48\\), so \\(x^2+5x-24=0\\). Factor it, then test each candidate in \\(\\frac{8}{x-3}\\) before deciding."
+    ],
+    "sol": "<p>Multiplying every term by \\((x-3)(x+3)\\) gives \\(8(x+3)+x(x-3)=48\\), so \\(x^2+5x-24=0\\) and \\((x+8)(x-3)=0\\). The candidates are \\(-8\\) and \\(3\\). At \\(x=3\\) the denominator \\(x-3\\) is zero, so \\(3\\) is not a solution and the answer is \\(\\boxed{-8}\\). Checking, \\(\\frac{8}{-11}+\\frac{-8}{-5}=\\frac{48}{55}\\), which matches \\(\\frac{48}{55}\\).</p>"
+   },
+   {
+    "x": "Two positive integers differ by \\(6\\), and their product is \\(216\\). Call the smaller one \\(n\\), write the product as an equation in \\(n\\), and move every term to one side before factoring. Enter the smaller integer.",
+    "ans": "12",
+    "accept": [
+     "12",
+     "twelve",
+     "n=12"
+    ],
+    "hints": [
+     "The two integers are \\(n\\) and \\(n+6\\), so \\(n(n+6)=216\\). Expanding and subtracting \\(216\\) gives \\(n^2+6n-216=0\\)."
+    ],
+    "sol": "<p>The integers are \\(n\\) and \\(n+6\\), so \\(n(n+6)=216\\), which becomes \\(n^2+6n-216=0\\). That factors as \\((n-12)(n+18)=0\\), so \\(n=12\\) or \\(n=-18\\), and only \\(12\\) is positive, so the smaller integer is \\(\\boxed{12}\\). Checking, \\(12\\cdot 18=216\\).</p>"
+   }
+  ],
+  "challenge": [
+   {
+    "x": "Solve \\((x+6)(x-5)=9(x+6)\\). The factor \\(x+6\\) appears on both sides, and dividing it out costs you one of the two solutions. Enter the sum of the two solutions.",
+    "ans": "8",
+    "accept": [
+     "8",
+     "8.0",
+     "eight"
+    ],
+    "hints": [
+     "Do not divide both sides by \\(x+6\\). That factor is zero at \\(x=-6\\), so a root is lost that way. Move \\(9(x+6)\\) to the left instead, or pull \\(x+6\\) out of both terms.",
+     "Once everything is on one side you have \\(x^2-8x-84=0\\), and the sum of the roots of \\(ax^2+bx+c\\) is \\(-\\frac{b}{a}\\)."
+    ],
+    "sol": "<p>Expanding the left side gives \\(x^2+x-30=9x+54\\), so \\(x^2-8x-84=0\\), which factors as \\((x-14)(x+6)=0\\) with solutions \\(14\\) and \\(-6\\), and their sum is \\(\\boxed{8}\\). Divide the original equation by \\(x+6\\) and \\(x=-6\\) is lost, where both sides are \\(0\\). The sum can also be read straight off \\(x^2-8x-84\\) as \\(-\\frac{b}{a}=8\\), with no factoring at all.</p>"
+   },
+   {
+    "x": "Solve \\(12x^2+2x-70=0\\). The two roots have opposite signs, and neither is a whole number. Rewrite the equation with the smallest possible integer coefficients, factor that quadratic over the integers, and read both roots off the factors. Enter the positive root as a fraction in lowest terms.",
+    "ans": "7/3",
+    "accept": [
+     "7/3",
+     "x=7/3"
+    ],
+    "hints": [
+     "Every coefficient is even, so divide both sides by \\(2\\) and factor \\(6x^2+x-35\\) instead.",
+     "Write the factors as \\((3x+p)(2x+q)\\) since \\(3x\\cdot 2x=6x^2\\), then pick \\(p\\) and \\(q\\) from the factor pairs of \\(35\\) so the two cross terms combine to \\(+x\\)."
+    ],
+    "sol": "<p>Every coefficient is even, so \\(12x^2+2x-70=2(6x^2+x-35)\\). Since \\(3x\\cdot 2x=6x^2\\) and \\((-7)(5)=-35\\), test \\((3x-7)(2x+5)=6x^2+15x-14x-35=6x^2+x-35\\), so the roots are \\(\\frac{7}{3}\\) and \\(-\\frac{5}{2}\\), and the positive one is \\(\\boxed{\\frac{7}{3}}\\). The constant factor \\(2\\) is never zero, so it produces no root.</p>"
+   },
+   {
+    "x": "The product \\((x+a)(x+b)\\) equals \\(x^2+11x+c\\) for every value of \\(x\\), where \\(a\\) and \\(b\\) are positive integers with \\(a\\lt b\\). Find the largest possible value of \\(c\\).",
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0",
+     "thirty"
+    ],
+    "hints": [
+     "Expanding \\((x+a)(x+b)\\) gives \\(x^2+(a+b)x+ab\\), so matching the two forms coefficient by coefficient forces \\(a+b=11\\) and \\(c=ab\\).",
+     "List the pairs of positive integers with \\(a\\lt b\\) that add to \\(11\\), then work out \\(ab\\) for each and take the largest."
+    ],
+    "sol": "<p>Expanding gives \\(x^2+(a+b)x+ab\\), so \\(a+b=11\\) and \\(c=ab\\). The pairs of positive integers with \\(a\\lt b\\) adding to \\(11\\) are \\((1,10)\\), \\((2,9)\\), \\((3,8)\\), \\((4,7)\\) and \\((5,6)\\), with products \\(10\\), \\(18\\), \\(24\\), \\(28\\) and \\(30\\), so the largest is \\(\\boxed{30}\\). Two numbers with a fixed sum have the largest product when they sit closest together.</p>"
+   },
+   {
+    "x": "Let \\(r\\) and \\(s\\) be the roots of \\(5x^2-8x+2\\), which does not factor over the integers. Find \\(\\frac{1}{r^2}+\\frac{1}{s^2}\\) without finding either root, using the sum and the product read off the coefficients.",
+    "ans": "11",
+    "accept": [
+     "11",
+     "11.0",
+     "eleven"
+    ],
+    "hints": [
+     "Put the expression over a common denominator, \\(\\frac{1}{r^2}+\\frac{1}{s^2}=\\frac{r^2+s^2}{(rs)^2}\\).",
+     "Now use \\(r^2+s^2=(r+s)^2-2rs\\), with \\(r+s=\\frac{8}{5}\\) and \\(rs=\\frac{2}{5}\\)."
+    ],
+    "sol": "<p>Over a common denominator, \\(\\frac{1}{r^2}+\\frac{1}{s^2}=\\frac{r^2+s^2}{(rs)^2}\\), and \\(r^2+s^2=(r+s)^2-2rs\\). From the coefficients, \\(r+s=\\frac{8}{5}\\) and \\(rs=\\frac{2}{5}\\), so \\(r^2+s^2=\\frac{64}{25}-\\frac{4}{5}=\\frac{44}{25}\\) and \\((rs)^2=\\frac{4}{25}\\), and the value is \\(\\frac{44}{25}\\cdot\\frac{25}{4}=\\boxed{11}\\). Both roots are irrational and neither one was needed. Dividing by \\(rs\\) rather than \\((rs)^2\\) gives \\(\\frac{22}{5}\\).</p>"
+   },
+   {
+    "x": "The equation \\((x^2-6x)^2+8(x^2-6x)+7=0\\) is built from the single quantity \\(x^2-6x\\). How many distinct real numbers \\(x\\) satisfy it? Count the values of \\(x\\), not the values of \\(x^2-6x\\) that solve the outer quadratic. Enter a single number.",
+    "ans": "4",
+    "accept": [
+     "4",
+     "four"
+    ],
+    "hints": [
+     "Treat the whole quantity \\(x^2-6x\\) as one unknown \\(u\\). The equation then reads \\(u^2+8u+7=0\\), which factors, so read off the two values of \\(u\\).",
+     "For each value of \\(u\\), the equation \\(x^2-6x-u=0\\) has roots \\(r\\) and \\(s\\) with \\(r+s=6\\) and \\(rs=-u\\), and those roots are real and different exactly when \\((r-s)^2=(r+s)^2-4rs=36+4u\\) is greater than zero."
+    ],
+    "sol": "<p>Write \\(u=x^2-6x\\). Then \\(u^2+8u+7=(u+1)(u+7)=0\\), so \\(u=-1\\) or \\(u=-7\\). Putting \\(u=-1\\) back gives \\(x^2-6x+1=0\\), whose roots satisfy \\((r-s)^2=(r+s)^2-4rs=36-4=32\\), a positive number, so two different real roots. Putting \\(u=-7\\) back gives \\(x^2-6x+7=0\\) with \\((r-s)^2=36-28=8\\), again positive, so two more. The two quadratics differ only in their constant terms, so they share no root, and the count is \\(\\boxed{4}\\). The four values are \\(3\\pm 2\\sqrt{2}\\) and \\(3\\pm\\sqrt{2}\\).</p>"
+   },
+   {
+    "x": "The equation \\(\\frac{4}{x-1}+\\frac{5}{x+3}=2\\) has two solutions \\(r\\) and \\(s\\). Clearing the denominators gives a quadratic that does not factor over the integers, so neither solution is available by factoring, but \\(r^2+s^2\\) is. Enter it as a fraction in lowest terms.",
+    "ans": "77/4",
+    "accept": [
+     "77/4"
+    ],
+    "hints": [
+     "Multiply both sides by \\((x-1)(x+3)\\) and collect every term on one side. What is left is a quadratic in standard form.",
+     "Collect every term on one side so the quadratic is in standard form. The two roots of \\(ax^2+bx+c=0\\) add to \\(-\\frac{b}{a}\\) and multiply to \\(\\frac{c}{a}\\), and \\(r^2+s^2=(r+s)^2-2rs\\)."
+    ],
+    "sol": "<p>Multiplying by \\((x-1)(x+3)\\) gives \\(4(x+3)+5(x-1)=2(x-1)(x+3)\\), so \\(9x+7=2x^2+4x-6\\) and \\(2x^2-5x-13=0\\). From the coefficients \\(r+s=\\frac{5}{2}\\) and \\(rs=-\\frac{13}{2}\\), so \\(r^2+s^2=(r+s)^2-2rs=\\frac{25}{4}+13=\\boxed{\\frac{77}{4}}\\). Both roots are genuine, since \\(x=1\\) gives \\(2-5-13=-16\\) and \\(x=-3\\) gives \\(18+15-13=20\\), so neither excluded value is a root.</p>"
+   },
+   {
+    "x": "The roots \\(r\\) and \\(s\\) of \\(2x^2+bx-14\\) satisfy \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{3}{7}\\). Neither root is given and neither is needed. Find \\(b\\).",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "b=6",
+     "six"
+    ],
+    "hints": [
+     "Rewrite \\(\\frac{1}{r}+\\frac{1}{s}\\) as \\(\\frac{r+s}{rs}\\).",
+     "Here \\(r+s=-\\frac{b}{2}\\) and \\(rs=\\frac{-14}{2}=-7\\), so the condition becomes \\(\\frac{b}{14}=\\frac{3}{7}\\)."
+    ],
+    "sol": "<p>Rewrite the condition as \\(\\frac{r+s}{rs}=\\frac{3}{7}\\). The coefficients give \\(r+s=-\\frac{b}{2}\\) and \\(rs=\\frac{-14}{2}=-7\\), so \\(\\frac{-b/2}{-7}=\\frac{b}{14}=\\frac{3}{7}\\), which gives \\(7b=42\\) and \\(b=\\boxed{6}\\). Checking, \\(2x^2+6x-14\\) has \\(r+s=-3\\) and \\(rs=-7\\), and \\(\\frac{-3}{-7}=\\frac{3}{7}\\).</p>"
+   },
+   {
+    "x": "Solve \\(9x^4-82x^2+9=0\\). Only even powers of \\(x\\) appear, so one substitution makes this a quadratic, and that quadratic has leading coefficient \\(9\\), so the factor pairs of \\(9\\) have to be tried against more than one split of \\(9\\). Enter the sum of the two positive solutions as a fraction in lowest terms.",
+    "ans": "10/3",
+    "accept": [
+     "10/3"
+    ],
+    "hints": [
+     "Write \\(u=x^2\\), which turns the equation into \\(9u^2-82u+9=0\\).",
+     "That factors as \\((9u-1)(u-9)\\), and each positive value of \\(u\\) gives two values of \\(x\\), one positive and one negative."
+    ],
+    "sol": "<p>Write \\(u=x^2\\), so \\(9u^2-82u+9=0\\). Splitting the leading \\(9\\) as \\(9\\cdot 1\\) and the constant \\(9\\) as \\((-1)(-9)\\) gives \\((9u-1)(u-9)=9u^2-81u-u+9\\), which matches. Then \\(u=9\\) gives \\(x=\\pm 3\\) and \\(u=\\frac{1}{9}\\) gives \\(x=\\pm\\frac{1}{3}\\), so the two positive solutions add to \\(3+\\frac{1}{3}=\\boxed{\\frac{10}{3}}\\). Each positive value of \\(u\\) gives two values of \\(x\\), so a quadratic in \\(x^2\\) can have four solutions.</p>"
+   },
+   {
+    "x": "Let \\(r\\) and \\(s\\) be the roots of \\(4x^2-9x-3\\), which does not factor over the integers. Build the monic quadratic whose two roots are \\(r+3\\) and \\(s+3\\). Enter its constant term.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "The constant term of a monic quadratic is the product of its roots, so you need \\((r+3)(s+3)=rs+3(r+s)+9\\).",
+     "Read \\(r+s=\\frac{9}{4}\\) and \\(rs=-\\frac{3}{4}\\) off the coefficients and substitute."
+    ],
+    "sol": "<p>The constant term of the new quadratic is the product of its roots, \\((r+3)(s+3)=rs+3(r+s)+9\\). From the coefficients, \\(r+s=\\frac{9}{4}\\) and \\(rs=-\\frac{3}{4}\\), so the product is \\(-\\frac{3}{4}+\\frac{27}{4}+9=6+9=\\boxed{15}\\). The leading coefficient is \\(4\\), not \\(1\\), so reading \\(9\\) and \\(-3\\) straight off the coefficients instead gives \\(-3+27+9=33\\).</p>"
+   },
+   {
+    "x": "Solve \\(x^2+\\frac{1}{x^2}=5\\left(x+\\frac{1}{x}\\right)-8\\). Both sides are built from the single quantity \\(x+\\frac{1}{x}\\), though the left side needs one identity before that is visible. How many distinct real numbers \\(x\\) satisfy the equation? Enter a single number.",
+    "ans": "3",
+    "accept": [
+     "3",
+     "3.0",
+     "three"
+    ],
+    "hints": [
+     "Square \\(x+\\frac{1}{x}\\). The result is \\(x^2+2+\\frac{1}{x^2}\\), so \\(x^2+\\frac{1}{x^2}=\\left(x+\\frac{1}{x}\\right)^2-2\\).",
+     "With \\(u=x+\\frac{1}{x}\\) the equation is \\(u^2-2=5u-8\\), which factors. Each value of \\(u\\) gives its own quadratic in \\(x\\), and the two need not yield the same number of solutions."
+    ],
+    "sol": "<p>Since \\(\\left(x+\\frac{1}{x}\\right)^2=x^2+2+\\frac{1}{x^2}\\), writing \\(u=x+\\frac{1}{x}\\) turns the equation into \\(u^2-2=5u-8\\), so \\(u^2-5u+6=0\\) and \\((u-2)(u-3)=0\\). For \\(u=2\\), \\(x+\\frac{1}{x}=2\\) gives \\(x^2-2x+1=0\\), a repeated factor with the single solution \\(x=1\\). For \\(u=3\\), \\(x^2-3x+1=0\\) has \\((r-s)^2=9-4=5\\), so two more. The count is \\(\\boxed{3}\\). One value of \\(u\\) gave one solution and the other gave two, so the total is odd.</p>",
+    "legendary": true
+   },
+   {
+    "x": "Find the sum of all integers \\(b\\) for which \\(x^2+bx+2b\\) factors as \\((x-r)(x-s)\\) with \\(r\\) and \\(s\\) integers. Here \\(r\\) and \\(s\\) are allowed to be equal, and only finitely many such \\(b\\) exist. Enter that sum.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "sixteen"
+    ],
+    "hints": [
+     "Expanding \\((x-r)(x-s)\\) gives \\(x^2-(r+s)x+rs\\), so matching it against \\(x^2+bx+2b\\) gives \\(r+s=-b\\) and \\(rs=2b\\).",
+     "Eliminate \\(b\\) to reach \\(rs+2(r+s)=0\\), add \\(4\\) to both sides for \\((r+2)(s+2)=4\\), then check every integer factor pair of \\(4\\), negatives included."
+    ],
+    "sol": "<p>Matching \\((x-r)(x-s)=x^2-(r+s)x+rs\\) against \\(x^2+bx+2b\\) gives \\(r+s=-b\\) and \\(rs=2b\\), so \\(rs+2(r+s)=2b-2b=0\\). Adding \\(4\\) to both sides gives \\(rs+2r+2s+4=4\\), that is \\((r+2)(s+2)=4\\). The integer factor pairs of \\(4\\) are \\(1\\) and \\(4\\), \\(2\\) and \\(2\\), \\(-1\\) and \\(-4\\), and \\(-2\\) and \\(-2\\), giving \\((r,s)=(-1,2)\\), \\((0,0)\\), \\((-3,-6)\\), \\((-4,-4)\\), so \\(b=-(r+s)\\) is \\(-1\\), \\(0\\), \\(9\\), \\(8\\), and the sum is \\(\\boxed{16}\\). Reversing a factor pair only swaps \\(r\\) and \\(s\\), so \\(r+s\\) and \\(b\\) stay the same. As a check, \\(b=9\\) gives \\(x^2+9x+18=(x+3)(x+6)\\).</p>",
+    "legendary": true
+   },
+   {
+    "x": "Whenever \\(x^2+bx+c\\) has two roots, they add to \\(-b\\) and multiply to \\(c\\). The quadratic \\(x^2+px+q\\) has roots \\(r\\) and \\(s\\), and the quadratic \\(x^2+qx+p\\) has roots \\(r+1\\) and \\(s+1\\). Find \\(q\\).",
+    "ans": "-3",
+    "accept": [
+     "-3",
+     "−3",
+     "q=-3",
+     "q=−3"
+    ],
+    "hints": [
+     "Use the given fact on each quadratic. The first one gives \\(r+s=-p\\) and \\(rs=q\\), and the second gives \\((r+1)+(s+1)=-q\\) and \\((r+1)(s+1)=p\\).",
+     "Expand \\((r+1)(s+1)\\) as \\(rs+(r+s)+1\\), then substitute \\(rs=q\\) and \\(r+s=-p\\). That leaves two equations in \\(p\\) and \\(q\\) alone."
+    ],
+    "sol": "<p>The first quadratic gives \\(r+s=-p\\) and \\(rs=q\\). From the second, \\((r+1)+(s+1)=-q\\) becomes \\(-p+2=-q\\), so \\(q=p-2\\), and \\((r+1)(s+1)=p\\) expands to \\(rs+(r+s)+1=q-p+1=p\\), so \\(q=2p-1\\). Solving that system, \\(p-2=2p-1\\), so \\(p=-1\\) and \\(q=\\boxed{-3}\\). Then \\(x^2-x-3\\) has roots \\(\\frac{1\\pm\\sqrt{13}}{2}\\), and \\(x^2-3x-1\\) has roots \\(\\frac{3\\pm\\sqrt{13}}{2}\\), exactly those plus \\(1\\).</p>",
+    "legendary": true
+   }
+  ]
+ }
+});
+
   /* ===== Multi-course registry. TOC / LESSONS / PSETS stay the app-wide globals the
      whole engine reads; setCourse() repoints them at one course's data and re-renders.
      The Rewards engine is already course-agnostic (keys prefixed with COURSE.slug). ===== */

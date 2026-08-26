@@ -114,12 +114,10 @@ exceptions.
 
 - **Prealgebra**: complete. 70 lessons across 12 chapters, all with Practice + Challenge sets.
 - **Algebra I**: 50 of 81 lessons live. **Chapters 1 to 8 are complete, lessons and problem
-  sets both, and chapter 9's five lessons are all live** (9.4 and 9.5 shipped 2026-08-26).
-  Chapter 9 has NO problem sets yet, which is the next work:
-  `python3 tools/make_pset_workflow.py 9 --course algebra1 --title "Quadratics I, Factoring"
-  --covers tools/lesson-specs/covers9.txt -o <out>`, then wire into `PSETS_ALG1`. After that,
-  chapters 10 to 15, whose SPECs are not yet written. Counts verified against
-  `lessons/algebra1/chapter-*.json` on 2026-08-26, not copied forward.
+  sets both, and chapter 9 is complete too** (9.4, 9.5 and the chapter 9 Practice/Challenge
+  sets all shipped 2026-08-26). Next work is chapter 10, Special Factorizations, four lessons,
+  whose SPECs are not yet written, then its sets, then chapters 11 to 15. Counts verified
+  against `lessons/algebra1/chapter-*.json` on 2026-08-26, not copied forward.
   NOTE: `docs/reference-coverage-map.md` calls 9.5 "Quadratics in Disguise"; `toc.json` and the
   shipped text call it **Factoring in Action**, which wins. The map line is stale.
   Figures now follow the CURRENT brand, not the retired blue/gold kit; see the note atop

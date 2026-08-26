@@ -8,12 +8,22 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **50 / 81**, 15 chapters in the TOC | **chapters 1-8** | ch1-ch9 lessons done; ch9 has no sets yet |
+| Algebra I | **50 / 81**, 15 chapters in the TOC | **chapters 1-9** | ch1-ch9 complete, lessons and sets |
 
-Updated 2026-08-26. The "Next work" list below is from 2026-08-03 and is spent through
-chapter 9's lessons. Current next work is the chapter 9 Practice and Challenge sets
-(`tools/make_pset_workflow.py 9 --course algebra1 --title "Quadratics I, Factoring"
---covers tools/lesson-specs/covers9.txt -o <out>`), then chapters 10 to 15.
+Updated 2026-08-26. The "Next work" list below is from 2026-08-03 and is fully spent.
+Current next work is chapter 10, Special Factorizations (4 lessons, mapped to reference
+ch11 minus rationalizing), whose SPECs are not yet written, then its Practice/Challenge
+sets, then chapters 11 to 15.
+
+**A pset-generator trap fixed 2026-08-26.** `make_pset_workflow.py` sliced its workflow body
+out of the chapter 6 template and carried chapter 6's own lesson count and its
+systems-specific practice ramp into the agent prompts, so any chapter without six lessons was
+told to cover six. It now substitutes the real count and fails the build if a hardcoded one
+survives. Separately, the chapter 9 run still drifted: three of the twelve practice items came
+back as chapter 5 linear systems with no quadratic in them at all, one citing "5.3's
+elimination setup" outright. Both audit halves caught it independently. **Read every pset item
+for CHAPTER SCOPE, not just for correctness**, because the freshness catalogue pushes designers
+away from the chapter's own material and they can drift clean out of it.
 
 **Next work, in order:**
 1. **Chapter 8, Inequalities.** 8.1 was in flight when this was written. All five SPECs are
