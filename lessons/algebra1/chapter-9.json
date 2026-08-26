@@ -1463,5 +1463,540 @@
     "sol": "Rearranged, \\(48x^2+26x-55=0\\). The split \\((8x+q)(6x+s)\\) with \\(q=11\\), \\(s=-5\\) gives \\(8(-5)+6\\cdot 11=26\\), so \\((8x+11)(6x-5)=0\\) with roots \\(-\\tfrac{11}{8}\\) and \\(\\tfrac{5}{6}\\). The negative root is \\(\\boxed{-\\tfrac{11}{8}}\\). Each factor \\(px+q\\) contributes the root \\(-q/p\\), so a leading coefficient that does not divide its constant leaves a fraction."
    }
   ]
+ },
+ "9.4": {
+  "title": "Roots, Sums, and Products",
+  "next": "9.5",
+  "blocks": [
+   {
+    "t": "p",
+    "x": "A monic quadratic with roots \\(r\\) and \\(s\\) factors as \\((x-r)(x-s)\\), 9.2's factorization written with the roots rather than the search numbers. Expanding gives \\(x^2-(r+s)x+rs\\). Against \\(x^2+bx+c\\), \\(b=-(r+s)\\) and \\(c=rs\\), so the roots add to \\(-b\\) and multiply to \\(c\\). In \\(x^2-10x+21=(x-3)(x-7)\\) the roots add to \\(10\\) and multiply to \\(21\\)."
+   },
+   {
+    "t": "prob",
+    "x": "The roots of \\(x^2-17x+52\\) are \\(r\\) and \\(s\\). Find \\(r+s\\) without factoring the quadratic and without finding either root.",
+    "xp": 5,
+    "ans": "17",
+    "accept": [
+     "17",
+     "17.0",
+     "seventeen"
+    ],
+    "hints": [
+     "Multiply \\((x-r)(x-s)\\) out. The coefficient of \\(x\\) in the expansion is \\(-(r+s)\\).",
+     "Match that against the coefficient of \\(x\\) in \\(x^2-17x+52\\), which is \\(-17\\) with its sign, and solve for \\(r+s\\)."
+    ],
+    "sol": "Expanding, \\((x-r)(x-s)=x^2-(r+s)x+rs\\), and matching the middle coefficients gives \\(-(r+s)=-17\\), so \\(r+s=\\boxed{17}\\). Watch the sign, the coefficient of \\(x\\) is \\(-17\\), so the sum is its opposite and not \\(-17\\) itself."
+   },
+   {
+    "t": "prob",
+    "x": "The roots of \\(x^2+6x-91\\) are \\(r\\) and \\(s\\). Match the quadratic against \\((x-r)(x-s)\\) expanded and read off the product \\(rs\\). Enter it as an integer.",
+    "xp": 5,
+    "ans": "-91",
+    "accept": [
+     "-91",
+     "−91",
+     "-91.0",
+     "negative 91",
+     "negative ninety-one",
+     "−91.0"
+    ],
+    "hints": [
+     "Match \\(x^2+6x-91\\) against the expanded form \\((x-r)(x-s)=x^2-(r+s)x+rs\\). The product of the roots sits in the constant slot.",
+     "For a second route, factor the quadratic into two whole-number factors, read a root off each factor, and multiply the two roots."
+    ],
+    "sol": "Matching \\(x^2+6x-91\\) with \\((x-r)(x-s)=x^2-(r+s)x+rs\\) puts the product in the constant slot, so \\(rs=\\boxed{-91}\\). In \\(x^2-(r+s)x+rs\\) the sign flip is on the sum term only, so the constant is the product with no change. Factoring gives \\((x+13)(x-7)\\), so the roots are \\(-13\\) and \\(7\\), and \\(-13\\cdot 7=-91\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Sum and product of the roots.</b> If \\(x^2+bx+c\\) has roots \\(r\\) and \\(s\\), it equals \\((x-r)(x-s)=x^2-(r+s)x+rs\\), so \\(r+s=-b\\) and \\(rs=c\\). The sign on the sum is the part that gets misread. In 9.2 the same two letters stood for the search numbers, the constants inside \\((x+r)(x+s)\\), and that product is zero at \\(-r\\) and \\(-s\\), not at \\(r\\) and \\(s\\). So 9.2's search numbers are the negatives of the roots. The search numbers add to \\(b\\), and the roots add to \\(-b\\)."
+   },
+   {
+    "t": "prob",
+    "x": "The numbers \\(6\\) and \\(17\\) multiply to \\(102\\) and add to \\(23\\), so \\(x^2+23x+102=(x+6)(x+17)\\). What is the sum of the two roots?",
+    "xp": 6,
+    "ans": "-23",
+    "accept": [
+     "-23",
+     "−23",
+     "-23.0",
+     "negative 23",
+     "negative twenty-three",
+     "−23.0"
+    ],
+    "hints": [
+     "The two numbers given are the constants inside the factors. A root is a value of \\(x\\) that makes a factor zero, which is a different thing.",
+     "\\(x+6\\) is zero at \\(x=-6\\), so the roots are \\(-6\\) and \\(-17\\). Add those, or read \\(-b\\) straight off the quadratic."
+    ],
+    "sol": "The sum of the roots is \\(-b\\), so \\(r+s=\\boxed{-23}\\). The factors are \\(x+6\\) and \\(x+17\\), and \\(x+6\\) is zero at \\(-6\\), not at \\(6\\), so the roots are \\(-6\\) and \\(-17\\), which add to \\(-23\\). Adding the two search numbers instead gives \\(23\\), the right size with the wrong sign."
+   },
+   {
+    "t": "prob",
+    "x": "The quadratic \\(8x^2+18x-5\\) factors as \\((2x+5)(4x-1)\\). Find its two roots and add them. Enter the sum as a fraction in lowest terms.",
+    "xp": 6,
+    "ans": "-9/4",
+    "accept": [
+     "-9/4",
+     "−9/4",
+     "-2.25",
+     "−2.25"
+    ],
+    "hints": [
+     "Each factor is zero at one root. Set \\(2x+5=0\\) and \\(4x-1=0\\), and solve each one.",
+     "The roots are \\(-\\frac{5}{2}\\) and \\(\\frac{1}{4}\\). Put both over the denominator \\(4\\) before adding."
+    ],
+    "sol": "From \\((2x+5)(4x-1)\\) the roots are \\(-\\frac{5}{2}\\) and \\(\\frac{1}{4}\\), so the sum is \\(-\\frac{10}{4}+\\frac{1}{4}=\\boxed{-\\frac{9}{4}}\\). That is \\(-\\frac{18}{8}\\) reduced, the middle coefficient over the leading one with the sign flipped, which is not a coincidence."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Any leading coefficient.</b> Divide \\(ax^2+bx+c=0\\) through by \\(a\\), which is not zero, and what remains is \\(x^2+\\frac{b}{a}x+\\frac{c}{a}=0\\). Dividing both sides of an equation by a nonzero number changes no solution, so this quadratic has the same two roots, and the monic rule applies to it as written. Then \\(r+s=-\\frac{b}{a}\\) and \\(rs=\\frac{c}{a}\\). The last problem is the check. For \\(8x^2+18x-5\\) the sum is \\(-\\frac{18}{8}=-\\frac{9}{4}\\) and the product is \\(-\\frac{5}{8}\\). When \\(a=1\\) these are \\(-b\\) and \\(c\\) again."
+   },
+   {
+    "t": "fig",
+    "x": "<svg viewBox=\"0 0 580 316\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"The quadratic a x squared plus b x plus c sits at the top, with each of its three coefficients underlined in its own color. Two arrows lead down from it. The left arrow ends at minus b over a, labelled sum, with the minus sign drawn large and in gold. The right arrow ends at c over a, labelled product. No root appears anywhere in the picture, because both facts are read off the coefficients without finding the roots.\" font-family=\"Space Grotesk, sans-serif\"><path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#c9b8ff\" d=\"M -1.74 1.24 C -1.593359 1.24 -1.446641 1.24 -1.3 1.24 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -0.18 1.24 C -0.0333594 1.24 0.113359 1.24 0.26 1.24 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#7cc7ff\" d=\"M 1.3 1.24 C 1.446641 1.24 1.593359 1.24 1.74 1.24 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill=\"none\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -0.48 0.88 C -1.053359 0.56 -1.626641 0.24 -2.2 -0.08 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill-rule=\"nonzero\" fill=\"#0a0a0a\" d=\"M 172 170 C 173.328125 165.464844 174.652344 160.929688 175.980469 156.394531 C 178.605469 158.339844 181.230469 160.285156 183.855469 162.230469 C 179.902344 164.820312 175.953125 167.410156 172 170 Z M 172 170 \"/>\n<path fill=\"none\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 0.64 0.88 C 1.173359 0.56 1.706641 0.24 2.24 -0.08 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill-rule=\"nonzero\" fill=\"#0a0a0a\" d=\"M 410 170 C 406.046875 167.410156 402.097656 164.820312 398.144531 162.230469 C 400.769531 160.285156 403.394531 158.339844 406.019531 156.394531 C 407.347656 160.929688 408.671875 165.464844 410 170 Z M 410 170 \"/>\n<path fill=\"none\" stroke-width=\"0.05\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#ffc84d\" d=\"M -3.06 -0.74 C -2.926641 -0.74 -2.793359 -0.74 -2.66 -0.74 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill=\"none\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M -3.08 -1.14 C -2.786641 -1.14 -2.493359 -1.14 -2.2 -1.14 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/>\n<path fill=\"none\" stroke-width=\"0.028\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke=\"#0a0a0a\" d=\"M 2.3 -1.14 C 2.553359 -1.14 2.806641 -1.14 3.06 -1.14 \" transform=\"matrix(50, 0, 0, -50, 290, 158)\"/><text x=\"224.0\" y=\"74.0\" font-size=\"28\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">ax</text><text x=\"243.0\" y=\"63.0\" font-size=\"16\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">2</text><text x=\"266.0\" y=\"74.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">+</text><text x=\"298.0\" y=\"74.0\" font-size=\"28\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">bx</text><text x=\"336.0\" y=\"74.0\" font-size=\"22\" font-weight=\"500\" fill=\"#5b6b7a\" text-anchor=\"middle\" dominant-baseline=\"middle\">+</text><text x=\"366.0\" y=\"74.0\" font-size=\"28\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">c</text><text x=\"173.0\" y=\"195.0\" font-size=\"25\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">b</text><text x=\"158.0\" y=\"237.0\" font-size=\"25\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">a</text><text x=\"158.0\" y=\"276.0\" font-size=\"17\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">sum</text><text x=\"424.0\" y=\"195.0\" font-size=\"25\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">c</text><text x=\"424.0\" y=\"237.0\" font-size=\"25\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-style=\"italic\">a</text><text x=\"424.0\" y=\"276.0\" font-size=\"17\" font-weight=\"700\" fill=\"#0a0a0a\" text-anchor=\"middle\" dominant-baseline=\"middle\">product</text></svg>",
+    "cap": "The map from a quadratic's coefficients to its two root facts. From \\(ax^2+bx+c\\) the roots add to \\(-\\frac{b}{a}\\) and multiply to \\(\\frac{c}{a}\\). The leading coefficient sits under both. The minus sits on the sum alone, in the same gold as \\(b\\)'s underline above it, since that is the sign readers drop. No root appears in the picture, because neither fact needs one."
+   },
+   {
+    "t": "p",
+    "x": "Both facts are read off the coefficients in place. Put the quadratic in standard form with one side zero, and \\(a\\), \\(b\\) and \\(c\\) are already written down. For \\(6x^2-13x-3\\) the sum of the roots is \\(-\\frac{-13}{6}=\\frac{13}{6}\\) and the product is \\(-\\frac{1}{2}\\). Nothing was factored, and this one has no integer factorization to find."
+   },
+   {
+    "t": "prob",
+    "x": "A monic quadratic has two roots that add to \\(12\\) and multiply to \\(-85\\). Write it in the form \\(x^2+bx+c\\) and enter \\(b\\), the coefficient of \\(x\\).",
+    "xp": 6,
+    "ans": "-12",
+    "accept": [
+     "-12",
+     "−12",
+     "-12.0",
+     "b=-12",
+     "b=−12",
+     "negative 12",
+     "negative twelve",
+     "−12.0"
+    ],
+    "hints": [
+     "A monic quadratic with roots \\(r\\) and \\(s\\) is \\((x-r)(x-s)\\), which expands to \\(x^2-(r+s)x+rs\\). Line that up against \\(x^2+bx+c\\).",
+     "Matching the \\(x\\) terms gives \\(-b=r+s\\), and the roots add to \\(12\\). Solve that for \\(b\\)."
+    ],
+    "sol": "The roots add to \\(-b\\), so \\(-b=12\\) and \\(b=\\boxed{-12}\\). The quadratic is \\(x^2-12x-85\\), which is \\((x-17)(x+5)\\) with roots \\(17\\) and \\(-5\\). Writing \\(12\\) straight in as the coefficient of \\(x\\) gives \\(x^2+12x-85\\), whose roots add to \\(-12\\) instead."
+   },
+   {
+    "t": "prob",
+    "x": "One root of \\(5x^2-16x+3=0\\) is \\(3\\). Find the other root from the sum of the roots rather than by factoring, and enter it as a fraction in lowest terms.",
+    "xp": 6,
+    "ans": "1/5",
+    "accept": [
+     "1/5",
+     "0.2",
+     "0.20",
+     ".2",
+     "x=1/5",
+     "x=0.2"
+    ],
+    "hints": [
+     "The two roots add to \\(-\\frac{b}{a}\\), and one of them is already known, so the other is one subtraction away.",
+     "The sum is \\(\\frac{16}{5}\\). Subtract \\(3\\) from it. Dividing the product \\(\\frac{3}{5}\\) by \\(3\\) is the second route."
+    ],
+    "sol": "The roots add to \\(-\\frac{-16}{5}=\\frac{16}{5}\\), so the other root is \\(\\frac{16}{5}-3=\\boxed{\\frac{1}{5}}\\). The product gives the same value, \\(\\frac{3}{5}\\div 3=\\frac{1}{5}\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Building a quadratic from its roots.</b> Given a sum \\(S\\) and a product \\(P\\), the monic quadratic with those two numbers as its roots is \\(x^2-Sx+P\\), since that is \\((x-r)(x-s)\\) expanded with \\(r+s=S\\) and \\(rs=P\\). The coefficient of \\(x\\) is the negative of the sum and the constant is the product, which is the monic rule read backwards. Multiplying by any nonzero number gives another quadratic with the same two roots, and \\(x^2-Sx+P\\) is the only monic one."
+   },
+   {
+    "t": "p",
+    "x": "Here is what the two facts are for. Some expressions in \\(r\\) and \\(s\\) can be rewritten so that only \\(r+s\\) and \\(rs\\) appear in them, and any expression like that can be evaluated from \\(a\\), \\(b\\) and \\(c\\) alone. Whether the roots are integers, fractions, or numbers no method in this chapter produces makes no difference to the work."
+   },
+   {
+    "t": "prob",
+    "x": "The quadratic \\(7x^2-5x-9\\) has no factorization with integer coefficients, so nothing in this chapter produces its roots. Call them \\(r\\) and \\(s\\) anyway and find \\(\\frac{1}{r}+\\frac{1}{s}\\) as a fraction in lowest terms.",
+    "xp": 7,
+    "ans": "-5/9",
+    "accept": [
+     "-5/9",
+     "−5/9",
+     "negative 5/9"
+    ],
+    "hints": [
+     "Combine the two fractions over the common denominator \\(rs\\). The result is a sum divided by a product, and both of those come from the coefficients.",
+     "The sum is \\(\\frac{5}{7}\\) and the product is \\(-\\frac{9}{7}\\). Divide the first by the second, and the sevens cancel."
+    ],
+    "sol": "Over the common denominator \\(rs\\), \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{r+s}{rs}\\). Here \\(r+s=\\frac{5}{7}\\) and \\(rs=-\\frac{9}{7}\\), so the value is \\(\\frac{5/7}{-9/7}=\\boxed{-\\frac{5}{9}}\\). The sevens cancel in the division, so this expression is \\(-\\frac{b}{c}\\) for any quadratic with \\(c\\) not zero, whatever \\(a\\) is."
+   },
+   {
+    "t": "fact",
+    "x": "Albert Girard stated the relations between a polynomial's coefficients and its roots in 1629, in general form and for any degree. He gave the pattern without a proof, before notation had settled enough to write it cleanly."
+   },
+   {
+    "t": "prob",
+    "x": "The roots \\(r\\) and \\(s\\) of \\(x^2-5x-8=0\\) are not integers, so factoring will not produce them. Find \\(r^2+s^2\\) from the sum and the product of the roots alone.",
+    "xp": 6,
+    "ans": "41",
+    "accept": [
+     "41",
+     "41.0",
+     "forty-one",
+     "forty one"
+    ],
+    "hints": [
+     "Neither root can be found here, but \\(r+s\\) and \\(rs\\) come straight from the coefficients. Build \\(r^2+s^2\\) out of those two numbers.",
+     "Squaring \\(r+s\\) gives \\(r^2+2rs+s^2\\), which is \\(2rs\\) too big. Here \\(rs=-8\\), so watch the sign when you subtract \\(2rs\\)."
+    ],
+    "sol": "Since \\((r+s)^2=r^2+2rs+s^2\\), subtracting \\(2rs\\) gives \\(r^2+s^2=(r+s)^2-2rs\\). Here \\(r+s=5\\) and \\(rs=-8\\), so the value is \\(25-2(-8)=25+16=\\boxed{41}\\). The product is negative, so \\(-2rs\\) is positive here. Reading it as \\(25-16=9\\) is the standard slip."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Symmetric expressions.</b> An expression in \\(r\\) and \\(s\\) is <b>symmetric</b> when swapping the two letters leaves it unchanged. Both \\(r^2+s^2\\) and \\(\\frac{1}{r}+\\frac{1}{s}\\) are symmetric. Symmetric expressions can almost always be rewritten with only \\(r+s\\) and \\(rs\\) in them, so the value comes from the coefficients. Four rewritings are enough here. Over a common denominator, \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{r+s}{rs}\\). Since \\((r+s)^2=r^2+2rs+s^2\\), subtracting \\(2rs\\) leaves \\(r^2+s^2=(r+s)^2-2rs\\), and then \\((r-s)^2=r^2+s^2-2rs=(r+s)^2-4rs\\). Last, \\(r^2s+rs^2=rs(r+s)\\)."
+   },
+   {
+    "t": "p",
+    "x": "The coefficients are the shorter route even when the roots are findable. \\(20x^2+x-12\\) factors as \\((4x-3)(5x+4)\\), so one way to reach \\(\\frac{1}{r}+\\frac{1}{s}\\) is to add \\(\\frac{4}{3}\\) and \\(-\\frac{5}{4}\\) over a common denominator. From the coefficients it is \\(-\\frac{b}{c}\\), a single division."
+   },
+   {
+    "t": "prob",
+    "x": "The quadratic \\(2x^2-15x+c\\) has two roots, and one of them is four times the other. Neither root is given. Find the value of \\(c\\).",
+    "xp": 7,
+    "ans": "18",
+    "accept": [
+     "18",
+     "18.0",
+     "eighteen",
+     "c=18"
+    ],
+    "hints": [
+     "Call one root \\(r\\), so the other is \\(4r\\). Their sum is \\(-\\frac{b}{a}\\), so the stated ratio gives one equation in one unknown.",
+     "The sum of the roots is \\(\\frac{15}{2}\\), so \\(5r=\\frac{15}{2}\\). Once both roots are known, use the product, which is \\(\\frac{c}{2}\\) rather than \\(c\\)."
+    ],
+    "sol": "Call the roots \\(r\\) and \\(4r\\). They add to \\(\\frac{15}{2}\\), so \\(5r=\\frac{15}{2}\\) and \\(r=\\frac{3}{2}\\), making the roots \\(\\frac{3}{2}\\) and \\(6\\). Their product is \\(9\\), and the product of the roots is \\(\\frac{c}{2}\\), so \\(c=\\boxed{18}\\). The slip here is reading that product as \\(c\\) rather than \\(\\frac{c}{2}\\), which gives \\(9\\)."
+   },
+   {
+    "t": "prob",
+    "x": "The two roots of \\(x^2-24x+c\\) differ by \\(8\\). Call them \\(r\\) and \\(s\\), and find the value of \\(c\\) without finding either root.",
+    "xp": 7,
+    "ans": "128",
+    "accept": [
+     "128",
+     "128.0",
+     "c=128",
+     "one hundred twenty-eight"
+    ],
+    "hints": [
+     "Both \\((r+s)^2\\) and \\((r-s)^2\\) expand to \\(r^2+s^2\\) plus or minus \\(2rs\\), so \\((r-s)^2=(r+s)^2-4rs\\).",
+     "For \\(x^2-24x+c\\) the sum of the roots is \\(24\\) and the product is \\(c\\), and the squared difference is \\(64\\). Put all three into that identity."
+    ],
+    "sol": "Here \\(r+s=24\\) and \\(rs=c\\), so \\((r-s)^2=(r+s)^2-4rs\\) becomes \\(64=576-4c\\), and \\(c=\\boxed{128}\\). The difference \\(r-s\\) is not symmetric and cannot be read off the coefficients, but \\((r-s)^2\\) is, which is what makes this work. A sum of \\(24\\) and a difference of \\(8\\) also give the roots outright, \\(16\\) and \\(8\\)."
+   },
+   {
+    "t": "imp",
+    "x": "<b>Working backwards, and where it stops.</b> A stated fact about the roots is one equation in \\(r+s\\) and \\(rs\\), and solving it gives the unknown coefficient. With a fixed ratio between the roots, the sum is linear in one unknown. A stated difference is squared first, since \\((r-s)^2=(r+s)^2-4rs\\). Equal roots mean \\(r=s\\), so the product is \\(r^2\\). On their own the two facts never produce the roots, and for some sums and products no real pair exists. For sum \\(2\\) and product \\(5\\), \\((r-s)^2\\) would be \\(4-20=-16\\), and no real square is negative. Chapter 11 takes up \\(x^2-2x+5\\)."
+   },
+   {
+    "t": "p",
+    "x": "Any question that involves the roots only through \\(r+s\\) and \\(rs\\) can be answered from the coefficients, and there is exactly one monic quadratic with a stated sum and product. Neither fact separates \\(r\\) from \\(s\\), and neither one produces a root. The last two problems use most of the lesson at once."
+   },
+   {
+    "t": "prob",
+    "x": "The quadratic \\(4x^2+10x-21\\) has no integer factorization, so no method in this chapter produces either root. Its roots are \\(r\\) and \\(s\\). Find \\(r^2s+rs^2\\) as a fraction in lowest terms.",
+    "xp": 8,
+    "ans": "105/8",
+    "accept": [
+     "105/8",
+     "13.125"
+    ],
+    "hints": [
+     "Both terms have a factor of \\(rs\\). Take it out and see what is left.",
+     "\\(r^2s+rs^2=rs(r+s)\\), with \\(rs=-\\frac{21}{4}\\) and \\(r+s=-\\frac{5}{2}\\). Two negatives multiply to a positive."
+    ],
+    "sol": "Both terms have a factor of \\(rs\\), so \\(r^2s+rs^2=rs(r+s)\\). Here \\(r+s=-\\frac{10}{4}=-\\frac{5}{2}\\) and \\(rs=-\\frac{21}{4}\\), so the value is \\(\\left(-\\frac{21}{4}\\right)\\left(-\\frac{5}{2}\\right)=\\boxed{\\frac{105}{8}}\\). Both factors are negative, so the value is positive. A sign dropped anywhere in the setup shows up as \\(-\\frac{105}{8}\\)."
+   },
+   {
+    "t": "prob",
+    "x": "Let \\(r\\) and \\(s\\) be the roots of \\(4x^2-12x-9\\), which does not factor over the integers. Find the coefficient of \\(x\\) in the monic quadratic whose roots are \\(r^2\\) and \\(s^2\\), as a fraction in lowest terms.",
+    "xp": 8,
+    "ans": "-27/2",
+    "accept": [
+     "-27/2",
+     "−27/2",
+     "-13.5",
+     "−13.5",
+     "negative 27/2",
+     "minus 27/2"
+    ],
+    "hints": [
+     "In a monic quadratic the coefficient of \\(x\\) is the negative of the sum of its roots, and the roots here are \\(r^2\\) and \\(s^2\\), so find \\(r^2+s^2\\) first.",
+     "From the coefficients, \\(r+s=3\\) and \\(rs=-\\frac{9}{4}\\). Use \\(r^2+s^2=(r+s)^2-2rs\\), then flip the sign of the result."
+    ],
+    "sol": "From the coefficients, \\(r+s=\\frac{12}{4}=3\\) and \\(rs=-\\frac{9}{4}\\), so \\(r^2+s^2=(r+s)^2-2rs=9-2\\left(-\\frac{9}{4}\\right)=\\frac{27}{2}\\). The monic quadratic with roots \\(r^2\\) and \\(s^2\\) is \\(x^2-(r^2+s^2)x+r^2s^2\\), so its coefficient of \\(x\\) is \\(\\boxed{-\\frac{27}{2}}\\). Neither root was needed anywhere in that. The sign flip is the step to watch, since \\(\\frac{27}{2}\\) is the sum of the new roots and the coefficient is its negative."
+   },
+   {
+    "t": "p",
+    "x": "Every answer in this lesson's second half came off the coefficients, and four of those quadratics have no root chapter 9 can produce. Lesson 9.5, Factoring in Action, turns these tools on equations not written as \\(ax^2+bx+c=0\\). An equation can be a quadratic in some repeated piece, and naming that piece with one letter makes it one you can solve."
+   }
+  ],
+  "review": [
+   {
+    "x": "Find the sum of the two roots of \\(x^2-15x+26=0\\). Read the sum off the coefficients, and keep the sign of the middle coefficient in mind.",
+    "ans": "15",
+    "accept": [
+     "15",
+     "15.0",
+     "fifteen"
+    ],
+    "hints": [
+     "For \\(x^2+bx+c\\) the two roots sum to \\(-b\\), where \\(b\\) is the coefficient of \\(x\\) taken together with its sign.",
+     "Substitute the coefficient of \\(x\\) into \\(-b\\) with its minus sign attached. For a second opinion, factor \\(x^2-15x+26\\) over the integers and add the two roots you find."
+    ],
+    "sol": "The coefficient of \\(x\\) is \\(b=-15\\), so the sum of the roots is \\(-b=-(-15)=\\boxed{15}\\). Factoring gives the same total, since \\(x^2-15x+26=(x-2)(x-13)\\) and \\(2+13=15\\)."
+   },
+   {
+    "x": "The quadratic \\(x^2-33-8x\\) is not written in standard form. Put it in standard form, then find the product of its two roots. The leading coefficient is \\(1\\), so the product can be read straight off once it is.",
+    "ans": "-33",
+    "accept": [
+     "-33",
+     "−33",
+     "-33.0",
+     "−33.0",
+     "negative 33",
+     "negative thirty-three"
+    ],
+    "hints": [
+     "In standard form it is \\(x^2-8x-33\\). Write that as \\((x-r)(x-s)\\) and expand. Line up the constant term of that expansion with the constant term you were handed.",
+     "If the sign is the part you are unsure of, factor \\(x^2-8x-33\\) into two binomials, read the two roots off the factors, and multiply them. Both routes must give the same value."
+    ],
+    "sol": "The quadratic is monic, so the product of the roots is its constant term, \\(rs=\\boxed{-33}\\). Check by factoring, \\(x^2-8x-33=(x-11)(x+3)\\), whose roots \\(11\\) and \\(-3\\) multiply to \\(-33\\)."
+   },
+   {
+    "x": "The quadratic \\(x^2+19x+34\\) factors as \\((x+2)(x+17)\\). Find the sum of its two roots. Read each root off its own factor first, and mind the sign as you do it.",
+    "ans": "-19",
+    "accept": [
+     "-19",
+     "−19",
+     "-19.0",
+     "−19.0",
+     "negative 19",
+     "negative nineteen"
+    ],
+    "hints": [
+     "A root makes the whole product \\((x+2)(x+17)\\) equal zero, and that happens exactly when one of the two factors is zero.",
+     "The factor \\(x+2\\) is zero at \\(x=-2\\), not at \\(2\\). Read the second root the same way and add the two."
+    ],
+    "sol": "The factors \\(x+2\\) and \\(x+17\\) are zero at \\(-2\\) and \\(-17\\), so the two roots add to \\(\\boxed{-19}\\). Both roots are negative, so the sum is the negative of the middle coefficient \\(19\\), never \\(19\\) itself."
+   },
+   {
+    "x": "Find the product of the two roots of \\(10x^2+11x-6=0\\). Give your answer as a fraction in lowest terms. The leading coefficient is not \\(1\\) here, so the constant term alone is not the product.",
+    "ans": "-3/5",
+    "accept": [
+     "-3/5",
+     "−3/5",
+     "-0.6",
+     "−0.6",
+     "-.6",
+     "−.6",
+     "negative 3/5"
+    ],
+    "hints": [
+     "The leading coefficient here is \\(10\\), not \\(1\\), so the product of the roots is \\(\\frac{c}{a}\\) rather than \\(c\\) by itself.",
+     "Read \\(a\\) and \\(c\\) straight off \\(10x^2+11x-6\\), divide, and reduce the fraction before typing it."
+    ],
+    "sol": "The product of the roots is \\(\\frac{c}{a}=\\frac{-6}{10}=\\boxed{-\\frac{3}{5}}\\). As a check, \\(10x^2+11x-6=(5x-2)(2x+3)\\) has roots \\(\\frac{2}{5}\\) and \\(-\\frac{3}{2}\\), and \\(\\frac{2}{5}\\cdot\\left(-\\frac{3}{2}\\right)=-\\frac{3}{5}\\)."
+   },
+   {
+    "x": "Find the sum of the two roots of \\(8x^2+30x-7\\) as a fraction in lowest terms. This quadratic has no integer factorization, so the sum has to come from the coefficients.",
+    "ans": "-15/4",
+    "accept": [
+     "-15/4",
+     "−15/4",
+     "-3.75",
+     "−3.75",
+     "negative 15/4"
+    ],
+    "hints": [
+     "Nothing here needs factoring. For \\(ax^2+bx+c\\) the two roots sum to \\(-\\frac{b}{a}\\), the middle coefficient over the leading one with the sign flipped.",
+     "Substitute \\(a=8\\) and \\(b=30\\). The resulting fraction has an even numerator and an even denominator, so it still needs reducing."
+    ],
+    "sol": "The sum of the roots is \\(-\\frac{b}{a}=-\\frac{30}{8}=\\boxed{-\\frac{15}{4}}\\). The roots themselves are irrational, so no factor search would have found them, and the sum is still exact."
+   },
+   {
+    "x": "A monic quadratic has two roots that add to \\(-6\\) and multiply to \\(-40\\). Enter the coefficient of \\(x\\) in that quadratic. The two roots themselves are not needed.",
+    "ans": "6",
+    "accept": [
+     "6",
+     "6.0",
+     "six"
+    ],
+    "hints": [
+     "A monic quadratic with roots \\(r\\) and \\(s\\) equals \\((x-r)(x-s)\\). Expand that and compare it term by term with \\(x^2+bx+c\\) to see how \\(b\\) is related to \\(r+s\\).",
+     "Once you have a value, test it. Build the quadratic with that coefficient and \\(-40\\) as the constant, factor it, and check that its two roots really do add to \\(-6\\)."
+    ],
+    "sol": "The roots add to \\(-b\\), so \\(-b=-6\\) and \\(b=\\boxed{6}\\). The quadratic is \\(x^2+6x-40=(x+10)(x-4)\\), with roots \\(-10\\) and \\(4\\), which add to \\(-6\\) and multiply to \\(-40\\)."
+   },
+   {
+    "x": "One root of the quadratic \\(x^2-2x-63\\) is \\(9\\). Find the other root from the sum of the roots rather than by factoring, then check it against the product.",
+    "ans": "-7",
+    "accept": [
+     "-7",
+     "−7",
+     "-7.0",
+     "−7.0",
+     "negative 7",
+     "negative seven",
+     "x=-7",
+     "x=−7"
+    ],
+    "hints": [
+     "For \\(x^2+bx+c\\) the two roots sum to \\(-b\\), and here \\(b=-2\\), so watch the sign when you write that sum down.",
+     "Call the unknown root \\(r\\) and solve \\(r+9=2\\). The product check is \\(9r=-63\\)."
+    ],
+    "sol": "The roots add to \\(-(-2)=2\\), so the other root is \\(2-9=\\boxed{-7}\\). Checking against the product, \\(9\\cdot(-7)=-63\\)."
+   },
+   {
+    "x": "One root of \\(6x^2-19x+14\\) is \\(2\\). The leading coefficient is \\(6\\), not \\(1\\), so the two roots add to \\(-\\frac{b}{a}\\) rather than to \\(-b\\). Find the other root as a fraction in lowest terms.",
+    "ans": "7/6",
+    "accept": [
+     "7/6",
+     "x=7/6"
+    ],
+    "hints": [
+     "With \\(a=6\\), \\(b=-19\\) and \\(c=14\\), the roots add to \\(-\\frac{b}{a}\\) and multiply to \\(\\frac{c}{a}\\). Either fact is enough here, since one root is already known.",
+     "The sum is \\(\\frac{19}{6}\\), so subtract \\(2\\) from it. For a check, divide the product \\(\\frac{7}{3}\\) by \\(2\\)."
+    ],
+    "sol": "With \\(a=6\\) and \\(b=-19\\), the roots add to \\(-\\frac{b}{a}=\\frac{19}{6}\\), so the other root is \\(\\frac{19}{6}-2=\\boxed{\\frac{7}{6}}\\). The product route gives the same value, since the roots multiply to \\(\\frac{c}{a}=\\frac{7}{3}\\) and \\(\\frac{7}{3}\\div 2=\\frac{7}{6}\\)."
+   },
+   {
+    "x": "The quadratic \\(5x^2-14x+4\\) has no integer factorization. Its roots are \\(r\\) and \\(s\\). Find \\(\\frac{1}{r}+\\frac{1}{s}\\) as a fraction in lowest terms.",
+    "ans": "7/2",
+    "accept": [
+     "7/2",
+     "3.5"
+    ],
+    "hints": [
+     "Put the two fractions over the common denominator \\(rs\\).",
+     "For \\(ax^2+bx+c\\) the roots sum to \\(-\\frac{b}{a}\\) and multiply to \\(\\frac{c}{a}\\), so read both off here with \\(a=5\\)."
+    ],
+    "sol": "Over a common denominator, \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{r+s}{rs}\\). Here \\(r+s=\\frac{14}{5}\\) and \\(rs=\\frac{4}{5}\\), so the value is \\(\\frac{14}{4}=\\boxed{\\frac{7}{2}}\\). The fifths divide out, so for any \\(ax^2+bx+c\\) this expression equals \\(-\\frac{b}{c}\\), with \\(b=-14\\) and \\(c=4\\) here."
+   },
+   {
+    "x": "Let \\(r\\) and \\(s\\) be the roots of the quadratic \\(x^2-9x+11\\), neither of which is an integer. Find \\(r^2+s^2\\) without finding either root.",
+    "ans": "59",
+    "accept": [
+     "59",
+     "59.0",
+     "fifty-nine",
+     "fifty nine"
+    ],
+    "hints": [
+     "The quadratic is monic, so the sum of the roots is the negative of the middle coefficient and the product of the roots is the constant term. Write down \\(r+s\\) and \\(rs\\) before anything else.",
+     "Expanding \\((r+s)^2\\) gives \\(r^2+2rs+s^2\\), which is larger than the quantity asked for by \\(2rs\\), so subtract \\(2rs\\) from \\((r+s)^2\\)."
+    ],
+    "sol": "Since the quadratic is monic, \\(r+s=9\\) and \\(rs=11\\), so \\(r^2+s^2=(r+s)^2-2rs=81-22=\\boxed{59}\\). Expanding \\((r+s)^2\\) gives \\(r^2+2rs+s^2\\), which exceeds \\(r^2+s^2\\) by exactly \\(2rs\\), so one subtraction of \\(2rs\\) is the whole correction."
+   },
+   {
+    "x": "Let \\(r\\) and \\(s\\) be the roots of the quadratic \\(x^2-6x-2\\), which does not factor over the integers. Find \\((r-s)^2\\).",
+    "ans": "44",
+    "accept": [
+     "44",
+     "44.0",
+     "forty-four",
+     "forty four"
+    ],
+    "hints": [
+     "A difference is not symmetric, but its square is. Use \\((r-s)^2=(r+s)^2-4rs\\).",
+     "Read the sum and the product straight off the coefficients, \\(r+s=6\\) and \\(rs=-2\\), then watch the sign when you subtract \\(4rs\\)."
+    ],
+    "sol": "\\((r-s)^2=(r+s)^2-4rs=36-4(-2)=36+8=\\boxed{44}\\). The product \\(rs\\) is negative, so \\(-4rs\\) is positive here, and the common slip is \\(36-8=28\\)."
+   },
+   {
+    "x": "Is there a pair of real numbers \\(r\\) and \\(s\\) whose sum is \\(4\\) and whose product is \\(9\\)? Decide from the square of their difference, which is fixed by the sum and the product alone, then answer yes or no.",
+    "ans": "no",
+    "accept": [
+     "no",
+     "n",
+     "no.",
+     "nope",
+     "not real",
+     "no real pair"
+    ],
+    "hints": [
+     "\\((r-s)^2\\) can be written in terms of \\(r+s\\) and \\(rs\\), and both of those are given.",
+     "Expanding both squares gives \\((r-s)^2=(r+s)^2-4rs\\). Put in the given sum and product, then compare the result with what the square of a real number can be."
+    ],
+    "sol": "For such a pair, \\((r-s)^2=(r+s)^2-4rs=16-36=-20\\), and no real number has a negative square, so the answer is \\(\\boxed{\\text{no}}\\). The quadratic with that sum and product is \\(x^2-4x+9\\), and chapter 11 takes it up."
+   },
+   {
+    "x": "Both roots of \\(x^2+bx+125\\) are negative, and one root is five times the other. Start from the product of the roots rather than the sum. Find \\(b\\).",
+    "ans": "30",
+    "accept": [
+     "30",
+     "30.0",
+     "thirty",
+     "b=30"
+    ],
+    "hints": [
+     "Call the roots \\(r\\) and \\(5r\\). For a monic quadratic the product of the roots is the constant term, so \\(5r^2=125\\).",
+     "That gives \\(r=5\\) or \\(r=-5\\), and only one of the two makes both roots negative. The sum of the roots of \\(x^2+bx+c\\) is \\(-b\\)."
+    ],
+    "sol": "With roots \\(r\\) and \\(5r\\), the product is \\(5r^2=125\\), so \\(r=-5\\) since both roots are negative, and the roots are \\(-5\\) and \\(-25\\). They add to \\(-30\\), and the sum of the roots is \\(-b\\), so \\(b=\\boxed{30}\\). Taking \\(r=5\\) gives two positive roots and \\(b=-30\\) instead."
+   },
+   {
+    "x": "Both roots of \\(25x^2-40x+c\\) are the same number. Find \\(c\\). The leading coefficient is not \\(1\\), so use the sum and the product in their general form.",
+    "ans": "16",
+    "accept": [
+     "16",
+     "16.0",
+     "sixteen",
+     "c=16"
+    ],
+    "hints": [
+     "For \\(ax^2+bx+c\\) the roots sum to \\(-\\frac{b}{a}\\) and multiply to \\(\\frac{c}{a}\\). Work out that sum here and reduce it before going further.",
+     "Two equal roots are each half of their sum, and their product is \\(\\frac{c}{25}\\)."
+    ],
+    "sol": "The roots sum to \\(-\\frac{b}{a}=\\frac{40}{25}=\\frac{8}{5}\\), and equal roots are each half of that, so each is \\(\\frac{4}{5}\\). Their product \\(\\frac{16}{25}\\) equals \\(\\frac{c}{25}\\), so \\(c=\\boxed{16}\\). Checking, \\(25x^2-40x+16=(5x-4)^2\\)."
+   },
+   {
+    "x": "The quadratic \\(x^2-14x+c\\) has two roots that differ by \\(4\\). The difference itself cannot be read off the coefficients, but its square can. Find \\(c\\).",
+    "ans": "45",
+    "accept": [
+     "45",
+     "45.0",
+     "forty-five",
+     "forty five",
+     "c=45"
+    ],
+    "hints": [
+     "Square the stated difference and use the identity \\((r-s)^2=(r+s)^2-4rs\\).",
+     "For this quadratic \\(r+s=14\\) and \\(rs=c\\), and squaring the stated difference gives \\((r-s)^2=16\\)."
+    ],
+    "sol": "Here \\(r+s=14\\) and \\(rs=c\\), so \\((r-s)^2=(r+s)^2-4rs\\) becomes \\(16=196-4c\\) and \\(c=\\boxed{45}\\). As a check, the roots must be \\(9\\) and \\(5\\), since those sum to \\(14\\) and differ by \\(4\\), and their product is \\(45\\)."
+   },
+   {
+    "x": "Let \\(r\\) and \\(s\\) be the roots of \\(2x^2-5x-6\\), which does not factor over the integers. Find \\(\\frac{r}{s}+\\frac{s}{r}\\) as a fraction in lowest terms.",
+    "ans": "-49/12",
+    "accept": [
+     "-49/12",
+     "−49/12",
+     "negative 49/12"
+    ],
+    "hints": [
+     "Put both terms over the common denominator \\(rs\\), and see what the numerator becomes.",
+     "The numerator is \\(r^2+s^2\\), and \\(r^2+s^2=(r+s)^2-2rs\\). Read \\(r+s\\) and \\(rs\\) straight off the coefficients of \\(2x^2-5x-6\\)."
+    ],
+    "sol": "Over a common denominator, \\(\\frac{r}{s}+\\frac{s}{r}=\\frac{r^2+s^2}{rs}\\). From the coefficients, \\(r+s=\\frac{5}{2}\\) and \\(rs=-3\\), so \\(r^2+s^2=(r+s)^2-2rs=\\frac{25}{4}+6=\\frac{49}{4}\\), and the value is \\(\\frac{49}{4}\\div(-3)=\\boxed{-\\frac{49}{12}}\\). Because \\(rs\\) is negative, the \\(-2rs\\) term is \\(+6\\) and not \\(-6\\), which is the usual slip here."
+   },
+   {
+    "x": "Let \\(r\\) and \\(s\\) be the roots of \\(x^2-7x+3\\), which does not factor over the integers. Build the monic quadratic whose roots are \\(\\frac{1}{r}\\) and \\(\\frac{1}{s}\\), and enter its coefficient of \\(x\\) as a fraction in lowest terms.",
+    "ans": "-7/3",
+    "accept": [
+     "-7/3",
+     "−7/3",
+     "negative 7/3"
+    ],
+    "hints": [
+     "A monic quadratic with roots \\(p\\) and \\(q\\) is \\(x^2-(p+q)x+pq\\), so the coefficient of \\(x\\) is the negative of the sum of the new roots.",
+     "Read \\(r+s\\) and \\(rs\\) straight off \\(x^2-7x+3\\), then use \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{r+s}{rs}\\)."
+    ],
+    "sol": "From the coefficients, \\(r+s=7\\) and \\(rs=3\\), so the new roots add to \\(\\frac{1}{r}+\\frac{1}{s}=\\frac{r+s}{rs}=\\frac{7}{3}\\), and a monic quadratic's coefficient of \\(x\\) is the negative of the sum of its roots, so it is \\(\\boxed{-\\frac{7}{3}}\\). The built quadratic is \\(x^2-\\frac{7}{3}x+\\frac{1}{3}\\)."
+   }
+  ]
  }
 }

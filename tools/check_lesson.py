@@ -16,7 +16,13 @@ from collections import Counter
 
 
 def norm(a):
-    """Mirror landing.html normAns exactly. It does NOT map the unicode minus."""
+    """A CONSERVATIVE subset of landing.html's normAns.
+
+    normAns has mapped the unicode minus, the en/em dashes and a leading `$` since
+    commit ab324c5; this does not. The gap only ever makes this checker miss a
+    redundancy (two accept entries differing by the minus glyph), never invent one,
+    so it is safe. Align it if you want dead accept entries reported.
+    """
     return str(a).strip().lower().replace(' ', '').replace(',', '').lstrip('+')
 
 

@@ -212,8 +212,10 @@ growing in each SPEC.
 
 ## Docs corrected this session
 
-- `AUTHORING.md` claimed the grader normalizes the unicode minus. `normAns` does not touch it,
-  so a negative answer needs both `-6` and `−6` in `accept`.
+- `AUTHORING.md` claimed the grader normalizes the unicode minus. At the time it did not.
+  **Reversed again on 2026-08-14 by commit `ab324c5`**, which taught `normAns` to map `−`, `–`
+  and `—` onto `-` and to strip a leading `$`. So the original claim is true again and the
+  correction below it is stale. A negative answer needs only the ASCII spelling in `accept`.
 - `figure-design-system.md` prescribed uppercase letter-spaced band labels, which the
   product-wide all-caps ban retired. Band labels are lowercase, 13px, no letter-spacing.
 

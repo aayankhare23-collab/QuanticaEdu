@@ -52,11 +52,17 @@ Rules that the grader and renderer depend on:
 
 - **Answers are a single typed value.** An integer, a lowest-terms fraction `a/b`, or a
   single word. The grader (`normAns` in `landing.html`) trims, lowercases, strips spaces and
-  commas, and drops a leading `+`. It does **not** touch the unicode minus `−`, so a negative
-  answer needs both `-6` and `−6` in `accept`. It then compares to `ans` and each
-  `accept` entry. `accept` must contain `ans`
-  plus every reasonable typed variant (word forms like `four`, exact terminating decimal for
-  a fraction, etc). Never ask for a list, a sentence, or "explain"; funnel to one value.
+  commas, and drops a leading `+`. It then compares the result to `ans` and to each `accept`
+  entry, put through the same normalizer. `accept` must contain `ans` plus every reasonable
+  typed variant (word forms like `four`, exact terminating decimal for a fraction, etc).
+  Never ask for a list, a sentence, or "explain"; funnel to one value.
+
+  **The unicode minus is handled for you.** Since commit `ab324c5` (2026-08-14) `normAns`
+  also maps `−`, `–` and `—` onto `-` and strips a leading `$`, so a negative answer does
+  NOT need a separate `−6` entry. Two entries differing only by the minus glyph are dead
+  weight. Older lessons are full of them because this file said the opposite until
+  2026-08-26. `tools/check_lesson.py`'s own `norm()` still does not map the minus, so it
+  will not flag the redundancy.
 - **Solutions are answer-first, in two parts** (changed 2026-07-26, replaces the old
   "end on the box / name the trap first" rule):
   1. **The solve.** Do the problem directly and plainly, and close this part on
