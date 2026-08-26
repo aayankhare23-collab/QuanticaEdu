@@ -74,9 +74,13 @@ deliver on that promise.
 9.4 Sums and Products of Roots  <- ref 10.4  for x^2+bx+c the roots sum to -b and multiply
                                    to c; building a quadratic from its roots; answering a
                                    question about the roots WITHOUT finding them.
-9.5 Quadratics in Disguise      <- ref 10.5  an equation that is quadratic in some repeated
+9.5 Factoring in Action         <- ref 10.5  an equation that is quadratic in some repeated
                                    piece; naming that piece and substituting; treating a
                                    multi-variable equation as a quadratic in one letter.
+
+NOTE for 9.5: this row said "Quadratics in Disguise" until 2026-08-26. The shipped title in
+lessons/algebra1/toc.json, in 9.3's closer and in 9.4's closer is **Factoring in Action**,
+so that wins. The content mapping to ref 10.5 is unchanged.
 
 NOTE for 9.1: chapter 2 owns the distributive property and chapter 3 owns exponents, so
 neither is re-derived. The new content is the two-binomial product and the zero product

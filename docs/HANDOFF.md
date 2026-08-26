@@ -8,7 +8,12 @@ writing any lesson. This file is what a fresh session would otherwise have to re
 | | lessons | problem sets | notes |
 |---|---|---|---|
 | Prealgebra | 70 / 70, 12 chapters | all 12 chapters | complete |
-| Algebra I | **40 / 81**, 15 chapters in the TOC | **chapters 1-7** | ch1-ch7 fully done, 8.1 in flight |
+| Algebra I | **49 / 81**, 15 chapters in the TOC | **chapters 1-8** | ch1-ch8 fully done; ch9 at 9.1-9.4 |
+
+Updated 2026-08-26. The "Next work" list below is from 2026-08-03 and is spent through
+chapter 8. Current next work is 9.5 Factoring in Action, then the chapter 9 Practice and
+Challenge sets (`tools/make_pset_workflow.py 9 --course algebra1 --title "Quadratics I,
+Factoring" --covers tools/lesson-specs/covers9.txt`), then chapters 10 to 15.
 
 **Next work, in order:**
 1. **Chapter 8, Inequalities.** 8.1 was in flight when this was written. All five SPECs are
@@ -112,6 +117,20 @@ agents against **pre-labelled slot ids**, assembled deterministically from `OUTL
 
 ## Traps that cost real time
 
+- **Two audit findings can propose edits to the SAME field, and applying both in sequence
+  silently drops one.** On 9.4 the review audit returned one finding wanting R2's statement
+  lengthened past the 120-char floor and a separate finding wanting it reordered out of
+  standard form. Both rewrote `review[1].x`. Applied blind, whichever ran second won and the
+  other was lost with no error. Group findings BY FIELD before applying any of them, and merge
+  the colliding ones by hand into a single replacement.
+- **Apply audit fixes as exact-match assertions, never as blind writes.** The patch script for
+  9.4 asserted on the current text of every target before replacing it, so a finding whose
+  target had already been changed by an earlier edit failed loudly instead of doing nothing.
+  49 edits landed with zero silent misses that way.
+- **Scanning for doubled backslashes needs a QUOTED heredoc.** `python3 - <<PYEOF` lets bash
+  eat the backslashes, so every field looks broken and the real ones hide in the noise. Use
+  `<<'PYEOF'` or a script file. On 9.4 the bug was real and sat in all four fields of two
+  review items, R8 and R17, exactly as the STYLE block warns.
 - **The verify phase rewrites 20 to 28 of 29 items per lesson.** The blueprint's numbers are
   NOT what ships. Re-solve from the final text or you will ship the wrong answer.
 - **The verify phase can introduce a duplicate answer.** On 6.6 it moved an answer onto another
