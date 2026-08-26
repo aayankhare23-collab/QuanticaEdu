@@ -55,9 +55,33 @@ def main():
         '(fill in what each lesson taught)'
     tmpl = (ROOT / 'tools/lesson-specs/pset6.workflow.js.bak').read_text()
 
-    # everything from `const SPEC` onward is chapter-agnostic scaffolding
     body = tmpl[tmpl.index('const STYLE_PS = `'):]
     n_lessons = len({l.split(':')[0][:-1] for l in used})
+
+    # The body was NOT chapter-agnostic, despite the comment that used to sit here.
+    # It carried chapter 6's own lesson count and chapter 6's systems-specific ramp
+    # straight into the agent prompts, so every chapter without exactly six lessons
+    # was told to cover six. Chapter 8 has five and shipped under that instruction.
+    words = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six',
+             7: 'seven', 8: 'eight'}
+    n_word = words.get(n_lessons, str(n_lessons))
+    for a_, b_ in (
+        ('all six lessons of the chapter are represented across the 24 items, and that the '
+         'practice set ramps gently from testing a pair to a three-letter system',
+         f'all {n_word} lessons of the chapter are represented across the 24 items, and that '
+         f'the practice set ramps gently from the simplest ask in the chapter to the hardest'),
+        ('all six lessons represented', f'all {n_word} lessons represented'),
+        ('Which of the six lessons', f'Which of the {n_word} lessons'),
+        ('worked after all six lessons', f'worked after all {n_word} lessons'),
+    ):
+        body = body.replace(a_, b_)
+    if 'six lessons' in body and n_lessons != 6:
+        raise SystemExit('a hardcoded "six lessons" survived; fix the substitution table')
+    # These phrases land inside single-quoted JS string literals, so an apostrophe in a
+    # substituted phrase silently produces an unparseable script. Caught once already.
+    for _, phrase in ((None, n_word),):
+        if "'" in phrase:
+            raise SystemExit(f'apostrophe in a substituted phrase: {phrase!r}')
 
     head = f'''export const meta = {{
   name: 'author-pset-{a.course}-ch{a.chapter}',
