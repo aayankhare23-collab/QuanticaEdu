@@ -187,6 +187,49 @@ class QuanticaVoice(SpeechService):
             check=True,
         )
         os.remove(raw)
+        level(out_path)
+
+
+TARGET_MEAN_DB = -23.0   # where the existing narration already sits, on average
+PEAK_CEILING_DB = -1.8   # leave headroom; one take came back at -1.4 and read as harsh
+
+
+def _measure(path):
+    """(mean_dB, peak_dB) via ffmpeg volumedetect. Reports at INFO, not ERROR."""
+    out = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path), "-af", "volumedetect",
+                          "-f", "null", "-"], capture_output=True, text=True).stderr
+    def grab(k):
+        m = re.search(rf"{k}: (-?[\d.]+) dB", out)
+        return float(m.group(1)) if m else None
+    return grab("mean_volume"), grab("max_volume")
+
+
+def level(path):
+    """Flat-gain each take to a common mean level.
+
+    ElevenLabs synthesises one line per request with no cross-request level matching, so
+    takes arrive up to 4 dB apart. In a narration that is a very audible jump partway
+    through, which is exactly what happened here: one line landed 1.5 dB hot with a -1.4 dB
+    peak and stood out from everything around it.
+
+    A flat gain, not loudnorm. loudnorm reshapes dynamics and would alter the performance;
+    the problem is only that the whole take sits at the wrong level, so shifting it bodily is
+    the correct and least invasive fix. Duration is untouched, which matters because the
+    scene timing is pinned to it.
+    """
+    mean, peak = _measure(path)
+    if mean is None or peak is None:
+        return
+    gain = TARGET_MEAN_DB - mean
+    if peak + gain > PEAK_CEILING_DB:          # never push a take into clipping
+        gain = PEAK_CEILING_DB - peak
+    if abs(gain) < 0.25:                       # already close enough, skip a re-encode
+        return
+    tmp = str(path) + ".lvl.mp3"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path),
+                    "-af", f"volume={gain:.2f}dB", "-ar", "44100", "-ac", "1",
+                    "-b:a", "160k", tmp], check=True)
+    os.replace(tmp, path)
 
 
 if __name__ == "__main__":

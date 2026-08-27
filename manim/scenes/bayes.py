@@ -64,7 +64,11 @@ SAY = [
     "You take the test and it comes back positive. Are you ninety nine percent sure you "
     "have it?",
     "Let's line up a hundred people and find out.",
-    "One percent of them, so one person, actually has the disease.",
+    # Was "One percent of them, so one person, actually has the disease." Two comma
+    # asides in one sentence, which the engine read as emphatic pauses: it came back
+    # 11% slower than the opener and 1.5 dB hotter, and it audibly stood out. One flat
+    # clause, no asides.
+    "So exactly one of them has the disease.",
     "The test is ninety nine percent accurate, so it catches them.",
     "But ninety nine percent accurate cuts both ways. One in every hundred healthy people "
     "gets flagged by mistake.",
