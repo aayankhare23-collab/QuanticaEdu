@@ -176,6 +176,14 @@ GRADING RULES:
   ("21/2" for "2 1/2"); that now denotes ten and a half and grades a wrong answer correct.
   accept must contain ans plus every reasonable typed variant (word form, exact terminating
   decimal for a fraction, unit spellings).
+- EXACTLY ONE ANSWER. A prompt that admits several correct values is broken even when accept
+  covers them all, because two students can both be right and type different numbers. Never
+  write "give a counterexample", "name a factor", or "find a number such that" when many
+  qualify, and never join two questions into one answer box. Pin it with a slick move instead,
+  the smallest or largest such value, the sum of all of them over a stated range, their
+  product, how many there are, or how many digits the result has. The slick move usually makes
+  the problem better, since it forces the student to characterise the whole family rather than
+  stop at the first example.
 - hints are 2, specific to that problem, never generic. The first reframes, the second gets
   concrete without handing over the answer.
 - SOLUTIONS ARE ANSWER-FIRST, in two parts. Part 1 does the problem directly and closes ON
@@ -301,7 +309,7 @@ lesson.review.forEach((b, i) => targets.push({ kind: 'review', idx: i, b }))
 const verdicts = await parallel(targets.map(t => () =>
   tryAgent(`Adversarially verify this single Quantica ${COURSE_TITLE} ${KEY} problem. BREAK it before passing.
 1. SOLVE IT YOURSELF from scratch, without following the given solution. Then read the question again to see WHICH value it asks for. Does your value match ans exactly?
-2. AMBIGUITY. Could a careful reader read this statement a different way? Is every unit stated? Is the ask unmistakable about which single value to type?
+2. AMBIGUITY. Could a careful reader read this statement a different way? Is every unit stated? Is the ask unmistakable about which single value to type? Could two students both be RIGHT while typing DIFFERENT numbers? If so the problem is broken and needs a slick move (smallest, largest, sum of all, product, how many, number of digits) to pin exactly one answer.
 3. Grader (normAns) trims, lowercases, strips spaces and commas, drops a leading plus, maps the unicode minus and en/em dashes onto ASCII '-', strips a leading '$', and folds a mixed number like "1 1/2" onto "3/2". Is ans in accept? Any two accept entries that differ ONLY by one of those (dead weight the grader can never reach)? Any accept variant that falsely accepts a wrong response? Any obvious correct typed form missing?
 4. EXACTLY 2 hints, specific to this problem, neither revealing the answer, and no note-to-self text. Sol is ANSWER-FIRST: part 1 closes ON \\(\\boxed{...}\\) with nothing trailing after the box in that sentence; part 2 optional and short. Flag any sol over ~600 chars.
 5. KaTeX valid and balanced, SINGLE backslashes, no em-dashes, colon-free prose, no poetic register, no verb of agency on a mathematical object.

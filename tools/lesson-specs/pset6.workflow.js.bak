@@ -246,9 +246,21 @@ ITEM SCHEMA:
   { "id", "x", "ans", "accept": [...], "hints": [...], "sol", "legendary"? }
 - id is the slot id you were handed, copied VERBATIM.
 - Answers are a SINGLE typed value. The grader normAns trims, lowercases, strips spaces and
-  commas, and drops a leading plus. It does NOT convert the unicode minus, so a negative answer
-  needs BOTH the ASCII and the unicode spelling in accept. accept must contain ans plus every
-  reasonable typed variant (word form, exact terminating decimal for a fraction, unit spellings).
+  commas, and drops a leading plus. It ALSO maps the unicode minus and the en/em dashes onto
+  ASCII '-', strips a leading '$', and folds a mixed number like "1 1/2" onto "3/2". So a
+  negative answer needs ONLY the ASCII spelling, and a separate unicode-minus entry is dead
+  weight the grader can never reach. Never add the whitespace-stripped form of a mixed number
+  ("21/2" for "2 1/2"); that now denotes ten and a half and grades a wrong answer correct.
+  accept must contain ans plus every reasonable typed variant (word form, exact terminating
+  decimal for a fraction, unit spellings).
+- EXACTLY ONE ANSWER. A prompt that admits several correct values is broken even when accept
+  covers them all, because two students can both be right and type different numbers. Never
+  write "give a counterexample", "name a factor", or "find a number such that" when many
+  qualify, and never join two questions into one answer box. Pin it with a slick move instead,
+  the smallest or largest such value, the sum of all of them over a stated range, their
+  product, how many there are, or how many digits the result has. The slick move usually makes
+  the problem better, since it forces the student to characterise the whole family rather than
+  stop at the first example.
 - Practice items: EXACTLY 1 hint. Challenge items: EXACTLY 2 hints. Never a note to yourself.
 - sol is wrapped in <p>...</p>, is answer-first, and part 1 closes ON \\(\\boxed{...}\\) with
   nothing trailing after the box in that sentence. An optional second sentence follows the box.
@@ -330,8 +342,8 @@ const targets = [...practice.map((b,i)=>({kind:'practice',idx:i,b})), ...challen
 const verdicts = await parallel(targets.map(t => () =>
   tryAgent(`Adversarially verify this single Quantica Algebra I chapter 5 problem-set item. BREAK it before passing.
 1. SOLVE IT YOURSELF from scratch. Then read the question again to see WHICH value it asks for. Does it match ans exactly?
-2. AMBIGUITY. Could a careful reader read the statement a different way? Is every unit stated? Is the ask unmistakable?
-3. Grader normAns trims, lowercases, strips spaces and commas, drops a leading plus, and does NOT convert the unicode minus. Is ans in accept? Any accept entry that falsely accepts a wrong response? Any obvious correct form missing?
+2. AMBIGUITY. Could a careful reader read the statement a different way? Is every unit stated? Is the ask unmistakable? Could two students both be RIGHT while typing DIFFERENT numbers? If so the problem is broken and needs a slick move (smallest, largest, sum of all, product, how many, number of digits) to pin exactly one answer.
+3. Grader normAns trims, lowercases, strips spaces and commas, drops a leading plus, maps the unicode minus and en/em dashes onto ASCII '-', strips a leading '$', and folds a mixed number like "1 1/2" onto "3/2". Is ans in accept? Any two accept entries that differ ONLY by one of those (dead weight the grader can never reach)? Any accept entry that falsely accepts a wrong response? Any obvious correct form missing?
 4. HINT COUNT: a practice item has EXACTLY 1 hint, a challenge item EXACTLY 2. No note-to-self text.
 5. sol wrapped in <p>...</p>, answer-first, part 1 closing ON \\(\\boxed{...}\\).
 6. KaTeX valid and balanced, SINGLE backslashes, no raw unescaped dollar sign inside math, no em-dashes, colon-free prose, no verb of agency on a mathematical object.

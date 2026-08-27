@@ -57,6 +57,16 @@ Rules that the grader and renderer depend on:
   typed variant (word forms like `four`, exact terminating decimal for a fraction, etc).
   Never ask for a list, a sentence, or "explain"; funnel to one value.
 
+  **Exactly one answer, always.** A prompt that admits several correct values is broken
+  even when the accept list covers them all, because two students can both be right and
+  type different numbers. "Give a counterexample", "name a factor" and "find a number
+  divisible by 2 and 6 but not 12" all fail this, and so does joining two questions into
+  one answer box. Pin it with a slick move instead. The smallest or largest such value,
+  the sum of all of them over a stated range, their product, how many there are, or how
+  many digits the result has. The slick move usually makes the problem better, since it
+  forces the student to characterise the whole family rather than stop at the first
+  example.
+
   **The unicode minus is handled for you.** Since commit `ab324c5` (2026-08-14) `normAns`
   also maps `−`, `–` and `—` onto `-` and strips a leading `$`, so a negative answer does
   NOT need a separate `−6` entry. Two entries differing only by the minus glyph are dead
