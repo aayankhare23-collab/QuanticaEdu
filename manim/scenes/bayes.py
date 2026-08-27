@@ -18,7 +18,13 @@ ground, ink type, and lime as a highlighter SURFACE rather than as type. Lime on
 too little contrast to be read as a letterform, which is why the payoff figure is a lime
 fill behind an ink outline instead of lime text.
 
-Silent on purpose. Feed and Reels autoplay muted, so nothing depends on a soundtrack.
+NARRATION. This is an organic piece rather than a cold ad, so it is narrated, and the
+voiceover drives the timing: each beat sits inside a self.voiceover() block and the visuals
+are held until the line finishes. Every line here is NEW, so it is not in manim/voiceovers/
+and the first render needs ELEVENLABS_API_KEY exported once. After that the takes are cached
+and committed and no further render needs a key. QUANTICA_VOICE=macos renders a keyless
+local-voice version for checking pacing; those takes are keyed by provider so they can never
+overwrite the ElevenLabs ones.
 """
 
 import sys
@@ -28,8 +34,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from manim import (DOWN, LEFT, PI, RIGHT, UP, Circle, FadeIn, FadeOut, Indicate, Sector,
                    Square, Text, VGroup, Write)
+from manim_voiceover import VoiceoverScene
 
 from base import QuanticaScene
+from voice import QuanticaVoice
 from brand import HONEY, INK, LIME, SAGE
 from typeset import LIGHT as AD
 
@@ -46,6 +54,28 @@ POSITIVES = SICK + FALSE_POS                # 2
 
 assert (SICK, FALSE_POS, POSITIVES) == (1, 1, 2)
 
+# Narration. These strings ARE the voiceover cache keys, byte for byte, so editing one
+# invalidates its take and the next render needs ELEVENLABS_API_KEY again. Numbers are
+# spelled out because the engine reads "99%" as "ninety nine percent sign" often enough
+# to matter, and a stray symbol in a cache key is hard to spot later.
+SAY = [
+    "Suppose one percent of people have a disease, and there is a test for it that is "
+    "ninety nine percent accurate.",
+    "You take the test and it comes back positive. Are you ninety nine percent sure you "
+    "have it?",
+    "Let's line up a hundred people and find out.",
+    "One percent of them, so one person, actually has the disease.",
+    "The test is ninety nine percent accurate, so it catches them.",
+    "But ninety nine percent accurate cuts both ways. One in every hundred healthy people "
+    "gets flagged by mistake.",
+    "So one of the ninety nine healthy people tests positive too.",
+    "Now look at everyone the test flagged. Two people, and only one of them is sick.",
+    "Your odds are one in two. A coin flip, not ninety nine percent.",
+    "The test did not lie. Almost nobody had the disease to begin with, so the handful of "
+    "false alarms is just as big as the real cases.",
+]
+
+
 
 def person(color, opacity=1.0, outline=None, sw=0):
     """A circular head over domed shoulders.
@@ -61,9 +91,19 @@ def person(color, opacity=1.0, outline=None, sw=0):
     return VGroup(body, head)
 
 
-class BayesPositive(QuanticaScene):
+class BayesPositive(QuanticaScene, VoiceoverScene):
+    """QuanticaScene first in the MRO, so its frame sizing, theme and font registration win.
+
+    VoiceoverScene contributes voiceover() and the speech service. It defines no setup() of
+    its own, so QuanticaScene.setup is called explicitly and the service attached after it.
+    """
+
     format_name = "reel"
     theme_name = "light"
+
+    def setup(self):
+        QuanticaScene.setup(self)
+        self.set_speech_service(QuanticaVoice())
 
     def construct(self):
         t = self.theme
@@ -96,9 +136,9 @@ class BayesPositive(QuanticaScene):
             fit(disp("1% of people", 58)),
             fit(disp("have a disease.", 58)),
         ).arrange(DOWN, buff=0.22).move_to([0, 3.1, 0])
-        for m in h:
-            show(m, 0.4)
-        self.wait(0.5)
+        with self.voiceover(text=SAY[0]):
+            for m in h:
+                show(m, 0.4)
 
         h2 = VGroup(
             fit(disp("A test for it is", 58)),
@@ -107,17 +147,15 @@ class BayesPositive(QuanticaScene):
         h2.next_to(h, DOWN, buff=0.75)
         show(h2[0], 0.4)
         self.play(Write(h2[1]), run_time=0.6)
-        self.wait(0.8)
 
         h3 = VGroup(
             fit(disp("You test positive.", 58)),
             fit(disp("Are you 99% sure?", 62, HONEY)),
         ).arrange(DOWN, buff=0.26)
         h3.next_to(h2, DOWN, buff=0.85)
-        show(h3[0], 0.4)
-        self.wait(0.3)
-        show(h3[1], 0.45)
-        self.wait(1.6)
+        with self.voiceover(text=SAY[1]):
+            show(h3[0], 0.4)
+            show(h3[1], 0.45)
         self.play(FadeOut(h), FadeOut(h2), FadeOut(h3), run_time=0.45)
 
         # ---- 2. the crowd ------------------------------------------------------
@@ -131,26 +169,26 @@ class BayesPositive(QuanticaScene):
         if people.width > 6.6:
             people.scale(6.6 / people.width)
         people.next_to(cap, DOWN, buff=0.5)
-        self.play(FadeIn(people, lag_ratio=0.006), run_time=1.6)
-        self.wait(0.8)
+        with self.voiceover(text=SAY[2]):
+            self.play(FadeIn(people, lag_ratio=0.006), run_time=1.6)
 
         # ---- 3. one of them is actually sick -----------------------------------
         sick = people[SICK_AT]
-        self.play(sick.animate.set_fill(LIME, 1.0), run_time=0.7)
-        self.play(Indicate(sick, scale_factor=1.35, color=LIME), run_time=0.8)
         c1 = note("1 actually has it", 38, AD.ink)
         c1.next_to(people, DOWN, buff=0.45)
-        show(c1, 0.4, DOWN * 0.1)
-        self.wait(1.5)
+        with self.voiceover(text=SAY[3]):
+            self.play(sick.animate.set_fill(LIME, 1.0), run_time=0.7)
+            self.play(Indicate(sick, scale_factor=1.35, color=LIME), run_time=0.8)
+            show(c1, 0.4, DOWN * 0.1)
 
         # ---- 4. run the test ---------------------------------------------------
         self.play(FadeOut(c1), run_time=0.3)
         c2 = note("the test flags them", 38)
         c2.next_to(people, DOWN, buff=0.45)
         m_sick = marker(sick, INK)
-        show(c2, 0.35, DOWN * 0.1)
-        self.play(Write(m_sick), run_time=0.6)
-        self.wait(1.2)
+        with self.voiceover(text=SAY[4]):
+            show(c2, 0.35, DOWN * 0.1)
+            self.play(Write(m_sick), run_time=0.6)
 
         # the 1% that is easy to forget: 1 in every 100 healthy people is flagged too
         self.play(FadeOut(c2), run_time=0.3)
@@ -158,21 +196,20 @@ class BayesPositive(QuanticaScene):
                     note("1 in 100 healthy people is flagged", 34, HONEY)
                     ).arrange(DOWN, buff=0.16)
         c3.next_to(people, DOWN, buff=0.42)
-        show(c3, 0.45, DOWN * 0.1)
-        self.wait(1.3)
+        with self.voiceover(text=SAY[5]):
+            show(c3, 0.45, DOWN * 0.1)
 
         false_p = people[FALSE_AT]
         m_false = marker(false_p, HONEY)
-        self.play(false_p.animate.set_fill(HONEY, 1.0), run_time=0.4)
-        self.play(Write(m_false), run_time=0.6)
-        self.play(Indicate(false_p, scale_factor=1.35, color=HONEY), run_time=0.8)
-        self.wait(1.4)
+        with self.voiceover(text=SAY[6]):
+            self.play(false_p.animate.set_fill(HONEY, 1.0), run_time=0.4)
+            self.play(Write(m_false), run_time=0.6)
+            self.play(Indicate(false_p, scale_factor=1.35, color=HONEY), run_time=0.8)
 
         # ---- 5. pull the two positives out of the crowd ------------------------
         self.play(FadeOut(c3), run_time=0.3)
         rest = VGroup(*[p for i, p in enumerate(people) if i not in (SICK_AT, FALSE_AT)])
         self.play(rest.animate.set_opacity(0.12), FadeOut(cap), run_time=0.9)
-        self.wait(0.4)
 
         pair = VGroup(VGroup(sick, m_sick), VGroup(false_p, m_false))
         self.play(FadeOut(rest), run_time=0.5)
@@ -183,29 +220,26 @@ class BayesPositive(QuanticaScene):
         self.play(pair.animate.scale(2.1), run_time=0.8)
         self.play(pair[0].animate.move_to([-1.8, 1.7, 0]),
                   pair[1].animate.move_to([1.8, 1.7, 0]), run_time=0.9)
-        self.wait(0.6)
 
         lab = VGroup(fit(note("really sick", 34, AD.ink), 3.0),
                      fit(note("false alarm", 34, AD.gray), 3.0))
         for l, grp in zip(lab, pair):
             l.next_to(grp, DOWN, buff=0.45)
-        self.play(FadeIn(lab[0], shift=DOWN * 0.1), run_time=0.4)
-        self.play(FadeIn(lab[1], shift=DOWN * 0.1), run_time=0.4)
-        self.wait(1.3)
+        with self.voiceover(text=SAY[7]):
+            self.play(FadeIn(lab[0], shift=DOWN * 0.1), run_time=0.4)
+            self.play(FadeIn(lab[1], shift=DOWN * 0.1), run_time=0.4)
 
         # ---- 6. the answer -----------------------------------------------------
         two = fit(disp("2 test positive.", 56))
         one = fit(disp("1 is sick.", 56))
         tg = VGroup(two, one).arrange(DOWN, buff=0.22)
         tg.next_to(lab, DOWN, buff=0.95)
-        show(two, 0.4)
-        show(one, 0.4)
-        self.wait(1.0)
-
         fifty = fit(disp("50%", 130, AD.ink))
         fifty.next_to(tg, DOWN, buff=0.55)
-        self.play(Write(fifty), run_time=0.8)
-        self.wait(1.8)
+        with self.voiceover(text=SAY[8]):
+            show(two, 0.4)
+            show(one, 0.4)
+            self.play(Write(fifty), run_time=0.8)
 
         # ---- 7. the point ------------------------------------------------------
         self.play(FadeOut(VGroup(pair, lab, tg, fifty)), run_time=0.5)
@@ -213,11 +247,10 @@ class BayesPositive(QuanticaScene):
                    fit(note("Because almost nobody", 42, AD.gray)),
                    fit(note("has it in the first place.", 42, AD.gray))
                    ).arrange(DOWN, buff=0.34).move_to([0, 1.5, 0])
-        self.play(Write(e[0]), run_time=0.7)
-        self.wait(0.4)
-        show(e[1], 0.4)
-        show(e[2], 0.4)
-        self.wait(1.8)
+        with self.voiceover(text=SAY[9]):
+            self.play(Write(e[0]), run_time=0.7)
+            show(e[1], 0.4)
+            show(e[2], 0.4)
 
         sig = VGroup(disp("Quantica", 52, AD.ink), note("quanticaedu.com", 36)
                      ).arrange(DOWN, buff=0.22)
