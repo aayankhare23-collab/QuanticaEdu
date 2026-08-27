@@ -5,7 +5,14 @@ Renders branded 1080-wide animations for Facebook and Instagram ads. Separate fr
 
 ## Setup
 
-The venv already exists. If it ever needs rebuilding, from the repo root:
+The venv already exists in the main checkout. A git worktree does not get it, since it is
+gitignored, so symlink it in rather than building a second copy:
+
+```bash
+ln -sfn /path/to/main/checkout/manim/.venv manim/.venv
+```
+
+If it ever needs rebuilding, from the repo root:
 
 ```bash
 python3 -m venv manim/.venv && manim/.venv/bin/pip install -r manim/requirements.txt
@@ -96,6 +103,7 @@ cannot get it half right.
 | `scenes/pythagoras.py` | `PythagorasWithMilo`, the narrated `a² + b² = c²` area proof |
 | `scenes/circle_area.py` | `CircleAreaWithMilo`, the narrated `A = πr²` rearrangement proof |
 | `scenes/pythagorean_proof.py` | `PythagoreanProofWithMilo`, the older silent cut of the Pythagorean proof |
+| `scenes/bayes.py` | `BayesPositive`, a 97% accurate test whose positive result is 3% right. Silent, type-only |
 | `render.py` | Render plus the ffmpeg pass that makes the file Meta-safe |
 | `fonts/` | Font files: Chillax Semibold and Space Grotesk |
 | `out/` | Finished MP4s, gitignored |

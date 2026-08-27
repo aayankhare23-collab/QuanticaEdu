@@ -28,7 +28,6 @@ TARGETS = {
     "v8": "quantica-08-squares",
     "v9": "quantica-09-down20up20",
     "v10": "quantica-10-paycut",
-    "v11": "quantica-11-bayes",
 }
 
 

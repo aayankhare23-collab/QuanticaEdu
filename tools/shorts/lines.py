@@ -145,18 +145,5 @@ V10 = [
     "The cut and the raise are measured against different numbers.",
 ]
 
-V11 = [
-    "A test for a disease is ninety seven percent accurate.",
-    "You test positive. What are the odds you actually have it?",
-    "Almost everyone says ninety seven percent. It's about three.",
-    "The catch is that the disease is rare. One person in a thousand.",
-    "So line up a hundred thousand people.",
-    "A hundred of them have it, and ninety seven of those test positive.",
-    "The other ninety nine thousand nine hundred are healthy, but the test is wrong three percent of the time. Nearly three thousand of them test positive too.",
-    "Everyone with a positive result steps forward. Three thousand and ninety four people.",
-    "Only ninety seven are actually sick. That is three point one percent.",
-    "A test can be accurate and still be mostly false alarms, when the thing it hunts for is rare.",
-]
-
 SETS = {"v1": V1, "v2": V2, "v3": V3, "v4": V4, "v5": V5, "v6": V6,
-        "v7": V7, "v8": V8, "v9": V9, "v10": V10, "v11": V11}
+        "v7": V7, "v8": V8, "v9": V9, "v10": V10}

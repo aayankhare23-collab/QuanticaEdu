@@ -26,6 +26,7 @@ SCENES = {
     "PythagorasWithMilo": {"file": "pythagoras.py", "fixed": "reel"},
     "CircleAreaWithMilo": {"file": "circle_area.py", "fixed": "reel"},
     "PythagoreanProofWithMilo": {"file": "pythagorean_proof.py", "fixed": "reel"},
+    "BayesPositive": {"file": "bayes.py"},
 }
 
 
