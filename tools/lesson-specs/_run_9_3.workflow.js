@@ -184,9 +184,13 @@ GRADING RULES:
 - prob block: {"t":"prob","xp":5-8,"x","ans","accept":[...],"hints":[exactly 2],"sol"}
 - review item: same but NO t and NO xp fields, and still exactly 2 hints.
 - Answers are a SINGLE typed value. The grader (normAns) trims, lowercases, strips spaces and
-  commas, and drops a leading plus. It does NOT convert the unicode minus, so a negative answer
-  needs BOTH the ASCII and the unicode spelling in accept. accept must contain ans plus every
-  reasonable typed variant (word form, exact terminating decimal for a fraction, unit spellings).
+  commas, and drops a leading plus. It ALSO maps the unicode minus and the en/em dashes onto
+  ASCII '-', strips a leading '$', and folds a mixed number like "1 1/2" onto "3/2". So a
+  negative answer needs ONLY the ASCII spelling, and a separate unicode-minus entry is dead
+  weight the grader can never reach. Never add the whitespace-stripped form of a mixed number
+  ("21/2" for "2 1/2"); that now denotes ten and a half and grades a wrong answer correct.
+  accept must contain ans plus every reasonable typed variant (word form, exact terminating
+  decimal for a fraction, unit spellings).
 - hints are 2, specific to that problem, never generic. The first reframes, the second gets
   concrete without handing over the answer.
 - SOLUTIONS ARE ANSWER-FIRST, in two parts. Part 1 does the problem directly and closes ON
@@ -313,7 +317,7 @@ const verdicts = await parallel(targets.map(t => () =>
   tryAgent(`Adversarially verify this single Quantica ${COURSE_TITLE} ${KEY} problem. BREAK it before passing.
 1. SOLVE IT YOURSELF from scratch, without following the given solution. Then read the question again to see WHICH value it asks for. Does your value match ans exactly?
 2. AMBIGUITY. Could a careful reader read this statement a different way? Is every unit stated? Is the ask unmistakable about which single value to type?
-3. Grader (normAns) trims, lowercases, strips spaces and commas, drops a leading plus, and does NOT convert the unicode minus. Is ans in accept? Any accept variant that falsely accepts a wrong response? Any obvious correct typed form missing?
+3. Grader (normAns) trims, lowercases, strips spaces and commas, drops a leading plus, maps the unicode minus and en/em dashes onto ASCII '-', strips a leading '$', and folds a mixed number like "1 1/2" onto "3/2". Is ans in accept? Any two accept entries that differ ONLY by one of those (dead weight the grader can never reach)? Any accept variant that falsely accepts a wrong response? Any obvious correct typed form missing?
 4. EXACTLY 2 hints, specific to this problem, neither revealing the answer, and no note-to-self text. Sol is ANSWER-FIRST: part 1 closes ON \\(\\boxed{...}\\) with nothing trailing after the box in that sentence; part 2 optional and short. Flag any sol over ~600 chars.
 5. KaTeX valid and balanced, SINGLE backslashes, no em-dashes, colon-free prose, no poetic register, no verb of agency on a mathematical object.
 6. SCOPE: nothing owned by a neighbouring lesson or chapter.

@@ -61,8 +61,11 @@ Rules that the grader and renderer depend on:
   also maps `−`, `–` and `—` onto `-` and strips a leading `$`, so a negative answer does
   NOT need a separate `−6` entry. Two entries differing only by the minus glyph are dead
   weight. Older lessons are full of them because this file said the opposite until
-  2026-08-26. `tools/check_lesson.py`'s own `norm()` still does not map the minus, so it
-  will not flag the redundancy.
+  2026-08-26, and 908 such entries were stripped from the corpus on 2026-08-26.
+  `tools/check_lesson.py` and `tools/check_pset.py` now mirror `normAns` exactly, so they
+  DO flag the redundancy as a duplicate accept entry. Both must report 0 before a build.
+  One more trap from the same commit: `normAns` folds `"1 1/2"` onto `"3/2"`, so the old
+  whitespace-stripped spelling `"11/2"` is now a different number. Never put it in `accept`.
 - **Solutions are answer-first, in two parts** (changed 2026-07-26, replaces the old
   "end on the box / name the trap first" rule):
   1. **The solve.** Do the problem directly and plainly, and close this part on
