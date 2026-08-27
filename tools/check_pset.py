@@ -13,7 +13,24 @@ from collections import Counter
 
 
 def norm(a):
-    return str(a).strip().lower().replace(' ', '').replace(',', '').lstrip('+')
+    """Mirror of normAns in landing.html, which is what actually grades a student.
+
+    Kept in lockstep on purpose. More permissive than the grader and this invents
+    redundancies that are not real; less permissive and it misses dead accept
+    entries, which is how every lesson from Algebra I chapter 4 on ended up with
+    both "-91.0" and "\u221291.0" in its accept list. Port any normAns change to
+    BOTH this and check_lesson.py.
+    """
+    s = ('' if a is None else str(a)).strip()
+    s = re.sub(r'[\u2212\u2013\u2014]', '-', s)          # U+2212 and the dashes are all a minus
+    s = s.lower().replace(',', '')
+    s = re.sub(r'^(-?)\$|^\$(-?)', r'\1\2', s, count=1)   # "$12", "-$3" and "$-3" shed the $
+    m = re.match(r'^(-?)(\d{1,9})[ \t]+(\d{1,9})\s*/\s*(\d{1,9})\Z', s)
+    if m:                                                 # "1 1/2" -> "3/2", BEFORE spaces go
+        den = int(m.group(4))
+        if den > 0:
+            s = m.group(1) + str(int(m.group(2)) * den + int(m.group(3))) + '/' + str(den)
+    return re.sub(r'^\+', '', re.sub(r'\s+', '', s), count=1)
 
 
 def brace_span(s, i):
@@ -39,13 +56,18 @@ def boxed_values(sol):
 
 def latex_to_value(t):
     t = t.strip()
+    # \boxed{4\tfrac{3}{5}} is a mixed number, but flattening it glues the parts into
+    # "43/5", forty-three fifths. normAns only folds a mixed number when a space
+    # separates the whole part, so put that space back before the general rule runs.
+    t = re.sub(r'(\d)\s*\\[tdc]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}', r'\1 \2/\3', t)
     t = re.sub(r'\\[tdc]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}', r'\1/\2', t)
     # A word answer is boxed as \text{parallel}. check_lesson.py already strips this;
     # without the same rule here every word-answer item reads as \textparallel != parallel.
     t = re.sub(r'\\(?:text|mathrm|mbox)\s*\{([^{}]*)\}', r'\1', t)
     for junk in ('\\!', '\\,', '\\ ', '\\left', '\\right', '\\$', '{', '}'):
         t = t.replace(junk, '')
-    return re.sub(r'\s+', '', t.replace('\u2212', '-'))
+    # No whitespace collapse here: norm() strips it last, after the mixed-number fold.
+    return t.replace('\u2212', '-').strip()
 
 
 def numeric(s):
