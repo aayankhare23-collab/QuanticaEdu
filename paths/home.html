@@ -206,6 +206,31 @@
   .avatar{width:32px;height:32px;border-radius:50%;background:#E7F4DA;border:1px solid #C6E1B4;display:grid;place-items:center;cursor:pointer}
   .avatar svg{width:22px;height:22px}
   .avatar{background:#E7F4DA}
+  /* Upgrade pill. Free accounts had no way to learn a paid tier exists: the home shows a
+     course they can already use, and pricing lives on a marketing page they never return to.
+     Sits left of the avatar and survives the 520px breakpoint, unlike .sig and .streak,
+     because discovery is the whole point of it. Hidden until entitlement is known so a
+     subscriber never sees "Upgrade" flash. */
+  .upsell{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:0;
+    background:var(--lime);color:var(--forest);border:1.5px solid var(--forest);
+    font-family:var(--ff-ui);font-weight:700;font-size:.82rem;text-decoration:none;
+    white-space:nowrap;box-shadow:0 3px 0 var(--forest);
+    transition:transform .09s ease,box-shadow .09s ease}
+  .upsell:hover{background:#D6F5B0}
+  .upsell:active{transform:translateY(3px);box-shadow:0 0 0 var(--forest)}
+  .upsell[hidden]{display:none}
+  .upsell svg{flex:0 0 auto}
+  /* Below 420px the star goes and the word stays. The word is what tells someone a paid
+     tier exists, which is this control's entire job; the star is decoration. Dropping
+     it instead of the label also hands ~29px back to the course pill, which was being
+     squeezed from 83px to 40px and rendering "Prealgebra" as "Prea". */
+  @media(max-width:420px){
+    .upsell svg{display:none}
+    .upsell{padding:6px 9px;font-size:.78rem;box-shadow:0 2px 0 var(--forest)}
+    .upsell:active{transform:translateY(2px)}
+  }
+  /* The pill must never be the thing that truncates the course name. */
+  .coursesel .cur{flex:0 0 auto;white-space:nowrap}
   .acct{position:relative}
   .acct-menu{position:absolute;top:calc(100% + 10px);right:0;width:236px;background:var(--card);border:1px solid var(--line);border-radius:0;box-shadow:0 22px 50px -20px rgba(20,60,40,.4);padding:7px;z-index:90;animation:acctpop .13s ease-out}
   .acct-menu[hidden]{display:none}
@@ -253,10 +278,17 @@
   .coursesel .cur{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   @media(max-width:520px){
     .tb-right .sig,.streak{display:none}
-    .topbar{padding:0 12px;gap:10px}
     .brand-word{display:none}                    /* keep the mark, drop the wordmark */
-    .hnav{margin-left:0}
     .hnav-tab{padding:7px 10px}
+    /* Six controls do not fit one phone-width row once the Upgrade pill is there, and the
+       tabs were being drawn underneath it. Shaving padding would only break again when a
+       longer course name ships (Counting & Probability), so the section tabs get their own
+       row and nothing truncates at any width. --topbar is redefined because .chrail and
+       .rail hang their sticky offsets off it. */
+    :root{--topbar:100px}
+    .topbar{height:auto;min-height:var(--topbar);flex-wrap:wrap;align-content:center;
+      row-gap:4px;padding:8px 12px;gap:10px}
+    .hnav{order:9;flex:1 0 100%;margin-left:0}
   }
 
   /* shell: chapter rail | main | rail */
@@ -540,6 +572,7 @@
   <div class="tb-right">
     <div class="sig" title="Your mastery fills in as you learn; nothing yet"><span class="ring"><i></i></span><span>Mastery</span></div>
     <div class="streak" id="streakPill" style="display:none"><span aria-hidden="true">🌱</span><b>0</b>&nbsp;days</div>
+    <a class="upsell" id="upsellBtn" href="/#pricing" hidden data-cta="home_upgrade" aria-label="See Quantica pricing and upgrade"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.4.8-4.7 4.3 1.3 6.3L12 17l-5.6 3 1.3-6.3L3 9.4l6.4-.8z"/></svg><span>Upgrade</span></a>
     <div class="acct" id="acct">
       <button class="avatar lift" id="acctBtn" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu"><svg viewBox="0 0 24 24" fill="none" stroke="#3E7A4E" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></button>
       <div class="acct-menu" id="acctMenu" role="menu" hidden>
@@ -1240,10 +1273,51 @@
     if(setEmail) setEmail.textContent = on ? user.email : 'Browsing as guest';
     if(setAuthBtn) setAuthBtn.textContent = on ? 'Sign out' : 'Sign in to save your progress';
   }
+  /* Does this account still need a subscription? Decides whether the Upgrade pill shows.
+
+     PAYWALL_LIVE_AT is duplicated from landing.html on purpose; this page is standalone and
+     cannot read that file. If the date ever moves in landing.html, move it here too, or a
+     grandfathered account starts being sold what it already owns.
+
+     Entitlement has two halves. Legacy is derivable from the account itself, so it costs
+     nothing. Paid lives in Firestore, and this page loads only app-compat and auth-compat, so
+     it is fetched over the REST API rather than pulling in the whole firestore SDK for one
+     document read. The rules already allow a user to read their own state/subscription. */
+  var PAYWALL_LIVE_AT = Date.parse('2026-08-24T01:12:00-07:00');
+  function isLegacy(u){
+    try{
+      var t = u && u.metadata && u.metadata.creationTime;
+      return !!t && Date.parse(t) <= PAYWALL_LIVE_AT;   // <=, the tie belongs to the user
+    }catch(e){ return false; }
+  }
+  function showUpsell(on){ var b=document.getElementById('upsellBtn'); if(b) b.hidden=!on; }
+  function decideUpsell(u){
+    if(!u) return showUpsell(false);
+    if(Date.now() < PAYWALL_LIVE_AT) return showUpsell(false);   // nothing to sell yet
+    if(isLegacy(u)) return showUpsell(false);                    // keeps full access for free
+    u.getIdToken().then(function(tok){
+      return fetch('https://firestore.googleapis.com/v1/projects/quanticaedu-a077d/databases/(default)'
+        + '/documents/users/' + u.uid + '/state/subscription',
+        { headers:{ Authorization:'Bearer ' + tok } });
+    }).then(function(r){
+      if(r.status===404) return null;                            // no doc means never subscribed
+      if(!r.ok) throw new Error('subscription read failed: ' + r.status);
+      return r.json();
+    }).then(function(d){
+      var t = d && d.fields && d.fields.type && d.fields.type.stringValue;
+      showUpsell(t !== 'paid');
+    }).catch(function(){
+      // Unknown entitlement. Show it. A subscriber seeing an Upgrade pill is a small
+      // annoyance; a free account never learning the tier exists is the bug being fixed.
+      showUpsell(true);
+    });
+  }
+
   if(auth){ auth.onAuthStateChanged(function(u){ user=u||null; render();
     window.__authResolved=true;
     if(!u){ location.assign('/paths/landing.html'); return; }        // the home needs an account
     var bg=document.getElementById('bootGate'); if(bg) bg.remove();
+    decideUpsell(u);
   }); }
   else { location.assign('/paths/landing.html'); }  // Firebase unavailable -> can't confirm an account, so fail CLOSED to the public landing (never expose the home)
   render();
