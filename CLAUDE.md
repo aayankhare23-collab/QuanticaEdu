@@ -160,5 +160,16 @@ exceptions.
 - Funnel coverage, verified 2026-08-24: Ads Manager sees impression, PageView, StartFreeClick,
   CompleteRegistration, InitiateCheckout and Purchase (with the real 14.99/99.99 plan value).
   GA4 sees page_view, lesson_start, paywall_hit, sign_up, segmentable by utm_content, but has
-  NO purchase event, so revenue by ad is Meta-only. `lesson_start` is GA4-only, so Meta cannot
-  optimise toward it. Each signup also stores its first-touch UTMs on the user doc in Firestore.
+  NO purchase event, so revenue by ad is Meta-only.
+  **Meta DOES see the lesson-start moment.** Corrected 2026-08-27; this file previously said
+  `lesson_start` was GA4-only and that Meta could not optimise toward it, which is false and
+  cost real thinking. Only the event NAME is GA4-only. The same moment fires
+  `fbTrack('ViewContent')` in `landing.html` (`showLesson`, next to the `lesson_start` line),
+  installed 2026-08-07 in commit `228a434` and verified live. So the ad set CAN optimise for
+  ViewContent, and should, because CompleteRegistration sits behind finishing a whole lesson
+  in guest mode and will never hit the ~50 conversions a week the learning phase needs.
+  Each signup also stores its first-touch UTMs on the user doc in Firestore.
+- **Guest mode is deliberate.** No account is needed to work Chapter 1; progress lives in
+  localStorage and syncs if they sign up later. The signup prompt fires only from `markDone`
+  (`__signinPrompt.afterLesson()`) and offers "Maybe later". Do not treat a low
+  CompleteRegistration count as a broken funnel; it is the design.
