@@ -2985,6 +2985,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       var _homeSent=false;
       window.__goHomeNow=function(){
         if(_homeSent) return; _homeSent=true;
+        /* A brand-new account has never seen the questionnaire, and it could not run before
+           now: shouldAutoOpen() refuses while ?signin=1 is in the URL and while the auth modal
+           is up, both true for the whole signup. So the only thing that ever opened it was the
+           3s safety net, firing later on whatever screen they had wandered to, which is the
+           "it ambushed me on the dashboard" report. Run it here instead, in context, while
+           they are still looking at the thing they just signed up for. Every conversion event
+           has already fired above; this only changes where they land. */
+        if(window.__obFirstRun && window.Onboard && !Onboard.seen() &&
+           Onboard.open({force:true})) return;
         location.assign('/paths/home.html');
       };
       setTimeout(window.__goHomeNow, 5000);
@@ -3024,6 +3033,8 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
             if(Object.keys(_at).length) Rewards.setMeta('attr',_at);
           }catch(e){}
         }
+        // consumed by __goHomeNow to decide between the questionnaire and the roadmap
+        if(isNewAcct) window.__obFirstRun = true;
         if(isNewAcct && window.track) track('sign_up',{method:prov||'password'});
         // Meta's signup conversion. No email or name is passed, only the method.
         if(isNewAcct && window.fbTrack) fbTrack('CompleteRegistration',{method:prov||'password'});
@@ -9803,6 +9814,55 @@ async function sendTutorMsg() {
   }
   function show(){ build(); void el.offsetHeight; /* force reflow so the transition fires */ el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; el.style.pointerEvents='auto'; }
   function hide(){ if(!el) return; el.style.opacity='0'; el.style.transform='translateX(-50%) translateY(24px)'; el.style.pointerEvents='none'; }
+  /* Offered once, immediately after the onboarding questionnaire, which is the only point in
+     the funnel where someone has stated a goal and has not yet been asked for anything. It is
+     deliberately not a wall: both buttons continue, and it is never shown twice. */
+  window.__premiumPrompt={
+    _key:'qa_premium_prompt_v1',
+    seen:function(){ try{ return localStorage.getItem(this._key)==='1'; }catch(e){ return false; } },
+    _mark:function(){ try{ localStorage.setItem(this._key,'1'); }catch(e){} },
+    afterOnboarding:function(cont){
+      try{
+        if(this.seen()) return false;
+        if(!(window.paywallOn && window.paywallOn())) return false;   // nothing to sell yet
+        var a=window._access||{};
+        if(a.type==='paid'||a.type==='legacy') return false;          // already has everything
+        if(window.WS && WS.active) return false;                      // reading a lesson, do not cover it
+        var go=function(){ try{ cont&&cont(); }catch(e){} };
+        this._mark();
+        var ov=document.createElement('div');
+        ov.id='premOv';
+        ov.style.cssText='position:fixed;inset:0;z-index:4350;background:rgba(12,26,16,.5);display:grid;place-items:center;padding:20px';
+        ov.innerHTML=
+          '<div role="dialog" aria-modal="true" aria-labelledby="premH" style="max-width:440px;width:100%;background:#fff;border:1.5px solid #14532D;border-radius:0;padding:26px 24px;font-family:inherit">'+
+          '<h3 id="premH" style="margin:0 0 10px;font-size:1.32rem;color:#14532D">You are set up. Chapter 1 is on us.</h3>'+
+          '<p style="margin:0 0 6px;color:#3d4f42;line-height:1.55">Every course opens with a free chapter, no card needed. A plan unlocks every chapter of every course, Milo on every problem, and the practice and challenge sets.</p>'+
+          '<p style="margin:0 0 18px;color:#3d4f42;line-height:1.55">You can decide later. Nothing is locked until you reach Chapter 2.</p>'+
+          '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
+          '<button id="premGo" style="flex:1 1 190px;background:#beff8b;border:1.5px solid #14532D;border-radius:0;padding:12px 16px;font-family:inherit;font-weight:700;font-size:.95rem;color:#0a0a0a;cursor:pointer">Start my first lesson</button>'+
+          '<button id="premSee" style="flex:0 1 auto;background:transparent;border:1.5px solid rgba(10,10,10,.22);border-radius:0;padding:12px 18px;font-family:inherit;font-weight:600;font-size:.95rem;color:#14532D;cursor:pointer">See plans</button>'+
+          '</div></div>';
+        document.body.appendChild(ov);
+        var shut=function(){ if(ov.parentNode) ov.parentNode.removeChild(ov); };
+        ov.querySelector('#premGo').onclick=function(){
+          if(window.track) track('premium_prompt_continue',{});
+          shut(); go();
+        };
+        ov.querySelector('#premSee').onclick=function(){
+          if(window.track) track('premium_prompt_see_plans',{});
+          if(window.fbTrack) fbTrack('ViewContent',{content_type:'pricing'});
+          shut(); location.assign('/#pricing');
+        };
+        ov.addEventListener('click',function(e){ if(e.target===ov){ shut(); go(); } });
+        document.addEventListener('keydown',function esc(e){
+          if(e.key==='Escape'){ document.removeEventListener('keydown',esc); shut(); go(); }
+        });
+        setTimeout(function(){ var b=ov.querySelector('#premGo'); if(b) b.focus(); },40);
+        if(window.track) track('premium_prompt_shown',{});
+        return true;
+      }catch(e){ return false; }
+    }
+  };
   window.__signinPrompt={
     afterLesson:function(){
       if(seen()||signedIn()) return;
@@ -10104,6 +10164,14 @@ async function sendTutorMsg() {
   function snoozed(){ try{ return sessionStorage.getItem(KEY+'.skip')==='1'; }catch(e){ return false; } }
   function snooze(){ try{ sessionStorage.setItem(KEY+'.skip','1'); }catch(e){} }
 
+  /* Signup opens this questionnaire in place of the redirect to the roadmap, so backing out
+     of it must still deliver them somewhere. Only fires on that first run; a returning
+     visitor who dismisses it stays exactly where they were. */
+  function firstRunExit(){
+    if(!window.__obFirstRun) return;
+    window.__obFirstRun=false;
+    try{ location.assign('/paths/home.html'); }catch(e){}
+  }
   window.Onboard={
     flow:FLOW,
     /* The single decision about whether the questionnaire may open ITSELF. Both triggers call
@@ -10135,10 +10203,10 @@ async function sendTutorMsg() {
     back:function(){ if(i>0){ i--; render(); } },
     // Skip now means "not now", not "never again on every device forever". Nothing is written
     // to localStorage and done is never set, so it returns on the next visit.
-    skip:function(){ A.skipped=1; saveAnswers(); snooze(); close(); if(window.track) track('onboarding_skip',{step:i,flow:FLOW}); },
+    skip:function(){ A.skipped=1; saveAnswers(); snooze(); close(); if(window.track) track('onboarding_skip',{step:i,flow:FLOW}); firstRunExit(); },
     // Shared by Escape, browser Back and the backdrop. Every one of those used to eject the
     // visitor from the app entirely rather than close the modal.
-    snoozeClose:function(){ snooze(); close(); if(window.track) track('onboarding_dismiss',{step:i,flow:FLOW}); },
+    snoozeClose:function(){ snooze(); close(); if(window.track) track('onboarding_dismiss',{step:i,flow:FLOW}); firstRunExit(); },
     go:function(slug){
       markOnboarded(); close();
       // silent, because setCourse without it re-renders the dashboard they are about to leave.
@@ -10152,16 +10220,24 @@ async function sendTutorMsg() {
       // button and loses their place. In that case switch the course and leave them where they
       // are. shouldAutoOpen now prevents most of this, but the modal can still be opened by
       // hand from the dashboard link, and losing someone's lesson is bad enough to guard twice.
-      window.__obEntry='onboarding';
-      if(!openedOverLesson){
-        try{
-          var reg=window.COURSE_REG&&window.COURSE_REG[slug];
-          var first=null;
-          if(reg) reg.toc.some(function(ch){ return ch.s.some(function(s){ if(reg.lessons[s[0]]){ first=s[0]; return true; } }); });
-          if(first && typeof window.gotoLesson==='function') gotoLesson(first);
-        }catch(e){}
-      }
-      setTimeout(function(){ window.__obEntry=null; },0);
+      var _land=function(){
+        window.__obEntry='onboarding';
+        if(!openedOverLesson){
+          try{
+            var reg=window.COURSE_REG&&window.COURSE_REG[slug];
+            var first=null;
+            if(reg) reg.toc.some(function(ch){ return ch.s.some(function(s){ if(reg.lessons[s[0]]){ first=s[0]; return true; } }); });
+            if(first && typeof window.gotoLesson==='function') gotoLesson(first);
+          }catch(e){}
+        }
+        setTimeout(function(){ window.__obEntry=null; },0);
+      };
+      // The one moment they have just told us what they want to learn and have not yet been
+      // asked for anything. Offer the plan once, here, then get out of the way. It never
+      // blocks: both buttons continue into the lesson, and it is skipped entirely for anyone
+      // who already has access or who opened this flow over a lesson they were reading.
+      if(window.__premiumPrompt && window.__premiumPrompt.afterOnboarding(_land)) return;
+      _land();
     },
     open:function(opts){
       opts=opts||{};
