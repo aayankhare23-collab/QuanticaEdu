@@ -28,16 +28,17 @@ COURSE_META={
    # Describes what is written, not what is planned. This used to promise 15 chapters reaching
    # quadratics, functions and logarithms. Seven of those chapters have no content, so Google
    # was being told the course teaches material that does not exist, next to a 14.99 offer.
-   # Update this prose when chapters 9 to 15 actually land; the counts elsewhere are computed
+   # Update this prose when chapters 10 to 15 actually land; the counts elsewhere are computed
    # and will move on their own.
    "blurb":("Learn Algebra I online by solving real problems, not memorizing. Quantica's Algebra I course "
-     "covers expressions, linear equations, exponents and radicals, systems, and graphing, "
+     "covers expressions, linear equations, exponents and radicals, systems, graphing, "
+     "inequalities, and factoring quadratics, "
      "with instant feedback and Milo, a tutor that helps you find the answer yourself. "
      "Chapter 1 is free, and more chapters are being written."),
    "note":"New lessons arrive regularly while Algebra I is in early access.",
    "workload":"P15W", "cross":("prealgebra","Prealgebra"),
    "faq":[("Is the Algebra I course free?","Chapter 1 of every course is free and no card is required to begin. Everything after that is $14.99 a month."),
-          ("What does Quantica's Algebra I cover?","So far: expressions, linear equations, exponents and radicals, systems of equations, and graphing. Algebra I is in early access and later chapters, through quadratics and functions, are still being written."),
+          ("What does Quantica's Algebra I cover?","So far, expressions, linear equations, exponents and radicals, systems of equations, graphing, inequalities, and factoring quadratics. Algebra I is in early access and later chapters, through the quadratic formula, functions and logarithms, are still being written."),
           ("Do I need to finish Prealgebra first?","No, but the two fit together. If arithmetic and fractions feel shaky, Prealgebra builds the ground Algebra I stands on."),
           ("How is Quantica's Algebra I different?","You learn by solving real problems with instant feedback and layered hints, so each idea emerges from your own work instead of being memorized.")]},
 }

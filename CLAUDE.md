@@ -147,9 +147,13 @@ exceptions.
   (both entry pages now carry a canonical-host redirect as backstop). Those checks were all run
   with the paywall OFF and `?paytest=1` bypassing the free-mode guard, which is why the live
   gate itself is still unproven.
-  Still outstanding: Google sign-in tested from inside the Instagram/Facebook in-app browser
-  (founder's phone), and one clean run to observe the Meta Purchase event on a completed
-  payment now that a real buyer can reach checkout without `?paytest=1`.
+  Google sign-in inside the Instagram in-app browser PASSED on 2026-08-27, tested on the
+  founder's phone by DMing himself the link. The page loads and Google OAuth completes, so
+  the `disallowed_useragent` failure that blocks embedded webviews for many sites is not
+  happening here. No in-app-browser detection is needed. `?signin=1` also works on `/landing`,
+  verified at 375x812 as a first-run visitor; a claim that it was broken was wrong.
+  Still outstanding: one clean run to observe the Meta Purchase event on a completed payment
+  now that a real buyer can reach checkout without `?paytest=1`.
 - **Meta ads: LIVE.** Campaign `signups-cold-2026-08`, ad set `us-parents-v1` (US only, minimum
   age 25, suggested 25 to 54, $15/day), four ads: `pythagoras-reel-v1`, `circle-area-reel-v1`,
   `sum-to-100-reel-v1`, `hero-square-poster-v1`. All carry the UTM macro string, the Quantica
