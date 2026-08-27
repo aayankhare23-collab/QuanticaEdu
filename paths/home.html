@@ -280,14 +280,17 @@
     .tb-right .sig,.streak{display:none}
     .brand-word{display:none}                    /* keep the mark, drop the wordmark */
     .hnav-tab{padding:7px 10px}
-    /* Six controls do not fit one phone-width row once the Upgrade pill is there, and the
-       tabs were being drawn underneath it. Shaving padding would only break again when a
-       longer course name ships (Counting & Probability), so the section tabs get their own
-       row and nothing truncates at any width. --topbar is redefined because .chrail and
-       .rail hang their sticky offsets off it. */
-    :root{--topbar:100px}
-    .topbar{height:auto;min-height:var(--topbar);flex-wrap:wrap;align-content:center;
-      row-gap:4px;padding:8px 12px;gap:10px}
+    .topbar{padding:8px 12px;gap:10px}
+  }
+  /* Six controls do not fit one row once the Upgrade pill is there, and the tabs were being
+     painted on top of the wordmark and the course name. This was first written at 520px,
+     which was wrong: the pill adds ~118px, and with a streak pill showing the bar does not
+     actually come clean until ~800px, so everything from a phone up to a small laptop was
+     overlapping. It now wraps at the same 860px line where .chrail disappears, which is the
+     file's existing "not desktop yet" breakpoint. Shaving padding instead would only break
+     again when a longer course name ships (Counting & Probability). */
+  @media(max-width:860px){
+    .topbar{height:auto;min-height:96px;flex-wrap:wrap;align-content:center;row-gap:4px}
     .hnav{order:9;flex:1 0 100%;margin-left:0}
   }
 
