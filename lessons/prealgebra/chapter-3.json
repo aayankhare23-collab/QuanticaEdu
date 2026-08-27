@@ -186,71 +186,48 @@
    {
     "t": "prob",
     "xp": 10,
-    "x": "Bundles of 12 beeswax sheets, with \\(12 = 4 \\times 3\\). (1) Must a whole number of bundles be a multiple of 3? (2) Of 4? (3) Is every multiple of 3 a multiple of 12? Give a counterexample.",
+    "x": "A workshop packs beeswax sheets in bundles of 12, and \\(12 = 4 \\times 3\\), so any whole number of bundles holds a number of sheets that is a multiple of 3 and of 4. The reverse does not follow. Among the multiples of 3 from 3 through 60, how many are not multiples of 12?",
     "hints": [
-     "For (1) and (2), picture one bundle as \\(3\\) rows of \\(4\\) (or \\(4\\) rows of \\(3\\)). If every single bundle already splits into a whole number of threes, what happens when you have several bundles stacked together?",
-     "For (3), look for a heap that you can split into groups of \\(3\\) with none left over, yet that is too small or too lopsided to fill whole bundles of \\(12\\). Try counting up \\(3, 6, 9, \\ldots\\) and check each against \\(12\\)."
+     "Every bundle already splits into groups of 3, so a stack of bundles does too. The question runs the other way. Count 3, 6, 9, 12, and on up to 60, and mark which of those land exactly on a whole number of bundles.",
+     "Instead of testing each multiple of 3 one at a time, count how many multiples of 3 sit in the range, then count the multiples of 12 in the same range and take those away. Every multiple of 12 is already a multiple of 3, so each one you remove really was on the first list."
     ],
-    "ans": "6",
+    "ans": "15",
     "accept": [
-     "6",
-     "3",
-     "9",
      "15",
-     "18",
-     "21",
-     "27",
-     "30",
-     "33",
-     "39",
-     "42",
-     "51",
-     "57",
-     "three",
-     "six",
-     "nine",
-     "fifteen",
-     "6 sheets",
-     "a pile of 6"
+     "fifteen"
     ],
-    "sol": "(1) Yes. A delivery of \\(n\\) bundles is \\(n\\times12 = n\\times(4\\times3) = (n\\times4)\\times3\\), which is 3 times a whole number. (2) Yes, the same way, \\(n\\times12 = n\\times(3\\times4) = (n\\times3)\\times4\\), which is 4 times a whole number. (3) No. A pile of \\(\\boxed{6}\\) sheets is \\(3\\times2\\), so it is a multiple of 3, but it is smaller than one full bundle, so it is not a multiple of 12. This chaining only runs downward, from 12 to the numbers built into it, never back up."
+    "sol": "There are \\(60\\div3=20\\) multiples of 3 from 3 through 60. Among them, \\(60\\div12=5\\) are multiples of 12, namely 12, 24, 36, 48 and 60. Striking those five out leaves $$20-5=\\boxed{15}.$$ Chaining runs downward only. Any \\(n\\times12=(n\\times4)\\times3\\) is a multiple of 3 and of 4, but a multiple of 3 such as 6 splits into 3s while falling short of a full bundle of 12."
    },
    {
     "t": "prob",
     "xp": 12,
-    "x": "A secret number is a multiple of 6, a perfect square, and lies between 100 and 400 inclusive. Find every possible value.",
+    "x": "A secret number is a multiple of 6, a perfect square, and lies between 100 and 400 inclusive. Find the sum of all possible values.",
     "hints": [
-     "If a square \\(k\\times k\\) is a multiple of \\(6\\), the side \\(k\\) itself must supply the factor \\(2\\) and the factor \\(3\\). What does that force \\(k\\) to be a multiple of?",
-     "So the secret number is the square of a multiple of \\(6\\). Which multiples of \\(6\\) have squares between \\(100\\) and \\(400\\)?"
+     "If a square \\(k\\times k\\) is a multiple of \\(6\\), the side \\(k\\) itself has to supply the factor \\(2\\) and the factor \\(3\\). What does that force \\(k\\) to be a multiple of?",
+     "So every secret number is the square of a multiple of \\(6\\). Square \\(6, 12, 18, 24\\) in turn, keep the ones that land between \\(100\\) and \\(400\\), and add those."
     ],
-    "ans": "144 and 324",
+    "ans": "468",
     "accept": [
-     "144, 324",
-     "324 and 144"
+     "468",
+     "four hundred sixty-eight",
+     "four hundred sixty eight"
     ],
-    "sol": "A multiple of 6 carries a factor of 2 and a factor of 3, and in a square \\(k\\times k\\) those can only come from \\(k\\) itself, so \\(k\\) is a multiple of 6 and the square is a multiple of \\(6\\times6=36\\). Squaring multiples of 6, \\(6^2=36\\) is below 100, \\(12^2=144\\) and \\(18^2=324\\) both land in range, and \\(24^2=576\\) overshoots. $$\\boxed{144 \\text{ and } 324}$$ Asking for a square that is also a multiple of 6 quietly forces a multiple of 36."
+    "sol": "\\(12^2=144\\) and \\(18^2=324\\) are the only ones that qualify, and \\(144+324=468\\). $$\\boxed{468}$$ A multiple of 6 carries a factor of 2 and a factor of 3, and in a square \\(k\\times k\\) those can only come from \\(k\\) itself, so \\(k\\) is a multiple of 6 and the square is a multiple of \\(6\\times6=36\\). Squaring multiples of 6, \\(6^2=36\\) sits below 100, \\(12^2=144\\) and \\(18^2=324\\) both land in range, and \\(24^2=576\\) overshoots."
    }
   ],
   "review": [
    {
-    "x": "A school fits 40 lockers into one full rectangular block. List all factor pairs of 40 and report how many factors there are in all.",
+    "x": "A school fits 40 lockers into one full rectangular block, every row the same length and no locker left over. Climb the factor pairs of 40 from \\(1\\times 40\\) and stop once the two sides of a pair would cross. How many factors does 40 have in all?",
     "ans": "8",
     "accept": [
      "8",
-     "eight",
-     "1,2,4,5,8,10,20,40",
-     "factors:8",
-     "8factors",
-     "eightfactors",
-     "1,2,4,5,8,10,20,40,eight",
-     "there are 8"
+     "eight"
     ],
     "hints": [
      "Climb from \\(1\\) and test each small number in turn. The moment one divides \\(40\\), the partner side is handed to you for free, since \\(d\\) lockers per row forces \\(40\\div d\\) rows.",
-     "Watch the two sides of each pair close in on each other. Once the next number you would test is larger than the partner it would pair with, every block past that point is one you have already seen turned on its side, so the hunt is done.",
-     "The pairs are \\(1\\times40,\\ 2\\times20,\\ 4\\times10,\\ 5\\times8\\). Read both numbers out of every pair, sort them, and count how many you have."
+     "Stop once the next number you would test is bigger than the partner it would pair with. Then read both numbers out of every pair you found and count them, with no repeats."
     ],
-    "sol": "Climb from 1 and let each small factor fix its partner. $$1\\times 40,\\qquad 2\\times 20,\\qquad 4\\times 10,\\qquad 5\\times 8$$ The numbers 3, 6, and 7 do not divide 40, so they are skipped. Reading both sides of every pair and sorting gives \\(1,\\ 2,\\ 4,\\ 5,\\ 8,\\ 10,\\ 20,\\ 40\\), which is \\(\\boxed{8}\\) factors. You stop after 5 because the next try, 6, would pair with a partner smaller than itself, and every rectangle down there has already appeared mirrored. Four clean pairs with no side meeting itself gives an even count, exactly what a non-square should have."
+    "sol": "Climb the pairs from 1 and let each small side fix its partner. $$1\\times 40,\\qquad 2\\times 20,\\qquad 4\\times 10,\\qquad 5\\times 8$$ Reading both sides of every pair gives \\(1,\\ 2,\\ 4,\\ 5,\\ 8,\\ 10,\\ 20,\\ 40\\), so 40 has \\(\\boxed{8}\\) factors. The numbers 3, 6 and 7 do not divide 40, so they are skipped, and you stop at 7, because 7 would pair with a partner smaller than 7, a rectangle already seen on its side. Four pairs with no side meeting itself gives an even count, exactly what a non-square should have."
    },
    {
     "x": "A ring-toss scoreboard only ever adds 8 points per throw. Five friends claim scores of 24, 30, 48, 56, and 60. How many of these could the game actually show?",
@@ -292,22 +269,18 @@
     "sol": "(a) \\(61 = 1\\times 61\\), so 1 is a factor of 61. (b) \\(61 = 61\\times 1\\), so 61 is a multiple of itself. (c) and (d) are the single line \\(0 = 61\\times 0\\) read from its two ends, which makes 0 a multiple of 61 and 61 a factor of 0. All four hold, so the verdict is \\(\\boxed{\\text{all four true}}\\). The three facts behind this are that 1 divides every number, every number is a multiple of itself, and 0 is a multiple of everything."
    },
    {
-    "x": "Find the smallest and largest factors of 56, and give a one-line reason for each.",
-    "ans": "1 and 56",
+    "x": "Find the smallest and largest factors of \\(56\\), then add them together.",
+    "ans": "57",
     "accept": [
-     "1 and 56",
-     "1, 56",
-     "smallest 1 largest 56",
-     "smallest is 1 and largest is 56",
-     "56 and 1",
-     "the smallest is 1 and the largest is 56"
+     "57",
+     "fifty-seven",
+     "fifty seven"
     ],
     "hints": [
-     "A factor of \\(56\\) is any whole number that divides it evenly, so think about the two rectangles at the far ends, the single long strip and the one stacked into a single column.",
-     "One special number divides every whole number with nothing left over, which fixes the smallest factor right away. For the largest, ask whether any side length could ever be bigger than the whole bed itself.",
-     "Every factor of \\(56\\) travels with a partner, and the two partners multiply to \\(56\\). Picture the partner of the smallest whole number that divides anything, and picture what a factor bigger than \\(56\\) would force its partner to be. Both ends of the list fall straight out of that partner pairing once you push each side as far as it can go."
+     "Every factor of \\(56\\) travels with a partner, and the two multiply to \\(56\\). Ask what the smallest whole number that divides anything is, and what its partner has to be.",
+     "One whole number divides every whole number evenly, so it sits at the bottom of every factor list. For the top end, ask what partner a factor larger than \\(56\\) would need, and whether that partner could be a whole number at all."
     ],
-    "sol": "The smallest factor is 1, since \\(56 = 1\\times 56\\) and nothing smaller than 1 is a positive whole number. The largest is 56 itself, since a factor bigger than 56 would need a partner smaller than 1, and no such whole number exists. $$\\boxed{1\\ \\text{and}\\ 56}$$ Every factor list is bookended the same way, 1 at the low end and the number at the high end."
+    "sol": "The smallest factor of \\(56\\) is \\(1\\) and the largest is \\(56\\), so the sum is \\(1+56\\). $$\\boxed{57}$$ Nothing smaller than \\(1\\) divides a whole number evenly, so \\(1\\) sits at the bottom of every factor list. And a factor bigger than \\(56\\) would need a partner smaller than \\(1\\) to multiply out to \\(56\\), which no whole number does, so \\(56\\) is its own largest factor. Every factor list is bookended the same way, \\(1\\) at the low end and the number itself at the high end."
    },
    {
     "t": "imp",
@@ -660,52 +633,19 @@
    },
    {
     "t": "prob",
-    "x": "A clerk thinks: if a pile is even and divisible by 6, it is divisible by 12. Find one pile divisible by 2 and by 6 that is NOT divisible by 12.",
+    "x": "A clerk thinks that if a pile is even and divisible by 6, then it must be divisible by 12. Every pile below 50 that is divisible by 2 and by 6 but NOT by 12 breaks that rule. Find the sum of all of them.",
     "xp": 9,
     "hints": [
-     "Test the clerk's two claims on a small count first. Pick a number you already know fills whole cartons of 6, then check both whether it is even and whether it splits into crates of 12.",
-     "The trap is that 6 already carries a factor of 2 inside it, so being even tells you nothing new beyond what divisibility by 6 already promised. You want a multiple of 6 that is missing a second factor of 2.",
-     "Multiples of 6 go 6, 12, 18, 24, 30, and so on. Every other one is odd-times-6, which keeps just one factor of 2. Take the first such count after 6 itself."
+     "Being even is no extra news once a pile is divisible by 6, since 6 already carries a factor of 2 inside it. So the piles that break the clerk's rule are the multiples of 6 that are not multiples of 12.",
+     "Write each pile as \\(6k\\) and run \\(k=1,2,3,\\ldots\\) until the pile passes 50. Then test each of those piles for divisibility by 12, and keep the ones that fail."
     ],
-    "ans": "18",
+    "ans": "96",
     "accept": [
-     "18",
-     "6",
-     "30",
-     "42",
-     "54",
-     "66",
-     "78",
-     "90",
-     "102",
-     "114",
-     "126",
-     "138",
-     "150",
-     "162",
-     "174",
-     "186",
-     "198",
-     "210",
-     "6eggs",
-     "18eggs",
-     "30eggs",
-     "eighteen",
-     "six",
-     "thirty",
-     "forty-two",
-     "fortytwo",
-     "fifty-four",
-     "fiftyfour",
-     "sixty-six",
-     "sixtysix",
-     "seventy-eight",
-     "seventyeight",
-     "ninety",
-     "onehundredtwo",
-     "onehundredfourteen"
+     "96",
+     "ninety-six",
+     "ninetysix"
     ],
-    "sol": "Take \\(18\\). It fills whole cartons since \\(18 = 6\\times 3\\), and it is even since \\(18 = 2\\times 9\\), so it passes both of the clerk's tests. But \\(18 = 12 + 6\\), and that leftover 6 is only half a crate, so 18 is not divisible by 12. The clerk is wrong, and \\(\\boxed{18}\\) proves it. Splitting a divisor into two tests works only when the pieces are coprime. Here 6 already carries the 2, so \\(12 = 2\\times 6\\) counts the same factor of 2 twice, while \\(12 = 2^2\\times 3\\) needs two of them. The honest split is \\(12 = 3\\times 4\\)."
+    "sol": "The piles below 50 that break the rule are \\(6\\), \\(18\\), \\(30\\) and \\(42\\), so the sum is $$6+18+30+42=\\boxed{96}.$$ Every multiple of 6 is already even, so the test for 2 adds nothing. Write a pile as \\(6k\\). Divisibility by 12 needs a second factor of 2, and that only appears when \\(k\\) is even, so the rule breaks exactly at odd \\(k\\). The split \\(12=2\\times 6\\) counts the same factor of 2 twice, while \\(12=2^2\\times 3\\) needs two of them. The honest split is \\(12=3\\times 4\\)."
    },
    {
     "t": "prob",
