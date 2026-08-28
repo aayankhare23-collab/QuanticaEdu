@@ -44,3 +44,11 @@ tools/shorts/measured/
 # one) and out/ holds finished mp4s; both are regenerable, neither belongs in the repo.
 manim/.venv
 manim/out/
+
+# Firebase Admin service-account keys. These are read by the local attribution and
+# parent-report scripts and must never be committed OR deployed. firebase.json carries
+# the matching hosting ignore, because "public" is "." and a key at repo root would
+# otherwise be published to the open web.
+*adminsdk*.json
+serviceAccount*.json
+service-account*.json

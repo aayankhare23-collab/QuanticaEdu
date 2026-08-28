@@ -101,8 +101,39 @@
 <link href="https://api.fontshare.com/v2/css?f%5B%5D=chillax@400,500,600,700&f%5B%5D=switzer@400,500,600,700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+  // KaTeX loads async rather than deferred, because a deferred script still gates
+  // DOMContentLoaded and DOMContentLoaded is what reveals the app shell to a guest
+  // (see _showGuest). These two are 64KB brotli off the reveal path.
+  //
+  // They cannot both simply become async. auto-render's UMD wrapper binds the katex global
+  // at the moment it executes, so an unordered pair would sometimes run auto-render first
+  // and define nothing. It is injected from katex's own load instead.
+  //
+  // The queue matters more than it looks. Every call site is guarded with
+  // `if(window.renderMathInElement)`, so math painted before KaTeX lands would silently stay
+  // as raw LaTeX with no error thrown. typeset() parks those elements here and they are
+  // re-typeset once auto-render arrives.
+  (function(){
+    var Q=[];
+    window.__katexQueue=function(el){ Q.push(el); };
+    function flush(){
+      var q=Q; Q=[]; window.__katexQueue=null;
+      q.forEach(function(el){ try{ if(window.__typeset) window.__typeset(el); }catch(e){} });
+    }
+    var k=document.createElement('script');
+    k.src='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js';
+    k.async=true;
+    k.onload=function(){
+      var a=document.createElement('script');
+      a.src='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js';
+      a.async=true; a.onload=flush; a.onerror=flush;
+      document.head.appendChild(a);
+    };
+    k.onerror=flush;   // give up cleanly rather than queueing forever
+    document.head.appendChild(k);
+  })();
+</script>
 <style>
   :root{
     --navy:#0f2c4d; --blue:#1f4e79; --mid:#2e75b6; --sky:#4a9fe0;
@@ -3148,11 +3179,37 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
 
 <!-- Lesson data, split per course so a first load parses only the course being opened.
      The default course stays synchronous because the app consumes __CHDATA and calls
-     renderDashboard() at parse time. Every other course is deferred, which still runs
-     before DOMContentLoaded, so setCourse() never sees missing data. The combined
-     data/lessons.js is still generated for tools/gen_seo_pages.py, just not loaded here. -->
+     renderDashboard() at parse time.
+     Every other course is ASYNC, not deferred. Deferred still gates DOMContentLoaded, and
+     DOMContentLoaded is what reveals the app shell to a guest, so the 292KB brotli algebra1
+     chunk was holding the reveal on every cold click including ad traffic that never opens
+     Algebra I at all.
+     That removes the old "deferred always finishes before DOMContentLoaded" guarantee, which
+     two places were relying on. They now wait on __courseChunk instead, which fires on the
+     chunk itself and is correct whether it lands before or after DOMContentLoaded.
+     The combined data/lessons.js is still generated for tools/gen_seo_pages.py, not loaded here. -->
+<script>
+  window.__courseChunk=(function(){
+    var done=Object.create(null), waiting=Object.create(null);
+    return {
+      ready:function(slug){
+        done[slug]=true;
+        var q=waiting[slug]||[]; waiting[slug]=[];
+        q.forEach(function(fn){ try{ fn(); }catch(e){} });
+      },
+      // Runs fn now if the chunk has landed, otherwise the moment it does.
+      when:function(slug,fn){
+        if(done[slug]){ try{ fn(); }catch(e){} return; }
+        (waiting[slug]=waiting[slug]||[]).push(fn);
+      }
+    };
+  })();
+</script>
 <script src="data/lessons-prealgebra.js"></script>
-<script defer src="data/lessons-algebra1.js"></script>
+<script>window.__courseChunk.ready('prealgebra');</script>
+<script async src="data/lessons-algebra1.js"
+        onload="window.__courseChunk.ready('algebra1')"
+        onerror="window.__courseChunk.ready('algebra1')"></script>
 <script>
   // --- Course tables of contents (one array per course; setCourse points the app at one) ---
   var TOC=[
@@ -6988,11 +7045,12 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       intro:'Fifteen chapters run from the language of algebra through quadratics, functions, and logarithms. Tap any lesson to read it, or open a chapter\'s <b>Practice</b> or <b>Challenge</b> set to try problems yourself.'}
   };
   // The tabs count lessons to decide "live" vs "soon", so a render that happened before the
-  // deferred chunk executed would show Algebra I as "soon". Re-render once it has landed.
+  // chunk executed would show Algebra I as "soon". Re-render once it has landed. This hangs
+  // off the chunk rather than DOMContentLoaded now that the chunk is async and may arrive
+  // after it.
   (function(){
     function adopt(){ try{ if(window.renderCourseTabs) renderCourseTabs(); }catch(e){} }
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',adopt);
-    else adopt();
+    window.__courseChunk.when('algebra1',adopt);
   })();
   var CURRENT_COURSE='prealgebra';
   window.setCourse=function(slug,opts){
@@ -7481,10 +7539,15 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     else { btn.textContent='Show next hint ('+rec.hi+'/'+rec.hints.length+')'; }
   }
   function typeset(el){
-    if(el && window.renderMathInElement){
-      try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); }catch(e){}
-    }
+    if(!el) return;
+    // KaTeX is async, so it may not have landed yet. Park the element and let the head
+    // script re-typeset it on arrival. Returning quietly here, which is what the old guard
+    // did, would leave raw LaTeX on screen and throw nothing.
+    if(!window.renderMathInElement){ if(window.__katexQueue) window.__katexQueue(el); return; }
+    try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false}); }catch(e){}
   }
+  window.__typeset=typeset;   // the flush in the head calls back through here, so the
+                              // delimiter set lives in exactly one place
   function renderBlock(b,ctx,__bi,isCp){
     if(b.t==='p') return '<p>'+b.x+'</p>';
     if(b.t==='f') return '<div class="formula">'+b.x+(b.s?'<span class="small">'+b.s+'</span>':'')+'</div>';
@@ -8874,15 +8937,19 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
   }
   if(typeof renderDashHero==='function') renderDashHero();
   // Restore the course the user was last in (after hydration, so progress re-keys correctly).
-  // This waits for DOMContentLoaded because setCourse snapshots the course's lesson table into
-  // LESSONS, and any course whose data chunk is deferred has not executed yet at parse time.
-  // Restoring early would snapshot an empty table and leave a returning student staring at a
-  // course with no lessons in it. Deferred chunks always finish before DOMContentLoaded, and
-  // the app shell is not revealed until launch() runs after that, so nothing flashes.
+  // setCourse snapshots the course's lesson table into LESSONS, so restoring before that
+  // course's data chunk has run would snapshot an empty table and leave a returning student
+  // staring at a course with no lessons in it.
+  // This used to wait on DOMContentLoaded, which was sound only while the chunks were
+  // deferred. They are async now and can land after it, so it waits on the chunk itself.
+  // __courseChunk.when fires immediately if the chunk is already in, so a returning
+  // Prealgebra student is unaffected.
   function restoreBootCourse(){
     try{
       var bootCourse=localStorage.getItem('quantica.course');
-      if(bootCourse && bootCourse!==COURSE.slug && window.setCourse) setCourse(bootCourse);
+      if(!bootCourse || bootCourse===COURSE.slug || !window.setCourse) return;
+      if(!window.COURSE_REG || !window.COURSE_REG[bootCourse]) return;   // unknown slug, leave the default
+      window.__courseChunk.when(bootCourse, function(){ try{ setCourse(bootCourse); }catch(e){} });
     }catch(e){}
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',restoreBootCourse);
