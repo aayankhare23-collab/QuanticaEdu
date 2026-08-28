@@ -1,10 +1,10 @@
 # Generate static, crawlable SEO pages for a course:
 #   - one course HUB page at /<course>            (<course>.html at repo root)
 #   - one LESSON page per lesson at /<course>/<slug>.html
-# Real teaching intro + problem prompts (KaTeX-rendered), prev/next links, structured data,
-# and an "Open in the course" CTA that deep-launches the app.
+# Real teaching intro + problem prompts (KaTeX pre-rendered at build time), prev/next links,
+# structured data, and an "Open in the course" CTA that deep-launches the app.
 # Usage: python3 tools/gen_seo_pages.py [course]   (default: prealgebra)
-import json, re, html as H, os, sys
+import json, re, html as H, os, sys, subprocess
 
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COURSE=sys.argv[1] if len(sys.argv)>1 else "prealgebra"
@@ -265,10 +265,94 @@ details p{color:var(--gray);margin:14px 0 0}
 '''
 MILO='<img src="/paths/assets/spot/spot-happy.png" class="milo" alt="Milo">'
 MILO_BIG=MILO.replace('class="milo"','class="milo-big"')
-KATEX='''<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+# The stylesheet is always needed, because the math is pre-rendered into KaTeX markup at build
+# time and that markup is styled by this exact version. The renderer script is not needed on a
+# page whose math all rendered here, and gets added back per page only where something failed.
+KATEX_CSS='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">'
+KATEX_JS='''
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\\\[",right:"\\\\]",display:true},{left:"\\\\(",right:"\\\\)",display:false},{left:"$",right:"$",display:false}],throwOnError:false});});</script>'''
+
+# ---- build-time math ----
+# Every lesson page used to ship its formulas as raw LaTeX and let the browser render them.
+# That made the math invisible to Googlebot's first pass, which is the pass that decides
+# whether a page is worth indexing on a site with no authority yet. Search Console was
+# ranking one page for the literal string "-1\dfrac{2}{3} \div \left(-2\dfrac{1}{5}\right) =".
+# Now the LaTeX never reaches the browser: it is rendered to KaTeX markup here.
+
+SVG_RE=re.compile(r'<svg.*?</svg>',re.S)
+# $$..$$ and \[..\] are display, \(..\) and $..$ are inline. Longest delimiters first so that
+# $$ is never mistaken for two $.
+#
+# The (?<!\\) guards are the one place this differs from the client-side script it replaces,
+# and they are a bug fix. A literal dollar is written \$, and KaTeX's auto-render does not
+# know that, so on a line like "15 oz for \$6.00, or 24 oz for \$8.40" it paired the two
+# dollars and tried to typeset the prose between them. That is live on lesson 7.3 today.
+MATH_RE=re.compile(r'(?<!\\)\$\$(.+?)(?<!\\)\$\$|\\\[(.+?)\\\]|\\\((.+?)\\\)|(?<!\\)\$(.+?)(?<!\\)\$',re.S)
+
+def _plain(text):
+    """Prose between two math spans. A \\$ here is a literal dollar that never reached a
+    renderer, so it loses its backslash rather than being shown one."""
+    parts=[]; last=0
+    for m in SVG_RE.finditer(text):
+        parts.append(text[last:m.start()].replace('\\$','$')); parts.append(m.group(0)); last=m.end()
+    parts.append(text[last:].replace('\\$','$'))
+    return "".join(parts)
+
+def _math_spans(html):
+    """Every (start, end, tex, display) in html, skipping inline <svg> figures.
+
+    Figure labels are plain text, never LaTeX, and injecting KaTeX spans into an SVG would
+    break it. The old client-side pass had nothing to render in there either."""
+    out=[]; last=0; segs=[]
+    for m in SVG_RE.finditer(html):
+        segs.append((last,html[last:m.start()])); last=m.end()
+    segs.append((last,html[last:]))
+    for off,seg in segs:
+        for m in MATH_RE.finditer(seg):
+            tex=next(g for g in m.groups() if g is not None)
+            display=m.group(1) is not None or m.group(2) is not None
+            out.append((off+m.start(),off+m.end(),tex,display))
+    return out
+
+def render_math(bodies):
+    """Replace the LaTeX in every body with rendered KaTeX, in one node call.
+
+    bodies is {key: html}; it is updated in place. Returns {key: unrendered_count} so each
+    page can decide whether it still needs the client-side renderer as a fallback."""
+    spans={k:_math_spans(h) for k,h in bodies.items()}
+    jobs=[]; index={}
+    for k in bodies:
+        for _,_,tex,display in spans[k]:
+            if (tex,display) not in index:
+                index[(tex,display)]=len(jobs); jobs.append([tex,display])
+    if not jobs:
+        return {k:0 for k in bodies}
+    proc=subprocess.run(["node",os.path.join(ROOT,"tools","katex_render.js")],
+                        input=json.dumps(jobs),capture_output=True,text=True)
+    if proc.returncode!=0:
+        raise SystemExit("katex_render.js failed:\n"+proc.stderr)
+    results=json.loads(proc.stdout)
+    failed={}
+    for (tex,display),i in index.items():
+        if not results[i]["ok"]:
+            failed[(tex,display)]=results[i]["err"]
+    if failed:
+        print(f"  {len(failed)} expression(s) would not render, left as source:")
+        for (tex,_),err in list(failed.items())[:8]:
+            print(f"    {tex[:70]!r} -> {err[:70]}")
+    unrendered={}
+    for k,h in bodies.items():
+        n=0; parts=[]; last=0
+        for s,e,tex,display in spans[k]:
+            r=results[index[(tex,display)]]
+            if not r["ok"]:
+                n+=1; continue          # leave the source untouched, the fallback JS gets it
+            parts.append(_plain(h[last:s])); parts.append(r["html"]); last=e
+        parts.append(_plain(h[last:]))
+        bodies[k]="".join(parts); unrendered[k]=n
+    return unrendered
 
 def gen_hub():
     hub_url=f"{BASE}/{COURSE}"
@@ -525,37 +609,91 @@ SEO_TITLE = {
 SEOQ = SEO_TITLE.get(COURSE, {})
 SEOD = SEO_DESC.get(COURSE, {})
 
-def clean_desc(raw, seo_title, fallback_raw=''):
-    """A meta description Google can print. Whole sentences only, and never any math,
-    because stripped LaTeX leaves debris like "marks 3 4 of the way out"."""
+# A snippet is read by someone who has never seen the page, so a sentence that leans on the
+# page around it is worse than no sentence at all. algebra1/exponents used to describe itself
+# as "The grouping in the last problem traded ten factors for two blocks of five", which names
+# a problem the searcher cannot see. These two patterns throw those sentences out.
+OPENER_RE = re.compile(
+    r'^(so|then|but|and|or|now|here|there|again|instead|also|thus|hence|either|neither|'
+    r'that|this|these|those|it|they|both|each|notice|note|look|see|try|watch|first|second|'
+    r'third|next|finally|likewise|similarly|otherwise|meanwhile)\b', re.I)
+BACKREF_RE = re.compile(
+    r'\b(the (last|previous|first|next|second|third|same|other) '
+    r'(problem|example|lesson|line|step|page|section|figure|picture|diagram|table|rule|one|two|idea)'
+    r'|(this|that|these|those) (problem|example|lesson|line|step|figure|picture|diagram|table|case|time)'
+    r'|(earlier|beforehand)'
+    r'|we (just|saw|did|used|found|had|were|have been)'
+    r'|(as|like) (before|above|earlier)'
+    # "As in 1.2, an exponent applies only to..." points at another lesson. A bare N.N in
+    # prose is always a cross-reference here; real decimals live inside math, already dropped.
+    r'|(as in|in|from|see|section|lesson|chapter) \d+\.\d+'
+    # "the graph of an inequality" is the topic; "the graph above" is a pointer. Only the
+    # pointer is rejected, so a locator word is required rather than the noun alone.
+    r'|(shown|seen|drawn|listed|described|pictured) (above|below)'
+    r'|the (figure|picture|diagram|graph|table) (above|below|here))\b', re.I)
+
+TAIL = "Worked examples with hints and full solutions."
+
+def _sentences(raw):
+    """Split on sentence punctuation followed by a space and a capital, so that a lesson
+    cross-reference like "the factoring in 2.3" stays whole. Splitting on every period cut
+    that into "The reason comes from the factoring in 2." and shipped it as a description."""
     x = re.sub(r'<svg.*?</svg>', '', raw or '', flags=re.S)
     x = H.unescape(re.sub(r'<[^>]+>', ' ', x))
     x = re.sub(r'\s+', ' ', x).strip()
-    out = ''
-    for sent in re.findall(r'[^.!?]+[.!?]', x):
-        sent = sent.strip()
-        # skip math, and skip fragments left behind when a sentence split inside a number
-        if re.search(r'[\\$]', sent) or len(sent.split()) < 4 or not sent[:1].isupper():
+    x = re.sub(r'\s+([,.;:!?])', r'\1', x)   # <b>legs</b>, became "legs ," when tags went
+    return [s.strip() for s in re.split(r'(?<=[.!?])\s+(?=[A-Z])', x) if s.strip()]
+
+def _standalone(sent):
+    """Whether a sentence still says something with no page around it."""
+    if re.search(r'[\\$]', sent):        return False   # math debris
+    if not sent.endswith(('.', '!', '?')): return False # a trailing fragment, not a sentence
+    if len(sent.split()) < 5:            return False
+    if not sent[:1].isupper():           return False
+    if OPENER_RE.match(sent):            return False
+    if BACKREF_RE.search(sent):          return False
+    return True
+
+def clean_desc(sources, seo_title):
+    """A meta description Google can print, written for someone who has not read the page.
+
+    Whole sentences only, never any math, and never a sentence that points at something the
+    searcher cannot see. sources is tried in order, best first: the lesson's key idea, then
+    each teaching paragraph. A plain statement of the topic beats shipping a fragment, so
+    that is what it settles on when nothing in the lesson stands on its own."""
+    for source in sources:
+        keep = [s for s in _sentences(source) if _standalone(s)]
+        if not keep:
             continue
-        if len(out) + len(sent) + 1 > 155:
-            break
-        out = (out + ' ' + sent).strip()
-    if len(out) < 60 and fallback_raw:
-        return clean_desc(fallback_raw, seo_title)
-    if len(out) < 60:
-        out = f"{seo_title}. Worked examples with hints and full solutions on Quantica."
-    return out
+        out = ''
+        for s in keep:
+            if len(out) + len(s) + 1 > 155:
+                break
+            out = (out + ' ' + s).strip()
+        if len(out) < 60:
+            continue
+        # A short lead leaves half the snippet empty, so say what else is on the page.
+        if len(out) + len(TAIL) + 1 <= 155:
+            out = out + ' ' + TAIL
+        return out
+    return f"{seo_title}. {TAIL} Free to read on Quantica."
 
 # ---- lesson pages ----
 os.makedirs(ROOT+"/"+COURSE, exist_ok=True)
 sitemap_urls=[f"{BASE}/{COURSE}"]
+# Every body first, so all the math across the course renders in a single node call rather
+# than one subprocess per page.
+BODIES={k:render_full(DATA[k]) for k in ORDER}
+UNRENDERED=render_math(BODIES)
 for idx,k in enumerate(ORDER):
     L=DATA[k]; title=L['title']; slug=SLUG[k]; chn,cht=CHOF[k]
     url=f"{BASE}/{COURSE}/{slug}"
     sitemap_urls.append(url)
     seo_title=SEOQ.get(k) or title
-    imp=next((b.get('x','') for b in (L.get('blocks') or []) if b.get('t')=='imp'), '')
-    desc=SEOD.get(k) or clean_desc(imp, seo_title, (L.get('blocks') or [{}])[0].get('x',''))
+    blocks=L.get('blocks') or []
+    imp=next((b.get('x','') for b in blocks if b.get('t')=='imp'), '')
+    paras=[b.get('x','') for b in blocks if b.get('t')=='p']
+    desc=SEOD.get(k) or clean_desc([imp]+paras, seo_title)
     prev_k=ORDER[idx-1] if idx>0 else None
     next_k=ORDER[idx+1] if idx<len(ORDER)-1 else None
     def pager_link(kk,dir_,cls):
@@ -569,7 +707,7 @@ for idx,k in enumerate(ORDER):
         {"@type":"ListItem","position":1,"name":"Quantica","item":BASE+"/"},
         {"@type":"ListItem","position":2,"name":CTITLE,"item":BASE+"/"+COURSE},
         {"@type":"ListItem","position":3,"name":title,"item":url}]}
-    body=render_full(L)
+    body=BODIES[k]
     page=f'''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -588,7 +726,7 @@ for idx,k in enumerate(ORDER):
 <script type="application/ld+json">{json.dumps(crumb)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com"><link rel="preconnect" href="https://cdn.fontshare.com" crossorigin><link href="https://api.fontshare.com/v2/css?f%5B%5D=chillax@300,400,500,600,700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-{KATEX}
+{KATEX_CSS}{KATEX_JS if UNRENDERED[k] else ''}
 <style>{CSS}</style></head>
 <body>
 <header class="wrap nav"><a class="brand" href="/">{MILO}Quantica</a><a class="pill" href="/{COURSE}">{H.escape(CTITLE)}</a><a class="pill solid" href="/landing?course={COURSE}&amp;lesson={k}">Open in the course</a></header>
