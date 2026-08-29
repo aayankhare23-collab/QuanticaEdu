@@ -7128,7 +7128,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         // entirely. Delayed so the view they navigated to paints first, and it self
         // suppresses if they already saw the prompt after onboarding.
         if(_reached>=1 && window.__premiumPrompt){
-          setTimeout(function(){ try{ __premiumPrompt.afterLessonExit(); }catch(e){} },450);
+          setTimeout(function(){
+            try{
+              // The price ask gets first refusal. If it declines to show, because they have
+              // seen it or already pay, the account ask takes the slot instead. Exactly one
+              // of the two appears, and neither is ever shown twice.
+              if(!__premiumPrompt.afterLessonExit() && window.__signinPrompt) __signinPrompt.afterProgress();
+            }catch(e){}
+          },450);
         }
       }catch(e){}
     }
@@ -9906,8 +9913,8 @@ async function sendTutorMsg() {
         '<div style="display:flex;gap:12px;align-items:flex-start">'+
           '<div style="flex:0 0 auto;width:40px;height:40px"><img src="'+(window.guideImg?guideImg('happy'):'paths/assets/spot/spot-happy.png')+'" alt="'+(window.guideName?guideName():'Milo')+'" style="width:100%;height:100%;object-fit:contain"></div>'+
           '<div style="flex:1;min-width:0">'+
-            '<div style="font-weight:700;font-size:16px;letter-spacing:-.01em;margin-bottom:3px">Nice, your first lesson is done.</div>'+
-            '<div style="font-size:14px;line-height:1.5;color:#55554f">Create a free account to save your progress and streak. Takes a few seconds, and you can keep going either way.</div>'+
+            '<div id="spTitle" style="font-weight:700;font-size:16px;letter-spacing:-.01em;margin-bottom:3px">Nice, your first lesson is done.</div>'+
+            '<div id="spBody" style="font-size:14px;line-height:1.5;color:#55554f">Create a free account to save your progress and streak. Takes a few seconds, and you can keep going either way.</div>'+
           '</div>'+
           '<button aria-label="Dismiss" style="flex:0 0 auto;background:none;border:none;font-size:22px;line-height:1;color:#9a9a92;cursor:pointer;padding:0 2px" onclick="__signinPrompt.dismiss()">&times;</button>'+
         '</div>'+
@@ -9918,7 +9925,15 @@ async function sendTutorMsg() {
       '</div>';
     document.body.appendChild(el);
   }
-  function show(){ build(); void el.offsetHeight; /* force reflow so the transition fires */ el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; el.style.pointerEvents='auto'; }
+  // Copy is set at show time because this now fires from two different moments and the old
+  // wording, "your first lesson is done", is false at the earlier one.
+  function show(t,b){
+    build();
+    if(t){ var _t=el.querySelector('#spTitle'); if(_t) _t.textContent=t; }
+    if(b){ var _b=el.querySelector('#spBody'); if(_b) _b.textContent=b; }
+    void el.offsetHeight; /* force reflow so the transition fires */
+    el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)'; el.style.pointerEvents='auto';
+  }
   function hide(){ if(!el) return; el.style.opacity='0'; el.style.transform='translateX(-50%) translateY(24px)'; el.style.pointerEvents='none'; }
   /* Offered once, immediately after the onboarding questionnaire, which is the only point in
      the funnel where someone has stated a goal and has not yet been asked for anything. It is
@@ -9965,6 +9980,10 @@ async function sendTutorMsg() {
         ov.querySelector('#premGo').onclick=function(){
           if(window.track) track('premium_prompt_continue',{surface:o.surface});
           shut(); go();
+          // They have just declined the price. That is the natural moment for the cheaper ask,
+          // and it does not compete, because the price modal is already closed. __signinPrompt
+          // guards on its own once-flag and on being signed in.
+          if(window.__signinPrompt) setTimeout(function(){ try{ __signinPrompt.afterProgress(); }catch(e){} },600);
         };
         ov.querySelector('#premSee').onclick=function(){
           if(window.track) track('premium_prompt_see_plans',{surface:o.surface});
@@ -10008,12 +10027,29 @@ async function sendTutorMsg() {
       });
     }
   };
-  window.__signinPrompt={
-    afterLesson:function(){
+  /* This is the only email capture in the product, and it converts. In the 28 days to
+     2026-08-27 it was shown to 6 people and 5 of them created an account. The problem was
+     never the prompt, it was that markDone gates it on FINISHING a lesson, which 8 of 211
+     users did. _offer takes a reason so it can also fire at lesson exit, which 20 of 211
+     reached, and so the two moments stay separable in GA4. */
+  function _offer(reason,t,b){
+    if(seen()||signedIn()) return false;
+    // only burn the once-flag when we actually show it (not before the delay),
+    // so a failed reveal or a mid-delay sign-in doesn't silently consume the one chance
+    setTimeout(function(){
       if(seen()||signedIn()) return;
-      // only burn the once-flag when we actually show it (not before the delay),
-      // so a failed reveal or a mid-delay sign-in doesn't silently consume the one chance
-      setTimeout(function(){ if(seen()||signedIn()) return; mark(); show(); if(window.track) track('signin_prompt_shown'); }, 1100);
+      mark(); show(t,b);
+      if(window.track) track('signin_prompt_shown',{reason:reason});
+    }, 1100);
+    return true;
+  }
+  window.__signinPrompt={
+    afterLesson:function(){ return _offer('lesson_complete'); },
+    // Fired when someone worked part of a lesson and left without finishing. Without this the
+    // ad traffic that never completes a lesson leaves no way to contact them, ever.
+    afterProgress:function(){
+      return _offer('lesson_exit','You made a start.',
+        'Create a free account to keep your progress and pick up where you left off. Takes a few seconds, and you can carry on either way.');
     },
     go:function(){ hide(); if(window.track) track('signin_prompt_click'); if(window.showAuthModal) showAuthModal('up'); },
     dismiss:function(){ hide(); if(window.track) track('signin_prompt_dismiss'); },
