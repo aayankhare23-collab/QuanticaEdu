@@ -2136,7 +2136,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     if(typeof window.startCheckout!=='function') return;
     window.__checkoutStarted=true;
     var pp=window.__pendingPlan; window.__pendingPlan=null;
-    try{ startCheckout(pp); }catch(e){}
+    try{ startCheckout(pp,'resume_after_signin'); }catch(e){}
   };
 
   var launched=false;
@@ -2734,8 +2734,13 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     try{ var el=document.getElementById('ckRedirect'); if(el) el.remove(); }catch(e){}
   };
 
-  window.startCheckout=function(plan){
+  /* surface says which control sent them here. It is not decoration. The whole $20k question
+     is what it costs to put one person in front of a price, and a locked chip clicked on the
+     dashboard and a gate hit two lessons deep are different populations with different intent.
+     Pooling them produces a flattering denominator and a conversion rate that means nothing. */
+  window.startCheckout=function(plan,surface){
     plan = (plan==='yearly') ? 'yearly' : 'monthly';
+    surface = surface || 'unknown';
     // Do not sell what is currently being given away. PAYWALL_LIVE_AT is in the future, so
     // isAccessGranted returns true on its first line for everybody, and the FAQ on the page
     // these buttons live on promises that anyone who joins while Quantica is free keeps free
@@ -2769,6 +2774,14 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     // successful sign-in never happened. The visible symptom today is an eight second "Taking
     // you to checkout" screen followed by the dashboard. The day PAYWALL_LIVE_AT moves forward
     // it becomes total: no visitor who was not already signed in could ever buy.
+    /* Everything above this line is a reason NOT to sell, so this is the first point at which
+       a real buying attempt exists. It has to fire before the sign-in branch below, because a
+       guest is the overwhelming majority of ad traffic and that branch used to return without
+       emitting anything at all. The only track() call in this function was
+       checkout_blocked_free, inside the free-mode branch, which has not run since the paywall
+       went live on 2026-08-24. So every live checkout attempt was invisible to GA4. */
+    if(window.track) track('checkout_start',{plan:plan,surface:surface,
+      value: plan==='yearly' ? 99.99 : 14.99, signed_in: !!auth.currentUser});
     if(!auth.currentUser){
       window.__pendingPlan=plan;
       window.__checkoutStarted=false;
@@ -2916,7 +2929,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         '</button>'+
         '<div class="auth-dropdown" id="authDrop" style="display:none">'+
           '<a onclick="window.Rewards&&Rewards.openPanel&&Rewards.openPanel();var d=document.getElementById(\'authDrop\');if(d)d.style.display=\'none\'">My progress</a>'+
-          (!isAccessGranted(2) ? '<a onclick="startCheckout()" style="color:var(--gold-deep);font-weight:700">Upgrade to Pro →</a>' : '')+
+          (!isAccessGranted(2) ? '<a onclick="startCheckout(\'monthly\',\'account_menu\')" style="color:var(--gold-deep);font-weight:700">Upgrade to Pro →</a>' : '')+
           '<a onclick="fbSignOut()">Sign out</a>'+
         '</div>'+
       '</div>';
@@ -7339,7 +7352,7 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         var el=document.createElement('a');
         el.className='ex'+(setLocked?' pro':'');
         el.textContent=name+(setLocked?' · pro':' →');
-        el.addEventListener('click',function(){ setLocked ? startCheckout() : openPSet(ch.n,type); });
+        el.addEventListener('click',function(){ setLocked ? startCheckout('monthly','locked_pset') : openPSet(ch.n,type); });
         g.appendChild(el);
       });
       host.appendChild(g);
@@ -8177,13 +8190,21 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
         'course, Milo on every problem, the practice and challenge sets, and everything added '+
         'while you are subscribed.</p>'+
       '<div class="lessonnav" style="justify-content:center">'+
-        '<button class="btn btn-primary" onclick="startCheckout(\'monthly\')">Unlock everything, $14.99/month →</button>'+
+        '<button class="btn btn-primary" onclick="startCheckout(\'monthly\',\'chapter_gate\')">Unlock everything, $14.99/month →</button>'+
         '<a class="btn btn-ghost" onclick="showToc()">Back to contents</a>'+
       '</div>'+
       (signedIn?'':'<p style="color:var(--mute);font-size:13px;margin-top:14px">Already subscribed? '+
         '<a onclick="showAuthModal(\'in\')" style="color:var(--mid);font-weight:600;cursor:pointer">Sign in</a>.</p>')+
       '</div>';
-    if(window.track) track('paywall_hit',{chapter:chNum,course:CURRENT_COURSE});
+    if(window.track){
+      track('paywall_hit',{chapter:chNum,course:CURRENT_COURSE});
+      // paywall_hit is kept because the historical series depends on it, but it fires only
+      // from here, so it counts one price surface out of several and is useless as the
+      // denominator for cost per price view. price_seen is the countable one and fires
+      // wherever a price is actually rendered.
+      track('price_seen',{surface:'chapter_gate',plan:'monthly',value:14.99,
+                          chapter:chNum,course:CURRENT_COURSE});
+    }
   }
   window.showPaywallGate=showPaywallGate;
 
@@ -9949,7 +9970,7 @@ async function sendTutorMsg() {
           if(window.track) track('premium_prompt_see_plans',{surface:o.surface});
           if(window.fbTrack) fbTrack('ViewContent',{content_type:'pricing'});
           shut();
-          if(window.startCheckout) startCheckout('monthly'); else location.assign('/#pricing');
+          if(window.startCheckout) startCheckout('monthly',o.surface); else location.assign('/#pricing');
         };
         ov.addEventListener('click',function(e){ if(e.target===ov){ shut(); go(); } });
         document.addEventListener('keydown',function esc(e){
