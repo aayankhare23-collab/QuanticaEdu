@@ -7105,7 +7105,20 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
     var cs=document.getElementById('courseScroll'); if(cs){ if(name!=='lessonView'){ cs.classList.remove('ws-mode'); if(window.WS) WS.active=false; } cs.scrollTop=0; }
     // Leaving the workspace for any other view is an in-app exit. Guarded on window.LP
     // because showView is defined earlier in the file than LP is.
-    if(name!=='lessonView' && window.LP){ try{ LP.exit('nav'); }catch(e){} }
+    if(name!=='lessonView' && window.LP){
+      try{
+        var _reached=LP.exit('nav');
+        // exit() returns the furthest page index, so >=1 means they advanced at least one
+        // page rather than opening the lesson and turning straight round. Offering a plan to
+        // a bounce would spend the once-ever flag on someone who read nothing. This is the
+        // deep-linked reader's only chance to see a price, since they skip onboarding
+        // entirely. Delayed so the view they navigated to paints first, and it self
+        // suppresses if they already saw the prompt after onboarding.
+        if(_reached>=1 && window.__premiumPrompt){
+          setTimeout(function(){ try{ __premiumPrompt.afterLessonExit(); }catch(e){} },450);
+        }
+      }catch(e){}
+    }
   }
   function showDashboard(){
     if(window.navGuard && !navGuard(1,{v:'dash'})) return;
@@ -7472,13 +7485,18 @@ h1,h2,h3,h4,.logo,.tour-pop h4,.auth-card h2,.demo .top .t,.quad .cell b,.cpanel
       },
       hint:function(n){ if(cur) send('hint_open',{lesson_page:String(cur.furthest+1),hint:n||1}); },
       complete:function(){ if(cur) cur.done=true; },
+      // Returns the furthest page index reached when it actually sends, and false otherwise.
+      // showView uses that to size how much work the student did. It is an index, not a
+      // count, so opening a lesson and leaving from the first page returns 0.
       exit:function(why){
-        if(!cur||cur.done||cur.exited||cur.furthest<0) return;
+        if(!cur||cur.done||cur.exited||cur.furthest<0) return false;
+        var reached=cur.furthest;
         cur.exited=true;
         send('lesson_exit',{lesson_page:String(cur.furthest+1),pct:pctOf(cur.furthest,total()),
                             lesson_page_type:kindOf(cur.furthest),
                             secs:Math.round((Date.now()-cur.t0)/1000),
                             exit_reason:why||'nav',transport_type:'beacon'});
+        return reached;
       }
     };
   })();
@@ -9888,46 +9906,85 @@ async function sendTutorMsg() {
     _key:'qa_premium_prompt_v1',
     seen:function(){ try{ return localStorage.getItem(this._key)==='1'; }catch(e){ return false; } },
     _mark:function(){ try{ localStorage.setItem(this._key,'1'); }catch(e){} },
-    afterOnboarding:function(cont){
+    // Shared by both entry points. These guards used to live inline in afterOnboarding
+    // because it was the only one.
+    _eligible:function(){
+      if(this.seen()) return false;
+      if(!(window.paywallOn && window.paywallOn())) return false;   // nothing to sell yet
+      var a=window._access||{};
+      if(a.type==='paid'||a.type==='legacy') return false;          // already has everything
+      if(window.WS && WS.active) return false;                      // reading a lesson, do not cover it
+      return true;
+    },
+    /* o.title, o.lead, o.goLabel, o.cont, o.surface.
+       The plan button used to be "See plans" calling location.assign('/#pricing'), which threw
+       the student out of the app onto the marketing page. Coming back to buy meant reloading
+       the whole app door. It calls startCheckout directly now, which already handles a signed
+       out visitor by opening auth, and the price sits in the copy so this screen IS the plan
+       surface rather than a signpost to one. */
+    _show:function(o){
       try{
-        if(this.seen()) return false;
-        if(!(window.paywallOn && window.paywallOn())) return false;   // nothing to sell yet
-        var a=window._access||{};
-        if(a.type==='paid'||a.type==='legacy') return false;          // already has everything
-        if(window.WS && WS.active) return false;                      // reading a lesson, do not cover it
-        var go=function(){ try{ cont&&cont(); }catch(e){} };
+        if(!this._eligible()) return false;
+        var go=function(){ try{ o.cont&&o.cont(); }catch(e){} };
         this._mark();
         var ov=document.createElement('div');
         ov.id='premOv';
         ov.style.cssText='position:fixed;inset:0;z-index:4350;background:rgba(12,26,16,.5);display:grid;place-items:center;padding:20px';
         ov.innerHTML=
           '<div role="dialog" aria-modal="true" aria-labelledby="premH" style="max-width:440px;width:100%;background:#fff;border:1.5px solid #14532D;border-radius:0;padding:26px 24px;font-family:inherit">'+
-          '<h3 id="premH" style="margin:0 0 10px;font-size:1.32rem;color:#14532D">You are set up. Chapter 1 is on us.</h3>'+
-          '<p style="margin:0 0 6px;color:#3d4f42;line-height:1.55">Every course opens with a free chapter, no card needed. A plan unlocks every chapter of every course, Milo on every problem, and the practice and challenge sets.</p>'+
-          '<p style="margin:0 0 18px;color:#3d4f42;line-height:1.55">You can decide later. Nothing is locked until you reach Chapter 2.</p>'+
+          '<h3 id="premH" style="margin:0 0 10px;font-size:1.32rem;color:#14532D">'+o.title+'</h3>'+
+          '<p style="margin:0 0 6px;color:#3d4f42;line-height:1.55">'+o.lead+'</p>'+
+          '<p style="margin:0 0 18px;color:#3d4f42;line-height:1.55">Quantica Pro is $14.99 a month and opens every published chapter of every course, Milo on every problem, and the practice and challenge sets. Cancel anytime. Nothing is locked until you reach Chapter 2.</p>'+
           '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
-          '<button id="premGo" style="flex:1 1 190px;background:#beff8b;border:1.5px solid #14532D;border-radius:0;padding:12px 16px;font-family:inherit;font-weight:700;font-size:.95rem;color:#0a0a0a;cursor:pointer">Start my first lesson</button>'+
-          '<button id="premSee" style="flex:0 1 auto;background:transparent;border:1.5px solid rgba(10,10,10,.22);border-radius:0;padding:12px 18px;font-family:inherit;font-weight:600;font-size:.95rem;color:#14532D;cursor:pointer">See plans</button>'+
+          '<button id="premGo" style="flex:1 1 190px;background:#beff8b;border:1.5px solid #14532D;border-radius:0;padding:12px 16px;font-family:inherit;font-weight:700;font-size:.95rem;color:#0a0a0a;cursor:pointer">'+o.goLabel+'</button>'+
+          '<button id="premSee" style="flex:0 1 auto;background:transparent;border:1.5px solid rgba(10,10,10,.22);border-radius:0;padding:12px 18px;font-family:inherit;font-weight:600;font-size:.95rem;color:#14532D;cursor:pointer">Unlock everything</button>'+
           '</div></div>';
         document.body.appendChild(ov);
         var shut=function(){ if(ov.parentNode) ov.parentNode.removeChild(ov); };
         ov.querySelector('#premGo').onclick=function(){
-          if(window.track) track('premium_prompt_continue',{});
+          if(window.track) track('premium_prompt_continue',{surface:o.surface});
           shut(); go();
         };
         ov.querySelector('#premSee').onclick=function(){
-          if(window.track) track('premium_prompt_see_plans',{});
+          if(window.track) track('premium_prompt_see_plans',{surface:o.surface});
           if(window.fbTrack) fbTrack('ViewContent',{content_type:'pricing'});
-          shut(); location.assign('/#pricing');
+          shut();
+          if(window.startCheckout) startCheckout('monthly'); else location.assign('/#pricing');
         };
         ov.addEventListener('click',function(e){ if(e.target===ov){ shut(); go(); } });
         document.addEventListener('keydown',function esc(e){
           if(e.key==='Escape'){ document.removeEventListener('keydown',esc); shut(); go(); }
         });
         setTimeout(function(){ var b=ov.querySelector('#premGo'); if(b) b.focus(); },40);
-        if(window.track) track('premium_prompt_shown',{});
+        if(window.track){
+          track('premium_prompt_shown',{surface:o.surface});
+          // The price is on screen at this moment. paywall_hit only fires from the chapter
+          // gate, which almost nobody reaches, so without this the biggest price surface in
+          // the app counts as nothing. surface is what keeps the two populations apart.
+          track('price_seen',{surface:o.surface,plan:'monthly',value:14.99});
+        }
         return true;
       }catch(e){ return false; }
+    },
+    afterOnboarding:function(cont){
+      return this._show({
+        surface:'onboarding', cont:cont, goLabel:'Start my first lesson',
+        title:'You are set up. Chapter 1 is on us.',
+        lead:'Every course opens with a free chapter, no card needed.'
+      });
+    },
+    /* Deep-linked traffic never reaches afterOnboarding, because Onboard.shouldAutoOpen()
+       refuses while ?lesson= is in the URL, which is correct; someone who asked for a lesson
+       should not get a questionnaire. But that is exactly the traffic the ads send, so the
+       whole cohort was being shown no price at all. This is the second entry point, fired
+       once they leave a lesson they actually worked. Same once-ever flag, so nobody sees
+       both. */
+    afterLessonExit:function(){
+      return this._show({
+        surface:'lesson_exit', goLabel:'Keep going',
+        title:'Nice work. That was a free chapter.',
+        lead:'You just finished a lesson from the free chapter. The rest of the course works exactly the same way.'
+      });
     }
   };
   window.__signinPrompt={
